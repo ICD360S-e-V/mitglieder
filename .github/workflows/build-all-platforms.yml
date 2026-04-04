@@ -1,3 +1,4 @@
+# CI/CD workflow for ICD360S e.V. Mitgliederportal
 name: Build All Platforms
 
 on:
