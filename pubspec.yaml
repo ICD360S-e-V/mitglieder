@@ -100,7 +100,8 @@ dependencies:
   noise_meter: ^5.0.1
 
   # Network connectivity detection (WiFi/4G/5G/offline)
-  connectivity_plus: ^7.0.0
+  # Pinned: 7.1.0 uses NWPath.isUltraConstrained (macOS 26 API) which fails on Xcode 16.x
+  connectivity_plus: 7.0.0
 
   # Background service for persistent WebSocket and notifications
   flutter_background_service: ^5.0.10
