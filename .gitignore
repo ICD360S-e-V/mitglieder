@@ -44,3 +44,12 @@ backups_*/
 
 # Symbols (debug)
 symbols/
+
+# SSH keys - NEVER commit these
+vps_*
+*.pem
+*.key
+*.p12
+*.jks
+id_rsa
+id_ed25519
