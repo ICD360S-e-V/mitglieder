@@ -2,52 +2,96 @@
 
 Die offizielle Mitglieder-App des **ICD360S e.V.** - eine sichere, mehrsprachige Plattform zur Verwaltung aller Vereinsaktivitaeten.
 
+![Platform](https://img.shields.io/badge/Android-available-brightgreen)
+![Platform](https://img.shields.io/badge/iOS-Beta-yellow)
+![Platform](https://img.shields.io/badge/macOS-Beta-yellow)
+![Platform](https://img.shields.io/badge/Windows-available-brightgreen)
+![Platform](https://img.shields.io/badge/Linux-available-brightgreen)
+![Flutter](https://img.shields.io/badge/Flutter-3.41.6-blue)
+![License](https://img.shields.io/badge/License-Proprietary-red)
+
 ## Funktionen
 
-- **Mitgliederverwaltung** - Registrierung, Login, Profilverwaltung, Verifizierung
-- **Terminverwaltung** - Wochenkalender mit Urlaubs- und Feiertagsplanung
+- **Mitgliederverwaltung** - Registrierung, Login, Profilverwaltung, 8-Stufen Verifizierung
+- **Terminverwaltung** - Wochenkalender mit KW-Navigation, Urlaubs- und Feiertagsplanung
 - **Live Chat** - Echtzeit-Kommunikation mit dem Vorstand via WebSocket
 - **Sprachanrufe** - Peer-to-Peer Voice Calls via WebRTC mit TURN/STUN
-- **Ticket-System** - Anfragen erstellen, verfolgen und verwalten mit Anhängen
-- **Push-Benachrichtigungen** - Sofortige Benachrichtigungen ohne Google-Dienste
+- **Ticket-System** - Anfragen erstellen, verfolgen und verwalten mit Dateianhang
+- **Push-Benachrichtigungen** - Sofortige Benachrichtigungen ohne Google-Dienste (ntfy)
 - **Interner Datei-Viewer** - PDF und Bilder direkt in der App oeffnen
-- **28 Sprachen** - Vollstaendig lokalisiert, automatische Spracherkennung
+- **28 Sprachen** - Vollstaendig lokalisiert mit automatischer Spracherkennung
+- **Auto-Update** - Automatische Aktualisierungen ueber F-Droid oder internen Update-Service
 
-## Plattformen
+## Plattformen & Verfuegbarkeit
 
-| Plattform | Format | Distribution |
-|-----------|--------|--------------|
-| Android | APK | F-Droid, Google Play, Huawei, Amazon, Samsung |
-| iOS | IPA | App Store |
-| macOS | DMG | Direktdownload |
-| Windows | EXE | Direktdownload |
-| Linux | DEB, RPM, AppImage | Direktdownload |
+| Plattform | Format | Status | Distribution |
+|-----------|--------|--------|--------------|
+| **Android** | APK | Verfuegbar | F-Droid (eigenes Repository) |
+| **Android** | APK/AAB | In Vorbereitung | Google Play, Huawei AppGallery, Amazon Appstore, Samsung Galaxy Store |
+| **Windows** | EXE Installer | Verfuegbar | Direktdownload vom Server |
+| **Linux** | DEB, RPM, AppImage | Verfuegbar | Direktdownload vom Server |
+| **macOS** | DMG | Beta-Phase | Direktdownload (sucht Beta-Tester) |
+| **iOS** | IPA | Beta-Phase | TestFlight (sucht Beta-Tester) |
 
-## Technologie
+Die Store-Veroeffentlichungen (Google Play, Huawei, Amazon, Samsung, App Store) befinden sich in Vorbereitung und werden verfuegbar, sobald ausreichend Beta-Tester die App validiert haben.
 
-- **Framework:** Flutter 3.41.6 (Dart 3.11.4)
-- **Backend:** PHP 8.4 + MariaDB 10.11 + Nginx
-- **Echtzeit:** WebSocket (Ratchet PHP) + WebRTC
-- **Sicherheit:** Certificate Pinning, Ende-zu-Ende verschluesselt, Obfuscation
-- **CI/CD:** GitHub Actions - automatischer Build, Release und Deploy
+## Installation
 
-## Installation (F-Droid)
+### Android (F-Droid - empfohlen)
 
-1. F-Droid installieren: [f-droid.org](https://f-droid.org)
+1. [F-Droid](https://f-droid.org) installieren
 2. Repository hinzufuegen: `https://icd360sev.icd360s.de/fdroid/repo`
 3. Nach **ICD360S e.V. Mitglieder** suchen und installieren
 
-## Datenschutz
+Updates werden automatisch ueber F-Droid bereitgestellt (alle 12-24 Stunden).
 
-- Keine Google-Dienste erforderlich
-- Keine Werbung, kein Tracking
-- Alle Daten auf eigenem Server in Deutschland
+### Andere Plattformen
+
+Downloads fuer Windows, Linux und macOS sind ueber den internen Update-Service der App verfuegbar.
+
+## Technologie
+
+| Komponente | Technologie |
+|------------|-------------|
+| **Framework** | Flutter 3.41.6 (Dart 3.11.4) |
+| **Backend** | PHP 8.4, MariaDB 10.11, Nginx |
+| **Echtzeit** | WebSocket (Ratchet PHP), WebRTC |
+| **Sicherheit** | Certificate Pinning (ISRG Root X1), Code-Obfuscation |
+| **CI/CD** | GitHub Actions (automatischer Build, Release, Deploy) |
+| **Benachrichtigungen** | ntfy (FOSS, ohne Google/FCM) |
+| **Lokalisierung** | 28 Sprachen, 558 Uebersetzungsschluessel |
+
+## Sicherheit & Datenschutz
+
+- Keine Google-Dienste erforderlich (100% FOSS-kompatibel)
+- Keine Werbung, kein Tracking, keine Analytics
+- Alle Daten auf eigenem Server in Deutschland gehostet
+- SSL Certificate Pinning auf allen Verbindungen
 - DSGVO-konform
+- Dart-Code Obfuscation in allen Release-Builds
+
+## Beta-Tester gesucht
+
+Wir suchen aktiv Beta-Tester fuer folgende Plattformen:
+
+- **iOS** - TestFlight Beta
+- **macOS** - DMG Direktdownload
+- **Google Play** - Closed Beta Track
+
+Interessierte Mitglieder koennen sich per E-Mail melden: **kontakt@icd360s.de**
 
 ## Lizenz
 
 Proprietaer - Nur fuer Mitglieder des ICD360S e.V.
 
----
+Der Quellcode ist nicht zur Weiterverbreitung oder Nutzung durch Dritte bestimmt.
 
-**ICD360S e.V.** | [icd360s.de](https://icd360s.de) | Berlin, Deutschland
+## Impressum
+
+**ICD360S e.V.**
+Neu-Ulm, Deutschland
+
+E-Mail: kontakt@icd360s.de
+Web: [icd360s.de](https://icd360s.de)
+Impressum: [icd360s.de/impressum](https://icd360s.de/impressum)
+Datenschutz: [icd360s.de/datenschutz](https://icd360s.de/datenschutz)
