@@ -6,7 +6,7 @@ import '../services/update_service.dart';
 import '../services/logger_service.dart';
 import 'update_dialog.dart';
 
-const String appVersion = '1.1.11';
+const String appVersion = '1.1.12';
 
 class LegalFooter extends StatefulWidget {
   final bool darkMode;
@@ -159,13 +159,24 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
               mainAxisSize: MainAxisSize.min,
               children: [
                 _buildVersionEntry(
+                  'v1.1.12',
+                  '05.04.2026',
+                  [
+                    'IMPROVED: Alle APKs mit Release-Keystore signiert',
+                    'IMPROVED: Download-URL korrigiert (/android/universal/)',
+                    'IMPROVED: GitHub CI/CD: automatischer Build, Release, Deploy',
+                    'IMPROVED: F-Droid versionCode automatisch aus APK',
+                    'IMPROVED: Projekt aufgeräumt (unnötige Dateien entfernt)',
+                  ],
+                  isLatest: true,
+                ),
+                _buildVersionEntry(
                   'v1.1.11',
                   '04.04.2026',
                   [
                     'FIX: App sendet jetzt die korrekte Client-Version an den Server',
                     'FIX: War vorher hardcodiert auf alte Version',
                   ],
-                  isLatest: true,
                 ),
                 _buildVersionEntry(
                   'v1.1.10',
