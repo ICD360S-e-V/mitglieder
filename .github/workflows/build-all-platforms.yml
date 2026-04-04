@@ -546,11 +546,16 @@ jobs:
           SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
           BASE="/var/www/icd360sev.icd360s.de/downloads/mitglieder"
 
-          # Backup Android
-          $SSH_CMD "[ -f $BASE/android/icd360sev.apk ] && cp $BASE/android/icd360sev.apk $BASE/android/icd360sev_stable.apk || true"
+          # Backup Android (each flavor)
+          for flavor in fdroid googleplay amazon huawei samsung universal; do
+            $SSH_CMD "[ -f $BASE/android/$flavor/icd360sev.apk ] && cp $BASE/android/$flavor/icd360sev.apk $BASE/android/$flavor/icd360sev_stable.apk || true"
+          done
+          $SSH_CMD "[ -f $BASE/android/googleplay/icd360sev.aab ] && cp $BASE/android/googleplay/icd360sev.aab $BASE/android/googleplay/icd360sev_stable.aab || true"
 
-          # Backup Windows
-          $SSH_CMD "[ -f $BASE/windows/icd360sev_setup.exe ] && cp $BASE/windows/icd360sev_setup.exe $BASE/windows/icd360sev_setup_stable.exe || true"
+          # Backup other platforms
+          $SSH_CMD "[ -f $BASE/windows/icd360sev-windows.zip ] && cp $BASE/windows/icd360sev-windows.zip $BASE/windows/icd360sev-windows_stable.zip || true"
+          $SSH_CMD "[ -f $BASE/macos/icd360sev-macos.zip ] && cp $BASE/macos/icd360sev-macos.zip $BASE/macos/icd360sev-macos_stable.zip || true"
+          $SSH_CMD "[ -f $BASE/linux/icd360sev-mitglied.AppImage ] && cp $BASE/linux/icd360sev-mitglied.AppImage $BASE/linux/icd360sev-mitglied_stable.AppImage || true"
 
           echo "Backups created"
 
@@ -561,35 +566,47 @@ jobs:
           BASE="/var/www/icd360sev.icd360s.de/downloads/mitglieder"
 
           # Create directories on server
-          $SSH_CMD "mkdir -p $BASE/android $BASE/linux $BASE/windows $BASE/macos $BASE/ios"
+          $SSH_CMD "mkdir -p \
+            $BASE/android/fdroid \
+            $BASE/android/googleplay \
+            $BASE/android/amazon \
+            $BASE/android/huawei \
+            $BASE/android/samsung \
+            $BASE/android/universal \
+            $BASE/linux \
+            $BASE/windows \
+            $BASE/macos \
+            $BASE/ios"
 
-          # Upload Android
-          $SCP_CMD deploy/android/icd360sev.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev.apk
-          $SCP_CMD deploy/android/icd360sev-universal.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-universal.apk
-          $SCP_CMD deploy/android/icd360sev-googleplay.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-googleplay.apk
-          $SCP_CMD deploy/android/icd360sev-googleplay.aab ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-googleplay.aab
-          $SCP_CMD deploy/android/icd360sev-amazon.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-amazon.apk
-          $SCP_CMD deploy/android/icd360sev-huawei.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-huawei.apk
-          $SCP_CMD deploy/android/icd360sev-samsung.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-samsung.apk
-          echo "✅ Android uploaded"
+          DEST="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+
+          # Upload Android (each flavor in its own folder)
+          $SCP_CMD deploy/android/icd360sev.apk $DEST:$BASE/android/fdroid/icd360sev.apk
+          $SCP_CMD deploy/android/icd360sev-universal.apk $DEST:$BASE/android/universal/icd360sev.apk
+          $SCP_CMD deploy/android/icd360sev-googleplay.apk $DEST:$BASE/android/googleplay/icd360sev.apk
+          $SCP_CMD deploy/android/icd360sev-googleplay.aab $DEST:$BASE/android/googleplay/icd360sev.aab
+          $SCP_CMD deploy/android/icd360sev-amazon.apk $DEST:$BASE/android/amazon/icd360sev.apk
+          $SCP_CMD deploy/android/icd360sev-huawei.apk $DEST:$BASE/android/huawei/icd360sev.apk
+          $SCP_CMD deploy/android/icd360sev-samsung.apk $DEST:$BASE/android/samsung/icd360sev.apk
+          echo "✅ Android uploaded (7 flavors)"
 
           # Upload Linux
-          $SCP_CMD deploy/linux/icd360sev-mitglied.deb ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/linux/
-          $SCP_CMD deploy/linux/icd360sev-mitglied.rpm ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/linux/
-          $SCP_CMD deploy/linux/icd360sev-mitglied.AppImage ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/linux/
-          $SCP_CMD deploy/linux/icd360sev-linux.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/linux/
-          echo "✅ Linux uploaded"
+          $SCP_CMD deploy/linux/icd360sev-mitglied.deb $DEST:$BASE/linux/
+          $SCP_CMD deploy/linux/icd360sev-mitglied.rpm $DEST:$BASE/linux/
+          $SCP_CMD deploy/linux/icd360sev-mitglied.AppImage $DEST:$BASE/linux/
+          $SCP_CMD deploy/linux/icd360sev-linux.tar.gz $DEST:$BASE/linux/
+          echo "✅ Linux uploaded (.deb, .rpm, .AppImage, .tar.gz)"
 
           # Upload Windows
-          $SCP_CMD deploy/windows/icd360sev-windows.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/windows/
+          $SCP_CMD deploy/windows/icd360sev-windows.zip $DEST:$BASE/windows/
           echo "✅ Windows uploaded"
 
           # Upload macOS
-          $SCP_CMD deploy/macos/icd360sev-macos.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/macos/
+          $SCP_CMD deploy/macos/icd360sev-macos.zip $DEST:$BASE/macos/
           echo "✅ macOS uploaded"
 
           # Upload iOS
-          $SCP_CMD deploy/ios/icd360sev-ios.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/ios/
+          $SCP_CMD deploy/ios/icd360sev-ios.zip $DEST:$BASE/ios/
           echo "✅ iOS uploaded"
 
       - name: Update F-Droid repository
@@ -597,7 +614,7 @@ jobs:
           SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
 
           # Copy fdroid APK to F-Droid repo
-          $SSH_CMD "cp /var/www/icd360sev.icd360s.de/downloads/mitglieder/android/icd360sev.apk \
+          $SSH_CMD "cp /var/www/icd360sev.icd360s.de/downloads/mitglieder/android/fdroid/icd360sev.apk \
                        /var/www/icd360sev.icd360s.de/fdroid/repo/icd360sev.apk"
 
           # Regenerate F-Droid index
