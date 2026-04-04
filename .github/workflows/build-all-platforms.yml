@@ -16,7 +16,6 @@ concurrency:
 env:
   FLUTTER_VERSION: '3.41.4'
   JAVA_VERSION: '17'
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   # ============================================
@@ -76,7 +75,7 @@ jobs:
       # Restore-only (never auto-save) - save happens only after successful build
       - name: Check Linux+Android cache
         id: cache-la
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: /tmp/la-hash.txt
           key: v2-build-ok-linux-android-${{ steps.check.outputs.la_hash }}
@@ -84,7 +83,7 @@ jobs:
 
       - name: Check Apple cache
         id: cache-apple
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: /tmp/apple-hash.txt
           key: v2-build-ok-apple-${{ steps.check.outputs.apple_hash }}
@@ -92,7 +91,7 @@ jobs:
 
       - name: Check Windows cache
         id: cache-win
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: /tmp/win-hash.txt
           key: v2-build-ok-windows-${{ steps.check.outputs.win_hash }}
@@ -376,7 +375,7 @@ jobs:
       # --- Mark successful build (for cache) ---
       - name: Save Linux+Android build marker
         run: echo "ok" > /tmp/la-build-ok.txt
-      - uses: actions/cache/save@v4
+      - uses: actions/cache/save@v5
         with:
           path: /tmp/la-build-ok.txt
           key: v2-build-ok-linux-android-${{ needs.detect-changes.outputs.la_hash }}
@@ -438,7 +437,7 @@ jobs:
       # Mark successful build
       - name: Save Apple build marker
         run: echo "ok" > /tmp/apple-build-ok.txt
-      - uses: actions/cache/save@v4
+      - uses: actions/cache/save@v5
         with:
           path: /tmp/apple-build-ok.txt
           key: v2-build-ok-apple-${{ needs.detect-changes.outputs.apple_hash }}
@@ -480,7 +479,7 @@ jobs:
       # Mark successful build
       - name: Save Windows build marker
         run: echo "ok" > /tmp/win-build-ok.txt
-      - uses: actions/cache/save@v4
+      - uses: actions/cache/save@v5
         with:
           path: /tmp/win-build-ok.txt
           key: v2-build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}
