@@ -67,3 +67,11 @@ vps_icd360sev_icd360s.de.pub
 # Release keystore (signing)
 release-keystore.jks
 *.jks
+
+# IDE settings (personal)
+.vscode/
+.claude/settings.local.json
+devtools_options.yaml
+
+# Local build scripts (CI/CD handles builds)
+build_all_stores.sh
