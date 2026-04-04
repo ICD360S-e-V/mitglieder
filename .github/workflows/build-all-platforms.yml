@@ -657,10 +657,15 @@ jobs:
           $SSH_CMD "cp /var/www/icd360sev.icd360s.de/downloads/mitglieder/android/fdroid/icd360sev.apk \
                        /var/www/icd360sev.icd360s.de/fdroid/repo/icd360sev.apk"
 
-          # Regenerate F-Droid index
+          # Auto-detect versionCode from APK and update metadata
           $SSH_CMD "export ANDROID_SDK_ROOT=/opt/android-sdk && \
                     export JAVA_HOME=/usr/lib/jvm/java-21-openjdk && \
                     cd /var/www/icd360sev.icd360s.de/fdroid && \
+                    VC=\$(aapt2 dump badging repo/icd360sev.apk 2>/dev/null | grep versionCode | sed \"s/.*versionCode='//\" | sed \"s/'.*//\") && \
+                    if [ -n \"\$VC\" ]; then \
+                      sed -i \"s/CurrentVersionCode:.*/CurrentVersionCode: \$VC/\" metadata/de.icd360s.mitglieder.yml && \
+                      echo \"Updated CurrentVersionCode to \$VC\"; \
+                    fi && \
                     fdroid update" || echo "Warning: F-Droid index update failed (non-critical)"
 
           echo "✅ F-Droid repository updated"
