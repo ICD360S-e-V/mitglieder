@@ -478,10 +478,11 @@ jobs:
 
       # Mark successful build
       - name: Save Windows build marker
-        run: echo "ok" > /tmp/win-build-ok.txt
+        shell: bash
+        run: echo "ok" > "$RUNNER_TEMP/win-build-ok.txt"
       - uses: actions/cache/save@v5
         with:
-          path: /tmp/win-build-ok.txt
+          path: ${{ runner.temp }}/win-build-ok.txt
           key: v2-build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}
 
   # ============================================
