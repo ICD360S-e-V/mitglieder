@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FLUTTER_VERSION: '3.41.4'
+  FLUTTER_VERSION: '3.41.6'
   JAVA_VERSION: '17'
 
 jobs:
@@ -309,8 +309,16 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
+      - name: Decode release keystore
+        run: echo "${{ secrets.RELEASE_KEYSTORE }}" | base64 -d > android/app/release-keystore.jks
+
       - name: Build APK (${{ matrix.flavor }})
         run: ${{ matrix.build_cmd }}
+        env:
+          KEYSTORE_PATH: release-keystore.jks
+          KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
 
       - name: Upload APK
         uses: actions/upload-artifact@v7
@@ -641,43 +649,13 @@ jobs:
           $SCP_CMD deploy/ios/icd360sev-ios.app.zip $DEST:$BASE/ios/icd360sev-ios.app.zip
           echo "✅ iOS uploaded (.app)"
 
-      - name: Re-sign F-Droid APK with keystore
-        run: |
-          SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
-          SCP_CMD="scp -i ~/.ssh/deploy_key -P ${{ secrets.SSH_PORT }}"
-          DEST="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
-
-          # Decode keystore from secret
-          echo "${{ secrets.FDROID_KEYSTORE }}" | base64 -d > /tmp/fdroid.jks
-
-          # Download the fdroid APK from server
-          $SCP_CMD $DEST:/var/www/icd360sev.icd360s.de/downloads/mitglieder/android/fdroid/icd360sev.apk /tmp/icd360sev-unsigned.apk
-
-          # Remove existing signature
-          zip -d /tmp/icd360sev-unsigned.apk "META-INF/*" 2>/dev/null || true
-
-          # Align APK
-          ${ANDROID_HOME}/build-tools/34.0.0/zipalign -f 4 /tmp/icd360sev-unsigned.apk /tmp/icd360sev-aligned.apk
-
-          # Sign with F-Droid keystore
-          ${ANDROID_HOME}/build-tools/34.0.0/apksigner sign \
-            --ks /tmp/fdroid.jks \
-            --ks-pass pass:${{ secrets.FDROID_KEYSTORE_PASS }} \
-            --ks-key-alias ${{ secrets.FDROID_KEY_ALIAS }} \
-            --key-pass pass:${{ secrets.FDROID_KEYSTORE_PASS }} \
-            --out /tmp/icd360sev-signed.apk \
-            /tmp/icd360sev-aligned.apk
-
-          # Upload signed APK to F-Droid repo
-          $SCP_CMD /tmp/icd360sev-signed.apk $DEST:/var/www/icd360sev.icd360s.de/fdroid/repo/icd360sev.apk
-
-          # Cleanup
-          rm -f /tmp/fdroid.jks /tmp/icd360sev-unsigned.apk /tmp/icd360sev-aligned.apk /tmp/icd360sev-signed.apk
-          echo "✅ APK re-signed with F-Droid keystore"
-
       - name: Update F-Droid repository
         run: |
           SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+
+          # Copy signed fdroid APK to F-Droid repo
+          $SSH_CMD "cp /var/www/icd360sev.icd360s.de/downloads/mitglieder/android/fdroid/icd360sev.apk \
+                       /var/www/icd360sev.icd360s.de/fdroid/repo/icd360sev.apk"
 
           # Regenerate F-Droid index
           $SSH_CMD "export ANDROID_SDK_ROOT=/opt/android-sdk && \

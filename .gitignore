@@ -63,3 +63,7 @@ CLAUDE.md
 # SSH keys
 vps_icd360sev_icd360s.de
 vps_icd360sev_icd360s.de.pub
+
+# Release keystore (signing)
+release-keystore.jks
+*.jks

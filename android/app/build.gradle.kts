@@ -54,6 +54,16 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            val keystorePath = System.getenv("KEYSTORE_PATH") ?: "release-keystore.jks"
+            storeFile = file(keystorePath)
+            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
+            keyAlias = System.getenv("KEY_ALIAS") ?: "release"
+            keyPassword = System.getenv("KEY_PASSWORD") ?: ""
+        }
+    }
+
     defaultConfig {
         applicationId = "de.icd360s.mitglieder"
         minSdk = flutter.minSdkVersion  // Android 6.0+ (Flutter minimum)
@@ -74,9 +84,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // TODO: Add production signing config
-            // Signing with debug keys for now
-            signingConfig = signingConfigs.getByName("debug")
+            // Use release keystore if available (CI), otherwise debug
+            signingConfig = if (file("release-keystore.jks").exists()) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
 }
