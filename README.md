@@ -8,7 +8,7 @@ Die offizielle Mitglieder-App des **ICD360S e.V.** - eine sichere, mehrsprachige
 ![Platform](https://img.shields.io/badge/Windows-available-brightgreen)
 ![Platform](https://img.shields.io/badge/Linux-available-brightgreen)
 ![Flutter](https://img.shields.io/badge/Flutter-3.41.6-blue)
-![License](https://img.shields.io/badge/License-Proprietary-red)
+![License](https://img.shields.io/badge/License-GPL--3.0-blue)
 
 ## Funktionen
 
@@ -82,9 +82,9 @@ Interessierte Mitglieder koennen sich per E-Mail melden: **kontakt@icd360s.de**
 
 ## Lizenz
 
-Proprietaer - Nur fuer Mitglieder des ICD360S e.V.
+Dieses Projekt ist lizenziert unter der [GNU General Public License v3.0](LICENSE).
 
-Der Quellcode ist nicht zur Weiterverbreitung oder Nutzung durch Dritte bestimmt.
+Jeder darf den Quellcode einsehen, verwenden, modifizieren und weiterverbreiten - unter der Bedingung, dass abgeleitete Werke ebenfalls unter GPL-3.0 veroeffentlicht werden.
 
 ## Impressum
 
