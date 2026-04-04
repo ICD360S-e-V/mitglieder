@@ -4,8 +4,6 @@ on:
   push:
     branches: [main]
     tags: ['v*']
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 # Auto-cancel old runs when a new one starts on the same branch
