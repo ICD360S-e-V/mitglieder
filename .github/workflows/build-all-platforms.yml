@@ -1,5 +1,6 @@
 # CI/CD workflow for ICD360S e.V. Mitgliederportal
-# Smart cache: skips platforms where code hasn't changed since last successful build
+# 4 jobs: Linux, Android, Apple, Windows
+# Smart cache: skips platforms unchanged since last successful build
 name: Build All Platforms
 
 on:
@@ -8,7 +9,6 @@ on:
     tags: ['v*']
   workflow_dispatch:
 
-# Auto-cancel old runs when a new one starts on the same branch
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -25,113 +25,114 @@ jobs:
     name: Detect Changes
     runs-on: ubuntu-latest
     outputs:
-      linux_android: ${{ steps.flags.outputs.linux_android }}
+      linux: ${{ steps.flags.outputs.linux }}
+      android: ${{ steps.flags.outputs.android }}
       apple: ${{ steps.flags.outputs.apple }}
       windows: ${{ steps.flags.outputs.windows }}
-      la_hash: ${{ steps.check.outputs.la_hash }}
+      linux_hash: ${{ steps.check.outputs.linux_hash }}
+      android_hash: ${{ steps.check.outputs.android_hash }}
       apple_hash: ${{ steps.check.outputs.apple_hash }}
       win_hash: ${{ steps.check.outputs.win_hash }}
     steps:
       - uses: actions/checkout@v5
 
-      - name: Check what needs building
+      - name: Compute hashes
         id: check
         run: |
-          # On tags or workflow_dispatch → always build everything
           if [[ "${{ github.ref }}" == refs/tags/* ]] || [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "linux_android=true" >> $GITHUB_OUTPUT
+            echo "linux=true" >> $GITHUB_OUTPUT
+            echo "android=true" >> $GITHUB_OUTPUT
             echo "apple=true" >> $GITHUB_OUTPUT
             echo "windows=true" >> $GITHUB_OUTPUT
+            echo "linux_hash=force" >> $GITHUB_OUTPUT
+            echo "android_hash=force" >> $GITHUB_OUTPUT
+            echo "apple_hash=force" >> $GITHUB_OUTPUT
+            echo "win_hash=force" >> $GITHUB_OUTPUT
             echo "BUILD ALL: tag or manual trigger"
             exit 0
           fi
 
-          # Compute hashes of relevant files per platform
-          # Shared = lib/ + pubspec.yaml + l10n.yaml (affects all platforms)
-          SHARED_HASH=$(find lib/ pubspec.yaml l10n.yaml -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
+          SHARED=$(find lib/ pubspec.yaml l10n.yaml -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
 
-          # Per-platform hashes = shared + platform-specific files
-          LA_HASH=$(echo "$SHARED_HASH"; find android/ linux/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
-          LA_HASH=$(echo "$LA_HASH" | sha256sum | cut -d' ' -f1)
+          LINUX_H=$(echo "$SHARED"; find linux/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && LINUX_H=$(echo "$LINUX_H" | sha256sum | cut -d' ' -f1)
+          ANDROID_H=$(echo "$SHARED"; find android/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && ANDROID_H=$(echo "$ANDROID_H" | sha256sum | cut -d' ' -f1)
+          APPLE_H=$(echo "$SHARED"; find ios/ macos/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && APPLE_H=$(echo "$APPLE_H" | sha256sum | cut -d' ' -f1)
+          WIN_H=$(echo "$SHARED"; find windows/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && WIN_H=$(echo "$WIN_H" | sha256sum | cut -d' ' -f1)
 
-          APPLE_HASH=$(echo "$SHARED_HASH"; find ios/ macos/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
-          APPLE_HASH=$(echo "$APPLE_HASH" | sha256sum | cut -d' ' -f1)
+          echo "Hashes: LINUX=$LINUX_H ANDROID=$ANDROID_H APPLE=$APPLE_H WIN=$WIN_H"
+          echo "linux_hash=$LINUX_H" >> $GITHUB_OUTPUT
+          echo "android_hash=$ANDROID_H" >> $GITHUB_OUTPUT
+          echo "apple_hash=$APPLE_H" >> $GITHUB_OUTPUT
+          echo "win_hash=$WIN_H" >> $GITHUB_OUTPUT
 
-          WIN_HASH=$(echo "$SHARED_HASH"; find windows/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
-          WIN_HASH=$(echo "$WIN_HASH" | sha256sum | cut -d' ' -f1)
+          # Dummy files for cache lookup
+          echo "$LINUX_H" > /tmp/linux-h.txt
+          echo "$ANDROID_H" > /tmp/android-h.txt
+          echo "$APPLE_H" > /tmp/apple-h.txt
+          echo "$WIN_H" > /tmp/win-h.txt
 
-          echo "Hashes: LA=$LA_HASH APPLE=$APPLE_HASH WIN=$WIN_HASH"
-
-          # Save hashes for cache lookup
-          echo "$LA_HASH" > /tmp/la-hash.txt
-          echo "$APPLE_HASH" > /tmp/apple-hash.txt
-          echo "$WIN_HASH" > /tmp/win-hash.txt
-
-          # Store hash values for later steps
-          echo "la_hash=$LA_HASH" >> $GITHUB_OUTPUT
-          echo "apple_hash=$APPLE_HASH" >> $GITHUB_OUTPUT
-          echo "win_hash=$WIN_HASH" >> $GITHUB_OUTPUT
-
-      # Restore-only (never auto-save) - save happens only after successful build
-      - name: Check Linux+Android cache
-        id: cache-la
+      - name: Check Linux cache
+        id: cache-linux
         uses: actions/cache/restore@v5
         with:
-          path: /tmp/la-hash.txt
-          key: v2-build-ok-linux-android-${{ steps.check.outputs.la_hash }}
+          path: /tmp/linux-h.txt
+          key: v3-build-ok-linux-${{ steps.check.outputs.linux_hash }}
+          lookup-only: true
+
+      - name: Check Android cache
+        id: cache-android
+        uses: actions/cache/restore@v5
+        with:
+          path: /tmp/android-h.txt
+          key: v3-build-ok-android-${{ steps.check.outputs.android_hash }}
           lookup-only: true
 
       - name: Check Apple cache
         id: cache-apple
         uses: actions/cache/restore@v5
         with:
-          path: /tmp/apple-hash.txt
-          key: v2-build-ok-apple-${{ steps.check.outputs.apple_hash }}
+          path: /tmp/apple-h.txt
+          key: v3-build-ok-apple-${{ steps.check.outputs.apple_hash }}
           lookup-only: true
 
       - name: Check Windows cache
         id: cache-win
         uses: actions/cache/restore@v5
         with:
-          path: /tmp/win-hash.txt
-          key: v2-build-ok-windows-${{ steps.check.outputs.win_hash }}
+          path: /tmp/win-h.txt
+          key: v3-build-ok-windows-${{ steps.check.outputs.win_hash }}
           lookup-only: true
 
       - name: Set build flags
         id: flags
         run: |
-          # If cache hit → already built successfully → skip
-          if [ "${{ steps.cache-la.outputs.cache-hit }}" == "true" ]; then
-            echo "→ Linux + Android: SKIP (already built)"
-            echo "linux_android=false" >> $GITHUB_OUTPUT
-          else
-            echo "→ Linux + Android: BUILD"
-            echo "linux_android=true" >> $GITHUB_OUTPUT
-          fi
+          for platform in linux android apple windows; do
+            CACHE_VAR="cache-${platform}"
+            if [ "$platform" = "windows" ]; then CACHE_VAR="cache-win"; fi
 
-          if [ "${{ steps.cache-apple.outputs.cache-hit }}" == "true" ]; then
-            echo "→ Apple: SKIP (already built)"
-            echo "apple=false" >> $GITHUB_OUTPUT
-          else
-            echo "→ Apple: BUILD"
-            echo "apple=true" >> $GITHUB_OUTPUT
-          fi
+            HIT="${{ steps.cache-linux.outputs.cache-hit }}"
+            case "$platform" in
+              android) HIT="${{ steps.cache-android.outputs.cache-hit }}" ;;
+              apple) HIT="${{ steps.cache-apple.outputs.cache-hit }}" ;;
+              windows) HIT="${{ steps.cache-win.outputs.cache-hit }}" ;;
+            esac
 
-          if [ "${{ steps.cache-win.outputs.cache-hit }}" == "true" ]; then
-            echo "→ Windows: SKIP (already built)"
-            echo "windows=false" >> $GITHUB_OUTPUT
-          else
-            echo "→ Windows: BUILD"
-            echo "windows=true" >> $GITHUB_OUTPUT
-          fi
+            if [ "$HIT" == "true" ]; then
+              echo "→ $platform: SKIP (already built)"
+              echo "$platform=false" >> $GITHUB_OUTPUT
+            else
+              echo "→ $platform: BUILD"
+              echo "$platform=true" >> $GITHUB_OUTPUT
+            fi
+          done
 
   # ============================================
-  # LINUX + ANDROID (all 5 flavors) - 1 runner
+  # LINUX desktop + packages
   # ============================================
-  build-linux-android:
-    name: Linux + Android
+  build-linux:
+    name: Linux
     needs: detect-changes
-    if: needs.detect-changes.outputs.linux_android == 'true'
+    if: needs.detect-changes.outputs.linux == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -144,6 +145,146 @@ jobs:
             libgtk-3-dev liblzma-dev libstdc++-12-dev \
             libsecret-1-dev libjsoncpp-dev libnotify-dev \
             libayatana-appindicator3-dev
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Generate l10n
+        run: flutter gen-l10n
+
+      - name: Build Linux
+        run: flutter build linux --release
+
+      - name: Upload Linux bundle
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-linux
+          path: build/linux/x64/release/bundle/
+          if-no-files-found: error
+
+      # --- Linux Packages ---
+      - name: Install packaging tools
+        run: |
+          sudo apt-get install -y ruby-dev rpm libfuse2
+          sudo gem install fpm
+          wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
+          chmod +x /usr/local/bin/appimagetool
+
+      - name: Create .deb
+        run: |
+          BUNDLE=build/linux/x64/release/bundle
+          VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
+          mkdir -p /tmp/scripts
+          printf '#!/bin/sh\nln -sf /opt/icd360sev-mitglied/icd360sev_mitglied /usr/local/bin/icd360sev_mitglied\n' > /tmp/scripts/postinst
+          chmod +x /tmp/scripts/postinst
+          fpm -s dir -t deb --name icd360sev-mitglied --version "$VERSION" \
+            --description "ICD360S e.V. Mitglieder-App" --maintainer "ICD360S e.V." \
+            --url "https://icd360s.de" --license "Proprietary" --architecture amd64 \
+            --depends libgtk-3-0 --depends libsecret-1-0 --depends libjsoncpp25 --depends libnotify4 \
+            --after-install /tmp/scripts/postinst \
+            "$BUNDLE/=/opt/icd360sev-mitglied/" \
+            "linux/icd360sev_mitglied.desktop=/usr/share/applications/icd360sev_mitglied.desktop"
+          mv icd360sev-mitglied_*.deb icd360sev-mitglied.deb
+
+      - name: Upload .deb
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-linux-deb
+          path: icd360sev-mitglied.deb
+          if-no-files-found: error
+
+      - name: Create .rpm
+        run: |
+          BUNDLE=build/linux/x64/release/bundle
+          VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
+          fpm -s dir -t rpm --name icd360sev-mitglied --version "$VERSION" \
+            --description "ICD360S e.V. Mitglieder-App" --maintainer "ICD360S e.V." \
+            --url "https://icd360s.de" --license "Proprietary" --architecture x86_64 \
+            --depends gtk3 --depends libsecret --depends jsoncpp --depends libnotify \
+            --after-install /tmp/scripts/postinst \
+            "$BUNDLE/=/opt/icd360sev-mitglied/" \
+            "linux/icd360sev_mitglied.desktop=/usr/share/applications/icd360sev_mitglied.desktop"
+          mv icd360sev-mitglied-*.rpm icd360sev-mitglied.rpm
+
+      - name: Upload .rpm
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-linux-rpm
+          path: icd360sev-mitglied.rpm
+          if-no-files-found: error
+
+      - name: Create AppImage
+        run: |
+          BUNDLE=build/linux/x64/release/bundle
+          mkdir -p AppDir/usr/bin AppDir/usr/lib AppDir/usr/share/applications
+          cp -r "$BUNDLE"/* AppDir/usr/bin/
+          [ -d "AppDir/usr/bin/lib" ] && mv AppDir/usr/bin/lib/* AppDir/usr/lib/ && rmdir AppDir/usr/bin/lib
+          cp linux/icd360sev_mitglied.desktop AppDir/
+          cp linux/icd360sev_mitglied.desktop AppDir/usr/share/applications/
+          printf '#!/bin/bash\nSELF=$(readlink -f "$0")\nHERE=${SELF%%/*}\nexport LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"\nexec "${HERE}/usr/bin/icd360sev_mitglied" "$@"\n' > AppDir/AppRun
+          chmod +x AppDir/AppRun
+          echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" | base64 -d > AppDir/icd360sev_mitglied.png
+          ARCH=x86_64 appimagetool --no-appstream AppDir icd360sev-mitglied.AppImage
+
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-linux-appimage
+          path: icd360sev-mitglied.AppImage
+          if-no-files-found: error
+
+      - name: Save cache marker
+        run: echo "ok" > /tmp/linux-ok.txt
+      - uses: actions/cache/save@v5
+        with:
+          path: /tmp/linux-ok.txt
+          key: v3-build-ok-linux-${{ needs.detect-changes.outputs.linux_hash }}
+
+  # ============================================
+  # ANDROID - each flavor in its own matrix job (separate memory)
+  # ============================================
+  build-android:
+    name: Android (${{ matrix.flavor }})
+    needs: detect-changes
+    if: needs.detect-changes.outputs.android == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - flavor: universal
+            build_cmd: "flutter build apk --release --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-release.apk"
+            artifact_name: icd360sev-universal-apk
+          - flavor: fdroid
+            build_cmd: "flutter build apk --release --flavor fdroid --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-fdroid-release.apk"
+            artifact_name: icd360sev-fdroid-apk
+          - flavor: googleplay
+            build_cmd: "flutter build apk --release --flavor googleplay --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-googleplay-release.apk"
+            artifact_name: icd360sev-googleplay-apk
+          - flavor: amazon
+            build_cmd: "flutter build apk --release --flavor amazon --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-amazon-release.apk"
+            artifact_name: icd360sev-amazon-apk
+          - flavor: huawei
+            build_cmd: "flutter build apk --release --flavor huawei --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-huawei-release.apk"
+            artifact_name: icd360sev-huawei-apk
+          - flavor: samsung
+            build_cmd: "flutter build apk --release --flavor samsung --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-samsung-release.apk"
+            artifact_name: icd360sev-samsung-apk
+    steps:
+      - uses: actions/checkout@v5
 
       - name: Set up Java ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v5
@@ -164,221 +305,48 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
-      # --- Linux Desktop Build ---
-      - name: Build Linux
-        run: flutter build linux --release
+      - name: Build APK (${{ matrix.flavor }})
+        run: ${{ matrix.build_cmd }}
 
-      - name: Upload Linux build (raw bundle)
+      - name: Upload APK
         uses: actions/upload-artifact@v7
         with:
-          name: icd360sev-linux
-          path: build/linux/x64/release/bundle/
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.apk_path }}
           if-no-files-found: error
 
-      # --- Linux Packages (.deb, .rpm, AppImage) ---
-      - name: Install packaging tools
-        run: |
-          sudo apt-get install -y ruby-dev rpm libfuse2
-          sudo gem install fpm
-          wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
-          chmod +x /usr/local/bin/appimagetool
-
-      - name: Create .deb package
-        run: |
-          BUNDLE=build/linux/x64/release/bundle
-          VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
-
-          mkdir -p /tmp/deb-scripts
-          echo '#!/bin/sh' > /tmp/deb-scripts/postinst
-          echo 'ln -sf /opt/icd360sev-mitglied/icd360sev_mitglied /usr/local/bin/icd360sev_mitglied' >> /tmp/deb-scripts/postinst
-          chmod +x /tmp/deb-scripts/postinst
-
-          fpm -s dir -t deb \
-            --name icd360sev-mitglied \
-            --version "$VERSION" \
-            --description "ICD360S e.V. Mitglieder-App" \
-            --maintainer "ICD360S e.V." \
-            --url "https://icd360s.de" \
-            --license "Proprietary" \
-            --architecture amd64 \
-            --depends libgtk-3-0 \
-            --depends libsecret-1-0 \
-            --depends libjsoncpp25 \
-            --depends libnotify4 \
-            --after-install /tmp/deb-scripts/postinst \
-            "$BUNDLE/=/opt/icd360sev-mitglied/" \
-            "linux/icd360sev_mitglied.desktop=/usr/share/applications/icd360sev_mitglied.desktop"
-
-          mv icd360sev-mitglied_*.deb icd360sev-mitglied.deb
-
-      - name: Upload .deb
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-linux-deb
-          path: icd360sev-mitglied.deb
-          if-no-files-found: error
-
-      - name: Create .rpm package
-        run: |
-          BUNDLE=build/linux/x64/release/bundle
-          VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
-
-          fpm -s dir -t rpm \
-            --name icd360sev-mitglied \
-            --version "$VERSION" \
-            --description "ICD360S e.V. Mitglieder-App" \
-            --maintainer "ICD360S e.V." \
-            --url "https://icd360s.de" \
-            --license "Proprietary" \
-            --architecture x86_64 \
-            --depends gtk3 \
-            --depends libsecret \
-            --depends jsoncpp \
-            --depends libnotify \
-            --after-install /tmp/deb-scripts/postinst \
-            "$BUNDLE/=/opt/icd360sev-mitglied/" \
-            "linux/icd360sev_mitglied.desktop=/usr/share/applications/icd360sev_mitglied.desktop"
-
-          mv icd360sev-mitglied-*.rpm icd360sev-mitglied.rpm
-
-      - name: Upload .rpm
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-linux-rpm
-          path: icd360sev-mitglied.rpm
-          if-no-files-found: error
-
-      - name: Create AppImage
-        run: |
-          BUNDLE=build/linux/x64/release/bundle
-
-          mkdir -p AppDir/usr/bin AppDir/usr/lib AppDir/usr/share/applications
-
-          cp -r "$BUNDLE"/* AppDir/usr/bin/
-          if [ -d "AppDir/usr/bin/lib" ]; then
-            mv AppDir/usr/bin/lib/* AppDir/usr/lib/
-            rmdir AppDir/usr/bin/lib
-          fi
-
-          cp linux/icd360sev_mitglied.desktop AppDir/
-          cp linux/icd360sev_mitglied.desktop AppDir/usr/share/applications/
-
-          cat > AppDir/AppRun << 'APPRUN'
-          #!/bin/bash
-          SELF=$(readlink -f "$0")
-          HERE=${SELF%/*}
-          export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
-          exec "${HERE}/usr/bin/icd360sev_mitglied" "$@"
-          APPRUN
-          chmod +x AppDir/AppRun
-
-          echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" | base64 -d > AppDir/icd360sev_mitglied.png
-
-          ARCH=x86_64 appimagetool --no-appstream AppDir icd360sev-mitglied.AppImage
-
-      - name: Upload AppImage
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-linux-appimage
-          path: icd360sev-mitglied.AppImage
-          if-no-files-found: error
-
-      # --- Android: F-Droid ---
-      - name: Build APK (fdroid)
-        run: |
-          flutter build apk --release --flavor fdroid \
-            --obfuscate --split-debug-info=build/symbols-fdroid --split-per-abi
-
-      - name: Upload APK (fdroid)
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-fdroid-apk
-          path: build/app/outputs/flutter-apk/app-arm64-v8a-fdroid-release.apk
-          if-no-files-found: error
-
-      # --- Android: Google Play ---
-      - name: Build APK (googleplay)
-        run: |
-          flutter build apk --release --flavor googleplay \
-            --obfuscate --split-debug-info=build/symbols-googleplay --split-per-abi
-
-      - name: Upload APK (googleplay)
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-googleplay-apk
-          path: build/app/outputs/flutter-apk/app-arm64-v8a-googleplay-release.apk
-          if-no-files-found: error
-
-      - name: Build AAB (googleplay)
+      # Google Play AAB (only for googleplay flavor)
+      - name: Build AAB (Google Play)
+        if: matrix.flavor == 'googleplay'
         run: |
           flutter build appbundle --release --flavor googleplay \
-            --obfuscate --split-debug-info=build/symbols-googleplay-aab
+            --obfuscate --split-debug-info=build/symbols-aab
 
-      - name: Upload AAB (googleplay)
+      - name: Upload AAB
+        if: matrix.flavor == 'googleplay'
         uses: actions/upload-artifact@v7
         with:
           name: icd360sev-googleplay-aab
           path: build/app/outputs/bundle/googleplayRelease/app-googleplay-release.aab
           if-no-files-found: error
 
-      # --- Android: Amazon ---
-      - name: Build APK (amazon)
-        run: |
-          flutter build apk --release --flavor amazon \
-            --obfuscate --split-debug-info=build/symbols-amazon --split-per-abi
-
-      - name: Upload APK (amazon)
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-amazon-apk
-          path: build/app/outputs/flutter-apk/app-arm64-v8a-amazon-release.apk
-          if-no-files-found: error
-
-      # --- Android: Huawei ---
-      - name: Build APK (huawei)
-        run: |
-          flutter build apk --release --flavor huawei \
-            --obfuscate --split-debug-info=build/symbols-huawei --split-per-abi
-
-      - name: Upload APK (huawei)
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-huawei-apk
-          path: build/app/outputs/flutter-apk/app-arm64-v8a-huawei-release.apk
-          if-no-files-found: error
-
-      # --- Android: Samsung ---
-      - name: Build APK (samsung)
-        run: |
-          flutter build apk --release --flavor samsung \
-            --obfuscate --split-debug-info=build/symbols-samsung --split-per-abi
-
-      - name: Upload APK (samsung)
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-samsung-apk
-          path: build/app/outputs/flutter-apk/app-arm64-v8a-samsung-release.apk
-          if-no-files-found: error
-
-      # --- Debug Symbols (all flavors) ---
       - name: Upload debug symbols
         uses: actions/upload-artifact@v7
         with:
-          name: symbols-android
-          path: |
-            build/symbols-fdroid/
-            build/symbols-googleplay/
-            build/symbols-amazon/
-            build/symbols-huawei/
-            build/symbols-samsung/
+          name: symbols-android-${{ matrix.flavor }}
+          path: build/symbols/
 
-      # --- Mark successful build (for cache) ---
-      - name: Save Linux+Android build marker
-        run: echo "ok" > /tmp/la-build-ok.txt
+  # Save Android cache marker (runs after all matrix jobs)
+  save-android-cache:
+    name: Save Android Cache
+    needs: [detect-changes, build-android]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "ok" > /tmp/android-ok.txt
       - uses: actions/cache/save@v5
         with:
-          path: /tmp/la-build-ok.txt
-          key: v2-build-ok-linux-android-${{ needs.detect-changes.outputs.la_hash }}
+          path: /tmp/android-ok.txt
+          key: v3-build-ok-android-${{ needs.detect-changes.outputs.android_hash }}
 
   # ============================================
   # APPLE (iOS + macOS) - 1 runner
@@ -405,7 +373,6 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
-      # --- iOS Build ---
       - name: Build iOS (no codesign)
         run: flutter build ios --release --no-codesign
 
@@ -416,7 +383,6 @@ jobs:
           path: build/ios/iphoneos/Runner.app
           if-no-files-found: error
 
-      # --- macOS Build ---
       - name: Disable macOS code signing for CI
         run: |
           sed -i '' 's/CODE_SIGN_IDENTITY = "Apple Development"/CODE_SIGN_IDENTITY = ""/g' macos/Runner.xcodeproj/project.pbxproj
@@ -434,13 +400,12 @@ jobs:
           path: build/macos/Build/Products/Release/icd360sev_mitglied.app
           if-no-files-found: error
 
-      # Mark successful build
-      - name: Save Apple build marker
-        run: echo "ok" > /tmp/apple-build-ok.txt
+      - name: Save cache marker
+        run: echo "ok" > /tmp/apple-ok.txt
       - uses: actions/cache/save@v5
         with:
-          path: /tmp/apple-build-ok.txt
-          key: v2-build-ok-apple-${{ needs.detect-changes.outputs.apple_hash }}
+          path: /tmp/apple-ok.txt
+          key: v3-build-ok-apple-${{ needs.detect-changes.outputs.apple_hash }}
 
   # ============================================
   # WINDOWS - 1 runner
@@ -476,14 +441,13 @@ jobs:
           path: build/windows/x64/runner/Release/
           if-no-files-found: error
 
-      # Mark successful build
-      - name: Save Windows build marker
+      - name: Save cache marker
         shell: bash
-        run: echo "ok" > "$RUNNER_TEMP/win-build-ok.txt"
+        run: echo "ok" > "$RUNNER_TEMP/win-ok.txt"
       - uses: actions/cache/save@v5
         with:
-          path: ${{ runner.temp }}/win-build-ok.txt
-          key: v2-build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}
+          path: ${{ runner.temp }}/win-ok.txt
+          key: v3-build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}
 
   # ============================================
   # Release (only on version tags)
@@ -491,7 +455,7 @@ jobs:
   release:
     name: Create Release
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [build-linux-android, build-apple, build-windows]
+    needs: [build-linux, build-android, save-android-cache, build-apple, build-windows]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -508,6 +472,7 @@ jobs:
           mkdir -p release/
 
           # Android APKs + AAB
+          cp artifacts/icd360sev-universal-apk/*.apk release/icd360sev-universal.apk
           cp artifacts/icd360sev-fdroid-apk/*.apk release/icd360sev-fdroid.apk
           cp artifacts/icd360sev-googleplay-apk/*.apk release/icd360sev-googleplay.apk
           cp artifacts/icd360sev-googleplay-aab/*.aab release/icd360sev-googleplay.aab
@@ -515,7 +480,7 @@ jobs:
           cp artifacts/icd360sev-huawei-apk/*.apk release/icd360sev-huawei.apk
           cp artifacts/icd360sev-samsung-apk/*.apk release/icd360sev-samsung.apk
 
-          # Desktop & iOS - zip/tar bundles
+          # Desktop & iOS
           cd artifacts/icd360sev-windows && zip -r ../../release/icd360sev-windows.zip . && cd ../..
           cd artifacts/icd360sev-linux && tar czf ../../release/icd360sev-linux.tar.gz . && cd ../..
           cd artifacts/icd360sev-macos && zip -r ../../release/icd360sev-macos.zip . && cd ../..
@@ -525,11 +490,6 @@ jobs:
           cp artifacts/icd360sev-linux-deb/*.deb release/icd360sev-mitglied.deb
           cp artifacts/icd360sev-linux-rpm/*.rpm release/icd360sev-mitglied.rpm
           cp artifacts/icd360sev-linux-appimage/*.AppImage release/icd360sev-mitglied.AppImage
-
-          # Debug symbols archive
-          if [ -d "artifacts/symbols-android" ]; then
-            cd artifacts/symbols-android && zip -r ../../release/debug-symbols.zip . && cd ../..
-          fi
 
           echo "Release files:"
           ls -lh release/
