@@ -70,7 +70,8 @@ dependencies:
   flutter_local_notifications: ^21.0.0
 
   # Device info for unique device identification
-  device_info_plus: ^12.3.0
+  # Pinned: 12.4.0 uses NSProcessInfo.isiOSAppOnVision unavailable in Xcode 16.x SDK
+  device_info_plus: 12.3.0
 
   # UUID generation for device ID
   uuid: ^3.0.7
