@@ -8,6 +8,11 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Auto-cancel old runs when a new one starts on the same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   FLUTTER_VERSION: '3.41.4'
   JAVA_VERSION: '17'
