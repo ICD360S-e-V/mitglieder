@@ -1,5 +1,5 @@
 # CI/CD workflow for ICD360S e.V. Mitgliederportal
-# Smart detection: only builds platforms affected by changes
+# Smart cache: skips platforms where code hasn't changed since last successful build
 name: Build All Platforms
 
 on:
@@ -19,7 +19,7 @@ env:
 
 jobs:
   # ============================================
-  # DETECT what changed → skip unchanged platforms
+  # DETECT: compare file hashes with last successful build
   # ============================================
   detect-changes:
     name: Detect Changes
@@ -30,13 +30,11 @@ jobs:
       windows: ${{ steps.check.outputs.windows }}
     steps:
       - uses: actions/checkout@v5
-        with:
-          fetch-depth: 2
 
-      - name: Check changed files
+      - name: Check what needs building
         id: check
         run: |
-          # On tags or workflow_dispatch → build everything
+          # On tags or workflow_dispatch → always build everything
           if [[ "${{ github.ref }}" == refs/tags/* ]] || [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "linux_android=true" >> $GITHUB_OUTPUT
             echo "apple=true" >> $GITHUB_OUTPUT
@@ -45,51 +43,82 @@ jobs:
             exit 0
           fi
 
-          # Get changed files
-          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "FULL_BUILD")
+          # Compute hashes of relevant files per platform
+          # Shared = lib/ + pubspec.yaml + l10n.yaml (affects all platforms)
+          SHARED_HASH=$(find lib/ pubspec.yaml l10n.yaml -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
 
-          if [ "$CHANGED" = "FULL_BUILD" ]; then
-            echo "linux_android=true" >> $GITHUB_OUTPUT
-            echo "apple=true" >> $GITHUB_OUTPUT
-            echo "windows=true" >> $GITHUB_OUTPUT
-            echo "BUILD ALL: cannot detect changes"
-            exit 0
-          fi
+          # Per-platform hashes = shared + platform-specific files
+          LA_HASH=$(echo "$SHARED_HASH"; find android/ linux/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
+          LA_HASH=$(echo "$LA_HASH" | sha256sum | cut -d' ' -f1)
 
-          echo "Changed files:"
-          echo "$CHANGED"
+          APPLE_HASH=$(echo "$SHARED_HASH"; find ios/ macos/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
+          APPLE_HASH=$(echo "$APPLE_HASH" | sha256sum | cut -d' ' -f1)
 
-          # Shared code (Dart, deps, workflow) → build ALL platforms
-          SHARED=false
-          if echo "$CHANGED" | grep -qE '^(lib/|pubspec\.|l10n\.yaml|\.github/workflows/)'; then
-            SHARED=true
-          fi
+          WIN_HASH=$(echo "$SHARED_HASH"; find windows/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
+          WIN_HASH=$(echo "$WIN_HASH" | sha256sum | cut -d' ' -f1)
 
-          # Linux/Android specific
-          if [ "$SHARED" = "true" ] || echo "$CHANGED" | grep -qE '^(android/|linux/)'; then
-            echo "linux_android=true" >> $GITHUB_OUTPUT
-            echo "→ Linux + Android: YES"
-          else
+          echo "Hashes: LA=$LA_HASH APPLE=$APPLE_HASH WIN=$WIN_HASH"
+
+          # Save hashes for cache lookup
+          echo "$LA_HASH" > /tmp/la-hash.txt
+          echo "$APPLE_HASH" > /tmp/apple-hash.txt
+          echo "$WIN_HASH" > /tmp/win-hash.txt
+
+          # Store hash values for later steps
+          echo "la_hash=$LA_HASH" >> $GITHUB_OUTPUT
+          echo "apple_hash=$APPLE_HASH" >> $GITHUB_OUTPUT
+          echo "win_hash=$WIN_HASH" >> $GITHUB_OUTPUT
+
+      # Check if Linux+Android was already built with this hash
+      - name: Check Linux+Android cache
+        id: cache-la
+        uses: actions/cache@v4
+        with:
+          path: /tmp/la-hash.txt
+          key: build-ok-linux-android-${{ steps.check.outputs.la_hash }}
+
+      # Check if Apple was already built with this hash
+      - name: Check Apple cache
+        id: cache-apple
+        uses: actions/cache@v4
+        with:
+          path: /tmp/apple-hash.txt
+          key: build-ok-apple-${{ steps.check.outputs.apple_hash }}
+
+      # Check if Windows was already built with this hash
+      - name: Check Windows cache
+        id: cache-win
+        uses: actions/cache@v4
+        with:
+          path: /tmp/win-hash.txt
+          key: build-ok-windows-${{ steps.check.outputs.win_hash }}
+
+      - name: Set build flags
+        id: flags
+        run: |
+          # If cache hit → already built successfully → skip
+          if [ "${{ steps.cache-la.outputs.cache-hit }}" == "true" ]; then
+            echo "→ Linux + Android: SKIP (already built)"
             echo "linux_android=false" >> $GITHUB_OUTPUT
-            echo "→ Linux + Android: SKIP"
+          else
+            echo "→ Linux + Android: BUILD"
+            echo "linux_android=true" >> $GITHUB_OUTPUT
           fi
 
-          # Apple (iOS/macOS) specific
-          if [ "$SHARED" = "true" ] || echo "$CHANGED" | grep -qE '^(ios/|macos/)'; then
-            echo "apple=true" >> $GITHUB_OUTPUT
-            echo "→ Apple: YES"
-          else
+          if [ "${{ steps.cache-apple.outputs.cache-hit }}" == "true" ]; then
+            echo "→ Apple: SKIP (already built)"
             echo "apple=false" >> $GITHUB_OUTPUT
-            echo "→ Apple: SKIP"
+          else
+            echo "→ Apple: BUILD"
+            echo "apple=true" >> $GITHUB_OUTPUT
           fi
 
-          # Windows specific
-          if [ "$SHARED" = "true" ] || echo "$CHANGED" | grep -qE '^(windows/)'; then
-            echo "windows=true" >> $GITHUB_OUTPUT
-            echo "→ Windows: YES"
-          else
+          if [ "${{ steps.cache-win.outputs.cache-hit }}" == "true" ]; then
+            echo "→ Windows: SKIP (already built)"
             echo "windows=false" >> $GITHUB_OUTPUT
-            echo "→ Windows: SKIP"
+          else
+            echo "→ Windows: BUILD"
+            echo "windows=true" >> $GITHUB_OUTPUT
           fi
 
   # ============================================
@@ -239,7 +268,6 @@ jobs:
           APPRUN
           chmod +x AppDir/AppRun
 
-          # Placeholder icon
           echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" | base64 -d > AppDir/icd360sev_mitglied.png
 
           ARCH=x86_64 appimagetool --no-appstream AppDir icd360sev-mitglied.AppImage
@@ -339,6 +367,19 @@ jobs:
             build/symbols-amazon/
             build/symbols-huawei/
             build/symbols-samsung/
+
+      # --- Mark successful build (for cache) ---
+      - name: Save build hash
+        run: |
+          SHARED_HASH=$(find lib/ pubspec.yaml l10n.yaml -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
+          LA_HASH=$(echo "$SHARED_HASH"; find android/ linux/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
+          echo "$LA_HASH" | sha256sum | cut -d' ' -f1 > /tmp/la-build-ok.txt
+
+      - name: Cache successful build marker
+        uses: actions/cache/save@v4
+        with:
+          path: /tmp/la-build-ok.txt
+          key: build-ok-linux-android-${{ needs.detect-changes.outputs.la_hash || 'unknown' }}
 
   # ============================================
   # APPLE (iOS + macOS) - 1 runner
