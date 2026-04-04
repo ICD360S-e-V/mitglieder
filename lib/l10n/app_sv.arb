@@ -1,0 +1,919 @@
+{
+  "@@locale": "sv",
+  "appTitle": "ICD360S e.V - Medlemsportal",
+  "memberPortal": "Medlemsportal",
+  "welcomeLoading": "Laddar...",
+  "welcomeAutoLogin": "Automatisk inloggning...",
+  "login": "Logga in",
+  "register": "Registrera",
+  "becomeMember": "Bli medlem",
+  "memberNumber": "Medlemsnummer",
+  "memberNumberHint": "Ange medlemsnummer",
+  "password": "Lösenord",
+  "passwordHint": "Ange lösenord",
+  "confirmPassword": "Bekräfta lösenord",
+  "confirmPasswordHint": "Bekräfta lösenord",
+  "newPassword": "Nytt lösenord",
+  "newPasswordHint": "Ange nytt lösenord",
+  "saveCredentials": "Spara inloggningsuppgifter",
+  "autoLogin": "Automatisk inloggning",
+  "forgotPassword": "Glömt lösenord?",
+  "firstName": "Förnamn och efternamn",
+  "firstNameHint": "Ange för- och efternamn",
+  "nameMinLength": "Namnet måste ha minst 2 tecken",
+  "nameOnlyLetters": "Endast bokstäver och bindestreck tillåtna",
+  "email": "E-postadress",
+  "emailHint": "Ange e-post",
+  "emailInvalid": "Ange en giltig e-postadress",
+  "passwordMinLength": "Lösenordet måste ha minst 6 tecken",
+  "passwordsNotMatch": "Lösenorden matchar inte",
+  "recoveryCode": "Återställningskod (6 siffror)",
+  "recoveryCodeHelper": "Kom ihåg denna kod för lösenordsåterställning",
+  "recoveryCodeHint": "Ange återställningskod",
+  "recoveryCodeInvalid": "Koden måste ha exakt 6 siffror",
+  "loginFailed": "Inloggningen misslyckades",
+  "registrationFailed": "Registreringen misslyckades",
+  "connectionError": "Anslutningsfel: {error}",
+  "registrationSuccess": "Registrering lyckades!\n\nDitt medlemsnummer: {memberNumber}\n\nKom ihåg detta nummer för inloggning.",
+  "tooManyDevices": "För många enheter",
+  "maxDevicesMessage": "Du är redan inloggad på 3 enheter.\nVälj en enhet att logga ut från:",
+  "unknownDevice": "Okänd enhet",
+  "unknown": "Okänd",
+  "logoutError": "Utloggningsfel",
+  "error": "Fel: {error}",
+  "cancel": "Avbryt",
+  "resetPassword": "Återställ lösenord",
+  "forgotPasswordTitle": "Glömt lösenord",
+  "forgotPasswordDescription": "Ange ditt medlemsnummer och återställningskoden som du skapade vid registreringen.",
+  "passwordResetSuccess": "Lösenordet har återställts!\n\nDu kan nu logga in med ditt nya lösenord.",
+  "passwordResetFailed": "Återställning av lösenord misslyckades",
+  "needHelp": "Behöver du hjälp?",
+  "helpQuestion": "Problem med inloggning eller registrering?",
+  "helpDescription": "Kontakta oss via WhatsApp och beskriv vad som inte fungerar. Vi svarar så snart som möjligt!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Förfrågan via ICD360S-appen",
+  "whatsappMessage": "Hej, jag har ett problem med ICD360S-appen. ",
+  "imprint": "Impressum",
+  "privacy": "Integritetspolicy",
+  "statutes": "Stadgar",
+  "revocation": "Ångerrätt",
+  "cancellation": "Uppsägning",
+  "allRightsReserved": "Alla rättigheter förbehållna.",
+  "enterCredentials": "Ange medlemsnummer och lösenord",
+  "appointments": "Möten",
+  "tickets": "Ärenden",
+  "liveChat": "Livechatt",
+  "notifications": "Aviseringar",
+  "myProfile": "Min Profil",
+  "logout": "Logga ut",
+  "goodMorning": "God morgon",
+  "goodDay": "God dag",
+  "goodEvening": "God kväll",
+  "goodNight": "God natt",
+  "welcomeToICD": "Välkommen till ICD360S e.V!",
+  "accountCreatedSuccessfully": "Ditt konto har skapats framgångsrikt.",
+  "today": "Idag",
+  "membershipFeeDue": "Medlemsavgift förfaller",
+  "pleaseTransferAnnualFee": "Vänligen överför årsavgiften.",
+  "newBadge": "Ny",
+  "close": "Stäng",
+  "membership": "Medlemskap",
+  "myAppointments": "Mina möten",
+  "appointmentsLoadingReady": "Laddar möten - API redo!",
+  "priority": "Prioritet",
+  "messageLabel": "Meddelande",
+  "createdOn": "Skapad",
+  "handler": "Hanterare",
+  "reportProblems": "Rapportera problem",
+  "reportProblem": "Rapportera problem",
+  "weRespondIn24Hours": "Vi svarar dig inom maximalt 24 timmar!",
+  "everythingOk": "Allt OK!",
+  "haveProblemWeHelp": "Har du problem?\nVi tar hand om det!",
+  "myMembership": "Mitt medlemskap",
+  "managePersonalDataAndFee": "Hantera personuppgifter och avgift",
+  "myAppointmentsTitle": "Mina möten",
+  "appointmentsDescription": "Här kan du se dina kommande möten.\nDu kan bekräfta ditt deltagande eller avböja.",
+  "loadAppointments": "Ladda möten",
+  "myTickets": "Mina ärenden",
+  "newTicket": "Nytt ärende",
+  "noOpenTickets": "Inga öppna ärenden",
+  "haveQuestionCreateTicket": "Har du en fråga eller problem?\nSkapa ett nytt ärende.",
+  "whatIsTheProblem": "Vad är problemet?",
+  "describeTheProblem": "Beskriv problemet",
+  "howUrgentIsIt": "Hur brådskande är det?",
+  "low": "Låg",
+  "medium": "Medel",
+  "high": "Hög",
+  "submit": "Skicka",
+  "fillSubjectAndMessage": "Vänligen fyll i ämne och meddelande",
+  "ticketCreated": "Ärende skapat",
+  "errorCreatingTicket": "Fel vid skapande av ärende",
+  "verified": "Verifierad",
+  "account": "Konto",
+  "myDevices": "Mina enheter",
+  "changeEmail": "Ändra e-post",
+  "changePassword": "Ändra lösenord",
+  "newEmailAddress": "Ny e-postadress",
+  "currentPassword": "Nuvarande lösenord",
+  "saveEmail": "Spara e-post",
+  "savePassword": "Spara lösenord",
+  "deviceLoggedOut": "Enheten utloggad",
+  "passwordChangedSuccessfully": "Lösenord ändrat",
+  "emailChangedSuccessfully": "E-post ändrad",
+  "errorChangingPassword": "Fel vid ändring av lösenord",
+  "errorChangingEmail": "Fel vid ändring av e-post",
+  "validEmailRequired": "Vänligen ange en giltig e-postadress",
+  "passwordTooShort": "Lösenordet måste vara minst 6 tecken",
+  "maxDevicesReached": "Du är inloggad på maximalt 3 enheter.",
+  "loggedInOnDevices": "Du är inloggad på {count} av 3 enheter.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Inga aktiva sessioner",
+  "logoutFromDevice": "Logga ut från denna enhet",
+  "confirmLogoutDevice": "Logga ut enhet?",
+  "confirmLogoutMessage": "Vill du logga ut från denna enhet?\n\nDu måste logga in igen för att använda denna enhet.",
+  "ipAddress": "IP",
+  "platform": "Plattform",
+  "trialWarningUrgentTitle": "Varning: Endast {days, plural, =1{1 dag} other{{days} dagar}} kvar till kontospärr!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Ditt konto är ännu inte verifierat",
+  "trialWarningDescription": "Vänligen fyll i dina uppgifter i \"Min profil\". Efter 30 dagar kommer ditt konto att spärras automatiskt.",
+  "trialDaysRemaining": "{days, plural, =1{1 dag} other{{days} dagar}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Översikt",
+  "member": "Medlem",
+  "memberManagement": "Medlemshantering",
+  "reportProblemTooltip": "Rapportera problem",
+  "newAppointmentsTitle": "Nya möten",
+  "youHaveNewAppointment": "Du har ett nytt möte.",
+  "youHaveNewAppointments": "Du har {count} nya möten.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Påminnelse: Möte imorgon",
+  "tomorrowAppointment": "Imorgon: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Du har {count} möten imorgon.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Möten idag",
+  "todayAppointment": "Idag: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Du har {count} möten idag.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Betalningspåminnelse",
+  "paymentReminderMessage": "Idag är den {day}:e i månaden – vänligen slutför {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Betalningsdag (månatlig påminnelse)",
+  "updateAvailable": "Uppdatering tillgänglig",
+  "newVersionAvailable": "En ny version finns tillgänglig: {version}",
+  "currentVersionLabel": "Aktuell version: {version}",
+  "changes": "Ändringar:",
+  "downloadProgress": "Nedladdning: {percent}%",
+  "installationStarting": "Installationen startar...",
+  "appWillRestart": "Appen startas om automatiskt.",
+  "later": "Senare",
+  "updateNow": "Uppdatera nu",
+  "downloading": "Laddar ner...",
+  "downloadFailed": "Nedladdningen misslyckades. Försök igen senare.",
+  "searchingForUpdates": "Söker efter uppdateringar...",
+  "appUpToDate": "Appen är uppdaterad",
+  "updateCheckError": "Fel vid sökning efter uppdateringar",
+  "changelog": "Ändringslogg",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Möte bekräftat",
+  "terminDeclined": "Möte avvisat",
+  "terminRescheduleRequested": "Ombokning begärd",
+  "statusConfirmed": "Bekräftat",
+  "statusDeclined": "Avvisat",
+  "statusRescheduling": "Ombokning",
+  "statusPending": "Väntande",
+  "categoryVorstandssitzung": "Styrelsemöte",
+  "categoryMitgliederversammlung": "Årsmöte",
+  "categorySchulung": "Utbildning",
+  "categorySonstiges": "Övrigt",
+  "openCount": "{count} öppna",
+  "refresh": "Uppdatera",
+  "filterUpcoming": "Kommande",
+  "filterPast": "Tidigare",
+  "filterAll": "Alla",
+  "noUpcomingAppointments": "Inga kommande möten",
+  "noPastAppointments": "Inga tidigare möten",
+  "noAppointmentsAvailable": "Inga möten",
+  "appointmentsShownHere": "Dina möten visas här",
+  "dateLabel": "Datum",
+  "timeLabel": "Tid",
+  "locationLabel": "Plats",
+  "createdByLabel": "Skapad av",
+  "descriptionLabel": "Beskrivning",
+  "ticketLabel": "Ärende",
+  "yourStatus": "Din status: ",
+  "reasonLabel": "Anledning: {reason}",
+  "durationMinutes": "{minutes} min",
+  "confirm": "Bekräfta",
+  "decline": "Avvisa",
+  "reschedule": "Omboka",
+  "requestReschedule": "Begär ombokning",
+  "appointmentLabel": "Möte: {title}",
+  "rescheduleReason": "Anledning till ombokning *",
+  "rescheduleReasonHint": "Ange en anledning...",
+  "pleaseProvideReason": "Ange en anledning",
+  "request": "Begär",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Öppen",
+  "ticketStatusInProgress": "Pågående",
+  "ticketStatusWaitingMember": "Väntar på medlem",
+  "ticketStatusWaitingStaff": "Väntar på personal",
+  "ticketStatusWaitingAuthority": "Väntar på myndighet",
+  "ticketStatusDone": "Klar",
+  "ticketPriorityHigh": "Hög",
+  "ticketPriorityMedium": "Medel",
+  "ticketPriorityLow": "Låg",
+  "comments": "Kommentarer",
+  "documents": "Dokument",
+  "details": "Detaljer",
+  "replySent": "Svar skickat",
+  "sendError": "Fel vid sändning",
+  "uploading": "Laddar upp...",
+  "fileUploaded": "{filename} uppladdat",
+  "uploadFailed": "Uppladdning misslyckades",
+  "openError": "Fel vid öppning",
+  "noRepliesYet": "Inga svar ännu",
+  "waitingForSupport": "Väntar på svar från support",
+  "writeReply": "Skriv ett svar...",
+  "attachFile": "Bifoga fil",
+  "documentsCount": "Dokument ({count})",
+  "upload": "Ladda upp",
+  "noDocuments": "Inga dokument",
+  "allowedFormats": "Tillåtna format: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Ditt meddelande:",
+  "translation": "Översättning",
+  "original": "Original",
+  "originalText": "Originaltext",
+  "autoTranslated": "Automatiskt översatt",
+  "originalTapTranslation": "Original · Tryck för översättning",
+  "translatedTapOriginal": "Översatt · Tryck för original",
+  "justNow": "Just nu",
+  "minutesAgo": "{minutes} min sedan",
+  "hoursAgo": "{hours} tim sedan",
+  "daysAgo": "{days} {days, plural, =1{dag} other{dagar}} sedan",
+  "createdLabel": "Skapad",
+  "updatedLabel": "Uppdaterad",
+  "handlerLabel": "Handläggare",
+  "doneLabel": "Klar",
+  "newTicketTitle": "Nytt ärende",
+  "categoryOptional": "Kategori (valfri)",
+  "selectCategory": "Välj",
+  "subjectLabel": "Ämne",
+  "fillAllFields": "Fyll i alla fält",
+  "ticketCreatedId": "Ärende #{id} skapat",
+  "priorityLabel": "Prioritet: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Support offline",
+  "lastSeenSeconds": "Aktiv för några sekunder sedan",
+  "lastSeenMinutes": "Aktiv för {minutes} {minutes, plural, =1{minut} other{minuter}} sedan",
+  "lastSeenHours": "Aktiv för {hours} {hours, plural, =1{timme} other{timmar}} sedan",
+  "lastSeenDays": "Aktiv för {days} {days, plural, =1{dag} other{dagar}} sedan",
+  "online": "Online",
+  "callSupport": "Ring",
+  "typeMessage": "Skriv ett meddelande...",
+  "callBusy": "Support är upptagen",
+  "callRejected": "Samtal avvisat",
+  "callFailed": "Samtalet kunde inte kopplas",
+  "callEnded": "Samtal avslutat",
+  "callSupportBusy": "Support är redan i ett annat samtal",
+  "errorStartingChat": "Fel vid start av chatt",
+  "errorStartingCall": "Fel vid start av samtal",
+  "errorConnecting": "Anslutningsfel",
+  "errorAcceptingCall": "Fel vid acceptering av samtal",
+  "errorDownloading": "Nedladdningsfel",
+  "errorUploading": "Uppladdningsfel",
+  "errorSending": "Sändningsfel",
+  "errorPickingPhotos": "Fel vid val av foton",
+  "errorPickingFiles": "Fel vid val av filer",
+  "errorTakingPhoto": "Fel vid fotografering",
+  "fileNotLoaded": "Filen kunde inte laddas",
+  "attachmentIdMissing": "Bilaga-ID saknas",
+  "camera": "Kamera",
+  "gallery": "Galleri",
+  "file": "Fil",
+  "typingIndicator": "{name} skriver...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Nytt meddelande från",
+  "notifUrgentPrefix": "BRÅDSKANDE",
+  "notifUrgentMessage": "BRÅDSKANDE MEDDELANDE",
+  "notifIncomingCall": "Inkommande samtal",
+  "notifCallingYou": "ringer...",
+  "notifUpdateAvailable": "Uppdatering tillgänglig",
+  "notifVersionAvailable": "är nu tillgänglig",
+  "notifConnected": "Ansluten",
+  "notifDisconnected": "Frånkopplad",
+  "notifConnectedBody": "Du är nu ansluten till servern.",
+  "notifDisconnectedBody": "Anslutningen till servern bröts.",
+  "notifError": "Fel",
+  "retry": "Försök igen",
+  "save": "Spara",
+  "accept": "Acceptera",
+  "selectFile": "Välj fil",
+  "dataLoadingText": "Laddar data...",
+  "dataSavedSuccess": "Data sparad",
+  "errorSaving": "Fel vid sparande",
+  "errorLoading": "Fel vid laddning",
+  "savedFilename": "Sparad: {filename}",
+  "logsCopied": "Loggar kopierade!",
+  "diagnosticDataTitle": "Diagnostikdata",
+  "diagnosticDescription": "Vill du skicka anonym diagnostikdata för att förbättra appen?",
+  "noThanks": "Nej tack",
+  "yesEnable": "Ja, aktivera",
+  "passwordMinEightChars": "Lösenordet måste vara minst 8 tecken",
+  "passwordChangeSuccess": "Lösenord ändrat",
+  "emailChangeError": "Fel vid ändring av e-post",
+  "acceptDocumentCheckbox": "Jag har läst och accepterar dokumentet.",
+  "loadingErrorGeneric": "Laddningsfel: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Inkommande samtal",
+  "ringingFor": "Ringer i {seconds}s",
+  "rejectCall": "Avvisa",
+  "acceptCall": "Svara",
+  "unmute": "Slå på ljud",
+  "mute": "Stäng av ljud",
+  "hangUp": "Lägg på",
+  "calling": "Ringer...",
+  "autoRejectIn": "Automatiskt avvisande om {seconds} sekunder",
+  "speakerOn": "Högtalare",
+  "speakerOff": "Hörsnäcka",
+  "micMuted": "Avstängt",
+  "micOn": "Mikrofon",
+  "connectionExcellent": "Utmärkt",
+  "connectionGood": "Bra",
+  "connectionWeak": "Svag",
+  "connectionLost": "Frånkopplad",
+  "personalData": "Personuppgifter",
+  "personalDataSubtitle": "Förnamn, efternamn, adress",
+  "membershipFee": "Medlemsavgift",
+  "annualFeeYear": "Årsavgift {year}",
+  "amount": "Belopp:",
+  "dueBy": "Förfaller:",
+  "paid": "Betald",
+  "versionHistory": "Versionshistorik",
+  "lastUpdated": "Senast uppdaterad: {date}",
+  "noVersionHistory": "Ingen versionshistorik tillgänglig",
+  "failedLoadChangelog": "Kunde inte ladda ändringslogg",
+  "callMember": "Ring medlem",
+  "closeConversation": "Stäng konversation",
+  "chatOffline": "Offline",
+  "attachFiles": "Bifoga filer (max. 10, 50MB)",
+  "conversationClosed": "Denna konversation har stängts",
+  "noMessages": "Inga meddelanden",
+  "goBack": "Tillbaka",
+  "goForward": "Framåt",
+  "homePage": "Hem",
+  "firstNameLabel": "Förnamn",
+  "lastNameLabel": "Efternamn",
+  "streetLabel": "Gata",
+  "houseNumberLabel": "Nr.",
+  "postalCodeLabel": "Postnummer",
+  "cityLabel": "Stad",
+  "phoneMobileLabel": "Telefon (Mobil)",
+  "phoneLandlineLabel": "Telefon (Fast)",
+  "newEmailLabel": "Ny e-postadress",
+  "currentPasswordLabel": "Nuvarande lösenord",
+  "newPasswordLabel": "Nytt lösenord",
+  "confirmPasswordLabel": "Bekräfta lösenord",
+  "emailChangedSuccess": "E-post ändrad",
+  "newPasswordMinChars": "Nytt lösenord (min. 6 tecken)",
+  "reasonLabel2": "Anledning",
+  "downloadFailed2": "Nedladdning misslyckades",
+  "downloadTooltip": "Ladda ner",
+  "connectionErrorGeneric": "Anslutningsfel",
+  "copyLogs": "Kopiera loggar",
+  "deleteLogs": "Radera loggar",
+  "autoScrollOn": "Automatisk rullning PÅ",
+  "autoScrollOff": "Automatisk rullning AV",
+  "unknownValue": "Okänt",
+  "bankTransfer": "Banköverföring",
+  "standingOrder": "Stående överföring",
+  "payment": "Betalning",
+  "warningType_ermahnung": "Varning",
+  "warningType_abmahnung": "Tillrättavisning",
+  "warningType_letzte": "Sista varning",
+  "warningsTotal": "Totalt: {count}",
+  "warningsErmahnung": "Varningar: {count}",
+  "warningsAbmahnung": "Tillrättavisningar: {count}",
+  "warningsLetzte": "Sista: {count}",
+  "noWarnings": "Inga varningar",
+  "noWarningsDescription": "Du har inga varningar för tillfället.",
+  "createdBy": "Skapad av: {name}",
+  "monthJan": "Jan",
+  "monthFeb": "Feb",
+  "monthMar": "Mar",
+  "monthApr": "Apr",
+  "monthMay": "Maj",
+  "monthJun": "Jun",
+  "monthJul": "Jul",
+  "monthAug": "Aug",
+  "monthSep": "Sep",
+  "monthOct": "Okt",
+  "monthNov": "Nov",
+  "monthDec": "Dec",
+  "stufe1_name": "Personuppgifter",
+  "stufe2_name": "Medlemstyp",
+  "stufe3_name": "Ekonomisk situation",
+  "stufe4_name": "Betalningsmetod",
+  "stufe5_name": "Medlemskapets start",
+  "stufe6_name": "Stadgar",
+  "stufe7_name": "Integritetspolicy",
+  "stufe8_name": "Ångerrätt",
+  "memberType_ordentlich": "Ordinarie medlem",
+  "memberType_foerder": "Stödmedlem",
+  "memberType_ehren": "Hedersmedlem",
+  "memberDesc_ordentlich": "Aktivt medlem med rösträtt. Deltar i föreningens tjänster (e-post, moln, byråkratiskt stöd).",
+  "memberDesc_foerder": "Stödjer föreningen genom bidrag. Kan delta i årsmötet med rådgivande röst, utan rösträtt eller valbarhet till styrelsen.",
+  "memberDesc_ehren": "Har samma rättigheter som en ordinarie medlem utan skyldighet att betala medlemsavgift. Utnämnd av årsmötet eller styrelsen.",
+  "payMethod_ueberweisung": "Banköverföring",
+  "payMethod_dauerauftrag": "Stående överföring",
+  "verifyStatus_geprueft": "Verifierad",
+  "verifyStatus_ausgefuellt": "Ifylld",
+  "verifyStatus_abgelehnt": "Avvisad",
+  "verifyStatus_offen": "Öppen",
+  "fillRequiredFields": "Fyll i alla obligatoriska fält.",
+  "personalDataSaved": "Personuppgifter sparade",
+  "selectMemberType": "Välj en medlemstyp.",
+  "memberTypeSaved": "Medlemstyp sparad",
+  "selectOption": "Välj ett alternativ.",
+  "financialSaved": "Ekonomisk situation sparad",
+  "selectPaymentMethod": "Välj en betalningsmetod.",
+  "paymentDataSaved": "Betalningsuppgifter sparade",
+  "selectDate": "Välj ett datum.",
+  "membershipStartSaved": "Medlemskapets start sparad",
+  "fileTooLarge": "Filen är för stor (max. 10 MB).",
+  "leistungsbescheidUploaded": "Bidragsbeslut uppladdat",
+  "verificationProgress": "Verifieringsframsteg",
+  "notApplicable": "Ej tillämpligt",
+  "socialBenefitsExempt": "Betalningsmetod krävs inte för mottagare av socialbidrag.",
+  "locked": "Låst",
+  "completePreviousStep": "Slutför steg {step} först.",
+  "rejectedNote": "Avvisad: {note}",
+  "waitingForReview": "Inväntar granskning av styrelsen.",
+  "stepApproved": "Detta steg har granskats och godkänts.",
+  "changesViaChat": "Ändringar endast möjliga via chatt.",
+  "firstNameRequired": "Förnamn *",
+  "lastNameRequired": "Efternamn *",
+  "birthDateLabel": "Födelsedatum *",
+  "streetRequired": "Gata *",
+  "houseNumberRequired": "Nr. *",
+  "cityRequired": "Stad *",
+  "phoneRequired": "Telefonnummer *",
+  "phonePurpose": "Syfte: Kontakt när inte tillgänglig via appen",
+  "selectMemberTypePrompt": "Välj önskad medlemstyp:",
+  "financialExplanation": "För att kontrollera om du är berättigad till avgiftsreduktion behöver vi följande information. Den används uteslutande för att fastställa din medlemsavgift.",
+  "socialBenefitsQuestion": "Får du för närvarande socialbidrag?",
+  "optionBuergergeld": "Ja, medborgarbidrag (Jobcenter)",
+  "optionSozialamt": "Ja, socialbidrag (Socialkontoret)",
+  "optionNoBenefits": "Nej, jag får inte socialbidrag",
+  "feeExempt": "Din månadsavgift är: 0,00 €/månad",
+  "uploadLeistungsbescheid": "Ladda upp bidragsbeslut",
+  "uploadLeistungsbescheidHint": "Ladda upp ett aktuellt bidragsbeslut inom 14 dagar för att bekräfta avgiftsbefrielsen.",
+  "allowedFormatsUpload": "Tillåtna format: PDF, JPG, PNG (max. 10 MB)",
+  "feeRegular": "Din månadsavgift är: 25,00 €/månad",
+  "paymentDayReminder": "Du kommer att påminnas den {day}:e varje månad.",
+  "membershipStartPrompt": "Välj när ditt medlemskap ska börja.",
+  "optionAfterVerification": "Efter verifieringens slutförande",
+  "optionAfterVerificationDesc": "Medlemskapet börjar från dagen för styrelsens bekräftelse.",
+  "optionRetroFoundation": "Retroaktivt till grundningsdatumet (01.08.2025)",
+  "optionRetroFoundationDesc": "Du blir retroaktiv medlem från föreningens grundande.",
+  "optionRetroCustom": "Retroaktivt till ett annat datum",
+  "optionRetroCustomDesc": "Välj ett datum mellan 01.08.2025 och idag.",
+  "selectDateLabel": "Välj datum",
+  "selectDateHint": "Välj datum...",
+  "dateNotBefore": "Inte före 01.08.2025 (grundningsdatum)",
+  "feeExemptRetro": "Avgiftsbefrielse: 0,00 € retroaktivt.\nEndast medlemsdatumet sätts retroaktivt.",
+  "retroactiveFees": "Retroaktiva avgifter",
+  "retroFeeCalculation": "Period: {from} – {to}\nMånader: {months}\nAvgift: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Läs föreningens stadgar.",
+  "pleaseReadDatenschutz": "Läs integritetspolicyn.",
+  "pleaseReadWiderruf": "Läs ångerrätten.",
+  "acceptedAtRegistration": "Accepterad vid registrering",
+  "confirmedByBoard": "Bekräftas efter styrelsens granskning.",
+  "docSatzung": "Stadgar",
+  "docDatenschutz": "Integritetspolicy",
+  "docWiderruf": "Ångerrätt",
+  "acceptedAtRegCount": "Accepterad vid registrering ({count}/3)",
+  "acceptedOn": "Accepterad den {date}",
+  "notAccepted": "Inte accepterad",
+  "statusAccepted": "Accepterad",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Medlemsnummer för långt (max 20 tecken)",
+  "onlyUppercaseAndNumbers": "Endast versaler och siffror tillåtna",
+  "passwordTooLong": "Lösenord för långt (max 100 tecken)",
+  "nameTooLong": "Namn för långt (max 100 tecken)",
+  "emailTooLong": "E-post för lång (max 255 tecken)",
+  "legalAcknowledgePrefix": "Jag har läst ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " för ICD360S e.V. och erkänner dem som bindande.",
+  "legalPleaseReadFirst": "(vänligen läs först)",
+  "statusActive": "Aktiv",
+  "statusSuspended": "Avstängd",
+  "statusNew": "Ny",
+  "statusCancelled": "Uppsagt",
+  "statusDeleted": "Borttagen",
+  "roleMitglied": "Medlem",
+  "roleVorsitzer": "Ordförande",
+  "roleStellvertreter": "Ställföreträdare",
+  "roleSchatzmeister": "Kassör",
+  "roleSchriftfuehrer": "Sekreterare",
+  "roleBeisitzer": "Bisittare",
+  "roleKassierer": "Kassör",
+  "roleKassenpruefer": "Revisor",
+  "roleEhrenamtlich": "Frivillig",
+  "roleMitgliedergruender": "Grundande Medlem",
+  "roleEhrenmitglied": "Hedersmedlem",
+  "roleFoerdermitglied": "Stödmedlem",
+  "memberTypeNotSet": "Ännu inte fastställt",
+  "payMethodSepa": "SEPA-autogiro",
+  "labelStatus": "Status",
+  "labelMemberNumber": "Medlemsnummer",
+  "labelRole": "Roll",
+  "labelMemberType": "Medlemstyp",
+  "labelPaymentMethod": "Betalningsmetod",
+  "labelRegisteredOn": "Registrerad den",
+  "labelLastLogin": "Senaste inloggning",
+  "labelMemberSince": "Medlem sedan",
+  "neverLoggedIn": "Aldrig",
+  "notActivatedYet": "Ännu inte aktiverat",
+  "tabVerification": "Verifiering",
+  "tabWarnings": "Varningar",
+  "tabDocuments": "Dokument",
+  "tabMembership": "Medlemskap",
+  "pleaseEnterFirstName": "Ange förnamn",
+  "pleaseEnterLastName": "Ange efternamn",
+  "noFileDataReceived": "Inga data mottagna",
+  "openFile": "Öppna",
+  "diagnosticErrors": "Felrapporter för förbättring",
+  "diagnosticAnonymousStats": "Anonym användningsstatistik",
+  "diagnosticPerformance": "Appprestandadata",
+  "noMicrophoneError": "Ingen mikrofon hittades. Anslut en mikrofon och försök igen.",
+  "startConversation": "Starta en konversation!",
+  "staffWillReply": "En medarbetare kommer snart att svara dig.",
+  "inCall": "I samtal...",
+  "registration": "Registrering",
+  "deactivation": "Avaktivering",
+  "deactivatedOn": "Avaktiverad den",
+  "accountAutoSuspend": "Konton som inte verifieras inom 30 dagar kommer automatiskt att stängas av.",
+  "ipClean": "IP ren - inte listad",
+  "documentsProvidedByBoard": "Dokument tillhandahålls av styrelsen.",
+  "noDocumentsAvailable": "Inga dokument",
+  "noDocumentsDescription": "Inga dokument har tillhandahållits för dig ännu.",
+  "uploadedBy": "Uppladdat av: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} steg klara",
+  "dayOfMonth": "{day}:e i månaden",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Ändra {field}",
+  "openDocument": "Öppna {name}",
+  "helpImproveApp": "Vill du hjälpa oss att förbättra appen?",
+  "noPersonalDataCollected": "Inga personuppgifter samlas in. Denna inställning kan ändras när som helst.",
+  "logEntries": "{count} poster",
+  "noLogs": "Inga loggar",
+  "newLoginDetected": "Ny inloggning upptäckt",
+  "waitingForMember": "Väntar på medlem",
+  "waitingForStaff": "Väntar på personal",
+  "waitingForAuthority": "Väntar på myndighet",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}
