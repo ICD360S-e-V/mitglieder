@@ -53,6 +53,9 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Generate l10n
+        run: flutter gen-l10n
+
       # Build APK (split-per-abi for smaller size)
       - name: Build APK (${{ matrix.flavor }})
         run: |
@@ -106,6 +109,9 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Generate l10n
+        run: flutter gen-l10n
+
       - name: Build iOS (no codesign)
         run: flutter build ios --release --no-codesign
 
@@ -134,6 +140,9 @@ jobs:
 
       - name: Get dependencies
         run: flutter pub get
+
+      - name: Generate l10n
+        run: flutter gen-l10n
 
       - name: Build macOS
         run: flutter build macos --release
@@ -164,6 +173,9 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Generate l10n
+        run: flutter gen-l10n
+
       - name: Build Windows
         run: flutter build windows --release
 
@@ -183,7 +195,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Linux dependencies
+      - name: Install Linux build dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -202,6 +214,9 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Generate l10n
+        run: flutter gen-l10n
+
       - name: Build Linux
         run: flutter build linux --release
 
@@ -213,7 +228,7 @@ jobs:
           if-no-files-found: error
 
   # ============================================
-  # Release (only on tags)
+  # Release (only on version tags)
   # ============================================
   release:
     name: Create Release
@@ -233,18 +248,31 @@ jobs:
       - name: Prepare release files
         run: |
           mkdir -p release/
-          # Android APKs
+
+          # Android APKs + AAB
           cp artifacts/icd360sev-fdroid-apk/*.apk release/icd360sev-fdroid.apk
           cp artifacts/icd360sev-googleplay-apk/*.apk release/icd360sev-googleplay.apk
           cp artifacts/icd360sev-googleplay-aab/*.aab release/icd360sev-googleplay.aab
           cp artifacts/icd360sev-amazon-apk/*.apk release/icd360sev-amazon.apk
           cp artifacts/icd360sev-huawei-apk/*.apk release/icd360sev-huawei.apk
           cp artifacts/icd360sev-samsung-apk/*.apk release/icd360sev-samsung.apk
-          # Desktop - zip bundles
+
+          # Desktop & iOS - zip/tar bundles
           cd artifacts/icd360sev-windows && zip -r ../../release/icd360sev-windows.zip . && cd ../..
           cd artifacts/icd360sev-linux && tar czf ../../release/icd360sev-linux.tar.gz . && cd ../..
           cd artifacts/icd360sev-macos && zip -r ../../release/icd360sev-macos.zip . && cd ../..
           cd artifacts/icd360sev-ios && zip -r ../../release/icd360sev-ios.zip . && cd ../..
+
+          # Debug symbols archive
+          mkdir -p symbols-all/
+          for dir in artifacts/symbols-android-*; do
+            flavor=$(basename "$dir" | sed 's/symbols-android-//')
+            cp -r "$dir" "symbols-all/$flavor"
+          done
+          cd symbols-all && zip -r ../release/debug-symbols.zip . && cd ..
+
+          echo "Release files:"
+          ls -lh release/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
