@@ -260,8 +260,8 @@ jobs:
       matrix:
         include:
           - flavor: universal
-            build_cmd: "flutter build apk --release --obfuscate --split-debug-info=build/symbols --split-per-abi"
-            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-release.apk"
+            build_cmd: "flutter build apk --release --flavor fdroid --obfuscate --split-debug-info=build/symbols"
+            apk_path: "build/app/outputs/flutter-apk/app-fdroid-release.apk"
             artifact_name: icd360sev-universal-apk
           - flavor: fdroid
             build_cmd: "flutter build apk --release --flavor fdroid --obfuscate --split-debug-info=build/symbols --split-per-abi"
@@ -271,6 +271,10 @@ jobs:
             build_cmd: "flutter build apk --release --flavor googleplay --obfuscate --split-debug-info=build/symbols --split-per-abi"
             apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-googleplay-release.apk"
             artifact_name: icd360sev-googleplay-apk
+          - flavor: googleplay-aab
+            build_cmd: "flutter build appbundle --release --flavor googleplay --obfuscate --split-debug-info=build/symbols"
+            apk_path: "build/app/outputs/bundle/googleplayRelease/app-googleplay-release.aab"
+            artifact_name: icd360sev-googleplay-aab
           - flavor: amazon
             build_cmd: "flutter build apk --release --flavor amazon --obfuscate --split-debug-info=build/symbols --split-per-abi"
             apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-amazon-release.apk"
@@ -313,21 +317,6 @@ jobs:
         with:
           name: ${{ matrix.artifact_name }}
           path: ${{ matrix.apk_path }}
-          if-no-files-found: error
-
-      # Google Play AAB (only for googleplay flavor)
-      - name: Build AAB (Google Play)
-        if: matrix.flavor == 'googleplay'
-        run: |
-          flutter build appbundle --release --flavor googleplay \
-            --obfuscate --split-debug-info=build/symbols-aab
-
-      - name: Upload AAB
-        if: matrix.flavor == 'googleplay'
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-googleplay-aab
-          path: build/app/outputs/bundle/googleplayRelease/app-googleplay-release.aab
           if-no-files-found: error
 
       - name: Upload debug symbols
@@ -472,10 +461,10 @@ jobs:
           mkdir -p release/
 
           # Android APKs + AAB
-          cp artifacts/icd360sev-universal-apk/*.apk release/icd360sev-universal.apk
+          cp artifacts/icd360sev-universal-apk/* release/icd360sev-universal.apk
           cp artifacts/icd360sev-fdroid-apk/*.apk release/icd360sev-fdroid.apk
           cp artifacts/icd360sev-googleplay-apk/*.apk release/icd360sev-googleplay.apk
-          cp artifacts/icd360sev-googleplay-aab/*.aab release/icd360sev-googleplay.aab
+          cp artifacts/icd360sev-googleplay-aab/* release/icd360sev-googleplay.aab
           cp artifacts/icd360sev-amazon-apk/*.apk release/icd360sev-amazon.apk
           cp artifacts/icd360sev-huawei-apk/*.apk release/icd360sev-huawei.apk
           cp artifacts/icd360sev-samsung-apk/*.apk release/icd360sev-samsung.apk
