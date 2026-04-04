@@ -26,18 +26,23 @@ Die offizielle Mitglieder-App des **ICD360S e.V.** - eine sichere, mehrsprachige
 
 | Plattform | Format | Status | Distribution |
 |-----------|--------|--------|--------------|
-| **Android** | APK | Verfuegbar | F-Droid (eigenes Repository) |
+| **Android** | APK | Verfuegbar | [F-Droid Repository](https://icd360sev.icd360s.de/fdroid/repo) |
+| **Android** | APK (Universal) | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk) |
 | **Android** | APK/AAB | In Vorbereitung | Google Play, Huawei AppGallery, Amazon Appstore, Samsung Galaxy Store |
-| **Windows** | EXE Installer | Verfuegbar | Direktdownload vom Server |
-| **Linux** | DEB, RPM, AppImage | Verfuegbar | Direktdownload vom Server |
-| **macOS** | DMG | Beta-Phase | Direktdownload (sucht Beta-Tester) |
+| **Windows** | EXE Installer | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe) |
+| **Linux** | DEB | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb) |
+| **Linux** | RPM | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm) |
+| **Linux** | AppImage | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage) |
+| **macOS** | DMG | Beta-Phase | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg) (sucht Beta-Tester) |
 | **iOS** | IPA | Beta-Phase | TestFlight (sucht Beta-Tester) |
 
 Die Store-Veroeffentlichungen (Google Play, Huawei, Amazon, Samsung, App Store) befinden sich in Vorbereitung und werden verfuegbar, sobald ausreichend Beta-Tester die App validiert haben.
 
 ## Installation
 
-### Android (F-Droid - empfohlen)
+### Android
+
+**Option 1: F-Droid (empfohlen)**
 
 1. [F-Droid](https://f-droid.org) installieren
 2. Repository hinzufuegen: `https://icd360sev.icd360s.de/fdroid/repo`
@@ -45,9 +50,13 @@ Die Store-Veroeffentlichungen (Google Play, Huawei, Amazon, Samsung, App Store) 
 
 Updates werden automatisch ueber F-Droid bereitgestellt (alle 12-24 Stunden).
 
-### Andere Plattformen
+**Option 2: Universal APK (Direktdownload)**
 
-Downloads fuer Windows, Linux und macOS sind ueber den internen Update-Service der App verfuegbar.
+[APK herunterladen](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk) und manuell installieren. Die App prueft automatisch auf Updates.
+
+### Windows / Linux / macOS
+
+Downloads sind in der Tabelle oben verlinkt. Die App prueft automatisch auf Updates nach der Installation.
 
 ## Technologie
 
