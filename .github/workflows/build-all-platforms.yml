@@ -1,5 +1,5 @@
 # CI/CD workflow for ICD360S e.V. Mitgliederportal
-# Optimized: 3 jobs instead of 9 (saves ~80 min/run)
+# Smart detection: only builds platforms affected by changes
 name: Build All Platforms
 
 on:
@@ -19,10 +19,86 @@ env:
 
 jobs:
   # ============================================
+  # DETECT what changed → skip unchanged platforms
+  # ============================================
+  detect-changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      linux_android: ${{ steps.check.outputs.linux_android }}
+      apple: ${{ steps.check.outputs.apple }}
+      windows: ${{ steps.check.outputs.windows }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Check changed files
+        id: check
+        run: |
+          # On tags or workflow_dispatch → build everything
+          if [[ "${{ github.ref }}" == refs/tags/* ]] || [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "linux_android=true" >> $GITHUB_OUTPUT
+            echo "apple=true" >> $GITHUB_OUTPUT
+            echo "windows=true" >> $GITHUB_OUTPUT
+            echo "BUILD ALL: tag or manual trigger"
+            exit 0
+          fi
+
+          # Get changed files
+          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "FULL_BUILD")
+
+          if [ "$CHANGED" = "FULL_BUILD" ]; then
+            echo "linux_android=true" >> $GITHUB_OUTPUT
+            echo "apple=true" >> $GITHUB_OUTPUT
+            echo "windows=true" >> $GITHUB_OUTPUT
+            echo "BUILD ALL: cannot detect changes"
+            exit 0
+          fi
+
+          echo "Changed files:"
+          echo "$CHANGED"
+
+          # Shared code (Dart, deps, workflow) → build ALL platforms
+          SHARED=false
+          if echo "$CHANGED" | grep -qE '^(lib/|pubspec\.|l10n\.yaml|\.github/workflows/)'; then
+            SHARED=true
+          fi
+
+          # Linux/Android specific
+          if [ "$SHARED" = "true" ] || echo "$CHANGED" | grep -qE '^(android/|linux/)'; then
+            echo "linux_android=true" >> $GITHUB_OUTPUT
+            echo "→ Linux + Android: YES"
+          else
+            echo "linux_android=false" >> $GITHUB_OUTPUT
+            echo "→ Linux + Android: SKIP"
+          fi
+
+          # Apple (iOS/macOS) specific
+          if [ "$SHARED" = "true" ] || echo "$CHANGED" | grep -qE '^(ios/|macos/)'; then
+            echo "apple=true" >> $GITHUB_OUTPUT
+            echo "→ Apple: YES"
+          else
+            echo "apple=false" >> $GITHUB_OUTPUT
+            echo "→ Apple: SKIP"
+          fi
+
+          # Windows specific
+          if [ "$SHARED" = "true" ] || echo "$CHANGED" | grep -qE '^(windows/)'; then
+            echo "windows=true" >> $GITHUB_OUTPUT
+            echo "→ Windows: YES"
+          else
+            echo "windows=false" >> $GITHUB_OUTPUT
+            echo "→ Windows: SKIP"
+          fi
+
+  # ============================================
   # LINUX + ANDROID (all 5 flavors) - 1 runner
   # ============================================
   build-linux-android:
     name: Linux + Android
+    needs: detect-changes
+    if: needs.detect-changes.outputs.linux_android == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -71,7 +147,6 @@ jobs:
         run: |
           sudo apt-get install -y ruby-dev rpm libfuse2
           sudo gem install fpm
-          # AppImageTool
           wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
           chmod +x /usr/local/bin/appimagetool
 
@@ -80,29 +155,11 @@ jobs:
           BUNDLE=build/linux/x64/release/bundle
           VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
 
-          # Create .deb with fpm
-          fpm -s dir -t deb \
-            --name icd360sev-mitglied \
-            --version "$VERSION" \
-            --description "ICD360S e.V. Mitglieder-App" \
-            --maintainer "ICD360S e.V." \
-            --url "https://icd360s.de" \
-            --license "Proprietary" \
-            --architecture amd64 \
-            --depends libgtk-3-0 \
-            --depends libsecret-1-0 \
-            --depends libjsoncpp25 \
-            --depends libnotify4 \
-            "$BUNDLE/=/opt/icd360sev-mitglied/" \
-            "linux/icd360sev_mitglied.desktop=/usr/share/applications/icd360sev_mitglied.desktop"
-
-          # Create symlink script in postinst
           mkdir -p /tmp/deb-scripts
           echo '#!/bin/sh' > /tmp/deb-scripts/postinst
           echo 'ln -sf /opt/icd360sev-mitglied/icd360sev_mitglied /usr/local/bin/icd360sev_mitglied' >> /tmp/deb-scripts/postinst
           chmod +x /tmp/deb-scripts/postinst
 
-          # Rebuild with postinst
           fpm -s dir -t deb \
             --name icd360sev-mitglied \
             --version "$VERSION" \
@@ -116,7 +173,6 @@ jobs:
             --depends libjsoncpp25 \
             --depends libnotify4 \
             --after-install /tmp/deb-scripts/postinst \
-            --force \
             "$BUNDLE/=/opt/icd360sev-mitglied/" \
             "linux/icd360sev_mitglied.desktop=/usr/share/applications/icd360sev_mitglied.desktop"
 
@@ -163,22 +219,17 @@ jobs:
         run: |
           BUNDLE=build/linux/x64/release/bundle
 
-          # Create AppDir structure
-          mkdir -p AppDir/usr/bin AppDir/usr/lib AppDir/usr/share/applications AppDir/usr/share/icons/hicolor/256x256/apps
+          mkdir -p AppDir/usr/bin AppDir/usr/lib AppDir/usr/share/applications
 
-          # Copy bundle
           cp -r "$BUNDLE"/* AppDir/usr/bin/
-          # Move libs to lib dir
           if [ -d "AppDir/usr/bin/lib" ]; then
             mv AppDir/usr/bin/lib/* AppDir/usr/lib/
             rmdir AppDir/usr/bin/lib
           fi
 
-          # Desktop file
           cp linux/icd360sev_mitglied.desktop AppDir/
           cp linux/icd360sev_mitglied.desktop AppDir/usr/share/applications/
 
-          # AppRun
           cat > AppDir/AppRun << 'APPRUN'
           #!/bin/bash
           SELF=$(readlink -f "$0")
@@ -188,11 +239,9 @@ jobs:
           APPRUN
           chmod +x AppDir/AppRun
 
-          # Create a simple icon (placeholder)
-          convert -size 256x256 xc:blue AppDir/icd360sev_mitglied.png 2>/dev/null || \
-            echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" | base64 -d > AppDir/icd360sev_mitglied.png
+          # Placeholder icon
+          echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" | base64 -d > AppDir/icd360sev_mitglied.png
 
-          # Build AppImage
           ARCH=x86_64 appimagetool --no-appstream AppDir icd360sev-mitglied.AppImage
 
       - name: Upload AppImage
@@ -296,6 +345,8 @@ jobs:
   # ============================================
   build-apple:
     name: Apple (iOS + macOS)
+    needs: detect-changes
+    if: needs.detect-changes.outputs.apple == 'true'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5
@@ -348,6 +399,8 @@ jobs:
   # ============================================
   build-windows:
     name: Windows
+    needs: detect-changes
+    if: needs.detect-changes.outputs.windows == 'true'
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v5
