@@ -628,7 +628,12 @@ jobs:
           $SCP_CMD deploy/android/icd360sev-amazon.apk $DEST:$BASE/android/amazon/icd360sev.apk
           $SCP_CMD deploy/android/icd360sev-huawei.apk $DEST:$BASE/android/huawei/icd360sev.apk
           $SCP_CMD deploy/android/icd360sev-samsung.apk $DEST:$BASE/android/samsung/icd360sev.apk
-          echo "✅ Android uploaded (7 flavors)"
+
+          # IMPORTANT: Copy universal APK to root android/ folder
+          # This is where version_mitglieder_android.json download_url points to!
+          # Users who update directly (not F-Droid) download from this path
+          $SCP_CMD deploy/android/icd360sev-universal.apk $DEST:$BASE/android/icd360sev.apk
+          echo "✅ Android uploaded (7 flavors + root fallback)"
 
           # Upload Linux
           $SCP_CMD deploy/linux/icd360sev-mitglied.deb $DEST:$BASE/linux/
