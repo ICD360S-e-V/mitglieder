@@ -56,3 +56,10 @@ id_ed25519
 
 # Project docs with sensitive info
 CLAUDE.md
+
+# Claude instructions (sensitive - server info, credentials)
+CLAUDE.md
+
+# SSH keys
+vps_icd360sev_icd360s.de
+vps_icd360sev_icd360s.de.pub
