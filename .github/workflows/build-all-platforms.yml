@@ -453,7 +453,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: icd360sev-windows
-          path: windows/icd360sev_setup.exe
+          path: icd360sev_setup.exe
           if-no-files-found: error
 
       - name: Save cache marker
