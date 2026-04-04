@@ -53,3 +53,6 @@ vps_*
 *.jks
 id_rsa
 id_ed25519
+
+# Project docs with sensitive info
+CLAUDE.md
