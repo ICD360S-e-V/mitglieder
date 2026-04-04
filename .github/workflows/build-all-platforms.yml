@@ -1,4 +1,5 @@
 # CI/CD workflow for ICD360S e.V. Mitgliederportal
+# Optimized: 3 jobs instead of 9 (saves ~80 min/run)
 name: Build All Platforms
 
 on:
@@ -18,28 +19,22 @@ env:
 
 jobs:
   # ============================================
-  # ANDROID - 5 App Store Flavors
+  # LINUX + ANDROID (all 5 flavors) - 1 runner
   # ============================================
-  build-android:
-    name: Android (${{ matrix.flavor }})
+  build-linux-android:
+    name: Linux + Android
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - flavor: fdroid
-            artifact_name: icd360sev-fdroid
-          - flavor: googleplay
-            artifact_name: icd360sev-googleplay
-          - flavor: amazon
-            artifact_name: icd360sev-amazon
-          - flavor: huawei
-            artifact_name: icd360sev-huawei
-          - flavor: samsung
-            artifact_name: icd360sev-samsung
-
     steps:
       - uses: actions/checkout@v5
+
+      - name: Install Linux build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang cmake git ninja-build pkg-config \
+            libgtk-3-dev liblzma-dev libstdc++-12-dev \
+            libsecret-1-dev libjsoncpp-dev libnotify-dev \
+            libayatana-appindicator3-dev
 
       - name: Set up Java ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v5
@@ -60,45 +55,111 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
-      # Build APK (split-per-abi for smaller size)
-      - name: Build APK (${{ matrix.flavor }})
-        run: |
-          flutter build apk --release --flavor ${{ matrix.flavor }} \
-            --obfuscate --split-debug-info=build/symbols --split-per-abi
+      # --- Linux Desktop Build ---
+      - name: Build Linux
+        run: flutter build linux --release
 
-      # Build AAB for Google Play (Google handles ABI splitting)
-      - name: Build AAB (Google Play)
-        if: matrix.flavor == 'googleplay'
-        run: |
-          flutter build appbundle --release --flavor googleplay \
-            --obfuscate --split-debug-info=build/symbols-aab
-
-      - name: Upload APK
+      - name: Upload Linux build
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ matrix.artifact_name }}-apk
-          path: build/app/outputs/flutter-apk/app-arm64-v8a-${{ matrix.flavor }}-release.apk
+          name: icd360sev-linux
+          path: build/linux/x64/release/bundle/
           if-no-files-found: error
 
-      - name: Upload AAB (Google Play)
-        if: matrix.flavor == 'googleplay'
+      # --- Android: F-Droid ---
+      - name: Build APK (fdroid)
+        run: |
+          flutter build apk --release --flavor fdroid \
+            --obfuscate --split-debug-info=build/symbols-fdroid --split-per-abi
+
+      - name: Upload APK (fdroid)
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ matrix.artifact_name }}-aab
+          name: icd360sev-fdroid-apk
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-fdroid-release.apk
+          if-no-files-found: error
+
+      # --- Android: Google Play ---
+      - name: Build APK (googleplay)
+        run: |
+          flutter build apk --release --flavor googleplay \
+            --obfuscate --split-debug-info=build/symbols-googleplay --split-per-abi
+
+      - name: Upload APK (googleplay)
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-googleplay-apk
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-googleplay-release.apk
+          if-no-files-found: error
+
+      - name: Build AAB (googleplay)
+        run: |
+          flutter build appbundle --release --flavor googleplay \
+            --obfuscate --split-debug-info=build/symbols-googleplay-aab
+
+      - name: Upload AAB (googleplay)
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-googleplay-aab
           path: build/app/outputs/bundle/googleplayRelease/app-googleplay-release.aab
           if-no-files-found: error
 
+      # --- Android: Amazon ---
+      - name: Build APK (amazon)
+        run: |
+          flutter build apk --release --flavor amazon \
+            --obfuscate --split-debug-info=build/symbols-amazon --split-per-abi
+
+      - name: Upload APK (amazon)
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-amazon-apk
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-amazon-release.apk
+          if-no-files-found: error
+
+      # --- Android: Huawei ---
+      - name: Build APK (huawei)
+        run: |
+          flutter build apk --release --flavor huawei \
+            --obfuscate --split-debug-info=build/symbols-huawei --split-per-abi
+
+      - name: Upload APK (huawei)
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-huawei-apk
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-huawei-release.apk
+          if-no-files-found: error
+
+      # --- Android: Samsung ---
+      - name: Build APK (samsung)
+        run: |
+          flutter build apk --release --flavor samsung \
+            --obfuscate --split-debug-info=build/symbols-samsung --split-per-abi
+
+      - name: Upload APK (samsung)
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-samsung-apk
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-samsung-release.apk
+          if-no-files-found: error
+
+      # --- Debug Symbols (all flavors) ---
       - name: Upload debug symbols
         uses: actions/upload-artifact@v7
         with:
-          name: symbols-android-${{ matrix.flavor }}
-          path: build/symbols/
+          name: symbols-android
+          path: |
+            build/symbols-fdroid/
+            build/symbols-googleplay/
+            build/symbols-amazon/
+            build/symbols-huawei/
+            build/symbols-samsung/
 
   # ============================================
-  # iOS
+  # APPLE (iOS + macOS) - 1 runner
   # ============================================
-  build-ios:
-    name: iOS
+  build-apple:
+    name: Apple (iOS + macOS)
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5
@@ -117,6 +178,7 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
+      # --- iOS Build ---
       - name: Build iOS (no codesign)
         run: flutter build ios --release --no-codesign
 
@@ -127,29 +189,7 @@ jobs:
           path: build/ios/iphoneos/Runner.app
           if-no-files-found: error
 
-  # ============================================
-  # macOS
-  # ============================================
-  build-macos:
-    name: macOS
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Install Flutter
-        run: |
-          git clone --depth 1 --branch ${{ env.FLUTTER_VERSION }} https://github.com/flutter/flutter.git "$HOME/flutter"
-          echo "$HOME/flutter/bin" >> $GITHUB_PATH
-
-      - name: Flutter doctor
-        run: flutter doctor -v
-
-      - name: Get dependencies
-        run: flutter pub get
-
-      - name: Generate l10n
-        run: flutter gen-l10n
-
+      # --- macOS Build ---
       - name: Disable macOS code signing for CI
         run: |
           sed -i '' 's/CODE_SIGN_IDENTITY = "Apple Development"/CODE_SIGN_IDENTITY = ""/g' macos/Runner.xcodeproj/project.pbxproj
@@ -168,7 +208,7 @@ jobs:
           if-no-files-found: error
 
   # ============================================
-  # Windows
+  # WINDOWS - 1 runner
   # ============================================
   build-windows:
     name: Windows
@@ -200,53 +240,12 @@ jobs:
           if-no-files-found: error
 
   # ============================================
-  # Linux
-  # ============================================
-  build-linux:
-    name: Linux
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Install Linux build dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            clang cmake git ninja-build pkg-config \
-            libgtk-3-dev liblzma-dev libstdc++-12-dev \
-            libsecret-1-dev libjsoncpp-dev libnotify-dev \
-            libayatana-appindicator3-dev
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: stable
-          cache: true
-
-      - name: Get dependencies
-        run: flutter pub get
-
-      - name: Generate l10n
-        run: flutter gen-l10n
-
-      - name: Build Linux
-        run: flutter build linux --release
-
-      - name: Upload Linux build
-        uses: actions/upload-artifact@v7
-        with:
-          name: icd360sev-linux
-          path: build/linux/x64/release/bundle/
-          if-no-files-found: error
-
-  # ============================================
   # Release (only on version tags)
   # ============================================
   release:
     name: Create Release
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [build-android, build-ios, build-macos, build-windows, build-linux]
+    needs: [build-linux-android, build-apple, build-windows]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -277,12 +276,9 @@ jobs:
           cd artifacts/icd360sev-ios && zip -r ../../release/icd360sev-ios.zip . && cd ../..
 
           # Debug symbols archive
-          mkdir -p symbols-all/
-          for dir in artifacts/symbols-android-*; do
-            flavor=$(basename "$dir" | sed 's/symbols-android-//')
-            cp -r "$dir" "symbols-all/$flavor"
-          done
-          cd symbols-all && zip -r ../release/debug-symbols.zip . && cd ..
+          if [ -d "artifacts/symbols-android" ]; then
+            cd artifacts/symbols-android && zip -r ../../release/debug-symbols.zip . && cd ../..
+          fi
 
           echo "Release files:"
           ls -lh release/
