@@ -1,0 +1,919 @@
+{
+  "@@locale": "uk",
+  "appTitle": "ICD360S e.V - Портал учасників",
+  "memberPortal": "Портал учасників",
+  "welcomeLoading": "Завантаження...",
+  "welcomeAutoLogin": "Автоматичний вхід...",
+  "login": "Увійти",
+  "register": "Реєстрація",
+  "becomeMember": "Стати учасником",
+  "memberNumber": "Номер учасника",
+  "memberNumberHint": "Введіть номер учасника",
+  "password": "Пароль",
+  "passwordHint": "Введіть пароль",
+  "confirmPassword": "Підтвердіть пароль",
+  "confirmPasswordHint": "Підтвердіть пароль",
+  "newPassword": "Новий пароль",
+  "newPasswordHint": "Введіть новий пароль",
+  "saveCredentials": "Зберегти дані входу",
+  "autoLogin": "Автоматичний вхід",
+  "forgotPassword": "Забули пароль?",
+  "firstName": "Ім'я та прізвище",
+  "firstNameHint": "Введіть ім'я та прізвище",
+  "nameMinLength": "Ім'я має містити мінімум 2 символи",
+  "nameOnlyLetters": "Дозволені лише літери та дефіс",
+  "email": "Електронна пошта",
+  "emailHint": "Введіть email",
+  "emailInvalid": "Введіть коректний email",
+  "passwordMinLength": "Пароль має містити мінімум 6 символів",
+  "passwordsNotMatch": "Паролі не збігаються",
+  "recoveryCode": "Код відновлення (6 цифр)",
+  "recoveryCodeHelper": "Запам'ятайте цей код для відновлення пароля",
+  "recoveryCodeHint": "Введіть код відновлення",
+  "recoveryCodeInvalid": "Код має складатися з 6 цифр",
+  "loginFailed": "Помилка входу",
+  "registrationFailed": "Помилка реєстрації",
+  "connectionError": "Помилка з'єднання: {error}",
+  "registrationSuccess": "Реєстрація успішна!\n\nВаш номер учасника: {memberNumber}\n\nЗапам'ятайте цей номер для входу.",
+  "tooManyDevices": "Забагато пристроїв",
+  "maxDevicesMessage": "Ви вже увійшли на 3 пристроях.\nВиберіть пристрій для виходу:",
+  "unknownDevice": "Невідомий пристрій",
+  "unknown": "Невідомо",
+  "logoutError": "Помилка виходу",
+  "error": "Помилка: {error}",
+  "cancel": "Скасувати",
+  "resetPassword": "Скинути пароль",
+  "forgotPasswordTitle": "Забули пароль",
+  "forgotPasswordDescription": "Введіть номер учасника та код відновлення, створений під час реєстрації.",
+  "passwordResetSuccess": "Пароль успішно скинуто!\n\nТепер ви можете увійти з новим паролем.",
+  "passwordResetFailed": "Скидання пароля не вдалося",
+  "needHelp": "Потрібна допомога?",
+  "helpQuestion": "Проблеми з входом або реєстрацією?",
+  "helpDescription": "Зв'яжіться з нами через WhatsApp та опишіть, що не працює. Ми відповімо якнайшвидше!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Запит через додаток ICD360S",
+  "whatsappMessage": "Вітаю, у мене проблема з додатком ICD360S. ",
+  "imprint": "Імпресум",
+  "privacy": "Політика конфіденційності",
+  "statutes": "Статут",
+  "revocation": "Право відкликання",
+  "cancellation": "Скасування",
+  "allRightsReserved": "Всі права захищені.",
+  "enterCredentials": "Введіть номер учасника та пароль",
+  "appointments": "Зустрічі",
+  "tickets": "Заявки",
+  "liveChat": "Чат",
+  "notifications": "Сповіщення",
+  "myProfile": "Мій профіль",
+  "logout": "Вийти",
+  "goodMorning": "Доброго ранку",
+  "goodDay": "Добрий день",
+  "goodEvening": "Добрий вечір",
+  "goodNight": "Надобранiч",
+  "welcomeToICD": "Ласкаво просимо до ICD360S e.V!",
+  "accountCreatedSuccessfully": "Ваш обліковий запис успішно створено.",
+  "today": "Сьогодні",
+  "membershipFeeDue": "Членський внесок до сплати",
+  "pleaseTransferAnnualFee": "Будь ласка, переведіть річний внесок.",
+  "newBadge": "Новий",
+  "close": "Закрити",
+  "membership": "Членство",
+  "myAppointments": "Мої зустрічі",
+  "appointmentsLoadingReady": "Завантаження зустрічей - API готовий!",
+  "priority": "Пріоритет",
+  "messageLabel": "Повідомлення",
+  "createdOn": "Створено",
+  "handler": "Обробник",
+  "reportProblems": "Повідомити про проблеми",
+  "reportProblem": "Повідомити про проблему",
+  "weRespondIn24Hours": "Ми відповімо вам протягом 24 годин!",
+  "everythingOk": "Все гаразд!",
+  "haveProblemWeHelp": "Є проблема?\nМи подбаємо про це!",
+  "myMembership": "Моє членство",
+  "managePersonalDataAndFee": "Керування особистими даними та членським внеском",
+  "myAppointmentsTitle": "Мої зустрічі",
+  "appointmentsDescription": "Тут ви можете побачити свої майбутні зустрічі.\nВи можете підтвердити свою участь або відхилити.",
+  "loadAppointments": "Завантажити зустрічі",
+  "myTickets": "Мої заявки",
+  "newTicket": "Нова заявка",
+  "noOpenTickets": "Немає відкритих заявок",
+  "haveQuestionCreateTicket": "Є питання або проблема?\nСтворіть нову заявку.",
+  "whatIsTheProblem": "У чому проблема?",
+  "describeTheProblem": "Опишіть проблему",
+  "howUrgentIsIt": "Наскільки це терміново?",
+  "low": "Низький",
+  "medium": "Середній",
+  "high": "Високий",
+  "submit": "Надіслати",
+  "fillSubjectAndMessage": "Будь ласка, заповніть тему та повідомлення",
+  "ticketCreated": "Заявку створено",
+  "errorCreatingTicket": "Помилка створення заявки",
+  "verified": "Перевірено",
+  "account": "Обліковий запис",
+  "myDevices": "Мої пристрої",
+  "changeEmail": "Змінити email",
+  "changePassword": "Змінити пароль",
+  "newEmailAddress": "Нова адреса email",
+  "currentPassword": "Поточний пароль",
+  "saveEmail": "Зберегти email",
+  "savePassword": "Зберегти пароль",
+  "deviceLoggedOut": "Пристрій відключено",
+  "passwordChangedSuccessfully": "Пароль успішно змінено",
+  "emailChangedSuccessfully": "Email успішно змінено",
+  "errorChangingPassword": "Помилка зміни пароля",
+  "errorChangingEmail": "Помилка зміни email",
+  "validEmailRequired": "Будь ласка, введіть дійсну адресу email",
+  "passwordTooShort": "Пароль повинен містити не менше 6 символів",
+  "maxDevicesReached": "Ви увійшли на максимум з 3 пристроїв.",
+  "loggedInOnDevices": "Ви увійшли на {count} з 3 пристроїв.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Немає активних сеансів",
+  "logoutFromDevice": "Вийти з цього пристрою",
+  "confirmLogoutDevice": "Вийти з пристрою?",
+  "confirmLogoutMessage": "Ви хочете вийти з цього пристрою?\n\nВам потрібно буде увійти знову, щоб використовувати цей пристрій.",
+  "ipAddress": "IP",
+  "platform": "Платформа",
+  "trialWarningUrgentTitle": "Увага: Залишилось {days, plural, =1{1 день} few{{days} дні} other{{days} днів}} до блокування акаунту!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Ваш акаунт ще не верифіковано",
+  "trialWarningDescription": "Будь ласка, заповніть дані в \"Мій профіль\". Через 30 днів акаунт буде автоматично заблоковано.",
+  "trialDaysRemaining": "{days, plural, =1{1 день} few{{days} дні} other{{days} днів}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Огляд",
+  "member": "Член",
+  "memberManagement": "Управління членами",
+  "reportProblemTooltip": "Повідомити про проблему",
+  "newAppointmentsTitle": "Нові зустрічі",
+  "youHaveNewAppointment": "У вас нова зустріч.",
+  "youHaveNewAppointments": "У вас {count} нових зустрічей.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Нагадування: Зустріч завтра",
+  "tomorrowAppointment": "Завтра: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "У вас {count} зустрічей завтра.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Зустрічі сьогодні",
+  "todayAppointment": "Сьогодні: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "У вас {count} зустрічей сьогодні.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Нагадування про оплату",
+  "paymentReminderMessage": "Сьогодні {day}-е число місяця – будь ласка, завершіть {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "День оплати (щомісячне нагадування)",
+  "updateAvailable": "Доступне оновлення",
+  "newVersionAvailable": "Доступна нова версія: {version}",
+  "currentVersionLabel": "Поточна версія: {version}",
+  "changes": "Зміни:",
+  "downloadProgress": "Завантаження: {percent}%",
+  "installationStarting": "Початок встановлення...",
+  "appWillRestart": "Додаток буде перезапущено автоматично.",
+  "later": "Пізніше",
+  "updateNow": "Оновити зараз",
+  "downloading": "Завантаження...",
+  "downloadFailed": "Не вдалося завантажити. Спробуйте пізніше.",
+  "searchingForUpdates": "Пошук оновлень...",
+  "appUpToDate": "Додаток оновлено",
+  "updateCheckError": "Помилка перевірки оновлень",
+  "changelog": "Журнал змін",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Зустріч підтверджено",
+  "terminDeclined": "Зустріч відхилено",
+  "terminRescheduleRequested": "Запитано перенесення",
+  "statusConfirmed": "Підтверджено",
+  "statusDeclined": "Відхилено",
+  "statusRescheduling": "Перенесення",
+  "statusPending": "Очікування",
+  "categoryVorstandssitzung": "Засідання правління",
+  "categoryMitgliederversammlung": "Загальні збори",
+  "categorySchulung": "Навчання",
+  "categorySonstiges": "Інше",
+  "openCount": "{count} відкритих",
+  "refresh": "Оновити",
+  "filterUpcoming": "Майбутні",
+  "filterPast": "Минулі",
+  "filterAll": "Усі",
+  "noUpcomingAppointments": "Немає майбутніх зустрічей",
+  "noPastAppointments": "Немає минулих зустрічей",
+  "noAppointmentsAvailable": "Зустрічей немає",
+  "appointmentsShownHere": "Ваші зустрічі відображатимуться тут",
+  "dateLabel": "Дата",
+  "timeLabel": "Час",
+  "locationLabel": "Місце",
+  "createdByLabel": "Створив",
+  "descriptionLabel": "Опис",
+  "ticketLabel": "Заявка",
+  "yourStatus": "Ваш статус: ",
+  "reasonLabel": "Причина: {reason}",
+  "durationMinutes": "{minutes} хв",
+  "confirm": "Підтвердити",
+  "decline": "Відхилити",
+  "reschedule": "Перенести",
+  "requestReschedule": "Запитати перенесення",
+  "appointmentLabel": "Зустріч: {title}",
+  "rescheduleReason": "Причина перенесення *",
+  "rescheduleReasonHint": "Вкажіть причину...",
+  "pleaseProvideReason": "Вкажіть причину",
+  "request": "Запитати",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Відкрита",
+  "ticketStatusInProgress": "В роботі",
+  "ticketStatusWaitingMember": "Очікування учасника",
+  "ticketStatusWaitingStaff": "Очікування співробітника",
+  "ticketStatusWaitingAuthority": "Очікування відомства",
+  "ticketStatusDone": "Завершена",
+  "ticketPriorityHigh": "Високий",
+  "ticketPriorityMedium": "Середній",
+  "ticketPriorityLow": "Низький",
+  "comments": "Коментарі",
+  "documents": "Документи",
+  "details": "Деталі",
+  "replySent": "Відповідь надіслано",
+  "sendError": "Помилка надсилання",
+  "uploading": "Завантаження...",
+  "fileUploaded": "{filename} завантажено",
+  "uploadFailed": "Помилка завантаження",
+  "openError": "Помилка відкриття",
+  "noRepliesYet": "Ще немає відповідей",
+  "waitingForSupport": "Очікування відповіді підтримки",
+  "writeReply": "Написати відповідь...",
+  "attachFile": "Прикріпити файл",
+  "documentsCount": "Документи ({count})",
+  "upload": "Завантажити",
+  "noDocuments": "Немає документів",
+  "allowedFormats": "Дозволені формати: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Ваше повідомлення:",
+  "translation": "Переклад",
+  "original": "Оригінал",
+  "originalText": "Оригінальний текст",
+  "autoTranslated": "Перекладено автоматично",
+  "originalTapTranslation": "Оригінал · Натисніть для перекладу",
+  "translatedTapOriginal": "Перекладено · Натисніть для оригіналу",
+  "justNow": "Щойно",
+  "minutesAgo": "{minutes} хв тому",
+  "hoursAgo": "{hours} год тому",
+  "daysAgo": "{days} {days, plural, =1{день} other{днів}} тому",
+  "createdLabel": "Створено",
+  "updatedLabel": "Оновлено",
+  "handlerLabel": "Відповідальний",
+  "doneLabel": "Завершено",
+  "newTicketTitle": "Нова заявка",
+  "categoryOptional": "Категорія (необов'язково)",
+  "selectCategory": "Вибрати",
+  "subjectLabel": "Тема",
+  "fillAllFields": "Заповніть усі поля",
+  "ticketCreatedId": "Заявка #{id} створена",
+  "priorityLabel": "Пріоритет: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Підтримка офлайн",
+  "lastSeenSeconds": "Активний кілька секунд тому",
+  "lastSeenMinutes": "Активний {minutes} {minutes, plural, =1{хвилину} other{хвилин}} тому",
+  "lastSeenHours": "Активний {hours} {hours, plural, =1{годину} other{годин}} тому",
+  "lastSeenDays": "Активний {days} {days, plural, =1{день} other{днів}} тому",
+  "online": "Онлайн",
+  "callSupport": "Зателефонувати",
+  "typeMessage": "Введіть повідомлення...",
+  "callBusy": "Підтримка зайнята",
+  "callRejected": "Дзвінок відхилено",
+  "callFailed": "Дзвінок не вдалося з'єднати",
+  "callEnded": "Дзвінок завершено",
+  "callSupportBusy": "Підтримка вже в іншому дзвінку",
+  "errorStartingChat": "Помилка запуску чату",
+  "errorStartingCall": "Помилка запуску дзвінка",
+  "errorConnecting": "Помилка з'єднання",
+  "errorAcceptingCall": "Помилка прийняття дзвінка",
+  "errorDownloading": "Помилка завантаження",
+  "errorUploading": "Помилка відправки файлу",
+  "errorSending": "Помилка відправки",
+  "errorPickingPhotos": "Помилка вибору фото",
+  "errorPickingFiles": "Помилка вибору файлів",
+  "errorTakingPhoto": "Помилка зйомки",
+  "fileNotLoaded": "Файл не завантажено",
+  "attachmentIdMissing": "ID вкладення відсутній",
+  "camera": "Камера",
+  "gallery": "Галерея",
+  "file": "Файл",
+  "typingIndicator": "{name} друкує...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Нове повідомлення від",
+  "notifUrgentPrefix": "ТЕРМІНОВО",
+  "notifUrgentMessage": "ТЕРМІНОВЕ ПОВІДОМЛЕННЯ",
+  "notifIncomingCall": "Вхідний дзвінок",
+  "notifCallingYou": "дзвонить...",
+  "notifUpdateAvailable": "Доступне оновлення",
+  "notifVersionAvailable": "вже доступна",
+  "notifConnected": "Підключено",
+  "notifDisconnected": "Відключено",
+  "notifConnectedBody": "Ви підключені до сервера.",
+  "notifDisconnectedBody": "З'єднання з сервером втрачено.",
+  "notifError": "Помилка",
+  "retry": "Спробувати знову",
+  "save": "Зберегти",
+  "accept": "Прийняти",
+  "selectFile": "Вибрати файл",
+  "dataLoadingText": "Завантаження даних...",
+  "dataSavedSuccess": "Дані успішно збережено",
+  "errorSaving": "Помилка збереження",
+  "errorLoading": "Помилка завантаження",
+  "savedFilename": "Збережено: {filename}",
+  "logsCopied": "Логи скопійовано!",
+  "diagnosticDataTitle": "Діагностичні дані",
+  "diagnosticDescription": "Бажаєте надсилати анонімні діагностичні дані для покращення додатку?",
+  "noThanks": "Ні, дякую",
+  "yesEnable": "Так, увімкнути",
+  "passwordMinEightChars": "Пароль повинен містити щонайменше 8 символів",
+  "passwordChangeSuccess": "Пароль успішно змінено",
+  "emailChangeError": "Помилка зміни email",
+  "acceptDocumentCheckbox": "Я прочитав і приймаю документ.",
+  "loadingErrorGeneric": "Помилка завантаження: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Вхідний дзвінок",
+  "ringingFor": "Дзвонить {seconds}с",
+  "rejectCall": "Відхилити",
+  "acceptCall": "Прийняти",
+  "unmute": "Увімкнути звук",
+  "mute": "Вимкнути звук",
+  "hangUp": "Завершити",
+  "calling": "Виклик...",
+  "autoRejectIn": "Автовідхилення через {seconds} секунд",
+  "speakerOn": "Динамік",
+  "speakerOff": "Навушник",
+  "micMuted": "Вимкнено",
+  "micOn": "Мікрофон",
+  "connectionExcellent": "Відмінне",
+  "connectionGood": "Добре",
+  "connectionWeak": "Слабке",
+  "connectionLost": "Відключено",
+  "personalData": "Особисті дані",
+  "personalDataSubtitle": "Ім'я, прізвище, адреса",
+  "membershipFee": "Членський внесок",
+  "annualFeeYear": "Річний внесок {year}",
+  "amount": "Сума:",
+  "dueBy": "Термін:",
+  "paid": "Сплачено",
+  "versionHistory": "Історія версій",
+  "lastUpdated": "Останнє оновлення: {date}",
+  "noVersionHistory": "Історія версій недоступна",
+  "failedLoadChangelog": "Не вдалося завантажити журнал змін",
+  "callMember": "Зателефонувати учаснику",
+  "closeConversation": "Закрити розмову",
+  "chatOffline": "Не в мережі",
+  "attachFiles": "Прикріпити файли (макс. 10, 50МБ)",
+  "conversationClosed": "Ця розмова була закрита",
+  "noMessages": "Немає повідомлень",
+  "goBack": "Назад",
+  "goForward": "Вперед",
+  "homePage": "Головна",
+  "firstNameLabel": "Ім'я",
+  "lastNameLabel": "Прізвище",
+  "streetLabel": "Вулиця",
+  "houseNumberLabel": "№",
+  "postalCodeLabel": "Поштовий індекс",
+  "cityLabel": "Місто",
+  "phoneMobileLabel": "Телефон (Мобільний)",
+  "phoneLandlineLabel": "Телефон (Стаціонарний)",
+  "newEmailLabel": "Нова адреса електронної пошти",
+  "currentPasswordLabel": "Поточний пароль",
+  "newPasswordLabel": "Новий пароль",
+  "confirmPasswordLabel": "Підтвердити пароль",
+  "emailChangedSuccess": "Email успішно змінено",
+  "newPasswordMinChars": "Новий пароль (мін. 6 символів)",
+  "reasonLabel2": "Причина",
+  "downloadFailed2": "Завантаження не вдалося",
+  "downloadTooltip": "Завантажити",
+  "connectionErrorGeneric": "Помилка з'єднання",
+  "copyLogs": "Копіювати логи",
+  "deleteLogs": "Видалити логи",
+  "autoScrollOn": "Автопрокрутка УВІМК",
+  "autoScrollOff": "Автопрокрутка ВИМК",
+  "unknownValue": "Невідомо",
+  "bankTransfer": "Банківський переказ",
+  "standingOrder": "Постійне доручення",
+  "payment": "Оплата",
+  "warningType_ermahnung": "Попередження",
+  "warningType_abmahnung": "Догана",
+  "warningType_letzte": "Останнє попередження",
+  "warningsTotal": "Всього: {count}",
+  "warningsErmahnung": "Попередження: {count}",
+  "warningsAbmahnung": "Догани: {count}",
+  "warningsLetzte": "Останні: {count}",
+  "noWarnings": "Немає попереджень",
+  "noWarningsDescription": "Наразі у вас немає попереджень.",
+  "createdBy": "Створив: {name}",
+  "monthJan": "Sic",
+  "monthFeb": "Lut",
+  "monthMar": "Ber",
+  "monthApr": "Kvi",
+  "monthMay": "Tra",
+  "monthJun": "Cer",
+  "monthJul": "Lyp",
+  "monthAug": "Ser",
+  "monthSep": "Ver",
+  "monthOct": "Zov",
+  "monthNov": "Lys",
+  "monthDec": "Gru",
+  "stufe1_name": "Особисті дані",
+  "stufe2_name": "Тип членства",
+  "stufe3_name": "Фінансове становище",
+  "stufe4_name": "Спосіб оплати",
+  "stufe5_name": "Початок членства",
+  "stufe6_name": "Статут",
+  "stufe7_name": "Політика конфіденційності",
+  "stufe8_name": "Право на відкликання",
+  "memberType_ordentlich": "Дійсний член",
+  "memberType_foerder": "Член-прихильник",
+  "memberType_ehren": "Почесний член",
+  "memberDesc_ordentlich": "Активний член з правом голосу. Бере участь у послугах асоціації (пошта, хмара, бюрократична підтримка).",
+  "memberDesc_foerder": "Підтримує асоціацію внесками. Може бути присутнім на загальних зборах з дорадчим голосом, без права голосу або обрання до правління.",
+  "memberDesc_ehren": "Має права дійсного члена без обов'язку сплати членських внесків. Призначається загальними зборами або правлінням.",
+  "payMethod_ueberweisung": "Банківський переказ",
+  "payMethod_dauerauftrag": "Постійне доручення",
+  "verifyStatus_geprueft": "Перевірено",
+  "verifyStatus_ausgefuellt": "Заповнено",
+  "verifyStatus_abgelehnt": "Відхилено",
+  "verifyStatus_offen": "Відкрито",
+  "fillRequiredFields": "Будь ласка, заповніть усі обов'язкові поля.",
+  "personalDataSaved": "Особисті дані збережено",
+  "selectMemberType": "Оберіть тип членства.",
+  "memberTypeSaved": "Тип членства збережено",
+  "selectOption": "Оберіть варіант.",
+  "financialSaved": "Фінансове становище збережено",
+  "selectPaymentMethod": "Оберіть спосіб оплати.",
+  "paymentDataSaved": "Платіжні дані збережено",
+  "selectDate": "Оберіть дату.",
+  "membershipStartSaved": "Початок членства збережено",
+  "fileTooLarge": "Файл занадто великий (макс. 10 МБ).",
+  "leistungsbescheidUploaded": "Довідку про виплати успішно завантажено",
+  "verificationProgress": "Прогрес верифікації",
+  "notApplicable": "Не застосовується",
+  "socialBenefitsExempt": "Спосіб оплати не потрібен для отримувачів соціальних виплат.",
+  "locked": "Заблоковано",
+  "completePreviousStep": "Спочатку завершіть крок {step}.",
+  "rejectedNote": "Відхилено: {note}",
+  "waitingForReview": "Очікує розгляду правлінням.",
+  "stepApproved": "Цей крок перевірено та затверджено.",
+  "changesViaChat": "Зміни можливі лише через чат.",
+  "firstNameRequired": "Ім'я *",
+  "lastNameRequired": "Прізвище *",
+  "birthDateLabel": "Дата народження *",
+  "streetRequired": "Вулиця *",
+  "houseNumberRequired": "№ *",
+  "cityRequired": "Місто *",
+  "phoneRequired": "Номер телефону *",
+  "phonePurpose": "Призначення: Зв'язок, коли недоступний через додаток",
+  "selectMemberTypePrompt": "Оберіть бажаний тип членства:",
+  "financialExplanation": "Щоб перевірити, чи маєте ви право на зниження внеску, нам потрібна наступна інформація. Вона буде використана виключно для визначення вашого членського внеску.",
+  "socialBenefitsQuestion": "Чи отримуєте ви зараз соціальні виплати?",
+  "optionBuergergeld": "Так, громадянська допомога (Job Center)",
+  "optionSozialamt": "Так, соціальна допомога (Соціальна служба)",
+  "optionNoBenefits": "Ні, я не отримую соціальних виплат",
+  "feeExempt": "Ваш щомісячний внесок: 0,00 €/місяць",
+  "uploadLeistungsbescheid": "Завантажити довідку про виплати",
+  "uploadLeistungsbescheidHint": "Завантажте актуальну довідку про виплати протягом 14 днів для підтвердження звільнення від внеску.",
+  "allowedFormatsUpload": "Дозволені формати: PDF, JPG, PNG (макс. 10 МБ)",
+  "feeRegular": "Ваш щомісячний внесок: 25,00 €/місяць",
+  "paymentDayReminder": "Вам нагадуватиметься {day}-го числа кожного місяця.",
+  "membershipStartPrompt": "Оберіть, коли має розпочатися ваше членство.",
+  "optionAfterVerification": "Після завершення верифікації",
+  "optionAfterVerificationDesc": "Членство починається з дня затвердження правлінням.",
+  "optionRetroFoundation": "Ретроактивно до дати заснування (01.08.2025)",
+  "optionRetroFoundationDesc": "Ви стаєте ретроактивним членом з моменту заснування асоціації.",
+  "optionRetroCustom": "Ретроактивно до іншої дати",
+  "optionRetroCustomDesc": "Оберіть дату між 01.08.2025 та сьогоднішнім днем.",
+  "selectDateLabel": "Оберіть дату",
+  "selectDateHint": "Оберіть дату...",
+  "dateNotBefore": "Не раніше 01.08.2025 (дата заснування)",
+  "feeExemptRetro": "Звільнення від внеску: 0,00 € ретроактивно.\nЛише дата членства встановлюється ретроактивно.",
+  "retroactiveFees": "Ретроактивні внески",
+  "retroFeeCalculation": "Період: {from} – {to}\nМісяці: {months}\nВнесок: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Будь ласка, прочитайте статут асоціації.",
+  "pleaseReadDatenschutz": "Будь ласка, прочитайте політику конфіденційності.",
+  "pleaseReadWiderruf": "Будь ласка, прочитайте право на відкликання.",
+  "acceptedAtRegistration": "Прийнято при реєстрації",
+  "confirmedByBoard": "Буде підтверджено після розгляду правлінням.",
+  "docSatzung": "Статут",
+  "docDatenschutz": "Політика конфіденційності",
+  "docWiderruf": "Право на відкликання",
+  "acceptedAtRegCount": "Прийнято при реєстрації ({count}/3)",
+  "acceptedOn": "Прийнято {date}",
+  "notAccepted": "Не прийнято",
+  "statusAccepted": "Прийнято",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Номер учасника занадто довгий (макс. 20 символів)",
+  "onlyUppercaseAndNumbers": "Дозволено лише великі літери та цифри",
+  "passwordTooLong": "Пароль занадто довгий (макс. 100 символів)",
+  "nameTooLong": "Ім'я занадто довге (макс. 100 символів)",
+  "emailTooLong": "Email занадто довгий (макс. 255 символів)",
+  "legalAcknowledgePrefix": "Я ознайомився/лася з ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " ICD360S e.V. та визнаю їх обов'язковими.",
+  "legalPleaseReadFirst": "(будь ласка, спочатку прочитайте)",
+  "statusActive": "Активний",
+  "statusSuspended": "Заблоковано",
+  "statusNew": "Новий",
+  "statusCancelled": "Скасовано",
+  "statusDeleted": "Видалено",
+  "roleMitglied": "Учасник",
+  "roleVorsitzer": "Голова",
+  "roleStellvertreter": "Заступник",
+  "roleSchatzmeister": "Скарбник",
+  "roleSchriftfuehrer": "Секретар",
+  "roleBeisitzer": "Засідатель",
+  "roleKassierer": "Касир",
+  "roleKassenpruefer": "Ревізор",
+  "roleEhrenamtlich": "Волонтер",
+  "roleMitgliedergruender": "Засновник",
+  "roleEhrenmitglied": "Почесний член",
+  "roleFoerdermitglied": "Член-спонсор",
+  "memberTypeNotSet": "Ще не встановлено",
+  "payMethodSepa": "Пряме дебетування SEPA",
+  "labelStatus": "Статус",
+  "labelMemberNumber": "Номер учасника",
+  "labelRole": "Роль",
+  "labelMemberType": "Тип членства",
+  "labelPaymentMethod": "Спосіб оплати",
+  "labelRegisteredOn": "Зареєстровано",
+  "labelLastLogin": "Останній вхід",
+  "labelMemberSince": "Учасник з",
+  "neverLoggedIn": "Ніколи",
+  "notActivatedYet": "Ще не активовано",
+  "tabVerification": "Верифікація",
+  "tabWarnings": "Попередження",
+  "tabDocuments": "Документи",
+  "tabMembership": "Членство",
+  "pleaseEnterFirstName": "Введіть ім'я",
+  "pleaseEnterLastName": "Введіть прізвище",
+  "noFileDataReceived": "Дані не отримано",
+  "openFile": "Відкрити",
+  "diagnosticErrors": "Звіти про помилки для покращення",
+  "diagnosticAnonymousStats": "Анонімна статистика використання",
+  "diagnosticPerformance": "Дані про продуктивність додатку",
+  "noMicrophoneError": "Мікрофон не знайдено. Підключіть мікрофон і спробуйте ще раз.",
+  "startConversation": "Розпочніть розмову!",
+  "staffWillReply": "Співробітник незабаром відповість вам.",
+  "inCall": "У дзвінку...",
+  "registration": "Реєстрація",
+  "deactivation": "Деактивація",
+  "deactivatedOn": "Деактивовано",
+  "accountAutoSuspend": "Облікові записи, не підтверджені протягом 30 днів, будуть автоматично заблоковані.",
+  "ipClean": "IP чистий - не в списку",
+  "documentsProvidedByBoard": "Документи надаються правлінням.",
+  "noDocumentsAvailable": "Документів немає",
+  "noDocumentsDescription": "Для вас ще не надано документів.",
+  "uploadedBy": "Завантажив: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} кроків виконано",
+  "dayOfMonth": "{day}-е число місяця",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Змінити {field}",
+  "openDocument": "Відкрити {name}",
+  "helpImproveApp": "Бажаєте допомогти нам покращити додаток?",
+  "noPersonalDataCollected": "Особисті дані не збираються. Цей параметр можна змінити в будь-який час.",
+  "logEntries": "{count} записів",
+  "noLogs": "Немає логів",
+  "newLoginDetected": "Виявлено новий вхід",
+  "waitingForMember": "Очікування учасника",
+  "waitingForStaff": "Очікування співробітника",
+  "waitingForAuthority": "Очікування органу влади",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

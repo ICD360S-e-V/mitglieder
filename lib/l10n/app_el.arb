@@ -1,0 +1,919 @@
+{
+  "@@locale": "el",
+  "appTitle": "ICD360S e.V - Πύλη Μελών",
+  "memberPortal": "Πύλη Μελών",
+  "welcomeLoading": "Φόρτωση...",
+  "welcomeAutoLogin": "Αυτόματη σύνδεση...",
+  "login": "Σύνδεση",
+  "register": "Εγγραφή",
+  "becomeMember": "Γίνετε Μέλος",
+  "memberNumber": "Αριθμός Μέλους",
+  "memberNumberHint": "Εισάγετε τον αριθμό μέλους",
+  "password": "Κωδικός",
+  "passwordHint": "Εισάγετε τον κωδικό",
+  "confirmPassword": "Επιβεβαίωση Κωδικού",
+  "confirmPasswordHint": "Επιβεβαιώστε τον κωδικό",
+  "newPassword": "Νέος Κωδικός",
+  "newPasswordHint": "Εισάγετε νέο κωδικό",
+  "saveCredentials": "Αποθήκευση στοιχείων",
+  "autoLogin": "Αυτόματη σύνδεση",
+  "forgotPassword": "Ξεχάσατε τον κωδικό;",
+  "firstName": "Όνομα και Επώνυμο",
+  "firstNameHint": "Εισάγετε όνομα και επώνυμο",
+  "nameMinLength": "Το όνομα πρέπει να έχει τουλάχιστον 2 χαρακτήρες",
+  "nameOnlyLetters": "Επιτρέπονται μόνο γράμματα και παύλες",
+  "email": "Διεύθυνση Email",
+  "emailHint": "Εισάγετε email",
+  "emailInvalid": "Εισάγετε έγκυρο email",
+  "passwordMinLength": "Ο κωδικός πρέπει να έχει τουλάχιστον 6 χαρακτήρες",
+  "passwordsNotMatch": "Οι κωδικοί δεν ταιριάζουν",
+  "recoveryCode": "Κωδικός Ανάκτησης (6 ψηφία)",
+  "recoveryCodeHelper": "Θυμηθείτε αυτόν τον κωδικό για ανάκτηση κωδικού",
+  "recoveryCodeHint": "Εισάγετε κωδικό ανάκτησης",
+  "recoveryCodeInvalid": "Ο κωδικός πρέπει να έχει ακριβώς 6 ψηφία",
+  "loginFailed": "Αποτυχία σύνδεσης",
+  "registrationFailed": "Αποτυχία εγγραφής",
+  "connectionError": "Σφάλμα σύνδεσης: {error}",
+  "registrationSuccess": "Επιτυχής εγγραφή!\n\nΟ αριθμός μέλους σας: {memberNumber}\n\nΘυμηθείτε αυτόν τον αριθμό για σύνδεση.",
+  "tooManyDevices": "Πάρα πολλές συσκευές",
+  "maxDevicesMessage": "Είστε ήδη συνδεδεμένοι σε 3 συσκευές.\nΕπιλέξτε συσκευή για αποσύνδεση:",
+  "unknownDevice": "Άγνωστη συσκευή",
+  "unknown": "Άγνωστο",
+  "logoutError": "Σφάλμα αποσύνδεσης",
+  "error": "Σφάλμα: {error}",
+  "cancel": "Ακύρωση",
+  "resetPassword": "Επαναφορά Κωδικού",
+  "forgotPasswordTitle": "Ξεχάσατε τον Κωδικό",
+  "forgotPasswordDescription": "Εισάγετε τον αριθμό μέλους και τον κωδικό ανάκτησης που δημιουργήσατε κατά την εγγραφή.",
+  "passwordResetSuccess": "Ο κωδικός επαναφέρθηκε επιτυχώς!\n\nΤώρα μπορείτε να συνδεθείτε με τον νέο κωδικό.",
+  "passwordResetFailed": "Αποτυχία επαναφοράς κωδικού",
+  "needHelp": "Χρειάζεστε βοήθεια;",
+  "helpQuestion": "Προβλήματα με τη σύνδεση ή την εγγραφή;",
+  "helpDescription": "Επικοινωνήστε μέσω WhatsApp και περιγράψτε τι δεν λειτουργεί. Θα απαντήσουμε το συντομότερο!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Ερώτημα μέσω εφαρμογής ICD360S",
+  "whatsappMessage": "Γεια σας, έχω πρόβλημα με την εφαρμογή ICD360S. ",
+  "imprint": "Impressum",
+  "privacy": "Πολιτική Απορρήτου",
+  "statutes": "Καταστατικό",
+  "revocation": "Δικαίωμα Υπαναχώρησης",
+  "cancellation": "Ακύρωση",
+  "allRightsReserved": "Με επιφύλαξη παντός δικαιώματος.",
+  "enterCredentials": "Εισάγετε αριθμό μέλους και κωδικό",
+  "appointments": "Ραντεβού",
+  "tickets": "Εισιτήρια",
+  "liveChat": "Ζωντανή Συνομιλία",
+  "notifications": "Ειδοποιήσεις",
+  "myProfile": "Το Προφίλ μου",
+  "logout": "Αποσύνδεση",
+  "goodMorning": "Καλημέρα",
+  "goodDay": "Καλή μέρα",
+  "goodEvening": "Καλησπέρα",
+  "goodNight": "Καληνύχτα",
+  "welcomeToICD": "Καλώς ήρθατε στο ICD360S e.V!",
+  "accountCreatedSuccessfully": "Ο λογαριασμός σας δημιουργήθηκε με επιτυχία.",
+  "today": "Σήμερα",
+  "membershipFeeDue": "Οφειλόμενη συνδρομή μέλους",
+  "pleaseTransferAnnualFee": "Παρακαλώ μεταφέρετε την ετήσια συνδρομή.",
+  "newBadge": "Νέο",
+  "close": "Κλείσιμο",
+  "membership": "Μέλος",
+  "myAppointments": "Τα ραντεβού μου",
+  "appointmentsLoadingReady": "Φόρτωση ραντεβού - API έτοιμο!",
+  "priority": "Προτεραιότητα",
+  "messageLabel": "Μήνυμα",
+  "createdOn": "Δημιουργήθηκε",
+  "handler": "Διαχειριστής",
+  "reportProblems": "Αναφορά προβλημάτων",
+  "reportProblem": "Αναφορά προβλήματος",
+  "weRespondIn24Hours": "Θα σας απαντήσουμε εντός 24 ωρών!",
+  "everythingOk": "Όλα εντάξει!",
+  "haveProblemWeHelp": "Έχετε πρόβλημα;\nΘα το φροντίσουμε!",
+  "myMembership": "Η συνδρομή μου",
+  "managePersonalDataAndFee": "Διαχείριση προσωπικών δεδομένων και συνδρομής",
+  "myAppointmentsTitle": "Τα ραντεβού μου",
+  "appointmentsDescription": "Εδώ μπορείτε να δείτε τα επερχόμενα ραντεβού σας.\nΜπορείτε να επιβεβαιώσετε τη συμμετοχή σας ή να αρνηθείτε.",
+  "loadAppointments": "Φόρτωση ραντεβού",
+  "myTickets": "Τα αιτήματά μου",
+  "newTicket": "Νέο αίτημα",
+  "noOpenTickets": "Δεν υπάρχουν ανοιχτά αιτήματα",
+  "haveQuestionCreateTicket": "Έχετε ερώτηση ή πρόβλημα;\nΔημιουργήστε ένα νέο αίτημα.",
+  "whatIsTheProblem": "Ποιο είναι το πρόβλημα;",
+  "describeTheProblem": "Περιγράψτε το πρόβλημα",
+  "howUrgentIsIt": "Πόσο επείγον είναι;",
+  "low": "Χαμηλή",
+  "medium": "Μεσαία",
+  "high": "Υψηλή",
+  "submit": "Υποβολή",
+  "fillSubjectAndMessage": "Συμπληρώστε το θέμα και το μήνυμα",
+  "ticketCreated": "Το αίτημα δημιουργήθηκε",
+  "errorCreatingTicket": "Σφάλμα κατά τη δημιουργία αιτήματος",
+  "verified": "Επαληθευμένο",
+  "account": "Λογαριασμός",
+  "myDevices": "Οι συσκευές μου",
+  "changeEmail": "Αλλαγή email",
+  "changePassword": "Αλλαγή κωδικού",
+  "newEmailAddress": "Νέα διεύθυνση email",
+  "currentPassword": "Τρέχων κωδικός",
+  "saveEmail": "Αποθήκευση email",
+  "savePassword": "Αποθήκευση κωδικού",
+  "deviceLoggedOut": "Η συσκευή αποσυνδέθηκε",
+  "passwordChangedSuccessfully": "Ο κωδικός άλλαξε επιτυχώς",
+  "emailChangedSuccessfully": "Το email άλλαξε επιτυχώς",
+  "errorChangingPassword": "Σφάλμα κατά την αλλαγή κωδικού",
+  "errorChangingEmail": "Σφάλμα κατά την αλλαγή email",
+  "validEmailRequired": "Εισαγάγετε μια έγκυρη διεύθυνση email",
+  "passwordTooShort": "Ο κωδικός πρέπει να έχει τουλάχιστον 6 χαρακτήρες",
+  "maxDevicesReached": "Είστε συνδεδεμένοι στο μέγιστο των 3 συσκευών.",
+  "loggedInOnDevices": "Είστε συνδεδεμένοι σε {count} από 3 συσκευές.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Δεν υπάρχουν ενεργές συνεδρίες",
+  "logoutFromDevice": "Αποσύνδεση από αυτή τη συσκευή",
+  "confirmLogoutDevice": "Αποσύνδεση συσκευής;",
+  "confirmLogoutMessage": "Θέλετε να αποσυνδεθείτε από αυτή τη συσκευή;\n\nΘα χρειαστεί να συνδεθείτε ξανά για να χρησιμοποιήσετε αυτή τη συσκευή.",
+  "ipAddress": "IP",
+  "platform": "Πλατφόρμα",
+  "trialWarningUrgentTitle": "Προσοχή: Απομένουν {days, plural, =1{1 ημέρα} other{{days} ημέρες}} μέχρι την αναστολή του λογαριασμού!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Ο λογαριασμός σας δεν έχει επαληθευτεί ακόμα",
+  "trialWarningDescription": "Παρακαλώ συμπληρώστε τα στοιχεία σας στο \"Το προφίλ μου\". Μετά από 30 ημέρες ο λογαριασμός σας θα ανασταλεί αυτόματα.",
+  "trialDaysRemaining": "{days, plural, =1{1 ημέρα} other{{days} ημέρες}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Επισκόπηση",
+  "member": "Μέλος",
+  "memberManagement": "Διαχείριση μελών",
+  "reportProblemTooltip": "Αναφορά προβλήματος",
+  "newAppointmentsTitle": "Νέα ραντεβού",
+  "youHaveNewAppointment": "Έχετε νέο ραντεβού.",
+  "youHaveNewAppointments": "Έχετε {count} νέα ραντεβού.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Υπενθύμιση: Ραντεβού αύριο",
+  "tomorrowAppointment": "Αύριο: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Έχετε {count} ραντεβού αύριο.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Ραντεβού σήμερα",
+  "todayAppointment": "Σήμερα: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Έχετε {count} ραντεβού σήμερα.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Υπενθύμιση πληρωμής",
+  "paymentReminderMessage": "Σήμερα είναι η {day}η του μήνα – παρακαλώ ολοκληρώστε {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Ημέρα πληρωμής (μηνιαία υπενθύμιση)",
+  "updateAvailable": "Διαθέσιμη ενημέρωση",
+  "newVersionAvailable": "Μια νέα έκδοση είναι διαθέσιμη: {version}",
+  "currentVersionLabel": "Τρέχουσα έκδοση: {version}",
+  "changes": "Αλλαγές:",
+  "downloadProgress": "Λήψη: {percent}%",
+  "installationStarting": "Έναρξη εγκατάστασης...",
+  "appWillRestart": "Η εφαρμογή θα επανεκκινηθεί αυτόματα.",
+  "later": "Αργότερα",
+  "updateNow": "Ενημέρωση τώρα",
+  "downloading": "Γίνεται λήψη...",
+  "downloadFailed": "Η λήψη απέτυχε. Δοκιμάστε ξανά αργότερα.",
+  "searchingForUpdates": "Αναζήτηση ενημερώσεων...",
+  "appUpToDate": "Η εφαρμογή είναι ενημερωμένη",
+  "updateCheckError": "Σφάλμα ελέγχου ενημερώσεων",
+  "changelog": "Ιστορικό αλλαγών",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Ραντεβού επιβεβαιώθηκε",
+  "terminDeclined": "Ραντεβού απορρίφθηκε",
+  "terminRescheduleRequested": "Ζητήθηκε αναβολή",
+  "statusConfirmed": "Επιβεβαιωμένο",
+  "statusDeclined": "Απορρίφθηκε",
+  "statusRescheduling": "Αναβολή",
+  "statusPending": "Εκκρεμεί",
+  "categoryVorstandssitzung": "Συνεδρίαση διοικητικού",
+  "categoryMitgliederversammlung": "Γενική συνέλευση",
+  "categorySchulung": "Εκπαίδευση",
+  "categorySonstiges": "Άλλο",
+  "openCount": "{count} ανοιχτά",
+  "refresh": "Ανανέωση",
+  "filterUpcoming": "Επερχόμενα",
+  "filterPast": "Παρελθόντα",
+  "filterAll": "Όλα",
+  "noUpcomingAppointments": "Δεν υπάρχουν επερχόμενα ραντεβού",
+  "noPastAppointments": "Δεν υπάρχουν προηγούμενα ραντεβού",
+  "noAppointmentsAvailable": "Δεν υπάρχουν ραντεβού",
+  "appointmentsShownHere": "Τα ραντεβού σας θα εμφανιστούν εδώ",
+  "dateLabel": "Ημερομηνία",
+  "timeLabel": "Ώρα",
+  "locationLabel": "Τοποθεσία",
+  "createdByLabel": "Δημιουργήθηκε από",
+  "descriptionLabel": "Περιγραφή",
+  "ticketLabel": "Αίτημα",
+  "yourStatus": "Η κατάστασή σας: ",
+  "reasonLabel": "Λόγος: {reason}",
+  "durationMinutes": "{minutes} λεπτά",
+  "confirm": "Επιβεβαίωση",
+  "decline": "Απόρριψη",
+  "reschedule": "Αναβολή",
+  "requestReschedule": "Αίτηση αναβολής",
+  "appointmentLabel": "Ραντεβού: {title}",
+  "rescheduleReason": "Λόγος αναβολής *",
+  "rescheduleReasonHint": "Παρακαλώ αναφέρετε τον λόγο...",
+  "pleaseProvideReason": "Παρακαλώ αναφέρετε τον λόγο",
+  "request": "Αίτηση",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Ανοιχτό",
+  "ticketStatusInProgress": "Σε εξέλιξη",
+  "ticketStatusWaitingMember": "Αναμονή μέλους",
+  "ticketStatusWaitingStaff": "Αναμονή προσωπικού",
+  "ticketStatusWaitingAuthority": "Αναμονή αρχής",
+  "ticketStatusDone": "Ολοκληρωμένο",
+  "ticketPriorityHigh": "Υψηλή",
+  "ticketPriorityMedium": "Μεσαία",
+  "ticketPriorityLow": "Χαμηλή",
+  "comments": "Σχόλια",
+  "documents": "Έγγραφα",
+  "details": "Λεπτομέρειες",
+  "replySent": "Απάντηση εστάλη",
+  "sendError": "Σφάλμα αποστολής",
+  "uploading": "Μεταφόρτωση...",
+  "fileUploaded": "{filename} μεταφορτώθηκε",
+  "uploadFailed": "Αποτυχία μεταφόρτωσης",
+  "openError": "Σφάλμα ανοίγματος",
+  "noRepliesYet": "Δεν υπάρχουν απαντήσεις ακόμα",
+  "waitingForSupport": "Αναμονή απάντησης υποστήριξης",
+  "writeReply": "Γράψτε απάντηση...",
+  "attachFile": "Επισύναψη αρχείου",
+  "documentsCount": "Έγγραφα ({count})",
+  "upload": "Μεταφόρτωση",
+  "noDocuments": "Δεν υπάρχουν έγγραφα",
+  "allowedFormats": "Επιτρεπόμενες μορφές: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Το μήνυμά σας:",
+  "translation": "Μετάφραση",
+  "original": "Πρωτότυπο",
+  "originalText": "Αρχικό κείμενο",
+  "autoTranslated": "Αυτόματα μεταφρασμένο",
+  "originalTapTranslation": "Πρωτότυπο · Πατήστε για μετάφραση",
+  "translatedTapOriginal": "Μεταφρασμένο · Πατήστε για πρωτότυπο",
+  "justNow": "Μόλις τώρα",
+  "minutesAgo": "πριν {minutes} λεπτά",
+  "hoursAgo": "πριν {hours} ώρες",
+  "daysAgo": "πριν {days} {days, plural, =1{ημέρα} other{ημέρες}}",
+  "createdLabel": "Δημιουργήθηκε",
+  "updatedLabel": "Ενημερώθηκε",
+  "handlerLabel": "Υπεύθυνος",
+  "doneLabel": "Ολοκληρωμένο",
+  "newTicketTitle": "Νέο αίτημα",
+  "categoryOptional": "Κατηγορία (προαιρετικό)",
+  "selectCategory": "Επιλογή",
+  "subjectLabel": "Θέμα",
+  "fillAllFields": "Συμπληρώστε όλα τα πεδία",
+  "ticketCreatedId": "Αίτημα #{id} δημιουργήθηκε",
+  "priorityLabel": "Προτεραιότητα: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Υποστήριξη εκτός σύνδεσης",
+  "lastSeenSeconds": "Ενεργός πριν λίγα δευτερόλεπτα",
+  "lastSeenMinutes": "Ενεργός πριν {minutes} {minutes, plural, =1{λεπτό} other{λεπτά}}",
+  "lastSeenHours": "Ενεργός πριν {hours} {hours, plural, =1{ώρα} other{ώρες}}",
+  "lastSeenDays": "Ενεργός πριν {days} {days, plural, =1{ημέρα} other{ημέρες}}",
+  "online": "Σε σύνδεση",
+  "callSupport": "Κλήση",
+  "typeMessage": "Πληκτρολογήστε μήνυμα...",
+  "callBusy": "Η υποστήριξη είναι απασχολημένη",
+  "callRejected": "Η κλήση απορρίφθηκε",
+  "callFailed": "Η κλήση δεν μπόρεσε να συνδεθεί",
+  "callEnded": "Η κλήση τερματίστηκε",
+  "callSupportBusy": "Η υποστήριξη είναι ήδη σε άλλη κλήση",
+  "errorStartingChat": "Σφάλμα εκκίνησης συνομιλίας",
+  "errorStartingCall": "Σφάλμα εκκίνησης κλήσης",
+  "errorConnecting": "Σφάλμα σύνδεσης",
+  "errorAcceptingCall": "Σφάλμα αποδοχής κλήσης",
+  "errorDownloading": "Σφάλμα λήψης",
+  "errorUploading": "Σφάλμα μεταφόρτωσης",
+  "errorSending": "Σφάλμα αποστολής",
+  "errorPickingPhotos": "Σφάλμα επιλογής φωτογραφιών",
+  "errorPickingFiles": "Σφάλμα επιλογής αρχείων",
+  "errorTakingPhoto": "Σφάλμα λήψης φωτογραφίας",
+  "fileNotLoaded": "Το αρχείο δεν φορτώθηκε",
+  "attachmentIdMissing": "Λείπει ID συνημμένου",
+  "camera": "Κάμερα",
+  "gallery": "Συλλογή",
+  "file": "Αρχείο",
+  "typingIndicator": "{name} γράφει...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Νέο μήνυμα από",
+  "notifUrgentPrefix": "ΕΠΕΙΓΟΝ",
+  "notifUrgentMessage": "ΕΠΕΙΓΟΝ ΜΗΝΥΜΑ",
+  "notifIncomingCall": "Εισερχόμενη κλήση",
+  "notifCallingYou": "καλεί...",
+  "notifUpdateAvailable": "Διαθέσιμη ενημέρωση",
+  "notifVersionAvailable": "είναι τώρα διαθέσιμη",
+  "notifConnected": "Συνδέθηκε",
+  "notifDisconnected": "Αποσυνδέθηκε",
+  "notifConnectedBody": "Είστε συνδεδεμένοι στον διακομιστή.",
+  "notifDisconnectedBody": "Η σύνδεση με τον διακομιστή χάθηκε.",
+  "notifError": "Σφάλμα",
+  "retry": "Δοκιμάστε ξανά",
+  "save": "Αποθήκευση",
+  "accept": "Αποδοχή",
+  "selectFile": "Επιλογή αρχείου",
+  "dataLoadingText": "Φόρτωση δεδομένων...",
+  "dataSavedSuccess": "Τα δεδομένα αποθηκεύτηκαν",
+  "errorSaving": "Σφάλμα αποθήκευσης",
+  "errorLoading": "Σφάλμα φόρτωσης",
+  "savedFilename": "Αποθηκεύτηκε: {filename}",
+  "logsCopied": "Αρχεία καταγραφής αντιγράφηκαν!",
+  "diagnosticDataTitle": "Διαγνωστικά δεδομένα",
+  "diagnosticDescription": "Θέλετε να στέλνετε ανώνυμα διαγνωστικά δεδομένα για τη βελτίωση της εφαρμογής;",
+  "noThanks": "Όχι, ευχαριστώ",
+  "yesEnable": "Ναι, ενεργοποίηση",
+  "passwordMinEightChars": "Ο κωδικός πρέπει να έχει τουλάχιστον 8 χαρακτήρες",
+  "passwordChangeSuccess": "Ο κωδικός άλλαξε επιτυχώς",
+  "emailChangeError": "Σφάλμα αλλαγής email",
+  "acceptDocumentCheckbox": "Έχω διαβάσει και αποδέχομαι το έγγραφο.",
+  "loadingErrorGeneric": "Σφάλμα φόρτωσης: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Εισερχόμενη κλήση",
+  "ringingFor": "Χτυπά {seconds}δ",
+  "rejectCall": "Απόρριψη",
+  "acceptCall": "Αποδοχή",
+  "unmute": "Κατάργηση σίγασης",
+  "mute": "Σίγαση",
+  "hangUp": "Τερματισμός",
+  "calling": "Κλήση...",
+  "autoRejectIn": "Αυτόματη απόρριψη σε {seconds} δευτερόλεπτα",
+  "speakerOn": "Ηχείο",
+  "speakerOff": "Ακουστικό",
+  "micMuted": "Σε σίγαση",
+  "micOn": "Μικρόφωνο",
+  "connectionExcellent": "Εξαιρετική",
+  "connectionGood": "Καλή",
+  "connectionWeak": "Ασθενής",
+  "connectionLost": "Αποσυνδέθηκε",
+  "personalData": "Προσωπικά δεδομένα",
+  "personalDataSubtitle": "Όνομα, επώνυμο, διεύθυνση",
+  "membershipFee": "Συνδρομή μέλους",
+  "annualFeeYear": "Ετήσια συνδρομή {year}",
+  "amount": "Ποσό:",
+  "dueBy": "Προθεσμία:",
+  "paid": "Πληρωμένο",
+  "versionHistory": "Ιστορικό εκδόσεων",
+  "lastUpdated": "Τελευταία ενημέρωση: {date}",
+  "noVersionHistory": "Δεν υπάρχει ιστορικό εκδόσεων",
+  "failedLoadChangelog": "Αποτυχία φόρτωσης αρχείου αλλαγών",
+  "callMember": "Κλήση μέλους",
+  "closeConversation": "Κλείσιμο συνομιλίας",
+  "chatOffline": "Εκτός σύνδεσης",
+  "attachFiles": "Επισύναψη αρχείων (μέγ. 10, 50MB)",
+  "conversationClosed": "Αυτή η συνομιλία έχει κλείσει",
+  "noMessages": "Δεν υπάρχουν μηνύματα",
+  "goBack": "Πίσω",
+  "goForward": "Εμπρός",
+  "homePage": "Αρχική",
+  "firstNameLabel": "Όνομα",
+  "lastNameLabel": "Επώνυμο",
+  "streetLabel": "Οδός",
+  "houseNumberLabel": "Αρ.",
+  "postalCodeLabel": "Τ.Κ.",
+  "cityLabel": "Πόλη",
+  "phoneMobileLabel": "Τηλέφωνο (Κινητό)",
+  "phoneLandlineLabel": "Τηλέφωνο (Σταθερό)",
+  "newEmailLabel": "Νέα διεύθυνση email",
+  "currentPasswordLabel": "Τρέχων κωδικός",
+  "newPasswordLabel": "Νέος κωδικός",
+  "confirmPasswordLabel": "Επιβεβαίωση κωδικού",
+  "emailChangedSuccess": "Το email άλλαξε επιτυχώς",
+  "newPasswordMinChars": "Νέος κωδικός (ελάχ. 6 χαρακτήρες)",
+  "reasonLabel2": "Λόγος",
+  "downloadFailed2": "Η λήψη απέτυχε",
+  "downloadTooltip": "Λήψη",
+  "connectionErrorGeneric": "Σφάλμα σύνδεσης",
+  "copyLogs": "Αντιγραφή αρχείων καταγραφής",
+  "deleteLogs": "Διαγραφή αρχείων καταγραφής",
+  "autoScrollOn": "Αυτόματη κύλιση ΕΝΕΡΓΉ",
+  "autoScrollOff": "Αυτόματη κύλιση ΑΝΕΝΕΡΓΉ",
+  "unknownValue": "Άγνωστο",
+  "bankTransfer": "Τραπεζικό έμβασμα",
+  "standingOrder": "Πάγια εντολή",
+  "payment": "Πληρωμή",
+  "warningType_ermahnung": "Προειδοποίηση",
+  "warningType_abmahnung": "Επίπληξη",
+  "warningType_letzte": "Τελευταία προειδοποίηση",
+  "warningsTotal": "Σύνολο: {count}",
+  "warningsErmahnung": "Προειδοποιήσεις: {count}",
+  "warningsAbmahnung": "Επιπλήξεις: {count}",
+  "warningsLetzte": "Τελευταίες: {count}",
+  "noWarnings": "Δεν υπάρχουν προειδοποιήσεις",
+  "noWarningsDescription": "Δεν έχετε προειδοποιήσεις αυτή τη στιγμή.",
+  "createdBy": "Δημιουργήθηκε από: {name}",
+  "monthJan": "Ian",
+  "monthFeb": "Fev",
+  "monthMar": "Mar",
+  "monthApr": "Apr",
+  "monthMay": "Mai",
+  "monthJun": "Iun",
+  "monthJul": "Iul",
+  "monthAug": "Avg",
+  "monthSep": "Sep",
+  "monthOct": "Okt",
+  "monthNov": "Noe",
+  "monthDec": "Dek",
+  "stufe1_name": "Προσωπικά δεδομένα",
+  "stufe2_name": "Τύπος μέλους",
+  "stufe3_name": "Οικονομική κατάσταση",
+  "stufe4_name": "Τρόπος πληρωμής",
+  "stufe5_name": "Έναρξη συνδρομής",
+  "stufe6_name": "Καταστατικό",
+  "stufe7_name": "Πολιτική απορρήτου",
+  "stufe8_name": "Δικαίωμα υπαναχώρησης",
+  "memberType_ordentlich": "Τακτικό μέλος",
+  "memberType_foerder": "Υποστηρικτικό μέλος",
+  "memberType_ehren": "Επίτιμο μέλος",
+  "memberDesc_ordentlich": "Ενεργό μέλος με δικαίωμα ψήφου. Συμμετέχει στις υπηρεσίες του συλλόγου (email, cloud, γραφειοκρατική υποστήριξη).",
+  "memberDesc_foerder": "Υποστηρίζει τον σύλλογο με εισφορές. Μπορεί να παρευρίσκεται στη γενική συνέλευση με συμβουλευτική ψήφο, χωρίς δικαίωμα ψήφου ή εκλογής στο διοικητικό συμβούλιο.",
+  "memberDesc_ehren": "Έχει τα δικαιώματα τακτικού μέλους χωρίς την υποχρέωση καταβολής συνδρομών. Διορίζεται από τη γενική συνέλευση ή το διοικητικό συμβούλιο.",
+  "payMethod_ueberweisung": "Τραπεζικό έμβασμα",
+  "payMethod_dauerauftrag": "Πάγια εντολή",
+  "verifyStatus_geprueft": "Επαληθεύτηκε",
+  "verifyStatus_ausgefuellt": "Συμπληρώθηκε",
+  "verifyStatus_abgelehnt": "Απορρίφθηκε",
+  "verifyStatus_offen": "Ανοιχτό",
+  "fillRequiredFields": "Συμπληρώστε όλα τα υποχρεωτικά πεδία.",
+  "personalDataSaved": "Τα προσωπικά δεδομένα αποθηκεύτηκαν",
+  "selectMemberType": "Επιλέξτε τύπο μέλους.",
+  "memberTypeSaved": "Ο τύπος μέλους αποθηκεύτηκε",
+  "selectOption": "Επιλέξτε μια επιλογή.",
+  "financialSaved": "Η οικονομική κατάσταση αποθηκεύτηκε",
+  "selectPaymentMethod": "Επιλέξτε τρόπο πληρωμής.",
+  "paymentDataSaved": "Τα στοιχεία πληρωμής αποθηκεύτηκαν",
+  "selectDate": "Επιλέξτε ημερομηνία.",
+  "membershipStartSaved": "Η έναρξη συνδρομής αποθηκεύτηκε",
+  "fileTooLarge": "Το αρχείο είναι πολύ μεγάλο (μέγ. 10 MB).",
+  "leistungsbescheidUploaded": "Η βεβαίωση παροχών μεταφορτώθηκε επιτυχώς",
+  "verificationProgress": "Πρόοδος επαλήθευσης",
+  "notApplicable": "Δεν ισχύει",
+  "socialBenefitsExempt": "Ο τρόπος πληρωμής δεν απαιτείται για δικαιούχους κοινωνικών παροχών.",
+  "locked": "Κλειδωμένο",
+  "completePreviousStep": "Ολοκληρώστε πρώτα το βήμα {step}.",
+  "rejectedNote": "Απορρίφθηκε: {note}",
+  "waitingForReview": "Αναμονή ελέγχου από το διοικητικό συμβούλιο.",
+  "stepApproved": "Αυτό το βήμα ελέγχθηκε και εγκρίθηκε.",
+  "changesViaChat": "Αλλαγές μόνο μέσω συνομιλίας.",
+  "firstNameRequired": "Όνομα *",
+  "lastNameRequired": "Επώνυμο *",
+  "birthDateLabel": "Ημερομηνία γέννησης *",
+  "streetRequired": "Οδός *",
+  "houseNumberRequired": "Αρ. *",
+  "cityRequired": "Πόλη *",
+  "phoneRequired": "Αριθμός τηλεφώνου *",
+  "phonePurpose": "Σκοπός: Επικοινωνία όταν δεν είστε προσβάσιμοι μέσω της εφαρμογής",
+  "selectMemberTypePrompt": "Επιλέξτε τον επιθυμητό τύπο μέλους:",
+  "financialExplanation": "Για να ελέγξουμε αν δικαιούστε μείωση συνδρομής, χρειαζόμαστε τις ακόλουθες πληροφορίες. Θα χρησιμοποιηθούν αποκλειστικά για τον καθορισμό της συνδρομής σας.",
+  "socialBenefitsQuestion": "Λαμβάνετε αυτήν τη στιγμή κοινωνικές παροχές;",
+  "optionBuergergeld": "Ναι, επίδομα πολίτη (Job Center)",
+  "optionSozialamt": "Ναι, κοινωνική πρόνοια (Κοινωνική Υπηρεσία)",
+  "optionNoBenefits": "Όχι, δεν λαμβάνω κοινωνικές παροχές",
+  "feeExempt": "Η μηνιαία συνδρομή σας είναι: 0,00 €/μήνα",
+  "uploadLeistungsbescheid": "Μεταφόρτωση βεβαίωσης παροχών",
+  "uploadLeistungsbescheidHint": "Μεταφορτώστε μια τρέχουσα βεβαίωση παροχών εντός 14 ημερών για επιβεβαίωση της απαλλαγής.",
+  "allowedFormatsUpload": "Επιτρεπόμενες μορφές: PDF, JPG, PNG (μέγ. 10 MB)",
+  "feeRegular": "Η μηνιαία συνδρομή σας είναι: 25,00 €/μήνα",
+  "paymentDayReminder": "Θα σας υπενθυμίζεται στις {day} κάθε μήνα.",
+  "membershipStartPrompt": "Επιλέξτε πότε θα ξεκινήσει η συνδρομή σας.",
+  "optionAfterVerification": "Μετά την ολοκλήρωση της επαλήθευσης",
+  "optionAfterVerificationDesc": "Η συνδρομή αρχίζει από την ημέρα επιβεβαίωσης του διοικητικού συμβουλίου.",
+  "optionRetroFoundation": "Αναδρομικά στην ημερομηνία ίδρυσης (01.08.2025)",
+  "optionRetroFoundationDesc": "Γίνεστε αναδρομικό μέλος από την ίδρυση του συλλόγου.",
+  "optionRetroCustom": "Αναδρομικά σε άλλη ημερομηνία",
+  "optionRetroCustomDesc": "Επιλέξτε ημερομηνία μεταξύ 01.08.2025 και σήμερα.",
+  "selectDateLabel": "Επιλογή ημερομηνίας",
+  "selectDateHint": "Επιλέξτε ημερομηνία...",
+  "dateNotBefore": "Όχι πριν τις 01.08.2025 (ημερομηνία ίδρυσης)",
+  "feeExemptRetro": "Απαλλαγή συνδρομής: 0,00 € αναδρομικά.\nΜόνο η ημερομηνία συνδρομής ορίζεται αναδρομικά.",
+  "retroactiveFees": "Αναδρομικές συνδρομές",
+  "retroFeeCalculation": "Περίοδος: {from} – {to}\nΜήνες: {months}\nΣυνδρομή: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Διαβάστε το καταστατικό του συλλόγου.",
+  "pleaseReadDatenschutz": "Διαβάστε την πολιτική απορρήτου.",
+  "pleaseReadWiderruf": "Διαβάστε το δικαίωμα υπαναχώρησης.",
+  "acceptedAtRegistration": "Αποδεκτό κατά την εγγραφή",
+  "confirmedByBoard": "Θα επιβεβαιωθεί μετά τον έλεγχο του διοικητικού συμβουλίου.",
+  "docSatzung": "Καταστατικό",
+  "docDatenschutz": "Πολιτική απορρήτου",
+  "docWiderruf": "Δικαίωμα υπαναχώρησης",
+  "acceptedAtRegCount": "Αποδεκτό κατά την εγγραφή ({count}/3)",
+  "acceptedOn": "Αποδεκτό στις {date}",
+  "notAccepted": "Δεν έγινε αποδεκτό",
+  "statusAccepted": "Αποδεκτό",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Αριθμός μέλους πολύ μεγάλος (μέγ. 20 χαρακτήρες)",
+  "onlyUppercaseAndNumbers": "Επιτρέπονται μόνο κεφαλαία γράμματα και αριθμοί",
+  "passwordTooLong": "Κωδικός πολύ μεγάλος (μέγ. 100 χαρακτήρες)",
+  "nameTooLong": "Όνομα πολύ μεγάλο (μέγ. 100 χαρακτήρες)",
+  "emailTooLong": "Email πολύ μεγάλο (μέγ. 255 χαρακτήρες)",
+  "legalAcknowledgePrefix": "Έχω διαβάσει την ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " του ICD360S e.V. και τα αναγνωρίζω ως δεσμευτικά.",
+  "legalPleaseReadFirst": "(παρακαλώ διαβάστε πρώτα)",
+  "statusActive": "Ενεργός",
+  "statusSuspended": "Ανεσταλμένος",
+  "statusNew": "Νέος",
+  "statusCancelled": "Ακυρωμένος",
+  "statusDeleted": "Διαγραμμένος",
+  "roleMitglied": "Μέλος",
+  "roleVorsitzer": "Πρόεδρος",
+  "roleStellvertreter": "Αναπληρωτής",
+  "roleSchatzmeister": "Ταμίας",
+  "roleSchriftfuehrer": "Γραμματέας",
+  "roleBeisitzer": "Πάρεδρος",
+  "roleKassierer": "Ταμίας",
+  "roleKassenpruefer": "Ελεγκτής",
+  "roleEhrenamtlich": "Εθελοντής",
+  "roleMitgliedergruender": "Ιδρυτικό Μέλος",
+  "roleEhrenmitglied": "Επίτιμο Μέλος",
+  "roleFoerdermitglied": "Υποστηρικτικό Μέλος",
+  "memberTypeNotSet": "Δεν έχει οριστεί ακόμα",
+  "payMethodSepa": "Άμεση χρέωση SEPA",
+  "labelStatus": "Κατάσταση",
+  "labelMemberNumber": "Αριθμός μέλους",
+  "labelRole": "Ρόλος",
+  "labelMemberType": "Τύπος μέλους",
+  "labelPaymentMethod": "Μέθοδος πληρωμής",
+  "labelRegisteredOn": "Εγγραφή στις",
+  "labelLastLogin": "Τελευταία σύνδεση",
+  "labelMemberSince": "Μέλος από",
+  "neverLoggedIn": "Ποτέ",
+  "notActivatedYet": "Δεν έχει ενεργοποιηθεί ακόμα",
+  "tabVerification": "Επαλήθευση",
+  "tabWarnings": "Προειδοποιήσεις",
+  "tabDocuments": "Έγγραφα",
+  "tabMembership": "Συνδρομή",
+  "pleaseEnterFirstName": "Εισάγετε το όνομα",
+  "pleaseEnterLastName": "Εισάγετε το επώνυμο",
+  "noFileDataReceived": "Δεν ελήφθησαν δεδομένα",
+  "openFile": "Άνοιγμα",
+  "diagnosticErrors": "Αναφορές σφαλμάτων για βελτίωση",
+  "diagnosticAnonymousStats": "Ανώνυμα στατιστικά χρήσης",
+  "diagnosticPerformance": "Δεδομένα απόδοσης εφαρμογής",
+  "noMicrophoneError": "Δεν βρέθηκε μικρόφωνο. Συνδέστε ένα μικρόφωνο και δοκιμάστε ξανά.",
+  "startConversation": "Ξεκινήστε μια συνομιλία!",
+  "staffWillReply": "Ένας υπάλληλος θα σας απαντήσει σύντομα.",
+  "inCall": "Σε κλήση...",
+  "registration": "Εγγραφή",
+  "deactivation": "Απενεργοποίηση",
+  "deactivatedOn": "Απενεργοποιήθηκε στις",
+  "accountAutoSuspend": "Οι λογαριασμοί που δεν επαληθεύονται εντός 30 ημερών θα ανασταλούν αυτόματα.",
+  "ipClean": "IP καθαρή - μη καταχωρημένη",
+  "documentsProvidedByBoard": "Τα έγγραφα παρέχονται από το διοικητικό συμβούλιο.",
+  "noDocumentsAvailable": "Δεν υπάρχουν έγγραφα",
+  "noDocumentsDescription": "Δεν έχουν παρασχεθεί ακόμα έγγραφα για εσάς.",
+  "uploadedBy": "Μεταφορτώθηκε από: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} βήματα ολοκληρώθηκαν",
+  "dayOfMonth": "{day}η του μήνα",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Αλλαγή {field}",
+  "openDocument": "Άνοιγμα {name}",
+  "helpImproveApp": "Θέλετε να μας βοηθήσετε να βελτιώσουμε την εφαρμογή;",
+  "noPersonalDataCollected": "Δεν συλλέγονται προσωπικά δεδομένα. Αυτή η ρύθμιση μπορεί να αλλάξει ανά πάσα στιγμή.",
+  "logEntries": "{count} εγγραφές",
+  "noLogs": "Χωρίς αρχεία",
+  "newLoginDetected": "Εντοπίστηκε νέα σύνδεση",
+  "waitingForMember": "Αναμονή μέλους",
+  "waitingForStaff": "Αναμονή προσωπικού",
+  "waitingForAuthority": "Αναμονή αρχής",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

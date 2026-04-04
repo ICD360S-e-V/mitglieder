@@ -1,0 +1,919 @@
+{
+  "@@locale": "et",
+  "appTitle": "ICD360S e.V - Liikmete portaal",
+  "memberPortal": "Liikmete portaal",
+  "welcomeLoading": "Laadimine...",
+  "welcomeAutoLogin": "Automaatne sisselogimine...",
+  "login": "Logi sisse",
+  "register": "Registreeru",
+  "becomeMember": "Saa liikmeks",
+  "memberNumber": "Liikme number",
+  "memberNumberHint": "Sisesta liikme number",
+  "password": "Parool",
+  "passwordHint": "Sisesta parool",
+  "confirmPassword": "Kinnita parool",
+  "confirmPasswordHint": "Kinnita parool",
+  "newPassword": "Uus parool",
+  "newPasswordHint": "Sisesta uus parool",
+  "saveCredentials": "Salvesta sisselogimisandmed",
+  "autoLogin": "Automaatne sisselogimine",
+  "forgotPassword": "Unustasid parooli?",
+  "firstName": "Eesnimi ja perekonnanimi",
+  "firstNameHint": "Sisesta ees- ja perekonnanimi",
+  "nameMinLength": "Nimi peab olema vähemalt 2 tähemärki",
+  "nameOnlyLetters": "Lubatud ainult tähed ja sidekriipsud",
+  "email": "E-posti aadress",
+  "emailHint": "Sisesta e-post",
+  "emailInvalid": "Sisesta kehtiv e-posti aadress",
+  "passwordMinLength": "Parool peab olema vähemalt 6 tähemärki",
+  "passwordsNotMatch": "Paroolid ei kattu",
+  "recoveryCode": "Taastekood (6 numbrit)",
+  "recoveryCodeHelper": "Jäta see kood parooli taastamiseks meelde",
+  "recoveryCodeHint": "Sisesta taastekood",
+  "recoveryCodeInvalid": "Kood peab olema täpselt 6 numbrit",
+  "loginFailed": "Sisselogimine ebaõnnestus",
+  "registrationFailed": "Registreerimine ebaõnnestus",
+  "connectionError": "Ühendusviga: {error}",
+  "registrationSuccess": "Registreerimine õnnestus!\n\nSinu liikme number: {memberNumber}\n\nJäta see number sisselogimiseks meelde.",
+  "tooManyDevices": "Liiga palju seadmeid",
+  "maxDevicesMessage": "Oled juba 3 seadmesse sisse logitud.\nVali seade väljalogimiseks:",
+  "unknownDevice": "Tundmatu seade",
+  "unknown": "Tundmatu",
+  "logoutError": "Väljalogimise viga",
+  "error": "Viga: {error}",
+  "cancel": "Tühista",
+  "resetPassword": "Lähtesta parool",
+  "forgotPasswordTitle": "Unustatud parool",
+  "forgotPasswordDescription": "Sisesta oma liikme number ja registreerimisel loodud taastekood.",
+  "passwordResetSuccess": "Parool lähtestatud!\n\nNüüd saad oma uue parooliga sisse logida.",
+  "passwordResetFailed": "Parooli lähtestamine ebaõnnestus",
+  "needHelp": "Vajad abi?",
+  "helpQuestion": "Probleemid sisselogimise või registreerimisega?",
+  "helpDescription": "Võta meiega ühendust WhatsAppi kaudu ja kirjelda, mis ei tööta. Vastame esimesel võimalusel!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Päring ICD360S rakenduse kaudu",
+  "whatsappMessage": "Tere, mul on probleem ICD360S rakendusega. ",
+  "imprint": "Impressum",
+  "privacy": "Privaatsuspoliitika",
+  "statutes": "Põhikiri",
+  "revocation": "Taganemisõigus",
+  "cancellation": "Tühistamine",
+  "allRightsReserved": "Kõik õigused kaitstud.",
+  "enterCredentials": "Sisesta liikme number ja parool",
+  "appointments": "Kohtumised",
+  "tickets": "Piletid",
+  "liveChat": "Reaalajas vestlus",
+  "notifications": "Teavitused",
+  "myProfile": "Minu Profiil",
+  "logout": "Logi välja",
+  "goodMorning": "Tere hommikust",
+  "goodDay": "Tere päevast",
+  "goodEvening": "Tere õhtust",
+  "goodNight": "Head ööd",
+  "welcomeToICD": "Tere tulemast ICD360S e.V!",
+  "accountCreatedSuccessfully": "Teie konto on edukalt loodud.",
+  "today": "Täna",
+  "membershipFeeDue": "Liikmemaks tasumisele",
+  "pleaseTransferAnnualFee": "Palun kandke üle aastamaks.",
+  "newBadge": "Uus",
+  "close": "Sulge",
+  "membership": "Liikmelisus",
+  "myAppointments": "Minu kohtumised",
+  "appointmentsLoadingReady": "Kohtumiste laadimine - API valmis!",
+  "priority": "Prioriteet",
+  "messageLabel": "Sõnum",
+  "createdOn": "Loodud",
+  "handler": "Käsitleja",
+  "reportProblems": "Teavita probleemidest",
+  "reportProblem": "Teavita probleemist",
+  "weRespondIn24Hours": "Vastame teile maksimaalselt 24 tunni jooksul!",
+  "everythingOk": "Kõik korras!",
+  "haveProblemWeHelp": "Kas teil on probleem?\nMe võtame sellest!",
+  "myMembership": "Minu liikmelisus",
+  "managePersonalDataAndFee": "Hallake isikuandmeid ja liikmemaksu",
+  "myAppointmentsTitle": "Minu kohtumised",
+  "appointmentsDescription": "Siin saate näha oma tulevasi kohtumisi.\nSaate kinnitada oma osalemist või keelduda.",
+  "loadAppointments": "Laadi kohtumised",
+  "myTickets": "Minu piletid",
+  "newTicket": "Uus pilet",
+  "noOpenTickets": "Avatud pileteid pole",
+  "haveQuestionCreateTicket": "Kas teil on küsimus või probleem?\nLooge uus pilet.",
+  "whatIsTheProblem": "Mis on probleem?",
+  "describeTheProblem": "Kirjeldage probleemi",
+  "howUrgentIsIt": "Kui kiire see on?",
+  "low": "Madal",
+  "medium": "Keskmine",
+  "high": "Kõrge",
+  "submit": "Esita",
+  "fillSubjectAndMessage": "Palun täitke teema ja sõnum",
+  "ticketCreated": "Pilet loodud",
+  "errorCreatingTicket": "Viga pileti loomisel",
+  "verified": "Kinnitatud",
+  "account": "Konto",
+  "myDevices": "Minu seadmed",
+  "changeEmail": "Muuda e-posti",
+  "changePassword": "Muuda parooli",
+  "newEmailAddress": "Uus e-posti aadress",
+  "currentPassword": "Praegune parool",
+  "saveEmail": "Salvesta e-post",
+  "savePassword": "Salvesta parool",
+  "deviceLoggedOut": "Seade välja logitud",
+  "passwordChangedSuccessfully": "Parool edukalt muudetud",
+  "emailChangedSuccessfully": "E-post edukalt muudetud",
+  "errorChangingPassword": "Viga parooli muutmisel",
+  "errorChangingEmail": "Viga e-posti muutmisel",
+  "validEmailRequired": "Palun sisestage kehtiv e-posti aadress",
+  "passwordTooShort": "Parool peab olema vähemalt 6 tähemärki",
+  "maxDevicesReached": "Olete sisse loginud maksimaalselt 3 seadmesse.",
+  "loggedInOnDevices": "Olete sisse loginud {count} seadmesse 3-st.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Aktiivseid seanse pole",
+  "logoutFromDevice": "Logi sellest seadmest välja",
+  "confirmLogoutDevice": "Logi seade välja?",
+  "confirmLogoutMessage": "Kas soovite sellest seadmest välja logida?\n\nSelle seadme kasutamiseks peate uuesti sisse logima.",
+  "ipAddress": "IP",
+  "platform": "Platvorm",
+  "trialWarningUrgentTitle": "Tähelepanu: Konto peatamiseni on jäänud {days, plural, =1{1 päev} other{{days} päeva}}!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Teie konto pole veel kinnitatud",
+  "trialWarningDescription": "Palun täitke oma andmed jaotises \"Minu profiil\". 30 päeva pärast peatatakse teie konto automaatselt.",
+  "trialDaysRemaining": "{days, plural, =1{1 päev} other{{days} päeva}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Ülevaade",
+  "member": "Liige",
+  "memberManagement": "Liikmehaldus",
+  "reportProblemTooltip": "Teavita probleemist",
+  "newAppointmentsTitle": "Uued kohtumised",
+  "youHaveNewAppointment": "Teil on uus kohtumine.",
+  "youHaveNewAppointments": "Teil on {count} uut kohtumist.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Meeldetuletus: Kohtumine homme",
+  "tomorrowAppointment": "Homme: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Teil on {count} kohtumist homme.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Kohtumised täna",
+  "todayAppointment": "Täna: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Teil on {count} kohtumist täna.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Maksemeeldetuletus",
+  "paymentReminderMessage": "Täna on kuu {day}. päev – palun viige lõpule {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Maksepäev (igakuine meeldetuletus)",
+  "updateAvailable": "Värskendus saadaval",
+  "newVersionAvailable": "Uus versioon on saadaval: {version}",
+  "currentVersionLabel": "Praegune versioon: {version}",
+  "changes": "Muudatused:",
+  "downloadProgress": "Allalaadimine: {percent}%",
+  "installationStarting": "Paigaldamine algab...",
+  "appWillRestart": "Rakendus taaskäivitub automaatselt.",
+  "later": "Hiljem",
+  "updateNow": "Värskenda kohe",
+  "downloading": "Allalaadimine...",
+  "downloadFailed": "Allalaadimine ebaõnnestus. Proovige hiljem uuesti.",
+  "searchingForUpdates": "Värskenduste otsimine...",
+  "appUpToDate": "Rakendus on ajakohane",
+  "updateCheckError": "Viga värskenduse kontrollimisel",
+  "changelog": "Muudatuste logi",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Kohtumine kinnitatud",
+  "terminDeclined": "Kohtumine keeldutud",
+  "terminRescheduleRequested": "Edasilükkamine taotud",
+  "statusConfirmed": "Kinnitatud",
+  "statusDeclined": "Keeldutud",
+  "statusRescheduling": "Edasilükkamine",
+  "statusPending": "Ootel",
+  "categoryVorstandssitzung": "Juhatuse koosolek",
+  "categoryMitgliederversammlung": "Üldkoosolek",
+  "categorySchulung": "Koolitus",
+  "categorySonstiges": "Muu",
+  "openCount": "{count} avatud",
+  "refresh": "Värskenda",
+  "filterUpcoming": "Tulevased",
+  "filterPast": "Möödunud",
+  "filterAll": "Kõik",
+  "noUpcomingAppointments": "Tulevasi kohtumisi pole",
+  "noPastAppointments": "Möödunud kohtumisi pole",
+  "noAppointmentsAvailable": "Kohtumisi pole",
+  "appointmentsShownHere": "Teie kohtumised kuvatakse siin",
+  "dateLabel": "Kuupäev",
+  "timeLabel": "Aeg",
+  "locationLabel": "Asukoht",
+  "createdByLabel": "Loonud",
+  "descriptionLabel": "Kirjeldus",
+  "ticketLabel": "Pilet",
+  "yourStatus": "Teie olek: ",
+  "reasonLabel": "Põhjus: {reason}",
+  "durationMinutes": "{minutes} min",
+  "confirm": "Kinnita",
+  "decline": "Keeldu",
+  "reschedule": "Lükka edasi",
+  "requestReschedule": "Taotle edasilükkamist",
+  "appointmentLabel": "Kohtumine: {title}",
+  "rescheduleReason": "Edasilükkamise põhjus *",
+  "rescheduleReasonHint": "Märkige põhjus...",
+  "pleaseProvideReason": "Märkige põhjus",
+  "request": "Taotle",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Avatud",
+  "ticketStatusInProgress": "Töös",
+  "ticketStatusWaitingMember": "Ootab liiget",
+  "ticketStatusWaitingStaff": "Ootab töötajat",
+  "ticketStatusWaitingAuthority": "Ootab asutust",
+  "ticketStatusDone": "Lõpetatud",
+  "ticketPriorityHigh": "Kõrge",
+  "ticketPriorityMedium": "Keskmine",
+  "ticketPriorityLow": "Madal",
+  "comments": "Kommentaarid",
+  "documents": "Dokumendid",
+  "details": "Üksikasjad",
+  "replySent": "Vastus saadetud",
+  "sendError": "Saatmisviga",
+  "uploading": "Üleslaadimine...",
+  "fileUploaded": "{filename} üles laetud",
+  "uploadFailed": "Üleslaadimine ebaõnnestus",
+  "openError": "Avamisviga",
+  "noRepliesYet": "Vastuseid veel pole",
+  "waitingForSupport": "Ootel toe vastust",
+  "writeReply": "Kirjutage vastus...",
+  "attachFile": "Lisa fail",
+  "documentsCount": "Dokumendid ({count})",
+  "upload": "Laadi üles",
+  "noDocuments": "Dokumente pole",
+  "allowedFormats": "Lubatud formaadid: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Teie sõnum:",
+  "translation": "Tõlge",
+  "original": "Originaal",
+  "originalText": "Algne tekst",
+  "autoTranslated": "Automaatselt tõlgitud",
+  "originalTapTranslation": "Originaal · Puudutage tõlke jaoks",
+  "translatedTapOriginal": "Tõlgitud · Puudutage originaali jaoks",
+  "justNow": "Äsja",
+  "minutesAgo": "{minutes} min tagasi",
+  "hoursAgo": "{hours} tundi tagasi",
+  "daysAgo": "{days} {days, plural, =1{päev} other{päeva}} tagasi",
+  "createdLabel": "Loodud",
+  "updatedLabel": "Uuendatud",
+  "handlerLabel": "Menetleja",
+  "doneLabel": "Lõpetatud",
+  "newTicketTitle": "Uus pilet",
+  "categoryOptional": "Kategooria (valikuline)",
+  "selectCategory": "Vali",
+  "subjectLabel": "Teema",
+  "fillAllFields": "Täitke kõik väljad",
+  "ticketCreatedId": "Pilet #{id} loodud",
+  "priorityLabel": "Prioriteet: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Tugi võrguühenduseta",
+  "lastSeenSeconds": "Aktiivne mõni sekund tagasi",
+  "lastSeenMinutes": "Aktiivne {minutes} {minutes, plural, =1{minut} other{minutit}} tagasi",
+  "lastSeenHours": "Aktiivne {hours} {hours, plural, =1{tund} other{tundi}} tagasi",
+  "lastSeenDays": "Aktiivne {days} {days, plural, =1{päev} other{päeva}} tagasi",
+  "online": "Võrgus",
+  "callSupport": "Helista",
+  "typeMessage": "Kirjutage sõnum...",
+  "callBusy": "Tugi on hõivatud",
+  "callRejected": "Kõne lükati tagasi",
+  "callFailed": "Kõnet ei saanud ühendada",
+  "callEnded": "Kõne lõppes",
+  "callSupportBusy": "Tugi on juba teises kõnes",
+  "errorStartingChat": "Viga vestluse alustamisel",
+  "errorStartingCall": "Viga kõne alustamisel",
+  "errorConnecting": "Ühendusviga",
+  "errorAcceptingCall": "Viga kõne vastuvõtmisel",
+  "errorDownloading": "Allalaadimisviga",
+  "errorUploading": "Üleslaadimise viga",
+  "errorSending": "Saatmisviga",
+  "errorPickingPhotos": "Viga fotode valimisel",
+  "errorPickingFiles": "Viga failide valimisel",
+  "errorTakingPhoto": "Viga pildistamisel",
+  "fileNotLoaded": "Faili ei saanud laadida",
+  "attachmentIdMissing": "Manuse ID puudub",
+  "camera": "Kaamera",
+  "gallery": "Galerii",
+  "file": "Fail",
+  "typingIndicator": "{name} kirjutab...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Uus sõnum saatjalt",
+  "notifUrgentPrefix": "KIIRE",
+  "notifUrgentMessage": "KIIRE SÕNUM",
+  "notifIncomingCall": "Sissetulev kõne",
+  "notifCallingYou": "helistab...",
+  "notifUpdateAvailable": "Värskendus saadaval",
+  "notifVersionAvailable": "on nüüd saadaval",
+  "notifConnected": "Ühendatud",
+  "notifDisconnected": "Ühendus katkes",
+  "notifConnectedBody": "Olete nüüd serveriga ühendatud.",
+  "notifDisconnectedBody": "Ühendus serveriga katkes.",
+  "notifError": "Viga",
+  "retry": "Proovi uuesti",
+  "save": "Salvesta",
+  "accept": "Nõustu",
+  "selectFile": "Vali fail",
+  "dataLoadingText": "Andmete laadimine...",
+  "dataSavedSuccess": "Andmed salvestatud",
+  "errorSaving": "Salvestamisviga",
+  "errorLoading": "Laadimise viga",
+  "savedFilename": "Salvestatud: {filename}",
+  "logsCopied": "Logid kopeeritud!",
+  "diagnosticDataTitle": "Diagnostikaandmed",
+  "diagnosticDescription": "Kas soovite saata anonüümseid diagnostikaandmeid rakenduse parandamiseks?",
+  "noThanks": "Ei, aitäh",
+  "yesEnable": "Jah, luba",
+  "passwordMinEightChars": "Parool peab olema vähemalt 8 tähemärki",
+  "passwordChangeSuccess": "Parool edukalt muudetud",
+  "emailChangeError": "Viga e-posti muutmisel",
+  "acceptDocumentCheckbox": "Olen dokumendi läbi lugenud ja nõustun sellega.",
+  "loadingErrorGeneric": "Laadimise viga: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Sissetulev kõne",
+  "ringingFor": "Heliseb {seconds}s",
+  "rejectCall": "Keeldu",
+  "acceptCall": "Vasta",
+  "unmute": "Lõpeta vaigistus",
+  "mute": "Vaigista",
+  "hangUp": "Lõpeta kõne",
+  "calling": "Helistamine...",
+  "autoRejectIn": "Automaatne keeldumine {seconds} sekundi pärast",
+  "speakerOn": "Kõlar",
+  "speakerOff": "Kõrvakuular",
+  "micMuted": "Vaigistatud",
+  "micOn": "Mikrofon",
+  "connectionExcellent": "Suurepärane",
+  "connectionGood": "Hea",
+  "connectionWeak": "Nõrk",
+  "connectionLost": "Ühendus katkes",
+  "personalData": "Isikuandmed",
+  "personalDataSubtitle": "Eesnimi, perekonnanimi, aadress",
+  "membershipFee": "Liikmemaks",
+  "annualFeeYear": "Aastamaks {year}",
+  "amount": "Summa:",
+  "dueBy": "Tähtaeg:",
+  "paid": "Makstud",
+  "versionHistory": "Versiooniajalugu",
+  "lastUpdated": "Viimati uuendatud: {date}",
+  "noVersionHistory": "Versiooniajalugu pole saadaval",
+  "failedLoadChangelog": "Muudatuste logi laadimine ebaõnnestus",
+  "callMember": "Helista liikmele",
+  "closeConversation": "Sulge vestlus",
+  "chatOffline": "Ühenduseta",
+  "attachFiles": "Lisa failid (max. 10, 50MB)",
+  "conversationClosed": "See vestlus on suletud",
+  "noMessages": "Sõnumeid pole",
+  "goBack": "Tagasi",
+  "goForward": "Edasi",
+  "homePage": "Avaleht",
+  "firstNameLabel": "Eesnimi",
+  "lastNameLabel": "Perekonnanimi",
+  "streetLabel": "Tänav",
+  "houseNumberLabel": "Nr",
+  "postalCodeLabel": "Postiindeks",
+  "cityLabel": "Linn",
+  "phoneMobileLabel": "Telefon (Mobiil)",
+  "phoneLandlineLabel": "Telefon (Lauatelefon)",
+  "newEmailLabel": "Uus e-posti aadress",
+  "currentPasswordLabel": "Praegune parool",
+  "newPasswordLabel": "Uus parool",
+  "confirmPasswordLabel": "Kinnita parool",
+  "emailChangedSuccess": "E-post muudetud",
+  "newPasswordMinChars": "Uus parool (min. 6 tähemärki)",
+  "reasonLabel2": "Põhjus",
+  "downloadFailed2": "Allalaadimine ebaõnnestus",
+  "downloadTooltip": "Laadi alla",
+  "connectionErrorGeneric": "Ühendusviga",
+  "copyLogs": "Kopeeri logid",
+  "deleteLogs": "Kustuta logid",
+  "autoScrollOn": "Automaatne kerimine SEES",
+  "autoScrollOff": "Automaatne kerimine VÄLJAS",
+  "unknownValue": "Teadmata",
+  "bankTransfer": "Pangaülekanne",
+  "standingOrder": "Püsikorraldus",
+  "payment": "Makse",
+  "warningType_ermahnung": "Hoiatus",
+  "warningType_abmahnung": "Noomitus",
+  "warningType_letzte": "Viimane hoiatus",
+  "warningsTotal": "Kokku: {count}",
+  "warningsErmahnung": "Hoiatused: {count}",
+  "warningsAbmahnung": "Noomitused: {count}",
+  "warningsLetzte": "Viimased: {count}",
+  "noWarnings": "Hoiatusi pole",
+  "noWarningsDescription": "Teil pole hetkel hoiatusi.",
+  "createdBy": "Loonud: {name}",
+  "monthJan": "Jan",
+  "monthFeb": "Vee",
+  "monthMar": "Mar",
+  "monthApr": "Apr",
+  "monthMay": "Mai",
+  "monthJun": "Jun",
+  "monthJul": "Jul",
+  "monthAug": "Aug",
+  "monthSep": "Sep",
+  "monthOct": "Okt",
+  "monthNov": "Nov",
+  "monthDec": "Det",
+  "stufe1_name": "Isikuandmed",
+  "stufe2_name": "Liikmesuse tüüp",
+  "stufe3_name": "Rahaline olukord",
+  "stufe4_name": "Makseviis",
+  "stufe5_name": "Liikmesuse algus",
+  "stufe6_name": "Põhikiri",
+  "stufe7_name": "Privaatsuspoliitika",
+  "stufe8_name": "Taganemisõigus",
+  "memberType_ordentlich": "Korraline liige",
+  "memberType_foerder": "Toetajaliige",
+  "memberType_ehren": "Auliige",
+  "memberDesc_ordentlich": "Aktiivne liige hääleõigusega. Osaleb ühingu teenustes (e-post, pilv, bürokraatiline tugi).",
+  "memberDesc_foerder": "Toetab ühingut maksetega. Võib osaleda üldkoosolekul nõuandva häälega, ilma hääleõiguse või valitavuseta juhatusse.",
+  "memberDesc_ehren": "Omab korralise liikme õigusi ilma liikmemaksu tasumise kohustuseta. Nimetatud üldkoosoleku või juhatuse poolt.",
+  "payMethod_ueberweisung": "Pangaülekanne",
+  "payMethod_dauerauftrag": "Püsikorraldus",
+  "verifyStatus_geprueft": "Kinnitatud",
+  "verifyStatus_ausgefuellt": "Täidetud",
+  "verifyStatus_abgelehnt": "Tagasilükatud",
+  "verifyStatus_offen": "Avatud",
+  "fillRequiredFields": "Täitke kõik kohustuslikud väljad.",
+  "personalDataSaved": "Isikuandmed salvestatud",
+  "selectMemberType": "Valige liikmesuse tüüp.",
+  "memberTypeSaved": "Liikmesuse tüüp salvestatud",
+  "selectOption": "Valige variant.",
+  "financialSaved": "Rahaline olukord salvestatud",
+  "selectPaymentMethod": "Valige makseviis.",
+  "paymentDataSaved": "Makseandmed salvestatud",
+  "selectDate": "Valige kuupäev.",
+  "membershipStartSaved": "Liikmesuse algus salvestatud",
+  "fileTooLarge": "Fail on liiga suur (max. 10 MB).",
+  "leistungsbescheidUploaded": "Hüvitise otsus edukalt üles laetud",
+  "verificationProgress": "Kinnitamise edenemine",
+  "notApplicable": "Ei kohaldu",
+  "socialBenefitsExempt": "Makseviis pole vajalik sotsiaalhüvitiste saajatele.",
+  "locked": "Lukustatud",
+  "completePreviousStep": "Lõpetage esmalt samm {step}.",
+  "rejectedNote": "Tagasi lükatud: {note}",
+  "waitingForReview": "Ootab juhatuse ülevaatust.",
+  "stepApproved": "See samm on üle vaadatud ja kinnitatud.",
+  "changesViaChat": "Muudatused on võimalikud ainult vestluse kaudu.",
+  "firstNameRequired": "Eesnimi *",
+  "lastNameRequired": "Perekonnanimi *",
+  "birthDateLabel": "Sünniaeg *",
+  "streetRequired": "Tänav *",
+  "houseNumberRequired": "Nr *",
+  "cityRequired": "Linn *",
+  "phoneRequired": "Telefoninumber *",
+  "phonePurpose": "Eesmärk: Kontakt, kui pole rakenduse kaudu kättesaadav",
+  "selectMemberTypePrompt": "Valige soovitud liikmesuse tüüp:",
+  "financialExplanation": "Selleks, et kontrollida, kas teil on õigus makse vähendamisele, vajame järgmist teavet. Seda kasutatakse ainult teie liikmemaksu määramiseks.",
+  "socialBenefitsQuestion": "Kas te saate praegu sotsiaalhüvitisi?",
+  "optionBuergergeld": "Jah, kodaniku toetus (Job Center)",
+  "optionSozialamt": "Jah, sotsiaalabi (Sotsiaalamet)",
+  "optionNoBenefits": "Ei, ma ei saa sotsiaalhüvitisi",
+  "feeExempt": "Teie kuumakse on: 0,00 €/kuu",
+  "uploadLeistungsbescheid": "Laadige üles hüvitise otsus",
+  "uploadLeistungsbescheidHint": "Laadige üles kehtiv hüvitise otsus 14 päeva jooksul makse vabastuse kinnitamiseks.",
+  "allowedFormatsUpload": "Lubatud formaadid: PDF, JPG, PNG (max. 10 MB)",
+  "feeRegular": "Teie kuumakse on: 25,00 €/kuu",
+  "paymentDayReminder": "Teid teavitatakse iga kuu {day}. päeval.",
+  "membershipStartPrompt": "Valige, millal teie liikmesus peaks algama.",
+  "optionAfterVerification": "Pärast kinnitamise lõpetamist",
+  "optionAfterVerificationDesc": "Liikmesus algab juhatuse kinnitamise päevast.",
+  "optionRetroFoundation": "Tagasiulatuvalt asutamiskuupäevani (01.08.2025)",
+  "optionRetroFoundationDesc": "Teist saab tagasiulatuv liige ühingu asutamisest alates.",
+  "optionRetroCustom": "Tagasiulatuvalt teisele kuupäevale",
+  "optionRetroCustomDesc": "Valige kuupäev vahemikus 01.08.2025 kuni tänane päev.",
+  "selectDateLabel": "Valige kuupäev",
+  "selectDateHint": "Valige kuupäev...",
+  "dateNotBefore": "Mitte enne 01.08.2025 (asutamiskuupäev)",
+  "feeExemptRetro": "Makse vabastus: 0,00 € tagasiulatuvalt.\nAinult liikmesuse kuupäev määratakse tagasiulatuvalt.",
+  "retroactiveFees": "Tagasiulatuvad maksed",
+  "retroFeeCalculation": "Periood: {from} – {to}\nKuud: {months}\nMakse: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Lugege ühingu põhikirja.",
+  "pleaseReadDatenschutz": "Lugege privaatsuspoliitikat.",
+  "pleaseReadWiderruf": "Lugege taganemisõigust.",
+  "acceptedAtRegistration": "Aktsepteeritud registreerimisel",
+  "confirmedByBoard": "Kinnitatakse pärast juhatuse ülevaatust.",
+  "docSatzung": "Põhikiri",
+  "docDatenschutz": "Privaatsuspoliitika",
+  "docWiderruf": "Taganemisõigus",
+  "acceptedAtRegCount": "Aktsepteeritud registreerimisel ({count}/3)",
+  "acceptedOn": "Aktsepteeritud {date}",
+  "notAccepted": "Pole aktsepteeritud",
+  "statusAccepted": "Aktsepteeritud",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Liikmenuumber liiga pikk (maks 20 tähemärki)",
+  "onlyUppercaseAndNumbers": "Lubatud ainult suurtähed ja numbrid",
+  "passwordTooLong": "Parool liiga pikk (maks 100 tähemärki)",
+  "nameTooLong": "Nimi liiga pikk (maks 100 tähemärki)",
+  "emailTooLong": "E-post liiga pikk (maks 255 tähemärki)",
+  "legalAcknowledgePrefix": "Olen tutvunud ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " ICD360S e.V. ja tunnistan need siduvaks.",
+  "legalPleaseReadFirst": "(palun lugege kõigepealt)",
+  "statusActive": "Aktiivne",
+  "statusSuspended": "Peatatud",
+  "statusNew": "Uus",
+  "statusCancelled": "Tühistatud",
+  "statusDeleted": "Kustutatud",
+  "roleMitglied": "Liige",
+  "roleVorsitzer": "Esimees",
+  "roleStellvertreter": "Asemees",
+  "roleSchatzmeister": "Laekur",
+  "roleSchriftfuehrer": "Sekretär",
+  "roleBeisitzer": "Kaasistuja",
+  "roleKassierer": "Kassapidaja",
+  "roleKassenpruefer": "Revisor",
+  "roleEhrenamtlich": "Vabatahtlik",
+  "roleMitgliedergruender": "Asutajaliige",
+  "roleEhrenmitglied": "Auliige",
+  "roleFoerdermitglied": "Toetajaliige",
+  "memberTypeNotSet": "Pole veel määratud",
+  "payMethodSepa": "SEPA otsekorraldus",
+  "labelStatus": "Olek",
+  "labelMemberNumber": "Liikmenuumber",
+  "labelRole": "Roll",
+  "labelMemberType": "Liikmetüüp",
+  "labelPaymentMethod": "Makseviis",
+  "labelRegisteredOn": "Registreeritud",
+  "labelLastLogin": "Viimane sisselogimine",
+  "labelMemberSince": "Liige alates",
+  "neverLoggedIn": "Mitte kunagi",
+  "notActivatedYet": "Pole veel aktiveeritud",
+  "tabVerification": "Kontrollimine",
+  "tabWarnings": "Hoiatused",
+  "tabDocuments": "Dokumendid",
+  "tabMembership": "Liikmelisus",
+  "pleaseEnterFirstName": "Sisestage eesnimi",
+  "pleaseEnterLastName": "Sisestage perekonnanimi",
+  "noFileDataReceived": "Andmeid ei saadud",
+  "openFile": "Ava",
+  "diagnosticErrors": "Veateated parandamiseks",
+  "diagnosticAnonymousStats": "Anonüümne kasutusstatistika",
+  "diagnosticPerformance": "Rakenduse jõudlusandmed",
+  "noMicrophoneError": "Mikrofoni ei leitud. Ühendage mikrofon ja proovige uuesti.",
+  "startConversation": "Alustage vestlust!",
+  "staffWillReply": "Töötaja vastab teile peagi.",
+  "inCall": "Kõnes...",
+  "registration": "Registreerimine",
+  "deactivation": "Deaktiveerimine",
+  "deactivatedOn": "Deaktiveeritud",
+  "accountAutoSuspend": "Kontod, mida 30 päeva jooksul ei kinnitata, peatatakse automaatselt.",
+  "ipClean": "IP puhas - pole nimekirjas",
+  "documentsProvidedByBoard": "Dokumendid esitab juhatus.",
+  "noDocumentsAvailable": "Dokumente pole",
+  "noDocumentsDescription": "Teile pole veel dokumente esitatud.",
+  "uploadedBy": "Üles laadinud: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} sammu lõpetatud",
+  "dayOfMonth": "Kuu {day}. päev",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Muuda {field}",
+  "openDocument": "Ava {name}",
+  "helpImproveApp": "Kas soovite meid aidata rakendust parandada?",
+  "noPersonalDataCollected": "Isikuandmeid ei koguta. Seda seadet saab igal ajal muuta.",
+  "logEntries": "{count} kirjet",
+  "noLogs": "Logisid pole",
+  "newLoginDetected": "Tuvastati uus sisselogimine",
+  "waitingForMember": "Oodatakse liiget",
+  "waitingForStaff": "Oodatakse töötajat",
+  "waitingForAuthority": "Oodatakse asutust",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

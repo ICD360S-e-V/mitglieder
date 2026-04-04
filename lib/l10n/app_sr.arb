@@ -1,0 +1,919 @@
+{
+  "@@locale": "sr",
+  "appTitle": "ICD360S e.V - Портал чланова",
+  "memberPortal": "Портал чланова",
+  "welcomeLoading": "Учитавање...",
+  "welcomeAutoLogin": "Аутоматска пријава...",
+  "login": "Пријава",
+  "register": "Регистрација",
+  "becomeMember": "Постаните члан",
+  "memberNumber": "Број члана",
+  "memberNumberHint": "Унесите број члана",
+  "password": "Лозинка",
+  "passwordHint": "Унесите лозинку",
+  "confirmPassword": "Потврдите лозинку",
+  "confirmPasswordHint": "Потврдите лозинку",
+  "newPassword": "Нова лозинка",
+  "newPasswordHint": "Унесите нову лозинку",
+  "saveCredentials": "Сачувај податке за пријаву",
+  "autoLogin": "Аутоматска пријава",
+  "forgotPassword": "Заборавили сте лозинку?",
+  "firstName": "Име и презиме",
+  "firstNameHint": "Унесите име и презиме",
+  "nameMinLength": "Име мора имати најмање 2 знака",
+  "nameOnlyLetters": "Дозвољена су само слова и цртице",
+  "email": "Имејл адреса",
+  "emailHint": "Унесите имејл",
+  "emailInvalid": "Унесите важећи имејл",
+  "passwordMinLength": "Лозинка мора имати најмање 6 знакова",
+  "passwordsNotMatch": "Лозинке се не подударају",
+  "recoveryCode": "Код за опоравак (6 цифара)",
+  "recoveryCodeHelper": "Запамтите овај код за опоравак лозинке",
+  "recoveryCodeHint": "Унесите код за опоравак",
+  "recoveryCodeInvalid": "Код мора имати тачно 6 цифара",
+  "loginFailed": "Пријава није успела",
+  "registrationFailed": "Регистрација није успела",
+  "connectionError": "Грешка повезивања: {error}",
+  "registrationSuccess": "Успешна регистрација!\n\nВаш број члана: {memberNumber}\n\nЗапамтите овај број за пријаву.",
+  "tooManyDevices": "Превише уређаја",
+  "maxDevicesMessage": "Већ сте пријављени на 3 уређаја.\nИзаберите уређај за одјаву:",
+  "unknownDevice": "Непознат уређај",
+  "unknown": "Непознато",
+  "logoutError": "Грешка при одјави",
+  "error": "Грешка: {error}",
+  "cancel": "Откажи",
+  "resetPassword": "Поништи лозинку",
+  "forgotPasswordTitle": "Заборављена лозинка",
+  "forgotPasswordDescription": "Унесите број члана и код за опоравак створен приликом регистрације.",
+  "passwordResetSuccess": "Лозинка успешно поништена!\n\nСада се можете пријавити новом лозинком.",
+  "passwordResetFailed": "Поништавање лозинке није успело",
+  "needHelp": "Требате помоћ?",
+  "helpQuestion": "Проблеми са пријавом или регистрацијом?",
+  "helpDescription": "Контактирајте нас путем WhatsApp-а и опишите шта не ради. Одговорићемо што пре!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Упит путем апликације ICD360S",
+  "whatsappMessage": "Здраво, имам проблем са апликацијом ICD360S. ",
+  "imprint": "Импресум",
+  "privacy": "Политика приватности",
+  "statutes": "Статут",
+  "revocation": "Право повлачења",
+  "cancellation": "Отказивање",
+  "allRightsReserved": "Сва права задржана.",
+  "enterCredentials": "Унесите број члана и лозинку",
+  "appointments": "Састанци",
+  "tickets": "Захтеви",
+  "liveChat": "Ћаскање уживо",
+  "notifications": "Обавештења",
+  "myProfile": "Мој профил",
+  "logout": "Одјава",
+  "goodMorning": "Добро јутро",
+  "goodDay": "Добар дан",
+  "goodEvening": "Добро вече",
+  "goodNight": "Лаку ноћ",
+  "welcomeToICD": "Добродошли у ICD360S e.V!",
+  "accountCreatedSuccessfully": "Ваш налог је успешно креиран.",
+  "today": "Данас",
+  "membershipFeeDue": "Чланарина доспела",
+  "pleaseTransferAnnualFee": "Молимо пренесите годишњу чланарину.",
+  "newBadge": "Ново",
+  "close": "Затвори",
+  "membership": "Чланство",
+  "myAppointments": "Моји састанци",
+  "appointmentsLoadingReady": "Учитавање састанака - API спреман!",
+  "priority": "Приоритет",
+  "messageLabel": "Порука",
+  "createdOn": "Креирано",
+  "handler": "Руковалац",
+  "reportProblems": "Пријавите проблеме",
+  "reportProblem": "Пријавите проблем",
+  "weRespondIn24Hours": "Одговорићемо вам у року од максимално 24 сата!",
+  "everythingOk": "Све је у реду!",
+  "haveProblemWeHelp": "Имате проблем?\nМи ћемо се побринути!",
+  "myMembership": "Моје чланство",
+  "managePersonalDataAndFee": "Управљање личним подацима и чланарином",
+  "myAppointmentsTitle": "Моји термини",
+  "appointmentsDescription": "Овде можете видети своје предстојеће термине.\nМожете потврдити своје учешће или одбити.",
+  "loadAppointments": "Учитај термине",
+  "myTickets": "Моји тикети",
+  "newTicket": "Нови тикет",
+  "noOpenTickets": "Нема отворених тикета",
+  "haveQuestionCreateTicket": "Имате питање или проблем?\nКреирајте нови тикет.",
+  "whatIsTheProblem": "У чему је проблем?",
+  "describeTheProblem": "Опишите проблем",
+  "howUrgentIsIt": "Колико је хитно?",
+  "low": "Ниско",
+  "medium": "Средње",
+  "high": "Високо",
+  "submit": "Пошаљи",
+  "fillSubjectAndMessage": "Молимо попуните тему и поруку",
+  "ticketCreated": "Тикет је креиран",
+  "errorCreatingTicket": "Грешка при креирању тикета",
+  "verified": "Верификовано",
+  "account": "Налог",
+  "myDevices": "Моји уређаји",
+  "changeEmail": "Промени е-пошту",
+  "changePassword": "Промени лозинку",
+  "newEmailAddress": "Нова адреса е-поште",
+  "currentPassword": "Тренутна лозинка",
+  "saveEmail": "Сачувај е-пошту",
+  "savePassword": "Сачувај лозинку",
+  "deviceLoggedOut": "Уређај одјављен",
+  "passwordChangedSuccessfully": "Лозинка успешно промењена",
+  "emailChangedSuccessfully": "Е-пошта успешно промењена",
+  "errorChangingPassword": "Грешка при промени лозинке",
+  "errorChangingEmail": "Грешка при промени е-поште",
+  "validEmailRequired": "Молимо унесите важећу адресу е-поште",
+  "passwordTooShort": "Лозинка мора имати најмање 6 карактера",
+  "maxDevicesReached": "Пријављени сте на максимум од 3 уређаја.",
+  "loggedInOnDevices": "Пријављени сте на {count} од 3 уређаја.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Нема активних сесија",
+  "logoutFromDevice": "Одјавите се са овог уређаја",
+  "confirmLogoutDevice": "Одјавити уређај?",
+  "confirmLogoutMessage": "Желите ли да се одјавите са овог уређаја?\n\nМораћете се поново пријавити да бисте користили овај уређај.",
+  "ipAddress": "IP",
+  "platform": "Платформа",
+  "trialWarningUrgentTitle": "Пажња: Преостало је {days, plural, =1{1 дан} few{{days} дана} other{{days} дана}} до суспензије налога!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Ваш налог још није верификован",
+  "trialWarningDescription": "Молимо попуните своје податке у \"Мој профил\". После 30 дана ваш налог ће бити аутоматски суспендован.",
+  "trialDaysRemaining": "{days, plural, =1{1 дан} few{{days} дана} other{{days} дана}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Преглед",
+  "member": "Члан",
+  "memberManagement": "Управљање члановима",
+  "reportProblemTooltip": "Пријавите проблем",
+  "newAppointmentsTitle": "Нови састанци",
+  "youHaveNewAppointment": "Имате нови састанак.",
+  "youHaveNewAppointments": "Имате {count} нових састанака.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Подсетник: Састанак сутра",
+  "tomorrowAppointment": "Сутра: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Имате {count} састанака сутра.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Састанци данас",
+  "todayAppointment": "Данас: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Имате {count} састанака данас.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Подсетник за плаћање",
+  "paymentReminderMessage": "Данас је {day}. дан у месецу – молимо завршите {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Дан плаћања (месечни подсетник)",
+  "updateAvailable": "Ажурирање доступно",
+  "newVersionAvailable": "Нова верзија је доступна: {version}",
+  "currentVersionLabel": "Тренутна верзија: {version}",
+  "changes": "Промене:",
+  "downloadProgress": "Преузимање: {percent}%",
+  "installationStarting": "Покретање инсталације...",
+  "appWillRestart": "Апликација ће се аутоматски поново покренути.",
+  "later": "Касније",
+  "updateNow": "Ажурирај сада",
+  "downloading": "Преузимање...",
+  "downloadFailed": "Преузимање није успело. Покушајте поново касније.",
+  "searchingForUpdates": "Тражење ажурирања...",
+  "appUpToDate": "Апликација је ажурна",
+  "updateCheckError": "Грешка при провери ажурирања",
+  "changelog": "Дневник промена",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Термин потврђен",
+  "terminDeclined": "Термин одбијен",
+  "terminRescheduleRequested": "Затражено одлагање",
+  "statusConfirmed": "Потврђено",
+  "statusDeclined": "Одбијено",
+  "statusRescheduling": "Одлагање",
+  "statusPending": "На чекању",
+  "categoryVorstandssitzung": "Седница управе",
+  "categoryMitgliederversammlung": "Скупштина чланова",
+  "categorySchulung": "Обука",
+  "categorySonstiges": "Остало",
+  "openCount": "{count} отворених",
+  "refresh": "Освежи",
+  "filterUpcoming": "Предстојећи",
+  "filterPast": "Прошли",
+  "filterAll": "Сви",
+  "noUpcomingAppointments": "Нема предстојећих термина",
+  "noPastAppointments": "Нема прошлих термина",
+  "noAppointmentsAvailable": "Нема термина",
+  "appointmentsShownHere": "Ваши термини ће бити приказани овде",
+  "dateLabel": "Датум",
+  "timeLabel": "Време",
+  "locationLabel": "Место",
+  "createdByLabel": "Креирао",
+  "descriptionLabel": "Опис",
+  "ticketLabel": "Захтев",
+  "yourStatus": "Ваш статус: ",
+  "reasonLabel": "Разлог: {reason}",
+  "durationMinutes": "{minutes} мин",
+  "confirm": "Потврди",
+  "decline": "Одбиј",
+  "reschedule": "Одложи",
+  "requestReschedule": "Затражи одлагање",
+  "appointmentLabel": "Термин: {title}",
+  "rescheduleReason": "Разлог одлагања *",
+  "rescheduleReasonHint": "Наведите разлог...",
+  "pleaseProvideReason": "Наведите разлог",
+  "request": "Затражи",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Отворено",
+  "ticketStatusInProgress": "У обради",
+  "ticketStatusWaitingMember": "Чека се члан",
+  "ticketStatusWaitingStaff": "Чека се запослени",
+  "ticketStatusWaitingAuthority": "Чека се установа",
+  "ticketStatusDone": "Завршено",
+  "ticketPriorityHigh": "Висок",
+  "ticketPriorityMedium": "Средњи",
+  "ticketPriorityLow": "Низак",
+  "comments": "Коментари",
+  "documents": "Документи",
+  "details": "Детаљи",
+  "replySent": "Одговор послат",
+  "sendError": "Грешка при слању",
+  "uploading": "Отпремање...",
+  "fileUploaded": "{filename} отпремљен",
+  "uploadFailed": "Отпремање неуспешно",
+  "openError": "Грешка при отварању",
+  "noRepliesYet": "Још нема одговора",
+  "waitingForSupport": "Чека се одговор подршке",
+  "writeReply": "Напишите одговор...",
+  "attachFile": "Приложи датотеку",
+  "documentsCount": "Документи ({count})",
+  "upload": "Отпреми",
+  "noDocuments": "Нема докумената",
+  "allowedFormats": "Дозвољени формати: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Ваша порука:",
+  "translation": "Превод",
+  "original": "Оригинал",
+  "originalText": "Оригинални текст",
+  "autoTranslated": "Аутоматски преведено",
+  "originalTapTranslation": "Оригинал · Додирните за превод",
+  "translatedTapOriginal": "Преведено · Додирните за оригинал",
+  "justNow": "Управо",
+  "minutesAgo": "пре {minutes} мин",
+  "hoursAgo": "пре {hours} ч",
+  "daysAgo": "пре {days} {days, plural, =1{дан} other{дана}}",
+  "createdLabel": "Креирано",
+  "updatedLabel": "Ажурирано",
+  "handlerLabel": "Обрађивач",
+  "doneLabel": "Завршено",
+  "newTicketTitle": "Нови захтев",
+  "categoryOptional": "Категорија (необавезно)",
+  "selectCategory": "Изабери",
+  "subjectLabel": "Предмет",
+  "fillAllFields": "Попуните сва поља",
+  "ticketCreatedId": "Захтев #{id} креиран",
+  "priorityLabel": "Приоритет: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Подршка офлајн",
+  "lastSeenSeconds": "Активан пре неколико секунди",
+  "lastSeenMinutes": "Активан пре {minutes} {minutes, plural, =1{минут} other{минута}}",
+  "lastSeenHours": "Активан пре {hours} {hours, plural, =1{сат} other{сати}}",
+  "lastSeenDays": "Активан пре {days} {days, plural, =1{дан} other{дана}}",
+  "online": "Онлајн",
+  "callSupport": "Позови",
+  "typeMessage": "Напишите поруку...",
+  "callBusy": "Подршка је заузета",
+  "callRejected": "Позив је одбијен",
+  "callFailed": "Позив није успео",
+  "callEnded": "Позив завршен",
+  "callSupportBusy": "Подршка је већ у другом позиву",
+  "errorStartingChat": "Грешка при покретању чата",
+  "errorStartingCall": "Грешка при покретању позива",
+  "errorConnecting": "Грешка при повезивању",
+  "errorAcceptingCall": "Грешка при прихватању позива",
+  "errorDownloading": "Грешка при преузимању",
+  "errorUploading": "Грешка при отпремању",
+  "errorSending": "Грешка при слању",
+  "errorPickingPhotos": "Грешка при одабиру фотографија",
+  "errorPickingFiles": "Грешка при одабиру датотека",
+  "errorTakingPhoto": "Грешка при фотографисању",
+  "fileNotLoaded": "Датотека се не може учитати",
+  "attachmentIdMissing": "Недостаје ID прилога",
+  "camera": "Камера",
+  "gallery": "Галерија",
+  "file": "Датотека",
+  "typingIndicator": "{name} пише...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Нова порука од",
+  "notifUrgentPrefix": "ХИТНО",
+  "notifUrgentMessage": "ХИТНА ПОРУКА",
+  "notifIncomingCall": "Долазни позив",
+  "notifCallingYou": "зове...",
+  "notifUpdateAvailable": "Ажурирање доступно",
+  "notifVersionAvailable": "је сада доступна",
+  "notifConnected": "Повезано",
+  "notifDisconnected": "Прекинуто",
+  "notifConnectedBody": "Повезани сте са сервером.",
+  "notifDisconnectedBody": "Веза са сервером је прекинута.",
+  "notifError": "Грешка",
+  "retry": "Покушај поново",
+  "save": "Сачувај",
+  "accept": "Прихвати",
+  "selectFile": "Изабери датотеку",
+  "dataLoadingText": "Учитавање података...",
+  "dataSavedSuccess": "Подаци успешно сачувани",
+  "errorSaving": "Грешка при чувању",
+  "errorLoading": "Грешка при учитавању",
+  "savedFilename": "Сачувано: {filename}",
+  "logsCopied": "Логови копирани!",
+  "diagnosticDataTitle": "Дијагностички подаци",
+  "diagnosticDescription": "Желите ли да шаљете анонимне дијагностичке податке за побољшање апликације?",
+  "noThanks": "Не, хвала",
+  "yesEnable": "Да, омогући",
+  "passwordMinEightChars": "Лозинка мора имати најмање 8 знакова",
+  "passwordChangeSuccess": "Лозинка успешно промењена",
+  "emailChangeError": "Грешка при промени е-маила",
+  "acceptDocumentCheckbox": "Прочитао сам и прихватам документ.",
+  "loadingErrorGeneric": "Грешка при учитавању: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Долазни позив",
+  "ringingFor": "Звони {seconds}с",
+  "rejectCall": "Одбиј",
+  "acceptCall": "Прихвати",
+  "unmute": "Укључи звук",
+  "mute": "Искључи звук",
+  "hangUp": "Прекини",
+  "calling": "Позивање...",
+  "autoRejectIn": "Аутоматско одбијање за {seconds} секунди",
+  "speakerOn": "Звучник",
+  "speakerOff": "Слушалица",
+  "micMuted": "Искључен",
+  "micOn": "Микрофон",
+  "connectionExcellent": "Одлично",
+  "connectionGood": "Добро",
+  "connectionWeak": "Слабо",
+  "connectionLost": "Прекинуто",
+  "personalData": "Лични подаци",
+  "personalDataSubtitle": "Име, презиме, адреса",
+  "membershipFee": "Чланарина",
+  "annualFeeYear": "Годишња чланарина {year}",
+  "amount": "Износ:",
+  "dueBy": "Рок:",
+  "paid": "Плаћено",
+  "versionHistory": "Историја верзија",
+  "lastUpdated": "Последње ажурирање: {date}",
+  "noVersionHistory": "Нема доступне историје",
+  "failedLoadChangelog": "Учитавање дневника није успело",
+  "callMember": "Позови члана",
+  "closeConversation": "Затвори разговор",
+  "chatOffline": "Офлајн",
+  "attachFiles": "Приложи датотеке (макс. 10, 50MB)",
+  "conversationClosed": "Овај разговор је затворен",
+  "noMessages": "Нема порука",
+  "goBack": "Назад",
+  "goForward": "Напред",
+  "homePage": "Почетна",
+  "firstNameLabel": "Име",
+  "lastNameLabel": "Презиме",
+  "streetLabel": "Улица",
+  "houseNumberLabel": "Бр.",
+  "postalCodeLabel": "Поштански број",
+  "cityLabel": "Град",
+  "phoneMobileLabel": "Телефон (Мобилни)",
+  "phoneLandlineLabel": "Телефон (Фиксни)",
+  "newEmailLabel": "Нова е-маил адреса",
+  "currentPasswordLabel": "Тренутна лозинка",
+  "newPasswordLabel": "Нова лозинка",
+  "confirmPasswordLabel": "Потврди лозинку",
+  "emailChangedSuccess": "Е-маил успешно промењен",
+  "newPasswordMinChars": "Нова лозинка (мин. 6 знакова)",
+  "reasonLabel2": "Разлог",
+  "downloadFailed2": "Преузимање неуспешно",
+  "downloadTooltip": "Преузми",
+  "connectionErrorGeneric": "Грешка повезивања",
+  "copyLogs": "Копирај логове",
+  "deleteLogs": "Обриши логове",
+  "autoScrollOn": "Аутоматско померање УКЉ",
+  "autoScrollOff": "Аутоматско померање ИСКЉ",
+  "unknownValue": "Непознато",
+  "bankTransfer": "Банковни пренос",
+  "standingOrder": "Трајни налог",
+  "payment": "Плаћање",
+  "warningType_ermahnung": "Опомена",
+  "warningType_abmahnung": "Упозорење",
+  "warningType_letzte": "Последње упозорење",
+  "warningsTotal": "Укупно: {count}",
+  "warningsErmahnung": "Опомене: {count}",
+  "warningsAbmahnung": "Упозорења: {count}",
+  "warningsLetzte": "Последње: {count}",
+  "noWarnings": "Нема опомена",
+  "noWarningsDescription": "Тренутно немате опомена.",
+  "createdBy": "Креирао: {name}",
+  "monthJan": "Jan",
+  "monthFeb": "Feb",
+  "monthMar": "Mar",
+  "monthApr": "Apr",
+  "monthMay": "Maj",
+  "monthJun": "Jun",
+  "monthJul": "Jul",
+  "monthAug": "Avg",
+  "monthSep": "Sep",
+  "monthOct": "Okt",
+  "monthNov": "Nov",
+  "monthDec": "Dec",
+  "stufe1_name": "Лични подаци",
+  "stufe2_name": "Врста чланства",
+  "stufe3_name": "Финансијска ситуација",
+  "stufe4_name": "Начин плаћања",
+  "stufe5_name": "Почетак чланства",
+  "stufe6_name": "Статут",
+  "stufe7_name": "Политика приватности",
+  "stufe8_name": "Право на одустајање",
+  "memberType_ordentlich": "Редовни члан",
+  "memberType_foerder": "Подржавајући члан",
+  "memberType_ehren": "Почасни члан",
+  "memberDesc_ordentlich": "Активни члан са правом гласа. Учествује у услугама удружења (имејл, облак, бирократска подршка).",
+  "memberDesc_foerder": "Подржава удружење доприносима. Може присуствовати скупштини са саветодавним гласом, без права гласа или избора у управу.",
+  "memberDesc_ehren": "Има права редовног члана без обавезе плаћања чланарине. Именован од стране скупштине или управе.",
+  "payMethod_ueberweisung": "Банковни пренос",
+  "payMethod_dauerauftrag": "Трајни налог",
+  "verifyStatus_geprueft": "Проверено",
+  "verifyStatus_ausgefuellt": "Попуњено",
+  "verifyStatus_abgelehnt": "Одбијено",
+  "verifyStatus_offen": "Отворено",
+  "fillRequiredFields": "Попуните сва обавезна поља.",
+  "personalDataSaved": "Лични подаци сачувани",
+  "selectMemberType": "Одаберите врсту чланства.",
+  "memberTypeSaved": "Врста чланства сачувана",
+  "selectOption": "Одаберите опцију.",
+  "financialSaved": "Финансијска ситуација сачувана",
+  "selectPaymentMethod": "Одаберите начин плаћања.",
+  "paymentDataSaved": "Подаци о плаћању сачувани",
+  "selectDate": "Одаберите датум.",
+  "membershipStartSaved": "Почетак чланства сачуван",
+  "fileTooLarge": "Датотека превелика (макс. 10 MB).",
+  "leistungsbescheidUploaded": "Решење о накнадама успешно отпремљено",
+  "verificationProgress": "Напредак провере",
+  "notApplicable": "Није применљиво",
+  "socialBenefitsExempt": "Начин плаћања није потребан за примаоце социјалних накнада.",
+  "locked": "Закључано",
+  "completePreviousStep": "Прво довршите корак {step}.",
+  "rejectedNote": "Одбијено: {note}",
+  "waitingForReview": "Чека преглед управе.",
+  "stepApproved": "Овај корак је прегледан и одобрен.",
+  "changesViaChat": "Промене могуће само путем чата.",
+  "firstNameRequired": "Име *",
+  "lastNameRequired": "Презиме *",
+  "birthDateLabel": "Датум рођења *",
+  "streetRequired": "Улица *",
+  "houseNumberRequired": "Бр. *",
+  "cityRequired": "Град *",
+  "phoneRequired": "Телефонски број *",
+  "phonePurpose": "Сврха: Контакт када нисте доступни путем апликације",
+  "selectMemberTypePrompt": "Одаберите жељену врсту чланства:",
+  "financialExplanation": "Да бисмо проверили да ли имате право на смањење чланарине, потребне су нам следеће информације. Користиће се искључиво за одређивање ваше чланарине.",
+  "socialBenefitsQuestion": "Да ли тренутно примате социјалне накнаде?",
+  "optionBuergergeld": "Да, грађанска накнада (Job Center)",
+  "optionSozialamt": "Да, социјална помоћ (Социјална служба)",
+  "optionNoBenefits": "Не, не примам социјалне накнаде",
+  "feeExempt": "Ваша месечна чланарина је: 0,00 €/месец",
+  "uploadLeistungsbescheid": "Отпремите решење о накнадама",
+  "uploadLeistungsbescheidHint": "Отпремите актуелно решење о накнадама у року од 14 дана за потврду ослобађања од чланарине.",
+  "allowedFormatsUpload": "Дозвољени формати: PDF, JPG, PNG (макс. 10 MB)",
+  "feeRegular": "Ваша месечна чланарина је: 25,00 €/месец",
+  "paymentDayReminder": "Бићете подсећани {day}. дана сваког месеца.",
+  "membershipStartPrompt": "Одаберите када треба да почне ваше чланство.",
+  "optionAfterVerification": "Након завршетка провере",
+  "optionAfterVerificationDesc": "Чланство почиње од дана потврде управе.",
+  "optionRetroFoundation": "Ретроактивно до датума оснивања (01.08.2025)",
+  "optionRetroFoundationDesc": "Постајете ретроактивни члан од оснивања удружења.",
+  "optionRetroCustom": "Ретроактивно до другог датума",
+  "optionRetroCustomDesc": "Одаберите датум између 01.08.2025. и данас.",
+  "selectDateLabel": "Одаберите датум",
+  "selectDateHint": "Одаберите датум...",
+  "dateNotBefore": "Не пре 01.08.2025. (датум оснивања)",
+  "feeExemptRetro": "Ослобађање од чланарине: 0,00 € ретроактивно.\nСамо датум чланства се поставља ретроактивно.",
+  "retroactiveFees": "Ретроактивне чланарине",
+  "retroFeeCalculation": "Период: {from} – {to}\nМесеци: {months}\nЧланарина: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Прочитајте статут удружења.",
+  "pleaseReadDatenschutz": "Прочитајте политику приватности.",
+  "pleaseReadWiderruf": "Прочитајте право на одустајање.",
+  "acceptedAtRegistration": "Прихваћено при регистрацији",
+  "confirmedByBoard": "Биће потврђено након прегледа управе.",
+  "docSatzung": "Статут",
+  "docDatenschutz": "Политика приватности",
+  "docWiderruf": "Право на одустајање",
+  "acceptedAtRegCount": "Прихваћено при регистрацији ({count}/3)",
+  "acceptedOn": "Прихваћено дана {date}",
+  "notAccepted": "Није прихваћено",
+  "statusAccepted": "Прихваћено",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Члански број предуг (макс. 20 знакова)",
+  "onlyUppercaseAndNumbers": "Дозвољена су само велика слова и бројеви",
+  "passwordTooLong": "Лозинка предуга (макс. 100 знакова)",
+  "nameTooLong": "Име предуго (макс. 100 знакова)",
+  "emailTooLong": "Имејл предуг (макс. 255 знакова)",
+  "legalAcknowledgePrefix": "Прочитао/ла сам ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " ICD360S e.V. и признајем их као обавезујуће.",
+  "legalPleaseReadFirst": "(молимо прво прочитајте)",
+  "statusActive": "Активан",
+  "statusSuspended": "Суспендован",
+  "statusNew": "Ново",
+  "statusCancelled": "Отказано",
+  "statusDeleted": "Обрисано",
+  "roleMitglied": "Члан",
+  "roleVorsitzer": "Председник",
+  "roleStellvertreter": "Заменик",
+  "roleSchatzmeister": "Благајник",
+  "roleSchriftfuehrer": "Секретар",
+  "roleBeisitzer": "Заседатељ",
+  "roleKassierer": "Касир",
+  "roleKassenpruefer": "Ревизор",
+  "roleEhrenamtlich": "Волонтер",
+  "roleMitgliedergruender": "Оснивач",
+  "roleEhrenmitglied": "Почасни члан",
+  "roleFoerdermitglied": "Подржавајући члан",
+  "memberTypeNotSet": "Још није одређено",
+  "payMethodSepa": "SEPA директно задужење",
+  "labelStatus": "Статус",
+  "labelMemberNumber": "Члански број",
+  "labelRole": "Улога",
+  "labelMemberType": "Врста чланства",
+  "labelPaymentMethod": "Начин плаћања",
+  "labelRegisteredOn": "Регистровано",
+  "labelLastLogin": "Последња пријава",
+  "labelMemberSince": "Члан од",
+  "neverLoggedIn": "Никада",
+  "notActivatedYet": "Још није активирано",
+  "tabVerification": "Верификација",
+  "tabWarnings": "Упозорења",
+  "tabDocuments": "Документи",
+  "tabMembership": "Чланство",
+  "pleaseEnterFirstName": "Унесите име",
+  "pleaseEnterLastName": "Унесите презиме",
+  "noFileDataReceived": "Нису примљени подаци",
+  "openFile": "Отвори",
+  "diagnosticErrors": "Извештаји о грешкама за побољшање",
+  "diagnosticAnonymousStats": "Анонимне статистике коришћења",
+  "diagnosticPerformance": "Подаци о перформансама апликације",
+  "noMicrophoneError": "Микрофон није пронађен. Повежите микрофон и покушајте поново.",
+  "startConversation": "Започните разговор!",
+  "staffWillReply": "Запослени ће вам ускоро одговорити.",
+  "inCall": "У позиву...",
+  "registration": "Регистрација",
+  "deactivation": "Деактивација",
+  "deactivatedOn": "Деактивирано",
+  "accountAutoSuspend": "Налози који нису верификовани у року од 30 дана биће аутоматски суспендовани.",
+  "ipClean": "IP чист - није на листи",
+  "documentsProvidedByBoard": "Документе обезбеђује управа.",
+  "noDocumentsAvailable": "Нема докумената",
+  "noDocumentsDescription": "Још нису достављени документи за вас.",
+  "uploadedBy": "Отпремио: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} корака завршено",
+  "dayOfMonth": "{day}. у месецу",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Промени {field}",
+  "openDocument": "Отвори {name}",
+  "helpImproveApp": "Желите ли да нам помогнете да побољшамо апликацију?",
+  "noPersonalDataCollected": "Лични подаци се не прикупљају. Ово подешавање се може променити у било ком тренутку.",
+  "logEntries": "{count} записа",
+  "noLogs": "Нема записа",
+  "newLoginDetected": "Откривена нова пријава",
+  "waitingForMember": "Чекање на члана",
+  "waitingForStaff": "Чекање на запосленог",
+  "waitingForAuthority": "Чекање на орган",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}
