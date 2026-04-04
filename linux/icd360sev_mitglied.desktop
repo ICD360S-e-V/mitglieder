@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ICD360S e.V. Mitglieder
+Comment=Mitglieder-App für ICD360S e.V.
+Exec=icd360sev_mitglied
+Icon=icd360sev_mitglied
+Terminal=false
+Type=Application
+Categories=Office;Communication;
+Keywords=ICD360S;Mitglieder;Verein;

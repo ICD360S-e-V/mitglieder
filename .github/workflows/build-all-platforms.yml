@@ -59,11 +59,147 @@ jobs:
       - name: Build Linux
         run: flutter build linux --release
 
-      - name: Upload Linux build
+      - name: Upload Linux build (raw bundle)
         uses: actions/upload-artifact@v7
         with:
           name: icd360sev-linux
           path: build/linux/x64/release/bundle/
+          if-no-files-found: error
+
+      # --- Linux Packages (.deb, .rpm, AppImage) ---
+      - name: Install packaging tools
+        run: |
+          sudo apt-get install -y ruby-dev rpm libfuse2
+          sudo gem install fpm
+          # AppImageTool
+          wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
+          chmod +x /usr/local/bin/appimagetool
+
+      - name: Create .deb package
+        run: |
+          BUNDLE=build/linux/x64/release/bundle
+          VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
+
+          # Create .deb with fpm
+          fpm -s dir -t deb \
+            --name icd360sev-mitglied \
+            --version "$VERSION" \
+            --description "ICD360S e.V. Mitglieder-App" \
+            --maintainer "ICD360S e.V." \
+            --url "https://icd360s.de" \
+            --license "Proprietary" \
+            --architecture amd64 \
+            --depends libgtk-3-0 \
+            --depends libsecret-1-0 \
+            --depends libjsoncpp25 \
+            --depends libnotify4 \
+            "$BUNDLE/=/opt/icd360sev-mitglied/" \
+            "linux/icd360sev_mitglied.desktop=/usr/share/applications/icd360sev_mitglied.desktop"
+
+          # Create symlink script in postinst
+          mkdir -p /tmp/deb-scripts
+          echo '#!/bin/sh' > /tmp/deb-scripts/postinst
+          echo 'ln -sf /opt/icd360sev-mitglied/icd360sev_mitglied /usr/local/bin/icd360sev_mitglied' >> /tmp/deb-scripts/postinst
+          chmod +x /tmp/deb-scripts/postinst
+
+          # Rebuild with postinst
+          fpm -s dir -t deb \
+            --name icd360sev-mitglied \
+            --version "$VERSION" \
+            --description "ICD360S e.V. Mitglieder-App" \
+            --maintainer "ICD360S e.V." \
+            --url "https://icd360s.de" \
+            --license "Proprietary" \
+            --architecture amd64 \
+            --depends libgtk-3-0 \
+            --depends libsecret-1-0 \
+            --depends libjsoncpp25 \
+            --depends libnotify4 \
+            --after-install /tmp/deb-scripts/postinst \
+            --force \
+            "$BUNDLE/=/opt/icd360sev-mitglied/" \
+            "linux/icd360sev_mitglied.desktop=/usr/share/applications/icd360sev_mitglied.desktop"
+
+          mv icd360sev-mitglied_*.deb icd360sev-mitglied.deb
+
+      - name: Upload .deb
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-linux-deb
+          path: icd360sev-mitglied.deb
+          if-no-files-found: error
+
+      - name: Create .rpm package
+        run: |
+          BUNDLE=build/linux/x64/release/bundle
+          VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
+
+          fpm -s dir -t rpm \
+            --name icd360sev-mitglied \
+            --version "$VERSION" \
+            --description "ICD360S e.V. Mitglieder-App" \
+            --maintainer "ICD360S e.V." \
+            --url "https://icd360s.de" \
+            --license "Proprietary" \
+            --architecture x86_64 \
+            --depends gtk3 \
+            --depends libsecret \
+            --depends jsoncpp \
+            --depends libnotify \
+            --after-install /tmp/deb-scripts/postinst \
+            "$BUNDLE/=/opt/icd360sev-mitglied/" \
+            "linux/icd360sev_mitglied.desktop=/usr/share/applications/icd360sev_mitglied.desktop"
+
+          mv icd360sev-mitglied-*.rpm icd360sev-mitglied.rpm
+
+      - name: Upload .rpm
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-linux-rpm
+          path: icd360sev-mitglied.rpm
+          if-no-files-found: error
+
+      - name: Create AppImage
+        run: |
+          BUNDLE=build/linux/x64/release/bundle
+
+          # Create AppDir structure
+          mkdir -p AppDir/usr/bin AppDir/usr/lib AppDir/usr/share/applications AppDir/usr/share/icons/hicolor/256x256/apps
+
+          # Copy bundle
+          cp -r "$BUNDLE"/* AppDir/usr/bin/
+          # Move libs to lib dir
+          if [ -d "AppDir/usr/bin/lib" ]; then
+            mv AppDir/usr/bin/lib/* AppDir/usr/lib/
+            rmdir AppDir/usr/bin/lib
+          fi
+
+          # Desktop file
+          cp linux/icd360sev_mitglied.desktop AppDir/
+          cp linux/icd360sev_mitglied.desktop AppDir/usr/share/applications/
+
+          # AppRun
+          cat > AppDir/AppRun << 'APPRUN'
+          #!/bin/bash
+          SELF=$(readlink -f "$0")
+          HERE=${SELF%/*}
+          export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
+          exec "${HERE}/usr/bin/icd360sev_mitglied" "$@"
+          APPRUN
+          chmod +x AppDir/AppRun
+
+          # Create a simple icon (placeholder)
+          convert -size 256x256 xc:blue AppDir/icd360sev_mitglied.png 2>/dev/null || \
+            echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" | base64 -d > AppDir/icd360sev_mitglied.png
+
+          # Build AppImage
+          ARCH=x86_64 appimagetool --no-appstream AppDir icd360sev-mitglied.AppImage
+
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v7
+        with:
+          name: icd360sev-linux-appimage
+          path: icd360sev-mitglied.AppImage
           if-no-files-found: error
 
       # --- Android: F-Droid ---
@@ -274,6 +410,11 @@ jobs:
           cd artifacts/icd360sev-linux && tar czf ../../release/icd360sev-linux.tar.gz . && cd ../..
           cd artifacts/icd360sev-macos && zip -r ../../release/icd360sev-macos.zip . && cd ../..
           cd artifacts/icd360sev-ios && zip -r ../../release/icd360sev-ios.zip . && cd ../..
+
+          # Linux packages
+          cp artifacts/icd360sev-linux-deb/*.deb release/icd360sev-mitglied.deb
+          cp artifacts/icd360sev-linux-rpm/*.rpm release/icd360sev-mitglied.rpm
+          cp artifacts/icd360sev-linux-appimage/*.AppImage release/icd360sev-mitglied.AppImage
 
           # Debug symbols archive
           if [ -d "artifacts/symbols-android" ]; then
