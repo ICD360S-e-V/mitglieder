@@ -27,3 +27,20 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# Kotlin build errors
+.kotlin/
+
+# Logs
+*.log
+
+# Backups
+backups_*/
+
+# Symbols (debug)
+symbols/
