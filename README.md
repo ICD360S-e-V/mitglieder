@@ -40,9 +40,13 @@ Die Store-Veroeffentlichungen (Google Play, Huawei, Amazon, Samsung, App Store) 
 
 ## Installation
 
-### Android
+### Android (F-Droid - empfohlen)
 
-**Option 1: F-Droid (empfohlen)**
+F-Droid Repository mit der Kamera scannen:
+
+![F-Droid QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://icd360sev.icd360s.de/fdroid/repo)
+
+Oder manuell hinzufuegen:
 
 1. [F-Droid](https://f-droid.org) installieren
 2. Repository hinzufuegen: `https://icd360sev.icd360s.de/fdroid/repo`
@@ -50,13 +54,27 @@ Die Store-Veroeffentlichungen (Google Play, Huawei, Amazon, Samsung, App Store) 
 
 Updates werden automatisch ueber F-Droid bereitgestellt (alle 12-24 Stunden).
 
-**Option 2: Universal APK (Direktdownload)**
+### Android (Universal APK - Direktdownload)
 
-[APK herunterladen](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk) und manuell installieren. Die App prueft automatisch auf Updates.
+APK mit der Kamera scannen und installieren:
+
+![APK QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
+
+Oder direkt herunterladen: [icd360sev.apk](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
+
+Die App prueft automatisch auf Updates.
 
 ### Windows / Linux / macOS
 
-Downloads sind in der Tabelle oben verlinkt. Die App prueft automatisch auf Updates nach der Installation.
+Alle Downloads sind in der Tabelle oben verlinkt. Die App prueft automatisch auf Updates nach der Installation.
+
+| Plattform | Direktlink |
+|-----------|-----------|
+| Windows | [icd360sev_setup.exe](https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe) |
+| Linux DEB | [icd360sev-mitglied.deb](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb) |
+| Linux RPM | [icd360sev-mitglied.rpm](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm) |
+| Linux AppImage | [icd360sev-mitglied.AppImage](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage) |
+| macOS | [icd360sev-mitglied.dmg](https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg) |
 
 ## Technologie
 
