@@ -175,7 +175,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           SizedBox(height: _getResponsiveSpacing(context, 12)),
           Text(
-            'v1.1.12',
+            'v1.1.13',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
               fontSize: _getResponsiveFontSize(context, 11),

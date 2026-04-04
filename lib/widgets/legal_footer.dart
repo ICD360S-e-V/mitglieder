@@ -4,9 +4,10 @@ import '../l10n/app_localizations.dart';
 import '../screens/webview_screen.dart';
 import '../services/update_service.dart';
 import '../services/logger_service.dart';
+import 'changelog_dialog.dart';
 import 'update_dialog.dart';
 
-const String appVersion = '1.1.12';
+const String appVersion = '1.1.13';
 
 class LegalFooter extends StatefulWidget {
   final bool darkMode;
@@ -140,6 +141,17 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
   }
 
   void _showChangelog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => const ChangelogDialog(),
+    );
+  }
+
+  // ==========================================================================
+  // LEGACY CHANGELOG - kept but unused, changelog now loaded from server
+  // Server: /api/changelog_mitglieder.php → ChangelogDialog widget
+  // ==========================================================================
+  void _showChangelogLegacy(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
