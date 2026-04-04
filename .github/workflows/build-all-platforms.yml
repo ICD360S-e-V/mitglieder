@@ -488,3 +488,126 @@ jobs:
         with:
           generate_release_notes: true
           files: release/*
+
+  # ============================================
+  # DEPLOY to server (only on version tags)
+  # ============================================
+  deploy:
+    name: Deploy to Server
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [release]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v7
+        with:
+          path: artifacts/
+
+      - name: Prepare deploy files
+        run: |
+          mkdir -p deploy/android deploy/linux deploy/windows deploy/macos deploy/ios
+
+          # Android
+          cp artifacts/icd360sev-fdroid-apk/*.apk deploy/android/icd360sev.apk
+          cp artifacts/icd360sev-universal-apk/* deploy/android/icd360sev-universal.apk
+          cp artifacts/icd360sev-googleplay-apk/*.apk deploy/android/icd360sev-googleplay.apk
+          cp artifacts/icd360sev-googleplay-aab/* deploy/android/icd360sev-googleplay.aab
+          cp artifacts/icd360sev-amazon-apk/*.apk deploy/android/icd360sev-amazon.apk
+          cp artifacts/icd360sev-huawei-apk/*.apk deploy/android/icd360sev-huawei.apk
+          cp artifacts/icd360sev-samsung-apk/*.apk deploy/android/icd360sev-samsung.apk
+
+          # Linux
+          cp artifacts/icd360sev-linux-deb/*.deb deploy/linux/icd360sev-mitglied.deb
+          cp artifacts/icd360sev-linux-rpm/*.rpm deploy/linux/icd360sev-mitglied.rpm
+          cp artifacts/icd360sev-linux-appimage/*.AppImage deploy/linux/icd360sev-mitglied.AppImage
+          cd artifacts/icd360sev-linux && tar czf ../../deploy/linux/icd360sev-linux.tar.gz . && cd ../..
+
+          # Windows
+          cd artifacts/icd360sev-windows && zip -r ../../deploy/windows/icd360sev-windows.zip . && cd ../..
+
+          # macOS
+          cd artifacts/icd360sev-macos && zip -r ../../deploy/macos/icd360sev-macos.zip . && cd ../..
+
+          # iOS
+          cd artifacts/icd360sev-ios && zip -r ../../deploy/ios/icd360sev-ios.zip . && cd ../..
+
+          echo "Deploy files ready:"
+          find deploy/ -type f -exec ls -lh {} \;
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Backup current versions on server
+        run: |
+          SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+          BASE="/var/www/icd360sev.icd360s.de/downloads/mitglieder"
+
+          # Backup Android
+          $SSH_CMD "[ -f $BASE/android/icd360sev.apk ] && cp $BASE/android/icd360sev.apk $BASE/android/icd360sev_stable.apk || true"
+
+          # Backup Windows
+          $SSH_CMD "[ -f $BASE/windows/icd360sev_setup.exe ] && cp $BASE/windows/icd360sev_setup.exe $BASE/windows/icd360sev_setup_stable.exe || true"
+
+          echo "Backups created"
+
+      - name: Upload to server
+        run: |
+          SCP_CMD="scp -i ~/.ssh/deploy_key -P ${{ secrets.SSH_PORT }}"
+          SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+          BASE="/var/www/icd360sev.icd360s.de/downloads/mitglieder"
+
+          # Create directories on server
+          $SSH_CMD "mkdir -p $BASE/android $BASE/linux $BASE/windows $BASE/macos $BASE/ios"
+
+          # Upload Android
+          $SCP_CMD deploy/android/icd360sev.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev.apk
+          $SCP_CMD deploy/android/icd360sev-universal.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-universal.apk
+          $SCP_CMD deploy/android/icd360sev-googleplay.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-googleplay.apk
+          $SCP_CMD deploy/android/icd360sev-googleplay.aab ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-googleplay.aab
+          $SCP_CMD deploy/android/icd360sev-amazon.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-amazon.apk
+          $SCP_CMD deploy/android/icd360sev-huawei.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-huawei.apk
+          $SCP_CMD deploy/android/icd360sev-samsung.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/android/icd360sev-samsung.apk
+          echo "✅ Android uploaded"
+
+          # Upload Linux
+          $SCP_CMD deploy/linux/icd360sev-mitglied.deb ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/linux/
+          $SCP_CMD deploy/linux/icd360sev-mitglied.rpm ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/linux/
+          $SCP_CMD deploy/linux/icd360sev-mitglied.AppImage ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/linux/
+          $SCP_CMD deploy/linux/icd360sev-linux.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/linux/
+          echo "✅ Linux uploaded"
+
+          # Upload Windows
+          $SCP_CMD deploy/windows/icd360sev-windows.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/windows/
+          echo "✅ Windows uploaded"
+
+          # Upload macOS
+          $SCP_CMD deploy/macos/icd360sev-macos.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/macos/
+          echo "✅ macOS uploaded"
+
+          # Upload iOS
+          $SCP_CMD deploy/ios/icd360sev-ios.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$BASE/ios/
+          echo "✅ iOS uploaded"
+
+      - name: Update F-Droid repository
+        run: |
+          SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+
+          # Copy fdroid APK to F-Droid repo
+          $SSH_CMD "cp /var/www/icd360sev.icd360s.de/downloads/mitglieder/android/icd360sev.apk \
+                       /var/www/icd360sev.icd360s.de/fdroid/repo/icd360sev.apk"
+
+          # Regenerate F-Droid index
+          $SSH_CMD "export ANDROID_SDK_ROOT=/opt/android-sdk && \
+                    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk && \
+                    cd /var/www/icd360sev.icd360s.de/fdroid && \
+                    fdroid update" || echo "Warning: F-Droid index update failed (non-critical)"
+
+          echo "✅ F-Droid repository updated"
+
+      - name: Cleanup SSH
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
