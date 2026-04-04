@@ -191,7 +191,7 @@ class DeviceKeyService {
           'device_id': _deviceId,
           'device_name': info['device_name'],
           'platform': info['platform'],
-          'app_version': '1.1.12',
+          'app_version': '1.1.13',
         }),
       );
 
