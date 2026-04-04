@@ -1,0 +1,940 @@
+{
+  "@@locale": "ar",
+  "appTitle": "بوابة الأعضاء ICD360S e.V.",
+  "memberPortal": "بوابة الأعضاء",
+  "welcomeLoading": "جاري التحميل...",
+  "welcomeAutoLogin": "تسجيل دخول تلقائي...",
+  "login": "تسجيل الدخول",
+  "register": "التسجيل",
+  "becomeMember": "كن عضواً",
+  "memberNumber": "رقم العضوية",
+  "memberNumberHint": "مثال: M12345",
+  "password": "كلمة المرور",
+  "passwordHint": "أدخل كلمة المرور",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "confirmPasswordHint": "تأكيد كلمة المرور",
+  "newPassword": "كلمة المرور الجديدة",
+  "newPasswordHint": "أدخل كلمة المرور الجديدة",
+  "saveCredentials": "حفظ بيانات الدخول",
+  "autoLogin": "تسجيل دخول تلقائي",
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "firstName": "الاسم الأول",
+  "firstNameHint": "أدخل الاسم الأول واسم العائلة",
+  "nameMinLength": "الاسم يجب أن يحتوي على حرفين على الأقل",
+  "nameOnlyLetters": "يُسمح فقط بالأحرف والشرطات",
+  "email": "البريد الإلكتروني",
+  "emailHint": "أدخل بريدك الإلكتروني",
+  "emailInvalid": "الرجاء إدخال بريد إلكتروني صالح",
+  "passwordMinLength": "كلمة المرور 6 أحرف على الأقل",
+  "passwordsNotMatch": "كلمتا المرور غير متطابقتين",
+  "recoveryCode": "رمز الاسترداد",
+  "recoveryCodeHelper": "تذكر هذا الرمز لاسترداد كلمة المرور",
+  "recoveryCodeHint": "6 أرقام",
+  "recoveryCodeInvalid": "يجب أن يكون الرمز 6 أرقام بالضبط",
+  "loginFailed": "فشل تسجيل الدخول",
+  "registrationFailed": "فشل التسجيل",
+  "connectionError": "خطأ في الاتصال: {error}",
+  "@connectionError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "registrationSuccess": "تم التسجيل بنجاح!\n\nرقم عضويتك: {memberNumber}\n\nيرجى حفظ هذا الرقم لتسجيل الدخول.",
+  "@registrationSuccess": {
+    "placeholders": {
+      "memberNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "tooManyDevices": "أجهزة كثيرة جداً",
+  "maxDevicesMessage": "أنت مسجل الدخول بالفعل على 3 أجهزة.\nاختر جهازاً لتسجيل الخروج منه:",
+  "unknownDevice": "جهاز غير معروف",
+  "unknown": "غير معروف",
+  "logoutError": "خطأ في تسجيل الخروج",
+  "error": "خطأ",
+  "@error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "cancel": "إلغاء",
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "forgotPasswordTitle": "نسيت كلمة المرور",
+  "forgotPasswordDescription": "أدخل رقم عضويتك ورمز الاسترداد الذي أنشأته أثناء التسجيل.",
+  "passwordResetSuccess": "تم إعادة تعيين كلمة المرور بنجاح",
+  "passwordResetFailed": "فشل إعادة تعيين كلمة المرور",
+  "needHelp": "تحتاج مساعدة؟",
+  "helpQuestion": "هل لديك مشاكل في تسجيل الدخول أو التسجيل؟",
+  "helpDescription": "تواصل معنا عبر واتساب وصف بالضبط ما لا يعمل. سنرد في أقرب وقت!",
+  "whatsapp": "واتساب",
+  "emailSubject": "استفسار عبر تطبيق ICD360S",
+  "whatsappMessage": "مرحباً، لدي مشكلة في تطبيق ICD360S. ",
+  "imprint": "بيانات النشر",
+  "privacy": "سياسة الخصوصية",
+  "statutes": "النظام الأساسي",
+  "revocation": "حق الانسحاب",
+  "cancellation": "الإلغاء",
+  "allRightsReserved": "جميع الحقوق محفوظة.",
+  "enterCredentials": "الرجاء إدخال رقم العضوية وكلمة المرور",
+  "appointments": "المواعيد",
+  "tickets": "التذاكر",
+  "liveChat": "دردشة مباشرة",
+  "notifications": "الإشعارات",
+  "myProfile": "ملفي الشخصي",
+  "logout": "تسجيل الخروج",
+  "goodMorning": "صباح الخير",
+  "goodDay": "نهارك سعيد",
+  "goodEvening": "مساء الخير",
+  "goodNight": "تصبح على خير",
+  "welcomeToICD": "مرحباً بك في ICD360S e.V!",
+  "accountCreatedSuccessfully": "تم إنشاء حسابك بنجاح.",
+  "today": "اليوم",
+  "membershipFeeDue": "رسوم العضوية مستحقة",
+  "pleaseTransferAnnualFee": "يرجى تحويل الرسوم السنوية.",
+  "newBadge": "جديد",
+  "close": "إغلاق",
+  "membership": "العضوية",
+  "myAppointments": "مواعيدي",
+  "appointmentsLoadingReady": "جاري تحميل المواعيد - الخادم جاهز!",
+  "priority": "الأولوية",
+  "messageLabel": "الرسالة",
+  "createdOn": "تاريخ الإنشاء",
+  "handler": "المسؤول",
+  "reportProblems": "الإبلاغ عن مشاكل",
+  "reportProblem": "الإبلاغ عن مشكلة",
+  "weRespondIn24Hours": "سنرد عليك خلال 24 ساعة كحد أقصى!",
+  "everythingOk": "كل شيء على ما يرام!",
+  "haveProblemWeHelp": "لديك مشكلة؟\nسنهتم بها!",
+  "myMembership": "عضويتي",
+  "managePersonalDataAndFee": "إدارة بياناتك الشخصية ورسوم العضوية",
+  "myAppointmentsTitle": "مواعيدي",
+  "appointmentsDescription": "هنا يمكنك رؤية مواعيدك القادمة.\nيمكنك تأكيد مشاركتك أو رفضها.",
+  "loadAppointments": "تحميل المواعيد",
+  "myTickets": "تذاكري",
+  "newTicket": "تذكرة جديدة",
+  "noOpenTickets": "لا توجد تذاكر مفتوحة",
+  "haveQuestionCreateTicket": "لديك سؤال أو مشكلة؟\nأنشئ تذكرة جديدة.",
+  "whatIsTheProblem": "ما هي المشكلة؟",
+  "describeTheProblem": "صف المشكلة",
+  "howUrgentIsIt": "ما مدى الاستعجال؟",
+  "low": "منخفض",
+  "medium": "متوسط",
+  "high": "مرتفع",
+  "submit": "إرسال",
+  "fillSubjectAndMessage": "يرجى ملء الموضوع والرسالة",
+  "ticketCreated": "تم الإنشاء",
+  "errorCreatingTicket": "خطأ في إنشاء التذكرة",
+  "verified": "تم التحقق",
+  "account": "الحساب",
+  "myDevices": "أجهزتي",
+  "changeEmail": "تغيير البريد الإلكتروني",
+  "changePassword": "تغيير كلمة المرور",
+  "newEmailAddress": "عنوان بريد إلكتروني جديد",
+  "currentPassword": "كلمة المرور الحالية",
+  "saveEmail": "حفظ البريد الإلكتروني",
+  "savePassword": "حفظ كلمة المرور",
+  "deviceLoggedOut": "تم تسجيل خروج الجهاز",
+  "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
+  "emailChangedSuccessfully": "تم تغيير البريد الإلكتروني بنجاح",
+  "errorChangingPassword": "خطأ في تغيير كلمة المرور",
+  "errorChangingEmail": "خطأ في تغيير البريد الإلكتروني",
+  "validEmailRequired": "يرجى إدخال بريد إلكتروني صالح",
+  "passwordTooShort": "كلمة المرور 6 أحرف على الأقل",
+  "maxDevicesReached": "أنت مسجل الدخول على 3 أجهزة كحد أقصى.",
+  "loggedInOnDevices": "أنت مسجل الدخول على {count} من 3 أجهزة.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "لا توجد جلسات نشطة",
+  "logoutFromDevice": "تسجيل الخروج من هذا الجهاز",
+  "confirmLogoutDevice": "تسجيل خروج الجهاز؟",
+  "confirmLogoutMessage": "هل تريد تسجيل الخروج من هذا الجهاز؟\n\nستحتاج لتسجيل الدخول مرة أخرى.",
+  "ipAddress": "عنوان IP",
+  "platform": "المنصة",
+  "trialWarningUrgentTitle": "تحذير: {days} {days, plural, =1{يوم} other{أيام}} فقط حتى تعليق الحساب!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "لم يتم التحقق من حسابك بعد",
+  "trialWarningDescription": "يرجى إكمال بياناتك في \"ملفي الشخصي\". بعد 30 يوماً سيتم تعليق حسابك تلقائياً.",
+  "trialDaysRemaining": "{days, plural, =1{يوم واحد} other{{days} أيام}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "نظرة عامة",
+  "member": "عضو",
+  "memberManagement": "إدارة الأعضاء",
+  "reportProblemTooltip": "الإبلاغ عن مشكلة",
+  "newAppointmentsTitle": "مواعيد جديدة",
+  "youHaveNewAppointment": "لديك موعد جديد.",
+  "youHaveNewAppointments": "لديك {count} مواعيد جديدة.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "تذكير: موعد غداً",
+  "tomorrowAppointment": "غداً: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "لديك {count} مواعيد غداً.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "مواعيد اليوم",
+  "todayAppointment": "اليوم: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "لديك {count} مواعيد اليوم.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "تذكير بالدفع",
+  "paymentReminderMessage": "اليوم هو {day} من الشهر - يرجى إتمام {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "يوم الدفع (تذكير شهري)",
+  "updateAvailable": "تحديث متوفر",
+  "newVersionAvailable": "إصدار جديد متوفر: {version}",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "currentVersionLabel": "الإصدار الحالي: {version}",
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "changes": "التغييرات:",
+  "downloadProgress": "جاري التحميل... {percent}%",
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "installationStarting": "جاري بدء التثبيت...",
+  "appWillRestart": "سيتم إعادة تشغيل التطبيق تلقائياً.",
+  "later": "لاحقاً",
+  "updateNow": "تحديث الآن",
+  "downloading": "جاري التحميل...",
+  "downloadFailed": "فشل التحميل. يرجى المحاولة لاحقاً.",
+  "searchingForUpdates": "جاري البحث عن تحديثات...",
+  "appUpToDate": "التطبيق محدث",
+  "updateCheckError": "خطأ في التحقق من التحديثات",
+  "changelog": "سجل التغييرات",
+  "terminConfirmed": "تم تأكيد الموعد",
+  "terminDeclined": "تم رفض الموعد",
+  "terminRescheduleRequested": "تم طلب إعادة الجدولة",
+  "statusConfirmed": "مؤكد",
+  "statusDeclined": "مرفوض",
+  "statusRescheduling": "إعادة جدولة",
+  "statusPending": "معلق",
+  "categoryVorstandssitzung": "اجتماع مجلس الإدارة",
+  "categoryMitgliederversammlung": "الجمعية العمومية",
+  "categorySchulung": "تدريب",
+  "categorySonstiges": "أخرى",
+  "openCount": "{count} مفتوحة",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "refresh": "تحديث",
+  "filterUpcoming": "القادمة",
+  "filterPast": "السابقة",
+  "filterAll": "الكل",
+  "noUpcomingAppointments": "لا توجد مواعيد قادمة",
+  "noPastAppointments": "لا توجد مواعيد سابقة",
+  "noAppointmentsAvailable": "لا توجد مواعيد",
+  "appointmentsShownHere": "ستظهر مواعيدك هنا",
+  "dateLabel": "التاريخ",
+  "timeLabel": "الوقت",
+  "locationLabel": "المكان",
+  "createdByLabel": "أنشأه",
+  "descriptionLabel": "الوصف",
+  "ticketLabel": "تذكرة",
+  "yourStatus": "حالتك: ",
+  "reasonLabel": "السبب: {reason}",
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "durationMinutes": "{minutes} دقيقة",
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "confirm": "تأكيد",
+  "decline": "رفض",
+  "reschedule": "إعادة جدولة",
+  "requestReschedule": "طلب إعادة جدولة",
+  "appointmentLabel": "الموعد: {title}",
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "rescheduleReason": "سبب إعادة الجدولة *",
+  "rescheduleReasonHint": "يرجى تقديم سبب...",
+  "pleaseProvideReason": "يرجى تقديم سبب",
+  "request": "طلب",
+  "ticketStatusOpen": "مفتوحة",
+  "ticketStatusInProgress": "قيد التنفيذ",
+  "ticketStatusWaitingMember": "في انتظار العضو",
+  "ticketStatusWaitingStaff": "في انتظار الموظف",
+  "ticketStatusWaitingAuthority": "في انتظار الجهة",
+  "ticketStatusDone": "منجزة",
+  "ticketPriorityHigh": "عالية",
+  "ticketPriorityMedium": "متوسطة",
+  "ticketPriorityLow": "منخفضة",
+  "comments": "التعليقات",
+  "documents": "المستندات",
+  "details": "التفاصيل",
+  "replySent": "تم إرسال الرد",
+  "sendError": "خطأ في الإرسال",
+  "uploading": "جاري الرفع...",
+  "fileUploaded": "تم رفع {filename}",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "uploadFailed": "فشل الرفع",
+  "openError": "خطأ في الفتح",
+  "noRepliesYet": "لا توجد ردود بعد",
+  "waitingForSupport": "في انتظار رد الدعم",
+  "writeReply": "اكتب رداً...",
+  "attachFile": "إرفاق ملف",
+  "documentsCount": "المستندات ({count})",
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "upload": "رفع",
+  "noDocuments": "لا توجد مستندات",
+  "allowedFormats": "الصيغ المسموحة: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "رسالتك:",
+  "translation": "ترجمة",
+  "original": "الأصلي",
+  "originalText": "النص الأصلي",
+  "autoTranslated": "مترجم تلقائياً",
+  "originalTapTranslation": "النص الأصلي · اضغط للترجمة",
+  "translatedTapOriginal": "مترجم · اضغط للأصلي",
+  "justNow": "الآن",
+  "minutesAgo": "قبل {minutes} دقيقة",
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "قبل {hours} ساعات",
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "daysAgo": "قبل {days} {days, plural, =1{يوم} other{أيام}}",
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "createdLabel": "الإنشاء",
+  "updatedLabel": "التحديث",
+  "handlerLabel": "المسؤول",
+  "doneLabel": "منجزة",
+  "newTicketTitle": "تذكرة جديدة",
+  "categoryOptional": "الفئة (اختياري)",
+  "selectCategory": "اختر الفئة",
+  "subjectLabel": "الموضوع",
+  "fillAllFields": "يرجى ملء جميع الحقول",
+  "ticketCreatedId": "تذكرة #{id} تم إنشاؤها",
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "priorityLabel": "الأولوية: ",
+  "supportOffline": "الدعم غير متصل",
+  "lastSeenSeconds": "آخر نشاط قبل ثوانٍ",
+  "lastSeenMinutes": "آخر نشاط قبل {minutes} {minutes, plural, =1{دقيقة} other{دقائق}}",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "lastSeenHours": "آخر نشاط قبل {hours} {hours, plural, =1{ساعة} other{ساعات}}",
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "lastSeenDays": "آخر نشاط قبل {days} {days, plural, =1{يوم} other{أيام}}",
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "online": "متصل",
+  "callSupport": "اتصال",
+  "typeMessage": "اكتب رسالة...",
+  "callBusy": "الدعم مشغول",
+  "callRejected": "تم رفض المكالمة",
+  "callFailed": "فشلت المكالمة",
+  "callEnded": "انتهت المكالمة",
+  "callSupportBusy": "الدعم في مكالمة أخرى",
+  "errorStartingChat": "خطأ في بدء الدردشة",
+  "errorStartingCall": "خطأ في بدء المكالمة",
+  "errorConnecting": "خطأ في الاتصال",
+  "errorAcceptingCall": "خطأ في قبول المكالمة",
+  "errorDownloading": "خطأ في التحميل",
+  "errorUploading": "خطأ في الرفع",
+  "errorSending": "خطأ في الإرسال",
+  "errorPickingPhotos": "خطأ في اختيار الصور",
+  "errorPickingFiles": "خطأ في اختيار الملفات",
+  "errorTakingPhoto": "خطأ في التقاط الصورة",
+  "fileNotLoaded": "لا يمكن تحميل الملف",
+  "attachmentIdMissing": "معرف المرفق مفقود",
+  "camera": "الكاميرا",
+  "gallery": "المعرض",
+  "file": "ملف",
+  "typingIndicator": "{name} يكتب...",
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "رسالة جديدة من",
+  "notifUrgentPrefix": "عاجل",
+  "notifUrgentMessage": "رسالة عاجلة",
+  "notifIncomingCall": "مكالمة واردة",
+  "notifCallingYou": "يتصل بك...",
+  "notifUpdateAvailable": "تحديث متوفر",
+  "notifVersionAvailable": "متوفر الآن",
+  "notifConnected": "متصل",
+  "notifDisconnected": "غير متصل",
+  "notifConnectedBody": "أنت متصل بالخادم الآن.",
+  "notifDisconnectedBody": "تم فقد الاتصال بالخادم.",
+  "notifError": "خطأ",
+  "retry": "إعادة المحاولة",
+  "save": "حفظ",
+  "accept": "قبول",
+  "selectFile": "اختر ملفاً",
+  "dataLoadingText": "جاري تحميل البيانات...",
+  "dataSavedSuccess": "تم حفظ البيانات بنجاح",
+  "errorSaving": "خطأ في الحفظ",
+  "errorLoading": "خطأ في التحميل",
+  "savedFilename": "تم الحفظ: {filename}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "logsCopied": "تم نسخ السجلات!",
+  "diagnosticDataTitle": "بيانات التشخيص",
+  "diagnosticDescription": "هل تريد إرسال بيانات تشخيص مجهولة لتحسين التطبيق؟",
+  "noThanks": "لا، شكراً",
+  "yesEnable": "نعم، تفعيل",
+  "passwordMinEightChars": "كلمة المرور 8 أحرف على الأقل",
+  "passwordChangeSuccess": "تم تغيير كلمة المرور بنجاح",
+  "emailChangeError": "خطأ في تغيير البريد الإلكتروني",
+  "acceptDocumentCheckbox": "لقد قرأت المستند وأوافق عليه.",
+  "loadingErrorGeneric": "خطأ في التحميل: {details}",
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "مكالمة واردة",
+  "ringingFor": "رنين منذ {seconds} ثانية",
+  "rejectCall": "رفض",
+  "acceptCall": "قبول",
+  "unmute": "إلغاء الكتم",
+  "mute": "كتم",
+  "hangUp": "إنهاء",
+  "calling": "جاري الاتصال...",
+  "autoRejectIn": "رفض تلقائي خلال {seconds} ثانية",
+  "speakerOn": "مكبر الصوت",
+  "speakerOff": "سماعة الأذن",
+  "micMuted": "مكتوم",
+  "micOn": "الميكروفون",
+  "connectionExcellent": "ممتاز",
+  "connectionGood": "جيد",
+  "connectionWeak": "ضعيف",
+  "connectionLost": "منقطع",
+  "personalData": "البيانات الشخصية",
+  "personalDataSubtitle": "الاسم، اللقب، العنوان",
+  "membershipFee": "رسوم العضوية",
+  "annualFeeYear": "الرسوم السنوية {year}",
+  "amount": "المبلغ:",
+  "dueBy": "مستحق بحلول:",
+  "paid": "مدفوع",
+  "versionHistory": "سجل الإصدارات",
+  "lastUpdated": "آخر تحديث: {date}",
+  "noVersionHistory": "لا يوجد سجل إصدارات",
+  "failedLoadChangelog": "فشل تحميل سجل التغييرات",
+  "callMember": "اتصل بالعضو",
+  "closeConversation": "إغلاق المحادثة",
+  "chatOffline": "غير متصل",
+  "attachFiles": "إرفاق ملفات (حد أقصى 10، 50 ميغابايت)",
+  "conversationClosed": "تم إغلاق هذه المحادثة",
+  "noMessages": "لا توجد رسائل",
+  "goBack": "رجوع",
+  "goForward": "للأمام",
+  "homePage": "الرئيسية",
+  "firstNameLabel": "الاسم الأول",
+  "lastNameLabel": "اسم العائلة",
+  "streetLabel": "الشارع",
+  "houseNumberLabel": "الرقم",
+  "postalCodeLabel": "الرمز البريدي",
+  "cityLabel": "المدينة",
+  "phoneMobileLabel": "الهاتف (جوال)",
+  "phoneLandlineLabel": "الهاتف (أرضي)",
+  "newEmailLabel": "بريد إلكتروني جديد",
+  "currentPasswordLabel": "كلمة المرور الحالية",
+  "newPasswordLabel": "كلمة المرور الجديدة",
+  "confirmPasswordLabel": "تأكيد كلمة المرور",
+  "emailChangedSuccess": "تم تغيير البريد الإلكتروني بنجاح",
+  "newPasswordMinChars": "كلمة مرور جديدة (6 أحرف على الأقل)",
+  "reasonLabel2": "السبب",
+  "downloadFailed2": "فشل التحميل",
+  "downloadTooltip": "تحميل",
+  "connectionErrorGeneric": "خطأ في الاتصال",
+  "copyLogs": "نسخ السجلات",
+  "deleteLogs": "حذف السجلات",
+  "autoScrollOn": "تمرير تلقائي مفعل",
+  "autoScrollOff": "تمرير تلقائي معطل",
+  "unknownValue": "غير معروف",
+  "bankTransfer": "تحويل بنكي",
+  "standingOrder": "أمر دائم",
+  "payment": "الدفع",
+  "warningType_ermahnung": "تنبيه",
+  "warningType_abmahnung": "إنذار",
+  "warningType_letzte": "إنذار أخير",
+  "warningsTotal": "المجموع: {count}",
+  "warningsErmahnung": "تنبيه: {count}",
+  "warningsAbmahnung": "إنذار: {count}",
+  "warningsLetzte": "أخير: {count}",
+  "noWarnings": "لا توجد تحذيرات",
+  "noWarningsDescription": "ليس لديك أي تحذيرات حالياً.",
+  "createdBy": "أنشأه: {name}",
+  "monthJan": "يناير",
+  "monthFeb": "فبراير",
+  "monthMar": "مارس",
+  "monthApr": "أبريل",
+  "monthMay": "مايو",
+  "monthJun": "يونيو",
+  "monthJul": "يوليو",
+  "monthAug": "أغسطس",
+  "monthSep": "سبتمبر",
+  "monthOct": "أكتوبر",
+  "monthNov": "نوفمبر",
+  "monthDec": "ديسمبر",
+  "stufe1_name": "البيانات الشخصية",
+  "stufe2_name": "نوع العضوية",
+  "stufe3_name": "الوضع المالي",
+  "stufe4_name": "طريقة الدفع",
+  "stufe5_name": "بدء العضوية",
+  "stufe6_name": "النظام الأساسي",
+  "stufe7_name": "سياسة الخصوصية",
+  "stufe8_name": "حق الانسحاب",
+  "memberType_ordentlich": "عضو عادي",
+  "memberType_foerder": "عضو داعم",
+  "memberType_ehren": "عضو فخري",
+  "memberDesc_ordentlich": "عضو فعال له حق التصويت. يشارك في خدمات الجمعية (بريد إلكتروني، سحابة، دعم بيروقراطي).",
+  "memberDesc_foerder": "يدعم الجمعية بالمساهمات. يحضر الجمعية العمومية بصوت استشاري، بدون حق التصويت أو الترشح.",
+  "memberDesc_ehren": "له حقوق العضو العادي بدون التزام بدفع رسوم. يعينه الجمعية العمومية أو مجلس الإدارة.",
+  "payMethod_ueberweisung": "تحويل بنكي",
+  "payMethod_dauerauftrag": "أمر دائم",
+  "verifyStatus_geprueft": "تم التحقق",
+  "verifyStatus_ausgefuellt": "مكتمل",
+  "verifyStatus_abgelehnt": "مرفوض",
+  "verifyStatus_offen": "مفتوح",
+  "fillRequiredFields": "يرجى ملء جميع الحقول المطلوبة.",
+  "personalDataSaved": "تم حفظ البيانات الشخصية",
+  "selectMemberType": "يرجى اختيار نوع العضوية.",
+  "memberTypeSaved": "تم حفظ نوع العضوية",
+  "selectOption": "يرجى اختيار خيار.",
+  "financialSaved": "تم حفظ الوضع المالي",
+  "selectPaymentMethod": "يرجى اختيار طريقة الدفع.",
+  "paymentDataSaved": "تم حفظ بيانات الدفع",
+  "selectDate": "يرجى اختيار تاريخ.",
+  "membershipStartSaved": "تم حفظ بدء العضوية",
+  "fileTooLarge": "الملف كبير جداً (الحد الأقصى: 50 ميغابايت)",
+  "leistungsbescheidUploaded": "تم رفع شهادة الإعانة بنجاح",
+  "verificationProgress": "تقدم التحقق",
+  "notApplicable": "لا ينطبق",
+  "socialBenefitsExempt": "طريقة الدفع غير مطلوبة لمستفيدي الإعانات.",
+  "locked": "مقفل",
+  "completePreviousStep": "يرجى إكمال المرحلة {step} أولاً.",
+  "rejectedNote": "مرفوض: {note}",
+  "waitingForReview": "في انتظار مراجعة مجلس الإدارة.",
+  "stepApproved": "تمت مراجعة هذه المرحلة والموافقة عليها.",
+  "changesViaChat": "التغييرات ممكنة فقط عبر الدردشة المباشرة.",
+  "firstNameRequired": "الاسم الأول *",
+  "lastNameRequired": "اسم العائلة *",
+  "birthDateLabel": "تاريخ الميلاد *",
+  "streetRequired": "الشارع *",
+  "houseNumberRequired": "الرقم *",
+  "cityRequired": "المدينة *",
+  "phoneRequired": "رقم الهاتف *",
+  "phonePurpose": "الغرض: الاتصال عند عدم إمكانية الوصول عبر التطبيق",
+  "selectMemberTypePrompt": "يرجى اختيار نوع العضوية المرغوب:",
+  "financialExplanation": "للتحقق من أهليتك لتخفيض الرسوم، نحتاج المعلومات التالية. تُستخدم حصرياً لتحديد رسوم عضويتك.",
+  "socialBenefitsQuestion": "هل تتلقى حالياً إعانات اجتماعية؟",
+  "optionBuergergeld": "نعم، إعانة المواطن (مركز التوظيف)",
+  "optionSozialamt": "نعم، إعانات اجتماعية (الشؤون الاجتماعية)",
+  "optionNoBenefits": "لا، لا أتلقى إعانات اجتماعية",
+  "feeExempt": "رسوم عضويتك الشهرية: 0.00€/شهر",
+  "uploadLeistungsbescheid": "رفع شهادة الإعانة",
+  "uploadLeistungsbescheidHint": "يرجى رفع شهادة إعانة حالية خلال 14 يوماً لتأكيد الإعفاء.",
+  "allowedFormatsUpload": "الصيغ المسموحة: PDF, JPG, PNG (حد أقصى 10 ميغابايت)",
+  "feeRegular": "رسوم عضويتك الشهرية: 25.00€/شهر",
+  "paymentDayReminder": "سيتم تذكيرك في {day} من كل شهر.",
+  "membershipStartPrompt": "اختر متى تبدأ عضويتك.",
+  "optionAfterVerification": "بعد اكتمال التحقق",
+  "optionAfterVerificationDesc": "تبدأ العضوية من يوم تأكيد مجلس الإدارة.",
+  "optionRetroFoundation": "بأثر رجعي من تاريخ التأسيس (01.08.2025)",
+  "optionRetroFoundationDesc": "تصبح عضواً بأثر رجعي من تأسيس الجمعية.",
+  "optionRetroCustom": "بأثر رجعي من تاريخ آخر",
+  "optionRetroCustomDesc": "اختر تاريخاً بين 01.08.2025 واليوم.",
+  "selectDateLabel": "اختر تاريخاً",
+  "selectDateHint": "اختر تاريخاً...",
+  "dateNotBefore": "ليس قبل 01.08.2025 (تاريخ التأسيس)",
+  "feeExemptRetro": "معفى من الرسوم: 0.00€ بأثر رجعي.\nيتم تحديد تاريخ العضوية فقط بأثر رجعي.",
+  "retroactiveFees": "رسوم بأثر رجعي",
+  "retroFeeCalculation": "الفترة: {from} – {to}\nالأشهر: {months}\nالرسوم: {months} × 25.00€ = {total}€",
+  "pleaseReadSatzung": "يرجى قراءة النظام الأساسي للجمعية.",
+  "pleaseReadDatenschutz": "يرجى قراءة سياسة الخصوصية.",
+  "pleaseReadWiderruf": "يرجى قراءة حق الانسحاب.",
+  "acceptedAtRegistration": "تم القبول عند التسجيل",
+  "confirmedByBoard": "سيتم التأكيد بعد مراجعة مجلس الإدارة.",
+  "docSatzung": "النظام الأساسي",
+  "docDatenschutz": "سياسة الخصوصية",
+  "docWiderruf": "حق الانسحاب",
+  "acceptedAtRegCount": "تم القبول عند التسجيل ({count}/3)",
+  "acceptedOn": "تم القبول في {date}",
+  "notAccepted": "لم يتم القبول",
+  "statusAccepted": "مقبول",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "رقم العضوية طويل جداً (الحد الأقصى 20 حرفاً)",
+  "onlyUppercaseAndNumbers": "يُسمح فقط بالأحرف الكبيرة والأرقام",
+  "passwordTooLong": "كلمة المرور طويلة جداً (الحد الأقصى 100 حرف)",
+  "nameTooLong": "الاسم طويل جداً (الحد الأقصى 100 حرف)",
+  "emailTooLong": "البريد طويل جداً (الحد الأقصى 255 حرفاً)",
+  "legalAcknowledgePrefix": "لقد قرأت ",
+  "legalAcknowledgeSuffix": " وأقر بها.",
+  "legalStatutesSuffix": " لـ ICD360S e.V. وأعترف بها كملزمة.",
+  "legalPleaseReadFirst": "(يرجى القراءة أولاً)",
+  "statusActive": "نشط",
+  "statusSuspended": "معلق",
+  "statusNew": "جديد",
+  "statusCancelled": "ملغى",
+  "statusDeleted": "محذوف",
+  "roleMitglied": "عضو",
+  "roleVorsitzer": "رئيس",
+  "roleStellvertreter": "نائب الرئيس",
+  "roleSchatzmeister": "أمين الصندوق",
+  "roleSchriftfuehrer": "أمين السر",
+  "roleBeisitzer": "عضو مجلس",
+  "roleKassierer": "أمين الصندوق",
+  "roleKassenpruefer": "مدقق الحسابات",
+  "roleEhrenamtlich": "متطوع",
+  "roleMitgliedergruender": "عضو مؤسس",
+  "roleEhrenmitglied": "عضو فخري",
+  "roleFoerdermitglied": "عضو داعم",
+  "memberTypeNotSet": "لم يتم تحديده",
+  "payMethodSepa": "خصم SEPA المباشر",
+  "labelStatus": "الحالة",
+  "labelMemberNumber": "رقم العضوية",
+  "labelRole": "الدور",
+  "labelMemberType": "نوع العضوية",
+  "labelPaymentMethod": "طريقة الدفع",
+  "labelRegisteredOn": "تاريخ التسجيل",
+  "labelLastLogin": "آخر تسجيل دخول",
+  "labelMemberSince": "عضو منذ",
+  "neverLoggedIn": "لم يسجل الدخول أبداً",
+  "notActivatedYet": "لم يتم التفعيل بعد",
+  "tabVerification": "التحقق",
+  "tabWarnings": "التحذيرات",
+  "tabDocuments": "المستندات",
+  "tabMembership": "العضوية",
+  "pleaseEnterFirstName": "الرجاء إدخال الاسم الأول",
+  "pleaseEnterLastName": "الرجاء إدخال اسم العائلة",
+  "noFileDataReceived": "لم يتم استلام بيانات الملف",
+  "openFile": "فتح",
+  "diagnosticErrors": "تقارير أخطاء للتحسين",
+  "diagnosticAnonymousStats": "إحصائيات استخدام مجهولة",
+  "diagnosticPerformance": "بيانات أداء التطبيق",
+  "noMicrophoneError": "لم يتم العثور على ميكروفون. يرجى توصيل ميكروفون والمحاولة مرة أخرى.",
+  "startConversation": "ابدأ محادثة!",
+  "staffWillReply": "سيرد عليك أحد الموظفين قريباً.",
+  "inCall": "في مكالمة...",
+  "registration": "التسجيل",
+  "deactivation": "التعطيل",
+  "deactivatedOn": "تم التعطيل في",
+  "accountAutoSuspend": "الحسابات التي لا يتم التحقق منها خلال 30 يوماً يتم تعليقها تلقائياً.",
+  "ipClean": "IP نظيف - غير مدرج",
+  "documentsProvidedByBoard": "يتم توفير المستندات من قبل مجلس الإدارة.",
+  "noDocumentsAvailable": "لا توجد مستندات",
+  "noDocumentsDescription": "لم يتم توفير أي مستندات لك بعد.",
+  "uploadedBy": "رفعه: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} مراحل مكتملة",
+  "dayOfMonth": "{day}. من الشهر",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "تغيير {field}",
+  "openDocument": "فتح {name}",
+  "helpImproveApp": "هل تريد مساعدتنا في تحسين التطبيق؟",
+  "noPersonalDataCollected": "لا يتم جمع بيانات شخصية. يمكن تغيير هذا الإعداد في أي وقت.",
+  "logEntries": "{count} إدخالات",
+  "noLogs": "لا توجد سجلات",
+  "newLoginDetected": "تم اكتشاف تسجيل دخول جديد",
+  "waitingForMember": "في انتظار العضو",
+  "waitingForStaff": "في انتظار الموظف",
+  "waitingForAuthority": "في انتظار الجهة المختصة",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

@@ -1,0 +1,940 @@
+{
+  "@@locale": "tr",
+  "appTitle": "ICD360S e.V - Üye Portalı",
+  "memberPortal": "Üye Portalı",
+  "welcomeLoading": "Yükleniyor...",
+  "welcomeAutoLogin": "Otomatik giriş...",
+  "login": "Giriş Yap",
+  "register": "Kayıt Ol",
+  "becomeMember": "Üye Ol",
+  "memberNumber": "Üye Numarası",
+  "memberNumberHint": "Lütfen üye numaranızı girin",
+  "password": "Şifre",
+  "passwordHint": "Lütfen şifrenizi girin",
+  "confirmPassword": "Şifreyi Onayla",
+  "confirmPasswordHint": "Lütfen şifrenizi onaylayın",
+  "newPassword": "Yeni Şifre",
+  "newPasswordHint": "Lütfen yeni şifrenizi girin",
+  "saveCredentials": "Giriş bilgilerini kaydet",
+  "autoLogin": "Otomatik giriş yap",
+  "forgotPassword": "Şifrenizi mi unuttunuz?",
+  "firstName": "Ad ve Soyad",
+  "firstNameHint": "Lütfen ad ve soyadınızı girin",
+  "nameMinLength": "İsim en az 2 karakter olmalıdır",
+  "nameOnlyLetters": "Sadece harf ve tire kullanılabilir",
+  "email": "E-posta Adresi",
+  "emailHint": "Lütfen e-posta adresinizi girin",
+  "emailInvalid": "Lütfen geçerli bir e-posta adresi girin",
+  "passwordMinLength": "Şifre en az 6 karakter olmalıdır",
+  "passwordsNotMatch": "Şifreler eşleşmiyor",
+  "recoveryCode": "Kurtarma Kodu (6 rakam)",
+  "recoveryCodeHelper": "Şifre kurtarma için bu kodu unutmayın",
+  "recoveryCodeHint": "Lütfen kurtarma kodunu girin",
+  "recoveryCodeInvalid": "Kod tam olarak 6 rakam olmalıdır",
+  "loginFailed": "Giriş başarısız",
+  "registrationFailed": "Kayıt başarısız",
+  "connectionError": "Bağlantı hatası: {error}",
+  "@connectionError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "registrationSuccess": "Kayıt başarılı!\n\nÜye numaranız: {memberNumber}\n\nLütfen giriş için bu numarayı unutmayın.",
+  "@registrationSuccess": {
+    "placeholders": {
+      "memberNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "tooManyDevices": "Çok fazla cihaz",
+  "maxDevicesMessage": "Zaten 3 cihazda giriş yapmış durumdasınız.\nÇıkış yapmak için bir cihaz seçin:",
+  "unknownDevice": "Bilinmeyen cihaz",
+  "unknown": "Bilinmeyen",
+  "logoutError": "Çıkış hatası",
+  "error": "Hata: {error}",
+  "@error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "cancel": "İptal",
+  "resetPassword": "Şifreyi Sıfırla",
+  "forgotPasswordTitle": "Şifremi Unuttum",
+  "forgotPasswordDescription": "Üye numaranızı ve kayıt sırasında oluşturduğunuz kurtarma kodunu girin.",
+  "passwordResetSuccess": "Şifre başarıyla sıfırlandı!\n\nArtık yeni şifrenizle giriş yapabilirsiniz.",
+  "passwordResetFailed": "Şifre sıfırlama başarısız",
+  "needHelp": "Yardıma mı ihtiyacınız var?",
+  "helpQuestion": "Giriş veya kayıt ile ilgili sorun mu yaşıyorsunuz?",
+  "helpDescription": "WhatsApp üzerinden bizimle iletişime geçin ve neyin çalışmadığını tam olarak açıklayın. En kısa sürede cevap vereceğiz!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "ICD360S Uygulaması hakkında soru",
+  "whatsappMessage": "Merhaba, ICD360S Uygulamasıyla ilgili bir sorunum var. ",
+  "imprint": "Künye",
+  "privacy": "Gizlilik Politikası",
+  "statutes": "Tüzük",
+  "revocation": "İptal Hakkı",
+  "cancellation": "Fesih",
+  "allRightsReserved": "Tüm hakları saklıdır.",
+  "enterCredentials": "Lütfen üye numaranızı ve şifrenizi girin",
+  "appointments": "Randevular",
+  "tickets": "Talepler",
+  "liveChat": "Canlı Sohbet",
+  "notifications": "Bildirimler",
+  "myProfile": "Profilim",
+  "logout": "Çıkış Yap",
+  "goodMorning": "Günaydın",
+  "goodDay": "İyi Günler",
+  "goodEvening": "İyi Akşamlar",
+  "goodNight": "İyi Geceler",
+  "welcomeToICD": "ICD360S e.V'ye Hoş Geldiniz!",
+  "accountCreatedSuccessfully": "Hesabınız başarıyla oluşturuldu.",
+  "today": "Bugün",
+  "membershipFeeDue": "Üyelik aidatı vadesi",
+  "pleaseTransferAnnualFee": "Lütfen yıllık aidatı transfer edin.",
+  "newBadge": "Yeni",
+  "close": "Kapat",
+  "membership": "Üyelik",
+  "myAppointments": "Randevularım",
+  "appointmentsLoadingReady": "Randevular yükleniyor - API hazır!",
+  "priority": "Öncelik",
+  "messageLabel": "Mesaj",
+  "createdOn": "Oluşturulma",
+  "handler": "İşlemci",
+  "reportProblems": "Sorunları Bildir",
+  "reportProblem": "Sorun Bildir",
+  "weRespondIn24Hours": "En geç 24 saat içinde cevap vereceğiz!",
+  "everythingOk": "Her şey yolunda!",
+  "haveProblemWeHelp": "Bir sorununuz mu var?\nBiz hallederiz!",
+  "myMembership": "Üyeliğim",
+  "managePersonalDataAndFee": "Kişisel verilerinizi ve üyelik aidatınızı yönetin",
+  "myAppointmentsTitle": "Randevularım",
+  "appointmentsDescription": "Burada yaklaşan randevularınızı görebilirsiniz.\nKatılımınızı onaylayabilir veya iptal edebilirsiniz.",
+  "loadAppointments": "Randevuları Yükle",
+  "myTickets": "Taleplerim",
+  "newTicket": "Yeni Talep",
+  "noOpenTickets": "Açık talep yok",
+  "haveQuestionCreateTicket": "Bir sorunuz veya sorununuz mu var?\nYeni bir talep oluşturun.",
+  "whatIsTheProblem": "Sorun nedir?",
+  "describeTheProblem": "Sorunu açıklayın",
+  "howUrgentIsIt": "Ne kadar acil?",
+  "low": "Düşük",
+  "medium": "Orta",
+  "high": "Yüksek",
+  "submit": "Gönder",
+  "fillSubjectAndMessage": "Lütfen konu ve mesajı doldurun",
+  "ticketCreated": "Talep oluşturuldu",
+  "errorCreatingTicket": "Talep oluşturulurken hata",
+  "verified": "Doğrulanmış",
+  "account": "Hesap",
+  "myDevices": "Cihazlarım",
+  "changeEmail": "E-posta Değiştir",
+  "changePassword": "Şifre Değiştir",
+  "newEmailAddress": "Yeni E-posta Adresi",
+  "currentPassword": "Mevcut Şifre",
+  "saveEmail": "E-postayı Kaydet",
+  "savePassword": "Şifreyi Kaydet",
+  "deviceLoggedOut": "Cihaz çıkış yaptı",
+  "passwordChangedSuccessfully": "Şifre başarıyla değiştirildi",
+  "emailChangedSuccessfully": "E-posta başarıyla değiştirildi",
+  "errorChangingPassword": "Şifre değiştirme hatası",
+  "errorChangingEmail": "E-posta değiştirme hatası",
+  "validEmailRequired": "Lütfen geçerli bir e-posta adresi girin",
+  "passwordTooShort": "Şifre en az 6 karakter uzunluğunda olmalıdır",
+  "maxDevicesReached": "Maksimum 3 cihazda giriş yapmış durumdasınız.",
+  "loggedInOnDevices": "3 cihazdan {count} tanesinde giriş yapmış durumdasınız.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Aktif oturum yok",
+  "logoutFromDevice": "Bu cihazdan çıkış yap",
+  "confirmLogoutDevice": "Cihazdan çıkış yapılsın mı?",
+  "confirmLogoutMessage": "Bu cihazdan çıkış yapmak istiyor musunuz?\n\nBu cihazı tekrar kullanmak için yeniden giriş yapmanız gerekecektir.",
+  "ipAddress": "IP",
+  "platform": "Platform",
+  "trialWarningUrgentTitle": "Dikkat: Hesap askıya alınmasına sadece {days} {days, plural, =1{gün} other{gün}} kaldı!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Hesabınız henüz doğrulanmadı",
+  "trialWarningDescription": "Lütfen \"Profilim\" bölümünden verilerinizi tamamlayın. 30 gün sonra hesabınız otomatik olarak askıya alınacaktır.",
+  "trialDaysRemaining": "{days, plural, =1{1 gün} other{{days} gün}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Genel Bakış",
+  "member": "Üye",
+  "memberManagement": "Üye Yönetimi",
+  "reportProblemTooltip": "Sorun Bildir",
+  "newAppointmentsTitle": "Yeni Randevular",
+  "youHaveNewAppointment": "Yeni bir randevunuz var.",
+  "youHaveNewAppointments": "{count} yeni randevunuz var.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Hatırlatma: Yarın randevunuz var",
+  "tomorrowAppointment": "Yarın: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Yarın {count} randevunuz var.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Bugünkü randevular",
+  "todayAppointment": "Bugün: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Bugün {count} randevunuz var.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Ödeme Hatırlatması",
+  "paymentReminderMessage": "Bugün ayın {day}. günü – lütfen {method} işlemini gerçekleştirin.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Ödeme günü (aylık hatırlatma)",
+  "updateAvailable": "Güncelleme mevcut",
+  "newVersionAvailable": "Yeni bir sürüm mevcut: {version}",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "currentVersionLabel": "Mevcut sürüm: {version}",
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "changes": "Değişiklikler:",
+  "downloadProgress": "İndirme: {percent}%",
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "installationStarting": "Kurulum başlatılıyor...",
+  "appWillRestart": "Uygulama otomatik olarak yeniden başlatılacak.",
+  "later": "Daha Sonra",
+  "updateNow": "Şimdi Güncelle",
+  "downloading": "İndiriliyor...",
+  "downloadFailed": "İndirme başarısız. Lütfen daha sonra tekrar deneyin.",
+  "searchingForUpdates": "Güncelleme aranıyor...",
+  "appUpToDate": "Uygulama güncel",
+  "updateCheckError": "Güncelleme kontrolü hatası",
+  "changelog": "Değişiklik Günlüğü",
+  "terminConfirmed": "Randevu onaylandı",
+  "terminDeclined": "Randevu reddedildi",
+  "terminRescheduleRequested": "Erteleme talep edildi",
+  "statusConfirmed": "Onaylandı",
+  "statusDeclined": "Reddedildi",
+  "statusRescheduling": "Erteleme",
+  "statusPending": "Beklemede",
+  "categoryVorstandssitzung": "Yönetim Kurulu Toplantısı",
+  "categoryMitgliederversammlung": "Üye Genel Kurulu",
+  "categorySchulung": "Eğitim",
+  "categorySonstiges": "Diğer",
+  "openCount": "{count} açık",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "refresh": "Yenile",
+  "filterUpcoming": "Yaklaşan",
+  "filterPast": "Geçmiş",
+  "filterAll": "Tümü",
+  "noUpcomingAppointments": "Yaklaşan randevu yok",
+  "noPastAppointments": "Geçmiş randevu yok",
+  "noAppointmentsAvailable": "Randevu bulunmuyor",
+  "appointmentsShownHere": "Randevularınız burada görüntülenecek",
+  "dateLabel": "Tarih",
+  "timeLabel": "Saat",
+  "locationLabel": "Yer",
+  "createdByLabel": "Oluşturan",
+  "descriptionLabel": "Açıklama",
+  "ticketLabel": "Talep",
+  "yourStatus": "Durumunuz: ",
+  "reasonLabel": "Sebep: {reason}",
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "durationMinutes": "{minutes} dk",
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "confirm": "Onayla",
+  "decline": "Reddet",
+  "reschedule": "Ertele",
+  "requestReschedule": "Erteleme talep et",
+  "appointmentLabel": "Randevu: {title}",
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "rescheduleReason": "Erteleme sebebi *",
+  "rescheduleReasonHint": "Lütfen bir sebep belirtin...",
+  "pleaseProvideReason": "Lütfen bir sebep belirtin",
+  "request": "Talep Et",
+  "ticketStatusOpen": "Açık",
+  "ticketStatusInProgress": "İşlemde",
+  "ticketStatusWaitingMember": "Üye bekleniyor",
+  "ticketStatusWaitingStaff": "Personel bekleniyor",
+  "ticketStatusWaitingAuthority": "Kurum bekleniyor",
+  "ticketStatusDone": "Tamamlandı",
+  "ticketPriorityHigh": "Yüksek",
+  "ticketPriorityMedium": "Orta",
+  "ticketPriorityLow": "Düşük",
+  "comments": "Yorumlar",
+  "documents": "Belgeler",
+  "details": "Detaylar",
+  "replySent": "Yanıt gönderildi",
+  "sendError": "Gönderme hatası",
+  "uploading": "Yükleniyor...",
+  "fileUploaded": "{filename} yüklendi",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "uploadFailed": "Yükleme başarısız",
+  "openError": "Açma hatası",
+  "noRepliesYet": "Henüz yanıt yok",
+  "waitingForSupport": "Destek ekibinden yanıt bekleniyor",
+  "writeReply": "Yanıt yazın...",
+  "attachFile": "Dosya ekle",
+  "documentsCount": "Belgeler ({count})",
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "upload": "Yükle",
+  "noDocuments": "Belge bulunmuyor",
+  "allowedFormats": "İzin verilen formatlar: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Mesajınız:",
+  "translation": "Çeviri",
+  "original": "Orijinal",
+  "originalText": "Orijinal metin",
+  "autoTranslated": "Otomatik çevrildi",
+  "originalTapTranslation": "Orijinal metin · Çeviri için dokunun",
+  "translatedTapOriginal": "Çevrildi · Orijinal için dokunun",
+  "justNow": "Az önce",
+  "minutesAgo": "{minutes} dk önce",
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "{hours} saat önce",
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "daysAgo": "{days} {days, plural, =1{gün} other{gün}} önce",
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "createdLabel": "Oluşturulma",
+  "updatedLabel": "Güncelleme",
+  "handlerLabel": "İşlemci",
+  "doneLabel": "Tamamlandı",
+  "newTicketTitle": "Yeni Talep",
+  "categoryOptional": "Kategori (isteğe bağlı)",
+  "selectCategory": "Seçin",
+  "subjectLabel": "Konu",
+  "fillAllFields": "Lütfen tüm alanları doldurun",
+  "ticketCreatedId": "Talep #{id} oluşturuldu",
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "priorityLabel": "Öncelik: ",
+  "supportOffline": "Destek çevrimdışı",
+  "lastSeenSeconds": "Birkaç saniye önce aktifti",
+  "lastSeenMinutes": "{minutes} {minutes, plural, =1{dakika} other{dakika}} önce aktifti",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "lastSeenHours": "{hours} {hours, plural, =1{saat} other{saat}} önce aktifti",
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "lastSeenDays": "{days} {days, plural, =1{gün} other{gün}} önce aktifti",
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "online": "Çevrimiçi",
+  "callSupport": "Ara",
+  "typeMessage": "Mesaj yazın...",
+  "callBusy": "Destek meşgul",
+  "callRejected": "Arama reddedildi",
+  "callFailed": "Arama bağlanamadı",
+  "callEnded": "Arama sona erdi",
+  "callSupportBusy": "Destek başka bir aramada",
+  "errorStartingChat": "Sohbet başlatma hatası",
+  "errorStartingCall": "Arama başlatma hatası",
+  "errorConnecting": "Bağlantı hatası",
+  "errorAcceptingCall": "Arama kabul hatası",
+  "errorDownloading": "İndirme hatası",
+  "errorUploading": "Yükleme hatası",
+  "errorSending": "Gönderme hatası",
+  "errorPickingPhotos": "Fotoğraf seçme hatası",
+  "errorPickingFiles": "Dosya seçme hatası",
+  "errorTakingPhoto": "Fotoğraf çekme hatası",
+  "fileNotLoaded": "Dosya yüklenemedi",
+  "attachmentIdMissing": "Ek kimliği eksik",
+  "camera": "Kamera",
+  "gallery": "Galeri",
+  "file": "Dosya",
+  "typingIndicator": "{name} yazıyor...",
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Yeni mesaj:",
+  "notifUrgentPrefix": "ACİL",
+  "notifUrgentMessage": "ACİL MESAJ",
+  "notifIncomingCall": "Gelen arama",
+  "notifCallingYou": "arıyor...",
+  "notifUpdateAvailable": "Güncelleme mevcut",
+  "notifVersionAvailable": "şimdi mevcut",
+  "notifConnected": "Bağlandı",
+  "notifDisconnected": "Bağlantı kesildi",
+  "notifConnectedBody": "Sunucuya bağlandınız.",
+  "notifDisconnectedBody": "Sunucu bağlantısı kesildi.",
+  "notifError": "Hata",
+  "retry": "Tekrar dene",
+  "save": "Kaydet",
+  "accept": "Kabul Et",
+  "selectFile": "Dosya seç",
+  "dataLoadingText": "Veriler yükleniyor...",
+  "dataSavedSuccess": "Veriler başarıyla kaydedildi",
+  "errorSaving": "Kaydetme hatası",
+  "errorLoading": "Yükleme hatası",
+  "savedFilename": "Kaydedildi: {filename}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "logsCopied": "Günlükler kopyalandı!",
+  "diagnosticDataTitle": "Tanılama Verileri",
+  "diagnosticDescription": "Uygulamayı iyileştirmek için anonim tanılama verileri göndermek ister misiniz?",
+  "noThanks": "Hayır, teşekkürler",
+  "yesEnable": "Evet, etkinleştir",
+  "passwordMinEightChars": "Şifre en az 8 karakter olmalıdır",
+  "passwordChangeSuccess": "Şifre başarıyla değiştirildi",
+  "emailChangeError": "E-posta değiştirme hatası",
+  "acceptDocumentCheckbox": "Belgeyi okudum ve kabul ediyorum.",
+  "loadingErrorGeneric": "Yükleme hatası: {details}",
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Gelen Arama",
+  "ringingFor": "{seconds} saniyedir çalıyor",
+  "rejectCall": "Reddet",
+  "acceptCall": "Kabul Et",
+  "unmute": "Sesi aç",
+  "mute": "Sessize al",
+  "hangUp": "Kapat",
+  "calling": "Aranıyor...",
+  "autoRejectIn": "{seconds} saniye sonra otomatik reddedilecek",
+  "speakerOn": "Hoparlör",
+  "speakerOff": "Kulaklık",
+  "micMuted": "Sessiz",
+  "micOn": "Mikrofon",
+  "connectionExcellent": "Mükemmel",
+  "connectionGood": "İyi",
+  "connectionWeak": "Zayıf",
+  "connectionLost": "Bağlantı kesildi",
+  "personalData": "Kişisel Veriler",
+  "personalDataSubtitle": "Ad, soyad, adres",
+  "membershipFee": "Üyelik Aidatı",
+  "annualFeeYear": "Yıllık aidat {year}",
+  "amount": "Tutar:",
+  "dueBy": "Son ödeme:",
+  "paid": "Ödendi",
+  "versionHistory": "Sürüm Geçmişi",
+  "lastUpdated": "Son güncelleme: {date}",
+  "noVersionHistory": "Sürüm geçmişi mevcut değil",
+  "failedLoadChangelog": "Değişiklik günlüğü yüklenemedi",
+  "callMember": "Üyeyi ara",
+  "closeConversation": "Sohbeti kapat",
+  "chatOffline": "Çevrimdışı",
+  "attachFiles": "Dosya ekle (maks. 10, 50MB)",
+  "conversationClosed": "Bu sohbet kapatılmıştır",
+  "noMessages": "Mesaj yok",
+  "goBack": "Geri",
+  "goForward": "İleri",
+  "homePage": "Ana Sayfa",
+  "firstNameLabel": "Ad",
+  "lastNameLabel": "Soyad",
+  "streetLabel": "Sokak",
+  "houseNumberLabel": "No.",
+  "postalCodeLabel": "Posta Kodu",
+  "cityLabel": "Şehir",
+  "phoneMobileLabel": "Telefon (Mobil)",
+  "phoneLandlineLabel": "Telefon (Sabit)",
+  "newEmailLabel": "Yeni E-posta Adresi",
+  "currentPasswordLabel": "Mevcut Şifre",
+  "newPasswordLabel": "Yeni Şifre",
+  "confirmPasswordLabel": "Şifreyi Onayla",
+  "emailChangedSuccess": "E-posta başarıyla değiştirildi",
+  "newPasswordMinChars": "Yeni Şifre (min. 6 karakter)",
+  "reasonLabel2": "Sebep",
+  "downloadFailed2": "İndirme başarısız",
+  "downloadTooltip": "İndir",
+  "connectionErrorGeneric": "Bağlantı hatası",
+  "copyLogs": "Günlükleri kopyala",
+  "deleteLogs": "Günlükleri sil",
+  "autoScrollOn": "Otomatik kaydırma AÇIK",
+  "autoScrollOff": "Otomatik kaydırma KAPALI",
+  "unknownValue": "Bilinmeyen",
+  "bankTransfer": "Havale",
+  "standingOrder": "Otomatik Ödeme",
+  "payment": "Ödeme",
+  "warningType_ermahnung": "Uyarı",
+  "warningType_abmahnung": "İhtar",
+  "warningType_letzte": "Son İhtar",
+  "warningsTotal": "Toplam: {count}",
+  "warningsErmahnung": "Uyarı: {count}",
+  "warningsAbmahnung": "İhtar: {count}",
+  "warningsLetzte": "Son: {count}",
+  "noWarnings": "Uyarı bulunmuyor",
+  "noWarningsDescription": "Şu anda herhangi bir uyarınız yok.",
+  "createdBy": "Oluşturan: {name}",
+  "monthJan": "Oca",
+  "monthFeb": "Şub",
+  "monthMar": "Mar",
+  "monthApr": "Nis",
+  "monthMay": "May",
+  "monthJun": "Haz",
+  "monthJul": "Tem",
+  "monthAug": "Ağu",
+  "monthSep": "Eyl",
+  "monthOct": "Eki",
+  "monthNov": "Kas",
+  "monthDec": "Ara",
+  "stufe1_name": "Kişisel Veriler",
+  "stufe2_name": "Üyelik Türü",
+  "stufe3_name": "Mali Durum",
+  "stufe4_name": "Ödeme Yöntemi",
+  "stufe5_name": "Üyelik Başlangıcı",
+  "stufe6_name": "Tüzük",
+  "stufe7_name": "Gizlilik Politikası",
+  "stufe8_name": "İptal Hakkı Bilgilendirmesi",
+  "memberType_ordentlich": "Asıl Üye",
+  "memberType_foerder": "Destekçi Üye",
+  "memberType_ehren": "Onursal Üye",
+  "memberDesc_ordentlich": "Oy hakkına sahip aktif üye. Derneğin hizmetlerine katılır (E-posta, Bulut, bürokratik destek).",
+  "memberDesc_foerder": "Derneği aidatlarla destekler. Genel kurula danışma oy hakkıyla katılabilir, ancak seçme veya yönetim kuruluna seçilme hakkı yoktur.",
+  "memberDesc_ehren": "Asıl üye haklarına sahiptir, aidat ödeme yükümlülüğü yoktur. Genel kurul veya yönetim kurulu tarafından belirlenir.",
+  "payMethod_ueberweisung": "Havale",
+  "payMethod_dauerauftrag": "Otomatik Ödeme",
+  "verifyStatus_geprueft": "Onaylandı",
+  "verifyStatus_ausgefuellt": "Dolduruldu",
+  "verifyStatus_abgelehnt": "Reddedildi",
+  "verifyStatus_offen": "Açık",
+  "fillRequiredFields": "Lütfen tüm zorunlu alanları doldurun.",
+  "personalDataSaved": "Kişisel veriler kaydedildi",
+  "selectMemberType": "Lütfen bir üyelik türü seçin.",
+  "memberTypeSaved": "Üyelik türü kaydedildi",
+  "selectOption": "Lütfen bir seçenek belirleyin.",
+  "financialSaved": "Mali durum kaydedildi",
+  "selectPaymentMethod": "Lütfen bir ödeme yöntemi seçin.",
+  "paymentDataSaved": "Ödeme verileri kaydedildi",
+  "selectDate": "Lütfen bir tarih seçin.",
+  "membershipStartSaved": "Üyelik başlangıcı kaydedildi",
+  "fileTooLarge": "Dosya çok büyük (maks. 10 MB).",
+  "leistungsbescheidUploaded": "Yardım belgesi başarıyla yüklendi",
+  "verificationProgress": "Doğrulama İlerlemesi",
+  "notApplicable": "Uygulanmaz",
+  "socialBenefitsExempt": "Sosyal yardım alanlarda ödeme yöntemi gerekmez.",
+  "locked": "Kilitli",
+  "completePreviousStep": "Lütfen önce Adım {step} tamamlayın.",
+  "rejectedNote": "Reddedildi: {note}",
+  "waitingForReview": "Yönetim kurulu incelemesi bekleniyor.",
+  "stepApproved": "Bu adım incelendi ve onaylandı.",
+  "changesViaChat": "Değişiklikler yalnızca Canlı Sohbet üzerinden yapılabilir.",
+  "firstNameRequired": "Ad *",
+  "lastNameRequired": "Soyad *",
+  "birthDateLabel": "Doğum Tarihi *",
+  "streetRequired": "Sokak *",
+  "houseNumberRequired": "No. *",
+  "cityRequired": "Şehir *",
+  "phoneRequired": "Telefon Numarası *",
+  "phonePurpose": "Amaç: Uygulama üzerinden ulaşılamadığında iletişim",
+  "selectMemberTypePrompt": "Lütfen istediğiniz üyelik türünü seçin:",
+  "financialExplanation": "Aidat indirimine hak kazanıp kazanmadığınızı kontrol etmek için aşağıdaki bilgiye ihtiyacımız var. Bu bilgi yalnızca üyelik aidatınızın belirlenmesi için kullanılacaktır.",
+  "socialBenefitsQuestion": "Şu anda sosyal yardım alıyor musunuz?",
+  "optionBuergergeld": "Evet, vatandaş parası (İş Merkezi)",
+  "optionSozialamt": "Evet, sosyal yardım (Sosyal Hizmetler)",
+  "optionNoBenefits": "Hayır, sosyal yardım almıyorum",
+  "feeExempt": "Aylık üyelik aidatınız: 0,00 €/Ay",
+  "uploadLeistungsbescheid": "Yardım belgesi yükle",
+  "uploadLeistungsbescheidHint": "Aidat muafiyetini onaylamak için lütfen 14 gün içinde güncel bir yardım belgesi yükleyin.",
+  "allowedFormatsUpload": "İzin verilen formatlar: PDF, JPG, PNG (maks. 10 MB)",
+  "feeRegular": "Aylık üyelik aidatınız: 25,00 €/Ay",
+  "paymentDayReminder": "Her ayın {day}. gününde ödeme hatırlatılacaktır.",
+  "membershipStartPrompt": "Üyeliğinizin ne zaman başlaması gerektiğini seçin.",
+  "optionAfterVerification": "Doğrulama tamamlandıktan sonra",
+  "optionAfterVerificationDesc": "Üyelik, yönetim kurulu onayından itibaren başlar.",
+  "optionRetroFoundation": "Kuruluş tarihinden itibaren geçmişe dönük (01.08.2025)",
+  "optionRetroFoundationDesc": "Derneğin kuruluşundan itibaren geçmişe dönük üye olursunuz.",
+  "optionRetroCustom": "Başka bir tarihten itibaren geçmişe dönük",
+  "optionRetroCustomDesc": "01.08.2025 ile bugün arasında bir tarih seçin.",
+  "selectDateLabel": "Tarih seç",
+  "selectDateHint": "Tarih seçin...",
+  "dateNotBefore": "01.08.2025'ten önce olamaz (Kuruluş tarihi)",
+  "feeExemptRetro": "Aidat muafiyeti: 0,00 € geçmişe dönük.\nSadece üyelik tarihi geriye dönük olarak belirlenir.",
+  "retroactiveFees": "Geçmişe Dönük Aidatlar",
+  "retroFeeCalculation": "Dönem: {from} – {to}\nAy: {months}\nAidat: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Lütfen derneğin tüzüğünü okuyun.",
+  "pleaseReadDatenschutz": "Lütfen gizlilik politikasını okuyun.",
+  "pleaseReadWiderruf": "Lütfen iptal hakkı bilgilendirmesini okuyun.",
+  "acceptedAtRegistration": "Kayıt sırasında kabul edildi",
+  "confirmedByBoard": "Yönetim kurulu incelemesinden sonra onaylanacaktır.",
+  "docSatzung": "Tüzük",
+  "docDatenschutz": "Gizlilik Politikası",
+  "docWiderruf": "İptal Hakkı Bilgilendirmesi",
+  "acceptedAtRegCount": "Kayıt sırasında kabul edildi ({count}/3)",
+  "acceptedOn": "{date} tarihinde kabul edildi",
+  "notAccepted": "Kabul edilmedi",
+  "statusAccepted": "Kabul Edildi",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Üye numarası çok uzun (maks. 20 karakter)",
+  "onlyUppercaseAndNumbers": "Sadece büyük harfler ve rakamlar kullanılabilir",
+  "passwordTooLong": "Şifre çok uzun (maks. 100 karakter)",
+  "nameTooLong": "İsim çok uzun (maks. 100 karakter)",
+  "emailTooLong": "E-posta çok uzun (maks. 255 karakter)",
+  "legalAcknowledgePrefix": "Okudum ve kabul ediyorum: ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " belgesini okudum ve bağlayıcı olduğunu kabul ediyorum.",
+  "legalPleaseReadFirst": "(lütfen önce okuyun)",
+  "statusActive": "Aktif",
+  "statusSuspended": "Askıya alındı",
+  "statusNew": "Yeni",
+  "statusCancelled": "İptal edildi",
+  "statusDeleted": "Silindi",
+  "roleMitglied": "Üye",
+  "roleVorsitzer": "Başkan",
+  "roleStellvertreter": "Başkan Yardımcısı",
+  "roleSchatzmeister": "Sayman",
+  "roleSchriftfuehrer": "Sekreter",
+  "roleBeisitzer": "Yönetim Kurulu Üyesi",
+  "roleKassierer": "Kasiyer",
+  "roleKassenpruefer": "Denetçi",
+  "roleEhrenamtlich": "Gönüllü",
+  "roleMitgliedergruender": "Kurucu Üye",
+  "roleEhrenmitglied": "Onursal Üye",
+  "roleFoerdermitglied": "Destekçi Üye",
+  "memberTypeNotSet": "Henüz belirlenmedi",
+  "payMethodSepa": "SEPA Otomatik Ödeme",
+  "labelStatus": "Durum",
+  "labelMemberNumber": "Üye Numarası",
+  "labelRole": "Rol",
+  "labelMemberType": "Üyelik Türü",
+  "labelPaymentMethod": "Ödeme Yöntemi",
+  "labelRegisteredOn": "Kayıt tarihi",
+  "labelLastLogin": "Son Giriş",
+  "labelMemberSince": "Üyelik başlangıcı",
+  "neverLoggedIn": "Hiçbir zaman",
+  "notActivatedYet": "Henüz etkinleştirilmedi",
+  "tabVerification": "Doğrulama",
+  "tabWarnings": "Uyarılar",
+  "tabDocuments": "Belgeler",
+  "tabMembership": "Üyelik",
+  "pleaseEnterFirstName": "Lütfen adınızı girin",
+  "pleaseEnterLastName": "Lütfen soyadınızı girin",
+  "noFileDataReceived": "Dosya verisi alınamadı",
+  "openFile": "Aç",
+  "diagnosticErrors": "İyileştirme için hata raporları",
+  "diagnosticAnonymousStats": "Anonim kullanım istatistikleri",
+  "diagnosticPerformance": "Uygulama performans verileri",
+  "noMicrophoneError": "Mikrofon bulunamadı. Lütfen bir mikrofon bağlayın ve tekrar deneyin.",
+  "startConversation": "Bir sohbet başlatın!",
+  "staffWillReply": "Bir görevli en kısa sürede size cevap verecek.",
+  "inCall": "Aramada...",
+  "registration": "Kayıt",
+  "deactivation": "Devre dışı bırakma",
+  "deactivatedOn": "Devre dışı bırakılma tarihi",
+  "accountAutoSuspend": "30 gün içinde doğrulanmayan hesaplar otomatik olarak askıya alınacaktır.",
+  "ipClean": "IP temiz - listelenmemiş",
+  "documentsProvidedByBoard": "Belgeler yönetim kurulu tarafından sağlanır.",
+  "noDocumentsAvailable": "Belge bulunmuyor",
+  "noDocumentsDescription": "Sizin için henüz belge sağlanmadı.",
+  "uploadedBy": "Yükleyen: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} adım tamamlandı",
+  "dayOfMonth": "Ayın {day}. günü",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "{field} değiştir",
+  "openDocument": "{name} aç",
+  "helpImproveApp": "Uygulamayı geliştirmemize yardımcı olmak ister misiniz?",
+  "noPersonalDataCollected": "Kişisel veri toplanmaz. Bu ayar her zaman değiştirilebilir.",
+  "logEntries": "{count} kayıt",
+  "noLogs": "Günlük yok",
+  "newLoginDetected": "Yeni giriş algılandı",
+  "waitingForMember": "Üye bekleniyor",
+  "waitingForStaff": "Personel bekleniyor",
+  "waitingForAuthority": "Kurum bekleniyor",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

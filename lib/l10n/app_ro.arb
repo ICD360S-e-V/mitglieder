@@ -1,0 +1,919 @@
+{
+  "@@locale": "ro",
+  "appTitle": "ICD360S e.V - Portal Membri",
+  "memberPortal": "Portal Membri",
+  "welcomeLoading": "Se încarcă...",
+  "welcomeAutoLogin": "Autentificare automată...",
+  "login": "Autentificare",
+  "register": "Înregistrare",
+  "becomeMember": "Devino Membru",
+  "memberNumber": "Număr de Membru",
+  "memberNumberHint": "Introduceți numărul de membru",
+  "password": "Parolă",
+  "passwordHint": "Introduceți parola",
+  "confirmPassword": "Confirmați Parola",
+  "confirmPasswordHint": "Confirmați parola",
+  "newPassword": "Parolă Nouă",
+  "newPasswordHint": "Introduceți parola nouă",
+  "saveCredentials": "Salvează datele de autentificare",
+  "autoLogin": "Autentificare automată",
+  "forgotPassword": "Ai uitat parola?",
+  "firstName": "Prenume și Nume",
+  "firstNameHint": "Introduceți prenumele și numele",
+  "nameMinLength": "Numele trebuie să aibă minim 2 caractere",
+  "nameOnlyLetters": "Sunt permise doar litere și cratimă",
+  "email": "Adresă de Email",
+  "emailHint": "Introduceți email-ul",
+  "emailInvalid": "Introduceți un email valid",
+  "passwordMinLength": "Parola trebuie să aibă minim 6 caractere",
+  "passwordsNotMatch": "Parolele nu coincid",
+  "recoveryCode": "Cod de Recuperare (6 cifre)",
+  "recoveryCodeHelper": "Memorați acest cod pentru recuperarea parolei",
+  "recoveryCodeHint": "Introduceți codul de recuperare",
+  "recoveryCodeInvalid": "Codul trebuie să aibă exact 6 cifre",
+  "loginFailed": "Autentificare eșuată",
+  "registrationFailed": "Înregistrare eșuată",
+  "connectionError": "Eroare de conexiune: {error}",
+  "registrationSuccess": "Înregistrare reușită!\n\nNumărul dvs. de membru: {memberNumber}\n\nMemorați acest număr pentru autentificare.",
+  "tooManyDevices": "Prea multe dispozitive",
+  "maxDevicesMessage": "Sunteți deja conectat pe 3 dispozitive.\nSelectați un dispozitiv pentru deconectare:",
+  "unknownDevice": "Dispozitiv necunoscut",
+  "unknown": "Necunoscut",
+  "logoutError": "Eroare la deconectare",
+  "error": "Eroare: {error}",
+  "cancel": "Anulare",
+  "resetPassword": "Resetare Parolă",
+  "forgotPasswordTitle": "Ai Uitat Parola",
+  "forgotPasswordDescription": "Introduceți numărul de membru și codul de recuperare creat la înregistrare.",
+  "passwordResetSuccess": "Parola a fost resetată cu succes!\n\nAcum vă puteți autentifica cu noua parolă.",
+  "passwordResetFailed": "Resetarea parolei a eșuat",
+  "needHelp": "Ai nevoie de ajutor?",
+  "helpQuestion": "Probleme cu autentificarea sau înregistrarea?",
+  "helpDescription": "Contactați-ne prin WhatsApp și descrieți exact ce nu funcționează. Vom răspunde cât mai curând!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Solicitare prin aplicația ICD360S",
+  "whatsappMessage": "Bună, am o problemă cu aplicația ICD360S. ",
+  "imprint": "Impressum",
+  "privacy": "Politica de Confidențialitate",
+  "statutes": "Statut",
+  "revocation": "Drept de Retragere",
+  "cancellation": "Anulare",
+  "allRightsReserved": "Toate drepturile rezervate.",
+  "enterCredentials": "Introduceți numărul de membru și parola",
+  "appointments": "Programări",
+  "tickets": "Tichete",
+  "liveChat": "Chat Live",
+  "notifications": "Notificări",
+  "myProfile": "Profilul Meu",
+  "logout": "Deconectare",
+  "goodMorning": "Bună dimineața",
+  "goodDay": "Bună ziua",
+  "goodEvening": "Bună seara",
+  "goodNight": "Noapte bună",
+  "welcomeToICD": "Bun venit la ICD360S e.V!",
+  "accountCreatedSuccessfully": "Contul dvs. a fost creat cu succes.",
+  "today": "Astăzi",
+  "membershipFeeDue": "Taxa de membru este scadentă",
+  "pleaseTransferAnnualFee": "Vă rugăm să transferați cotizația anuală.",
+  "newBadge": "Nou",
+  "close": "Închide",
+  "membership": "Membru",
+  "myAppointments": "Programările mele",
+  "appointmentsLoadingReady": "Se încarcă programări - API gata!",
+  "priority": "Prioritate",
+  "messageLabel": "Mesaj",
+  "createdOn": "Creat",
+  "handler": "Responsabil",
+  "reportProblems": "Raportați probleme",
+  "reportProblem": "Raportați problemă",
+  "weRespondIn24Hours": "Vom răspunde în maxim 24 de ore!",
+  "everythingOk": "Totul în regulă!",
+  "haveProblemWeHelp": "Aveți o problemă?\nNe ocupăm noi!",
+  "myMembership": "Calitatea mea de membru",
+  "managePersonalDataAndFee": "Gestionați datele personale și cotizația",
+  "myAppointmentsTitle": "Programările mele",
+  "appointmentsDescription": "Aici puteți vedea programările viitoare.\nPuteți confirma participarea sau refuza.",
+  "loadAppointments": "Încarcă programări",
+  "myTickets": "Ticketele mele",
+  "newTicket": "Ticket nou",
+  "noOpenTickets": "Niciun ticket deschis",
+  "haveQuestionCreateTicket": "Aveți o întrebare sau problemă?\nCreați un ticket nou.",
+  "whatIsTheProblem": "Care este problema?",
+  "describeTheProblem": "Descrieți problema",
+  "howUrgentIsIt": "Cât de urgent este?",
+  "low": "Scăzut",
+  "medium": "Mediu",
+  "high": "Ridicat",
+  "submit": "Trimite",
+  "fillSubjectAndMessage": "Vă rugăm să completați subiectul și mesajul",
+  "ticketCreated": "Ticketul a fost creat",
+  "errorCreatingTicket": "Eroare la crearea ticketului",
+  "verified": "Verificat",
+  "account": "Cont",
+  "myDevices": "Dispozitivele mele",
+  "changeEmail": "Schimbă email",
+  "changePassword": "Schimbă parola",
+  "newEmailAddress": "Adresă email nouă",
+  "currentPassword": "Parola curentă",
+  "saveEmail": "Salvează email",
+  "savePassword": "Salvează parola",
+  "deviceLoggedOut": "Dispozitiv deconectat",
+  "passwordChangedSuccessfully": "Parola a fost schimbată cu succes",
+  "emailChangedSuccessfully": "Email-ul a fost schimbat cu succes",
+  "errorChangingPassword": "Eroare la schimbarea parolei",
+  "errorChangingEmail": "Eroare la schimbarea email-ului",
+  "validEmailRequired": "Vă rugăm să introduceți o adresă email validă",
+  "passwordTooShort": "Parola trebuie să aibă cel puțin 6 caractere",
+  "maxDevicesReached": "Sunteți conectat pe maximum 3 dispozitive.",
+  "loggedInOnDevices": "Sunteți conectat pe {count} din 3 dispozitive.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Nicio sesiune activă",
+  "logoutFromDevice": "Deconectare de pe acest dispozitiv",
+  "confirmLogoutDevice": "Deconectare dispozitiv?",
+  "confirmLogoutMessage": "Doriți să vă deconectați de pe acest dispozitiv?\n\nVa trebui să vă conectați din nou pentru a folosi acest dispozitiv.",
+  "ipAddress": "IP",
+  "platform": "Platformă",
+  "trialWarningUrgentTitle": "Atenție: Mai {days, plural, =1{este 1 zi} other{sunt {days} zile}} până la suspendarea contului!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Contul dvs. nu este încă verificat",
+  "trialWarningDescription": "Vă rugăm să completați datele în \"Profilul meu\". După 30 de zile, contul va fi suspendat automat.",
+  "trialDaysRemaining": "{days, plural, =1{1 zi} other{{days} zile}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Prezentare generală",
+  "member": "Membru",
+  "memberManagement": "Administrare membri",
+  "reportProblemTooltip": "Raportează problemă",
+  "newAppointmentsTitle": "Programări noi",
+  "youHaveNewAppointment": "Aveți o programare nouă.",
+  "youHaveNewAppointments": "Aveți {count} programări noi.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Memento: Programare mâine",
+  "tomorrowAppointment": "Mâine: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Aveți mâine {count} programări.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Programări astăzi",
+  "todayAppointment": "Astăzi: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Aveți astăzi {count} programări.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Memento plată",
+  "paymentReminderMessage": "Astăzi este ziua {day} a lunii – vă rugăm efectuați {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Ziua de plată (memento lunar)",
+  "updateAvailable": "Actualizare disponibilă",
+  "newVersionAvailable": "O nouă versiune este disponibilă: {version}",
+  "currentVersionLabel": "Versiunea curentă: {version}",
+  "changes": "Modificări:",
+  "downloadProgress": "Descărcare: {percent}%",
+  "installationStarting": "Instalarea se inițiază...",
+  "appWillRestart": "Aplicația se va reporni automat.",
+  "later": "Mai târziu",
+  "updateNow": "Actualizează acum",
+  "downloading": "Se descarcă...",
+  "downloadFailed": "Descărcarea a eșuat. Vă rugăm încercați mai târziu.",
+  "searchingForUpdates": "Se caută actualizări...",
+  "appUpToDate": "Aplicația este la zi",
+  "updateCheckError": "Eroare la verificarea actualizării",
+  "changelog": "Jurnal de modificări",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Programare confirmată",
+  "terminDeclined": "Programare refuzată",
+  "terminRescheduleRequested": "Reprogramare solicitată",
+  "statusConfirmed": "Confirmat",
+  "statusDeclined": "Refuzat",
+  "statusRescheduling": "Reprogramare",
+  "statusPending": "În așteptare",
+  "categoryVorstandssitzung": "Ședință de conducere",
+  "categoryMitgliederversammlung": "Adunare generală",
+  "categorySchulung": "Instruire",
+  "categorySonstiges": "Altele",
+  "openCount": "{count} deschise",
+  "refresh": "Actualizare",
+  "filterUpcoming": "Viitoare",
+  "filterPast": "Trecute",
+  "filterAll": "Toate",
+  "noUpcomingAppointments": "Nu sunt programări viitoare",
+  "noPastAppointments": "Nu sunt programări trecute",
+  "noAppointmentsAvailable": "Nu există programări",
+  "appointmentsShownHere": "Programările dvs. vor fi afișate aici",
+  "dateLabel": "Data",
+  "timeLabel": "Ora",
+  "locationLabel": "Locație",
+  "createdByLabel": "Creat de",
+  "descriptionLabel": "Descriere",
+  "ticketLabel": "Tichet",
+  "yourStatus": "Statusul dvs.: ",
+  "reasonLabel": "Motiv: {reason}",
+  "durationMinutes": "{minutes} min",
+  "confirm": "Confirmă",
+  "decline": "Refuză",
+  "reschedule": "Reprogramează",
+  "requestReschedule": "Solicită reprogramare",
+  "appointmentLabel": "Programare: {title}",
+  "rescheduleReason": "Motiv pentru reprogramare *",
+  "rescheduleReasonHint": "Vă rugăm indicați un motiv...",
+  "pleaseProvideReason": "Vă rugăm indicați un motiv",
+  "request": "Solicită",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Deschis",
+  "ticketStatusInProgress": "În lucru",
+  "ticketStatusWaitingMember": "Se așteaptă membru",
+  "ticketStatusWaitingStaff": "Se așteaptă personal",
+  "ticketStatusWaitingAuthority": "Se așteaptă autoritate",
+  "ticketStatusDone": "Rezolvat",
+  "ticketPriorityHigh": "Ridicată",
+  "ticketPriorityMedium": "Medie",
+  "ticketPriorityLow": "Scăzută",
+  "comments": "Comentarii",
+  "documents": "Documente",
+  "details": "Detalii",
+  "replySent": "Răspuns trimis",
+  "sendError": "Eroare la trimitere",
+  "uploading": "Se încarcă...",
+  "fileUploaded": "{filename} încărcat",
+  "uploadFailed": "Încărcare eșuată",
+  "openError": "Eroare la deschidere",
+  "noRepliesYet": "Încă nu sunt răspunsuri",
+  "waitingForSupport": "Se așteaptă răspuns de la suport",
+  "writeReply": "Scrieți un răspuns...",
+  "attachFile": "Atașați fișier",
+  "documentsCount": "Documente ({count})",
+  "upload": "Încarcă",
+  "noDocuments": "Nu există documente",
+  "allowedFormats": "Formate permise: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Mesajul dvs.:",
+  "translation": "Traducere",
+  "original": "Original",
+  "originalText": "Text original",
+  "autoTranslated": "Tradus automat",
+  "originalTapTranslation": "Text original · Atingeți pentru traducere",
+  "translatedTapOriginal": "Tradus · Atingeți pentru original",
+  "justNow": "Chiar acum",
+  "minutesAgo": "acum {minutes} min",
+  "hoursAgo": "acum {hours} ore",
+  "daysAgo": "acum {days} {days, plural, =1{zi} other{zile}}",
+  "createdLabel": "Creat",
+  "updatedLabel": "Actualizat",
+  "handlerLabel": "Responsabil",
+  "doneLabel": "Rezolvat",
+  "newTicketTitle": "Tichet nou",
+  "categoryOptional": "Categorie (opțional)",
+  "selectCategory": "Alegeți",
+  "subjectLabel": "Subiect",
+  "fillAllFields": "Vă rugăm completați toate câmpurile",
+  "ticketCreatedId": "Tichet #{id} creat",
+  "priorityLabel": "Prioritate: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Suport offline",
+  "lastSeenSeconds": "Activ acum câteva secunde",
+  "lastSeenMinutes": "Activ acum {minutes} {minutes, plural, =1{minut} other{minute}}",
+  "lastSeenHours": "Activ acum {hours} {hours, plural, =1{oră} other{ore}}",
+  "lastSeenDays": "Activ acum {days} {days, plural, =1{zi} other{zile}}",
+  "online": "Online",
+  "callSupport": "Apelează",
+  "typeMessage": "Scrieți un mesaj...",
+  "callBusy": "Suportul este ocupat",
+  "callRejected": "Apelul a fost respins",
+  "callFailed": "Apelul nu s-a putut conecta",
+  "callEnded": "Apel încheiat",
+  "callSupportBusy": "Suportul este deja într-un alt apel",
+  "errorStartingChat": "Eroare la pornirea chat-ului",
+  "errorStartingCall": "Eroare la pornirea apelului",
+  "errorConnecting": "Eroare de conectare",
+  "errorAcceptingCall": "Eroare la acceptarea apelului",
+  "errorDownloading": "Eroare la descărcare",
+  "errorUploading": "Eroare la încărcare",
+  "errorSending": "Eroare la trimitere",
+  "errorPickingPhotos": "Eroare la selectarea pozelor",
+  "errorPickingFiles": "Eroare la selectarea fișierelor",
+  "errorTakingPhoto": "Eroare la fotografiere",
+  "fileNotLoaded": "Fișierul nu a putut fi încărcat",
+  "attachmentIdMissing": "ID atașament lipsă",
+  "camera": "Cameră",
+  "gallery": "Galerie",
+  "file": "Fișier",
+  "typingIndicator": "{name} scrie...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Mesaj nou de la",
+  "notifUrgentPrefix": "URGENT",
+  "notifUrgentMessage": "MESAJ URGENT",
+  "notifIncomingCall": "Apel primit",
+  "notifCallingYou": "vă sună...",
+  "notifUpdateAvailable": "Actualizare disponibilă",
+  "notifVersionAvailable": "este acum disponibilă",
+  "notifConnected": "Conectat",
+  "notifDisconnected": "Deconectat",
+  "notifConnectedBody": "Sunteți conectat la server.",
+  "notifDisconnectedBody": "Conexiunea la server a fost întreruptă.",
+  "notifError": "Eroare",
+  "retry": "Încearcă din nou",
+  "save": "Salvează",
+  "accept": "Acceptă",
+  "selectFile": "Selectează fișier",
+  "dataLoadingText": "Se încarcă datele...",
+  "dataSavedSuccess": "Datele au fost salvate cu succes",
+  "errorSaving": "Eroare la salvare",
+  "errorLoading": "Eroare la încărcare",
+  "savedFilename": "Salvat: {filename}",
+  "logsCopied": "Loguri copiate!",
+  "diagnosticDataTitle": "Date de diagnosticare",
+  "diagnosticDescription": "Doriți să trimiteți date anonime de diagnosticare pentru a îmbunătăți aplicația?",
+  "noThanks": "Nu, mulțumesc",
+  "yesEnable": "Da, activează",
+  "passwordMinEightChars": "Parola trebuie să aibă cel puțin 8 caractere",
+  "passwordChangeSuccess": "Parola a fost schimbată cu succes",
+  "emailChangeError": "Eroare la schimbarea emailului",
+  "acceptDocumentCheckbox": "Am citit și accept documentul.",
+  "loadingErrorGeneric": "Eroare la încărcare: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Apel primit",
+  "ringingFor": "Sună de {seconds}s",
+  "rejectCall": "Respinge",
+  "acceptCall": "Acceptă",
+  "unmute": "Activează sunetul",
+  "mute": "Dezactivează sunetul",
+  "hangUp": "Închide",
+  "calling": "Se apelează...",
+  "autoRejectIn": "Respingere automată în {seconds} secunde",
+  "speakerOn": "Difuzor",
+  "speakerOff": "Cască",
+  "micMuted": "Mut",
+  "micOn": "Microfon",
+  "connectionExcellent": "Excelentă",
+  "connectionGood": "Bună",
+  "connectionWeak": "Slabă",
+  "connectionLost": "Deconectat",
+  "personalData": "Date personale",
+  "personalDataSubtitle": "Nume, prenume, adresă",
+  "membershipFee": "Cotizație",
+  "annualFeeYear": "Cotizație anuală {year}",
+  "amount": "Sumă:",
+  "dueBy": "Scadent până la:",
+  "paid": "Plătit",
+  "versionHistory": "Istoricul versiunilor",
+  "lastUpdated": "Ultima actualizare: {date}",
+  "noVersionHistory": "Nu există istoric de versiuni",
+  "failedLoadChangelog": "Nu s-a putut încărca istoricul",
+  "callMember": "Apelează membrul",
+  "closeConversation": "Închide conversația",
+  "chatOffline": "Offline",
+  "attachFiles": "Atașează fișiere (max. 10, 50MB)",
+  "conversationClosed": "Această conversație a fost închisă",
+  "noMessages": "Fără mesaje",
+  "goBack": "Înapoi",
+  "goForward": "Înainte",
+  "homePage": "Pagina principală",
+  "firstNameLabel": "Prenume",
+  "lastNameLabel": "Nume",
+  "streetLabel": "Strada",
+  "houseNumberLabel": "Nr.",
+  "postalCodeLabel": "Cod poștal",
+  "cityLabel": "Localitate",
+  "phoneMobileLabel": "Telefon (Mobil)",
+  "phoneLandlineLabel": "Telefon (Fix)",
+  "newEmailLabel": "Adresă email nouă",
+  "currentPasswordLabel": "Parola curentă",
+  "newPasswordLabel": "Parola nouă",
+  "confirmPasswordLabel": "Confirmă parola",
+  "emailChangedSuccess": "Email schimbat cu succes",
+  "newPasswordMinChars": "Parolă nouă (min. 6 caractere)",
+  "reasonLabel2": "Motiv",
+  "downloadFailed2": "Descărcare eșuată",
+  "downloadTooltip": "Descarcă",
+  "connectionErrorGeneric": "Eroare de conexiune",
+  "copyLogs": "Copiază loguri",
+  "deleteLogs": "Șterge loguri",
+  "autoScrollOn": "Derulare automată ACTIVATĂ",
+  "autoScrollOff": "Derulare automată DEZACTIVATĂ",
+  "unknownValue": "Necunoscut",
+  "bankTransfer": "Transfer bancar",
+  "standingOrder": "Ordin permanent",
+  "payment": "Plată",
+  "warningType_ermahnung": "Avertisment",
+  "warningType_abmahnung": "Somație",
+  "warningType_letzte": "Ultima somație",
+  "warningsTotal": "Total: {count}",
+  "warningsErmahnung": "Avertismente: {count}",
+  "warningsAbmahnung": "Somații: {count}",
+  "warningsLetzte": "Ultimele: {count}",
+  "noWarnings": "Nu există avertismente",
+  "noWarningsDescription": "Nu aveți avertismente în acest moment.",
+  "createdBy": "Creat de: {name}",
+  "monthJan": "Ian",
+  "monthFeb": "Feb",
+  "monthMar": "Mar",
+  "monthApr": "Apr",
+  "monthMay": "Mai",
+  "monthJun": "Iun",
+  "monthJul": "Iul",
+  "monthAug": "Aug",
+  "monthSep": "Sep",
+  "monthOct": "Oct",
+  "monthNov": "Nov",
+  "monthDec": "Dec",
+  "stufe1_name": "Date personale",
+  "stufe2_name": "Tip de membru",
+  "stufe3_name": "Situație financiară",
+  "stufe4_name": "Metoda de plată",
+  "stufe5_name": "Începutul membriei",
+  "stufe6_name": "Statut",
+  "stufe7_name": "Politica de confidențialitate",
+  "stufe8_name": "Dreptul de retragere",
+  "memberType_ordentlich": "Membru ordinar",
+  "memberType_foerder": "Membru susținător",
+  "memberType_ehren": "Membru de onoare",
+  "memberDesc_ordentlich": "Membru activ cu drept de vot. Participă la serviciile asociației.",
+  "memberDesc_foerder": "Susține asociația prin contribuții. Poate participa la adunarea generală cu vot consultativ.",
+  "memberDesc_ehren": "Are drepturile unui membru ordinar fără obligația de a plăti cotizații.",
+  "payMethod_ueberweisung": "Transfer bancar",
+  "payMethod_dauerauftrag": "Ordin permanent",
+  "verifyStatus_geprueft": "Verificat",
+  "verifyStatus_ausgefuellt": "Completat",
+  "verifyStatus_abgelehnt": "Respins",
+  "verifyStatus_offen": "Deschis",
+  "fillRequiredFields": "Vă rugăm completați toate câmpurile obligatorii.",
+  "personalDataSaved": "Date personale salvate",
+  "selectMemberType": "Selectați un tip de membru.",
+  "memberTypeSaved": "Tip de membru salvat",
+  "selectOption": "Selectați o opțiune.",
+  "financialSaved": "Situație financiară salvată",
+  "selectPaymentMethod": "Selectați o metodă de plată.",
+  "paymentDataSaved": "Date de plată salvate",
+  "selectDate": "Selectați o dată.",
+  "membershipStartSaved": "Începutul membriei salvat",
+  "fileTooLarge": "Fișier prea mare (max. 10 MB).",
+  "leistungsbescheidUploaded": "Certificat încărcat cu succes",
+  "verificationProgress": "Progres verificare",
+  "notApplicable": "Nu se aplică",
+  "socialBenefitsExempt": "Metoda de plată nu este necesară pentru beneficiarii de ajutor social.",
+  "locked": "Blocat",
+  "completePreviousStep": "Completați mai întâi pasul {step}.",
+  "rejectedNote": "Respins: {note}",
+  "waitingForReview": "Se așteaptă verificarea conducerii.",
+  "stepApproved": "Acest pas a fost verificat și aprobat.",
+  "changesViaChat": "Modificări posibile doar prin Live Chat.",
+  "firstNameRequired": "Prenume *",
+  "lastNameRequired": "Nume *",
+  "birthDateLabel": "Data nașterii *",
+  "streetRequired": "Strada *",
+  "houseNumberRequired": "Nr. *",
+  "cityRequired": "Localitate *",
+  "phoneRequired": "Număr de telefon *",
+  "phonePurpose": "Scop: Contact când nu sunteți accesibil prin aplicație",
+  "selectMemberTypePrompt": "Selectați tipul de membru dorit:",
+  "financialExplanation": "Pentru a verifica dacă aveți dreptul la o reducere a cotizației, avem nevoie de următoarele informații.",
+  "socialBenefitsQuestion": "Primiți în prezent ajutor social?",
+  "optionBuergergeld": "Da, ajutor social (Centrul de Muncă)",
+  "optionSozialamt": "Da, prestații sociale (Asistență Socială)",
+  "optionNoBenefits": "Nu, nu primesc ajutor social",
+  "feeExempt": "Cotizația lunară: 0,00 €/lună",
+  "uploadLeistungsbescheid": "Încarcă certificat",
+  "uploadLeistungsbescheidHint": "Încărcați un certificat actual în 14 zile pentru a confirma scutirea.",
+  "allowedFormatsUpload": "Formate permise: PDF, JPG, PNG (max. 10 MB)",
+  "feeRegular": "Cotizația lunară: 25,00 €/lună",
+  "paymentDayReminder": "Veți fi notificat în fiecare {day} a lunii.",
+  "membershipStartPrompt": "Alegeți când să înceapă calitatea de membru.",
+  "optionAfterVerification": "După finalizarea verificării",
+  "optionAfterVerificationDesc": "Calitatea de membru începe de la confirmarea conducerii.",
+  "optionRetroFoundation": "Retroactiv la data înființării (01.08.2025)",
+  "optionRetroFoundationDesc": "Deveniți membru retroactiv de la înființarea asociației.",
+  "optionRetroCustom": "Retroactiv la altă dată",
+  "optionRetroCustomDesc": "Alegeți o dată între 01.08.2025 și astăzi.",
+  "selectDateLabel": "Selectați data",
+  "selectDateHint": "Selectați data...",
+  "dateNotBefore": "Nu înainte de 01.08.2025 (data înființării)",
+  "feeExemptRetro": "Scutit: 0,00 € retroactiv.\nDoar data membriei este setată retroactiv.",
+  "retroactiveFees": "Cotizații retroactive",
+  "retroFeeCalculation": "Perioadă: {from} – {to}\nLuni: {months}\nCotizație: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Vă rugăm citiți statutul asociației.",
+  "pleaseReadDatenschutz": "Vă rugăm citiți politica de confidențialitate.",
+  "pleaseReadWiderruf": "Vă rugăm citiți dreptul de retragere.",
+  "acceptedAtRegistration": "Acceptat la înregistrare",
+  "confirmedByBoard": "Va fi confirmat după verificarea conducerii.",
+  "docSatzung": "Statut",
+  "docDatenschutz": "Politica de confidențialitate",
+  "docWiderruf": "Dreptul de retragere",
+  "acceptedAtRegCount": "Acceptat la înregistrare ({count}/3)",
+  "acceptedOn": "Acceptat pe {date}",
+  "notAccepted": "Neacceptat",
+  "statusAccepted": "Acceptat",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Număr de membru prea lung (max 20 caractere)",
+  "onlyUppercaseAndNumbers": "Doar litere mari și cifre sunt permise",
+  "passwordTooLong": "Parola prea lungă (max 100 caractere)",
+  "nameTooLong": "Numele prea lung (max 100 caractere)",
+  "emailTooLong": "E-mail prea lung (max 255 caractere)",
+  "legalAcknowledgePrefix": "Am luat cunoștință de ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " a ICD360S e.V. și le recunosc ca obligatorii.",
+  "legalPleaseReadFirst": "(vă rugăm citiți mai întâi)",
+  "statusActive": "Activ",
+  "statusSuspended": "Suspendat",
+  "statusNew": "Nou",
+  "statusCancelled": "Anulat",
+  "statusDeleted": "Șters",
+  "roleMitglied": "Membru",
+  "roleVorsitzer": "Președinte",
+  "roleStellvertreter": "Vicepreședinte",
+  "roleSchatzmeister": "Trezorier",
+  "roleSchriftfuehrer": "Secretar",
+  "roleBeisitzer": "Asesor",
+  "roleKassierer": "Casier",
+  "roleKassenpruefer": "Auditor",
+  "roleEhrenamtlich": "Voluntar",
+  "roleMitgliedergruender": "Membru Fondator",
+  "roleEhrenmitglied": "Membru de Onoare",
+  "roleFoerdermitglied": "Membru Susținător",
+  "memberTypeNotSet": "Nu a fost încă stabilit",
+  "payMethodSepa": "Debit direct SEPA",
+  "labelStatus": "Stare",
+  "labelMemberNumber": "Număr de membru",
+  "labelRole": "Rol",
+  "labelMemberType": "Tip de membru",
+  "labelPaymentMethod": "Metodă de plată",
+  "labelRegisteredOn": "Înregistrat la",
+  "labelLastLogin": "Ultima autentificare",
+  "labelMemberSince": "Membru din",
+  "neverLoggedIn": "Niciodată",
+  "notActivatedYet": "Nu a fost încă activat",
+  "tabVerification": "Verificare",
+  "tabWarnings": "Avertismente",
+  "tabDocuments": "Documente",
+  "tabMembership": "Membru",
+  "pleaseEnterFirstName": "Introduceți prenumele",
+  "pleaseEnterLastName": "Introduceți numele de familie",
+  "noFileDataReceived": "Nu s-au primit date",
+  "openFile": "Deschide",
+  "diagnosticErrors": "Rapoarte de erori pentru îmbunătățire",
+  "diagnosticAnonymousStats": "Statistici de utilizare anonime",
+  "diagnosticPerformance": "Date de performanță ale aplicației",
+  "noMicrophoneError": "Nu s-a găsit niciun microfon. Conectați un microfon și încercați din nou.",
+  "startConversation": "Începeți o conversație!",
+  "staffWillReply": "Un angajat vă va răspunde în curând.",
+  "inCall": "În apel...",
+  "registration": "Înregistrare",
+  "deactivation": "Dezactivare",
+  "deactivatedOn": "Dezactivat la",
+  "accountAutoSuspend": "Conturile care nu sunt verificate în 30 de zile vor fi suspendate automat.",
+  "ipClean": "IP curat - nelistat",
+  "documentsProvidedByBoard": "Documentele sunt furnizate de consiliu.",
+  "noDocumentsAvailable": "Nu există documente",
+  "noDocumentsDescription": "Nu au fost încă furnizate documente pentru dvs.",
+  "uploadedBy": "Încărcat de: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} etape completate",
+  "dayOfMonth": "{day} a lunii",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Schimbă {field}",
+  "openDocument": "Deschide {name}",
+  "helpImproveApp": "Doriți să ne ajutați să îmbunătățim aplicația?",
+  "noPersonalDataCollected": "Nu se colectează date personale. Această setare poate fi modificată oricând.",
+  "logEntries": "{count} înregistrări",
+  "noLogs": "Fără jurnale",
+  "newLoginDetected": "Autentificare nouă detectată",
+  "waitingForMember": "Se așteaptă membrul",
+  "waitingForStaff": "Se așteaptă personalul",
+  "waitingForAuthority": "Se așteaptă autoritatea",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

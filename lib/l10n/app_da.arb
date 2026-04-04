@@ -1,0 +1,919 @@
+{
+  "@@locale": "da",
+  "appTitle": "ICD360S e.V - Medlemsportal",
+  "memberPortal": "Medlemsportal",
+  "welcomeLoading": "Indlæser...",
+  "welcomeAutoLogin": "Automatisk login...",
+  "login": "Log ind",
+  "register": "Registrer",
+  "becomeMember": "Bliv medlem",
+  "memberNumber": "Medlemsnummer",
+  "memberNumberHint": "Indtast medlemsnummer",
+  "password": "Adgangskode",
+  "passwordHint": "Indtast adgangskode",
+  "confirmPassword": "Bekræft adgangskode",
+  "confirmPasswordHint": "Bekræft adgangskode",
+  "newPassword": "Ny adgangskode",
+  "newPasswordHint": "Indtast ny adgangskode",
+  "saveCredentials": "Gem loginoplysninger",
+  "autoLogin": "Automatisk login",
+  "forgotPassword": "Glemt adgangskode?",
+  "firstName": "Fornavn og efternavn",
+  "firstNameHint": "Indtast for- og efternavn",
+  "nameMinLength": "Navnet skal have mindst 2 tegn",
+  "nameOnlyLetters": "Kun bogstaver og bindestreger tilladt",
+  "email": "E-mailadresse",
+  "emailHint": "Indtast e-mail",
+  "emailInvalid": "Indtast en gyldig e-mailadresse",
+  "passwordMinLength": "Adgangskoden skal have mindst 6 tegn",
+  "passwordsNotMatch": "Adgangskoderne matcher ikke",
+  "recoveryCode": "Gendannelseskode (6 cifre)",
+  "recoveryCodeHelper": "Husk denne kode til gendannelse af adgangskode",
+  "recoveryCodeHint": "Indtast gendannelseskode",
+  "recoveryCodeInvalid": "Koden skal have præcis 6 cifre",
+  "loginFailed": "Login mislykkedes",
+  "registrationFailed": "Registrering mislykkedes",
+  "connectionError": "Forbindelsesfejl: {error}",
+  "registrationSuccess": "Registrering lykkedes!\n\nDit medlemsnummer: {memberNumber}\n\nHusk dette nummer til login.",
+  "tooManyDevices": "For mange enheder",
+  "maxDevicesMessage": "Du er allerede logget ind på 3 enheder.\nVælg en enhed at logge ud fra:",
+  "unknownDevice": "Ukendt enhed",
+  "unknown": "Ukendt",
+  "logoutError": "Logud-fejl",
+  "error": "Fejl: {error}",
+  "cancel": "Annuller",
+  "resetPassword": "Nulstil adgangskode",
+  "forgotPasswordTitle": "Glemt adgangskode",
+  "forgotPasswordDescription": "Indtast dit medlemsnummer og gendannelseskoden, du oprettede ved registrering.",
+  "passwordResetSuccess": "Adgangskode nulstillet!\n\nDu kan nu logge ind med din nye adgangskode.",
+  "passwordResetFailed": "Nulstilling af adgangskode mislykkedes",
+  "needHelp": "Brug for hjælp?",
+  "helpQuestion": "Problemer med login eller registrering?",
+  "helpDescription": "Kontakt os via WhatsApp og beskriv, hvad der ikke virker. Vi svarer hurtigst muligt!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Forespørgsel via ICD360S-appen",
+  "whatsappMessage": "Hej, jeg har et problem med ICD360S-appen. ",
+  "imprint": "Impressum",
+  "privacy": "Privatlivspolitik",
+  "statutes": "Vedtægter",
+  "revocation": "Fortrydelsesret",
+  "cancellation": "Opsigelse",
+  "allRightsReserved": "Alle rettigheder forbeholdes.",
+  "enterCredentials": "Indtast medlemsnummer og adgangskode",
+  "appointments": "Aftaler",
+  "tickets": "Sager",
+  "liveChat": "Live Chat",
+  "notifications": "Notifikationer",
+  "myProfile": "Min Profil",
+  "logout": "Log ud",
+  "goodMorning": "God morgen",
+  "goodDay": "God dag",
+  "goodEvening": "God aften",
+  "goodNight": "Godnat",
+  "welcomeToICD": "Velkommen til ICD360S e.V!",
+  "accountCreatedSuccessfully": "Din konto er blevet oprettet.",
+  "today": "I dag",
+  "membershipFeeDue": "Medlemskontingent forfalden",
+  "pleaseTransferAnnualFee": "Vær venlig at overføre det årlige kontingent.",
+  "newBadge": "Ny",
+  "close": "Luk",
+  "membership": "Medlemskab",
+  "myAppointments": "Mine aftaler",
+  "appointmentsLoadingReady": "Indlæser aftaler - API klar!",
+  "priority": "Prioritet",
+  "messageLabel": "Besked",
+  "createdOn": "Oprettet",
+  "handler": "Håndterer",
+  "reportProblems": "Rapporter problemer",
+  "reportProblem": "Rapporter problem",
+  "weRespondIn24Hours": "Vi svarer dig inden for maksimalt 24 timer!",
+  "everythingOk": "Alt OK!",
+  "haveProblemWeHelp": "Har du et problem?\nVi tager os af det!",
+  "myMembership": "Mit medlemskab",
+  "managePersonalDataAndFee": "Administrer personlige data og kontingent",
+  "myAppointmentsTitle": "Mine aftaler",
+  "appointmentsDescription": "Her kan du se dine kommende aftaler.\nDu kan bekræfte din deltagelse eller afvise.",
+  "loadAppointments": "Indlæs aftaler",
+  "myTickets": "Mine sager",
+  "newTicket": "Ny sag",
+  "noOpenTickets": "Ingen åbne sager",
+  "haveQuestionCreateTicket": "Har du et spørgsmål eller problem?\nOpret en ny sag.",
+  "whatIsTheProblem": "Hvad er problemet?",
+  "describeTheProblem": "Beskriv problemet",
+  "howUrgentIsIt": "Hvor hastende er det?",
+  "low": "Lav",
+  "medium": "Mellem",
+  "high": "Høj",
+  "submit": "Send",
+  "fillSubjectAndMessage": "Udfyld emne og besked",
+  "ticketCreated": "Sag oprettet",
+  "errorCreatingTicket": "Fejl ved oprettelse af sag",
+  "verified": "Verificeret",
+  "account": "Konto",
+  "myDevices": "Mine enheder",
+  "changeEmail": "Skift e-mail",
+  "changePassword": "Skift adgangskode",
+  "newEmailAddress": "Ny e-mailadresse",
+  "currentPassword": "Nuværende adgangskode",
+  "saveEmail": "Gem e-mail",
+  "savePassword": "Gem adgangskode",
+  "deviceLoggedOut": "Enhed logget ud",
+  "passwordChangedSuccessfully": "Adgangskode ændret",
+  "emailChangedSuccessfully": "E-mail ændret",
+  "errorChangingPassword": "Fejl ved ændring af adgangskode",
+  "errorChangingEmail": "Fejl ved ændring af e-mail",
+  "validEmailRequired": "Angiv en gyldig e-mailadresse",
+  "passwordTooShort": "Adgangskoden skal være mindst 6 tegn",
+  "maxDevicesReached": "Du er logget ind på maksimalt 3 enheder.",
+  "loggedInOnDevices": "Du er logget ind på {count} ud af 3 enheder.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Ingen aktive sessioner",
+  "logoutFromDevice": "Log ud fra denne enhed",
+  "confirmLogoutDevice": "Log ud fra enhed?",
+  "confirmLogoutMessage": "Vil du logge ud fra denne enhed?\n\nDu skal logge ind igen for at bruge denne enhed.",
+  "ipAddress": "IP",
+  "platform": "Platform",
+  "trialWarningUrgentTitle": "Advarsel: Kun {days, plural, =1{1 dag} other{{days} dage}} tilbage til kontosuspension!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Din konto er endnu ikke verificeret",
+  "trialWarningDescription": "Udfyld venligst dine oplysninger i \"Min profil\". Efter 30 dage vil din konto automatisk blive suspenderet.",
+  "trialDaysRemaining": "{days, plural, =1{1 dag} other{{days} dage}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Oversigt",
+  "member": "Medlem",
+  "memberManagement": "Medlemsstyring",
+  "reportProblemTooltip": "Rapporter problem",
+  "newAppointmentsTitle": "Nye aftaler",
+  "youHaveNewAppointment": "Du har en ny aftale.",
+  "youHaveNewAppointments": "Du har {count} nye aftaler.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Påmindelse: Aftale i morgen",
+  "tomorrowAppointment": "I morgen: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Du har {count} aftaler i morgen.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Aftaler i dag",
+  "todayAppointment": "I dag: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Du har {count} aftaler i dag.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Betalingspåmindelse",
+  "paymentReminderMessage": "I dag er den {day}. i måneden – gennemfør venligst {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Betalingsdag (månedlig påmindelse)",
+  "updateAvailable": "Opdatering tilgængelig",
+  "newVersionAvailable": "En ny version er tilgængelig: {version}",
+  "currentVersionLabel": "Nuværende version: {version}",
+  "changes": "Ændringer:",
+  "downloadProgress": "Download: {percent}%",
+  "installationStarting": "Installation starter...",
+  "appWillRestart": "Appen genstartes automatisk.",
+  "later": "Senere",
+  "updateNow": "Opdater nu",
+  "downloading": "Downloader...",
+  "downloadFailed": "Download mislykkedes. Prøv igen senere.",
+  "searchingForUpdates": "Søger efter opdateringer...",
+  "appUpToDate": "Appen er opdateret",
+  "updateCheckError": "Fejl ved søgning efter opdateringer",
+  "changelog": "Ændringslog",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Aftale bekræftet",
+  "terminDeclined": "Aftale afvist",
+  "terminRescheduleRequested": "Flytning anmodet",
+  "statusConfirmed": "Bekræftet",
+  "statusDeclined": "Afvist",
+  "statusRescheduling": "Flytning",
+  "statusPending": "Afventer",
+  "categoryVorstandssitzung": "Bestyrelsesmøde",
+  "categoryMitgliederversammlung": "Generalforsamling",
+  "categorySchulung": "Uddannelse",
+  "categorySonstiges": "Andet",
+  "openCount": "{count} åbne",
+  "refresh": "Opdater",
+  "filterUpcoming": "Kommende",
+  "filterPast": "Tidligere",
+  "filterAll": "Alle",
+  "noUpcomingAppointments": "Ingen kommende aftaler",
+  "noPastAppointments": "Ingen tidligere aftaler",
+  "noAppointmentsAvailable": "Ingen aftaler",
+  "appointmentsShownHere": "Dine aftaler vises her",
+  "dateLabel": "Dato",
+  "timeLabel": "Tid",
+  "locationLabel": "Sted",
+  "createdByLabel": "Oprettet af",
+  "descriptionLabel": "Beskrivelse",
+  "ticketLabel": "Sag",
+  "yourStatus": "Din status: ",
+  "reasonLabel": "Årsag: {reason}",
+  "durationMinutes": "{minutes} min",
+  "confirm": "Bekræft",
+  "decline": "Afvis",
+  "reschedule": "Flyt",
+  "requestReschedule": "Anmod om flytning",
+  "appointmentLabel": "Aftale: {title}",
+  "rescheduleReason": "Årsag til flytning *",
+  "rescheduleReasonHint": "Angiv en årsag...",
+  "pleaseProvideReason": "Angiv en årsag",
+  "request": "Anmod",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Åben",
+  "ticketStatusInProgress": "Under behandling",
+  "ticketStatusWaitingMember": "Venter på medlem",
+  "ticketStatusWaitingStaff": "Venter på medarbejder",
+  "ticketStatusWaitingAuthority": "Venter på myndighed",
+  "ticketStatusDone": "Afsluttet",
+  "ticketPriorityHigh": "Høj",
+  "ticketPriorityMedium": "Middel",
+  "ticketPriorityLow": "Lav",
+  "comments": "Kommentarer",
+  "documents": "Dokumenter",
+  "details": "Detaljer",
+  "replySent": "Svar sendt",
+  "sendError": "Fejl ved afsendelse",
+  "uploading": "Uploader...",
+  "fileUploaded": "{filename} uploadet",
+  "uploadFailed": "Upload mislykkedes",
+  "openError": "Fejl ved åbning",
+  "noRepliesYet": "Ingen svar endnu",
+  "waitingForSupport": "Venter på svar fra support",
+  "writeReply": "Skriv et svar...",
+  "attachFile": "Vedhæft fil",
+  "documentsCount": "Dokumenter ({count})",
+  "upload": "Upload",
+  "noDocuments": "Ingen dokumenter",
+  "allowedFormats": "Tilladte formater: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Din besked:",
+  "translation": "Oversættelse",
+  "original": "Original",
+  "originalText": "Originaltekst",
+  "autoTranslated": "Automatisk oversat",
+  "originalTapTranslation": "Original · Tryk for oversættelse",
+  "translatedTapOriginal": "Oversat · Tryk for original",
+  "justNow": "Lige nu",
+  "minutesAgo": "{minutes} min siden",
+  "hoursAgo": "{hours} timer siden",
+  "daysAgo": "{days} {days, plural, =1{dag} other{dage}} siden",
+  "createdLabel": "Oprettet",
+  "updatedLabel": "Opdateret",
+  "handlerLabel": "Behandler",
+  "doneLabel": "Afsluttet",
+  "newTicketTitle": "Ny sag",
+  "categoryOptional": "Kategori (valgfri)",
+  "selectCategory": "Vælg",
+  "subjectLabel": "Emne",
+  "fillAllFields": "Udfyld alle felter",
+  "ticketCreatedId": "Sag #{id} oprettet",
+  "priorityLabel": "Prioritet: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Support offline",
+  "lastSeenSeconds": "Aktiv for få sekunder siden",
+  "lastSeenMinutes": "Aktiv for {minutes} {minutes, plural, =1{minut} other{minutter}} siden",
+  "lastSeenHours": "Aktiv for {hours} {hours, plural, =1{time} other{timer}} siden",
+  "lastSeenDays": "Aktiv for {days} {days, plural, =1{dag} other{dage}} siden",
+  "online": "Online",
+  "callSupport": "Ring",
+  "typeMessage": "Skriv en besked...",
+  "callBusy": "Support er optaget",
+  "callRejected": "Opkald afvist",
+  "callFailed": "Opkald kunne ikke forbindes",
+  "callEnded": "Opkald afsluttet",
+  "callSupportBusy": "Support er allerede i et andet opkald",
+  "errorStartingChat": "Fejl ved start af chat",
+  "errorStartingCall": "Fejl ved start af opkald",
+  "errorConnecting": "Forbindelsesfejl",
+  "errorAcceptingCall": "Fejl ved accept af opkald",
+  "errorDownloading": "Fejl ved download",
+  "errorUploading": "Fejl ved upload",
+  "errorSending": "Fejl ved afsendelse",
+  "errorPickingPhotos": "Fejl ved valg af fotos",
+  "errorPickingFiles": "Fejl ved valg af filer",
+  "errorTakingPhoto": "Fejl ved optagelse af foto",
+  "fileNotLoaded": "Filen kunne ikke indlæses",
+  "attachmentIdMissing": "Vedhæftnings-ID mangler",
+  "camera": "Kamera",
+  "gallery": "Galleri",
+  "file": "Fil",
+  "typingIndicator": "{name} skriver...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Ny besked fra",
+  "notifUrgentPrefix": "HASTENDE",
+  "notifUrgentMessage": "HASTENDE BESKED",
+  "notifIncomingCall": "Indgående opkald",
+  "notifCallingYou": "ringer...",
+  "notifUpdateAvailable": "Opdatering tilgængelig",
+  "notifVersionAvailable": "er nu tilgængelig",
+  "notifConnected": "Forbundet",
+  "notifDisconnected": "Afbrudt",
+  "notifConnectedBody": "Du er nu forbundet til serveren.",
+  "notifDisconnectedBody": "Forbindelsen til serveren blev afbrudt.",
+  "notifError": "Fejl",
+  "retry": "Prøv igen",
+  "save": "Gem",
+  "accept": "Accepter",
+  "selectFile": "Vælg fil",
+  "dataLoadingText": "Indlæser data...",
+  "dataSavedSuccess": "Data gemt",
+  "errorSaving": "Fejl ved gemning",
+  "errorLoading": "Fejl ved indlæsning",
+  "savedFilename": "Gemt: {filename}",
+  "logsCopied": "Logs kopieret!",
+  "diagnosticDataTitle": "Diagnosticeringsdata",
+  "diagnosticDescription": "Vil du sende anonyme diagnosticeringsdata for at forbedre appen?",
+  "noThanks": "Nej tak",
+  "yesEnable": "Ja, aktiver",
+  "passwordMinEightChars": "Adgangskoden skal være mindst 8 tegn",
+  "passwordChangeSuccess": "Adgangskode ændret",
+  "emailChangeError": "Fejl ved ændring af e-mail",
+  "acceptDocumentCheckbox": "Jeg har læst og accepterer dokumentet.",
+  "loadingErrorGeneric": "Indlæsningsfejl: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Indgående opkald",
+  "ringingFor": "Ringer i {seconds}s",
+  "rejectCall": "Afvis",
+  "acceptCall": "Besvar",
+  "unmute": "Slå lyd til",
+  "mute": "Slå lyd fra",
+  "hangUp": "Læg på",
+  "calling": "Ringer...",
+  "autoRejectIn": "Automatisk afvisning om {seconds} sekunder",
+  "speakerOn": "Højttaler",
+  "speakerOff": "Ørestykke",
+  "micMuted": "Slået fra",
+  "micOn": "Mikrofon",
+  "connectionExcellent": "Fremragende",
+  "connectionGood": "God",
+  "connectionWeak": "Svag",
+  "connectionLost": "Afbrudt",
+  "personalData": "Personlige data",
+  "personalDataSubtitle": "Fornavn, efternavn, adresse",
+  "membershipFee": "Kontingent",
+  "annualFeeYear": "Årskontingent {year}",
+  "amount": "Beløb:",
+  "dueBy": "Forfald:",
+  "paid": "Betalt",
+  "versionHistory": "Versionshistorik",
+  "lastUpdated": "Sidst opdateret: {date}",
+  "noVersionHistory": "Ingen versionshistorik tilgængelig",
+  "failedLoadChangelog": "Kunne ikke indlæse ændringslog",
+  "callMember": "Ring til medlem",
+  "closeConversation": "Luk samtale",
+  "chatOffline": "Offline",
+  "attachFiles": "Vedhæft filer (maks. 10, 50MB)",
+  "conversationClosed": "Denne samtale er lukket",
+  "noMessages": "Ingen beskeder",
+  "goBack": "Tilbage",
+  "goForward": "Frem",
+  "homePage": "Hjem",
+  "firstNameLabel": "Fornavn",
+  "lastNameLabel": "Efternavn",
+  "streetLabel": "Gade",
+  "houseNumberLabel": "Nr.",
+  "postalCodeLabel": "Postnummer",
+  "cityLabel": "By",
+  "phoneMobileLabel": "Telefon (Mobil)",
+  "phoneLandlineLabel": "Telefon (Fastnet)",
+  "newEmailLabel": "Ny e-mailadresse",
+  "currentPasswordLabel": "Nuværende adgangskode",
+  "newPasswordLabel": "Ny adgangskode",
+  "confirmPasswordLabel": "Bekræft adgangskode",
+  "emailChangedSuccess": "E-mail ændret",
+  "newPasswordMinChars": "Ny adgangskode (min. 6 tegn)",
+  "reasonLabel2": "Årsag",
+  "downloadFailed2": "Download mislykkedes",
+  "downloadTooltip": "Download",
+  "connectionErrorGeneric": "Forbindelsesfejl",
+  "copyLogs": "Kopiér logfiler",
+  "deleteLogs": "Slet logfiler",
+  "autoScrollOn": "Automatisk rulning TIL",
+  "autoScrollOff": "Automatisk rulning FRA",
+  "unknownValue": "Ukendt",
+  "bankTransfer": "Bankoverførsel",
+  "standingOrder": "Fast overførsel",
+  "payment": "Betaling",
+  "warningType_ermahnung": "Advarsel",
+  "warningType_abmahnung": "Påmindelse",
+  "warningType_letzte": "Sidste advarsel",
+  "warningsTotal": "I alt: {count}",
+  "warningsErmahnung": "Advarsler: {count}",
+  "warningsAbmahnung": "Påmindelser: {count}",
+  "warningsLetzte": "Sidste: {count}",
+  "noWarnings": "Ingen advarsler",
+  "noWarningsDescription": "Du har ingen advarsler i øjeblikket.",
+  "createdBy": "Oprettet af: {name}",
+  "monthJan": "Jan",
+  "monthFeb": "Feb",
+  "monthMar": "Mar",
+  "monthApr": "Apr",
+  "monthMay": "Maj",
+  "monthJun": "Jun",
+  "monthJul": "Jul",
+  "monthAug": "Aug",
+  "monthSep": "Sep",
+  "monthOct": "Okt",
+  "monthNov": "Nov",
+  "monthDec": "Dec",
+  "stufe1_name": "Personlige data",
+  "stufe2_name": "Medlemstype",
+  "stufe3_name": "Økonomisk situation",
+  "stufe4_name": "Betalingsmetode",
+  "stufe5_name": "Medlemskabets start",
+  "stufe6_name": "Vedtægter",
+  "stufe7_name": "Privatlivspolitik",
+  "stufe8_name": "Fortrydelsesret",
+  "memberType_ordentlich": "Ordinært medlem",
+  "memberType_foerder": "Støttemedlem",
+  "memberType_ehren": "Æresmedlem",
+  "memberDesc_ordentlich": "Aktivt medlem med stemmeret. Deltager i foreningens tjenester (email, cloud, bureaukratisk støtte).",
+  "memberDesc_foerder": "Støtter foreningen med bidrag. Kan deltage i generalforsamlingen med rådgivende stemme, uden stemmeret eller valgbarhed til bestyrelsen.",
+  "memberDesc_ehren": "Har rettighederne som et ordinært medlem uden pligt til at betale kontingent. Udnævnt af generalforsamlingen eller bestyrelsen.",
+  "payMethod_ueberweisung": "Bankoverførsel",
+  "payMethod_dauerauftrag": "Fast overførsel",
+  "verifyStatus_geprueft": "Verificeret",
+  "verifyStatus_ausgefuellt": "Udfyldt",
+  "verifyStatus_abgelehnt": "Afvist",
+  "verifyStatus_offen": "Åben",
+  "fillRequiredFields": "Udfyld alle påkrævede felter.",
+  "personalDataSaved": "Personlige data gemt",
+  "selectMemberType": "Vælg en medlemstype.",
+  "memberTypeSaved": "Medlemstype gemt",
+  "selectOption": "Vælg en mulighed.",
+  "financialSaved": "Økonomisk situation gemt",
+  "selectPaymentMethod": "Vælg en betalingsmetode.",
+  "paymentDataSaved": "Betalingsdata gemt",
+  "selectDate": "Vælg en dato.",
+  "membershipStartSaved": "Medlemskabets start gemt",
+  "fileTooLarge": "Filen er for stor (maks. 10 MB).",
+  "leistungsbescheidUploaded": "Ydelsesattest uploadet",
+  "verificationProgress": "Verificeringsfremskridt",
+  "notApplicable": "Ikke relevant",
+  "socialBenefitsExempt": "Betalingsmetode ikke påkrævet for modtagere af sociale ydelser.",
+  "locked": "Låst",
+  "completePreviousStep": "Gennemfør venligst trin {step} først.",
+  "rejectedNote": "Afvist: {note}",
+  "waitingForReview": "Afventer gennemgang af bestyrelsen.",
+  "stepApproved": "Dette trin er gennemgået og godkendt.",
+  "changesViaChat": "Ændringer kun mulige via chat.",
+  "firstNameRequired": "Fornavn *",
+  "lastNameRequired": "Efternavn *",
+  "birthDateLabel": "Fødselsdato *",
+  "streetRequired": "Gade *",
+  "houseNumberRequired": "Nr. *",
+  "cityRequired": "By *",
+  "phoneRequired": "Telefonnummer *",
+  "phonePurpose": "Formål: Kontakt når ikke tilgængelig via appen",
+  "selectMemberTypePrompt": "Vælg den ønskede medlemstype:",
+  "financialExplanation": "For at kontrollere, om du er berettiget til reduktion af kontingent, har vi brug for følgende oplysninger. De bruges udelukkende til at fastsætte dit kontingent.",
+  "socialBenefitsQuestion": "Modtager du i øjeblikket sociale ydelser?",
+  "optionBuergergeld": "Ja, borgerydelse (Job Center)",
+  "optionSozialamt": "Ja, sociale ydelser (Socialforvaltningen)",
+  "optionNoBenefits": "Nej, jeg modtager ikke sociale ydelser",
+  "feeExempt": "Dit månedlige kontingent er: 0,00 €/måned",
+  "uploadLeistungsbescheid": "Upload ydelsesattest",
+  "uploadLeistungsbescheidHint": "Upload en aktuel ydelsesattest inden for 14 dage for at bekræfte kontingentfritagelsen.",
+  "allowedFormatsUpload": "Tilladte formater: PDF, JPG, PNG (maks. 10 MB)",
+  "feeRegular": "Dit månedlige kontingent er: 25,00 €/måned",
+  "paymentDayReminder": "Du vil blive mindet den {day}. i hver måned.",
+  "membershipStartPrompt": "Vælg hvornår dit medlemskab skal starte.",
+  "optionAfterVerification": "Efter verificering",
+  "optionAfterVerificationDesc": "Medlemskabet begynder fra dagen for bestyrelsens bekræftelse.",
+  "optionRetroFoundation": "Tilbagevirkende til stiftelsesdatoen (01.08.2025)",
+  "optionRetroFoundationDesc": "Du bliver tilbagevirkende medlem fra foreningens stiftelse.",
+  "optionRetroCustom": "Tilbagevirkende til en anden dato",
+  "optionRetroCustomDesc": "Vælg en dato mellem 01.08.2025 og i dag.",
+  "selectDateLabel": "Vælg dato",
+  "selectDateHint": "Vælg dato...",
+  "dateNotBefore": "Ikke før 01.08.2025 (stiftelsesdato)",
+  "feeExemptRetro": "Kontingentfritagelse: 0,00 € tilbagevirkende.\nKun medlemskabsdatoen sættes tilbagevirkende.",
+  "retroactiveFees": "Tilbagevirkende kontingenter",
+  "retroFeeCalculation": "Periode: {from} – {to}\nMåneder: {months}\nKontingent: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Læs foreningens vedtægter.",
+  "pleaseReadDatenschutz": "Læs privatlivspolitikken.",
+  "pleaseReadWiderruf": "Læs fortrydelsesretten.",
+  "acceptedAtRegistration": "Accepteret ved registrering",
+  "confirmedByBoard": "Bekræftes efter bestyrelsens gennemgang.",
+  "docSatzung": "Vedtægter",
+  "docDatenschutz": "Privatlivspolitik",
+  "docWiderruf": "Fortrydelsesret",
+  "acceptedAtRegCount": "Accepteret ved registrering ({count}/3)",
+  "acceptedOn": "Accepteret den {date}",
+  "notAccepted": "Ikke accepteret",
+  "statusAccepted": "Accepteret",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Medlemsnummer for langt (maks. 20 tegn)",
+  "onlyUppercaseAndNumbers": "Kun store bogstaver og tal er tilladt",
+  "passwordTooLong": "Adgangskode for lang (maks. 100 tegn)",
+  "nameTooLong": "Navn for langt (maks. 100 tegn)",
+  "emailTooLong": "E-mail for lang (maks. 255 tegn)",
+  "legalAcknowledgePrefix": "Jeg har læst ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " for ICD360S e.V. og anerkender dem som bindende.",
+  "legalPleaseReadFirst": "(læs venligst først)",
+  "statusActive": "Aktiv",
+  "statusSuspended": "Suspenderet",
+  "statusNew": "Ny",
+  "statusCancelled": "Opsagt",
+  "statusDeleted": "Slettet",
+  "roleMitglied": "Medlem",
+  "roleVorsitzer": "Formand",
+  "roleStellvertreter": "Stedfortræder",
+  "roleSchatzmeister": "Kasserer",
+  "roleSchriftfuehrer": "Sekretær",
+  "roleBeisitzer": "Bisidder",
+  "roleKassierer": "Kasserer",
+  "roleKassenpruefer": "Revisor",
+  "roleEhrenamtlich": "Frivillig",
+  "roleMitgliedergruender": "Stiftende Medlem",
+  "roleEhrenmitglied": "Æresmedlem",
+  "roleFoerdermitglied": "Støttemedlem",
+  "memberTypeNotSet": "Endnu ikke fastsat",
+  "payMethodSepa": "SEPA-betalingsservice",
+  "labelStatus": "Status",
+  "labelMemberNumber": "Medlemsnummer",
+  "labelRole": "Rolle",
+  "labelMemberType": "Medlemstype",
+  "labelPaymentMethod": "Betalingsmetode",
+  "labelRegisteredOn": "Registreret den",
+  "labelLastLogin": "Sidste login",
+  "labelMemberSince": "Medlem siden",
+  "neverLoggedIn": "Aldrig",
+  "notActivatedYet": "Endnu ikke aktiveret",
+  "tabVerification": "Verifikation",
+  "tabWarnings": "Advarsler",
+  "tabDocuments": "Dokumenter",
+  "tabMembership": "Medlemskab",
+  "pleaseEnterFirstName": "Indtast fornavn",
+  "pleaseEnterLastName": "Indtast efternavn",
+  "noFileDataReceived": "Ingen data modtaget",
+  "openFile": "Åbn",
+  "diagnosticErrors": "Fejlrapporter til forbedring",
+  "diagnosticAnonymousStats": "Anonyme brugsstatistikker",
+  "diagnosticPerformance": "App-ydeevnedata",
+  "noMicrophoneError": "Ingen mikrofon fundet. Tilslut en mikrofon og prøv igen.",
+  "startConversation": "Start en samtale!",
+  "staffWillReply": "En medarbejder vil snart svare dig.",
+  "inCall": "I opkald...",
+  "registration": "Registrering",
+  "deactivation": "Deaktivering",
+  "deactivatedOn": "Deaktiveret den",
+  "accountAutoSuspend": "Konti, der ikke verificeres inden for 30 dage, vil automatisk blive suspenderet.",
+  "ipClean": "IP ren - ikke opført",
+  "documentsProvidedByBoard": "Dokumenter leveres af bestyrelsen.",
+  "noDocumentsAvailable": "Ingen dokumenter",
+  "noDocumentsDescription": "Der er endnu ikke leveret dokumenter til dig.",
+  "uploadedBy": "Uploadet af: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} trin gennemført",
+  "dayOfMonth": "{day}. i måneden",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Ændre {field}",
+  "openDocument": "Åbn {name}",
+  "helpImproveApp": "Vil du hjælpe os med at forbedre appen?",
+  "noPersonalDataCollected": "Ingen personlige data indsamles. Denne indstilling kan ændres når som helst.",
+  "logEntries": "{count} poster",
+  "noLogs": "Ingen logfiler",
+  "newLoginDetected": "Nyt login registreret",
+  "waitingForMember": "Venter på medlem",
+  "waitingForStaff": "Venter på medarbejder",
+  "waitingForAuthority": "Venter på myndighed",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

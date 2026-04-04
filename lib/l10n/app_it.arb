@@ -1,0 +1,919 @@
+{
+  "@@locale": "it",
+  "appTitle": "ICD360S e.V - Portale Membri",
+  "memberPortal": "Portale Membri",
+  "welcomeLoading": "Caricamento...",
+  "welcomeAutoLogin": "Accesso automatico...",
+  "login": "Accedi",
+  "register": "Registrati",
+  "becomeMember": "Diventa Membro",
+  "memberNumber": "Numero Membro",
+  "memberNumberHint": "Inserisci il numero membro",
+  "password": "Password",
+  "passwordHint": "Inserisci la password",
+  "confirmPassword": "Conferma Password",
+  "confirmPasswordHint": "Conferma la password",
+  "newPassword": "Nuova Password",
+  "newPasswordHint": "Inserisci la nuova password",
+  "saveCredentials": "Salva credenziali",
+  "autoLogin": "Accesso automatico",
+  "forgotPassword": "Password dimenticata?",
+  "firstName": "Nome e Cognome",
+  "firstNameHint": "Inserisci nome e cognome",
+  "nameMinLength": "Il nome deve avere almeno 2 caratteri",
+  "nameOnlyLetters": "Sono ammesse solo lettere e trattini",
+  "email": "Indirizzo Email",
+  "emailHint": "Inserisci l'email",
+  "emailInvalid": "Inserisci un'email valida",
+  "passwordMinLength": "La password deve avere almeno 6 caratteri",
+  "passwordsNotMatch": "Le password non corrispondono",
+  "recoveryCode": "Codice di Recupero (6 cifre)",
+  "recoveryCodeHelper": "Ricorda questo codice per recuperare la password",
+  "recoveryCodeHint": "Inserisci il codice di recupero",
+  "recoveryCodeInvalid": "Il codice deve avere esattamente 6 cifre",
+  "loginFailed": "Accesso fallito",
+  "registrationFailed": "Registrazione fallita",
+  "connectionError": "Errore di connessione: {error}",
+  "registrationSuccess": "Registrazione riuscita!\n\nIl tuo numero membro: {memberNumber}\n\nRicorda questo numero per l'accesso.",
+  "tooManyDevices": "Troppi dispositivi",
+  "maxDevicesMessage": "Sei già connesso su 3 dispositivi.\nSeleziona un dispositivo da disconnettere:",
+  "unknownDevice": "Dispositivo sconosciuto",
+  "unknown": "Sconosciuto",
+  "logoutError": "Errore di disconnessione",
+  "error": "Errore: {error}",
+  "cancel": "Annulla",
+  "resetPassword": "Reimposta Password",
+  "forgotPasswordTitle": "Password Dimenticata",
+  "forgotPasswordDescription": "Inserisci il numero membro e il codice di recupero creato durante la registrazione.",
+  "passwordResetSuccess": "Password reimpostata con successo!\n\nOra puoi accedere con la nuova password.",
+  "passwordResetFailed": "Reimpostazione password fallita",
+  "needHelp": "Hai bisogno di aiuto?",
+  "helpQuestion": "Problemi con l'accesso o la registrazione?",
+  "helpDescription": "Contattaci su WhatsApp e descrivi esattamente cosa non funziona. Risponderemo il prima possibile!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Richiesta tramite app ICD360S",
+  "whatsappMessage": "Ciao, ho un problema con l'app ICD360S. ",
+  "imprint": "Note Legali",
+  "privacy": "Informativa Privacy",
+  "statutes": "Statuto",
+  "revocation": "Diritto di Recesso",
+  "cancellation": "Cancellazione",
+  "allRightsReserved": "Tutti i diritti riservati.",
+  "enterCredentials": "Inserisci numero membro e password",
+  "appointments": "Appuntamenti",
+  "tickets": "Ticket",
+  "liveChat": "Chat dal Vivo",
+  "notifications": "Notifiche",
+  "myProfile": "Il Mio Profilo",
+  "logout": "Esci",
+  "goodMorning": "Buongiorno",
+  "goodDay": "Buona giornata",
+  "goodEvening": "Buonasera",
+  "goodNight": "Buonanotte",
+  "welcomeToICD": "Benvenuto a ICD360S e.V!",
+  "accountCreatedSuccessfully": "Il tuo account è stato creato con successo.",
+  "today": "Oggi",
+  "membershipFeeDue": "Quota associativa dovuta",
+  "pleaseTransferAnnualFee": "Si prega di trasferire la quota annuale.",
+  "newBadge": "Nuovo",
+  "close": "Chiudi",
+  "membership": "Iscrizione",
+  "myAppointments": "I miei appuntamenti",
+  "appointmentsLoadingReady": "Caricamento appuntamenti - API pronto!",
+  "priority": "Priorità",
+  "messageLabel": "Messaggio",
+  "createdOn": "Creato",
+  "handler": "Gestore",
+  "reportProblems": "Segnala problemi",
+  "reportProblem": "Segnala problema",
+  "weRespondIn24Hours": "Ti risponderemo entro un massimo di 24 ore!",
+  "everythingOk": "Tutto OK!",
+  "haveProblemWeHelp": "Hai un problema?\nCe ne occupiamo noi!",
+  "myMembership": "La mia iscrizione",
+  "managePersonalDataAndFee": "Gestisci i tuoi dati personali e la quota",
+  "myAppointmentsTitle": "I miei appuntamenti",
+  "appointmentsDescription": "Qui puoi vedere i tuoi prossimi appuntamenti.\nPuoi confermare la tua partecipazione o rifiutare.",
+  "loadAppointments": "Carica appuntamenti",
+  "myTickets": "I miei ticket",
+  "newTicket": "Nuovo ticket",
+  "noOpenTickets": "Nessun ticket aperto",
+  "haveQuestionCreateTicket": "Hai una domanda o un problema?\nCrea un nuovo ticket.",
+  "whatIsTheProblem": "Qual è il problema?",
+  "describeTheProblem": "Descrivi il problema",
+  "howUrgentIsIt": "Quanto è urgente?",
+  "low": "Bassa",
+  "medium": "Media",
+  "high": "Alta",
+  "submit": "Invia",
+  "fillSubjectAndMessage": "Compila oggetto e messaggio",
+  "ticketCreated": "Ticket creato",
+  "errorCreatingTicket": "Errore durante la creazione del ticket",
+  "verified": "Verificato",
+  "account": "Account",
+  "myDevices": "I miei dispositivi",
+  "changeEmail": "Cambia email",
+  "changePassword": "Cambia password",
+  "newEmailAddress": "Nuovo indirizzo email",
+  "currentPassword": "Password attuale",
+  "saveEmail": "Salva email",
+  "savePassword": "Salva password",
+  "deviceLoggedOut": "Dispositivo disconnesso",
+  "passwordChangedSuccessfully": "Password modificata con successo",
+  "emailChangedSuccessfully": "Email modificata con successo",
+  "errorChangingPassword": "Errore durante la modifica della password",
+  "errorChangingEmail": "Errore durante la modifica dell'email",
+  "validEmailRequired": "Inserisci un indirizzo email valido",
+  "passwordTooShort": "La password deve essere di almeno 6 caratteri",
+  "maxDevicesReached": "Sei connesso al massimo di 3 dispositivi.",
+  "loggedInOnDevices": "Sei connesso su {count} di 3 dispositivi.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Nessuna sessione attiva",
+  "logoutFromDevice": "Disconnetti da questo dispositivo",
+  "confirmLogoutDevice": "Disconnettere dispositivo?",
+  "confirmLogoutMessage": "Vuoi disconnetterti da questo dispositivo?\n\nDovrai accedere nuovamente per utilizzare questo dispositivo.",
+  "ipAddress": "IP",
+  "platform": "Piattaforma",
+  "trialWarningUrgentTitle": "Attenzione: {days, plural, =1{Manca solo 1 giorno} other{Mancano solo {days} giorni}} alla sospensione dell'account!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Il tuo account non è ancora verificato",
+  "trialWarningDescription": "Completa i tuoi dati in \"Il Mio Profilo\". Dopo 30 giorni il tuo account verrà sospeso automaticamente.",
+  "trialDaysRemaining": "{days, plural, =1{1 giorno} other{{days} giorni}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Panoramica",
+  "member": "Membro",
+  "memberManagement": "Gestione membri",
+  "reportProblemTooltip": "Segnala problema",
+  "newAppointmentsTitle": "Nuovi appuntamenti",
+  "youHaveNewAppointment": "Hai un nuovo appuntamento.",
+  "youHaveNewAppointments": "Hai {count} nuovi appuntamenti.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Promemoria: Appuntamento domani",
+  "tomorrowAppointment": "Domani: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Hai {count} appuntamenti domani.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Appuntamenti oggi",
+  "todayAppointment": "Oggi: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Hai {count} appuntamenti oggi.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Promemoria pagamento",
+  "paymentReminderMessage": "Oggi è il {day} del mese – completa {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Giorno di pagamento (promemoria mensile)",
+  "updateAvailable": "Aggiornamento disponibile",
+  "newVersionAvailable": "È disponibile una nuova versione: {version}",
+  "currentVersionLabel": "Versione attuale: {version}",
+  "changes": "Modifiche:",
+  "downloadProgress": "Download: {percent}%",
+  "installationStarting": "Installazione in corso...",
+  "appWillRestart": "L'applicazione si riavvierà automaticamente.",
+  "later": "Più tardi",
+  "updateNow": "Aggiorna ora",
+  "downloading": "Download in corso...",
+  "downloadFailed": "Download fallito. Riprova più tardi.",
+  "searchingForUpdates": "Ricerca aggiornamenti...",
+  "appUpToDate": "L'app è aggiornata",
+  "updateCheckError": "Errore nel controllo aggiornamenti",
+  "changelog": "Registro delle modifiche",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Appuntamento confermato",
+  "terminDeclined": "Appuntamento rifiutato",
+  "terminRescheduleRequested": "Riprogrammazione richiesta",
+  "statusConfirmed": "Confermato",
+  "statusDeclined": "Rifiutato",
+  "statusRescheduling": "Riprogrammazione",
+  "statusPending": "In attesa",
+  "categoryVorstandssitzung": "Riunione del consiglio",
+  "categoryMitgliederversammlung": "Assemblea generale",
+  "categorySchulung": "Formazione",
+  "categorySonstiges": "Altro",
+  "openCount": "{count} aperti",
+  "refresh": "Aggiorna",
+  "filterUpcoming": "Prossimi",
+  "filterPast": "Passati",
+  "filterAll": "Tutti",
+  "noUpcomingAppointments": "Nessun appuntamento imminente",
+  "noPastAppointments": "Nessun appuntamento passato",
+  "noAppointmentsAvailable": "Nessun appuntamento disponibile",
+  "appointmentsShownHere": "I tuoi appuntamenti saranno mostrati qui",
+  "dateLabel": "Data",
+  "timeLabel": "Ora",
+  "locationLabel": "Luogo",
+  "createdByLabel": "Creato da",
+  "descriptionLabel": "Descrizione",
+  "ticketLabel": "Ticket",
+  "yourStatus": "Il tuo stato: ",
+  "reasonLabel": "Motivo: {reason}",
+  "durationMinutes": "{minutes} min",
+  "confirm": "Conferma",
+  "decline": "Rifiuta",
+  "reschedule": "Riprogramma",
+  "requestReschedule": "Richiedi riprogrammazione",
+  "appointmentLabel": "Appuntamento: {title}",
+  "rescheduleReason": "Motivo della riprogrammazione *",
+  "rescheduleReasonHint": "Indica un motivo...",
+  "pleaseProvideReason": "Indica un motivo",
+  "request": "Richiedi",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Aperto",
+  "ticketStatusInProgress": "In corso",
+  "ticketStatusWaitingMember": "In attesa del membro",
+  "ticketStatusWaitingStaff": "In attesa del personale",
+  "ticketStatusWaitingAuthority": "In attesa dell'autorità",
+  "ticketStatusDone": "Completato",
+  "ticketPriorityHigh": "Alta",
+  "ticketPriorityMedium": "Media",
+  "ticketPriorityLow": "Bassa",
+  "comments": "Commenti",
+  "documents": "Documenti",
+  "details": "Dettagli",
+  "replySent": "Risposta inviata",
+  "sendError": "Errore nell'invio",
+  "uploading": "Caricamento...",
+  "fileUploaded": "{filename} caricato",
+  "uploadFailed": "Caricamento fallito",
+  "openError": "Errore nell'apertura",
+  "noRepliesYet": "Ancora nessuna risposta",
+  "waitingForSupport": "In attesa di risposta dal supporto",
+  "writeReply": "Scrivi una risposta...",
+  "attachFile": "Allega file",
+  "documentsCount": "Documenti ({count})",
+  "upload": "Carica",
+  "noDocuments": "Nessun documento disponibile",
+  "allowedFormats": "Formati consentiti: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Il tuo messaggio:",
+  "translation": "Traduzione",
+  "original": "Originale",
+  "originalText": "Testo originale",
+  "autoTranslated": "Tradotto automaticamente",
+  "originalTapTranslation": "Testo originale · Tocca per traduzione",
+  "translatedTapOriginal": "Tradotto · Tocca per originale",
+  "justNow": "Adesso",
+  "minutesAgo": "{minutes} min fa",
+  "hoursAgo": "{hours} ore fa",
+  "daysAgo": "{days} {days, plural, =1{giorno} other{giorni}} fa",
+  "createdLabel": "Creato",
+  "updatedLabel": "Aggiornato",
+  "handlerLabel": "Responsabile",
+  "doneLabel": "Completato",
+  "newTicketTitle": "Nuovo ticket",
+  "categoryOptional": "Categoria (opzionale)",
+  "selectCategory": "Seleziona",
+  "subjectLabel": "Oggetto",
+  "fillAllFields": "Compila tutti i campi",
+  "ticketCreatedId": "Ticket #{id} creato",
+  "priorityLabel": "Priorità: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Supporto offline",
+  "lastSeenSeconds": "Attivo pochi secondi fa",
+  "lastSeenMinutes": "Attivo {minutes} {minutes, plural, =1{minuto} other{minuti}} fa",
+  "lastSeenHours": "Attivo {hours} {hours, plural, =1{ora} other{ore}} fa",
+  "lastSeenDays": "Attivo {days} {days, plural, =1{giorno} other{giorni}} fa",
+  "online": "Online",
+  "callSupport": "Chiama",
+  "typeMessage": "Scrivi un messaggio...",
+  "callBusy": "Supporto occupato",
+  "callRejected": "Chiamata rifiutata",
+  "callFailed": "Chiamata non riuscita",
+  "callEnded": "Chiamata terminata",
+  "callSupportBusy": "Il supporto è già in un'altra chiamata",
+  "errorStartingChat": "Errore avvio chat",
+  "errorStartingCall": "Errore avvio chiamata",
+  "errorConnecting": "Errore di connessione",
+  "errorAcceptingCall": "Errore accettazione chiamata",
+  "errorDownloading": "Errore download",
+  "errorUploading": "Errore caricamento",
+  "errorSending": "Errore invio",
+  "errorPickingPhotos": "Errore selezione foto",
+  "errorPickingFiles": "Errore selezione file",
+  "errorTakingPhoto": "Errore scatto foto",
+  "fileNotLoaded": "File non caricabile",
+  "attachmentIdMissing": "ID allegato mancante",
+  "camera": "Fotocamera",
+  "gallery": "Galleria",
+  "file": "File",
+  "typingIndicator": "{name} sta scrivendo...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Nuovo messaggio da",
+  "notifUrgentPrefix": "URGENTE",
+  "notifUrgentMessage": "MESSAGGIO URGENTE",
+  "notifIncomingCall": "Chiamata in arrivo",
+  "notifCallingYou": "sta chiamando...",
+  "notifUpdateAvailable": "Aggiornamento disponibile",
+  "notifVersionAvailable": "è ora disponibile",
+  "notifConnected": "Connesso",
+  "notifDisconnected": "Disconnesso",
+  "notifConnectedBody": "Sei ora connesso al server.",
+  "notifDisconnectedBody": "La connessione al server è stata persa.",
+  "notifError": "Errore",
+  "retry": "Riprova",
+  "save": "Salva",
+  "accept": "Accetta",
+  "selectFile": "Seleziona file",
+  "dataLoadingText": "Caricamento dati...",
+  "dataSavedSuccess": "Dati salvati con successo",
+  "errorSaving": "Errore nel salvataggio",
+  "errorLoading": "Errore nel caricamento",
+  "savedFilename": "Salvato: {filename}",
+  "logsCopied": "Log copiati!",
+  "diagnosticDataTitle": "Dati diagnostici",
+  "diagnosticDescription": "Vuoi inviare dati diagnostici anonimi per migliorare l'app?",
+  "noThanks": "No, grazie",
+  "yesEnable": "Sì, attiva",
+  "passwordMinEightChars": "La password deve avere almeno 8 caratteri",
+  "passwordChangeSuccess": "Password modificata con successo",
+  "emailChangeError": "Errore nel cambio email",
+  "acceptDocumentCheckbox": "Ho letto e accetto il documento.",
+  "loadingErrorGeneric": "Errore di caricamento: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Chiamata in arrivo",
+  "ringingFor": "Squilla da {seconds}s",
+  "rejectCall": "Rifiuta",
+  "acceptCall": "Accetta",
+  "unmute": "Riattiva audio",
+  "mute": "Disattiva audio",
+  "hangUp": "Riaggancia",
+  "calling": "Chiamata in corso...",
+  "autoRejectIn": "Rifiuto automatico tra {seconds} secondi",
+  "speakerOn": "Altoparlante",
+  "speakerOff": "Auricolare",
+  "micMuted": "Disattivato",
+  "micOn": "Microfono",
+  "connectionExcellent": "Eccellente",
+  "connectionGood": "Buona",
+  "connectionWeak": "Debole",
+  "connectionLost": "Disconnesso",
+  "personalData": "Dati personali",
+  "personalDataSubtitle": "Nome, cognome, indirizzo",
+  "membershipFee": "Quota associativa",
+  "annualFeeYear": "Quota annuale {year}",
+  "amount": "Importo:",
+  "dueBy": "Scadenza:",
+  "paid": "Pagato",
+  "versionHistory": "Cronologia versioni",
+  "lastUpdated": "Ultimo aggiornamento: {date}",
+  "noVersionHistory": "Nessuna cronologia disponibile",
+  "failedLoadChangelog": "Impossibile caricare il registro modifiche",
+  "callMember": "Chiama membro",
+  "closeConversation": "Chiudi conversazione",
+  "chatOffline": "Offline",
+  "attachFiles": "Allega file (max. 10, 50MB)",
+  "conversationClosed": "Questa conversazione è stata chiusa",
+  "noMessages": "Nessun messaggio",
+  "goBack": "Indietro",
+  "goForward": "Avanti",
+  "homePage": "Home",
+  "firstNameLabel": "Nome",
+  "lastNameLabel": "Cognome",
+  "streetLabel": "Via",
+  "houseNumberLabel": "N.",
+  "postalCodeLabel": "CAP",
+  "cityLabel": "Città",
+  "phoneMobileLabel": "Telefono (Cellulare)",
+  "phoneLandlineLabel": "Telefono (Fisso)",
+  "newEmailLabel": "Nuovo indirizzo email",
+  "currentPasswordLabel": "Password attuale",
+  "newPasswordLabel": "Nuova password",
+  "confirmPasswordLabel": "Conferma password",
+  "emailChangedSuccess": "Email modificata con successo",
+  "newPasswordMinChars": "Nuova password (min. 6 caratteri)",
+  "reasonLabel2": "Motivo",
+  "downloadFailed2": "Download fallito",
+  "downloadTooltip": "Scarica",
+  "connectionErrorGeneric": "Errore di connessione",
+  "copyLogs": "Copia log",
+  "deleteLogs": "Elimina log",
+  "autoScrollOn": "Scorrimento automatico ON",
+  "autoScrollOff": "Scorrimento automatico OFF",
+  "unknownValue": "Sconosciuto",
+  "bankTransfer": "Bonifico bancario",
+  "standingOrder": "Ordine permanente",
+  "payment": "Pagamento",
+  "warningType_ermahnung": "Ammonimento",
+  "warningType_abmahnung": "Diffida",
+  "warningType_letzte": "Ultima diffida",
+  "warningsTotal": "Totale: {count}",
+  "warningsErmahnung": "Ammonimenti: {count}",
+  "warningsAbmahnung": "Diffide: {count}",
+  "warningsLetzte": "Ultime: {count}",
+  "noWarnings": "Nessun ammonimento",
+  "noWarningsDescription": "Al momento non hai ammonimenti.",
+  "createdBy": "Creato da: {name}",
+  "monthJan": "Jan",
+  "monthFeb": "Feb",
+  "monthMar": "Mar",
+  "monthApr": "Apr",
+  "monthMay": "May",
+  "monthJun": "Jun",
+  "monthJul": "Jul",
+  "monthAug": "Aug",
+  "monthSep": "Sep",
+  "monthOct": "Oct",
+  "monthNov": "Nov",
+  "monthDec": "Dec",
+  "stufe1_name": "Dati personali",
+  "stufe2_name": "Tipo di iscrizione",
+  "stufe3_name": "Situazione finanziaria",
+  "stufe4_name": "Metodo di pagamento",
+  "stufe5_name": "Inizio iscrizione",
+  "stufe6_name": "Statuto",
+  "stufe7_name": "Informativa sulla privacy",
+  "stufe8_name": "Diritto di recesso",
+  "memberType_ordentlich": "Membro ordinario",
+  "memberType_foerder": "Membro sostenitore",
+  "memberType_ehren": "Membro onorario",
+  "memberDesc_ordentlich": "Membro attivo con diritto di voto. Partecipa ai servizi dell'associazione (email, cloud, supporto burocratico).",
+  "memberDesc_foerder": "Sostiene l'associazione con contributi. Può partecipare all'assemblea generale con voto consultivo, senza diritto di voto o di elezione nel consiglio.",
+  "memberDesc_ehren": "Ha i diritti di un membro ordinario senza obbligo di pagare la quota associativa. Nominato dall'assemblea generale o dal consiglio.",
+  "payMethod_ueberweisung": "Bonifico bancario",
+  "payMethod_dauerauftrag": "Ordine permanente",
+  "verifyStatus_geprueft": "Verificato",
+  "verifyStatus_ausgefuellt": "Completato",
+  "verifyStatus_abgelehnt": "Rifiutato",
+  "verifyStatus_offen": "Aperto",
+  "fillRequiredFields": "Compila tutti i campi obbligatori.",
+  "personalDataSaved": "Dati personali salvati",
+  "selectMemberType": "Seleziona un tipo di iscrizione.",
+  "memberTypeSaved": "Tipo di iscrizione salvato",
+  "selectOption": "Seleziona un'opzione.",
+  "financialSaved": "Situazione finanziaria salvata",
+  "selectPaymentMethod": "Seleziona un metodo di pagamento.",
+  "paymentDataSaved": "Dati di pagamento salvati",
+  "selectDate": "Seleziona una data.",
+  "membershipStartSaved": "Inizio iscrizione salvato",
+  "fileTooLarge": "File troppo grande (max. 10 MB).",
+  "leistungsbescheidUploaded": "Certificato delle prestazioni caricato con successo",
+  "verificationProgress": "Progresso della verifica",
+  "notApplicable": "Non applicabile",
+  "socialBenefitsExempt": "Metodo di pagamento non richiesto per beneficiari di prestazioni sociali.",
+  "locked": "Bloccato",
+  "completePreviousStep": "Completa prima il passaggio {step}.",
+  "rejectedNote": "Rifiutato: {note}",
+  "waitingForReview": "In attesa di revisione da parte del consiglio.",
+  "stepApproved": "Questo passaggio è stato verificato e approvato.",
+  "changesViaChat": "Modifiche possibili solo tramite chat.",
+  "firstNameRequired": "Nome *",
+  "lastNameRequired": "Cognome *",
+  "birthDateLabel": "Data di nascita *",
+  "streetRequired": "Via *",
+  "houseNumberRequired": "N. *",
+  "cityRequired": "Città *",
+  "phoneRequired": "Numero di telefono *",
+  "phonePurpose": "Scopo: Contatto quando non raggiungibile tramite l'app",
+  "selectMemberTypePrompt": "Seleziona il tipo di iscrizione desiderato:",
+  "financialExplanation": "Per verificare se hai diritto a una riduzione della quota, necessitiamo delle seguenti informazioni. Queste saranno utilizzate esclusivamente per determinare la tua quota associativa.",
+  "socialBenefitsQuestion": "Ricevi attualmente prestazioni sociali?",
+  "optionBuergergeld": "Sì, sussidio cittadino (Job Center)",
+  "optionSozialamt": "Sì, assistenza sociale (Servizi Sociali)",
+  "optionNoBenefits": "No, non ricevo prestazioni sociali",
+  "feeExempt": "La tua quota mensile è: 0,00 €/mese",
+  "uploadLeistungsbescheid": "Carica certificato delle prestazioni",
+  "uploadLeistungsbescheidHint": "Carica un certificato delle prestazioni attuale entro 14 giorni per confermare l'esenzione dalla quota.",
+  "allowedFormatsUpload": "Formati consentiti: PDF, JPG, PNG (max. 10 MB)",
+  "feeRegular": "La tua quota mensile è: 25,00 €/mese",
+  "paymentDayReminder": "Riceverai un promemoria il {day} di ogni mese.",
+  "membershipStartPrompt": "Scegli quando deve iniziare la tua iscrizione.",
+  "optionAfterVerification": "Dopo il completamento della verifica",
+  "optionAfterVerificationDesc": "L'iscrizione inizia dal giorno della conferma del consiglio.",
+  "optionRetroFoundation": "Retroattivo alla data di fondazione (01.08.2025)",
+  "optionRetroFoundationDesc": "Diventi membro retroattivo dalla fondazione dell'associazione.",
+  "optionRetroCustom": "Retroattivo a un'altra data",
+  "optionRetroCustomDesc": "Scegli una data tra il 01.08.2025 e oggi.",
+  "selectDateLabel": "Seleziona data",
+  "selectDateHint": "Seleziona data...",
+  "dateNotBefore": "Non prima del 01.08.2025 (data di fondazione)",
+  "feeExemptRetro": "Esenzione dalla quota: 0,00 € retroattivo.\nSolo la data di iscrizione viene impostata retroattivamente.",
+  "retroactiveFees": "Quote retroattive",
+  "retroFeeCalculation": "Periodo: {from} – {to}\nMesi: {months}\nQuota: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Leggi lo statuto dell'associazione.",
+  "pleaseReadDatenschutz": "Leggi l'informativa sulla privacy.",
+  "pleaseReadWiderruf": "Leggi il diritto di recesso.",
+  "acceptedAtRegistration": "Accettato alla registrazione",
+  "confirmedByBoard": "Sarà confermato dopo la revisione del consiglio.",
+  "docSatzung": "Statuto",
+  "docDatenschutz": "Informativa sulla privacy",
+  "docWiderruf": "Diritto di recesso",
+  "acceptedAtRegCount": "Accettato alla registrazione ({count}/3)",
+  "acceptedOn": "Accettato il {date}",
+  "notAccepted": "Non accettato",
+  "statusAccepted": "Accettato",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Numero di membro troppo lungo (max 20 caratteri)",
+  "onlyUppercaseAndNumbers": "Sono consentite solo lettere maiuscole e numeri",
+  "passwordTooLong": "Password troppo lunga (max 100 caratteri)",
+  "nameTooLong": "Nome troppo lungo (max 100 caratteri)",
+  "emailTooLong": "Email troppo lunga (max 255 caratteri)",
+  "legalAcknowledgePrefix": "Ho preso visione della ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " dell'ICD360S e.V. e li riconosco come vincolanti.",
+  "legalPleaseReadFirst": "(si prega di leggere prima)",
+  "statusActive": "Attivo",
+  "statusSuspended": "Sospeso",
+  "statusNew": "Nuovo",
+  "statusCancelled": "Cancellato",
+  "statusDeleted": "Eliminato",
+  "roleMitglied": "Membro",
+  "roleVorsitzer": "Presidente",
+  "roleStellvertreter": "Vicepresidente",
+  "roleSchatzmeister": "Tesoriere",
+  "roleSchriftfuehrer": "Segretario",
+  "roleBeisitzer": "Assessore",
+  "roleKassierer": "Cassiere",
+  "roleKassenpruefer": "Revisore",
+  "roleEhrenamtlich": "Volontario",
+  "roleMitgliedergruender": "Membro Fondatore",
+  "roleEhrenmitglied": "Membro Onorario",
+  "roleFoerdermitglied": "Membro Sostenitore",
+  "memberTypeNotSet": "Non ancora definito",
+  "payMethodSepa": "Addebito diretto SEPA",
+  "labelStatus": "Stato",
+  "labelMemberNumber": "Numero di membro",
+  "labelRole": "Ruolo",
+  "labelMemberType": "Tipo di membro",
+  "labelPaymentMethod": "Metodo di pagamento",
+  "labelRegisteredOn": "Registrato il",
+  "labelLastLogin": "Ultimo accesso",
+  "labelMemberSince": "Membro dal",
+  "neverLoggedIn": "Mai",
+  "notActivatedYet": "Non ancora attivato",
+  "tabVerification": "Verifica",
+  "tabWarnings": "Avvertimenti",
+  "tabDocuments": "Documenti",
+  "tabMembership": "Iscrizione",
+  "pleaseEnterFirstName": "Inserisci il nome",
+  "pleaseEnterLastName": "Inserisci il cognome",
+  "noFileDataReceived": "Nessun dato ricevuto",
+  "openFile": "Apri",
+  "diagnosticErrors": "Segnalazioni errori per miglioramento",
+  "diagnosticAnonymousStats": "Statistiche di utilizzo anonime",
+  "diagnosticPerformance": "Dati sulle prestazioni dell'app",
+  "noMicrophoneError": "Nessun microfono trovato. Collegare un microfono e riprovare.",
+  "startConversation": "Avvia una conversazione!",
+  "staffWillReply": "Un collaboratore ti risponderà presto.",
+  "inCall": "In chiamata...",
+  "registration": "Registrazione",
+  "deactivation": "Disattivazione",
+  "deactivatedOn": "Disattivato il",
+  "accountAutoSuspend": "Gli account non verificati entro 30 giorni verranno sospesi automaticamente.",
+  "ipClean": "IP pulito - non elencato",
+  "documentsProvidedByBoard": "I documenti sono forniti dal consiglio direttivo.",
+  "noDocumentsAvailable": "Nessun documento disponibile",
+  "noDocumentsDescription": "Non sono ancora stati forniti documenti per te.",
+  "uploadedBy": "Caricato da: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} passaggi completati",
+  "dayOfMonth": "{day} del mese",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Modifica {field}",
+  "openDocument": "Apri {name}",
+  "helpImproveApp": "Vuoi aiutarci a migliorare l'app?",
+  "noPersonalDataCollected": "Nessun dato personale viene raccolto. Questa impostazione può essere modificata in qualsiasi momento.",
+  "logEntries": "{count} voci",
+  "noLogs": "Nessun registro",
+  "newLoginDetected": "Nuovo accesso rilevato",
+  "waitingForMember": "In attesa del membro",
+  "waitingForStaff": "In attesa del personale",
+  "waitingForAuthority": "In attesa dell'autorità",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

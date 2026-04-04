@@ -1,0 +1,919 @@
+{
+  "@@locale": "fi",
+  "appTitle": "ICD360S e.V - Jäsenportaali",
+  "memberPortal": "Jäsenportaali",
+  "welcomeLoading": "Ladataan...",
+  "welcomeAutoLogin": "Automaattinen kirjautuminen...",
+  "login": "Kirjaudu",
+  "register": "Rekisteröidy",
+  "becomeMember": "Liity jäseneksi",
+  "memberNumber": "Jäsennumero",
+  "memberNumberHint": "Anna jäsennumero",
+  "password": "Salasana",
+  "passwordHint": "Anna salasana",
+  "confirmPassword": "Vahvista salasana",
+  "confirmPasswordHint": "Vahvista salasana",
+  "newPassword": "Uusi salasana",
+  "newPasswordHint": "Anna uusi salasana",
+  "saveCredentials": "Tallenna kirjautumistiedot",
+  "autoLogin": "Automaattinen kirjautuminen",
+  "forgotPassword": "Unohditko salasanan?",
+  "firstName": "Etunimi ja sukunimi",
+  "firstNameHint": "Anna etu- ja sukunimi",
+  "nameMinLength": "Nimessä on oltava vähintään 2 merkkiä",
+  "nameOnlyLetters": "Vain kirjaimet ja yhdysmerkit sallittu",
+  "email": "Sähköpostiosoite",
+  "emailHint": "Anna sähköposti",
+  "emailInvalid": "Anna kelvollinen sähköpostiosoite",
+  "passwordMinLength": "Salasanassa on oltava vähintään 6 merkkiä",
+  "passwordsNotMatch": "Salasanat eivät täsmää",
+  "recoveryCode": "Palautuskoodi (6 numeroa)",
+  "recoveryCodeHelper": "Muista tämä koodi salasanan palauttamiseen",
+  "recoveryCodeHint": "Anna palautuskoodi",
+  "recoveryCodeInvalid": "Koodissa on oltava tasan 6 numeroa",
+  "loginFailed": "Kirjautuminen epäonnistui",
+  "registrationFailed": "Rekisteröinti epäonnistui",
+  "connectionError": "Yhteysvirhe: {error}",
+  "registrationSuccess": "Rekisteröinti onnistui!\n\nJäsennumerosi: {memberNumber}\n\nMuista tämä numero kirjautumista varten.",
+  "tooManyDevices": "Liian monta laitetta",
+  "maxDevicesMessage": "Olet jo kirjautunut 3 laitteella.\nValitse laite uloskirjautumista varten:",
+  "unknownDevice": "Tuntematon laite",
+  "unknown": "Tuntematon",
+  "logoutError": "Uloskirjautumisvirhe",
+  "error": "Virhe: {error}",
+  "cancel": "Peruuta",
+  "resetPassword": "Nollaa salasana",
+  "forgotPasswordTitle": "Unohtunut salasana",
+  "forgotPasswordDescription": "Anna jäsennumerosi ja rekisteröinnin yhteydessä luomasi palautuskoodi.",
+  "passwordResetSuccess": "Salasana nollattu onnistuneesti!\n\nVoit nyt kirjautua uudella salasanallasi.",
+  "passwordResetFailed": "Salasanan nollaus epäonnistui",
+  "needHelp": "Tarvitsetko apua?",
+  "helpQuestion": "Ongelmia kirjautumisessa tai rekisteröinnissä?",
+  "helpDescription": "Ota yhteyttä WhatsAppissa ja kuvaile, mikä ei toimi. Vastaamme mahdollisimman pian!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Kysely ICD360S-sovelluksen kautta",
+  "whatsappMessage": "Hei, minulla on ongelma ICD360S-sovelluksen kanssa. ",
+  "imprint": "Impressum",
+  "privacy": "Tietosuojakäytäntö",
+  "statutes": "Säännöt",
+  "revocation": "Peruutusoikeus",
+  "cancellation": "Irtisanominen",
+  "allRightsReserved": "Kaikki oikeudet pidätetään.",
+  "enterCredentials": "Anna jäsennumero ja salasana",
+  "appointments": "Tapaamiset",
+  "tickets": "Tiketit",
+  "liveChat": "Live Chat",
+  "notifications": "Ilmoitukset",
+  "myProfile": "Profiilini",
+  "logout": "Kirjaudu ulos",
+  "goodMorning": "Hyvää huomenta",
+  "goodDay": "Hyvää päivää",
+  "goodEvening": "Hyvää iltaa",
+  "goodNight": "Hyvää yötä",
+  "welcomeToICD": "Tervetuloa ICD360S e.V:lle!",
+  "accountCreatedSuccessfully": "Tilisi on luotu onnistuneesti.",
+  "today": "Tänään",
+  "membershipFeeDue": "Jäsenmaksu erääntynyt",
+  "pleaseTransferAnnualFee": "Ole hyvä ja siirrä vuosimaksu.",
+  "newBadge": "Uusi",
+  "close": "Sulje",
+  "membership": "Jäsenyys",
+  "myAppointments": "Omat tapaamiset",
+  "appointmentsLoadingReady": "Ladataan tapaamisia - API valmis!",
+  "priority": "Prioriteetti",
+  "messageLabel": "Viesti",
+  "createdOn": "Luotu",
+  "handler": "Käsittelijä",
+  "reportProblems": "Ilmoita ongelmista",
+  "reportProblem": "Ilmoita ongelma",
+  "weRespondIn24Hours": "Vastaamme sinulle enintään 24 tunnin kuluessa!",
+  "everythingOk": "Kaikki OK!",
+  "haveProblemWeHelp": "Ongelma?\nMe hoidamme sen!",
+  "myMembership": "Jäsenyyteni",
+  "managePersonalDataAndFee": "Hallitse henkilötietoja ja jäsenmaksua",
+  "myAppointmentsTitle": "Tapaamiseni",
+  "appointmentsDescription": "Täällä näet tulevat tapaamisesi.\nVoit vahvistaa osallistumisesi tai kieltäytyä.",
+  "loadAppointments": "Lataa tapaamiset",
+  "myTickets": "Tikettini",
+  "newTicket": "Uusi tiketti",
+  "noOpenTickets": "Ei avoimia tikettejä",
+  "haveQuestionCreateTicket": "Onko sinulla kysymys tai ongelma?\nLuo uusi tiketti.",
+  "whatIsTheProblem": "Mikä ongelma on?",
+  "describeTheProblem": "Kuvaile ongelma",
+  "howUrgentIsIt": "Kuinka kiireellinen?",
+  "low": "Matala",
+  "medium": "Keskitaso",
+  "high": "Korkea",
+  "submit": "Lähetä",
+  "fillSubjectAndMessage": "Täytä aihe ja viesti",
+  "ticketCreated": "Tiketti luotu",
+  "errorCreatingTicket": "Virhe tiketin luomisessa",
+  "verified": "Vahvistettu",
+  "account": "Tili",
+  "myDevices": "Laitteeni",
+  "changeEmail": "Vaihda sähköposti",
+  "changePassword": "Vaihda salasana",
+  "newEmailAddress": "Uusi sähköpostiosoite",
+  "currentPassword": "Nykyinen salasana",
+  "saveEmail": "Tallenna sähköposti",
+  "savePassword": "Tallenna salasana",
+  "deviceLoggedOut": "Laite kirjautunut ulos",
+  "passwordChangedSuccessfully": "Salasana vaihdettu",
+  "emailChangedSuccessfully": "Sähköposti vaihdettu",
+  "errorChangingPassword": "Virhe salasanan vaihdossa",
+  "errorChangingEmail": "Virhe sähköpostin vaihdossa",
+  "validEmailRequired": "Anna kelvollinen sähköpostiosoite",
+  "passwordTooShort": "Salasanan on oltava vähintään 6 merkkiä",
+  "maxDevicesReached": "Olet kirjautuneena maksimimäärään 3 laitetta.",
+  "loggedInOnDevices": "Olet kirjautuneena {count} laitteella 3:sta.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Ei aktiivisia istuntoja",
+  "logoutFromDevice": "Kirjaudu ulos tältä laitteelta",
+  "confirmLogoutDevice": "Kirjaudu ulos laitteelta?",
+  "confirmLogoutMessage": "Haluatko kirjautua ulos tältä laitteelta?\n\nSinun on kirjauduttava uudelleen käyttääksesi tätä laitetta.",
+  "ipAddress": "IP",
+  "platform": "Alusta",
+  "trialWarningUrgentTitle": "Varoitus: Vain {days, plural, =1{1 päivä} other{{days} päivää}} tilin jäädyttämiseen!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Tiliäsi ei ole vielä vahvistettu",
+  "trialWarningDescription": "Täytä tietosi kohdassa \"Oma profiili\". 30 päivän jälkeen tilisi jäädytetään automaattisesti.",
+  "trialDaysRemaining": "{days, plural, =1{1 päivä} other{{days} päivää}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Yleiskatsaus",
+  "member": "Jäsen",
+  "memberManagement": "Jäsenhallinta",
+  "reportProblemTooltip": "Ilmoita ongelmasta",
+  "newAppointmentsTitle": "Uudet tapaamiset",
+  "youHaveNewAppointment": "Sinulla on uusi tapaaminen.",
+  "youHaveNewAppointments": "Sinulla on {count} uutta tapaamista.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Muistutus: Tapaaminen huomenna",
+  "tomorrowAppointment": "Huomenna: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Sinulla on {count} tapaamista huomenna.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Tapaamiset tänään",
+  "todayAppointment": "Tänään: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Sinulla on {count} tapaamista tänään.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Maksumuistutus",
+  "paymentReminderMessage": "Tänään on kuukauden {day}. päivä – suorita {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Maksupäivä (kuukausittainen muistutus)",
+  "updateAvailable": "Päivitys saatavilla",
+  "newVersionAvailable": "Uusi versio on saatavilla: {version}",
+  "currentVersionLabel": "Nykyinen versio: {version}",
+  "changes": "Muutokset:",
+  "downloadProgress": "Lataus: {percent}%",
+  "installationStarting": "Asennus alkaa...",
+  "appWillRestart": "Sovellus käynnistyy automaattisesti uudelleen.",
+  "later": "Myöhemmin",
+  "updateNow": "Päivitä nyt",
+  "downloading": "Ladataan...",
+  "downloadFailed": "Lataus epäonnistui. Yritä myöhemmin uudelleen.",
+  "searchingForUpdates": "Etsitään päivityksiä...",
+  "appUpToDate": "Sovellus on ajan tasalla",
+  "updateCheckError": "Virhe päivityksen tarkistuksessa",
+  "changelog": "Muutosloki",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Tapaaminen vahvistettu",
+  "terminDeclined": "Tapaaminen hylätty",
+  "terminRescheduleRequested": "Siirto pyydetty",
+  "statusConfirmed": "Vahvistettu",
+  "statusDeclined": "Hylätty",
+  "statusRescheduling": "Siirto",
+  "statusPending": "Odottaa",
+  "categoryVorstandssitzung": "Hallituksen kokous",
+  "categoryMitgliederversammlung": "Yleiskokous",
+  "categorySchulung": "Koulutus",
+  "categorySonstiges": "Muu",
+  "openCount": "{count} avointa",
+  "refresh": "Päivitä",
+  "filterUpcoming": "Tulevat",
+  "filterPast": "Menneet",
+  "filterAll": "Kaikki",
+  "noUpcomingAppointments": "Ei tulevia tapaamisia",
+  "noPastAppointments": "Ei menneitä tapaamisia",
+  "noAppointmentsAvailable": "Ei tapaamisia",
+  "appointmentsShownHere": "Tapaamisesi näytetään täällä",
+  "dateLabel": "Päivämäärä",
+  "timeLabel": "Aika",
+  "locationLabel": "Paikka",
+  "createdByLabel": "Luonut",
+  "descriptionLabel": "Kuvaus",
+  "ticketLabel": "Tiketti",
+  "yourStatus": "Tilasi: ",
+  "reasonLabel": "Syy: {reason}",
+  "durationMinutes": "{minutes} min",
+  "confirm": "Vahvista",
+  "decline": "Hylkää",
+  "reschedule": "Siirrä",
+  "requestReschedule": "Pyydä siirtoa",
+  "appointmentLabel": "Tapaaminen: {title}",
+  "rescheduleReason": "Syy siirtoon *",
+  "rescheduleReasonHint": "Anna syy...",
+  "pleaseProvideReason": "Anna syy",
+  "request": "Pyydä",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Avoin",
+  "ticketStatusInProgress": "Käsittelyssä",
+  "ticketStatusWaitingMember": "Odottaa jäsentä",
+  "ticketStatusWaitingStaff": "Odottaa henkilökuntaa",
+  "ticketStatusWaitingAuthority": "Odottaa viranomaista",
+  "ticketStatusDone": "Valmis",
+  "ticketPriorityHigh": "Korkea",
+  "ticketPriorityMedium": "Keskitaso",
+  "ticketPriorityLow": "Matala",
+  "comments": "Kommentit",
+  "documents": "Asiakirjat",
+  "details": "Tiedot",
+  "replySent": "Vastaus lähetetty",
+  "sendError": "Lähetysvirhe",
+  "uploading": "Ladataan...",
+  "fileUploaded": "{filename} ladattu",
+  "uploadFailed": "Lataus epäonnistui",
+  "openError": "Avausvirhe",
+  "noRepliesYet": "Ei vielä vastauksia",
+  "waitingForSupport": "Odotetaan tukivastausta",
+  "writeReply": "Kirjoita vastaus...",
+  "attachFile": "Liitä tiedosto",
+  "documentsCount": "Asiakirjat ({count})",
+  "upload": "Lataa",
+  "noDocuments": "Ei asiakirjoja",
+  "allowedFormats": "Sallitut muodot: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Viestisi:",
+  "translation": "Käännös",
+  "original": "Alkuperäinen",
+  "originalText": "Alkuperäinen teksti",
+  "autoTranslated": "Käännetty automaattisesti",
+  "originalTapTranslation": "Alkuperäinen · Napauta käännöstä varten",
+  "translatedTapOriginal": "Käännetty · Napauta alkuperäistä varten",
+  "justNow": "Juuri nyt",
+  "minutesAgo": "{minutes} min sitten",
+  "hoursAgo": "{hours} tuntia sitten",
+  "daysAgo": "{days} {days, plural, =1{päivä} other{päivää}} sitten",
+  "createdLabel": "Luotu",
+  "updatedLabel": "Päivitetty",
+  "handlerLabel": "Käsittelijä",
+  "doneLabel": "Valmis",
+  "newTicketTitle": "Uusi tiketti",
+  "categoryOptional": "Kategoria (valinnainen)",
+  "selectCategory": "Valitse",
+  "subjectLabel": "Aihe",
+  "fillAllFields": "Täytä kaikki kentät",
+  "ticketCreatedId": "Tiketti #{id} luotu",
+  "priorityLabel": "Prioriteetti: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Tuki offline",
+  "lastSeenSeconds": "Aktiivinen muutama sekunti sitten",
+  "lastSeenMinutes": "Aktiivinen {minutes} {minutes, plural, =1{minuutti} other{minuuttia}} sitten",
+  "lastSeenHours": "Aktiivinen {hours} {hours, plural, =1{tunti} other{tuntia}} sitten",
+  "lastSeenDays": "Aktiivinen {days} {days, plural, =1{päivä} other{päivää}} sitten",
+  "online": "Paikalla",
+  "callSupport": "Soita",
+  "typeMessage": "Kirjoita viesti...",
+  "callBusy": "Tuki on varattu",
+  "callRejected": "Puhelu hylättiin",
+  "callFailed": "Puhelua ei voitu yhdistää",
+  "callEnded": "Puhelu päättyi",
+  "callSupportBusy": "Tuki on jo toisessa puhelussa",
+  "errorStartingChat": "Virhe chatin käynnistyksessä",
+  "errorStartingCall": "Virhe puhelun käynnistyksessä",
+  "errorConnecting": "Yhteysvirhe",
+  "errorAcceptingCall": "Virhe puhelun vastaanottamisessa",
+  "errorDownloading": "Latausvirhe",
+  "errorUploading": "Lähetysvirhe",
+  "errorSending": "Lähetysvirhe",
+  "errorPickingPhotos": "Virhe kuvien valinnassa",
+  "errorPickingFiles": "Virhe tiedostojen valinnassa",
+  "errorTakingPhoto": "Virhe kuvan ottamisessa",
+  "fileNotLoaded": "Tiedostoa ei voitu ladata",
+  "attachmentIdMissing": "Liitteen ID puuttuu",
+  "camera": "Kamera",
+  "gallery": "Galleria",
+  "file": "Tiedosto",
+  "typingIndicator": "{name} kirjoittaa...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Uusi viesti lähettäjältä",
+  "notifUrgentPrefix": "KIIREELLINEN",
+  "notifUrgentMessage": "KIIREELLINEN VIESTI",
+  "notifIncomingCall": "Saapuva puhelu",
+  "notifCallingYou": "soittaa...",
+  "notifUpdateAvailable": "Päivitys saatavilla",
+  "notifVersionAvailable": "on nyt saatavilla",
+  "notifConnected": "Yhdistetty",
+  "notifDisconnected": "Yhteys katkaistu",
+  "notifConnectedBody": "Olet nyt yhteydessä palvelimeen.",
+  "notifDisconnectedBody": "Yhteys palvelimeen katkesi.",
+  "notifError": "Virhe",
+  "retry": "Yritä uudelleen",
+  "save": "Tallenna",
+  "accept": "Hyväksy",
+  "selectFile": "Valitse tiedosto",
+  "dataLoadingText": "Ladataan tietoja...",
+  "dataSavedSuccess": "Tiedot tallennettu",
+  "errorSaving": "Tallennusvirhe",
+  "errorLoading": "Latausvirhe",
+  "savedFilename": "Tallennettu: {filename}",
+  "logsCopied": "Lokit kopioitu!",
+  "diagnosticDataTitle": "Diagnostiikkatiedot",
+  "diagnosticDescription": "Haluatko lähettää nimettömiä diagnostiikkatietoja sovelluksen parantamiseksi?",
+  "noThanks": "Ei kiitos",
+  "yesEnable": "Kyllä, ota käyttöön",
+  "passwordMinEightChars": "Salasanassa on oltava vähintään 8 merkkiä",
+  "passwordChangeSuccess": "Salasana vaihdettu",
+  "emailChangeError": "Virhe sähköpostin vaihdossa",
+  "acceptDocumentCheckbox": "Olen lukenut ja hyväksyn asiakirjan.",
+  "loadingErrorGeneric": "Latausvirhe: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Saapuva puhelu",
+  "ringingFor": "Soi {seconds}s",
+  "rejectCall": "Hylkää",
+  "acceptCall": "Vastaa",
+  "unmute": "Poista mykistys",
+  "mute": "Mykistä",
+  "hangUp": "Lopeta puhelu",
+  "calling": "Soitetaan...",
+  "autoRejectIn": "Automaattinen hylkäys {seconds} sekunnin kuluttua",
+  "speakerOn": "Kaiutin",
+  "speakerOff": "Kuuloke",
+  "micMuted": "Mykistetty",
+  "micOn": "Mikrofoni",
+  "connectionExcellent": "Erinomainen",
+  "connectionGood": "Hyvä",
+  "connectionWeak": "Heikko",
+  "connectionLost": "Yhteys katkesi",
+  "personalData": "Henkilötiedot",
+  "personalDataSubtitle": "Etunimi, sukunimi, osoite",
+  "membershipFee": "Jäsenmaksu",
+  "annualFeeYear": "Vuosimaksu {year}",
+  "amount": "Summa:",
+  "dueBy": "Eräpäivä:",
+  "paid": "Maksettu",
+  "versionHistory": "Versiohistoria",
+  "lastUpdated": "Viimeksi päivitetty: {date}",
+  "noVersionHistory": "Ei versiohistoriaa saatavilla",
+  "failedLoadChangelog": "Muutoslokin lataus epäonnistui",
+  "callMember": "Soita jäsenelle",
+  "closeConversation": "Sulje keskustelu",
+  "chatOffline": "Ei verkossa",
+  "attachFiles": "Liitä tiedostoja (enint. 10, 50Mt)",
+  "conversationClosed": "Tämä keskustelu on suljettu",
+  "noMessages": "Ei viestejä",
+  "goBack": "Takaisin",
+  "goForward": "Eteenpäin",
+  "homePage": "Etusivu",
+  "firstNameLabel": "Etunimi",
+  "lastNameLabel": "Sukunimi",
+  "streetLabel": "Katu",
+  "houseNumberLabel": "Nro",
+  "postalCodeLabel": "Postinumero",
+  "cityLabel": "Kaupunki",
+  "phoneMobileLabel": "Puhelin (Matkapuhelin)",
+  "phoneLandlineLabel": "Puhelin (Lankapuhelin)",
+  "newEmailLabel": "Uusi sähköpostiosoite",
+  "currentPasswordLabel": "Nykyinen salasana",
+  "newPasswordLabel": "Uusi salasana",
+  "confirmPasswordLabel": "Vahvista salasana",
+  "emailChangedSuccess": "Sähköposti vaihdettu",
+  "newPasswordMinChars": "Uusi salasana (väh. 6 merkkiä)",
+  "reasonLabel2": "Syy",
+  "downloadFailed2": "Lataus epäonnistui",
+  "downloadTooltip": "Lataa",
+  "connectionErrorGeneric": "Yhteysvirhe",
+  "copyLogs": "Kopioi lokit",
+  "deleteLogs": "Poista lokit",
+  "autoScrollOn": "Automaattinen vieritys PÄÄLLÄ",
+  "autoScrollOff": "Automaattinen vieritys POIS",
+  "unknownValue": "Tuntematon",
+  "bankTransfer": "Pankkisiirto",
+  "standingOrder": "Toistuvaissuoritus",
+  "payment": "Maksu",
+  "warningType_ermahnung": "Varoitus",
+  "warningType_abmahnung": "Huomautus",
+  "warningType_letzte": "Viimeinen varoitus",
+  "warningsTotal": "Yhteensä: {count}",
+  "warningsErmahnung": "Varoituksia: {count}",
+  "warningsAbmahnung": "Huomautuksia: {count}",
+  "warningsLetzte": "Viimeiset: {count}",
+  "noWarnings": "Ei varoituksia",
+  "noWarningsDescription": "Sinulla ei ole tällä hetkellä varoituksia.",
+  "createdBy": "Luonut: {name}",
+  "monthJan": "Tam",
+  "monthFeb": "Hel",
+  "monthMar": "Maa",
+  "monthApr": "Huh",
+  "monthMay": "Tou",
+  "monthJun": "Kes",
+  "monthJul": "Hei",
+  "monthAug": "Elo",
+  "monthSep": "Syy",
+  "monthOct": "Lok",
+  "monthNov": "Mar",
+  "monthDec": "Jou",
+  "stufe1_name": "Henkilötiedot",
+  "stufe2_name": "Jäsentyyppi",
+  "stufe3_name": "Taloudellinen tilanne",
+  "stufe4_name": "Maksutapa",
+  "stufe5_name": "Jäsenyyden alku",
+  "stufe6_name": "Säännöt",
+  "stufe7_name": "Tietosuojakäytäntö",
+  "stufe8_name": "Peruuttamisoikeus",
+  "memberType_ordentlich": "Varsinainen jäsen",
+  "memberType_foerder": "Kannatusjäsen",
+  "memberType_ehren": "Kunniajäsen",
+  "memberDesc_ordentlich": "Aktiivijäsen äänioikeudella. Osallistuu yhdistyksen palveluihin (sähköposti, pilvi, byrokratiatuki).",
+  "memberDesc_foerder": "Tukee yhdistystä jäsenmaksuilla. Voi osallistua vuosikokoukseen neuvoa-antavalla äänellä, ilman äänioikeutta tai vaalikelpoisuutta hallitukseen.",
+  "memberDesc_ehren": "Varsinaisen jäsenen oikeudet ilman jäsenmaksuvelvollisuutta. Nimittää vuosikokous tai hallitus.",
+  "payMethod_ueberweisung": "Pankkisiirto",
+  "payMethod_dauerauftrag": "Toistuvaissuoritus",
+  "verifyStatus_geprueft": "Vahvistettu",
+  "verifyStatus_ausgefuellt": "Täytetty",
+  "verifyStatus_abgelehnt": "Hylätty",
+  "verifyStatus_offen": "Avoin",
+  "fillRequiredFields": "Täytä kaikki pakolliset kentät.",
+  "personalDataSaved": "Henkilötiedot tallennettu",
+  "selectMemberType": "Valitse jäsentyyppi.",
+  "memberTypeSaved": "Jäsentyyppi tallennettu",
+  "selectOption": "Valitse vaihtoehto.",
+  "financialSaved": "Taloudellinen tilanne tallennettu",
+  "selectPaymentMethod": "Valitse maksutapa.",
+  "paymentDataSaved": "Maksutiedot tallennettu",
+  "selectDate": "Valitse päivämäärä.",
+  "membershipStartSaved": "Jäsenyyden alku tallennettu",
+  "fileTooLarge": "Tiedosto on liian suuri (enint. 10 Mt).",
+  "leistungsbescheidUploaded": "Etuuspäätös ladattu onnistuneesti",
+  "verificationProgress": "Vahvistuksen edistyminen",
+  "notApplicable": "Ei sovellettavissa",
+  "socialBenefitsExempt": "Maksutapaa ei vaadita sosiaalietuuksien saajilta.",
+  "locked": "Lukittu",
+  "completePreviousStep": "Suorita ensin vaihe {step}.",
+  "rejectedNote": "Hylätty: {note}",
+  "waitingForReview": "Odottaa hallituksen tarkistusta.",
+  "stepApproved": "Tämä vaihe on tarkistettu ja hyväksytty.",
+  "changesViaChat": "Muutokset mahdollisia vain chatin kautta.",
+  "firstNameRequired": "Etunimi *",
+  "lastNameRequired": "Sukunimi *",
+  "birthDateLabel": "Syntymäaika *",
+  "streetRequired": "Katu *",
+  "houseNumberRequired": "Nro *",
+  "cityRequired": "Kaupunki *",
+  "phoneRequired": "Puhelinnumero *",
+  "phonePurpose": "Tarkoitus: Yhteydenotto kun ei tavoitettavissa sovelluksessa",
+  "selectMemberTypePrompt": "Valitse haluamasi jäsentyyppi:",
+  "financialExplanation": "Jotta voimme tarkistaa, onko sinulla oikeus maksuvähennykseen, tarvitsemme seuraavat tiedot. Niitä käytetään yksinomaan jäsenmaksusi määrittämiseen.",
+  "socialBenefitsQuestion": "Saatko tällä hetkellä sosiaalietuuksia?",
+  "optionBuergergeld": "Kyllä, kansalaistuki (Job Center)",
+  "optionSozialamt": "Kyllä, toimeentulotuki (Sosiaalivirasto)",
+  "optionNoBenefits": "Ei, en saa sosiaalietuuksia",
+  "feeExempt": "Kuukausimaksusi on: 0,00 €/kk",
+  "uploadLeistungsbescheid": "Lataa etuuspäätös",
+  "uploadLeistungsbescheidHint": "Lataa ajantasainen etuuspäätös 14 päivän kuluessa maksuvapautuksen vahvistamiseksi.",
+  "allowedFormatsUpload": "Sallitut muodot: PDF, JPG, PNG (enint. 10 Mt)",
+  "feeRegular": "Kuukausimaksusi on: 25,00 €/kk",
+  "paymentDayReminder": "Sinua muistutetaan joka kuukauden {day}. päivä.",
+  "membershipStartPrompt": "Valitse, milloin jäsenyytesi alkaa.",
+  "optionAfterVerification": "Vahvistuksen jälkeen",
+  "optionAfterVerificationDesc": "Jäsenyys alkaa hallituksen vahvistuspäivästä.",
+  "optionRetroFoundation": "Takautuvasti perustamispäivään (01.08.2025)",
+  "optionRetroFoundationDesc": "Sinusta tulee takautuva jäsen yhdistyksen perustamisesta alkaen.",
+  "optionRetroCustom": "Takautuvasti toiseen päivämäärään",
+  "optionRetroCustomDesc": "Valitse päivämäärä väliltä 01.08.2025 ja tänään.",
+  "selectDateLabel": "Valitse päivämäärä",
+  "selectDateHint": "Valitse päivämäärä...",
+  "dateNotBefore": "Ei ennen 01.08.2025 (perustamispäivä)",
+  "feeExemptRetro": "Maksuvapautus: 0,00 € takautuvasti.\nVain jäsenyyden päivämäärä asetetaan takautuvasti.",
+  "retroactiveFees": "Takautuvat maksut",
+  "retroFeeCalculation": "Jakso: {from} – {to}\nKuukaudet: {months}\nMaksu: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Lue yhdistyksen säännöt.",
+  "pleaseReadDatenschutz": "Lue tietosuojakäytäntö.",
+  "pleaseReadWiderruf": "Lue peruuttamisoikeus.",
+  "acceptedAtRegistration": "Hyväksytty rekisteröinnissä",
+  "confirmedByBoard": "Vahvistetaan hallituksen tarkistuksen jälkeen.",
+  "docSatzung": "Säännöt",
+  "docDatenschutz": "Tietosuojakäytäntö",
+  "docWiderruf": "Peruuttamisoikeus",
+  "acceptedAtRegCount": "Hyväksytty rekisteröinnissä ({count}/3)",
+  "acceptedOn": "Hyväksytty {date}",
+  "notAccepted": "Ei hyväksytty",
+  "statusAccepted": "Hyväksytty",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Jäsennumero liian pitkä (enintään 20 merkkiä)",
+  "onlyUppercaseAndNumbers": "Vain isot kirjaimet ja numerot sallittu",
+  "passwordTooLong": "Salasana liian pitkä (enintään 100 merkkiä)",
+  "nameTooLong": "Nimi liian pitkä (enintään 100 merkkiä)",
+  "emailTooLong": "Sähköposti liian pitkä (enintään 255 merkkiä)",
+  "legalAcknowledgePrefix": "Olen lukenut ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " ICD360S e.V.:n ja tunnustan ne sitoviksi.",
+  "legalPleaseReadFirst": "(lue ensin)",
+  "statusActive": "Aktiivinen",
+  "statusSuspended": "Jäädytetty",
+  "statusNew": "Uusi",
+  "statusCancelled": "Peruutettu",
+  "statusDeleted": "Poistettu",
+  "roleMitglied": "Jäsen",
+  "roleVorsitzer": "Puheenjohtaja",
+  "roleStellvertreter": "Varapuheenjohtaja",
+  "roleSchatzmeister": "Rahastonhoitaja",
+  "roleSchriftfuehrer": "Sihteeri",
+  "roleBeisitzer": "Lautamies",
+  "roleKassierer": "Kassanhoitaja",
+  "roleKassenpruefer": "Tilintarkastaja",
+  "roleEhrenamtlich": "Vapaaehtoinen",
+  "roleMitgliedergruender": "Perustajajäsen",
+  "roleEhrenmitglied": "Kunniajäsen",
+  "roleFoerdermitglied": "Kannatusjäsen",
+  "memberTypeNotSet": "Ei vielä asetettu",
+  "payMethodSepa": "SEPA-suoraveloitus",
+  "labelStatus": "Tila",
+  "labelMemberNumber": "Jäsennumero",
+  "labelRole": "Rooli",
+  "labelMemberType": "Jäsentyyppi",
+  "labelPaymentMethod": "Maksutapa",
+  "labelRegisteredOn": "Rekisteröity",
+  "labelLastLogin": "Viimeisin kirjautuminen",
+  "labelMemberSince": "Jäsen alkaen",
+  "neverLoggedIn": "Ei koskaan",
+  "notActivatedYet": "Ei vielä aktivoitu",
+  "tabVerification": "Vahvistus",
+  "tabWarnings": "Varoitukset",
+  "tabDocuments": "Asiakirjat",
+  "tabMembership": "Jäsenyys",
+  "pleaseEnterFirstName": "Syötä etunimi",
+  "pleaseEnterLastName": "Syötä sukunimi",
+  "noFileDataReceived": "Tietoja ei vastaanotettu",
+  "openFile": "Avaa",
+  "diagnosticErrors": "Virheraportteja parannukseen",
+  "diagnosticAnonymousStats": "Anonyymit käyttötilastot",
+  "diagnosticPerformance": "Sovelluksen suorituskykytiedot",
+  "noMicrophoneError": "Mikrofonia ei löytynyt. Liitä mikrofoni ja yritä uudelleen.",
+  "startConversation": "Aloita keskustelu!",
+  "staffWillReply": "Työntekijä vastaa sinulle pian.",
+  "inCall": "Puhelussa...",
+  "registration": "Rekisteröinti",
+  "deactivation": "Käytöstäpoisto",
+  "deactivatedOn": "Poistettu käytöstä",
+  "accountAutoSuspend": "Tilit, joita ei vahvisteta 30 päivän kuluessa, jäädytetään automaattisesti.",
+  "ipClean": "IP puhdas - ei listalla",
+  "documentsProvidedByBoard": "Asiakirjat tarjoaa hallitus.",
+  "noDocumentsAvailable": "Ei asiakirjoja",
+  "noDocumentsDescription": "Sinulle ei ole vielä toimitettu asiakirjoja.",
+  "uploadedBy": "Lähettäjä: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} vaihetta suoritettu",
+  "dayOfMonth": "Kuukauden {day}. päivä",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Muuta {field}",
+  "openDocument": "Avaa {name}",
+  "helpImproveApp": "Haluatko auttaa meitä parantamaan sovellusta?",
+  "noPersonalDataCollected": "Henkilötietoja ei kerätä. Tätä asetusta voi muuttaa milloin tahansa.",
+  "logEntries": "{count} merkintää",
+  "noLogs": "Ei lokeja",
+  "newLoginDetected": "Uusi kirjautuminen havaittu",
+  "waitingForMember": "Odotetaan jäsentä",
+  "waitingForStaff": "Odotetaan henkilökuntaa",
+  "waitingForAuthority": "Odotetaan viranomaista",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}
