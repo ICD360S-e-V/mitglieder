@@ -362,16 +362,18 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
+      # --- iOS Build ---
       - name: Build iOS (no codesign)
         run: flutter build ios --release --no-codesign
 
-      - name: Upload iOS build
+      - name: Upload iOS .app
         uses: actions/upload-artifact@v7
         with:
           name: icd360sev-ios
           path: build/ios/iphoneos/Runner.app
           if-no-files-found: error
 
+      # --- macOS Build ---
       - name: Disable macOS code signing for CI
         run: |
           sed -i '' 's/CODE_SIGN_IDENTITY = "Apple Development"/CODE_SIGN_IDENTITY = ""/g' macos/Runner.xcodeproj/project.pbxproj
@@ -382,11 +384,21 @@ jobs:
       - name: Build macOS
         run: flutter build macos --release
 
-      - name: Upload macOS build
+      - name: Create DMG
+        run: |
+          APP_PATH="build/macos/Build/Products/Release/icd360sev_mitglied.app"
+          DMG_DIR="build/dmg"
+          mkdir -p "$DMG_DIR"
+          cp -r "$APP_PATH" "$DMG_DIR/"
+          ln -s /Applications "$DMG_DIR/Applications"
+          hdiutil create -volname "ICD360S Mitglieder" -srcfolder "$DMG_DIR" \
+            -ov -format UDZO "build/icd360sev-mitglied.dmg"
+
+      - name: Upload macOS .dmg
         uses: actions/upload-artifact@v7
         with:
           name: icd360sev-macos
-          path: build/macos/Build/Products/Release/icd360sev_mitglied.app
+          path: build/icd360sev-mitglied.dmg
           if-no-files-found: error
 
       - name: Save cache marker
@@ -423,11 +435,25 @@ jobs:
       - name: Build Windows
         run: flutter build windows --release
 
-      - name: Upload Windows build
+      - name: Install Inno Setup
+        run: choco install innosetup -y --no-progress
+
+      - name: Get version
+        id: version
+        shell: bash
+        run: |
+          VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Create installer
+        run: |
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DAppVersion="${{ steps.version.outputs.version }}" windows\installer.iss
+
+      - name: Upload Windows installer
         uses: actions/upload-artifact@v7
         with:
           name: icd360sev-windows
-          path: build/windows/x64/runner/Release/
+          path: windows/icd360sev_setup.exe
           if-no-files-found: error
 
       - name: Save cache marker
@@ -469,11 +495,17 @@ jobs:
           cp artifacts/icd360sev-huawei-apk/*.apk release/icd360sev-huawei.apk
           cp artifacts/icd360sev-samsung-apk/*.apk release/icd360sev-samsung.apk
 
-          # Desktop & iOS
-          cd artifacts/icd360sev-windows && zip -r ../../release/icd360sev-windows.zip . && cd ../..
+          # Windows installer
+          cp artifacts/icd360sev-windows/icd360sev_setup.exe release/icd360sev_setup.exe
+
+          # macOS DMG
+          cp artifacts/icd360sev-macos/icd360sev-mitglied.dmg release/icd360sev-mitglied.dmg
+
+          # iOS .app (zip for download)
+          cd artifacts/icd360sev-ios && zip -r ../../release/icd360sev-ios.app.zip . && cd ../..
+
+          # Linux raw bundle
           cd artifacts/icd360sev-linux && tar czf ../../release/icd360sev-linux.tar.gz . && cd ../..
-          cd artifacts/icd360sev-macos && zip -r ../../release/icd360sev-macos.zip . && cd ../..
-          cd artifacts/icd360sev-ios && zip -r ../../release/icd360sev-ios.zip . && cd ../..
 
           # Linux packages
           cp artifacts/icd360sev-linux-deb/*.deb release/icd360sev-mitglied.deb
@@ -522,14 +554,14 @@ jobs:
           cp artifacts/icd360sev-linux-appimage/*.AppImage deploy/linux/icd360sev-mitglied.AppImage
           cd artifacts/icd360sev-linux && tar czf ../../deploy/linux/icd360sev-linux.tar.gz . && cd ../..
 
-          # Windows
-          cd artifacts/icd360sev-windows && zip -r ../../deploy/windows/icd360sev-windows.zip . && cd ../..
+          # Windows (.exe installer)
+          cp artifacts/icd360sev-windows/icd360sev_setup.exe deploy/windows/icd360sev_setup.exe
 
-          # macOS
-          cd artifacts/icd360sev-macos && zip -r ../../deploy/macos/icd360sev-macos.zip . && cd ../..
+          # macOS (.dmg)
+          cp artifacts/icd360sev-macos/icd360sev-mitglied.dmg deploy/macos/icd360sev-mitglied.dmg
 
-          # iOS
-          cd artifacts/icd360sev-ios && zip -r ../../deploy/ios/icd360sev-ios.zip . && cd ../..
+          # iOS (.app)
+          cd artifacts/icd360sev-ios && zip -r ../../deploy/ios/icd360sev-ios.app.zip . && cd ../..
 
           echo "Deploy files ready:"
           find deploy/ -type f -exec ls -lh {} \;
@@ -553,8 +585,8 @@ jobs:
           $SSH_CMD "[ -f $BASE/android/googleplay/icd360sev.aab ] && cp $BASE/android/googleplay/icd360sev.aab $BASE/android/googleplay/icd360sev_stable.aab || true"
 
           # Backup other platforms
-          $SSH_CMD "[ -f $BASE/windows/icd360sev-windows.zip ] && cp $BASE/windows/icd360sev-windows.zip $BASE/windows/icd360sev-windows_stable.zip || true"
-          $SSH_CMD "[ -f $BASE/macos/icd360sev-macos.zip ] && cp $BASE/macos/icd360sev-macos.zip $BASE/macos/icd360sev-macos_stable.zip || true"
+          $SSH_CMD "[ -f $BASE/windows/icd360sev_setup.exe ] && cp $BASE/windows/icd360sev_setup.exe $BASE/windows/icd360sev_setup_stable.exe || true"
+          $SSH_CMD "[ -f $BASE/macos/icd360sev-mitglied.dmg ] && cp $BASE/macos/icd360sev-mitglied.dmg $BASE/macos/icd360sev-mitglied_stable.dmg || true"
           $SSH_CMD "[ -f $BASE/linux/icd360sev-mitglied.AppImage ] && cp $BASE/linux/icd360sev-mitglied.AppImage $BASE/linux/icd360sev-mitglied_stable.AppImage || true"
 
           echo "Backups created"
@@ -597,17 +629,17 @@ jobs:
           $SCP_CMD deploy/linux/icd360sev-linux.tar.gz $DEST:$BASE/linux/
           echo "✅ Linux uploaded (.deb, .rpm, .AppImage, .tar.gz)"
 
-          # Upload Windows
-          $SCP_CMD deploy/windows/icd360sev-windows.zip $DEST:$BASE/windows/
-          echo "✅ Windows uploaded"
+          # Upload Windows (.exe installer)
+          $SCP_CMD deploy/windows/icd360sev_setup.exe $DEST:$BASE/windows/icd360sev_setup.exe
+          echo "✅ Windows uploaded (.exe)"
 
-          # Upload macOS
-          $SCP_CMD deploy/macos/icd360sev-macos.zip $DEST:$BASE/macos/
-          echo "✅ macOS uploaded"
+          # Upload macOS (.dmg)
+          $SCP_CMD deploy/macos/icd360sev-mitglied.dmg $DEST:$BASE/macos/icd360sev-mitglied.dmg
+          echo "✅ macOS uploaded (.dmg)"
 
-          # Upload iOS
-          $SCP_CMD deploy/ios/icd360sev-ios.zip $DEST:$BASE/ios/
-          echo "✅ iOS uploaded"
+          # Upload iOS (.app.zip)
+          $SCP_CMD deploy/ios/icd360sev-ios.app.zip $DEST:$BASE/ios/icd360sev-ios.app.zip
+          echo "✅ iOS uploaded (.app)"
 
       - name: Update F-Droid repository
         run: |
