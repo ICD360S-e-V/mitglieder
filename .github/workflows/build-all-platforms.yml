@@ -78,7 +78,7 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: ${{ matrix.artifact_name }}-apk
-          path: build/app/outputs/flutter-apk/app-${{ matrix.flavor }}-arm64-v8a-release.apk
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-${{ matrix.flavor }}-release.apk
           if-no-files-found: error
 
       - name: Upload AAB (Google Play)
