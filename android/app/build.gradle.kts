@@ -68,8 +68,8 @@ android {
         applicationId = "de.icd360s.mitglieder"
         minSdk = flutter.minSdkVersion  // Android 6.0+ (Flutter minimum)
         targetSdk = 36  // Android 15
-        versionCode = 109
-        versionName = "1.1.13"
+        versionCode = 110
+        versionName = "1.1.14"
 
         // ABI filtering handled by Flutter --split-per-abi flag
         // Do NOT set ndk.abiFilters here (conflicts with split-per-abi)
