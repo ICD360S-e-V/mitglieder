@@ -5,17 +5,16 @@ AppPublisher=ICD360S e.V.
 AppPublisherURL=https://icd360s.de
 DefaultDirName={autopf}\ICD360S Mitglieder
 DefaultGroupName=ICD360S Mitglieder
-OutputDir=.
+OutputDir=..
 OutputBaseFilename=icd360sev_setup
 Compression=lzma2
 SolidCompression=yes
 ArchitecturesInstallIn64BitMode=x64compatible
 UninstallDisplayIcon={app}\icd360sev_mitglied.exe
-SetupIconFile=
 PrivilegesRequired=lowest
 
 [Files]
-Source: "build\windows\x64\runner\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "..\build\windows\x64\runner\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 
 [Icons]
 Name: "{group}\ICD360S Mitglieder"; Filename: "{app}\icd360sev_mitglied.exe"
