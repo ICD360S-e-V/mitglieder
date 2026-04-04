@@ -1,2 +1,0 @@
-# mitglieder
-pass Mitglieder
