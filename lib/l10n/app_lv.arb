@@ -1,0 +1,919 @@
+{
+  "@@locale": "lv",
+  "appTitle": "ICD360S e.V - Biedru portāls",
+  "memberPortal": "Biedru portāls",
+  "welcomeLoading": "Ielādē...",
+  "welcomeAutoLogin": "Automātiska pieteikšanās...",
+  "login": "Pieteikties",
+  "register": "Reģistrēties",
+  "becomeMember": "Kļūt par biedru",
+  "memberNumber": "Biedra numurs",
+  "memberNumberHint": "Ievadiet biedra numuru",
+  "password": "Parole",
+  "passwordHint": "Ievadiet paroli",
+  "confirmPassword": "Apstiprināt paroli",
+  "confirmPasswordHint": "Apstipriniet paroli",
+  "newPassword": "Jauna parole",
+  "newPasswordHint": "Ievadiet jaunu paroli",
+  "saveCredentials": "Saglabāt pieteikšanās datus",
+  "autoLogin": "Automātiska pieteikšanās",
+  "forgotPassword": "Aizmirsāt paroli?",
+  "firstName": "Vārds un uzvārds",
+  "firstNameHint": "Ievadiet vārdu un uzvārdu",
+  "nameMinLength": "Vārdam jābūt vismaz 2 rakstzīmēm",
+  "nameOnlyLetters": "Atļauti tikai burti un defises",
+  "email": "E-pasta adrese",
+  "emailHint": "Ievadiet e-pastu",
+  "emailInvalid": "Ievadiet derīgu e-pasta adresi",
+  "passwordMinLength": "Parolei jābūt vismaz 6 rakstzīmēm",
+  "passwordsNotMatch": "Paroles nesakrīt",
+  "recoveryCode": "Atjaunošanas kods (6 cipari)",
+  "recoveryCodeHelper": "Atcerieties šo kodu paroles atjaunošanai",
+  "recoveryCodeHint": "Ievadiet atjaunošanas kodu",
+  "recoveryCodeInvalid": "Kodam jābūt tieši 6 cipariem",
+  "loginFailed": "Pieteikšanās neizdevās",
+  "registrationFailed": "Reģistrācija neizdevās",
+  "connectionError": "Savienojuma kļūda: {error}",
+  "registrationSuccess": "Reģistrācija veiksmīga!\n\nJūsu biedra numurs: {memberNumber}\n\nAtcerieties šo numuru pieteikšanai.",
+  "tooManyDevices": "Pārāk daudz ierīču",
+  "maxDevicesMessage": "Jūs jau esat pieteicies 3 ierīcēs.\nIzvēlieties ierīci izrakstīšanai:",
+  "unknownDevice": "Nezināma ierīce",
+  "unknown": "Nezināms",
+  "logoutError": "Izrakstīšanās kļūda",
+  "error": "Kļūda: {error}",
+  "cancel": "Atcelt",
+  "resetPassword": "Atiestatīt paroli",
+  "forgotPasswordTitle": "Aizmirsta parole",
+  "forgotPasswordDescription": "Ievadiet savu biedra numuru un reģistrācijas laikā izveidoto atjaunošanas kodu.",
+  "passwordResetSuccess": "Parole atiestatīta!\n\nTagad varat pieteikties ar jauno paroli.",
+  "passwordResetFailed": "Paroles atiestatīšana neizdevās",
+  "needHelp": "Nepieciešama palīdzība?",
+  "helpQuestion": "Problēmas ar pieteikšanos vai reģistrāciju?",
+  "helpDescription": "Sazinieties ar mums caur WhatsApp un aprakstiet, kas nedarbojas. Atbildēsim pēc iespējas ātrāk!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Pieprasījums caur ICD360S lietotni",
+  "whatsappMessage": "Sveiki, man ir problēma ar ICD360S lietotni. ",
+  "imprint": "Impressum",
+  "privacy": "Privātuma politika",
+  "statutes": "Statūti",
+  "revocation": "Atteikuma tiesības",
+  "cancellation": "Atcelšana",
+  "allRightsReserved": "Visas tiesības aizsargātas.",
+  "enterCredentials": "Ievadiet biedra numuru un paroli",
+  "appointments": "Tikšanās",
+  "tickets": "Pieteikumi",
+  "liveChat": "Tiešsaistes čats",
+  "notifications": "Paziņojumi",
+  "myProfile": "Mans Profils",
+  "logout": "Izrakstīties",
+  "goodMorning": "Labrīt",
+  "goodDay": "Labdien",
+  "goodEvening": "Labvakar",
+  "goodNight": "Ar labu nakti",
+  "welcomeToICD": "Laipni lūdzam ICD360S e.V!",
+  "accountCreatedSuccessfully": "Jūsu konts ir veiksmīgi izveidots.",
+  "today": "Šodien",
+  "membershipFeeDue": "Biedru nauda jāmaksā",
+  "pleaseTransferAnnualFee": "Lūdzu, pārskaitiet gada maksu.",
+  "newBadge": "Jauns",
+  "close": "Aizvērt",
+  "membership": "Dalība",
+  "myAppointments": "Mani tikšanās",
+  "appointmentsLoadingReady": "Ielādē tikšanās - API gatavs!",
+  "priority": "Prioritāte",
+  "messageLabel": "Ziņojums",
+  "createdOn": "Izveidots",
+  "handler": "Apstrādātājs",
+  "reportProblems": "Ziņot par problēmām",
+  "reportProblem": "Ziņot par problēmu",
+  "weRespondIn24Hours": "Mēs jums atbildēsim maksimāli 24 stundu laikā!",
+  "everythingOk": "Viss kārtībā!",
+  "haveProblemWeHelp": "Ir problēma?\nMēs par to parūpēsimies!",
+  "myMembership": "Mana dalība",
+  "managePersonalDataAndFee": "Pārvaldīt personas datus un maksu",
+  "myAppointmentsTitle": "Mani tikšanās",
+  "appointmentsDescription": "Šeit varat redzēt savus gaidāmos tikšanās.\nVarat apstiprināt savu dalību vai atteikties.",
+  "loadAppointments": "Ielādēt tikšanās",
+  "myTickets": "Manas pieteikumi",
+  "newTicket": "Jauns pieteikums",
+  "noOpenTickets": "Nav atvērtu pieteikumu",
+  "haveQuestionCreateTicket": "Vai jums ir jautājums vai problēma?\nIzveidojiet jaunu pieteikumu.",
+  "whatIsTheProblem": "Kāda ir problēma?",
+  "describeTheProblem": "Aprakstiet problēmu",
+  "howUrgentIsIt": "Cik steidzami?",
+  "low": "Zems",
+  "medium": "Vidējs",
+  "high": "Augsts",
+  "submit": "Iesniegt",
+  "fillSubjectAndMessage": "Lūdzu, aizpildiet tēmu un ziņojumu",
+  "ticketCreated": "Pieteikums izveidots",
+  "errorCreatingTicket": "Kļūda, izveidojot pieteikumu",
+  "verified": "Pārbaudīts",
+  "account": "Konts",
+  "myDevices": "Manas ierīces",
+  "changeEmail": "Mainīt e-pastu",
+  "changePassword": "Mainīt paroli",
+  "newEmailAddress": "Jauna e-pasta adrese",
+  "currentPassword": "Pašreizējā parole",
+  "saveEmail": "Saglabāt e-pastu",
+  "savePassword": "Saglabāt paroli",
+  "deviceLoggedOut": "Ierīce atteikta",
+  "passwordChangedSuccessfully": "Parole veiksmīgi mainīta",
+  "emailChangedSuccessfully": "E-pasts veiksmīgi mainīts",
+  "errorChangingPassword": "Kļūda, mainot paroli",
+  "errorChangingEmail": "Kļūda, mainot e-pastu",
+  "validEmailRequired": "Lūdzu, ievadiet derīgu e-pasta adresi",
+  "passwordTooShort": "Parolei jābūt vismaz 6 rakstzīmēm",
+  "maxDevicesReached": "Esat pieteicies maksimāli 3 ierīcēs.",
+  "loggedInOnDevices": "Esat pieteicies {count} no 3 ierīcēm.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Nav aktīvu sesiju",
+  "logoutFromDevice": "Iziet no šīs ierīces",
+  "confirmLogoutDevice": "Iziet no ierīces?",
+  "confirmLogoutMessage": "Vai vēlaties iziet no šīs ierīces?\n\nJums būs jāpiesakās vēlreiz, lai izmantotu šo ierīci.",
+  "ipAddress": "IP",
+  "platform": "Platforma",
+  "trialWarningUrgentTitle": "Uzmanību: {days, plural, =1{Atlicis 1 diena} other{Atlikušas {days} dienas}} līdz konta apturēšanai!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Jūsu konts vēl nav verificēts",
+  "trialWarningDescription": "Lūdzu, aizpildiet savus datus sadaļā \"Mans profils\". Pēc 30 dienām jūsu konts tiks automātiski apturēts.",
+  "trialDaysRemaining": "{days, plural, =1{1 diena} other{{days} dienas}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Pārskats",
+  "member": "Biedrs",
+  "memberManagement": "Biedru pārvaldība",
+  "reportProblemTooltip": "Ziņot par problēmu",
+  "newAppointmentsTitle": "Jaunas tikšanās",
+  "youHaveNewAppointment": "Jums ir jauna tikšanās.",
+  "youHaveNewAppointments": "Jums ir {count} jaunas tikšanās.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Atgādinājums: Tikšanās rīt",
+  "tomorrowAppointment": "Rīt: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Jums ir {count} tikšanās rīt.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Tikšanās šodien",
+  "todayAppointment": "Šodien: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Jums ir {count} tikšanās šodien.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Maksājuma atgādinājums",
+  "paymentReminderMessage": "Šodien ir mēneša {day}. datums – lūdzu, pabeidziet {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Maksājuma diena (ikmēneša atgādinājums)",
+  "updateAvailable": "Pieejams atjauninājums",
+  "newVersionAvailable": "Pieejama jauna versija: {version}",
+  "currentVersionLabel": "Pašreizējā versija: {version}",
+  "changes": "Izmaiņas:",
+  "downloadProgress": "Lejupielāde: {percent}%",
+  "installationStarting": "Sākas instalēšana...",
+  "appWillRestart": "Lietotne tiks automātiski restartēta.",
+  "later": "Vēlāk",
+  "updateNow": "Atjaunināt tagad",
+  "downloading": "Lejupielādē...",
+  "downloadFailed": "Lejupielāde neizdevās. Lūdzu, mēģiniet vēlāk.",
+  "searchingForUpdates": "Meklē atjauninājumus...",
+  "appUpToDate": "Lietotne ir atjaunināta",
+  "updateCheckError": "Kļūda pārbaudot atjauninājumus",
+  "changelog": "Izmaiņu žurnāls",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Tikšanās apstiprināta",
+  "terminDeclined": "Tikšanās noraidīta",
+  "terminRescheduleRequested": "Pieprasīta pārcelšana",
+  "statusConfirmed": "Apstiprināts",
+  "statusDeclined": "Noraidīts",
+  "statusRescheduling": "Pārcelšana",
+  "statusPending": "Gaida",
+  "categoryVorstandssitzung": "Valdes sēde",
+  "categoryMitgliederversammlung": "Kopsapulce",
+  "categorySchulung": "Apmācība",
+  "categorySonstiges": "Cits",
+  "openCount": "{count} atvērti",
+  "refresh": "Atjaunināt",
+  "filterUpcoming": "Gaidāmie",
+  "filterPast": "Pagātnes",
+  "filterAll": "Visi",
+  "noUpcomingAppointments": "Nav gaidāmu tikšanos",
+  "noPastAppointments": "Nav pagātnes tikšanos",
+  "noAppointmentsAvailable": "Nav tikšanos",
+  "appointmentsShownHere": "Jūsu tikšanās tiks parādītas šeit",
+  "dateLabel": "Datums",
+  "timeLabel": "Laiks",
+  "locationLabel": "Vieta",
+  "createdByLabel": "Izveidoja",
+  "descriptionLabel": "Apraksts",
+  "ticketLabel": "Pieteikums",
+  "yourStatus": "Jūsu statuss: ",
+  "reasonLabel": "Iemesls: {reason}",
+  "durationMinutes": "{minutes} min",
+  "confirm": "Apstiprināt",
+  "decline": "Noraidīt",
+  "reschedule": "Pārcelt",
+  "requestReschedule": "Pieprasīt pārcelšanu",
+  "appointmentLabel": "Tikšanās: {title}",
+  "rescheduleReason": "Pārcelšanas iemesls *",
+  "rescheduleReasonHint": "Norādiet iemeslu...",
+  "pleaseProvideReason": "Norādiet iemeslu",
+  "request": "Pieprasīt",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Atvērts",
+  "ticketStatusInProgress": "Apstrādē",
+  "ticketStatusWaitingMember": "Gaida biedru",
+  "ticketStatusWaitingStaff": "Gaida darbinieku",
+  "ticketStatusWaitingAuthority": "Gaida iestādi",
+  "ticketStatusDone": "Pabeigts",
+  "ticketPriorityHigh": "Augsta",
+  "ticketPriorityMedium": "Vidēja",
+  "ticketPriorityLow": "Zema",
+  "comments": "Komentāri",
+  "documents": "Dokumenti",
+  "details": "Detaļas",
+  "replySent": "Atbilde nosūtīta",
+  "sendError": "Sūtīšanas kļūda",
+  "uploading": "Augšupielāde...",
+  "fileUploaded": "{filename} augšupielādēts",
+  "uploadFailed": "Augšupielāde neizdevās",
+  "openError": "Atvēršanas kļūda",
+  "noRepliesYet": "Vēl nav atbilžu",
+  "waitingForSupport": "Gaida atbalsta atbildi",
+  "writeReply": "Rakstīt atbildi...",
+  "attachFile": "Pievienot failu",
+  "documentsCount": "Dokumenti ({count})",
+  "upload": "Augšupielādēt",
+  "noDocuments": "Nav dokumentu",
+  "allowedFormats": "Atļautie formāti: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Jūsu ziņojums:",
+  "translation": "Tulkojums",
+  "original": "Oriģināls",
+  "originalText": "Oriģinālais teksts",
+  "autoTranslated": "Automātiski tulkots",
+  "originalTapTranslation": "Oriģināls · Pieskarieties tulkojumam",
+  "translatedTapOriginal": "Tulkots · Pieskarieties oriģinālam",
+  "justNow": "Tikko",
+  "minutesAgo": "pirms {minutes} min",
+  "hoursAgo": "pirms {hours} stundām",
+  "daysAgo": "pirms {days} {days, plural, =1{dienas} other{dienām}}",
+  "createdLabel": "Izveidots",
+  "updatedLabel": "Atjaunināts",
+  "handlerLabel": "Apstrādātājs",
+  "doneLabel": "Pabeigts",
+  "newTicketTitle": "Jauns pieteikums",
+  "categoryOptional": "Kategorija (neobligāti)",
+  "selectCategory": "Izvēlēties",
+  "subjectLabel": "Tēma",
+  "fillAllFields": "Aizpildiet visus laukus",
+  "ticketCreatedId": "Pieteikums #{id} izveidots",
+  "priorityLabel": "Prioritāte: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Atbalsts bezsaistē",
+  "lastSeenSeconds": "Aktīvs pirms dažām sekundēm",
+  "lastSeenMinutes": "Aktīvs pirms {minutes} {minutes, plural, =1{minūtes} other{minūtēm}}",
+  "lastSeenHours": "Aktīvs pirms {hours} {hours, plural, =1{stundas} other{stundām}}",
+  "lastSeenDays": "Aktīvs pirms {days} {days, plural, =1{dienas} other{dienām}}",
+  "online": "Tiešsaistē",
+  "callSupport": "Zvanīt",
+  "typeMessage": "Rakstiet ziņojumu...",
+  "callBusy": "Atbalsts ir aizņemts",
+  "callRejected": "Zvans noraidīts",
+  "callFailed": "Zvanu neizdevās savienot",
+  "callEnded": "Zvans beidzies",
+  "callSupportBusy": "Atbalsts jau ir citā zvanā",
+  "errorStartingChat": "Kļūda sākot tērzēšanu",
+  "errorStartingCall": "Kļūda sākot zvanu",
+  "errorConnecting": "Savienojuma kļūda",
+  "errorAcceptingCall": "Kļūda pieņemot zvanu",
+  "errorDownloading": "Lejupielādes kļūda",
+  "errorUploading": "Augšupielādes kļūda",
+  "errorSending": "Sūtīšanas kļūda",
+  "errorPickingPhotos": "Kļūda izvēloties fotogrāfijas",
+  "errorPickingFiles": "Kļūda izvēloties failus",
+  "errorTakingPhoto": "Kļūda fotografējot",
+  "fileNotLoaded": "Failu neizdevās ielādēt",
+  "attachmentIdMissing": "Trūkst pielikuma ID",
+  "camera": "Kamera",
+  "gallery": "Galerija",
+  "file": "Fails",
+  "typingIndicator": "{name} raksta...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Jauna ziņa no",
+  "notifUrgentPrefix": "STEIDZAMI",
+  "notifUrgentMessage": "STEIDZAMS ZIŅOJUMS",
+  "notifIncomingCall": "Ienākošais zvans",
+  "notifCallingYou": "zvana...",
+  "notifUpdateAvailable": "Pieejams atjauninājums",
+  "notifVersionAvailable": "tagad ir pieejama",
+  "notifConnected": "Savienots",
+  "notifDisconnected": "Atvienots",
+  "notifConnectedBody": "Esat savienots ar serveri.",
+  "notifDisconnectedBody": "Savienojums ar serveri tika pārtraukts.",
+  "notifError": "Kļūda",
+  "retry": "Mēģināt vēlreiz",
+  "save": "Saglabāt",
+  "accept": "Pieņemt",
+  "selectFile": "Izvēlēties failu",
+  "dataLoadingText": "Datu ielāde...",
+  "dataSavedSuccess": "Dati veiksmīgi saglabāti",
+  "errorSaving": "Saglabāšanas kļūda",
+  "errorLoading": "Ielādes kļūda",
+  "savedFilename": "Saglabāts: {filename}",
+  "logsCopied": "Žurnāli nokopēti!",
+  "diagnosticDataTitle": "Diagnostikas dati",
+  "diagnosticDescription": "Vai vēlaties sūtīt anonīmus diagnostikas datus lietotnes uzlabošanai?",
+  "noThanks": "Nē, paldies",
+  "yesEnable": "Jā, iespējot",
+  "passwordMinEightChars": "Parolei jābūt vismaz 8 rakstzīmēm",
+  "passwordChangeSuccess": "Parole veiksmīgi nomainīta",
+  "emailChangeError": "Kļūda mainot e-pastu",
+  "acceptDocumentCheckbox": "Esmu izlasījis un pieņemu dokumentu.",
+  "loadingErrorGeneric": "Ielādes kļūda: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Ienākošais zvans",
+  "ringingFor": "Zvana {seconds}s",
+  "rejectCall": "Noraidīt",
+  "acceptCall": "Atbildēt",
+  "unmute": "Ieslēgt skaņu",
+  "mute": "Izslēgt skaņu",
+  "hangUp": "Nolikt klausuli",
+  "calling": "Zvana...",
+  "autoRejectIn": "Automātiska noraidīšana pēc {seconds} sekundēm",
+  "speakerOn": "Skaļrunis",
+  "speakerOff": "Austiņa",
+  "micMuted": "Izslēgts",
+  "micOn": "Mikrofons",
+  "connectionExcellent": "Izcils",
+  "connectionGood": "Labs",
+  "connectionWeak": "Vājš",
+  "connectionLost": "Atvienots",
+  "personalData": "Personas dati",
+  "personalDataSubtitle": "Vārds, uzvārds, adrese",
+  "membershipFee": "Biedra maksa",
+  "annualFeeYear": "Gada maksa {year}",
+  "amount": "Summa:",
+  "dueBy": "Termiņš:",
+  "paid": "Samaksāts",
+  "versionHistory": "Versiju vēsture",
+  "lastUpdated": "Pēdējoreiz atjaunināts: {date}",
+  "noVersionHistory": "Versiju vēsture nav pieejama",
+  "failedLoadChangelog": "Neizdevās ielādēt izmaiņu žurnālu",
+  "callMember": "Zvanīt biedram",
+  "closeConversation": "Aizvērt sarunu",
+  "chatOffline": "Bezsaistē",
+  "attachFiles": "Pievienot failus (maks. 10, 50MB)",
+  "conversationClosed": "Šī saruna ir aizvērta",
+  "noMessages": "Nav ziņojumu",
+  "goBack": "Atpakaļ",
+  "goForward": "Uz priekšu",
+  "homePage": "Sākumlapa",
+  "firstNameLabel": "Vārds",
+  "lastNameLabel": "Uzvārds",
+  "streetLabel": "Iela",
+  "houseNumberLabel": "Nr.",
+  "postalCodeLabel": "Pasta indekss",
+  "cityLabel": "Pilsēta",
+  "phoneMobileLabel": "Tālrunis (Mobilais)",
+  "phoneLandlineLabel": "Tālrunis (Fiksētais)",
+  "newEmailLabel": "Jauna e-pasta adrese",
+  "currentPasswordLabel": "Pašreizējā parole",
+  "newPasswordLabel": "Jauna parole",
+  "confirmPasswordLabel": "Apstiprināt paroli",
+  "emailChangedSuccess": "E-pasts nomainīts",
+  "newPasswordMinChars": "Jauna parole (min. 6 rakstzīmes)",
+  "reasonLabel2": "Iemesls",
+  "downloadFailed2": "Lejupielāde neizdevās",
+  "downloadTooltip": "Lejupielādēt",
+  "connectionErrorGeneric": "Savienojuma kļūda",
+  "copyLogs": "Kopēt žurnālus",
+  "deleteLogs": "Dzēst žurnālus",
+  "autoScrollOn": "Automātiskā ritināšana IESL",
+  "autoScrollOff": "Automātiskā ritināšana IZSL",
+  "unknownValue": "Nezināms",
+  "bankTransfer": "Bankas pārskaitījums",
+  "standingOrder": "Pastāvīgais maksājums",
+  "payment": "Maksājums",
+  "warningType_ermahnung": "Brīdinājums",
+  "warningType_abmahnung": "Aizrādījums",
+  "warningType_letzte": "Pēdējais brīdinājums",
+  "warningsTotal": "Kopā: {count}",
+  "warningsErmahnung": "Brīdinājumi: {count}",
+  "warningsAbmahnung": "Aizrādījumi: {count}",
+  "warningsLetzte": "Pēdējie: {count}",
+  "noWarnings": "Nav brīdinājumu",
+  "noWarningsDescription": "Jums pašlaik nav brīdinājumu.",
+  "createdBy": "Izveidoja: {name}",
+  "monthJan": "Jan",
+  "monthFeb": "Feb",
+  "monthMar": "Mar",
+  "monthApr": "Apr",
+  "monthMay": "Mai",
+  "monthJun": "Jun",
+  "monthJul": "Jul",
+  "monthAug": "Aug",
+  "monthSep": "Sep",
+  "monthOct": "Okt",
+  "monthNov": "Nov",
+  "monthDec": "Dec",
+  "stufe1_name": "Personas dati",
+  "stufe2_name": "Dalības veids",
+  "stufe3_name": "Finansiālā situācija",
+  "stufe4_name": "Maksājuma veids",
+  "stufe5_name": "Dalības sākums",
+  "stufe6_name": "Statūti",
+  "stufe7_name": "Privātuma politika",
+  "stufe8_name": "Atteikuma tiesības",
+  "memberType_ordentlich": "Parastais biedrs",
+  "memberType_foerder": "Atbalstītājs biedrs",
+  "memberType_ehren": "Goda biedrs",
+  "memberDesc_ordentlich": "Aktīvs biedrs ar balsstiesībām. Piedalās biedrības pakalpojumos (e-pasts, mākonis, birokrātiskais atbalsts).",
+  "memberDesc_foerder": "Atbalsta biedrību ar iemaksām. Var piedalīties biedru sapulcē ar padomdevēja balsi, bez balsstiesībām vai tiesībām tikt ievēlētam valdē.",
+  "memberDesc_ehren": "Ir parastā biedra tiesības bez pienākuma maksāt biedra naudu. Iecelts no biedru sapulces vai valdes.",
+  "payMethod_ueberweisung": "Bankas pārskaitījums",
+  "payMethod_dauerauftrag": "Pastāvīgais maksājums",
+  "verifyStatus_geprueft": "Pārbaudīts",
+  "verifyStatus_ausgefuellt": "Aizpildīts",
+  "verifyStatus_abgelehnt": "Noraidīts",
+  "verifyStatus_offen": "Atvērts",
+  "fillRequiredFields": "Aizpildiet visus obligātos laukus.",
+  "personalDataSaved": "Personas dati saglabāti",
+  "selectMemberType": "Izvēlieties dalības veidu.",
+  "memberTypeSaved": "Dalības veids saglabāts",
+  "selectOption": "Izvēlieties variantu.",
+  "financialSaved": "Finansiālā situācija saglabāta",
+  "selectPaymentMethod": "Izvēlieties maksājuma veidu.",
+  "paymentDataSaved": "Maksājuma dati saglabāti",
+  "selectDate": "Izvēlieties datumu.",
+  "membershipStartSaved": "Dalības sākums saglabāts",
+  "fileTooLarge": "Fails ir pārāk liels (maks. 10 MB).",
+  "leistungsbescheidUploaded": "Pabalstu apliecība veiksmīgi augšupielādēta",
+  "verificationProgress": "Verifikācijas progress",
+  "notApplicable": "Nav piemērojams",
+  "socialBenefitsExempt": "Maksājuma veids nav nepieciešams sociālo pabalstu saņēmējiem.",
+  "locked": "Bloķēts",
+  "completePreviousStep": "Vispirms pabeidziet soli {step}.",
+  "rejectedNote": "Noraidīts: {note}",
+  "waitingForReview": "Gaida valdes pārskatu.",
+  "stepApproved": "Šis solis ir pārskatīts un apstiprināts.",
+  "changesViaChat": "Izmaiņas iespējamas tikai caur čatu.",
+  "firstNameRequired": "Vārds *",
+  "lastNameRequired": "Uzvārds *",
+  "birthDateLabel": "Dzimšanas datums *",
+  "streetRequired": "Iela *",
+  "houseNumberRequired": "Nr. *",
+  "cityRequired": "Pilsēta *",
+  "phoneRequired": "Tālruņa numurs *",
+  "phonePurpose": "Mērķis: Kontakts, kad nav sasniedzams caur lietotni",
+  "selectMemberTypePrompt": "Izvēlieties vēlamo dalības veidu:",
+  "financialExplanation": "Lai pārbaudītu, vai jums pienākas maksas samazinājums, mums nepieciešama šāda informācija. Tā tiks izmantota tikai jūsu biedra naudas noteikšanai.",
+  "socialBenefitsQuestion": "Vai jūs pašlaik saņemat sociālos pabalstus?",
+  "optionBuergergeld": "Jā, pilsoņu pabalsts (Job Center)",
+  "optionSozialamt": "Jā, sociālā palīdzība (Sociālais dienests)",
+  "optionNoBenefits": "Nē, es nesaņemu sociālos pabalstus",
+  "feeExempt": "Jūsu ikmēneša maksa ir: 0,00 €/mēnesī",
+  "uploadLeistungsbescheid": "Augšupielādēt pabalstu apliecību",
+  "uploadLeistungsbescheidHint": "Augšupielādējiet aktuālu pabalstu apliecību 14 dienu laikā, lai apstiprinātu atbrīvojumu no maksas.",
+  "allowedFormatsUpload": "Atļautie formāti: PDF, JPG, PNG (maks. 10 MB)",
+  "feeRegular": "Jūsu ikmēneša maksa ir: 25,00 €/mēnesī",
+  "paymentDayReminder": "Jums tiks atgādināts katra mēneša {day}. datumā.",
+  "membershipStartPrompt": "Izvēlieties, kad jāsākas jūsu dalībai.",
+  "optionAfterVerification": "Pēc verifikācijas pabeigšanas",
+  "optionAfterVerificationDesc": "Dalība sākas no valdes apstiprināšanas dienas.",
+  "optionRetroFoundation": "Ar atpakaļejošu spēku līdz dibināšanas datumam (01.08.2025)",
+  "optionRetroFoundationDesc": "Jūs kļūstat par biedru ar atpakaļejošu spēku no biedrības dibināšanas.",
+  "optionRetroCustom": "Ar atpakaļejošu spēku līdz citam datumam",
+  "optionRetroCustomDesc": "Izvēlieties datumu no 01.08.2025 līdz šodienai.",
+  "selectDateLabel": "Izvēlieties datumu",
+  "selectDateHint": "Izvēlieties datumu...",
+  "dateNotBefore": "Ne agrāk par 01.08.2025 (dibināšanas datums)",
+  "feeExemptRetro": "Atbrīvojums no maksas: 0,00 € ar atpakaļejošu spēku.\nTikai dalības datums tiek iestatīts ar atpakaļejošu spēku.",
+  "retroactiveFees": "Atpakaļejošas maksas",
+  "retroFeeCalculation": "Periods: {from} – {to}\nMēneši: {months}\nMaksa: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Izlasiet biedrības statūtus.",
+  "pleaseReadDatenschutz": "Izlasiet privātuma politiku.",
+  "pleaseReadWiderruf": "Izlasiet atteikuma tiesības.",
+  "acceptedAtRegistration": "Pieņemts reģistrācijā",
+  "confirmedByBoard": "Tiks apstiprināts pēc valdes pārskata.",
+  "docSatzung": "Statūti",
+  "docDatenschutz": "Privātuma politika",
+  "docWiderruf": "Atteikuma tiesības",
+  "acceptedAtRegCount": "Pieņemts reģistrācijā ({count}/3)",
+  "acceptedOn": "Pieņemts {date}",
+  "notAccepted": "Nav pieņemts",
+  "statusAccepted": "Pieņemts",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Biedra numurs pārāk garš (maks. 20 rakstzīmes)",
+  "onlyUppercaseAndNumbers": "Atļauti tikai lielie burti un cipari",
+  "passwordTooLong": "Parole pārāk gara (maks. 100 rakstzīmes)",
+  "nameTooLong": "Vārds pārāk garš (maks. 100 rakstzīmes)",
+  "emailTooLong": "E-pasts pārāk garš (maks. 255 rakstzīmes)",
+  "legalAcknowledgePrefix": "Esmu iepazinies ar ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " ICD360S e.V. un atzīstu tos par saistošiem.",
+  "legalPleaseReadFirst": "(lūdzu, vispirms izlasiet)",
+  "statusActive": "Aktīvs",
+  "statusSuspended": "Apturēts",
+  "statusNew": "Jauns",
+  "statusCancelled": "Atcelts",
+  "statusDeleted": "Dzēsts",
+  "roleMitglied": "Biedrs",
+  "roleVorsitzer": "Priekšsēdētājs",
+  "roleStellvertreter": "Vietnieks",
+  "roleSchatzmeister": "Kasieris",
+  "roleSchriftfuehrer": "Sekretārs",
+  "roleBeisitzer": "Piesēdētājs",
+  "roleKassierer": "Kasieris",
+  "roleKassenpruefer": "Revidents",
+  "roleEhrenamtlich": "Brīvprātīgais",
+  "roleMitgliedergruender": "Dibinātājs biedrs",
+  "roleEhrenmitglied": "Goda biedrs",
+  "roleFoerdermitglied": "Atbalstītājs biedrs",
+  "memberTypeNotSet": "Vēl nav noteikts",
+  "payMethodSepa": "SEPA tiešais debets",
+  "labelStatus": "Statuss",
+  "labelMemberNumber": "Biedra numurs",
+  "labelRole": "Loma",
+  "labelMemberType": "Biedra tips",
+  "labelPaymentMethod": "Maksājuma veids",
+  "labelRegisteredOn": "Reģistrēts",
+  "labelLastLogin": "Pēdējā pieslēgšanās",
+  "labelMemberSince": "Biedrs kopš",
+  "neverLoggedIn": "Nekad",
+  "notActivatedYet": "Vēl nav aktivizēts",
+  "tabVerification": "Verifikācija",
+  "tabWarnings": "Brīdinājumi",
+  "tabDocuments": "Dokumenti",
+  "tabMembership": "Dalība",
+  "pleaseEnterFirstName": "Ievadiet vārdu",
+  "pleaseEnterLastName": "Ievadiet uzvārdu",
+  "noFileDataReceived": "Dati nav saņemti",
+  "openFile": "Atvērt",
+  "diagnosticErrors": "Kļūdu ziņojumi uzlabošanai",
+  "diagnosticAnonymousStats": "Anonīma lietošanas statistika",
+  "diagnosticPerformance": "Lietotnes veiktspējas dati",
+  "noMicrophoneError": "Mikrofons nav atrasts. Pievienojiet mikrofonu un mēģiniet vēlreiz.",
+  "startConversation": "Sāciet sarunu!",
+  "staffWillReply": "Darbinieks jums drīz atbildēs.",
+  "inCall": "Zvanā...",
+  "registration": "Reģistrācija",
+  "deactivation": "Deaktivācija",
+  "deactivatedOn": "Deaktivizēts",
+  "accountAutoSuspend": "Konti, kas nav verificēti 30 dienu laikā, tiks automātiski apturēti.",
+  "ipClean": "IP tīra - nav sarakstā",
+  "documentsProvidedByBoard": "Dokumentus nodrošina valde.",
+  "noDocumentsAvailable": "Nav dokumentu",
+  "noDocumentsDescription": "Jums vēl nav nodrošināti dokumenti.",
+  "uploadedBy": "Augšupielādēja: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} soļi pabeigti",
+  "dayOfMonth": "Mēneša {day}. diena",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Mainīt {field}",
+  "openDocument": "Atvērt {name}",
+  "helpImproveApp": "Vai vēlaties palīdzēt mums uzlabot lietotni?",
+  "noPersonalDataCollected": "Personas dati netiek vākti. Šo iestatījumu var mainīt jebkurā laikā.",
+  "logEntries": "{count} ieraksti",
+  "noLogs": "Nav žurnālu",
+  "newLoginDetected": "Konstatēta jauna pieslēgšanās",
+  "waitingForMember": "Gaida biedru",
+  "waitingForStaff": "Gaida darbinieku",
+  "waitingForAuthority": "Gaida iestādi",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

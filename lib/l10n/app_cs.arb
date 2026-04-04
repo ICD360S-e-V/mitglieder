@@ -1,0 +1,919 @@
+{
+  "@@locale": "cs",
+  "appTitle": "ICD360S e.V - Portál členů",
+  "memberPortal": "Portál členů",
+  "welcomeLoading": "Načítání...",
+  "welcomeAutoLogin": "Automatické přihlášení...",
+  "login": "Přihlásit se",
+  "register": "Registrovat se",
+  "becomeMember": "Staňte se členem",
+  "memberNumber": "Číslo člena",
+  "memberNumberHint": "Zadejte číslo člena",
+  "password": "Heslo",
+  "passwordHint": "Zadejte heslo",
+  "confirmPassword": "Potvrďte heslo",
+  "confirmPasswordHint": "Potvrďte heslo",
+  "newPassword": "Nové heslo",
+  "newPasswordHint": "Zadejte nové heslo",
+  "saveCredentials": "Uložit přihlašovací údaje",
+  "autoLogin": "Automatické přihlášení",
+  "forgotPassword": "Zapomněli jste heslo?",
+  "firstName": "Jméno a příjmení",
+  "firstNameHint": "Zadejte jméno a příjmení",
+  "nameMinLength": "Jméno musí mít alespoň 2 znaky",
+  "nameOnlyLetters": "Povolena pouze písmena a pomlčky",
+  "email": "E-mailová adresa",
+  "emailHint": "Zadejte e-mail",
+  "emailInvalid": "Zadejte platný e-mail",
+  "passwordMinLength": "Heslo musí mít alespoň 6 znaků",
+  "passwordsNotMatch": "Hesla se neshodují",
+  "recoveryCode": "Kód pro obnovení (6 číslic)",
+  "recoveryCodeHelper": "Zapamatujte si tento kód pro obnovení hesla",
+  "recoveryCodeHint": "Zadejte kód pro obnovení",
+  "recoveryCodeInvalid": "Kód musí mít přesně 6 číslic",
+  "loginFailed": "Přihlášení se nezdařilo",
+  "registrationFailed": "Registrace se nezdařila",
+  "connectionError": "Chyba připojení: {error}",
+  "registrationSuccess": "Registrace úspěšná!\n\nVaše číslo člena: {memberNumber}\n\nZapamatujte si toto číslo pro přihlášení.",
+  "tooManyDevices": "Příliš mnoho zařízení",
+  "maxDevicesMessage": "Jste již přihlášeni na 3 zařízeních.\nVyberte zařízení k odhlášení:",
+  "unknownDevice": "Neznámé zařízení",
+  "unknown": "Neznámé",
+  "logoutError": "Chyba při odhlášení",
+  "error": "Chyba: {error}",
+  "cancel": "Zrušit",
+  "resetPassword": "Obnovit heslo",
+  "forgotPasswordTitle": "Zapomenuté heslo",
+  "forgotPasswordDescription": "Zadejte číslo člena a kód pro obnovení vytvořený při registraci.",
+  "passwordResetSuccess": "Heslo bylo úspěšně obnoveno!\n\nNyní se můžete přihlásit novým heslem.",
+  "passwordResetFailed": "Obnovení hesla se nezdařilo",
+  "needHelp": "Potřebujete pomoc?",
+  "helpQuestion": "Problémy s přihlášením nebo registrací?",
+  "helpDescription": "Kontaktujte nás přes WhatsApp a popište přesně, co nefunguje. Odpovíme co nejdříve!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Dotaz přes aplikaci ICD360S",
+  "whatsappMessage": "Dobrý den, mám problém s aplikací ICD360S. ",
+  "imprint": "Impressum",
+  "privacy": "Ochrana osobních údajů",
+  "statutes": "Stanovy",
+  "revocation": "Právo na odstoupení",
+  "cancellation": "Zrušení",
+  "allRightsReserved": "Všechna práva vyhrazena.",
+  "enterCredentials": "Zadejte číslo člena a heslo",
+  "appointments": "Schůzky",
+  "tickets": "Tikety",
+  "liveChat": "Live Chat",
+  "notifications": "Oznámení",
+  "myProfile": "Můj Profil",
+  "logout": "Odhlásit",
+  "goodMorning": "Dobré ráno",
+  "goodDay": "Dobrý den",
+  "goodEvening": "Dobrý večer",
+  "goodNight": "Dobrou noc",
+  "welcomeToICD": "Vítejte v ICD360S e.V!",
+  "accountCreatedSuccessfully": "Váš účet byl úspěšně vytvořen.",
+  "today": "Dnes",
+  "membershipFeeDue": "Členský příspěvek splatný",
+  "pleaseTransferAnnualFee": "Prosím, převeďte roční příspěvek.",
+  "newBadge": "Nový",
+  "close": "Zavřít",
+  "membership": "Členství",
+  "myAppointments": "Moje schůzky",
+  "appointmentsLoadingReady": "Načítání schůzek - API připraveno!",
+  "priority": "Priorita",
+  "messageLabel": "Zpráva",
+  "createdOn": "Vytvořeno",
+  "handler": "Správce",
+  "reportProblems": "Nahlásit problémy",
+  "reportProblem": "Nahlásit problém",
+  "weRespondIn24Hours": "Odpovíme vám do maximálně 24 hodin!",
+  "everythingOk": "Vše v pořádku!",
+  "haveProblemWeHelp": "Máte problém?\nPostaráme se o to!",
+  "myMembership": "Moje členství",
+  "managePersonalDataAndFee": "Spravujte své osobní údaje a příspěvek",
+  "myAppointmentsTitle": "Moje schůzky",
+  "appointmentsDescription": "Zde můžete vidět své nadcházející schůzky.\nMůžete potvrdit svou účast nebo odmítnout.",
+  "loadAppointments": "Načíst schůzky",
+  "myTickets": "Moje tikety",
+  "newTicket": "Nový tiket",
+  "noOpenTickets": "Žádné otevřené tikety",
+  "haveQuestionCreateTicket": "Máte otázku nebo problém?\nVytvořte nový tiket.",
+  "whatIsTheProblem": "Jaký je problém?",
+  "describeTheProblem": "Popište problém",
+  "howUrgentIsIt": "Jak naléhavé?",
+  "low": "Nízká",
+  "medium": "Střední",
+  "high": "Vysoká",
+  "submit": "Odeslat",
+  "fillSubjectAndMessage": "Vyplňte předmět a zprávu",
+  "ticketCreated": "Tiket vytvořen",
+  "errorCreatingTicket": "Chyba při vytváření tiketu",
+  "verified": "Ověřeno",
+  "account": "Účet",
+  "myDevices": "Moje zařízení",
+  "changeEmail": "Změnit email",
+  "changePassword": "Změnit heslo",
+  "newEmailAddress": "Nová emailová adresa",
+  "currentPassword": "Aktuální heslo",
+  "saveEmail": "Uložit email",
+  "savePassword": "Uložit heslo",
+  "deviceLoggedOut": "Zařízení odhlášeno",
+  "passwordChangedSuccessfully": "Heslo úspěšně změněno",
+  "emailChangedSuccessfully": "Email úspěšně změněn",
+  "errorChangingPassword": "Chyba při změně hesla",
+  "errorChangingEmail": "Chyba při změně emailu",
+  "validEmailRequired": "Zadejte platnou emailovou adresu",
+  "passwordTooShort": "Heslo musí mít alespoň 6 znaků",
+  "maxDevicesReached": "Jste přihlášeni na maximálním počtu 3 zařízení.",
+  "loggedInOnDevices": "Jste přihlášeni na {count} ze 3 zařízení.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Žádné aktivní relace",
+  "logoutFromDevice": "Odhlásit z tohoto zařízení",
+  "confirmLogoutDevice": "Odhlásit zařízení?",
+  "confirmLogoutMessage": "Chcete se odhlásit z tohoto zařízení?\n\nBudete se muset znovu přihlásit, abyste mohli toto zařízení používat.",
+  "ipAddress": "IP",
+  "platform": "Platforma",
+  "trialWarningUrgentTitle": "Pozor: Zbývá {days, plural, =1{1 den} few{{days} dny} other{{days} dní}} do pozastavení účtu!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Váš účet ještě nebyl ověřen",
+  "trialWarningDescription": "Vyplňte prosím své údaje v \"Můj profil\". Po 30 dnech bude váš účet automaticky pozastaven.",
+  "trialDaysRemaining": "{days, plural, =1{1 den} few{{days} dny} other{{days} dní}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Přehled",
+  "member": "Člen",
+  "memberManagement": "Správa členů",
+  "reportProblemTooltip": "Nahlásit problém",
+  "newAppointmentsTitle": "Nové schůzky",
+  "youHaveNewAppointment": "Máte novou schůzku.",
+  "youHaveNewAppointments": "Máte {count} nových schůzek.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Připomínka: Schůzka zítra",
+  "tomorrowAppointment": "Zítra: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Máte {count} schůzek zítra.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Schůzky dnes",
+  "todayAppointment": "Dnes: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Máte {count} schůzek dnes.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Připomínka platby",
+  "paymentReminderMessage": "Dnes je {day}. den v měsíci – dokončete prosím {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Den platby (měsíční připomínka)",
+  "updateAvailable": "Aktualizace k dispozici",
+  "newVersionAvailable": "Je k dispozici nová verze: {version}",
+  "currentVersionLabel": "Aktuální verze: {version}",
+  "changes": "Změny:",
+  "downloadProgress": "Stahování: {percent}%",
+  "installationStarting": "Spouštění instalace...",
+  "appWillRestart": "Aplikace se automaticky restartuje.",
+  "later": "Později",
+  "updateNow": "Aktualizovat nyní",
+  "downloading": "Stahování...",
+  "downloadFailed": "Stahování se nezdařilo. Zkuste to prosím později.",
+  "searchingForUpdates": "Hledání aktualizací...",
+  "appUpToDate": "Aplikace je aktuální",
+  "updateCheckError": "Chyba při kontrole aktualizací",
+  "changelog": "Seznam změn",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Schůzka potvrzena",
+  "terminDeclined": "Schůzka odmítnuta",
+  "terminRescheduleRequested": "Požadavek na přeložení",
+  "statusConfirmed": "Potvrzeno",
+  "statusDeclined": "Odmítnuto",
+  "statusRescheduling": "Přeložení",
+  "statusPending": "Čekající",
+  "categoryVorstandssitzung": "Schůze představenstva",
+  "categoryMitgliederversammlung": "Valná hromada",
+  "categorySchulung": "Školení",
+  "categorySonstiges": "Ostatní",
+  "openCount": "{count} otevřených",
+  "refresh": "Obnovit",
+  "filterUpcoming": "Nadcházející",
+  "filterPast": "Minulé",
+  "filterAll": "Vše",
+  "noUpcomingAppointments": "Žádné nadcházející schůzky",
+  "noPastAppointments": "Žádné minulé schůzky",
+  "noAppointmentsAvailable": "Žádné schůzky",
+  "appointmentsShownHere": "Vaše schůzky se zobrazí zde",
+  "dateLabel": "Datum",
+  "timeLabel": "Čas",
+  "locationLabel": "Místo",
+  "createdByLabel": "Vytvořil",
+  "descriptionLabel": "Popis",
+  "ticketLabel": "Ticket",
+  "yourStatus": "Váš stav: ",
+  "reasonLabel": "Důvod: {reason}",
+  "durationMinutes": "{minutes} min",
+  "confirm": "Potvrdit",
+  "decline": "Odmítnout",
+  "reschedule": "Přeložit",
+  "requestReschedule": "Požádat o přeložení",
+  "appointmentLabel": "Schůzka: {title}",
+  "rescheduleReason": "Důvod přeložení *",
+  "rescheduleReasonHint": "Uveďte důvod...",
+  "pleaseProvideReason": "Uveďte důvod",
+  "request": "Požádat",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Otevřeno",
+  "ticketStatusInProgress": "Zpracovává se",
+  "ticketStatusWaitingMember": "Čeká se na člena",
+  "ticketStatusWaitingStaff": "Čeká se na pracovníka",
+  "ticketStatusWaitingAuthority": "Čeká se na úřad",
+  "ticketStatusDone": "Vyřízeno",
+  "ticketPriorityHigh": "Vysoká",
+  "ticketPriorityMedium": "Střední",
+  "ticketPriorityLow": "Nízká",
+  "comments": "Komentáře",
+  "documents": "Dokumenty",
+  "details": "Podrobnosti",
+  "replySent": "Odpověď odeslána",
+  "sendError": "Chyba při odesílání",
+  "uploading": "Nahrávání...",
+  "fileUploaded": "{filename} nahráno",
+  "uploadFailed": "Nahrávání selhalo",
+  "openError": "Chyba při otevírání",
+  "noRepliesYet": "Zatím žádné odpovědi",
+  "waitingForSupport": "Čekání na odpověď podpory",
+  "writeReply": "Napsat odpověď...",
+  "attachFile": "Připojit soubor",
+  "documentsCount": "Dokumenty ({count})",
+  "upload": "Nahrát",
+  "noDocuments": "Žádné dokumenty",
+  "allowedFormats": "Povolené formáty: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Vaše zpráva:",
+  "translation": "Překlad",
+  "original": "Originál",
+  "originalText": "Původní text",
+  "autoTranslated": "Automaticky přeloženo",
+  "originalTapTranslation": "Originál · Klepněte pro překlad",
+  "translatedTapOriginal": "Přeloženo · Klepněte pro originál",
+  "justNow": "Právě teď",
+  "minutesAgo": "před {minutes} min",
+  "hoursAgo": "před {hours} hod",
+  "daysAgo": "před {days} {days, plural, =1{dnem} other{dny}}",
+  "createdLabel": "Vytvořeno",
+  "updatedLabel": "Aktualizováno",
+  "handlerLabel": "Zpracovatel",
+  "doneLabel": "Vyřízeno",
+  "newTicketTitle": "Nový ticket",
+  "categoryOptional": "Kategorie (volitelné)",
+  "selectCategory": "Vybrat",
+  "subjectLabel": "Předmět",
+  "fillAllFields": "Vyplňte všechna pole",
+  "ticketCreatedId": "Ticket #{id} vytvořen",
+  "priorityLabel": "Priorita: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Podpora offline",
+  "lastSeenSeconds": "Aktivní před několika sekundami",
+  "lastSeenMinutes": "Aktivní před {minutes} {minutes, plural, =1{minutou} other{minutami}}",
+  "lastSeenHours": "Aktivní před {hours} {hours, plural, =1{hodinou} other{hodinami}}",
+  "lastSeenDays": "Aktivní před {days} {days, plural, =1{dnem} other{dny}}",
+  "online": "Online",
+  "callSupport": "Zavolat",
+  "typeMessage": "Napište zprávu...",
+  "callBusy": "Podpora je zaneprázdněna",
+  "callRejected": "Hovor byl odmítnut",
+  "callFailed": "Hovor se nepodařilo spojit",
+  "callEnded": "Hovor ukončen",
+  "callSupportBusy": "Podpora je již v jiném hovoru",
+  "errorStartingChat": "Chyba při spuštění chatu",
+  "errorStartingCall": "Chyba při spuštění hovoru",
+  "errorConnecting": "Chyba připojení",
+  "errorAcceptingCall": "Chyba při přijímání hovoru",
+  "errorDownloading": "Chyba stahování",
+  "errorUploading": "Chyba nahrávání",
+  "errorSending": "Chyba odesílání",
+  "errorPickingPhotos": "Chyba výběru fotek",
+  "errorPickingFiles": "Chyba výběru souborů",
+  "errorTakingPhoto": "Chyba focení",
+  "fileNotLoaded": "Soubor nelze načíst",
+  "attachmentIdMissing": "ID přílohy chybí",
+  "camera": "Fotoaparát",
+  "gallery": "Galerie",
+  "file": "Soubor",
+  "typingIndicator": "{name} píše...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Nová zpráva od",
+  "notifUrgentPrefix": "NALÉHAVÉ",
+  "notifUrgentMessage": "NALÉHAVÁ ZPRÁVA",
+  "notifIncomingCall": "Příchozí hovor",
+  "notifCallingYou": "volá...",
+  "notifUpdateAvailable": "Aktualizace k dispozici",
+  "notifVersionAvailable": "je nyní k dispozici",
+  "notifConnected": "Připojeno",
+  "notifDisconnected": "Odpojeno",
+  "notifConnectedBody": "Jste připojeni k serveru.",
+  "notifDisconnectedBody": "Spojení se serverem bylo přerušeno.",
+  "notifError": "Chyba",
+  "retry": "Zkusit znovu",
+  "save": "Uložit",
+  "accept": "Přijmout",
+  "selectFile": "Vybrat soubor",
+  "dataLoadingText": "Načítání dat...",
+  "dataSavedSuccess": "Data úspěšně uložena",
+  "errorSaving": "Chyba při ukládání",
+  "errorLoading": "Chyba při načítání",
+  "savedFilename": "Uloženo: {filename}",
+  "logsCopied": "Logy zkopírovány!",
+  "diagnosticDataTitle": "Diagnostická data",
+  "diagnosticDescription": "Chcete odesílat anonymní diagnostická data pro zlepšení aplikace?",
+  "noThanks": "Ne, děkuji",
+  "yesEnable": "Ano, povolit",
+  "passwordMinEightChars": "Heslo musí mít alespoň 8 znaků",
+  "passwordChangeSuccess": "Heslo úspěšně změněno",
+  "emailChangeError": "Chyba při změně e-mailu",
+  "acceptDocumentCheckbox": "Přečetl jsem a přijímám dokument.",
+  "loadingErrorGeneric": "Chyba načítání: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Příchozí hovor",
+  "ringingFor": "Vyzvání {seconds}s",
+  "rejectCall": "Odmítnout",
+  "acceptCall": "Přijmout",
+  "unmute": "Zapnout zvuk",
+  "mute": "Ztlumit",
+  "hangUp": "Zavěsit",
+  "calling": "Volání...",
+  "autoRejectIn": "Automatické odmítnutí za {seconds} sekund",
+  "speakerOn": "Reproduktor",
+  "speakerOff": "Sluchátko",
+  "micMuted": "Ztlumeno",
+  "micOn": "Mikrofon",
+  "connectionExcellent": "Výborné",
+  "connectionGood": "Dobré",
+  "connectionWeak": "Slabé",
+  "connectionLost": "Odpojeno",
+  "personalData": "Osobní údaje",
+  "personalDataSubtitle": "Jméno, příjmení, adresa",
+  "membershipFee": "Členský příspěvek",
+  "annualFeeYear": "Roční příspěvek {year}",
+  "amount": "Částka:",
+  "dueBy": "Splatnost:",
+  "paid": "Zaplaceno",
+  "versionHistory": "Historie verzí",
+  "lastUpdated": "Poslední aktualizace: {date}",
+  "noVersionHistory": "Žádná historie verzí",
+  "failedLoadChangelog": "Nepodařilo se načíst seznam změn",
+  "callMember": "Zavolat členovi",
+  "closeConversation": "Zavřít konverzaci",
+  "chatOffline": "Offline",
+  "attachFiles": "Přiložit soubory (max. 10, 50MB)",
+  "conversationClosed": "Tato konverzace byla uzavřena",
+  "noMessages": "Žádné zprávy",
+  "goBack": "Zpět",
+  "goForward": "Vpřed",
+  "homePage": "Domů",
+  "firstNameLabel": "Jméno",
+  "lastNameLabel": "Příjmení",
+  "streetLabel": "Ulice",
+  "houseNumberLabel": "Č.",
+  "postalCodeLabel": "PSČ",
+  "cityLabel": "Město",
+  "phoneMobileLabel": "Telefon (Mobil)",
+  "phoneLandlineLabel": "Telefon (Pevná linka)",
+  "newEmailLabel": "Nová e-mailová adresa",
+  "currentPasswordLabel": "Současné heslo",
+  "newPasswordLabel": "Nové heslo",
+  "confirmPasswordLabel": "Potvrzení hesla",
+  "emailChangedSuccess": "E-mail úspěšně změněn",
+  "newPasswordMinChars": "Nové heslo (min. 6 znaků)",
+  "reasonLabel2": "Důvod",
+  "downloadFailed2": "Stahování selhalo",
+  "downloadTooltip": "Stáhnout",
+  "connectionErrorGeneric": "Chyba připojení",
+  "copyLogs": "Kopírovat logy",
+  "deleteLogs": "Smazat logy",
+  "autoScrollOn": "Automatické posouvání ZAP",
+  "autoScrollOff": "Automatické posouvání VYP",
+  "unknownValue": "Neznámé",
+  "bankTransfer": "Bankovní převod",
+  "standingOrder": "Trvalý příkaz",
+  "payment": "Platba",
+  "warningType_ermahnung": "Napomenutí",
+  "warningType_abmahnung": "Výstraha",
+  "warningType_letzte": "Poslední výstraha",
+  "warningsTotal": "Celkem: {count}",
+  "warningsErmahnung": "Napomenutí: {count}",
+  "warningsAbmahnung": "Výstrahy: {count}",
+  "warningsLetzte": "Poslední: {count}",
+  "noWarnings": "Žádná napomenutí",
+  "noWarningsDescription": "Momentálně nemáte žádná napomenutí.",
+  "createdBy": "Vytvořil: {name}",
+  "monthJan": "Led",
+  "monthFeb": "Feb",
+  "monthMar": "Mar",
+  "monthApr": "Dub",
+  "monthMay": "Kve",
+  "monthJun": "Cer",
+  "monthJul": "Cec",
+  "monthAug": "Srp",
+  "monthSep": "Zar",
+  "monthOct": "Rij",
+  "monthNov": "Lis",
+  "monthDec": "Pro",
+  "stufe1_name": "Osobní údaje",
+  "stufe2_name": "Typ členství",
+  "stufe3_name": "Finanční situace",
+  "stufe4_name": "Platební metoda",
+  "stufe5_name": "Začátek členství",
+  "stufe6_name": "Stanovy",
+  "stufe7_name": "Zásady ochrany osobních údajů",
+  "stufe8_name": "Právo na odstoupení",
+  "memberType_ordentlich": "Řádný člen",
+  "memberType_foerder": "Podporující člen",
+  "memberType_ehren": "Čestný člen",
+  "memberDesc_ordentlich": "Aktivní člen s hlasovacím právem. Účastní se služeb spolku (email, cloud, úřední podpora).",
+  "memberDesc_foerder": "Podporuje spolek příspěvky. Může se účastnit valné hromady s poradním hlasem, bez hlasovacího práva nebo volitelnosti do představenstva.",
+  "memberDesc_ehren": "Má práva řádného člena bez povinnosti platit členské příspěvky. Jmenován valnou hromadou nebo představenstvem.",
+  "payMethod_ueberweisung": "Bankovní převod",
+  "payMethod_dauerauftrag": "Trvalý příkaz",
+  "verifyStatus_geprueft": "Ověřeno",
+  "verifyStatus_ausgefuellt": "Vyplněno",
+  "verifyStatus_abgelehnt": "Zamítnuto",
+  "verifyStatus_offen": "Otevřeno",
+  "fillRequiredFields": "Vyplňte všechna povinná pole.",
+  "personalDataSaved": "Osobní údaje uloženy",
+  "selectMemberType": "Vyberte typ členství.",
+  "memberTypeSaved": "Typ členství uložen",
+  "selectOption": "Vyberte možnost.",
+  "financialSaved": "Finanční situace uložena",
+  "selectPaymentMethod": "Vyberte platební metodu.",
+  "paymentDataSaved": "Platební údaje uloženy",
+  "selectDate": "Vyberte datum.",
+  "membershipStartSaved": "Začátek členství uložen",
+  "fileTooLarge": "Soubor je příliš velký (max. 10 MB).",
+  "leistungsbescheidUploaded": "Rozhodnutí o dávkách úspěšně nahráno",
+  "verificationProgress": "Průběh ověření",
+  "notApplicable": "Nepoužitelné",
+  "socialBenefitsExempt": "Platební metoda není vyžadována pro příjemce sociálních dávek.",
+  "locked": "Zamčeno",
+  "completePreviousStep": "Nejprve dokončete krok {step}.",
+  "rejectedNote": "Zamítnuto: {note}",
+  "waitingForReview": "Čeká na posouzení představenstvem.",
+  "stepApproved": "Tento krok byl zkontrolován a schválen.",
+  "changesViaChat": "Změny možné pouze přes chat.",
+  "firstNameRequired": "Jméno *",
+  "lastNameRequired": "Příjmení *",
+  "birthDateLabel": "Datum narození *",
+  "streetRequired": "Ulice *",
+  "houseNumberRequired": "Č. *",
+  "cityRequired": "Město *",
+  "phoneRequired": "Telefonní číslo *",
+  "phonePurpose": "Účel: Kontakt, když nejste dostupní přes aplikaci",
+  "selectMemberTypePrompt": "Vyberte požadovaný typ členství:",
+  "financialExplanation": "Pro ověření nároku na snížení příspěvku potřebujeme následující informace. Budou použity výhradně ke stanovení vašeho členského příspěvku.",
+  "socialBenefitsQuestion": "Pobíráte v současnosti sociální dávky?",
+  "optionBuergergeld": "Ano, občanský příspěvek (Job Center)",
+  "optionSozialamt": "Ano, sociální pomoc (Sociální úřad)",
+  "optionNoBenefits": "Ne, nepobírám sociální dávky",
+  "feeExempt": "Váš měsíční příspěvek je: 0,00 €/měsíc",
+  "uploadLeistungsbescheid": "Nahrát rozhodnutí o dávkách",
+  "uploadLeistungsbescheidHint": "Nahrajte aktuální rozhodnutí o dávkách do 14 dnů pro potvrzení osvobození od příspěvku.",
+  "allowedFormatsUpload": "Povolené formáty: PDF, JPG, PNG (max. 10 MB)",
+  "feeRegular": "Váš měsíční příspěvek je: 25,00 €/měsíc",
+  "paymentDayReminder": "Budete upozorněni {day}. den každého měsíce.",
+  "membershipStartPrompt": "Zvolte, kdy má začít vaše členství.",
+  "optionAfterVerification": "Po dokončení ověření",
+  "optionAfterVerificationDesc": "Členství začíná ode dne potvrzení představenstvem.",
+  "optionRetroFoundation": "Zpětně k datu založení (01.08.2025)",
+  "optionRetroFoundationDesc": "Stanete se zpětným členem od založení spolku.",
+  "optionRetroCustom": "Zpětně k jinému datu",
+  "optionRetroCustomDesc": "Zvolte datum mezi 01.08.2025 a dneškem.",
+  "selectDateLabel": "Vybrat datum",
+  "selectDateHint": "Vyberte datum...",
+  "dateNotBefore": "Ne dříve než 01.08.2025 (datum založení)",
+  "feeExemptRetro": "Osvobození od příspěvku: 0,00 € zpětně.\nPouze datum členství je nastaveno zpětně.",
+  "retroactiveFees": "Zpětné příspěvky",
+  "retroFeeCalculation": "Období: {from} – {to}\nMěsíce: {months}\nPříspěvek: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Přečtěte si stanovy spolku.",
+  "pleaseReadDatenschutz": "Přečtěte si zásady ochrany osobních údajů.",
+  "pleaseReadWiderruf": "Přečtěte si právo na odstoupení.",
+  "acceptedAtRegistration": "Přijato při registraci",
+  "confirmedByBoard": "Bude potvrzeno po posouzení představenstvem.",
+  "docSatzung": "Stanovy",
+  "docDatenschutz": "Zásady ochrany osobních údajů",
+  "docWiderruf": "Právo na odstoupení",
+  "acceptedAtRegCount": "Přijato při registraci ({count}/3)",
+  "acceptedOn": "Přijato dne {date}",
+  "notAccepted": "Nepřijato",
+  "statusAccepted": "Přijato",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Číslo člena příliš dlouhé (max 20 znaků)",
+  "onlyUppercaseAndNumbers": "Povolena jsou pouze velká písmena a čísla",
+  "passwordTooLong": "Heslo příliš dlouhé (max 100 znaků)",
+  "nameTooLong": "Jméno příliš dlouhé (max 100 znaků)",
+  "emailTooLong": "E-mail příliš dlouhý (max 255 znaků)",
+  "legalAcknowledgePrefix": "Seznámil/a jsem se s ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " ICD360S e.V. a uznávám je jako závazné.",
+  "legalPleaseReadFirst": "(prosím nejprve přečtěte)",
+  "statusActive": "Aktivní",
+  "statusSuspended": "Pozastaveno",
+  "statusNew": "Nový",
+  "statusCancelled": "Zrušeno",
+  "statusDeleted": "Smazáno",
+  "roleMitglied": "Člen",
+  "roleVorsitzer": "Předseda",
+  "roleStellvertreter": "Zástupce",
+  "roleSchatzmeister": "Pokladník",
+  "roleSchriftfuehrer": "Tajemník",
+  "roleBeisitzer": "Přísedící",
+  "roleKassierer": "Pokladní",
+  "roleKassenpruefer": "Revisor",
+  "roleEhrenamtlich": "Dobrovolník",
+  "roleMitgliedergruender": "Zakládající člen",
+  "roleEhrenmitglied": "Čestný člen",
+  "roleFoerdermitglied": "Podporující člen",
+  "memberTypeNotSet": "Dosud nenastaveno",
+  "payMethodSepa": "SEPA inkaso",
+  "labelStatus": "Stav",
+  "labelMemberNumber": "Číslo člena",
+  "labelRole": "Role",
+  "labelMemberType": "Typ členství",
+  "labelPaymentMethod": "Platební metoda",
+  "labelRegisteredOn": "Registrováno",
+  "labelLastLogin": "Poslední přihlášení",
+  "labelMemberSince": "Členem od",
+  "neverLoggedIn": "Nikdy",
+  "notActivatedYet": "Dosud neaktivováno",
+  "tabVerification": "Ověření",
+  "tabWarnings": "Varování",
+  "tabDocuments": "Dokumenty",
+  "tabMembership": "Členství",
+  "pleaseEnterFirstName": "Zadejte jméno",
+  "pleaseEnterLastName": "Zadejte příjmení",
+  "noFileDataReceived": "Žádná data nebyla přijata",
+  "openFile": "Otevřít",
+  "diagnosticErrors": "Hlášení chyb pro vylepšení",
+  "diagnosticAnonymousStats": "Anonymní statistiky použití",
+  "diagnosticPerformance": "Údaje o výkonu aplikace",
+  "noMicrophoneError": "Mikrofon nebyl nalezen. Připojte mikrofon a zkuste to znovu.",
+  "startConversation": "Zahajte konverzaci!",
+  "staffWillReply": "Pracovník vám brzy odpoví.",
+  "inCall": "V hovoru...",
+  "registration": "Registrace",
+  "deactivation": "Deaktivace",
+  "deactivatedOn": "Deaktivováno dne",
+  "accountAutoSuspend": "Účty neověřené do 30 dnů budou automaticky pozastaveny.",
+  "ipClean": "IP čistá - neuvedena",
+  "documentsProvidedByBoard": "Dokumenty poskytuje představenstvo.",
+  "noDocumentsAvailable": "Žádné dokumenty",
+  "noDocumentsDescription": "Zatím pro vás nebyly poskytnuty žádné dokumenty.",
+  "uploadedBy": "Nahráno: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} kroků dokončeno",
+  "dayOfMonth": "{day}. den v měsíci",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Změnit {field}",
+  "openDocument": "Otevřít {name}",
+  "helpImproveApp": "Chcete nám pomoci vylepšit aplikaci?",
+  "noPersonalDataCollected": "Žádné osobní údaje nejsou shromažďovány. Toto nastavení lze kdykoli změnit.",
+  "logEntries": "{count} záznamů",
+  "noLogs": "Žádné záznamy",
+  "newLoginDetected": "Zjištěno nové přihlášení",
+  "waitingForMember": "Čekání na člena",
+  "waitingForStaff": "Čekání na pracovníka",
+  "waitingForAuthority": "Čekání na úřad",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

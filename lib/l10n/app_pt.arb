@@ -1,0 +1,919 @@
+{
+  "@@locale": "pt",
+  "appTitle": "ICD360S e.V - Portal de Membros",
+  "memberPortal": "Portal de Membros",
+  "welcomeLoading": "Carregando...",
+  "welcomeAutoLogin": "Login automático...",
+  "login": "Entrar",
+  "register": "Registrar",
+  "becomeMember": "Tornar-se Membro",
+  "memberNumber": "Número de Membro",
+  "memberNumberHint": "Digite o número de membro",
+  "password": "Senha",
+  "passwordHint": "Digite a senha",
+  "confirmPassword": "Confirmar Senha",
+  "confirmPasswordHint": "Confirme a senha",
+  "newPassword": "Nova Senha",
+  "newPasswordHint": "Digite a nova senha",
+  "saveCredentials": "Salvar credenciais",
+  "autoLogin": "Login automático",
+  "forgotPassword": "Esqueceu a senha?",
+  "firstName": "Nome e Sobrenome",
+  "firstNameHint": "Digite nome e sobrenome",
+  "nameMinLength": "O nome deve ter pelo menos 2 caracteres",
+  "nameOnlyLetters": "Apenas letras e hífens são permitidos",
+  "email": "Endereço de Email",
+  "emailHint": "Digite o email",
+  "emailInvalid": "Digite um email válido",
+  "passwordMinLength": "A senha deve ter pelo menos 6 caracteres",
+  "passwordsNotMatch": "As senhas não coincidem",
+  "recoveryCode": "Código de Recuperação (6 dígitos)",
+  "recoveryCodeHelper": "Lembre-se deste código para recuperar a senha",
+  "recoveryCodeHint": "Digite o código de recuperação",
+  "recoveryCodeInvalid": "O código deve ter exatamente 6 dígitos",
+  "loginFailed": "Falha no login",
+  "registrationFailed": "Falha no registro",
+  "connectionError": "Erro de conexão: {error}",
+  "registrationSuccess": "Registro bem-sucedido!\n\nSeu número de membro: {memberNumber}\n\nLembre-se deste número para fazer login.",
+  "tooManyDevices": "Muitos dispositivos",
+  "maxDevicesMessage": "Você já está conectado em 3 dispositivos.\nSelecione um dispositivo para desconectar:",
+  "unknownDevice": "Dispositivo desconhecido",
+  "unknown": "Desconhecido",
+  "logoutError": "Erro ao desconectar",
+  "error": "Erro: {error}",
+  "cancel": "Cancelar",
+  "resetPassword": "Redefinir Senha",
+  "forgotPasswordTitle": "Esqueceu a Senha",
+  "forgotPasswordDescription": "Digite seu número de membro e o código de recuperação criado durante o registro.",
+  "passwordResetSuccess": "Senha redefinida com sucesso!\n\nAgora você pode fazer login com sua nova senha.",
+  "passwordResetFailed": "Falha ao redefinir a senha",
+  "needHelp": "Precisa de ajuda?",
+  "helpQuestion": "Problemas com login ou registro?",
+  "helpDescription": "Entre em contato pelo WhatsApp e descreva exatamente o que não está funcionando. Responderemos o mais rápido possível!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Consulta pelo aplicativo ICD360S",
+  "whatsappMessage": "Olá, tenho um problema com o aplicativo ICD360S. ",
+  "imprint": "Aviso Legal",
+  "privacy": "Política de Privacidade",
+  "statutes": "Estatutos",
+  "revocation": "Direito de Arrependimento",
+  "cancellation": "Cancelamento",
+  "allRightsReserved": "Todos os direitos reservados.",
+  "enterCredentials": "Digite número de membro e senha",
+  "appointments": "Compromissos",
+  "tickets": "Tickets",
+  "liveChat": "Chat ao Vivo",
+  "notifications": "Notificações",
+  "myProfile": "Meu Perfil",
+  "logout": "Sair",
+  "goodMorning": "Bom dia",
+  "goodDay": "Bom dia",
+  "goodEvening": "Boa tarde",
+  "goodNight": "Boa noite",
+  "welcomeToICD": "Bem-vindo ao ICD360S e.V!",
+  "accountCreatedSuccessfully": "Sua conta foi criada com sucesso.",
+  "today": "Hoje",
+  "membershipFeeDue": "Taxa de membro vencida",
+  "pleaseTransferAnnualFee": "Por favor, transfira a taxa anual.",
+  "newBadge": "Novo",
+  "close": "Fechar",
+  "membership": "Adesão",
+  "myAppointments": "Meus compromissos",
+  "appointmentsLoadingReady": "Carregando compromissos - API pronto!",
+  "priority": "Prioridade",
+  "messageLabel": "Mensagem",
+  "createdOn": "Criado",
+  "handler": "Gestor",
+  "reportProblems": "Relatar problemas",
+  "reportProblem": "Relatar problema",
+  "weRespondIn24Hours": "Responderemos em no máximo 24 horas!",
+  "everythingOk": "Tudo bem!",
+  "haveProblemWeHelp": "Tem um problema?\nNós cuidamos disso!",
+  "myMembership": "Minha adesão",
+  "managePersonalDataAndFee": "Gerencie seus dados pessoais e taxa",
+  "myAppointmentsTitle": "Meus compromissos",
+  "appointmentsDescription": "Aqui você pode ver seus compromissos futuros.\nVocê pode confirmar sua participação ou recusar.",
+  "loadAppointments": "Carregar compromissos",
+  "myTickets": "Meus tickets",
+  "newTicket": "Novo ticket",
+  "noOpenTickets": "Nenhum ticket aberto",
+  "haveQuestionCreateTicket": "Tem uma pergunta ou problema?\nCrie um novo ticket.",
+  "whatIsTheProblem": "Qual é o problema?",
+  "describeTheProblem": "Descreva o problema",
+  "howUrgentIsIt": "Quão urgente é?",
+  "low": "Baixo",
+  "medium": "Médio",
+  "high": "Alto",
+  "submit": "Enviar",
+  "fillSubjectAndMessage": "Por favor, preencha o assunto e a mensagem",
+  "ticketCreated": "Ticket criado",
+  "errorCreatingTicket": "Erro ao criar ticket",
+  "verified": "Verificado",
+  "account": "Conta",
+  "myDevices": "Meus dispositivos",
+  "changeEmail": "Alterar email",
+  "changePassword": "Alterar senha",
+  "newEmailAddress": "Novo endereço de email",
+  "currentPassword": "Senha atual",
+  "saveEmail": "Salvar email",
+  "savePassword": "Salvar senha",
+  "deviceLoggedOut": "Dispositivo desconectado",
+  "passwordChangedSuccessfully": "Senha alterada com sucesso",
+  "emailChangedSuccessfully": "Email alterado com sucesso",
+  "errorChangingPassword": "Erro ao alterar senha",
+  "errorChangingEmail": "Erro ao alterar email",
+  "validEmailRequired": "Por favor, insira um endereço de email válido",
+  "passwordTooShort": "A senha deve ter pelo menos 6 caracteres",
+  "maxDevicesReached": "Você está conectado no máximo de 3 dispositivos.",
+  "loggedInOnDevices": "Você está conectado em {count} de 3 dispositivos.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Nenhuma sessão ativa",
+  "logoutFromDevice": "Desconectar deste dispositivo",
+  "confirmLogoutDevice": "Desconectar dispositivo?",
+  "confirmLogoutMessage": "Deseja desconectar deste dispositivo?\n\nVocê precisará fazer login novamente para usar este dispositivo.",
+  "ipAddress": "IP",
+  "platform": "Plataforma",
+  "trialWarningUrgentTitle": "Atenção: {days, plural, =1{Falta apenas 1 dia} other{Faltam apenas {days} dias}} para a suspensão da conta!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Sua conta ainda não está verificada",
+  "trialWarningDescription": "Por favor, complete seus dados em \"Meu Perfil\". Após 30 dias, sua conta será suspensa automaticamente.",
+  "trialDaysRemaining": "{days, plural, =1{1 dia} other{{days} dias}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Visão geral",
+  "member": "Membro",
+  "memberManagement": "Gestão de membros",
+  "reportProblemTooltip": "Relatar problema",
+  "newAppointmentsTitle": "Novos compromissos",
+  "youHaveNewAppointment": "Você tem um novo compromisso.",
+  "youHaveNewAppointments": "Você tem {count} novos compromissos.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Lembrete: Compromisso amanhã",
+  "tomorrowAppointment": "Amanhã: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "Você tem {count} compromissos amanhã.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Compromissos hoje",
+  "todayAppointment": "Hoje: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "Você tem {count} compromissos hoje.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Lembrete de pagamento",
+  "paymentReminderMessage": "Hoje é dia {day} do mês – por favor complete {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "Dia de pagamento (lembrete mensal)",
+  "updateAvailable": "Atualização disponível",
+  "newVersionAvailable": "Uma nova versão está disponível: {version}",
+  "currentVersionLabel": "Versão atual: {version}",
+  "changes": "Alterações:",
+  "downloadProgress": "Download: {percent}%",
+  "installationStarting": "Iniciando instalação...",
+  "appWillRestart": "O aplicativo será reiniciado automaticamente.",
+  "later": "Mais tarde",
+  "updateNow": "Atualizar agora",
+  "downloading": "Baixando...",
+  "downloadFailed": "Falha no download. Tente novamente mais tarde.",
+  "searchingForUpdates": "Procurando atualizações...",
+  "appUpToDate": "O aplicativo está atualizado",
+  "updateCheckError": "Erro ao verificar atualizações",
+  "changelog": "Registro de alterações",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Consulta confirmada",
+  "terminDeclined": "Consulta recusada",
+  "terminRescheduleRequested": "Reagendamento solicitado",
+  "statusConfirmed": "Confirmado",
+  "statusDeclined": "Recusado",
+  "statusRescheduling": "Reagendamento",
+  "statusPending": "Pendente",
+  "categoryVorstandssitzung": "Reunião da diretoria",
+  "categoryMitgliederversammlung": "Assembleia geral",
+  "categorySchulung": "Formação",
+  "categorySonstiges": "Outros",
+  "openCount": "{count} abertos",
+  "refresh": "Atualizar",
+  "filterUpcoming": "Próximos",
+  "filterPast": "Passados",
+  "filterAll": "Todos",
+  "noUpcomingAppointments": "Sem consultas próximas",
+  "noPastAppointments": "Sem consultas passadas",
+  "noAppointmentsAvailable": "Sem consultas disponíveis",
+  "appointmentsShownHere": "As suas consultas serão mostradas aqui",
+  "dateLabel": "Data",
+  "timeLabel": "Hora",
+  "locationLabel": "Local",
+  "createdByLabel": "Criado por",
+  "descriptionLabel": "Descrição",
+  "ticketLabel": "Ticket",
+  "yourStatus": "Seu estado: ",
+  "reasonLabel": "Motivo: {reason}",
+  "durationMinutes": "{minutes} min",
+  "confirm": "Confirmar",
+  "decline": "Recusar",
+  "reschedule": "Reagendar",
+  "requestReschedule": "Solicitar reagendamento",
+  "appointmentLabel": "Consulta: {title}",
+  "rescheduleReason": "Motivo do reagendamento *",
+  "rescheduleReasonHint": "Indique um motivo...",
+  "pleaseProvideReason": "Indique um motivo",
+  "request": "Solicitar",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Aberto",
+  "ticketStatusInProgress": "Em andamento",
+  "ticketStatusWaitingMember": "Aguardando membro",
+  "ticketStatusWaitingStaff": "Aguardando equipe",
+  "ticketStatusWaitingAuthority": "Aguardando autoridade",
+  "ticketStatusDone": "Concluído",
+  "ticketPriorityHigh": "Alta",
+  "ticketPriorityMedium": "Média",
+  "ticketPriorityLow": "Baixa",
+  "comments": "Comentários",
+  "documents": "Documentos",
+  "details": "Detalhes",
+  "replySent": "Resposta enviada",
+  "sendError": "Erro ao enviar",
+  "uploading": "Enviando...",
+  "fileUploaded": "{filename} enviado",
+  "uploadFailed": "Falha no envio",
+  "openError": "Erro ao abrir",
+  "noRepliesYet": "Ainda sem respostas",
+  "waitingForSupport": "Aguardando resposta do suporte",
+  "writeReply": "Escrever resposta...",
+  "attachFile": "Anexar arquivo",
+  "documentsCount": "Documentos ({count})",
+  "upload": "Enviar",
+  "noDocuments": "Nenhum documento disponível",
+  "allowedFormats": "Formatos permitidos: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Sua mensagem:",
+  "translation": "Tradução",
+  "original": "Original",
+  "originalText": "Texto original",
+  "autoTranslated": "Traduzido automaticamente",
+  "originalTapTranslation": "Original · Toque para tradução",
+  "translatedTapOriginal": "Traduzido · Toque para original",
+  "justNow": "Agora mesmo",
+  "minutesAgo": "há {minutes} min",
+  "hoursAgo": "há {hours} h",
+  "daysAgo": "há {days} {days, plural, =1{dia} other{dias}}",
+  "createdLabel": "Criado",
+  "updatedLabel": "Atualizado",
+  "handlerLabel": "Responsável",
+  "doneLabel": "Concluído",
+  "newTicketTitle": "Novo ticket",
+  "categoryOptional": "Categoria (opcional)",
+  "selectCategory": "Selecionar",
+  "subjectLabel": "Assunto",
+  "fillAllFields": "Preencha todos os campos",
+  "ticketCreatedId": "Ticket #{id} criado",
+  "priorityLabel": "Prioridade: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Suporte offline",
+  "lastSeenSeconds": "Ativo há poucos segundos",
+  "lastSeenMinutes": "Ativo há {minutes} {minutes, plural, =1{minuto} other{minutos}}",
+  "lastSeenHours": "Ativo há {hours} {hours, plural, =1{hora} other{horas}}",
+  "lastSeenDays": "Ativo há {days} {days, plural, =1{dia} other{dias}}",
+  "online": "Online",
+  "callSupport": "Ligar",
+  "typeMessage": "Digite uma mensagem...",
+  "callBusy": "Suporte está ocupado",
+  "callRejected": "Chamada rejeitada",
+  "callFailed": "Chamada não conectou",
+  "callEnded": "Chamada encerrada",
+  "callSupportBusy": "Suporte já está em outra chamada",
+  "errorStartingChat": "Erro ao iniciar chat",
+  "errorStartingCall": "Erro ao iniciar chamada",
+  "errorConnecting": "Erro de conexão",
+  "errorAcceptingCall": "Erro ao aceitar chamada",
+  "errorDownloading": "Erro ao baixar",
+  "errorUploading": "Erro ao enviar",
+  "errorSending": "Erro ao enviar",
+  "errorPickingPhotos": "Erro ao selecionar fotos",
+  "errorPickingFiles": "Erro ao selecionar arquivos",
+  "errorTakingPhoto": "Erro ao tirar foto",
+  "fileNotLoaded": "Arquivo não carregado",
+  "attachmentIdMissing": "ID do anexo ausente",
+  "camera": "Câmera",
+  "gallery": "Galeria",
+  "file": "Arquivo",
+  "typingIndicator": "{name} está digitando...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Nova mensagem de",
+  "notifUrgentPrefix": "URGENTE",
+  "notifUrgentMessage": "MENSAGEM URGENTE",
+  "notifIncomingCall": "Chamada recebida",
+  "notifCallingYou": "está ligando...",
+  "notifUpdateAvailable": "Atualização disponível",
+  "notifVersionAvailable": "já está disponível",
+  "notifConnected": "Conectado",
+  "notifDisconnected": "Desconectado",
+  "notifConnectedBody": "Você está conectado ao servidor.",
+  "notifDisconnectedBody": "A conexão com o servidor foi perdida.",
+  "notifError": "Erro",
+  "retry": "Tentar novamente",
+  "save": "Salvar",
+  "accept": "Aceitar",
+  "selectFile": "Selecionar arquivo",
+  "dataLoadingText": "Carregando dados...",
+  "dataSavedSuccess": "Dados salvos com sucesso",
+  "errorSaving": "Erro ao salvar",
+  "errorLoading": "Erro ao carregar",
+  "savedFilename": "Salvo: {filename}",
+  "logsCopied": "Logs copiados!",
+  "diagnosticDataTitle": "Dados de diagnóstico",
+  "diagnosticDescription": "Deseja enviar dados de diagnóstico anónimos para melhorar a aplicação?",
+  "noThanks": "Não, obrigado",
+  "yesEnable": "Sim, ativar",
+  "passwordMinEightChars": "A senha deve ter pelo menos 8 caracteres",
+  "passwordChangeSuccess": "Senha alterada com sucesso",
+  "emailChangeError": "Erro ao alterar e-mail",
+  "acceptDocumentCheckbox": "Li e aceito o documento.",
+  "loadingErrorGeneric": "Erro ao carregar: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Chamada recebida",
+  "ringingFor": "Tocando há {seconds}s",
+  "rejectCall": "Rejeitar",
+  "acceptCall": "Atender",
+  "unmute": "Ativar som",
+  "mute": "Silenciar",
+  "hangUp": "Desligar",
+  "calling": "Chamando...",
+  "autoRejectIn": "Rejeição automática em {seconds} segundos",
+  "speakerOn": "Alto-falante",
+  "speakerOff": "Auricular",
+  "micMuted": "Silenciado",
+  "micOn": "Microfone",
+  "connectionExcellent": "Excelente",
+  "connectionGood": "Boa",
+  "connectionWeak": "Fraca",
+  "connectionLost": "Desconectado",
+  "personalData": "Dados pessoais",
+  "personalDataSubtitle": "Nome, apelido, morada",
+  "membershipFee": "Quota de membro",
+  "annualFeeYear": "Quota anual {year}",
+  "amount": "Valor:",
+  "dueBy": "Vencimento:",
+  "paid": "Pago",
+  "versionHistory": "Histórico de versões",
+  "lastUpdated": "Última atualização: {date}",
+  "noVersionHistory": "Nenhum histórico disponível",
+  "failedLoadChangelog": "Falha ao carregar o registo de alterações",
+  "callMember": "Ligar ao membro",
+  "closeConversation": "Fechar conversa",
+  "chatOffline": "Offline",
+  "attachFiles": "Anexar ficheiros (máx. 10, 50MB)",
+  "conversationClosed": "Esta conversa foi encerrada",
+  "noMessages": "Sem mensagens",
+  "goBack": "Voltar",
+  "goForward": "Avançar",
+  "homePage": "Início",
+  "firstNameLabel": "Nome",
+  "lastNameLabel": "Apelido",
+  "streetLabel": "Rua",
+  "houseNumberLabel": "N.º",
+  "postalCodeLabel": "Código postal",
+  "cityLabel": "Cidade",
+  "phoneMobileLabel": "Telefone (Telemóvel)",
+  "phoneLandlineLabel": "Telefone (Fixo)",
+  "newEmailLabel": "Novo endereço de e-mail",
+  "currentPasswordLabel": "Palavra-passe atual",
+  "newPasswordLabel": "Nova palavra-passe",
+  "confirmPasswordLabel": "Confirmar palavra-passe",
+  "emailChangedSuccess": "Email alterado com sucesso",
+  "newPasswordMinChars": "Nova palavra-passe (mín. 6 caracteres)",
+  "reasonLabel2": "Motivo",
+  "downloadFailed2": "Transferência falhada",
+  "downloadTooltip": "Transferir",
+  "connectionErrorGeneric": "Erro de ligação",
+  "copyLogs": "Copiar registos",
+  "deleteLogs": "Apagar registos",
+  "autoScrollOn": "Rolagem automática LIGADA",
+  "autoScrollOff": "Rolagem automática DESLIGADA",
+  "unknownValue": "Desconhecido",
+  "bankTransfer": "Transferência bancária",
+  "standingOrder": "Ordem permanente",
+  "payment": "Pagamento",
+  "warningType_ermahnung": "Aviso",
+  "warningType_abmahnung": "Advertência",
+  "warningType_letzte": "Última advertência",
+  "warningsTotal": "Total: {count}",
+  "warningsErmahnung": "Avisos: {count}",
+  "warningsAbmahnung": "Advertências: {count}",
+  "warningsLetzte": "Últimas: {count}",
+  "noWarnings": "Sem avisos",
+  "noWarningsDescription": "De momento não tem avisos.",
+  "createdBy": "Criado por: {name}",
+  "monthJan": "Jan",
+  "monthFeb": "Fev",
+  "monthMar": "Mar",
+  "monthApr": "Abr",
+  "monthMay": "Mai",
+  "monthJun": "Jun",
+  "monthJul": "Jul",
+  "monthAug": "Ago",
+  "monthSep": "Set",
+  "monthOct": "Out",
+  "monthNov": "Nov",
+  "monthDec": "Dez",
+  "stufe1_name": "Dados pessoais",
+  "stufe2_name": "Tipo de membro",
+  "stufe3_name": "Situação financeira",
+  "stufe4_name": "Método de pagamento",
+  "stufe5_name": "Início da adesão",
+  "stufe6_name": "Estatutos",
+  "stufe7_name": "Política de privacidade",
+  "stufe8_name": "Direito de revogação",
+  "memberType_ordentlich": "Membro efetivo",
+  "memberType_foerder": "Membro apoiante",
+  "memberType_ehren": "Membro honorário",
+  "memberDesc_ordentlich": "Membro ativo com direito a voto. Participa nos serviços da associação (email, cloud, apoio burocrático).",
+  "memberDesc_foerder": "Apoia a associação com contribuições. Pode assistir à assembleia geral com voto consultivo, sem direito a voto ou elegibilidade para a direção.",
+  "memberDesc_ehren": "Tem os direitos de um membro efetivo sem obrigação de pagar quotas. Nomeado pela assembleia geral ou pela direção.",
+  "payMethod_ueberweisung": "Transferência bancária",
+  "payMethod_dauerauftrag": "Ordem permanente",
+  "verifyStatus_geprueft": "Verificado",
+  "verifyStatus_ausgefuellt": "Preenchido",
+  "verifyStatus_abgelehnt": "Rejeitado",
+  "verifyStatus_offen": "Em aberto",
+  "fillRequiredFields": "Preencha todos os campos obrigatórios.",
+  "personalDataSaved": "Dados pessoais guardados",
+  "selectMemberType": "Selecione um tipo de membro.",
+  "memberTypeSaved": "Tipo de membro guardado",
+  "selectOption": "Selecione uma opção.",
+  "financialSaved": "Situação financeira guardada",
+  "selectPaymentMethod": "Selecione um método de pagamento.",
+  "paymentDataSaved": "Dados de pagamento guardados",
+  "selectDate": "Selecione uma data.",
+  "membershipStartSaved": "Início da adesão guardado",
+  "fileTooLarge": "Ficheiro demasiado grande (máx. 10 MB).",
+  "leistungsbescheidUploaded": "Certificado de prestações carregado com sucesso",
+  "verificationProgress": "Progresso da verificação",
+  "notApplicable": "Não aplicável",
+  "socialBenefitsExempt": "Método de pagamento não necessário para beneficiários de prestações sociais.",
+  "locked": "Bloqueado",
+  "completePreviousStep": "Complete primeiro o passo {step}.",
+  "rejectedNote": "Rejeitado: {note}",
+  "waitingForReview": "A aguardar revisão pela direção.",
+  "stepApproved": "Este passo foi verificado e aprovado.",
+  "changesViaChat": "Alterações apenas possíveis por chat.",
+  "firstNameRequired": "Nome *",
+  "lastNameRequired": "Apelido *",
+  "birthDateLabel": "Data de nascimento *",
+  "streetRequired": "Rua *",
+  "houseNumberRequired": "N.º *",
+  "cityRequired": "Cidade *",
+  "phoneRequired": "Número de telefone *",
+  "phonePurpose": "Finalidade: Contacto quando indisponível pela app",
+  "selectMemberTypePrompt": "Selecione o tipo de membro desejado:",
+  "financialExplanation": "Para verificar se tem direito a uma redução da quota, precisamos das seguintes informações. Estas serão utilizadas exclusivamente para determinar a sua quota de membro.",
+  "socialBenefitsQuestion": "Recebe atualmente prestações sociais?",
+  "optionBuergergeld": "Sim, subsídio cidadão (Job Center)",
+  "optionSozialamt": "Sim, assistência social (Serviços Sociais)",
+  "optionNoBenefits": "Não, não recebo prestações sociais",
+  "feeExempt": "A sua quota mensal é: 0,00 €/mês",
+  "uploadLeistungsbescheid": "Carregar certificado de prestações",
+  "uploadLeistungsbescheidHint": "Carregue um certificado de prestações atual no prazo de 14 dias para confirmar a isenção da quota.",
+  "allowedFormatsUpload": "Formatos permitidos: PDF, JPG, PNG (máx. 10 MB)",
+  "feeRegular": "A sua quota mensal é: 25,00 €/mês",
+  "paymentDayReminder": "Será lembrado no dia {day} de cada mês.",
+  "membershipStartPrompt": "Escolha quando a sua adesão deve começar.",
+  "optionAfterVerification": "Após conclusão da verificação",
+  "optionAfterVerificationDesc": "A adesão começa a partir do dia da confirmação da direção.",
+  "optionRetroFoundation": "Retroativo à data de fundação (01.08.2025)",
+  "optionRetroFoundationDesc": "Torna-se membro retroativo desde a fundação da associação.",
+  "optionRetroCustom": "Retroativo a outra data",
+  "optionRetroCustomDesc": "Escolha uma data entre 01.08.2025 e hoje.",
+  "selectDateLabel": "Selecionar data",
+  "selectDateHint": "Selecionar data...",
+  "dateNotBefore": "Não antes de 01.08.2025 (data de fundação)",
+  "feeExemptRetro": "Isenção de quota: 0,00 € retroativo.\nApenas a data de adesão é definida retroativamente.",
+  "retroactiveFees": "Quotas retroativas",
+  "retroFeeCalculation": "Período: {from} – {to}\nMeses: {months}\nQuota: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Leia os estatutos da associação.",
+  "pleaseReadDatenschutz": "Leia a política de privacidade.",
+  "pleaseReadWiderruf": "Leia o direito de revogação.",
+  "acceptedAtRegistration": "Aceite no registo",
+  "confirmedByBoard": "Será confirmado após revisão da direção.",
+  "docSatzung": "Estatutos",
+  "docDatenschutz": "Política de privacidade",
+  "docWiderruf": "Direito de revogação",
+  "acceptedAtRegCount": "Aceite no registo ({count}/3)",
+  "acceptedOn": "Aceite em {date}",
+  "notAccepted": "Não aceite",
+  "statusAccepted": "Aceite",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Número de membro muito longo (máx. 20 caracteres)",
+  "onlyUppercaseAndNumbers": "Apenas letras maiúsculas e números são permitidos",
+  "passwordTooLong": "Senha muito longa (máx. 100 caracteres)",
+  "nameTooLong": "Nome muito longo (máx. 100 caracteres)",
+  "emailTooLong": "Email muito longo (máx. 255 caracteres)",
+  "legalAcknowledgePrefix": "Eu li a ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " da ICD360S e.V. e reconheço-os como vinculativos.",
+  "legalPleaseReadFirst": "(por favor leia primeiro)",
+  "statusActive": "Ativo",
+  "statusSuspended": "Suspenso",
+  "statusNew": "Novo",
+  "statusCancelled": "Cancelado",
+  "statusDeleted": "Eliminado",
+  "roleMitglied": "Membro",
+  "roleVorsitzer": "Presidente",
+  "roleStellvertreter": "Vice-presidente",
+  "roleSchatzmeister": "Tesoureiro",
+  "roleSchriftfuehrer": "Secretário",
+  "roleBeisitzer": "Assessor",
+  "roleKassierer": "Caixa",
+  "roleKassenpruefer": "Auditor",
+  "roleEhrenamtlich": "Voluntário",
+  "roleMitgliedergruender": "Membro Fundador",
+  "roleEhrenmitglied": "Membro Honorário",
+  "roleFoerdermitglied": "Membro de Apoio",
+  "memberTypeNotSet": "Ainda não definido",
+  "payMethodSepa": "Débito direto SEPA",
+  "labelStatus": "Estado",
+  "labelMemberNumber": "Número de membro",
+  "labelRole": "Função",
+  "labelMemberType": "Tipo de membro",
+  "labelPaymentMethod": "Método de pagamento",
+  "labelRegisteredOn": "Registrado em",
+  "labelLastLogin": "Último acesso",
+  "labelMemberSince": "Membro desde",
+  "neverLoggedIn": "Nunca",
+  "notActivatedYet": "Ainda não ativado",
+  "tabVerification": "Verificação",
+  "tabWarnings": "Avisos",
+  "tabDocuments": "Documentos",
+  "tabMembership": "Adesão",
+  "pleaseEnterFirstName": "Insira o nome",
+  "pleaseEnterLastName": "Insira o sobrenome",
+  "noFileDataReceived": "Nenhum dado recebido",
+  "openFile": "Abrir",
+  "diagnosticErrors": "Relatórios de erro para melhoria",
+  "diagnosticAnonymousStats": "Estatísticas de uso anônimas",
+  "diagnosticPerformance": "Dados de desempenho do app",
+  "noMicrophoneError": "Nenhum microfone encontrado. Conecte um microfone e tente novamente.",
+  "startConversation": "Inicie uma conversa!",
+  "staffWillReply": "Um funcionário responderá em breve.",
+  "inCall": "Em chamada...",
+  "registration": "Registo",
+  "deactivation": "Desativação",
+  "deactivatedOn": "Desativado em",
+  "accountAutoSuspend": "Contas não verificadas em 30 dias serão suspensas automaticamente.",
+  "ipClean": "IP limpo - não listado",
+  "documentsProvidedByBoard": "Os documentos são fornecidos pela diretoria.",
+  "noDocumentsAvailable": "Nenhum documento disponível",
+  "noDocumentsDescription": "Ainda não foram fornecidos documentos para você.",
+  "uploadedBy": "Enviado por: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} etapas concluídas",
+  "dayOfMonth": "{day} do mês",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Alterar {field}",
+  "openDocument": "Abrir {name}",
+  "helpImproveApp": "Gostaria de nos ajudar a melhorar o aplicativo?",
+  "noPersonalDataCollected": "Nenhum dado pessoal é coletado. Esta configuração pode ser alterada a qualquer momento.",
+  "logEntries": "{count} entradas",
+  "noLogs": "Sem registros",
+  "newLoginDetected": "Novo login detectado",
+  "waitingForMember": "Aguardando membro",
+  "waitingForStaff": "Aguardando funcionário",
+  "waitingForAuthority": "Aguardando autoridade",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

@@ -1,0 +1,919 @@
+{
+  "@@locale": "ru",
+  "appTitle": "ICD360S e.V - Портал участников",
+  "memberPortal": "Портал участников",
+  "welcomeLoading": "Загрузка...",
+  "welcomeAutoLogin": "Автоматический вход...",
+  "login": "Войти",
+  "register": "Регистрация",
+  "becomeMember": "Стать участником",
+  "memberNumber": "Номер участника",
+  "memberNumberHint": "Введите номер участника",
+  "password": "Пароль",
+  "passwordHint": "Введите пароль",
+  "confirmPassword": "Подтвердите пароль",
+  "confirmPasswordHint": "Подтвердите пароль",
+  "newPassword": "Новый пароль",
+  "newPasswordHint": "Введите новый пароль",
+  "saveCredentials": "Сохранить данные входа",
+  "autoLogin": "Автоматический вход",
+  "forgotPassword": "Забыли пароль?",
+  "firstName": "Имя и фамилия",
+  "firstNameHint": "Введите имя и фамилию",
+  "nameMinLength": "Имя должно содержать минимум 2 символа",
+  "nameOnlyLetters": "Разрешены только буквы и дефис",
+  "email": "Электронная почта",
+  "emailHint": "Введите email",
+  "emailInvalid": "Введите корректный email",
+  "passwordMinLength": "Пароль должен содержать минимум 6 символов",
+  "passwordsNotMatch": "Пароли не совпадают",
+  "recoveryCode": "Код восстановления (6 цифр)",
+  "recoveryCodeHelper": "Запомните этот код для восстановления пароля",
+  "recoveryCodeHint": "Введите код восстановления",
+  "recoveryCodeInvalid": "Код должен состоять из 6 цифр",
+  "loginFailed": "Ошибка входа",
+  "registrationFailed": "Ошибка регистрации",
+  "connectionError": "Ошибка соединения: {error}",
+  "registrationSuccess": "Регистрация успешна!\n\nВаш номер участника: {memberNumber}\n\nЗапомните этот номер для входа.",
+  "tooManyDevices": "Слишком много устройств",
+  "maxDevicesMessage": "Вы уже вошли на 3 устройствах.\nВыберите устройство для выхода:",
+  "unknownDevice": "Неизвестное устройство",
+  "unknown": "Неизвестно",
+  "logoutError": "Ошибка выхода",
+  "error": "Ошибка: {error}",
+  "cancel": "Отмена",
+  "resetPassword": "Сбросить пароль",
+  "forgotPasswordTitle": "Забыли пароль",
+  "forgotPasswordDescription": "Введите номер участника и код восстановления, созданный при регистрации.",
+  "passwordResetSuccess": "Пароль успешно сброшен!\n\nТеперь вы можете войти с новым паролем.",
+  "passwordResetFailed": "Сброс пароля не удался",
+  "needHelp": "Нужна помощь?",
+  "helpQuestion": "Проблемы со входом или регистрацией?",
+  "helpDescription": "Свяжитесь с нами через WhatsApp и опишите, что не работает. Мы ответим как можно скорее!",
+  "whatsapp": "WhatsApp",
+  "emailSubject": "Запрос через приложение ICD360S",
+  "whatsappMessage": "Здравствуйте, у меня проблема с приложением ICD360S. ",
+  "imprint": "Импрессум",
+  "privacy": "Политика конфиденциальности",
+  "statutes": "Устав",
+  "revocation": "Право отзыва",
+  "cancellation": "Отмена",
+  "allRightsReserved": "Все права защищены.",
+  "enterCredentials": "Введите номер участника и пароль",
+  "appointments": "Встречи",
+  "tickets": "Заявки",
+  "liveChat": "Чат",
+  "notifications": "Уведомления",
+  "myProfile": "Мой профиль",
+  "logout": "Выйти",
+  "goodMorning": "Доброе утро",
+  "goodDay": "Добрый день",
+  "goodEvening": "Добрый вечер",
+  "goodNight": "Спокойной ночи",
+  "welcomeToICD": "Добро пожаловать в ICD360S e.V!",
+  "accountCreatedSuccessfully": "Ваша учетная запись успешно создана.",
+  "today": "Сегодня",
+  "membershipFeeDue": "Членский взнос подлежит оплате",
+  "pleaseTransferAnnualFee": "Пожалуйста, переведите годовой взнос.",
+  "newBadge": "Новый",
+  "close": "Закрыть",
+  "membership": "Членство",
+  "myAppointments": "Мои встречи",
+  "appointmentsLoadingReady": "Загрузка встреч - API готов!",
+  "priority": "Приоритет",
+  "messageLabel": "Сообщение",
+  "createdOn": "Создано",
+  "handler": "Обработчик",
+  "reportProblems": "Сообщить о проблемах",
+  "reportProblem": "Сообщить о проблеме",
+  "weRespondIn24Hours": "Мы ответим вам в течение 24 часов!",
+  "everythingOk": "Все в порядке!",
+  "haveProblemWeHelp": "Есть проблема?\nМы позаботимся об этом!",
+  "myMembership": "Мое членство",
+  "managePersonalDataAndFee": "Управление личными данными и членским взносом",
+  "myAppointmentsTitle": "Мои встречи",
+  "appointmentsDescription": "Здесь вы можете увидеть свои предстоящие встречи.\nВы можете подтвердить свое участие или отклонить.",
+  "loadAppointments": "Загрузить встречи",
+  "myTickets": "Мои заявки",
+  "newTicket": "Новая заявка",
+  "noOpenTickets": "Нет открытых заявок",
+  "haveQuestionCreateTicket": "Есть вопрос или проблема?\nСоздайте новую заявку.",
+  "whatIsTheProblem": "В чем проблема?",
+  "describeTheProblem": "Опишите проблему",
+  "howUrgentIsIt": "Насколько это срочно?",
+  "low": "Низкий",
+  "medium": "Средний",
+  "high": "Высокий",
+  "submit": "Отправить",
+  "fillSubjectAndMessage": "Пожалуйста, заполните тему и сообщение",
+  "ticketCreated": "Заявка создана",
+  "errorCreatingTicket": "Ошибка создания заявки",
+  "verified": "Проверено",
+  "account": "Аккаунт",
+  "myDevices": "Мои устройства",
+  "changeEmail": "Изменить email",
+  "changePassword": "Изменить пароль",
+  "newEmailAddress": "Новый адрес email",
+  "currentPassword": "Текущий пароль",
+  "saveEmail": "Сохранить email",
+  "savePassword": "Сохранить пароль",
+  "deviceLoggedOut": "Устройство отключено",
+  "passwordChangedSuccessfully": "Пароль успешно изменен",
+  "emailChangedSuccessfully": "Email успешно изменен",
+  "errorChangingPassword": "Ошибка изменения пароля",
+  "errorChangingEmail": "Ошибка изменения email",
+  "validEmailRequired": "Пожалуйста, введите действительный адрес email",
+  "passwordTooShort": "Пароль должен содержать не менее 6 символов",
+  "maxDevicesReached": "Вы вошли на максимум из 3 устройств.",
+  "loggedInOnDevices": "Вы вошли на {count} из 3 устройств.",
+  "@loggedInOnDevices": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noActiveSessions": "Нет активных сеансов",
+  "logoutFromDevice": "Выйти с этого устройства",
+  "confirmLogoutDevice": "Выйти с устройства?",
+  "confirmLogoutMessage": "Вы хотите выйти с этого устройства?\n\nВам нужно будет войти снова, чтобы использовать это устройство.",
+  "ipAddress": "IP",
+  "platform": "Платформа",
+  "trialWarningUrgentTitle": "Внимание: Осталось {days, plural, =1{1 день} few{{days} дня} other{{days} дней}} до блокировки аккаунта!",
+  "@trialWarningUrgentTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialWarningTitle": "Ваш аккаунт еще не верифицирован",
+  "trialWarningDescription": "Пожалуйста, заполните данные в \"Мой профиль\". Через 30 дней аккаунт будет автоматически заблокирован.",
+  "trialDaysRemaining": "{days, plural, =1{1 день} few{{days} дня} other{{days} дней}}",
+  "@trialDaysRemaining": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overview": "Обзор",
+  "member": "Член",
+  "memberManagement": "Управление членами",
+  "reportProblemTooltip": "Сообщить о проблеме",
+  "newAppointmentsTitle": "Новые встречи",
+  "youHaveNewAppointment": "У вас новая встреча.",
+  "youHaveNewAppointments": "У вас {count} новых встреч.",
+  "@youHaveNewAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentReminderTomorrow": "Напоминание: Встреча завтра",
+  "tomorrowAppointment": "Завтра: {title}",
+  "@tomorrowAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTomorrowAppointments": "У вас {count} встреч завтра.",
+  "@youHaveTomorrowAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appointmentsToday": "Встречи сегодня",
+  "todayAppointment": "Сегодня: {title}",
+  "@todayAppointment": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "youHaveTodayAppointments": "У вас {count} встреч сегодня.",
+  "@youHaveTodayAppointments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentReminder": "Напоминание об оплате",
+  "paymentReminderMessage": "Сегодня {day}-е число месяца – пожалуйста, завершите {method}.",
+  "@paymentReminderMessage": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentDayLabel": "День оплаты (ежемесячное напоминание)",
+  "updateAvailable": "Доступно обновление",
+  "newVersionAvailable": "Доступна новая версия: {version}",
+  "currentVersionLabel": "Текущая версия: {version}",
+  "changes": "Изменения:",
+  "downloadProgress": "Загрузка: {percent}%",
+  "installationStarting": "Начинается установка...",
+  "appWillRestart": "Приложение будет перезапущено автоматически.",
+  "later": "Позже",
+  "updateNow": "Обновить сейчас",
+  "downloading": "Загрузка...",
+  "downloadFailed": "Не удалось загрузить. Попробуйте позже.",
+  "searchingForUpdates": "Поиск обновлений...",
+  "appUpToDate": "Приложение обновлено",
+  "updateCheckError": "Ошибка проверки обновлений",
+  "changelog": "Журнал изменений",
+  "@newVersionAvailable": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@currentVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "terminConfirmed": "Встреча подтверждена",
+  "terminDeclined": "Встреча отклонена",
+  "terminRescheduleRequested": "Запрошен перенос",
+  "statusConfirmed": "Подтверждено",
+  "statusDeclined": "Отклонено",
+  "statusRescheduling": "Перенос",
+  "statusPending": "Ожидание",
+  "categoryVorstandssitzung": "Заседание правления",
+  "categoryMitgliederversammlung": "Общее собрание",
+  "categorySchulung": "Обучение",
+  "categorySonstiges": "Прочее",
+  "openCount": "{count} открытых",
+  "refresh": "Обновить",
+  "filterUpcoming": "Предстоящие",
+  "filterPast": "Прошедшие",
+  "filterAll": "Все",
+  "noUpcomingAppointments": "Нет предстоящих встреч",
+  "noPastAppointments": "Нет прошедших встреч",
+  "noAppointmentsAvailable": "Встречи отсутствуют",
+  "appointmentsShownHere": "Ваши встречи будут показаны здесь",
+  "dateLabel": "Дата",
+  "timeLabel": "Время",
+  "locationLabel": "Место",
+  "createdByLabel": "Создал",
+  "descriptionLabel": "Описание",
+  "ticketLabel": "Заявка",
+  "yourStatus": "Ваш статус: ",
+  "reasonLabel": "Причина: {reason}",
+  "durationMinutes": "{minutes} мин",
+  "confirm": "Подтвердить",
+  "decline": "Отклонить",
+  "reschedule": "Перенести",
+  "requestReschedule": "Запросить перенос",
+  "appointmentLabel": "Встреча: {title}",
+  "rescheduleReason": "Причина переноса *",
+  "rescheduleReasonHint": "Укажите причину...",
+  "pleaseProvideReason": "Укажите причину",
+  "request": "Запросить",
+  "@openCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@appointmentLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketStatusOpen": "Открыта",
+  "ticketStatusInProgress": "В работе",
+  "ticketStatusWaitingMember": "Ожидание участника",
+  "ticketStatusWaitingStaff": "Ожидание сотрудника",
+  "ticketStatusWaitingAuthority": "Ожидание ведомства",
+  "ticketStatusDone": "Завершена",
+  "ticketPriorityHigh": "Высокий",
+  "ticketPriorityMedium": "Средний",
+  "ticketPriorityLow": "Низкий",
+  "comments": "Комментарии",
+  "documents": "Документы",
+  "details": "Детали",
+  "replySent": "Ответ отправлен",
+  "sendError": "Ошибка отправки",
+  "uploading": "Загрузка...",
+  "fileUploaded": "{filename} загружен",
+  "uploadFailed": "Ошибка загрузки",
+  "openError": "Ошибка открытия",
+  "noRepliesYet": "Пока нет ответов",
+  "waitingForSupport": "Ожидание ответа поддержки",
+  "writeReply": "Написать ответ...",
+  "attachFile": "Прикрепить файл",
+  "documentsCount": "Документы ({count})",
+  "upload": "Загрузить",
+  "noDocuments": "Нет документов",
+  "allowedFormats": "Допустимые форматы: PDF, JPEG, JPG, TXT, ZIP",
+  "yourMessage": "Ваше сообщение:",
+  "translation": "Перевод",
+  "original": "Оригинал",
+  "originalText": "Оригинальный текст",
+  "autoTranslated": "Переведено автоматически",
+  "originalTapTranslation": "Оригинал · Нажмите для перевода",
+  "translatedTapOriginal": "Переведено · Нажмите для оригинала",
+  "justNow": "Только что",
+  "minutesAgo": "{minutes} мин назад",
+  "hoursAgo": "{hours} ч назад",
+  "daysAgo": "{days} {days, plural, =1{день} other{дней}} назад",
+  "createdLabel": "Создано",
+  "updatedLabel": "Обновлено",
+  "handlerLabel": "Ответственный",
+  "doneLabel": "Завершено",
+  "newTicketTitle": "Новая заявка",
+  "categoryOptional": "Категория (необязательно)",
+  "selectCategory": "Выбрать",
+  "subjectLabel": "Тема",
+  "fillAllFields": "Заполните все поля",
+  "ticketCreatedId": "Заявка #{id} создана",
+  "priorityLabel": "Приоритет: ",
+  "@fileUploaded": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@documentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@ticketCreatedId": {
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "supportOffline": "Поддержка офлайн",
+  "lastSeenSeconds": "Был активен несколько секунд назад",
+  "lastSeenMinutes": "Был активен {minutes} {minutes, plural, =1{минуту} other{минут}} назад",
+  "lastSeenHours": "Был активен {hours} {hours, plural, =1{час} other{часов}} назад",
+  "lastSeenDays": "Был активен {days} {days, plural, =1{день} other{дней}} назад",
+  "online": "Онлайн",
+  "callSupport": "Позвонить",
+  "typeMessage": "Введите сообщение...",
+  "callBusy": "Поддержка занята",
+  "callRejected": "Звонок отклонён",
+  "callFailed": "Не удалось подключить звонок",
+  "callEnded": "Звонок завершён",
+  "callSupportBusy": "Поддержка уже в другом звонке",
+  "errorStartingChat": "Ошибка запуска чата",
+  "errorStartingCall": "Ошибка запуска звонка",
+  "errorConnecting": "Ошибка подключения",
+  "errorAcceptingCall": "Ошибка принятия звонка",
+  "errorDownloading": "Ошибка загрузки",
+  "errorUploading": "Ошибка отправки файла",
+  "errorSending": "Ошибка отправки",
+  "errorPickingPhotos": "Ошибка выбора фото",
+  "errorPickingFiles": "Ошибка выбора файлов",
+  "errorTakingPhoto": "Ошибка съёмки",
+  "fileNotLoaded": "Файл не загружен",
+  "attachmentIdMissing": "ID вложения отсутствует",
+  "camera": "Камера",
+  "gallery": "Галерея",
+  "file": "Файл",
+  "typingIndicator": "{name} печатает...",
+  "@lastSeenMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@lastSeenDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@typingIndicator": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifNewMessageFrom": "Новое сообщение от",
+  "notifUrgentPrefix": "СРОЧНО",
+  "notifUrgentMessage": "СРОЧНОЕ СООБЩЕНИЕ",
+  "notifIncomingCall": "Входящий звонок",
+  "notifCallingYou": "звонит...",
+  "notifUpdateAvailable": "Доступно обновление",
+  "notifVersionAvailable": "уже доступна",
+  "notifConnected": "Подключено",
+  "notifDisconnected": "Отключено",
+  "notifConnectedBody": "Вы подключены к серверу.",
+  "notifDisconnectedBody": "Соединение с сервером потеряно.",
+  "notifError": "Ошибка",
+  "retry": "Повторить",
+  "save": "Сохранить",
+  "accept": "Принять",
+  "selectFile": "Выбрать файл",
+  "dataLoadingText": "Загрузка данных...",
+  "dataSavedSuccess": "Данные успешно сохранены",
+  "errorSaving": "Ошибка сохранения",
+  "errorLoading": "Ошибка загрузки",
+  "savedFilename": "Сохранено: {filename}",
+  "logsCopied": "Логи скопированы!",
+  "diagnosticDataTitle": "Диагностические данные",
+  "diagnosticDescription": "Хотите отправлять анонимные диагностические данные для улучшения приложения?",
+  "noThanks": "Нет, спасибо",
+  "yesEnable": "Да, включить",
+  "passwordMinEightChars": "Пароль должен содержать не менее 8 символов",
+  "passwordChangeSuccess": "Пароль успешно изменён",
+  "emailChangeError": "Ошибка изменения email",
+  "acceptDocumentCheckbox": "Я прочитал и принимаю документ.",
+  "loadingErrorGeneric": "Ошибка загрузки: {details}",
+  "@savedFilename": {
+    "placeholders": {
+      "filename": {
+        "type": "String"
+      }
+    }
+  },
+  "@loadingErrorGeneric": {
+    "placeholders": {
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingCallTitle": "Входящий звонок",
+  "ringingFor": "Звонит {seconds}с",
+  "rejectCall": "Отклонить",
+  "acceptCall": "Ответить",
+  "unmute": "Включить звук",
+  "mute": "Выключить звук",
+  "hangUp": "Завершить",
+  "calling": "Вызов...",
+  "autoRejectIn": "Автоотклонение через {seconds} секунд",
+  "speakerOn": "Динамик",
+  "speakerOff": "Наушник",
+  "micMuted": "Отключён",
+  "micOn": "Микрофон",
+  "connectionExcellent": "Отличное",
+  "connectionGood": "Хорошее",
+  "connectionWeak": "Слабое",
+  "connectionLost": "Отключено",
+  "personalData": "Личные данные",
+  "personalDataSubtitle": "Имя, фамилия, адрес",
+  "membershipFee": "Членский взнос",
+  "annualFeeYear": "Годовой взнос {year}",
+  "amount": "Сумма:",
+  "dueBy": "Срок:",
+  "paid": "Оплачено",
+  "versionHistory": "История версий",
+  "lastUpdated": "Последнее обновление: {date}",
+  "noVersionHistory": "История версий недоступна",
+  "failedLoadChangelog": "Не удалось загрузить журнал изменений",
+  "callMember": "Позвонить участнику",
+  "closeConversation": "Закрыть беседу",
+  "chatOffline": "Не в сети",
+  "attachFiles": "Прикрепить файлы (макс. 10, 50МБ)",
+  "conversationClosed": "Эта беседа была закрыта",
+  "noMessages": "Нет сообщений",
+  "goBack": "Назад",
+  "goForward": "Вперёд",
+  "homePage": "Главная",
+  "firstNameLabel": "Имя",
+  "lastNameLabel": "Фамилия",
+  "streetLabel": "Улица",
+  "houseNumberLabel": "№",
+  "postalCodeLabel": "Индекс",
+  "cityLabel": "Город",
+  "phoneMobileLabel": "Телефон (Мобильный)",
+  "phoneLandlineLabel": "Телефон (Стационарный)",
+  "newEmailLabel": "Новый адрес электронной почты",
+  "currentPasswordLabel": "Текущий пароль",
+  "newPasswordLabel": "Новый пароль",
+  "confirmPasswordLabel": "Подтвердите пароль",
+  "emailChangedSuccess": "Email успешно изменён",
+  "newPasswordMinChars": "Новый пароль (мин. 6 символов)",
+  "reasonLabel2": "Причина",
+  "downloadFailed2": "Ошибка загрузки",
+  "downloadTooltip": "Скачать",
+  "connectionErrorGeneric": "Ошибка подключения",
+  "copyLogs": "Копировать логи",
+  "deleteLogs": "Удалить логи",
+  "autoScrollOn": "Автопрокрутка ВКЛ",
+  "autoScrollOff": "Автопрокрутка ВЫКЛ",
+  "unknownValue": "Неизвестно",
+  "bankTransfer": "Банковский перевод",
+  "standingOrder": "Постоянное поручение",
+  "payment": "Оплата",
+  "warningType_ermahnung": "Предупреждение",
+  "warningType_abmahnung": "Выговор",
+  "warningType_letzte": "Последнее предупреждение",
+  "warningsTotal": "Всего: {count}",
+  "warningsErmahnung": "Предупреждения: {count}",
+  "warningsAbmahnung": "Выговоры: {count}",
+  "warningsLetzte": "Последние: {count}",
+  "noWarnings": "Нет предупреждений",
+  "noWarningsDescription": "У вас нет предупреждений.",
+  "createdBy": "Создано: {name}",
+  "monthJan": "Jan",
+  "monthFeb": "Feb",
+  "monthMar": "Mar",
+  "monthApr": "Apr",
+  "monthMay": "May",
+  "monthJun": "Jun",
+  "monthJul": "Jul",
+  "monthAug": "Aug",
+  "monthSep": "Sep",
+  "monthOct": "Oct",
+  "monthNov": "Nov",
+  "monthDec": "Dec",
+  "stufe1_name": "Личные данные",
+  "stufe2_name": "Тип членства",
+  "stufe3_name": "Финансовое положение",
+  "stufe4_name": "Способ оплаты",
+  "stufe5_name": "Начало членства",
+  "stufe6_name": "Устав",
+  "stufe7_name": "Политика конфиденциальности",
+  "stufe8_name": "Право на отзыв",
+  "memberType_ordentlich": "Обычный член",
+  "memberType_foerder": "Член-спонсор",
+  "memberType_ehren": "Почётный член",
+  "memberDesc_ordentlich": "Активный член с правом голоса. Участвует в услугах ассоциации (почта, облако, бюрократическая поддержка).",
+  "memberDesc_foerder": "Поддерживает ассоциацию взносами. Может присутствовать на общем собрании с совещательным голосом, без права голоса или избрания в правление.",
+  "memberDesc_ehren": "Имеет права обычного члена без обязанности уплаты членских взносов. Назначается общим собранием или правлением.",
+  "payMethod_ueberweisung": "Банковский перевод",
+  "payMethod_dauerauftrag": "Постоянное поручение",
+  "verifyStatus_geprueft": "Проверено",
+  "verifyStatus_ausgefuellt": "Заполнено",
+  "verifyStatus_abgelehnt": "Отклонено",
+  "verifyStatus_offen": "Открыто",
+  "fillRequiredFields": "Заполните все обязательные поля.",
+  "personalDataSaved": "Личные данные сохранены",
+  "selectMemberType": "Выберите тип членства.",
+  "memberTypeSaved": "Тип членства сохранён",
+  "selectOption": "Выберите вариант.",
+  "financialSaved": "Финансовое положение сохранено",
+  "selectPaymentMethod": "Выберите способ оплаты.",
+  "paymentDataSaved": "Платёжные данные сохранены",
+  "selectDate": "Выберите дату.",
+  "membershipStartSaved": "Начало членства сохранено",
+  "fileTooLarge": "Файл слишком большой (макс. 10 МБ).",
+  "leistungsbescheidUploaded": "Справка о пособиях успешно загружена",
+  "verificationProgress": "Прогресс верификации",
+  "notApplicable": "Не применимо",
+  "socialBenefitsExempt": "Способ оплаты не требуется для получателей социальных пособий.",
+  "locked": "Заблокировано",
+  "completePreviousStep": "Сначала завершите шаг {step}.",
+  "rejectedNote": "Отклонено: {note}",
+  "waitingForReview": "Ожидает рассмотрения правлением.",
+  "stepApproved": "Этот шаг проверен и одобрен.",
+  "changesViaChat": "Изменения возможны только через чат.",
+  "firstNameRequired": "Имя *",
+  "lastNameRequired": "Фамилия *",
+  "birthDateLabel": "Дата рождения *",
+  "streetRequired": "Улица *",
+  "houseNumberRequired": "№ *",
+  "cityRequired": "Город *",
+  "phoneRequired": "Номер телефона *",
+  "phonePurpose": "Назначение: Связь при недоступности через приложение",
+  "selectMemberTypePrompt": "Выберите желаемый тип членства:",
+  "financialExplanation": "Чтобы проверить, имеете ли вы право на снижение взноса, нам нужна следующая информация. Она будет использована исключительно для определения вашего членского взноса.",
+  "socialBenefitsQuestion": "Вы сейчас получаете социальные пособия?",
+  "optionBuergergeld": "Да, гражданское пособие (Job Center)",
+  "optionSozialamt": "Да, социальная помощь (Социальная служба)",
+  "optionNoBenefits": "Нет, я не получаю социальных пособий",
+  "feeExempt": "Ваш ежемесячный взнос: 0,00 €/месяц",
+  "uploadLeistungsbescheid": "Загрузить справку о пособиях",
+  "uploadLeistungsbescheidHint": "Загрузите актуальную справку о пособиях в течение 14 дней для подтверждения освобождения от взноса.",
+  "allowedFormatsUpload": "Допустимые форматы: PDF, JPG, PNG (макс. 10 МБ)",
+  "feeRegular": "Ваш ежемесячный взнос: 25,00 €/месяц",
+  "paymentDayReminder": "Вам будет напоминаться {day}-го числа каждого месяца.",
+  "membershipStartPrompt": "Выберите, когда должно начаться ваше членство.",
+  "optionAfterVerification": "После завершения верификации",
+  "optionAfterVerificationDesc": "Членство начинается со дня утверждения правлением.",
+  "optionRetroFoundation": "Ретроактивно с даты основания (01.08.2025)",
+  "optionRetroFoundationDesc": "Вы становитесь ретроактивным членом с момента основания ассоциации.",
+  "optionRetroCustom": "Ретроактивно к другой дате",
+  "optionRetroCustomDesc": "Выберите дату между 01.08.2025 и сегодняшним днём.",
+  "selectDateLabel": "Выберите дату",
+  "selectDateHint": "Выберите дату...",
+  "dateNotBefore": "Не ранее 01.08.2025 (дата основания)",
+  "feeExemptRetro": "Освобождение от взноса: 0,00 € ретроактивно.\nТолько дата членства устанавливается ретроактивно.",
+  "retroactiveFees": "Ретроактивные взносы",
+  "retroFeeCalculation": "Период: {from} – {to}\nМесяцы: {months}\nВзнос: {months} × 25,00 € = {total} €",
+  "pleaseReadSatzung": "Ознакомьтесь с уставом ассоциации.",
+  "pleaseReadDatenschutz": "Ознакомьтесь с политикой конфиденциальности.",
+  "pleaseReadWiderruf": "Ознакомьтесь с правом на отзыв.",
+  "acceptedAtRegistration": "Принято при регистрации",
+  "confirmedByBoard": "Будет подтверждено после рассмотрения правлением.",
+  "docSatzung": "Устав",
+  "docDatenschutz": "Политика конфиденциальности",
+  "docWiderruf": "Право на отзыв",
+  "acceptedAtRegCount": "Принято при регистрации ({count}/3)",
+  "acceptedOn": "Принято {date}",
+  "notAccepted": "Не принято",
+  "statusAccepted": "Принято",
+  "@ringingFor": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@autoRejectIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@annualFeeYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@warningsTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsErmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsAbmahnung": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@warningsLetzte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@createdBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@completePreviousStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "@rejectedNote": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "@paymentDayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "@retroFeeCalculation": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@acceptedAtRegCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@acceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memberNumberTooLong": "Номер участника слишком длинный (макс. 20 символов)",
+  "onlyUppercaseAndNumbers": "Допускаются только заглавные буквы и цифры",
+  "passwordTooLong": "Пароль слишком длинный (макс. 100 символов)",
+  "nameTooLong": "Имя слишком длинное (макс. 100 символов)",
+  "emailTooLong": "Email слишком длинный (макс. 255 символов)",
+  "legalAcknowledgePrefix": "Я ознакомился/ась с ",
+  "legalAcknowledgeSuffix": ".",
+  "legalStatutesSuffix": " ICD360S e.V. и признаю их обязательными.",
+  "legalPleaseReadFirst": "(пожалуйста, сначала прочитайте)",
+  "statusActive": "Активный",
+  "statusSuspended": "Заблокирован",
+  "statusNew": "Новый",
+  "statusCancelled": "Отменён",
+  "statusDeleted": "Удалён",
+  "roleMitglied": "Участник",
+  "roleVorsitzer": "Председатель",
+  "roleStellvertreter": "Заместитель",
+  "roleSchatzmeister": "Казначей",
+  "roleSchriftfuehrer": "Секретарь",
+  "roleBeisitzer": "Заседатель",
+  "roleKassierer": "Кассир",
+  "roleKassenpruefer": "Ревизор",
+  "roleEhrenamtlich": "Волонтёр",
+  "roleMitgliedergruender": "Член-основатель",
+  "roleEhrenmitglied": "Почётный член",
+  "roleFoerdermitglied": "Член-спонсор",
+  "memberTypeNotSet": "Ещё не установлено",
+  "payMethodSepa": "Прямое дебетование SEPA",
+  "labelStatus": "Статус",
+  "labelMemberNumber": "Номер участника",
+  "labelRole": "Роль",
+  "labelMemberType": "Тип членства",
+  "labelPaymentMethod": "Способ оплаты",
+  "labelRegisteredOn": "Зарегистрирован",
+  "labelLastLogin": "Последний вход",
+  "labelMemberSince": "Участник с",
+  "neverLoggedIn": "Никогда",
+  "notActivatedYet": "Ещё не активировано",
+  "tabVerification": "Верификация",
+  "tabWarnings": "Предупреждения",
+  "tabDocuments": "Документы",
+  "tabMembership": "Членство",
+  "pleaseEnterFirstName": "Введите имя",
+  "pleaseEnterLastName": "Введите фамилию",
+  "noFileDataReceived": "Данные не получены",
+  "openFile": "Открыть",
+  "diagnosticErrors": "Отчёты об ошибках для улучшения",
+  "diagnosticAnonymousStats": "Анонимная статистика использования",
+  "diagnosticPerformance": "Данные о производительности приложения",
+  "noMicrophoneError": "Микрофон не найден. Подключите микрофон и попробуйте снова.",
+  "startConversation": "Начните разговор!",
+  "staffWillReply": "Сотрудник скоро вам ответит.",
+  "inCall": "В звонке...",
+  "registration": "Регистрация",
+  "deactivation": "Деактивация",
+  "deactivatedOn": "Деактивирован",
+  "accountAutoSuspend": "Аккаунты, не подтверждённые в течение 30 дней, будут автоматически заблокированы.",
+  "ipClean": "IP чистый - не в списке",
+  "documentsProvidedByBoard": "Документы предоставляются правлением.",
+  "noDocumentsAvailable": "Документов нет",
+  "noDocumentsDescription": "Для вас ещё не предоставлено документов.",
+  "uploadedBy": "Загружено: {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepsCompleted": "{completed}/{total} шагов выполнено",
+  "dayOfMonth": "{day}-е число месяца",
+  "@stepsCompleted": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@dayOfMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "changeField": "Изменить {field}",
+  "openDocument": "Открыть {name}",
+  "helpImproveApp": "Хотите помочь нам улучшить приложение?",
+  "noPersonalDataCollected": "Личные данные не собираются. Эту настройку можно изменить в любое время.",
+  "logEntries": "{count} записей",
+  "noLogs": "Нет логов",
+  "newLoginDetected": "Обнаружен новый вход",
+  "waitingForMember": "Ожидание участника",
+  "waitingForStaff": "Ожидание сотрудника",
+  "waitingForAuthority": "Ожидание органа власти",
+  "@changeField": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "@openDocument": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@logEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}
