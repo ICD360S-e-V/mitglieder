@@ -1,124 +1,150 @@
-# ICD360S e.V. - Mitgliederportal
+<p align="center">
+  <h1 align="center">ICD360S e.V. - Mitgliederportal</h1>
+  <p align="center">
+    <strong>Die offizielle Mitglieder-App des ICD360S e.V.</strong><br>
+    Sicher. Mehrsprachig. Open Source.
+  </p>
+</p>
 
-Die offizielle Mitglieder-App des **ICD360S e.V.** - eine sichere, mehrsprachige Plattform zur Verwaltung aller Vereinsaktivitaeten.
+<p align="center">
+  <a href="https://icd360s.de"><img src="https://img.shields.io/badge/Website-icd360s.de-blue?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"></a>
+  <a href="https://icd360sev.icd360s.de/fdroid/repo"><img src="https://img.shields.io/badge/F--Droid-Repository-green?style=for-the-badge&logo=fdroid&logoColor=white" alt="F-Droid"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/Lizenz-GPL--3.0-orange?style=for-the-badge&logo=gnu&logoColor=white" alt="License"></a>
+</p>
 
-![Platform](https://img.shields.io/badge/Android-available-brightgreen)
-![Platform](https://img.shields.io/badge/iOS-Beta-yellow)
-![Platform](https://img.shields.io/badge/macOS-Beta-yellow)
-![Platform](https://img.shields.io/badge/Windows-available-brightgreen)
-![Platform](https://img.shields.io/badge/Linux-available-brightgreen)
-![Flutter](https://img.shields.io/badge/Flutter-3.41.6-blue)
-![License](https://img.shields.io/badge/License-GPL--3.0-blue)
+<p align="center">
+  <img src="https://img.shields.io/badge/Android-verfuegbar-brightgreen?style=flat-square&logo=android&logoColor=white" alt="Android">
+  <img src="https://img.shields.io/badge/Windows-verfuegbar-brightgreen?style=flat-square&logo=windows&logoColor=white" alt="Windows">
+  <img src="https://img.shields.io/badge/Linux-verfuegbar-brightgreen?style=flat-square&logo=linux&logoColor=white" alt="Linux">
+  <img src="https://img.shields.io/badge/macOS-Beta-yellow?style=flat-square&logo=apple&logoColor=white" alt="macOS">
+  <img src="https://img.shields.io/badge/iOS-Beta-yellow?style=flat-square&logo=apple&logoColor=white" alt="iOS">
+  <img src="https://img.shields.io/badge/Flutter-3.41.6-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter">
+  <img src="https://img.shields.io/badge/Sprachen-28-blueviolet?style=flat-square&logo=translate&logoColor=white" alt="Languages">
+</p>
+
+---
 
 ## Funktionen
 
-- **Mitgliederverwaltung** - Registrierung, Login, Profilverwaltung, 8-Stufen Verifizierung
-- **Terminverwaltung** - Wochenkalender mit KW-Navigation, Urlaubs- und Feiertagsplanung
-- **Live Chat** - Echtzeit-Kommunikation mit dem Vorstand via WebSocket
-- **Sprachanrufe** - Peer-to-Peer Voice Calls via WebRTC mit TURN/STUN
-- **Ticket-System** - Anfragen erstellen, verfolgen und verwalten mit Dateianhang
-- **Push-Benachrichtigungen** - Sofortige Benachrichtigungen ohne Google-Dienste (ntfy)
-- **Interner Datei-Viewer** - PDF und Bilder direkt in der App oeffnen
-- **28 Sprachen** - Vollstaendig lokalisiert mit automatischer Spracherkennung
-- **Auto-Update** - Automatische Aktualisierungen ueber F-Droid oder internen Update-Service
+| | Funktion | Beschreibung |
+|---|---|---|
+| :busts_in_silhouette: | **Mitgliederverwaltung** | Registrierung, Login, Profil, 8-Stufen Verifizierung |
+| :calendar: | **Terminverwaltung** | Wochenkalender mit KW-Navigation, Urlaub, Feiertage |
+| :speech_balloon: | **Live Chat** | Echtzeit-Kommunikation mit dem Vorstand (WebSocket) |
+| :telephone_receiver: | **Sprachanrufe** | Peer-to-Peer Voice Calls (WebRTC + TURN/STUN) |
+| :ticket: | **Ticket-System** | Anfragen erstellen, verfolgen, Dateianhang |
+| :bell: | **Push-Benachrichtigungen** | Sofort, ohne Google-Dienste (ntfy) |
+| :page_facing_up: | **Datei-Viewer** | PDF und Bilder direkt in der App oeffnen |
+| :globe_with_meridians: | **28 Sprachen** | Automatische Spracherkennung |
+| :arrows_counterclockwise: | **Auto-Update** | Automatisch ueber F-Droid oder intern |
 
-## Plattformen & Verfuegbarkeit
+---
 
-| Plattform | Format | Status | Distribution |
-|-----------|--------|--------|--------------|
-| **Android** | APK | Verfuegbar | [F-Droid Repository](https://icd360sev.icd360s.de/fdroid/repo) |
-| **Android** | APK (Universal) | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk) |
-| **Android** | APK/AAB | In Vorbereitung | Google Play, Huawei AppGallery, Amazon Appstore, Samsung Galaxy Store |
-| **Windows** | EXE Installer | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe) |
-| **Linux** | DEB | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb) |
-| **Linux** | RPM | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm) |
-| **Linux** | AppImage | Verfuegbar | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage) |
-| **macOS** | DMG | Beta-Phase | [Direktdownload](https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg) (sucht Beta-Tester) |
-| **iOS** | IPA | Beta-Phase | TestFlight (sucht Beta-Tester) |
+## Downloads
 
-Die Store-Veroeffentlichungen (Google Play, Huawei, Amazon, Samsung, App Store) befinden sich in Vorbereitung und werden verfuegbar, sobald ausreichend Beta-Tester die App validiert haben.
+### Android
 
-## Installation
+<table>
+<tr>
+<td align="center" width="50%">
 
-### Android (F-Droid - empfohlen)
+**F-Droid Repository (empfohlen)**
 
-F-Droid Repository mit der Kamera scannen:
+![F-Droid QR](https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://icd360sev.icd360s.de/fdroid/repo&color=1a73e8)
 
-![F-Droid QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://icd360sev.icd360s.de/fdroid/repo)
+:link: [`https://icd360sev.icd360s.de/fdroid/repo`](https://icd360sev.icd360s.de/fdroid/repo)
 
-Oder manuell hinzufuegen:
+Automatische Updates alle 12-24 Stunden
 
-1. [F-Droid](https://f-droid.org) installieren
-2. Repository hinzufuegen: `https://icd360sev.icd360s.de/fdroid/repo`
-3. Nach **ICD360S e.V. Mitglieder** suchen und installieren
+</td>
+<td align="center" width="50%">
 
-Updates werden automatisch ueber F-Droid bereitgestellt (alle 12-24 Stunden).
+**Universal APK (Direktdownload)**
 
-### Android (Universal APK - Direktdownload)
+![APK QR](https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk&color=34a853)
 
-APK mit der Kamera scannen und installieren:
+:link: [`https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk`](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
 
-![APK QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
+Manuell installieren, Auto-Update integriert
 
-Oder direkt herunterladen: [icd360sev.apk](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
+</td>
+</tr>
+</table>
 
-Die App prueft automatisch auf Updates.
+> :soon: **Google Play**, **Huawei AppGallery**, **Amazon Appstore** und **Samsung Galaxy Store** befinden sich in Vorbereitung (Beta-Tester gesucht).
 
-### Windows / Linux / macOS
+### Desktop & iOS
 
-Alle Downloads sind in der Tabelle oben verlinkt. Die App prueft automatisch auf Updates nach der Installation.
+| Plattform | Format | Status | Download |
+|-----------|--------|--------|----------|
+| :desktop_computer: **Windows** | EXE Installer | :green_circle: Verfuegbar | [`icd360sev_setup.exe`](https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe) |
+| :penguin: **Linux** | DEB | :green_circle: Verfuegbar | [`icd360sev-mitglied.deb`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb) |
+| :penguin: **Linux** | RPM | :green_circle: Verfuegbar | [`icd360sev-mitglied.rpm`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm) |
+| :penguin: **Linux** | AppImage | :green_circle: Verfuegbar | [`icd360sev-mitglied.AppImage`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage) |
+| :apple: **macOS** | DMG | :yellow_circle: Beta | [`icd360sev-mitglied.dmg`](https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg) |
+| :iphone: **iOS** | IPA | :yellow_circle: Beta | TestFlight (kontakt@icd360s.de) |
 
-| Plattform | Direktlink |
-|-----------|-----------|
-| Windows | [icd360sev_setup.exe](https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe) |
-| Linux DEB | [icd360sev-mitglied.deb](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb) |
-| Linux RPM | [icd360sev-mitglied.rpm](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm) |
-| Linux AppImage | [icd360sev-mitglied.AppImage](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage) |
-| macOS | [icd360sev-mitglied.dmg](https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg) |
+---
 
 ## Technologie
 
-| Komponente | Technologie |
-|------------|-------------|
-| **Framework** | Flutter 3.41.6 (Dart 3.11.4) |
-| **Backend** | PHP 8.4, MariaDB 10.11, Nginx |
-| **Echtzeit** | WebSocket (Ratchet PHP), WebRTC |
-| **Sicherheit** | Certificate Pinning (ISRG Root X1), Code-Obfuscation |
-| **CI/CD** | GitHub Actions (automatischer Build, Release, Deploy) |
-| **Benachrichtigungen** | ntfy (FOSS, ohne Google/FCM) |
-| **Lokalisierung** | 28 Sprachen, 558 Uebersetzungsschluessel |
+<table>
+<tr><td><strong>Framework</strong></td><td>Flutter 3.41.6 (Dart 3.11.4)</td></tr>
+<tr><td><strong>Backend</strong></td><td>PHP 8.4, MariaDB 10.11, Nginx</td></tr>
+<tr><td><strong>Echtzeit</strong></td><td>WebSocket (Ratchet PHP), WebRTC</td></tr>
+<tr><td><strong>Sicherheit</strong></td><td>Certificate Pinning (ISRG Root X1), Code-Obfuscation, DSGVO-konform</td></tr>
+<tr><td><strong>CI/CD</strong></td><td>GitHub Actions (automatischer Build, Release, Deploy)</td></tr>
+<tr><td><strong>Notifications</strong></td><td>ntfy (FOSS, ohne Google/FCM)</td></tr>
+<tr><td><strong>Lokalisierung</strong></td><td>28 Sprachen, 558 Uebersetzungsschluessel</td></tr>
+</table>
+
+---
 
 ## Sicherheit & Datenschutz
 
-- Keine Google-Dienste erforderlich (100% FOSS-kompatibel)
-- Keine Werbung, kein Tracking, keine Analytics
-- Alle Daten auf eigenem Server in Deutschland gehostet
-- SSL Certificate Pinning auf allen Verbindungen
-- DSGVO-konform
-- Dart-Code Obfuscation in allen Release-Builds
+:shield: Keine Google-Dienste erforderlich (100% FOSS-kompatibel)
+:no_entry_sign: Keine Werbung, kein Tracking, keine Analytics
+:flag_de: Alle Daten auf eigenem Server in Deutschland
+:lock: SSL Certificate Pinning auf allen Verbindungen
+:white_check_mark: DSGVO-konform
+:closed_lock_with_key: Dart-Code Obfuscation in allen Release-Builds
+
+---
 
 ## Beta-Tester gesucht
 
 Wir suchen aktiv Beta-Tester fuer folgende Plattformen:
 
-- **iOS** - TestFlight Beta
-- **macOS** - DMG Direktdownload
-- **Google Play** - Closed Beta Track
+- :apple: **iOS** - TestFlight Beta
+- :desktop_computer: **macOS** - DMG Direktdownload
+- :iphone: **Google Play** - Closed Beta Track
 
-Interessierte Mitglieder koennen sich per E-Mail melden: **kontakt@icd360s.de**
+:email: Interessierte Mitglieder: **kontakt@icd360s.de**
+
+---
+
+## Quellcode & Transparenz
+
+| | Link |
+|---|---|
+| :octocat: **Repository** | [`github.com/ICD360S-e-V/mitglieder`](https://github.com/ICD360S-e-V/mitglieder) |
+| :globe_with_meridians: **Website** | [`icd360s.de`](https://icd360s.de) |
+| :page_with_curl: **Impressum** | [`icd360s.de/impressum`](https://icd360s.de/impressum) |
+| :lock: **Datenschutz** | [`icd360s.de/datenschutz`](https://icd360s.de/datenschutz) |
+| :package: **F-Droid Repo** | [`icd360sev.icd360s.de/fdroid/repo`](https://icd360sev.icd360s.de/fdroid/repo) |
+| :incoming_envelope: **Kontakt** | [`kontakt@icd360s.de`](mailto:kontakt@icd360s.de) |
+
+---
 
 ## Lizenz
 
-Dieses Projekt ist lizenziert unter der [GNU General Public License v3.0](LICENSE).
+Dieses Projekt ist lizenziert unter der [**GNU General Public License v3.0**](LICENSE).
 
 Jeder darf den Quellcode einsehen, verwenden, modifizieren und weiterverbreiten - unter der Bedingung, dass abgeleitete Werke ebenfalls unter GPL-3.0 veroeffentlicht werden.
 
-## Impressum
+---
 
-**ICD360S e.V.**
-Neu-Ulm, Deutschland
-
-E-Mail: kontakt@icd360s.de
-Web: [icd360s.de](https://icd360s.de)
-Impressum: [icd360s.de/impressum](https://icd360s.de/impressum)
-Datenschutz: [icd360s.de/datenschutz](https://icd360s.de/datenschutz)
+<p align="center">
+  <strong>ICD360S e.V.</strong> | Neu-Ulm, Deutschland<br>
+  <a href="https://icd360s.de">icd360s.de</a> | <a href="mailto:kontakt@icd360s.de">kontakt@icd360s.de</a>
+</p>
