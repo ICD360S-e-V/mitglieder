@@ -16,6 +16,7 @@ concurrency:
 env:
   FLUTTER_VERSION: '3.41.4'
   JAVA_VERSION: '17'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   # ============================================
@@ -78,7 +79,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: /tmp/la-hash.txt
-          key: build-ok-linux-android-${{ steps.check.outputs.la_hash }}
+          key: v2-build-ok-linux-android-${{ steps.check.outputs.la_hash }}
           lookup-only: true
 
       - name: Check Apple cache
@@ -86,7 +87,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: /tmp/apple-hash.txt
-          key: build-ok-apple-${{ steps.check.outputs.apple_hash }}
+          key: v2-build-ok-apple-${{ steps.check.outputs.apple_hash }}
           lookup-only: true
 
       - name: Check Windows cache
@@ -94,7 +95,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: /tmp/win-hash.txt
-          key: build-ok-windows-${{ steps.check.outputs.win_hash }}
+          key: v2-build-ok-windows-${{ steps.check.outputs.win_hash }}
           lookup-only: true
 
       - name: Set build flags
@@ -378,7 +379,7 @@ jobs:
       - uses: actions/cache/save@v4
         with:
           path: /tmp/la-build-ok.txt
-          key: build-ok-linux-android-${{ needs.detect-changes.outputs.la_hash }}
+          key: v2-build-ok-linux-android-${{ needs.detect-changes.outputs.la_hash }}
 
   # ============================================
   # APPLE (iOS + macOS) - 1 runner
@@ -440,7 +441,7 @@ jobs:
       - uses: actions/cache/save@v4
         with:
           path: /tmp/apple-build-ok.txt
-          key: build-ok-apple-${{ needs.detect-changes.outputs.apple_hash }}
+          key: v2-build-ok-apple-${{ needs.detect-changes.outputs.apple_hash }}
 
   # ============================================
   # WINDOWS - 1 runner
@@ -482,7 +483,7 @@ jobs:
       - uses: actions/cache/save@v4
         with:
           path: /tmp/win-build-ok.txt
-          key: build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}
+          key: v2-build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}
 
   # ============================================
   # Release (only on version tags)
