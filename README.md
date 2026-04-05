@@ -32,30 +32,33 @@ Die offizielle App fuer Mitglieder des **ICD360S e.V.** - ein gemeinnuetziger Ve
 
 ## :iphone: Android
 
-<table>
-<tr>
-<td align="center" width="50%">
+### :arrow_down: Direktdownload (Universal APK)
 
-**F-Droid (empfohlen)**
+<p align="center">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk&color=34a853" alt="APK QR">
+</p>
 
-![QR](https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://icd360sev.icd360s.de/fdroid/repo&color=1a73e8)
+<p align="center">
+  <a href="https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk"><img src="https://img.shields.io/badge/APK_herunterladen-34a853?style=for-the-badge&logo=android&logoColor=white" alt="Download APK"></a>
+</p>
 
-F-Droid installieren: [`f-droid.org`](https://f-droid.org)
+> :link: [`https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk`](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
 
-Repo: [`icd360sev.icd360s.de/fdroid/repo`](https://icd360sev.icd360s.de/fdroid/repo)
+QR-Code scannen oder Link antippen. Auto-Update integriert.
 
-</td>
-<td align="center" width="50%">
+---
 
-**Universal APK**
+### :package: F-Droid Repository (automatische Updates)
 
-![QR](https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk&color=34a853)
+<p align="center">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://icd360sev.icd360s.de/fdroid/repo&color=1a73e8" alt="F-Droid QR">
+</p>
 
-[`icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk`](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
+1. F-Droid installieren: [`https://f-droid.org`](https://f-droid.org)
+2. Repository hinzufuegen: [`https://icd360sev.icd360s.de/fdroid/repo`](https://icd360sev.icd360s.de/fdroid/repo)
+3. Nach **ICD360S e.V. Mitglieder** suchen
 
-</td>
-</tr>
-</table>
+---
 
 :soon: Google Play, Huawei, Amazon, Samsung - Beta-Tester gesucht
 
