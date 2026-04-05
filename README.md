@@ -51,7 +51,11 @@ Die offizielle App fuer Mitglieder des **ICD360S e.V.** - ein gemeinnuetziger Ve
 ### :package: F-Droid Repository (automatische Updates)
 
 <p align="center">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://icd360sev.icd360s.de/fdroid/repo&color=1a73e8" alt="F-Droid QR">
+  <a href="https://icd360sev.icd360s.de/fdroid/repo"><img src="https://f-droid.org/badge/get-it-on.png" height="80" alt="Get it on F-Droid"></a>
+</p>
+
+<p align="center">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://icd360sev.icd360s.de/fdroid/repo&color=1a73e8" alt="F-Droid QR">
 </p>
 
 1. F-Droid installieren: [`https://f-droid.org`](https://f-droid.org)
