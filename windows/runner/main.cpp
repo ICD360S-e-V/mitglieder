@@ -1,3 +1,8 @@
+// Screen capture protection (Windows 10 2004+)
+#ifndef WDA_EXCLUDEFROMCAPTURE
+#define WDA_EXCLUDEFROMCAPTURE 0x00000011
+#endif
+
 #include <flutter/dart_project.h>
 #include <flutter/flutter_view_controller.h>
 #include <windows.h>
@@ -31,6 +36,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
     return EXIT_FAILURE;
   }
   window.SetQuitOnClose(true);
+
+  // Security: Prevent screenshots and screen recording (like Discord/banking apps)
+  // WDA_EXCLUDEFROMCAPTURE = 0x00000011 (Windows 10 2004+)
+  HWND hwnd = window.GetHandle();
+  if (hwnd) {
+    ::SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE);
+  }
 
   ::MSG msg;
   while (::GetMessage(&msg, nullptr, 0, 0)) {

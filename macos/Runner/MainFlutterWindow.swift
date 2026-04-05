@@ -10,6 +10,11 @@ class MainFlutterWindow: NSWindow {
 
     RegisterGeneratedPlugins(registry: flutterViewController)
 
+    // Security: Prevent screenshots and screen recording (like Netflix)
+    if #available(macOS 12.0, *) {
+      self.sharingType = .none
+    }
+
     super.awakeFromNib()
   }
 }
