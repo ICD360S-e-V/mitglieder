@@ -32,13 +32,37 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   }
   window.SetQuitOnClose(true);
 
-  // Security: DLL injection protection
-  // Remove current working directory from DLL search path
-  // Prevents DLL hijacking attacks
+  // ==========================================
+  // SECURITY HARDENING
+  // ==========================================
+
+  // 1. DLL injection protection - remove CWD from DLL search path
   ::SetDllDirectoryW(L"");
 
-  // Security: Anti-debugging (only in release builds)
-  // In debug mode, IsDebuggerPresent is used for console attach (line 12)
+  // 2. Heap corruption protection - terminate on corruption (anti-exploit)
+  ::HeapSetInformation(NULL, HeapEnableTerminationOnCorruption, NULL, 0);
+
+  // 3. ACG (Arbitrary Code Guard) - block shellcode injection
+  PROCESS_MITIGATION_DYNAMIC_CODE_POLICY dynamicCodePolicy = {};
+  dynamicCodePolicy.ProhibitDynamicCode = 1;
+  ::SetProcessMitigationPolicy(ProcessDynamicCodePolicy,
+    &dynamicCodePolicy, sizeof(dynamicCodePolicy));
+
+  // 4. Image Load Policy - block DLLs from network/low integrity
+  PROCESS_MITIGATION_IMAGE_LOAD_POLICY imageLoadPolicy = {};
+  imageLoadPolicy.NoRemoteImages = 1;
+  imageLoadPolicy.NoLowMandatoryLabelImages = 1;
+  ::SetProcessMitigationPolicy(ProcessImageLoadPolicy,
+    &imageLoadPolicy, sizeof(imageLoadPolicy));
+
+  // 5. DEP - force Data Execution Prevention
+  PROCESS_MITIGATION_DEP_POLICY depPolicy = {};
+  depPolicy.Enable = 1;
+  depPolicy.Permanent = 1;
+  ::SetProcessMitigationPolicy(ProcessDEPPolicy,
+    &depPolicy, sizeof(depPolicy));
+
+  // 6. Anti-debugging (release builds only)
   #ifdef NDEBUG
   BOOL remoteDebugger = FALSE;
   ::CheckRemoteDebuggerPresent(::GetCurrentProcess(), &remoteDebugger);
