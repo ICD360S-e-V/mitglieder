@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:ui' show PlatformDispatcher;
 import 'package:battery_plus/battery_plus.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:safe_device/safe_device.dart';
 import 'secure_storage_helper.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
@@ -136,12 +138,14 @@ class DeviceKeyService {
   Future<Map<String, String>> _getDeviceInfo() async {
     final deviceInfo = DeviceInfoPlugin();
 
+    // Screen-based tablet detection (Material Design: shortestSide >= 600dp)
+    final screenSize = PlatformDispatcher.instance.views.first.physicalSize /
+        PlatformDispatcher.instance.views.first.devicePixelRatio;
+    final shortestSide = screenSize.shortestSide;
+
     if (Platform.isAndroid) {
       final info = await deviceInfo.androidInfo;
-      final model = info.model.toLowerCase();
-      final isTablet = model.contains('tab') || model.contains('pad') ||
-          model.contains('sm-t') || model.contains('sm-x') ||
-          model.contains('mediapad') || model.contains('matepad');
+      final isTablet = shortestSide >= 600;
       return {
         'device_name': '${info.brand} ${info.model}',
         'platform': 'Android ${info.version.release} (SDK ${info.version.sdkInt})',
@@ -150,7 +154,7 @@ class DeviceKeyService {
       };
     } else if (Platform.isIOS) {
       final info = await deviceInfo.iosInfo;
-      final isTablet = info.model.toLowerCase().contains('ipad');
+      final isTablet = shortestSide >= 600 || info.model.toLowerCase().contains('ipad');
       return {
         'device_name': info.name,
         'platform': '${info.systemName} ${info.systemVersion}',
@@ -196,11 +200,14 @@ class DeviceKeyService {
     final data = <String, dynamic>{};
 
     try {
-      // Battery
+      // Battery (may return -1 on desktops without battery)
       final battery = Battery();
-      data['battery_level'] = await battery.batteryLevel;
-      final state = await battery.batteryState;
-      data['battery_state'] = state.toString().split('.').last;
+      final level = await battery.batteryLevel;
+      if (level >= 0) {
+        data['battery_level'] = level;
+        final state = await battery.batteryState;
+        data['battery_state'] = state.toString().split('.').last;
+      }
     } catch (_) {}
 
     try {
@@ -213,13 +220,29 @@ class DeviceKeyService {
     } catch (_) {}
 
     try {
-      // VPN detection (check network interfaces)
-      final interfaces = await NetworkInterface.list();
-      final vpnPrefixes = ['utun', 'tun', 'tap', 'ppp', 'wg', 'ipsec', 'vpn'];
-      final hasVpn = interfaces.any((i) =>
-          vpnPrefixes.any((p) => i.name.toLowerCase().startsWith(p)));
-      data['is_vpn'] = hasVpn ? 1 : 0;
+      // VPN detection
+      if (Platform.isAndroid || Platform.isIOS) {
+        // Mobile: connectivity_plus can detect VPN
+        final connectivity = await Connectivity().checkConnectivity();
+        final hasVpn = connectivity.any((c) => c == ConnectivityResult.vpn);
+        data['is_vpn'] = hasVpn ? 1 : 0;
+      } else {
+        // Desktop: check network interfaces for VPN adapters
+        final interfaces = await NetworkInterface.list();
+        final vpnPrefixes = ['utun', 'tun', 'tap', 'ppp', 'wg', 'ipsec', 'vpn'];
+        final hasVpn = interfaces.any((i) =>
+            vpnPrefixes.any((p) => i.name.toLowerCase().startsWith(p)));
+        data['is_vpn'] = hasVpn ? 1 : 0;
+      }
     } catch (_) {}
+
+    // Root/Jailbreak detection (mobile only)
+    if (Platform.isAndroid || Platform.isIOS) {
+      try {
+        final isRooted = await SafeDevice.isJailBroken;
+        data['is_rooted'] = isRooted ? 1 : 0;
+      } catch (_) {}
+    }
 
     return data;
   }
@@ -245,7 +268,7 @@ class DeviceKeyService {
           'device_id': _deviceId,
           'device_name': info['device_name'],
           'platform': info['platform'],
-          'app_version': '1.1.17',
+          'app_version': '1.1.18',
           'device_type': info['device_type'],
           'os_version': info['os_version'],
           ...extendedData,
@@ -287,7 +310,7 @@ class DeviceKeyService {
         },
         body: jsonEncode({
           'device_key': _deviceKey,
-          'app_version': '1.1.17',
+          'app_version': '1.1.18',
           'device_type': info['device_type'],
           'os_version': info['os_version'],
           ...extendedData,
