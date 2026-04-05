@@ -3,7 +3,8 @@
 </p>
 
 <p align="center">
-  <strong>Sicher. Mehrsprachig. Open Source. Ohne Google.</strong>
+  <strong>Sicher. Mehrsprachig. Open Source. Unabhaengig.</strong><br>
+  <em>Keine Tracker oder Dienste von Google, Apple, Microsoft, Huawei oder anderen Drittanbietern.</em>
 </p>
 
 <p align="center">
@@ -26,7 +27,7 @@
 
 ## Was ist das?
 
-Die offizielle App fuer Mitglieder des **ICD360S e.V.** - ein gemeinnuetziger Verein mit Sitz in Neu-Ulm. Die App ermoeglicht Terminplanung, Live-Chat mit dem Vorstand, Sprachanrufe, Ticketverwaltung und Dokumenten-Verifizierung - alles ohne Google-Dienste, mit eigenem Server in Deutschland.
+Die offizielle App fuer Mitglieder des **ICD360S e.V.** - ein gemeinnuetziger Verein mit Sitz in Neu-Ulm. Die App ermoeglicht Terminplanung, Live-Chat mit dem Vorstand, Sprachanrufe, Ticketverwaltung und Dokumenten-Verifizierung - vollstaendig unabhaengig von Google, Apple, Microsoft oder anderen Drittanbietern, mit eigenem Server in Deutschland.
 
 ---
 
@@ -44,7 +45,7 @@ Die offizielle App fuer Mitglieder des **ICD360S e.V.** - ein gemeinnuetziger Ve
 
 > :link: [`https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk`](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
 
-:shield: **Store-unabhaengig** - Die App wird direkt von unserem Server heruntergeladen und aktualisiert sich automatisch. Kein App Store noetig. Ihre Daten bleiben auf unserer Infrastruktur in Deutschland - ohne Abhaengigkeit von Google, Apple oder anderen Drittanbietern.
+:shield: **Store-unabhaengig** - Direkt von unserem Server. Kein App Store noetig. Keine Abhaengigkeit von Google, Apple, Microsoft, Huawei oder anderen Drittanbietern. Ihre Daten bleiben auf unserer eigenen Infrastruktur in Deutschland.
 
 ---
 
