@@ -407,7 +407,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           SizedBox(height: _getResponsiveSpacing(context, 12)),
           Text(
-            'v1.1.19',
+            'v1.1.20',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
               fontSize: _getResponsiveFontSize(context, 11),
