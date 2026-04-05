@@ -1,6 +1,6 @@
 // Screen capture protection (Windows 10 2004+)
-#ifndef WDA_EXCLUDEFROMCAPTURE
-#define WDA_EXCLUDEFROMCAPTURE 0x00000011
+#ifndef WDA_MONITOR
+#define WDA_MONITOR 0x00000001
 #endif
 
 #include <flutter/dart_project.h>
@@ -37,11 +37,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   }
   window.SetQuitOnClose(true);
 
-  // Security: Prevent screenshots and screen recording (like Discord/banking apps)
-  // WDA_EXCLUDEFROMCAPTURE = 0x00000011 (Windows 10 2004+)
+  // Security: Prevent screenshots and screen recording
+  // WDA_MONITOR = content visible on monitor, black in screen capture/recording
+  // WDA_EXCLUDEFROMCAPTURE caused black screen on some GPU drivers/RDP setups
   HWND hwnd = window.GetHandle();
   if (hwnd) {
-    ::SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE);
+    ::SetWindowDisplayAffinity(hwnd, WDA_MONITOR);
   }
 
   ::MSG msg;
