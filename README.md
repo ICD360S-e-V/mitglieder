@@ -86,12 +86,12 @@
 | Komponente | Details |
 |------------|---------|
 | **Framework** | Flutter 3.41.6 (Dart 3.11.4) |
-| **Backend** | PHP 8.4, MariaDB 10.11, Nginx |
+| **Backend** | PHP 8.5, MariaDB 10.11, Nginx 1.29 |
 | **Echtzeit** | WebSocket (Ratchet), WebRTC |
 | **Sicherheit** | Certificate Pinning, Code-Obfuscation, DSGVO-konform |
 | **CI/CD** | GitHub Actions (Build, Release, Deploy) |
 | **Notifications** | ntfy (FOSS, ohne Google) |
-| **Sprachen** | 28 Sprachen, 558 Schluessel |
+| **Sprachen** | 28 Sprachen, 777 Schluessel |
 | **Datenschutz** | Eigener Server in Deutschland, kein Tracking, keine Werbung |
 
 ---
