@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../screens/webview_screen.dart';
 import '../services/update_service.dart';
@@ -7,7 +8,7 @@ import '../services/logger_service.dart';
 import 'changelog_dialog.dart';
 import 'update_dialog.dart';
 
-const String appVersion = '1.1.20';
+const String appVersion = '1.1.21';
 
 class LegalFooter extends StatefulWidget {
   final bool darkMode;
@@ -24,7 +25,7 @@ class LegalFooter extends StatefulWidget {
 class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStateMixin {
   final _log = LoggerService();
   bool _isChecking = false;
-  Timer? _autoCheckTimer;
+  bool _updateAvailable = false;
   late AnimationController _rotationController;
 
   @override
@@ -35,18 +36,27 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
       vsync: this,
     );
 
-    // Start auto-check timer (every 24 hours)
-    // F-Droid will handle updates, this is just a fallback
-    _autoCheckTimer = Timer.periodic(const Duration(hours: 24), (_) {
-      _checkForUpdates(silent: true);
-    });
+    // Check once per day silently (not every time app opens)
+    _checkOncePerDay();
   }
 
   @override
   void dispose() {
-    _autoCheckTimer?.cancel();
     _rotationController.dispose();
     super.dispose();
+  }
+
+  Future<void> _checkOncePerDay() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final lastCheck = prefs.getString('last_update_check') ?? '';
+      final today = DateTime.now().toIso8601String().substring(0, 10);
+
+      if (lastCheck != today) {
+        await prefs.setString('last_update_check', today);
+        _checkForUpdates(silent: true);
+      }
+    } catch (_) {}
   }
 
   Future<void> _checkForUpdates({bool silent = false}) async {
@@ -92,12 +102,15 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
 
       if (updateInfo != null) {
         _log.info('Update available: ${updateInfo.version}', tag: 'UPDATE');
-        // Show update dialog
-        showDialog(
-          context: context,
-          barrierDismissible: !updateInfo.forceUpdate,
-          builder: (context) => UpdateDialog(updateInfo: updateInfo),
-        );
+        setState(() => _updateAvailable = true);
+        // Show update dialog only if user clicked manually (not silent auto-check)
+        if (!silent) {
+          showDialog(
+            context: context,
+            barrierDismissible: !updateInfo.forceUpdate,
+            builder: (context) => UpdateDialog(updateInfo: updateInfo),
+          );
+        }
       } else if (!silent && mounted) {
         _log.info('No updates available', tag: 'UPDATE');
         ScaffoldMessenger.of(context).showSnackBar(
@@ -165,7 +178,7 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Line 1: Copyright + Version
+          // Line 1: Copyright + Version + Update button
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -191,6 +204,28 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
                       decorationColor: textColor,
                     ),
                   ),
+                ),
+              ),
+              const SizedBox(width: 4),
+              InkWell(
+                onTap: _isChecking ? null : () => _checkForUpdates(silent: false),
+                borderRadius: BorderRadius.circular(12),
+                child: Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: _isChecking
+                      ? SizedBox(
+                          width: 14,
+                          height: 14,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 1.5,
+                            color: textColor,
+                          ),
+                        )
+                      : Icon(
+                          _updateAvailable ? Icons.system_update : Icons.refresh,
+                          size: 14,
+                          color: _updateAvailable ? Colors.green : textColor,
+                        ),
                 ),
               ),
             ],
