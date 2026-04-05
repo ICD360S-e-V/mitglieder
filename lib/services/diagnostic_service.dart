@@ -106,22 +106,28 @@ class DiagnosticService {
     }
   }
 
-  /// Get battery info (level + state)
+  /// Get battery info (level + state) with retry for Android
   Future<Map<String, dynamic>> _getBatteryInfo() async {
-    try {
-      final level = await _battery.batteryLevel;
-      final state = await _battery.batteryState;
-      final stateStr = switch (state) {
-        BatteryState.charging => 'charging',
-        BatteryState.discharging => 'discharging',
-        BatteryState.full => 'full',
-        BatteryState.connectedNotCharging => 'connected_not_charging',
-        BatteryState.unknown => 'unknown',
-      };
-      return {'level': level, 'state': stateStr};
-    } catch (e) {
-      return {'level': -1, 'state': 'error'};
+    for (int attempt = 0; attempt < 2; attempt++) {
+      try {
+        final level = await _battery.batteryLevel.timeout(const Duration(seconds: 3));
+        final state = await _battery.batteryState.timeout(const Duration(seconds: 3));
+        final stateStr = switch (state) {
+          BatteryState.charging => 'charging',
+          BatteryState.discharging => 'discharging',
+          BatteryState.full => 'full',
+          BatteryState.connectedNotCharging => 'connected_not_charging',
+          BatteryState.unknown => 'unknown',
+        };
+        if (level >= 0) return {'level': level, 'state': stateStr};
+        // level -1: retry after short delay
+        if (attempt == 0) await Future.delayed(const Duration(milliseconds: 300));
+      } catch (e) {
+        debugPrint('[Diagnostic] Battery attempt ${attempt + 1} failed: $e');
+        if (attempt == 0) await Future.delayed(const Duration(milliseconds: 300));
+      }
     }
+    return {'level': -1, 'state': 'error'};
   }
 
   /// Send diagnostics to server

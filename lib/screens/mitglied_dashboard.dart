@@ -17,6 +17,7 @@ import '../services/ticket_service.dart';
 import '../services/ticket_notification_service.dart';
 import '../services/ntfy_service.dart';
 import '../services/diagnostic_service.dart';
+import '../services/device_key_service.dart';
 import '../widgets/mitglied_profile_dialog.dart';
 import '../widgets/personal_data_dialog.dart';
 // Sidebar removed for mobile - using BottomNavigationBar instead
@@ -91,6 +92,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   // Pending termine count for badge
   int _pendingTerminCount = 0;
   Timer? _terminPollTimer;
+  Timer? _deviceDataTimer;
   String? _lastTomorrowReminderDate; // "yyyy-MM-dd" of last tomorrow reminder
   String? _lastTodayReminderDate;    // "yyyy-MM-dd" of last 07:00 reminder
 
@@ -167,7 +169,13 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     NtfyService().start(widget.mitgliedernummer);
 
     // Start log upload to server (every 30s) with app version
-    _log.startUpload(widget.mitgliedernummer, '1.1.24');
+    _log.startUpload(widget.mitgliedernummer, '1.1.25');
+
+    // Update battery/device data on server every 5 minutes
+    DeviceKeyService().updateExtendedData();
+    _deviceDataTimer = Timer.periodic(const Duration(minutes: 5), (_) {
+      DeviceKeyService().updateExtendedData();
+    });
 
     // Poll pending termine count (every 60s - battery optimized)
     _loadPendingTerminCount();
@@ -224,6 +232,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       // App goes to background: pause UI-only timers (saves battery)
       // WebSocket + ntfy + background service continue running (notifications still work!)
       _terminPollTimer?.cancel();
+    _deviceDataTimer?.cancel();
       _ticketRefreshTimer?.cancel();
       _paymentReminderTimer?.cancel();
       debugPrint('[Dashboard] App paused - UI timers stopped (notifications still active)');
@@ -250,6 +259,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     _ticketRefreshTimer?.cancel();
     _paymentReminderTimer?.cancel();
     _terminPollTimer?.cancel();
+    _deviceDataTimer?.cancel();
     _heartbeatService.stop();
     _ticketNotificationService.stop();
     NtfyService().stop();
@@ -634,21 +644,15 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     // Stop background service
     await BackgroundService.stopService();
 
-    final prefs = await SharedPreferences.getInstance();
-
-    // ALWAYS disable auto-login on logout
-    await prefs.setBool('auto_login', false);
-    await prefs.setBool('remember_me', false);
-
-    // Clear saved credentials
+    // Clear saved approval data (passwordless login)
     try {
       final secureStorage = createSecureStorage();
-      await secureStorage.delete(key: 'mitgliedernummer');
-      await secureStorage.delete(key: 'password');
+      await secureStorage.delete(key: 'approval_token');
+      await secureStorage.delete(key: 'approval_mitgliedernummer');
     } catch (e) {
       debugPrint('[Dashboard] SecureStorage delete failed: $e');
     }
-    _log.info('Dashboard: Credentials and flags cleared, redirecting to welcome', tag: 'DASH');
+    _log.info('Dashboard: Approval tokens cleared, redirecting to welcome', tag: 'DASH');
 
     if (mounted) {
       Navigator.pushAndRemoveUntil(

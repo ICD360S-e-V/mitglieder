@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
@@ -33,21 +32,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   Future<void> _checkAutoLogin() async {
     debugPrint('[Welcome] _checkAutoLogin called');
-    final prefs = await SharedPreferences.getInstance();
-    final autoLogin = prefs.getBool('auto_login') ?? false;
-    final rememberMe = prefs.getBool('remember_me') ?? false;
-    debugPrint('[Welcome] SharedPreferences - auto_login=$autoLogin, remember_me=$rememberMe');
-    String? savedMitgliedernummer;
-    String? savedPassword;
-    try {
-      savedMitgliedernummer = await _secureStorage.read(key: 'mitgliedernummer');
-      savedPassword = await _secureStorage.read(key: 'password');
-      // Security: No password metadata in logs
-      debugPrint('[Welcome] Credentials loaded from SecureStorage');
-    } catch (e, stackTrace) {
-      debugPrint('[Welcome] SecureStorage read FAILED: $e');
-      debugPrint('[Welcome] StackTrace: $stackTrace');
-    }
 
     // Show diagnostic consent first
     if (mounted) {
@@ -55,43 +39,58 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       DiagnosticService().setScreen('welcome');
     }
 
-    if (autoLogin &&
-        savedMitgliedernummer != null &&
-        savedMitgliedernummer.isNotEmpty &&
-        savedPassword != null &&
-        savedPassword.isNotEmpty) {
-      debugPrint('[Welcome] AUTO-LOGIN: All conditions met, performing auto-login');
-      // Auto-login
+    // Check for saved mitgliedernummer (passwordless auto-login)
+    String? savedMnr;
+    try {
+      savedMnr = await _secureStorage.read(key: 'approval_mitgliedernummer');
+      debugPrint('[Welcome] Saved mitgliedernummer: ${savedMnr != null ? "found" : "none"}');
+    } catch (e) {
+      debugPrint('[Welcome] SecureStorage read failed: $e');
+    }
+
+    if (savedMnr != null && savedMnr.isNotEmpty) {
+      debugPrint('[Welcome] AUTO-LOGIN: Attempting passwordless login for $savedMnr');
       if (!mounted) return;
       setState(() => _isAutoLogging = true);
-      await _performAutoLogin(savedMitgliedernummer, savedPassword);
+      await _performAutoLogin(savedMnr);
     } else {
-      debugPrint('[Welcome] NO AUTO-LOGIN: autoLogin=$autoLogin, mnr=${savedMitgliedernummer != null && savedMitgliedernummer.isNotEmpty}, pwd=${savedPassword != null && savedPassword.isNotEmpty}');
+      debugPrint('[Welcome] NO AUTO-LOGIN: No saved mitgliedernummer');
       if (!mounted) return;
       setState(() => _isLoading = false);
     }
   }
 
-  Future<void> _performAutoLogin(String mitgliedernummer, String password) async {
+  Future<void> _performAutoLogin(String mitgliedernummer) async {
     try {
-      final result = await _apiService.login(mitgliedernummer, password);
+      // Use passwordless login (server auto-approves known devices)
+      final result = await _apiService.requestLoginApproval(mitgliedernummer);
+
       if (result['success'] == true && mounted) {
-        final user = result['user'];
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MitgliedDashboard(
-              userName: user['name'],
-              mitgliedernummer: user['mitgliedernummer'],
-              email: user['email'] ?? '',
-              status: user['status'] ?? 'active',
+        final data = result['data'] ?? result;
+
+        if (data['auto_approved'] == true) {
+          final user = data['user'];
+          await _apiService.saveTokens(
+            data['token'], data['refresh_token'] ?? '',
+            mitgliedernummer: mitgliedernummer,
+          );
+          if (!mounted) return;
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MitgliedDashboard(
+                userName: user['name'],
+                mitgliedernummer: user['mitgliedernummer'],
+                email: user['email'] ?? '',
+                status: user['status'] ?? 'active',
+              ),
             ),
-          ),
-        );
-        return;
+          );
+          return;
+        }
       }
     } catch (e) {
-      // Auto-login failed, show welcome screen
+      debugPrint('[Welcome] Auto-login failed: $e');
     }
     if (mounted) {
       setState(() {
@@ -412,7 +411,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           SizedBox(height: _getResponsiveSpacing(context, 12)),
           Text(
-            'v1.1.24',
+            'v1.1.25',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
               fontSize: _getResponsiveFontSize(context, 11),

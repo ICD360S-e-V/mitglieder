@@ -1129,4 +1129,55 @@ class ApiService {
       return {'success': false, 'error': 'Failed to load changelog: $e'};
     }
   }
+
+  // ============= PASSWORDLESS LOGIN (APPROVAL) API =============
+
+  /// Request passwordless login - sends approval request to admins
+  Future<Map<String, dynamic>> requestLoginApproval(String mitgliedernummer) async {
+    try {
+      final deviceId = LoggerService().deviceId;
+      final response = await _client.post(
+        Uri.parse('$baseUrl/auth/login_request.php'),
+        headers: _headers,
+        body: jsonEncode({
+          'mitgliedernummer': mitgliedernummer,
+          'device_id': deviceId,
+        }),
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
+      return {'success': false, 'message': 'Request failed: $e'};
+    }
+  }
+
+  /// Check approval status (polling)
+  Future<Map<String, dynamic>> checkApprovalStatus(String requestToken) async {
+    try {
+      final response = await _client.post(
+        Uri.parse('$baseUrl/auth/check_approval.php'),
+        headers: _headers,
+        body: jsonEncode({'request_token': requestToken}),
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
+      return {'success': false, 'message': 'Check failed: $e'};
+    }
+  }
+
+  /// Login with 30-day approval token (auto-login)
+  Future<Map<String, dynamic>> loginWithApproval(String mitgliedernummer, String approvalToken) async {
+    try {
+      final response = await _client.post(
+        Uri.parse('$baseUrl/auth/login_with_approval.php'),
+        headers: _headers,
+        body: jsonEncode({
+          'mitgliedernummer': mitgliedernummer,
+          'approval_token': approvalToken,
+        }),
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
+      return {'success': false, 'message': 'Approval login failed: $e'};
+    }
+  }
 }

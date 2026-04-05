@@ -32,15 +32,9 @@ class MitgliedProfileDialog extends StatefulWidget {
 class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
-  final _currentPasswordController = TextEditingController();
-  final _newPasswordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
   final _newEmailController = TextEditingController();
   final _emailPasswordController = TextEditingController();
 
-  bool _obscureCurrentPassword = true;
-  bool _obscureNewPassword = true;
-  bool _obscureConfirmPassword = true;
   bool _obscureEmailPassword = true;
 
   // Device sessions + registered devices
@@ -70,9 +64,6 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
   @override
   void dispose() {
     _tabController.dispose();
-    _currentPasswordController.dispose();
-    _newPasswordController.dispose();
-    _confirmPasswordController.dispose();
     _newEmailController.dispose();
     _emailPasswordController.dispose();
     super.dispose();
@@ -164,66 +155,6 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.connectionError(e.toString())),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
-
-  Future<void> _changePassword() async {
-    final l10n = AppLocalizations.of(context)!;
-    if (_newPasswordController.text != _confirmPasswordController.text) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l10n.passwordsNotMatch),
-          backgroundColor: Colors.red,
-        ),
-      );
-      return;
-    }
-
-    if (_newPasswordController.text.length < 6) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l10n.passwordTooShort),
-          backgroundColor: Colors.red,
-        ),
-      );
-      return;
-    }
-
-    try {
-      final result = await widget.apiService.changePassword(
-        widget.mitgliedernummer,
-        _currentPasswordController.text,
-        _newPasswordController.text,
-      );
-
-      if (!mounted) return;
-
-      if (result['success'] == true) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(l10n.passwordChangedSuccessfully),
-            backgroundColor: Colors.green,
-          ),
-        );
-        _currentPasswordController.clear();
-        _newPasswordController.clear();
-        _confirmPasswordController.clear();
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(result['message'] ?? l10n.errorChangingPassword),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    } catch (e) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l10n.error(e.toString())),
           backgroundColor: Colors.red,
         ),
       );
@@ -536,93 +467,6 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
     }
   }
 
-  Future<void> _showEditPasswordDialog() async {
-    _currentPasswordController.clear();
-    _newPasswordController.clear();
-    _confirmPasswordController.clear();
-    _obscureCurrentPassword = true;
-    _obscureNewPassword = true;
-    _obscureConfirmPassword = true;
-
-    final result = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => StatefulBuilder(
-        builder: (ctx, setDialogState) => AlertDialog(
-          title: Row(
-            children: [
-              const Icon(Icons.lock, color: Color(0xFF4a90d9)),
-              const SizedBox(width: 8),
-              Text(AppLocalizations.of(context)!.changePassword),
-            ],
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: _currentPasswordController,
-                obscureText: _obscureCurrentPassword,
-                decoration: InputDecoration(
-                  labelText: AppLocalizations.of(context)!.currentPasswordLabel,
-                  prefixIcon: const Icon(Icons.lock_outline),
-                  suffixIcon: IconButton(
-                    icon: Icon(_obscureCurrentPassword ? Icons.visibility : Icons.visibility_off),
-                    onPressed: () => setDialogState(() => _obscureCurrentPassword = !_obscureCurrentPassword),
-                  ),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                ),
-              ),
-              const SizedBox(height: 12),
-              TextField(
-                controller: _newPasswordController,
-                obscureText: _obscureNewPassword,
-                decoration: InputDecoration(
-                  labelText: AppLocalizations.of(context)!.newPasswordMinChars,
-                  prefixIcon: const Icon(Icons.lock),
-                  suffixIcon: IconButton(
-                    icon: Icon(_obscureNewPassword ? Icons.visibility : Icons.visibility_off),
-                    onPressed: () => setDialogState(() => _obscureNewPassword = !_obscureNewPassword),
-                  ),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                ),
-              ),
-              const SizedBox(height: 12),
-              TextField(
-                controller: _confirmPasswordController,
-                obscureText: _obscureConfirmPassword,
-                decoration: InputDecoration(
-                  labelText: AppLocalizations.of(context)!.confirmPasswordLabel,
-                  prefixIcon: const Icon(Icons.lock),
-                  suffixIcon: IconButton(
-                    icon: Icon(_obscureConfirmPassword ? Icons.visibility : Icons.visibility_off),
-                    onPressed: () => setDialogState(() => _obscureConfirmPassword = !_obscureConfirmPassword),
-                  ),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(ctx, false),
-              child: Text(AppLocalizations.of(context)!.cancel),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(ctx, true),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF4a90d9),
-                foregroundColor: Colors.white,
-              ),
-              child: Text(AppLocalizations.of(context)!.save),
-            ),
-          ],
-        ),
-      ),
-    );
-
-    if (result == true) {
-      await _changePassword();
-    }
-  }
 
   Widget _buildKontoDataRow(IconData icon, String label, String value, {VoidCallback? onEdit, Widget? trailing}) {
     return Padding(
@@ -709,16 +553,11 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                     ),
                   ),
                   Divider(height: 1, color: Colors.grey.shade200),
-                  // Passwort (editable)
+                  // Passwordless login info
                   _buildKontoDataRow(
-                    Icons.lock,
-                    AppLocalizations.of(context)!.password,
-                    '',
-                    onEdit: _showEditPasswordDialog,
-                    trailing: const Text(
-                      '\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022',
-                      style: TextStyle(fontSize: 18, letterSpacing: 2),
-                    ),
+                    Icons.verified_user,
+                    'Anmeldung',
+                    'Ohne Passwort (Vorstand-Genehmigung)',
                   ),
                 ],
               ),

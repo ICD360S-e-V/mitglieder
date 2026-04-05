@@ -1,34 +1,18 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
-import '../services/api_service.dart';
-import 'forgot_password_dialog.dart';
 
 class LoginTab extends StatefulWidget {
-  final ApiService apiService;
   final TextEditingController mitgliedernummerController;
-  final TextEditingController passwordController;
-  final bool rememberMe;
-  final bool autoLogin;
   final bool isLoading;
   final String? errorMessage;
-  final ValueChanged<bool> onRememberMeChanged;
-  final ValueChanged<bool> onAutoLoginChanged;
   final VoidCallback onLogin;
-  final Function(List activeSessions, String mitgliedernummer, String password) onMaxDevices;
 
   const LoginTab({
     super.key,
-    required this.apiService,
     required this.mitgliedernummerController,
-    required this.passwordController,
-    required this.rememberMe,
-    required this.autoLogin,
     required this.isLoading,
     this.errorMessage,
-    required this.onRememberMeChanged,
-    required this.onAutoLoginChanged,
     required this.onLogin,
-    required this.onMaxDevices,
   });
 
   @override
@@ -37,18 +21,15 @@ class LoginTab extends StatefulWidget {
 
 class _LoginTabState extends State<LoginTab> {
   final _formKey = GlobalKey<FormState>();
-  bool _obscurePassword = true;
 
   InputDecoration _buildInputDecoration({
     required String labelText,
     required IconData prefixIcon,
-    Widget? suffixIcon,
   }) {
     return InputDecoration(
       labelText: labelText,
       labelStyle: TextStyle(color: Colors.white.withValues(alpha: 0.8)),
       prefixIcon: Icon(prefixIcon, color: Colors.white.withValues(alpha: 0.7)),
-      suffixIcon: suffixIcon,
       filled: true,
       fillColor: Colors.white.withValues(alpha: 0.1),
       border: OutlineInputBorder(
@@ -92,16 +73,16 @@ class _LoginTabState extends State<LoginTab> {
             // Mitgliedernummer field
             TextFormField(
               controller: widget.mitgliedernummerController,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white, fontSize: 18),
               decoration: _buildInputDecoration(
                 labelText: l10n.memberNumber,
                 prefixIcon: Icons.badge,
               ),
+              textInputAction: TextInputAction.done,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return l10n.memberNumberHint;
                 }
-                // Security: Input validation - prevent injection attacks
                 if (value.length > 20) {
                   return l10n.memberNumberTooLong;
                 }
@@ -110,112 +91,24 @@ class _LoginTabState extends State<LoginTab> {
                 }
                 return null;
               },
-            ),
-            const SizedBox(height: 16),
-
-            // Password field
-            TextFormField(
-              controller: widget.passwordController,
-              style: const TextStyle(color: Colors.white),
-              obscureText: _obscurePassword,
-              decoration: _buildInputDecoration(
-                labelText: l10n.password,
-                prefixIcon: Icons.lock,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _obscurePassword ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.white.withValues(alpha: 0.7),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _obscurePassword = !_obscurePassword;
-                    });
-                  },
-                ),
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return l10n.passwordHint;
-                }
-                // Security: Password validation
-                if (value.length < 6) {
-                  return l10n.passwordMinLength;
-                }
-                if (value.length > 100) {
-                  return l10n.passwordTooLong;
-                }
-                return null;
-              },
               onFieldSubmitted: (_) => _handleLogin(),
             ),
-            const SizedBox(height: 12),
-
-            // Remember Me checkbox
-            Row(
-              children: [
-                Checkbox(
-                  value: widget.rememberMe,
-                  onChanged: (value) {
-                    widget.onRememberMeChanged(value ?? false);
-                  },
-                  activeColor: Colors.white,
-                  checkColor: const Color(0xFF0d47a1),
-                  side: BorderSide(color: Colors.white.withValues(alpha: 0.5), width: 2),
-                ),
-                Flexible(
-                  child: Text(
-                    l10n.saveCredentials,
-                    style: TextStyle(color: Colors.white.withValues(alpha: 0.9)),
-                  ),
-                ),
-              ],
-            ),
-
-            // Auto Login checkbox
-            Row(
-              children: [
-                Checkbox(
-                  value: widget.autoLogin,
-                  onChanged: widget.rememberMe
-                      ? (value) {
-                          widget.onAutoLoginChanged(value ?? false);
-                        }
-                      : null,
-                  activeColor: Colors.white,
-                  checkColor: const Color(0xFF0d47a1),
-                  side: BorderSide(
-                    color: widget.rememberMe
-                        ? Colors.white.withValues(alpha: 0.5)
-                        : Colors.white.withValues(alpha: 0.2),
-                    width: 2,
-                  ),
-                ),
-                Flexible(
-                  child: Text(
-                    l10n.autoLogin,
-                    style: TextStyle(
-                      color: widget.rememberMe
-                          ? Colors.white.withValues(alpha: 0.9)
-                          : Colors.white.withValues(alpha: 0.4),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
 
             // Login button
             SizedBox(
               width: double.infinity,
               height: 56,
-              child: OutlinedButton(
+              child: ElevatedButton(
                 onPressed: widget.isLoading ? null : _handleLogin,
-                style: OutlinedButton.styleFrom(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white.withValues(alpha: 0.15),
                   foregroundColor: Colors.white,
                   side: BorderSide(color: Colors.white.withValues(alpha: 0.5), width: 2),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
+                  elevation: 0,
                 ),
                 child: widget.isLoading
                     ? const SizedBox(
@@ -226,14 +119,14 @@ class _LoginTabState extends State<LoginTab> {
                           strokeWidth: 2,
                         ),
                       )
-                    : Row(
+                    : const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Icons.login, size: 24),
-                          const SizedBox(width: 12),
+                          Icon(Icons.login, size: 24),
+                          SizedBox(width: 12),
                           Text(
-                            l10n.login,
-                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                            'Anmelden',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -241,16 +134,28 @@ class _LoginTabState extends State<LoginTab> {
             ),
             const SizedBox(height: 16),
 
-            // Forgot Password link
-            TextButton(
-              onPressed: _showForgotPasswordDialog,
-              child: Text(
-                l10n.forgotPassword,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.white.withValues(alpha: 0.5),
-                ),
+            // Info text
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.05),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.info_outline, color: Colors.white.withValues(alpha: 0.5), size: 20),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      'Bekanntes Gerät: sofortige Anmeldung.\nNeues Gerät: Genehmigung vom Vorstand.',
+                      style: TextStyle(
+                        color: Colors.white.withValues(alpha: 0.5),
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -266,13 +171,6 @@ class _LoginTabState extends State<LoginTab> {
     widget.onLogin();
   }
 
-  void _showForgotPasswordDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => ForgotPasswordDialog(apiService: widget.apiService),
-    );
-  }
-
   Widget _buildMessageBox(String message, {required bool isError}) {
     return Container(
       padding: const EdgeInsets.all(12),
@@ -283,9 +181,7 @@ class _LoginTabState extends State<LoginTab> {
             : Colors.green.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isError
-              ? Colors.red.shade300
-              : Colors.green.shade300,
+          color: isError ? Colors.red.shade300 : Colors.green.shade300,
           width: 1.5,
         ),
       ),

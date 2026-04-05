@@ -38,11 +38,7 @@ class _RegisterTabState extends State<RegisterTab> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
   final _recoveryCodeController = TextEditingController();
-  bool _obscurePassword = true;
-  bool _obscureConfirmPassword = true;
   bool _datenschutzAccepted = false;
   bool _satzungAccepted = false;
   bool _widerrufsbelehrungAccepted = false;
@@ -54,8 +50,6 @@ class _RegisterTabState extends State<RegisterTab> {
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
-    _passwordController.dispose();
-    _confirmPasswordController.dispose();
     _recoveryCodeController.dispose();
     super.dispose();
   }
@@ -67,10 +61,6 @@ class _RegisterTabState extends State<RegisterTab> {
       return;
     }
 
-    if (_passwordController.text != _confirmPasswordController.text) {
-      widget.onErrorChanged(l10n.passwordsNotMatch);
-      return;
-    }
     _log.info('Register: Attempting registration for ${_emailController.text.trim()}', tag: 'AUTH');
 
     widget.onLoadingChanged(true);
@@ -80,7 +70,7 @@ class _RegisterTabState extends State<RegisterTab> {
     try {
       final result = await widget.apiService.register(
         _emailController.text.trim(),
-        _passwordController.text,
+        '', // Passwordless - no password needed
         _nameController.text.trim(),
         _recoveryCodeController.text.trim(),
         datenschutzAccepted: _datenschutzAccepted,
@@ -107,8 +97,6 @@ class _RegisterTabState extends State<RegisterTab> {
             _log.debug('RegisterTab: Clearing registration form', tag: 'AUTH');
             _nameController.clear();
             _emailController.clear();
-            _passwordController.clear();
-            _confirmPasswordController.clear();
             _recoveryCodeController.clear();
           }
         });
@@ -232,74 +220,6 @@ class _RegisterTabState extends State<RegisterTab> {
                 final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
                 if (!emailRegex.hasMatch(value)) {
                   return l10n.emailInvalid;
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-
-            // Password field
-            TextFormField(
-              controller: _passwordController,
-              style: const TextStyle(color: Colors.white),
-              obscureText: _obscurePassword,
-              decoration: _buildInputDecoration(
-                labelText: l10n.password,
-                prefixIcon: Icons.lock,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _obscurePassword ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.white.withValues(alpha: 0.7),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _obscurePassword = !_obscurePassword;
-                    });
-                  },
-                ),
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return l10n.passwordHint;
-                }
-                // Security: Password strength validation
-                if (value.length < 6) {
-                  return l10n.passwordMinLength;
-                }
-                if (value.length > 100) {
-                  return l10n.passwordTooLong;
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-
-            // Confirm Password field
-            TextFormField(
-              controller: _confirmPasswordController,
-              style: const TextStyle(color: Colors.white),
-              obscureText: _obscureConfirmPassword,
-              decoration: _buildInputDecoration(
-                labelText: l10n.confirmPassword,
-                prefixIcon: Icons.lock_outline,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _obscureConfirmPassword ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.white.withValues(alpha: 0.7),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _obscureConfirmPassword = !_obscureConfirmPassword;
-                    });
-                  },
-                ),
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return l10n.confirmPasswordHint;
-                }
-                if (value != _passwordController.text) {
-                  return l10n.passwordsNotMatch;
                 }
                 return null;
               },

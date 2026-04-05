@@ -21,7 +21,7 @@ import '../chat_service.dart';
 
 /// Desktop platform service implementation (Windows, macOS, Linux)
 /// Uses main isolate WebSocket instead of background service
-class DesktopPlatformService implements PlatformService {
+class DesktopPlatformService implements PlatformService, WindowListener {
   // WebSocket connection
   WebSocketChannel? _channel;
   Timer? _reconnectTimer;
@@ -52,6 +52,7 @@ class DesktopPlatformService implements PlatformService {
 
   @override
   Future<void> dispose() async {
+    windowManager.removeListener(this);
     await clearCredentials();
     _initialized = false;
   }
@@ -63,7 +64,7 @@ class DesktopPlatformService implements PlatformService {
       size: Size(1280, 800),
       minimumSize: Size(800, 600),
       center: true,
-      backgroundColor: Color(0x00000000),
+      backgroundColor: Color(0xFF1a1a2e),
       skipTaskbar: false,
       titleBarStyle: TitleBarStyle.normal,
       title: 'ICD360S e.V - Mitgliederportal',
@@ -75,53 +76,138 @@ class DesktopPlatformService implements PlatformService {
     });
 
     // Prevent close - minimize to tray instead
-    windowManager.setPreventClose(true);
+    await windowManager.setPreventClose(true);
+
+    // Listen for window events (close, minimize, etc.)
+    windowManager.addListener(this);
+  }
+
+  /// Get the correct icon path for the current platform
+  Future<String?> _getIconPath() async {
+    if (Platform.isWindows) {
+      // Windows: icon is bundled next to the executable in data/flutter_assets/
+      final exeDir = File(Platform.resolvedExecutable).parent.path;
+      final paths = [
+        '$exeDir\\data\\flutter_assets\\assets\\app_icon.ico',
+        '$exeDir\\app_icon.ico',
+        '$exeDir\\resources\\app_icon.ico',
+        // Development: relative to project
+        'windows/runner/resources/app_icon.ico',
+      ];
+      for (final path in paths) {
+        if (await File(path).exists()) {
+          debugPrint('[DesktopPlatformService] Tray icon found at: $path');
+          return path;
+        }
+      }
+    } else if (Platform.isMacOS) {
+      final exeDir = File(Platform.resolvedExecutable).parent.path;
+      final paths = [
+        '$exeDir/../Resources/app_icon.png',
+        'macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png',
+      ];
+      for (final path in paths) {
+        if (await File(path).exists()) return path;
+      }
+    } else if (Platform.isLinux) {
+      final exeDir = File(Platform.resolvedExecutable).parent.path;
+      final paths = [
+        '$exeDir/data/flutter_assets/assets/app_icon.png',
+        '$exeDir/app_icon.png',
+      ];
+      for (final path in paths) {
+        if (await File(path).exists()) return path;
+      }
+    }
+    debugPrint('[DesktopPlatformService] Tray icon not found in any expected location');
+    return null;
   }
 
   Future<void> _initializeTray() async {
     if (_trayInitialized) return;
 
-    String iconPath;
-    if (Platform.isWindows) {
-      iconPath = 'assets/app_icon.ico';
-    } else {
-      iconPath = 'assets/app_icon.png';
-    }
-
-    // Check if icon exists, use default if not
-    final iconFile = File(iconPath);
-    if (!await iconFile.exists()) {
-      debugPrint('[DesktopPlatformService] Tray icon not found at $iconPath');
-      // Skip tray initialization if no icon
+    final iconPath = await _getIconPath();
+    if (iconPath == null) {
+      debugPrint('[DesktopPlatformService] Skipping tray - no icon found');
       return;
     }
 
-    await trayManager.setIcon(iconPath);
-    if (!Platform.isLinux) {
-      await trayManager.setToolTip('ICD360S e.V - Mitgliederportal');
+    try {
+      await trayManager.setIcon(iconPath);
+      if (!Platform.isLinux) {
+        await trayManager.setToolTip('ICD360S e.V - Mitgliederportal');
+      }
+
+      final menu = Menu(
+        items: [
+          MenuItem(
+            key: 'open',
+            label: 'Öffnen',
+          ),
+          MenuItem.separator(),
+          MenuItem(
+            key: 'exit',
+            label: 'Beenden',
+          ),
+        ],
+      );
+
+      await trayManager.setContextMenu(menu);
+      trayManager.addListener(_TrayClickListener(this));
+
+      _trayInitialized = true;
+      debugPrint('[DesktopPlatformService] System tray initialized with icon: $iconPath');
+    } catch (e) {
+      debugPrint('[DesktopPlatformService] Tray initialization failed: $e');
     }
-
-    final menu = Menu(
-      items: [
-        MenuItem(
-          key: 'open',
-          label: 'Öffnen',
-        ),
-        MenuItem.separator(),
-        MenuItem(
-          key: 'exit',
-          label: 'Beenden',
-        ),
-      ],
-    );
-
-    await trayManager.setContextMenu(menu);
-
-    trayManager.addListener(_TrayClickListener(this));
-
-    _trayInitialized = true;
-    debugPrint('[DesktopPlatformService] System tray initialized');
   }
+
+  // ============================================
+  // WINDOW LISTENER - handles close/minimize events
+  // ============================================
+
+  @override
+  void onWindowClose() async {
+    // Minimize to tray instead of closing
+    if (_trayInitialized) {
+      await minimizeToTray();
+    } else {
+      // No tray available - actually close
+      await windowManager.setPreventClose(false);
+      await windowManager.destroy();
+    }
+  }
+
+  @override
+  void onWindowFocus() {}
+  @override
+  void onWindowBlur() {}
+  @override
+  void onWindowMaximize() {}
+  @override
+  void onWindowUnmaximize() {}
+  @override
+  void onWindowMinimize() {}
+  @override
+  void onWindowRestore() {}
+  @override
+  void onWindowResize() {}
+  @override
+  void onWindowMove() {}
+  @override
+  void onWindowEnterFullScreen() {}
+  @override
+  void onWindowLeaveFullScreen() {}
+  @override
+  void onWindowEvent(String eventName) {}
+  @override
+  void onWindowMoved() {}
+  @override
+  void onWindowResized() {}
+  @override
+  void onWindowDocked() {}
+  @override
+  void onWindowUndocked() {}
 
   // ============================================
   // BACKGROUND CONNECTION MANAGEMENT

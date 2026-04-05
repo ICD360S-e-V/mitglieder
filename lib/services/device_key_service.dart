@@ -199,16 +199,29 @@ class DeviceKeyService {
   Future<Map<String, dynamic>> _collectExtendedDeviceData() async {
     final data = <String, dynamic>{};
 
-    try {
-      // Battery (may return -1 on desktops without battery)
-      final battery = Battery();
-      final level = await battery.batteryLevel;
-      if (level >= 0) {
-        data['battery_level'] = level;
-        final state = await battery.batteryState;
-        data['battery_state'] = state.toString().split('.').last;
+    // Battery - with retry for Android devices that need time to initialize
+    for (int attempt = 0; attempt < 3; attempt++) {
+      try {
+        final battery = Battery();
+        final level = await battery.batteryLevel.timeout(const Duration(seconds: 3));
+        _logger.debug('Battery attempt ${attempt + 1}: level=$level', tag: 'DEVICE');
+        if (level >= 0) {
+          data['battery_level'] = level;
+          final state = await battery.batteryState.timeout(const Duration(seconds: 3));
+          data['battery_state'] = state.toString().split('.').last;
+          _logger.debug('Battery: $level% ${data["battery_state"]}', tag: 'DEVICE');
+          break; // Success
+        } else if (attempt < 2) {
+          // Some Android devices return -1 on first call, retry after delay
+          await Future.delayed(const Duration(milliseconds: 500));
+        }
+      } catch (e) {
+        _logger.warning('Battery attempt ${attempt + 1} failed: $e', tag: 'DEVICE');
+        if (attempt < 2) {
+          await Future.delayed(const Duration(milliseconds: 500));
+        }
       }
-    } catch (_) {}
+    }
 
     try {
       // Connection type
@@ -217,33 +230,38 @@ class DeviceKeyService {
         final type = connectivity.first.toString().split('.').last;
         data['connection_type'] = type;
       }
-    } catch (_) {}
+    } catch (e) {
+      _logger.warning('Connection check failed: $e', tag: 'DEVICE');
+    }
 
     try {
       // VPN detection
       if (Platform.isAndroid || Platform.isIOS) {
-        // Mobile: connectivity_plus can detect VPN
         final connectivity = await Connectivity().checkConnectivity();
         final hasVpn = connectivity.any((c) => c == ConnectivityResult.vpn);
         data['is_vpn'] = hasVpn ? 1 : 0;
       } else {
-        // Desktop: check network interfaces for VPN adapters
         final interfaces = await NetworkInterface.list();
         final vpnPrefixes = ['utun', 'tun', 'tap', 'ppp', 'wg', 'ipsec', 'vpn'];
         final hasVpn = interfaces.any((i) =>
             vpnPrefixes.any((p) => i.name.toLowerCase().startsWith(p)));
         data['is_vpn'] = hasVpn ? 1 : 0;
       }
-    } catch (_) {}
+    } catch (e) {
+      _logger.warning('VPN detection failed: $e', tag: 'DEVICE');
+    }
 
     // Root/Jailbreak detection (mobile only)
     if (Platform.isAndroid || Platform.isIOS) {
       try {
         final isRooted = await SafeDevice.isJailBroken;
         data['is_rooted'] = isRooted ? 1 : 0;
-      } catch (_) {}
+      } catch (e) {
+        _logger.warning('Root detection failed: $e', tag: 'DEVICE');
+      }
     }
 
+    _logger.info('Extended device data collected: ${data.keys.toList()}', tag: 'DEVICE');
     return data;
   }
 
@@ -268,7 +286,7 @@ class DeviceKeyService {
           'device_id': _deviceId,
           'device_name': info['device_name'],
           'platform': info['platform'],
-          'app_version': '1.1.24',
+          'app_version': '1.1.25',
           'device_type': info['device_type'],
           'os_version': info['os_version'],
           ...extendedData,
@@ -310,7 +328,7 @@ class DeviceKeyService {
         },
         body: jsonEncode({
           'device_key': _deviceKey,
-          'app_version': '1.1.24',
+          'app_version': '1.1.25',
           'device_type': info['device_type'],
           'os_version': info['os_version'],
           ...extendedData,
@@ -334,6 +352,30 @@ class DeviceKeyService {
       // Eroare de rețea - presupunem că key-ul e valid (offline mode)
       _logger.info('Device key validation error (assuming valid): $e', tag: 'DEVICE');
       return true;
+    }
+  }
+
+  /// Actualizează datele bateriei pe server (apelat periodic din dashboard)
+  Future<void> updateExtendedData() async {
+    if (_deviceKey == null) return;
+    try {
+      final extendedData = await _collectExtendedDeviceData();
+      if (extendedData.isEmpty) return;
+
+      await _client.post(
+        Uri.parse('$_baseUrl/device/validate.php'),
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'ICD360S-Mitglied/1.0',
+        },
+        body: jsonEncode({
+          'device_key': _deviceKey,
+          ...extendedData,
+        }),
+      ).timeout(const Duration(seconds: 5));
+      _logger.debug('Extended device data updated on server', tag: 'DEVICE');
+    } catch (e) {
+      _logger.warning('Extended data update failed: $e', tag: 'DEVICE');
     }
   }
 
