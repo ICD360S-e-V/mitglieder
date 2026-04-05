@@ -412,7 +412,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           SizedBox(height: _getResponsiveSpacing(context, 12)),
           Text(
-            'v1.1.15',
+            'v1.1.16',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
               fontSize: _getResponsiveFontSize(context, 11),

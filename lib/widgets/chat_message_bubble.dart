@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import 'chat_attachment_item.dart';
 
@@ -60,14 +62,9 @@ class ChatMessageBubble extends StatelessWidget {
                   ),
                 ),
               ),
-            // Message text
+            // Message text (with clickable links)
             if (hasTextMessage)
-              Text(
-                messageText,
-                style: TextStyle(
-                  color: isOwn ? Colors.white : Colors.black87,
-                ),
-              ),
+              _buildLinkifiedText(messageText, isOwn),
             // Attachments
             if (attachments.isNotEmpty) ...[
               if (hasTextMessage) const SizedBox(height: 8),
@@ -100,6 +97,48 @@ class ChatMessageBubble extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  static final _urlRegex = RegExp(
+    r'https?://[^\s<>\"\)]+',
+    caseSensitive: false,
+  );
+
+  Widget _buildLinkifiedText(String text, bool isOwn) {
+    final matches = _urlRegex.allMatches(text).toList();
+    if (matches.isEmpty) {
+      return Text(text, style: TextStyle(color: isOwn ? Colors.white : Colors.black87));
+    }
+
+    final spans = <TextSpan>[];
+    int lastEnd = 0;
+
+    for (final match in matches) {
+      if (match.start > lastEnd) {
+        spans.add(TextSpan(text: text.substring(lastEnd, match.start)));
+      }
+      final url = match.group(0)!;
+      spans.add(TextSpan(
+        text: url,
+        style: TextStyle(
+          color: isOwn ? Colors.lightBlueAccent : Colors.blue.shade700,
+          decoration: TextDecoration.underline,
+        ),
+        recognizer: TapGestureRecognizer()..onTap = () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
+      ));
+      lastEnd = match.end;
+    }
+
+    if (lastEnd < text.length) {
+      spans.add(TextSpan(text: text.substring(lastEnd)));
+    }
+
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(color: isOwn ? Colors.white : Colors.black87, fontSize: 14),
+        children: spans,
       ),
     );
   }
