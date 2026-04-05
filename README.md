@@ -86,11 +86,23 @@ Die App aktualisiert sich automatisch nach der Installation - wenn Sie es erlaub
 
 ## :penguin: Linux
 
-| | Download | Link |
-|---|---|---|
-| <img src="https://img.shields.io/badge/-FCC624?logo=ubuntu&logoColor=black" alt="DEB"> | **DEB (Ubuntu/Debian)** | [`icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb) |
-| <img src="https://img.shields.io/badge/-EE0000?logo=redhat&logoColor=white" alt="RPM"> | **RPM (Fedora/RHEL)** | [`icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm) |
-| <img src="https://img.shields.io/badge/-333?logo=linux&logoColor=white" alt="AppImage"> | **AppImage (Universal)** | [`icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage) |
+<p align="center">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage&color=333333" alt="Linux QR">
+</p>
+
+### <img src="https://img.shields.io/badge/Ubuntu/Debian-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu"> DEB
+
+> :link: [`https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb)
+
+### <img src="https://img.shields.io/badge/Fedora/openSUSE-51A2DA?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora"> RPM
+
+> :link: [`https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm)
+
+### <img src="https://img.shields.io/badge/Universal-333333?style=for-the-badge&logo=linux&logoColor=white" alt="AppImage"> AppImage
+
+> :link: [`https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage)
+
+:penguin: Alle Linux-Versionen aktualisieren sich automatisch.
 
 ---
 
