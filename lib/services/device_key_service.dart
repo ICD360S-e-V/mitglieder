@@ -286,7 +286,7 @@ class DeviceKeyService {
           'device_id': _deviceId,
           'device_name': info['device_name'],
           'platform': info['platform'],
-          'app_version': '1.1.25',
+          'app_version': '1.1.26',
           'device_type': info['device_type'],
           'os_version': info['os_version'],
           ...extendedData,
@@ -328,7 +328,7 @@ class DeviceKeyService {
         },
         body: jsonEncode({
           'device_key': _deviceKey,
-          'app_version': '1.1.25',
+          'app_version': '1.1.26',
           'device_type': info['device_type'],
           'os_version': info['os_version'],
           ...extendedData,

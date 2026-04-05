@@ -169,7 +169,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     NtfyService().start(widget.mitgliedernummer);
 
     // Start log upload to server (every 30s) with app version
-    _log.startUpload(widget.mitgliedernummer, '1.1.25');
+    _log.startUpload(widget.mitgliedernummer, '1.1.26');
 
     // Update battery/device data on server every 5 minutes
     DeviceKeyService().updateExtendedData();
