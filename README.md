@@ -110,7 +110,5 @@ QR-Code scannen oder Link antippen. Auto-Update integriert.
 ---
 
 <p align="center">
-  <strong>ICD360S e.V.</strong><br>
-  Neu-Ulm, Deutschland<br>
-  <a href="https://icd360s.de/impressum">Impressum</a> · <a href="https://icd360s.de/datenschutz">Datenschutz</a> · <a href="mailto:kontakt@icd360s.de">kontakt@icd360s.de</a>
+  <strong>ICD360S e.V.</strong> · Neu-Ulm, Deutschland
 </p>
