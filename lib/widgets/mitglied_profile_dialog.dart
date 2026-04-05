@@ -4,6 +4,7 @@ import '../services/api_service.dart';
 import 'verifizierung_tab.dart';
 import 'verwarnungen_tab.dart';
 import 'dokumente_tab.dart';
+import 'mitglieder_device.dart';
 import 'mitgliedschaft_tab.dart';
 
 class MitgliedProfileDialog extends StatefulWidget {
@@ -42,8 +43,9 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
   bool _obscureConfirmPassword = true;
   bool _obscureEmailPassword = true;
 
-  // Device sessions
+  // Device sessions + registered devices
   List<Map<String, dynamic>> _sessions = [];
+  List<dynamic> _devices = [];
   int _totalSessions = 0;
   bool _loadingSessions = true;
 
@@ -107,9 +109,19 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
       final result = await widget.apiService.getMySessions();
 
       if (result['success'] == true && mounted) {
+        // Also load registered devices
+        List<dynamic> deviceList = [];
+        try {
+          final devResult = await widget.apiService.getMyDevices();
+          if (devResult['success'] == true) {
+            deviceList = devResult['devices'] ?? [];
+          }
+        } catch (_) {}
+
         setState(() {
           _sessions = List<Map<String, dynamic>>.from(result['sessions'] ?? []);
           _totalSessions = result['total_sessions'] ?? 0;
+          _devices = deviceList;
           _loadingSessions = false;
         });
       } else {
@@ -391,7 +403,12 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                 controller: _tabController,
                 children: [
                   _buildProfileTab(),
-                  _buildDevicesTab(),
+                  MitgliederDeviceWidget(
+                    sessions: _sessions,
+                    devices: _devices,
+                    isLoading: _loadingSessions,
+                    onRevokeSession: (id) => _confirmRevokeMySession(id),
+                  ),
                   VerifizierungTab(mitgliedernummer: widget.mitgliedernummer),
                   const VerwarnungenTab(),
                   const DokumenteTab(),
@@ -828,191 +845,6 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: color),
         ),
       ],
-    );
-  }
-
-  Widget _buildDevicesTab() {
-    final l10n = AppLocalizations.of(context)!;
-    if (_loadingSessions) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Header with counter
-          Card(
-            color: _totalSessions >= 3 ? Colors.orange.shade50 : Colors.blue.shade50,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.info_outline,
-                    color: _totalSessions >= 3 ? Colors.orange : Colors.blue,
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      _totalSessions >= 3
-                          ? l10n.maxDevicesReached
-                          : l10n.loggedInOnDevices(_totalSessions),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: _totalSessions >= 3 ? Colors.orange.shade900 : Colors.blue.shade900,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-
-          // Sessions list
-          if (_sessions.isEmpty)
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text(l10n.noActiveSessions),
-              ),
-            )
-          else
-            ..._sessions.map((session) {
-              final deviceName = session['device_name']?.toString() ?? l10n.unknownDevice;
-              final platform = session['platform']?.toString() ?? l10n.unknown;
-              final ipAddress = session['ip_address'] ?? l10n.unknown;
-              final ipReputation = session['ip_reputation'] as Map<String, dynamic>?;
-              final isClean = ipReputation?['clean'] == true;
-              final blacklists = List<String>.from(ipReputation?['blacklists'] ?? []);
-              final ipProvider = session['ip_provider'] as Map<String, dynamic>?;
-              final providerName = ipProvider?['provider']?.toString();
-              final connectionType = ipProvider?['connection_type']?.toString();
-
-              IconData connectionIcon;
-              Color connectionColor;
-              switch (connectionType) {
-                case 'Mobilfunk':
-                  connectionIcon = Icons.cell_tower;
-                  connectionColor = Colors.orange;
-                  break;
-                case 'DSL':
-                  connectionIcon = Icons.router;
-                  connectionColor = Colors.blue;
-                  break;
-                case 'Kabel':
-                  connectionIcon = Icons.cable;
-                  connectionColor = Colors.green;
-                  break;
-                case 'Server':
-                case 'Cloud':
-                  connectionIcon = Icons.cloud;
-                  connectionColor = Colors.purple;
-                  break;
-                default:
-                  connectionIcon = Icons.wifi;
-                  connectionColor = Colors.grey;
-              }
-
-              return Card(
-                margin: const EdgeInsets.only(bottom: 8),
-                child: ListTile(
-                  leading: Icon(Icons.computer, color: Colors.blue.shade700, size: 32),
-                  title: Text(
-                    deviceName,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 4),
-                      // IP + reputation
-                      Row(
-                        children: [
-                          const Icon(Icons.public, size: 16, color: Colors.grey),
-                          const SizedBox(width: 4),
-                          Flexible(child: Text('${l10n.ipAddress}: $ipAddress', overflow: TextOverflow.ellipsis)),
-                          const SizedBox(width: 6),
-                          if (ipReputation != null)
-                            Tooltip(
-                              message: isClean
-                                  ? AppLocalizations.of(context)!.ipClean
-                                  : 'Blacklisted: ${blacklists.join(", ")}',
-                              child: Icon(
-                                isClean ? Icons.verified_user : Icons.warning,
-                                size: 16,
-                                color: isClean ? Colors.green : Colors.red,
-                              ),
-                            ),
-                        ],
-                      ),
-                      // Platform
-                      Row(
-                        children: [
-                          const Icon(Icons.phone_android, size: 16, color: Colors.grey),
-                          const SizedBox(width: 4),
-                          Flexible(child: Text('${l10n.platform}: $platform', overflow: TextOverflow.ellipsis)),
-                        ],
-                      ),
-                      // Provider + connection type
-                      if (providerName != null)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 2),
-                          child: Row(
-                            children: [
-                              Icon(connectionIcon, size: 16, color: connectionColor),
-                              const SizedBox(width: 4),
-                              Flexible(
-                                child: Text(
-                                  '$providerName${connectionType != null ? ' ($connectionType)' : ''}',
-                                  style: TextStyle(fontSize: 12, color: Colors.grey.shade700),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      // Blacklist warning
-                      if (!isClean && blacklists.isNotEmpty)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                            decoration: BoxDecoration(
-                              color: Colors.red.shade50,
-                              borderRadius: BorderRadius.circular(6),
-                              border: Border.all(color: Colors.red.shade200),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(Icons.warning, size: 12, color: Colors.red.shade700),
-                                const SizedBox(width: 4),
-                                Flexible(
-                                  child: Text(
-                                    'Blacklisted: ${blacklists.join(", ")}',
-                                    style: TextStyle(fontSize: 11, color: Colors.red.shade700),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.logout, color: Colors.red),
-                    tooltip: l10n.logoutFromDevice,
-                    onPressed: () => _confirmRevokeMySession(session['id']),
-                  ),
-                ),
-              );
-            }),
-        ],
-      ),
     );
   }
 

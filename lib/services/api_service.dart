@@ -273,6 +273,16 @@ class ApiService {
     return jsonDecode(response.body);
   }
 
+  // Get my registered devices (member - self-service)
+  Future<Map<String, dynamic>> getMyDevices() async {
+    final response = await _client.get(
+      Uri.parse('$baseUrl/auth/my_devices.php'),
+      headers: _headers,
+    );
+
+    return jsonDecode(response.body);
+  }
+
   // Revoke my session (member - self-service)
   Future<Map<String, dynamic>> revokeMySession(int sessionId) async {
     final response = await _client.post(

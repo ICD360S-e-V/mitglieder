@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:battery_plus/battery_plus.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'secure_storage_helper.dart';
 import 'package:http/http.dart' as http;
@@ -136,40 +138,90 @@ class DeviceKeyService {
 
     if (Platform.isAndroid) {
       final info = await deviceInfo.androidInfo;
+      final model = info.model.toLowerCase();
+      final isTablet = model.contains('tab') || model.contains('pad') ||
+          model.contains('sm-t') || model.contains('sm-x') ||
+          model.contains('mediapad') || model.contains('matepad');
       return {
         'device_name': '${info.brand} ${info.model}',
         'platform': 'Android ${info.version.release} (SDK ${info.version.sdkInt})',
+        'device_type': isTablet ? 'tablet' : 'phone',
+        'os_version': 'Android ${info.version.release} (SDK ${info.version.sdkInt}, Patch ${info.version.securityPatch ?? "unknown"})',
       };
     } else if (Platform.isIOS) {
       final info = await deviceInfo.iosInfo;
+      final isTablet = info.model.toLowerCase().contains('ipad');
       return {
         'device_name': info.name,
         'platform': '${info.systemName} ${info.systemVersion}',
+        'device_type': isTablet ? 'tablet' : 'phone',
+        'os_version': '${info.systemName} ${info.systemVersion} (${info.utsname.machine})',
       };
     } else if (Platform.isWindows) {
       final info = await deviceInfo.windowsInfo;
       return {
         'device_name': info.computerName,
         'platform': 'Windows ${info.majorVersion}.${info.minorVersion} Build ${info.buildNumber}',
+        'device_type': 'desktop',
+        'os_version': '${info.productName} (Build ${info.buildNumber})',
       };
     } else if (Platform.isMacOS) {
       final info = await deviceInfo.macOsInfo;
       return {
         'device_name': info.computerName,
         'platform': 'macOS ${info.osRelease}',
+        'device_type': 'desktop',
+        'os_version': 'macOS ${info.majorVersion}.${info.minorVersion}.${info.patchVersion} (${info.model})',
       };
     } else if (Platform.isLinux) {
       final info = await deviceInfo.linuxInfo;
       return {
         'device_name': info.name,
         'platform': 'Linux ${info.prettyName}',
+        'device_type': 'desktop',
+        'os_version': info.prettyName,
       };
     }
 
     return {
       'device_name': 'Unknown Device',
       'platform': Platform.operatingSystem,
+      'device_type': 'unknown',
+      'os_version': Platform.operatingSystemVersion,
     };
+  }
+
+  /// Colectează date extinse despre device (battery, connection, VPN)
+  Future<Map<String, dynamic>> _collectExtendedDeviceData() async {
+    final data = <String, dynamic>{};
+
+    try {
+      // Battery
+      final battery = Battery();
+      data['battery_level'] = await battery.batteryLevel;
+      final state = await battery.batteryState;
+      data['battery_state'] = state.toString().split('.').last;
+    } catch (_) {}
+
+    try {
+      // Connection type
+      final connectivity = await Connectivity().checkConnectivity();
+      if (connectivity.isNotEmpty) {
+        final type = connectivity.first.toString().split('.').last;
+        data['connection_type'] = type;
+      }
+    } catch (_) {}
+
+    try {
+      // VPN detection (check network interfaces)
+      final interfaces = await NetworkInterface.list();
+      final vpnPrefixes = ['utun', 'tun', 'tap', 'ppp', 'wg', 'ipsec', 'vpn'];
+      final hasVpn = interfaces.any((i) =>
+          vpnPrefixes.any((p) => i.name.toLowerCase().startsWith(p)));
+      data['is_vpn'] = hasVpn ? 1 : 0;
+    } catch (_) {}
+
+    return data;
   }
 
   /// Înregistrează device-ul pe server și obține device key
@@ -181,6 +233,8 @@ class DeviceKeyService {
       // Obține informații despre device
       final info = await _getDeviceInfo();
 
+      final extendedData = await _collectExtendedDeviceData();
+
       final response = await _client.post(
         Uri.parse('$_baseUrl/device/register.php'),
         headers: {
@@ -191,7 +245,10 @@ class DeviceKeyService {
           'device_id': _deviceId,
           'device_name': info['device_name'],
           'platform': info['platform'],
-          'app_version': '1.1.16',
+          'app_version': '1.1.17',
+          'device_type': info['device_type'],
+          'os_version': info['os_version'],
+          ...extendedData,
         }),
       );
 
@@ -219,6 +276,9 @@ class DeviceKeyService {
   /// Validează device key-ul existent cu serverul
   Future<bool> _validateDeviceKey() async {
     try {
+      final info = await _getDeviceInfo();
+      final extendedData = await _collectExtendedDeviceData();
+
       final response = await _client.post(
         Uri.parse('$_baseUrl/device/validate.php'),
         headers: {
@@ -227,6 +287,10 @@ class DeviceKeyService {
         },
         body: jsonEncode({
           'device_key': _deviceKey,
+          'app_version': '1.1.17',
+          'device_type': info['device_type'],
+          'os_version': info['os_version'],
+          ...extendedData,
         }),
       );
 

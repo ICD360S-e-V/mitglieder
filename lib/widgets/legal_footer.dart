@@ -7,7 +7,7 @@ import '../services/logger_service.dart';
 import 'changelog_dialog.dart';
 import 'update_dialog.dart';
 
-const String appVersion = '1.1.16';
+const String appVersion = '1.1.17';
 
 class LegalFooter extends StatefulWidget {
   final bool darkMode;
