@@ -43,7 +43,11 @@
 2. Repository hinzufuegen: [`https://icd360sev.icd360s.de/fdroid/repo`](https://icd360sev.icd360s.de/fdroid/repo)
 3. Nach **ICD360S e.V. Mitglieder** suchen
 
-**Universal APK** - Direktdownload
+**Universal APK** - Direktdownload (unabhaengig von F-Droid)
+
+<p align="center">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk&color=34a853" alt="APK QR">
+</p>
 
 > :link: [`https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk`](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
 
