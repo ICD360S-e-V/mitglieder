@@ -1,14 +1,20 @@
 import 'dart:io';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
+import 'package:windows_notification/notification_message.dart';
+import 'package:windows_notification/windows_notification.dart';
 
 /// Notification Service - Cross-platform notifications
-/// All platforms: flutter_local_notifications
+/// Android/iOS/macOS/Linux: flutter_local_notifications
+/// Windows: windows_notification (WinRT Toast API)
 class NotificationService {
   static bool _isInitialized = false;
 
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
+
+  // Windows notification instance
+  final _windowsNotification = WindowsNotification(applicationId: 'de.icd360s.mitglieder');
 
   // Singleton
   static final NotificationService _instance = NotificationService._internal();
@@ -19,7 +25,12 @@ class NotificationService {
   Future<void> initialize() async {
     if (_isInitialized) return;
 
-    await _initFlutterNotifications();
+    if (Platform.isWindows) {
+      // Windows: WinRT Toast API (flutter_local_notifications is a stub on Windows)
+      debugPrint('[Notification] Windows: using WinRT Toast API');
+    } else {
+      await _initFlutterNotifications();
+    }
 
     _isInitialized = true;
     debugPrint('[Notification] Service initialized for ${Platform.operatingSystem}');
@@ -97,7 +108,24 @@ class NotificationService {
       await initialize();
     }
 
-    await _showFlutterNotification(title: title, body: body, payload: payload, id: id);
+    if (Platform.isWindows) {
+      _showWindowsNotification(title: title, body: body);
+    } else {
+      await _showFlutterNotification(title: title, body: body, payload: payload, id: id);
+    }
+  }
+
+  void _showWindowsNotification({required String title, required String body}) {
+    try {
+      final message = NotificationMessage.fromPluginTemplate(
+        'icd360s_${DateTime.now().millisecondsSinceEpoch}',
+        title,
+        body,
+      );
+      _windowsNotification.showNotificationPluginTemplate(message);
+    } catch (e) {
+      debugPrint('[Notification] Windows error: $e');
+    }
   }
 
   Future<void> _showFlutterNotification({

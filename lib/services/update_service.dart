@@ -13,8 +13,8 @@ import 'http_client_factory.dart';
 /// Supports: Android (APK), iOS (App Store), Windows (EXE), macOS (DMG), Linux (AppImage)
 class UpdateService {
   static const String versionUrl = 'https://icd360sev.icd360s.de/api/version_mitglieder.php';
-  static const String currentVersion = '1.1.21';
-  static const int currentBuildNumber = 117;
+  static const String currentVersion = '1.1.22';
+  static const int currentBuildNumber = 118;
 
   late http.Client _client;
   late HttpClient _httpClient;

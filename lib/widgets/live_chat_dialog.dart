@@ -451,11 +451,16 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       if (!mounted) return;
       if (message.conversationId != _conversationId) return;
 
-      // CRITICAL: Check if message already exists FIRST (prevent duplicates)
-      // This handles both own messages (added locally) and messages from others
-      final messageExists = _messages.any((m) => m['id'] == message.id);
-      if (messageExists) {
-        _log.debug('LiveChat: Skipping duplicate message (id: ${message.id}, sender: ${message.senderName})', tag: 'CHAT');
+      // Skip own messages - already added locally via HTTP POST response
+      final isOwn = message.senderName == widget.userName;
+      if (isOwn) {
+        _log.debug('LiveChat: Skipping own WebSocket echo (id: ${message.id})', tag: 'CHAT');
+        return;
+      }
+
+      // Dedup by message ID (for messages from others)
+      if (_messages.any((m) => m['id'] == message.id)) {
+        _log.debug('LiveChat: Skipping duplicate message (id: ${message.id})', tag: 'CHAT');
         return;
       }
 
@@ -466,7 +471,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           'sender_id': message.senderId,
           'sender_name': message.senderName,
           'sender_role': message.senderRole,
-          'is_own': message.senderName == widget.userName, // CRITICAL: Compare sender name with current user
+          'is_own': false,
           'created_at': message.createdAt.toIso8601String(),
         });
       });
