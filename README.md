@@ -44,7 +44,7 @@ Die offizielle App fuer Mitglieder des **ICD360S e.V.** - ein gemeinnuetziger Ve
 
 > :link: [`https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk`](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
 
-QR-Code scannen oder Link antippen. Auto-Update integriert.
+:shield: **Store-unabhaengig** - Die App wird direkt von unserem Server heruntergeladen und aktualisiert sich automatisch. Kein App Store noetig. Ihre Daten bleiben auf unserer Infrastruktur in Deutschland - ohne Abhaengigkeit von Google, Apple oder anderen Drittanbietern.
 
 ---
 
@@ -64,18 +64,40 @@ QR-Code scannen oder Link antippen. Auto-Update integriert.
 
 ---
 
-## :desktop_computer: Windows &ensp; :penguin: Linux &ensp; :apple: macOS / iOS
+## :desktop_computer: Windows
+
+<p align="center">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe&color=0078D6" alt="Windows QR">
+</p>
+
+<p align="center">
+  <a href="https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe"><img src="https://img.shields.io/badge/Windows_Installer-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Download Windows"></a>
+</p>
+
+> :link: [`https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe`](https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe)
+
+Die App aktualisiert sich automatisch nach der Installation - wenn Sie es erlauben.
+
+---
+
+## :penguin: Linux
 
 | | Download | Link |
 |---|---|---|
-| <img src="https://img.shields.io/badge/-0078D6?logo=windows&logoColor=white" alt="W"> | **Windows Installer** | [`icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe`](https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe) |
-| <img src="https://img.shields.io/badge/-FCC624?logo=ubuntu&logoColor=black" alt="L"> | **Linux DEB** | [`icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb) |
-| <img src="https://img.shields.io/badge/-EE0000?logo=redhat&logoColor=white" alt="L"> | **Linux RPM** | [`icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm) |
-| <img src="https://img.shields.io/badge/-333?logo=linux&logoColor=white" alt="L"> | **Linux AppImage** | [`icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage) |
-| <img src="https://img.shields.io/badge/-000?logo=apple&logoColor=white" alt="M"> | **macOS DMG** :yellow_circle: | [`icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg`](https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg) |
-| <img src="https://img.shields.io/badge/-000?logo=apple&logoColor=white" alt="I"> | **iOS** :yellow_circle: | TestFlight - kontakt@icd360s.de |
+| <img src="https://img.shields.io/badge/-FCC624?logo=ubuntu&logoColor=black" alt="DEB"> | **DEB (Ubuntu/Debian)** | [`icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb) |
+| <img src="https://img.shields.io/badge/-EE0000?logo=redhat&logoColor=white" alt="RPM"> | **RPM (Fedora/RHEL)** | [`icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm) |
+| <img src="https://img.shields.io/badge/-333?logo=linux&logoColor=white" alt="AppImage"> | **AppImage (Universal)** | [`icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage) |
 
-:yellow_circle: = Beta (sucht Tester)
+---
+
+## :apple: macOS / iOS (Beta)
+
+| | Download | Link |
+|---|---|---|
+| <img src="https://img.shields.io/badge/-000?logo=apple&logoColor=white" alt="macOS"> | **macOS DMG** :yellow_circle: | [`icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg`](https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg) |
+| <img src="https://img.shields.io/badge/-000?logo=apple&logoColor=white" alt="iOS"> | **iOS** :yellow_circle: | TestFlight - kontakt@icd360s.de |
+
+:yellow_circle: Beta-Phase - sucht Tester
 
 ---
 
