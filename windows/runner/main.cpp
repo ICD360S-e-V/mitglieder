@@ -1,8 +1,3 @@
-// Screen capture protection (Windows 10 2004+)
-#ifndef WDA_MONITOR
-#define WDA_MONITOR 0x00000001
-#endif
-
 #include <flutter/dart_project.h>
 #include <flutter/flutter_view_controller.h>
 #include <windows.h>
@@ -37,13 +32,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   }
   window.SetQuitOnClose(true);
 
-  // Security: Prevent screenshots and screen recording
-  // WDA_MONITOR = content visible on monitor, black in screen capture/recording
-  // WDA_EXCLUDEFROMCAPTURE caused black screen on some GPU drivers/RDP setups
-  HWND hwnd = window.GetHandle();
-  if (hwnd) {
-    ::SetWindowDisplayAffinity(hwnd, WDA_MONITOR);
+  // Security: DLL injection protection
+  // Remove current working directory from DLL search path
+  // Prevents DLL hijacking attacks
+  ::SetDllDirectoryW(L"");
+
+  // Security: Anti-debugging (only in release builds)
+  // In debug mode, IsDebuggerPresent is used for console attach (line 12)
+  #ifdef NDEBUG
+  BOOL remoteDebugger = FALSE;
+  ::CheckRemoteDebuggerPresent(::GetCurrentProcess(), &remoteDebugger);
+  if (remoteDebugger) {
+    return EXIT_FAILURE;
   }
+  #endif
 
   ::MSG msg;
   while (::GetMessage(&msg, nullptr, 0, 0)) {

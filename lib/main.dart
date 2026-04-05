@@ -40,7 +40,8 @@ void main() async {
   // Desktop: Window management is handled in DesktopPlatformService.initialize()
 
   // Security: Screenshots blocked via FLAG_SECURE in Android MainActivity.kt
-  // Linux/Windows/macOS: no OS-level screenshot prevention available
+  // Windows: anti-debug + DLL injection protection in main.cpp
+  // macOS: NSWindow.sharingType = .none in MainFlutterWindow.swift
 
   // Initialize services with error handling
   try {
