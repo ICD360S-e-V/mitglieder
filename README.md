@@ -40,49 +40,65 @@
 
 ---
 
-## Downloads
+## :iphone: Android Download
 
-### Android
+<p align="center">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://icd360sev.icd360s.de/fdroid/repo&color=1a73e8" alt="F-Droid QR">
+</p>
 
-<table>
-<tr>
-<td align="center" width="50%">
+### :green_circle: F-Droid Repository (empfohlen)
 
-**F-Droid Repository (empfohlen)**
+1. **F-Droid installieren:** [https://f-droid.org](https://f-droid.org)
+2. **Repository hinzufuegen:** [`https://icd360sev.icd360s.de/fdroid/repo`](https://icd360sev.icd360s.de/fdroid/repo)
+3. Nach **ICD360S e.V. Mitglieder** suchen und installieren
 
-![F-Droid QR](https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://icd360sev.icd360s.de/fdroid/repo&color=1a73e8)
+Updates werden automatisch alle 12-24 Stunden bereitgestellt.
 
-:link: [`https://icd360sev.icd360s.de/fdroid/repo`](https://icd360sev.icd360s.de/fdroid/repo)
+### :arrow_down: Universal APK (Direktdownload)
 
-Automatische Updates alle 12-24 Stunden
+> :link: **Download:** [`https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk`](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
 
-</td>
-<td align="center" width="50%">
+Manuell installieren. Auto-Update ist integriert.
 
-**Universal APK (Direktdownload)**
+### :soon: App Stores (in Vorbereitung)
 
-![APK QR](https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk&color=34a853)
+Google Play, Huawei AppGallery, Amazon Appstore, Samsung Galaxy Store - Beta-Tester gesucht!
 
-:link: [`https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk`](https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk)
+---
 
-Manuell installieren, Auto-Update integriert
+## :desktop_computer: Windows Download
 
-</td>
-</tr>
-</table>
+> <img src="https://img.shields.io/badge/Windows-Installer-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows">
+>
+> :link: **Download:** [`https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe`](https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe)
 
-> :soon: **Google Play**, **Huawei AppGallery**, **Amazon Appstore** und **Samsung Galaxy Store** befinden sich in Vorbereitung (Beta-Tester gesucht).
+---
 
-### Desktop & iOS
+## :penguin: Linux Download
 
-| Plattform | Format | Status | Download |
-|-----------|--------|--------|----------|
-| :desktop_computer: **Windows** | EXE Installer | :green_circle: Verfuegbar | [`icd360sev_setup.exe`](https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe) |
-| :penguin: **Linux** | DEB | :green_circle: Verfuegbar | [`icd360sev-mitglied.deb`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb) |
-| :penguin: **Linux** | RPM | :green_circle: Verfuegbar | [`icd360sev-mitglied.rpm`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm) |
-| :penguin: **Linux** | AppImage | :green_circle: Verfuegbar | [`icd360sev-mitglied.AppImage`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage) |
-| :apple: **macOS** | DMG | :yellow_circle: Beta | [`icd360sev-mitglied.dmg`](https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg) |
-| :iphone: **iOS** | IPA | :yellow_circle: Beta | TestFlight (kontakt@icd360s.de) |
+> <img src="https://img.shields.io/badge/Linux-Pakete-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+>
+> :link: **DEB (Ubuntu/Debian):** [`https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.deb)
+>
+> :link: **RPM (Fedora/RHEL):** [`https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.rpm)
+>
+> :link: **AppImage (Universal):** [`https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage`](https://icd360sev.icd360s.de/downloads/mitglieder/linux/icd360sev-mitglied.AppImage)
+
+---
+
+## :apple: macOS Download (Beta)
+
+> <img src="https://img.shields.io/badge/macOS-DMG-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS">
+>
+> :link: **Download:** [`https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg`](https://icd360sev.icd360s.de/downloads/mitglieder/macos/icd360sev-mitglied.dmg)
+>
+> :yellow_circle: Beta-Phase - sucht Tester!
+
+---
+
+## :iphone: iOS (Beta)
+
+> :yellow_circle: TestFlight Beta - Zugang per E-Mail anfragen: **kontakt@icd360s.de**
 
 ---
 
@@ -103,10 +119,15 @@ Manuell installieren, Auto-Update integriert
 ## Sicherheit & Datenschutz
 
 :shield: Keine Google-Dienste erforderlich (100% FOSS-kompatibel)
+
 :no_entry_sign: Keine Werbung, kein Tracking, keine Analytics
+
 :flag_de: Alle Daten auf eigenem Server in Deutschland
+
 :lock: SSL Certificate Pinning auf allen Verbindungen
+
 :white_check_mark: DSGVO-konform
+
 :closed_lock_with_key: Dart-Code Obfuscation in allen Release-Builds
 
 ---
@@ -125,14 +146,14 @@ Wir suchen aktiv Beta-Tester fuer folgende Plattformen:
 
 ## Quellcode & Transparenz
 
-| | Link |
-|---|---|
-| :octocat: **Repository** | [`github.com/ICD360S-e-V/mitglieder`](https://github.com/ICD360S-e-V/mitglieder) |
-| :globe_with_meridians: **Website** | [`icd360s.de`](https://icd360s.de) |
-| :page_with_curl: **Impressum** | [`icd360s.de/impressum`](https://icd360s.de/impressum) |
-| :lock: **Datenschutz** | [`icd360s.de/datenschutz`](https://icd360s.de/datenschutz) |
-| :package: **F-Droid Repo** | [`icd360sev.icd360s.de/fdroid/repo`](https://icd360sev.icd360s.de/fdroid/repo) |
-| :incoming_envelope: **Kontakt** | [`kontakt@icd360s.de`](mailto:kontakt@icd360s.de) |
+| | Beschreibung | Link |
+|---|---|---|
+| :octocat: | **Repository** | [`https://github.com/ICD360S-e-V/mitglieder`](https://github.com/ICD360S-e-V/mitglieder) |
+| :globe_with_meridians: | **Website** | [`https://icd360s.de`](https://icd360s.de) |
+| :page_with_curl: | **Impressum** | [`https://icd360s.de/impressum`](https://icd360s.de/impressum) |
+| :lock: | **Datenschutz** | [`https://icd360s.de/datenschutz`](https://icd360s.de/datenschutz) |
+| :package: | **F-Droid Repo** | [`https://icd360sev.icd360s.de/fdroid/repo`](https://icd360sev.icd360s.de/fdroid/repo) |
+| :incoming_envelope: | **Kontakt** | [`kontakt@icd360s.de`](mailto:kontakt@icd360s.de) |
 
 ---
 
