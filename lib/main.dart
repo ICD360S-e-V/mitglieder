@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:no_screenshot/no_screenshot.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
 import 'screens/welcome.dart';
@@ -38,6 +40,11 @@ void main() async {
     );
   }
   // Desktop: Window management is handled in DesktopPlatformService.initialize()
+
+  // Security: Prevent screenshots on iOS (Android uses FLAG_SECURE in MainActivity.kt)
+  if (Platform.isIOS) {
+    await NoScreenshot.instance.screenshotOff();
+  }
 
   // Initialize services with error handling
   try {
