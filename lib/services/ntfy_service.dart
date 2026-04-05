@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'api_service.dart';
 import 'logger_service.dart';
 import 'notification_service.dart';
 
@@ -10,6 +11,7 @@ final _log = LoggerService();
 /// Ntfy Push Notification Service for Mitglieder app.
 /// Subscribes to ntfy topic via NDJSON stream (HTTP GET long-polling).
 /// Server-side: NtfyService.php sends notifications with prefix 'icd360s_'.
+/// Authentication: token fetched from /api/auth/ntfy_token.php (JWT protected).
 class NtfyService {
   static final NtfyService _instance = NtfyService._internal();
   factory NtfyService() => _instance;
@@ -19,6 +21,7 @@ class NtfyService {
   static const String _topicPrefix = 'icd360s_';
 
   String? _mitgliedernummer;
+  String? _ntfyToken;
   bool _isListening = false;
   http.Client? _client;
   StreamSubscription? _subscription;
@@ -30,7 +33,7 @@ class NtfyService {
     _mitgliedernummer = mitgliedernummer;
     _isListening = true;
     _log.info('NtfyService: Starting for $mitgliedernummer', tag: 'NTFY');
-    _connect();
+    _fetchTokenAndConnect();
   }
 
   /// Stop listening.
@@ -43,6 +46,30 @@ class NtfyService {
     if (_mitgliedernummer != null) {
       _log.info('NtfyService: Stopped', tag: 'NTFY');
     }
+  }
+
+  /// Fetch ntfy auth token from server, then connect.
+  void _fetchTokenAndConnect() async {
+    if (!_isListening) return;
+
+    try {
+      final apiService = ApiService();
+      final response = await http.get(
+        Uri.parse('${ApiService.baseUrl}/auth/ntfy_token.php'),
+        headers: {'Authorization': 'Bearer ${apiService.token}'},
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        if (data['success'] == true && data['ntfy_token'] != null) {
+          _ntfyToken = data['ntfy_token'] as String;
+          debugPrint('[NTFY] Token received');
+        }
+      }
+    } catch (e) {
+      debugPrint('[NTFY] Token fetch error: $e');
+    }
+    _connect();
   }
 
   /// Connect to ntfy NDJSON stream.
@@ -59,7 +86,19 @@ class NtfyService {
       final request = http.Request('GET', Uri.parse(url));
       request.headers['Accept'] = 'application/x-ndjson';
 
+      // Add auth token if available
+      if (_ntfyToken != null) {
+        request.headers['Authorization'] = 'Bearer $_ntfyToken';
+      }
+
       final response = await _client!.send(request);
+
+      if (response.statusCode == 403 || response.statusCode == 401) {
+        debugPrint('[NTFY] Auth failed (${response.statusCode}), refetching token...');
+        _ntfyToken = null;
+        _scheduleReconnect();
+        return;
+      }
 
       if (response.statusCode != 200) {
         debugPrint('[NTFY] HTTP ${response.statusCode}, reconnecting...');
@@ -126,7 +165,13 @@ class NtfyService {
 
     debugPrint('[NTFY] Reconnecting in 5s...');
     Future.delayed(const Duration(seconds: 5), () {
-      if (_isListening) _connect();
+      if (_isListening) {
+        if (_ntfyToken == null) {
+          _fetchTokenAndConnect();
+        } else {
+          _connect();
+        }
+      }
     });
   }
 }

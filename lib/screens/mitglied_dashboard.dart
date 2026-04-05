@@ -167,7 +167,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     NtfyService().start(widget.mitgliedernummer);
 
     // Start log upload to server (every 30s) with app version
-    _log.startUpload(widget.mitgliedernummer, '1.1.14');
+    _log.startUpload(widget.mitgliedernummer, '1.1.15');
 
     // Poll pending termine count (every 60s - battery optimized)
     _loadPendingTerminCount();
