@@ -1236,6 +1236,21 @@ class AppLocalizationsNl extends AppLocalizations {
   String get connectionErrorGeneric => 'Verbindingsfout';
 
   @override
+  String get errorNoInternet => 'Geen internetverbinding. Controleer uw netwerk.';
+
+  @override
+  String get errorTimeout => 'Server reageert niet. Probeer het later opnieuw.';
+
+  @override
+  String get errorServer => 'Serverfout. Probeer het later opnieuw.';
+
+  @override
+  String get errorConnection => 'Verbindingsfout. Probeer het later opnieuw.';
+
+  @override
+  String get errorUnexpected => 'Er is een onverwachte fout opgetreden. Probeer het later opnieuw.';
+
+  @override
   String get copyLogs => 'Logs kopiëren';
 
   @override
