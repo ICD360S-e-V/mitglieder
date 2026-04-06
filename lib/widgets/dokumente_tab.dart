@@ -163,7 +163,8 @@ class _DokumenteTabState extends State<DokumenteTab> {
           saveDir = await getApplicationDocumentsDirectory();
         }
 
-        final filePath = '${saveDir.path}/$filename';
+        final safeName = filename.split(RegExp(r'[/\\]')).last.replaceAll('..', '');
+        final filePath = '${saveDir.path}/$safeName';
         final file = File(filePath);
         await file.writeAsBytes(bytes);
 
