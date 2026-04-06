@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Geen internetverbinding. Controleer uw netwerk.",
+  "errorTimeout": "Server reageert niet. Probeer het later opnieuw.",
+  "errorServer": "Serverfout. Probeer het later opnieuw.",
+  "errorConnection": "Verbindingsfout. Probeer het later opnieuw.",
+  "errorUnexpected": "Er is een onverwachte fout opgetreden. Probeer het later opnieuw."
 }
