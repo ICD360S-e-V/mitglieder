@@ -76,6 +76,9 @@ dependencies:
   # App version info (single source of truth from pubspec.yaml)
   package_info_plus: ^8.0.0
 
+  # Cryptographic hashing (SHA-256)
+  crypto: ^3.0.3
+
   # UUID generation for device ID
   uuid: ^3.0.7
 
