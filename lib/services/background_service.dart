@@ -488,7 +488,7 @@ class BackgroundService {
       priority: shouldUseFullScreen ? Priority.max : Priority.high,  // Max doar pentru urgent!
       fullScreenIntent: shouldUseFullScreen,  // 🚨 FULL-SCREEN doar pentru admin messages!
       category: AndroidNotificationCategory.message,
-      visibility: NotificationVisibility.public,
+      visibility: NotificationVisibility.private,
       showWhen: true,
       enableLights: true,
       enableVibration: true,
