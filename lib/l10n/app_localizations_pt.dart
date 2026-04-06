@@ -1235,6 +1235,21 @@ class AppLocalizationsPt extends AppLocalizations {
   String get connectionErrorGeneric => 'Erro de ligação';
 
   @override
+  String get errorNoInternet => 'Sem ligação à Internet. Verifique a sua rede.';
+
+  @override
+  String get errorTimeout => 'O servidor não responde. Tente novamente mais tarde.';
+
+  @override
+  String get errorServer => 'Erro do servidor. Tente novamente mais tarde.';
+
+  @override
+  String get errorConnection => 'Erro de ligação. Tente novamente mais tarde.';
+
+  @override
+  String get errorUnexpected => 'Ocorreu um erro inesperado. Tente novamente mais tarde.';
+
+  @override
   String get copyLogs => 'Copiar registos';
 
   @override
