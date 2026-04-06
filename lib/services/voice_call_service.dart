@@ -11,12 +11,10 @@ final _log = LoggerService();
 
 /// Voice Call Service using WebRTC for real-time audio communication
 class VoiceCallService {
-  // Fallback STUN-only config (used if TURN credentials fetch fails)
-  static const Map<String, dynamic> _fallbackIceServers = {
-    'iceServers': [
-      {'urls': 'stun:stun.l.google.com:19302'},
-      {'urls': 'stun:stun1.l.google.com:19302'},
-    ]
+  // No fallback — if our TURN server is unreachable, calls cannot be established.
+  // GDPR: we never send user IPs to third-party servers (e.g. Google STUN).
+  static const Map<String, dynamic> _emptyIceServers = {
+    'iceServers': <Map<String, dynamic>>[]
   };
 
   // Cached ICE servers from server (fetched at runtime)
@@ -33,8 +31,8 @@ class VoiceCallService {
       final apiService = ApiService();
       final token = apiService.token;
       if (token == null) {
-        debugPrint('[VoiceCall] No token, using fallback STUN servers');
-        return _fallbackIceServers;
+        debugPrint('[VoiceCall] No token — call will fail (no ICE servers)');
+        return _emptyIceServers;
       }
 
       final httpClient = HttpClient()..connectionTimeout = const Duration(seconds: 10);
@@ -62,14 +60,14 @@ class VoiceCallService {
             return _cachedIceServers!;
           }
         }
-        debugPrint('[VoiceCall] TURN fetch failed (${response.statusCode}), using fallback');
-        return _fallbackIceServers;
+        debugPrint('[VoiceCall] TURN fetch failed (${response.statusCode}) — call will fail (no ICE servers)');
+        return _emptyIceServers;
       } finally {
         client.close();
       }
     } catch (e) {
-      debugPrint('[VoiceCall] TURN fetch error: $e, using fallback');
-      return _fallbackIceServers;
+      debugPrint('[VoiceCall] TURN fetch error: $e — call will fail (no ICE servers)');
+      return _emptyIceServers;
     }
   }
 
