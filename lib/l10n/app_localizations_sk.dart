@@ -1234,6 +1234,21 @@ class AppLocalizationsSk extends AppLocalizations {
   String get connectionErrorGeneric => 'Chyba pripojenia';
 
   @override
+  String get errorNoInternet => 'Žiadne pripojenie na internet. Skontrolujte svoju sieť.';
+
+  @override
+  String get errorTimeout => 'Server neodpovedá. Skúste to prosím neskôr.';
+
+  @override
+  String get errorServer => 'Chyba servera. Skúste to prosím neskôr.';
+
+  @override
+  String get errorConnection => 'Chyba pripojenia. Skúste to prosím neskôr.';
+
+  @override
+  String get errorUnexpected => 'Vyskytla sa neočakávaná chyba. Skúste to prosím neskôr.';
+
+  @override
   String get copyLogs => 'Kopírovať logy';
 
   @override
