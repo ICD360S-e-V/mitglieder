@@ -1232,6 +1232,21 @@ class AppLocalizationsSv extends AppLocalizations {
   String get connectionErrorGeneric => 'Anslutningsfel';
 
   @override
+  String get errorNoInternet => 'Ingen internetanslutning. Kontrollera ditt nätverk.';
+
+  @override
+  String get errorTimeout => 'Servern svarar inte. Försök igen senare.';
+
+  @override
+  String get errorServer => 'Serverfel. Försök igen senare.';
+
+  @override
+  String get errorConnection => 'Anslutningsfel. Försök igen senare.';
+
+  @override
+  String get errorUnexpected => 'Ett oväntat fel uppstod. Försök igen senare.';
+
+  @override
   String get copyLogs => 'Kopiera loggar';
 
   @override
