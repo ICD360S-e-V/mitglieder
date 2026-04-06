@@ -1056,7 +1056,8 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
         // Decode and save file
         final bytes = base64Decode(base64Data);
         final tempDir = await getTemporaryDirectory();
-        final file = File('${tempDir.path}/$filename');
+        final safeName = filename.split(RegExp(r'[/\\]')).last.replaceAll('..', '');
+        final file = File('${tempDir.path}/$safeName');
         await file.writeAsBytes(bytes);
 
         // Open file internally (PDF, images) or externally (other types)
