@@ -4,6 +4,7 @@ import '../services/api_service.dart';
 import '../services/secure_storage_helper.dart';
 import '../widgets/login_tab.dart';
 import '../widgets/approval_waiting_dialog.dart';
+import '../utils/error_helpers.dart';
 import 'mitglied_dashboard.dart';
 import 'webview_screen.dart';
 
