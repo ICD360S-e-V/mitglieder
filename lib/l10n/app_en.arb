@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "No internet connection. Please check your network.",
+  "errorTimeout": "Server is not responding. Please try again later.",
+  "errorServer": "Server error. Please try again later.",
+  "errorConnection": "Connection error. Please try again later.",
+  "errorUnexpected": "An unexpected error occurred. Please try again later."
 }
