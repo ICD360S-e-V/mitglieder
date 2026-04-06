@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Nu există conexiune la internet. Verificați rețeaua.",
+  "errorTimeout": "Serverul nu răspunde. Încercați din nou mai târziu.",
+  "errorServer": "Eroare de server. Încercați din nou mai târziu.",
+  "errorConnection": "Eroare de conexiune. Încercați din nou mai târziu.",
+  "errorUnexpected": "A apărut o eroare neașteptată. Încercați din nou mai târziu."
 }
