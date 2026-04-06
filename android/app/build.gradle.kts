@@ -84,12 +84,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Use release keystore if available (CI), otherwise debug
-            signingConfig = if (file("release-keystore.jks").exists()) {
-                signingConfigs.getByName("release")
-            } else {
-                signingConfigs.getByName("debug")
+            // Security: fail build if release keystore is missing (never fall back to debug)
+            if (!file("release-keystore.jks").exists()) {
+                throw GradleException("Release keystore not found! Cannot sign release build with debug key.")
             }
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }
