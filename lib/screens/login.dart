@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          _errorMessage = 'Verbindungsfehler: $e';
+          _errorMessage = getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'LOGIN');
           _isLoading = false;
         });
       }
