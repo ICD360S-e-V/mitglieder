@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show FilteringTextInputFormatter, LengthLimitingTextInputFormatter;
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../utils/error_helpers.dart';
 
 class PersonalDataDialog extends StatefulWidget {
   final String userName;
