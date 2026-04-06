@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Brak połączenia z Internetem. Sprawdź swoją sieć.",
+  "errorTimeout": "Serwer nie odpowiada. Spróbuj ponownie później.",
+  "errorServer": "Błąd serwera. Spróbuj ponownie później.",
+  "errorConnection": "Błąd połączenia. Spróbuj ponownie później.",
+  "errorUnexpected": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później."
 }
