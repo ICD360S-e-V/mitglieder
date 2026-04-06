@@ -1237,6 +1237,21 @@ class AppLocalizationsRo extends AppLocalizations {
   String get connectionErrorGeneric => 'Eroare de conexiune';
 
   @override
+  String get errorNoInternet => 'Nu există conexiune la internet. Verificați rețeaua.';
+
+  @override
+  String get errorTimeout => 'Serverul nu răspunde. Încercați din nou mai târziu.';
+
+  @override
+  String get errorServer => 'Eroare de server. Încercați din nou mai târziu.';
+
+  @override
+  String get errorConnection => 'Eroare de conexiune. Încercați din nou mai târziu.';
+
+  @override
+  String get errorUnexpected => 'A apărut o eroare neașteptată. Încercați din nou mai târziu.';
+
+  @override
   String get copyLogs => 'Copiază loguri';
 
   @override
