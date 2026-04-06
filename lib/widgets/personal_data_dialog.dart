@@ -130,7 +130,7 @@ class _PersonalDataDialogState extends State<PersonalDataDialog> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('${AppLocalizations.of(context)!.notifError}: $e'),
+          content: Text(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'PERSONAL')),
           backgroundColor: Colors.red,
         ),
       );
