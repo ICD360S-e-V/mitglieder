@@ -1233,6 +1233,21 @@ class AppLocalizationsBg extends AppLocalizations {
   String get connectionErrorGeneric => 'Грешка при свързване';
 
   @override
+  String get errorNoInternet => 'Няма интернет връзка. Моля, проверете мрежата си.';
+
+  @override
+  String get errorTimeout => 'Сървърът не отговаря. Моля, опитайте по-късно.';
+
+  @override
+  String get errorServer => 'Грешка на сървъра. Моля, опитайте по-късно.';
+
+  @override
+  String get errorConnection => 'Грешка при свързване. Моля, опитайте по-късно.';
+
+  @override
+  String get errorUnexpected => 'Възникна неочаквана грешка. Моля, опитайте по-късно.';
+
+  @override
   String get copyLogs => 'Копирай логове';
 
   @override
