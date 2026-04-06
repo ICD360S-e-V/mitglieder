@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Sem ligação à Internet. Verifique a sua rede.",
+  "errorTimeout": "O servidor não responde. Tente novamente mais tarde.",
+  "errorServer": "Erro do servidor. Tente novamente mais tarde.",
+  "errorConnection": "Erro de ligação. Tente novamente mais tarde.",
+  "errorUnexpected": "Ocorreu um erro inesperado. Tente novamente mais tarde."
 }
