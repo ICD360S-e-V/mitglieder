@@ -14,6 +14,7 @@ import '../services/voice_call_service.dart';
 import '../services/logger_service.dart';
 import 'file_viewer.dart';
 import 'incoming_call_dialog.dart';
+import '../utils/error_helpers.dart';
 
 final _log = LoggerService();
 
@@ -266,7 +267,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       }
     } catch (e) {
       _log.error('LiveChat: _initChat exception: $e', tag: 'CHAT');
-      if (mounted) _showError('${AppLocalizations.of(context)!.errorConnecting}: $e');
+      if (mounted) _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
     } finally {
       if (mounted) {
         setState(() => _isLoading = false);
@@ -618,7 +619,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
         if (e.toString().contains('NO_MICROPHONE')) {
           _showError(AppLocalizations.of(context)!.errorStartingCall);
         } else {
-          _showError('${AppLocalizations.of(context)!.errorStartingCall}: $e');
+          _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
         }
       }
       await _voiceCallService.endCall();
@@ -643,7 +644,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     } catch (e) {
       _log.error('LiveChat: _handleCallAnswer() error: $e', tag: 'CALL');
       if (mounted) {
-        _showError('${AppLocalizations.of(context)!.errorConnecting}: $e');
+        _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
         _endCallCleanup();
       }
     }
@@ -744,7 +745,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
         if (e.toString().contains('NO_MICROPHONE')) {
           _showError(AppLocalizations.of(context)!.noMicrophoneError);
         } else {
-          _showError('${AppLocalizations.of(context)!.errorAcceptingCall}: $e');
+          _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
         }
       }
       await _voiceCallService.endCall();
@@ -814,7 +815,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       }
     } catch (e) {
       _log.error('LiveChat: _sendMessage exception: $e', tag: 'CHAT');
-      _showError('$errorSendingText: $e');
+      _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
       _messageController.text = message;
     } finally {
       if (mounted) {
@@ -1015,7 +1016,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       }
     } catch (e) {
       _log.error('LiveChat: Upload error: $e', tag: 'CHAT');
-      _showError('$errorUploadText: $e');
+      _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
     } finally {
       if (mounted) {
         setState(() => _isUploading = false);
@@ -1067,7 +1068,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       }
     } catch (e) {
       _log.error('LiveChat: Download error: $e', tag: 'CHAT');
-      _showError('$errorDownloadText: $e');
+      _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
     }
   }
 
