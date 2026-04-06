@@ -1233,6 +1233,21 @@ class AppLocalizationsSr extends AppLocalizations {
   String get connectionErrorGeneric => 'Грешка повезивања';
 
   @override
+  String get errorNoInternet => 'Нема интернет везе. Проверите мрежу.';
+
+  @override
+  String get errorTimeout => 'Сервер не одговара. Покушајте касније.';
+
+  @override
+  String get errorServer => 'Грешка сервера. Покушајте касније.';
+
+  @override
+  String get errorConnection => 'Грешка повезивања. Покушајте касније.';
+
+  @override
+  String get errorUnexpected => 'Дошло је до неочекиване грешке. Покушајте касније.';
+
+  @override
   String get copyLogs => 'Копирај логове';
 
   @override
