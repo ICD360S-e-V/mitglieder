@@ -8,6 +8,7 @@ import 'services/notification_service.dart';
 import 'services/ticket_notification_service.dart';
 import 'services/logger_service.dart';
 import 'services/background_service.dart';
+import 'services/update_service.dart';
 import 'services/platform/platform_factory.dart';
 
 void main() async {
@@ -46,6 +47,7 @@ void main() async {
   // Initialize services with error handling
   try {
     await LoggerService().init();
+    await UpdateService.initVersion();
     await ApiService().initialize();
 
     if (PlatformFactory.isMobile) {
