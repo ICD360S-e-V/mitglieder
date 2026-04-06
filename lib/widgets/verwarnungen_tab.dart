@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../utils/error_helpers.dart';
 
 class VerwarnungenTab extends StatefulWidget {
   const VerwarnungenTab({super.key});
@@ -51,7 +52,7 @@ class _VerwarnungenTabState extends State<VerwarnungenTab> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = '${AppLocalizations.of(context)!.connectionErrorGeneric}: $e';
+        _error = getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'WARNINGS');
         _isLoading = false;
       });
     }
