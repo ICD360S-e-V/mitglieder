@@ -1233,6 +1233,21 @@ class AppLocalizationsHr extends AppLocalizations {
   String get connectionErrorGeneric => 'Greška povezivanja';
 
   @override
+  String get errorNoInternet => 'Nema internetske veze. Provjerite svoju mrežu.';
+
+  @override
+  String get errorTimeout => 'Poslužitelj ne odgovara. Pokušajte ponovo kasnije.';
+
+  @override
+  String get errorServer => 'Greška poslužitelja. Pokušajte ponovo kasnije.';
+
+  @override
+  String get errorConnection => 'Greška veze. Pokušajte ponovo kasnije.';
+
+  @override
+  String get errorUnexpected => 'Došlo je do neočekivane greške. Pokušajte ponovo kasnije.';
+
+  @override
   String get copyLogs => 'Kopiraj logove';
 
   @override
