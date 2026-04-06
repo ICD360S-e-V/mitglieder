@@ -1241,6 +1241,21 @@ class AppLocalizationsEs extends AppLocalizations {
   String get connectionErrorGeneric => 'Error de conexión';
 
   @override
+  String get errorNoInternet => 'Sin conexión a Internet. Por favor, compruebe su red.';
+
+  @override
+  String get errorTimeout => 'El servidor no responde. Por favor, inténtelo más tarde.';
+
+  @override
+  String get errorServer => 'Error del servidor. Por favor, inténtelo más tarde.';
+
+  @override
+  String get errorConnection => 'Error de conexión. Por favor, inténtelo más tarde.';
+
+  @override
+  String get errorUnexpected => 'Se ha producido un error inesperado. Por favor, inténtelo más tarde.';
+
+  @override
   String get copyLogs => 'Copiar logs';
 
   @override
