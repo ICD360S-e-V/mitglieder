@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Nincs internetkapcsolat. Kérjük, ellenőrizze a hálózatát.",
+  "errorTimeout": "A szerver nem válaszol. Kérjük, próbálja később.",
+  "errorServer": "Szerverhiba. Kérjük, próbálja később.",
+  "errorConnection": "Kapcsolódási hiba. Kérjük, próbálja később.",
+  "errorUnexpected": "Váratlan hiba történt. Kérjük, próbálja később."
 }
