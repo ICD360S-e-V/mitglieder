@@ -1229,6 +1229,21 @@ class AppLocalizationsLv extends AppLocalizations {
   String get connectionErrorGeneric => 'Savienojuma kļūda';
 
   @override
+  String get errorNoInternet => 'Nav interneta savienojuma. Lūdzu, pārbaudiet tīklu.';
+
+  @override
+  String get errorTimeout => 'Serveris neatbild. Lūdzu, mēģiniet vēlāk.';
+
+  @override
+  String get errorServer => 'Servera kļūda. Lūdzu, mēģiniet vēlāk.';
+
+  @override
+  String get errorConnection => 'Savienojuma kļūda. Lūdzu, mēģiniet vēlāk.';
+
+  @override
+  String get errorUnexpected => 'Radās neparedzēta kļūda. Lūdzu, mēģiniet vēlāk.';
+
+  @override
   String get copyLogs => 'Kopēt žurnālus';
 
   @override
