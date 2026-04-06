@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
@@ -13,7 +14,15 @@ import 'http_client_factory.dart';
 /// Supports: Android (APK), iOS (App Store), Windows (EXE), macOS (DMG), Linux (AppImage)
 class UpdateService {
   static const String versionUrl = 'https://icd360sev.icd360s.de/api/version_mitglieder.php';
-  static const String currentVersion = '1.1.26';
+  static String _currentVersion = 'unknown';
+
+  /// Initialize version from pubspec.yaml via package_info_plus
+  static Future<void> initVersion() async {
+    final info = await PackageInfo.fromPlatform();
+    _currentVersion = info.version;
+  }
+
+  static String get currentVersion => _currentVersion;
   static const int currentBuildNumber = 122;
 
   late http.Client _client;
