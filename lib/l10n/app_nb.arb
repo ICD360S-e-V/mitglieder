@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Ingen internettforbindelse. Vennligst sjekk nettverket ditt.",
+  "errorTimeout": "Serveren svarer ikke. Vennligst prøv igjen senere.",
+  "errorServer": "Serverfeil. Vennligst prøv igjen senere.",
+  "errorConnection": "Tilkoblingsfeil. Vennligst prøv igjen senere.",
+  "errorUnexpected": "En uventet feil oppstod. Vennligst prøv igjen senere."
 }
