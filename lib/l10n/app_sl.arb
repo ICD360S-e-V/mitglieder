@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Ni internetne povezave. Preverite omrežje.",
+  "errorTimeout": "Strežnik se ne odziva. Poskusite znova pozneje.",
+  "errorServer": "Napaka strežnika. Poskusite znova pozneje.",
+  "errorConnection": "Napaka povezave. Poskusite znova pozneje.",
+  "errorUnexpected": "Prišlo je do nepričakovane napake. Poskusite znova pozneje."
 }
