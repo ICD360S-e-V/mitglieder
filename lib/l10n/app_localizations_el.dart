@@ -1240,6 +1240,21 @@ class AppLocalizationsEl extends AppLocalizations {
   String get connectionErrorGeneric => 'Σφάλμα σύνδεσης';
 
   @override
+  String get errorNoInternet => 'Δεν υπάρχει σύνδεση στο διαδίκτυο. Ελέγξτε το δίκτυό σας.';
+
+  @override
+  String get errorTimeout => 'Ο διακομιστής δεν αποκρίνεται. Δοκιμάστε αργότερα.';
+
+  @override
+  String get errorServer => 'Σφάλμα διακομιστή. Δοκιμάστε αργότερα.';
+
+  @override
+  String get errorConnection => 'Σφάλμα σύνδεσης. Δοκιμάστε αργότερα.';
+
+  @override
+  String get errorUnexpected => 'Παρουσιάστηκε απροσδόκητο σφάλμα. Δοκιμάστε αργότερα.';
+
+  @override
   String get copyLogs => 'Αντιγραφή αρχείων καταγραφής';
 
   @override
