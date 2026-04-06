@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Nav interneta savienojuma. Lūdzu, pārbaudiet tīklu.",
+  "errorTimeout": "Serveris neatbild. Lūdzu, mēģiniet vēlāk.",
+  "errorServer": "Servera kļūda. Lūdzu, mēģiniet vēlāk.",
+  "errorConnection": "Savienojuma kļūda. Lūdzu, mēģiniet vēlāk.",
+  "errorUnexpected": "Radās neparedzēta kļūda. Lūdzu, mēģiniet vēlāk."
 }
