@@ -936,5 +936,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "İnternet bağlantısı yok. Lütfen ağınızı kontrol edin.",
+  "errorTimeout": "Sunucu yanıt vermiyor. Lütfen daha sonra tekrar deneyin.",
+  "errorServer": "Sunucu hatası. Lütfen daha sonra tekrar deneyin.",
+  "errorConnection": "Bağlantı hatası. Lütfen daha sonra tekrar deneyin.",
+  "errorUnexpected": "Beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin."
 }
