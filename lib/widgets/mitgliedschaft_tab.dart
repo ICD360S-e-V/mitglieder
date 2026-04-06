@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../utils/error_helpers.dart';
 
 class MitgliedschaftTab extends StatefulWidget {
   final String mitgliedernummer;
@@ -50,7 +51,7 @@ class _MitgliedschaftTabState extends State<MitgliedschaftTab> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = '${AppLocalizations.of(context)!.connectionErrorGeneric}: $e';
+        _error = getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'MEMBERSHIP');
         _isLoading = false;
       });
     }
