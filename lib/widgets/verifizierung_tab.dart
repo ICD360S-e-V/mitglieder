@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../screens/webview_screen.dart';
+import '../utils/error_helpers.dart';
 
 class VerifizierungTab extends StatefulWidget {
   final String mitgliedernummer;
@@ -158,7 +159,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = '${AppLocalizations.of(context)!.connectionErrorGeneric}: $e';
+        _error = getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY');
         _isLoading = false;
       });
     }
@@ -328,7 +329,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       }
     } catch (e) {
       if (!mounted) return;
-      _showSnackBar(AppLocalizations.of(context)!.error(e.toString()), isError: true);
+      _showSnackBar(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY'), isError: true);
     } finally {
       if (mounted) setState(() => _isSaving = false);
     }
@@ -360,7 +361,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       }
     } catch (e) {
       if (!mounted) return;
-      _showSnackBar(AppLocalizations.of(context)!.error(e.toString()), isError: true);
+      _showSnackBar(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY'), isError: true);
     } finally {
       if (mounted) setState(() => _isSaving = false);
     }
@@ -386,7 +387,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       }
     } catch (e) {
       if (!mounted) return;
-      _showSnackBar(AppLocalizations.of(context)!.error(e.toString()), isError: true);
+      _showSnackBar(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY'), isError: true);
     } finally {
       if (mounted) setState(() => _isSaving = false);
     }
@@ -413,7 +414,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       }
     } catch (e) {
       if (!mounted) return;
-      _showSnackBar(AppLocalizations.of(context)!.error(e.toString()), isError: true);
+      _showSnackBar(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY'), isError: true);
     } finally {
       if (mounted) setState(() => _isSaving = false);
     }
@@ -453,7 +454,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       }
     } catch (e) {
       if (!mounted) return;
-      _showSnackBar(AppLocalizations.of(context)!.error(e.toString()), isError: true);
+      _showSnackBar(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY'), isError: true);
     } finally {
       if (mounted) setState(() => _isSaving = false);
     }
@@ -473,7 +474,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       }
     } catch (e) {
       if (!mounted) return;
-      _showSnackBar(AppLocalizations.of(context)!.error(e.toString()), isError: true);
+      _showSnackBar(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY'), isError: true);
     } finally {
       if (mounted) setState(() => _isSaving = false);
     }
@@ -1312,7 +1313,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     } catch (e) {
       if (!mounted) return;
       Navigator.pop(context); // Close progress dialog
-      _showSnackBar('${AppLocalizations.of(context)!.errorUploading}: $e', isError: true);
+      _showSnackBar(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY'), isError: true);
     }
   }
 
