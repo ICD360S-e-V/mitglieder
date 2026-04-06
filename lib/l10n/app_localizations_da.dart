@@ -1232,6 +1232,21 @@ class AppLocalizationsDa extends AppLocalizations {
   String get connectionErrorGeneric => 'Forbindelsesfejl';
 
   @override
+  String get errorNoInternet => 'Ingen internetforbindelse. Kontrollér venligst dit netværk.';
+
+  @override
+  String get errorTimeout => 'Serveren svarer ikke. Prøv venligst igen senere.';
+
+  @override
+  String get errorServer => 'Serverfejl. Prøv venligst igen senere.';
+
+  @override
+  String get errorConnection => 'Forbindelsesfejl. Prøv venligst igen senere.';
+
+  @override
+  String get errorUnexpected => 'Der opstod en uventet fejl. Prøv venligst igen senere.';
+
+  @override
   String get copyLogs => 'Kopiér logfiler';
 
   @override
