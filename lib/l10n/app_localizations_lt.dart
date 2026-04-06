@@ -1235,6 +1235,21 @@ class AppLocalizationsLt extends AppLocalizations {
   String get connectionErrorGeneric => 'Ryšio klaida';
 
   @override
+  String get errorNoInternet => 'Nėra interneto ryšio. Patikrinkite savo tinklą.';
+
+  @override
+  String get errorTimeout => 'Serveris neatsako. Bandykite vėliau.';
+
+  @override
+  String get errorServer => 'Serverio klaida. Bandykite vėliau.';
+
+  @override
+  String get errorConnection => 'Ryšio klaida. Bandykite vėliau.';
+
+  @override
+  String get errorUnexpected => 'Įvyko netikėta klaida. Bandykite vėliau.';
+
+  @override
   String get copyLogs => 'Kopijuoti žurnalus';
 
   @override
