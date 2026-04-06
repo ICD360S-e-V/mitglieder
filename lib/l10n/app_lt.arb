@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Nėra interneto ryšio. Patikrinkite savo tinklą.",
+  "errorTimeout": "Serveris neatsako. Bandykite vėliau.",
+  "errorServer": "Serverio klaida. Bandykite vėliau.",
+  "errorConnection": "Ryšio klaida. Bandykite vėliau.",
+  "errorUnexpected": "Įvyko netikėta klaida. Bandykite vėliau."
 }
