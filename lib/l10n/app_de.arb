@@ -936,5 +936,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Keine Internetverbindung. Bitte überprüfen Sie Ihr Netzwerk.",
+  "errorTimeout": "Server antwortet nicht. Bitte versuchen Sie es später erneut.",
+  "errorServer": "Serverfehler. Bitte versuchen Sie es später erneut.",
+  "errorConnection": "Verbindungsfehler. Bitte versuchen Sie es später erneut.",
+  "errorUnexpected": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
 }
