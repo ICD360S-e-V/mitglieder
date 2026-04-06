@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
+import 'package:crypto/crypto.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -453,8 +454,9 @@ class DesktopPlatformService implements PlatformService, WindowListener {
       combined = const Uuid().v4();
     }
 
-    // Create hash from combined string
-    final hash = combined.hashCode.toRadixString(16).padLeft(8, '0');
+    // Create cryptographic hash from combined string
+    final bytes = utf8.encode(combined);
+    final hash = sha256.convert(bytes).toString().substring(0, 16);
     _deviceId = '${PlatformFactory.platformPrefix}_$hash';
 
     return _deviceId!;
@@ -530,15 +532,16 @@ class DesktopPlatformService implements PlatformService, WindowListener {
 
       if (await file.exists()) await file.delete();
 
-      final client = http.Client();
-      final request = http.Request('GET', Uri.parse(downloadUrl));
-      final response = await client.send(request);
+      // Security: use certificate-pinned HTTP client for update downloads
+      final httpClient = HttpClientFactory.createPinnedHttpClient();
+      final request = await httpClient.getUrl(Uri.parse(downloadUrl));
+      final response = await request.close();
 
-      final totalBytes = response.contentLength ?? 0;
+      final totalBytes = response.contentLength;
       int receivedBytes = 0;
 
       final sink = file.openWrite();
-      await for (final chunk in response.stream) {
+      await for (final chunk in response) {
         sink.add(chunk);
         receivedBytes += chunk.length;
         if (totalBytes > 0) {
@@ -546,6 +549,7 @@ class DesktopPlatformService implements PlatformService, WindowListener {
         }
       }
       await sink.close();
+      httpClient.close();
 
       // Launch installer
       await _launchInstaller(filePath);
@@ -558,13 +562,13 @@ class DesktopPlatformService implements PlatformService, WindowListener {
 
   Future<void> _launchInstaller(String filePath) async {
     if (Platform.isWindows) {
-      await Process.start(filePath, [], runInShell: true);
+      await Process.start(filePath, []);
     } else if (Platform.isMacOS) {
       await Process.run('hdiutil', ['attach', filePath]);
       await Process.run('open', ['/Volumes/ICD360S Mitglieder']);
     } else if (Platform.isLinux) {
       await Process.run('chmod', ['+x', filePath]);
-      await Process.start(filePath, [], runInShell: true);
+      await Process.start(filePath, []);
     }
   }
 
