@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/secure_storage_helper.dart';
@@ -169,7 +170,10 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     NtfyService().start(widget.mitgliedernummer);
 
     // Start log upload to server (every 30s) with app version
-    _log.startUpload(widget.mitgliedernummer, '1.1.26');
+    // Get version dynamically from pubspec.yaml
+    PackageInfo.fromPlatform().then((info) {
+      _log.startUpload(widget.mitgliedernummer, info.version);
+    });
 
     // Update battery/device data on server every 5 minutes
     DeviceKeyService().updateExtendedData();
