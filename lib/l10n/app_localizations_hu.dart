@@ -1238,6 +1238,21 @@ class AppLocalizationsHu extends AppLocalizations {
   String get connectionErrorGeneric => 'Kapcsolódási hiba';
 
   @override
+  String get errorNoInternet => 'Nincs internetkapcsolat. Kérjük, ellenőrizze a hálózatát.';
+
+  @override
+  String get errorTimeout => 'A szerver nem válaszol. Kérjük, próbálja később.';
+
+  @override
+  String get errorServer => 'Szerverhiba. Kérjük, próbálja később.';
+
+  @override
+  String get errorConnection => 'Kapcsolódási hiba. Kérjük, próbálja később.';
+
+  @override
+  String get errorUnexpected => 'Váratlan hiba történt. Kérjük, próbálja később.';
+
+  @override
   String get copyLogs => 'Naplók másolása';
 
   @override
