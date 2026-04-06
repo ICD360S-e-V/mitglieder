@@ -57,7 +57,7 @@ class _DokumenteTabState extends State<DokumenteTab> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = '${AppLocalizations.of(context)!.connectionErrorGeneric}: $e';
+        _error = getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'DOCS');
         _isLoading = false;
       });
     }
