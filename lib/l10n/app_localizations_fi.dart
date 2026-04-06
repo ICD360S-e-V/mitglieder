@@ -1234,6 +1234,21 @@ class AppLocalizationsFi extends AppLocalizations {
   String get connectionErrorGeneric => 'Yhteysvirhe';
 
   @override
+  String get errorNoInternet => 'Ei Internet-yhteyttä. Tarkista verkkosi.';
+
+  @override
+  String get errorTimeout => 'Palvelin ei vastaa. Yritä myöhemmin uudelleen.';
+
+  @override
+  String get errorServer => 'Palvelinvirhe. Yritä myöhemmin uudelleen.';
+
+  @override
+  String get errorConnection => 'Yhteysvirhe. Yritä myöhemmin uudelleen.';
+
+  @override
+  String get errorUnexpected => 'Odottamaton virhe. Yritä myöhemmin uudelleen.';
+
+  @override
   String get copyLogs => 'Kopioi lokit';
 
   @override
