@@ -1236,6 +1236,21 @@ class AppLocalizationsUk extends AppLocalizations {
   String get connectionErrorGeneric => 'Помилка з\'єднання';
 
   @override
+  String get errorNoInternet => 'Немає з'єднання з Інтернетом. Перевірте мережу.';
+
+  @override
+  String get errorTimeout => 'Сервер не відповідає. Спробуйте пізніше.';
+
+  @override
+  String get errorServer => 'Помилка сервера. Спробуйте пізніше.';
+
+  @override
+  String get errorConnection => 'Помилка з'єднання. Спробуйте пізніше.';
+
+  @override
+  String get errorUnexpected => 'Сталася неочікувана помилка. Спробуйте пізніше.';
+
+  @override
   String get copyLogs => 'Копіювати логи';
 
   @override
