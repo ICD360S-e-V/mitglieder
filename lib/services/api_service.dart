@@ -57,8 +57,7 @@ class ApiService {
 
     // Save mitgliedernummer to SharedPreferences (needed by BackgroundService for own-message detection)
     if (mitgliedernummer != null) {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('mitgliedernummer', mitgliedernummer);
+      // mitgliedernummer passed to background service via IPC only (not stored in plaintext)
       // Send credentials to background service for WebSocket connection
       await BackgroundService.setCredentials(token, mitgliedernummer);
     }
@@ -73,7 +72,6 @@ class ApiService {
 
     // Clear mitgliedernummer from SharedPreferences
     final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('mitgliedernummer');
 
     // Clear credentials from background service
     await BackgroundService.clearCredentials();
