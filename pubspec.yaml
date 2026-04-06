@@ -86,7 +86,7 @@ dependencies:
   intl: ^0.20.2
 
   # File picker for chat attachments
-  file_picker: ^10.3.10
+  file_picker: ^11.0.2
 
   # Image picker for camera and gallery
   image_picker: ^1.0.7
