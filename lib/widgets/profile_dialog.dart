@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../utils/error_helpers.dart';
 
 class ProfileDialog extends StatefulWidget {
   final String userName;
