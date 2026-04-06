@@ -1238,6 +1238,21 @@ class AppLocalizationsSl extends AppLocalizations {
   String get connectionErrorGeneric => 'Napaka povezave';
 
   @override
+  String get errorNoInternet => 'Ni internetne povezave. Preverite omrežje.';
+
+  @override
+  String get errorTimeout => 'Strežnik se ne odziva. Poskusite znova pozneje.';
+
+  @override
+  String get errorServer => 'Napaka strežnika. Poskusite znova pozneje.';
+
+  @override
+  String get errorConnection => 'Napaka povezave. Poskusite znova pozneje.';
+
+  @override
+  String get errorUnexpected => 'Prišlo je do nepričakovane napake. Poskusite znova pozneje.';
+
+  @override
   String get copyLogs => 'Kopiraj dnevnike';
 
   @override
