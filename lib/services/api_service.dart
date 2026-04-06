@@ -767,7 +767,8 @@ class ApiService {
 
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Upload failed: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Upload failed'};
     }
   }
 
@@ -788,7 +789,8 @@ class ApiService {
 
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Download failed: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Download failed'};
     }
   }
 
@@ -813,7 +815,8 @@ class ApiService {
 
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Mark read failed: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Mark read failed'};
     }
   }
 
@@ -834,7 +837,8 @@ class ApiService {
 
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to load data: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to load data'};
     }
   }
 
@@ -849,7 +853,8 @@ class ApiService {
 
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to update: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to update'};
     }
   }
 
@@ -865,7 +870,8 @@ class ApiService {
       final response = await _client.get(Uri.parse(url), headers: _headers);
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to load: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to load'};
     }
   }
 
@@ -879,7 +885,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to create: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to create'};
     }
   }
 
@@ -893,7 +900,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to update: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to update'};
     }
   }
 
@@ -906,7 +914,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to delete: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to delete'};
     }
   }
 
@@ -920,7 +929,8 @@ class ApiService {
       final response = await _client.get(Uri.parse(url), headers: _headers);
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to load: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to load'};
     }
   }
 
@@ -934,7 +944,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to create: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to create'};
     }
   }
 
@@ -948,7 +959,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to update: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to update'};
     }
   }
 
@@ -961,7 +973,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to delete: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to delete'};
     }
   }
 
@@ -976,7 +989,8 @@ class ApiService {
       final response = await _client.get(Uri.parse(url), headers: _headers);
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to load: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to load'};
     }
   }
 
@@ -990,7 +1004,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to create: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to create'};
     }
   }
 
@@ -1004,7 +1019,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to update: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to update'};
     }
   }
 
@@ -1017,7 +1033,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to delete: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to delete'};
     }
   }
 
@@ -1032,7 +1049,8 @@ class ApiService {
       final response = await _client.get(Uri.parse(url), headers: _headers);
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to load: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to load'};
     }
   }
 
@@ -1046,7 +1064,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to create: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to create'};
     }
   }
 
@@ -1060,7 +1079,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to update: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to update'};
     }
   }
 
@@ -1073,7 +1093,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Failed to delete: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Failed to delete'};
     }
   }
 
@@ -1102,7 +1123,8 @@ class ApiService {
 
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Push logs failed: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Push logs failed'};
     }
   }
 
@@ -1126,7 +1148,8 @@ class ApiService {
         };
       }
     } catch (e) {
-      return {'success': false, 'error': 'Failed to load changelog: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'error': 'Failed to load changelog'};
     }
   }
 
@@ -1146,7 +1169,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Request failed: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Request failed'};
     }
   }
 
@@ -1160,7 +1184,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Check failed: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Check failed'};
     }
   }
 
@@ -1177,7 +1202,8 @@ class ApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      return {'success': false, 'message': 'Approval login failed: $e'};
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Approval login failed'};
     }
   }
 }
