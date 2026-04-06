@@ -1230,6 +1230,21 @@ class AppLocalizationsNb extends AppLocalizations {
   String get connectionErrorGeneric => 'Tilkoblingsfeil';
 
   @override
+  String get errorNoInternet => 'Ingen internettforbindelse. Vennligst sjekk nettverket ditt.';
+
+  @override
+  String get errorTimeout => 'Serveren svarer ikke. Vennligst prøv igjen senere.';
+
+  @override
+  String get errorServer => 'Serverfeil. Vennligst prøv igjen senere.';
+
+  @override
+  String get errorConnection => 'Tilkoblingsfeil. Vennligst prøv igjen senere.';
+
+  @override
+  String get errorUnexpected => 'En uventet feil oppstod. Vennligst prøv igjen senere.';
+
+  @override
   String get copyLogs => 'Kopier logger';
 
   @override
