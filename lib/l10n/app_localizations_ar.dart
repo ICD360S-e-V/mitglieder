@@ -1227,6 +1227,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get connectionErrorGeneric => 'خطأ في الاتصال';
 
   @override
+  String get errorNoInternet => 'لا يوجد اتصال بالإنترنت. يرجى التحقق من شبكتك.';
+
+  @override
+  String get errorTimeout => 'الخادم لا يستجيب. يرجى المحاولة لاحقاً.';
+
+  @override
+  String get errorServer => 'خطأ في الخادم. يرجى المحاولة لاحقاً.';
+
+  @override
+  String get errorConnection => 'خطأ في الاتصال. يرجى المحاولة لاحقاً.';
+
+  @override
+  String get errorUnexpected => 'حدث خطأ غير متوقع. يرجى المحاولة لاحقاً.';
+
+  @override
   String get copyLogs => 'نسخ السجلات';
 
   @override
