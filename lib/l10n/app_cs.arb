@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Žádné připojení k internetu. Zkontrolujte prosím síť.",
+  "errorTimeout": "Server neodpovídá. Zkuste to prosím později.",
+  "errorServer": "Chyba serveru. Zkuste to prosím později.",
+  "errorConnection": "Chyba připojení. Zkuste to prosím později.",
+  "errorUnexpected": "Došlo k neočekávané chybě. Zkuste to prosím později."
 }
