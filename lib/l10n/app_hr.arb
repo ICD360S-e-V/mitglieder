@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Nema internetske veze. Provjerite svoju mrežu.",
+  "errorTimeout": "Poslužitelj ne odgovara. Pokušajte ponovo kasnije.",
+  "errorServer": "Greška poslužitelja. Pokušajte ponovo kasnije.",
+  "errorConnection": "Greška veze. Pokušajte ponovo kasnije.",
+  "errorUnexpected": "Došlo je do neočekivane greške. Pokušajte ponovo kasnije."
 }
