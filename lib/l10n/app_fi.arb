@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Ei Internet-yhteyttä. Tarkista verkkosi.",
+  "errorTimeout": "Palvelin ei vastaa. Yritä myöhemmin uudelleen.",
+  "errorServer": "Palvelinvirhe. Yritä myöhemmin uudelleen.",
+  "errorConnection": "Yhteysvirhe. Yritä myöhemmin uudelleen.",
+  "errorUnexpected": "Odottamaton virhe. Yritä myöhemmin uudelleen."
 }
