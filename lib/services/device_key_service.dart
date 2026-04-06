@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:crypto/crypto.dart';
 import 'dart:io';
 import 'dart:ui' show PlatformDispatcher;
 import 'package:battery_plus/battery_plus.dart';
@@ -132,12 +133,12 @@ class DeviceKeyService {
         components = [const Uuid().v4()];
       }
 
-      // Hash-uiește componentele pentru un ID consistent
+      // Cryptographic hash for consistent, non-reversible device ID
       final combined = components.join('|');
       final bytes = utf8.encode(combined);
-      final hash = base64Encode(bytes);
+      final hash = sha256.convert(bytes).toString();
 
-      return '${_platformPrefix}_${hash.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '').substring(0, 32)}';
+      return '${_platformPrefix}_${hash.substring(0, 32)}';
     } catch (e) {
       // Fallback: generează UUID
       return '${_platformPrefix}_${const Uuid().v4().replaceAll('-', '')}';
