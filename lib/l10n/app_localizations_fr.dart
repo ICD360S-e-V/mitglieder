@@ -1243,6 +1243,21 @@ class AppLocalizationsFr extends AppLocalizations {
   String get connectionErrorGeneric => 'Erreur de connexion';
 
   @override
+  String get errorNoInternet => 'Pas de connexion Internet. Veuillez vérifier votre réseau.';
+
+  @override
+  String get errorTimeout => 'Le serveur ne répond pas. Veuillez réessayer plus tard.';
+
+  @override
+  String get errorServer => 'Erreur du serveur. Veuillez réessayer plus tard.';
+
+  @override
+  String get errorConnection => 'Erreur de connexion. Veuillez réessayer plus tard.';
+
+  @override
+  String get errorUnexpected => 'Une erreur inattendue s'est produite. Veuillez réessayer plus tard.';
+
+  @override
   String get copyLogs => 'Copier les journaux';
 
   @override
