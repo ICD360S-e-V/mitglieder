@@ -915,5 +915,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "errorNoInternet": "Internetiühendus puudub. Palun kontrollige oma võrku.",
+  "errorTimeout": "Server ei vasta. Palun proovige hiljem uuesti.",
+  "errorServer": "Serveri viga. Palun proovige hiljem uuesti.",
+  "errorConnection": "Ühenduse viga. Palun proovige hiljem uuesti.",
+  "errorUnexpected": "Tekkis ootamatu viga. Palun proovige hiljem uuesti."
 }
