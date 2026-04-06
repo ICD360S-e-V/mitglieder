@@ -412,13 +412,11 @@ class BackgroundService {
 
     switch (type) {
       case 'new_message':
-        // Skip own messages - check sender against stored mitgliedernummer
+        // Skip own messages - use mitgliedernummer from IPC credentials (not SharedPreferences)
         final senderMitgliedernummer = message['sender_mitgliedernummer']?.toString() ?? '';
         final senderId = message['sender_id']?.toString() ?? '';
-        final prefs = await SharedPreferences.getInstance();
-        final currentUser = prefs.getString('mitgliedernummer') ?? '';
-        if (currentUser.isNotEmpty &&
-            (senderMitgliedernummer == currentUser || senderId == currentUser)) {
+        if (mitgliedernummer != null && mitgliedernummer!.isNotEmpty &&
+            (senderMitgliedernummer == mitgliedernummer || senderId == mitgliedernummer)) {
           debugPrint('[BackgroundService] Skipping notification for own message');
           break;
         }
