@@ -71,7 +71,7 @@ dependencies:
 
   # Device info for unique device identification
   # Pinned: 12.4.0 uses NSProcessInfo.isiOSAppOnVision unavailable in Xcode 16.x SDK
-  device_info_plus: 12.3.0
+  device_info_plus: 12.4.0
 
   # App version info (single source of truth from pubspec.yaml)
   package_info_plus: ^8.0.0
