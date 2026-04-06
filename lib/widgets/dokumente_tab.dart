@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import '../l10n/app_localizations.dart';
 import 'file_viewer.dart';
 import '../services/api_service.dart';
+import '../utils/error_helpers.dart';
 
 class DokumenteTab extends StatefulWidget {
   const DokumenteTab({super.key});
@@ -190,7 +191,7 @@ class _DokumenteTabState extends State<DokumenteTab> {
       }
     } catch (e) {
       if (!mounted) return;
-      _showSnackBar(AppLocalizations.of(context)!.error(e.toString()), isError: true);
+      _showSnackBar(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'DOCS'), isError: true);
     } finally {
       if (mounted) setState(() => _downloadingId = null);
     }
