@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../utils/error_helpers.dart';
 
 class ForgotPasswordDialog extends StatefulWidget {
   final ApiService apiService;
@@ -76,7 +77,7 @@ class _ForgotPasswordDialogState extends State<ForgotPasswordDialog> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = l10n.connectionError(e.toString());
+        _errorMessage = getUserFriendlyError(l10n, e, tag: 'FORGOT_PW');
       });
     } finally {
       if (mounted) {
