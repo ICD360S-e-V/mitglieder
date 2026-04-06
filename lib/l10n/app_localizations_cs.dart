@@ -1234,6 +1234,21 @@ class AppLocalizationsCs extends AppLocalizations {
   String get connectionErrorGeneric => 'Chyba připojení';
 
   @override
+  String get errorNoInternet => 'Žádné připojení k internetu. Zkontrolujte prosím síť.';
+
+  @override
+  String get errorTimeout => 'Server neodpovídá. Zkuste to prosím později.';
+
+  @override
+  String get errorServer => 'Chyba serveru. Zkuste to prosím později.';
+
+  @override
+  String get errorConnection => 'Chyba připojení. Zkuste to prosím později.';
+
+  @override
+  String get errorUnexpected => 'Došlo k neočekávané chybě. Zkuste to prosím později.';
+
+  @override
   String get copyLogs => 'Kopírovat logy';
 
   @override
