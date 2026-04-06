@@ -1232,6 +1232,21 @@ class AppLocalizationsEt extends AppLocalizations {
   String get connectionErrorGeneric => 'Ühendusviga';
 
   @override
+  String get errorNoInternet => 'Internetiühendus puudub. Palun kontrollige oma võrku.';
+
+  @override
+  String get errorTimeout => 'Server ei vasta. Palun proovige hiljem uuesti.';
+
+  @override
+  String get errorServer => 'Serveri viga. Palun proovige hiljem uuesti.';
+
+  @override
+  String get errorConnection => 'Ühenduse viga. Palun proovige hiljem uuesti.';
+
+  @override
+  String get errorUnexpected => 'Tekkis ootamatu viga. Palun proovige hiljem uuesti.';
+
+  @override
   String get copyLogs => 'Kopeeri logid';
 
   @override
