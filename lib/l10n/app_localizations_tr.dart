@@ -1234,6 +1234,21 @@ class AppLocalizationsTr extends AppLocalizations {
   String get connectionErrorGeneric => 'Bağlantı hatası';
 
   @override
+  String get errorNoInternet => 'İnternet bağlantısı yok. Lütfen ağınızı kontrol edin.';
+
+  @override
+  String get errorTimeout => 'Sunucu yanıt vermiyor. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get errorServer => 'Sunucu hatası. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get errorConnection => 'Bağlantı hatası. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get errorUnexpected => 'Beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
+
+  @override
   String get copyLogs => 'Günlükleri kopyala';
 
   @override
