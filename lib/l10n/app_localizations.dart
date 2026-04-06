@@ -2358,6 +2358,36 @@ abstract class AppLocalizations {
   /// **'Verbindungsfehler'**
   String get connectionErrorGeneric;
 
+  /// No description provided for @errorNoInternet.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Internetverbindung. Bitte überprüfen Sie Ihr Netzwerk.'**
+  String get errorNoInternet;
+
+  /// No description provided for @errorTimeout.
+  ///
+  /// In de, this message translates to:
+  /// **'Server antwortet nicht. Bitte versuchen Sie es später erneut.'**
+  String get errorTimeout;
+
+  /// No description provided for @errorServer.
+  ///
+  /// In de, this message translates to:
+  /// **'Serverfehler. Bitte versuchen Sie es später erneut.'**
+  String get errorServer;
+
+  /// No description provided for @errorConnection.
+  ///
+  /// In de, this message translates to:
+  /// **'Verbindungsfehler. Bitte versuchen Sie es später erneut.'**
+  String get errorConnection;
+
+  /// No description provided for @errorUnexpected.
+  ///
+  /// In de, this message translates to:
+  /// **'Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'**
+  String get errorUnexpected;
+
   /// No description provided for @copyLogs.
   ///
   /// In de, this message translates to:
