@@ -1236,6 +1236,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get connectionErrorGeneric => 'Ошибка подключения';
 
   @override
+  String get errorNoInternet => 'Нет подключения к Интернету. Проверьте сеть.';
+
+  @override
+  String get errorTimeout => 'Сервер не отвечает. Попробуйте позже.';
+
+  @override
+  String get errorServer => 'Ошибка сервера. Попробуйте позже.';
+
+  @override
+  String get errorConnection => 'Ошибка соединения. Попробуйте позже.';
+
+  @override
+  String get errorUnexpected => 'Произошла непредвиденная ошибка. Попробуйте позже.';
+
+  @override
   String get copyLogs => 'Копировать логи';
 
   @override
