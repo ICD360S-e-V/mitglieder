@@ -116,7 +116,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('${AppLocalizations.of(context)!.notifError}: $e'),
+          content: Text(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'PROFILE')),
           backgroundColor: Colors.red,
         ),
       );
@@ -172,7 +172,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('${AppLocalizations.of(context)!.notifError}: $e'),
+          content: Text(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'PROFILE')),
           backgroundColor: Colors.red,
         ),
       );
