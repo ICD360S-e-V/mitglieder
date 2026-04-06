@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'dart:io';
 import 'dart:ui' show PlatformDispatcher;
 import 'package:battery_plus/battery_plus.dart';
@@ -25,6 +26,7 @@ class DeviceKeyService {
   late http.Client _client;
   String? _deviceKey;
   String? _deviceId;
+  String _appVersion = 'unknown';
 
   // Singleton pattern
   static final DeviceKeyService _instance = DeviceKeyService._internal();
@@ -43,6 +45,14 @@ class DeviceKeyService {
 
   /// Verifică dacă device-ul este înregistrat
   bool get isRegistered => _deviceKey != null;
+
+  /// Initialize app version from pubspec.yaml
+  Future<void> _ensureVersion() async {
+    if (_appVersion == 'unknown') {
+      final info = await PackageInfo.fromPlatform();
+      _appVersion = info.version;
+    }
+  }
 
   /// Inițializează service-ul - încarcă sau generează device key
   Future<bool> initialize() async {
@@ -268,6 +278,7 @@ class DeviceKeyService {
   /// Înregistrează device-ul pe server și obține device key
   Future<bool> _registerDevice() async {
     try {
+      await _ensureVersion();
       // Generează device ID
       _deviceId = await _generateDeviceId();
 
@@ -286,7 +297,7 @@ class DeviceKeyService {
           'device_id': _deviceId,
           'device_name': info['device_name'],
           'platform': info['platform'],
-          'app_version': '1.1.26',
+          'app_version': _appVersion,
           'device_type': info['device_type'],
           'os_version': info['os_version'],
           ...extendedData,
@@ -317,6 +328,7 @@ class DeviceKeyService {
   /// Validează device key-ul existent cu serverul
   Future<bool> _validateDeviceKey() async {
     try {
+      await _ensureVersion();
       final info = await _getDeviceInfo();
       final extendedData = await _collectExtendedDeviceData();
 
@@ -328,7 +340,7 @@ class DeviceKeyService {
         },
         body: jsonEncode({
           'device_key': _deviceKey,
-          'app_version': '1.1.26',
+          'app_version': _appVersion,
           'device_type': info['device_type'],
           'os_version': info['os_version'],
           ...extendedData,
