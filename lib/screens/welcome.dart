@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
@@ -23,11 +24,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   final _secureStorage = createSecureStorage();
   bool _isLoading = true;
   bool _isAutoLogging = false;
+  String _appVersion = '...';
 
   @override
   void initState() {
     super.initState();
     _checkAutoLogin();
+    _loadVersion();
+  }
+
+  Future<void> _loadVersion() async {
+    final info = await PackageInfo.fromPlatform();
+    if (mounted) setState(() => _appVersion = info.version);
   }
 
   Future<void> _checkAutoLogin() async {
@@ -411,7 +419,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           SizedBox(height: _getResponsiveSpacing(context, 12)),
           Text(
-            'v1.1.26',
+            'v$_appVersion',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
               fontSize: _getResponsiveFontSize(context, 11),
