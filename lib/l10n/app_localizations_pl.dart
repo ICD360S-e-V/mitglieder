@@ -1238,6 +1238,21 @@ class AppLocalizationsPl extends AppLocalizations {
   String get connectionErrorGeneric => 'Błąd połączenia';
 
   @override
+  String get errorNoInternet => 'Brak połączenia z Internetem. Sprawdź swoją sieć.';
+
+  @override
+  String get errorTimeout => 'Serwer nie odpowiada. Spróbuj ponownie później.';
+
+  @override
+  String get errorServer => 'Błąd serwera. Spróbuj ponownie później.';
+
+  @override
+  String get errorConnection => 'Błąd połączenia. Spróbuj ponownie później.';
+
+  @override
+  String get errorUnexpected => 'Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.';
+
+  @override
   String get copyLogs => 'Kopiuj logi';
 
   @override
