@@ -825,13 +825,12 @@ class ApiService {
   // Get Vereinverwaltung data (partners, notary, etc.)
   Future<Map<String, dynamic>> getVereinverwaltung({String? kategorie}) async {
     try {
-      String url = '$baseUrl/vereinverwaltung/get.php';
-      if (kategorie != null) {
-        url += '?kategorie=$kategorie';
-      }
+      final uri = Uri.parse('$baseUrl/vereinverwaltung/get.php').replace(
+        queryParameters: kategorie != null ? {'kategorie': kategorie} : null,
+      );
 
       final response = await _client.get(
-        Uri.parse(url),
+        uri,
         headers: _headers,
       );
 
@@ -863,11 +862,10 @@ class ApiService {
   // Get Notar Rechnungen (Invoices)
   Future<Map<String, dynamic>> getNotarRechnungen({int? notarId}) async {
     try {
-      String url = '$baseUrl/notar/rechnungen.php';
-      if (notarId != null) {
-        url += '?notar_id=$notarId';
-      }
-      final response = await _client.get(Uri.parse(url), headers: _headers);
+      final uri = Uri.parse('$baseUrl/notar/rechnungen.php').replace(
+        queryParameters: notarId != null ? {'notar_id': notarId.toString()} : null,
+      );
+      final response = await _client.get(uri, headers: _headers);
       return jsonDecode(response.body);
     } catch (e) {
       LoggerService().error('$e', tag: 'API');
@@ -922,11 +920,10 @@ class ApiService {
   // Get Notar Besuche (Visits)
   Future<Map<String, dynamic>> getNotarBesuche({int? notarId}) async {
     try {
-      String url = '$baseUrl/notar/besuche.php';
-      if (notarId != null) {
-        url += '?notar_id=$notarId';
-      }
-      final response = await _client.get(Uri.parse(url), headers: _headers);
+      final uri = Uri.parse('$baseUrl/notar/besuche.php').replace(
+        queryParameters: notarId != null ? {'notar_id': notarId.toString()} : null,
+      );
+      final response = await _client.get(uri, headers: _headers);
       return jsonDecode(response.body);
     } catch (e) {
       LoggerService().error('$e', tag: 'API');
@@ -981,12 +978,13 @@ class ApiService {
   // Get Notar Dokumente
   Future<Map<String, dynamic>> getNotarDokumente({int? notarId, String? typ}) async {
     try {
-      String url = '$baseUrl/notar/dokumente.php';
-      List<String> params = [];
-      if (notarId != null) params.add('notar_id=$notarId');
-      if (typ != null) params.add('typ=$typ');
-      if (params.isNotEmpty) url += '?${params.join('&')}';
-      final response = await _client.get(Uri.parse(url), headers: _headers);
+      final queryParams = <String, String>{};
+      if (notarId != null) queryParams['notar_id'] = notarId.toString();
+      if (typ != null) queryParams['typ'] = typ;
+      final uri = Uri.parse('$baseUrl/notar/dokumente.php').replace(
+        queryParameters: queryParams.isNotEmpty ? queryParams : null,
+      );
+      final response = await _client.get(uri, headers: _headers);
       return jsonDecode(response.body);
     } catch (e) {
       LoggerService().error('$e', tag: 'API');
@@ -1041,12 +1039,13 @@ class ApiService {
   // Get Notar Zahlungen (Payments)
   Future<Map<String, dynamic>> getNotarZahlungen({int? notarId, int? rechnungId}) async {
     try {
-      String url = '$baseUrl/notar/zahlungen.php';
-      List<String> params = [];
-      if (notarId != null) params.add('notar_id=$notarId');
-      if (rechnungId != null) params.add('rechnung_id=$rechnungId');
-      if (params.isNotEmpty) url += '?${params.join('&')}';
-      final response = await _client.get(Uri.parse(url), headers: _headers);
+      final queryParams = <String, String>{};
+      if (notarId != null) queryParams['notar_id'] = notarId.toString();
+      if (rechnungId != null) queryParams['rechnung_id'] = rechnungId.toString();
+      final uri = Uri.parse('$baseUrl/notar/zahlungen.php').replace(
+        queryParameters: queryParams.isNotEmpty ? queryParams : null,
+      );
+      final response = await _client.get(uri, headers: _headers);
       return jsonDecode(response.body);
     } catch (e) {
       LoggerService().error('$e', tag: 'API');
