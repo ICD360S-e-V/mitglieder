@@ -657,22 +657,19 @@ jobs:
         run: |
           SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
 
-          # Copy signed fdroid APK to F-Droid repo
+          # Copy signed fdroid APK into the F-Droid repo directory.
+          # The systemd path unit fdroid-update.path on the server watches
+          # this file and triggers fdroid-update.service (runs `fdroid update -c`)
+          # automatically on PathChanged, with a 3s debounce.
           $SSH_CMD "cp /var/www/icd360sev.icd360s.de/downloads/mitglieder/android/fdroid/icd360sev.apk \
                        /var/www/icd360sev.icd360s.de/fdroid/repo/icd360sev.apk"
 
-          # Auto-detect versionCode from APK and update metadata
-          $SSH_CMD "export ANDROID_SDK_ROOT=/opt/android-sdk && \
-                    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk && \
-                    cd /var/www/icd360sev.icd360s.de/fdroid && \
-                    VC=\$(aapt2 dump badging repo/icd360sev.apk 2>/dev/null | grep versionCode | sed \"s/.*versionCode='//\" | sed \"s/'.*//\") && \
-                    if [ -n \"\$VC\" ]; then \
-                      sed -i \"s/CurrentVersionCode:.*/CurrentVersionCode: \$VC/\" metadata/de.icd360s.mitglieder.yml && \
-                      echo \"Updated CurrentVersionCode to \$VC\"; \
-                    fi && \
-                    fdroid update" || echo "Warning: F-Droid index update failed (non-critical)"
+          # Wait for the index regeneration to finish. `systemctl start --wait`
+          # on a oneshot unit blocks until ExecStart returns and propagates its
+          # exit status — a failed index build will fail this CI step.
+          $SSH_CMD "systemctl start --wait fdroid-update.service"
 
-          echo "✅ F-Droid repository updated"
+          echo "✅ F-Droid APK deployed + index regenerated"
 
       - name: Cleanup SSH
         if: always()
