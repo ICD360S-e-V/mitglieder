@@ -703,7 +703,9 @@ jobs:
           # in the prior step, so it is deliberately not checked here.
           fail=0
           for u in "${URLS[@]}"; do
-            read code size < <(curl -s -o /dev/null -w '%{http_code} %{size_download}' -L --max-time 60 "$u" || echo "000 0")
+            # Trailing \n is required: without it `read` returns 1 at EOF
+            # (even though code/size are populated), which kills the loop under set -e.
+            read code size < <(curl -s -o /dev/null -w '%{http_code} %{size_download}\n' -L --max-time 60 "$u" || echo "000 0")
             # 1MB minimum guards against nginx autoindex pages or truncated uploads
             if [ "$code" = "200" ] && [ "${size:-0}" -gt 1048576 ]; then
               printf '  ok  %s  (%s bytes)\n' "$u" "$size"
