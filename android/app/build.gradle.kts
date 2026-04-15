@@ -68,8 +68,13 @@ android {
         applicationId = "de.icd360s.mitglieder"
         minSdk = flutter.minSdkVersion  // Android 6.0+ (Flutter minimum)
         targetSdk = 36  // Android 15
-        versionCode = 122
-        versionName = "1.1.26"
+        // Pull versionCode/versionName from pubspec.yaml (Flutter Gradle plugin).
+        // Hardcoding these caused the app to ship with a stale Android version —
+        // the manifest on the server advertised a newer version, the APK identified
+        // itself as the previous one, and the update prompt looped forever after
+        // install because the freshly installed APK still reported the old version.
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
 
         // ABI filtering handled by Flutter --split-per-abi flag
         // Do NOT set ndk.abiFilters here (conflicts with split-per-abi)
