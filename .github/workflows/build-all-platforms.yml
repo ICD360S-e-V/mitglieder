@@ -654,6 +654,74 @@ jobs:
           $SCP_CMD deploy/ios/icd360sev-ios.app.zip $DEST:$BASE/ios/icd360sev-ios.app.zip
           echo "✅ iOS uploaded (.app)"
 
+      - name: Publish version manifests
+        run: |
+          set -euo pipefail
+          # The app polls /api/data/version_mitglieder_{android,}.json on every
+          # launch to decide whether to prompt for an update. Without this step
+          # the manifests stay pinned to the previous version forever and users
+          # never see the update banner — even though the APK/EXE is live.
+          SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+          SCP_CMD="scp -B -i ~/.ssh/deploy_key -P ${{ secrets.SSH_PORT }}"
+          DEST="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+
+          TAG="${GITHUB_REF_NAME}"          # e.g. v1.1.27
+          VERSION="${TAG#v}"                 # 1.1.27
+          BUILD=$(grep '^version:' pubspec.yaml | head -1 | sed 's/.*+//')
+          RELEASE_DATE=$(date -u +%F)
+          FALLBACK_VERSION=$(gh api repos/${{ github.repository }}/releases --jq '[.[] | select(.tag_name | test("^v[0-9]"))] | map(.tag_name) | .[1] // "0.0.0"' | sed 's/^v//')
+          REPO_URL="https://github.com/${{ github.repository }}"
+
+          apk_size=$(stat -c%s deploy/android/icd360sev-universal.apk)
+          apk_sha=$(sha256sum deploy/android/icd360sev-universal.apk | awk '{print $1}')
+          apk_mb=$(( (apk_size + 524288) / 1048576 ))
+
+          exe_size=$(stat -c%s deploy/windows/icd360sev_setup.exe)
+          exe_sha=$(sha256sum deploy/windows/icd360sev_setup.exe | awk '{print $1}')
+          exe_mb=$(( (exe_size + 524288) / 1048576 ))
+
+          CHANGELOG="Version ${VERSION}\n\nSee full changelog at ${REPO_URL}/releases/tag/${TAG}"
+
+          write_manifest() {
+            local out=$1 url=$2 fallback=$3 sha=$4 mb=$5
+            cat > "$out" <<JSON
+          {
+              "version": "${VERSION}",
+              "build_number": ${BUILD},
+              "download_url": "${url}",
+              "fallback_url": "${fallback}",
+              "fallback_version": "${FALLBACK_VERSION}",
+              "changelog": "${CHANGELOG}",
+              "min_version": null,
+              "force_update": false,
+              "release_date": "${RELEASE_DATE}",
+              "file_size": "${mb} MB",
+              "sha256": "${sha}"
+          }
+          JSON
+          }
+
+          mkdir -p manifest
+          write_manifest manifest/version_mitglieder_android.json \
+            "https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk" \
+            "https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev_stable.apk" \
+            "$apk_sha" "$apk_mb"
+          write_manifest manifest/version_mitglieder.json \
+            "https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe" \
+            "https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup_stable.exe" \
+            "$exe_sha" "$exe_mb"
+
+          TARGET="/var/www/icd360sev.icd360s.de/api/data"
+          # Server-side timestamped backup before overwrite
+          $SSH_CMD "cp $TARGET/version_mitglieder_android.json $TARGET/version_mitglieder_android.json.bak.\$(date +%s) || true"
+          $SSH_CMD "cp $TARGET/version_mitglieder.json $TARGET/version_mitglieder.json.bak.\$(date +%s) || true"
+          $SCP_CMD manifest/version_mitglieder_android.json $DEST:$TARGET/
+          $SCP_CMD manifest/version_mitglieder.json         $DEST:$TARGET/
+
+          echo "✅ Version manifests published (${VERSION} / build ${BUILD})"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Update F-Droid repository
         run: |
           SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
