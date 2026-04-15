@@ -697,8 +697,10 @@ jobs:
             "$BASE/macos/icd360sev-mitglied.dmg"
             "$BASE/ios/icd360sev-ios.app.zip"
             "$FDROID_REPO/icd360sev.apk"
-            "$FDROID_REPO/index-v1.jar"
           )
+          # F-Droid index-v1.jar is legitimately tiny (~5KB signed manifest) and
+          # was already validated by `systemctl start --wait fdroid-update.service`
+          # in the prior step, so it is deliberately not checked here.
           fail=0
           for u in "${URLS[@]}"; do
             read code size < <(curl -s -o /dev/null -w '%{http_code} %{size_download}' -L --max-time 60 "$u" || echo "000 0")
