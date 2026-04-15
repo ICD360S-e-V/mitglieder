@@ -313,7 +313,7 @@ class BackgroundService {
             try {
               debugPrint('[BackgroundService] Message received: $data');
               final message = jsonDecode(data);
-              _handleWebSocketMessage(message, flutterLocalNotificationsPlugin);
+              _handleWebSocketMessage(message, flutterLocalNotificationsPlugin, mitgliedernummer);
             } catch (e) {
               debugPrint('[BackgroundService] Error parsing message: $e');
             }
@@ -406,6 +406,7 @@ class BackgroundService {
   static void _handleWebSocketMessage(
     Map<String, dynamic> message,
     FlutterLocalNotificationsPlugin notificationsPlugin,
+    String? mitgliedernummer,
   ) async {
     final type = message['type'];
     debugPrint('[BackgroundService] Handling message type: $type');
