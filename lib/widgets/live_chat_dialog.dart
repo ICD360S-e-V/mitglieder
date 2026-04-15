@@ -831,10 +831,16 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   }
 
   void _scrollToBottom() {
+    // With `reverse: true` the bottom of the visible list is offset 0, so
+    // jumping to 0 always lands on the newest message regardless of whether
+    // the ListView has finished laying out items. On initial load the list
+    // already opens at offset 0 — this call is a no-op then, and becomes the
+    // animate-to-newest action when a new message arrives while the user is
+    // at the bottom.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.hasClients) {
         _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent,
+          0.0,
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeOut,
         );
@@ -1393,10 +1399,11 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           paintBehind: true,
           child: ListView.builder(
           controller: _scrollController,
+          reverse: true,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           itemCount: _messages.length,
           itemBuilder: (context, index) {
-            final msg = _messages[index];
+            final msg = _messages[_messages.length - 1 - index];
             final isOwn = msg['is_own'] == true;
             return _buildModernMessageBubble(msg, isOwn);
           },
