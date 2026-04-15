@@ -604,7 +604,8 @@ jobs:
 
       - name: Upload to server
         run: |
-          SCP_CMD="scp -i ~/.ssh/deploy_key -P ${{ secrets.SSH_PORT }}"
+          set -euo pipefail
+          SCP_CMD="scp -B -i ~/.ssh/deploy_key -P ${{ secrets.SSH_PORT }}"
           SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
           BASE="/var/www/icd360sev.icd360s.de/downloads/mitglieder"
 
@@ -670,6 +671,50 @@ jobs:
           $SSH_CMD "systemctl start --wait fdroid-update.service"
 
           echo "✅ F-Droid APK deployed + index regenerated"
+
+      - name: Verify public download URLs
+        run: |
+          set -euo pipefail
+          # All URLs referenced from the public README. If any returns non-200
+          # or an empty body, the deploy did not land correctly and CI must fail
+          # so it gets noticed (previously the deploy step claimed success even
+          # though /downloads/mitglieder/android/*/icd360sev.apk were missing).
+          BASE="https://icd360sev.icd360s.de/downloads/mitglieder"
+          FDROID_REPO="https://icd360sev.icd360s.de/fdroid/repo"
+          URLS=(
+            "$BASE/android/universal/icd360sev.apk"
+            "$BASE/android/fdroid/icd360sev.apk"
+            "$BASE/android/googleplay/icd360sev.apk"
+            "$BASE/android/googleplay/icd360sev.aab"
+            "$BASE/android/amazon/icd360sev.apk"
+            "$BASE/android/huawei/icd360sev.apk"
+            "$BASE/android/samsung/icd360sev.apk"
+            "$BASE/windows/icd360sev_setup.exe"
+            "$BASE/linux/icd360sev-mitglied.deb"
+            "$BASE/linux/icd360sev-mitglied.rpm"
+            "$BASE/linux/icd360sev-mitglied.AppImage"
+            "$BASE/linux/icd360sev-linux.tar.gz"
+            "$BASE/macos/icd360sev-mitglied.dmg"
+            "$BASE/ios/icd360sev-ios.app.zip"
+            "$FDROID_REPO/icd360sev.apk"
+            "$FDROID_REPO/index-v1.jar"
+          )
+          fail=0
+          for u in "${URLS[@]}"; do
+            read code size < <(curl -s -o /dev/null -w '%{http_code} %{size_download}' -L --max-time 60 "$u" || echo "000 0")
+            # 1MB minimum guards against nginx autoindex pages or truncated uploads
+            if [ "$code" = "200" ] && [ "${size:-0}" -gt 1048576 ]; then
+              printf '  ok  %s  (%s bytes)\n' "$u" "$size"
+            else
+              printf '  FAIL  %s  (http=%s size=%s)\n' "$u" "$code" "$size"
+              fail=1
+            fi
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo "::error::One or more public downloads are missing or invalid."
+            exit 1
+          fi
+          echo "✅ All public download URLs verified"
 
       - name: Cleanup SSH
         if: always()
