@@ -1415,7 +1415,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     );
   }
 
-  static final _urlPattern = RegExp(r'https?://[^\s<>"')\]]+', caseSensitive: false);
+  static final _urlPattern = RegExp(r"""https?://[^\s<>"')\]]+""", caseSensitive: false);
 
   Widget _buildLinkedText(String text, bool isOwn) {
     final matches = _urlPattern.allMatches(text).toList();
