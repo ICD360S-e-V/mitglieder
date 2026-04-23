@@ -159,8 +159,17 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
+      - name: Compute build number from version
+        id: ver
+        run: |
+          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
+          IFS=. read MAJ MIN PAT <<< "$VER"
+          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
+
       - name: Build Linux
-        run: flutter build linux --release
+        run: flutter build linux --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
 
       - name: Upload Linux bundle
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
@@ -309,11 +318,20 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
+      - name: Compute build number from version
+        id: ver
+        run: |
+          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
+          IFS=. read MAJ MIN PAT <<< "$VER"
+          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
+
       - name: Decode release keystore
         run: echo "${{ secrets.RELEASE_KEYSTORE }}" | base64 -d > android/app/release-keystore.jks
 
       - name: Build APK (${{ matrix.flavor }})
-        run: ${{ matrix.build_cmd }}
+        run: ${{ matrix.build_cmd }} --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
         env:
           KEYSTORE_PATH: release-keystore.jks
           KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
@@ -369,9 +387,18 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
+      - name: Compute build number from version
+        id: ver
+        run: |
+          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
+          IFS=. read MAJ MIN PAT <<< "$VER"
+          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
+
       # --- iOS Build ---
       - name: Build iOS (no codesign)
-        run: flutter build ios --release --no-codesign
+        run: flutter build ios --release --no-codesign --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
 
       - name: Upload iOS .app
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
@@ -391,7 +418,7 @@ jobs:
           sed -i '' 's/CODE_SIGN_ENTITLEMENTS = .*$/CODE_SIGN_ENTITLEMENTS = "";/g' macos/Runner.xcodeproj/project.pbxproj
 
       - name: Build macOS
-        run: flutter build macos --release
+        run: flutter build macos --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
 
       - name: Create DMG
         run: |
@@ -443,8 +470,18 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
+      - name: Compute build number from version
+        id: ver
+        shell: bash
+        run: |
+          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
+          IFS=. read MAJ MIN PAT <<< "$VER"
+          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
+
       - name: Build Windows
-        run: flutter build windows --release
+        run: flutter build windows --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
 
       - name: Install Inno Setup
         run: choco install innosetup -y --no-progress
@@ -671,7 +708,8 @@ jobs:
 
           TAG="${GITHUB_REF_NAME}"          # e.g. v1.1.27
           VERSION="${TAG#v}"                 # 1.1.27
-          BUILD=$(grep '^version:' pubspec.yaml | head -1 | sed 's/.*+//')
+          IFS=. read MAJ MIN PAT <<< "$VERSION"
+          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
           RELEASE_DATE=$(date -u +%F)
           FALLBACK_VERSION=$(gh api repos/${{ github.repository }}/releases --jq '[.[] | select(.tag_name | test("^v[0-9]"))] | map(.tag_name) | .[1] // "0.0.0"' | sed 's/^v//')
           REPO_URL="https://github.com/${{ github.repository }}"
