@@ -1,0 +1,64 @@
+name: Release Please
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    name: Open / merge release PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Run release-please release-pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          npx --yes release-please@latest release-pr \
+            --token="$GITHUB_TOKEN" \
+            --repo-url="$GITHUB_REPOSITORY" \
+            --config-file=release-please-config.json \
+            --manifest-file=.release-please-manifest.json
+
+      - name: Enable auto-merge on release PR
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          PR=$(gh pr list --repo "$GITHUB_REPOSITORY" \
+               --head release-please--branches--main \
+               --json number --jq '.[0].number // empty')
+          if [ -n "$PR" ]; then
+            echo "Enabling auto-merge (squash) on PR #$PR"
+            gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --squash --auto
+          else
+            echo "No release PR found, skipping auto-merge"
+          fi
+
+      - name: Run release-please github-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          npx --yes release-please@latest github-release \
+            --token="$GITHUB_TOKEN" \
+            --repo-url="$GITHUB_REPOSITORY" \
+            --config-file=release-please-config.json \
+            --manifest-file=.release-please-manifest.json || {
+            rc=$?
+            if [ $rc -eq 1 ]; then
+              echo "::warning::github-release exited $rc (likely duplicate tag — safe to ignore)"
+            else
+              exit $rc
+            fi
+          }
