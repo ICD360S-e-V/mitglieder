@@ -1,0 +1,41 @@
+name: Check README Links
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Daily at 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check-links:
+    name: Verify README download links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Extract and verify all download URLs from README
+        run: |
+          set -euo pipefail
+
+          # Extract all icd360sev.icd360s.de URLs from README (download links only)
+          URLS=$(grep -oP 'https://icd360sev\.icd360s\.de/(?:downloads|fdroid)/[^\s)">\x60&]+' README.md | sort -u)
+
+          echo "Found $(echo "$URLS" | wc -l) unique URLs in README"
+          echo ""
+
+          fail=0
+          while IFS= read -r url; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 30 "$url" || echo "000")
+            if [ "$code" = "200" ]; then
+              echo "  ✅ $url"
+            else
+              echo "  ❌ $url (HTTP $code)"
+              fail=1
+            fi
+          done <<< "$URLS"
+
+          echo ""
+          if [ "$fail" -ne 0 ]; then
+            echo "::error::One or more README download links are broken!"
+            exit 1
+          fi
+          echo "All README links OK"
