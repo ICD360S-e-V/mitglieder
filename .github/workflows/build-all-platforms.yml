@@ -73,7 +73,7 @@ jobs:
 
       - name: Check Linux cache
         id: cache-linux
-        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /tmp/linux-h.txt
           key: v3-build-ok-linux-${{ steps.check.outputs.linux_hash }}
@@ -81,7 +81,7 @@ jobs:
 
       - name: Check Android cache
         id: cache-android
-        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /tmp/android-h.txt
           key: v3-build-ok-android-${{ steps.check.outputs.android_hash }}
@@ -89,7 +89,7 @@ jobs:
 
       - name: Check Apple cache
         id: cache-apple
-        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /tmp/apple-h.txt
           key: v3-build-ok-apple-${{ steps.check.outputs.apple_hash }}
@@ -97,7 +97,7 @@ jobs:
 
       - name: Check Windows cache
         id: cache-win
-        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /tmp/win-h.txt
           key: v3-build-ok-windows-${{ steps.check.outputs.win_hash }}
@@ -251,7 +251,7 @@ jobs:
 
       - name: Save cache marker
         run: echo "ok" > /tmp/linux-ok.txt
-      - uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
+      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /tmp/linux-ok.txt
           key: v3-build-ok-linux-${{ needs.detect-changes.outputs.linux_hash }}
@@ -358,7 +358,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "ok" > /tmp/android-ok.txt
-      - uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
+      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /tmp/android-ok.txt
           key: v3-build-ok-android-${{ needs.detect-changes.outputs.android_hash }}
@@ -441,7 +441,7 @@ jobs:
 
       - name: Save cache marker
         run: echo "ok" > /tmp/apple-ok.txt
-      - uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
+      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /tmp/apple-ok.txt
           key: v3-build-ok-apple-${{ needs.detect-changes.outputs.apple_hash }}
@@ -507,7 +507,7 @@ jobs:
       - name: Save cache marker
         shell: bash
         run: echo "ok" > "$RUNNER_TEMP/win-ok.txt"
-      - uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
+      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: ${{ runner.temp }}/win-ok.txt
           key: v3-build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}
