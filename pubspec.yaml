@@ -91,6 +91,9 @@ dependencies:
   # Image picker for camera and gallery
   image_picker: ^1.0.7
 
+  # Image cropping for document photos in chat
+  crop_your_image: ^2.0.0
+
   # URL launcher for opening downloaded files
   url_launcher: ^6.2.0
 
