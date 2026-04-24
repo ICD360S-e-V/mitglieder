@@ -949,7 +949,6 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                   Navigator.of(ctx).pop();
                 },
                 interactive: true,
-                fixArea: false,
                 baseColor: Colors.black87,
                 maskColor: Colors.black54,
                 cornerDotBuilder: (size, edgeAlignment) => DotControl(
