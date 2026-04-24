@@ -944,8 +944,8 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
               child: Crop(
                 image: imageBytes,
                 controller: controller,
-                onCropped: (cropped) {
-                  result = cropped;
+                onCropped: (cropResult) {
+                  result = cropResult.image;
                   Navigator.of(ctx).pop();
                 },
                 interactive: true,
