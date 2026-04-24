@@ -945,8 +945,13 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                 image: imageBytes,
                 controller: controller,
                 onCropped: (cropResult) {
-                  result = cropResult.image;
-                  Navigator.of(ctx).pop();
+                  switch (cropResult) {
+                    case CropSuccess(:final croppedImage):
+                      result = croppedImage;
+                      Navigator.of(ctx).pop();
+                    case CropFailure(:final cause):
+                      Navigator.of(ctx).pop();
+                  }
                 },
                 interactive: true,
                 baseColor: Colors.black87,
