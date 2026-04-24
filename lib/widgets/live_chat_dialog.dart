@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
+import 'package:crop_your_image/crop_your_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/gestures.dart';
@@ -894,22 +896,94 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     );
   }
 
-  /// Pick image from camera
+  /// Pick image from camera, then offer crop before upload
   Future<void> _pickFromCamera() async {
     final errorText = AppLocalizations.of(context)!.errorTakingPhoto;
     try {
       final ImagePicker picker = ImagePicker();
       final XFile? image = await picker.pickImage(source: ImageSource.camera);
 
-      if (image != null) {
-        final file = File(image.path);
-        setState(() => _selectedFiles = [file]);
-        await _uploadFiles();
+      if (image != null && mounted) {
+        final imageBytes = await File(image.path).readAsBytes();
+        final croppedBytes = await _showCropDialog(imageBytes);
+        if (croppedBytes != null && mounted) {
+          final dir = await getTemporaryDirectory();
+          final croppedFile = File('${dir.path}/crop_${DateTime.now().millisecondsSinceEpoch}.jpg');
+          await croppedFile.writeAsBytes(croppedBytes);
+          setState(() => _selectedFiles = [croppedFile]);
+          await _uploadFiles();
+        }
       }
     } catch (e) {
       _log.error('LiveChat: Camera picker error: $e', tag: 'CHAT');
       _showError(errorText);
     }
+  }
+
+  Future<Uint8List?> _showCropDialog(Uint8List imageBytes) async {
+    final controller = CropController();
+    Uint8List? result;
+
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => Dialog(
+        insetPadding: const EdgeInsets.all(12),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                'Dokument zuschneiden',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.6,
+              child: Crop(
+                image: imageBytes,
+                controller: controller,
+                onCropped: (cropped) {
+                  result = cropped;
+                  Navigator.of(ctx).pop();
+                },
+                interactive: true,
+                fixArea: false,
+                baseColor: Colors.black87,
+                maskColor: Colors.black54,
+                cornerDotBuilder: (size, edgeAlignment) => DotControl(
+                  color: const Color(0xFF667eea),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                    onPressed: () => Navigator.of(ctx).pop(),
+                    child: Text('Abbrechen'),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () => controller.crop(),
+                    icon: const Icon(Icons.crop),
+                    label: Text('Zuschneiden'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF667eea),
+                      foregroundColor: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    return result;
   }
 
   /// Pick image from gallery
