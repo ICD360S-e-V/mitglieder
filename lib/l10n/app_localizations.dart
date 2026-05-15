@@ -2358,36 +2358,6 @@ abstract class AppLocalizations {
   /// **'Verbindungsfehler'**
   String get connectionErrorGeneric;
 
-  /// No description provided for @errorNoInternet.
-  ///
-  /// In de, this message translates to:
-  /// **'Keine Internetverbindung. Bitte überprüfen Sie Ihr Netzwerk.'**
-  String get errorNoInternet;
-
-  /// No description provided for @errorTimeout.
-  ///
-  /// In de, this message translates to:
-  /// **'Server antwortet nicht. Bitte versuchen Sie es später erneut.'**
-  String get errorTimeout;
-
-  /// No description provided for @errorServer.
-  ///
-  /// In de, this message translates to:
-  /// **'Serverfehler. Bitte versuchen Sie es später erneut.'**
-  String get errorServer;
-
-  /// No description provided for @errorConnection.
-  ///
-  /// In de, this message translates to:
-  /// **'Verbindungsfehler. Bitte versuchen Sie es später erneut.'**
-  String get errorConnection;
-
-  /// No description provided for @errorUnexpected.
-  ///
-  /// In de, this message translates to:
-  /// **'Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'**
-  String get errorUnexpected;
-
   /// No description provided for @copyLogs.
   ///
   /// In de, this message translates to:
@@ -3528,6 +3498,90 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Warten auf Behörde'**
   String get waitingForAuthority;
+
+  /// No description provided for @errorNoInternet.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Internetverbindung. Bitte überprüfen Sie Ihr Netzwerk.'**
+  String get errorNoInternet;
+
+  /// No description provided for @errorTimeout.
+  ///
+  /// In de, this message translates to:
+  /// **'Server antwortet nicht. Bitte versuchen Sie es später erneut.'**
+  String get errorTimeout;
+
+  /// No description provided for @errorServer.
+  ///
+  /// In de, this message translates to:
+  /// **'Serverfehler. Bitte versuchen Sie es später erneut.'**
+  String get errorServer;
+
+  /// No description provided for @errorConnection.
+  ///
+  /// In de, this message translates to:
+  /// **'Verbindungsfehler. Bitte versuchen Sie es später erneut.'**
+  String get errorConnection;
+
+  /// No description provided for @errorUnexpected.
+  ///
+  /// In de, this message translates to:
+  /// **'Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'**
+  String get errorUnexpected;
+
+  /// No description provided for @securityBannerTlsInterception.
+  ///
+  /// In de, this message translates to:
+  /// **'Ihr Netzwerk fängt sichere Verbindungen ab. Bitte wechseln Sie das Netzwerk oder deaktivieren Sie VPN/Antivirus.'**
+  String get securityBannerTlsInterception;
+
+  /// No description provided for @securityBannerDnsFailure.
+  ///
+  /// In de, this message translates to:
+  /// **'DNS-Problem erkannt. Prüfen Sie Ihre Verbindung oder wechseln Sie das Netzwerk.'**
+  String get securityBannerDnsFailure;
+
+  /// No description provided for @securityBannerCaptivePortal.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte öffnen Sie Ihren Browser und melden Sie sich beim WLAN an.'**
+  String get securityBannerCaptivePortal;
+
+  /// No description provided for @securityBannerSlowNetwork.
+  ///
+  /// In de, this message translates to:
+  /// **'Langsame Verbindung.'**
+  String get securityBannerSlowNetwork;
+
+  /// No description provided for @securityBannerNetworkOffline.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Netzwerkverbindung.'**
+  String get securityBannerNetworkOffline;
+
+  /// No description provided for @securityPermissionDialogTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Möglicher Netzwerkangriff erkannt'**
+  String get securityPermissionDialogTitle;
+
+  /// No description provided for @securityPermissionDialogBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Etwas in Ihrem Netzwerk fängt möglicherweise Verbindungen ab. Um das Netzwerk zu identifizieren und Sie zu schützen, benötigen wir die Berechtigung, den WLAN-Namen zu lesen. Keine Standortverfolgung.'**
+  String get securityPermissionDialogBody;
+
+  /// No description provided for @securityPermissionDialogAllow.
+  ///
+  /// In de, this message translates to:
+  /// **'Erlauben'**
+  String get securityPermissionDialogAllow;
+
+  /// No description provided for @securityPermissionDialogDeny.
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt nicht'**
+  String get securityPermissionDialogDeny;
 }
 
 class _AppLocalizationsDelegate

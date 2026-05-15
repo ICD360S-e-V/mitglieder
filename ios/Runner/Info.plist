@@ -64,5 +64,8 @@
 	<!-- Privacy - Photo Library Add Usage (Save Photos) -->
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Die App möchte Fotos in Ihrer Mediathek speichern.</string>
+	<!-- Privacy - Location When In Use (WiFi name access for MITM detection) -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Nur zur Erkennung manipulierter WLAN-Netze. Die App liest den Namen des aktuell verbundenen WLANs, wenn ein TLS-Angriff erkannt wird. Kein Standort-Tracking.</string>
 </dict>
 </plist>

@@ -920,5 +920,14 @@
   "errorTimeout": "Server reageert niet. Probeer het later opnieuw.",
   "errorServer": "Serverfout. Probeer het later opnieuw.",
   "errorConnection": "Verbindingsfout. Probeer het later opnieuw.",
-  "errorUnexpected": "Er is een onverwachte fout opgetreden. Probeer het later opnieuw."
+  "errorUnexpected": "Er is een onverwachte fout opgetreden. Probeer het later opnieuw.",
+  "securityBannerTlsInterception": "Your network is intercepting secure connections. Switch networks or disable VPN/antivirus.",
+  "securityBannerDnsFailure": "DNS problem detected. Check your connection or try another network.",
+  "securityBannerCaptivePortal": "Please open your browser and sign in to the WiFi.",
+  "securityBannerSlowNetwork": "Slow connection.",
+  "securityBannerNetworkOffline": "No network connection.",
+  "securityPermissionDialogTitle": "Possible network attack detected",
+  "securityPermissionDialogBody": "Something on your network may be intercepting connections. To identify the network and protect you, we need permission to read the WiFi name. No location tracking.",
+  "securityPermissionDialogAllow": "Allow",
+  "securityPermissionDialogDeny": "Not now"
 }

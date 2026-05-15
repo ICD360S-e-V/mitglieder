@@ -1242,21 +1242,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get connectionErrorGeneric => 'Verbindungsfehler';
 
   @override
-  String get errorNoInternet => 'Keine Internetverbindung. Bitte überprüfen Sie Ihr Netzwerk.';
-
-  @override
-  String get errorTimeout => 'Server antwortet nicht. Bitte versuchen Sie es später erneut.';
-
-  @override
-  String get errorServer => 'Serverfehler. Bitte versuchen Sie es später erneut.';
-
-  @override
-  String get errorConnection => 'Verbindungsfehler. Bitte versuchen Sie es später erneut.';
-
-  @override
-  String get errorUnexpected => 'Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.';
-
-  @override
   String get copyLogs => 'Logs kopieren';
 
   @override
@@ -1885,4 +1870,56 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get waitingForAuthority => 'Warten auf Behörde';
+
+  @override
+  String get errorNoInternet =>
+      'Keine Internetverbindung. Bitte überprüfen Sie Ihr Netzwerk.';
+
+  @override
+  String get errorTimeout =>
+      'Server antwortet nicht. Bitte versuchen Sie es später erneut.';
+
+  @override
+  String get errorServer =>
+      'Serverfehler. Bitte versuchen Sie es später erneut.';
+
+  @override
+  String get errorConnection =>
+      'Verbindungsfehler. Bitte versuchen Sie es später erneut.';
+
+  @override
+  String get errorUnexpected =>
+      'Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.';
+
+  @override
+  String get securityBannerTlsInterception =>
+      'Ihr Netzwerk fängt sichere Verbindungen ab. Bitte wechseln Sie das Netzwerk oder deaktivieren Sie VPN/Antivirus.';
+
+  @override
+  String get securityBannerDnsFailure =>
+      'DNS-Problem erkannt. Prüfen Sie Ihre Verbindung oder wechseln Sie das Netzwerk.';
+
+  @override
+  String get securityBannerCaptivePortal =>
+      'Bitte öffnen Sie Ihren Browser und melden Sie sich beim WLAN an.';
+
+  @override
+  String get securityBannerSlowNetwork => 'Langsame Verbindung.';
+
+  @override
+  String get securityBannerNetworkOffline => 'Keine Netzwerkverbindung.';
+
+  @override
+  String get securityPermissionDialogTitle =>
+      'Möglicher Netzwerkangriff erkannt';
+
+  @override
+  String get securityPermissionDialogBody =>
+      'Etwas in Ihrem Netzwerk fängt möglicherweise Verbindungen ab. Um das Netzwerk zu identifizieren und Sie zu schützen, benötigen wir die Berechtigung, den WLAN-Namen zu lesen. Keine Standortverfolgung.';
+
+  @override
+  String get securityPermissionDialogAllow => 'Erlauben';
+
+  @override
+  String get securityPermissionDialogDeny => 'Jetzt nicht';
 }

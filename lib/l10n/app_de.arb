@@ -941,5 +941,14 @@
   "errorTimeout": "Server antwortet nicht. Bitte versuchen Sie es später erneut.",
   "errorServer": "Serverfehler. Bitte versuchen Sie es später erneut.",
   "errorConnection": "Verbindungsfehler. Bitte versuchen Sie es später erneut.",
-  "errorUnexpected": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+  "errorUnexpected": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+  "securityBannerTlsInterception": "Ihr Netzwerk fängt sichere Verbindungen ab. Bitte wechseln Sie das Netzwerk oder deaktivieren Sie VPN/Antivirus.",
+  "securityBannerDnsFailure": "DNS-Problem erkannt. Prüfen Sie Ihre Verbindung oder wechseln Sie das Netzwerk.",
+  "securityBannerCaptivePortal": "Bitte öffnen Sie Ihren Browser und melden Sie sich beim WLAN an.",
+  "securityBannerSlowNetwork": "Langsame Verbindung.",
+  "securityBannerNetworkOffline": "Keine Netzwerkverbindung.",
+  "securityPermissionDialogTitle": "Möglicher Netzwerkangriff erkannt",
+  "securityPermissionDialogBody": "Etwas in Ihrem Netzwerk fängt möglicherweise Verbindungen ab. Um das Netzwerk zu identifizieren und Sie zu schützen, benötigen wir die Berechtigung, den WLAN-Namen zu lesen. Keine Standortverfolgung.",
+  "securityPermissionDialogAllow": "Erlauben",
+  "securityPermissionDialogDeny": "Jetzt nicht"
 }

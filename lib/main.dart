@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -8,8 +10,11 @@ import 'services/notification_service.dart';
 import 'services/ticket_notification_service.dart';
 import 'services/logger_service.dart';
 import 'services/background_service.dart';
+import 'services/network_resilience.dart';
+import 'services/security_event_reporter.dart';
 import 'services/update_service.dart';
 import 'services/platform/platform_factory.dart';
+import 'widgets/network_security_banner.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +54,17 @@ void main() async {
     await LoggerService().init();
     await UpdateService.initVersion();
     await ApiService().initialize();
+
+    // Network resilience: circuit breaker + retry on top of every API call.
+    // Security telemetry: queues TLS interception reports for push when the
+    // network recovers. Mitgliedernummer is added after login.
+    await NetworkResilience.instance.start();
+    await SecurityEventReporter.instance.start(
+      deviceId: LoggerService().deviceId,
+      appVersion: UpdateService.currentVersion,
+      platform: Platform.operatingSystem,
+      osVersion: Platform.operatingSystemVersion,
+    );
 
     if (PlatformFactory.isMobile) {
       await NotificationService().initialize();
@@ -110,6 +126,12 @@ class MitgliedApp extends StatelessWidget {
           centerTitle: true,
           elevation: 0,
         ),
+      ),
+      // Wrap every screen with the global network-security banner so TLS
+      // interceptions, DNS failures and slow-network conditions surface on
+      // any route without per-screen integration.
+      builder: (context, child) => NetworkSecurityBanner(
+        child: child ?? const SizedBox.shrink(),
       ),
       home: const WelcomeScreen(),
     );

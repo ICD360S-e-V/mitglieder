@@ -920,5 +920,14 @@
   "errorTimeout": "Serverul nu răspunde. Încercați din nou mai târziu.",
   "errorServer": "Eroare de server. Încercați din nou mai târziu.",
   "errorConnection": "Eroare de conexiune. Încercați din nou mai târziu.",
-  "errorUnexpected": "A apărut o eroare neașteptată. Încercați din nou mai târziu."
+  "errorUnexpected": "A apărut o eroare neașteptată. Încercați din nou mai târziu.",
+  "securityBannerTlsInterception": "Reteaua ta intercepteaza conexiunile securizate. Schimba reteaua sau dezactiveaza VPN-ul/antivirusul.",
+  "securityBannerDnsFailure": "Problema DNS detectata. Verifica conexiunea sau incearca alta retea.",
+  "securityBannerCaptivePortal": "Deschide browser-ul si conecteaza-te la WiFi.",
+  "securityBannerSlowNetwork": "Conexiune lenta.",
+  "securityBannerNetworkOffline": "Fara conexiune la retea.",
+  "securityPermissionDialogTitle": "Posibil atac de retea detectat",
+  "securityPermissionDialogBody": "Ceva din reteaua ta ar putea intercepta conexiunile. Pentru a identifica reteaua si a te proteja, avem nevoie de permisiunea de a citi numele WiFi. Fara urmarirea locatiei.",
+  "securityPermissionDialogAllow": "Permite",
+  "securityPermissionDialogDeny": "Nu acum"
 }

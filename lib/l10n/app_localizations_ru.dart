@@ -1236,21 +1236,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get connectionErrorGeneric => 'Ошибка подключения';
 
   @override
-  String get errorNoInternet => 'Нет подключения к Интернету. Проверьте сеть.';
-
-  @override
-  String get errorTimeout => 'Сервер не отвечает. Попробуйте позже.';
-
-  @override
-  String get errorServer => 'Ошибка сервера. Попробуйте позже.';
-
-  @override
-  String get errorConnection => 'Ошибка соединения. Попробуйте позже.';
-
-  @override
-  String get errorUnexpected => 'Произошла непредвиденная ошибка. Попробуйте позже.';
-
-  @override
   String get copyLogs => 'Копировать логи';
 
   @override
@@ -1879,4 +1864,52 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get waitingForAuthority => 'Ожидание органа власти';
+
+  @override
+  String get errorNoInternet => 'Нет подключения к Интернету. Проверьте сеть.';
+
+  @override
+  String get errorTimeout => 'Сервер не отвечает. Попробуйте позже.';
+
+  @override
+  String get errorServer => 'Ошибка сервера. Попробуйте позже.';
+
+  @override
+  String get errorConnection => 'Ошибка соединения. Попробуйте позже.';
+
+  @override
+  String get errorUnexpected =>
+      'Произошла непредвиденная ошибка. Попробуйте позже.';
+
+  @override
+  String get securityBannerTlsInterception =>
+      'Ваша сеть перехватывает защищённые соединения. Смените сеть или отключите VPN/антивирус.';
+
+  @override
+  String get securityBannerDnsFailure =>
+      'Обнаружена проблема с DNS. Проверьте соединение или смените сеть.';
+
+  @override
+  String get securityBannerCaptivePortal =>
+      'Откройте браузер и войдите в Wi-Fi.';
+
+  @override
+  String get securityBannerSlowNetwork => 'Медленное соединение.';
+
+  @override
+  String get securityBannerNetworkOffline => 'Нет соединения с сетью.';
+
+  @override
+  String get securityPermissionDialogTitle =>
+      'Обнаружена возможная атака на сеть';
+
+  @override
+  String get securityPermissionDialogBody =>
+      'Что-то в вашей сети может перехватывать соединения. Чтобы определить сеть и защитить вас, нам нужно разрешение читать имя Wi-Fi. Никакого отслеживания местоположения.';
+
+  @override
+  String get securityPermissionDialogAllow => 'Разрешить';
+
+  @override
+  String get securityPermissionDialogDeny => 'Не сейчас';
 }

@@ -1236,21 +1236,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get connectionErrorGeneric => 'Помилка з\'єднання';
 
   @override
-  String get errorNoInternet => 'Немає з'єднання з Інтернетом. Перевірте мережу.';
-
-  @override
-  String get errorTimeout => 'Сервер не відповідає. Спробуйте пізніше.';
-
-  @override
-  String get errorServer => 'Помилка сервера. Спробуйте пізніше.';
-
-  @override
-  String get errorConnection => 'Помилка з'єднання. Спробуйте пізніше.';
-
-  @override
-  String get errorUnexpected => 'Сталася неочікувана помилка. Спробуйте пізніше.';
-
-  @override
   String get copyLogs => 'Копіювати логи';
 
   @override
@@ -1878,4 +1863,52 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get waitingForAuthority => 'Очікування органу влади';
+
+  @override
+  String get errorNoInternet =>
+      'Немає з\'єднання з Інтернетом. Перевірте мережу.';
+
+  @override
+  String get errorTimeout => 'Сервер не відповідає. Спробуйте пізніше.';
+
+  @override
+  String get errorServer => 'Помилка сервера. Спробуйте пізніше.';
+
+  @override
+  String get errorConnection => 'Помилка з\'єднання. Спробуйте пізніше.';
+
+  @override
+  String get errorUnexpected =>
+      'Сталася неочікувана помилка. Спробуйте пізніше.';
+
+  @override
+  String get securityBannerTlsInterception =>
+      'Ваша мережа перехоплює захищені з\'єднання. Змініть мережу або вимкніть VPN/антивірус.';
+
+  @override
+  String get securityBannerDnsFailure =>
+      'Виявлено проблему з DNS. Перевірте з\'єднання або спробуйте іншу мережу.';
+
+  @override
+  String get securityBannerCaptivePortal =>
+      'Відкрийте браузер і увійдіть у Wi-Fi.';
+
+  @override
+  String get securityBannerSlowNetwork => 'Повільне з\'єднання.';
+
+  @override
+  String get securityBannerNetworkOffline => 'Немає з\'єднання з мережею.';
+
+  @override
+  String get securityPermissionDialogTitle => 'Виявлено можливу мережеву атаку';
+
+  @override
+  String get securityPermissionDialogBody =>
+      'Щось у вашій мережі може перехоплювати з\'єднання. Щоб ідентифікувати мережу та захистити вас, потрібен дозвіл на читання назви Wi-Fi. Без відстеження місцезнаходження.';
+
+  @override
+  String get securityPermissionDialogAllow => 'Дозволити';
+
+  @override
+  String get securityPermissionDialogDeny => 'Не зараз';
 }

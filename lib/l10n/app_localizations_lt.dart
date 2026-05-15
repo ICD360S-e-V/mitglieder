@@ -1235,21 +1235,6 @@ class AppLocalizationsLt extends AppLocalizations {
   String get connectionErrorGeneric => 'Ryšio klaida';
 
   @override
-  String get errorNoInternet => 'Nėra interneto ryšio. Patikrinkite savo tinklą.';
-
-  @override
-  String get errorTimeout => 'Serveris neatsako. Bandykite vėliau.';
-
-  @override
-  String get errorServer => 'Serverio klaida. Bandykite vėliau.';
-
-  @override
-  String get errorConnection => 'Ryšio klaida. Bandykite vėliau.';
-
-  @override
-  String get errorUnexpected => 'Įvyko netikėta klaida. Bandykite vėliau.';
-
-  @override
   String get copyLogs => 'Kopijuoti žurnalus';
 
   @override
@@ -1874,4 +1859,52 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get waitingForAuthority => 'Laukiama institucijos';
+
+  @override
+  String get errorNoInternet =>
+      'Nėra interneto ryšio. Patikrinkite savo tinklą.';
+
+  @override
+  String get errorTimeout => 'Serveris neatsako. Bandykite vėliau.';
+
+  @override
+  String get errorServer => 'Serverio klaida. Bandykite vėliau.';
+
+  @override
+  String get errorConnection => 'Ryšio klaida. Bandykite vėliau.';
+
+  @override
+  String get errorUnexpected => 'Įvyko netikėta klaida. Bandykite vėliau.';
+
+  @override
+  String get securityBannerTlsInterception =>
+      'Your network is intercepting secure connections. Switch networks or disable VPN/antivirus.';
+
+  @override
+  String get securityBannerDnsFailure =>
+      'DNS problem detected. Check your connection or try another network.';
+
+  @override
+  String get securityBannerCaptivePortal =>
+      'Please open your browser and sign in to the WiFi.';
+
+  @override
+  String get securityBannerSlowNetwork => 'Slow connection.';
+
+  @override
+  String get securityBannerNetworkOffline => 'No network connection.';
+
+  @override
+  String get securityPermissionDialogTitle =>
+      'Possible network attack detected';
+
+  @override
+  String get securityPermissionDialogBody =>
+      'Something on your network may be intercepting connections. To identify the network and protect you, we need permission to read the WiFi name. No location tracking.';
+
+  @override
+  String get securityPermissionDialogAllow => 'Allow';
+
+  @override
+  String get securityPermissionDialogDeny => 'Not now';
 }

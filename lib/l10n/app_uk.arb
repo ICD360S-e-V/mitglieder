@@ -920,5 +920,14 @@
   "errorTimeout": "Сервер не відповідає. Спробуйте пізніше.",
   "errorServer": "Помилка сервера. Спробуйте пізніше.",
   "errorConnection": "Помилка з'єднання. Спробуйте пізніше.",
-  "errorUnexpected": "Сталася неочікувана помилка. Спробуйте пізніше."
+  "errorUnexpected": "Сталася неочікувана помилка. Спробуйте пізніше.",
+  "securityBannerTlsInterception": "Ваша мережа перехоплює захищені з'єднання. Змініть мережу або вимкніть VPN/антивірус.",
+  "securityBannerDnsFailure": "Виявлено проблему з DNS. Перевірте з'єднання або спробуйте іншу мережу.",
+  "securityBannerCaptivePortal": "Відкрийте браузер і увійдіть у Wi-Fi.",
+  "securityBannerSlowNetwork": "Повільне з'єднання.",
+  "securityBannerNetworkOffline": "Немає з'єднання з мережею.",
+  "securityPermissionDialogTitle": "Виявлено можливу мережеву атаку",
+  "securityPermissionDialogBody": "Щось у вашій мережі може перехоплювати з'єднання. Щоб ідентифікувати мережу та захистити вас, потрібен дозвіл на читання назви Wi-Fi. Без відстеження місцезнаходження.",
+  "securityPermissionDialogAllow": "Дозволити",
+  "securityPermissionDialogDeny": "Не зараз"
 }

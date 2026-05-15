@@ -1237,21 +1237,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get connectionErrorGeneric => 'Eroare de conexiune';
 
   @override
-  String get errorNoInternet => 'Nu există conexiune la internet. Verificați rețeaua.';
-
-  @override
-  String get errorTimeout => 'Serverul nu răspunde. Încercați din nou mai târziu.';
-
-  @override
-  String get errorServer => 'Eroare de server. Încercați din nou mai târziu.';
-
-  @override
-  String get errorConnection => 'Eroare de conexiune. Încercați din nou mai târziu.';
-
-  @override
-  String get errorUnexpected => 'A apărut o eroare neașteptată. Încercați din nou mai târziu.';
-
-  @override
   String get copyLogs => 'Copiază loguri';
 
   @override
@@ -1879,4 +1864,54 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get waitingForAuthority => 'Se așteaptă autoritatea';
+
+  @override
+  String get errorNoInternet =>
+      'Nu există conexiune la internet. Verificați rețeaua.';
+
+  @override
+  String get errorTimeout =>
+      'Serverul nu răspunde. Încercați din nou mai târziu.';
+
+  @override
+  String get errorServer => 'Eroare de server. Încercați din nou mai târziu.';
+
+  @override
+  String get errorConnection =>
+      'Eroare de conexiune. Încercați din nou mai târziu.';
+
+  @override
+  String get errorUnexpected =>
+      'A apărut o eroare neașteptată. Încercați din nou mai târziu.';
+
+  @override
+  String get securityBannerTlsInterception =>
+      'Reteaua ta intercepteaza conexiunile securizate. Schimba reteaua sau dezactiveaza VPN-ul/antivirusul.';
+
+  @override
+  String get securityBannerDnsFailure =>
+      'Problema DNS detectata. Verifica conexiunea sau incearca alta retea.';
+
+  @override
+  String get securityBannerCaptivePortal =>
+      'Deschide browser-ul si conecteaza-te la WiFi.';
+
+  @override
+  String get securityBannerSlowNetwork => 'Conexiune lenta.';
+
+  @override
+  String get securityBannerNetworkOffline => 'Fara conexiune la retea.';
+
+  @override
+  String get securityPermissionDialogTitle => 'Posibil atac de retea detectat';
+
+  @override
+  String get securityPermissionDialogBody =>
+      'Ceva din reteaua ta ar putea intercepta conexiunile. Pentru a identifica reteaua si a te proteja, avem nevoie de permisiunea de a citi numele WiFi. Fara urmarirea locatiei.';
+
+  @override
+  String get securityPermissionDialogAllow => 'Permite';
+
+  @override
+  String get securityPermissionDialogDeny => 'Nu acum';
 }

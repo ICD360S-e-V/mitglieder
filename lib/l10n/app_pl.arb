@@ -920,5 +920,14 @@
   "errorTimeout": "Serwer nie odpowiada. Spróbuj ponownie później.",
   "errorServer": "Błąd serwera. Spróbuj ponownie później.",
   "errorConnection": "Błąd połączenia. Spróbuj ponownie później.",
-  "errorUnexpected": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później."
+  "errorUnexpected": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.",
+  "securityBannerTlsInterception": "Your network is intercepting secure connections. Switch networks or disable VPN/antivirus.",
+  "securityBannerDnsFailure": "DNS problem detected. Check your connection or try another network.",
+  "securityBannerCaptivePortal": "Please open your browser and sign in to the WiFi.",
+  "securityBannerSlowNetwork": "Slow connection.",
+  "securityBannerNetworkOffline": "No network connection.",
+  "securityPermissionDialogTitle": "Possible network attack detected",
+  "securityPermissionDialogBody": "Something on your network may be intercepting connections. To identify the network and protect you, we need permission to read the WiFi name. No location tracking.",
+  "securityPermissionDialogAllow": "Allow",
+  "securityPermissionDialogDeny": "Not now"
 }

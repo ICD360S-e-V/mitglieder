@@ -920,5 +920,14 @@
   "errorTimeout": "Сервер не отвечает. Попробуйте позже.",
   "errorServer": "Ошибка сервера. Попробуйте позже.",
   "errorConnection": "Ошибка соединения. Попробуйте позже.",
-  "errorUnexpected": "Произошла непредвиденная ошибка. Попробуйте позже."
+  "errorUnexpected": "Произошла непредвиденная ошибка. Попробуйте позже.",
+  "securityBannerTlsInterception": "Ваша сеть перехватывает защищённые соединения. Смените сеть или отключите VPN/антивирус.",
+  "securityBannerDnsFailure": "Обнаружена проблема с DNS. Проверьте соединение или смените сеть.",
+  "securityBannerCaptivePortal": "Откройте браузер и войдите в Wi-Fi.",
+  "securityBannerSlowNetwork": "Медленное соединение.",
+  "securityBannerNetworkOffline": "Нет соединения с сетью.",
+  "securityPermissionDialogTitle": "Обнаружена возможная атака на сеть",
+  "securityPermissionDialogBody": "Что-то в вашей сети может перехватывать соединения. Чтобы определить сеть и защитить вас, нам нужно разрешение читать имя Wi-Fi. Никакого отслеживания местоположения.",
+  "securityPermissionDialogAllow": "Разрешить",
+  "securityPermissionDialogDeny": "Не сейчас"
 }

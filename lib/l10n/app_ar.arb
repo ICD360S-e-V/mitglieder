@@ -941,5 +941,14 @@
   "errorTimeout": "الخادم لا يستجيب. يرجى المحاولة لاحقاً.",
   "errorServer": "خطأ في الخادم. يرجى المحاولة لاحقاً.",
   "errorConnection": "خطأ في الاتصال. يرجى المحاولة لاحقاً.",
-  "errorUnexpected": "حدث خطأ غير متوقع. يرجى المحاولة لاحقاً."
+  "errorUnexpected": "حدث خطأ غير متوقع. يرجى المحاولة لاحقاً.",
+  "securityBannerTlsInterception": "Your network is intercepting secure connections. Switch networks or disable VPN/antivirus.",
+  "securityBannerDnsFailure": "DNS problem detected. Check your connection or try another network.",
+  "securityBannerCaptivePortal": "Please open your browser and sign in to the WiFi.",
+  "securityBannerSlowNetwork": "Slow connection.",
+  "securityBannerNetworkOffline": "No network connection.",
+  "securityPermissionDialogTitle": "Possible network attack detected",
+  "securityPermissionDialogBody": "Something on your network may be intercepting connections. To identify the network and protect you, we need permission to read the WiFi name. No location tracking.",
+  "securityPermissionDialogAllow": "Allow",
+  "securityPermissionDialogDeny": "Not now"
 }

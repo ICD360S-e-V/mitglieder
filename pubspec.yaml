@@ -141,6 +141,7 @@ dependencies:
   # Auto-start on boot
   launch_at_startup: ^0.5.1
   windows_notification: ^1.3.0
+  network_info_plus: ^7.0.0
 
 dev_dependencies:
   flutter_test:

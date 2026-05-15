@@ -1233,21 +1233,6 @@ class AppLocalizationsSr extends AppLocalizations {
   String get connectionErrorGeneric => 'Грешка повезивања';
 
   @override
-  String get errorNoInternet => 'Нема интернет везе. Проверите мрежу.';
-
-  @override
-  String get errorTimeout => 'Сервер не одговара. Покушајте касније.';
-
-  @override
-  String get errorServer => 'Грешка сервера. Покушајте касније.';
-
-  @override
-  String get errorConnection => 'Грешка повезивања. Покушајте касније.';
-
-  @override
-  String get errorUnexpected => 'Дошло је до неочекиване грешке. Покушајте касније.';
-
-  @override
   String get copyLogs => 'Копирај логове';
 
   @override
@@ -1873,4 +1858,52 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get waitingForAuthority => 'Чекање на орган';
+
+  @override
+  String get errorNoInternet => 'Нема интернет везе. Проверите мрежу.';
+
+  @override
+  String get errorTimeout => 'Сервер не одговара. Покушајте касније.';
+
+  @override
+  String get errorServer => 'Грешка сервера. Покушајте касније.';
+
+  @override
+  String get errorConnection => 'Грешка повезивања. Покушајте касније.';
+
+  @override
+  String get errorUnexpected =>
+      'Дошло је до неочекиване грешке. Покушајте касније.';
+
+  @override
+  String get securityBannerTlsInterception =>
+      'Your network is intercepting secure connections. Switch networks or disable VPN/antivirus.';
+
+  @override
+  String get securityBannerDnsFailure =>
+      'DNS problem detected. Check your connection or try another network.';
+
+  @override
+  String get securityBannerCaptivePortal =>
+      'Please open your browser and sign in to the WiFi.';
+
+  @override
+  String get securityBannerSlowNetwork => 'Slow connection.';
+
+  @override
+  String get securityBannerNetworkOffline => 'No network connection.';
+
+  @override
+  String get securityPermissionDialogTitle =>
+      'Possible network attack detected';
+
+  @override
+  String get securityPermissionDialogBody =>
+      'Something on your network may be intercepting connections. To identify the network and protect you, we need permission to read the WiFi name. No location tracking.';
+
+  @override
+  String get securityPermissionDialogAllow => 'Allow';
+
+  @override
+  String get securityPermissionDialogDeny => 'Not now';
 }

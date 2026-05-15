@@ -1234,21 +1234,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get connectionErrorGeneric => 'Yhteysvirhe';
 
   @override
-  String get errorNoInternet => 'Ei Internet-yhteyttä. Tarkista verkkosi.';
-
-  @override
-  String get errorTimeout => 'Palvelin ei vastaa. Yritä myöhemmin uudelleen.';
-
-  @override
-  String get errorServer => 'Palvelinvirhe. Yritä myöhemmin uudelleen.';
-
-  @override
-  String get errorConnection => 'Yhteysvirhe. Yritä myöhemmin uudelleen.';
-
-  @override
-  String get errorUnexpected => 'Odottamaton virhe. Yritä myöhemmin uudelleen.';
-
-  @override
   String get copyLogs => 'Kopioi lokit';
 
   @override
@@ -1875,4 +1860,51 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get waitingForAuthority => 'Odotetaan viranomaista';
+
+  @override
+  String get errorNoInternet => 'Ei Internet-yhteyttä. Tarkista verkkosi.';
+
+  @override
+  String get errorTimeout => 'Palvelin ei vastaa. Yritä myöhemmin uudelleen.';
+
+  @override
+  String get errorServer => 'Palvelinvirhe. Yritä myöhemmin uudelleen.';
+
+  @override
+  String get errorConnection => 'Yhteysvirhe. Yritä myöhemmin uudelleen.';
+
+  @override
+  String get errorUnexpected => 'Odottamaton virhe. Yritä myöhemmin uudelleen.';
+
+  @override
+  String get securityBannerTlsInterception =>
+      'Your network is intercepting secure connections. Switch networks or disable VPN/antivirus.';
+
+  @override
+  String get securityBannerDnsFailure =>
+      'DNS problem detected. Check your connection or try another network.';
+
+  @override
+  String get securityBannerCaptivePortal =>
+      'Please open your browser and sign in to the WiFi.';
+
+  @override
+  String get securityBannerSlowNetwork => 'Slow connection.';
+
+  @override
+  String get securityBannerNetworkOffline => 'No network connection.';
+
+  @override
+  String get securityPermissionDialogTitle =>
+      'Possible network attack detected';
+
+  @override
+  String get securityPermissionDialogBody =>
+      'Something on your network may be intercepting connections. To identify the network and protect you, we need permission to read the WiFi name. No location tracking.';
+
+  @override
+  String get securityPermissionDialogAllow => 'Allow';
+
+  @override
+  String get securityPermissionDialogDeny => 'Not now';
 }

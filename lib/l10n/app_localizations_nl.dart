@@ -1236,21 +1236,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get connectionErrorGeneric => 'Verbindingsfout';
 
   @override
-  String get errorNoInternet => 'Geen internetverbinding. Controleer uw netwerk.';
-
-  @override
-  String get errorTimeout => 'Server reageert niet. Probeer het later opnieuw.';
-
-  @override
-  String get errorServer => 'Serverfout. Probeer het later opnieuw.';
-
-  @override
-  String get errorConnection => 'Verbindingsfout. Probeer het later opnieuw.';
-
-  @override
-  String get errorUnexpected => 'Er is een onverwachte fout opgetreden. Probeer het later opnieuw.';
-
-  @override
   String get copyLogs => 'Logs kopiëren';
 
   @override
@@ -1878,4 +1863,53 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get waitingForAuthority => 'Wachten op instantie';
+
+  @override
+  String get errorNoInternet =>
+      'Geen internetverbinding. Controleer uw netwerk.';
+
+  @override
+  String get errorTimeout => 'Server reageert niet. Probeer het later opnieuw.';
+
+  @override
+  String get errorServer => 'Serverfout. Probeer het later opnieuw.';
+
+  @override
+  String get errorConnection => 'Verbindingsfout. Probeer het later opnieuw.';
+
+  @override
+  String get errorUnexpected =>
+      'Er is een onverwachte fout opgetreden. Probeer het later opnieuw.';
+
+  @override
+  String get securityBannerTlsInterception =>
+      'Your network is intercepting secure connections. Switch networks or disable VPN/antivirus.';
+
+  @override
+  String get securityBannerDnsFailure =>
+      'DNS problem detected. Check your connection or try another network.';
+
+  @override
+  String get securityBannerCaptivePortal =>
+      'Please open your browser and sign in to the WiFi.';
+
+  @override
+  String get securityBannerSlowNetwork => 'Slow connection.';
+
+  @override
+  String get securityBannerNetworkOffline => 'No network connection.';
+
+  @override
+  String get securityPermissionDialogTitle =>
+      'Possible network attack detected';
+
+  @override
+  String get securityPermissionDialogBody =>
+      'Something on your network may be intercepting connections. To identify the network and protect you, we need permission to read the WiFi name. No location tracking.';
+
+  @override
+  String get securityPermissionDialogAllow => 'Allow';
+
+  @override
+  String get securityPermissionDialogDeny => 'Not now';
 }

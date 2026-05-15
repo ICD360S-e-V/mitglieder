@@ -19,6 +19,7 @@ import '../services/ticket_notification_service.dart';
 import '../services/ntfy_service.dart';
 import '../services/diagnostic_service.dart';
 import '../services/device_key_service.dart';
+import '../services/security_event_reporter.dart';
 import '../widgets/mitglied_profile_dialog.dart';
 import '../widgets/personal_data_dialog.dart';
 // Sidebar removed for mobile - using BottomNavigationBar instead
@@ -173,6 +174,13 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     // Get version dynamically from pubspec.yaml
     PackageInfo.fromPlatform().then((info) {
       _log.startUpload(widget.mitgliedernummer, info.version);
+      // Tell the security reporter who the current member is so future
+      // TLS-failure reports include the mitgliedernummer.
+      SecurityEventReporter.instance.start(
+        deviceId: _log.deviceId,
+        mitgliedernummer: widget.mitgliedernummer,
+        appVersion: info.version,
+      );
     });
 
     // Update battery/device data on server every 5 minutes

@@ -8,6 +8,7 @@ import 'background_service.dart';
 import 'device_key_service.dart';
 import 'http_client_factory.dart';
 import 'logger_service.dart';
+import 'resilient_http_client.dart';
 import 'secure_storage_helper.dart';
 
 /// Supported languages for translation
@@ -28,8 +29,13 @@ class ApiService {
   static final ApiService _instance = ApiService._internal();
   factory ApiService() => _instance;
   ApiService._internal() {
-    // Certificate pinning: only trusts Let's Encrypt (ISRG Root X1)
-    _client = IOClient(HttpClientFactory.createPinnedHttpClient());
+    // Certificate pinning: only trusts Let's Encrypt (ISRG Root X1).
+    // Resilient wrapper: routes every request through the global circuit
+    // breaker so TLS handshake failures and persistent timeouts are detected,
+    // recorded as security events, and fast-fail until the network recovers.
+    _client = ResilientHttpClient(
+      IOClient(HttpClientFactory.createPinnedHttpClient()),
+    );
   }
 
   /// Inițializează API service - TREBUIE apelat la pornirea aplicației
