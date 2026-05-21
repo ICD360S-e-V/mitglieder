@@ -23,7 +23,24 @@ class UpdateService {
   }
 
   static String get currentVersion => _currentVersion;
-  static const int currentBuildNumber = 122;
+
+  /// Build number computed from the current version string using the same
+  /// MAJOR*10000 + MINOR*100 + PATCH encoding the server uses in
+  /// `/api/data/version_mitglieder_<platform>.json`. Returns 0 if the version
+  /// string can't be parsed (e.g. `unknown` before [initVersion] runs).
+  ///
+  /// Used to be a hardcoded `const int = 122` which silently rotted across
+  /// releases — every server response with a higher number was treated as
+  /// "update available", causing the update prompt loop after install.
+  static int get currentBuildNumber {
+    final parts = _currentVersion.split('.');
+    if (parts.length < 3) return 0;
+    final major = int.tryParse(parts[0]);
+    final minor = int.tryParse(parts[1]);
+    final patch = int.tryParse(parts[2]);
+    if (major == null || minor == null || patch == null) return 0;
+    return major * 10000 + minor * 100 + patch;
+  }
 
   late http.Client _client;
   late HttpClient _httpClient;
