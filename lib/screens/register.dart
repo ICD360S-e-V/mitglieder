@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../services/update_service.dart';
 import '../widgets/register_tab.dart';
 import 'login.dart'; // Used for redirect after registration
 import 'webview_screen.dart';
@@ -175,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           SizedBox(height: _getResponsiveSpacing(context, 12)),
           Text(
-            'v1.1.26',
+            'v${UpdateService.currentVersion}',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
               fontSize: _getResponsiveFontSize(context, 11),

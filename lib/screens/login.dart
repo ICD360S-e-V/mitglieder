@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/secure_storage_helper.dart';
+import '../services/update_service.dart';
 import '../widgets/login_tab.dart';
 import '../widgets/approval_waiting_dialog.dart';
 import '../utils/error_helpers.dart';
@@ -316,7 +317,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           SizedBox(height: _getResponsiveSpacing(context, 12)),
           Text(
-            'v1.1.26',
+            'v${UpdateService.currentVersion}',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
               fontSize: _getResponsiveFontSize(context, 11),

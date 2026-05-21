@@ -8,8 +8,6 @@ import '../services/logger_service.dart';
 import 'changelog_dialog.dart';
 import 'update_dialog.dart';
 
-const String appVersion = '1.1.26';
-
 class LegalFooter extends StatefulWidget {
   final bool darkMode;
 
@@ -196,7 +194,7 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                   child: Text(
-                    'v$appVersion',
+                    'v${UpdateService.currentVersion}',
                     style: TextStyle(
                       color: textColor,
                       fontSize: 11,
