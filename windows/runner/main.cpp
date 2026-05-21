@@ -42,11 +42,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   // 2. Heap corruption protection - terminate on corruption (anti-exploit)
   ::HeapSetInformation(NULL, HeapEnableTerminationOnCorruption, NULL, 0);
 
-  // 3. ACG (Arbitrary Code Guard) - block shellcode injection
-  PROCESS_MITIGATION_DYNAMIC_CODE_POLICY dynamicCodePolicy = {};
-  dynamicCodePolicy.ProhibitDynamicCode = 1;
-  ::SetProcessMitigationPolicy(ProcessDynamicCodePolicy,
-    &dynamicCodePolicy, sizeof(dynamicCodePolicy));
+  // 3. ACG (Arbitrary Code Guard) — DISABLED.
+  //
+  // ProhibitDynamicCode=1 blocks every code page that wasn't on disk at
+  // load time, which kills ANGLE's GL->D3D shader translator and Skia's
+  // shader cache. With ACG on, EGL_CONTEXT_LOST (0x300E) fires on every
+  // frame and the Flutter view never paints — the user only sees the
+  // window chrome, which is exactly the white-window symptom reported.
+  //
+  // ACG is fundamentally incompatible with any GPU-accelerated framework
+  // that JITs shaders (Flutter, Chromium-based shells, Electron, Unity,
+  // anything that loads a graphics driver doing runtime codegen).
+  //
+  // The other five mitigations below (DLL injection block, heap
+  // corruption termination, image-load policy, DEP, anti-debug) all
+  // remain on; they don't touch JIT.
 
   // 4. Image Load Policy - block DLLs from network/low integrity
   PROCESS_MITIGATION_IMAGE_LOAD_POLICY imageLoadPolicy = {};
