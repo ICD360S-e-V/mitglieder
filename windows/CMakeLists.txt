@@ -32,6 +32,14 @@ set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_RELEASE}")
 # Use Unicode for all projects.
 add_definitions(-DUNICODE -D_UNICODE)
 
+# MSVC 14.51+ (VS 2026) turned the <experimental/coroutine> deprecation
+# warning into a hard error. Several Flutter Windows plugins (notably
+# flutter_local_notifications_windows, permission_handler_windows,
+# windows_notification) still include the experimental header. Silence the
+# warning project-wide until those plugins migrate to the C++20 <coroutine>
+# header.
+add_definitions(-D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS)
+
 # Compilation settings that should be applied to most targets.
 #
 # Be cautious about adding new options here, as plugins use this function by
