@@ -53,6 +53,8 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   bool _isSending = false;
   String? _typingUser;
   Timer? _typingTimer;
+  Timer? _markReadDebounce;
+  Timer? _countdownTimer;
 
   // Support online status
   bool _supportOnline = false;
@@ -91,6 +93,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   StreamSubscription? _iceCandidateSubscription;
   StreamSubscription? _callBusySubscription;
   StreamSubscription? _readReceiptSubscription;
+  StreamSubscription? _messageExpiredSubscription;
   StreamSubscription? _callOfferSubscription;
   StreamSubscription? _callStateSubscription;
 
@@ -223,6 +226,8 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     _messageController.dispose();
     _scrollController.dispose();
     _typingTimer?.cancel();
+    _markReadDebounce?.cancel();
+    _countdownTimer?.cancel();
     _callDurationTimer?.cancel();
     _supportStatusTimer?.cancel();
     _networkTimer?.cancel();
@@ -236,6 +241,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     _iceCandidateSubscription?.cancel();
     _callBusySubscription?.cancel();
     _readReceiptSubscription?.cancel();
+    _messageExpiredSubscription?.cancel();
     _callOfferSubscription?.cancel();
     _callStateSubscription?.cancel();
     // Don't call _endCallCleanup() in dispose - widget is already defunct
@@ -441,6 +447,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           }
         });
         _scrollToBottom();
+        _ensureCountdownTimer();
       } else {
         _log.warning('LiveChat: _loadMessages failed: ${result['message']}', tag: 'CHAT');
       }
@@ -557,7 +564,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     });
     */
 
-    // Read receipt listener
+    // Read receipt listener: sender's bubble flips to ✓✓ blue + countdown bar arms.
     _readReceiptSubscription = _chatService.readReceiptStream.listen((event) {
       if (!mounted) return;
       if (event.conversationId != _conversationId) return;
@@ -568,7 +575,28 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
             msg['status'] = event.status;
             if (event.status == 'read') {
               msg['is_read'] = true;
+              msg['read_at'] ??= DateTime.now().toIso8601String();
+              final expIso = event.expires[msg['id'].toString()];
+              if (expIso != null) msg['expires_at'] = expIso;
             }
+          }
+        }
+      });
+      _ensureCountdownTimer();
+    });
+
+    // Message-expired listener: server NULLed the body after 5-min TTL.
+    // Blank the local content + stamp deleted_at so the bubble renders as ghost.
+    _messageExpiredSubscription = _chatService.messageExpiredStream.listen((event) {
+      if (!mounted) return;
+      if (event.conversationId != _conversationId) return;
+      setState(() {
+        for (var msg in _messages) {
+          if (event.messageIds.contains(msg['id'])) {
+            msg['message'] = null;
+            msg['original_message'] = null;
+            msg['attachments'] = [];
+            msg['deleted_at'] = DateTime.now().toIso8601String();
           }
         }
       });
@@ -1159,13 +1187,25 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     }
   }
 
-  /// Mark all unread messages as read when user focuses on input
+  /// Typing-as-read: TextField.onChanged invokes this; once ≥2 chars have been
+  /// sustained for 500ms, we mark every unread non-own message as read, which
+  /// arms the server-side 5-minute expire timer.
+  void _onInputChanged(String text) {
+    if (text.trim().length < 2) return;
+    _markReadDebounce?.cancel();
+    _markReadDebounce = Timer(const Duration(milliseconds: 500), _markMessagesAsRead);
+  }
+
+  /// Mark all delivered messages as read. Server stamps expires_at = NOW + 5 MIN
+  /// and returns it; we mirror locally so the countdown bar can start instantly.
   Future<void> _markMessagesAsRead() async {
     if (_conversationId == null) return;
 
-    // Find unread messages from others
     final unreadIds = _messages
-        .where((m) => m['is_own'] != true && m['status'] != 'read')
+        .where((m) =>
+            m['is_own'] != true &&
+            m['status'] != 'read' &&
+            m['deleted_at'] == null)
         .map((m) => int.tryParse(m['id']?.toString() ?? ''))
         .whereType<int>()
         .toList();
@@ -1181,17 +1221,27 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       );
 
       if (result['success'] == true && mounted) {
-        // Update local state
+        final returned = (result['messages'] ?? result['data']?['messages']) as List?;
         setState(() {
           for (var msg in _messages) {
             if (unreadIds.contains(msg['id'])) {
               msg['status'] = 'read';
               msg['is_read'] = true;
+              msg['read_at'] ??= DateTime.now().toIso8601String();
+              if (returned != null) {
+                final hit = returned.firstWhere(
+                  (m) => m is Map && m['id'] == msg['id'],
+                  orElse: () => null,
+                );
+                if (hit is Map && hit['expires_at'] != null) {
+                  msg['expires_at'] = hit['expires_at'];
+                }
+              }
             }
           }
         });
+        _ensureCountdownTimer();
 
-        // Broadcast via WebSocket
         if (_isConnected) {
           _chatService.sendReadReceipt(_conversationId!, unreadIds, 'read');
         }
@@ -1199,6 +1249,32 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     } catch (e) {
       _log.error('LiveChat: Mark read error: $e', tag: 'CHAT');
     }
+  }
+
+  /// Run a 1Hz repaint while any bubble is in the read+pending-expire window.
+  /// Auto-stops once every expiring bubble has either expired or been purged.
+  void _ensureCountdownTimer() {
+    if (_countdownTimer != null && _countdownTimer!.isActive) return;
+    _countdownTimer = Timer.periodic(const Duration(seconds: 1), (t) {
+      if (!mounted) {
+        t.cancel();
+        return;
+      }
+      final now = DateTime.now();
+      final anyPending = _messages.any((m) {
+        if (m['deleted_at'] != null) return false;
+        final exp = m['expires_at'];
+        if (exp == null) return false;
+        final dt = DateTime.tryParse(exp.toString());
+        return dt != null && dt.isAfter(now);
+      });
+      if (!anyPending) {
+        t.cancel();
+        _countdownTimer = null;
+        return;
+      }
+      setState(() {});
+    });
   }
 
   void _showError(String message) {
@@ -1544,10 +1620,35 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   }
 
   Widget _buildModernMessageBubble(Map<String, dynamic> msg, bool isOwn) {
+    // Ghost: server has NULLed message body after 5-min read TTL.
+    // Render a minimal "Gelesen · HH:MM ✓✓" tombstone (audit-friendly, content gone).
+    final rawMessage = msg['message'];
+    final isGhost = msg['deleted_at'] != null ||
+        (rawMessage == null && msg['is_read'] == true);
+    if (isGhost) {
+      return _buildGhostBubble(msg, isOwn);
+    }
+
     final senderRole = msg['sender_role'] ?? 'mitglied';
     final isSupport = senderRole != 'mitglied';
     final attachments = msg['attachments'] as List? ?? [];
-    final messageText = msg['message'] ?? '';
+    final messageText = rawMessage ?? '';
+
+    // Countdown bar: status=read + expires_at in future
+    double? expireProgress;
+    if (msg['status'] == 'read' && msg['expires_at'] != null) {
+      final exp = DateTime.tryParse(msg['expires_at'].toString());
+      final readAtStr = msg['read_at'];
+      final readAt = readAtStr != null ? DateTime.tryParse(readAtStr.toString()) : null;
+      if (exp != null) {
+        final base = readAt ?? exp.subtract(const Duration(minutes: 5));
+        final total = exp.difference(base).inMilliseconds;
+        if (total > 0) {
+          final elapsed = DateTime.now().difference(base).inMilliseconds;
+          expireProgress = (elapsed / total).clamp(0.0, 1.0);
+        }
+      }
+    }
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -1626,6 +1727,22 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                     if (messageText.isNotEmpty) const SizedBox(height: 8),
                     ...attachments.map((att) => _buildModernAttachment(att, isOwn)),
                   ],
+                  // Countdown bar: thin progress strip that fills over 5 minutes
+                  // from read_at toward expires_at — synced for sender & recipient.
+                  if (expireProgress != null) ...[
+                    const SizedBox(height: 6),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(2),
+                      child: LinearProgressIndicator(
+                        value: expireProgress,
+                        minHeight: 3,
+                        backgroundColor: (isOwn ? Colors.white : Colors.grey.shade300).withValues(alpha: 0.35),
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          isOwn ? Colors.white70 : Colors.lightBlue.shade300,
+                        ),
+                      ),
+                    ),
+                  ],
                   // Time and read receipt
                   const SizedBox(height: 6),
                   Row(
@@ -1646,6 +1763,46 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                   ),
                 ],
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Minimal tombstone bubble shown after the server NULLs the message body.
+  /// Audit-friendly: keeps timestamp + double-blue-tick so the sender still
+  /// sees "I sent this and it was read at HH:MM", without the content.
+  Widget _buildGhostBubble(Map<String, dynamic> msg, bool isOwn) {
+    final readAt = msg['read_at'] ?? msg['deleted_at'];
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Row(
+        mainAxisAlignment: isOwn ? MainAxisAlignment.end : MainAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: Colors.grey.shade300, width: 1),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.auto_delete_outlined, size: 14, color: Colors.grey.shade500),
+                const SizedBox(width: 6),
+                Text(
+                  'Gelesen · ${_formatTime(readAt)}',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.grey.shade600,
+                  ),
+                ),
+                const SizedBox(width: 6),
+                Icon(Icons.done_all, size: 12, color: Colors.lightBlue.shade300),
+              ],
             ),
           ),
         ],
@@ -1809,9 +1966,11 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                   ),
                   child: TextField(
                     controller: _messageController,
-                    onChanged: (_) => _onTyping(),
+                    onChanged: (text) {
+                      _onTyping();
+                      _onInputChanged(text);
+                    },
                     onSubmitted: (_) => _sendMessage(),
-                    onTap: _markMessagesAsRead,
                     decoration: InputDecoration(
                       hintText: AppLocalizations.of(context)!.typeMessage,
                       hintStyle: TextStyle(color: Colors.grey),
