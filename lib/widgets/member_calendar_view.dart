@@ -395,6 +395,40 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Kind badge (shown only when this termin belongs to a
+                      // child of the current parent user). Server-side
+                      // aggregation in /api/termine/my_termine.php returns the
+                      // participant fields; forKindBadge() decides whether to
+                      // render and what label to show.
+                      if (termin.forKindBadge(widget.mitgliedernummer) != null) ...[
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                          decoration: BoxDecoration(
+                            color: Colors.pink.shade50,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.pink.shade200),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.child_care, size: 12, color: Colors.pink.shade700),
+                              const SizedBox(width: 4),
+                              Flexible(
+                                child: Text(
+                                  termin.forKindBadge(widget.mitgliedernummer)!,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.pink.shade700,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                      ],
                       // Title
                       Text(
                         termin.title,

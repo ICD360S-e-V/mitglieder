@@ -35,6 +35,15 @@ class Termin {
   final String? myReschedulingReason;
   final DateTime? myRespondedAt;
 
+  // Participant (server-side aggregation: parent users see their children's
+  // termine alongside their own. Server fills these in for every termin when
+  // the response is aggregated; missing for legacy/non-aggregated endpoints.)
+  final int? participantUserId;
+  final String? participantVorname;
+  final String? participantNachname;
+  final String? participantMitgliedernummer;
+  final String? participantRole;
+
   Termin({
     required this.id,
     required this.title,
@@ -58,6 +67,11 @@ class Termin {
     this.myResponse,
     this.myReschedulingReason,
     this.myRespondedAt,
+    this.participantUserId,
+    this.participantVorname,
+    this.participantNachname,
+    this.participantMitgliedernummer,
+    this.participantRole,
   });
 
   factory Termin.fromJson(Map<String, dynamic> json) {
@@ -111,7 +125,42 @@ class Termin {
       myReschedulingReason: json['rescheduling_reason'],
       myRespondedAt:
           json['responded_at'] != null ? DateTime.tryParse(json['responded_at'].toString()) : null,
+      participantUserId: json['participant_user_id'] == null
+          ? null
+          : (json['participant_user_id'] is int
+              ? json['participant_user_id'] as int
+              : int.tryParse(json['participant_user_id'].toString())),
+      participantVorname: json['participant_vorname'] as String?,
+      participantNachname: json['participant_nachname'] as String?,
+      participantMitgliedernummer: json['participant_mitgliedernummer'] as String?,
+      participantRole: json['participant_role'] as String?,
     );
+  }
+
+  /// True if this termin belongs to a Jugendmitglied participant (a child
+  /// the current parent user has authority over). Useful for filtering /
+  /// labelling.
+  bool get isKindTermin => participantRole == 'jugendmitglied';
+
+  /// Returns the display label for the "kind badge" rendered above the title,
+  /// or null if no badge should be shown (i.e. this termin is the user's own).
+  ///
+  /// Logic:
+  ///   - If the server did not aggregate participant info (legacy endpoint),
+  ///     [participantMitgliedernummer] is null -> no badge.
+  ///   - If the participant is the user themselves, no badge.
+  ///   - Otherwise return the participant's full name; fall back to their
+  ///     Mitgliedernummer when the name is missing.
+  String? forKindBadge(String selfMitgliedernummer) {
+    final theirNumber = participantMitgliedernummer;
+    if (theirNumber == null || theirNumber.isEmpty) return null;
+    if (theirNumber == selfMitgliedernummer) return null;
+
+    final first = participantVorname?.trim() ?? '';
+    final last = participantNachname?.trim() ?? '';
+    final fullName = '$first $last'.trim();
+    if (fullName.isNotEmpty) return fullName;
+    return theirNumber;
   }
 
   String get categoryDisplay {
