@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.5.1...v1.6.0) (2026-05-22)
+
+
+### Features
+
+* **chat:** Snapchat-strict — bubble vanishes at 5-min TTL, no tombstone ([0ec155f](https://github.com/ICD360S-e-V/mitglieder/commit/0ec155fbd1e90642110955ea6375f31381808e90))
+
 ## [1.5.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.5.0...v1.5.1) (2026-05-21)
 
 
