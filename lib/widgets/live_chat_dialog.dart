@@ -1770,45 +1770,9 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     );
   }
 
-  /// Minimal tombstone bubble shown after the server NULLs the message body.
-  /// Audit-friendly: keeps timestamp + double-blue-tick so the sender still
-  /// sees "I sent this and it was read at HH:MM", without the content.
-  Widget _buildGhostBubble(Map<String, dynamic> msg, bool isOwn) {
-    final readAt = msg['read_at'] ?? msg['deleted_at'];
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Row(
-        mainAxisAlignment: isOwn ? MainAxisAlignment.end : MainAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade200,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.grey.shade300, width: 1),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.auto_delete_outlined, size: 14, color: Colors.grey.shade500),
-                const SizedBox(width: 6),
-                Text(
-                  'Gelesen · ${_formatTime(readAt)}',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.grey.shade600,
-                  ),
-                ),
-                const SizedBox(width: 6),
-                Icon(Icons.done_all, size: 12, color: Colors.lightBlue.shade300),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  /// Snapchat-strict: bubble disappears completely after the 5-min TTL.
+  /// No tombstone, no timestamp, no trace.
+  Widget _buildGhostBubble(Map<String, dynamic> msg, bool isOwn) => const SizedBox.shrink();
 
   Widget _buildModernAttachment(Map<String, dynamic> attachment, bool isOwn) {
     final filename = attachment['filename'] ?? AppLocalizations.of(context)!.file;
