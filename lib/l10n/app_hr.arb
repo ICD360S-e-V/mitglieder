@@ -929,5 +929,7 @@
   "securityPermissionDialogTitle": "Possible network attack detected",
   "securityPermissionDialogBody": "Something on your network may be intercepting connections. To identify the network and protect you, we need permission to read the WiFi name. No location tracking.",
   "securityPermissionDialogAllow": "Allow",
-  "securityPermissionDialogDeny": "Not now"
+  "securityPermissionDialogDeny": "Not now",
+  "callErrorMicPermissionDenied": "Microphone access is blocked. Enable it in Windows Settings → Privacy → Microphone (or your system's privacy settings), then try again.",
+  "callErrorMicNotFound": "No microphone was found. Connect a headset or microphone and try again."
 }

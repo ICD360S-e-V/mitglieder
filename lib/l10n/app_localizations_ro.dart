@@ -1914,4 +1914,12 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get securityPermissionDialogDeny => 'Nu acum';
+
+  @override
+  String get callErrorMicPermissionDenied =>
+      'Accesul la microfon este blocat. Activeaza-l in Windows Settings → Privacy → Microphone (sau setarile de confidentialitate ale sistemului tau) si incearca din nou.';
+
+  @override
+  String get callErrorMicNotFound =>
+      'Nu a fost gasit niciun microfon. Conecteaza casti sau un microfon si incearca din nou.';
 }

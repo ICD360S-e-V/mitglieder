@@ -929,5 +929,7 @@
   "securityPermissionDialogTitle": "Обнаружена возможная атака на сеть",
   "securityPermissionDialogBody": "Что-то в вашей сети может перехватывать соединения. Чтобы определить сеть и защитить вас, нам нужно разрешение читать имя Wi-Fi. Никакого отслеживания местоположения.",
   "securityPermissionDialogAllow": "Разрешить",
-  "securityPermissionDialogDeny": "Не сейчас"
+  "securityPermissionDialogDeny": "Не сейчас",
+  "callErrorMicPermissionDenied": "Доступ к микрофону заблокирован. Включите его в Windows Settings → Privacy → Microphone (или в настройках конфиденциальности вашей системы) и попробуйте снова.",
+  "callErrorMicNotFound": "Микрофон не найден. Подключите гарнитуру или микрофон и попробуйте снова."
 }

@@ -1922,4 +1922,12 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get securityPermissionDialogDeny => 'Jetzt nicht';
+
+  @override
+  String get callErrorMicPermissionDenied =>
+      'Mikrofonzugriff ist blockiert. Aktivieren Sie ihn in Windows-Einstellungen → Datenschutz → Mikrofon (oder den Datenschutz-Einstellungen Ihres Systems) und versuchen Sie es erneut.';
+
+  @override
+  String get callErrorMicNotFound =>
+      'Kein Mikrofon gefunden. Schließen Sie ein Headset oder Mikrofon an und versuchen Sie es erneut.';
 }

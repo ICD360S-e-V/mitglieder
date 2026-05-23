@@ -929,5 +929,7 @@
   "securityPermissionDialogTitle": "Posibil atac de retea detectat",
   "securityPermissionDialogBody": "Ceva din reteaua ta ar putea intercepta conexiunile. Pentru a identifica reteaua si a te proteja, avem nevoie de permisiunea de a citi numele WiFi. Fara urmarirea locatiei.",
   "securityPermissionDialogAllow": "Permite",
-  "securityPermissionDialogDeny": "Nu acum"
+  "securityPermissionDialogDeny": "Nu acum",
+  "callErrorMicPermissionDenied": "Accesul la microfon este blocat. Activeaza-l in Windows Settings → Privacy → Microphone (sau setarile de confidentialitate ale sistemului tau) si incearca din nou.",
+  "callErrorMicNotFound": "Nu a fost gasit niciun microfon. Conecteaza casti sau un microfon si incearca din nou."
 }

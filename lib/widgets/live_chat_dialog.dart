@@ -636,7 +636,20 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       final success = await _voiceCallService.startCall(_conversationId!, 'support', 'Support');
 
       if (!success) {
-        throw Exception('Failed to start call via VoiceCallService');
+        // Map the specific failure reason to a localised, actionable message.
+        // Generic getUserFriendlyError fell through to "unexpected error" for
+        // mic-permission/missing-device cases, which left users guessing.
+        if (mounted) {
+          final l = AppLocalizations.of(context)!;
+          final message = switch (_voiceCallService.lastStartFailure) {
+            CallStartFailure.micPermissionDenied => l.callErrorMicPermissionDenied,
+            CallStartFailure.micNotFound => l.callErrorMicNotFound,
+            _ => l.errorStartingCall,
+          };
+          _showError(message);
+        }
+        if (mounted) _endCallCleanup();
+        return;
       }
 
       _log.info('LiveChat: Call to support started successfully via VoiceCallService', tag: 'CALL');
@@ -648,11 +661,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     } catch (e) {
       _log.error('LiveChat: _startCall() error: $e', tag: 'CALL');
       if (mounted) {
-        if (e.toString().contains('NO_MICROPHONE')) {
-          _showError(AppLocalizations.of(context)!.errorStartingCall);
-        } else {
-          _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
-        }
+        _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
       }
       await _voiceCallService.endCall();
       if (mounted) {

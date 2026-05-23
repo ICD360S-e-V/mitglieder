@@ -9,6 +9,21 @@ import 'logger_service.dart';
 
 final _log = LoggerService();
 
+/// Why a call failed to start. Lets the UI surface an actionable error
+/// instead of a generic "unexpected" toast.
+enum CallStartFailure {
+  /// The OS denied microphone access (Windows Privacy / macOS System Prefs /
+  /// Android runtime permission). User can fix this in system settings.
+  micPermissionDenied,
+
+  /// No usable microphone exists. Hardware missing, driver broken, or the
+  /// device is exclusively held by another app.
+  micNotFound,
+
+  /// Something else — TURN, signaling, internal WebRTC error.
+  unknown,
+}
+
 /// Voice Call Service using WebRTC for real-time audio communication
 class VoiceCallService {
   // No fallback — if our TURN server is unreachable, calls cannot be established.
@@ -85,6 +100,11 @@ class VoiceCallService {
   bool _isMuted = false;
   bool _isSpeakerOn = true;
 
+  /// Set when [startCall] returns false. Reset to null at the start of every
+  /// [startCall]. Callers read this to show a specific user-facing message.
+  CallStartFailure? _lastStartFailure;
+  CallStartFailure? get lastStartFailure => _lastStartFailure;
+
   // Stream controllers for UI updates
   final _callStateController = StreamController<CallState>.broadcast();
   final _remoteStreamController = StreamController<MediaStream?>.broadcast();
@@ -109,9 +129,13 @@ class VoiceCallService {
   factory VoiceCallService() => _instance;
   VoiceCallService._internal();
 
-  /// Initialize a call (caller side)
+  /// Initialize a call (caller side).
+  ///
+  /// On failure returns false; the caller can read [lastStartFailure] for
+  /// the reason and map it to a localised user-facing message.
   Future<bool> startCall(int conversationId, String targetUserId, String targetUserName) async {
     _log.info('VoiceCallService: startCall() - conv: $conversationId, target: $targetUserName', tag: 'CALL');
+    _lastStartFailure = null;
     if (_callState != CallState.idle) {
       _log.warning('VoiceCallService: startCall() aborted - already in state: $_callState', tag: 'CALL');
       return false;
@@ -126,6 +150,7 @@ class VoiceCallService {
       _localStream = await _getLocalStream();
       if (_localStream == null) {
         _log.error('VoiceCallService: Failed to get local stream', tag: 'CALL');
+        _lastStartFailure ??= CallStartFailure.unknown;
         _setCallState(CallState.idle);
         return false;
       }
@@ -167,6 +192,9 @@ class VoiceCallService {
       return true;
     } catch (e) {
       _log.error('VoiceCallService: startCall() error: $e', tag: 'CALL');
+      // _getLocalStream classifies its own failures into _lastStartFailure.
+      // Anything else is unknown.
+      _lastStartFailure ??= CallStartFailure.unknown;
       await endCall();
       return false;
     }
@@ -549,64 +577,99 @@ class VoiceCallService {
     };
   }
 
-  /// Get local audio stream with detailed logging
+  /// Get local audio stream.
+  ///
+  /// On Windows (libwebrtc native), the Web spec's privacy-preserving
+  /// behaviour hides audio inputs in `enumerateDevices()` until
+  /// `getUserMedia({audio: true})` has been granted permission. That made
+  /// our previous "enumerate first, then getUserMedia with deviceId"
+  /// pattern fail with NO_MICROPHONE for users who had a perfectly fine
+  /// headset connected (see flutter-webrtc#808, #1136, #1628).
+  ///
+  /// The correct order is: getUserMedia FIRST (this triggers the OS
+  /// permission prompt and unlocks the device list). Enumerate afterwards
+  /// only for diagnostic logging — we already have the stream we need.
+  ///
+  /// On failure, classifies the error into [_lastStartFailure] so the
+  /// caller can show an actionable message ("enable mic in Windows
+  /// Privacy" vs "no microphone connected" vs generic).
   Future<MediaStream?> _getLocalStream() async {
+    _log.info('VoiceCallService: 🎤 Requesting microphone access (default device)...', tag: 'CALL');
+
+    final MediaStream stream;
     try {
-      _log.info('VoiceCallService: 🎤 Enumerating audio devices...', tag: 'CALL');
-
-      // Check for audio devices first
-      final devices = await navigator.mediaDevices.enumerateDevices();
-      _log.info('VoiceCallService: 🎤 Total devices found: ${devices.length}', tag: 'CALL');
-
-      // Log all devices for debugging
-      for (var i = 0; i < devices.length; i++) {
-        final device = devices[i];
-        _log.info('VoiceCallService: 🎤 Device $i: kind=${device.kind}, label="${device.label}", deviceId=${device.deviceId}', tag: 'CALL');
-      }
-
-      final audioInputs = devices.where((d) => d.kind == 'audioinput').toList();
-      final audioOutputs = devices.where((d) => d.kind == 'audiooutput').toList();
-      final videoInputs = devices.where((d) => d.kind == 'videoinput').toList();
-
-      _log.info('VoiceCallService: 🎤 Audio inputs: ${audioInputs.length}', tag: 'CALL');
-      _log.info('VoiceCallService: 🔊 Audio outputs: ${audioOutputs.length}', tag: 'CALL');
-      _log.info('VoiceCallService: 📹 Video inputs: ${videoInputs.length}', tag: 'CALL');
-
-      if (audioInputs.isEmpty) {
-        _log.error('VoiceCallService: ❌ NO MICROPHONE FOUND! Cannot start voice call.', tag: 'CALL');
-        _log.error('VoiceCallService: ❌ Machine may not have audio hardware or drivers installed', tag: 'CALL');
-        throw Exception('NO_MICROPHONE');
-      }
-
-      // Log selected microphone
-      final selectedMic = audioInputs[0];
-      _log.info('VoiceCallService: ✓ Using microphone: "${selectedMic.label}" (${selectedMic.deviceId})', tag: 'CALL');
-
-      // Fix 2 - Audio Device Selection with explicit deviceId
-      final constraints = {
+      stream = await navigator.mediaDevices.getUserMedia(const {
         'audio': {
-          'deviceId': selectedMic.deviceId,  // Explicit device selection
           'echoCancellation': true,
           'noiseSuppression': true,
           'autoGainControl': true,
         },
         'video': false,
-      };
-
-      _log.debug('VoiceCallService: getUserMedia with deviceId: ${selectedMic.deviceId}', tag: 'CALL');
-      final stream = await navigator.mediaDevices.getUserMedia(constraints);
-      _log.info('VoiceCallService: ✓✓✓ Audio stream acquired successfully!', tag: 'CALL');
-      _log.info('VoiceCallService: Stream tracks: ${stream.getTracks().length}', tag: 'CALL');
-
-      for (var track in stream.getTracks()) {
-        _log.info('VoiceCallService: Track: ${track.kind}, enabled: ${track.enabled}, muted: ${track.muted}', tag: 'CALL');
-      }
-
-      return stream;
+      });
     } catch (e) {
-      _log.error('VoiceCallService: ❌ _getLocalStream() failed: $e', tag: 'CALL');
+      _lastStartFailure = _classifyMediaError(e);
+      _log.error(
+        'VoiceCallService: ❌ getUserMedia(audio) failed [${_lastStartFailure!.name}]: $e',
+        tag: 'CALL',
+      );
       rethrow;
     }
+
+    _log.info('VoiceCallService: ✓✓✓ Audio stream acquired', tag: 'CALL');
+    _log.info('VoiceCallService: Stream tracks: ${stream.getTracks().length}', tag: 'CALL');
+    for (var track in stream.getTracks()) {
+      _log.info(
+        'VoiceCallService: Track: kind=${track.kind}, label="${track.label}", enabled=${track.enabled}, muted=${track.muted}',
+        tag: 'CALL',
+      );
+    }
+
+    // Diagnostic enumeration AFTER permission grant — labels and audio
+    // inputs are now visible. Failures here are non-fatal.
+    try {
+      final devices = await navigator.mediaDevices.enumerateDevices();
+      final audioInputs = devices.where((d) => d.kind == 'audioinput').toList();
+      final audioOutputs = devices.where((d) => d.kind == 'audiooutput').toList();
+      final videoInputs = devices.where((d) => d.kind == 'videoinput').toList();
+      _log.info(
+        'VoiceCallService: Devices after permission — audio in: ${audioInputs.length}, audio out: ${audioOutputs.length}, video in: ${videoInputs.length}',
+        tag: 'CALL',
+      );
+      for (var i = 0; i < devices.length; i++) {
+        final d = devices[i];
+        _log.debug(
+          'VoiceCallService: Device $i: kind=${d.kind}, label="${d.label}", deviceId=${d.deviceId}',
+          tag: 'CALL',
+        );
+      }
+    } catch (e) {
+      _log.debug('VoiceCallService: enumerateDevices (post-permission) failed: $e (non-fatal)', tag: 'CALL');
+    }
+
+    return stream;
+  }
+
+  /// Map a getUserMedia error to a [CallStartFailure] category. flutter_webrtc
+  /// surfaces native errors as strings containing the DOMException name; we
+  /// match the standard names (NotAllowedError, NotFoundError, etc.) plus
+  /// some legacy aliases.
+  CallStartFailure _classifyMediaError(Object error) {
+    final msg = error.toString();
+    if (msg.contains('NotAllowedError') ||
+        msg.contains('PermissionDeniedError') ||
+        msg.contains('SecurityError') ||
+        msg.contains('PERMISSION_DENIED')) {
+      return CallStartFailure.micPermissionDenied;
+    }
+    if (msg.contains('NotFoundError') ||
+        msg.contains('DevicesNotFoundError') ||
+        msg.contains('NotReadableError') ||
+        msg.contains('TrackStartError') ||
+        msg.contains('OverconstrainedError') ||
+        msg.contains('ConstraintNotSatisfiedError')) {
+      return CallStartFailure.micNotFound;
+    }
+    return CallStartFailure.unknown;
   }
 
   /// Set call state and notify listeners

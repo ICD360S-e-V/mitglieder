@@ -1913,4 +1913,12 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get securityPermissionDialogDeny => 'Not now';
+
+  @override
+  String get callErrorMicPermissionDenied =>
+      'Microphone access is blocked. Enable it in Windows Settings → Privacy → Microphone (or your system\'s privacy settings), then try again.';
+
+  @override
+  String get callErrorMicNotFound =>
+      'No microphone was found. Connect a headset or microphone and try again.';
 }

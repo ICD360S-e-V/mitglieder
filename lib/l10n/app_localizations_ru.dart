@@ -1912,4 +1912,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get securityPermissionDialogDeny => 'Не сейчас';
+
+  @override
+  String get callErrorMicPermissionDenied =>
+      'Доступ к микрофону заблокирован. Включите его в Windows Settings → Privacy → Microphone (или в настройках конфиденциальности вашей системы) и попробуйте снова.';
+
+  @override
+  String get callErrorMicNotFound =>
+      'Микрофон не найден. Подключите гарнитуру или микрофон и попробуйте снова.';
 }

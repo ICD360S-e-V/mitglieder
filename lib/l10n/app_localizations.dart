@@ -3582,6 +3582,18 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Jetzt nicht'**
   String get securityPermissionDialogDeny;
+
+  /// No description provided for @callErrorMicPermissionDenied.
+  ///
+  /// In de, this message translates to:
+  /// **'Mikrofonzugriff ist blockiert. Aktivieren Sie ihn in Windows-Einstellungen → Datenschutz → Mikrofon (oder den Datenschutz-Einstellungen Ihres Systems) und versuchen Sie es erneut.'**
+  String get callErrorMicPermissionDenied;
+
+  /// No description provided for @callErrorMicNotFound.
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Mikrofon gefunden. Schließen Sie ein Headset oder Mikrofon an und versuchen Sie es erneut.'**
+  String get callErrorMicNotFound;
 }
 
 class _AppLocalizationsDelegate
