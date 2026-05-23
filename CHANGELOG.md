@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.6.0...v1.6.1) (2026-05-23)
+
+
+### Bug Fixes
+
+* **call:** actionable error when mic permission denied or device missing ([05fdb19](https://github.com/ICD360S-e-V/mitglieder/commit/05fdb197dbf4116d7ae78f28c1d49f59448be8ef))
+
 ## [1.6.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.5.1...v1.6.0) (2026-05-22)
 
 
