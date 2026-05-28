@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Google Play flavor override.
+
+    Play Store policy bans REQUEST_INSTALL_PACKAGES for apps whose core
+    purpose is not P2P file sharing. Member portals do not qualify, so
+    declaring it would cause Play rejection. The in-app self-update flow
+    is replaced on Play with App Store redirects (handled at runtime).
+
+    See: https://support.google.com/googleplay/android-developer/answer/12085295
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission
+        android:name="android.permission.REQUEST_INSTALL_PACKAGES"
+        tools:node="remove" />
+
+</manifest>
