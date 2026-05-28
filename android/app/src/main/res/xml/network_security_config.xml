@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Defense-in-depth at the OS level: enforces the same trust policy
+    as HttpClientFactory (Dart layer) for any traffic that bypasses it
+    (e.g. plugin-internal HTTP, system-initiated requests).
+
+    Policy:
+      - No cleartext anywhere.
+      - User-installed CAs NOT trusted in release builds — blocks MITM via
+        an attacker-installed root cert.
+      - icd360sev.icd360s.de must chain to a system CA AND its leaf must
+        pin to ISRG Root X1 (in use) or ISRG Root X2 (backup, ECDSA root).
+      - Pin expiration is a forcing function to revisit before 2027-06-01;
+        after that date, pinning silently degrades to system validation,
+        which prevents lockout if we forget to update.
+      - Debug builds may accept user CAs (Charles, mitmproxy, etc.).
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <domain-config includeSubdomains="true">
+        <domain>icd360sev.icd360s.de</domain>
+        <pin-set expiration="2027-06-01">
+            <!-- ISRG Root X1 (RSA, valid through 2035-06) — current production root -->
+            <pin digest="SHA-256">C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=</pin>
+            <!-- ISRG Root X2 (ECDSA, valid through 2040-09) — backup root for rotation -->
+            <pin digest="SHA-256">diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=</pin>
+        </pin-set>
+    </domain-config>
+
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>

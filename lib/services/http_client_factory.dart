@@ -6,21 +6,21 @@ import 'package:flutter/foundation.dart';
 ///
 /// All HTTP and WebSocket connections to our server MUST use this factory.
 ///
-/// How it works:
-/// - Creates a SecurityContext that ONLY trusts ISRG Root X1 (Let's Encrypt root)
-/// - Any certificate NOT signed by Let's Encrypt will be rejected
-/// - Protects against MITM attacks with rogue/fake CA certificates
-/// - Zero maintenance: ISRG Root X1 is valid until 2035, doesn't change at cert renewal
+/// Trust set in release mode: ISRG Root X1 (RSA, current) AND ISRG Root X2
+/// (ECDSA, backup). Either root is accepted; this prevents lockout if
+/// Let's Encrypt rotates the issuing chain to X2 between app releases.
 ///
-/// If migrating to another CA in the future:
-/// 1. Add new root CA PEM to _trustedRoots FIRST
+/// Mirrored at the OS layer by android/app/src/main/res/xml/network_security_config.xml
+/// so non-Dart HTTP (plugin code, system requests) gets the same guarantee.
+///
+/// CA migration runbook:
+/// 1. Add new root CA PEM to the trust list FIRST
 /// 2. Release app update (users now trust both CAs)
 /// 3. Switch server certificate to new CA
 /// 4. Remove old root CA PEM in next release
 class HttpClientFactory {
-  /// ISRG Root X1 - Let's Encrypt Root CA
-  /// Valid: June 4, 2015 - June 4, 2035
-  /// Source: https://letsencrypt.org/certificates/
+  /// ISRG Root X1 — Let's Encrypt RSA root.
+  /// Valid: 2015-06-04 to 2035-06-04. Source: https://letsencrypt.org/certificates/
   static const String _isrgRootX1Pem = '''
 -----BEGIN CERTIFICATE-----
 MIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw
@@ -54,8 +54,26 @@ mRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d
 emyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=
 -----END CERTIFICATE-----''';
 
-  /// Create an HttpClient pinned to Let's Encrypt Root CA.
-  /// ONLY certificates signed by Let's Encrypt will be accepted.
+  /// ISRG Root X2 — Let's Encrypt ECDSA root (backup for rotation).
+  /// Valid: 2020-09-04 to 2040-09-17. Source: https://letsencrypt.org/certificates/
+  static const String _isrgRootX2Pem = '''
+-----BEGIN CERTIFICATE-----
+MIICGzCCAaGgAwIBAgIQQdKd0XLq7qeAwSxs6S+HUjAKBggqhkjOPQQDAzBPMQsw
+CQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJuZXQgU2VjdXJpdHkgUmVzZWFyY2gg
+R3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBYMjAeFw0yMDA5MDQwMDAwMDBaFw00
+MDA5MTcxNjowMDBaME8xCzAJBgNVBAYTAlVTMSkwJwYDVQQKEyBJbnRlcm5ldCBT
+ZWN1cml0eSBSZXNlYXJjaCBHcm91cDEVMBMGA1UEAxMMSVNSRyBSb290IFgyMHYw
+EAYHKoZIzj0CAQYFK4EEACIDYgAEzZvVn4CDCuwJSvMWSj5cz3es3mcFDR0HttwW
++1qLFNvicWDEukWVEYmO6gbf9yoWHKS5xcUy4APgHoIYOIvXRdgKam7mAHf7AlF9
+ItgKbppbd9/w+kHsOdx1ymgHDB/qo0IwQDAOBgNVHQ8BAf8EBAMCAQYwDwYDVR0T
+AQH/BAUwAwEB/zAdBgNVHQ4EFgQUfEKWrt5LSDv6kviejM9ti6lyN5UwCgYIKoZI
+zj0EAwMDaAAwZQIwe3lORlCEwkSHRhtFcP9Ymd70/aTSVaYgLXTWNLxBo1BfASdW
+tL4ndQavEi51mI38AjEAi/V3bNTIZargCyzuFJ0nN6T5U6VR5CmD1/iQMVtCnwr1
+/q4AaOeMSQ+2b1tbFfLn
+-----END CERTIFICATE-----''';
+
+  /// Create an HttpClient pinned to Let's Encrypt Root CAs (X1 + X2 backup).
+  /// Certificates not chaining to either root will be rejected.
   ///
   /// In debug mode, uses system trust store (no pinning) for easier testing.
   static HttpClient createPinnedHttpClient({
@@ -70,15 +88,18 @@ emyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=
         ..idleTimeout = idleTimeout;
     }
 
-    // Release mode: create SecurityContext that ONLY trusts ISRG Root X1
+    // Release: trust ONLY ISRG Root X1 (active) + ISRG Root X2 (backup).
+    // Concatenating PEMs lets SecurityContext accept either chain.
     final securityContext = SecurityContext(withTrustedRoots: false);
-    securityContext.setTrustedCertificatesBytes(utf8.encode(_isrgRootX1Pem));
+    securityContext.setTrustedCertificatesBytes(
+      utf8.encode('$_isrgRootX1Pem\n$_isrgRootX2Pem'),
+    );
 
     final client = HttpClient(context: securityContext)
       ..connectionTimeout = connectionTimeout
       ..idleTimeout = idleTimeout;
 
-    debugPrint('[SSL] Certificate pinning ENABLED (ISRG Root X1 only)');
+    debugPrint('[SSL] Certificate pinning ENABLED (ISRG Root X1 + X2 backup)');
     return client;
   }
 
