@@ -1,0 +1,25 @@
+The official app for members of ICD360S e.V. — a non-profit association based in Neu-Ulm, Germany. Fully independent of Google, Apple, Microsoft, Huawei or other third parties, running on the association's own server infrastructure in Germany.
+
+<b>Features</b>
+• Appointment and leave management
+• Live chat with the board
+• Voice calls
+• Ticket and request management
+• Document verification
+• Push notifications via self-hosted ntfy
+
+<b>Security &amp; privacy</b>
+• No trackers, no ads, no analytics SDKs
+• TLS certificate pinning to Let's Encrypt roots (ISRG X1 + X2)
+• Encrypted local storage of sensitive tokens (Keychain / EncryptedSharedPreferences)
+• Cleartext HTTP traffic blocked at the OS level
+• Self-hosted server in Germany — GDPR compliant
+
+<b>Open source</b>
+• License: GPL-3.0
+• Source code: https://github.com/ICD360S-e-V/mitglieder
+• Reproducible builds via GitHub Actions
+• 28 languages supported
+
+<b>Platforms</b>
+Android, Windows, Linux, macOS, iOS — uniform feature set via Flutter.

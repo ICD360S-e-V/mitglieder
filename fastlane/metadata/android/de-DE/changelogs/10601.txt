@@ -1,0 +1,1 @@
+Fehlerbehebung: Klare Fehlermeldung, wenn das Mikrofon nicht freigegeben oder kein Aufnahmegerät vorhanden ist.

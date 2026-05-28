@@ -1,0 +1,25 @@
+Die offizielle App für Mitglieder des ICD360S e.V. – eines gemeinnützigen Vereins mit Sitz in Neu-Ulm. Vollständig unabhängig von Google, Apple, Microsoft, Huawei oder anderen Drittanbietern, mit eigener Serverinfrastruktur in Deutschland.
+
+<b>Funktionen</b>
+• Terminplanung und Urlaubsverwaltung
+• Live-Chat mit dem Vorstand
+• Sprachanrufe
+• Ticket- und Anfrageverwaltung
+• Dokumenten-Verifizierung
+• Push-Benachrichtigungen über eigenen ntfy-Server
+
+<b>Sicherheit &amp; Datenschutz</b>
+• Keine Tracker, keine Werbung, keine Analyse-SDKs
+• TLS-Zertifikat-Pinning auf Let's-Encrypt-Roots (ISRG X1 + X2)
+• Verschlüsselte lokale Speicherung sensibler Tokens (Keychain / EncryptedSharedPreferences)
+• Cleartext-HTTP-Verkehr OS-seitig blockiert
+• Eigener Server in Deutschland – DSGVO-konform
+
+<b>Open Source</b>
+• Lizenz: GPL-3.0
+• Quellcode: https://github.com/ICD360S-e-V/mitglieder
+• Reproduzierbare Builds via GitHub Actions
+• 28 Sprachen unterstützt
+
+<b>Plattformen</b>
+Android, Windows, Linux, macOS, iOS – einheitlicher Funktionsumfang über Flutter.
