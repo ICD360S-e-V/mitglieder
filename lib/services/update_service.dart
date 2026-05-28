@@ -14,6 +14,12 @@ import 'http_client_factory.dart';
 /// Supports: Android (APK), iOS (App Store), Windows (EXE), macOS (DMG), Linux (AppImage)
 class UpdateService {
   static const String versionUrl = 'https://icd360sev.icd360s.de/api/version_mitglieder.php';
+
+  /// TODO(ios-release): replace with the real numeric App Store ID once the
+  /// iOS build is published in App Store Connect (e.g. '6451234567').
+  /// While left at the placeholder, [openAppStore] launches a non-resolving
+  /// URL — acceptable only because the iOS flavor is not shipped yet.
+  static const String _iosAppStoreId = '000000000';
   static String _currentVersion = 'unknown';
 
   /// Initialize version from pubspec.yaml via package_info_plus
@@ -229,7 +235,7 @@ class UpdateService {
         // iOS: Open App Store page (self-update not supported)
         // This should ideally be called with the App Store URL instead
         debugPrint('[Update] iOS: Redirecting to App Store');
-        final appStoreUrl = Uri.parse('https://apps.apple.com/app/icd360s-mitglieder/id000000000');
+        final appStoreUrl = Uri.parse('https://apps.apple.com/app/icd360s-mitglieder/id$_iosAppStoreId');
         if (await canLaunchUrl(appStoreUrl)) {
           await launchUrl(appStoreUrl, mode: LaunchMode.externalApplication);
         }
@@ -257,7 +263,7 @@ class UpdateService {
   /// Call this instead of downloadUpdate on iOS
   Future<void> openAppStore() async {
     try {
-      final appStoreUrl = Uri.parse('https://apps.apple.com/app/icd360s-mitglieder/id000000000');
+      final appStoreUrl = Uri.parse('https://apps.apple.com/app/icd360s-mitglieder/id$_iosAppStoreId');
       if (await canLaunchUrl(appStoreUrl)) {
         await launchUrl(appStoreUrl, mode: LaunchMode.externalApplication);
       }
