@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.7.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.6.1...v1.7.0) (2026-06-15)
+
+
+### Features
+
+* **android:** strip REQUEST_INSTALL_PACKAGES from googleplay flavor ([a2f1ddb](https://github.com/ICD360S-e-V/mitglieder/commit/a2f1ddb58e3e60617d5ff63f8d2f4366cac83a9b))
+* **security:** harden TLS with OS-level pinning + ISRG Root X2 backup ([1815443](https://github.com/ICD360S-e-V/mitglieder/commit/1815443e91916c5a7da150e1fbfa7a69445e0f1c))
+
+
+### Bug Fixes
+
+* **ios:** extract App Store ID to a named constant with TODO ([5ea1473](https://github.com/ICD360S-e-V/mitglieder/commit/5ea1473340949bb67f8364090b27485392c3fdef))
+* **termine:** refresh expired JWT instead of silently looping 401 ([14dc56d](https://github.com/ICD360S-e-V/mitglieder/commit/14dc56d2c0b470f7488de4bd1c7e7519151651ec))
+
 ## [1.6.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.6.0...v1.6.1) (2026-05-23)
 
 
