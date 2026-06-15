@@ -19,9 +19,25 @@ class Termin {
   final String? createdByName;
   final int? ticketId;
   final String? ticketSubject;
+  // Vorstand-Flag: Anwesenheit dieses Teilnehmers ist erforderlich.
+  // Spalte termine.braucht_mich (tinyint(1), default 0). Wird seit dem
+  // Vorsitzer-Update zurückgegeben, der Member-Client zeigt einen Chip an.
+  final bool brauchtMich;
   final String status; // scheduled, completed, cancelled
   final DateTime createdAt;
   final DateTime? updatedAt;
+
+  // Termin-Nachbearbeitung — manuelles Status-Tracking nach dem Termin.
+  // Wird vom Vorstand über /api/admin/termine_nachbearbeitung.php gesetzt;
+  // Member sieht das Ergebnis read-only.
+  final String feedbackStatus; // offen | wahrgenommen | nicht_wahrgenommen
+  final bool feedbackErhalten;
+  final String? nichtWahrgenommenGrund; // key aus Server-Allowlist
+  final String? nichtWahrgenommenGrundText; // Freitext bei "sonstiges"
+  final String? feedbackText;
+  final DateTime? feedbackEingegangenAm;
+  final int? markiertVonUserId;
+  final DateTime? markiertAm;
 
   // Participant stats (când vine din admin list)
   final int? totalParticipants;
@@ -56,9 +72,18 @@ class Termin {
     this.createdByName,
     this.ticketId,
     this.ticketSubject,
+    this.brauchtMich = false,
     required this.status,
     required this.createdAt,
     this.updatedAt,
+    this.feedbackStatus = 'offen',
+    this.feedbackErhalten = false,
+    this.nichtWahrgenommenGrund,
+    this.nichtWahrgenommenGrundText,
+    this.feedbackText,
+    this.feedbackEingegangenAm,
+    this.markiertVonUserId,
+    this.markiertAm,
     this.totalParticipants,
     this.confirmedCount,
     this.declinedCount,
@@ -93,9 +118,32 @@ class Termin {
           ? (json['ticket_id'] is int ? json['ticket_id'] : int.parse(json['ticket_id'].toString()))
           : null,
       ticketSubject: json['ticket_subject'],
+      brauchtMich: json['braucht_mich'] == 1
+          || json['braucht_mich'] == '1'
+          || json['braucht_mich'] == true,
       status: json['status'] ?? 'scheduled',
       createdAt: DateTime.tryParse(json['created_at']?.toString() ?? '') ?? DateTime.now(),
       updatedAt: json['updated_at'] != null ? DateTime.tryParse(json['updated_at'].toString()) : null,
+      feedbackStatus: (json['feedback_status'] ?? 'offen').toString(),
+      feedbackErhalten: json['feedback_erhalten'] == 1
+          || json['feedback_erhalten'] == '1'
+          || json['feedback_erhalten'] == true,
+      nichtWahrgenommenGrund: json['nicht_wahrgenommen_grund']?.toString(),
+      nichtWahrgenommenGrundText: json['nicht_wahrgenommen_grund_text']?.toString(),
+      feedbackText: json['feedback_text']?.toString(),
+      feedbackEingegangenAm: (json['feedback_eingegangen_am'] != null
+              && json['feedback_eingegangen_am'].toString().isNotEmpty)
+          ? DateTime.tryParse(json['feedback_eingegangen_am'].toString())
+          : null,
+      markiertVonUserId: json['markiert_von_user_id'] == null
+          ? null
+          : (json['markiert_von_user_id'] is int
+              ? json['markiert_von_user_id'] as int
+              : int.tryParse(json['markiert_von_user_id'].toString())),
+      markiertAm: (json['markiert_am'] != null
+              && json['markiert_am'].toString().isNotEmpty)
+          ? DateTime.tryParse(json['markiert_am'].toString())
+          : null,
       totalParticipants: json['total_participants'] != null
           ? (json['total_participants'] is int
               ? json['total_participants']
@@ -345,6 +393,29 @@ class TerminService {
     };
   }
 
+  /// Runs an HTTP request, and if the server responds 401, refreshes the
+  /// access token once and retries. Without this, the 60-second calendar
+  /// poll keeps reusing the expired token past the 1h JWT lifetime — the
+  /// server then returns 401 + `{success:false, message:"Invalid or expired
+  /// token"}`, the calendar parses `null` for the `termine` field, and the
+  /// member sees an empty calendar with no error indication.
+  Future<Map<String, dynamic>> _withAuthRetry(
+    Future<http.Response> Function() request,
+  ) async {
+    http.Response response = await request().timeout(const Duration(seconds: 15));
+    if (response.statusCode == 401 && ApiService().refreshToken != null) {
+      final refreshed = await ApiService().refreshAccessToken();
+      if (refreshed) {
+        response = await request().timeout(const Duration(seconds: 15));
+      }
+    }
+    try {
+      return jsonDecode(response.body) as Map<String, dynamic>;
+    } catch (_) {
+      return {'success': false, 'message': 'Invalid server response'};
+    }
+  }
+
   // ========== ADMIN METHODS ==========
 
   /// Create termin (admin only)
@@ -515,14 +586,21 @@ class TerminService {
 
   // ========== MEMBER METHODS ==========
 
-  /// Get my termine (member)
-  Future<Map<String, dynamic>> getMyTermine({String filter = 'upcoming'}) async {
-    final response = await _client.get(
-      Uri.parse('$baseUrl/termine/my_termine.php?filter=$filter'),
-      headers: _headers,
-    );
-
-    return jsonDecode(response.body);
+  /// Get my termine (member). Supports optional from/to range for weekly view
+  /// (server endpoint extended 2026-05-20 with the vormund-kinder aggregation).
+  Future<Map<String, dynamic>> getMyTermine({
+    String filter = 'upcoming',
+    DateTime? from,
+    DateTime? to,
+  }) async {
+    final params = <String, String>{'filter': filter};
+    if (from != null && to != null) {
+      params['from'] = from.toIso8601String().substring(0, 10);
+      params['to'] = to.toIso8601String().substring(0, 10);
+    }
+    final uri = Uri.parse('$baseUrl/termine/my_termine.php')
+        .replace(queryParameters: params);
+    return _withAuthRetry(() => _client.get(uri, headers: _headers));
   }
 
   /// Respond to termin (member)
@@ -531,17 +609,15 @@ class TerminService {
     required String response, // confirmed, declined, rescheduling
     String? reason,
   }) async {
-    final res = await _client.post(
-      Uri.parse('$baseUrl/termine/respond.php'),
-      headers: _headers,
-      body: jsonEncode({
-        'termin_id': terminId,
-        'response': response,
-        if (reason != null) 'reason': reason,
-      }),
-    );
-
-    return jsonDecode(res.body);
+    return _withAuthRetry(() => _client.post(
+          Uri.parse('$baseUrl/termine/respond.php'),
+          headers: _headers,
+          body: jsonEncode({
+            'termin_id': terminId,
+            'response': response,
+            if (reason != null) 'reason': reason,
+          }),
+        ));
   }
 
   /// Get calendar view for member (read-only)
@@ -561,7 +637,12 @@ class TerminService {
       },
     );
 
-    final res = await _client.get(uri, headers: _headers);
+    http.Response res = await _client.get(uri, headers: _headers);
+    if (res.statusCode == 401 && ApiService().refreshToken != null) {
+      if (await ApiService().refreshAccessToken()) {
+        res = await _client.get(uri, headers: _headers);
+      }
+    }
 
     if (res.statusCode != 200) {
       throw Exception('Failed to load calendar: ${res.statusCode}');

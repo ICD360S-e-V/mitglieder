@@ -71,6 +71,61 @@ class ApiService {
     _refreshToken = refreshToken;
   }
 
+  // Single-flight lock for refreshAccessToken — without this, the calendar
+  // poll (60s) and the dashboard pending-count poll race to refresh after
+  // every expiry and each one starts an independent POST to /auth/refresh.php,
+  // generating refresh-token churn for every 60-second tick.
+  Future<bool>? _refreshInFlight;
+
+  /// Exchanges the stored refresh_token for a new access_token via
+  /// /api/auth/refresh.php. Returns true on success; the new access_token is
+  /// stored and immediately picked up by `_headers` (and by TerminService,
+  /// which falls back to `ApiService().token`).
+  ///
+  /// If the refresh_token itself is rejected (401), this clears all tokens
+  /// so the next isLoggedIn check returns false and the app routes to login.
+  Future<bool> refreshAccessToken() async {
+    if (_refreshInFlight != null) return _refreshInFlight!;
+    if (_refreshToken == null) return false;
+    _refreshInFlight = _performRefresh();
+    try {
+      return await _refreshInFlight!;
+    } finally {
+      _refreshInFlight = null;
+    }
+  }
+
+  Future<bool> _performRefresh() async {
+    try {
+      final deviceKey = _deviceKeyService.deviceKey;
+      final response = await _client.post(
+        Uri.parse('$baseUrl/auth/refresh.php'),
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'ICD360S-Mitglied/1.0',
+          if (deviceKey != null) 'X-Device-Key': deviceKey,
+        },
+        body: jsonEncode({'refresh_token': _refreshToken}),
+      );
+
+      if (response.statusCode == 401) {
+        // Refresh token expired or revoked — force re-login.
+        await clearTokens();
+        return false;
+      }
+      if (response.statusCode != 200) return false;
+
+      final data = jsonDecode(response.body) as Map<String, dynamic>;
+      if (data['success'] != true || data['token'] is! String) return false;
+
+      _token = data['token'] as String;
+      await _secureStorage.write(key: 'access_token', value: _token);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   Future<void> clearTokens() async {
     // Security: Clear tokens from SecureStorage
     await _secureStorage.delete(key: 'access_token');
