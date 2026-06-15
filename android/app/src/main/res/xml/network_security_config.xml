@@ -22,8 +22,8 @@
         </trust-anchors>
     </base-config>
 
-    <domain-config includeSubdomains="true">
-        <domain>icd360sev.icd360s.de</domain>
+    <domain-config>
+        <domain includeSubdomains="true">icd360sev.icd360s.de</domain>
         <pin-set expiration="2027-06-01">
             <!-- ISRG Root X1 (RSA, valid through 2035-06) — current production root -->
             <pin digest="SHA-256">C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=</pin>
