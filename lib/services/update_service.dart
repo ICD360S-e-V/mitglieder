@@ -10,10 +10,28 @@ import 'package:url_launcher/url_launcher.dart';
 import 'device_key_service.dart';
 import 'http_client_factory.dart';
 
-/// Update Service - checks for app updates and handles download
-/// Supports: Android (APK), iOS (App Store), Windows (EXE), macOS (DMG), Linux (AppImage)
+/// Update Service - checks for app updates and handles download.
+///
+/// Update channel: GitHub Releases. Each release tag uploads four manifest
+/// JSONs as release assets — version_mitglieder_{android,windows,macos,
+/// linux}.json — and the binaries themselves. The `releases/latest/download/`
+/// URL always redirects to the most recent tag, so the client never has to
+/// be told which version to check against.
+///
+/// Supports: Android (APK), iOS (App Store), Windows (EXE), macOS (DMG),
+/// Linux (AppImage).
 class UpdateService {
-  static const String versionUrl = 'https://icd360sev.icd360s.de/api/version_mitglieder.php';
+  static const String _releaseAssetBase =
+      'https://github.com/ICD360S-e-V/mitglieder/releases/latest/download/';
+
+  /// Platform-specific manifest URL hosted on GitHub Releases.
+  static String get versionUrl {
+    if (Platform.isAndroid) return '${_releaseAssetBase}version_mitglieder_android.json';
+    if (Platform.isWindows) return '${_releaseAssetBase}version_mitglieder_windows.json';
+    if (Platform.isMacOS) return '${_releaseAssetBase}version_mitglieder_macos.json';
+    if (Platform.isLinux) return '${_releaseAssetBase}version_mitglieder_linux.json';
+    return '${_releaseAssetBase}version_mitglieder_android.json';
+  }
 
   /// TODO(ios-release): replace with the real numeric App Store ID once the
   /// iOS build is published in App Store Connect (e.g. '6451234567').
@@ -56,8 +74,12 @@ class UpdateService {
   static final UpdateService _instance = UpdateService._internal();
   factory UpdateService() => _instance;
   UpdateService._internal() {
-    // Certificate pinning: only trusts Let's Encrypt (ISRG Root X1)
-    _httpClient = HttpClientFactory.createPinnedHttpClient();
+    // No certificate pinning here. The update channel is github.com /
+    // objects.githubusercontent.com, both signed by DigiCert, so the
+    // Let's-Encrypt-only pinning used for our own API would reject the
+    // TLS handshake. System trust store is the correct policy for
+    // third-party download infrastructure.
+    _httpClient = HttpClientFactory.createDefaultHttpClient();
     _client = IOClient(_httpClient);
   }
 
@@ -87,13 +109,13 @@ class UpdateService {
   /// Check if an update is available
   Future<UpdateInfo?> checkForUpdate() async {
     try {
-      final deviceKey = _deviceKeyService.deviceKey;
-
+      // Device key is intentionally not forwarded — GitHub.com is third
+      // party and has no use for it; sending it would leak the identifier
+      // outside our trust boundary.
       final response = await _client.get(
         Uri.parse(versionUrl),
         headers: {
           'User-Agent': _userAgent,
-          if (deviceKey != null) 'X-Device-Key': deviceKey,
         },
       ).timeout(
         const Duration(seconds: 10),

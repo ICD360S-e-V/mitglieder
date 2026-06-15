@@ -563,175 +563,46 @@ jobs:
           echo "Release files:"
           ls -lh release/
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2
-        with:
-          generate_release_notes: true
-          files: release/*
-
-  # ============================================
-  # DEPLOY to server (only on version tags)
-  # ============================================
-  deploy:
-    name: Deploy to Server
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: [release]
-    runs-on: ubuntu-latest
-    steps:
-      # Checkout is needed so the Publish version manifests step can read the
-      # build number from pubspec.yaml.
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Download all artifacts
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
-        with:
-          path: artifacts/
-
-      - name: Prepare deploy files
-        run: |
-          mkdir -p deploy/android deploy/linux deploy/windows deploy/macos deploy/ios
-
-          # Android
-          cp artifacts/icd360sev-fdroid-apk/*.apk deploy/android/icd360sev.apk
-          cp artifacts/icd360sev-universal-apk/* deploy/android/icd360sev-universal.apk
-          cp artifacts/icd360sev-googleplay-apk/*.apk deploy/android/icd360sev-googleplay.apk
-          cp artifacts/icd360sev-googleplay-aab/* deploy/android/icd360sev-googleplay.aab
-          cp artifacts/icd360sev-amazon-apk/*.apk deploy/android/icd360sev-amazon.apk
-          cp artifacts/icd360sev-huawei-apk/*.apk deploy/android/icd360sev-huawei.apk
-          cp artifacts/icd360sev-samsung-apk/*.apk deploy/android/icd360sev-samsung.apk
-
-          # Linux
-          cp artifacts/icd360sev-linux-deb/*.deb deploy/linux/icd360sev-mitglied.deb
-          cp artifacts/icd360sev-linux-rpm/*.rpm deploy/linux/icd360sev-mitglied.rpm
-          cp artifacts/icd360sev-linux-appimage/*.AppImage deploy/linux/icd360sev-mitglied.AppImage
-          cd artifacts/icd360sev-linux && tar czf ../../deploy/linux/icd360sev-linux.tar.gz . && cd ../..
-
-          # Windows (.exe installer)
-          cp artifacts/icd360sev-windows/icd360sev_setup.exe deploy/windows/icd360sev_setup.exe
-
-          # macOS (.dmg)
-          cp artifacts/icd360sev-macos/icd360sev-mitglied.dmg deploy/macos/icd360sev-mitglied.dmg
-
-          # iOS (.app)
-          cd artifacts/icd360sev-ios && zip -r ../../deploy/ios/icd360sev-ios.app.zip . && cd ../..
-
-          echo "Deploy files ready:"
-          find deploy/ -type f -exec ls -lh {} \;
-
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
-
-      - name: Backup current versions on server
-        run: |
-          SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
-          BASE="/var/www/icd360sev.icd360s.de/downloads/mitglieder"
-
-          # Backup Android (each flavor)
-          for flavor in fdroid googleplay amazon huawei samsung universal; do
-            $SSH_CMD "[ -f $BASE/android/$flavor/icd360sev.apk ] && cp $BASE/android/$flavor/icd360sev.apk $BASE/android/$flavor/icd360sev_stable.apk || true"
-          done
-          $SSH_CMD "[ -f $BASE/android/googleplay/icd360sev.aab ] && cp $BASE/android/googleplay/icd360sev.aab $BASE/android/googleplay/icd360sev_stable.aab || true"
-
-          # Backup other platforms
-          $SSH_CMD "[ -f $BASE/windows/icd360sev_setup.exe ] && cp $BASE/windows/icd360sev_setup.exe $BASE/windows/icd360sev_setup_stable.exe || true"
-          $SSH_CMD "[ -f $BASE/macos/icd360sev-mitglied.dmg ] && cp $BASE/macos/icd360sev-mitglied.dmg $BASE/macos/icd360sev-mitglied_stable.dmg || true"
-          $SSH_CMD "[ -f $BASE/linux/icd360sev-mitglied.AppImage ] && cp $BASE/linux/icd360sev-mitglied.AppImage $BASE/linux/icd360sev-mitglied_stable.AppImage || true"
-
-          echo "Backups created"
-
-      - name: Upload to server
+      - name: Generate per-platform version manifests
+        # Each manifest lives as a release asset; the in-app updater fetches it
+        # via the `releases/latest/download/<name>.json` URL, which always
+        # resolves to the most recent tag without anyone having to update a
+        # version constant. Replaces the previous flow that scp'd manifests to
+        # the VPS at /api/data/version_mitglieder_*.json.
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          SCP_CMD="scp -B -i ~/.ssh/deploy_key -P ${{ secrets.SSH_PORT }}"
-          SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
-          BASE="/var/www/icd360sev.icd360s.de/downloads/mitglieder"
 
-          # Create directories on server
-          $SSH_CMD "mkdir -p \
-            $BASE/android/fdroid \
-            $BASE/android/googleplay \
-            $BASE/android/amazon \
-            $BASE/android/huawei \
-            $BASE/android/samsung \
-            $BASE/android/universal \
-            $BASE/linux \
-            $BASE/windows \
-            $BASE/macos \
-            $BASE/ios"
-
-          DEST="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
-
-          # Upload Android (each flavor in its own folder)
-          $SCP_CMD deploy/android/icd360sev.apk $DEST:$BASE/android/fdroid/icd360sev.apk
-          $SCP_CMD deploy/android/icd360sev-universal.apk $DEST:$BASE/android/universal/icd360sev.apk
-          $SCP_CMD deploy/android/icd360sev-googleplay.apk $DEST:$BASE/android/googleplay/icd360sev.apk
-          $SCP_CMD deploy/android/icd360sev-googleplay.aab $DEST:$BASE/android/googleplay/icd360sev.aab
-          $SCP_CMD deploy/android/icd360sev-amazon.apk $DEST:$BASE/android/amazon/icd360sev.apk
-          $SCP_CMD deploy/android/icd360sev-huawei.apk $DEST:$BASE/android/huawei/icd360sev.apk
-          $SCP_CMD deploy/android/icd360sev-samsung.apk $DEST:$BASE/android/samsung/icd360sev.apk
-
-          echo "✅ Android uploaded (7 flavors)"
-
-          # Upload Linux
-          $SCP_CMD deploy/linux/icd360sev-mitglied.deb $DEST:$BASE/linux/
-          $SCP_CMD deploy/linux/icd360sev-mitglied.rpm $DEST:$BASE/linux/
-          $SCP_CMD deploy/linux/icd360sev-mitglied.AppImage $DEST:$BASE/linux/
-          $SCP_CMD deploy/linux/icd360sev-linux.tar.gz $DEST:$BASE/linux/
-          echo "✅ Linux uploaded (.deb, .rpm, .AppImage, .tar.gz)"
-
-          # Upload Windows (.exe installer)
-          $SCP_CMD deploy/windows/icd360sev_setup.exe $DEST:$BASE/windows/icd360sev_setup.exe
-          echo "✅ Windows uploaded (.exe)"
-
-          # Upload macOS (.dmg)
-          $SCP_CMD deploy/macos/icd360sev-mitglied.dmg $DEST:$BASE/macos/icd360sev-mitglied.dmg
-          echo "✅ macOS uploaded (.dmg)"
-
-          # Upload iOS (.app.zip)
-          $SCP_CMD deploy/ios/icd360sev-ios.app.zip $DEST:$BASE/ios/icd360sev-ios.app.zip
-          echo "✅ iOS uploaded (.app)"
-
-      - name: Publish version manifests
-        run: |
-          set -euo pipefail
-          # The app polls /api/data/version_mitglieder_{android,}.json on every
-          # launch to decide whether to prompt for an update. Without this step
-          # the manifests stay pinned to the previous version forever and users
-          # never see the update banner — even though the APK/EXE is live.
-          SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
-          SCP_CMD="scp -B -i ~/.ssh/deploy_key -P ${{ secrets.SSH_PORT }}"
-          DEST="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
-
-          TAG="${GITHUB_REF_NAME}"          # e.g. v1.1.27
-          VERSION="${TAG#v}"                 # 1.1.27
+          TAG="${GITHUB_REF_NAME}"          # e.g. v1.7.0
+          VERSION="${TAG#v}"                 # 1.7.0
           IFS=. read MAJ MIN PAT <<< "$VERSION"
           BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
           RELEASE_DATE=$(date -u +%F)
-          FALLBACK_VERSION=$(gh api repos/${{ github.repository }}/releases --jq '[.[] | select(.tag_name | test("^v[0-9]"))] | map(.tag_name) | .[1] // "0.0.0"' | sed 's/^v//')
           REPO_URL="https://github.com/${{ github.repository }}"
 
-          apk_size=$(stat -c%s deploy/android/icd360sev-universal.apk)
-          apk_sha=$(sha256sum deploy/android/icd360sev-universal.apk | awk '{print $1}')
-          apk_mb=$(( (apk_size + 524288) / 1048576 ))
+          # Previous release tag — used as the fallback download URL when
+          # users decline the new version.
+          FALLBACK_TAG=$(gh api repos/${{ github.repository }}/releases \
+            --jq '[.[] | select(.tag_name | test("^v[0-9]"))] | map(.tag_name) | .[1] // ""')
+          FALLBACK_VERSION="${FALLBACK_TAG#v}"
+          BASE_DL="${REPO_URL}/releases/download/${TAG}"
+          BASE_FB="${REPO_URL}/releases/download/${FALLBACK_TAG}"
 
-          exe_size=$(stat -c%s deploy/windows/icd360sev_setup.exe)
-          exe_sha=$(sha256sum deploy/windows/icd360sev_setup.exe | awk '{print $1}')
-          exe_mb=$(( (exe_size + 524288) / 1048576 ))
-
-          CHANGELOG="Version ${VERSION}\n\nSee full changelog at ${REPO_URL}/releases/tag/${TAG}"
+          CHANGELOG="Version ${VERSION}\\n\\nSee full changelog at ${REPO_URL}/releases/tag/${TAG}"
 
           write_manifest() {
-            local out=$1 url=$2 fallback=$3 sha=$4 mb=$5
-            cat > "$out" <<JSON
+            local out=$1 file=$2
+            local sha mb size
+            sha=$(sha256sum "release/$file" | awk '{print $1}')
+            size=$(stat -c%s "release/$file")
+            mb=$(( (size + 524288) / 1048576 ))
+            cat > "release/$out" <<JSON
           {
               "version": "${VERSION}",
               "build_number": ${BUILD},
-              "download_url": "${url}",
-              "fallback_url": "${fallback}",
+              "download_url": "${BASE_DL}/${file}",
+              "fallback_url": "${BASE_FB}/${file}",
               "fallback_version": "${FALLBACK_VERSION}",
               "changelog": "${CHANGELOG}",
               "min_version": null,
@@ -743,93 +614,16 @@ jobs:
           JSON
           }
 
-          mkdir -p manifest
-          write_manifest manifest/version_mitglieder_android.json \
-            "https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev.apk" \
-            "https://icd360sev.icd360s.de/downloads/mitglieder/android/universal/icd360sev_stable.apk" \
-            "$apk_sha" "$apk_mb"
-          write_manifest manifest/version_mitglieder.json \
-            "https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup.exe" \
-            "https://icd360sev.icd360s.de/downloads/mitglieder/windows/icd360sev_setup_stable.exe" \
-            "$exe_sha" "$exe_mb"
+          write_manifest version_mitglieder_android.json  icd360sev-universal.apk
+          write_manifest version_mitglieder_windows.json  icd360sev_setup.exe
+          write_manifest version_mitglieder_macos.json    icd360sev-mitglied.dmg
+          write_manifest version_mitglieder_linux.json    icd360sev-mitglied.AppImage
 
-          TARGET="/var/www/icd360sev.icd360s.de/api/data"
-          # Server-side timestamped backup before overwrite
-          $SSH_CMD "cp $TARGET/version_mitglieder_android.json $TARGET/version_mitglieder_android.json.bak.\$(date +%s) || true"
-          $SSH_CMD "cp $TARGET/version_mitglieder.json $TARGET/version_mitglieder.json.bak.\$(date +%s) || true"
-          $SCP_CMD manifest/version_mitglieder_android.json $DEST:$TARGET/
-          $SCP_CMD manifest/version_mitglieder.json         $DEST:$TARGET/
+          echo "Generated manifests:"
+          ls -lh release/version_mitglieder_*.json
 
-          echo "✅ Version manifests published (${VERSION} / build ${BUILD})"
-        env:
-          GH_TOKEN: ${{ github.token }}
-
-      - name: Update F-Droid repository
-        run: |
-          SSH_CMD="ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
-
-          # Copy signed fdroid APK into the F-Droid repo directory.
-          # The systemd path unit fdroid-update.path on the server watches
-          # this file and triggers fdroid-update.service (runs `fdroid update -c`)
-          # automatically on PathChanged, with a 3s debounce.
-          $SSH_CMD "cp /var/www/icd360sev.icd360s.de/downloads/mitglieder/android/fdroid/icd360sev.apk \
-                       /var/www/icd360sev.icd360s.de/fdroid/repo/icd360sev.apk"
-
-          # Wait for the index regeneration to finish. `systemctl start --wait`
-          # on a oneshot unit blocks until ExecStart returns and propagates its
-          # exit status — a failed index build will fail this CI step.
-          $SSH_CMD "systemctl start --wait fdroid-update.service"
-
-          echo "✅ F-Droid APK deployed + index regenerated"
-
-      - name: Verify public download URLs
-        run: |
-          set -euo pipefail
-          # All URLs referenced from the public README. If any returns non-200
-          # or an empty body, the deploy did not land correctly and CI must fail
-          # so it gets noticed (previously the deploy step claimed success even
-          # though /downloads/mitglieder/android/*/icd360sev.apk were missing).
-          BASE="https://icd360sev.icd360s.de/downloads/mitglieder"
-          FDROID_REPO="https://icd360sev.icd360s.de/fdroid/repo"
-          URLS=(
-            "$BASE/android/universal/icd360sev.apk"
-            "$BASE/android/fdroid/icd360sev.apk"
-            "$BASE/android/googleplay/icd360sev.apk"
-            "$BASE/android/googleplay/icd360sev.aab"
-            "$BASE/android/amazon/icd360sev.apk"
-            "$BASE/android/huawei/icd360sev.apk"
-            "$BASE/android/samsung/icd360sev.apk"
-            "$BASE/windows/icd360sev_setup.exe"
-            "$BASE/linux/icd360sev-mitglied.deb"
-            "$BASE/linux/icd360sev-mitglied.rpm"
-            "$BASE/linux/icd360sev-mitglied.AppImage"
-            "$BASE/linux/icd360sev-linux.tar.gz"
-            "$BASE/macos/icd360sev-mitglied.dmg"
-            "$BASE/ios/icd360sev-ios.app.zip"
-            "$FDROID_REPO/icd360sev.apk"
-          )
-          # F-Droid index-v1.jar is legitimately tiny (~5KB signed manifest) and
-          # was already validated by `systemctl start --wait fdroid-update.service`
-          # in the prior step, so it is deliberately not checked here.
-          fail=0
-          for u in "${URLS[@]}"; do
-            # Trailing \n is required: without it `read` returns 1 at EOF
-            # (even though code/size are populated), which kills the loop under set -e.
-            read code size < <(curl -s -o /dev/null -w '%{http_code} %{size_download}\n' -L --max-time 60 "$u" || echo "000 0")
-            # 1MB minimum guards against nginx autoindex pages or truncated uploads
-            if [ "$code" = "200" ] && [ "${size:-0}" -gt 1048576 ]; then
-              printf '  ok  %s  (%s bytes)\n' "$u" "$size"
-            else
-              printf '  FAIL  %s  (http=%s size=%s)\n' "$u" "$code" "$size"
-              fail=1
-            fi
-          done
-          if [ "$fail" -ne 0 ]; then
-            echo "::error::One or more public downloads are missing or invalid."
-            exit 1
-          fi
-          echo "✅ All public download URLs verified"
-
-      - name: Cleanup SSH
-        if: always()
-        run: rm -f ~/.ssh/deploy_key
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2
+        with:
+          generate_release_notes: true
+          files: release/*
