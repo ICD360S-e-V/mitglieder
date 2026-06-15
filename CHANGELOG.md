@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.8.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.7.0...v1.8.0) (2026-06-15)
+
+
+### Features
+
+* **updater:** move release delivery to GitHub Releases, drop VPS deploy ([1aad610](https://github.com/ICD360S-e-V/mitglieder/commit/1aad6102d7c5d89281c7081e54439da00eb1c1b7))
+
+
+### Bug Fixes
+
+* **android:** move includeSubdomains attribute to &lt;domain&gt; element ([c484edd](https://github.com/ICD360S-e-V/mitglieder/commit/c484edd51f284927fead8ccf36090be388db1edb))
+
 ## [1.7.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.6.1...v1.7.0) (2026-06-15)
 
 
