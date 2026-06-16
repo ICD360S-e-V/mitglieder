@@ -1,0 +1,71 @@
+app-id: de.icd360s.Mitglieder
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: icd360sev_mitglied
+separate-locales: false
+
+finish-args:
+  # GUI (Wayland-first, X11 fallback)
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  # Sound (just_audio + WebRTC voice/video calls)
+  - --socket=pulseaudio
+  # Network (HTTP/WebSocket/WebRTC backend)
+  - --share=network
+  # Camera + microphone (for video calls + ID scan)
+  - --device=all
+  # File access (downloads for in-app update, documents for ID upload)
+  - --filesystem=home
+  - --filesystem=xdg-download
+  - --filesystem=xdg-documents
+  # System tray (Plasma StatusNotifierItem + Ayatana fallback)
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --talk-name=com.canonical.indicator.application
+  - --talk-name=org.ayatana.indicator.application
+  # Desktop notifications
+  - --talk-name=org.freedesktop.Notifications
+  # Secret storage (flutter_secure_storage → libsecret / kwallet)
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.kwalletd5
+  - --talk-name=org.kde.kwalletd6
+  # Auto-start on login
+  - --talk-name=org.freedesktop.portal.Background
+
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /lib/cmake
+  - /share/aclocal
+  - /share/man
+  - /share/gtk-doc
+  - '*.la'
+  - '*.a'
+
+modules:
+  # tray_manager Flutter plugin → libayatana-appindicator
+  - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
+
+  # flutter_secure_storage → libsecret
+  - shared-modules/libsecret/libsecret.json
+
+  - name: mitglieder
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/bin /app/share/applications /app/share/metainfo /app/share/icons/hicolor/256x256/apps
+      - cp -r bundle/* /app/bin/
+      - install -Dm644 de.icd360s.Mitglieder.desktop /app/share/applications/de.icd360s.Mitglieder.desktop
+      - install -Dm644 de.icd360s.Mitglieder.metainfo.xml /app/share/metainfo/de.icd360s.Mitglieder.metainfo.xml
+      - install -Dm644 de.icd360s.Mitglieder.png /app/share/icons/hicolor/256x256/apps/de.icd360s.Mitglieder.png
+    sources:
+      - type: dir
+        path: ./bundle
+        dest: bundle
+      - type: file
+        path: ./de.icd360s.Mitglieder.desktop
+      - type: file
+        path: ./de.icd360s.Mitglieder.metainfo.xml
+      - type: file
+        path: ./de.icd360s.Mitglieder.png

@@ -515,10 +515,76 @@ jobs:
   # ============================================
   # Release (only on version tags)
   # ============================================
+  # ============================================
+  # FLATPAK (.flatpak single-file bundle for Linux)
+  # Repackages the linux bundle artifact built by `build-linux` and ships
+  # the result as a GitHub Release asset. Users install with
+  #   flatpak install --user icd360sev-mitglied.flatpak
+  # No OSTree repo — single-file delivery only, no VPS dependency.
+  # ============================================
+  flatpak:
+    name: Flatpak
+    needs: [detect-changes, build-linux]
+    if: needs.detect-changes.outputs.linux == 'true'
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:freedesktop-24.08
+      options: --privileged
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: icd360sev-linux
+          path: flatpak/bundle
+
+      - name: Make Flutter binary executable
+        run: chmod +x flatpak/bundle/icd360sev_mitglied
+
+      - name: Clone Flathub shared-modules
+        run: git clone --depth 1 --branch master https://github.com/flathub/shared-modules.git flatpak/shared-modules
+
+      - name: Inject current version into AppStream metainfo
+        run: |
+          TAG="${GITHUB_REF_NAME:-v1.8.0}"
+          VERSION="${TAG#v}"
+          DATE=$(date -u +%Y-%m-%d)
+          python3 - <<PYEOF
+          import re
+          path = 'flatpak/de.icd360s.Mitglieder.metainfo.xml'
+          with open(path, 'r', encoding='utf-8') as f:
+              content = f.read()
+          new_releases = f'''  <releases>
+            <release version="$VERSION" date="$DATE">
+              <description>
+                <p>Version $VERSION — neueste Aktualisierung.</p>
+              </description>
+            </release>
+          </releases>'''
+          content = re.sub(r'  <releases>.*?</releases>', new_releases, content, flags=re.DOTALL)
+          with open(path, 'w', encoding='utf-8') as f:
+              f.write(content)
+          print(f'Injected version=$VERSION date=$DATE into metainfo.xml')
+          PYEOF
+          cat flatpak/de.icd360s.Mitglieder.metainfo.xml
+
+      - name: Build Flatpak bundle
+        uses: flatpak/flatpak-github-actions/flatpak-builder@401fe28a8384095fc1531b9d320b292f0ee45adb # v6.7
+        with:
+          bundle: icd360sev-mitglied.flatpak
+          manifest-path: flatpak/de.icd360s.Mitglieder.yml
+          cache-key: flatpak-builder-${{ github.sha }}
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: icd360sev-flatpak
+          path: icd360sev-mitglied.flatpak
+          if-no-files-found: error
+
   release:
     name: Create Release
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [build-linux, build-android, save-android-cache, build-apple, build-windows]
+    needs: [build-linux, build-android, save-android-cache, build-apple, build-windows, flatpak]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -559,6 +625,9 @@ jobs:
           cp artifacts/icd360sev-linux-deb/*.deb release/icd360sev-mitglied.deb
           cp artifacts/icd360sev-linux-rpm/*.rpm release/icd360sev-mitglied.rpm
           cp artifacts/icd360sev-linux-appimage/*.AppImage release/icd360sev-mitglied.AppImage
+
+          # Flatpak (single-file bundle, Fedora Kinoite / SteamOS / Flathub-style)
+          cp artifacts/icd360sev-flatpak/icd360sev-mitglied.flatpak release/icd360sev-mitglied.flatpak
 
           echo "Release files:"
           ls -lh release/

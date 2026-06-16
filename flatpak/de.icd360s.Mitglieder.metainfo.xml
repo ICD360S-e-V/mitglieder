@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>de.icd360s.Mitglieder</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>ICD360S e.V. Mitglieder</name>
+  <summary>Mitgliederportal des ICD360S e.V.</summary>
+  <description>
+    <p>
+      Mitgliederportal des ICD360S e.V. — Terminplanung, Live-Chat mit dem
+      Vorstand, Sprachanrufe, Ticketverwaltung und Dokumenten-Verifizierung.
+      Vollständig unabhängig von Google, Apple, Microsoft, Huawei oder
+      anderen Drittanbietern, mit eigener Serverinfrastruktur in Deutschland.
+    </p>
+  </description>
+  <launchable type="desktop-id">de.icd360s.Mitglieder.desktop</launchable>
+  <url type="homepage">https://icd360sev.icd360s.de/</url>
+  <url type="bugtracker">https://github.com/ICD360S-e-V/mitglieder/issues</url>
+  <url type="vcs-browser">https://github.com/ICD360S-e-V/mitglieder</url>
+  <developer id="de.icd360s">
+    <name>ICD360S e.V.</name>
+  </developer>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.8.0" date="2026-06-15">
+      <description>
+        <p>Initiale Flatpak-Version.</p>
+      </description>
+    </release>
+  </releases>
+</component>
