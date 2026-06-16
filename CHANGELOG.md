@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.1...v1.10.2) (2026-06-16)
+
+
+### Bug Fixes
+
+* **flatpak:** force XWayland on KDE Plasma to render the content area ([e6eee7d](https://github.com/ICD360S-e-V/mitglieder/commit/e6eee7d8647a6559110d387fff8914ac9c2eba49))
+
 ## [1.10.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.0...v1.10.1) (2026-06-16)
 
 
