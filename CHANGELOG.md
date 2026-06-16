@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.0...v1.10.1) (2026-06-16)
+
+
+### Bug Fixes
+
+* **flatpak:** resize app icon from 1024×1024 to 256×256 ([38b927d](https://github.com/ICD360S-e-V/mitglieder/commit/38b927de161548de118173f09289fff2a446e85d))
+
 ## [1.10.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.9.0...v1.10.0) (2026-06-16)
 
 
