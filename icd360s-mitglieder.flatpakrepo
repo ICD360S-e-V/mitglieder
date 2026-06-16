@@ -1,0 +1,7 @@
+[Flatpak Repo]
+Title=ICD360S e.V. Mitglieder
+Url=https://icd360s-e-v.github.io/mitglieder/repo/
+Homepage=https://github.com/ICD360S-e-V/mitglieder
+Comment=Mitgliederportal Auto-Update Repository
+Description=Auto-update Flatpak repository for the ICD360S e.V. member app.
+NoDeps=true

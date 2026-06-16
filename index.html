@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>ICD360S e.V. Mitglieder — Flatpak Repo</title>
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; max-width: 720px; margin: 4rem auto; padding: 0 1rem; line-height: 1.55; color: #222; }
+    code, pre { background: #f4f4f4; border-radius: 4px; font-size: 0.9rem; }
+    code { padding: 0.1rem 0.35rem; }
+    pre { padding: 1rem; overflow-x: auto; }
+    a { color: #1a73e8; }
+  </style>
+</head>
+<body>
+  <h1>ICD360S e.V. Mitglieder — Flatpak Repository</h1>
+  <p>Auto-Update für die Mitglieder-App. Einmal hinzufügen, danach läuft <code>flatpak update</code> automatisch beim nächsten Release.</p>
+  <h2>Installation</h2>
+  <pre>flatpak remote-add --user --if-not-exists icd360s-mitglieder \
+  https://icd360s-e-v.github.io/mitglieder/icd360s-mitglieder.flatpakrepo
+flatpak install --user icd360s-mitglieder de.icd360s.Mitglieder</pre>
+  <h2>Update</h2>
+  <pre>flatpak update --user</pre>
+  <p>Quellcode: <a href="https://github.com/ICD360S-e-V/mitglieder">github.com/ICD360S-e-V/mitglieder</a></p>
+</body>
+</html>
