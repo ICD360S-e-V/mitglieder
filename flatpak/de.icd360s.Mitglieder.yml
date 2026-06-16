@@ -34,12 +34,6 @@ finish-args:
   # Auto-start on login
   - --talk-name=org.freedesktop.portal.Background
 
-  # KDE Plasma Wayland renders the Flutter content area blank in the
-  # sandbox (titlebar shows, content stays Breeze-Dark gray). Forcing the
-  # GTK3 stack onto XWayland is the documented workaround until the GTK
-  # gitlab #6192 / flatpak #5606 path lands a real fix.
-  - --env=GDK_BACKEND=x11
-
 cleanup:
   - /include
   - /lib/pkgconfig
