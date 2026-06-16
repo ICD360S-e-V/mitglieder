@@ -13,7 +13,12 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FLUTTER_VERSION: '3.41.6'
+  # Pinned to 3.38.4 to match the known-working Vorsitzer flatpak. Flutter
+  # 3.41 ships Impeller fixes on Linux but also a rendering regression on
+  # KDE Plasma Wayland inside flatpak sandboxes — the content area renders
+  # blank (Breeze-Dark gray) while the window chrome draws fine. See
+  # flutter/flutter#181483. Revisit when 3.41.x ships a backport of #181656.
+  FLUTTER_VERSION: '3.38.4'
   JAVA_VERSION: '17'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
