@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.8.0...v1.9.0) (2026-06-16)
+
+
+### Features
+
+* **linux:** add Flatpak single-file bundle to release pipeline ([1a70453](https://github.com/ICD360S-e-V/mitglieder/commit/1a70453457fc226f26a359dd8c3109b54840636a))
+
 ## [1.8.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.7.0...v1.8.0) (2026-06-15)
 
 
