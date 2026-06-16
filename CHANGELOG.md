@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.2...v1.10.3) (2026-06-16)
+
+
+### Bug Fixes
+
+* **flatpak:** tag bump to ship the GDK_BACKEND=x11 revert ([3dda8fd](https://github.com/ICD360S-e-V/mitglieder/commit/3dda8fd77084a27ad5d65b3155a33f48d59dc0d9))
+
 ## [1.10.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.1...v1.10.2) (2026-06-16)
 
 
