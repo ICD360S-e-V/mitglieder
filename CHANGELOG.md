@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.9.0...v1.10.0) (2026-06-16)
+
+
+### Features
+
+* **flatpak:** publish OSTree repo to GitHub Pages for `flatpak update` ([5648194](https://github.com/ICD360S-e-V/mitglieder/commit/564819470db589a451d9c9df340d40687bb3d29e))
+
 ## [1.9.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.8.0...v1.9.0) (2026-06-16)
 
 
