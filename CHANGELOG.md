@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.3...v1.10.4) (2026-06-16)
+
+
+### Bug Fixes
+
+* **ci:** pin Flutter to 3.38.4 to fix blank content area on Plasma Wayland ([815109f](https://github.com/ICD360S-e-V/mitglieder/commit/815109f6d8e26835635611246bc2c6082df27519))
+
 ## [1.10.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.2...v1.10.3) (2026-06-16)
 
 
