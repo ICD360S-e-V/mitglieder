@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.9](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.8...v1.10.9) (2026-06-17)
+
+
+### Bug Fixes
+
+* **ci/windows:** replace flutter_webrtc plugin junction with a copy ([dd4cd14](https://github.com/ICD360S-e-V/mitglieder/commit/dd4cd14d5e0f51c782cd8aaa79d60c2fcdfd4263))
+
 ## [1.10.8](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.7...v1.10.8) (2026-06-17)
 
 
