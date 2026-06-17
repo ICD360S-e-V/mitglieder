@@ -484,19 +484,30 @@ jobs:
         shell: pwsh
         run: |
           $sym = "windows/flutter/ephemeral/.plugin_symlinks/flutter_webrtc"
-          if (Test-Path $sym) {
-            $target = (Get-Item $sym).Target
-            if ($target) {
-              Write-Host "flutter_webrtc junction → $target"
-              cmd /c rmdir "$sym"
-              Copy-Item -Path $target -Destination $sym -Recurse -Force
-              Write-Host "Replaced junction with copy at $sym"
-            } else {
-              Write-Host "$sym is not a junction; nothing to do"
-            }
-          } else {
-            Write-Host "$sym does not exist (yet) — flutter build will create it; skipping"
+          if (-not (Test-Path $sym)) {
+            Write-Host "$sym does not exist yet — flutter build will create it; skipping"
+            exit 0
           }
+          $item = Get-Item $sym -Force
+          if (-not $item.Target) {
+            Write-Host "$sym is not a junction; nothing to do"
+            exit 0
+          }
+          $target = ($item.Target | Select-Object -First 1).TrimEnd('\','/')
+          Write-Host "flutter_webrtc junction → $target"
+          # Use .NET Directory.Delete so the forward slashes in $sym are not
+          # mis-parsed as command-line switches (cmd /c rmdir choked on the
+          # "/flutter/" segment as if it were a flag). recursive=$false means
+          # the junction entry itself is removed; the target tree in the pub
+          # cache stays untouched.
+          [System.IO.Directory]::Delete($sym, $false)
+          # robocopy is more reliable than Copy-Item for large recursive
+          # trees and survives long paths. /E = include subdirs incl. empty,
+          # /NFL /NDL /NJH /NJS = quiet output. Exit codes 0-7 are success
+          # for robocopy; >7 is a real failure.
+          $rc = (Start-Process robocopy -ArgumentList $target, $sym, '/E','/NFL','/NDL','/NJH','/NJS' -Wait -NoNewWindow -PassThru).ExitCode
+          if ($rc -gt 7) { throw "robocopy failed with code $rc" }
+          Write-Host "Replaced junction with copy at $sym"
 
       - name: Compute build number from version
         id: ver
