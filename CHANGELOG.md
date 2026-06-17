@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.10](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.9...v1.10.10) (2026-06-17)
+
+
+### Bug Fixes
+
+* **ci/windows:** use .NET Directory.Delete + robocopy for junction → copy ([09cee26](https://github.com/ICD360S-e-V/mitglieder/commit/09cee26fc675c6aa78dbc74aba775755c345a58f))
+
 ## [1.10.9](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.8...v1.10.9) (2026-06-17)
 
 
