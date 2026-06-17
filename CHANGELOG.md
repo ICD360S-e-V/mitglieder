@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.5...v1.10.6) (2026-06-17)
+
+
+### Bug Fixes
+
+* **flatpak:** force Mesa software rendering for Proxmox VM (no GPU) ([8d12ab3](https://github.com/ICD360S-e-V/mitglieder/commit/8d12ab3409c87b92d875be394cc48b5beb289e15))
+
 ## [1.10.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.4...v1.10.5) (2026-06-17)
 
 
