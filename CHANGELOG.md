@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.8](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.7...v1.10.8) (2026-06-17)
+
+
+### Bug Fixes
+
+* **ci:** tag bump to ship the Flutter pin revert ([f542b6d](https://github.com/ICD360S-e-V/mitglieder/commit/f542b6dea2b432051599f681b8ebc85ad32d057f))
+
 ## [1.10.7](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.6...v1.10.7) (2026-06-17)
 
 
