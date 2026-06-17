@@ -127,11 +127,41 @@ jobs:
           done
 
   # ============================================
+  # ANALYZE: flutter analyze fails fast on type/import errors before any
+  # platform build burns 20+ minutes only to fail at the same problem. Runs
+  # on Ubuntu because it's the fastest runner; the analysis is platform-
+  # independent.
+  # ============================================
+  analyze:
+    name: Analyze
+    needs: detect-changes
+    if: |
+      needs.detect-changes.outputs.linux == 'true' ||
+      needs.detect-changes.outputs.android == 'true' ||
+      needs.detect-changes.outputs.apple == 'true' ||
+      needs.detect-changes.outputs.windows == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Generate l10n
+        run: flutter gen-l10n
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos
+
+  # ============================================
   # LINUX desktop + packages
   # ============================================
   build-linux:
     name: Linux
-    needs: detect-changes
+    needs: [detect-changes, analyze]
     if: needs.detect-changes.outputs.linux == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -261,7 +291,7 @@ jobs:
   # ============================================
   build-android:
     name: Android (${{ matrix.flavor }})
-    needs: detect-changes
+    needs: [detect-changes, analyze]
     if: needs.detect-changes.outputs.android == 'true'
     runs-on: ubuntu-latest
     strategy:
@@ -368,7 +398,7 @@ jobs:
   # ============================================
   build-apple:
     name: Apple (iOS + macOS)
-    needs: detect-changes
+    needs: [detect-changes, analyze]
     if: needs.detect-changes.outputs.apple == 'true'
     runs-on: macos-latest
     steps:
@@ -451,7 +481,7 @@ jobs:
   # ============================================
   build-windows:
     name: Windows
-    needs: detect-changes
+    needs: [detect-changes, analyze]
     if: needs.detect-changes.outputs.windows == 'true'
     runs-on: windows-latest
     steps:
@@ -715,22 +745,32 @@ jobs:
           enable_jekyll: false
           commit_message: "deploy: flatpak repo ${{ github.ref_name }}"
 
-  release:
-    name: Create Release
+  # ============================================
+  # RELEASE — phase 1: Android + Linux + Flatpak
+  # ----------------------------------------------------------------------
+  # Runs as soon as build-android, build-linux and the flatpak job finish.
+  # This is the path members actually use day-to-day, so they get a
+  # downloadable GitHub Release the moment those builds are green —
+  # without waiting for slower platforms.
+  # Windows + Apple ride on top later via release-secondary.
+  # ============================================
+  release-priority:
+    name: Release (Android + Linux + Flatpak)
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [build-linux, build-android, save-android-cache, build-apple, build-windows, flatpak]
+    needs: [build-linux, build-android, save-android-cache, flatpak]
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Download all artifacts
+      - name: Download Android + Linux + Flatpak artifacts
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           path: artifacts/
+          pattern: 'icd360sev-{universal-apk,fdroid-apk,googleplay-apk,googleplay-aab,amazon-apk,huawei-apk,samsung-apk,linux,linux-deb,linux-rpm,linux-appimage,flatpak}'
 
-      - name: Prepare release files
+      - name: Prepare priority release files
         run: |
           mkdir -p release/
 
@@ -743,90 +783,81 @@ jobs:
           cp artifacts/icd360sev-huawei-apk/*.apk release/icd360sev-huawei.apk
           cp artifacts/icd360sev-samsung-apk/*.apk release/icd360sev-samsung.apk
 
-          # Windows installer
-          cp artifacts/icd360sev-windows/icd360sev_setup.exe release/icd360sev_setup.exe
-
-          # macOS DMG
-          cp artifacts/icd360sev-macos/icd360sev-mitglied.dmg release/icd360sev-mitglied.dmg
-
-          # iOS .app (zip for download)
-          cd artifacts/icd360sev-ios && zip -r ../../release/icd360sev-ios.app.zip . && cd ../..
-
-          # Linux raw bundle
+          # Linux raw bundle + packages + flatpak
           cd artifacts/icd360sev-linux && tar czf ../../release/icd360sev-linux.tar.gz . && cd ../..
-
-          # Linux packages
           cp artifacts/icd360sev-linux-deb/*.deb release/icd360sev-mitglied.deb
           cp artifacts/icd360sev-linux-rpm/*.rpm release/icd360sev-mitglied.rpm
           cp artifacts/icd360sev-linux-appimage/*.AppImage release/icd360sev-mitglied.AppImage
-
-          # Flatpak (single-file bundle, Fedora Kinoite / SteamOS / Flathub-style)
           cp artifacts/icd360sev-flatpak/icd360sev-mitglied.flatpak release/icd360sev-mitglied.flatpak
 
-          echo "Release files:"
+          echo "Priority release files:"
           ls -lh release/
 
-      - name: Generate per-platform version manifests
-        # Each manifest lives as a release asset; the in-app updater fetches it
-        # via the `releases/latest/download/<name>.json` URL, which always
-        # resolves to the most recent tag without anyone having to update a
-        # version constant. Replaces the previous flow that scp'd manifests to
-        # the VPS at /api/data/version_mitglieder_*.json.
+      - name: Generate Android + Linux manifests
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-
-          TAG="${GITHUB_REF_NAME}"          # e.g. v1.7.0
-          VERSION="${TAG#v}"                 # 1.7.0
-          IFS=. read MAJ MIN PAT <<< "$VERSION"
-          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
-          RELEASE_DATE=$(date -u +%F)
-          REPO_URL="https://github.com/${{ github.repository }}"
-
-          # Previous release tag — used as the fallback download URL when
-          # users decline the new version.
-          FALLBACK_TAG=$(gh api repos/${{ github.repository }}/releases \
-            --jq '[.[] | select(.tag_name | test("^v[0-9]"))] | map(.tag_name) | .[1] // ""')
-          FALLBACK_VERSION="${FALLBACK_TAG#v}"
-          BASE_DL="${REPO_URL}/releases/download/${TAG}"
-          BASE_FB="${REPO_URL}/releases/download/${FALLBACK_TAG}"
-
-          CHANGELOG="Version ${VERSION}\\n\\nSee full changelog at ${REPO_URL}/releases/tag/${TAG}"
-
-          write_manifest() {
-            local out=$1 file=$2
-            local sha mb size
-            sha=$(sha256sum "release/$file" | awk '{print $1}')
-            size=$(stat -c%s "release/$file")
-            mb=$(( (size + 524288) / 1048576 ))
-            cat > "release/$out" <<JSON
-          {
-              "version": "${VERSION}",
-              "build_number": ${BUILD},
-              "download_url": "${BASE_DL}/${file}",
-              "fallback_url": "${BASE_FB}/${file}",
-              "fallback_version": "${FALLBACK_VERSION}",
-              "changelog": "${CHANGELOG}",
-              "min_version": null,
-              "force_update": false,
-              "release_date": "${RELEASE_DATE}",
-              "file_size": "${mb} MB",
-              "sha256": "${sha}"
-          }
-          JSON
-          }
-
+          source .github/workflows/lib/write-manifest.sh
+          init_manifest_vars
           write_manifest version_mitglieder_android.json  icd360sev-universal.apk
-          write_manifest version_mitglieder_windows.json  icd360sev_setup.exe
-          write_manifest version_mitglieder_macos.json    icd360sev-mitglied.dmg
           write_manifest version_mitglieder_linux.json    icd360sev-mitglied.AppImage
-
-          echo "Generated manifests:"
+          echo "Generated priority manifests:"
           ls -lh release/version_mitglieder_*.json
 
-      - name: Create GitHub Release
+      - name: Create / update GitHub Release with priority assets
         uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
         with:
           generate_release_notes: true
+          files: release/*
+
+  # ============================================
+  # RELEASE — phase 2: Windows + Apple add-ons
+  # ----------------------------------------------------------------------
+  # Same GitHub Release tag — softprops/action-gh-release appends new
+  # assets without touching the ones the priority phase already uploaded.
+  # Failure here does not roll back the Android/Linux/Flatpak release that
+  # is already live.
+  # ============================================
+  release-secondary:
+    name: Release (Windows + Apple)
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [release-priority, build-apple, build-windows]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Download Windows + Apple artifacts
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          path: artifacts/
+          pattern: 'icd360sev-{windows,macos,ios}'
+
+      - name: Prepare secondary release files
+        run: |
+          mkdir -p release/
+          cp artifacts/icd360sev-windows/icd360sev_setup.exe release/icd360sev_setup.exe
+          cp artifacts/icd360sev-macos/icd360sev-mitglied.dmg release/icd360sev-mitglied.dmg
+          cd artifacts/icd360sev-ios && zip -r ../../release/icd360sev-ios.app.zip . && cd ../..
+          echo "Secondary release files:"
+          ls -lh release/
+
+      - name: Generate Windows + macOS manifests
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          source .github/workflows/lib/write-manifest.sh
+          init_manifest_vars
+          write_manifest version_mitglieder_windows.json  icd360sev_setup.exe
+          write_manifest version_mitglieder_macos.json    icd360sev-mitglied.dmg
+          echo "Generated secondary manifests:"
+          ls -lh release/version_mitglieder_*.json
+
+      - name: Append secondary assets to the existing GitHub Release
+        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
+        with:
+          generate_release_notes: false
           files: release/*
