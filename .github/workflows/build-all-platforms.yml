@@ -470,6 +470,34 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
+      - name: Replace flutter_webrtc plugin junction with a real directory copy
+        # The Windows runner now ships CMake ≥3.30, whose bundled libarchive
+        # refuses to extract archives through filesystem symlinks/junctions:
+        #   CMake Error: Cannot extract through symlink
+        #   …\windows\flutter\ephemeral\.plugin_symlinks\flutter_webrtc
+        # `flutter pub get` creates that path as a Windows junction pointing
+        # at the package in the pub cache, and flutter_webrtc's
+        # third_party/CMakeLists.txt then tries file(ARCHIVE_EXTRACT) inside
+        # it. Replacing the junction with a regular copy keeps Flutter happy
+        # (it only checks that the path exists) and removes the symlink that
+        # CMake refuses to traverse.
+        shell: pwsh
+        run: |
+          $sym = "windows/flutter/ephemeral/.plugin_symlinks/flutter_webrtc"
+          if (Test-Path $sym) {
+            $target = (Get-Item $sym).Target
+            if ($target) {
+              Write-Host "flutter_webrtc junction → $target"
+              cmd /c rmdir "$sym"
+              Copy-Item -Path $target -Destination $sym -Recurse -Force
+              Write-Host "Replaced junction with copy at $sym"
+            } else {
+              Write-Host "$sym is not a junction; nothing to do"
+            }
+          } else {
+            Write-Host "$sym does not exist (yet) — flutter build will create it; skipping"
+          }
+
       - name: Compute build number from version
         id: ver
         shell: bash
