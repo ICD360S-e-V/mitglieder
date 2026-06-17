@@ -131,9 +131,6 @@ class ApiService {
     await _secureStorage.delete(key: 'access_token');
     await _secureStorage.delete(key: 'refresh_token');
 
-    // Clear mitgliedernummer from SharedPreferences
-    final prefs = await SharedPreferences.getInstance();
-
     // Clear credentials from background service
     await BackgroundService.clearCredentials();
 

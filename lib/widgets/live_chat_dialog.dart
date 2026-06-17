@@ -986,7 +986,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                     case CropSuccess(:final croppedImage):
                       result = croppedImage;
                       Navigator.of(ctx).pop();
-                    case CropFailure(:final cause):
+                    case CropFailure():
                       Navigator.of(ctx).pop();
                   }
                 },

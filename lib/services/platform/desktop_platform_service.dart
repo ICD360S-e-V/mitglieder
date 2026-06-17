@@ -13,7 +13,6 @@ import '../notification_service.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:http/http.dart' as http;
 import '../http_client_factory.dart';
 
 import 'platform_service.dart';

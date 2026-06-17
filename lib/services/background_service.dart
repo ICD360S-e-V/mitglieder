@@ -416,7 +416,7 @@ class BackgroundService {
         // Skip own messages - use mitgliedernummer from IPC credentials (not SharedPreferences)
         final senderMitgliedernummer = message['sender_mitgliedernummer']?.toString() ?? '';
         final senderId = message['sender_id']?.toString() ?? '';
-        if (mitgliedernummer != null && mitgliedernummer!.isNotEmpty &&
+        if (mitgliedernummer != null && mitgliedernummer.isNotEmpty &&
             (senderMitgliedernummer == mitgliedernummer || senderId == mitgliedernummer)) {
           debugPrint('[BackgroundService] Skipping notification for own message');
           break;

@@ -68,7 +68,6 @@ class UpdateService {
 
   late http.Client _client;
   late HttpClient _httpClient;
-  final DeviceKeyService _deviceKeyService = DeviceKeyService();
 
   // Singleton
   static final UpdateService _instance = UpdateService._internal();
