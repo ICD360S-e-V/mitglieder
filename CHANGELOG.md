@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.4...v1.10.5) (2026-06-17)
+
+
+### Bug Fixes
+
+* **flatpak:** declare GL add-extension so Mesa drivers mount in sandbox ([9dd8174](https://github.com/ICD360S-e-V/mitglieder/commit/9dd8174727ac260268029411b5ec5965245728a8))
+
 ## [1.10.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.3...v1.10.4) (2026-06-16)
 
 
