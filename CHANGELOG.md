@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.11.1...v1.11.2) (2026-06-17)
+
+
+### Bug Fixes
+
+* **analyze:** drop now-orphan shared_preferences + device_key_service imports ([028e526](https://github.com/ICD360S-e-V/mitglieder/commit/028e526c4aed5c94b7bd81ef9bb788e9ee6fc86f))
+
 ## [1.11.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.11.0...v1.11.1) (2026-06-17)
 
 
