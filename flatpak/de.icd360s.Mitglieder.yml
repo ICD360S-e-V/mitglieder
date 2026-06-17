@@ -5,6 +5,25 @@ sdk: org.freedesktop.Sdk
 command: icd360sev_mitglied
 separate-locales: false
 
+# Without this, Fedora Kinoite (Mesa 25.x host) inside the flatpak 24.08
+# runtime tries the Zink (OpenGL-over-Vulkan) path because the native DRI
+# driver is not visible in /app/lib/GL, and fails with:
+#   libEGL warning: failed to get driver name for fd -1
+#   MESA-LOADER: failed to retrieve device information
+#   MESA: error: zink: failed to choose pdev
+# Declaring the GL add-extension makes flatpak mount the host-matched Mesa
+# driver (org.freedesktop.Platform.GL.default for Intel/AMD/Nouveau, or
+# .GL.nvidia-… for proprietary NVIDIA) into /app/lib/GL at install time.
+add-extensions:
+  org.freedesktop.Platform.GL:
+    version: '24.08'
+    versions: '24.08'
+    directory: lib/GL
+    subdirectories: true
+    no-autodownload: false
+    autodelete: false
+    add-ld-path: lib
+
 finish-args:
   # GUI (Wayland-first, X11 fallback)
   - --share=ipc
@@ -54,7 +73,9 @@ modules:
   - name: mitglieder
     buildsystem: simple
     build-commands:
-      - mkdir -p /app/bin /app/share/applications /app/share/metainfo /app/share/icons/hicolor/256x256/apps
+      # `/app/lib/GL` must exist before the GL add-extension can be mounted
+      # there at runtime; flatpak silently skips empty mount points otherwise.
+      - mkdir -p /app/bin /app/lib/GL /app/share/applications /app/share/metainfo /app/share/icons/hicolor/256x256/apps
       - cp -r bundle/* /app/bin/
       - install -Dm644 de.icd360s.Mitglieder.desktop /app/share/applications/de.icd360s.Mitglieder.desktop
       - install -Dm644 de.icd360s.Mitglieder.metainfo.xml /app/share/metainfo/de.icd360s.Mitglieder.metainfo.xml
