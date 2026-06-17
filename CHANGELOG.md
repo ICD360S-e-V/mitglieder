@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.11.0...v1.11.1) (2026-06-17)
+
+
+### Bug Fixes
+
+* **analyze:** clear five warnings flagged by the new analyze gate ([bdc9720](https://github.com/ICD360S-e-V/mitglieder/commit/bdc97200bd1deb58467e4564131bb21d27bc90c7))
+
 ## [1.11.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.10...v1.11.0) (2026-06-17)
 
 
