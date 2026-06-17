@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.7](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.6...v1.10.7) (2026-06-17)
+
+
+### Reverts
+
+* **flatpak:** drop GL ext + LIBGL_ALWAYS_SOFTWARE — both made it worse ([972c8e4](https://github.com/ICD360S-e-V/mitglieder/commit/972c8e49183bd6e06ccaa2f8b82aa673346325a4))
+
 ## [1.10.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.5...v1.10.6) (2026-06-17)
 
 
