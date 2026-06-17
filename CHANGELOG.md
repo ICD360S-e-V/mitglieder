@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.10...v1.11.0) (2026-06-17)
+
+
+### Features
+
+* **ci:** analyze gate + split release into priority (Android/Linux/Flatpak) + secondary (Windows/Apple) ([9197512](https://github.com/ICD360S-e-V/mitglieder/commit/9197512ef84eebce230c9bbb0776fe3dfdf20c15))
+
 ## [1.10.10](https://github.com/ICD360S-e-V/mitglieder/compare/v1.10.9...v1.10.10) (2026-06-17)
 
 
