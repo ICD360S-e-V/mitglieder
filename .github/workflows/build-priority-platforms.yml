@@ -1,7 +1,9 @@
-# CI/CD workflow for ICD360S e.V. Mitgliederportal
-# 4 jobs: Linux, Android, Apple, Windows
-# Smart cache: skips platforms unchanged since last successful build
-name: Build All Platforms
+# CI/CD workflow — priority platforms (Android + Linux + Flatpak)
+# These finish first and become UI-downloadable as soon as this workflow
+# completes. The slower platforms (Windows + iOS + macOS) live in
+# build-extras-platforms.yml and append to the same GitHub Release tag
+# without blocking this workflow's artifact downloads.
+name: Build Priority Platforms (Android + Linux + Flatpak)
 
 on:
   push:
@@ -27,12 +29,8 @@ jobs:
     outputs:
       linux: ${{ steps.flags.outputs.linux }}
       android: ${{ steps.flags.outputs.android }}
-      apple: ${{ steps.flags.outputs.apple }}
-      windows: ${{ steps.flags.outputs.windows }}
       linux_hash: ${{ steps.check.outputs.linux_hash }}
       android_hash: ${{ steps.check.outputs.android_hash }}
-      apple_hash: ${{ steps.check.outputs.apple_hash }}
-      win_hash: ${{ steps.check.outputs.win_hash }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
@@ -42,12 +40,8 @@ jobs:
           if [[ "${{ github.ref }}" == refs/tags/* ]] || [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "linux=true" >> $GITHUB_OUTPUT
             echo "android=true" >> $GITHUB_OUTPUT
-            echo "apple=true" >> $GITHUB_OUTPUT
-            echo "windows=true" >> $GITHUB_OUTPUT
             echo "linux_hash=force" >> $GITHUB_OUTPUT
             echo "android_hash=force" >> $GITHUB_OUTPUT
-            echo "apple_hash=force" >> $GITHUB_OUTPUT
-            echo "win_hash=force" >> $GITHUB_OUTPUT
             echo "BUILD ALL: tag or manual trigger"
             exit 0
           fi
@@ -56,20 +50,13 @@ jobs:
 
           LINUX_H=$(echo "$SHARED"; find linux/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && LINUX_H=$(echo "$LINUX_H" | sha256sum | cut -d' ' -f1)
           ANDROID_H=$(echo "$SHARED"; find android/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && ANDROID_H=$(echo "$ANDROID_H" | sha256sum | cut -d' ' -f1)
-          APPLE_H=$(echo "$SHARED"; find ios/ macos/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && APPLE_H=$(echo "$APPLE_H" | sha256sum | cut -d' ' -f1)
-          WIN_H=$(echo "$SHARED"; find windows/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && WIN_H=$(echo "$WIN_H" | sha256sum | cut -d' ' -f1)
 
-          echo "Hashes: LINUX=$LINUX_H ANDROID=$ANDROID_H APPLE=$APPLE_H WIN=$WIN_H"
+          echo "Hashes: LINUX=$LINUX_H ANDROID=$ANDROID_H"
           echo "linux_hash=$LINUX_H" >> $GITHUB_OUTPUT
           echo "android_hash=$ANDROID_H" >> $GITHUB_OUTPUT
-          echo "apple_hash=$APPLE_H" >> $GITHUB_OUTPUT
-          echo "win_hash=$WIN_H" >> $GITHUB_OUTPUT
 
-          # Dummy files for cache lookup
           echo "$LINUX_H" > /tmp/linux-h.txt
           echo "$ANDROID_H" > /tmp/android-h.txt
-          echo "$APPLE_H" > /tmp/apple-h.txt
-          echo "$WIN_H" > /tmp/win-h.txt
 
       - name: Check Linux cache
         id: cache-linux
@@ -87,36 +74,14 @@ jobs:
           key: v3-build-ok-android-${{ steps.check.outputs.android_hash }}
           lookup-only: true
 
-      - name: Check Apple cache
-        id: cache-apple
-        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
-        with:
-          path: /tmp/apple-h.txt
-          key: v3-build-ok-apple-${{ steps.check.outputs.apple_hash }}
-          lookup-only: true
-
-      - name: Check Windows cache
-        id: cache-win
-        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
-        with:
-          path: /tmp/win-h.txt
-          key: v3-build-ok-windows-${{ steps.check.outputs.win_hash }}
-          lookup-only: true
-
       - name: Set build flags
         id: flags
         run: |
-          for platform in linux android apple windows; do
-            CACHE_VAR="cache-${platform}"
-            if [ "$platform" = "windows" ]; then CACHE_VAR="cache-win"; fi
-
+          for platform in linux android; do
             HIT="${{ steps.cache-linux.outputs.cache-hit }}"
             case "$platform" in
               android) HIT="${{ steps.cache-android.outputs.cache-hit }}" ;;
-              apple) HIT="${{ steps.cache-apple.outputs.cache-hit }}" ;;
-              windows) HIT="${{ steps.cache-win.outputs.cache-hit }}" ;;
             esac
-
             if [ "$HIT" == "true" ]; then
               echo "→ $platform: SKIP (already built)"
               echo "$platform=false" >> $GITHUB_OUTPUT
@@ -128,18 +93,14 @@ jobs:
 
   # ============================================
   # ANALYZE: flutter analyze fails fast on type/import errors before any
-  # platform build burns 20+ minutes only to fail at the same problem. Runs
-  # on Ubuntu because it's the fastest runner; the analysis is platform-
-  # independent.
+  # platform build burns 20+ minutes only to fail at the same problem.
   # ============================================
   analyze:
     name: Analyze
     needs: detect-changes
     if: |
       needs.detect-changes.outputs.linux == 'true' ||
-      needs.detect-changes.outputs.android == 'true' ||
-      needs.detect-changes.outputs.apple == 'true' ||
-      needs.detect-changes.outputs.windows == 'true'
+      needs.detect-changes.outputs.android == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -378,13 +339,13 @@ jobs:
       - name: Upload debug symbols
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: symbols-android-${{ matrix.flavor }}
+          name: icd360sev-${{ matrix.flavor }}-symbols
           path: build/symbols/
+          if-no-files-found: warn
 
-  # Save Android cache marker (runs after all matrix jobs)
   save-android-cache:
     name: Save Android Cache
-    needs: [detect-changes, build-android]
+    needs: build-android
     runs-on: ubuntu-latest
     steps:
       - run: echo "ok" > /tmp/android-ok.txt
@@ -394,202 +355,7 @@ jobs:
           key: v3-build-ok-android-${{ needs.detect-changes.outputs.android_hash }}
 
   # ============================================
-  # APPLE (iOS + macOS) - 1 runner
-  # ============================================
-  build-apple:
-    name: Apple (iOS + macOS)
-    needs: [detect-changes, analyze]
-    if: needs.detect-changes.outputs.apple == 'true'
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: stable
-          cache: true
-
-      - name: Get dependencies
-        run: flutter pub get
-
-      - name: Generate l10n
-        run: flutter gen-l10n
-
-      - name: Compute build number from version
-        id: ver
-        run: |
-          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
-          IFS=. read MAJ MIN PAT <<< "$VER"
-          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
-          echo "version=$VER" >> "$GITHUB_OUTPUT"
-          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
-
-      # --- iOS Build ---
-      - name: Build iOS (no codesign)
-        run: flutter build ios --release --no-codesign --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
-
-      - name: Upload iOS .app
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: icd360sev-ios
-          path: build/ios/iphoneos/Runner.app
-          if-no-files-found: error
-
-      # --- macOS Build ---
-      - name: Disable macOS code signing for CI
-        run: |
-          sed -i '' 's/CODE_SIGN_IDENTITY = "Apple Development"/CODE_SIGN_IDENTITY = "-"/g' macos/Runner.xcodeproj/project.pbxproj
-          sed -i '' 's/CODE_SIGN_IDENTITY = "Mac Development"/CODE_SIGN_IDENTITY = "-"/g' macos/Runner.xcodeproj/project.pbxproj
-          sed -i '' 's/CODE_SIGN_IDENTITY = "Sign to Run Locally"/CODE_SIGN_IDENTITY = "-"/g' macos/Runner.xcodeproj/project.pbxproj
-          sed -i '' 's/DEVELOPMENT_TEAM = B42ZX94AKL/DEVELOPMENT_TEAM = ""/g' macos/Runner.xcodeproj/project.pbxproj
-          sed -i '' 's/CODE_SIGN_STYLE = Automatic/CODE_SIGN_STYLE = Manual/g' macos/Runner.xcodeproj/project.pbxproj
-          sed -i '' 's/CODE_SIGN_ENTITLEMENTS = .*$/CODE_SIGN_ENTITLEMENTS = "";/g' macos/Runner.xcodeproj/project.pbxproj
-
-      - name: Build macOS
-        run: flutter build macos --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
-
-      - name: Create DMG
-        run: |
-          APP_PATH="build/macos/Build/Products/Release/icd360sev_mitglied.app"
-          # Remove quarantine attributes so users don't get "damaged app" warning
-          xattr -cr "$APP_PATH"
-          DMG_DIR="build/dmg"
-          mkdir -p "$DMG_DIR"
-          cp -r "$APP_PATH" "$DMG_DIR/"
-          ln -s /Applications "$DMG_DIR/Applications"
-          hdiutil create -volname "ICD360S Mitglieder" -srcfolder "$DMG_DIR" \
-            -ov -format UDZO "build/icd360sev-mitglied.dmg"
-
-      - name: Upload macOS .dmg
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: icd360sev-macos
-          path: build/icd360sev-mitglied.dmg
-          if-no-files-found: error
-
-      - name: Save cache marker
-        run: echo "ok" > /tmp/apple-ok.txt
-      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
-        with:
-          path: /tmp/apple-ok.txt
-          key: v3-build-ok-apple-${{ needs.detect-changes.outputs.apple_hash }}
-
-  # ============================================
-  # WINDOWS - 1 runner
-  # ============================================
-  build-windows:
-    name: Windows
-    needs: [detect-changes, analyze]
-    if: needs.detect-changes.outputs.windows == 'true'
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: stable
-          cache: true
-
-      - name: Get dependencies
-        run: flutter pub get
-
-      - name: Generate l10n
-        run: flutter gen-l10n
-
-      - name: Replace flutter_webrtc plugin junction with a real directory copy
-        # The Windows runner now ships CMake ≥3.30, whose bundled libarchive
-        # refuses to extract archives through filesystem symlinks/junctions:
-        #   CMake Error: Cannot extract through symlink
-        #   …\windows\flutter\ephemeral\.plugin_symlinks\flutter_webrtc
-        # `flutter pub get` creates that path as a Windows junction pointing
-        # at the package in the pub cache, and flutter_webrtc's
-        # third_party/CMakeLists.txt then tries file(ARCHIVE_EXTRACT) inside
-        # it. Replacing the junction with a regular copy keeps Flutter happy
-        # (it only checks that the path exists) and removes the symlink that
-        # CMake refuses to traverse.
-        shell: pwsh
-        run: |
-          $sym = "windows/flutter/ephemeral/.plugin_symlinks/flutter_webrtc"
-          if (-not (Test-Path $sym)) {
-            Write-Host "$sym does not exist yet — flutter build will create it; skipping"
-            exit 0
-          }
-          $item = Get-Item $sym -Force
-          if (-not $item.Target) {
-            Write-Host "$sym is not a junction; nothing to do"
-            exit 0
-          }
-          $target = ($item.Target | Select-Object -First 1).TrimEnd('\','/')
-          Write-Host "flutter_webrtc junction → $target"
-          # Use .NET Directory.Delete so the forward slashes in $sym are not
-          # mis-parsed as command-line switches (cmd /c rmdir choked on the
-          # "/flutter/" segment as if it were a flag). recursive=$false means
-          # the junction entry itself is removed; the target tree in the pub
-          # cache stays untouched.
-          [System.IO.Directory]::Delete($sym, $false)
-          # robocopy is more reliable than Copy-Item for large recursive
-          # trees and survives long paths. /E = include subdirs incl. empty,
-          # /NFL /NDL /NJH /NJS = quiet output. Exit codes 0-7 are success
-          # for robocopy; >7 is a real failure.
-          $rc = (Start-Process robocopy -ArgumentList $target, $sym, '/E','/NFL','/NDL','/NJH','/NJS' -Wait -NoNewWindow -PassThru).ExitCode
-          if ($rc -gt 7) { throw "robocopy failed with code $rc" }
-          Write-Host "Replaced junction with copy at $sym"
-
-      - name: Compute build number from version
-        id: ver
-        shell: bash
-        run: |
-          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
-          IFS=. read MAJ MIN PAT <<< "$VER"
-          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
-          echo "version=$VER" >> "$GITHUB_OUTPUT"
-          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
-
-      - name: Build Windows
-        run: flutter build windows --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
-
-      - name: Install Inno Setup
-        run: choco install innosetup -y --no-progress
-
-      - name: Get version
-        id: version
-        shell: bash
-        run: |
-          VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-
-      - name: Create installer
-        run: |
-          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DAppVersion="${{ steps.version.outputs.version }}" windows\installer.iss
-
-      - name: Upload Windows installer
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: icd360sev-windows
-          path: icd360sev_setup.exe
-          if-no-files-found: error
-
-      - name: Save cache marker
-        shell: bash
-        run: echo "ok" > "$RUNNER_TEMP/win-ok.txt"
-      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
-        with:
-          path: ${{ runner.temp }}/win-ok.txt
-          key: v3-build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}
-
-  # ============================================
-  # Release (only on version tags)
-  # ============================================
-  # ============================================
   # FLATPAK (.flatpak single-file bundle for Linux)
-  # Repackages the linux bundle artifact built by `build-linux` and ships
-  # the result as a GitHub Release asset. Users install with
-  #   flatpak install --user icd360sev-mitglied.flatpak
-  # No OSTree repo — single-file delivery only, no VPS dependency.
   # ============================================
   flatpak:
     name: Flatpak
@@ -653,10 +419,6 @@ jobs:
       # ---- OSTree repo for `flatpak update` (served from GitHub Pages) ----
 
       - name: Update OSTree repo metadata + static deltas
-        # flatpak-builder leaves the OSTree repo at ./repo; this rewrites the
-        # summary so `flatpak update` clients can resolve refs, and generates
-        # static deltas to keep per-update downloads small. Prune to last 3
-        # versions — full history is in git, the repo doesn't need to keep it.
         run: |
           flatpak build-update-repo --generate-static-deltas \
             --title="ICD360S e.V. Mitglieder" \
@@ -664,10 +426,6 @@ jobs:
           du -sh repo
 
       - name: Assemble gh-pages publish tree
-        # Layout served at https://icd360s-e-v.github.io/mitglieder/:
-        #   /repo/                            — OSTree repo (flatpak update reads here)
-        #   /icd360s-mitglieder.flatpakrepo   — descriptor users `flatpak remote-add` from
-        #   /index.html                       — landing page with install instructions
         run: |
           mkdir -p pages-out
           cp -r repo pages-out/repo
@@ -716,11 +474,6 @@ jobs:
 
   # ============================================
   # FLATPAK auto-update repo → GitHub Pages
-  # Publishes the OSTree repo + .flatpakrepo descriptor to the gh-pages
-  # branch. After the first run, enable the branch under repo Settings →
-  # Pages → Build and deployment → Source: "Deploy from a branch", branch
-  # `gh-pages`, folder `/ (root)`. From then on, every release tag updates
-  # the OSTree repo and clients pick it up via `flatpak update`.
   # ============================================
   deploy-flatpak-pages:
     name: Deploy Flatpak repo to GitHub Pages
@@ -746,15 +499,14 @@ jobs:
           commit_message: "deploy: flatpak repo ${{ github.ref_name }}"
 
   # ============================================
-  # RELEASE — phase 1: Android + Linux + Flatpak
+  # RELEASE — Android + Linux + Flatpak
   # ----------------------------------------------------------------------
-  # Runs as soon as build-android, build-linux and the flatpak job finish.
-  # This is the path members actually use day-to-day, so they get a
-  # downloadable GitHub Release the moment those builds are green —
-  # without waiting for slower platforms.
-  # Windows + Apple ride on top later via release-secondary.
+  # Creates the GitHub Release with generated notes; uploads every Android
+  # APK/AAB + Linux deb/rpm/AppImage/tarball + .flatpak +
+  # version_mitglieder_{android,linux}.json manifests.
+  # The extras workflow appends Windows + Apple to this same release tag.
   # ============================================
-  release-priority:
+  release:
     name: Release (Android + Linux + Flatpak)
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [build-linux, build-android, save-android-cache, flatpak]
@@ -770,7 +522,7 @@ jobs:
           path: artifacts/
           pattern: 'icd360sev-{universal-apk,fdroid-apk,googleplay-apk,googleplay-aab,amazon-apk,huawei-apk,samsung-apk,linux,linux-deb,linux-rpm,linux-appimage,flatpak}'
 
-      - name: Prepare priority release files
+      - name: Prepare release files
         run: |
           mkdir -p release/
 
@@ -790,7 +542,7 @@ jobs:
           cp artifacts/icd360sev-linux-appimage/*.AppImage release/icd360sev-mitglied.AppImage
           cp artifacts/icd360sev-flatpak/icd360sev-mitglied.flatpak release/icd360sev-mitglied.flatpak
 
-          echo "Priority release files:"
+          echo "Release files:"
           ls -lh release/
 
       - name: Generate Android + Linux manifests
@@ -802,62 +554,11 @@ jobs:
           init_manifest_vars
           write_manifest version_mitglieder_android.json  icd360sev-universal.apk
           write_manifest version_mitglieder_linux.json    icd360sev-mitglied.AppImage
-          echo "Generated priority manifests:"
+          echo "Generated manifests:"
           ls -lh release/version_mitglieder_*.json
 
-      - name: Create / update GitHub Release with priority assets
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
         with:
           generate_release_notes: true
-          files: release/*
-
-  # ============================================
-  # RELEASE — phase 2: Windows + Apple add-ons
-  # ----------------------------------------------------------------------
-  # Same GitHub Release tag — softprops/action-gh-release appends new
-  # assets without touching the ones the priority phase already uploaded.
-  # Failure here does not roll back the Android/Linux/Flatpak release that
-  # is already live.
-  # ============================================
-  release-secondary:
-    name: Release (Windows + Apple)
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: [release-priority, build-apple, build-windows]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Download Windows + Apple artifacts
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
-        with:
-          path: artifacts/
-          pattern: 'icd360sev-{windows,macos,ios}'
-
-      - name: Prepare secondary release files
-        run: |
-          mkdir -p release/
-          cp artifacts/icd360sev-windows/icd360sev_setup.exe release/icd360sev_setup.exe
-          cp artifacts/icd360sev-macos/icd360sev-mitglied.dmg release/icd360sev-mitglied.dmg
-          cd artifacts/icd360sev-ios && zip -r ../../release/icd360sev-ios.app.zip . && cd ../..
-          echo "Secondary release files:"
-          ls -lh release/
-
-      - name: Generate Windows + macOS manifests
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          source .github/workflows/lib/write-manifest.sh
-          init_manifest_vars
-          write_manifest version_mitglieder_windows.json  icd360sev_setup.exe
-          write_manifest version_mitglieder_macos.json    icd360sev-mitglied.dmg
-          echo "Generated secondary manifests:"
-          ls -lh release/version_mitglieder_*.json
-
-      - name: Append secondary assets to the existing GitHub Release
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
-        with:
-          generate_release_notes: false
           files: release/*

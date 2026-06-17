@@ -1,0 +1,391 @@
+# CI/CD workflow — extra platforms (Windows + iOS + macOS)
+# Best-effort: a transient runner failure on PRs does not block review.
+# On tag pushes, the priority workflow creates the GitHub Release first;
+# this workflow polls until that release exists, then appends the Windows
+# .exe + macOS .dmg + iOS .app.zip + matching manifest JSONs to the same
+# release tag. Splitting the slow runners off here means the Android +
+# Linux + Flatpak download buttons in the Actions UI become clickable as
+# soon as that workflow completes, without waiting on Apple/Windows.
+name: Build Extra Platforms (Windows + iOS + macOS)
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FLUTTER_VERSION: '3.41.6'
+  JAVA_VERSION: '17'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  # ============================================
+  # DETECT: compare file hashes with last successful build (extras only)
+  # ============================================
+  detect-changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      apple: ${{ steps.flags.outputs.apple }}
+      windows: ${{ steps.flags.outputs.windows }}
+      apple_hash: ${{ steps.check.outputs.apple_hash }}
+      win_hash: ${{ steps.check.outputs.win_hash }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Compute hashes
+        id: check
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/* ]] || [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "apple=true" >> $GITHUB_OUTPUT
+            echo "windows=true" >> $GITHUB_OUTPUT
+            echo "apple_hash=force" >> $GITHUB_OUTPUT
+            echo "win_hash=force" >> $GITHUB_OUTPUT
+            echo "BUILD ALL: tag or manual trigger"
+            exit 0
+          fi
+
+          SHARED=$(find lib/ pubspec.yaml l10n.yaml -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
+
+          APPLE_H=$(echo "$SHARED"; find ios/ macos/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && APPLE_H=$(echo "$APPLE_H" | sha256sum | cut -d' ' -f1)
+          WIN_H=$(echo "$SHARED"; find windows/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && WIN_H=$(echo "$WIN_H" | sha256sum | cut -d' ' -f1)
+
+          echo "Hashes: APPLE=$APPLE_H WIN=$WIN_H"
+          echo "apple_hash=$APPLE_H" >> $GITHUB_OUTPUT
+          echo "win_hash=$WIN_H" >> $GITHUB_OUTPUT
+
+          echo "$APPLE_H" > /tmp/apple-h.txt
+          echo "$WIN_H" > /tmp/win-h.txt
+
+      - name: Check Apple cache
+        id: cache-apple
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: /tmp/apple-h.txt
+          key: v3-build-ok-apple-${{ steps.check.outputs.apple_hash }}
+          lookup-only: true
+
+      - name: Check Windows cache
+        id: cache-win
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: /tmp/win-h.txt
+          key: v3-build-ok-windows-${{ steps.check.outputs.win_hash }}
+          lookup-only: true
+
+      - name: Set build flags
+        id: flags
+        run: |
+          for platform in apple windows; do
+            HIT="${{ steps.cache-apple.outputs.cache-hit }}"
+            case "$platform" in
+              windows) HIT="${{ steps.cache-win.outputs.cache-hit }}" ;;
+            esac
+            if [ "$HIT" == "true" ]; then
+              echo "→ $platform: SKIP (already built)"
+              echo "$platform=false" >> $GITHUB_OUTPUT
+            else
+              echo "→ $platform: BUILD"
+              echo "$platform=true" >> $GITHUB_OUTPUT
+            fi
+          done
+
+  # ============================================
+  # ANALYZE: fast-fail on type/import errors before macOS + Windows runners.
+  # Mirrored from the priority workflow so we don't take a cross-workflow
+  # output dependency.
+  # ============================================
+  analyze:
+    name: Analyze
+    needs: detect-changes
+    if: |
+      needs.detect-changes.outputs.apple == 'true' ||
+      needs.detect-changes.outputs.windows == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Generate l10n
+        run: flutter gen-l10n
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos
+
+  # ============================================
+  # APPLE (iOS + macOS)
+  # ============================================
+  build-apple:
+    name: Apple (iOS + macOS)
+    needs: [detect-changes, analyze]
+    if: needs.detect-changes.outputs.apple == 'true'
+    runs-on: macos-latest
+    continue-on-error: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Generate l10n
+        run: flutter gen-l10n
+
+      - name: Compute build number from version
+        id: ver
+        run: |
+          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
+          IFS=. read MAJ MIN PAT <<< "$VER"
+          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
+
+      # --- iOS Build ---
+      - name: Build iOS (no codesign)
+        run: flutter build ios --release --no-codesign --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
+
+      - name: Upload iOS .app
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: icd360sev-ios
+          path: build/ios/iphoneos/Runner.app
+          if-no-files-found: error
+
+      # --- macOS Build ---
+      - name: Disable macOS code signing for CI
+        run: |
+          sed -i '' 's/CODE_SIGN_IDENTITY = "Apple Development"/CODE_SIGN_IDENTITY = "-"/g' macos/Runner.xcodeproj/project.pbxproj
+          sed -i '' 's/CODE_SIGN_IDENTITY = "Mac Development"/CODE_SIGN_IDENTITY = "-"/g' macos/Runner.xcodeproj/project.pbxproj
+          sed -i '' 's/CODE_SIGN_IDENTITY = "Sign to Run Locally"/CODE_SIGN_IDENTITY = "-"/g' macos/Runner.xcodeproj/project.pbxproj
+          sed -i '' 's/DEVELOPMENT_TEAM = B42ZX94AKL/DEVELOPMENT_TEAM = ""/g' macos/Runner.xcodeproj/project.pbxproj
+          sed -i '' 's/CODE_SIGN_STYLE = Automatic/CODE_SIGN_STYLE = Manual/g' macos/Runner.xcodeproj/project.pbxproj
+          sed -i '' 's/CODE_SIGN_ENTITLEMENTS = .*$/CODE_SIGN_ENTITLEMENTS = "";/g' macos/Runner.xcodeproj/project.pbxproj
+
+      - name: Build macOS
+        run: flutter build macos --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
+
+      - name: Create DMG
+        run: |
+          APP_PATH="build/macos/Build/Products/Release/icd360sev_mitglied.app"
+          xattr -cr "$APP_PATH"
+          DMG_DIR="build/dmg"
+          mkdir -p "$DMG_DIR"
+          cp -r "$APP_PATH" "$DMG_DIR/"
+          ln -s /Applications "$DMG_DIR/Applications"
+          hdiutil create -volname "ICD360S Mitglieder" -srcfolder "$DMG_DIR" \
+            -ov -format UDZO "build/icd360sev-mitglied.dmg"
+
+      - name: Upload macOS .dmg
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: icd360sev-macos
+          path: build/icd360sev-mitglied.dmg
+          if-no-files-found: error
+
+      - name: Save cache marker
+        run: echo "ok" > /tmp/apple-ok.txt
+      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: /tmp/apple-ok.txt
+          key: v3-build-ok-apple-${{ needs.detect-changes.outputs.apple_hash }}
+
+  # ============================================
+  # WINDOWS
+  # ============================================
+  build-windows:
+    name: Windows
+    needs: [detect-changes, analyze]
+    if: needs.detect-changes.outputs.windows == 'true'
+    runs-on: windows-latest
+    continue-on-error: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Generate l10n
+        run: flutter gen-l10n
+
+      - name: Replace flutter_webrtc plugin junction with a real directory copy
+        # The Windows runner ships CMake ≥3.30, whose bundled libarchive
+        # refuses to extract archives through filesystem symlinks/junctions:
+        #   CMake Error: Cannot extract through symlink
+        #   …\windows\flutter\ephemeral\.plugin_symlinks\flutter_webrtc
+        # `flutter pub get` creates that path as a Windows junction pointing
+        # at the package in the pub cache, and flutter_webrtc's
+        # third_party/CMakeLists.txt then tries file(ARCHIVE_EXTRACT) inside
+        # it. Replacing the junction with a regular copy keeps Flutter happy
+        # and removes the symlink CMake refuses to traverse.
+        shell: pwsh
+        run: |
+          $sym = "windows/flutter/ephemeral/.plugin_symlinks/flutter_webrtc"
+          if (-not (Test-Path $sym)) {
+            Write-Host "$sym does not exist yet — flutter build will create it; skipping"
+            exit 0
+          }
+          $item = Get-Item $sym -Force
+          if (-not $item.Target) {
+            Write-Host "$sym is not a junction; nothing to do"
+            exit 0
+          }
+          $target = ($item.Target | Select-Object -First 1).TrimEnd('\','/')
+          Write-Host "flutter_webrtc junction → $target"
+          [System.IO.Directory]::Delete($sym, $false)
+          $rc = (Start-Process robocopy -ArgumentList $target, $sym, '/E','/NFL','/NDL','/NJH','/NJS' -Wait -NoNewWindow -PassThru).ExitCode
+          if ($rc -gt 7) { throw "robocopy failed with code $rc" }
+          Write-Host "Replaced junction with copy at $sym"
+
+      - name: Compute build number from version
+        id: ver
+        shell: bash
+        run: |
+          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
+          IFS=. read MAJ MIN PAT <<< "$VER"
+          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
+
+      - name: Build Windows
+        run: flutter build windows --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y --no-progress
+
+      - name: Get version
+        id: version
+        shell: bash
+        run: |
+          VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Create installer
+        run: |
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DAppVersion="${{ steps.version.outputs.version }}" windows\installer.iss
+
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: icd360sev-windows
+          path: icd360sev_setup.exe
+          if-no-files-found: error
+
+      - name: Save cache marker
+        shell: bash
+        run: echo "ok" > "$RUNNER_TEMP/win-ok.txt"
+      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: ${{ runner.temp }}/win-ok.txt
+          key: v3-build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}
+
+  # ============================================
+  # RELEASE UPLOAD (extras): polls until the priority workflow has created
+  # the GitHub Release, then appends Windows/Apple assets to it.
+  # ============================================
+  release-upload-extras:
+    name: Release upload (extras)
+    needs: [build-apple, build-windows]
+    if: always() && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Download all extras artifacts
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          path: artifacts/
+          pattern: 'icd360sev-{windows,macos,ios}'
+
+      - name: Stage upload set
+        id: stage
+        run: |
+          mkdir -p release/
+          # Windows installer
+          if compgen -G 'artifacts/icd360sev-windows/icd360sev_setup.exe' > /dev/null; then
+            cp artifacts/icd360sev-windows/icd360sev_setup.exe release/icd360sev_setup.exe
+          fi
+          # macOS DMG
+          if compgen -G 'artifacts/icd360sev-macos/icd360sev-mitglied.dmg' > /dev/null; then
+            cp artifacts/icd360sev-macos/icd360sev-mitglied.dmg release/icd360sev-mitglied.dmg
+          fi
+          # iOS .app → zip
+          if [ -d artifacts/icd360sev-ios ]; then
+            cd artifacts/icd360sev-ios && zip -r ../../release/icd360sev-ios.app.zip . && cd ../..
+          fi
+
+          count=$(find release/ -mindepth 1 -maxdepth 1 -type f | wc -l)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Staged $count extras assets:"
+          ls -lh release/ || true
+
+      - name: Generate Windows + macOS manifests
+        if: steps.stage.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          source .github/workflows/lib/write-manifest.sh
+          init_manifest_vars
+          if [ -f release/icd360sev_setup.exe ]; then
+            write_manifest version_mitglieder_windows.json icd360sev_setup.exe
+          fi
+          if [ -f release/icd360sev-mitglied.dmg ]; then
+            write_manifest version_mitglieder_macos.json icd360sev-mitglied.dmg
+          fi
+          echo "Generated extras manifests:"
+          ls -lh release/version_mitglieder_*.json 2>/dev/null || true
+
+      - name: Wait for priority release to exist
+        if: steps.stage.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          # The priority workflow creates the GitHub Release with generated
+          # notes; this job only appends. Cap at 25 minutes — beyond that
+          # the priority workflow almost certainly failed, and this job
+          # should go red so the failure is visible in the Actions UI.
+          for i in $(seq 1 150); do
+            if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+              echo "✓ Release $TAG present, proceeding"
+              exit 0
+            fi
+            echo "  release $TAG not yet present (attempt $i/150), sleeping 10s"
+            sleep 10
+          done
+          echo "::error::Release $TAG did not appear in 25 min — priority workflow likely failed"
+          exit 1
+
+      - name: Upload extras to release
+        if: steps.stage.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          # --clobber overwrites any prior asset with the same name, so a
+          # retry of this job is idempotent.
+          gh release upload "$TAG" release/* --clobber --repo "$GITHUB_REPOSITORY"
