@@ -49,10 +49,19 @@ class NotificationService {
       requestSoundPermission: true,
     );
 
+    // Linux: flutter_local_notifications throws
+    //   "Invalid argument(s): Linux settings must be set when targeting Linux platform"
+    // if InitializationSettings.linux is omitted on a Linux runtime. defaultActionName
+    // is the only required field; the rest are optional and get sensible defaults
+    // from the freedesktop Notifications portal.
+    const LinuxInitializationSettings initializationSettingsLinux =
+        LinuxInitializationSettings(defaultActionName: 'Open');
+
     const InitializationSettings initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
       macOS: initializationSettingsDarwin,
+      linux: initializationSettingsLinux,
     );
 
     await _notifications.initialize(

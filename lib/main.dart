@@ -66,13 +66,13 @@ void main() async {
       () => LoggerService().init());
   await StartupDiagnostics.stepWithTimeout('UpdateService.initVersion', const Duration(seconds: 5),
       () => UpdateService.initVersion());
-  await StartupDiagnostics.stepWithTimeout('ApiService.initialize', const Duration(seconds: 5),
+  await StartupDiagnostics.stepWithTimeout('ApiService.initialize', const Duration(seconds: 15),
       () => ApiService().initialize());
 
   // Network resilience: circuit breaker + retry on top of every API call.
   // Security telemetry: queues TLS interception reports for push when the
   // network recovers. Mitgliedernummer is added after login.
-  await StartupDiagnostics.stepWithTimeout('NetworkResilience.start', const Duration(seconds: 5),
+  await StartupDiagnostics.stepWithTimeout('NetworkResilience.start', const Duration(seconds: 15),
       () => NetworkResilience.instance.start());
   await StartupDiagnostics.stepWithTimeout('SecurityEventReporter.start', const Duration(seconds: 5),
       () => SecurityEventReporter.instance.start(
