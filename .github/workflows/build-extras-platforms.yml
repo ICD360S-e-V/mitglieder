@@ -162,7 +162,7 @@ jobs:
 
       # --- iOS Build ---
       - name: Build iOS (no codesign)
-        run: flutter build ios --release --no-codesign --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.STARTUP_DIAG_KEY }}
+        run: flutter build ios --release --no-codesign --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.MITGLIEDER_STARTUP_DIAG_KEY }}
 
       - name: Upload iOS .app
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
@@ -182,7 +182,7 @@ jobs:
           sed -i '' 's/CODE_SIGN_ENTITLEMENTS = .*$/CODE_SIGN_ENTITLEMENTS = "";/g' macos/Runner.xcodeproj/project.pbxproj
 
       - name: Build macOS
-        run: flutter build macos --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.STARTUP_DIAG_KEY }}
+        run: flutter build macos --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.MITGLIEDER_STARTUP_DIAG_KEY }}
 
       - name: Create DMG
         run: |
@@ -274,7 +274,7 @@ jobs:
           echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
 
       - name: Build Windows
-        run: flutter build windows --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.STARTUP_DIAG_KEY }}
+        run: flutter build windows --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.MITGLIEDER_STARTUP_DIAG_KEY }}
 
       - name: Install Inno Setup
         run: choco install innosetup -y --no-progress

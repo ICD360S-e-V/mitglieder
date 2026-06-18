@@ -172,16 +172,25 @@ class StartupDiagnostics {
     }
   }
 
-  /// Per-channel log endpoint. Flatpak Linux clients get their own bucket
-  /// (`mitglieder_flatpack.php`) so the gray-screen diagnostics don't get
-  /// lost in the broader Android stream; everything else routes the same
-  /// way LoggerService already does.
+  /// Per-platform log endpoint — 7 distinct buckets so a transcript from
+  /// one platform never gets buried in another's stream. The trailing
+  /// `mitglieder_startup.php` is a safety fallback if Platform.is* ever
+  /// returns false on every branch (a Flutter target we don't ship to yet,
+  /// or a host where `Platform` reports a new OS string).
+  ///
+  /// Flatpak Linux is routed by the FLATPAK_ID env var the runtime sets,
+  /// not by `Platform.isLinux`, so a non-Flatpak Linux install
+  /// (AppImage / .deb / .rpm) keeps writing to the cleaner `_linux.php`
+  /// bucket.
   static String get _reportUrl {
-    if (Platform.environment['FLATPAK_ID'] != null) {
-      return 'https://icd360sev.icd360s.de/api/logs/mitglieder_flatpack.php';
-    }
-    if (Platform.isWindows) return 'https://icd360sev.icd360s.de/api/logs/mitglieder_windows.php';
-    return 'https://icd360sev.icd360s.de/api/logs/mitglieder_android.php';
+    const base = 'https://icd360sev.icd360s.de/api/logs';
+    if (Platform.environment['FLATPAK_ID'] != null) return '$base/mitglieder_flatpack.php';
+    if (Platform.isWindows) return '$base/mitglieder_windows.php';
+    if (Platform.isAndroid) return '$base/mitglieder_android.php';
+    if (Platform.isMacOS)   return '$base/mitglieder_macos.php';
+    if (Platform.isIOS)     return '$base/mitglieder_ios.php';
+    if (Platform.isLinux)   return '$base/mitglieder_linux.php';
+    return '$base/mitglieder_startup.php';
   }
 
   /// 32-byte hex (256-bit AES-GCM key) injected at build time via
