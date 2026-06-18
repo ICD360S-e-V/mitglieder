@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.2...v1.14.3) (2026-06-18)
+
+
+### Bug Fixes
+
+* **linux:** provide LinuxInitializationSettings + raise net init budgets ([7d4cf09](https://github.com/ICD360S-e-V/mitglieder/commit/7d4cf0995f766a0aaafda48cb06eae39ac110907))
+
 ## [1.14.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.1...v1.14.2) (2026-06-18)
 
 
