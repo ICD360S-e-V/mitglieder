@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.0...v1.14.1) (2026-06-18)
+
+
+### Bug Fixes
+
+* **linux:** match Vorsitzer SDK + flutter_webrtc to unblock VM rendering ([e59ae16](https://github.com/ICD360S-e-V/mitglieder/commit/e59ae16d86e1a4cf667acb555808efa20d202c6b))
+
 ## [1.14.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.13.0...v1.14.0) (2026-06-18)
 
 
