@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.13.0...v1.14.0) (2026-06-18)
+
+
+### Features
+
+* **diag:** inject STARTUP_DIAG_KEY via --dart-define, never in source ([052a7a0](https://github.com/ICD360S-e-V/mitglieder/commit/052a7a09b7213bd1d411253b7cd3e7dd4e766455))
+
 ## [1.13.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.12.0...v1.13.0) (2026-06-18)
 
 
