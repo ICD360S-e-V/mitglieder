@@ -86,6 +86,10 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           channel: stable
           cache: true
+          # Caches ~/.pub-cache by pubspec.lock hash. Shared across all three
+          # build workflows: first job to populate it (~30-60s) makes the
+          # other two near-instant (`flutter pub get` becomes a no-op).
+          pub-cache: true
       - name: Get dependencies
         run: flutter pub get
       - name: Generate l10n
@@ -148,6 +152,10 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           channel: stable
           cache: true
+          # Caches ~/.pub-cache by pubspec.lock hash. Shared across all three
+          # build workflows: first job to populate it (~30-60s) makes the
+          # other two near-instant (`flutter pub get` becomes a no-op).
+          pub-cache: true
 
       - name: Get dependencies
         run: flutter pub get
