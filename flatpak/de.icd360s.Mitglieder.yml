@@ -34,6 +34,13 @@ finish-args:
   # Auto-start on login
   - --talk-name=org.freedesktop.portal.Background
 
+  # NetworkManager on the SYSTEM bus, needed by connectivity_plus's
+  # checkConnectivity(). Without this the plugin hangs forever inside the
+  # flatpak sandbox (fluttercommunity/plus_plugins#602), which adds a full
+  # NetworkResilience.start timeout (5–15 s) to every cold launch. The
+  # name is read-only via system-talk-name — we don't take ownership.
+  - --system-talk-name=org.freedesktop.NetworkManager
+
 cleanup:
   - /include
   - /lib/pkgconfig
