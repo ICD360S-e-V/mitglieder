@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.5...v1.16.6) (2026-06-18)
+
+
+### Documentation
+
+* **readme:** add Flatpak auto-update install instructions for Kinoite/KDE/GNOME ([e55ad8a](https://github.com/ICD360S-e-V/mitglieder/commit/e55ad8ac6b3628bd43f68e062befa8951cd36848))
+
 ## [1.16.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.4...v1.16.5) (2026-06-18)
 
 
