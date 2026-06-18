@@ -238,6 +238,10 @@ jobs:
     needs: [detect-changes, build-linux]
     if: needs.detect-changes.outputs.linux == 'true'
     runs-on: ubuntu-latest
+    # Container init has gotten stuck for 20+ min when the freedesktop-24.08
+    # image misses cache on a new runner pool. 30 min is the largest budget
+    # we'll allow before failing fast — a healthy run finishes inside 8 min.
+    timeout-minutes: 30
     container:
       image: bilelmoussaoui/flatpak-github-actions:freedesktop-24.08
       options: --privileged
