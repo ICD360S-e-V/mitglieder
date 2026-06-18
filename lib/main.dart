@@ -71,7 +71,20 @@ void main() async {
       await TicketNotificationService().initialize();
       await BackgroundService.initializeService();
     } else {
-      await PlatformFactory.instance.initialize();
+      // Desktop init (notifications + windowManager.show + tray_manager) is
+      // wrapped in a timeout because in a Proxmox/QEMU VM without GPU
+      // passthrough — or any session without a working StatusNotifierWatcher
+      // / GL surface — _initializeTray() or windowManager.waitUntilReadyToShow
+      // can hang indefinitely waiting for a D-Bus reply or a GL context, and
+      // runApp() never gets called. With this timeout the app renders even if
+      // the tray/window setup never completes; users see the UI and any plugin
+      // that recovers later attaches on its own.
+      await PlatformFactory.instance.initialize().timeout(
+        const Duration(seconds: 8),
+        onTimeout: () {
+          debugPrint('[INIT] Desktop platform init timed out — proceeding to runApp without it');
+        },
+      );
     }
   } catch (e) {
     debugPrint('[INIT] Service initialization error (non-fatal): $e');
