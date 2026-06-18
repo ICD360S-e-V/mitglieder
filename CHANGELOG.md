@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.11.2...v1.11.3) (2026-06-18)
+
+
+### Bug Fixes
+
+* **linux:** timeout desktop init so runApp fires on GPU-less VMs ([427e40c](https://github.com/ICD360S-e-V/mitglieder/commit/427e40c3c25354d25dd2d288b97c969511fa4965))
+
 ## [1.11.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.11.1...v1.11.2) (2026-06-17)
 
 
