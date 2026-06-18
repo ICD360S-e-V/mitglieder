@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.4...v1.16.5) (2026-06-18)
+
+
+### Bug Fixes
+
+* **l10n:** ship SVG country flags so the language picker renders on Linux ([b97b849](https://github.com/ICD360S-e-V/mitglieder/commit/b97b849cae3393cf787017929edf5e45db05fe93))
+
 ## [1.16.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.3...v1.16.4) (2026-06-18)
 
 
