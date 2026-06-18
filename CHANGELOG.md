@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.3...v1.14.4) (2026-06-18)
+
+
+### Bug Fixes
+
+* **network:** cap connectivity_plus probe to 2s so it can't freeze startup ([f6c2c28](https://github.com/ICD360S-e-V/mitglieder/commit/f6c2c28ecff9fbe451b487170842bd199e7e61d4))
+
 ## [1.14.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.2...v1.14.3) (2026-06-18)
 
 
