@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.11.3...v1.12.0) (2026-06-18)
+
+
+### Features
+
+* **diag:** write per-step startup log to disk so gray-screen launches are debuggable ([825d251](https://github.com/ICD360S-e-V/mitglieder/commit/825d251b70b4649e00b109ec01349602b1c77a27))
+
 ## [1.11.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.11.2...v1.11.3) (2026-06-18)
 
 
