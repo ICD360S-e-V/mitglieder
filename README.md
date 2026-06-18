@@ -107,6 +107,66 @@ Die App aktualisiert sich automatisch nach der Installation - wenn Sie es erlaub
 
 ---
 
+### <img src="https://img.shields.io/badge/Flatpak-Auto--Update-4A90D9?style=for-the-badge&logo=flathub&logoColor=white" alt="Flatpak"> Flatpak (Kinoite / KDE / GNOME)
+
+Einmal installieren — danach erkennen **KDE Discover / GNOME Software** neue Releases automatisch, oder du nutzt `flatpak update --user` aus der Konsole.
+
+OSTree-Repo: [`https://icd360s-e-v.github.io/mitglieder/icd360s-mitglieder.flatpakrepo`](https://icd360s-e-v.github.io/mitglieder/icd360s-mitglieder.flatpakrepo)
+
+#### 1. Remote hinzufügen (einmalig)
+
+```bash
+flatpak remote-add --user --if-not-exists icd360s-mitglieder \
+  https://icd360s-e-v.github.io/mitglieder/icd360s-mitglieder.flatpakrepo
+```
+
+#### 2. Installation
+
+```bash
+flatpak install --user icd360s-mitglieder de.icd360s.Mitglieder
+```
+
+#### 3. Manuelles Update
+
+```bash
+flatpak update --user
+```
+
+#### 4. Auto-Check alle 60 Sekunden (systemd User-Timer)
+
+```bash
+mkdir -p ~/.config/systemd/user
+
+cat > ~/.config/systemd/user/flatpak-update-mitglieder.service <<'SVC'
+[Unit]
+Description=Flatpak update for ICD360S Mitglieder
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flatpak update --user --noninteractive -y icd360s-mitglieder
+SVC
+
+cat > ~/.config/systemd/user/flatpak-update-mitglieder.timer <<'TIM'
+[Unit]
+Description=Check Mitglieder Flatpak update every 1 minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+TIM
+
+systemctl --user daemon-reload
+systemctl --user enable --now flatpak-update-mitglieder.timer
+```
+
+Timer-Status prüfen: `systemctl --user list-timers | grep mitglieder`
+
+---
+
 ## :apple: macOS / iOS (Beta)
 
 | | Download | Link |
