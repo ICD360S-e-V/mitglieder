@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.1...v1.14.2) (2026-06-18)
+
+
+### Bug Fixes
+
+* **tls:** survive bad cert in flatpak runtime's system bundle ([5fa7ea5](https://github.com/ICD360S-e-V/mitglieder/commit/5fa7ea5ff53d45ddc629fb15a9ec0b9ba69947a1))
+
 ## [1.14.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.0...v1.14.1) (2026-06-18)
 
 
