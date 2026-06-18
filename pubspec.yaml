@@ -57,8 +57,12 @@ dependencies:
   # WebSocket for real-time chat
   web_socket_channel: ^3.0.1
 
-  # WebRTC for voice/video calls
-  flutter_webrtc: ^1.2.1
+  # WebRTC for voice/video calls. Pinned to ^1.4.1 to match Vorsitzer
+  # because earlier ^1.2.1 was resolving to a libwebrtc.zip that
+  # CMake 3.30+ refused to extract through the .plugin_symlinks junction
+  # on Windows — and on Linux 1.4.x ships the version the rest of the
+  # ICD360S stack is tested against.
+  flutter_webrtc: ^1.4.1
 
   # Battery level monitoring
   battery_plus: ^7.0.0

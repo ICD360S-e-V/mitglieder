@@ -18,7 +18,12 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FLUTTER_VERSION: '3.41.6'
+  # Same pin as build-priority-platforms.yml — kept consistent across both
+  # workflows so a tag rebuilds every artifact off the same SDK. The
+  # Windows junction → robocopy step below survives the downgrade because
+  # the CMake refusal-to-extract-through-symlinks policy is enforced by
+  # the runner's CMake, not by Flutter.
+  FLUTTER_VERSION: '3.38.4'
   JAVA_VERSION: '17'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 

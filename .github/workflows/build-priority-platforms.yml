@@ -15,7 +15,14 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FLUTTER_VERSION: '3.41.6'
+  # Matches Vorsitzer's known-working desktop build. Flutter 3.41 on Linux
+  # leaves the Flutter content area blank in a Proxmox VM without GPU
+  # passthrough (Mesa warnings are the same as Vorsitzer's — they're noise,
+  # not the cause; the actual difference is which GL path the renderer
+  # picks). Pinning to 3.38.4 brings Mitglieder's renderer in line with
+  # Vorsitzer, which is the only iteration that reliably ends with the
+  # welcome screen visible on the test VM.
+  FLUTTER_VERSION: '3.38.4'
   JAVA_VERSION: '17'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
