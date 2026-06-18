@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.5...v1.15.0) (2026-06-18)
+
+
+### Features
+
+* **diag:** per-platform endpoint routing + MITGLIEDER_STARTUP_DIAG_KEY rename ([2673802](https://github.com/ICD360S-e-V/mitglieder/commit/2673802df5e292821128a221f7aa13c758aff740))
+
 ## [1.14.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.4...v1.14.5) (2026-06-18)
 
 
