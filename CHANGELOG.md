@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.0...v1.16.1) (2026-06-18)
+
+
+### Bug Fixes
+
+* **l10n:** restore dart:io import for File type, drop redundant foundation import ([2a2d8e5](https://github.com/ICD360S-e-V/mitglieder/commit/2a2d8e501a1ba6c88f5bc7ab234218b334ad6ce6))
+
 ## [1.16.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.15.0...v1.16.0) (2026-06-18)
 
 
