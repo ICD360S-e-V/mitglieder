@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.15.0...v1.16.0) (2026-06-18)
+
+
+### Features
+
+* **l10n:** explicit first-launch language picker, drop device-locale inference ([7831709](https://github.com/ICD360S-e-V/mitglieder/commit/78317092139f0cfeb3e29ff9efc99e70dd18b9f0))
+
 ## [1.15.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.5...v1.15.0) (2026-06-18)
 
 
