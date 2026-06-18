@@ -123,9 +123,16 @@ jobs:
           # build workflows: first job to populate it (~30-60s) makes the
           # other two near-instant (`flutter pub get` becomes a no-op).
           pub-cache: true
+      - name: Cache .dart_tool (l10n + pub artifacts)
+        id: dart-tool-cache
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: .dart_tool
+          key: dart-tool-${{ runner.os }}-${{ hashFiles('pubspec.lock', 'l10n.yaml', 'lib/l10n/*.arb') }}
       - name: Get dependencies
         run: flutter pub get
       - name: Generate l10n
+        if: steps.dart-tool-cache.outputs.cache-hit != 'true'
         run: flutter gen-l10n
       - name: Analyze
         run: flutter analyze --no-fatal-infos
@@ -153,10 +160,20 @@ jobs:
           # other two near-instant (`flutter pub get` becomes a no-op).
           pub-cache: true
 
+      - name: Cache .dart_tool (l10n + pub artifacts)
+        id: dart-tool-cache
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: .dart_tool
+          # OS-keyed so analyze (Linux) doesn't collide with the macOS or
+          # Windows build trees. Saves gen-l10n on rebuilds.
+          key: dart-tool-${{ runner.os }}-${{ hashFiles('pubspec.lock', 'l10n.yaml', 'lib/l10n/*.arb') }}
+
       - name: Get dependencies
         run: flutter pub get
 
       - name: Generate l10n
+        if: steps.dart-tool-cache.outputs.cache-hit != 'true'
         run: flutter gen-l10n
 
       - name: Compute build number from version
@@ -240,10 +257,20 @@ jobs:
           # other two near-instant (`flutter pub get` becomes a no-op).
           pub-cache: true
 
+      - name: Cache .dart_tool (l10n + pub artifacts)
+        id: dart-tool-cache
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: .dart_tool
+          # OS-keyed so analyze (Linux) doesn't collide with the macOS or
+          # Windows build trees. Saves gen-l10n on rebuilds.
+          key: dart-tool-${{ runner.os }}-${{ hashFiles('pubspec.lock', 'l10n.yaml', 'lib/l10n/*.arb') }}
+
       - name: Get dependencies
         run: flutter pub get
 
       - name: Generate l10n
+        if: steps.dart-tool-cache.outputs.cache-hit != 'true'
         run: flutter gen-l10n
 
       - name: Replace flutter_webrtc plugin junction with a real directory copy
