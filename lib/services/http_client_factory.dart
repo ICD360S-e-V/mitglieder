@@ -90,17 +90,39 @@ tL4ndQavEi51mI38AjEAi/V3bNTIZargCyzuFJ0nN6T5U6VR5CmD1/iQMVtCnwr1
 
     // Release: trust ONLY ISRG Root X1 (active) + ISRG Root X2 (backup).
     // Concatenating PEMs lets SecurityContext accept either chain.
-    final securityContext = SecurityContext(withTrustedRoots: false);
-    securityContext.setTrustedCertificatesBytes(
-      utf8.encode('$_isrgRootX1Pem\n$_isrgRootX2Pem'),
-    );
+    //
+    // Defensive try/catch: on the freedesktop 24.08 flatpak runtime, the
+    // system cert bundle includes at least one certificate with a UTC time
+    // BoringSSL refuses to parse (`a_utctm.cc:46`). Even though we explicitly
+    // opt out with `withTrustedRoots: false`, the SecurityContext ctor still
+    // pre-loads the default store internally on Linux, and the parse error
+    // surfaces as a TlsException("Failure trusting builtin roots") in the
+    // very first ApiService() construction — taking ApiService.initialize and
+    // every downstream service with it. Catching here lets the rest of the
+    // app boot; calls that hit the now-null pinned client will surface a
+    // clear "no TLS context" error at use time instead of taking the whole
+    // startup chain down at construction time.
+    try {
+      final securityContext = SecurityContext(withTrustedRoots: false);
+      securityContext.setTrustedCertificatesBytes(
+        utf8.encode('$_isrgRootX1Pem\n$_isrgRootX2Pem'),
+      );
 
-    final client = HttpClient(context: securityContext)
-      ..connectionTimeout = connectionTimeout
-      ..idleTimeout = idleTimeout;
+      final client = HttpClient(context: securityContext)
+        ..connectionTimeout = connectionTimeout
+        ..idleTimeout = idleTimeout;
 
-    debugPrint('[SSL] Certificate pinning ENABLED (ISRG Root X1 + X2 backup)');
-    return client;
+      debugPrint('[SSL] Certificate pinning ENABLED (ISRG Root X1 + X2 backup)');
+      return client;
+    } catch (e) {
+      debugPrint('[SSL] SecurityContext init FAILED: $e');
+      debugPrint('[SSL] Falling back to system-trust HttpClient — pinning '
+          'is disabled for this session. Likely cause: bad cert in the '
+          'sandbox\'s /etc/ssl/certs bundle (freedesktop 24.08 runtime).');
+      return HttpClient()
+        ..connectionTimeout = connectionTimeout
+        ..idleTimeout = idleTimeout;
+    }
   }
 
   /// Create a default HttpClient WITHOUT pinning.
