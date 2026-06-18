@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.4...v1.14.5) (2026-06-18)
+
+
+### Bug Fixes
+
+* **flatpak:** grant system-bus access to NetworkManager for connectivity_plus ([0279595](https://github.com/ICD360S-e-V/mitglieder/commit/027959553a327d56bc197c3fbcc1be182af0b152))
+
 ## [1.14.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.14.3...v1.14.4) (2026-06-18)
 
 
