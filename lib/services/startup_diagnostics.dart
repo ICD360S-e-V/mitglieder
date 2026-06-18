@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 
 /// Records every step of `main()` to a plain-text log file from the very
 /// first call, so that a startup that never reaches `runApp()` is still
@@ -164,6 +166,59 @@ class StartupDiagnostics {
         }
       }
       return null;
+    }
+  }
+
+  /// Same endpoint pattern as LoggerService — Linux falls through to the
+  /// "android" log endpoint because the server uses one bucket for every
+  /// non-Windows client. No server-side change needed: the transcript
+  /// rides on the existing log shape with `tag: "STARTUP"`.
+  static String get _reportUrl {
+    if (Platform.isWindows) return 'https://icd360sev.icd360s.de/api/logs/mitglieder_windows.php';
+    return 'https://icd360sev.icd360s.de/api/logs/mitglieder_android.php';
+  }
+
+  /// Fire-and-forget POST of the recorded transcript to the central log
+  /// endpoint. Designed to be called once, after runApp(), with whatever
+  /// identifiers are available — anything missing is sent as 'unknown'
+  /// so the server still has a row to inspect.
+  ///
+  /// Errors are caught and logged back into the transcript (which the
+  /// user can still `cat` locally); they never propagate or crash the
+  /// caller. Default 10-second timeout means a hung HTTPS request can't
+  /// hold the app hostage forever.
+  static Future<void> uploadToServer({
+    String? appVersion,
+    String? deviceId,
+    String? mitgliedernummer,
+  }) async {
+    if (_entries.isEmpty) return;
+    log('→ uploadToServer ($_reportUrl)');
+    try {
+      final body = jsonEncode({
+        'mitgliedernummer': mitgliedernummer ?? '',
+        'device_id': deviceId ?? 'unknown',
+        'platform': Platform.operatingSystem,
+        'app_version': appVersion ?? 'unknown',
+        'logs': [
+          {
+            'timestamp': DateTime.now().toIso8601String(),
+            'message': _entries.join('\n'),
+            'level': _hadFailure ? 'error' : 'info',
+            'tag': 'STARTUP',
+          }
+        ],
+      });
+      final response = await http
+          .post(
+            Uri.parse(_reportUrl),
+            headers: {'Content-Type': 'application/json'},
+            body: body,
+          )
+          .timeout(const Duration(seconds: 10));
+      log('  ← uploadToServer status=${response.statusCode}');
+    } catch (e) {
+      log('  ✗ uploadToServer failed: $e');
     }
   }
 

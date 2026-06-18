@@ -106,6 +106,18 @@ void main() async {
 
   StartupDiagnostics.log('→ runApp()');
   runApp(const MitgliedApp());
+
+  // Fire-and-forget upload of the startup transcript so failures from a
+  // user's device land in the central log bucket — no need for the user
+  // to `cat` and paste. Scheduled with a small delay so it never delays
+  // the first frame; defaults to 'unknown' for any identifier whose
+  // upstream service didn't initialise.
+  Future<void>.delayed(const Duration(seconds: 3), () async {
+    await StartupDiagnostics.uploadToServer(
+      appVersion: UpdateService.currentVersion,
+      deviceId: LoggerService().deviceId,
+    );
+  });
 }
 
 class MitgliedApp extends StatelessWidget {
