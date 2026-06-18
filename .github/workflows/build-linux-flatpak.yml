@@ -1,9 +1,11 @@
-# CI/CD workflow — priority platforms (Android + Linux + Flatpak)
-# These finish first and become UI-downloadable as soon as this workflow
-# completes. The slower platforms (Windows + iOS + macOS) live in
-# build-extras-platforms.yml and append to the same GitHub Release tag
-# without blocking this workflow's artifact downloads.
-name: Build Priority Platforms (Android + Linux + Flatpak)
+# CI/CD workflow — Linux + Flatpak (highest-priority track)
+# Splits off from the old "priority" workflow so Linux/Flatpak finishes
+# first and the Linux .deb/.rpm/.AppImage + .flatpak appear in the
+# Actions UI as soon as humanly possible. Android moved to
+# build-android.yml; Windows + Apple stay in build-extras-platforms.yml.
+# This workflow OWNS the GitHub Release: it creates the release tag with
+# Linux + Flatpak assets, and the other two workflows append.
+name: Build Linux + Flatpak (priority)
 
 on:
   push:
@@ -23,21 +25,18 @@ env:
   # Vorsitzer, which is the only iteration that reliably ends with the
   # welcome screen visible on the test VM.
   FLUTTER_VERSION: '3.38.4'
-  JAVA_VERSION: '17'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   # ============================================
-  # DETECT: compare file hashes with last successful build
+  # DETECT: compare file hashes with last successful build (Linux only)
   # ============================================
   detect-changes:
     name: Detect Changes
     runs-on: ubuntu-latest
     outputs:
       linux: ${{ steps.flags.outputs.linux }}
-      android: ${{ steps.flags.outputs.android }}
       linux_hash: ${{ steps.check.outputs.linux_hash }}
-      android_hash: ${{ steps.check.outputs.android_hash }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
@@ -46,24 +45,17 @@ jobs:
         run: |
           if [[ "${{ github.ref }}" == refs/tags/* ]] || [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "linux=true" >> $GITHUB_OUTPUT
-            echo "android=true" >> $GITHUB_OUTPUT
             echo "linux_hash=force" >> $GITHUB_OUTPUT
-            echo "android_hash=force" >> $GITHUB_OUTPUT
             echo "BUILD ALL: tag or manual trigger"
             exit 0
           fi
 
           SHARED=$(find lib/ pubspec.yaml l10n.yaml -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
-
           LINUX_H=$(echo "$SHARED"; find linux/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && LINUX_H=$(echo "$LINUX_H" | sha256sum | cut -d' ' -f1)
-          ANDROID_H=$(echo "$SHARED"; find android/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && ANDROID_H=$(echo "$ANDROID_H" | sha256sum | cut -d' ' -f1)
 
-          echo "Hashes: LINUX=$LINUX_H ANDROID=$ANDROID_H"
+          echo "Hash: LINUX=$LINUX_H"
           echo "linux_hash=$LINUX_H" >> $GITHUB_OUTPUT
-          echo "android_hash=$ANDROID_H" >> $GITHUB_OUTPUT
-
           echo "$LINUX_H" > /tmp/linux-h.txt
-          echo "$ANDROID_H" > /tmp/android-h.txt
 
       - name: Check Linux cache
         id: cache-linux
@@ -73,30 +65,16 @@ jobs:
           key: v3-build-ok-linux-${{ steps.check.outputs.linux_hash }}
           lookup-only: true
 
-      - name: Check Android cache
-        id: cache-android
-        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
-        with:
-          path: /tmp/android-h.txt
-          key: v3-build-ok-android-${{ steps.check.outputs.android_hash }}
-          lookup-only: true
-
       - name: Set build flags
         id: flags
         run: |
-          for platform in linux android; do
-            HIT="${{ steps.cache-linux.outputs.cache-hit }}"
-            case "$platform" in
-              android) HIT="${{ steps.cache-android.outputs.cache-hit }}" ;;
-            esac
-            if [ "$HIT" == "true" ]; then
-              echo "→ $platform: SKIP (already built)"
-              echo "$platform=false" >> $GITHUB_OUTPUT
-            else
-              echo "→ $platform: BUILD"
-              echo "$platform=true" >> $GITHUB_OUTPUT
-            fi
-          done
+          if [ "${{ steps.cache-linux.outputs.cache-hit }}" == "true" ]; then
+            echo "→ linux: SKIP (already built)"
+            echo "linux=false" >> $GITHUB_OUTPUT
+          else
+            echo "→ linux: BUILD"
+            echo "linux=true" >> $GITHUB_OUTPUT
+          fi
 
   # ============================================
   # ANALYZE: flutter analyze fails fast on type/import errors before any
@@ -105,9 +83,7 @@ jobs:
   analyze:
     name: Analyze
     needs: detect-changes
-    if: |
-      needs.detect-changes.outputs.linux == 'true' ||
-      needs.detect-changes.outputs.android == 'true'
+    if: needs.detect-changes.outputs.linux == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -255,113 +231,6 @@ jobs:
           key: v3-build-ok-linux-${{ needs.detect-changes.outputs.linux_hash }}
 
   # ============================================
-  # ANDROID - each flavor in its own matrix job (separate memory)
-  # ============================================
-  build-android:
-    name: Android (${{ matrix.flavor }})
-    needs: [detect-changes, analyze]
-    if: needs.detect-changes.outputs.android == 'true'
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - flavor: universal
-            build_cmd: "flutter build apk --release --flavor fdroid --obfuscate --split-debug-info=build/symbols"
-            apk_path: "build/app/outputs/flutter-apk/app-fdroid-release.apk"
-            artifact_name: icd360sev-universal-apk
-          - flavor: fdroid
-            build_cmd: "flutter build apk --release --flavor fdroid --obfuscate --split-debug-info=build/symbols --split-per-abi"
-            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-fdroid-release.apk"
-            artifact_name: icd360sev-fdroid-apk
-          - flavor: googleplay
-            build_cmd: "flutter build apk --release --flavor googleplay --obfuscate --split-debug-info=build/symbols --split-per-abi"
-            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-googleplay-release.apk"
-            artifact_name: icd360sev-googleplay-apk
-          - flavor: googleplay-aab
-            build_cmd: "flutter build appbundle --release --flavor googleplay --obfuscate --split-debug-info=build/symbols"
-            apk_path: "build/app/outputs/bundle/googleplayRelease/app-googleplay-release.aab"
-            artifact_name: icd360sev-googleplay-aab
-          - flavor: amazon
-            build_cmd: "flutter build apk --release --flavor amazon --obfuscate --split-debug-info=build/symbols --split-per-abi"
-            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-amazon-release.apk"
-            artifact_name: icd360sev-amazon-apk
-          - flavor: huawei
-            build_cmd: "flutter build apk --release --flavor huawei --obfuscate --split-debug-info=build/symbols --split-per-abi"
-            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-huawei-release.apk"
-            artifact_name: icd360sev-huawei-apk
-          - flavor: samsung
-            build_cmd: "flutter build apk --release --flavor samsung --obfuscate --split-debug-info=build/symbols --split-per-abi"
-            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-samsung-release.apk"
-            artifact_name: icd360sev-samsung-apk
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Set up Java ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
-        with:
-          distribution: 'temurin'
-          java-version: ${{ env.JAVA_VERSION }}
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: stable
-          cache: true
-
-      - name: Get dependencies
-        run: flutter pub get
-
-      - name: Generate l10n
-        run: flutter gen-l10n
-
-      - name: Compute build number from version
-        id: ver
-        run: |
-          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
-          IFS=. read MAJ MIN PAT <<< "$VER"
-          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
-          echo "version=$VER" >> "$GITHUB_OUTPUT"
-          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
-
-      - name: Decode release keystore
-        run: echo "${{ secrets.RELEASE_KEYSTORE }}" | base64 -d > android/app/release-keystore.jks
-
-      - name: Build APK (${{ matrix.flavor }})
-        run: ${{ matrix.build_cmd }} --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.MITGLIEDER_STARTUP_DIAG_KEY }}
-        env:
-          KEYSTORE_PATH: release-keystore.jks
-          KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
-
-      - name: Upload APK
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: ${{ matrix.artifact_name }}
-          path: ${{ matrix.apk_path }}
-          if-no-files-found: error
-
-      - name: Upload debug symbols
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: icd360sev-${{ matrix.flavor }}-symbols
-          path: build/symbols/
-          if-no-files-found: warn
-
-  save-android-cache:
-    name: Save Android Cache
-    needs: build-android
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "ok" > /tmp/android-ok.txt
-      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
-        with:
-          path: /tmp/android-ok.txt
-          key: v3-build-ok-android-${{ needs.detect-changes.outputs.android_hash }}
-
-  # ============================================
   # FLATPAK (.flatpak single-file bundle for Linux)
   # ============================================
   flatpak:
@@ -506,62 +375,51 @@ jobs:
           commit_message: "deploy: flatpak repo ${{ github.ref_name }}"
 
   # ============================================
-  # RELEASE — Android + Linux + Flatpak
+  # RELEASE — Linux + Flatpak only
   # ----------------------------------------------------------------------
-  # Creates the GitHub Release with generated notes; uploads every Android
-  # APK/AAB + Linux deb/rpm/AppImage/tarball + .flatpak +
-  # version_mitglieder_{android,linux}.json manifests.
-  # The extras workflow appends Windows + Apple to this same release tag.
+  # This workflow OWNS the GitHub Release creation: it tags first with
+  # Linux + Flatpak assets + version_mitglieder_linux.json manifest, so
+  # the download buttons in the Actions UI become clickable as soon as
+  # Linux finishes (the slowest of the three platforms here). The Android
+  # and extras workflows append to this same release tag.
   # ============================================
   release:
-    name: Release (Android + Linux + Flatpak)
+    name: Release (Linux + Flatpak)
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [build-linux, build-android, save-android-cache, flatpak]
+    needs: [build-linux, flatpak]
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Download Android + Linux + Flatpak artifacts
+      - name: Download Linux + Flatpak artifacts
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           path: artifacts/
-          pattern: 'icd360sev-{universal-apk,fdroid-apk,googleplay-apk,googleplay-aab,amazon-apk,huawei-apk,samsung-apk,linux,linux-deb,linux-rpm,linux-appimage,flatpak}'
+          pattern: 'icd360sev-{linux,linux-deb,linux-rpm,linux-appimage,flatpak}'
 
       - name: Prepare release files
         run: |
           mkdir -p release/
-
-          # Android APKs + AAB
-          cp artifacts/icd360sev-universal-apk/* release/icd360sev-universal.apk
-          cp artifacts/icd360sev-fdroid-apk/*.apk release/icd360sev-fdroid.apk
-          cp artifacts/icd360sev-googleplay-apk/*.apk release/icd360sev-googleplay.apk
-          cp artifacts/icd360sev-googleplay-aab/* release/icd360sev-googleplay.aab
-          cp artifacts/icd360sev-amazon-apk/*.apk release/icd360sev-amazon.apk
-          cp artifacts/icd360sev-huawei-apk/*.apk release/icd360sev-huawei.apk
-          cp artifacts/icd360sev-samsung-apk/*.apk release/icd360sev-samsung.apk
-
           # Linux raw bundle + packages + flatpak
           cd artifacts/icd360sev-linux && tar czf ../../release/icd360sev-linux.tar.gz . && cd ../..
           cp artifacts/icd360sev-linux-deb/*.deb release/icd360sev-mitglied.deb
           cp artifacts/icd360sev-linux-rpm/*.rpm release/icd360sev-mitglied.rpm
           cp artifacts/icd360sev-linux-appimage/*.AppImage release/icd360sev-mitglied.AppImage
           cp artifacts/icd360sev-flatpak/icd360sev-mitglied.flatpak release/icd360sev-mitglied.flatpak
-
           echo "Release files:"
           ls -lh release/
 
-      - name: Generate Android + Linux manifests
+      - name: Generate Linux manifest
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           source .github/workflows/lib/write-manifest.sh
           init_manifest_vars
-          write_manifest version_mitglieder_android.json  icd360sev-universal.apk
-          write_manifest version_mitglieder_linux.json    icd360sev-mitglied.AppImage
-          echo "Generated manifests:"
+          write_manifest version_mitglieder_linux.json icd360sev-mitglied.AppImage
+          echo "Generated manifest:"
           ls -lh release/version_mitglieder_*.json
 
       - name: Create GitHub Release

@@ -1,0 +1,283 @@
+# CI/CD workflow — Android (priority track #2)
+# Runs in parallel with build-linux-flatpak.yml. The Linux+Flatpak
+# workflow creates the GitHub Release; this one appends the 7 Android
+# flavor artifacts + debug symbols + version_mitglieder_android.json
+# manifest to the same tag once they finish.
+name: Build Android (priority)
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FLUTTER_VERSION: '3.38.4'
+  JAVA_VERSION: '17'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  # ============================================
+  # DETECT: compare file hashes with last successful build (Android only)
+  # ============================================
+  detect-changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      android: ${{ steps.flags.outputs.android }}
+      android_hash: ${{ steps.check.outputs.android_hash }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Compute hashes
+        id: check
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/* ]] || [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "android=true" >> $GITHUB_OUTPUT
+            echo "android_hash=force" >> $GITHUB_OUTPUT
+            echo "BUILD ALL: tag or manual trigger"
+            exit 0
+          fi
+
+          SHARED=$(find lib/ pubspec.yaml l10n.yaml -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1)
+          ANDROID_H=$(echo "$SHARED"; find android/ -type f 2>/dev/null | sort | xargs sha256sum 2>/dev/null) && ANDROID_H=$(echo "$ANDROID_H" | sha256sum | cut -d' ' -f1)
+
+          echo "Hash: ANDROID=$ANDROID_H"
+          echo "android_hash=$ANDROID_H" >> $GITHUB_OUTPUT
+          echo "$ANDROID_H" > /tmp/android-h.txt
+
+      - name: Check Android cache
+        id: cache-android
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: /tmp/android-h.txt
+          key: v3-build-ok-android-${{ steps.check.outputs.android_hash }}
+          lookup-only: true
+
+      - name: Set build flags
+        id: flags
+        run: |
+          if [ "${{ steps.cache-android.outputs.cache-hit }}" == "true" ]; then
+            echo "→ android: SKIP (already built)"
+            echo "android=false" >> $GITHUB_OUTPUT
+          else
+            echo "→ android: BUILD"
+            echo "android=true" >> $GITHUB_OUTPUT
+          fi
+
+  # ============================================
+  # ANALYZE: fast-fail on type/import errors before the 7-flavor matrix
+  # spins up. Mirrored from the Linux+Flatpak workflow so we don't take a
+  # cross-workflow output dependency.
+  # ============================================
+  analyze:
+    name: Analyze
+    needs: detect-changes
+    if: needs.detect-changes.outputs.android == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Generate l10n
+        run: flutter gen-l10n
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos
+
+  # ============================================
+  # ANDROID - each flavor in its own matrix job (separate memory)
+  # ============================================
+  build-android:
+    name: Android (${{ matrix.flavor }})
+    needs: [detect-changes, analyze]
+    if: needs.detect-changes.outputs.android == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - flavor: universal
+            build_cmd: "flutter build apk --release --flavor fdroid --obfuscate --split-debug-info=build/symbols"
+            apk_path: "build/app/outputs/flutter-apk/app-fdroid-release.apk"
+            artifact_name: icd360sev-universal-apk
+          - flavor: fdroid
+            build_cmd: "flutter build apk --release --flavor fdroid --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-fdroid-release.apk"
+            artifact_name: icd360sev-fdroid-apk
+          - flavor: googleplay
+            build_cmd: "flutter build apk --release --flavor googleplay --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-googleplay-release.apk"
+            artifact_name: icd360sev-googleplay-apk
+          - flavor: googleplay-aab
+            build_cmd: "flutter build appbundle --release --flavor googleplay --obfuscate --split-debug-info=build/symbols"
+            apk_path: "build/app/outputs/bundle/googleplayRelease/app-googleplay-release.aab"
+            artifact_name: icd360sev-googleplay-aab
+          - flavor: amazon
+            build_cmd: "flutter build apk --release --flavor amazon --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-amazon-release.apk"
+            artifact_name: icd360sev-amazon-apk
+          - flavor: huawei
+            build_cmd: "flutter build apk --release --flavor huawei --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-huawei-release.apk"
+            artifact_name: icd360sev-huawei-apk
+          - flavor: samsung
+            build_cmd: "flutter build apk --release --flavor samsung --obfuscate --split-debug-info=build/symbols --split-per-abi"
+            apk_path: "build/app/outputs/flutter-apk/app-arm64-v8a-samsung-release.apk"
+            artifact_name: icd360sev-samsung-apk
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Java ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Generate l10n
+        run: flutter gen-l10n
+
+      - name: Compute build number from version
+        id: ver
+        run: |
+          VER=$(grep '^version:' pubspec.yaml | sed 's/version: //' | sed 's/ .*//' | sed 's/+.*//')
+          IFS=. read MAJ MIN PAT <<< "$VER"
+          BUILD=$((MAJ * 10000 + MIN * 100 + PAT))
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
+
+      - name: Decode release keystore
+        run: echo "${{ secrets.RELEASE_KEYSTORE }}" | base64 -d > android/app/release-keystore.jks
+
+      - name: Build APK (${{ matrix.flavor }})
+        run: ${{ matrix.build_cmd }} --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.MITGLIEDER_STARTUP_DIAG_KEY }}
+        env:
+          KEYSTORE_PATH: release-keystore.jks
+          KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+
+      - name: Upload APK
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.apk_path }}
+          if-no-files-found: error
+
+      - name: Upload debug symbols
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: icd360sev-${{ matrix.flavor }}-symbols
+          path: build/symbols/
+          if-no-files-found: warn
+
+  save-android-cache:
+    name: Save Android Cache
+    needs: build-android
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "ok" > /tmp/android-ok.txt
+      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: /tmp/android-ok.txt
+          key: v3-build-ok-android-${{ needs.detect-changes.outputs.android_hash }}
+
+  # ============================================
+  # RELEASE UPLOAD (Android): polls until the Linux+Flatpak workflow has
+  # created the GitHub Release, then appends Android assets + manifest.
+  # ============================================
+  release-upload-android:
+    name: Release upload (Android)
+    needs: [build-android, save-android-cache]
+    if: always() && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Download Android artifacts
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          path: artifacts/
+          pattern: 'icd360sev-{universal-apk,fdroid-apk,googleplay-apk,googleplay-aab,amazon-apk,huawei-apk,samsung-apk}'
+
+      - name: Stage upload set
+        id: stage
+        run: |
+          mkdir -p release/
+          cp artifacts/icd360sev-universal-apk/*    release/icd360sev-universal.apk      2>/dev/null || true
+          cp artifacts/icd360sev-fdroid-apk/*.apk   release/icd360sev-fdroid.apk         2>/dev/null || true
+          cp artifacts/icd360sev-googleplay-apk/*.apk release/icd360sev-googleplay.apk   2>/dev/null || true
+          cp artifacts/icd360sev-googleplay-aab/*   release/icd360sev-googleplay.aab     2>/dev/null || true
+          cp artifacts/icd360sev-amazon-apk/*.apk   release/icd360sev-amazon.apk         2>/dev/null || true
+          cp artifacts/icd360sev-huawei-apk/*.apk   release/icd360sev-huawei.apk         2>/dev/null || true
+          cp artifacts/icd360sev-samsung-apk/*.apk  release/icd360sev-samsung.apk        2>/dev/null || true
+
+          count=$(find release/ -mindepth 1 -maxdepth 1 -type f | wc -l)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Staged $count Android assets:"
+          ls -lh release/ || true
+
+      - name: Generate Android manifest
+        if: steps.stage.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          source .github/workflows/lib/write-manifest.sh
+          init_manifest_vars
+          if [ -f release/icd360sev-universal.apk ]; then
+            write_manifest version_mitglieder_android.json icd360sev-universal.apk
+          fi
+          echo "Generated manifest:"
+          ls -lh release/version_mitglieder_*.json 2>/dev/null || true
+
+      - name: Wait for Linux+Flatpak release to exist
+        if: steps.stage.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          # build-linux-flatpak.yml creates the GitHub Release with generated
+          # notes; this job only appends. Cap at 25 minutes — beyond that
+          # the Linux+Flatpak workflow almost certainly failed, and this job
+          # should go red so the failure is visible in the Actions UI.
+          for i in $(seq 1 150); do
+            if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+              echo "✓ Release $TAG present, proceeding"
+              exit 0
+            fi
+            echo "  release $TAG not yet present (attempt $i/150), sleeping 10s"
+            sleep 10
+          done
+          echo "::error::Release $TAG did not appear in 25 min — Linux+Flatpak workflow likely failed"
+          exit 1
+
+      - name: Upload Android assets to release
+        if: steps.stage.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          # --clobber overwrites any prior asset with the same name, so a
+          # retry of this job is idempotent.
+          gh release upload "$TAG" release/* --clobber --repo "$GITHUB_REPOSITORY"
