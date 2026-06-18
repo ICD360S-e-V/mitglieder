@@ -44,9 +44,21 @@ class NetworkResilience {
 
     final connectivity = Connectivity();
     try {
-      _lastConnectivity = await connectivity.checkConnectivity();
+      // Bound the probe with an internal timeout. connectivity_plus on Linux
+      // talks to NetworkManager over D-Bus; inside the flatpak sandbox that
+      // bus name isn't always reachable, and checkConnectivity() will then
+      // never complete. Without this cap the outer StartupDiagnostics
+      // wrapper waits the full step budget (5–15s) before runApp() fires,
+      // turning startup into a 12-second freeze on a VM. 2 seconds is plenty
+      // on a working host and short enough that even a hung sandbox falls
+      // through quickly.
+      _lastConnectivity = await connectivity
+          .checkConnectivity()
+          .timeout(const Duration(seconds: 2));
     } catch (_) {
-      // Non-fatal: we still want resilience even if connectivity probe failed.
+      // Non-fatal: we still want resilience even if connectivity probe
+      // failed or timed out. The onConnectivityChanged listener below still
+      // catches subsequent transitions.
     }
 
     _connectivitySub = connectivity.onConnectivityChanged.listen((results) {
