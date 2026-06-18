@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.1...v1.16.2) (2026-06-18)
+
+
+### Bug Fixes
+
+* **ci:** timeout-minutes 30 on Flatpak job so container-init hangs fail fast ([e4781f3](https://github.com/ICD360S-e-V/mitglieder/commit/e4781f30e9c3f65f2d9befb91d28167341009807))
+
 ## [1.16.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.0...v1.16.1) (2026-06-18)
 
 
