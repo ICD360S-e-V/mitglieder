@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.12.0...v1.13.0) (2026-06-18)
+
+
+### Features
+
+* **diag:** auto-upload startup transcript to the central log endpoint ([5bb103d](https://github.com/ICD360S-e-V/mitglieder/commit/5bb103df0e3ee299228e059f4cff4305b47734f0))
+
 ## [1.12.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.11.3...v1.12.0) (2026-06-18)
 
 
