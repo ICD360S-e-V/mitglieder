@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.2...v1.16.3) (2026-06-18)
+
+
+### Performance
+
+* **ci:** enable pub-cache in subosito/flutter-action across all 3 workflows ([2405108](https://github.com/ICD360S-e-V/mitglieder/commit/24051087d5794e21e3b60a38a2d95323994957a4))
+
 ## [1.16.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.1...v1.16.2) (2026-06-18)
 
 
