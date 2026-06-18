@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
+import 'screens/language_selection.dart';
 import 'screens/welcome.dart';
 import 'services/api_service.dart';
+import 'services/language_service.dart';
 import 'services/notification_service.dart';
 import 'services/ticket_notification_service.dart';
 import 'services/logger_service.dart';
@@ -62,6 +64,11 @@ void main() async {
   // timeouts are observable in the on-disk log even if the GUI never
   // renders. Any single step throwing is non-fatal — we still call
   // runApp() at the bottom so the user gets a UI to read the error from.
+  // Load the user-chosen UI language before anything renders. Device locale
+  // is intentionally NOT consulted — first-launch users will see the
+  // selector below, returning users get their saved pick.
+  await StartupDiagnostics.stepWithTimeout('LanguageService.load', const Duration(seconds: 3),
+      () => LanguageService.instance.load());
   await StartupDiagnostics.stepWithTimeout('LoggerService.init', const Duration(seconds: 5),
       () => LoggerService().init());
   await StartupDiagnostics.stepWithTimeout('UpdateService.initVersion', const Duration(seconds: 5),
@@ -120,57 +127,57 @@ void main() async {
   });
 }
 
-class MitgliedApp extends StatelessWidget {
+class MitgliedApp extends StatefulWidget {
   const MitgliedApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'ICD360S e.V - Mitgliederportal',
-      debugShowCheckedModeBanner: false,
-      // Localization configuration
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: AppLocalizations.supportedLocales,
-      // Auto-detect device language, fallback to German
-      localeResolutionCallback: (locale, supportedLocales) {
-        debugPrint('[L10N] Device locale: ${locale?.languageCode ?? 'null'} (${locale?.countryCode ?? 'no country'})');
-        debugPrint('[L10N] Supported locales: ${supportedLocales.map((l) => l.languageCode).join(', ')}');
+  State<MitgliedApp> createState() => _MitgliedAppState();
+}
 
-        if (locale != null) {
-          for (final supportedLocale in supportedLocales) {
-            if (supportedLocale.languageCode == locale.languageCode) {
-              debugPrint('[L10N] ✓ Matched locale: ${supportedLocale.languageCode}');
-              return supportedLocale;
-            }
-          }
-        }
-        debugPrint('[L10N] ✗ No match found, using fallback: de (German)');
-        return const Locale('de'); // Default to German
+class _MitgliedAppState extends State<MitgliedApp> {
+  // Flipped to true once the first-launch user picks a language. Returning
+  // users skip the picker because LanguageService.hasUserChoice is already
+  // true after LanguageService.load() in main().
+  bool _languagePicked = LanguageService.instance.hasUserChoice;
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<Locale>(
+      valueListenable: LanguageService.instance.localeNotifier,
+      builder: (context, locale, _) {
+        return MaterialApp(
+          title: 'ICD360S e.V - Mitgliederportal',
+          debugShowCheckedModeBanner: false,
+          locale: locale,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color(0xFF4a90d9),
+              brightness: Brightness.light,
+            ),
+            useMaterial3: true,
+            fontFamily: 'Roboto',
+            appBarTheme: const AppBarTheme(
+              centerTitle: true,
+              elevation: 0,
+            ),
+          ),
+          builder: (context, child) => NetworkSecurityBanner(
+            child: child ?? const SizedBox.shrink(),
+          ),
+          home: _languagePicked
+              ? const WelcomeScreen()
+              : LanguageSelectionScreen(
+                  onSelected: () => setState(() => _languagePicked = true),
+                ),
+        );
       },
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF4a90d9),
-          brightness: Brightness.light,
-        ),
-        useMaterial3: true,
-        fontFamily: 'Roboto', // Default Android font
-        appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          elevation: 0,
-        ),
-      ),
-      // Wrap every screen with the global network-security banner so TLS
-      // interceptions, DNS failures and slow-network conditions surface on
-      // any route without per-screen integration.
-      builder: (context, child) => NetworkSecurityBanner(
-        child: child ?? const SizedBox.shrink(),
-      ),
-      home: const WelcomeScreen(),
     );
   }
 }

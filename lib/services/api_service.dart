@@ -1,17 +1,13 @@
 import 'dart:convert';
-import 'dart:io';
-import 'dart:ui' as ui;
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'background_service.dart';
 import 'device_key_service.dart';
 import 'http_client_factory.dart';
+import 'language_service.dart';
 import 'logger_service.dart';
 import 'resilient_http_client.dart';
 import 'secure_storage_helper.dart';
-
-/// Supported languages for translation
-const List<String> _supportedLanguages = ['de', 'en', 'ro', 'ru', 'uk', 'tr', 'ar', 'fr', 'es', 'it', 'pl', 'nl', 'pt', 'cs', 'sk', 'hu', 'bg', 'hr', 'sr', 'sl', 'el', 'da', 'sv', 'nb', 'fi', 'et', 'lt', 'lv'];
 
 class ApiService {
   static const String baseUrl = 'https://icd360sev.icd360s.de/api';
@@ -141,36 +137,11 @@ class ApiService {
   String? get token => _token;
   String? get refreshToken => _refreshToken;
 
-  /// Detectează limba dispozitivului și o mapează la limbile suportate
-  /// Returnează: de, en, ro, ru, uk (default: de)
-  String getDeviceLocale() {
-    try {
-      // Get device locale from Platform
-      final String platformLocale = Platform.localeName; // e.g., "ro_RO", "de_DE", "en_US"
-
-      // Also check Flutter's window locale as fallback
-      final ui.Locale windowLocale = ui.PlatformDispatcher.instance.locale;
-
-      // Extract language code (first 2 characters)
-      String langCode = platformLocale.split('_').first.toLowerCase();
-
-      // Fallback to window locale if platform locale is empty
-      if (langCode.isEmpty) {
-        langCode = windowLocale.languageCode.toLowerCase();
-      }
-
-      // Map to supported languages
-      if (_supportedLanguages.contains(langCode)) {
-        return langCode;
-      }
-
-      // Default to German if language not supported
-      return 'de';
-    } catch (e) {
-      // Default to German on error
-      return 'de';
-    }
-  }
+  /// Returnează limba pe care utilizatorul a ales-o explicit la primul start.
+  /// Platform.localeName / device locale nu mai este consultat — limba vine
+  /// exclusiv din [LanguageService] (motiv de securitate: nu vrem să scurgem
+  /// limba telefonului în device_locale trimis la /auth/login).
+  String getDeviceLocale() => LanguageService.instance.currentCode;
 
   /// Headers pentru request-uri - folosește Device Key dinamic
   Map<String, String> get _headers {
