@@ -78,6 +78,10 @@ dependencies:
 
   # Cryptographic hashing (SHA-256)
   crypto: ^3.0.3
+  # AES-256-GCM for encrypting outbound diagnostic uploads (StartupDiagnostics
+  # → mitglieder_flatpack.php and friends). Pure Dart, works in the flatpak
+  # sandbox where native plugins are restricted.
+  cryptography: ^2.7.0
 
   # UUID generation for device ID
   uuid: ^3.0.7

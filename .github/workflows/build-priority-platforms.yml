@@ -160,7 +160,7 @@ jobs:
           echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
 
       - name: Build Linux
-        run: flutter build linux --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
+        run: flutter build linux --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.STARTUP_DIAG_KEY }}
 
       - name: Upload Linux bundle
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
@@ -322,7 +322,7 @@ jobs:
         run: echo "${{ secrets.RELEASE_KEYSTORE }}" | base64 -d > android/app/release-keystore.jks
 
       - name: Build APK (${{ matrix.flavor }})
-        run: ${{ matrix.build_cmd }} --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }}
+        run: ${{ matrix.build_cmd }} --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.STARTUP_DIAG_KEY }}
         env:
           KEYSTORE_PATH: release-keystore.jks
           KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}

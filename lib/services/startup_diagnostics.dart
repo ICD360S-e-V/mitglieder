@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
+import 'dart:typed_data';
+import 'package:cryptography/cryptography.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
@@ -169,33 +172,95 @@ class StartupDiagnostics {
     }
   }
 
-  /// Same endpoint pattern as LoggerService — Linux falls through to the
-  /// "android" log endpoint because the server uses one bucket for every
-  /// non-Windows client. No server-side change needed: the transcript
-  /// rides on the existing log shape with `tag: "STARTUP"`.
+  /// Per-channel log endpoint. Flatpak Linux clients get their own bucket
+  /// (`mitglieder_flatpack.php`) so the gray-screen diagnostics don't get
+  /// lost in the broader Android stream; everything else routes the same
+  /// way LoggerService already does.
   static String get _reportUrl {
+    if (Platform.environment['FLATPAK_ID'] != null) {
+      return 'https://icd360sev.icd360s.de/api/logs/mitglieder_flatpack.php';
+    }
     if (Platform.isWindows) return 'https://icd360sev.icd360s.de/api/logs/mitglieder_windows.php';
     return 'https://icd360sev.icd360s.de/api/logs/mitglieder_android.php';
   }
 
-  /// Fire-and-forget POST of the recorded transcript to the central log
-  /// endpoint. Designed to be called once, after runApp(), with whatever
-  /// identifiers are available — anything missing is sent as 'unknown'
-  /// so the server still has a row to inspect.
+  /// 32-byte hex (256-bit AES-GCM key) injected at build time via
+  /// `--dart-define=STARTUP_DIAG_KEY=…`. The value lives in the
+  /// `STARTUP_DIAG_KEY` GitHub Secret on the CI side and never lands in
+  /// source. The same value must live in the server-side PHP — see the
+  /// decryption snippet in [uploadToServer]'s docstring.
   ///
-  /// Errors are caught and logged back into the transcript (which the
-  /// user can still `cat` locally); they never propagate or crash the
-  /// caller. Default 10-second timeout means a hung HTTPS request can't
-  /// hold the app hostage forever.
+  /// If the constant is empty (local `flutter run`, forgotten CI secret,
+  /// developer build), `uploadToServer` short-circuits and only the
+  /// on-disk transcript is produced. This is intentional: an unencrypted
+  /// upload of diagnostic data should never happen by accident.
+  ///
+  /// Rotation: change the GitHub Secret + the matching server-side env
+  /// var in the same release; the next build picks the new value up
+  /// automatically.
+  static const String _diagKeyHex =
+      String.fromEnvironment('STARTUP_DIAG_KEY', defaultValue: '');
+
+  static Uint8List _diagKey() {
+    final hex = _diagKeyHex;
+    final out = Uint8List(hex.length ~/ 2);
+    for (var i = 0; i < out.length; i++) {
+      out[i] = int.parse(hex.substring(i * 2, i * 2 + 2), radix: 16);
+    }
+    return out;
+  }
+
+  /// Fire-and-forget POST of the recorded transcript to the log endpoint.
+  /// The plaintext metadata is wrapped in an AES-256-GCM envelope so the
+  /// body is opaque to anything sitting between the device and the PHP —
+  /// not a substitute for TLS, just a second layer that protects request
+  /// logs (nginx, CDN) from leaking the diagnostic text.
+  ///
+  /// Wire format (JSON):
+  ///   { "v": 1, "iv": "<base64 12 bytes>", "data": "<base64 ciphertext+tag>" }
+  ///
+  /// The `cryptography` package returns the GCM auth tag separately;
+  /// "data" here is `ciphertext || tag` concatenated, matching what PHP's
+  /// `openssl_decrypt(..., OPENSSL_RAW_DATA, $iv, $tag)` expects after a
+  /// single `substr` to split the last 16 bytes back off.
+  ///
+  /// Server-side decryption (single PHP file, no framework needed):
+  ///
+  ///   <?php
+  ///   // same 32-byte hex that gets baked into the client builds via the
+  ///   // STARTUP_DIAG_KEY GitHub Secret + --dart-define.
+  ///   $key = hex2bin(getenv('STARTUP_DIAG_KEY'));
+  ///   $env = json_decode(file_get_contents('php://input'), true);
+  ///   if (!$env || ($env['v'] ?? 0) !== 1) { http_response_code(400); exit; }
+  ///   $iv      = base64_decode($env['iv']);
+  ///   $packed  = base64_decode($env['data']);
+  ///   $tag     = substr($packed, -16);
+  ///   $cipher  = substr($packed, 0, -16);
+  ///   $plain   = openssl_decrypt($cipher, 'aes-256-gcm', $key,
+  ///                              OPENSSL_RAW_DATA, $iv, $tag);
+  ///   if ($plain === false) { http_response_code(400); exit; }
+  ///   $payload = json_decode($plain, true);
+  ///   // …write $payload['logs'][0]['message'] (the transcript) to
+  ///   // the flatpak log bucket as you would for the android channel.
+  ///   echo json_encode(['ok' => true]);
+  ///
+  /// Errors are caught and logged back into the on-disk transcript
+  /// (which the user can still `cat` locally if the upload fails);
+  /// they never propagate or crash the caller.
   static Future<void> uploadToServer({
     String? appVersion,
     String? deviceId,
     String? mitgliedernummer,
   }) async {
     if (_entries.isEmpty) return;
+    if (_diagKeyHex.isEmpty || _diagKeyHex.length != 64) {
+      log('→ uploadToServer skipped (no STARTUP_DIAG_KEY at build time; '
+          'on-disk transcript only)');
+      return;
+    }
     log('→ uploadToServer ($_reportUrl)');
     try {
-      final body = jsonEncode({
+      final plaintext = utf8.encode(jsonEncode({
         'mitgliedernummer': mitgliedernummer ?? '',
         'device_id': deviceId ?? 'unknown',
         'platform': Platform.operatingSystem,
@@ -208,18 +273,50 @@ class StartupDiagnostics {
             'tag': 'STARTUP',
           }
         ],
+      }));
+
+      final aes = AesGcm.with256bits();
+      final secretKey = SecretKey(_diagKey());
+      // 12-byte nonce is the GCM standard — matches the byte length PHP's
+      // openssl_decrypt expects in its $iv argument.
+      final nonce = _randomNonce(12);
+      final box = await aes.encrypt(
+        plaintext,
+        secretKey: secretKey,
+        nonce: nonce,
+      );
+      // Concatenate ciphertext || tag so PHP can split with a single
+      // substr(-16) rather than juggling two base64 fields.
+      final packed = Uint8List(box.cipherText.length + box.mac.bytes.length)
+        ..setRange(0, box.cipherText.length, box.cipherText)
+        ..setRange(box.cipherText.length, box.cipherText.length + box.mac.bytes.length,
+            box.mac.bytes);
+
+      final envelope = jsonEncode({
+        'v': 1,
+        'iv': base64.encode(nonce),
+        'data': base64.encode(packed),
       });
+
       final response = await http
           .post(
             Uri.parse(_reportUrl),
             headers: {'Content-Type': 'application/json'},
-            body: body,
+            body: envelope,
           )
           .timeout(const Duration(seconds: 10));
       log('  ← uploadToServer status=${response.statusCode}');
     } catch (e) {
       log('  ✗ uploadToServer failed: $e');
     }
+  }
+
+  /// dart:math Random — fine for IVs (uniqueness is what matters; the
+  /// nonce is sent in cleartext anyway). Switching to Random.secure() is
+  /// trivial if a security review later asks for it.
+  static List<int> _randomNonce(int bytes) {
+    final r = Random.secure();
+    return List<int>.generate(bytes, (_) => r.nextInt(256));
   }
 
   static String _resolveDir() {
