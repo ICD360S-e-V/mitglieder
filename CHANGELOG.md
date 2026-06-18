@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.3...v1.16.4) (2026-06-18)
+
+
+### Performance
+
+* **ci:** cache .dart_tool across analyze and build jobs ([1fef2a3](https://github.com/ICD360S-e-V/mitglieder/commit/1fef2a3a5eda1f620ad46257c5bcd7219649b303))
+
 ## [1.16.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.2...v1.16.3) (2026-06-18)
 
 
