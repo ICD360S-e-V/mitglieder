@@ -3,12 +3,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// One entry per language the app actually ships translations for.
 /// `code` matches the .arb suffix and what the server expects in `device_locale`.
+/// The flag SVG is at `assets/flags/<code>.svg` — the country shown is the most
+/// common visual identifier for the language (e.g. `en` → Union Jack).
 class AppLanguage {
   final String code;
   final String nativeName;
-  final String flag;
 
-  const AppLanguage(this.code, this.nativeName, this.flag);
+  const AppLanguage(this.code, this.nativeName);
+
+  String get flagAsset => 'assets/flags/$code.svg';
 }
 
 /// Holds the user-chosen UI language. We deliberately do NOT read
@@ -25,34 +28,34 @@ class LanguageService {
   /// Locales the app has .arb translations for. Order = visual order in the
   /// selection grid. Keep alphabetic-by-native-name so it stays predictable.
   static const List<AppLanguage> supported = [
-    AppLanguage('ar', 'العربية', '🇸🇦'),
-    AppLanguage('bg', 'Български', '🇧🇬'),
-    AppLanguage('cs', 'Čeština', '🇨🇿'),
-    AppLanguage('da', 'Dansk', '🇩🇰'),
-    AppLanguage('de', 'Deutsch', '🇩🇪'),
-    AppLanguage('et', 'Eesti', '🇪🇪'),
-    AppLanguage('en', 'English', '🇬🇧'),
-    AppLanguage('es', 'Español', '🇪🇸'),
-    AppLanguage('fr', 'Français', '🇫🇷'),
-    AppLanguage('hr', 'Hrvatski', '🇭🇷'),
-    AppLanguage('it', 'Italiano', '🇮🇹'),
-    AppLanguage('lv', 'Latviešu', '🇱🇻'),
-    AppLanguage('lt', 'Lietuvių', '🇱🇹'),
-    AppLanguage('hu', 'Magyar', '🇭🇺'),
-    AppLanguage('nl', 'Nederlands', '🇳🇱'),
-    AppLanguage('nb', 'Norsk', '🇳🇴'),
-    AppLanguage('pl', 'Polski', '🇵🇱'),
-    AppLanguage('pt', 'Português', '🇵🇹'),
-    AppLanguage('ro', 'Română', '🇷🇴'),
-    AppLanguage('sk', 'Slovenčina', '🇸🇰'),
-    AppLanguage('sl', 'Slovenščina', '🇸🇮'),
-    AppLanguage('sr', 'Srpski', '🇷🇸'),
-    AppLanguage('fi', 'Suomi', '🇫🇮'),
-    AppLanguage('sv', 'Svenska', '🇸🇪'),
-    AppLanguage('tr', 'Türkçe', '🇹🇷'),
-    AppLanguage('el', 'Ελληνικά', '🇬🇷'),
-    AppLanguage('ru', 'Русский', '🇷🇺'),
-    AppLanguage('uk', 'Українська', '🇺🇦'),
+    AppLanguage('ar', 'العربية'),
+    AppLanguage('bg', 'Български'),
+    AppLanguage('cs', 'Čeština'),
+    AppLanguage('da', 'Dansk'),
+    AppLanguage('de', 'Deutsch'),
+    AppLanguage('et', 'Eesti'),
+    AppLanguage('en', 'English'),
+    AppLanguage('es', 'Español'),
+    AppLanguage('fr', 'Français'),
+    AppLanguage('hr', 'Hrvatski'),
+    AppLanguage('it', 'Italiano'),
+    AppLanguage('lv', 'Latviešu'),
+    AppLanguage('lt', 'Lietuvių'),
+    AppLanguage('hu', 'Magyar'),
+    AppLanguage('nl', 'Nederlands'),
+    AppLanguage('nb', 'Norsk'),
+    AppLanguage('pl', 'Polski'),
+    AppLanguage('pt', 'Português'),
+    AppLanguage('ro', 'Română'),
+    AppLanguage('sk', 'Slovenčina'),
+    AppLanguage('sl', 'Slovenščina'),
+    AppLanguage('sr', 'Srpski'),
+    AppLanguage('fi', 'Suomi'),
+    AppLanguage('sv', 'Svenska'),
+    AppLanguage('tr', 'Türkçe'),
+    AppLanguage('el', 'Ελληνικά'),
+    AppLanguage('ru', 'Русский'),
+    AppLanguage('uk', 'Українська'),
   ];
 
   /// `null` until [load] has run, then either the saved code or `null` if the

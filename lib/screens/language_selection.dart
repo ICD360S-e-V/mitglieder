@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../services/language_service.dart';
 
@@ -145,9 +146,19 @@ class LanguageSelectionScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                lang.flag,
-                style: const TextStyle(fontSize: 32),
+              // SVG flag — replaces the emoji glyph which Linux/Flutter
+              // can't render without a colour-emoji font present.
+              SizedBox(
+                width: 48,
+                height: 36,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: SvgPicture.asset(
+                    lang.flagAsset,
+                    fit: BoxFit.cover,
+                    semanticsLabel: lang.nativeName,
+                  ),
+                ),
               ),
               const SizedBox(height: 8),
               Padding(
