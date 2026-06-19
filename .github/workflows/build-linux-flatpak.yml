@@ -274,25 +274,52 @@ jobs:
           PYEOF
           cat flatpak/de.icd360s.Mitglieder.metainfo.xml
 
-      - name: Build Flatpak bundle
+      - name: Build Flatpak bundle + .flatpakref descriptor
         # Direct flatpak-builder call — the runner already has the
         # runtime/SDK on disk and ~/.cache/flatpak-builder/ stays warm.
         # NO --force-clean: that flag wipes the persistent cache and
         # rebuilds the whole stack every tag.
+        #
+        # The .flatpak single-file bundle is offline-install only —
+        # `flatpak update` against a bundle install is documented to be
+        # impossible (flatpak#552). The .flatpakref companion we generate
+        # below is the supported update path: when a user installs the
+        # .flatpakref, flatpak auto-adds the SuggestRemoteName remote
+        # pointing at our Pages OSTree repo, after which `flatpak update`
+        # picks up every new tag automatically.
         working-directory: flatpak
         run: |
           rm -rf ../build ../repo
           flatpak-builder --user --install-deps-from=flathub \
             --repo=../repo --ccache \
             ../build de.icd360s.Mitglieder.yml
-          flatpak build-bundle ../repo \
+          flatpak build-bundle \
+            --runtime-repo=https://icd360s-e-v.github.io/mitglieder/icd360s-mitglieder.flatpakrepo \
+            ../repo \
             ../icd360sev-mitglied.flatpak \
             de.icd360s.Mitglieder
+          cat > ../de.icd360s.Mitglieder.flatpakref <<'REFEOF'
+          [Flatpak Ref]
+          Title=ICD360S e.V. Mitglieder
+          Name=de.icd360s.Mitglieder
+          Branch=master
+          Url=https://icd360s-e-v.github.io/mitglieder/repo/
+          SuggestRemoteName=icd360s-mitglieder
+          Homepage=https://github.com/ICD360S-e-V/mitglieder
+          Description=ICD360S e.V. Mitgliederportal — installs with auto-update wired to the GitHub Pages OSTree repo.
+          IsRuntime=false
+          REFEOF
 
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: icd360sev-flatpak
           path: icd360sev-mitglied.flatpak
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: icd360sev-flatpakref
+          path: de.icd360s.Mitglieder.flatpakref
           if-no-files-found: error
 
       # ---- OSTree repo for `flatpak update` (served from GitHub Pages) ----
@@ -400,7 +427,7 @@ jobs:
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           path: artifacts/
-          pattern: 'icd360sev-{linux,linux-deb,linux-rpm,linux-appimage,flatpak}'
+          pattern: 'icd360sev-{linux,linux-deb,linux-rpm,linux-appimage,flatpak,flatpakref}'
 
       - name: Prepare release files
         run: |
@@ -411,6 +438,10 @@ jobs:
           cp artifacts/icd360sev-linux-rpm/*.rpm release/icd360sev-mitglied.rpm
           cp artifacts/icd360sev-linux-appimage/*.AppImage release/icd360sev-mitglied.AppImage
           cp artifacts/icd360sev-flatpak/icd360sev-mitglied.flatpak release/icd360sev-mitglied.flatpak
+          # .flatpakref is the auto-update-capable installer; instruct users
+          # to prefer it over the .flatpak bundle (which is offline-only and
+          # cannot be updated in place per flatpak#552).
+          cp artifacts/icd360sev-flatpakref/de.icd360s.Mitglieder.flatpakref release/de.icd360s.Mitglieder.flatpakref
           echo "Release files:"
           ls -lh release/
 
