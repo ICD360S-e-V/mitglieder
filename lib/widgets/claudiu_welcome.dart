@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,6 +11,12 @@ import '../services/language_service.dart';
 /// "Anmelden / Mitglied werden / email / phone / SOS" button block on
 /// WelcomeScreen with a chat-style flow centred around the Claudiu mascot.
 ///
+/// Timeline (fixed — runs to completion every welcome entry):
+///   T+0       Claudiu slides in from the right (1.5s, easeOutCubic).
+///   T+2s      Speech bubble fades in; greeting types itself out
+///             character by character over ~2s.
+///   T+9s      The four option buttons cascade in (200ms apart).
+///
 /// The mascot is a placeholder Material icon for now; once the final
 /// SVG/Lottie of "boy in wheelchair" lands at `assets/mascot/claudiu.*`,
 /// only the `_mascot()` builder below needs to change.
@@ -17,14 +25,101 @@ import '../services/language_service.dart';
 /// start, and a first-launch greeting that sounds artificial would
 /// undermine the warmth this whole flow is here to convey. Will revisit
 /// when per-platform voice quality (especially Linux) is acceptable.
-class ClaudiuWelcome extends StatelessWidget {
+class ClaudiuWelcome extends StatefulWidget {
   final double scale;
   const ClaudiuWelcome({super.key, this.scale = 1.0});
 
+  @override
+  State<ClaudiuWelcome> createState() => _ClaudiuWelcomeState();
+}
+
+class _ClaudiuWelcomeState extends State<ClaudiuWelcome>
+    with TickerProviderStateMixin {
+  // Total scripted runtime from first frame until everything is visible.
+  // The user explicitly asked for "9 seconds always" before the option
+  // list appears — that anchor stays even if the earlier phases shift.
+  static const Duration _entranceDuration = Duration(milliseconds: 1500);
+  static const Duration _bubbleDelay = Duration(seconds: 2);
+  static const Duration _typewriterDuration = Duration(milliseconds: 2000);
+  static const Duration _optionsAppearAt = Duration(seconds: 9);
+  static const Duration _optionStagger = Duration(milliseconds: 200);
+
+  late final AnimationController _slideCtrl;
+  late final Animation<Offset> _slideAnim;
+
+  late final AnimationController _typewriterCtrl;
+
+  bool _bubbleVisible = false;
+
+  /// `_revealedOptionCount` < total options means cascading; when it equals
+  /// the option count all four are on screen. Skipping jumps it to total.
+  int _revealedOptionCount = 0;
+
+  Timer? _bubbleTimer;
+  Timer? _optionsTimer;
+  final List<Timer> _staggerTimers = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    _slideCtrl = AnimationController(
+      vsync: this,
+      duration: _entranceDuration,
+    );
+    _slideAnim = Tween<Offset>(
+      begin: const Offset(1.6, 0), // off-screen right
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _slideCtrl,
+      curve: Curves.easeOutCubic,
+    ));
+
+    _typewriterCtrl = AnimationController(
+      vsync: this,
+      duration: _typewriterDuration,
+    );
+
+    _slideCtrl.forward();
+
+    _bubbleTimer = Timer(_bubbleDelay, () {
+      if (!mounted) return;
+      setState(() => _bubbleVisible = true);
+      _typewriterCtrl.forward();
+    });
+
+    _optionsTimer = Timer(_optionsAppearAt, () {
+      if (!mounted) return;
+      _scheduleCascade();
+    });
+  }
+
+  void _scheduleCascade() {
+    for (var i = 0; i < 4; i++) {
+      final t = Timer(_optionStagger * i, () {
+        if (!mounted) return;
+        setState(() => _revealedOptionCount = i + 1);
+      });
+      _staggerTimers.add(t);
+    }
+  }
+
+  @override
+  void dispose() {
+    _bubbleTimer?.cancel();
+    _optionsTimer?.cancel();
+    for (final t in _staggerTimers) {
+      t.cancel();
+    }
+    _slideCtrl.dispose();
+    _typewriterCtrl.dispose();
+    super.dispose();
+  }
+
   // ---------------------------------------------------------------------------
-  // Tiny per-language string table. Kept inline (vs. .arb) until the mascot
-  // copy stabilises — once it does, migrate to AppLocalizations across all
-  // 28 ARB files. English is the implicit fallback for any unknown language.
+  // Per-language string table. Inline (vs. .arb) until copy stabilises; once
+  // it does, migrate to AppLocalizations across all 28 ARB files. English is
+  // the implicit fallback for any unknown language code.
   // ---------------------------------------------------------------------------
 
   static const Map<String, _ClaudiuStrings> _strings = {
@@ -32,7 +127,7 @@ class ClaudiuWelcome extends StatelessWidget {
       morning: 'Bună dimineața',
       day: 'Bună ziua',
       evening: 'Bună seara',
-      night: 'Bună seara', // intentionally not "noaptea" — too late for a hi
+      night: 'Bună seara',
       visitor: 'drag vizitator',
       ask: 'Cu ce te pot ajuta?',
       becomeMember: 'Vreau să devin membru',
@@ -109,73 +204,79 @@ class ClaudiuWelcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scale = widget.scale;
     final code = LanguageService.instance.currentCode;
     final s = _stringsFor(code);
     final greeting = '${_timeGreeting(s)}, ${s.visitor}!';
 
+    final options = [
+      _OptionData(Icons.person_add_alt_1, s.becomeMember, false, () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const RegisterPage()),
+        );
+      }),
+      _OptionData(Icons.login, s.login, false, () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const LoginPage()),
+        );
+      }),
+      _OptionData(Icons.bug_report_outlined, s.problem, false, () {
+        _emailSupport(s);
+      }),
+      _OptionData(Icons.phone_in_talk, s.emergency, true, _call),
+    ];
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _mascotAndBubble(context, s, greeting),
+        // Claudiu + bubble row — always laid out, mascot is animated in.
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SlideTransition(position: _slideAnim, child: _mascot(scale)),
+              SizedBox(width: 12 * scale),
+              Expanded(
+                child: AnimatedOpacity(
+                  opacity: _bubbleVisible ? 1 : 0,
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.easeOut,
+                  child: _bubble(s, greeting, scale),
+                ),
+              ),
+            ],
+          ),
+        ),
         SizedBox(height: 24 * scale),
-        _option(
-          context,
-          icon: Icons.person_add_alt_1,
-          label: s.becomeMember,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const RegisterPage()),
+        // Options cascade.
+        for (var i = 0; i < options.length; i++) ...[
+          AnimatedSlide(
+            offset: i < _revealedOptionCount
+                ? Offset.zero
+                : const Offset(0, 0.25),
+            duration: const Duration(milliseconds: 350),
+            curve: Curves.easeOut,
+            child: AnimatedOpacity(
+              opacity: i < _revealedOptionCount ? 1 : 0,
+              duration: const Duration(milliseconds: 300),
+              child: _option(options[i], scale),
+            ),
           ),
-        ),
-        SizedBox(height: 10 * scale),
-        _option(
-          context,
-          icon: Icons.login,
-          label: s.login,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const LoginPage()),
-          ),
-        ),
-        SizedBox(height: 10 * scale),
-        _option(
-          context,
-          icon: Icons.bug_report_outlined,
-          label: s.problem,
-          onTap: () => _emailSupport(s),
-        ),
-        SizedBox(height: 10 * scale),
-        _option(
-          context,
-          icon: Icons.phone_in_talk,
-          label: s.emergency,
-          onTap: () => _call(),
-          danger: true,
-        ),
+          if (i < options.length - 1) SizedBox(height: 10 * scale),
+        ],
       ],
     );
   }
 
   // ---------------------------------------------------------------------------
-  // Mascot + speech bubble row.
+  // Mascot — sits inside a soft-frosted circle. AnimationController for the
+  // entrance is on the parent SlideTransition; this widget is the static
+  // visual.
   // ---------------------------------------------------------------------------
 
-  Widget _mascotAndBubble(
-    BuildContext context,
-    _ClaudiuStrings s,
-    String greeting,
-  ) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _mascot(),
-        SizedBox(width: 12 * scale),
-        Expanded(child: _bubble(context, s, greeting)),
-      ],
-    );
-  }
-
-  Widget _mascot() {
+  Widget _mascot(double scale) {
     return Container(
       width: 88 * scale,
       height: 88 * scale,
@@ -197,7 +298,12 @@ class ClaudiuWelcome extends StatelessWidget {
     );
   }
 
-  Widget _bubble(BuildContext context, _ClaudiuStrings s, String greeting) {
+  // ---------------------------------------------------------------------------
+  // Speech bubble. Greeting uses a typewriter reveal driven by
+  // _typewriterCtrl; the secondary "ask" line + name fade in alongside.
+  // ---------------------------------------------------------------------------
+
+  Widget _bubble(_ClaudiuStrings s, String greeting, double scale) {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 16 * scale,
@@ -222,14 +328,21 @@ class ClaudiuWelcome extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            greeting,
-            style: TextStyle(
-              fontSize: 15 * scale,
-              fontWeight: FontWeight.w600,
-              color: const Color(0xFF0d47a1),
-              height: 1.3,
-            ),
+          AnimatedBuilder(
+            animation: _typewriterCtrl,
+            builder: (context, _) {
+              final shown =
+                  (greeting.length * _typewriterCtrl.value).floor();
+              return Text(
+                greeting.substring(0, shown.clamp(0, greeting.length)),
+                style: TextStyle(
+                  fontSize: 15 * scale,
+                  fontWeight: FontWeight.w600,
+                  color: const Color(0xFF0d47a1),
+                  height: 1.3,
+                ),
+              );
+            },
           ),
           SizedBox(height: 4 * scale),
           Text(
@@ -255,20 +368,14 @@ class ClaudiuWelcome extends StatelessWidget {
   }
 
   // ---------------------------------------------------------------------------
-  // Option button.
+  // Option pill.
   // ---------------------------------------------------------------------------
 
-  Widget _option(
-    BuildContext context, {
-    required IconData icon,
-    required String label,
-    required VoidCallback onTap,
-    bool danger = false,
-  }) {
+  Widget _option(_OptionData data, double scale) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: onTap,
+        onTap: data.onTap,
         borderRadius: BorderRadius.circular(14),
         child: Container(
           padding: EdgeInsets.symmetric(
@@ -276,12 +383,12 @@ class ClaudiuWelcome extends StatelessWidget {
             vertical: 14 * scale,
           ),
           decoration: BoxDecoration(
-            color: danger
+            color: data.danger
                 ? const Color(0xFFE57373).withValues(alpha: 0.18)
                 : Colors.white.withValues(alpha: 0.10),
             borderRadius: BorderRadius.circular(14),
             border: Border.all(
-              color: danger
+              color: data.danger
                   ? const Color(0xFFEF9A9A)
                   : Colors.white.withValues(alpha: 0.30),
               width: 1.5,
@@ -289,11 +396,11 @@ class ClaudiuWelcome extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(icon, color: Colors.white, size: 22 * scale),
+              Icon(data.icon, color: Colors.white, size: 22 * scale),
               SizedBox(width: 12 * scale),
               Expanded(
                 child: Text(
-                  label,
+                  data.label,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 14 * scale,
@@ -315,8 +422,8 @@ class ClaudiuWelcome extends StatelessWidget {
 
   // ---------------------------------------------------------------------------
   // Side-effects: open mail client / dial number. Same destinations as the
-  // existing WelcomeScreen helpers — kept in sync deliberately so a single
-  // contact change updates both Claudiu's offer and any future direct button.
+  // previous WelcomeScreen helpers — kept in sync so a single contact change
+  // updates both Claudiu's offer and any future direct button.
   // ---------------------------------------------------------------------------
 
   static const String _supportEmail = 'mitglied@icd360s.de';
@@ -335,6 +442,14 @@ class ClaudiuWelcome extends StatelessWidget {
     final uri = Uri(scheme: 'tel', path: _supportPhone);
     if (await canLaunchUrl(uri)) await launchUrl(uri);
   }
+}
+
+class _OptionData {
+  final IconData icon;
+  final String label;
+  final bool danger;
+  final VoidCallback onTap;
+  const _OptionData(this.icon, this.label, this.danger, this.onTap);
 }
 
 class _ClaudiuStrings {
