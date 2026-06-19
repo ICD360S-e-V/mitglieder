@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.24.0...v1.24.1) (2026-06-19)
+
+
+### Bug Fixes
+
+* **anon-chat:** HTTP-first send + 3s polling so messages actually persist ([a8cc962](https://github.com/ICD360S-e-V/mitglieder/commit/a8cc962c154a237c1229a97b74fc6b0247430b28))
+
 ## [1.24.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.23.0...v1.24.0) (2026-06-19)
 
 
