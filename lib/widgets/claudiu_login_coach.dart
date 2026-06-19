@@ -45,9 +45,17 @@ class ClaudiuLoginCoach extends StatefulWidget {
 }
 
 class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
-  /// Forgot panel is hidden by default; appears after 8 s of inactivity
-  /// with a fully empty digit box, OR immediately on error 404.
+  /// Forgot prompt is hidden by default; appears after 8 s of inactivity
+  /// with a fully empty digit box, OR immediately on error 404. The
+  /// prompt is just a clickable "Ai uitat?" headline — the explanation +
+  /// phone number stay hidden behind [_forgotExpanded] so the panel
+  /// never feels noisy for users who know their number.
   bool _showForgot = false;
+
+  /// User tapped the "Ai uitat?" headline → the security disclaimer and
+  /// the call-the-office phone number are revealed.
+  bool _forgotExpanded = false;
+
   Timer? _idleTimer;
 
   @override
@@ -101,14 +109,10 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
       foundNamed: 'Te-am găsit, {name}! Te conectez acum…',
       error: 'Hm, nu găsesc numărul ăsta. Verifici dacă ai scris bine?',
       forgotHeader: 'Ai uitat numărul de membru?',
-      security:
-          'Pentru siguranța ta, nu trimitem niciodată codul prin email, SMS sau poștă.',
+      noSms: 'Nu trimitem numărul prin email sau SMS.',
       onlyWay:
-          'Singura cale: vino în persoană la sediul asociației și ți-l reamintim pe loc, după verificare CI.',
-      callButton: 'Sună pentru programare',
-      whatsappButton: 'Cere programare prin WhatsApp',
-      whatsappMessage:
-          'Bună, sunt membru ICD360S e.V. și mi-am uitat numărul de membru. Aș vrea să programez o întâlnire personală la sediu pentru recuperare.',
+          'Singura cale: să ne întâlnim personal la sediul asociației, după verificare CI.',
+      contactUs: 'Contactează-ne pentru programare:',
     ),
     'de': _Strings(
       welcome: 'Willkommen zurück, liebes Mitglied!',
@@ -121,14 +125,10 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
       error:
           'Hm, die Nummer finde ich nicht. Hast du dich vielleicht vertippt?',
       forgotHeader: 'Mitgliedsnummer vergessen?',
-      security:
-          'Aus Sicherheitsgründen schicken wir die Nummer NIE per E-Mail, SMS oder Post.',
+      noSms: 'Wir verschicken die Nummer nicht per E-Mail oder SMS.',
       onlyWay:
-          'Der einzige Weg: Komm persönlich ins Vereinsbüro vorbei, mit Personalausweis — wir nennen sie dir vor Ort.',
-      callButton: 'Termin telefonisch vereinbaren',
-      whatsappButton: 'Termin per WhatsApp anfragen',
-      whatsappMessage:
-          'Hallo, ich bin Mitglied im ICD360S e.V. und habe meine Mitgliedsnummer vergessen. Ich möchte einen persönlichen Termin im Büro vereinbaren, um sie wieder zu erfahren.',
+          'Der einzige Weg: ein persönlicher Termin im Vereinsbüro, mit Personalausweis.',
+      contactUs: 'Ruf uns an für einen Termin:',
     ),
     'en': _Strings(
       welcome: 'Welcome back, dear member!',
@@ -140,14 +140,10 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
       foundNamed: 'Found you, {name}! Signing you in…',
       error: "Hm, I can't find that number. Did you type it correctly?",
       forgotHeader: 'Forgot your member number?',
-      security:
-          'For your safety, we NEVER send the number by email, SMS or post.',
+      noSms: "We don't send the number by email or SMS.",
       onlyWay:
-          'The only way: come in person to the association office with your ID — we will remind you on the spot.',
-      callButton: 'Call to book an appointment',
-      whatsappButton: 'Request an appointment on WhatsApp',
-      whatsappMessage:
-          "Hello, I'm a member of ICD360S e.V. and I forgot my member number. I'd like to schedule an in-person appointment at the office to recover it.",
+          'The only way: meet us in person at the association office, after ID verification.',
+      contactUs: 'Call us to book an appointment:',
     ),
     'ru': _Strings(
       welcome: 'С возвращением, дорогой член!',
@@ -159,14 +155,10 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
       foundNamed: 'Нашёл, {name}! Сейчас войдёшь…',
       error: 'Хм, такой номер не нахожу. Проверь, не ошибся ли?',
       forgotHeader: 'Забыл членский номер?',
-      security:
-          'Ради твоей безопасности мы НИКОГДА не отправляем номер по email, SMS или почте.',
+      noSms: 'Мы не отправляем номер по email или SMS.',
       onlyWay:
-          'Единственный путь: приди лично в офис ассоциации с удостоверением — мы напомним номер на месте.',
-      callButton: 'Записаться по телефону',
-      whatsappButton: 'Записаться через WhatsApp',
-      whatsappMessage:
-          'Здравствуйте, я член ICD360S e.V. и забыл свой членский номер. Хотел бы записаться на личную встречу в офисе, чтобы его восстановить.',
+          'Единственный путь: личная встреча в офисе ассоциации с удостоверением.',
+      contactUs: 'Позвони, чтобы записаться:',
     ),
     'uk': _Strings(
       welcome: 'З поверненням, дорогий члене!',
@@ -178,14 +170,10 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
       foundNamed: 'Знайшов, {name}! Зараз увійдеш…',
       error: 'Хм, такого номера не знаходжу. Перевір, чи правильно ввів?',
       forgotHeader: 'Забув членський номер?',
-      security:
-          'Заради твоєї безпеки ми НІКОЛИ не надсилаємо номер електронною поштою, SMS чи поштою.',
+      noSms: 'Ми не надсилаємо номер електронною поштою або SMS.',
       onlyWay:
-          'Єдиний шлях: прийди особисто до офісу асоціації з посвідченням — нагадаємо номер на місці.',
-      callButton: 'Записатися телефоном',
-      whatsappButton: 'Записатися через WhatsApp',
-      whatsappMessage:
-          'Доброго дня, я член ICD360S e.V. і забув свій членський номер. Хотів би записатися на особисту зустріч в офісі, щоб його відновити.',
+          'Єдиний шлях: особиста зустріч в офісі асоціації, з посвідченням.',
+      contactUs: 'Зателефонуй, щоб записатися:',
     ),
   };
 
@@ -349,42 +337,80 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
   Widget _forgotPanel(_Strings s) {
     return Container(
       margin: const EdgeInsets.only(top: 16),
-      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Colors.white.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: Colors.white.withValues(alpha: 0.25),
-        ),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            '🤔 ${s.forgotHeader}',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
+          // Clickable headline — toggles the details below. No
+          // explanation visible until the user actively asks for it.
+          InkWell(
+            onTap: () =>
+                setState(() => _forgotExpanded = !_forgotExpanded),
+            borderRadius: BorderRadius.circular(14),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 14, vertical: 12),
+              child: Row(
+                children: [
+                  const Text('🤔', style: TextStyle(fontSize: 18)),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      s.forgotHeader,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  AnimatedRotation(
+                    turns: _forgotExpanded ? 0.5 : 0,
+                    duration: const Duration(milliseconds: 250),
+                    child: Icon(
+                      Icons.expand_more,
+                      color: Colors.white.withValues(alpha: 0.85),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          const SizedBox(height: 10),
-          _infoLine(Icons.lock_outline, s.security,
-              color: Colors.amber.shade200),
-          const SizedBox(height: 6),
-          _infoLine(Icons.handshake_outlined, s.onlyWay,
-              color: Colors.greenAccent.shade100),
-          const SizedBox(height: 14),
-          _action(
-            icon: Icons.phone_in_talk,
-            label: s.callButton,
-            onTap: () => _call(),
-          ),
-          const SizedBox(height: 8),
-          _action(
-            icon: Icons.chat_bubble_outline,
-            label: s.whatsappButton,
-            onTap: () => _whatsApp(s.whatsappMessage),
+          AnimatedCrossFade(
+            firstChild: const SizedBox(height: 0),
+            secondChild: Padding(
+              padding:
+                  const EdgeInsets.fromLTRB(14, 0, 14, 14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _infoLine(Icons.no_cell, s.noSms,
+                      color: Colors.amber.shade200),
+                  const SizedBox(height: 6),
+                  _infoLine(Icons.handshake_outlined, s.onlyWay,
+                      color: Colors.greenAccent.shade100),
+                  const SizedBox(height: 12),
+                  Text(
+                    s.contactUs,
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.8),
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  _phoneAction(),
+                ],
+              ),
+            ),
+            crossFadeState: _forgotExpanded
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
+            duration: const Duration(milliseconds: 300),
           ),
         ],
       ),
@@ -414,41 +440,39 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
     );
   }
 
-  Widget _action({
-    required IconData icon,
-    required String label,
-    required VoidCallback onTap,
-  }) {
+  /// The phone number itself is the call-to-action. Tapping the row
+  /// fires `tel:` so the dialer pre-fills with the office line.
+  Widget _phoneAction() {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: onTap,
+        onTap: _call,
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.1),
+            color: Colors.white.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: Colors.white.withValues(alpha: 0.3),
-            ),
+            border:
+                Border.all(color: Colors.white.withValues(alpha: 0.35)),
           ),
           child: Row(
             children: [
-              Icon(icon, color: Colors.white, size: 18),
+              const Icon(Icons.phone_in_talk, color: Colors.white, size: 20),
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  label,
+                  widget.supportPhone,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1,
                   ),
                 ),
               ),
               Icon(Icons.chevron_right,
-                  color: Colors.white.withValues(alpha: 0.6), size: 18),
+                  color: Colors.white.withValues(alpha: 0.7), size: 20),
             ],
           ),
         ),
@@ -459,15 +483,6 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
   Future<void> _call() async {
     final uri = Uri(scheme: 'tel', path: widget.supportPhone);
     if (await canLaunchUrl(uri)) await launchUrl(uri);
-  }
-
-  Future<void> _whatsApp(String message) async {
-    final num = widget.supportPhone.replaceFirst('+', '');
-    final uri = Uri.parse(
-        'https://wa.me/$num?text=${Uri.encodeComponent(message)}');
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
   }
 }
 
@@ -481,11 +496,9 @@ class _Strings {
   final String foundNamed;
   final String error;
   final String forgotHeader;
-  final String security;
+  final String noSms;
   final String onlyWay;
-  final String callButton;
-  final String whatsappButton;
-  final String whatsappMessage;
+  final String contactUs;
 
   const _Strings({
     required this.welcome,
@@ -497,10 +510,8 @@ class _Strings {
     required this.foundNamed,
     required this.error,
     required this.forgotHeader,
-    required this.security,
+    required this.noSms,
     required this.onlyWay,
-    required this.callButton,
-    required this.whatsappButton,
-    required this.whatsappMessage,
+    required this.contactUs,
   });
 }
