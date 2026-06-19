@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.19.0...v1.20.0) (2026-06-19)
+
+
+### Features
+
+* **login:** two-box M+5-digits form, Claudiu coach, brand header on the page ([9669ca1](https://github.com/ICD360S-e-V/mitglieder/commit/9669ca11097eaab03aa8f806888666c85ab1e4d4))
+
 ## [1.19.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.4...v1.19.0) (2026-06-19)
 
 
