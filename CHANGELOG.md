@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.20.0...v1.20.1) (2026-06-19)
+
+
+### Bug Fixes
+
+* **login:** forgot-number panel — drop WhatsApp, hide details behind click ([f832a8b](https://github.com/ICD360S-e-V/mitglieder/commit/f832a8baec76ecd8518611905058ede16770671e))
+
 ## [1.20.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.19.0...v1.20.0) (2026-06-19)
 
 
