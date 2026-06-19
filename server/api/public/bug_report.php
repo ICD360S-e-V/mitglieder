@@ -26,6 +26,17 @@
  *
  * Reader / status-updater endpoints live in the vorsitzer repo (see the
  * sibling prompt for /api/vorstand/bug_reports/list.php + update.php).
+ *
+ * Realtime push to Vorstand:
+ *   ws_broadcast defaults to 0 on insert. The WebSocket server polls
+ *   bug_reports WHERE ws_broadcast = 0 every 5 s
+ *   (ChatServer::checkPendingBugReports in websocket/src/ChatServer.php)
+ *   and sends a 'bug_report_new' frame to every connected admin/Vorstand
+ *   client, then flips ws_broadcast to 1. Reports made while the WS
+ *   service is down still go out when it comes back up.
+ *
+ *   No notification call is needed from this endpoint — the polling
+ *   loop is the source of truth.
  */
 
 declare(strict_types=1);
@@ -91,23 +102,14 @@ try {
     ]);
     $reportId = (int)$pdo->lastInsertId();
 
-    // Fan out to any connected Vorstand member via the existing chat WS
-    // bridge. Stub for now; the vorsitzer repo will fill it in once the
-    // admin screen lands.
-    notify_vorstand_new_bug_report($reportId);
+    // The WebSocket server picks the row up via its 5 s
+    // checkPendingBugReports() polling loop and pushes 'bug_report_new'
+    // to every connected Vorstand client — see the doc block at the top
+    // of this file for the full chain. Nothing for us to do here.
 
     jsonResponse(true, ['id' => $reportId], 'Bug report received');
 } catch (PDOException $e) {
     error_log('[bug_report] INSERT failed: ' . $e->getMessage());
     http_response_code(500);
     jsonResponse(false, [], 'Could not save report');
-}
-
-/**
- * Stub: tell connected Vorstand members a new bug report is in. Replace
- * the body with the real WebSocket / Redis publish call once the
- * vorsitzer admin screen is wired up.
- */
-function notify_vorstand_new_bug_report(int $reportId): void {
-    // TODO(vorsitzer): publish {"type":"bug_report_new","id":$reportId}
 }
