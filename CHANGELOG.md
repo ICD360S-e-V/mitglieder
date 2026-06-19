@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.17.0...v1.18.0) (2026-06-19)
+
+
+### Features
+
+* **welcome:** staged reveal — Claudiu rolls in, then bubble, then options at T+9s ([348cb28](https://github.com/ICD360S-e-V/mitglieder/commit/348cb2865cd432e2aadedf1bb72038489972c42e))
+
 ## [1.17.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.6...v1.17.0) (2026-06-19)
 
 
