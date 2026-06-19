@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.18.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.1...v1.18.2) (2026-06-19)
+
+
+### Bug Fixes
+
+* Fix:  ([bd74fb1](https://github.com/ICD360S-e-V/mitglieder/commit/bd74fb17ccd9d97c54a3900b26859e862a1e3028))
+* **flatpak:** ship .flatpakref so installs can actually 'flatpak update' ([bd74fb1](https://github.com/ICD360S-e-V/mitglieder/commit/bd74fb17ccd9d97c54a3900b26859e862a1e3028))
+
 ## [1.18.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.0...v1.18.1) (2026-06-19)
 
 
