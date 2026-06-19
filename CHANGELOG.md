@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.21.2...v1.22.0) (2026-06-19)
+
+
+### Features
+
+* **welcome:** emergency bottom-sheet — office hours, call, SMS template ([16c7817](https://github.com/ICD360S-e-V/mitglieder/commit/16c7817c64bd1514469e3528c3ff70978b50c7a1))
+
 ## [1.21.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.21.1...v1.21.2) (2026-06-19)
 
 
