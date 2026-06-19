@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../screens/login.dart';
+import '../screens/problem_report.dart';
 import '../screens/register.dart';
 import '../services/language_service.dart';
 
@@ -145,7 +146,10 @@ class ClaudiuWelcome extends StatelessWidget {
         );
       }),
       _OptionData(Icons.bug_report_outlined, s.problem, false, () {
-        _emailSupport(s);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const ProblemReportScreen()),
+        );
       }),
       _OptionData(Icons.phone_in_talk, s.emergency, true, _call),
     ];
@@ -356,20 +360,12 @@ class ClaudiuWelcome extends StatelessWidget {
   }
 
   // ---------------------------------------------------------------------------
-  // Side-effects: open mail client / dial number.
+  // Side-effects: dial the emergency line. The "problem with the app"
+  // option now navigates to ProblemReportScreen — no more mailto: from
+  // Claudiu's surface.
   // ---------------------------------------------------------------------------
 
-  static const String _supportEmail = 'mitglied@icd360s.de';
   static const String _supportPhone = '+4916094482053';
-
-  Future<void> _emailSupport(_ClaudiuStrings s) async {
-    final uri = Uri(
-      scheme: 'mailto',
-      path: _supportEmail,
-      queryParameters: {'subject': '${s.problem} — ICD360S Mitglieder-App'},
-    );
-    if (await canLaunchUrl(uri)) await launchUrl(uri);
-  }
 
   Future<void> _call() async {
     final uri = Uri(scheme: 'tel', path: _supportPhone);

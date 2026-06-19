@@ -1179,6 +1179,46 @@ class ApiService {
     }
   }
 
+  // ============= BUG REPORTS (PUBLIC) =============
+
+  /// Submit a user-written bug report. Public endpoint — no Bearer token
+  /// required (the form is reachable from the welcome screen before
+  /// login). The body intentionally carries only the description text;
+  /// device fingerprint / OS / app version arrive separately via the
+  /// periodic diagnostic POST when the user has granted that consent,
+  /// and we don't want to duplicate them here.
+  ///
+  /// If a mitgliedernummer is in secure storage (returning logged-in
+  /// user) it's attached so the Vorstand UI can correlate the report
+  /// with a member without depending on the diagnostic channel.
+  Future<Map<String, dynamic>> submitBugReport({
+    required String description,
+  }) async {
+    try {
+      final body = <String, dynamic>{
+        'description': description,
+      };
+      final mnr = await _secureStorage.read(key: 'approval_mitgliedernummer');
+      if (mnr != null && mnr.isNotEmpty) {
+        body['mitgliedernummer'] = mnr;
+      }
+      final response = await _client
+          .post(
+            Uri.parse('$baseUrl/public/bug_report.php'),
+            headers: {
+              'Content-Type': 'application/json',
+              'User-Agent': 'ICD360S-Mitglied/1.0',
+            },
+            body: jsonEncode(body),
+          )
+          .timeout(const Duration(seconds: 15));
+      return jsonDecode(response.body) as Map<String, dynamic>;
+    } catch (e) {
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Could not send report'};
+    }
+  }
+
   // ============= PASSWORDLESS LOGIN (APPROVAL) API =============
 
   /// Request passwordless login - sends approval request to admins
