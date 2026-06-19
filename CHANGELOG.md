@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.21.0...v1.21.1) (2026-06-19)
+
+
+### Bug Fixes
+
+* **server:** bug_report.php uses project conventions (require ../config.php, jsonResponse, getDBConnection) ([3a5f3c2](https://github.com/ICD360S-e-V/mitglieder/commit/3a5f3c2905bf2707d6bd233820b15c7a4debd30b))
+
 ## [1.21.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.20.1...v1.21.0) (2026-06-19)
 
 
