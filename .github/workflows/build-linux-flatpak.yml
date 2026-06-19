@@ -337,6 +337,7 @@ jobs:
           Homepage=https://github.com/ICD360S-e-V/mitglieder
           Description=ICD360S e.V. Mitgliederportal — installs with auto-update wired to the GitHub Pages OSTree repo.
           IsRuntime=false
+          RuntimeRepo=https://flathub.org/repo/flathub.flatpakrepo
           GPGKey=$PUBKEY
           REFEOF
 
