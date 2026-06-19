@@ -427,8 +427,14 @@ class ClaudiuWelcome extends StatelessWidget {
   static const String _scheduleFieldWindow  = '14:00 – 17:00';
 
   Future<void> _call() async {
+    // tel: → system dialer (Phone on Android, FaceTime/Phone on iOS+macOS,
+    // Phone Link on Windows, whatever handler is registered on Linux).
+    // externalApplication forces the OS picker rather than letting iOS
+    // try to open the URL in SFSafariViewController.
     final uri = Uri(scheme: 'tel', path: _supportPhone);
-    if (await canLaunchUrl(uri)) await launchUrl(uri);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   Future<void> _sms(String body) async {

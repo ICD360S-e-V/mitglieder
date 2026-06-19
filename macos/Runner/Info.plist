@@ -32,5 +32,16 @@
 	<string>Die App benötigt Zugriff auf die Kamera für Videoanrufe und Dokumentenfotos.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Die App benötigt Zugriff auf das Mikrofon für Sprachanrufe.</string>
+	<!-- url_launcher: schemes we probe with canLaunchUrl. macOS gates
+	     non-default schemes (anything beyond http/https/mailto) on this
+	     allow-list, exactly like iOS. tel: opens FaceTime; sms: opens
+	     Messages, both via the system continuity bridge. -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tel</string>
+		<string>sms</string>
+		<string>mailto</string>
+		<string>https</string>
+	</array>
 </dict>
 </plist>

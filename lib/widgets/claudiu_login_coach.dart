@@ -482,7 +482,9 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
 
   Future<void> _call() async {
     final uri = Uri(scheme: 'tel', path: widget.supportPhone);
-    if (await canLaunchUrl(uri)) await launchUrl(uri);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 }
 

@@ -67,5 +67,17 @@
 	<!-- Privacy - Location When In Use (WiFi name access for MITM detection) -->
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Nur zur Erkennung manipulierter WLAN-Netze. Die App liest den Namen des aktuell verbundenen WLANs, wenn ein TLS-Angriff erkannt wird. Kein Standort-Tracking.</string>
+	<!-- url_launcher: schemes we probe with canLaunchUrl. iOS only allows
+	     http/https/mailto by default; tel/sms must be declared here or
+	     canLaunchUrl returns false and the "Sună-ne" / "Trimite SMS"
+	     buttons on Claudiu's emergency sheet silently no-op. -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tel</string>
+		<string>sms</string>
+		<string>mailto</string>
+		<string>https</string>
+		<string>whatsapp</string>
+	</array>
 </dict>
 </plist>
