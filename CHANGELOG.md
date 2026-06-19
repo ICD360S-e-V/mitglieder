@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.24.1...v1.25.0) (2026-06-19)
+
+
+### Features
+
+* **server:** /api/vorstand/anonymous_chat_users.php — Vorstand metadata pull ([0e45ca8](https://github.com/ICD360S-e-V/mitglieder/commit/0e45ca8f986cb28b75d5deb629b9b91c449042db))
+
 ## [1.24.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.24.0...v1.24.1) (2026-06-19)
 
 
