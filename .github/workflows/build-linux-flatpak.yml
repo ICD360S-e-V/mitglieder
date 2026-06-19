@@ -247,6 +247,24 @@ jobs:
       - name: Make Flutter binary executable
         run: chmod +x flatpak/bundle/icd360sev_mitglied
 
+      - name: Import Flatpak signing GPG key (idempotent)
+        # The key (ID 244C2F8A661420E8, "ICD360S e.V. Flatpak Builds") is
+        # already on the self-hosted runner's keyring from the initial
+        # generation. We still re-import the secret on every run so a
+        # fresh VM / rebuilt runner image can sign without manual
+        # intervention. gpg --import is idempotent.
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.FLATPAK_GPG_PRIVATE_KEY }}
+        run: |
+          if [ -z "$GPG_PRIVATE_KEY" ]; then
+            echo "::error::FLATPAK_GPG_PRIVATE_KEY secret missing"
+            exit 1
+          fi
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          echo "$GPG_PRIVATE_KEY" | base64 -d | gpg --batch --import 2>&1 | tail -5
+          gpg --list-secret-keys --keyid-format LONG 244C2F8A661420E8 | head -3
+
       - name: Clone Flathub shared-modules
         run: git clone --depth 1 --branch master https://github.com/flathub/shared-modules.git flatpak/shared-modules
 
@@ -290,15 +308,26 @@ jobs:
         working-directory: flatpak
         run: |
           rm -rf ../build ../repo
+          # --gpg-sign on flatpak-builder + build-bundle + build-update-repo
+          # signs every OSTree commit and the summary file with the ICD360S
+          # signing key. Without signatures, modern Flatpak refuses to install
+          # from custom remotes ("Can't pull from untrusted non-gpg verified
+          # remote") and the .flatpakref install flow breaks for users.
           flatpak-builder --user --install-deps-from=flathub \
             --repo=../repo --ccache \
+            --gpg-sign=244C2F8A661420E8 \
             ../build de.icd360s.Mitglieder.yml
           flatpak build-bundle \
             --runtime-repo=https://icd360s-e-v.github.io/mitglieder/icd360s-mitglieder.flatpakrepo \
+            --gpg-sign=244C2F8A661420E8 \
             ../repo \
             ../icd360sev-mitglied.flatpak \
             de.icd360s.Mitglieder
-          cat > ../de.icd360s.Mitglieder.flatpakref <<'REFEOF'
+          # Embed the public-key base64 (committed at .github/flatpak-pubkey.b64)
+          # into the .flatpakref so Flatpak auto-configures gpg-verify=true with
+          # this exact key when a user installs via the descriptor.
+          PUBKEY=$(tr -d '\n' < "$GITHUB_WORKSPACE/.github/flatpak-pubkey.b64")
+          cat > ../de.icd360s.Mitglieder.flatpakref <<REFEOF
           [Flatpak Ref]
           Title=ICD360S e.V. Mitglieder
           Name=de.icd360s.Mitglieder
@@ -308,6 +337,7 @@ jobs:
           Homepage=https://github.com/ICD360S-e-V/mitglieder
           Description=ICD360S e.V. Mitgliederportal — installs with auto-update wired to the GitHub Pages OSTree repo.
           IsRuntime=false
+          GPGKey=$PUBKEY
           REFEOF
 
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
@@ -327,6 +357,7 @@ jobs:
       - name: Update OSTree repo metadata + static deltas
         run: |
           flatpak build-update-repo --generate-static-deltas \
+            --gpg-sign=244C2F8A661420E8 \
             --title="ICD360S e.V. Mitglieder" \
             --prune --prune-depth=3 repo
           du -sh repo
@@ -335,7 +366,11 @@ jobs:
         run: |
           mkdir -p pages-out
           cp -r repo pages-out/repo
-          cat > pages-out/icd360s-mitglieder.flatpakrepo <<'EOF'
+          # Embed the ICD360S signing key (committed at
+          # .github/flatpak-pubkey.b64) so `flatpak remote-add --from`
+          # auto-configures gpg-verify=true with this exact key.
+          PUBKEY=$(tr -d '\n' < "$GITHUB_WORKSPACE/.github/flatpak-pubkey.b64")
+          cat > pages-out/icd360s-mitglieder.flatpakrepo <<EOF
           [Flatpak Repo]
           Title=ICD360S e.V. Mitglieder
           Url=https://icd360s-e-v.github.io/mitglieder/repo/
@@ -343,6 +378,7 @@ jobs:
           Comment=Mitgliederportal Auto-Update Repository
           Description=Auto-update Flatpak repository for the ICD360S e.V. member app.
           NoDeps=true
+          GPGKey=$PUBKEY
           EOF
           cat > pages-out/index.html <<'EOF'
           <!doctype html>
