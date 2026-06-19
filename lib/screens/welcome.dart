@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/diagnostic_service.dart';
 import '../services/secure_storage_helper.dart';
+import '../widgets/claudiu_welcome.dart';
 import '../widgets/diagnostic_consent_dialog.dart';
 import '../widgets/eastern.dart';
-import 'login.dart';
-import 'register.dart';
 import 'mitglied_dashboard.dart';
 import 'webview_screen.dart';
 
@@ -285,105 +283,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           letterSpacing: 2,
                         ),
                       ),
-                      SizedBox(height: _getResponsiveSpacing(context, 40)),
-                      // Login Button
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: Builder(
-                          builder: (context) {
-                            final l10n = AppLocalizations.of(context)!;
-                            return OutlinedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                                );
-                              },
-                              style: OutlinedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                side: BorderSide(color: Colors.white.withValues(alpha: 0.5), width: 2),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(Icons.login, size: 24),
-                                  const SizedBox(width: 12),
-                                  Text(
-                                    l10n.login,
-                                    style: TextStyle(fontSize: _getResponsiveFontSize(context, 18), fontWeight: FontWeight.w600),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
+                      SizedBox(height: _getResponsiveSpacing(context, 32)),
+                      // Claudiu — conversational welcome. Replaces the old
+                      // Anmelden / Mitglied werden / email / phone / SOS
+                      // button stack; every action a visitor previously
+                      // reached through those buttons now lives inside his
+                      // option list, framed as a question.
+                      ClaudiuWelcome(
+                        scale: _getResponsiveFontSize(context, 14) / 14.0,
                       ),
-                      SizedBox(height: _getResponsiveSpacing(context, 20)),
-                      // Register Button
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: Builder(
-                          builder: (context) {
-                            final l10n = AppLocalizations.of(context)!;
-                            return OutlinedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => const RegisterPage()),
-                                );
-                              },
-                              style: OutlinedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                side: BorderSide(color: Colors.white.withValues(alpha: 0.5), width: 2),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(Icons.person_add, size: 24),
-                                  const SizedBox(width: 12),
-                                  Text(
-                                    l10n.becomeMember,
-                                    style: TextStyle(fontSize: _getResponsiveFontSize(context, 18), fontWeight: FontWeight.w600),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(height: _getResponsiveSpacing(context, 40)),
-                      // Contact buttons
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Email button
-                          _buildContactButton(
-                            icon: Icons.alternate_email,
-                            onTap: () => _launchEmail(),
-                          ),
-                          const SizedBox(width: 24),
-                          // Phone button
-                          _buildContactButton(
-                            icon: Icons.phone,
-                            onTap: () => _launchPhone(),
-                          ),
-                          const SizedBox(width: 24),
-                          // SOS button
-                          _buildContactButton(
-                            icon: Icons.sos,
-                            onTap: () => _showSosDialog(),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: _getResponsiveSpacing(context, 40)),
+                      SizedBox(height: _getResponsiveSpacing(context, 32)),
                     ],
                   ),
                 ),
@@ -466,106 +375,4 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  Widget _buildContactButton({required IconData icon, required VoidCallback onTap}) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(30),
-      child: Container(
-        width: 56,
-        height: 56,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(color: Colors.white.withValues(alpha: 0.5), width: 2),
-        ),
-        child: Icon(icon, color: Colors.white, size: 28),
-      ),
-    );
-  }
-
-  Future<void> _launchEmail() async {
-    final l10n = AppLocalizations.of(context)!;
-    final Uri emailUri = Uri(
-      scheme: 'mailto',
-      path: 'mitglied@icd360s.de',
-      queryParameters: {
-        'subject': l10n.emailSubject,
-      },
-    );
-    if (await canLaunchUrl(emailUri)) {
-      await launchUrl(emailUri);
-    }
-  }
-
-  Future<void> _launchPhone() async {
-    final Uri phoneUri = Uri(
-      scheme: 'tel',
-      path: '+4916094482053',
-    );
-    if (await canLaunchUrl(phoneUri)) {
-      await launchUrl(phoneUri);
-    }
-  }
-
-  void _showSosDialog() {
-    final l10n = AppLocalizations.of(context)!;
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: Row(
-          children: [
-            const Icon(Icons.sos, color: Colors.red, size: 28),
-            const SizedBox(width: 12),
-            Text(l10n.needHelp),
-          ],
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              l10n.helpQuestion,
-              style: const TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: _getResponsiveSpacing(context, 16)),
-            Text(
-              l10n.helpDescription,
-              style: const TextStyle(fontSize: 14, color: Colors.grey),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: Text(l10n.cancel),
-          ),
-          ElevatedButton.icon(
-            onPressed: () {
-              Navigator.pop(ctx);
-              _launchWhatsApp();
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF25D366),
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            ),
-            icon: const Icon(Icons.chat, size: 20),
-            label: Text(l10n.whatsapp),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Future<void> _launchWhatsApp() async {
-    final l10n = AppLocalizations.of(context)!;
-    const phoneNumber = '4916094482053';
-    final message = l10n.whatsappMessage;
-    final Uri whatsappUri = Uri.parse(
-      'https://wa.me/$phoneNumber?text=${Uri.encodeComponent(message)}',
-    );
-    if (await canLaunchUrl(whatsappUri)) {
-      await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
-    }
-  }
 }
