@@ -55,6 +55,15 @@ dependencies:
   # language selector (assets/flags/<lang>.svg).
   flutter_svg: ^2.0.10
 
+  # Declarative animation DSL — replaces hand-rolled AnimationController +
+  # Timer in the Claudiu welcome flow. Staggered cascades, fades, slides
+  # and delays all express as a single chained expression.
+  flutter_animate: ^4.5.2
+
+  # Battle-tested typewriter reveal for Claudiu's greeting line —
+  # replaces an AnimatedBuilder + substring(0,...) hack.
+  animated_text_kit: ^4.3.0
+
   # WebView for Android
   webview_flutter: ^4.4.0
 

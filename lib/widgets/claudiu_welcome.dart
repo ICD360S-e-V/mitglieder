@@ -1,120 +1,43 @@
-import 'dart:async';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../screens/login.dart';
 import '../screens/register.dart';
 import '../services/language_service.dart';
 
-/// Conversational welcome surface — replaces the static
-/// "Anmelden / Mitglied werden / email / phone / SOS" button block on
-/// WelcomeScreen with a chat-style flow centred around the Claudiu mascot.
+/// Conversational welcome surface — replaces the static button stack on
+/// WelcomeScreen with a chat-style flow centred on the Claudiu mascot.
 ///
-/// Timeline (fixed — runs to completion every welcome entry):
-///   T+0       Claudiu slides in from the right (1.5s, easeOutCubic).
-///   T+2s      Speech bubble fades in; greeting types itself out
-///             character by character over ~2s.
-///   T+9s      The four option buttons cascade in (200ms apart).
+/// Timeline (fixed; runs to completion every welcome entry):
+///   T+0       Mascot slides in from the right (1.5s, easeOutCubic).
+///   T+2s      Speech bubble fades in; greeting types out via
+///             [TypewriterAnimatedText] over ~2s.
+///   T+9s      The four option pills cascade in (200ms stagger, fade+
+///             slide, via [flutter_animate]'s declarative API).
 ///
-/// The mascot is a placeholder Material icon for now; once the final
-/// SVG/Lottie of "boy in wheelchair" lands at `assets/mascot/claudiu.*`,
-/// only the `_mascot()` builder below needs to change.
+/// The visible character is a Material placeholder icon for now; once
+/// the commissioned SVG/Lottie/Rive of "boy in wheelchair" lands at
+/// `assets/mascot/claudiu.*` only [_mascot] needs updating. Per the
+/// 2026 Flutter mascot guide the long-term target is a Rive state
+/// machine (idle / wave / look-around states) — we ship the static
+/// placeholder + scripted reveal first and swap the asset in v2.
 ///
-/// TTS deliberately deferred: Linux espeak voices sound robotic on cold
-/// start, and a first-launch greeting that sounds artificial would
-/// undermine the warmth this whole flow is here to convey. Will revisit
-/// when per-platform voice quality (especially Linux) is acceptable.
-class ClaudiuWelcome extends StatefulWidget {
+/// TTS deliberately deferred: Linux espeak voices are robotic and a
+/// first-launch greeting that sounds artificial would undermine the
+/// warmth this whole flow is here to convey.
+class ClaudiuWelcome extends StatelessWidget {
   final double scale;
   const ClaudiuWelcome({super.key, this.scale = 1.0});
 
-  @override
-  State<ClaudiuWelcome> createState() => _ClaudiuWelcomeState();
-}
-
-class _ClaudiuWelcomeState extends State<ClaudiuWelcome>
-    with TickerProviderStateMixin {
-  // Total scripted runtime from first frame until everything is visible.
-  // The user explicitly asked for "9 seconds always" before the option
-  // list appears — that anchor stays even if the earlier phases shift.
-  static const Duration _entranceDuration = Duration(milliseconds: 1500);
+  // --- Timing anchors (deliberate; user-specified 9s on options). ---
+  static const Duration _entranceDur = Duration(milliseconds: 1500);
   static const Duration _bubbleDelay = Duration(seconds: 2);
-  static const Duration _typewriterDuration = Duration(milliseconds: 2000);
-  static const Duration _optionsAppearAt = Duration(seconds: 9);
+  static const Duration _typewriterDur = Duration(milliseconds: 2000);
+  static const Duration _optionsDelay = Duration(seconds: 9);
   static const Duration _optionStagger = Duration(milliseconds: 200);
-
-  late final AnimationController _slideCtrl;
-  late final Animation<Offset> _slideAnim;
-
-  late final AnimationController _typewriterCtrl;
-
-  bool _bubbleVisible = false;
-
-  /// `_revealedOptionCount` < total options means cascading; when it equals
-  /// the option count all four are on screen. Skipping jumps it to total.
-  int _revealedOptionCount = 0;
-
-  Timer? _bubbleTimer;
-  Timer? _optionsTimer;
-  final List<Timer> _staggerTimers = [];
-
-  @override
-  void initState() {
-    super.initState();
-
-    _slideCtrl = AnimationController(
-      vsync: this,
-      duration: _entranceDuration,
-    );
-    _slideAnim = Tween<Offset>(
-      begin: const Offset(1.6, 0), // off-screen right
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _slideCtrl,
-      curve: Curves.easeOutCubic,
-    ));
-
-    _typewriterCtrl = AnimationController(
-      vsync: this,
-      duration: _typewriterDuration,
-    );
-
-    _slideCtrl.forward();
-
-    _bubbleTimer = Timer(_bubbleDelay, () {
-      if (!mounted) return;
-      setState(() => _bubbleVisible = true);
-      _typewriterCtrl.forward();
-    });
-
-    _optionsTimer = Timer(_optionsAppearAt, () {
-      if (!mounted) return;
-      _scheduleCascade();
-    });
-  }
-
-  void _scheduleCascade() {
-    for (var i = 0; i < 4; i++) {
-      final t = Timer(_optionStagger * i, () {
-        if (!mounted) return;
-        setState(() => _revealedOptionCount = i + 1);
-      });
-      _staggerTimers.add(t);
-    }
-  }
-
-  @override
-  void dispose() {
-    _bubbleTimer?.cancel();
-    _optionsTimer?.cancel();
-    for (final t in _staggerTimers) {
-      t.cancel();
-    }
-    _slideCtrl.dispose();
-    _typewriterCtrl.dispose();
-    super.dispose();
-  }
+  static const Duration _optionDur = Duration(milliseconds: 350);
 
   // ---------------------------------------------------------------------------
   // Per-language string table. Inline (vs. .arb) until copy stabilises; once
@@ -204,12 +127,11 @@ class _ClaudiuWelcomeState extends State<ClaudiuWelcome>
 
   @override
   Widget build(BuildContext context) {
-    final scale = widget.scale;
     final code = LanguageService.instance.currentCode;
     final s = _stringsFor(code);
     final greeting = '${_timeGreeting(s)}, ${s.visitor}!';
 
-    final options = [
+    final options = <_OptionData>[
       _OptionData(Icons.person_add_alt_1, s.becomeMember, false, () {
         Navigator.push(
           context,
@@ -231,39 +153,45 @@ class _ClaudiuWelcomeState extends State<ClaudiuWelcome>
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Claudiu + bubble row — always laid out, mascot is animated in.
         IntrinsicHeight(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SlideTransition(position: _slideAnim, child: _mascot(scale)),
+              // Claudiu rolls in from the right: 1.5s easeOutCubic slide.
+              _mascot(scale).animate().slideX(
+                    begin: 1.6,
+                    end: 0,
+                    duration: _entranceDur,
+                    curve: Curves.easeOutCubic,
+                  ),
               SizedBox(width: 12 * scale),
+              // Bubble holds until 2s after page open, then fades in.
               Expanded(
-                child: AnimatedOpacity(
-                  opacity: _bubbleVisible ? 1 : 0,
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeOut,
-                  child: _bubble(s, greeting, scale),
-                ),
+                child: _bubble(s, greeting, scale)
+                    .animate()
+                    .fadeIn(delay: _bubbleDelay, duration: 400.ms),
               ),
             ],
           ),
         ),
         SizedBox(height: 24 * scale),
-        // Options cascade.
+
+        // Option list waits a full 9s after page open, then cascades.
+        // Each option's delay = 9s + (index × 200ms); fade + slide-up are
+        // a single chained expression — the entire scripted animation
+        // contract is expressed declaratively rather than in
+        // AnimationController/Timer state.
         for (var i = 0; i < options.length; i++) ...[
-          AnimatedSlide(
-            offset: i < _revealedOptionCount
-                ? Offset.zero
-                : const Offset(0, 0.25),
-            duration: const Duration(milliseconds: 350),
-            curve: Curves.easeOut,
-            child: AnimatedOpacity(
-              opacity: i < _revealedOptionCount ? 1 : 0,
-              duration: const Duration(milliseconds: 300),
-              child: _option(options[i], scale),
-            ),
-          ),
+          _option(options[i], scale).animate().fadeIn(
+                delay: _optionsDelay + _optionStagger * i,
+                duration: 300.ms,
+              ).slideY(
+                begin: 0.25,
+                end: 0,
+                delay: _optionsDelay + _optionStagger * i,
+                duration: _optionDur,
+                curve: Curves.easeOut,
+              ),
           if (i < options.length - 1) SizedBox(height: 10 * scale),
         ],
       ],
@@ -271,9 +199,11 @@ class _ClaudiuWelcomeState extends State<ClaudiuWelcome>
   }
 
   // ---------------------------------------------------------------------------
-  // Mascot — sits inside a soft-frosted circle. AnimationController for the
-  // entrance is on the parent SlideTransition; this widget is the static
-  // visual.
+  // Mascot — circle frame around a Material placeholder. The entire
+  // entrance animation is applied by the caller, so this widget is just
+  // the static visual; when the Rive/Lottie/SVG of Claudiu arrives, swap
+  // the Icon for an `RiveAnimation.asset(...)` here and nothing else
+  // needs touching.
   // ---------------------------------------------------------------------------
 
   Widget _mascot(double scale) {
@@ -288,8 +218,6 @@ class _ClaudiuWelcomeState extends State<ClaudiuWelcome>
           width: 2,
         ),
       ),
-      // accessible_forward = stylised wheelchair user — placeholder until the
-      // commissioned Claudiu SVG/Lottie asset lands. Sized to fill the circle.
       child: Icon(
         Icons.accessible_forward,
         size: 52 * scale,
@@ -299,8 +227,9 @@ class _ClaudiuWelcomeState extends State<ClaudiuWelcome>
   }
 
   // ---------------------------------------------------------------------------
-  // Speech bubble. Greeting uses a typewriter reveal driven by
-  // _typewriterCtrl; the secondary "ask" line + name fade in alongside.
+  // Speech bubble. Greeting uses TypewriterAnimatedText from
+  // animated_text_kit — battle-tested, handles glyph clusters / RTL
+  // properly which my AnimatedBuilder + substring hack did not.
   // ---------------------------------------------------------------------------
 
   Widget _bubble(_ClaudiuStrings s, String greeting, double scale) {
@@ -328,21 +257,27 @@ class _ClaudiuWelcomeState extends State<ClaudiuWelcome>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AnimatedBuilder(
-            animation: _typewriterCtrl,
-            builder: (context, _) {
-              final shown =
-                  (greeting.length * _typewriterCtrl.value).floor();
-              return Text(
-                greeting.substring(0, shown.clamp(0, greeting.length)),
-                style: TextStyle(
+          AnimatedTextKit(
+            isRepeatingAnimation: false,
+            animatedTexts: [
+              TypewriterAnimatedText(
+                greeting,
+                speed: Duration(
+                  // Per-character speed: total ≈ _typewriterDur. Floor at
+                  // 30ms so very short greetings don't blink past.
+                  milliseconds: (_typewriterDur.inMilliseconds /
+                          greeting.length)
+                      .floor()
+                      .clamp(30, 120),
+                ),
+                textStyle: TextStyle(
                   fontSize: 15 * scale,
                   fontWeight: FontWeight.w600,
                   color: const Color(0xFF0d47a1),
                   height: 1.3,
                 ),
-              );
-            },
+              ),
+            ],
           ),
           SizedBox(height: 4 * scale),
           Text(
@@ -421,9 +356,7 @@ class _ClaudiuWelcomeState extends State<ClaudiuWelcome>
   }
 
   // ---------------------------------------------------------------------------
-  // Side-effects: open mail client / dial number. Same destinations as the
-  // previous WelcomeScreen helpers — kept in sync so a single contact change
-  // updates both Claudiu's offer and any future direct button.
+  // Side-effects: open mail client / dial number.
   // ---------------------------------------------------------------------------
 
   static const String _supportEmail = 'mitglied@icd360s.de';
