@@ -59,6 +59,16 @@ class ClaudiuWelcome extends StatelessWidget {
       problem: 'Am o problemă cu aplicația',
       emergency: 'Urgență — sună-ne',
       claudiuName: 'Claudiu',
+      emergencyIntro: 'Înainte să suni — programul nostru de lucru:',
+      scheduleOffice: 'La birou',
+      scheduleField: 'Pe teren cu clienții',
+      outsideHoursNote:
+          'În afara acestui program preluăm doar urgențele. Poți să ne și scrii la același număr — te contactăm noi.',
+      callNow: 'Sună-ne acum',
+      sendSms: 'Trimite SMS',
+      smsBody:
+          'Urgență ICD360S e.V. — vă rog să mă contactați cât mai curând.',
+      closeButton: 'Închide',
     ),
     'de': _ClaudiuStrings(
       morning: 'Guten Morgen',
@@ -72,6 +82,16 @@ class ClaudiuWelcome extends StatelessWidget {
       problem: 'Ich habe ein Problem mit der App',
       emergency: 'Notfall — ruf uns an',
       claudiuName: 'Claudiu',
+      emergencyIntro: 'Bevor du anrufst — unsere Geschäftszeiten:',
+      scheduleOffice: 'Im Büro',
+      scheduleField: 'Beim Klienten vor Ort',
+      outsideHoursNote:
+          'Außerhalb dieser Zeiten nehmen wir nur Notfälle entgegen. Du kannst uns auch eine SMS schicken — wir melden uns zurück.',
+      callNow: 'Jetzt anrufen',
+      sendSms: 'SMS senden',
+      smsBody:
+          'Notfall ICD360S e.V. — bitte ruft mich so schnell wie möglich zurück.',
+      closeButton: 'Schließen',
     ),
     'en': _ClaudiuStrings(
       morning: 'Good morning',
@@ -85,6 +105,16 @@ class ClaudiuWelcome extends StatelessWidget {
       problem: 'I have a problem with the app',
       emergency: 'Emergency — call us',
       claudiuName: 'Claudiu',
+      emergencyIntro: 'Before you call — our office hours:',
+      scheduleOffice: 'At the office',
+      scheduleField: 'On the field with our clients',
+      outsideHoursNote:
+          "Outside these hours we only handle emergencies. You can also text the same number — we'll get back to you.",
+      callNow: 'Call us now',
+      sendSms: 'Send SMS',
+      smsBody:
+          'Emergency at ICD360S e.V. — please contact me as soon as possible.',
+      closeButton: 'Close',
     ),
     'ru': _ClaudiuStrings(
       morning: 'Доброе утро',
@@ -98,6 +128,16 @@ class ClaudiuWelcome extends StatelessWidget {
       problem: 'У меня проблема с приложением',
       emergency: 'Срочно — позвоните нам',
       claudiuName: 'Клаудиу',
+      emergencyIntro: 'Прежде чем звонить — наш график работы:',
+      scheduleOffice: 'В офисе',
+      scheduleField: 'На выезде с клиентами',
+      outsideHoursNote:
+          'Вне этого времени мы принимаем только срочные обращения. Можно также отправить SMS — мы свяжемся с вами.',
+      callNow: 'Позвонить сейчас',
+      sendSms: 'Отправить SMS',
+      smsBody:
+          'Срочно, ICD360S e.V. — пожалуйста, свяжитесь со мной как можно скорее.',
+      closeButton: 'Закрыть',
     ),
     'uk': _ClaudiuStrings(
       morning: 'Доброго ранку',
@@ -111,6 +151,16 @@ class ClaudiuWelcome extends StatelessWidget {
       problem: 'У мене проблема з застосунком',
       emergency: 'Терміново — зателефонуйте нам',
       claudiuName: 'Клаудіу',
+      emergencyIntro: 'Перш ніж телефонувати — наш робочий графік:',
+      scheduleOffice: 'В офісі',
+      scheduleField: 'На виїзді з клієнтами',
+      outsideHoursNote:
+          'Поза цим часом ми приймаємо лише термінові звернення. Можна також надіслати SMS — ми зв\'яжемося з вами.',
+      callNow: 'Зателефонувати зараз',
+      sendSms: 'Надіслати SMS',
+      smsBody:
+          'Терміново, ICD360S e.V. — зв\'яжіться зі мною якнайшвидше.',
+      closeButton: 'Закрити',
     ),
   };
 
@@ -151,7 +201,9 @@ class ClaudiuWelcome extends StatelessWidget {
           MaterialPageRoute(builder: (_) => const ProblemReportScreen()),
         );
       }),
-      _OptionData(Icons.phone_in_talk, s.emergency, true, _call),
+      _OptionData(Icons.phone_in_talk, s.emergency, true, () {
+        _showEmergencySheet(context, s);
+      }),
     ];
 
     return Column(
@@ -360,16 +412,315 @@ class ClaudiuWelcome extends StatelessWidget {
   }
 
   // ---------------------------------------------------------------------------
-  // Side-effects: dial the emergency line. The "problem with the app"
-  // option now navigates to ProblemReportScreen — no more mailto: from
-  // Claudiu's surface.
+  // Side-effects.
   // ---------------------------------------------------------------------------
 
   static const String _supportPhone = '+4916094482053';
 
+  /// Pretty form for the dialer / SMS app: spaces every 4 digits, makes
+  /// it easier to read at a glance in the bottom-sheet card.
+  static String get _supportPhoneDisplay => '+49 1609 4482053';
+
+  /// Office windows shown to the user. Plain ASCII colon — kept here as
+  /// constants so they're easy to find when the schedule changes.
+  static const String _scheduleOfficeWindow = '10:00 – 12:00';
+  static const String _scheduleFieldWindow  = '14:00 – 17:00';
+
   Future<void> _call() async {
     final uri = Uri(scheme: 'tel', path: _supportPhone);
     if (await canLaunchUrl(uri)) await launchUrl(uri);
+  }
+
+  Future<void> _sms(String body) async {
+    // sms:+number?body=… is the supported scheme on every platform we
+    // ship to (Android: handled by Messages, iOS: Messages, Linux/macOS/
+    // Windows: KDE Connect / Phone Link forwards to the paired device).
+    final uri = Uri.parse(
+      'sms:$_supportPhone?body=${Uri.encodeQueryComponent(body)}',
+    );
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
+  /// Slide-in bottom sheet shown when the user taps the "Emergency" option.
+  /// Replaces the silent tel: dial — the office hours are surfaced first
+  /// so the caller knows whether they'll reach a human or after-hours
+  /// emergency mode, and we offer SMS as an alternative for non-urgent
+  /// callbacks.
+  Future<void> _showEmergencySheet(
+    BuildContext context,
+    _ClaudiuStrings s,
+  ) async {
+    await showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (sheetCtx) {
+        return Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFF0d47a1),
+                Color(0xFF1565c0),
+              ],
+            ),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
+          ),
+          child: SafeArea(
+            top: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Drag handle.
+                  Center(
+                    child: Container(
+                      width: 38,
+                      height: 4,
+                      margin: const EdgeInsets.only(bottom: 14),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.35),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                  ),
+                  // Mascot + bubble row.
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 64,
+                        height: 64,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.15),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.4),
+                            width: 2,
+                          ),
+                        ),
+                        child: const Icon(Icons.phone_in_talk,
+                            color: Colors.white, size: 32),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4),
+                              topRight: Radius.circular(14),
+                              bottomLeft: Radius.circular(14),
+                              bottomRight: Radius.circular(14),
+                            ),
+                          ),
+                          child: Text(
+                            s.emergencyIntro,
+                            style: const TextStyle(
+                              fontSize: 13.5,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF0d47a1),
+                              height: 1.3,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 18),
+
+                  // Office hours.
+                  _scheduleRow(
+                    icon: Icons.business_outlined,
+                    label: s.scheduleOffice,
+                    window: _scheduleOfficeWindow,
+                  ),
+                  const SizedBox(height: 10),
+                  _scheduleRow(
+                    icon: Icons.directions_walk,
+                    label: s.scheduleField,
+                    window: _scheduleFieldWindow,
+                  ),
+                  const SizedBox(height: 14),
+
+                  // Outside-hours note.
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.08),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.18),
+                      ),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(Icons.info_outline,
+                            color: Colors.amber.shade200, size: 18),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            s.outsideHoursNote,
+                            style: TextStyle(
+                              color: Colors.white.withValues(alpha: 0.9),
+                              fontSize: 12.5,
+                              height: 1.4,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // Call action.
+                  _bigAction(
+                    icon: Icons.phone_in_talk,
+                    label: s.callNow,
+                    sub: _supportPhoneDisplay,
+                    onTap: () {
+                      Navigator.of(sheetCtx).pop();
+                      _call();
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  // SMS action.
+                  _bigAction(
+                    icon: Icons.sms_outlined,
+                    label: s.sendSms,
+                    sub: _supportPhoneDisplay,
+                    onTap: () {
+                      Navigator.of(sheetCtx).pop();
+                      _sms(s.smsBody);
+                    },
+                  ),
+                  const SizedBox(height: 14),
+
+                  // Close.
+                  Center(
+                    child: TextButton(
+                      onPressed: () => Navigator.of(sheetCtx).pop(),
+                      style: TextButton.styleFrom(
+                        foregroundColor:
+                            Colors.white.withValues(alpha: 0.85),
+                      ),
+                      child: Text(s.closeButton),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _scheduleRow({
+    required IconData icon,
+    required String label,
+    required String window,
+  }) {
+    return Row(
+      children: [
+        Icon(icon, color: Colors.white, size: 22),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        Container(
+          padding:
+              const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.18),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Text(
+            window,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _bigAction({
+    required IconData icon,
+    required String label,
+    required String sub,
+    required VoidCallback onTap,
+  }) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          padding:
+              const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.14),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: Colors.white.withValues(alpha: 0.4),
+              width: 1.5,
+            ),
+          ),
+          child: Row(
+            children: [
+              Icon(icon, color: Colors.white, size: 22),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      label,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      sub,
+                      style: TextStyle(
+                        color: Colors.white.withValues(alpha: 0.85),
+                        fontSize: 12.5,
+                        letterSpacing: 0.6,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.chevron_right,
+                  color: Colors.white.withValues(alpha: 0.7), size: 20),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -393,6 +744,15 @@ class _ClaudiuStrings {
   final String problem;
   final String emergency;
   final String claudiuName;
+  // Emergency bottom sheet copy.
+  final String emergencyIntro;
+  final String scheduleOffice;
+  final String scheduleField;
+  final String outsideHoursNote;
+  final String callNow;
+  final String sendSms;
+  final String smsBody;
+  final String closeButton;
 
   const _ClaudiuStrings({
     required this.morning,
@@ -406,5 +766,13 @@ class _ClaudiuStrings {
     required this.problem,
     required this.emergency,
     required this.claudiuName,
+    required this.emergencyIntro,
+    required this.scheduleOffice,
+    required this.scheduleField,
+    required this.outsideHoursNote,
+    required this.callNow,
+    required this.sendSms,
+    required this.smsBody,
+    required this.closeButton,
   });
 }
