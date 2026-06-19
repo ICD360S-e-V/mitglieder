@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.23.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.22.1...v1.23.0) (2026-06-19)
+
+
+### Features
+
+* **welcome:** split "I have a problem" into write/chat choice (chat coming soon) ([81d7148](https://github.com/ICD360S-e-V/mitglieder/commit/81d71485b03ea1ca7d558822f39c3ebddcb08072))
+
 ## [1.22.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.22.0...v1.22.1) (2026-06-19)
 
 
