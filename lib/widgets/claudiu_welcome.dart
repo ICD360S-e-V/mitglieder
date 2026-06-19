@@ -4,7 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../screens/login.dart';
-import '../screens/problem_report.dart';
+import '../screens/problem_help.dart';
 import '../screens/register.dart';
 import '../services/language_service.dart';
 
@@ -198,7 +198,7 @@ class ClaudiuWelcome extends StatelessWidget {
       _OptionData(Icons.bug_report_outlined, s.problem, false, () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => const ProblemReportScreen()),
+          MaterialPageRoute(builder: (_) => const ProblemHelpScreen()),
         );
       }),
       _OptionData(Icons.phone_in_talk, s.emergency, true, () {
