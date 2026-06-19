@@ -3,6 +3,8 @@ import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/secure_storage_helper.dart';
 import '../services/update_service.dart';
+import '../widgets/claudiu_login_coach.dart';
+import '../widgets/icd360s_header.dart';
 import '../widgets/login_tab.dart';
 import '../widgets/approval_waiting_dialog.dart';
 import '../utils/error_helpers.dart';
@@ -25,6 +27,16 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isLoading = false;
   String? _errorMessage;
+
+  /// Live digit count of the second (5-digit) field, pushed up from
+  /// LoginTab and read by ClaudiuLoginCoach so the speech bubble can
+  /// refresh on every keystroke without lifting a controller.
+  int _digitCount = 0;
+
+  /// First name returned by the server after a successful login. When set
+  /// (and just before the dashboard push), the coach swaps in the
+  /// "Te-am găsit, <name>!" message for ~1 second.
+  String? _foundName;
 
   @override
   void initState() {
@@ -142,6 +154,11 @@ class _LoginPageState extends State<LoginPage> {
     await _secureStorage.write(key: 'approval_mitgliedernummer', value: mitgliedernummer);
 
     if (!mounted) return;
+    // Flash Claudiu's "found you, {name}" line for a beat so the user
+    // sees a friendly confirmation before the dashboard pushes in.
+    setState(() => _foundName = (user['name'] ?? '').toString().split(' ').first);
+    await Future.delayed(const Duration(milliseconds: 700));
+    if (!mounted) return;
 
     Navigator.pushAndRemoveUntil(
       context,
@@ -174,6 +191,9 @@ class _LoginPageState extends State<LoginPage> {
       mitgliedernummer: mitgliedernummer,
     );
 
+    if (!mounted) return;
+    setState(() => _foundName = (user['name'] ?? '').toString().split(' ').first);
+    await Future.delayed(const Duration(milliseconds: 700));
     if (!mounted) return;
 
     Navigator.pushAndRemoveUntil(
@@ -260,22 +280,29 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      // Logo
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.1),
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(Icons.login, size: 48, color: Color(0xFF4a90d9)),
+                      // Brand anchor — same name + tri-colour slogan
+                      // we show on the welcome screen, in its compact
+                      // size so the login form stays dominant.
+                      const Icd360sHeader(compact: true),
+                      const SizedBox(height: 20),
+                      // Claudiu coach replaces the generic logo. The
+                      // bubble keeps switching message based on form
+                      // state; the forgot panel slides in after 8 s of
+                      // inactivity or immediately on auth error.
+                      ClaudiuLoginCoach(
+                        digitCount: _digitCount,
+                        isLoading: _isLoading,
+                        errorMessage: _errorMessage,
+                        foundName: _foundName,
                       ),
                       const SizedBox(height: 16),
-                      // Form
                       LoginTab(
                         mitgliedernummerController: _mitgliedernummerController,
                         isLoading: _isLoading,
                         errorMessage: _errorMessage,
                         onLogin: _login,
+                        onDigitsChanged: (n) =>
+                            setState(() => _digitCount = n),
                       ),
                     ],
                   ),
