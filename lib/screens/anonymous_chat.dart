@@ -1,94 +1,236 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+import '../services/anonymous_chat_service.dart';
+import '../services/chat_service.dart';
 import '../services/language_service.dart';
 import '../widgets/icd360s_header.dart';
-import 'problem_report.dart';
 
-/// Live anonymous chat surface. Currently a placeholder that ships the
-/// landing UX (mascot + bubble + "coming soon" copy + safe alternatives)
-/// while the server-side work lands in a follow-up commit:
-///
-///   • SQL: add users.is_anonymous + new anonymous_chat_users table
-///   • PHP: /api/public/anonymous_chat/init.php → creates a ghost user
-///     record and returns mitgliedernummer + JWT
-///   • Client: connect via the existing chat_service.dart with that
-///     mitgliedernummer; the WebSocket auth + translator + read receipts
-///     pipeline already works because the anonymous user IS a row in
-///     the users table, just flagged is_anonymous=1.
-///
-/// Until that ships, the screen offers the two fallback paths the user
-/// already knows: the written report form and a phone call.
-class AnonymousChatScreen extends StatelessWidget {
-  final String supportPhone;
-  const AnonymousChatScreen({
-    super.key,
-    this.supportPhone = '+4916094482053',
-  });
+/// Live anonymous chat surface — visitor side. Hits
+/// /api/public/anonymous_chat/init.php for a ghost user + JWT, then
+/// connects through the existing [ChatService] WebSocket. The auth
+/// path, the translator, read receipts and the 5-minute TTL on read
+/// messages all keep working because, on the server, the ghost user
+/// is a row in the `users` table with is_anonymous = 1.
+class AnonymousChatScreen extends StatefulWidget {
+  const AnonymousChatScreen({super.key});
+
+  @override
+  State<AnonymousChatScreen> createState() => _AnonymousChatScreenState();
+}
+
+class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
+  final _chatService = ChatService();
+  final _inputController = TextEditingController();
+  final _scrollController = ScrollController();
+
+  AnonymousChatSession? _session;
+  final List<ChatMessage> _messages = [];
+
+  bool _connecting = true;
+  bool _failed = false;
+  bool _wsConnected = false;
+  bool _adminTyping = false;
+
+  StreamSubscription<ChatMessage>? _messageSub;
+  StreamSubscription<bool>? _connectionSub;
+  StreamSubscription<TypingEvent>? _typingSub;
+  Timer? _typingResetTimer;
+
+  // ---------------------------------------------------------------------------
+  // Per-language strings (5 priority locales + English fallback).
+  // ---------------------------------------------------------------------------
 
   static const Map<String, _Strings> _strings = {
     'ro': _Strings(
       title: 'Chat anonim',
       greeting: 'Salut!',
-      ask:
-          'Chat-ul live anonim e aproape gata. Până atunci, scrie-ne un raport sau sună-ne — primim mesajul instant.',
-      writeButton: 'Scriu un raport',
-      callButton: 'Sună-ne',
-      soonBadge: 'În curând',
+      welcome:
+          'Te ascult. Scrie-mi orice — nu am nevoie de numele tău. Răspund de îndată ce sunt aici.',
+      hint: 'Scrie un mesaj…',
+      waitingOperator: 'Așteptăm ca un operator să răspundă…',
+      connecting: 'Mă conectez…',
+      connectionFailed: 'Nu am putut deschide chat-ul. Încearcă din nou sau sună-ne.',
+      retry: 'Încearcă din nou',
+      online: 'Conectat',
+      offline: 'Reconectare…',
+      adminTyping: 'Operatorul scrie…',
     ),
     'de': _Strings(
       title: 'Anonymer Chat',
       greeting: 'Hallo!',
-      ask:
-          'Der anonyme Live-Chat ist fast fertig. Bis dahin schreib uns einen Bericht oder ruf an — wir bekommen es sofort.',
-      writeButton: 'Bericht schreiben',
-      callButton: 'Ruf uns an',
-      soonBadge: 'Bald',
+      welcome:
+          'Ich höre dir zu. Schreib alles, was dich bewegt — ich brauche keinen Namen. Ich antworte, sobald ich da bin.',
+      hint: 'Nachricht schreiben…',
+      waitingOperator: 'Wir warten, bis ein Mitarbeiter antwortet…',
+      connecting: 'Verbinde…',
+      connectionFailed: 'Chat konnte nicht geöffnet werden. Versuch erneut oder ruf an.',
+      retry: 'Erneut versuchen',
+      online: 'Verbunden',
+      offline: 'Wiederverbindung…',
+      adminTyping: 'Mitarbeiter schreibt…',
     ),
     'en': _Strings(
       title: 'Anonymous chat',
       greeting: 'Hi!',
-      ask:
-          "Anonymous live chat is almost ready. Until then, send us a report or call — we'll get it right away.",
-      writeButton: 'Write a report',
-      callButton: 'Call us',
-      soonBadge: 'Soon',
+      welcome:
+          "I'm listening. Write anything you'd like — no name needed. I'll reply as soon as I'm in.",
+      hint: 'Write a message…',
+      waitingOperator: 'Waiting for an operator to reply…',
+      connecting: 'Connecting…',
+      connectionFailed: "Couldn't open the chat. Try again or call us.",
+      retry: 'Try again',
+      online: 'Connected',
+      offline: 'Reconnecting…',
+      adminTyping: 'Operator is typing…',
     ),
     'ru': _Strings(
       title: 'Анонимный чат',
       greeting: 'Привет!',
-      ask:
-          'Анонимный чат почти готов. Пока напиши нам отчёт или позвони — мы получим сразу.',
-      writeButton: 'Написать отчёт',
-      callButton: 'Позвонить',
-      soonBadge: 'Скоро',
+      welcome:
+          'Я слушаю. Пиши что угодно — имя не нужно. Отвечу, как только буду на связи.',
+      hint: 'Написать сообщение…',
+      waitingOperator: 'Ждём ответа оператора…',
+      connecting: 'Подключаюсь…',
+      connectionFailed: 'Не удалось открыть чат. Попробуй ещё раз или позвони.',
+      retry: 'Попробовать снова',
+      online: 'Подключено',
+      offline: 'Переподключение…',
+      adminTyping: 'Оператор печатает…',
     ),
     'uk': _Strings(
       title: 'Анонімний чат',
       greeting: 'Привіт!',
-      ask:
-          'Анонімний чат майже готовий. Поки напиши нам звіт або зателефонуй — ми отримаємо відразу.',
-      writeButton: 'Написати звіт',
-      callButton: 'Зателефонувати',
-      soonBadge: 'Скоро',
+      welcome:
+          'Я слухаю. Пиши що завгодно — імʼя не потрібне. Відповім, щойно буду на звʼязку.',
+      hint: 'Написати повідомлення…',
+      waitingOperator: 'Чекаємо на відповідь оператора…',
+      connecting: 'Підключаюсь…',
+      connectionFailed: 'Не вдалося відкрити чат. Спробуй ще раз або зателефонуй.',
+      retry: 'Спробувати ще раз',
+      online: 'Підключено',
+      offline: 'Перепідключення…',
+      adminTyping: 'Оператор пише…',
     ),
   };
 
   static _Strings _stringsFor(String code) =>
       _strings[code] ?? _strings['en']!;
 
-  Future<void> _call() async {
-    final uri = Uri(scheme: 'tel', path: supportPhone);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+  // ---------------------------------------------------------------------------
+  // Lifecycle.
+  // ---------------------------------------------------------------------------
+
+  @override
+  void initState() {
+    super.initState();
+    _bootstrap();
   }
+
+  Future<void> _bootstrap() async {
+    setState(() {
+      _connecting = true;
+      _failed = false;
+    });
+
+    final session = await AnonymousChatService().startSession();
+    if (!mounted) return;
+    if (session == null) {
+      setState(() {
+        _connecting = false;
+        _failed = true;
+      });
+      return;
+    }
+    setState(() => _session = session);
+
+    // Subscribe BEFORE we let the connect-future resolve, so we don't
+    // miss the first frames the server sends right after auth_success.
+    _messageSub = _chatService.messageStream.listen((msg) {
+      if (msg.conversationId != session.conversationId) return;
+      setState(() {
+        _messages.add(msg);
+        // Operator just sent something → clear typing indicator.
+        if (msg.isAdmin) _adminTyping = false;
+      });
+      _scrollToBottom();
+    });
+
+    _connectionSub = _chatService.connectionStream.listen((connected) {
+      if (!mounted) return;
+      setState(() => _wsConnected = connected);
+    });
+
+    _typingSub = _chatService.typingStream.listen((event) {
+      if (!mounted || !event.isAdmin) return;
+      setState(() => _adminTyping = true);
+      _typingResetTimer?.cancel();
+      _typingResetTimer = Timer(const Duration(seconds: 3), () {
+        if (mounted) setState(() => _adminTyping = false);
+      });
+    });
+
+    final ok = await _chatService.connect(session.mitgliedernummer);
+    if (!mounted) return;
+    if (!ok) {
+      setState(() {
+        _connecting = false;
+        _failed = true;
+      });
+      return;
+    }
+
+    _chatService.joinConversation(session.conversationId);
+    setState(() {
+      _connecting = false;
+      _wsConnected = true;
+    });
+  }
+
+  void _send() {
+    final text = _inputController.text.trim();
+    if (text.isEmpty || _session == null || !_wsConnected) return;
+    _chatService.sendMessage(_session!.conversationId, text);
+    _inputController.clear();
+  }
+
+  void _scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_scrollController.hasClients) return;
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent + 80,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOut,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _typingResetTimer?.cancel();
+    _messageSub?.cancel();
+    _connectionSub?.cancel();
+    _typingSub?.cancel();
+    if (_session != null) {
+      _chatService.leaveConversation(_session!.conversationId);
+    }
+    _chatService.disconnect();
+    _inputController.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  // ---------------------------------------------------------------------------
+  // Build.
+  // ---------------------------------------------------------------------------
 
   @override
   Widget build(BuildContext context) {
     final s = _stringsFor(LanguageService.instance.currentCode);
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -104,47 +246,14 @@ class AnonymousChatScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              _header(context, s.title),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const Icd360sHeader(compact: true),
-                      const SizedBox(height: 24),
-                      _mascotAndBubble(s),
-                      const SizedBox(height: 28),
-                      _action(
-                        icon: Icons.edit_outlined,
-                        label: s.writeButton,
-                        onTap: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) =>
-                                  const ProblemReportScreen(),
-                            ),
-                          );
-                        },
-                      )
-                          .animate()
-                          .fadeIn(delay: 400.ms, duration: 400.ms)
-                          .slideY(begin: 0.2, end: 0, delay: 400.ms),
-                      const SizedBox(height: 12),
-                      _action(
-                        icon: Icons.phone_in_talk,
-                        label: s.callButton,
-                        sub: supportPhone,
-                        onTap: _call,
-                      )
-                          .animate()
-                          .fadeIn(delay: 600.ms, duration: 400.ms)
-                          .slideY(begin: 0.2, end: 0, delay: 600.ms),
-                    ],
-                  ),
-                ),
-              ),
+              _header(s),
+              if (_failed)
+                Expanded(child: _errorView(s))
+              else if (_connecting)
+                Expanded(child: _loadingView(s))
+              else
+                Expanded(child: _chatView(s)),
+              if (!_failed && !_connecting) _inputBar(s),
             ],
           ),
         ),
@@ -152,9 +261,14 @@ class AnonymousChatScreen extends StatelessWidget {
     );
   }
 
-  Widget _header(BuildContext context, String title) {
-    return Padding(
+  Widget _header(_Strings s) {
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: Colors.white.withValues(alpha: 0.15)),
+        ),
+      ),
       child: Row(
         children: [
           IconButton(
@@ -162,14 +276,51 @@ class AnonymousChatScreen extends StatelessWidget {
             icon: const Icon(Icons.arrow_back, color: Colors.white),
           ),
           Expanded(
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  s.title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        color: _wsConnected
+                            ? const Color(0xFF81C784)
+                            : const Color(0xFFFFB74D),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      _wsConnected ? s.online : s.offline,
+                      style: TextStyle(
+                        color: Colors.white.withValues(alpha: 0.85),
+                        fontSize: 11.5,
+                      ),
+                    ),
+                    if (_session != null) ...[
+                      const SizedBox(width: 10),
+                      Text(
+                        _session!.name,
+                        style: TextStyle(
+                          color: Colors.white.withValues(alpha: 0.65),
+                          fontSize: 11.5,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ],
             ),
           ),
           const SizedBox(width: 48),
@@ -178,201 +329,424 @@ class AnonymousChatScreen extends StatelessWidget {
     );
   }
 
-  Widget _mascotAndBubble(_Strings s) {
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _loadingView(_Strings s) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Container(
-                width: 72,
-                height: 72,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.12),
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.35),
-                    width: 2,
-                  ),
-                ),
-                child: const Icon(
-                  Icons.chat_bubble_outline,
-                  size: 38,
-                  color: Colors.white,
-                ),
-              ),
-              Positioned(
-                bottom: -6,
-                right: -8,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 3,
-                  ),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFFFB74D),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    s.soonBadge,
-                    style: const TextStyle(
-                      color: Color(0xFF0d47a1),
-                      fontSize: 10,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )
-              .animate()
-              .slideX(
-                begin: -0.5,
-                end: 0,
-                duration: 500.ms,
-                curve: Curves.easeOutCubic,
-              )
-              .fadeIn(duration: 400.ms),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 14,
-                vertical: 10,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(4),
-                  topRight: Radius.circular(14),
-                  bottomLeft: Radius.circular(14),
-                  bottomRight: Radius.circular(14),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.15),
-                    blurRadius: 6,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    s.greeting,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xFF0d47a1),
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    s.ask,
-                    style: TextStyle(
-                      fontSize: 13.5,
-                      color: Colors.grey[800],
-                      height: 1.4,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '— Claudiu',
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: Colors.grey[500],
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ],
-              ),
-            ).animate().fadeIn(delay: 250.ms, duration: 400.ms),
+          const CircularProgressIndicator(color: Colors.white),
+          const SizedBox(height: 16),
+          Text(
+            s.connecting,
+            style: TextStyle(
+              color: Colors.white.withValues(alpha: 0.85),
+              fontSize: 14,
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _action({
-    required IconData icon,
-    required String label,
-    String? sub,
-    required VoidCallback onTap,
-  }) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
-          padding:
-              const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.14),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: Colors.white.withValues(alpha: 0.4),
-              width: 1.5,
+  Widget _errorView(_Strings s) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icd360sHeader(compact: true),
+          const SizedBox(height: 20),
+          Icon(Icons.cloud_off, color: Colors.amber.shade200, size: 56),
+          const SizedBox(height: 16),
+          Text(
+            s.connectionFailed,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white.withValues(alpha: 0.9),
+              fontSize: 14,
+              height: 1.4,
             ),
           ),
-          child: Row(
-            children: [
-              Icon(icon, color: Colors.white, size: 22),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      label,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    if (sub != null) ...[
-                      const SizedBox(height: 2),
-                      Text(
-                        sub,
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: 0.85),
-                          fontSize: 12.5,
-                          letterSpacing: 0.6,
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            onPressed: _bootstrap,
+            icon: const Icon(Icons.refresh),
+            label: Text(s.retry),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white.withValues(alpha: 0.18),
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 22,
+                vertical: 14,
               ),
-              Icon(Icons.chevron_right,
-                  color: Colors.white.withValues(alpha: 0.7), size: 20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              side: BorderSide(
+                color: Colors.white.withValues(alpha: 0.45),
+                width: 1.5,
+              ),
+              elevation: 0,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _chatView(_Strings s) {
+    return Column(
+      children: [
+        Expanded(
+          child: ListView(
+            controller: _scrollController,
+            padding: const EdgeInsets.fromLTRB(16, 20, 16, 12),
+            children: [
+              _claudiuWelcome(s),
+              if (_messages.isEmpty) ...[
+                const SizedBox(height: 24),
+                _waitingNote(s),
+              ] else ...[
+                const SizedBox(height: 18),
+                for (final m in _messages) _messageBubble(m),
+              ],
+              if (_adminTyping) ...[
+                const SizedBox(height: 8),
+                _typingIndicator(s),
+              ],
             ],
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _claudiuWelcome(_Strings s) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: 56,
+          height: 56,
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.12),
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.white.withValues(alpha: 0.35),
+              width: 2,
+            ),
+          ),
+          child: const Icon(
+            Icons.accessible_forward,
+            size: 32,
+            color: Colors.white,
+          ),
+        ).animate().slideX(begin: -0.5, end: 0, duration: 500.ms).fadeIn(),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(4),
+                topRight: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
+                bottomRight: Radius.circular(12),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  s.greeting,
+                  style: const TextStyle(
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xFF0d47a1),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  s.welcome,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey[800],
+                    height: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '— Claudiu',
+                  style: TextStyle(
+                    fontSize: 10.5,
+                    color: Colors.grey[500],
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ],
+            ),
+          ).animate().fadeIn(delay: 250.ms, duration: 400.ms),
+        ),
+      ],
+    );
+  }
+
+  Widget _waitingNote(_Strings s) {
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(
+              width: 14,
+              height: 14,
+              child: CircularProgressIndicator(
+                color: Colors.white,
+                strokeWidth: 2,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Text(
+              s.waitingOperator,
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.85),
+                fontSize: 12.5,
+              ),
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  Widget _messageBubble(ChatMessage m) {
+    final mine = !m.isAdmin;
+    final align = mine ? CrossAxisAlignment.end : CrossAxisAlignment.start;
+    final bg = mine ? const Color(0xFF1565c0) : Colors.white;
+    final fg = mine ? Colors.white : const Color(0xFF0d47a1);
+    final borderColor = mine
+        ? Colors.white.withValues(alpha: 0.35)
+        : Colors.transparent;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Column(
+        crossAxisAlignment: align,
+        children: [
+          if (!mine && m.senderName.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(left: 8, bottom: 2),
+              child: Text(
+                m.senderName,
+                style: TextStyle(
+                  color: Colors.white.withValues(alpha: 0.8),
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.72,
+            ),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 14,
+                vertical: 10,
+              ),
+              decoration: BoxDecoration(
+                color: bg,
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(14),
+                  topRight: const Radius.circular(14),
+                  bottomLeft: Radius.circular(mine ? 14 : 4),
+                  bottomRight: Radius.circular(mine ? 4 : 14),
+                ),
+                border: Border.all(color: borderColor),
+              ),
+              child: Text(
+                m.message,
+                style: TextStyle(color: fg, fontSize: 14, height: 1.35),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 2, left: 6, right: 6),
+            child: Text(
+              _formatTime(m.createdAt),
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.55),
+                fontSize: 10,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _typingIndicator(_Strings s) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 12, top: 4),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (var i = 0; i < 3; i++)
+                  Padding(
+                    padding: EdgeInsets.only(right: i < 2 ? 4 : 0),
+                    child: Container(
+                      width: 6,
+                      height: 6,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF1565c0),
+                        shape: BoxShape.circle,
+                      ),
+                    ).animate(
+                          onPlay: (c) => c.repeat(reverse: true),
+                          delay: (200 * i).ms,
+                        ).fadeIn(duration: 500.ms).fadeOut(duration: 500.ms),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            s.adminTyping,
+            style: TextStyle(
+              color: Colors.white.withValues(alpha: 0.75),
+              fontSize: 11.5,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _inputBar(_Strings s) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(
+        12,
+        10,
+        12,
+        12 + MediaQuery.of(context).viewInsets.bottom * 0,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.06),
+        border: Border(
+          top: BorderSide(color: Colors.white.withValues(alpha: 0.15)),
+        ),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Expanded(
+            child: TextField(
+              controller: _inputController,
+              minLines: 1,
+              maxLines: 4,
+              style: const TextStyle(color: Colors.white, fontSize: 14),
+              decoration: InputDecoration(
+                hintText: s.hint,
+                hintStyle: TextStyle(
+                  color: Colors.white.withValues(alpha: 0.55),
+                  fontSize: 14,
+                ),
+                filled: true,
+                fillColor: Colors.white.withValues(alpha: 0.1),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 12,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(22),
+                  borderSide: BorderSide(
+                    color: Colors.white.withValues(alpha: 0.3),
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(22),
+                  borderSide: BorderSide(
+                    color: Colors.white.withValues(alpha: 0.3),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(22),
+                  borderSide: const BorderSide(color: Colors.white, width: 2),
+                ),
+              ),
+              onChanged: (_) {
+                if (_session != null && _wsConnected) {
+                  _chatService.sendTyping(_session!.conversationId);
+                }
+              },
+              onSubmitted: (_) => _send(),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Material(
+            color: Colors.white.withValues(alpha: 0.16),
+            shape: const CircleBorder(),
+            child: InkWell(
+              onTap: _wsConnected ? _send : null,
+              customBorder: const CircleBorder(),
+              child: const Padding(
+                padding: EdgeInsets.all(12),
+                child: Icon(Icons.send, color: Colors.white, size: 22),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _formatTime(DateTime t) {
+    final h = t.hour.toString().padLeft(2, '0');
+    final m = t.minute.toString().padLeft(2, '0');
+    return '$h:$m';
   }
 }
 
 class _Strings {
   final String title;
   final String greeting;
-  final String ask;
-  final String writeButton;
-  final String callButton;
-  final String soonBadge;
+  final String welcome;
+  final String hint;
+  final String waitingOperator;
+  final String connecting;
+  final String connectionFailed;
+  final String retry;
+  final String online;
+  final String offline;
+  final String adminTyping;
 
   const _Strings({
     required this.title,
     required this.greeting,
-    required this.ask,
-    required this.writeButton,
-    required this.callButton,
-    required this.soonBadge,
+    required this.welcome,
+    required this.hint,
+    required this.waitingOperator,
+    required this.connecting,
+    required this.connectionFailed,
+    required this.retry,
+    required this.online,
+    required this.offline,
+    required this.adminTyping,
   });
 }
