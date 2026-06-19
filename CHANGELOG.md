@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.6...v1.17.0) (2026-06-19)
+
+
+### Features
+
+* **welcome:** conversational entry — Claudiu mascot replaces button stack ([820f092](https://github.com/ICD360S-e-V/mitglieder/commit/820f0923823fab12107ce2f58f1f5eb1a6d1791f))
+
 ## [1.16.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.16.5...v1.16.6) (2026-06-18)
 
 
