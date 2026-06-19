@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.23.0...v1.24.0) (2026-06-19)
+
+
+### Features
+
+* **chat:** live anonymous chat — server schema + endpoint, client service + screen ([48f9e82](https://github.com/ICD360S-e-V/mitglieder/commit/48f9e825034854daa537b7263e2678bffa5b2037))
+
 ## [1.23.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.22.1...v1.23.0) (2026-06-19)
 
 
