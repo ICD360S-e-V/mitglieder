@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.4...v1.19.0) (2026-06-19)
+
+
+### Features
+
+* **diag:** Claudiu-style consent dialog + anonymize the payload ([e334da2](https://github.com/ICD360S-e-V/mitglieder/commit/e334da230a311290078968a64d5f394d31a4f7c2))
+
 ## [1.18.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.3...v1.18.4) (2026-06-19)
 
 
