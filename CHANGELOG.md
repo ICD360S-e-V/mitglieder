@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.22.0...v1.22.1) (2026-06-19)
+
+
+### Bug Fixes
+
+* **deeplinks:** declare tel:/sms: schemes for url_launcher on every platform ([fd13880](https://github.com/ICD360S-e-V/mitglieder/commit/fd13880935bf5ed2be8a8353512d439d878ff6ff))
+
 ## [1.22.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.21.2...v1.22.0) (2026-06-19)
 
 
