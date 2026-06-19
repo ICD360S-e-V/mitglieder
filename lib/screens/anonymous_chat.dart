@@ -29,15 +29,21 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
   AnonymousChatSession? _session;
   final List<ChatMessage> _messages = [];
 
+  /// Highest chat_messages.id we have locally — used to ask the polling
+  /// endpoint only for newer rows.
+  int _lastMessageId = 0;
+
   bool _connecting = true;
   bool _failed = false;
   bool _wsConnected = false;
   bool _adminTyping = false;
+  bool _sending = false;
 
   StreamSubscription<ChatMessage>? _messageSub;
   StreamSubscription<bool>? _connectionSub;
   StreamSubscription<TypingEvent>? _typingSub;
   Timer? _typingResetTimer;
+  Timer? _pollTimer;
 
   // ---------------------------------------------------------------------------
   // Per-language strings (5 priority locales + English fallback).
@@ -146,16 +152,12 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     }
     setState(() => _session = session);
 
-    // Subscribe BEFORE we let the connect-future resolve, so we don't
-    // miss the first frames the server sends right after auth_success.
+    // Subscribe to the WebSocket streams. Realtime is the happy path
+    // but the screen is wired so HTTP send + polling stay authoritative
+    // even if the socket drops mid-conversation.
     _messageSub = _chatService.messageStream.listen((msg) {
       if (msg.conversationId != session.conversationId) return;
-      setState(() {
-        _messages.add(msg);
-        // Operator just sent something → clear typing indicator.
-        if (msg.isAdmin) _adminTyping = false;
-      });
-      _scrollToBottom();
+      _mergeMessage(msg);
     });
 
     _connectionSub = _chatService.connectionStream.listen((connected) {
@@ -172,28 +174,99 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
       });
     });
 
+    // Load conversation history before attempting WS — if the visitor
+    // is returning, they see prior messages immediately even if the
+    // socket takes time (or fails).
+    await _pollOnce();
+
+    // Background polling — 3 s cadence is fine for an interactive chat
+    // and keeps the visitor up-to-date when the WS isn't delivering.
+    _pollTimer = Timer.periodic(
+      const Duration(seconds: 3),
+      (_) => _pollOnce(),
+    );
+
+    if (!mounted) return;
+    setState(() {
+      _connecting = false;
+    });
+
+    // Fire-and-forget the WS connection. Failure here only disables the
+    // pretty "Online" indicator — HTTP polling above keeps the chat
+    // working.
     final ok = await _chatService.connect(session.mitgliedernummer);
     if (!mounted) return;
-    if (!ok) {
-      setState(() {
-        _connecting = false;
-        _failed = true;
-      });
+    if (ok) {
+      _chatService.joinConversation(session.conversationId);
+      setState(() => _wsConnected = true);
+    }
+  }
+
+  /// Poll once and merge any new messages into the local list.
+  Future<void> _pollOnce() async {
+    final session = _session;
+    if (session == null) return;
+    final items = await AnonymousChatService().fetchMessages(
+      conversationId: session.conversationId,
+      lastMessageId: _lastMessageId,
+    );
+    if (!mounted || items.isEmpty) return;
+    for (final item in items) {
+      _mergeMessage(ChatMessage(
+        id: (item['id'] as num).toInt(),
+        conversationId: session.conversationId,
+        senderId: (item['sender_id'] as num).toInt(),
+        senderName: (item['sender_name'] as String?) ?? '',
+        senderRole: (item['sender_role'] as String?) ?? '',
+        isAdmin: item['is_admin'] == true,
+        message: (item['message'] as String?) ?? '',
+        createdAt: DateTime.tryParse((item['created_at'] as String?) ?? '') ??
+            DateTime.now(),
+      ));
+    }
+  }
+
+  /// Append a message and keep the local id watermark up to date.
+  /// Duplicates are dropped — the WS and the poll can both deliver the
+  /// same row and we want it to appear once.
+  void _mergeMessage(ChatMessage msg) {
+    if (msg.id != 0 && _messages.any((m) => m.id == msg.id)) return;
+    setState(() {
+      _messages.add(msg);
+      if (msg.id > _lastMessageId) _lastMessageId = msg.id;
+      if (msg.isAdmin) _adminTyping = false;
+    });
+    _scrollToBottom();
+  }
+
+  Future<void> _send() async {
+    final text = _inputController.text.trim();
+    final session = _session;
+    if (text.isEmpty || session == null || _sending) return;
+
+    // Clear the input optimistically — feels snappy even on slow links.
+    _inputController.clear();
+    setState(() => _sending = true);
+
+    final messageId = await AnonymousChatService().sendMessage(
+      conversationId: session.conversationId,
+      text: text,
+    );
+
+    if (!mounted) return;
+    if (messageId == null) {
+      // Stuff the text back so the visitor can retry without retyping.
+      _inputController.text = text;
+      setState(() => _sending = false);
       return;
     }
 
-    _chatService.joinConversation(session.conversationId);
-    setState(() {
-      _connecting = false;
-      _wsConnected = true;
-    });
-  }
-
-  void _send() {
-    final text = _inputController.text.trim();
-    if (text.isEmpty || _session == null || !_wsConnected) return;
-    _chatService.sendMessage(_session!.conversationId, text);
-    _inputController.clear();
+    // Pull the freshly-saved row down so it shows up immediately —
+    // saves us from waiting on the WS push when the socket is slow or
+    // hasn't reconnected yet.
+    await _pollOnce();
+    if (!mounted) return;
+    setState(() => _sending = false);
   }
 
   void _scrollToBottom() {
@@ -210,6 +283,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
   @override
   void dispose() {
     _typingResetTimer?.cancel();
+    _pollTimer?.cancel();
     _messageSub?.cancel();
     _connectionSub?.cancel();
     _typingSub?.cancel();
@@ -690,7 +764,10 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                   borderSide: const BorderSide(color: Colors.white, width: 2),
                 ),
               ),
+              enabled: !_sending,
               onChanged: (_) {
+                // Best-effort typing indicator. Quietly skipped if the
+                // socket isn't up — HTTP send still works.
                 if (_session != null && _wsConnected) {
                   _chatService.sendTyping(_session!.conversationId);
                 }
@@ -703,11 +780,20 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
             color: Colors.white.withValues(alpha: 0.16),
             shape: const CircleBorder(),
             child: InkWell(
-              onTap: _wsConnected ? _send : null,
+              onTap: _sending ? null : _send,
               customBorder: const CircleBorder(),
-              child: const Padding(
-                padding: EdgeInsets.all(12),
-                child: Icon(Icons.send, color: Colors.white, size: 22),
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: _sending
+                    ? const SizedBox(
+                        width: 22,
+                        height: 22,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 2.4,
+                        ),
+                      )
+                    : const Icon(Icons.send, color: Colors.white, size: 22),
               ),
             ),
           ),

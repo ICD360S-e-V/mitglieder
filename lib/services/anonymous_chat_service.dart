@@ -45,8 +45,12 @@ class AnonymousChatSession {
 /// must be stable across screens so a visitor returning to the chat
 /// surface gets the same conversation thread.
 class AnonymousChatService {
-  static const String _apiUrl =
+  static const String _initUrl =
       'https://icd360sev.icd360s.de/api/public/anonymous_chat/init.php';
+  static const String _sendUrl =
+      'https://icd360sev.icd360s.de/api/public/anonymous_chat/send.php';
+  static const String _messagesUrl =
+      'https://icd360sev.icd360s.de/api/public/anonymous_chat/messages.php';
   static const String _idKey = 'anonymous_chat_id';
   static const String _firstOpenKey = 'anonymous_chat_first_open_at';
 
@@ -117,7 +121,7 @@ class AnonymousChatService {
 
       final response = await _client
           .post(
-            Uri.parse(_apiUrl),
+            Uri.parse(_initUrl),
             headers: {
               'Content-Type': 'application/json',
               'User-Agent': 'ICD360S-Mitglied/1.0',
@@ -152,6 +156,83 @@ class AnonymousChatService {
     } catch (e) {
       _log.error('$e', tag: 'AnonChat');
       return null;
+    }
+  }
+
+  /// Persist a visitor message via the public send endpoint. The HTTP
+  /// path is the source of truth — WebSocket gets a realtime push as a
+  /// side-effect via WebSocketNotifier — so polling fetchMessages() can
+  /// always catch up if the WS dropped.
+  Future<int?> sendMessage({
+    required int conversationId,
+    required String text,
+  }) async {
+    try {
+      final id = await ensureId();
+      final response = await _client
+          .post(
+            Uri.parse(_sendUrl),
+            headers: {
+              'Content-Type': 'application/json',
+              'User-Agent': 'ICD360S-Mitglied/1.0',
+            },
+            body: jsonEncode({
+              'anonymous_id': id,
+              'conversation_id': conversationId,
+              'message': text,
+            }),
+          )
+          .timeout(const Duration(seconds: 15));
+      if (response.statusCode == 201 || response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        if (data['success'] == true) {
+          return (data['message_id'] as num?)?.toInt();
+        }
+      }
+      _log.error(
+        'sendMessage HTTP ${response.statusCode}: ${response.body}',
+        tag: 'AnonChat',
+      );
+    } catch (e) {
+      _log.error('sendMessage: $e', tag: 'AnonChat');
+    }
+    return null;
+  }
+
+  /// Poll for new messages newer than [lastMessageId]. Returns the raw
+  /// item list verbatim so the caller can decide how to merge with
+  /// whatever it already has from the WebSocket stream — typical merge
+  /// is keyed off `id` to drop duplicates.
+  Future<List<Map<String, dynamic>>> fetchMessages({
+    required int conversationId,
+    int lastMessageId = 0,
+  }) async {
+    try {
+      final id = await ensureId();
+      final response = await _client
+          .post(
+            Uri.parse(_messagesUrl),
+            headers: {
+              'Content-Type': 'application/json',
+              'User-Agent': 'ICD360S-Mitglied/1.0',
+            },
+            body: jsonEncode({
+              'anonymous_id': id,
+              'conversation_id': conversationId,
+              'last_message_id': lastMessageId,
+            }),
+          )
+          .timeout(const Duration(seconds: 10));
+      if (response.statusCode != 200) return const [];
+      final data = jsonDecode(response.body) as Map<String, dynamic>;
+      if (data['success'] != true) return const [];
+      final items = data['items'] as List<dynamic>? ?? const [];
+      return items
+          .whereType<Map<String, dynamic>>()
+          .toList(growable: false);
+    } catch (e) {
+      _log.error('fetchMessages: $e', tag: 'AnonChat');
+      return const [];
     }
   }
 }
