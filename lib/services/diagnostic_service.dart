@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'package:battery_plus/battery_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'http_client_factory.dart';
 
 /// Diagnostic Service - sends app diagnostics to server every 15 seconds
@@ -13,8 +15,16 @@ class DiagnosticService {
   static const Duration _interval = Duration(seconds: 120);
 
   Timer? _timer;
-  String? _currentUser;
   String? _currentRole;
+  /// Random hex generated once per device install and persisted in
+  /// SharedPreferences under [_anonymousIdKey]. Replaces the previous
+  /// `user_id` field which was the literal mitgliedernummer — that
+  /// uniquely identified a real member on the diagnostic server, which
+  /// directly contradicted the "no personal data collected" promise the
+  /// consent dialog shows. The anonymous id keeps per-device grouping
+  /// useful for debugging without exposing membership identity.
+  String? _anonymousId;
+  static const String _anonymousIdKey = 'diagnostic_anonymous_id';
   String _appState = 'unknown';
   String _lastScreen = 'unknown';
   final List<String> _recentErrors = [];
@@ -32,9 +42,12 @@ class DiagnosticService {
     _client = IOClient(HttpClientFactory.createPinnedHttpClient());
   }
 
-  /// Start diagnostic reporting
-  void start({String? userId, String? userRole}) {
-    _currentUser = userId;
+  /// Start diagnostic reporting. `userId` is accepted for backwards
+  /// compatibility with callers that still pass the mitgliedernummer but
+  /// is intentionally ignored — the payload always carries the
+  /// anonymous_id instead.
+  Future<void> start({String? userId, String? userRole}) async {
+    await _ensureAnonymousId();
     _currentRole = userRole;
     _sessionStart = DateTime.now();
     _appState = 'running';
@@ -48,7 +61,25 @@ class DiagnosticService {
     // Send initial diagnostic immediately
     _sendDiagnostics();
 
-    debugPrint('[Diagnostic] Started for user: $_currentUser');
+    debugPrint('[Diagnostic] Started (anonymous_id=$_anonymousId)');
+  }
+
+  /// Load the persistent random id, or generate + store one on first use.
+  /// 16 random bytes → 32 hex chars. Survives logout/login but not a
+  /// reinstall — that's the privacy property we want.
+  Future<void> _ensureAnonymousId() async {
+    if (_anonymousId != null) return;
+    final prefs = await SharedPreferences.getInstance();
+    var id = prefs.getString(_anonymousIdKey);
+    if (id == null || id.isEmpty) {
+      final rng = Random.secure();
+      final bytes = List<int>.generate(16, (_) => rng.nextInt(256));
+      id = bytes
+          .map((b) => b.toRadixString(16).padLeft(2, '0'))
+          .join();
+      await prefs.setString(_anonymousIdKey, id);
+    }
+    _anonymousId = id;
   }
 
   /// Stop diagnostic reporting
@@ -60,9 +91,11 @@ class DiagnosticService {
     debugPrint('[Diagnostic] Stopped');
   }
 
-  /// Update current user info
+  /// Update current user info. `userId` (mitgliedernummer) is ignored —
+  /// the payload uses the anonymous_id instead. Only the role is kept,
+  /// since "vorstand sees X bug more often than mitglied" is useful
+  /// debugging signal and doesn't identify an individual.
   void setUser(String? userId, String? userRole) {
-    _currentUser = userId;
     _currentRole = userRole;
   }
 
@@ -136,7 +169,7 @@ class DiagnosticService {
       final batteryInfo = await _getBatteryInfo();
       final diagnostics = {
         'timestamp': DateTime.now().toIso8601String(),
-        'user_id': _currentUser,
+        'anonymous_id': _anonymousId,
         'user_role': _currentRole,
         'app_state': _appState,
         'last_screen': _lastScreen,
