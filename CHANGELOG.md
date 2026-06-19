@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.0...v1.18.1) (2026-06-19)
+
+
+### Refactor
+
+* **welcome:** use flutter_animate + animated_text_kit instead of hand-rolled state ([168d0d5](https://github.com/ICD360S-e-V/mitglieder/commit/168d0d593805dcc0a8151041306ed3c137addd00))
+
 ## [1.18.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.17.0...v1.18.0) (2026-06-19)
 
 
