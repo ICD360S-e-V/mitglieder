@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.3...v1.18.4) (2026-06-19)
+
+
+### Bug Fixes
+
+* **flatpak:** add RuntimeRepo= to .flatpakref so GUI store can install ([a8a0887](https://github.com/ICD360S-e-V/mitglieder/commit/a8a08870500e6ca96c3e0587942a6386cc2c3b30))
+
 ## [1.18.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.2...v1.18.3) (2026-06-19)
 
 
