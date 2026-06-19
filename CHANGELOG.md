@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.20.1...v1.21.0) (2026-06-19)
+
+
+### Features
+
+* **report:** interactive ProblemReportScreen + public bug-report endpoint ([924f63f](https://github.com/ICD360S-e-V/mitglieder/commit/924f63fa0274f01de459f1368d0cfefc913a638f))
+
 ## [1.20.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.20.0...v1.20.1) (2026-06-19)
 
 
