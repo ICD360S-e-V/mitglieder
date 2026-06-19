@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.2...v1.18.3) (2026-06-19)
+
+
+### Bug Fixes
+
+* **flatpak:** GPG-sign the OSTree commits + embed pubkey in .flatpakref/.flatpakrepo ([d9b9568](https://github.com/ICD360S-e-V/mitglieder/commit/d9b9568b05a915a8f2dab11460d1a967835ee2ad))
+
 ## [1.18.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.18.1...v1.18.2) (2026-06-19)
 
 
