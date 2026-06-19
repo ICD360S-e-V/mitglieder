@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.21.1...v1.21.2) (2026-06-19)
+
+
+### Documentation
+
+* **server:** bug_report.php + schema reflect the existing ws_broadcast polling ([0e4a4f5](https://github.com/ICD360S-e-V/mitglieder/commit/0e4a4f5ad48fdb74073c88eff0bce5d8c52fe468))
+
 ## [1.21.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.21.0...v1.21.1) (2026-06-19)
 
 
