@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.26.1...v1.27.0) (2026-06-20)
+
+
+### Features
+
+* **wizard:** backend foundation for self-service member onboarding ([d339f88](https://github.com/ICD360S-e-V/mitglieder/commit/d339f883fdc21370e7c12a9825023b39507c60fb))
+
 ## [1.26.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.26.0...v1.26.1) (2026-06-20)
 
 
