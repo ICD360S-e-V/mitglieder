@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.30.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.29.0...v1.30.0) (2026-06-20)
+
+
+### Features
+
+* **wizard:** Stufe 1b (birthdate + birthplace) + Age Gate ([c118d5d](https://github.com/ICD360S-e-V/mitglieder/commit/c118d5dc4788d259514358db3239bdcd22dcede2))
+
 ## [1.29.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.28.0...v1.29.0) (2026-06-20)
 
 
