@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "Den **1. august 2025** kom foreningen officielt til live — i foreningsregistret. Min smukkeste gave. 🎂",
   "wizardIntroBubble5": "Hvad gør vi? Vi hjælper flygtninge, mennesker med handicap, økonomisk ugunstigt stillede, **børn og unge** — med administrative forhold, tysk, bolig, indkøb, sociale ydelser. Vores Vorstand består hovedsageligt af mennesker med handicap — så beslutninger kommer fra ægte livserfaring. 🤝",
   "wizardIntroBubble6": "Nu er det din tur. Lad os tilmelde dig — tager cirka 5 minutter. Vi går trin for trin, jeg lader dig ikke i stikken. ✨",
-  "wizardIntroStart": "Lad os starte"
+  "wizardIntroStart": "Lad os starte",
+  "wizardBack": "Tilbage",
+  "wizardNext": "Næste",
+  "wizardStepLabel": "Trin {step} af {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Dette felt er påkrævet",
+  "wizardErrTooShort": "For kort (mindst {count} tegn)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Kun bogstaver, mellemrum, bindestreger og apostroffer",
+  "wizardErrSaveFailed": "Kunne ikke gemme. Tjek forbindelsen og prøv igen.",
+  "wizardStufe1aTitle": "Identitet",
+  "wizardStufe1aPrompt": "Lad os lære dig officielt at kende. Skriv dit navn præcis som det står på Personalausweis, Reisepass eller Aufenthaltstitel — så det matcher dine dokumenter.",
+  "wizardStufe1aVornameLabel": "Vornamen (fornavne)",
+  "wizardStufe1aVornameHelper": "Alle dine fornavne, præcis som på dokumentet. Med mellemrum eller bindestreg (fx Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (efternavn)",
+  "wizardStufe1aNachnameHelper": "Dit nuværende efternavn.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (fødenavn) — valgfri",
+  "wizardStufe1aGeburtsnameHelper": "Kun hvis det adskiller sig fra Familienname — fx før ægteskab."
 }

@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "Il **1° agosto 2025**, l'associazione è ufficialmente nata — nel Registro delle Associazioni. Il regalo più bello per me. 🎂",
   "wizardIntroBubble5": "Cosa facciamo? Aiutiamo rifugiati, persone con disabilità, persone economicamente svantaggiate, **bambini e giovani** — con pratiche burocratiche, lingua tedesca, casa, spesa, prestazioni sociali. Il nostro Vorstand è composto in maggioranza da persone con disabilità — così le decisioni nascono dall'esperienza vissuta. 🤝",
   "wizardIntroBubble6": "Ora tocca a te. Iscriviamoti — ci vogliono circa 5 minuti. Andiamo passo dopo passo, non ti lascio solo. ✨",
-  "wizardIntroStart": "Iniziamo"
+  "wizardIntroStart": "Iniziamo",
+  "wizardBack": "Indietro",
+  "wizardNext": "Avanti",
+  "wizardStepLabel": "Passo {step} di {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Questo campo è obbligatorio",
+  "wizardErrTooShort": "Troppo corto (almeno {count} caratteri)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Solo lettere, spazi, trattini e apostrofi",
+  "wizardErrSaveFailed": "Salvataggio non riuscito. Controlla la connessione e riprova.",
+  "wizardStufe1aTitle": "Identità",
+  "wizardStufe1aPrompt": "Conosciamoci ufficialmente. Per favore scrivi il tuo nome esattamente come compare sul Personalausweis, Reisepass o Aufenthaltstitel — così resta coerente con i tuoi documenti.",
+  "wizardStufe1aVornameLabel": "Vornamen (nomi)",
+  "wizardStufe1aVornameHelper": "Tutti i tuoi nomi, esattamente come sul documento. Con spazio o trattino (es. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (cognome)",
+  "wizardStufe1aNachnameHelper": "Il tuo cognome attuale.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (nome di nascita) — facoltativo",
+  "wizardStufe1aGeburtsnameHelper": "Solo se diverso dal Familienname — per esempio prima del matrimonio."
 }

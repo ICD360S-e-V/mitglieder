@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1. august 2025** kom foreningen offisielt til live — i foreningsregisteret. Min vakreste gave. 🎂",
   "wizardIntroBubble5": "Hva gjør vi? Vi hjelper flyktninger, mennesker med funksjonsnedsettelser, økonomisk vanskeligstilte, **barn og ungdom** — med administrative spørsmål, tysk språk, bolig, innkjøp, sosiale ytelser. Vorstand vårt består hovedsakelig av mennesker med funksjonsnedsettelser — slik kommer beslutninger fra ekte livserfaring. 🤝",
   "wizardIntroBubble6": "Nå er det din tur. La oss melde deg inn — tar omtrent 5 minutter. Vi går steg for steg, jeg lar deg ikke være alene. ✨",
-  "wizardIntroStart": "La oss starte"
+  "wizardIntroStart": "La oss starte",
+  "wizardBack": "Tilbake",
+  "wizardNext": "Neste",
+  "wizardStepLabel": "Steg {step} av {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Dette feltet er obligatorisk",
+  "wizardErrTooShort": "For kort (minst {count} tegn)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Kun bokstaver, mellomrom, bindestreker og apostrofer",
+  "wizardErrSaveFailed": "Kunne ikke lagre. Sjekk tilkoblingen og prøv igjen.",
+  "wizardStufe1aTitle": "Identitet",
+  "wizardStufe1aPrompt": "La oss bli kjent offisielt. Skriv navnet ditt nøyaktig som det står på Personalausweis, Reisepass eller Aufenthaltstitel — så stemmer det med dokumentene dine.",
+  "wizardStufe1aVornameLabel": "Vornamen (fornavn)",
+  "wizardStufe1aVornameHelper": "Alle fornavnene dine, nøyaktig som på dokumentet. Med mellomrom eller bindestrek (f.eks. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (etternavn)",
+  "wizardStufe1aNachnameHelper": "Etternavnet ditt nå.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (fødselsnavn) — valgfritt",
+  "wizardStufe1aGeburtsnameHelper": "Bare hvis det avviker fra Familienname — f.eks. før ekteskap."
 }

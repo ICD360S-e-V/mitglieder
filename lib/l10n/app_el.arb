@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "Την **1η Αυγούστου 2025**, ο σύλλογος ζωντάνεψε επίσημα — στο Μητρώο Συλλόγων. Το πιο όμορφο δώρο μου. 🎂",
   "wizardIntroBubble5": "Τι κάνουμε; Βοηθάμε πρόσφυγες, άτομα με αναπηρία, οικονομικά μειονεκτούντες, **παιδιά και νέους** — με διοικητικά θέματα, γερμανικά, στέγαση, ψώνια, κοινωνικά επιδόματα. Το Vorstand μας αποτελείται κυρίως από άτομα με αναπηρία — έτσι οι αποφάσεις προέρχονται από αληθινή εμπειρία ζωής. 🤝",
   "wizardIntroBubble6": "Τώρα είναι η σειρά σου. Ας σε εγγράψουμε — διαρκεί περίπου 5 λεπτά. Πάμε βήμα-βήμα, δεν σε αφήνω μόνο. ✨",
-  "wizardIntroStart": "Ας ξεκινήσουμε"
+  "wizardIntroStart": "Ας ξεκινήσουμε",
+  "wizardBack": "Πίσω",
+  "wizardNext": "Επόμενο",
+  "wizardStepLabel": "Βήμα {step} από {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Αυτό το πεδίο είναι υποχρεωτικό",
+  "wizardErrTooShort": "Πολύ σύντομο (τουλάχιστον {count} χαρακτήρες)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Μόνο γράμματα, κενά, παύλες και απόστροφοι",
+  "wizardErrSaveFailed": "Δεν ήταν δυνατή η αποθήκευση. Έλεγξε τη σύνδεση και προσπάθησε ξανά.",
+  "wizardStufe1aTitle": "Ταυτότητα",
+  "wizardStufe1aPrompt": "Ας γνωριστούμε επίσημα. Γράψε το όνομά σου ακριβώς όπως εμφανίζεται στο Personalausweis, Reisepass ή Aufenthaltstitel — ώστε να ταιριάζει με τα έγγραφά σου.",
+  "wizardStufe1aVornameLabel": "Vornamen (όνομα)",
+  "wizardStufe1aVornameHelper": "Όλα τα ονόματά σου, ακριβώς όπως στην ταυτότητα. Με κενό ή παύλα (π.χ. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (επώνυμο)",
+  "wizardStufe1aNachnameHelper": "Το τρέχον επώνυμό σου.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (όνομα γέννησης) — προαιρετικό",
+  "wizardStufe1aGeburtsnameHelper": "Μόνο αν διαφέρει από το Familienname — π.χ. πριν τον γάμο."
 }

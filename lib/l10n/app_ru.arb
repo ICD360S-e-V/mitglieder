@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1 августа 2025 года** ассоциация официально появилась — в Реестре ассоциаций. Самый прекрасный подарок для меня. 🎂",
   "wizardIntroBubble5": "Что мы делаем? Помогаем беженцам, людям с инвалидностью, экономически уязвимым, **детям и молодежи** — с административными вопросами, изучением немецкого, жильем, покупками, социальными пособиями. Наш Vorstand состоит преимущественно из людей с инвалидностью — так решения принимаются из реального жизненного опыта. 🤝",
   "wizardIntroBubble6": "Теперь твоя очередь. Давай тебя запишем — займёт около 5 минут. Идём шаг за шагом, я тебя не оставлю. ✨",
-  "wizardIntroStart": "Начнём"
+  "wizardIntroStart": "Начнём",
+  "wizardBack": "Назад",
+  "wizardNext": "Далее",
+  "wizardStepLabel": "Шаг {step} из {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Это поле обязательно",
+  "wizardErrTooShort": "Слишком коротко (минимум {count} символов)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Только буквы, пробелы, дефисы и апострофы",
+  "wizardErrSaveFailed": "Не удалось сохранить. Проверь соединение и попробуй ещё раз.",
+  "wizardStufe1aTitle": "Личность",
+  "wizardStufe1aPrompt": "Давай знакомиться официально. Напиши своё имя точно так, как в Personalausweis, Reisepass или Aufenthaltstitel — чтобы совпадало с документами.",
+  "wizardStufe1aVornameLabel": "Vornamen (имена)",
+  "wizardStufe1aVornameHelper": "Все имена точно как в документе. Через пробел или дефис (например, Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (фамилия)",
+  "wizardStufe1aNachnameHelper": "Твоя нынешняя фамилия.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (фамилия при рождении) — необязательно",
+  "wizardStufe1aGeburtsnameHelper": "Только если отличается от Familienname — например, до брака."
 }

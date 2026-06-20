@@ -1003,5 +1003,40 @@
   "wizardIntroBubble4": "Am **1. August 2025** wurde der Verein offiziell ins Vereinsregister eingetragen — mein schönstes Geschenk. 🎂",
   "wizardIntroBubble5": "Was machen wir? Wir helfen Geflüchteten, Menschen mit Behinderung, wirtschaftlich Benachteiligten, **Kindern und Jugendlichen** — bei Behördengängen, Deutsch lernen, Wohnungssuche, Einkäufen, Sozialleistungen. Unser Vorstand besteht mehrheitlich aus Menschen mit Behinderung — so kommen die Entscheidungen aus echter Lebenserfahrung. 🤝",
   "wizardIntroBubble6": "Jetzt bist du dran. Lass uns dich anmelden — dauert ca. 5 Minuten. Wir gehen Schritt für Schritt, ich lasse dich nicht allein. ✨",
-  "wizardIntroStart": "Lass uns anfangen"
+  "wizardIntroStart": "Lass uns anfangen",
+  "wizardBack": "Zurück",
+  "wizardNext": "Weiter",
+  "wizardStepLabel": "Schritt {step} von {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Dieses Feld ist erforderlich",
+  "wizardErrTooShort": "Zu kurz (mindestens {count} Zeichen)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Nur Buchstaben, Leerzeichen, Bindestriche und Apostroph",
+  "wizardErrSaveFailed": "Speichern fehlgeschlagen. Verbindung prüfen und erneut versuchen.",
+  "wizardStufe1aTitle": "Identität",
+  "wizardStufe1aPrompt": "Wir lernen dich offiziell kennen. Bitte schreib deinen Namen genau so, wie er auf Personalausweis, Reisepass oder Aufenthaltstitel steht — dann passt es zu deinen Dokumenten.",
+  "wizardStufe1aVornameLabel": "Vornamen",
+  "wizardStufe1aVornameHelper": "Alle deine Vornamen, genau wie auf dem Ausweis. Mit Leerzeichen oder Bindestrich (z.B. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname",
+  "wizardStufe1aNachnameHelper": "Dein aktueller Familienname.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (optional)",
+  "wizardStufe1aGeburtsnameHelper": "Nur wenn er vom Familiennamen abweicht — z.B. vor der Heirat."
 }

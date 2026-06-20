@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**2025. augusztus 1-jén** az egyesület hivatalosan életre kelt — az Egyesületi Nyilvántartásban. A legszebb ajándékom. 🎂",
   "wizardIntroBubble5": "Mit csinálunk? Segítünk menekülteknek, fogyatékossággal élőknek, gazdaságilag hátrányos helyzetűeknek, **gyermekeknek és fiataloknak** — adminisztrációs ügyekben, német nyelvtanulásban, lakhatásban, bevásárlásban, szociális ellátásokban. Vorstandunkban többségben vannak fogyatékossággal élő emberek — így a döntések valódi élettapasztalatból születnek. 🤝",
   "wizardIntroBubble6": "Most te jössz. Iratkozzunk fel — körülbelül 5 percig tart. Lépésről lépésre megyünk, nem hagylak magadra. ✨",
-  "wizardIntroStart": "Kezdjük"
+  "wizardIntroStart": "Kezdjük",
+  "wizardBack": "Vissza",
+  "wizardNext": "Tovább",
+  "wizardStepLabel": "{step}. lépés / {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Ez a mező kötelező",
+  "wizardErrTooShort": "Túl rövid (legalább {count} karakter)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Csak betűk, szóközök, kötőjelek és aposztrófok",
+  "wizardErrSaveFailed": "Mentés sikertelen. Ellenőrizd a kapcsolatot és próbáld újra.",
+  "wizardStufe1aTitle": "Személyazonosság",
+  "wizardStufe1aPrompt": "Ismerkedjünk meg hivatalosan. Írd be a neved pontosan úgy, ahogy a Personalausweis, Reisepass vagy Aufenthaltstitel okiraton szerepel — hogy egyezzen a dokumentumaiddal.",
+  "wizardStufe1aVornameLabel": "Vornamen (utónevek)",
+  "wizardStufe1aVornameHelper": "Minden utóneved pontosan úgy, ahogy a dokumentumon. Szóközzel vagy kötőjellel (pl. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (vezetéknév)",
+  "wizardStufe1aNachnameHelper": "A jelenlegi vezetékneved.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (születési név) — opcionális",
+  "wizardStufe1aGeburtsnameHelper": "Csak ha eltér a Familiennametől — pl. házasság előtti név."
 }

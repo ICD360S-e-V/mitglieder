@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "Den **1 augusti 2025** föddes föreningen officiellt — i föreningsregistret. Min vackraste gåva. 🎂",
   "wizardIntroBubble5": "Vad gör vi? Vi hjälper flyktingar, personer med funktionsnedsättning, ekonomiskt utsatta, **barn och unga** — med administrativa frågor, tyska, bostad, inköp, sociala förmåner. Vår Vorstand består till största delen av personer med funktionsnedsättning — så besluten kommer från verklig livserfarenhet. 🤝",
   "wizardIntroBubble6": "Nu är det din tur. Låt oss registrera dig — tar ungefär 5 minuter. Vi går steg för steg, jag lämnar dig inte ensam. ✨",
-  "wizardIntroStart": "Nu kör vi"
+  "wizardIntroStart": "Nu kör vi",
+  "wizardBack": "Tillbaka",
+  "wizardNext": "Nästa",
+  "wizardStepLabel": "Steg {step} av {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Detta fält är obligatoriskt",
+  "wizardErrTooShort": "För kort (minst {count} tecken)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Endast bokstäver, mellanslag, bindestreck och apostrofer",
+  "wizardErrSaveFailed": "Det gick inte att spara. Kontrollera anslutningen och försök igen.",
+  "wizardStufe1aTitle": "Identitet",
+  "wizardStufe1aPrompt": "Låt oss bli formellt bekanta. Skriv ditt namn precis som det står på Personalausweis, Reisepass eller Aufenthaltstitel — så stämmer det med dina dokument.",
+  "wizardStufe1aVornameLabel": "Vornamen (förnamn)",
+  "wizardStufe1aVornameHelper": "Alla dina förnamn precis som på dokumentet. Med mellanslag eller bindestreck (t.ex. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (efternamn)",
+  "wizardStufe1aNachnameHelper": "Ditt nuvarande efternamn.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (födelsenamn) — frivilligt",
+  "wizardStufe1aGeburtsnameHelper": "Endast om det skiljer sig från Familienname — t.ex. före äktenskap."
 }

@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "Le **1er août 2025**, l'association a officiellement vu le jour — dans le registre des associations. Le plus beau cadeau pour moi. 🎂",
   "wizardIntroBubble5": "Que faisons-nous ? Nous aidons les réfugiés, les personnes handicapées, les personnes économiquement défavorisées, **les enfants et les jeunes** — pour les démarches administratives, l'allemand, le logement, les courses, les prestations sociales. Notre Vorstand est composé majoritairement de personnes handicapées — ainsi les décisions viennent d'une expérience vécue réelle. 🤝",
   "wizardIntroBubble6": "C'est ton tour maintenant. Inscrivons-toi — environ 5 minutes. On y va pas à pas, je ne te laisse pas seul. ✨",
-  "wizardIntroStart": "C'est parti"
+  "wizardIntroStart": "C'est parti",
+  "wizardBack": "Retour",
+  "wizardNext": "Suivant",
+  "wizardStepLabel": "Étape {step} sur {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Ce champ est obligatoire",
+  "wizardErrTooShort": "Trop court (au moins {count} caractères)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Uniquement lettres, espaces, traits d'union et apostrophes",
+  "wizardErrSaveFailed": "Impossible d'enregistrer. Vérifie ta connexion et réessaie.",
+  "wizardStufe1aTitle": "Identité",
+  "wizardStufe1aPrompt": "Faisons connaissance officiellement. Écris ton nom exactement comme il apparaît sur ton Personalausweis, Reisepass ou Aufenthaltstitel — pour que ça corresponde à tes documents.",
+  "wizardStufe1aVornameLabel": "Vornamen (prénoms)",
+  "wizardStufe1aVornameHelper": "Tous tes prénoms, exactement comme sur le document. Avec espace ou tiret (p. ex. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (nom de famille)",
+  "wizardStufe1aNachnameHelper": "Ton nom de famille actuel.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (nom de naissance) — facultatif",
+  "wizardStufe1aGeburtsnameHelper": "Seulement s'il diffère du Familienname — par exemple avant le mariage."
 }

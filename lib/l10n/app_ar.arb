@@ -1003,5 +1003,40 @@
   "wizardIntroBubble4": "في **1 أغسطس 2025**، ولدت الجمعية رسميًا — في سجل الجمعيات. أجمل هدية لي. 🎂",
   "wizardIntroBubble5": "ماذا نفعل؟ نساعد اللاجئين، ذوي الإعاقة، المحرومين اقتصاديًا، **الأطفال والشباب** — في المسائل الإدارية، تعلم الألمانية، السكن، التسوق، الإعانات الاجتماعية. مجلس إدارتنا يتكون في الغالب من أشخاص ذوي إعاقة — هكذا تأتي القرارات من تجربة حياتية حقيقية. 🤝",
   "wizardIntroBubble6": "الآن دورك. دعنا نسجلك — يستغرق حوالي 5 دقائق. سنسير خطوة بخطوة، لن أتركك وحدك. ✨",
-  "wizardIntroStart": "لنبدأ"
+  "wizardIntroStart": "لنبدأ",
+  "wizardBack": "رجوع",
+  "wizardNext": "التالي",
+  "wizardStepLabel": "الخطوة {step} من {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "هذا الحقل مطلوب",
+  "wizardErrTooShort": "قصير جدًا (الحد الأدنى {count} حرفًا)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "الحروف والمسافات والشرطات والفواصل العلوية فقط",
+  "wizardErrSaveFailed": "تعذر الحفظ. تحقق من اتصالك وحاول مرة أخرى.",
+  "wizardStufe1aTitle": "الهوية",
+  "wizardStufe1aPrompt": "لنتعرف عليك رسميًا. اكتب اسمك تمامًا كما يظهر على بطاقة الهوية (Personalausweis) أو جواز السفر (Reisepass) أو تصريح الإقامة (Aufenthaltstitel) — حتى يكون متطابقًا مع وثائقك.",
+  "wizardStufe1aVornameLabel": "Vornamen (الأسماء الأولى)",
+  "wizardStufe1aVornameHelper": "كل أسمائك الأولى تمامًا كما في الوثيقة. استخدم مسافة أو شرطة (مثلاً Hans-Peter أو Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (اللقب)",
+  "wizardStufe1aNachnameHelper": "لقبك الحالي.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (اسم الميلاد) — اختياري",
+  "wizardStufe1aGeburtsnameHelper": "فقط إذا كان يختلف عن Familienname — مثلاً قبل الزواج."
 }

@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "Pe **1 august 2025**, asociația a prins viață oficial — în Registrul Asociațiilor. Cel mai frumos cadou al meu. 🎂",
   "wizardIntroBubble5": "Ce facem? Ajutăm refugiați, persoane cu dizabilități, oameni dezavantajați economic, **copii și tineri** — cu probleme administrative, limba germană, locuință, cumpărături, prestații sociale. Vorstandul nostru e majoritar format din oameni cu dizabilități — așa ne asigurăm că deciziile vin din experiență reală. 🤝",
   "wizardIntroBubble6": "Acum e timpul tău. Hai să te înscriem — durează vreo 5 minute. Mergem pas cu pas, nu te las singur. ✨",
-  "wizardIntroStart": "Hai să începem"
+  "wizardIntroStart": "Hai să începem",
+  "wizardBack": "Înapoi",
+  "wizardNext": "Mai departe",
+  "wizardStepLabel": "Pas {step} din {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Acest câmp e obligatoriu",
+  "wizardErrTooShort": "Prea scurt (minim {count} caractere)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Doar litere, spații, cratime și apostrof",
+  "wizardErrSaveFailed": "Nu am putut salva. Verifică conexiunea și încearcă din nou.",
+  "wizardStufe1aTitle": "Identitate",
+  "wizardStufe1aPrompt": "Hai să te cunoaștem oficial. Te rog să scrii numele tău exact cum apare pe Personalausweis, Reisepass sau Aufenthaltstitel — așa rămâne consistent cu actele.",
+  "wizardStufe1aVornameLabel": "Vornamen (prenumele)",
+  "wizardStufe1aVornameHelper": "Toate prenumele tale, exact ca pe acte. Folosește spațiu sau cratimă (ex: Hans-Peter, Maria Anna, José María).",
+  "wizardStufe1aNachnameLabel": "Familienname (numele de familie)",
+  "wizardStufe1aNachnameHelper": "Numele de familie actual.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (numele de naștere) — opțional",
+  "wizardStufe1aGeburtsnameHelper": "Doar dacă diferă de Familienname — ex. înainte de căsătorie."
 }

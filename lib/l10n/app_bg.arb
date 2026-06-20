@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "На **1 август 2025** сдружението официално оживя — в Регистъра на сдруженията. Най-красивият ми подарък. 🎂",
   "wizardIntroBubble5": "Какво правим? Помагаме на бежанци, хора с увреждания, икономически уязвими, **деца и младежи** — с административни въпроси, немски език, жилище, пазаруване, социални помощи. Нашият Vorstand се състои предимно от хора с увреждания — така решенията идват от истински житейски опит. 🤝",
   "wizardIntroBubble6": "Сега е твой ред. Хайде да те запишем — отнема около 5 минути. Вървим стъпка по стъпка, няма да те оставя сам. ✨",
-  "wizardIntroStart": "Да започнем"
+  "wizardIntroStart": "Да започнем",
+  "wizardBack": "Назад",
+  "wizardNext": "Напред",
+  "wizardStepLabel": "Стъпка {step} от {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Това поле е задължително",
+  "wizardErrTooShort": "Твърде кратко (минимум {count} символа)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Само букви, интервали, тирета и апострофи",
+  "wizardErrSaveFailed": "Не може да се запази. Провери връзката и опитай отново.",
+  "wizardStufe1aTitle": "Самоличност",
+  "wizardStufe1aPrompt": "Нека се запознаем официално. Моля, напиши името си точно както е в Personalausweis, Reisepass или Aufenthaltstitel — за да съвпада с документите ти.",
+  "wizardStufe1aVornameLabel": "Vornamen (имена)",
+  "wizardStufe1aVornameHelper": "Всички ти имена, точно както в документа. Със интервал или тире (напр. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (фамилия)",
+  "wizardStufe1aNachnameHelper": "Сегашната ти фамилия.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (рождена фамилия) — по избор",
+  "wizardStufe1aGeburtsnameHelper": "Само ако се различава от Familienname — напр. преди брака."
 }

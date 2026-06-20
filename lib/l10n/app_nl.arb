@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "Op **1 augustus 2025** kwam de vereniging officieel tot leven — in het verenigingenregister. Mijn mooiste cadeau. 🎂",
   "wizardIntroBubble5": "Wat doen we? We helpen vluchtelingen, mensen met een beperking, economisch achtergestelden, **kinderen en jongeren** — met administratieve zaken, Duits, huisvesting, boodschappen, sociale uitkeringen. Onze Vorstand bestaat grotendeels uit mensen met een beperking — zo komen beslissingen voort uit echte levenservaring. 🤝",
   "wizardIntroBubble6": "Nu is het jouw beurt. Laten we je inschrijven — duurt zo'n 5 minuten. We gaan stap voor stap, ik laat je niet alleen. ✨",
-  "wizardIntroStart": "Laten we beginnen"
+  "wizardIntroStart": "Laten we beginnen",
+  "wizardBack": "Terug",
+  "wizardNext": "Verder",
+  "wizardStepLabel": "Stap {step} van {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Dit veld is verplicht",
+  "wizardErrTooShort": "Te kort (minimaal {count} tekens)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Alleen letters, spaties, koppeltekens en apostrofs",
+  "wizardErrSaveFailed": "Opslaan mislukt. Controleer je verbinding en probeer opnieuw.",
+  "wizardStufe1aTitle": "Identiteit",
+  "wizardStufe1aPrompt": "Laten we officieel kennismaken. Schrijf je naam precies zoals hij op je Personalausweis, Reisepass of Aufenthaltstitel staat — zo blijft het consistent met je documenten.",
+  "wizardStufe1aVornameLabel": "Vornamen (voornamen)",
+  "wizardStufe1aVornameHelper": "Al je voornamen, precies zoals op het document. Met spatie of koppelteken (bv. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (achternaam)",
+  "wizardStufe1aNachnameHelper": "Je huidige achternaam.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (geboortenaam) — optioneel",
+  "wizardStufe1aGeburtsnameHelper": "Alleen als het verschilt van Familienname — bv. vóór het huwelijk."
 }

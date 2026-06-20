@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1 серпня 2025 року** асоціація офіційно з'явилася — у Реєстрі асоціацій. Найкрасивіший подарунок для мене. 🎂",
   "wizardIntroBubble5": "Що ми робимо? Допомагаємо біженцям, людям з інвалідністю, економічно вразливим, **дітям і молоді** — з адміністративними питаннями, вивченням німецької, житлом, покупками, соціальними виплатами. Наш Vorstand переважно складається з людей з інвалідністю — так рішення приймаються з реального життєвого досвіду. 🤝",
   "wizardIntroBubble6": "Тепер твоя черга. Запишемо тебе — займе близько 5 хвилин. Йдемо крок за кроком, я тебе не залишу. ✨",
-  "wizardIntroStart": "Почнімо"
+  "wizardIntroStart": "Почнімо",
+  "wizardBack": "Назад",
+  "wizardNext": "Далі",
+  "wizardStepLabel": "Крок {step} з {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Це поле обовʼязкове",
+  "wizardErrTooShort": "Занадто коротко (мінімум {count} символів)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Лише букви, пробіли, дефіси та апострофи",
+  "wizardErrSaveFailed": "Не вдалося зберегти. Перевір зʼєднання і спробуй ще раз.",
+  "wizardStufe1aTitle": "Особа",
+  "wizardStufe1aPrompt": "Знайомимося офіційно. Напиши своє імʼя точно так, як у Personalausweis, Reisepass або Aufenthaltstitel — щоб збігалося з документами.",
+  "wizardStufe1aVornameLabel": "Vornamen (імена)",
+  "wizardStufe1aVornameHelper": "Усі імена точно як у документі. Через пробіл або дефіс (наприклад, Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (прізвище)",
+  "wizardStufe1aNachnameHelper": "Твоє теперішнє прізвище.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (прізвище при народженні) — необовʼязково",
+  "wizardStufe1aGeburtsnameHelper": "Лише якщо відрізняється від Familienname — наприклад, до шлюбу."
 }

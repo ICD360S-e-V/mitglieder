@@ -1003,5 +1003,40 @@
   "wizardIntroBubble4": "**1 Ağustos 2025**'te dernek resmen hayata geldi — Dernekler Sicili'nde. En güzel hediyem. 🎂",
   "wizardIntroBubble5": "Ne yapıyoruz? Mültecilere, engellilere, ekonomik olarak dezavantajlı kişilere, **çocuklara ve gençlere** yardım ediyoruz — idari işlemlerde, Almanca öğrenmede, konut bulmada, alışverişte, sosyal yardımlarda. Vorstand'ımızın büyük çoğunluğu engelli kişilerden oluşuyor — böylece kararlar gerçek yaşam deneyiminden geliyor. 🤝",
   "wizardIntroBubble6": "Şimdi sıra sende. Seni kaydedelim — yaklaşık 5 dakika sürer. Adım adım gideceğiz, seni yalnız bırakmayacağım. ✨",
-  "wizardIntroStart": "Hadi başlayalım"
+  "wizardIntroStart": "Hadi başlayalım",
+  "wizardBack": "Geri",
+  "wizardNext": "İleri",
+  "wizardStepLabel": "{step}. adım / {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Bu alan zorunludur",
+  "wizardErrTooShort": "Çok kısa (en az {count} karakter)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Yalnızca harfler, boşluklar, tireler ve kesme işaretleri",
+  "wizardErrSaveFailed": "Kaydedilemedi. Bağlantını kontrol et ve tekrar dene.",
+  "wizardStufe1aTitle": "Kimlik",
+  "wizardStufe1aPrompt": "Resmi olarak tanışalım. Adını lütfen Personalausweis, Reisepass veya Aufenthaltstitel'de göründüğü gibi yaz — belgelerinle uyumlu kalsın.",
+  "wizardStufe1aVornameLabel": "Vornamen (adlar)",
+  "wizardStufe1aVornameHelper": "Tüm adların belgendekiyle aynı şekilde. Boşluk veya tire kullan (örn. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (soyad)",
+  "wizardStufe1aNachnameHelper": "Mevcut soyadın.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (doğum soyadı) — isteğe bağlı",
+  "wizardStufe1aGeburtsnameHelper": "Yalnızca Familienname'den farklıysa — örn. evlilik öncesi."
 }

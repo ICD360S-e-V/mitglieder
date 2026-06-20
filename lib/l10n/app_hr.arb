@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1. kolovoza 2025.** udruga je službeno oživjela — u Registru udruga. Moj najljepši dar. 🎂",
   "wizardIntroBubble5": "Što radimo? Pomažemo izbjeglicama, osobama s invaliditetom, ekonomski ugroženim, **djeci i mladima** — s administrativnim pitanjima, njemačkim jezikom, stanovanjem, kupovinom, socijalnim naknadama. Naš Vorstand većinom čine osobe s invaliditetom — tako odluke dolaze iz stvarnog životnog iskustva. 🤝",
   "wizardIntroBubble6": "Sada je tvoj red. Hajde da te upišemo — traje oko 5 minuta. Idemo korak po korak, ne ostavljam te samog. ✨",
-  "wizardIntroStart": "Krenimo"
+  "wizardIntroStart": "Krenimo",
+  "wizardBack": "Natrag",
+  "wizardNext": "Dalje",
+  "wizardStepLabel": "Korak {step} od {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Ovo polje je obavezno",
+  "wizardErrTooShort": "Prekratko (najmanje {count} znakova)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Samo slova, razmaci, crtice i apostrofi",
+  "wizardErrSaveFailed": "Spremanje nije uspjelo. Provjeri vezu i pokušaj ponovno.",
+  "wizardStufe1aTitle": "Identitet",
+  "wizardStufe1aPrompt": "Hajde da se službeno upoznamo. Napiši ime točno kako stoji na Personalausweisu, Reisepassu ili Aufenthaltstitelu — da odgovara dokumentima.",
+  "wizardStufe1aVornameLabel": "Vornamen (imena)",
+  "wizardStufe1aVornameHelper": "Sva tvoja imena točno kao na dokumentu. S razmakom ili crticom (npr. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (prezime)",
+  "wizardStufe1aNachnameHelper": "Tvoje trenutno prezime.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (djevojačko prezime) — neobavezno",
+  "wizardStufe1aGeburtsnameHelper": "Samo ako se razlikuje od Familienname — npr. prije braka."
 }

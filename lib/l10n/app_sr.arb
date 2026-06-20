@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1. августа 2025.** удружење је званично оживело — у Регистру удружења. Мој најлепши поклон. 🎂",
   "wizardIntroBubble5": "Шта радимо? Помажемо избеглицама, особама са инвалидитетом, економски угроженим, **деци и младима** — у административним питањима, немачком језику, становању, куповини, социјалним накнадама. Наш Vorstand чине углавном особе са инвалидитетом — тако одлуке долазе из стварног животног искуства. 🤝",
   "wizardIntroBubble6": "Сада си ти на реду. Хајде да те упишемо — траје око 5 минута. Идемо корак по корак, не остављам те самог. ✨",
-  "wizardIntroStart": "Кренимо"
+  "wizardIntroStart": "Кренимо",
+  "wizardBack": "Назад",
+  "wizardNext": "Даље",
+  "wizardStepLabel": "Корак {step} од {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Ово поље је обавезно",
+  "wizardErrTooShort": "Прекратко (најмање {count} знакова)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Само слова, размаци, цртице и апострофи",
+  "wizardErrSaveFailed": "Чување није успело. Провери везу и покушај поново.",
+  "wizardStufe1aTitle": "Идентитет",
+  "wizardStufe1aPrompt": "Хајде да се званично упознамо. Молим те, упиши име тачно онако како пише на Personalausweis-у, Reisepass-у или Aufenthaltstitel-у — да буде у складу са документима.",
+  "wizardStufe1aVornameLabel": "Vornamen (имена)",
+  "wizardStufe1aVornameHelper": "Сва твоја имена тачно као на документу. Са размаком или цртицом (нпр. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (презиме)",
+  "wizardStufe1aNachnameHelper": "Твоје тренутно презиме.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (девојачко презиме) — опционо",
+  "wizardStufe1aGeburtsnameHelper": "Само ако се разликује од Familienname — нпр. пре брака."
 }

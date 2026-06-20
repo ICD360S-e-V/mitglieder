@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1. elokuuta 2025** yhdistys heräsi virallisesti eloon — yhdistysrekisterissä. Kaunein lahjani. 🎂",
   "wizardIntroBubble5": "Mitä teemme? Autamme pakolaisia, vammaisia, taloudellisesti heikossa asemassa olevia, **lapsia ja nuoria** — virastoasioissa, saksan oppimisessa, asumisessa, ostoksilla, sosiaalietuuksissa. Vorstandimme koostuu pääosin vammaisista — näin päätökset perustuvat aitoon elämänkokemukseen. 🤝",
   "wizardIntroBubble6": "Nyt on sinun vuorosi. Rekisteröidään sinut — kestää noin 5 minuuttia. Etenemme askel kerrallaan, en jätä sinua yksin. ✨",
-  "wizardIntroStart": "Aloitetaan"
+  "wizardIntroStart": "Aloitetaan",
+  "wizardBack": "Takaisin",
+  "wizardNext": "Seuraava",
+  "wizardStepLabel": "Vaihe {step} / {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Tämä kenttä on pakollinen",
+  "wizardErrTooShort": "Liian lyhyt (vähintään {count} merkkiä)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Vain kirjaimet, välilyönnit, väliviivat ja heittomerkit",
+  "wizardErrSaveFailed": "Tallennus epäonnistui. Tarkista yhteys ja yritä uudelleen.",
+  "wizardStufe1aTitle": "Henkilöllisyys",
+  "wizardStufe1aPrompt": "Tutustutaan virallisesti. Kirjoita nimesi täsmälleen samoin kuin Personalausweis-, Reisepass- tai Aufenthaltstitel-asiakirjassa — niin se vastaa dokumenttejasi.",
+  "wizardStufe1aVornameLabel": "Vornamen (etunimet)",
+  "wizardStufe1aVornameHelper": "Kaikki etunimesi tarkalleen kuten asiakirjassa. Välilyönnillä tai väliviivalla (esim. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (sukunimi)",
+  "wizardStufe1aNachnameHelper": "Nykyinen sukunimesi.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (syntymänimi) — valinnainen",
+  "wizardStufe1aGeburtsnameHelper": "Vain jos eroaa Familiennamen kanssa — esim. ennen avioliittoa."
 }

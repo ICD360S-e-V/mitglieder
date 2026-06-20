@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1. augusta 2025** sa združenie oficiálne narodilo — v Registri združení. Môj najkrajší darček. 🎂",
   "wizardIntroBubble5": "Čo robíme? Pomáhame utečencom, ľuďom so zdravotným postihnutím, ekonomicky znevýhodneným, **deťom a mladým** — s úradnými záležitosťami, nemčinou, bývaním, nákupmi, sociálnymi dávkami. Náš Vorstand tvoria väčšinou ľudia so zdravotným postihnutím — rozhodnutia tak vychádzajú z reálnej životnej skúsenosti. 🤝",
   "wizardIntroBubble6": "Teraz si na rade ty. Poďme ťa zaregistrovať — trvá to asi 5 minút. Pôjdeme krok za krokom, nenechám ťa v tom samého. ✨",
-  "wizardIntroStart": "Začnime"
+  "wizardIntroStart": "Začnime",
+  "wizardBack": "Späť",
+  "wizardNext": "Ďalej",
+  "wizardStepLabel": "Krok {step} z {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Toto pole je povinné",
+  "wizardErrTooShort": "Príliš krátke (aspoň {count} znakov)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Iba písmená, medzery, pomlčky a apostrofy",
+  "wizardErrSaveFailed": "Uloženie zlyhalo. Skontroluj pripojenie a skús znova.",
+  "wizardStufe1aTitle": "Identita",
+  "wizardStufe1aPrompt": "Spoznajme sa oficiálne. Napíš svoje meno presne tak, ako je na Personalausweis, Reisepass alebo Aufenthaltstitel — aby sedelo s dokladmi.",
+  "wizardStufe1aVornameLabel": "Vornamen (krstné mená)",
+  "wizardStufe1aVornameHelper": "Všetky tvoje krstné mená presne ako na doklade. S medzerou alebo pomlčkou (napr. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (priezvisko)",
+  "wizardStufe1aNachnameHelper": "Tvoje súčasné priezvisko.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (rodné priezvisko) — voliteľné",
+  "wizardStufe1aGeburtsnameHelper": "Iba ak sa líši od Familienname — napr. pred svadbou."
 }

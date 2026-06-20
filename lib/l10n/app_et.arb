@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1. augustil 2025** sai ühing ametlikult elu — Ühingute registris. Minu kõige ilusam kingitus. 🎂",
   "wizardIntroBubble5": "Mida me teeme? Aitame pagulasi, puuetega inimesi, majanduslikult haavatavaid, **lapsi ja noori** — administratiivküsimuste, saksa keele, eluaseme, ostlemise ja sotsiaaltoetustega. Meie Vorstand koosneb peamiselt puuetega inimestest — nii tulevad otsused tegelikust elukogemusest. 🤝",
   "wizardIntroBubble6": "Nüüd on sinu kord. Registreerime sind — võtab umbes 5 minutit. Liigume samm-sammult, ma ei jäta sind üksi. ✨",
-  "wizardIntroStart": "Alustame"
+  "wizardIntroStart": "Alustame",
+  "wizardBack": "Tagasi",
+  "wizardNext": "Edasi",
+  "wizardStepLabel": "Samm {step} / {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "See väli on kohustuslik",
+  "wizardErrTooShort": "Liiga lühike (vähemalt {count} märki)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Ainult tähed, tühikud, sidekriipsud ja apostroofid",
+  "wizardErrSaveFailed": "Salvestamine ebaõnnestus. Kontrolli ühendust ja proovi uuesti.",
+  "wizardStufe1aTitle": "Isikuandmed",
+  "wizardStufe1aPrompt": "Tutvume ametlikult. Palun kirjuta oma nimi täpselt nii nagu Personalausweis, Reisepass või Aufenthaltstitel — et see sobiks dokumentidega.",
+  "wizardStufe1aVornameLabel": "Vornamen (eesnimed)",
+  "wizardStufe1aVornameHelper": "Kõik eesnimed täpselt nagu dokumendil. Tühiku või sidekriipsuga (nt Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (perekonnanimi)",
+  "wizardStufe1aNachnameHelper": "Sinu praegune perekonnanimi.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (sünninimi) — vabatahtlik",
+  "wizardStufe1aGeburtsnameHelper": "Ainult kui erineb perekonnanimest — nt enne abielu."
 }

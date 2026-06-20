@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "A **1 de agosto de 2025**, a associação ganhou vida oficialmente — no Registo de Associações. O presente mais bonito para mim. 🎂",
   "wizardIntroBubble5": "O que fazemos? Ajudamos refugiados, pessoas com deficiência, pessoas economicamente desfavorecidas, **crianças e jovens** — com questões administrativas, alemão, habitação, compras, prestações sociais. O nosso Vorstand é maioritariamente composto por pessoas com deficiência — assim as decisões nascem da experiência real. 🤝",
   "wizardIntroBubble6": "Agora é a tua vez. Vamos inscrever-te — leva cerca de 5 minutos. Vamos passo a passo, não te deixo sozinho. ✨",
-  "wizardIntroStart": "Vamos começar"
+  "wizardIntroStart": "Vamos começar",
+  "wizardBack": "Voltar",
+  "wizardNext": "Seguinte",
+  "wizardStepLabel": "Passo {step} de {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Este campo é obrigatório",
+  "wizardErrTooShort": "Demasiado curto (mínimo {count} caracteres)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Apenas letras, espaços, hífenes e apóstrofos",
+  "wizardErrSaveFailed": "Não foi possível guardar. Verifica a ligação e tenta de novo.",
+  "wizardStufe1aTitle": "Identidade",
+  "wizardStufe1aPrompt": "Vamos conhecer-nos oficialmente. Por favor escreve o teu nome exatamente como aparece no Personalausweis, Reisepass ou Aufenthaltstitel — para ficar consistente com os documentos.",
+  "wizardStufe1aVornameLabel": "Vornamen (nomes)",
+  "wizardStufe1aVornameHelper": "Todos os teus nomes, exatamente como no documento. Com espaço ou hífen (ex. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (apelido)",
+  "wizardStufe1aNachnameHelper": "O teu apelido atual.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (nome de nascimento) — opcional",
+  "wizardStufe1aGeburtsnameHelper": "Apenas se for diferente do Familienname — p. ex. antes do casamento."
 }

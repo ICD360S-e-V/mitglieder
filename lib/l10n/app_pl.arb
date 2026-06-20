@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1 sierpnia 2025** stowarzyszenie oficjalnie ożyło — w Rejestrze Stowarzyszeń. Mój najpiękniejszy prezent. 🎂",
   "wizardIntroBubble5": "Co robimy? Pomagamy uchodźcom, osobom z niepełnosprawnościami, osobom w trudnej sytuacji ekonomicznej, **dzieciom i młodzieży** — w sprawach urzędowych, nauce niemieckiego, mieszkaniu, zakupach, świadczeniach socjalnych. Nasz Vorstand składa się głównie z osób z niepełnosprawnościami — dzięki temu decyzje wynikają z prawdziwego doświadczenia życiowego. 🤝",
   "wizardIntroBubble6": "Teraz twoja kolej. Zapiszmy cię — trwa około 5 minut. Idziemy krok po kroku, nie zostawiam cię samego. ✨",
-  "wizardIntroStart": "Zaczynajmy"
+  "wizardIntroStart": "Zaczynajmy",
+  "wizardBack": "Wstecz",
+  "wizardNext": "Dalej",
+  "wizardStepLabel": "Krok {step} z {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "To pole jest wymagane",
+  "wizardErrTooShort": "Za krótkie (co najmniej {count} znaków)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Tylko litery, spacje, myślniki i apostrofy",
+  "wizardErrSaveFailed": "Nie udało się zapisać. Sprawdź połączenie i spróbuj ponownie.",
+  "wizardStufe1aTitle": "Tożsamość",
+  "wizardStufe1aPrompt": "Poznajmy się oficjalnie. Wpisz swoje imię i nazwisko dokładnie tak, jak są zapisane w Personalausweis, Reisepass lub Aufenthaltstitel — żeby się zgadzało z dokumentami.",
+  "wizardStufe1aVornameLabel": "Vornamen (imiona)",
+  "wizardStufe1aVornameHelper": "Wszystkie twoje imiona dokładnie jak w dokumencie. Ze spacją lub myślnikiem (np. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (nazwisko)",
+  "wizardStufe1aNachnameHelper": "Twoje obecne nazwisko.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (nazwisko rodowe) — opcjonalne",
+  "wizardStufe1aGeburtsnameHelper": "Tylko jeśli różni się od Familienname — np. przed małżeństwem."
 }

@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1. srpna 2025** spolek oficiálně ožil — ve spolkovém rejstříku. Můj nejkrásnější dárek. 🎂",
   "wizardIntroBubble5": "Co děláme? Pomáháme uprchlíkům, lidem se zdravotním postižením, ekonomicky znevýhodněným, **dětem a mladým lidem** — s administrativními záležitostmi, němčinou, bydlením, nakupováním, sociálními dávkami. Náš Vorstand tvoří většinou lidé s postižením — rozhodnutí tak vycházejí z reálné zkušenosti. 🤝",
   "wizardIntroBubble6": "Teď jsi na řadě ty. Pojďme tě zaregistrovat — trvá to asi 5 minut. Půjdeme krok za krokem, nenechám tě v tom samotného. ✨",
-  "wizardIntroStart": "Začněme"
+  "wizardIntroStart": "Začněme",
+  "wizardBack": "Zpět",
+  "wizardNext": "Dále",
+  "wizardStepLabel": "Krok {step} z {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Toto pole je povinné",
+  "wizardErrTooShort": "Příliš krátké (alespoň {count} znaků)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Pouze písmena, mezery, pomlčky a apostrofy",
+  "wizardErrSaveFailed": "Uložení selhalo. Zkontroluj připojení a zkus to znovu.",
+  "wizardStufe1aTitle": "Identita",
+  "wizardStufe1aPrompt": "Pojďme se oficiálně seznámit. Napiš své jméno přesně tak, jak je na Personalausweis, Reisepass nebo Aufenthaltstitel — ať to sedí s doklady.",
+  "wizardStufe1aVornameLabel": "Vornamen (křestní jména)",
+  "wizardStufe1aVornameHelper": "Všechna tvá křestní jména přesně jako na dokladu. S mezerou nebo pomlčkou (např. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (příjmení)",
+  "wizardStufe1aNachnameHelper": "Tvé aktuální příjmení.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (rodné příjmení) — volitelné",
+  "wizardStufe1aGeburtsnameHelper": "Pouze pokud se liší od Familienname — např. před svatbou."
 }

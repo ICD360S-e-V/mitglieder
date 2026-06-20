@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**2025. gada 1. augustā** biedrība oficiāli atdzima — Biedrību reģistrā. Mana visskaistākā dāvana. 🎂",
   "wizardIntroBubble5": "Ko mēs darām? Palīdzam bēgļiem, cilvēkiem ar invaliditāti, ekonomiski neaizsargātajiem, **bērniem un jauniešiem** — administratīvajos jautājumos, vācu valodā, mājoklī, iepirkumos, sociālajos pabalstos. Mūsu Vorstand veido galvenokārt cilvēki ar invaliditāti — tā lēmumi nāk no reālas dzīves pieredzes. 🤝",
   "wizardIntroBubble6": "Tagad ir tava kārta. Reģistrēsim tevi — aizņem apmēram 5 minūtes. Iesim soli pa solim, neatstāšu tevi vienu. ✨",
-  "wizardIntroStart": "Sāksim"
+  "wizardIntroStart": "Sāksim",
+  "wizardBack": "Atpakaļ",
+  "wizardNext": "Tālāk",
+  "wizardStepLabel": "{step}. solis no {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "Šis lauks ir obligāts",
+  "wizardErrTooShort": "Pārāk īss (vismaz {count} rakstzīmes)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Tikai burti, atstarpes, defises un apostrofi",
+  "wizardErrSaveFailed": "Saglabāt neizdevās. Pārbaudi savienojumu un mēģini vēlreiz.",
+  "wizardStufe1aTitle": "Identitāte",
+  "wizardStufe1aPrompt": "Iepazīsimies oficiāli. Lūdzu, ieraksti savu vārdu tieši tā, kā tas redzams Personalausweis, Reisepass vai Aufenthaltstitel — lai atbilstu dokumentiem.",
+  "wizardStufe1aVornameLabel": "Vornamen (vārdi)",
+  "wizardStufe1aVornameHelper": "Visi tavi vārdi tieši kā dokumentā. Ar atstarpi vai defisi (piem., Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (uzvārds)",
+  "wizardStufe1aNachnameHelper": "Tavs pašreizējais uzvārds.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (dzimšanas vārds) — pēc izvēles",
+  "wizardStufe1aGeburtsnameHelper": "Tikai ja atšķiras no Familienname — piem., pirms laulības."
 }

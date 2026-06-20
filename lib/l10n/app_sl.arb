@@ -982,5 +982,40 @@
   "wizardIntroBubble4": "**1. avgusta 2025** je društvo uradno zaživelo — v Registru društev. Moje najlepše darilo. 🎂",
   "wizardIntroBubble5": "Kaj počnemo? Pomagamo beguncem, invalidom, ekonomsko prikrajšanim, **otrokom in mladim** — pri upravnih zadevah, nemškem jeziku, stanovanju, nakupih, socialnih prejemkih. Naš Vorstand večinoma sestavljajo invalidi — tako odločitve izhajajo iz resnične življenjske izkušnje. 🤝",
   "wizardIntroBubble6": "Zdaj si na vrsti ti. Prijavimo te — traja približno 5 minut. Greva korak za korakom, ne pustim te samega. ✨",
-  "wizardIntroStart": "Začnimo"
+  "wizardIntroStart": "Začnimo",
+  "wizardBack": "Nazaj",
+  "wizardNext": "Naprej",
+  "wizardStepLabel": "Korak {step} od {total} · {title}",
+  "@wizardStepLabel": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrRequired": "To polje je obvezno",
+  "wizardErrTooShort": "Prekratko (vsaj {count} znakov)",
+  "@wizardErrTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardErrOnlyLetters": "Samo črke, presledki, vezaji in apostrofi",
+  "wizardErrSaveFailed": "Shranjevanje ni uspelo. Preveri povezavo in poskusi znova.",
+  "wizardStufe1aTitle": "Identiteta",
+  "wizardStufe1aPrompt": "Spoznajmo se uradno. Napiši ime točno tako, kot je na Personalausweis, Reisepass ali Aufenthaltstitel — da bo skladno z dokumenti.",
+  "wizardStufe1aVornameLabel": "Vornamen (imena)",
+  "wizardStufe1aVornameHelper": "Vsa tvoja imena točno kot na dokumentu. S presledkom ali vezajem (npr. Hans-Peter, Maria Anna).",
+  "wizardStufe1aNachnameLabel": "Familienname (priimek)",
+  "wizardStufe1aNachnameHelper": "Tvoj trenutni priimek.",
+  "wizardStufe1aGeburtsnameLabel": "Geburtsname (rojstno ime) — neobvezno",
+  "wizardStufe1aGeburtsnameHelper": "Samo če se razlikuje od Familienname — npr. pred poroko."
 }
