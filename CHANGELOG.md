@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.26.0...v1.26.1) (2026-06-20)
+
+
+### Refactor
+
+* **auth:** drop recovery_code + password from passwordless register ([66b9c16](https://github.com/ICD360S-e-V/mitglieder/commit/66b9c16e3a9f3a97cbd2a3df61fadd2e41daff6b))
+
 ## [1.26.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.25.2...v1.26.0) (2026-06-20)
 
 
