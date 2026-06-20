@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.35.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.34.0...v1.35.0) (2026-06-20)
+
+
+### Features
+
+* **wizard:** Stufe 1f — contact (Telefon mobil + Email) ([2d54fef](https://github.com/ICD360S-e-V/mitglieder/commit/2d54fefdd63db5a5d5b98df6603407fbd87f9988))
+
 ## [1.34.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.33.0...v1.34.0) (2026-06-20)
 
 
