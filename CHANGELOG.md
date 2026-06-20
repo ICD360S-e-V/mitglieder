@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.25.2...v1.26.0) (2026-06-20)
+
+
+### Features
+
+* **login:** conversational Claudiu wait dialog while Vorsitzer approves ([a981214](https://github.com/ICD360S-e-V/mitglieder/commit/a98121411e0c6cd5711756fe7e87bff2aa39f924))
+
 ## [1.25.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.25.1...v1.25.2) (2026-06-20)
 
 
