@@ -353,32 +353,11 @@ class ApiService {
     return jsonDecode(response.body);
   }
 
-  // Recover Password
-  Future<Map<String, dynamic>> recoverPassword(String mitgliedernummer, String recoveryCode, String newPassword) async {
-    final deviceKey = _deviceKeyService.deviceKey;
-    final response = await _client.post(
-      Uri.parse('$baseUrl/auth/recover.php'),
-      headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': 'ICD360S-Mitglied/1.0',
-        if (deviceKey != null) 'X-Device-Key': deviceKey,
-      },
-      body: jsonEncode({
-        'mitgliedernummer': mitgliedernummer,
-        'recovery_code': recoveryCode,
-        'new_password': newPassword,
-      }),
-    );
-
-    return jsonDecode(response.body);
-  }
-
-  // Register
+  // Register — passwordless, no recovery code. Identity is anchored to
+  // the device_key (per-install) and the device_id (hardware fingerprint).
   Future<Map<String, dynamic>> register(
     String email,
-    String password,
-    String name,
-    String recoveryCode, {
+    String name, {
     bool datenschutzAccepted = false,
     bool satzungAccepted = false,
     bool widerrufsbelehrungAccepted = false,
@@ -396,9 +375,7 @@ class ApiService {
       },
       body: jsonEncode({
         'email': email,
-        'password': password,
         'name': name,
-        'recovery_code': recoveryCode,
         'device_id': deviceId,
         'device_locale': deviceLocale, // Send device language for auto-translation
         'datenschutz_accepted': datenschutzAccepted,

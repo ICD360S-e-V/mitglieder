@@ -38,7 +38,6 @@ class _RegisterTabState extends State<RegisterTab> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
-  final _recoveryCodeController = TextEditingController();
   bool _datenschutzAccepted = false;
   bool _satzungAccepted = false;
   bool _widerrufsbelehrungAccepted = false;
@@ -50,7 +49,6 @@ class _RegisterTabState extends State<RegisterTab> {
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
-    _recoveryCodeController.dispose();
     super.dispose();
   }
 
@@ -70,9 +68,7 @@ class _RegisterTabState extends State<RegisterTab> {
     try {
       final result = await widget.apiService.register(
         _emailController.text.trim(),
-        '', // Passwordless - no password needed
         _nameController.text.trim(),
-        _recoveryCodeController.text.trim(),
         datenschutzAccepted: _datenschutzAccepted,
         satzungAccepted: _satzungAccepted,
         widerrufsbelehrungAccepted: _widerrufsbelehrungAccepted,
@@ -97,7 +93,6 @@ class _RegisterTabState extends State<RegisterTab> {
             _log.debug('RegisterTab: Clearing registration form', tag: 'AUTH');
             _nameController.clear();
             _emailController.clear();
-            _recoveryCodeController.clear();
           }
         });
       } else {
@@ -220,32 +215,6 @@ class _RegisterTabState extends State<RegisterTab> {
                 final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
                 if (!emailRegex.hasMatch(value)) {
                   return l10n.emailInvalid;
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-
-            // Recovery Code field
-            TextFormField(
-              controller: _recoveryCodeController,
-              style: const TextStyle(color: Colors.white),
-              keyboardType: TextInputType.number,
-              maxLength: 6,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ],
-              decoration: _buildInputDecoration(
-                labelText: l10n.recoveryCode,
-                prefixIcon: Icons.security,
-                helperText: l10n.recoveryCodeHelper,
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return l10n.recoveryCodeHint;
-                }
-                if (!RegExp(r'^\d{6}$').hasMatch(value)) {
-                  return l10n.recoveryCodeInvalid;
                 }
                 return null;
               },
