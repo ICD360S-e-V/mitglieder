@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.25.1...v1.25.2) (2026-06-20)
+
+
+### Bug Fixes
+
+* **imports:** restore http aliased imports my static check missed ([6771477](https://github.com/ICD360S-e-V/mitglieder/commit/6771477e6e6dd65721d9e94a5504f41e8f3b5539))
+
 ## [1.25.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.25.0...v1.25.1) (2026-06-20)
 
 
