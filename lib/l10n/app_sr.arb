@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (презиме)",
   "wizardStufe1aNachnameHelper": "Твоје тренутно презиме.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (девојачко презиме) — опционо",
-  "wizardStufe1aGeburtsnameHelper": "Само ако се разликује од Familienname — нпр. пре брака."
+  "wizardStufe1aGeburtsnameHelper": "Само ако се разликује од Familienname — нпр. пре брака.",
+  "wizardStufe1bTitle": "Рођендан",
+  "wizardStufe1bPrompt": "Желимо да прославимо твој рођендан заједно! 🎂 И помаже нам да потврдимо да имаш бар 16 — тако каже наш статут.",
+  "wizardStufe1bGeburtsdatumLabel": "Датум рођења",
+  "wizardStufe1bGeburtsdatumHelper": "Додирни да изабереш датум",
+  "wizardStufe1bGeburtsortLabel": "Место рођења",
+  "wizardStufe1bGeburtsortHelper": "Град / место где си рођен.",
+  "wizardAgeGatePrompt": "Жао ми је… 😔",
+  "wizardAgeGateBody1": "Наш статут каже да мораш имати бар 16 година да би био члан. Имаш {age} — надам се да ћемо се видети за {years} година! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Ако желиш да повремено волонтираш (било који узраст, са пристанком родитеља), позови — радо подржавамо младе који желе да промене свет.",
+  "wizardAgeGateCallUs": "Позови нас",
+  "wizardAgeGateBackHome": "Назад на почетну"
 }

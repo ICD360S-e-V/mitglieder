@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (επώνυμο)",
   "wizardStufe1aNachnameHelper": "Το τρέχον επώνυμό σου.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (όνομα γέννησης) — προαιρετικό",
-  "wizardStufe1aGeburtsnameHelper": "Μόνο αν διαφέρει από το Familienname — π.χ. πριν τον γάμο."
+  "wizardStufe1aGeburtsnameHelper": "Μόνο αν διαφέρει από το Familienname — π.χ. πριν τον γάμο.",
+  "wizardStufe1bTitle": "Γενέθλια",
+  "wizardStufe1bPrompt": "Θα θέλαμε να γιορτάσουμε τα γενέθλιά σου μαζί! 🎂 Μας βοηθάει επίσης να επιβεβαιώσουμε ότι είσαι τουλάχιστον 16 — έτσι λέει το καταστατικό μας.",
+  "wizardStufe1bGeburtsdatumLabel": "Ημερομηνία γέννησης",
+  "wizardStufe1bGeburtsdatumHelper": "Πάτα για να επιλέξεις ημερομηνία",
+  "wizardStufe1bGeburtsortLabel": "Τόπος γέννησης",
+  "wizardStufe1bGeburtsortHelper": "Πόλη / οικισμός όπου γεννήθηκες.",
+  "wizardAgeGatePrompt": "Λυπάμαι… 😔",
+  "wizardAgeGateBody1": "Το καταστατικό μας λέει ότι πρέπει να είσαι τουλάχιστον 16 για να γίνεις μέλος. Είσαι {age} — ελπίζω να σε δω σε {years} χρόνια! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Αν θες να βοηθάς περιστασιακά εθελοντικά (οποιαδήποτε ηλικία, με συγκατάθεση γονέων), κάλεσέ μας — μας αρέσει να στηρίζουμε νέους που θέλουν ν' αλλάξουν τον κόσμο.",
+  "wizardAgeGateCallUs": "Κάλεσέ μας",
+  "wizardAgeGateBackHome": "Πίσω στην αρχική"
 }

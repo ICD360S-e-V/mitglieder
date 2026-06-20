@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (efternavn)",
   "wizardStufe1aNachnameHelper": "Dit nuværende efternavn.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (fødenavn) — valgfri",
-  "wizardStufe1aGeburtsnameHelper": "Kun hvis det adskiller sig fra Familienname — fx før ægteskab."
+  "wizardStufe1aGeburtsnameHelper": "Kun hvis det adskiller sig fra Familienname — fx før ægteskab.",
+  "wizardStufe1bTitle": "Fødselsdag",
+  "wizardStufe1bPrompt": "Vi vil gerne fejre din fødselsdag sammen med dig! 🎂 Det hjælper os også at vide, at du er mindst 16 — sådan står der i vores Satzung.",
+  "wizardStufe1bGeburtsdatumLabel": "Fødselsdato",
+  "wizardStufe1bGeburtsdatumHelper": "Tryk for at vælge en dato",
+  "wizardStufe1bGeburtsortLabel": "Fødested",
+  "wizardStufe1bGeburtsortHelper": "By / sted hvor du blev født.",
+  "wizardAgeGatePrompt": "Det er jeg ked af… 😔",
+  "wizardAgeGateBody1": "Vores Satzung siger, at du skal være mindst 16 for at blive medlem. Du er {age} — jeg håber vi ses igen om {years} år! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Hvis du vil hjælpe lejlighedsvis som frivillig (enhver alder, med forældres samtykke), ring til os — vi støtter gerne unge, der vil forandre verden.",
+  "wizardAgeGateCallUs": "Ring til os",
+  "wizardAgeGateBackHome": "Tilbage til velkomstskærm"
 }

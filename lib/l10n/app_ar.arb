@@ -1038,5 +1038,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (اللقب)",
   "wizardStufe1aNachnameHelper": "لقبك الحالي.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (اسم الميلاد) — اختياري",
-  "wizardStufe1aGeburtsnameHelper": "فقط إذا كان يختلف عن Familienname — مثلاً قبل الزواج."
+  "wizardStufe1aGeburtsnameHelper": "فقط إذا كان يختلف عن Familienname — مثلاً قبل الزواج.",
+  "wizardStufe1bTitle": "عيد الميلاد",
+  "wizardStufe1bPrompt": "نود الاحتفال بعيد ميلادك معك! 🎂 ويساعدنا أيضًا للتأكد أنك على الأقل 16 سنة — هذا ما يقوله نظامنا الأساسي (Satzung).",
+  "wizardStufe1bGeburtsdatumLabel": "تاريخ الميلاد",
+  "wizardStufe1bGeburtsdatumHelper": "اضغط لاختيار التاريخ",
+  "wizardStufe1bGeburtsortLabel": "مكان الميلاد",
+  "wizardStufe1bGeburtsortHelper": "المدينة / البلدة التي ولدت فيها.",
+  "wizardAgeGatePrompt": "آسف… 😔",
+  "wizardAgeGateBody1": "يقول نظامنا الأساسي إنه يجب أن تكون على الأقل 16 سنة للانضمام. عمرك {age} — أتمنى أن أراك بعد {years} سنوات! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "إذا أردت التطوع بشكل عرضي (في أي عمر، بموافقة الوالدين)، اتصل بنا — يسعدنا دعم الشباب الذين يريدون تغيير العالم.",
+  "wizardAgeGateCallUs": "اتصل بنا",
+  "wizardAgeGateBackHome": "العودة إلى البداية"
 }

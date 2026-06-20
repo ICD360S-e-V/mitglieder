@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (nom de famille)",
   "wizardStufe1aNachnameHelper": "Ton nom de famille actuel.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (nom de naissance) — facultatif",
-  "wizardStufe1aGeburtsnameHelper": "Seulement s'il diffère du Familienname — par exemple avant le mariage."
+  "wizardStufe1aGeburtsnameHelper": "Seulement s'il diffère du Familienname — par exemple avant le mariage.",
+  "wizardStufe1bTitle": "Anniversaire",
+  "wizardStufe1bPrompt": "On aimerait fêter ton anniversaire avec toi ! 🎂 Et ça nous aide à vérifier que tu as au moins 16 ans — c'est ce que dit notre Satzung.",
+  "wizardStufe1bGeburtsdatumLabel": "Date de naissance",
+  "wizardStufe1bGeburtsdatumHelper": "Appuie pour choisir une date",
+  "wizardStufe1bGeburtsortLabel": "Lieu de naissance",
+  "wizardStufe1bGeburtsortHelper": "Ville / commune où tu es né.",
+  "wizardAgeGatePrompt": "Je suis désolé… 😔",
+  "wizardAgeGateBody1": "Notre Satzung dit qu'il faut au moins 16 ans pour devenir membre. Tu as {age} ans — j'espère te revoir dans {years} ans ! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Si tu veux faire du bénévolat ponctuel (à tout âge, avec l'accord de tes parents), appelle-nous — on adore soutenir les jeunes qui veulent changer le monde.",
+  "wizardAgeGateCallUs": "Appelle-nous",
+  "wizardAgeGateBackHome": "Retour à l'accueil"
 }

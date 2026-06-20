@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (прізвище)",
   "wizardStufe1aNachnameHelper": "Твоє теперішнє прізвище.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (прізвище при народженні) — необовʼязково",
-  "wizardStufe1aGeburtsnameHelper": "Лише якщо відрізняється від Familienname — наприклад, до шлюбу."
+  "wizardStufe1aGeburtsnameHelper": "Лише якщо відрізняється від Familienname — наприклад, до шлюбу.",
+  "wizardStufe1bTitle": "День народження",
+  "wizardStufe1bPrompt": "Хочемо святкувати твій день народження разом! 🎂 І нам важливо знати, що тобі щонайменше 16 — так пише наш статут.",
+  "wizardStufe1bGeburtsdatumLabel": "Дата народження",
+  "wizardStufe1bGeburtsdatumHelper": "Натисни, щоб вибрати дату",
+  "wizardStufe1bGeburtsortLabel": "Місце народження",
+  "wizardStufe1bGeburtsortHelper": "Місто / населений пункт, де ти народився.",
+  "wizardAgeGatePrompt": "Мені шкода… 😔",
+  "wizardAgeGateBody1": "Наш статут каже, що для членства потрібно бути щонайменше 16. Тобі {age} — сподіваюся побачити тебе через {years} років! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Якщо хочеш іноді допомагати як волонтер (будь-який вік, зі згодою батьків), зателефонуй — ми любимо підтримувати молодь, яка хоче змінювати світ.",
+  "wizardAgeGateCallUs": "Зателефонувати",
+  "wizardAgeGateBackHome": "Назад на головну"
 }

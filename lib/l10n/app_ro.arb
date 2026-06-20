@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (numele de familie)",
   "wizardStufe1aNachnameHelper": "Numele de familie actual.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (numele de naștere) — opțional",
-  "wizardStufe1aGeburtsnameHelper": "Doar dacă diferă de Familienname — ex. înainte de căsătorie."
+  "wizardStufe1aGeburtsnameHelper": "Doar dacă diferă de Familienname — ex. înainte de căsătorie.",
+  "wizardStufe1bTitle": "Ziua de naștere",
+  "wizardStufe1bPrompt": "Vrem să sărbătorim împreună cu tine ziua ta de naștere! 🎂 Ne ajută și să știm că ai cel puțin 16 ani — așa zice Satzung-ul nostru.",
+  "wizardStufe1bGeburtsdatumLabel": "Data nașterii",
+  "wizardStufe1bGeburtsdatumHelper": "Apasă să selectezi data",
+  "wizardStufe1bGeburtsortLabel": "Locul nașterii",
+  "wizardStufe1bGeburtsortHelper": "Orașul / localitatea unde te-ai născut.",
+  "wizardAgeGatePrompt": "Îmi pare rău… 😔",
+  "wizardAgeGateBody1": "Satzung-ul nostru spune că trebuie să ai cel puțin 16 ani să fii membru. Tu ai {age} ani — sper să te revedem peste {years} ani! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Dacă vrei să te implici punctual ca voluntar (orice vârstă, cu acordul părinților), sună-ne și vorbim — ne face plăcere să ajutăm tinerii care vor să schimbe lumea.",
+  "wizardAgeGateCallUs": "Sună-ne",
+  "wizardAgeGateBackHome": "Înapoi la welcome"
 }

@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (achternaam)",
   "wizardStufe1aNachnameHelper": "Je huidige achternaam.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (geboortenaam) — optioneel",
-  "wizardStufe1aGeburtsnameHelper": "Alleen als het verschilt van Familienname — bv. vóór het huwelijk."
+  "wizardStufe1aGeburtsnameHelper": "Alleen als het verschilt van Familienname — bv. vóór het huwelijk.",
+  "wizardStufe1bTitle": "Verjaardag",
+  "wizardStufe1bPrompt": "We willen je verjaardag graag samen vieren! 🎂 En het helpt ons te bevestigen dat je minstens 16 bent — dat staat in onze statuten.",
+  "wizardStufe1bGeburtsdatumLabel": "Geboortedatum",
+  "wizardStufe1bGeburtsdatumHelper": "Tik om een datum te kiezen",
+  "wizardStufe1bGeburtsortLabel": "Geboorteplaats",
+  "wizardStufe1bGeburtsortHelper": "Stad / plaats waar je geboren bent.",
+  "wizardAgeGatePrompt": "Het spijt me… 😔",
+  "wizardAgeGateBody1": "Onze statuten zeggen dat je minstens 16 moet zijn om lid te worden. Je bent {age} — ik hoop dat we elkaar over {years} jaar weerzien! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Wil je af en toe vrijwilligerswerk doen (elke leeftijd, met toestemming van je ouders), bel ons — we steunen graag jongeren die de wereld willen veranderen.",
+  "wizardAgeGateCallUs": "Bel ons",
+  "wizardAgeGateBackHome": "Terug naar welkom"
 }

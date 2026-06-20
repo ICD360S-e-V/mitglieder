@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (pavardė)",
   "wizardStufe1aNachnameHelper": "Dabartinė tavo pavardė.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (gimimo pavardė) — neprivaloma",
-  "wizardStufe1aGeburtsnameHelper": "Tik jei skiriasi nuo Familienname — pvz. iki santuokos."
+  "wizardStufe1aGeburtsnameHelper": "Tik jei skiriasi nuo Familienname — pvz. iki santuokos.",
+  "wizardStufe1bTitle": "Gimtadienis",
+  "wizardStufe1bPrompt": "Norėtume švęsti tavo gimtadienį kartu! 🎂 Ir mums padeda patikrinti, kad tau bent 16 — taip rašoma mūsų įstatuose.",
+  "wizardStufe1bGeburtsdatumLabel": "Gimimo data",
+  "wizardStufe1bGeburtsdatumHelper": "Bakstelėk, kad pasirinktum datą",
+  "wizardStufe1bGeburtsortLabel": "Gimimo vieta",
+  "wizardStufe1bGeburtsortHelper": "Miestas / vietovė, kur gimei.",
+  "wizardAgeGatePrompt": "Atsiprašau… 😔",
+  "wizardAgeGateBody1": "Mūsų įstatai sako, kad nariui reikia turėti bent 16 metų. Tau {age} — tikiuosi pasimatysime po {years} metų! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Jei nori savanoriauti retkarčiais (bet kuriame amžiuje, su tėvų sutikimu), paskambink — mums patinka palaikyti jaunimą, kuris nori keisti pasaulį.",
+  "wizardAgeGateCallUs": "Paskambink",
+  "wizardAgeGateBackHome": "Atgal į pradžią"
 }

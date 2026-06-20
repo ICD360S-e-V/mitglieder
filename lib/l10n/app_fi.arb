@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (sukunimi)",
   "wizardStufe1aNachnameHelper": "Nykyinen sukunimesi.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (syntymänimi) — valinnainen",
-  "wizardStufe1aGeburtsnameHelper": "Vain jos eroaa Familiennamen kanssa — esim. ennen avioliittoa."
+  "wizardStufe1aGeburtsnameHelper": "Vain jos eroaa Familiennamen kanssa — esim. ennen avioliittoa.",
+  "wizardStufe1bTitle": "Syntymäpäivä",
+  "wizardStufe1bPrompt": "Haluamme juhlia syntymäpäivääsi kanssasi! 🎂 Se auttaa myös vahvistamaan, että olet vähintään 16 — niin sanoo sääntömme.",
+  "wizardStufe1bGeburtsdatumLabel": "Syntymäaika",
+  "wizardStufe1bGeburtsdatumHelper": "Napauta valitaksesi päivän",
+  "wizardStufe1bGeburtsortLabel": "Syntymäpaikka",
+  "wizardStufe1bGeburtsortHelper": "Kaupunki / paikkakunta, jossa synnyit.",
+  "wizardAgeGatePrompt": "Olen pahoillani… 😔",
+  "wizardAgeGateBody1": "Sääntömme sanovat, että jäseneksi liittymiseen täytyy olla vähintään 16. Olet {age} — toivottavasti tapaamme {years} vuoden päästä! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Jos haluat auttaa silloin tällöin vapaaehtoisena (kaikenikäisille, vanhempien suostumuksella), soita meille — tuemme mielellämme nuoria, jotka haluavat muuttaa maailmaa.",
+  "wizardAgeGateCallUs": "Soita meille",
+  "wizardAgeGateBackHome": "Takaisin alkuun"
 }

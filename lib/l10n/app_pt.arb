@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (apelido)",
   "wizardStufe1aNachnameHelper": "O teu apelido atual.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (nome de nascimento) — opcional",
-  "wizardStufe1aGeburtsnameHelper": "Apenas se for diferente do Familienname — p. ex. antes do casamento."
+  "wizardStufe1aGeburtsnameHelper": "Apenas se for diferente do Familienname — p. ex. antes do casamento.",
+  "wizardStufe1bTitle": "Aniversário",
+  "wizardStufe1bPrompt": "Adoraríamos celebrar o teu aniversário contigo! 🎂 Também nos ajuda a confirmar que tens pelo menos 16 anos — é o que diz o nosso Satzung.",
+  "wizardStufe1bGeburtsdatumLabel": "Data de nascimento",
+  "wizardStufe1bGeburtsdatumHelper": "Toca para escolher uma data",
+  "wizardStufe1bGeburtsortLabel": "Local de nascimento",
+  "wizardStufe1bGeburtsortHelper": "Cidade / localidade onde nasceste.",
+  "wizardAgeGatePrompt": "Lamento… 😔",
+  "wizardAgeGateBody1": "O nosso Satzung diz que tens de ter pelo menos 16 anos para seres membro. Tens {age} — espero ver-te daqui a {years} anos! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Se quiseres fazer voluntariado pontual (qualquer idade, com consentimento dos pais), liga-nos — adoramos apoiar jovens que querem mudar o mundo.",
+  "wizardAgeGateCallUs": "Liga-nos",
+  "wizardAgeGateBackHome": "Voltar ao início"
 }

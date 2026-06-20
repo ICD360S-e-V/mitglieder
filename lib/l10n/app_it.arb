@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (cognome)",
   "wizardStufe1aNachnameHelper": "Il tuo cognome attuale.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (nome di nascita) — facoltativo",
-  "wizardStufe1aGeburtsnameHelper": "Solo se diverso dal Familienname — per esempio prima del matrimonio."
+  "wizardStufe1aGeburtsnameHelper": "Solo se diverso dal Familienname — per esempio prima del matrimonio.",
+  "wizardStufe1bTitle": "Compleanno",
+  "wizardStufe1bPrompt": "Vorremmo festeggiare il tuo compleanno con te! 🎂 E ci aiuta a confermare che hai almeno 16 anni — così dice il nostro Satzung.",
+  "wizardStufe1bGeburtsdatumLabel": "Data di nascita",
+  "wizardStufe1bGeburtsdatumHelper": "Tocca per scegliere una data",
+  "wizardStufe1bGeburtsortLabel": "Luogo di nascita",
+  "wizardStufe1bGeburtsortHelper": "Città / località dove sei nato.",
+  "wizardAgeGatePrompt": "Mi dispiace… 😔",
+  "wizardAgeGateBody1": "Il nostro Satzung dice che devi avere almeno 16 anni per diventare socio. Hai {age} anni — spero di rivederti tra {years} anni! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Se vuoi fare volontariato occasionalmente (qualsiasi età, con il consenso dei genitori), chiamaci — ci piace sostenere i giovani che vogliono cambiare il mondo.",
+  "wizardAgeGateCallUs": "Chiamaci",
+  "wizardAgeGateBackHome": "Torna alla home"
 }

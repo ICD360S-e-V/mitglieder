@@ -1038,5 +1038,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (soyad)",
   "wizardStufe1aNachnameHelper": "Mevcut soyadın.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (doğum soyadı) — isteğe bağlı",
-  "wizardStufe1aGeburtsnameHelper": "Yalnızca Familienname'den farklıysa — örn. evlilik öncesi."
+  "wizardStufe1aGeburtsnameHelper": "Yalnızca Familienname'den farklıysa — örn. evlilik öncesi.",
+  "wizardStufe1bTitle": "Doğum günü",
+  "wizardStufe1bPrompt": "Doğum gününü seninle kutlamak isteriz! 🎂 Ayrıca en az 16 yaşında olduğunu doğrulamamıza yardımcı olur — tüzüğümüz öyle diyor.",
+  "wizardStufe1bGeburtsdatumLabel": "Doğum tarihi",
+  "wizardStufe1bGeburtsdatumHelper": "Tarih seçmek için dokun",
+  "wizardStufe1bGeburtsortLabel": "Doğum yeri",
+  "wizardStufe1bGeburtsortHelper": "Doğduğun şehir / kasaba.",
+  "wizardAgeGatePrompt": "Üzgünüm… 😔",
+  "wizardAgeGateBody1": "Tüzüğümüze göre üye olabilmek için en az 16 yaşında olman gerekiyor. {age} yaşındasın — {years} yıl sonra görüşmek dileğiyle! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Ara sıra gönüllü olmak istersen (her yaşta, ailenin onayıyla), bizi ara — dünyayı değiştirmek isteyen gençleri desteklemeyi seviyoruz.",
+  "wizardAgeGateCallUs": "Bizi ara",
+  "wizardAgeGateBackHome": "Karşılama ekranına dön"
 }

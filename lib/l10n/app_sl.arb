@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (priimek)",
   "wizardStufe1aNachnameHelper": "Tvoj trenutni priimek.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (rojstno ime) — neobvezno",
-  "wizardStufe1aGeburtsnameHelper": "Samo če se razlikuje od Familienname — npr. pred poroko."
+  "wizardStufe1aGeburtsnameHelper": "Samo če se razlikuje od Familienname — npr. pred poroko.",
+  "wizardStufe1bTitle": "Rojstni dan",
+  "wizardStufe1bPrompt": "Z veseljem bi praznovali tvoj rojstni dan! 🎂 In nam pomaga potrditi, da imaš vsaj 16 — tako pravi naš statut.",
+  "wizardStufe1bGeburtsdatumLabel": "Datum rojstva",
+  "wizardStufe1bGeburtsdatumHelper": "Tapni za izbiro datuma",
+  "wizardStufe1bGeburtsortLabel": "Kraj rojstva",
+  "wizardStufe1bGeburtsortHelper": "Mesto / kraj, kjer si se rodil.",
+  "wizardAgeGatePrompt": "Žal mi je… 😔",
+  "wizardAgeGateBody1": "Naš statut pravi, da moraš biti vsaj star 16, da postaneš član. Star si {age} — upam, da se vidiva čez {years} let! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Če želiš občasno prostovoljiti (katera koli starost, s soglasjem staršev), pokliči nas — radi podpiramo mlade, ki želijo spremeniti svet.",
+  "wizardAgeGateCallUs": "Pokliči nas",
+  "wizardAgeGateBackHome": "Nazaj na pozdrav"
 }

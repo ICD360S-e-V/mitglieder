@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (uzvārds)",
   "wizardStufe1aNachnameHelper": "Tavs pašreizējais uzvārds.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (dzimšanas vārds) — pēc izvēles",
-  "wizardStufe1aGeburtsnameHelper": "Tikai ja atšķiras no Familienname — piem., pirms laulības."
+  "wizardStufe1aGeburtsnameHelper": "Tikai ja atšķiras no Familienname — piem., pirms laulības.",
+  "wizardStufe1bTitle": "Dzimšanas diena",
+  "wizardStufe1bPrompt": "Mēs vēlamies svinēt tavu dzimšanas dienu kopā! 🎂 Tas arī palīdz mums apstiprināt, ka tev ir vismaz 16 — tā teikts mūsu statūtos.",
+  "wizardStufe1bGeburtsdatumLabel": "Dzimšanas datums",
+  "wizardStufe1bGeburtsdatumHelper": "Pieskaries, lai izvēlētos datumu",
+  "wizardStufe1bGeburtsortLabel": "Dzimšanas vieta",
+  "wizardStufe1bGeburtsortHelper": "Pilsēta / vieta, kur tu dzimi.",
+  "wizardAgeGatePrompt": "Man žēl… 😔",
+  "wizardAgeGateBody1": "Mūsu statūti saka, ka biedrim jābūt vismaz 16. Tev ir {age} — ceru tikties pēc {years} gadiem! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Ja vēlies brīvprātīgi palīdzēt laiku pa laikam (jebkurā vecumā, ar vecāku piekrišanu), piezvani — mums patīk atbalstīt jauniešus, kuri vēlas mainīt pasauli.",
+  "wizardAgeGateCallUs": "Zvani mums",
+  "wizardAgeGateBackHome": "Atpakaļ uz sākumu"
 }

@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (efternamn)",
   "wizardStufe1aNachnameHelper": "Ditt nuvarande efternamn.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (födelsenamn) — frivilligt",
-  "wizardStufe1aGeburtsnameHelper": "Endast om det skiljer sig från Familienname — t.ex. före äktenskap."
+  "wizardStufe1aGeburtsnameHelper": "Endast om det skiljer sig från Familienname — t.ex. före äktenskap.",
+  "wizardStufe1bTitle": "Födelsedag",
+  "wizardStufe1bPrompt": "Vi vill gärna fira din födelsedag med dig! 🎂 Det hjälper oss också att bekräfta att du är minst 16 — så står det i våra stadgar.",
+  "wizardStufe1bGeburtsdatumLabel": "Födelsedatum",
+  "wizardStufe1bGeburtsdatumHelper": "Tryck för att välja ett datum",
+  "wizardStufe1bGeburtsortLabel": "Födelseort",
+  "wizardStufe1bGeburtsortHelper": "Stad / ort där du föddes.",
+  "wizardAgeGatePrompt": "Jag är ledsen… 😔",
+  "wizardAgeGateBody1": "Våra stadgar säger att du måste vara minst 16 för att bli medlem. Du är {age} — jag hoppas vi ses igen om {years} år! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Vill du volontära då och då (vilken ålder som helst, med föräldrarnas medgivande), ring oss — vi stöttar gärna unga som vill förändra världen.",
+  "wizardAgeGateCallUs": "Ring oss",
+  "wizardAgeGateBackHome": "Tillbaka till start"
 }

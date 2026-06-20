@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (family name)",
   "wizardStufe1aNachnameHelper": "Your current family name.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (birth name) — optional",
-  "wizardStufe1aGeburtsnameHelper": "Only if it differs from Familienname — e.g. before marriage."
+  "wizardStufe1aGeburtsnameHelper": "Only if it differs from Familienname — e.g. before marriage.",
+  "wizardStufe1bTitle": "Birthday",
+  "wizardStufe1bPrompt": "We'd love to celebrate your birthday with you! 🎂 It also helps us confirm you're at least 16 — that's what our Satzung says.",
+  "wizardStufe1bGeburtsdatumLabel": "Date of birth",
+  "wizardStufe1bGeburtsdatumHelper": "Tap to pick a date",
+  "wizardStufe1bGeburtsortLabel": "Place of birth",
+  "wizardStufe1bGeburtsortHelper": "City / town where you were born.",
+  "wizardAgeGatePrompt": "I'm sorry… 😔",
+  "wizardAgeGateBody1": "Our Satzung says you must be at least 16 to become a member. You're {age} — I hope we see you again in {years} years! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "If you want to volunteer occasionally (any age, with your parents' consent), give us a call — we love supporting young people who want to change the world.",
+  "wizardAgeGateCallUs": "Call us",
+  "wizardAgeGateBackHome": "Back to welcome"
 }

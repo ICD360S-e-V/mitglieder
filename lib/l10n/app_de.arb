@@ -1038,5 +1038,26 @@
   "wizardStufe1aNachnameLabel": "Familienname",
   "wizardStufe1aNachnameHelper": "Dein aktueller Familienname.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (optional)",
-  "wizardStufe1aGeburtsnameHelper": "Nur wenn er vom Familiennamen abweicht — z.B. vor der Heirat."
+  "wizardStufe1aGeburtsnameHelper": "Nur wenn er vom Familiennamen abweicht — z.B. vor der Heirat.",
+  "wizardStufe1bTitle": "Geburtstag",
+  "wizardStufe1bPrompt": "Wir möchten deinen Geburtstag mit dir feiern! 🎂 Und es hilft uns zu wissen, dass du mindestens 16 bist — so steht es in unserer Satzung.",
+  "wizardStufe1bGeburtsdatumLabel": "Geburtsdatum",
+  "wizardStufe1bGeburtsdatumHelper": "Tippen zum Auswählen",
+  "wizardStufe1bGeburtsortLabel": "Geburtsort",
+  "wizardStufe1bGeburtsortHelper": "Stadt / Ort, wo du geboren wurdest.",
+  "wizardAgeGatePrompt": "Es tut mir leid… 😔",
+  "wizardAgeGateBody1": "Unsere Satzung sagt, du musst mindestens 16 sein, um Mitglied zu werden. Du bist {age} — ich hoffe, wir sehen uns in {years} Jahren wieder! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Wenn du dich punktuell als Ehrenamtliche*r engagieren möchtest (jedes Alter, mit Erlaubnis der Eltern), ruf uns an — wir freuen uns, junge Menschen zu unterstützen, die die Welt verändern wollen.",
+  "wizardAgeGateCallUs": "Ruf uns an",
+  "wizardAgeGateBackHome": "Zurück zum Start"
 }

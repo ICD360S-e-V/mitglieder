@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (příjmení)",
   "wizardStufe1aNachnameHelper": "Tvé aktuální příjmení.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (rodné příjmení) — volitelné",
-  "wizardStufe1aGeburtsnameHelper": "Pouze pokud se liší od Familienname — např. před svatbou."
+  "wizardStufe1aGeburtsnameHelper": "Pouze pokud se liší od Familienname — např. před svatbou.",
+  "wizardStufe1bTitle": "Datum narození",
+  "wizardStufe1bPrompt": "Rádi bychom s tebou oslavili tvé narozeniny! 🎂 A pomáhá nám to ověřit, že máš aspoň 16 — tak to říká naše stanova.",
+  "wizardStufe1bGeburtsdatumLabel": "Datum narození",
+  "wizardStufe1bGeburtsdatumHelper": "Klepnutím vyber datum",
+  "wizardStufe1bGeburtsortLabel": "Místo narození",
+  "wizardStufe1bGeburtsortHelper": "Město / místo, kde ses narodil.",
+  "wizardAgeGatePrompt": "Je mi líto… 😔",
+  "wizardAgeGateBody1": "Naše stanovy říkají, že musíš mít alespoň 16 let, abys mohl být členem. Je ti {age} — doufám, že se vidíme za {years} let! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Pokud chceš příležitostně pomáhat jako dobrovolník (jakýkoli věk, se souhlasem rodičů), zavolej nám — rádi podporujeme mladé lidi, kteří chtějí měnit svět.",
+  "wizardAgeGateCallUs": "Zavolat",
+  "wizardAgeGateBackHome": "Zpět na úvod"
 }

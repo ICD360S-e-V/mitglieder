@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (фамилия)",
   "wizardStufe1aNachnameHelper": "Твоя нынешняя фамилия.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (фамилия при рождении) — необязательно",
-  "wizardStufe1aGeburtsnameHelper": "Только если отличается от Familienname — например, до брака."
+  "wizardStufe1aGeburtsnameHelper": "Только если отличается от Familienname — например, до брака.",
+  "wizardStufe1bTitle": "День рождения",
+  "wizardStufe1bPrompt": "Мы хотим праздновать твой день рождения вместе! 🎂 И нам важно знать, что тебе хотя бы 16 — так написано в нашем уставе.",
+  "wizardStufe1bGeburtsdatumLabel": "Дата рождения",
+  "wizardStufe1bGeburtsdatumHelper": "Нажми, чтобы выбрать дату",
+  "wizardStufe1bGeburtsortLabel": "Место рождения",
+  "wizardStufe1bGeburtsortHelper": "Город / населённый пункт, где ты родился.",
+  "wizardAgeGatePrompt": "Мне жаль… 😔",
+  "wizardAgeGateBody1": "Наш устав говорит, что для членства нужно быть не моложе 16 лет. Тебе {age} — надеюсь увидеть тебя через {years} лет(а)! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Если хочешь иногда помогать как волонтёр (любой возраст, с согласия родителей), позвони нам — мы любим поддерживать молодых, которые хотят менять мир.",
+  "wizardAgeGateCallUs": "Позвонить",
+  "wizardAgeGateBackHome": "Назад к началу"
 }

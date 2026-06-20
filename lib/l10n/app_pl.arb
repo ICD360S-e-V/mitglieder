@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (nazwisko)",
   "wizardStufe1aNachnameHelper": "Twoje obecne nazwisko.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (nazwisko rodowe) — opcjonalne",
-  "wizardStufe1aGeburtsnameHelper": "Tylko jeśli różni się od Familienname — np. przed małżeństwem."
+  "wizardStufe1aGeburtsnameHelper": "Tylko jeśli różni się od Familienname — np. przed małżeństwem.",
+  "wizardStufe1bTitle": "Urodziny",
+  "wizardStufe1bPrompt": "Chcielibyśmy świętować twoje urodziny razem! 🎂 Pomaga nam też potwierdzić, że masz co najmniej 16 lat — tak mówi nasz statut.",
+  "wizardStufe1bGeburtsdatumLabel": "Data urodzenia",
+  "wizardStufe1bGeburtsdatumHelper": "Dotknij, aby wybrać datę",
+  "wizardStufe1bGeburtsortLabel": "Miejsce urodzenia",
+  "wizardStufe1bGeburtsortHelper": "Miasto / miejscowość, w której się urodziłeś.",
+  "wizardAgeGatePrompt": "Przykro mi… 😔",
+  "wizardAgeGateBody1": "Nasz statut mówi, że trzeba mieć co najmniej 16 lat, aby zostać członkiem. Masz {age} — mam nadzieję, że zobaczymy się za {years} lat! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Jeśli chcesz pomagać jako wolontariusz okazjonalnie (każdy wiek, za zgodą rodziców), zadzwoń — uwielbiamy wspierać młodych, którzy chcą zmieniać świat.",
+  "wizardAgeGateCallUs": "Zadzwoń",
+  "wizardAgeGateBackHome": "Wróć na powitanie"
 }

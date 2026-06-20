@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (vezetéknév)",
   "wizardStufe1aNachnameHelper": "A jelenlegi vezetékneved.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (születési név) — opcionális",
-  "wizardStufe1aGeburtsnameHelper": "Csak ha eltér a Familiennametől — pl. házasság előtti név."
+  "wizardStufe1aGeburtsnameHelper": "Csak ha eltér a Familiennametől — pl. házasság előtti név.",
+  "wizardStufe1bTitle": "Születésnap",
+  "wizardStufe1bPrompt": "Szeretnénk veled ünnepelni a születésnapod! 🎂 És segít megerősíteni, hogy elmúltál 16 — így szól az alapszabályunk.",
+  "wizardStufe1bGeburtsdatumLabel": "Születési dátum",
+  "wizardStufe1bGeburtsdatumHelper": "Koppints a dátum kiválasztásához",
+  "wizardStufe1bGeburtsortLabel": "Születési hely",
+  "wizardStufe1bGeburtsortHelper": "Város / település, ahol születtél.",
+  "wizardAgeGatePrompt": "Sajnálom… 😔",
+  "wizardAgeGateBody1": "Az alapszabályunk szerint legalább 16 évesnek kell lenned a tagsághoz. {age} éves vagy — remélem találkozunk {years} év múlva! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Ha alkalmanként önkénteskedni szeretnél (bármilyen kor, szülői engedéllyel), hívj minket — szívesen támogatunk fiatalokat, akik meg akarják változtatni a világot.",
+  "wizardAgeGateCallUs": "Hívj minket",
+  "wizardAgeGateBackHome": "Vissza a kezdőképernyőre"
 }

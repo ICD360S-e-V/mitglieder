@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (perekonnanimi)",
   "wizardStufe1aNachnameHelper": "Sinu praegune perekonnanimi.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (sünninimi) — vabatahtlik",
-  "wizardStufe1aGeburtsnameHelper": "Ainult kui erineb perekonnanimest — nt enne abielu."
+  "wizardStufe1aGeburtsnameHelper": "Ainult kui erineb perekonnanimest — nt enne abielu.",
+  "wizardStufe1bTitle": "Sünnipäev",
+  "wizardStufe1bPrompt": "Soovime tähistada sinu sünnipäeva koos! 🎂 See aitab meil ka kontrollida, et oled vähemalt 16 — nii ütleb meie põhikiri.",
+  "wizardStufe1bGeburtsdatumLabel": "Sünnikuupäev",
+  "wizardStufe1bGeburtsdatumHelper": "Puuduta kuupäeva valimiseks",
+  "wizardStufe1bGeburtsortLabel": "Sünnikoht",
+  "wizardStufe1bGeburtsortHelper": "Linn / koht, kus sa sündisid.",
+  "wizardAgeGatePrompt": "Mul on kahju… 😔",
+  "wizardAgeGateBody1": "Meie põhikiri ütleb, et liikmeks saamiseks pead olema vähemalt 16. Sa oled {age} — loodan näha sind {years} aasta pärast! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Kui soovid juhuslikult vabatahtlikuna aidata (mistahes vanus, vanemate nõusolekul), helista — meile meeldib toetada noori, kes tahavad maailma muuta.",
+  "wizardAgeGateCallUs": "Helista",
+  "wizardAgeGateBackHome": "Tagasi tervitusekraanile"
 }

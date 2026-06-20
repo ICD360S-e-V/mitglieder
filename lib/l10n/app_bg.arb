@@ -1017,5 +1017,26 @@
   "wizardStufe1aNachnameLabel": "Familienname (фамилия)",
   "wizardStufe1aNachnameHelper": "Сегашната ти фамилия.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (рождена фамилия) — по избор",
-  "wizardStufe1aGeburtsnameHelper": "Само ако се различава от Familienname — напр. преди брака."
+  "wizardStufe1aGeburtsnameHelper": "Само ако се различава от Familienname — напр. преди брака.",
+  "wizardStufe1bTitle": "Рожден ден",
+  "wizardStufe1bPrompt": "Бихме искали да празнуваме рождения ти ден заедно! 🎂 Помага ни и да знаем, че си поне на 16 — така пише в нашия устав.",
+  "wizardStufe1bGeburtsdatumLabel": "Дата на раждане",
+  "wizardStufe1bGeburtsdatumHelper": "Натисни, за да избереш дата",
+  "wizardStufe1bGeburtsortLabel": "Място на раждане",
+  "wizardStufe1bGeburtsortHelper": "Град / населено място, където си роден.",
+  "wizardAgeGatePrompt": "Съжалявам… 😔",
+  "wizardAgeGateBody1": "Уставът ни казва, че трябва да си поне на 16, за да станеш член. Ти си на {age} — надявам се да те видя след {years} години! 🌱",
+  "@wizardAgeGateBody1": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardAgeGateBody2": "Ако искаш да помагаш като доброволец понякога (всякаква възраст, със съгласието на родителите), обади се — обичаме да подкрепяме млади, които искат да променят света.",
+  "wizardAgeGateCallUs": "Обади се",
+  "wizardAgeGateBackHome": "Обратно към началото"
 }
