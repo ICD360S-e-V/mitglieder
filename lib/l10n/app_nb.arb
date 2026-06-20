@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Hvis du vil bidra som frivillig av og til (uansett alder, med foreldres samtykke), ring oss — vi støtter gjerne unge som vil forandre verden.",
   "wizardAgeGateCallUs": "Ring oss",
-  "wizardAgeGateBackHome": "Tilbake til velkomstskjermen"
+  "wizardAgeGateBackHome": "Tilbake til velkomstskjermen",
+  "wizardErrInvalidPhone": "Ugyldig telefonnummer",
+  "wizardStufe1b1Title": "Foreldresamtykke",
+  "wizardStufe1b1Prompt": "Du er mindreårig (16-17) — i henhold til §106 BGB trenger vi samtykke fra en forelder eller verge. Si meg navnet og telefonnummeret. En Vorsitzer ringer og avtaler et møte (personlig eller videosamtale). Ingen e-post — vi vil være sikre på at vi snakker med rett person.",
+  "wizardStufe1b1VornameLabel": "Forelders fornavn",
+  "wizardStufe1b1VornameHelper": "Som det står på forelderens Personalausweis.",
+  "wizardStufe1b1NachnameLabel": "Forelders etternavn",
+  "wizardStufe1b1NachnameHelper": "Som det står på forelderens Personalausweis.",
+  "wizardStufe1b1TelefonLabel": "Forelders mobilnummer",
+  "wizardStufe1b1TelefonHelper": "En Vorsitzer ringer dette nummeret.",
+  "wizardStufe1b1RelationLabel": "Forhold til barnet:",
+  "wizardStufe1b1RelationMutter": "Mor",
+  "wizardStufe1b1RelationVater": "Far",
+  "wizardStufe1b1RelationSorgeberechtigter": "Verge",
+  "wizardStufe1b1RelationAndere": "Annen verge"
 }

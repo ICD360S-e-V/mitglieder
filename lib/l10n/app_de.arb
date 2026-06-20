@@ -1059,5 +1059,19 @@
   },
   "wizardAgeGateBody2": "Wenn du dich punktuell als Ehrenamtliche*r engagieren möchtest (jedes Alter, mit Erlaubnis der Eltern), ruf uns an — wir freuen uns, junge Menschen zu unterstützen, die die Welt verändern wollen.",
   "wizardAgeGateCallUs": "Ruf uns an",
-  "wizardAgeGateBackHome": "Zurück zum Start"
+  "wizardAgeGateBackHome": "Zurück zum Start",
+  "wizardErrInvalidPhone": "Ungültige Telefonnummer",
+  "wizardStufe1b1Title": "Einwilligung Eltern",
+  "wizardStufe1b1Prompt": "Du bist minderjährig (16-17) — gemäß §106 BGB brauchen wir die Zustimmung eines Elternteils oder gesetzlichen Vertreters. Gib mir Namen und Telefonnummer. Ein Vorsitzer ruft an und vereinbart ein Treffen (persönlich oder per Videoanruf). Keine E-Mail — wir wollen sicher sein, dass wir mit der richtigen Person sprechen.",
+  "wizardStufe1b1VornameLabel": "Vorname Erziehungsberechtigter",
+  "wizardStufe1b1VornameHelper": "Wie auf dem Personalausweis des Elternteils.",
+  "wizardStufe1b1NachnameLabel": "Familienname Erziehungsberechtigter",
+  "wizardStufe1b1NachnameHelper": "Wie auf dem Personalausweis des Elternteils.",
+  "wizardStufe1b1TelefonLabel": "Mobilnummer Erziehungsberechtigter",
+  "wizardStufe1b1TelefonHelper": "An diese Nummer ruft ein Vorsitzer an.",
+  "wizardStufe1b1RelationLabel": "Verhältnis zum Kind:",
+  "wizardStufe1b1RelationMutter": "Mutter",
+  "wizardStufe1b1RelationVater": "Vater",
+  "wizardStufe1b1RelationSorgeberechtigter": "Sorgeberechtigter",
+  "wizardStufe1b1RelationAndere": "Andere/r Erziehungsberechtigte/r"
 }

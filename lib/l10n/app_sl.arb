@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Če želiš občasno prostovoljiti (katera koli starost, s soglasjem staršev), pokliči nas — radi podpiramo mlade, ki želijo spremeniti svet.",
   "wizardAgeGateCallUs": "Pokliči nas",
-  "wizardAgeGateBackHome": "Nazaj na pozdrav"
+  "wizardAgeGateBackHome": "Nazaj na pozdrav",
+  "wizardErrInvalidPhone": "Neveljavna telefonska številka",
+  "wizardStufe1b1Title": "Soglasje staršev",
+  "wizardStufe1b1Prompt": "Si mladoletnik (16-17) — po §106 BGB potrebujemo soglasje staršev ali zakonitega skrbnika. Povej mi ime in telefonsko številko. Vorsitzer ga bo poklical in dogovoril srečanje (osebno ali video klic). Brez e-pošte — želimo biti prepričani, da govorimo s pravo osebo.",
+  "wizardStufe1b1VornameLabel": "Ime starša",
+  "wizardStufe1b1VornameHelper": "Kot na Personalausweis starša.",
+  "wizardStufe1b1NachnameLabel": "Priimek starša",
+  "wizardStufe1b1NachnameHelper": "Kot na Personalausweis starša.",
+  "wizardStufe1b1TelefonLabel": "Mobilna številka starša",
+  "wizardStufe1b1TelefonHelper": "Na to številko bo poklical Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Razmerje do otroka:",
+  "wizardStufe1b1RelationMutter": "Mati",
+  "wizardStufe1b1RelationVater": "Oče",
+  "wizardStufe1b1RelationSorgeberechtigter": "Zakoniti skrbnik",
+  "wizardStufe1b1RelationAndere": "Drug skrbnik"
 }

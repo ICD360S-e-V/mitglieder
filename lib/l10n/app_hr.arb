@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Ako želiš povremeno volontirati (bilo koja dob, uz pristanak roditelja), nazovi nas — rado podržavamo mlade koji žele promijeniti svijet.",
   "wizardAgeGateCallUs": "Nazovi nas",
-  "wizardAgeGateBackHome": "Natrag na dobrodošlicu"
+  "wizardAgeGateBackHome": "Natrag na dobrodošlicu",
+  "wizardErrInvalidPhone": "Nevažeći broj telefona",
+  "wizardStufe1b1Title": "Roditeljska suglasnost",
+  "wizardStufe1b1Prompt": "Maloljetan si (16-17) — prema §106 BGB-a treba nam suglasnost roditelja ili zakonskog skrbnika. Reci mi ime i broj telefona. Vorsitzer će nazvati i dogovoriti susret (osobno ili videopozivom). Bez e-maila — želimo biti sigurni da razgovaramo s pravom osobom.",
+  "wizardStufe1b1VornameLabel": "Ime roditelja",
+  "wizardStufe1b1VornameHelper": "Kao na Personalausweisu roditelja.",
+  "wizardStufe1b1NachnameLabel": "Prezime roditelja",
+  "wizardStufe1b1NachnameHelper": "Kao na Personalausweisu roditelja.",
+  "wizardStufe1b1TelefonLabel": "Mobitel roditelja",
+  "wizardStufe1b1TelefonHelper": "Vorsitzer će nazvati na ovaj broj.",
+  "wizardStufe1b1RelationLabel": "Odnos prema djetetu:",
+  "wizardStufe1b1RelationMutter": "Majka",
+  "wizardStufe1b1RelationVater": "Otac",
+  "wizardStufe1b1RelationSorgeberechtigter": "Zakonski skrbnik",
+  "wizardStufe1b1RelationAndere": "Drugi skrbnik"
 }

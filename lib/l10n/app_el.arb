@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Αν θες να βοηθάς περιστασιακά εθελοντικά (οποιαδήποτε ηλικία, με συγκατάθεση γονέων), κάλεσέ μας — μας αρέσει να στηρίζουμε νέους που θέλουν ν' αλλάξουν τον κόσμο.",
   "wizardAgeGateCallUs": "Κάλεσέ μας",
-  "wizardAgeGateBackHome": "Πίσω στην αρχική"
+  "wizardAgeGateBackHome": "Πίσω στην αρχική",
+  "wizardErrInvalidPhone": "Μη έγκυρος αριθμός τηλεφώνου",
+  "wizardStufe1b1Title": "Γονική συναίνεση",
+  "wizardStufe1b1Prompt": "Είσαι ανήλικος (16-17) — βάσει §106 BGB χρειαζόμαστε τη συναίνεση γονέα ή νόμιμου κηδεμόνα. Πες μου όνομα και τηλέφωνο. Ένας Vorsitzer θα τους καλέσει και θα κανονίσει συνάντηση (από κοντά ή με βιντεοκλήση). Όχι email — θέλουμε να βεβαιωθούμε ότι μιλάμε με το σωστό άτομο.",
+  "wizardStufe1b1VornameLabel": "Όνομα γονέα",
+  "wizardStufe1b1VornameHelper": "Όπως εμφανίζεται στο Personalausweis του γονέα.",
+  "wizardStufe1b1NachnameLabel": "Επώνυμο γονέα",
+  "wizardStufe1b1NachnameHelper": "Όπως εμφανίζεται στο Personalausweis του γονέα.",
+  "wizardStufe1b1TelefonLabel": "Κινητό γονέα",
+  "wizardStufe1b1TelefonHelper": "Ένας Vorsitzer θα καλέσει αυτόν τον αριθμό.",
+  "wizardStufe1b1RelationLabel": "Σχέση με το παιδί:",
+  "wizardStufe1b1RelationMutter": "Μητέρα",
+  "wizardStufe1b1RelationVater": "Πατέρας",
+  "wizardStufe1b1RelationSorgeberechtigter": "Νόμιμος κηδεμόνας",
+  "wizardStufe1b1RelationAndere": "Άλλος κηδεμόνας"
 }

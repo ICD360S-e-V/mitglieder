@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Ha alkalmanként önkénteskedni szeretnél (bármilyen kor, szülői engedéllyel), hívj minket — szívesen támogatunk fiatalokat, akik meg akarják változtatni a világot.",
   "wizardAgeGateCallUs": "Hívj minket",
-  "wizardAgeGateBackHome": "Vissza a kezdőképernyőre"
+  "wizardAgeGateBackHome": "Vissza a kezdőképernyőre",
+  "wizardErrInvalidPhone": "Érvénytelen telefonszám",
+  "wizardStufe1b1Title": "Szülői beleegyezés",
+  "wizardStufe1b1Prompt": "Kiskorú vagy (16-17) — a BGB §106 szerint szükségünk van egy szülő vagy törvényes képviselő beleegyezésére. Mondd a nevét és telefonszámát. Egy Vorsitzer felhívja és megbeszél vele egy találkozót (személyesen vagy videóhíváson). Email nincs — biztosak akarunk lenni, hogy a megfelelő emberrel beszélünk.",
+  "wizardStufe1b1VornameLabel": "Szülő keresztneve",
+  "wizardStufe1b1VornameHelper": "Ahogy a szülő Personalausweisén szerepel.",
+  "wizardStufe1b1NachnameLabel": "Szülő vezetékneve",
+  "wizardStufe1b1NachnameHelper": "Ahogy a szülő Personalausweisén szerepel.",
+  "wizardStufe1b1TelefonLabel": "Szülő mobilszáma",
+  "wizardStufe1b1TelefonHelper": "Erre a számra hív egy Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Kapcsolat a gyermekkel:",
+  "wizardStufe1b1RelationMutter": "Anya",
+  "wizardStufe1b1RelationVater": "Apa",
+  "wizardStufe1b1RelationSorgeberechtigter": "Törvényes képviselő",
+  "wizardStufe1b1RelationAndere": "Más gondviselő"
 }

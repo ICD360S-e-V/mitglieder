@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Ak chceš príležitostne pomáhať ako dobrovoľník (akýkoľvek vek, so súhlasom rodičov), zavolaj — radi podporujeme mladých, ktorí chcú meniť svet.",
   "wizardAgeGateCallUs": "Zavolaj nám",
-  "wizardAgeGateBackHome": "Späť na úvod"
+  "wizardAgeGateBackHome": "Späť na úvod",
+  "wizardErrInvalidPhone": "Neplatné telefónne číslo",
+  "wizardStufe1b1Title": "Súhlas rodiča",
+  "wizardStufe1b1Prompt": "Si maloletý (16-17) — podľa §106 BGB potrebujeme súhlas rodiča alebo zákonného zástupcu. Povedz mi meno a telefónne číslo. Vorsitzer zavolá a dohodne stretnutie (osobne alebo videohovorom). Žiadny e-mail — chceme mať istotu, že hovoríme so správnou osobou.",
+  "wizardStufe1b1VornameLabel": "Meno rodiča",
+  "wizardStufe1b1VornameHelper": "Ako na Personalausweis rodiča.",
+  "wizardStufe1b1NachnameLabel": "Priezvisko rodiča",
+  "wizardStufe1b1NachnameHelper": "Ako na Personalausweis rodiča.",
+  "wizardStufe1b1TelefonLabel": "Mobilné číslo rodiča",
+  "wizardStufe1b1TelefonHelper": "Na toto číslo zavolá Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Vzťah k dieťaťu:",
+  "wizardStufe1b1RelationMutter": "Matka",
+  "wizardStufe1b1RelationVater": "Otec",
+  "wizardStufe1b1RelationSorgeberechtigter": "Zákonný zástupca",
+  "wizardStufe1b1RelationAndere": "Iný zástupca"
 }

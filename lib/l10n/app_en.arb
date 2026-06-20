@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "If you want to volunteer occasionally (any age, with your parents' consent), give us a call — we love supporting young people who want to change the world.",
   "wizardAgeGateCallUs": "Call us",
-  "wizardAgeGateBackHome": "Back to welcome"
+  "wizardAgeGateBackHome": "Back to welcome",
+  "wizardErrInvalidPhone": "Invalid phone number",
+  "wizardStufe1b1Title": "Parental consent",
+  "wizardStufe1b1Prompt": "You're a minor (16-17) — per §106 BGB we need a parent or legal guardian's consent. Tell me their name and phone number. A Vorsitzer will call them and arrange a meeting (in person or video call). No email — we want to be sure we're speaking to the real person.",
+  "wizardStufe1b1VornameLabel": "Parent first name",
+  "wizardStufe1b1VornameHelper": "As shown on the parent's Personalausweis.",
+  "wizardStufe1b1NachnameLabel": "Parent family name",
+  "wizardStufe1b1NachnameHelper": "As shown on the parent's Personalausweis.",
+  "wizardStufe1b1TelefonLabel": "Parent mobile number",
+  "wizardStufe1b1TelefonHelper": "A Vorsitzer will call this number.",
+  "wizardStufe1b1RelationLabel": "Relationship to the child:",
+  "wizardStufe1b1RelationMutter": "Mother",
+  "wizardStufe1b1RelationVater": "Father",
+  "wizardStufe1b1RelationSorgeberechtigter": "Legal guardian",
+  "wizardStufe1b1RelationAndere": "Other guardian"
 }

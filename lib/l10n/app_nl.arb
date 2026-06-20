@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Wil je af en toe vrijwilligerswerk doen (elke leeftijd, met toestemming van je ouders), bel ons — we steunen graag jongeren die de wereld willen veranderen.",
   "wizardAgeGateCallUs": "Bel ons",
-  "wizardAgeGateBackHome": "Terug naar welkom"
+  "wizardAgeGateBackHome": "Terug naar welkom",
+  "wizardErrInvalidPhone": "Ongeldig telefoonnummer",
+  "wizardStufe1b1Title": "Toestemming ouder",
+  "wizardStufe1b1Prompt": "Je bent minderjarig (16-17) — volgens §106 BGB hebben we toestemming van een ouder of wettelijke voogd nodig. Geef me de naam en telefoonnummer. Een Vorsitzer belt en regelt een afspraak (in persoon of videogesprek). Geen e-mail — we willen zeker weten dat we de juiste persoon spreken.",
+  "wizardStufe1b1VornameLabel": "Voornaam ouder",
+  "wizardStufe1b1VornameHelper": "Zoals op de Personalausweis van de ouder.",
+  "wizardStufe1b1NachnameLabel": "Achternaam ouder",
+  "wizardStufe1b1NachnameHelper": "Zoals op de Personalausweis van de ouder.",
+  "wizardStufe1b1TelefonLabel": "Mobiel ouder",
+  "wizardStufe1b1TelefonHelper": "Een Vorsitzer belt dit nummer.",
+  "wizardStufe1b1RelationLabel": "Relatie tot het kind:",
+  "wizardStufe1b1RelationMutter": "Moeder",
+  "wizardStufe1b1RelationVater": "Vader",
+  "wizardStufe1b1RelationSorgeberechtigter": "Wettelijke voogd",
+  "wizardStufe1b1RelationAndere": "Andere voogd"
 }

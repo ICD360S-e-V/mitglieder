@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Jei nori savanoriauti retkarčiais (bet kuriame amžiuje, su tėvų sutikimu), paskambink — mums patinka palaikyti jaunimą, kuris nori keisti pasaulį.",
   "wizardAgeGateCallUs": "Paskambink",
-  "wizardAgeGateBackHome": "Atgal į pradžią"
+  "wizardAgeGateBackHome": "Atgal į pradžią",
+  "wizardErrInvalidPhone": "Neteisingas telefono numeris",
+  "wizardStufe1b1Title": "Tėvų sutikimas",
+  "wizardStufe1b1Prompt": "Esi nepilnametis (16-17) — pagal §106 BGB mums reikia tėvų ar globėjo sutikimo. Pasakyk vardą ir telefono numerį. Vorsitzer paskambins ir susitars dėl susitikimo (asmeniškai arba per vaizdo skambutį). Be el. pašto — norime būti tikri, kad kalbamės su tikru žmogumi.",
+  "wizardStufe1b1VornameLabel": "Tėvo / motinos vardas",
+  "wizardStufe1b1VornameHelper": "Kaip tėvo / motinos Personalausweis.",
+  "wizardStufe1b1NachnameLabel": "Tėvo / motinos pavardė",
+  "wizardStufe1b1NachnameHelper": "Kaip tėvo / motinos Personalausweis.",
+  "wizardStufe1b1TelefonLabel": "Tėvo / motinos mobilus",
+  "wizardStufe1b1TelefonHelper": "Į šį numerį skambins Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Santykis su vaiku:",
+  "wizardStufe1b1RelationMutter": "Motina",
+  "wizardStufe1b1RelationVater": "Tėvas",
+  "wizardStufe1b1RelationSorgeberechtigter": "Teisinis globėjas",
+  "wizardStufe1b1RelationAndere": "Kitas globėjas"
 }

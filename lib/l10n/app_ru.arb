@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Если хочешь иногда помогать как волонтёр (любой возраст, с согласия родителей), позвони нам — мы любим поддерживать молодых, которые хотят менять мир.",
   "wizardAgeGateCallUs": "Позвонить",
-  "wizardAgeGateBackHome": "Назад к началу"
+  "wizardAgeGateBackHome": "Назад к началу",
+  "wizardErrInvalidPhone": "Неверный номер телефона",
+  "wizardStufe1b1Title": "Согласие родителя",
+  "wizardStufe1b1Prompt": "Ты несовершеннолетний (16-17) — согласно §106 BGB нам нужно согласие родителя или законного представителя. Скажи мне имя и номер телефона. Vorsitzer позвонит и договорится о встрече (лично или по видеосвязи). Без email — мы хотим быть уверены, что говорим с реальным человеком.",
+  "wizardStufe1b1VornameLabel": "Имя родителя",
+  "wizardStufe1b1VornameHelper": "Как в Personalausweis родителя.",
+  "wizardStufe1b1NachnameLabel": "Фамилия родителя",
+  "wizardStufe1b1NachnameHelper": "Как в Personalausweis родителя.",
+  "wizardStufe1b1TelefonLabel": "Мобильный родителя",
+  "wizardStufe1b1TelefonHelper": "На этот номер позвонит Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Отношение к ребёнку:",
+  "wizardStufe1b1RelationMutter": "Мать",
+  "wizardStufe1b1RelationVater": "Отец",
+  "wizardStufe1b1RelationSorgeberechtigter": "Законный опекун",
+  "wizardStufe1b1RelationAndere": "Другой опекун"
 }

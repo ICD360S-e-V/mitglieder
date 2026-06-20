@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Si tu veux faire du bénévolat ponctuel (à tout âge, avec l'accord de tes parents), appelle-nous — on adore soutenir les jeunes qui veulent changer le monde.",
   "wizardAgeGateCallUs": "Appelle-nous",
-  "wizardAgeGateBackHome": "Retour à l'accueil"
+  "wizardAgeGateBackHome": "Retour à l'accueil",
+  "wizardErrInvalidPhone": "Numéro de téléphone invalide",
+  "wizardStufe1b1Title": "Accord parental",
+  "wizardStufe1b1Prompt": "Tu es mineur (16-17) — selon §106 BGB nous avons besoin du consentement d'un parent ou d'un tuteur légal. Donne-moi le nom et le téléphone. Un Vorsitzer appellera et fixera un rendez-vous (en personne ou par appel vidéo). Pas d'e-mail — nous voulons être sûrs de parler à la bonne personne.",
+  "wizardStufe1b1VornameLabel": "Prénom du parent",
+  "wizardStufe1b1VornameHelper": "Tel qu'il apparaît sur le Personalausweis du parent.",
+  "wizardStufe1b1NachnameLabel": "Nom du parent",
+  "wizardStufe1b1NachnameHelper": "Tel qu'il apparaît sur le Personalausweis du parent.",
+  "wizardStufe1b1TelefonLabel": "Mobile du parent",
+  "wizardStufe1b1TelefonHelper": "Un Vorsitzer appellera ce numéro.",
+  "wizardStufe1b1RelationLabel": "Relation avec l'enfant :",
+  "wizardStufe1b1RelationMutter": "Mère",
+  "wizardStufe1b1RelationVater": "Père",
+  "wizardStufe1b1RelationSorgeberechtigter": "Tuteur légal",
+  "wizardStufe1b1RelationAndere": "Autre tuteur"
 }

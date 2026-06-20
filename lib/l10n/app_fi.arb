@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Jos haluat auttaa silloin tällöin vapaaehtoisena (kaikenikäisille, vanhempien suostumuksella), soita meille — tuemme mielellämme nuoria, jotka haluavat muuttaa maailmaa.",
   "wizardAgeGateCallUs": "Soita meille",
-  "wizardAgeGateBackHome": "Takaisin alkuun"
+  "wizardAgeGateBackHome": "Takaisin alkuun",
+  "wizardErrInvalidPhone": "Virheellinen puhelinnumero",
+  "wizardStufe1b1Title": "Vanhemman suostumus",
+  "wizardStufe1b1Prompt": "Olet alaikäinen (16-17) — §106 BGB:n mukaan tarvitsemme vanhemman tai laillisen huoltajan suostumuksen. Kerro nimi ja puhelinnumero. Vorsitzer soittaa ja sopii tapaamisen (paikan päällä tai videopuhelulla). Ei sähköpostia — haluamme varmistaa, että puhumme oikealle henkilölle.",
+  "wizardStufe1b1VornameLabel": "Vanhemman etunimi",
+  "wizardStufe1b1VornameHelper": "Kuten vanhemman Personalausweisissa.",
+  "wizardStufe1b1NachnameLabel": "Vanhemman sukunimi",
+  "wizardStufe1b1NachnameHelper": "Kuten vanhemman Personalausweisissa.",
+  "wizardStufe1b1TelefonLabel": "Vanhemman matkapuhelinnumero",
+  "wizardStufe1b1TelefonHelper": "Vorsitzer soittaa tähän numeroon.",
+  "wizardStufe1b1RelationLabel": "Suhde lapseen:",
+  "wizardStufe1b1RelationMutter": "Äiti",
+  "wizardStufe1b1RelationVater": "Isä",
+  "wizardStufe1b1RelationSorgeberechtigter": "Laillinen huoltaja",
+  "wizardStufe1b1RelationAndere": "Muu huoltaja"
 }

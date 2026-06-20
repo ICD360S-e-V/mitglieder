@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Ако искаш да помагаш като доброволец понякога (всякаква възраст, със съгласието на родителите), обади се — обичаме да подкрепяме млади, които искат да променят света.",
   "wizardAgeGateCallUs": "Обади се",
-  "wizardAgeGateBackHome": "Обратно към началото"
+  "wizardAgeGateBackHome": "Обратно към началото",
+  "wizardErrInvalidPhone": "Невалиден телефонен номер",
+  "wizardStufe1b1Title": "Съгласие на родител",
+  "wizardStufe1b1Prompt": "Непълнолетен си (16-17) — съгласно §106 BGB ни е нужно съгласието на родител или законен представител. Кажи ми името и телефонния номер. Vorsitzer ще се обади и ще уговори среща (лично или видео разговор). Без имейл — искаме да сме сигурни, че говорим с истинския човек.",
+  "wizardStufe1b1VornameLabel": "Име на родителя",
+  "wizardStufe1b1VornameHelper": "Както е в Personalausweis на родителя.",
+  "wizardStufe1b1NachnameLabel": "Фамилия на родителя",
+  "wizardStufe1b1NachnameHelper": "Както е в Personalausweis на родителя.",
+  "wizardStufe1b1TelefonLabel": "Мобилен телефон на родителя",
+  "wizardStufe1b1TelefonHelper": "На този номер ще се обади Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Отношение към детето:",
+  "wizardStufe1b1RelationMutter": "Майка",
+  "wizardStufe1b1RelationVater": "Баща",
+  "wizardStufe1b1RelationSorgeberechtigter": "Законен настойник",
+  "wizardStufe1b1RelationAndere": "Друг настойник"
 }

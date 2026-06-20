@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Якщо хочеш іноді допомагати як волонтер (будь-який вік, зі згодою батьків), зателефонуй — ми любимо підтримувати молодь, яка хоче змінювати світ.",
   "wizardAgeGateCallUs": "Зателефонувати",
-  "wizardAgeGateBackHome": "Назад на головну"
+  "wizardAgeGateBackHome": "Назад на головну",
+  "wizardErrInvalidPhone": "Невірний номер телефону",
+  "wizardStufe1b1Title": "Згода батьків",
+  "wizardStufe1b1Prompt": "Ти неповнолітній (16-17) — згідно з §106 BGB нам потрібна згода батька, матері або законного опікуна. Скажи імʼя та номер телефону. Vorsitzer зателефонує та домовиться про зустріч (особисто або відеодзвінок). Без email — хочемо бути впевненими, що говоримо з реальною людиною.",
+  "wizardStufe1b1VornameLabel": "Імʼя батька / матері",
+  "wizardStufe1b1VornameHelper": "Як у Personalausweis батька / матері.",
+  "wizardStufe1b1NachnameLabel": "Прізвище батька / матері",
+  "wizardStufe1b1NachnameHelper": "Як у Personalausweis батька / матері.",
+  "wizardStufe1b1TelefonLabel": "Мобільний батька / матері",
+  "wizardStufe1b1TelefonHelper": "На цей номер зателефонує Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Стосунок до дитини:",
+  "wizardStufe1b1RelationMutter": "Мати",
+  "wizardStufe1b1RelationVater": "Батько",
+  "wizardStufe1b1RelationSorgeberechtigter": "Законний опікун",
+  "wizardStufe1b1RelationAndere": "Інший опікун"
 }

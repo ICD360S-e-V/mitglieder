@@ -1059,5 +1059,19 @@
   },
   "wizardAgeGateBody2": "إذا أردت التطوع بشكل عرضي (في أي عمر، بموافقة الوالدين)، اتصل بنا — يسعدنا دعم الشباب الذين يريدون تغيير العالم.",
   "wizardAgeGateCallUs": "اتصل بنا",
-  "wizardAgeGateBackHome": "العودة إلى البداية"
+  "wizardAgeGateBackHome": "العودة إلى البداية",
+  "wizardErrInvalidPhone": "رقم هاتف غير صحيح",
+  "wizardStufe1b1Title": "موافقة الوالدين",
+  "wizardStufe1b1Prompt": "أنت قاصر (16-17) — وفقًا للمادة §106 من القانون المدني الألماني نحتاج إلى موافقة أحد الوالدين أو الوصي القانوني. أخبرني باسمه ورقم هاتفه. سيتصل به Vorsitzer ويرتب لقاء (شخصيًا أو عبر مكالمة فيديو). لا بريد إلكتروني — نريد التأكد أننا نتحدث مع الشخص الحقيقي.",
+  "wizardStufe1b1VornameLabel": "اسم الوالد",
+  "wizardStufe1b1VornameHelper": "كما يظهر في بطاقة هوية الوالد.",
+  "wizardStufe1b1NachnameLabel": "لقب الوالد",
+  "wizardStufe1b1NachnameHelper": "كما يظهر في بطاقة هوية الوالد.",
+  "wizardStufe1b1TelefonLabel": "رقم هاتف الوالد",
+  "wizardStufe1b1TelefonHelper": "سيتصل Vorsitzer على هذا الرقم.",
+  "wizardStufe1b1RelationLabel": "العلاقة بالطفل:",
+  "wizardStufe1b1RelationMutter": "الأم",
+  "wizardStufe1b1RelationVater": "الأب",
+  "wizardStufe1b1RelationSorgeberechtigter": "الوصي القانوني",
+  "wizardStufe1b1RelationAndere": "وصي آخر"
 }

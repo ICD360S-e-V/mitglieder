@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Jeśli chcesz pomagać jako wolontariusz okazjonalnie (każdy wiek, za zgodą rodziców), zadzwoń — uwielbiamy wspierać młodych, którzy chcą zmieniać świat.",
   "wizardAgeGateCallUs": "Zadzwoń",
-  "wizardAgeGateBackHome": "Wróć na powitanie"
+  "wizardAgeGateBackHome": "Wróć na powitanie",
+  "wizardErrInvalidPhone": "Nieprawidłowy numer telefonu",
+  "wizardStufe1b1Title": "Zgoda rodzica",
+  "wizardStufe1b1Prompt": "Jesteś niepełnoletni (16-17) — zgodnie z §106 BGB potrzebujemy zgody rodzica lub opiekuna prawnego. Podaj imię i numer telefonu. Vorsitzer zadzwoni i umówi spotkanie (osobiście lub przez wideorozmowę). Bez maila — chcemy mieć pewność, że rozmawiamy z właściwą osobą.",
+  "wizardStufe1b1VornameLabel": "Imię rodzica",
+  "wizardStufe1b1VornameHelper": "Tak jak w Personalausweis rodzica.",
+  "wizardStufe1b1NachnameLabel": "Nazwisko rodzica",
+  "wizardStufe1b1NachnameHelper": "Tak jak w Personalausweis rodzica.",
+  "wizardStufe1b1TelefonLabel": "Mobil rodzica",
+  "wizardStufe1b1TelefonHelper": "Na ten numer zadzwoni Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Relacja z dzieckiem:",
+  "wizardStufe1b1RelationMutter": "Matka",
+  "wizardStufe1b1RelationVater": "Ojciec",
+  "wizardStufe1b1RelationSorgeberechtigter": "Opiekun prawny",
+  "wizardStufe1b1RelationAndere": "Inny opiekun"
 }

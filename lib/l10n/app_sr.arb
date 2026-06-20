@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Ако желиш да повремено волонтираш (било који узраст, са пристанком родитеља), позови — радо подржавамо младе који желе да промене свет.",
   "wizardAgeGateCallUs": "Позови нас",
-  "wizardAgeGateBackHome": "Назад на почетну"
+  "wizardAgeGateBackHome": "Назад на почетну",
+  "wizardErrInvalidPhone": "Неважећи број телефона",
+  "wizardStufe1b1Title": "Сагласност родитеља",
+  "wizardStufe1b1Prompt": "Малолетан си (16-17) — према §106 BGB треба нам сагласност родитеља или законског старатеља. Реци ми име и број телефона. Vorsitzer ће позвати и заказати састанак (лично или видео позивом). Без мејла — желимо да будемо сигурни да разговарамо са правом особом.",
+  "wizardStufe1b1VornameLabel": "Име родитеља",
+  "wizardStufe1b1VornameHelper": "Како је на Personalausweis-у родитеља.",
+  "wizardStufe1b1NachnameLabel": "Презиме родитеља",
+  "wizardStufe1b1NachnameHelper": "Како је на Personalausweis-у родитеља.",
+  "wizardStufe1b1TelefonLabel": "Мобилни родитеља",
+  "wizardStufe1b1TelefonHelper": "На овај број ће позвати Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Однос према детету:",
+  "wizardStufe1b1RelationMutter": "Мајка",
+  "wizardStufe1b1RelationVater": "Отац",
+  "wizardStufe1b1RelationSorgeberechtigter": "Законски старатељ",
+  "wizardStufe1b1RelationAndere": "Други старатељ"
 }

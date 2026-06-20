@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Vill du volontära då och då (vilken ålder som helst, med föräldrarnas medgivande), ring oss — vi stöttar gärna unga som vill förändra världen.",
   "wizardAgeGateCallUs": "Ring oss",
-  "wizardAgeGateBackHome": "Tillbaka till start"
+  "wizardAgeGateBackHome": "Tillbaka till start",
+  "wizardErrInvalidPhone": "Ogiltigt telefonnummer",
+  "wizardStufe1b1Title": "Föräldrasamtycke",
+  "wizardStufe1b1Prompt": "Du är minderårig (16-17) — enligt §106 BGB behöver vi en förälders eller vårdnadshavares samtycke. Säg mig namnet och telefonnumret. En Vorsitzer ringer och bokar ett möte (personligt eller videosamtal). Ingen e-post — vi vill vara säkra på att vi pratar med rätt person.",
+  "wizardStufe1b1VornameLabel": "Förälderns förnamn",
+  "wizardStufe1b1VornameHelper": "Som på förälderns Personalausweis.",
+  "wizardStufe1b1NachnameLabel": "Förälderns efternamn",
+  "wizardStufe1b1NachnameHelper": "Som på förälderns Personalausweis.",
+  "wizardStufe1b1TelefonLabel": "Förälderns mobilnummer",
+  "wizardStufe1b1TelefonHelper": "En Vorsitzer ringer detta nummer.",
+  "wizardStufe1b1RelationLabel": "Förhållande till barnet:",
+  "wizardStufe1b1RelationMutter": "Mor",
+  "wizardStufe1b1RelationVater": "Far",
+  "wizardStufe1b1RelationSorgeberechtigter": "Vårdnadshavare",
+  "wizardStufe1b1RelationAndere": "Annan vårdnadshavare"
 }

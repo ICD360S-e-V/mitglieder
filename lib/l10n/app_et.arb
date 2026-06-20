@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Kui soovid juhuslikult vabatahtlikuna aidata (mistahes vanus, vanemate nõusolekul), helista — meile meeldib toetada noori, kes tahavad maailma muuta.",
   "wizardAgeGateCallUs": "Helista",
-  "wizardAgeGateBackHome": "Tagasi tervitusekraanile"
+  "wizardAgeGateBackHome": "Tagasi tervitusekraanile",
+  "wizardErrInvalidPhone": "Vigane telefoninumber",
+  "wizardStufe1b1Title": "Vanema nõusolek",
+  "wizardStufe1b1Prompt": "Oled alaealine (16-17) — vastavalt §106 BGB vajame vanema või seadusliku esindaja nõusolekut. Ütle nimi ja telefon. Vorsitzer helistab ja lepib kokku kohtumise (kohapeal või videokõnega). Mitte e-postiga — tahame olla kindlad, et räägime õige inimesega.",
+  "wizardStufe1b1VornameLabel": "Vanema eesnimi",
+  "wizardStufe1b1VornameHelper": "Nagu vanema Personalausweisis.",
+  "wizardStufe1b1NachnameLabel": "Vanema perekonnanimi",
+  "wizardStufe1b1NachnameHelper": "Nagu vanema Personalausweisis.",
+  "wizardStufe1b1TelefonLabel": "Vanema mobiilinumber",
+  "wizardStufe1b1TelefonHelper": "Sellele numbrile helistab Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Suhe lapsega:",
+  "wizardStufe1b1RelationMutter": "Ema",
+  "wizardStufe1b1RelationVater": "Isa",
+  "wizardStufe1b1RelationSorgeberechtigter": "Seaduslik esindaja",
+  "wizardStufe1b1RelationAndere": "Muu hooldaja"
 }

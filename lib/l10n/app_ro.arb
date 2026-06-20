@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Dacă vrei să te implici punctual ca voluntar (orice vârstă, cu acordul părinților), sună-ne și vorbim — ne face plăcere să ajutăm tinerii care vor să schimbe lumea.",
   "wizardAgeGateCallUs": "Sună-ne",
-  "wizardAgeGateBackHome": "Înapoi la welcome"
+  "wizardAgeGateBackHome": "Înapoi la welcome",
+  "wizardErrInvalidPhone": "Număr de telefon invalid",
+  "wizardStufe1b1Title": "Acord părinte",
+  "wizardStufe1b1Prompt": "Ești minor (16-17 ani) — conform §106 BGB avem nevoie de acordul unui părinte sau tutore legal. Spune-mi cum îl cheamă și numărul lui de telefon. Un Vorsitzer îl va suna și va stabili o întâlnire (în persoană sau apel video). Nu trimitem email — vrem să fim siguri că vorbim cu persoana reală.",
+  "wizardStufe1b1VornameLabel": "Prenume părinte",
+  "wizardStufe1b1VornameHelper": "Ca pe Personalausweis al părintelui.",
+  "wizardStufe1b1NachnameLabel": "Nume părinte",
+  "wizardStufe1b1NachnameHelper": "Ca pe Personalausweis al părintelui.",
+  "wizardStufe1b1TelefonLabel": "Telefon mobil părinte",
+  "wizardStufe1b1TelefonHelper": "Pe acest număr îl va suna un Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Relația cu copilul:",
+  "wizardStufe1b1RelationMutter": "Mamă",
+  "wizardStufe1b1RelationVater": "Tată",
+  "wizardStufe1b1RelationSorgeberechtigter": "Tutore legal",
+  "wizardStufe1b1RelationAndere": "Alt tutore"
 }

@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Se vuoi fare volontariato occasionalmente (qualsiasi età, con il consenso dei genitori), chiamaci — ci piace sostenere i giovani che vogliono cambiare il mondo.",
   "wizardAgeGateCallUs": "Chiamaci",
-  "wizardAgeGateBackHome": "Torna alla home"
+  "wizardAgeGateBackHome": "Torna alla home",
+  "wizardErrInvalidPhone": "Numero di telefono non valido",
+  "wizardStufe1b1Title": "Consenso del genitore",
+  "wizardStufe1b1Prompt": "Sei minorenne (16-17) — secondo §106 BGB ci serve il consenso di un genitore o tutore legale. Dimmi il nome e il telefono. Un Vorsitzer chiamerà e fisserà un incontro (di persona o videochiamata). Niente email — vogliamo essere sicuri di parlare con la persona giusta.",
+  "wizardStufe1b1VornameLabel": "Nome del genitore",
+  "wizardStufe1b1VornameHelper": "Come sul Personalausweis del genitore.",
+  "wizardStufe1b1NachnameLabel": "Cognome del genitore",
+  "wizardStufe1b1NachnameHelper": "Come sul Personalausweis del genitore.",
+  "wizardStufe1b1TelefonLabel": "Cellulare del genitore",
+  "wizardStufe1b1TelefonHelper": "Un Vorsitzer chiamerà questo numero.",
+  "wizardStufe1b1RelationLabel": "Rapporto con il/la minore:",
+  "wizardStufe1b1RelationMutter": "Madre",
+  "wizardStufe1b1RelationVater": "Padre",
+  "wizardStufe1b1RelationSorgeberechtigter": "Tutore legale",
+  "wizardStufe1b1RelationAndere": "Altro tutore"
 }

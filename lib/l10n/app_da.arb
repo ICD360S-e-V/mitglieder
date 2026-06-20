@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Hvis du vil hjælpe lejlighedsvis som frivillig (enhver alder, med forældres samtykke), ring til os — vi støtter gerne unge, der vil forandre verden.",
   "wizardAgeGateCallUs": "Ring til os",
-  "wizardAgeGateBackHome": "Tilbage til velkomstskærm"
+  "wizardAgeGateBackHome": "Tilbage til velkomstskærm",
+  "wizardErrInvalidPhone": "Ugyldigt telefonnummer",
+  "wizardStufe1b1Title": "Forældresamtykke",
+  "wizardStufe1b1Prompt": "Du er mindreårig (16-17) — i henhold til §106 BGB skal vi have samtykke fra en forælder eller værge. Fortæl mig navn og telefonnummer. En Vorsitzer ringer og aftaler et møde (personligt eller videoopkald). Ingen e-mail — vi vil være sikre på, at vi taler med den rigtige person.",
+  "wizardStufe1b1VornameLabel": "Forælders fornavn",
+  "wizardStufe1b1VornameHelper": "Som det står på forælderens Personalausweis.",
+  "wizardStufe1b1NachnameLabel": "Forælders efternavn",
+  "wizardStufe1b1NachnameHelper": "Som det står på forælderens Personalausweis.",
+  "wizardStufe1b1TelefonLabel": "Forælders mobilnummer",
+  "wizardStufe1b1TelefonHelper": "En Vorsitzer ringer til dette nummer.",
+  "wizardStufe1b1RelationLabel": "Forhold til barnet:",
+  "wizardStufe1b1RelationMutter": "Mor",
+  "wizardStufe1b1RelationVater": "Far",
+  "wizardStufe1b1RelationSorgeberechtigter": "Værge",
+  "wizardStufe1b1RelationAndere": "Anden værge"
 }

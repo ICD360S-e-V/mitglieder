@@ -1059,5 +1059,19 @@
   },
   "wizardAgeGateBody2": "Ara sıra gönüllü olmak istersen (her yaşta, ailenin onayıyla), bizi ara — dünyayı değiştirmek isteyen gençleri desteklemeyi seviyoruz.",
   "wizardAgeGateCallUs": "Bizi ara",
-  "wizardAgeGateBackHome": "Karşılama ekranına dön"
+  "wizardAgeGateBackHome": "Karşılama ekranına dön",
+  "wizardErrInvalidPhone": "Geçersiz telefon numarası",
+  "wizardStufe1b1Title": "Veli onayı",
+  "wizardStufe1b1Prompt": "Reşit değilsin (16-17) — §106 BGB uyarınca anne, baba veya yasal vasinin onayı gerekiyor. Bana adını ve telefon numarasını söyle. Bir Vorsitzer onu arayıp bir toplantı (yüz yüze veya görüntülü görüşme) ayarlayacak. E-posta yok — doğru kişiyle konuştuğumuzdan emin olmak istiyoruz.",
+  "wizardStufe1b1VornameLabel": "Veli adı",
+  "wizardStufe1b1VornameHelper": "Velinin Personalausweis'inde göründüğü gibi.",
+  "wizardStufe1b1NachnameLabel": "Veli soyadı",
+  "wizardStufe1b1NachnameHelper": "Velinin Personalausweis'inde göründüğü gibi.",
+  "wizardStufe1b1TelefonLabel": "Veli cep telefonu",
+  "wizardStufe1b1TelefonHelper": "Bu numarayı bir Vorsitzer arayacak.",
+  "wizardStufe1b1RelationLabel": "Çocukla ilişki:",
+  "wizardStufe1b1RelationMutter": "Anne",
+  "wizardStufe1b1RelationVater": "Baba",
+  "wizardStufe1b1RelationSorgeberechtigter": "Yasal vasi",
+  "wizardStufe1b1RelationAndere": "Diğer vasi"
 }

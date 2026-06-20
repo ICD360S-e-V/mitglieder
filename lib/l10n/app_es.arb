@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Si quieres ayudar puntualmente como voluntario (cualquier edad, con consentimiento de los padres), llámanos — nos encanta apoyar a jóvenes que quieren cambiar el mundo.",
   "wizardAgeGateCallUs": "Llámanos",
-  "wizardAgeGateBackHome": "Volver al inicio"
+  "wizardAgeGateBackHome": "Volver al inicio",
+  "wizardErrInvalidPhone": "Número de teléfono no válido",
+  "wizardStufe1b1Title": "Consentimiento parental",
+  "wizardStufe1b1Prompt": "Eres menor (16-17) — según §106 BGB necesitamos el consentimiento de un padre o tutor legal. Dime su nombre y número de teléfono. Un Vorsitzer le llamará y concertará una reunión (presencial o videollamada). Sin email — queremos estar seguros de hablar con la persona real.",
+  "wizardStufe1b1VornameLabel": "Nombre del padre/madre",
+  "wizardStufe1b1VornameHelper": "Como aparece en el Personalausweis del padre/madre.",
+  "wizardStufe1b1NachnameLabel": "Apellido del padre/madre",
+  "wizardStufe1b1NachnameHelper": "Como aparece en el Personalausweis del padre/madre.",
+  "wizardStufe1b1TelefonLabel": "Móvil del padre/madre",
+  "wizardStufe1b1TelefonHelper": "Un Vorsitzer llamará a este número.",
+  "wizardStufe1b1RelationLabel": "Relación con el niño/a:",
+  "wizardStufe1b1RelationMutter": "Madre",
+  "wizardStufe1b1RelationVater": "Padre",
+  "wizardStufe1b1RelationSorgeberechtigter": "Tutor legal",
+  "wizardStufe1b1RelationAndere": "Otro tutor"
 }

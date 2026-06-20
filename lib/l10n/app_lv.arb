@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Ja vēlies brīvprātīgi palīdzēt laiku pa laikam (jebkurā vecumā, ar vecāku piekrišanu), piezvani — mums patīk atbalstīt jauniešus, kuri vēlas mainīt pasauli.",
   "wizardAgeGateCallUs": "Zvani mums",
-  "wizardAgeGateBackHome": "Atpakaļ uz sākumu"
+  "wizardAgeGateBackHome": "Atpakaļ uz sākumu",
+  "wizardErrInvalidPhone": "Nederīgs tālruņa numurs",
+  "wizardStufe1b1Title": "Vecāku piekrišana",
+  "wizardStufe1b1Prompt": "Esi nepilngadīgs (16-17) — saskaņā ar §106 BGB mums vajadzīga vecāku vai aizbildņa piekrišana. Pasaki vārdu un tālruņa numuru. Vorsitzer piezvanīs un norunās tikšanos (klātienē vai video zvanā). Bez e-pasta — vēlamies pārliecināties, ka runājam ar īsto personu.",
+  "wizardStufe1b1VornameLabel": "Vecāka vārds",
+  "wizardStufe1b1VornameHelper": "Kā vecāka Personalausweisā.",
+  "wizardStufe1b1NachnameLabel": "Vecāka uzvārds",
+  "wizardStufe1b1NachnameHelper": "Kā vecāka Personalausweisā.",
+  "wizardStufe1b1TelefonLabel": "Vecāka mobilais",
+  "wizardStufe1b1TelefonHelper": "Šim numuram piezvanīs Vorsitzer.",
+  "wizardStufe1b1RelationLabel": "Attiecības ar bērnu:",
+  "wizardStufe1b1RelationMutter": "Māte",
+  "wizardStufe1b1RelationVater": "Tēvs",
+  "wizardStufe1b1RelationSorgeberechtigter": "Likumīgais aizbildnis",
+  "wizardStufe1b1RelationAndere": "Cits aizbildnis"
 }

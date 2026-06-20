@@ -1038,5 +1038,19 @@
   },
   "wizardAgeGateBody2": "Se quiseres fazer voluntariado pontual (qualquer idade, com consentimento dos pais), liga-nos — adoramos apoiar jovens que querem mudar o mundo.",
   "wizardAgeGateCallUs": "Liga-nos",
-  "wizardAgeGateBackHome": "Voltar ao início"
+  "wizardAgeGateBackHome": "Voltar ao início",
+  "wizardErrInvalidPhone": "Número de telefone inválido",
+  "wizardStufe1b1Title": "Consentimento dos pais",
+  "wizardStufe1b1Prompt": "És menor (16-17) — segundo §106 BGB precisamos do consentimento de um pai/mãe ou tutor legal. Diz-me o nome e o número de telefone. Um Vorsitzer ligará e marcará um encontro (presencial ou videochamada). Sem email — queremos ter a certeza de falar com a pessoa certa.",
+  "wizardStufe1b1VornameLabel": "Nome do progenitor",
+  "wizardStufe1b1VornameHelper": "Como no Personalausweis do progenitor.",
+  "wizardStufe1b1NachnameLabel": "Apelido do progenitor",
+  "wizardStufe1b1NachnameHelper": "Como no Personalausweis do progenitor.",
+  "wizardStufe1b1TelefonLabel": "Telemóvel do progenitor",
+  "wizardStufe1b1TelefonHelper": "Um Vorsitzer ligará para este número.",
+  "wizardStufe1b1RelationLabel": "Relação com a criança:",
+  "wizardStufe1b1RelationMutter": "Mãe",
+  "wizardStufe1b1RelationVater": "Pai",
+  "wizardStufe1b1RelationSorgeberechtigter": "Tutor legal",
+  "wizardStufe1b1RelationAndere": "Outro tutor"
 }
