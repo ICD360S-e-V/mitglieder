@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.32.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.31.1...v1.32.0) (2026-06-20)
+
+
+### Features
+
+* **wizard:** Stufe 1c — Geschlecht + Familienstand ([60e4309](https://github.com/ICD360S-e-V/mitglieder/commit/60e4309a1a63f9343a93ab9baaeb6369b6aba762))
+
 ## [1.31.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.31.0...v1.31.1) (2026-06-20)
 
 
