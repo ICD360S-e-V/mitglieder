@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.34.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.33.0...v1.34.0) (2026-06-20)
+
+
+### Features
+
+* **wizard:** Stufe 1e — postal address (Straße/Nr/PLZ/Ort/Land) ([0a07160](https://github.com/ICD360S-e-V/mitglieder/commit/0a071608664615175b692c058183d65cce89c4aa))
+
 ## [1.33.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.32.0...v1.33.0) (2026-06-20)
 
 
