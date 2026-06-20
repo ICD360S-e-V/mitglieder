@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Förifyllt: Deutschland.",
   "wizardErrInvalidStreet": "Ogiltigt gatunamn",
   "wizardErrInvalidHausnummer": "Ogiltigt nummer (t.ex. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Ogiltigt postnummer (endast siffror)"
+  "wizardErrInvalidPlz": "Ogiltigt postnummer (endast siffror)",
+  "wizardStufe1fTitle": "Kontakt",
+  "wizardStufe1fPrompt": "Hur når vi dig? Telefon endast vid akuta fall, e-post för officiella dokument (stadgar, fakturor, möten).",
+  "wizardStufe1fTelefonLabel": "Mobilnummer",
+  "wizardStufe1fTelefonHelper": "Lovar att jag bara ringer om det är viktigt. 📱",
+  "wizardStufe1fEmailLabel": "E-postadress",
+  "wizardStufe1fEmailHelper": "Vi använder den som inloggning och för officiella dokument.",
+  "wizardErrInvalidEmail": "Ogiltig e-postadress"
 }

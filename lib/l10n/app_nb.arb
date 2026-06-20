@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Forhåndsutfylt: Deutschland.",
   "wizardErrInvalidStreet": "Ugyldig gatenavn",
   "wizardErrInvalidHausnummer": "Ugyldig nummer (f.eks. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Ugyldig postnummer (kun siffer)"
+  "wizardErrInvalidPlz": "Ugyldig postnummer (kun siffer)",
+  "wizardStufe1fTitle": "Kontakt",
+  "wizardStufe1fPrompt": "Hvordan får vi kontakt med deg? Telefon kun for nødstilfeller, e-post for offisielle dokumenter (vedtekter, fakturaer, møter).",
+  "wizardStufe1fTelefonLabel": "Mobilnummer",
+  "wizardStufe1fTelefonHelper": "Lover at jeg bare ringer hvis det er viktig. 📱",
+  "wizardStufe1fEmailLabel": "E-postadresse",
+  "wizardStufe1fEmailHelper": "Vi bruker den som innlogging og til offisielle dokumenter.",
+  "wizardErrInvalidEmail": "Ugyldig e-postadresse"
 }

@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Iš anksto užpildyta: Deutschland.",
   "wizardErrInvalidStreet": "Neteisingas gatvės pavadinimas",
   "wizardErrInvalidHausnummer": "Neteisingas numeris (pvz. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Neteisingas pašto kodas (tik skaitmenys)"
+  "wizardErrInvalidPlz": "Neteisingas pašto kodas (tik skaitmenys)",
+  "wizardStufe1fTitle": "Kontaktas",
+  "wizardStufe1fPrompt": "Kaip su tavimi susisiekti? Telefonas tik kritiniais atvejais, el. paštas oficialiems dokumentams (įstatai, sąskaitos, susirinkimai).",
+  "wizardStufe1fTelefonLabel": "Mobilus telefonas",
+  "wizardStufe1fTelefonHelper": "Žadu, skambinsiu tik tada, kai bus svarbu. 📱",
+  "wizardStufe1fEmailLabel": "El. pašto adresas",
+  "wizardStufe1fEmailHelper": "Naudojame jį prisijungimui ir oficialiems dokumentams.",
+  "wizardErrInvalidEmail": "Neteisingas el. pašto adresas"
 }

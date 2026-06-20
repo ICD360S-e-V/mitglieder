@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Předvyplněno: Deutschland.",
   "wizardErrInvalidStreet": "Neplatný název ulice",
   "wizardErrInvalidHausnummer": "Neplatné číslo (např. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Neplatné PSČ (jen číslice)"
+  "wizardErrInvalidPlz": "Neplatné PSČ (jen číslice)",
+  "wizardStufe1fTitle": "Kontakt",
+  "wizardStufe1fPrompt": "Jak tě zastihneme? Telefon jen na naléhavé případy, e-mail na oficiální dokumenty (stanovy, faktury, schůze).",
+  "wizardStufe1fTelefonLabel": "Mobilní číslo",
+  "wizardStufe1fTelefonHelper": "Slib — zavolám jen když to bude opravdu důležité. 📱",
+  "wizardStufe1fEmailLabel": "E-mailová adresa",
+  "wizardStufe1fEmailHelper": "Používáme ho jako přihlášení a pro oficiální dokumenty.",
+  "wizardErrInvalidEmail": "Neplatná e-mailová adresa"
 }

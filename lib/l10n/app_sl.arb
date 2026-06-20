@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Vnaprej izpolnjeno: Deutschland.",
   "wizardErrInvalidStreet": "Neveljavno ime ulice",
   "wizardErrInvalidHausnummer": "Neveljavna številka (npr. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Neveljavna poštna številka (samo številke)"
+  "wizardErrInvalidPlz": "Neveljavna poštna številka (samo številke)",
+  "wizardStufe1fTitle": "Kontakt",
+  "wizardStufe1fPrompt": "Kako te dosežemo? Telefon samo za nujne primere, e-pošta za uradne dokumente (statut, računi, sestanki).",
+  "wizardStufe1fTelefonLabel": "Mobilna številka",
+  "wizardStufe1fTelefonHelper": "Obljubim, pokličem samo če je pomembno. 📱",
+  "wizardStufe1fEmailLabel": "E-poštni naslov",
+  "wizardStufe1fEmailHelper": "Uporabljamo ga za prijavo in uradne dokumente.",
+  "wizardErrInvalidEmail": "Neveljaven e-poštni naslov"
 }

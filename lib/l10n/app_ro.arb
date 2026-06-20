@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Pre-completat cu Deutschland.",
   "wizardErrInvalidStreet": "Nume de stradă invalid",
   "wizardErrInvalidHausnummer": "Număr invalid (ex: 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Cod poștal invalid (doar cifre)"
+  "wizardErrInvalidPlz": "Cod poștal invalid (doar cifre)",
+  "wizardStufe1fTitle": "Contact",
+  "wizardStufe1fPrompt": "Cum te contactăm? Telefonul îl folosim doar pentru urgențe, iar email-ul pentru documente oficiale (statute, facturi, ședințe).",
+  "wizardStufe1fTelefonLabel": "Telefon mobil",
+  "wizardStufe1fTelefonHelper": "Promit, nu te sun decât dacă e ceva important. 📱",
+  "wizardStufe1fEmailLabel": "Adresa de email",
+  "wizardStufe1fEmailHelper": "O folosim ca login și pentru documente oficiale.",
+  "wizardErrInvalidEmail": "Adresă de email invalidă"
 }

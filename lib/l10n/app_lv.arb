@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Iepriekš aizpildīts: Deutschland.",
   "wizardErrInvalidStreet": "Nederīgs ielas nosaukums",
   "wizardErrInvalidHausnummer": "Nederīgs numurs (piem. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Nederīgs pasta indekss (tikai cipari)"
+  "wizardErrInvalidPlz": "Nederīgs pasta indekss (tikai cipari)",
+  "wizardStufe1fTitle": "Kontakts",
+  "wizardStufe1fPrompt": "Kā tev sazināties? Tālrunis tikai ārkārtas gadījumiem, e-pasts oficiāliem dokumentiem (statūti, rēķini, sapulces).",
+  "wizardStufe1fTelefonLabel": "Mobilais",
+  "wizardStufe1fTelefonHelper": "Solu, zvanīšu tikai tad, ja būs svarīgi. 📱",
+  "wizardStufe1fEmailLabel": "E-pasta adrese",
+  "wizardStufe1fEmailHelper": "Izmantojam to kā pieteikšanos un oficiāliem dokumentiem.",
+  "wizardErrInvalidEmail": "Nederīga e-pasta adrese"
 }

@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Wstępnie wypełnione: Deutschland.",
   "wizardErrInvalidStreet": "Nieprawidłowa nazwa ulicy",
   "wizardErrInvalidHausnummer": "Nieprawidłowy numer (np. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Nieprawidłowy kod pocztowy (tylko cyfry)"
+  "wizardErrInvalidPlz": "Nieprawidłowy kod pocztowy (tylko cyfry)",
+  "wizardStufe1fTitle": "Kontakt",
+  "wizardStufe1fPrompt": "Jak się z tobą skontaktować? Telefon tylko w pilnych sprawach, email do oficjalnych dokumentów (statut, faktury, zebrania).",
+  "wizardStufe1fTelefonLabel": "Telefon komórkowy",
+  "wizardStufe1fTelefonHelper": "Obiecuję, zadzwonię tylko jeśli to ważne. 📱",
+  "wizardStufe1fEmailLabel": "Adres e-mail",
+  "wizardStufe1fEmailHelper": "Używamy go jako login i do oficjalnych dokumentów.",
+  "wizardErrInvalidEmail": "Nieprawidłowy adres e-mail"
 }

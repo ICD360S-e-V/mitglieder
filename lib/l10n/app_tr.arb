@@ -1105,5 +1105,12 @@
   "wizardStufe1eLandHelper": "Önceden dolduruldu: Deutschland.",
   "wizardErrInvalidStreet": "Geçersiz sokak adı",
   "wizardErrInvalidHausnummer": "Geçersiz numara (örn. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Geçersiz posta kodu (yalnızca rakam)"
+  "wizardErrInvalidPlz": "Geçersiz posta kodu (yalnızca rakam)",
+  "wizardStufe1fTitle": "İletişim",
+  "wizardStufe1fPrompt": "Sana nasıl ulaşalım? Telefon yalnızca acil durumlar için, e-posta resmi belgeler için (tüzük, faturalar, toplantılar).",
+  "wizardStufe1fTelefonLabel": "Cep telefonu",
+  "wizardStufe1fTelefonHelper": "Söz veriyorum, sadece önemli olduğunda ararım. 📱",
+  "wizardStufe1fEmailLabel": "E-posta adresi",
+  "wizardStufe1fEmailHelper": "Giriş için ve resmi belgeler için kullanırız.",
+  "wizardErrInvalidEmail": "Geçersiz e-posta adresi"
 }

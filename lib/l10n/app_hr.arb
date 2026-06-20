@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Unaprijed ispunjeno: Deutschland.",
   "wizardErrInvalidStreet": "Nevažeći naziv ulice",
   "wizardErrInvalidHausnummer": "Nevažeći broj (npr. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Nevažeći poštanski broj (samo znamenke)"
+  "wizardErrInvalidPlz": "Nevažeći poštanski broj (samo znamenke)",
+  "wizardStufe1fTitle": "Kontakt",
+  "wizardStufe1fPrompt": "Kako te kontaktirati? Telefon samo za hitne slučajeve, e-mail za službene dokumente (statut, račune, sastanke).",
+  "wizardStufe1fTelefonLabel": "Mobitel",
+  "wizardStufe1fTelefonHelper": "Obećavam, nazvat ću samo ako je važno. 📱",
+  "wizardStufe1fEmailLabel": "E-mail adresa",
+  "wizardStufe1fEmailHelper": "Koristimo je za prijavu i službene dokumente.",
+  "wizardErrInvalidEmail": "Nevažeća e-mail adresa"
 }

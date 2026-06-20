@@ -1105,5 +1105,12 @@
   "wizardStufe1eLandHelper": "Vorausgefüllt mit Deutschland.",
   "wizardErrInvalidStreet": "Ungültiger Straßenname",
   "wizardErrInvalidHausnummer": "Ungültige Hausnummer (z.B. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Ungültige PLZ (nur Ziffern)"
+  "wizardErrInvalidPlz": "Ungültige PLZ (nur Ziffern)",
+  "wizardStufe1fTitle": "Kontakt",
+  "wizardStufe1fPrompt": "Wie erreichen wir dich? Telefon nur für Notfälle, E-Mail für offizielle Unterlagen (Satzung, Rechnungen, Versammlungen).",
+  "wizardStufe1fTelefonLabel": "Mobilnummer",
+  "wizardStufe1fTelefonHelper": "Versprochen — wir rufen nur an, wenn es wirklich wichtig ist. 📱",
+  "wizardStufe1fEmailLabel": "E-Mail-Adresse",
+  "wizardStufe1fEmailHelper": "Wir nutzen sie als Login und für offizielle Unterlagen.",
+  "wizardErrInvalidEmail": "Ungültige E-Mail-Adresse"
 }

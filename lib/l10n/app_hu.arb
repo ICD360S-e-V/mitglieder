@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Előre kitöltve: Deutschland.",
   "wizardErrInvalidStreet": "Érvénytelen utcanév",
   "wizardErrInvalidHausnummer": "Érvénytelen szám (pl. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Érvénytelen irányítószám (csak számjegyek)"
+  "wizardErrInvalidPlz": "Érvénytelen irányítószám (csak számjegyek)",
+  "wizardStufe1fTitle": "Elérhetőség",
+  "wizardStufe1fPrompt": "Hogyan érünk el? Telefon csak vészhelyzetre, email hivatalos dokumentumokhoz (alapszabály, számlák, ülések).",
+  "wizardStufe1fTelefonLabel": "Mobilszám",
+  "wizardStufe1fTelefonHelper": "Ígérem, csak akkor hívlak, ha tényleg fontos. 📱",
+  "wizardStufe1fEmailLabel": "E-mail cím",
+  "wizardStufe1fEmailHelper": "Bejelentkezéshez és hivatalos dokumentumokhoz használjuk.",
+  "wizardErrInvalidEmail": "Érvénytelen e-mail cím"
 }

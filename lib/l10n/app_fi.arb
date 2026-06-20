@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Esitäytetty: Deutschland.",
   "wizardErrInvalidStreet": "Virheellinen kadunnimi",
   "wizardErrInvalidHausnummer": "Virheellinen numero (esim. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Virheellinen postinumero (vain numerot)"
+  "wizardErrInvalidPlz": "Virheellinen postinumero (vain numerot)",
+  "wizardStufe1fTitle": "Yhteystiedot",
+  "wizardStufe1fPrompt": "Miten saamme sinuun yhteyttä? Puhelin vain hätätapauksiin, sähköposti virallisiin asiakirjoihin (säännöt, laskut, kokoukset).",
+  "wizardStufe1fTelefonLabel": "Matkapuhelin",
+  "wizardStufe1fTelefonHelper": "Lupaan, soitan vain jos asia on tärkeä. 📱",
+  "wizardStufe1fEmailLabel": "Sähköpostiosoite",
+  "wizardStufe1fEmailHelper": "Käytämme sitä sisäänkirjautumiseen ja virallisiin asiakirjoihin.",
+  "wizardErrInvalidEmail": "Virheellinen sähköpostiosoite"
 }

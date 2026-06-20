@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Eeltäidetud: Deutschland.",
   "wizardErrInvalidStreet": "Vigane tänava nimi",
   "wizardErrInvalidHausnummer": "Vigane number (nt 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Vigane sihtnumber (ainult numbrid)"
+  "wizardErrInvalidPlz": "Vigane sihtnumber (ainult numbrid)",
+  "wizardStufe1fTitle": "Kontakt",
+  "wizardStufe1fPrompt": "Kuidas sind kätte saame? Telefon ainult hädaolukordadeks, e-post ametlikeks dokumentideks (põhikiri, arved, koosolekud).",
+  "wizardStufe1fTelefonLabel": "Mobiilinumber",
+  "wizardStufe1fTelefonHelper": "Luban, et helistan ainult kui on midagi olulist. 📱",
+  "wizardStufe1fEmailLabel": "E-posti aadress",
+  "wizardStufe1fEmailHelper": "Kasutame seda sisselogimiseks ja ametlike dokumentide jaoks.",
+  "wizardErrInvalidEmail": "Vigane e-posti aadress"
 }

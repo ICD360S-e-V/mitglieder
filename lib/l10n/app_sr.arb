@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Унапред попуњено: Deutschland.",
   "wizardErrInvalidStreet": "Неважећи назив улице",
   "wizardErrInvalidHausnummer": "Неважећи број (нпр. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Неважећи поштански број (само цифре)"
+  "wizardErrInvalidPlz": "Неважећи поштански број (само цифре)",
+  "wizardStufe1fTitle": "Контакт",
+  "wizardStufe1fPrompt": "Како да те контактирамо? Телефон само за хитне случајеве, мејл за званичне документе (статут, рачуне, састанке).",
+  "wizardStufe1fTelefonLabel": "Мобилни",
+  "wizardStufe1fTelefonHelper": "Обећавам, позваћу само ако је важно. 📱",
+  "wizardStufe1fEmailLabel": "Имејл адреса",
+  "wizardStufe1fEmailHelper": "Користимо га за пријаву и званичне документе.",
+  "wizardErrInvalidEmail": "Неважећа имејл адреса"
 }

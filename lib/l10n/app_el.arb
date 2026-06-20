@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Προσυμπληρωμένο: Deutschland.",
   "wizardErrInvalidStreet": "Μη έγκυρο όνομα οδού",
   "wizardErrInvalidHausnummer": "Μη έγκυρος αριθμός (π.χ. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Μη έγκυρος Τ.Κ. (μόνο ψηφία)"
+  "wizardErrInvalidPlz": "Μη έγκυρος Τ.Κ. (μόνο ψηφία)",
+  "wizardStufe1fTitle": "Επικοινωνία",
+  "wizardStufe1fPrompt": "Πώς θα σε βρούμε; Τηλέφωνο μόνο για επείγοντα, email για επίσημα έγγραφα (καταστατικό, τιμολόγια, συνελεύσεις).",
+  "wizardStufe1fTelefonLabel": "Κινητό",
+  "wizardStufe1fTelefonHelper": "Υπόσχομαι, θα καλέσω μόνο αν είναι σημαντικό. 📱",
+  "wizardStufe1fEmailLabel": "Διεύθυνση email",
+  "wizardStufe1fEmailHelper": "Το χρησιμοποιούμε ως είσοδο και για επίσημα έγγραφα.",
+  "wizardErrInvalidEmail": "Μη έγκυρη διεύθυνση email"
 }

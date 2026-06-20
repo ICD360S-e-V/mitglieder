@@ -1084,5 +1084,12 @@
   "wizardStufe1eLandHelper": "Предварително попълнено: Deutschland.",
   "wizardErrInvalidStreet": "Невалидно име на улица",
   "wizardErrInvalidHausnummer": "Невалиден номер (напр. 12, 12a, 12/3)",
-  "wizardErrInvalidPlz": "Невалиден пощенски код (само цифри)"
+  "wizardErrInvalidPlz": "Невалиден пощенски код (само цифри)",
+  "wizardStufe1fTitle": "Контакт",
+  "wizardStufe1fPrompt": "Как да се свържем с теб? Телефон само за спешни случаи, имейл за официални документи (устав, фактури, събрания).",
+  "wizardStufe1fTelefonLabel": "Мобилен телефон",
+  "wizardStufe1fTelefonHelper": "Обещавам, ще се обадя само ако е важно. 📱",
+  "wizardStufe1fEmailLabel": "Имейл адрес",
+  "wizardStufe1fEmailHelper": "Използваме го за вход и за официални документи.",
+  "wizardErrInvalidEmail": "Невалиден имейл адрес"
 }
