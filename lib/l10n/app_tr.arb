@@ -1085,5 +1085,13 @@
   "wizardStufe1cFamilienstandLedig": "Bekâr",
   "wizardStufe1cFamilienstandVerheiratet": "Evli",
   "wizardStufe1cFamilienstandGeschieden": "Boşanmış",
-  "wizardStufe1cFamilienstandVerwitwet": "Dul"
+  "wizardStufe1cFamilienstandVerwitwet": "Dul",
+  "wizardStufe1dTitle": "Geçmişin",
+  "wizardStufe1dPrompt": "Bu, sana doğru desteği sunmamıza yardımcı olur — örneğin Aufenthalt danışmanlığı veya dil topluluğunu bulmak.",
+  "wizardStufe1dStaatLabel": "Uyruk",
+  "wizardStufe1dStaatHelper": "Örn. deutsch, rumänisch, ukrainisch. Birden fazlasını virgülle ayır.",
+  "wizardStufe1dAufenthaltLabel": "Oturum durumu (Aufenthaltsstatus) — isteğe bağlı",
+  "wizardStufe1dAufenthaltHelper": "Örn. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Geçerli değilse boş bırak.",
+  "wizardStufe1dMutterspracheLabel": "Ana dil",
+  "wizardStufe1dMutterspracheHelper": "Uygulama diliyle önceden dolduruldu — farklıysa değiştir."
 }

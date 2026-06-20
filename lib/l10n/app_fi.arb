@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Naimaton",
   "wizardStufe1cFamilienstandVerheiratet": "Naimisissa",
   "wizardStufe1cFamilienstandGeschieden": "Eronnut",
-  "wizardStufe1cFamilienstandVerwitwet": "Leski"
+  "wizardStufe1cFamilienstandVerwitwet": "Leski",
+  "wizardStufe1dTitle": "Taustasi",
+  "wizardStufe1dPrompt": "Tämä auttaa meitä tarjoamaan sinulle oikeaa tukea — esimerkiksi Aufenthalt-neuvontaa tai löytämään kieliyhteisösi.",
+  "wizardStufe1dStaatLabel": "Kansalaisuus",
+  "wizardStufe1dStaatHelper": "Esim. deutsch, rumänisch, ukrainisch. Useita pilkulla erotettuna.",
+  "wizardStufe1dAufenthaltLabel": "Oleskelustatus (Aufenthaltsstatus) — valinnainen",
+  "wizardStufe1dAufenthaltHelper": "Esim. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Jätä tyhjäksi jos ei sovellu.",
+  "wizardStufe1dMutterspracheLabel": "Äidinkieli",
+  "wizardStufe1dMutterspracheHelper": "Esitäytetty sovelluksen kielellä — vaihda jos eri."
 }

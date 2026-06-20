@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Nevedęs / Netekėjusi",
   "wizardStufe1cFamilienstandVerheiratet": "Vedęs / Ištekėjusi",
   "wizardStufe1cFamilienstandGeschieden": "Išsiskyręs / Išsiskyrusi",
-  "wizardStufe1cFamilienstandVerwitwet": "Našlys / Našlė"
+  "wizardStufe1cFamilienstandVerwitwet": "Našlys / Našlė",
+  "wizardStufe1dTitle": "Tavo kilmė",
+  "wizardStufe1dPrompt": "Tai padeda mums pasiūlyti tinkamą pagalbą — pavyzdžiui konsultaciją dėl Aufenthalt arba rasti tavo kalbinę bendruomenę.",
+  "wizardStufe1dStaatLabel": "Pilietybė",
+  "wizardStufe1dStaatHelper": "Pvz. deutsch, rumänisch, ukrainisch. Kelias atskirti kableliais.",
+  "wizardStufe1dAufenthaltLabel": "Buvimo statusas (Aufenthaltsstatus) — neprivaloma",
+  "wizardStufe1dAufenthaltHelper": "Pvz. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Palik tuščią jei netaikoma.",
+  "wizardStufe1dMutterspracheLabel": "Gimtoji kalba",
+  "wizardStufe1dMutterspracheHelper": "Iš anksto užpildyta programos kalba — pakeisk jei kita."
 }

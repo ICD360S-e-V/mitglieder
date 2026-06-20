@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Neprecējies/usies",
   "wizardStufe1cFamilienstandVerheiratet": "Precējies/usies",
   "wizardStufe1cFamilienstandGeschieden": "Šķīries/usies",
-  "wizardStufe1cFamilienstandVerwitwet": "Atraitnis/e"
+  "wizardStufe1cFamilienstandVerwitwet": "Atraitnis/e",
+  "wizardStufe1dTitle": "Tava izcelsme",
+  "wizardStufe1dPrompt": "Tas mums palīdz piedāvāt tev pareizo atbalstu — piemēram, konsultāciju par Aufenthalt vai atrast tavu valodas kopienu.",
+  "wizardStufe1dStaatLabel": "Pilsonība",
+  "wizardStufe1dStaatHelper": "Piem. deutsch, rumänisch, ukrainisch. Vairākas atdalītas ar komatu.",
+  "wizardStufe1dAufenthaltLabel": "Uzturēšanās statuss (Aufenthaltsstatus) — pēc izvēles",
+  "wizardStufe1dAufenthaltHelper": "Piem. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Atstāj tukšu, ja neattiecas.",
+  "wizardStufe1dMutterspracheLabel": "Dzimtā valoda",
+  "wizardStufe1dMutterspracheHelper": "Iepriekš aizpildīts ar lietotnes valodu — maini, ja atšķiras."
 }

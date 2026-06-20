@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Single",
   "wizardStufe1cFamilienstandVerheiratet": "Married",
   "wizardStufe1cFamilienstandGeschieden": "Divorced",
-  "wizardStufe1cFamilienstandVerwitwet": "Widowed"
+  "wizardStufe1cFamilienstandVerwitwet": "Widowed",
+  "wizardStufe1dTitle": "Your background",
+  "wizardStufe1dPrompt": "This helps us offer you the right kind of support — for example Aufenthalt advice or finding your language community.",
+  "wizardStufe1dStaatLabel": "Citizenship",
+  "wizardStufe1dStaatHelper": "E.g. deutsch, rumänisch, ukrainisch. Multiple comma-separated.",
+  "wizardStufe1dAufenthaltLabel": "Residence status (Aufenthaltsstatus) — optional",
+  "wizardStufe1dAufenthaltHelper": "E.g. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Leave blank if not applicable.",
+  "wizardStufe1dMutterspracheLabel": "Mother tongue",
+  "wizardStufe1dMutterspracheHelper": "Pre-filled with the app language — change if different."
 }

@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Kawaler / Panna",
   "wizardStufe1cFamilienstandVerheiratet": "Żonaty / Mężatka",
   "wizardStufe1cFamilienstandGeschieden": "Rozwiedziony/a",
-  "wizardStufe1cFamilienstandVerwitwet": "Wdowiec / Wdowa"
+  "wizardStufe1cFamilienstandVerwitwet": "Wdowiec / Wdowa",
+  "wizardStufe1dTitle": "Twoje pochodzenie",
+  "wizardStufe1dPrompt": "To pomaga nam zaproponować odpowiednie wsparcie — na przykład poradę dotyczącą Aufenthalt lub znalezienie twojej społeczności językowej.",
+  "wizardStufe1dStaatLabel": "Obywatelstwo",
+  "wizardStufe1dStaatHelper": "Np. deutsch, rumänisch, ukrainisch. Kilka oddzielonych przecinkiem.",
+  "wizardStufe1dAufenthaltLabel": "Status pobytu (Aufenthaltsstatus) — opcjonalne",
+  "wizardStufe1dAufenthaltHelper": "Np. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Zostaw puste, jeśli nie dotyczy.",
+  "wizardStufe1dMutterspracheLabel": "Język ojczysty",
+  "wizardStufe1dMutterspracheHelper": "Wstępnie wypełnione językiem aplikacji — zmień jeśli inny."
 }

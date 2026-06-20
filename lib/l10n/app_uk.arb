@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Неодружений / Незаміжня",
   "wizardStufe1cFamilienstandVerheiratet": "Одружений / Заміжня",
   "wizardStufe1cFamilienstandGeschieden": "Розлучений / Розлучена",
-  "wizardStufe1cFamilienstandVerwitwet": "Удівець / Удова"
+  "wizardStufe1cFamilienstandVerwitwet": "Удівець / Удова",
+  "wizardStufe1dTitle": "Походження",
+  "wizardStufe1dPrompt": "Це допомагає нам запропонувати тобі правильну допомогу — наприклад, поради щодо Aufenthalt або пошук твоєї мовної спільноти.",
+  "wizardStufe1dStaatLabel": "Громадянство",
+  "wizardStufe1dStaatHelper": "Наприклад: deutsch, rumänisch, ukrainisch. Декілька через кому.",
+  "wizardStufe1dAufenthaltLabel": "Статус перебування (Aufenthaltsstatus) — необовʼязково",
+  "wizardStufe1dAufenthaltHelper": "Наприклад: unbefristet, befristet, Asyl, Duldung, EU-Bürger. Залиш порожнім, якщо не застосовується.",
+  "wizardStufe1dMutterspracheLabel": "Рідна мова",
+  "wizardStufe1dMutterspracheHelper": "Заповнено мовою застосунку — зміни, якщо інша."
 }

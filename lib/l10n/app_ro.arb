@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Necăsătorit/ă",
   "wizardStufe1cFamilienstandVerheiratet": "Căsătorit/ă",
   "wizardStufe1cFamilienstandGeschieden": "Divorțat/ă",
-  "wizardStufe1cFamilienstandVerwitwet": "Văduv/ă"
+  "wizardStufe1cFamilienstandVerwitwet": "Văduv/ă",
+  "wizardStufe1dTitle": "Originea ta",
+  "wizardStufe1dPrompt": "Asta ne ajută să-ți oferim ajutorul potrivit — de ex. dacă ai nevoie de consiliere pe Aufenthalt sau să găsești comunitatea ta lingvistică.",
+  "wizardStufe1dStaatLabel": "Cetățenie",
+  "wizardStufe1dStaatHelper": "Ex. deutsch, rumänisch, ukrainisch. Mai multe, despărțite cu virgulă.",
+  "wizardStufe1dAufenthaltLabel": "Statut de ședere (Aufenthaltsstatus) — opțional",
+  "wizardStufe1dAufenthaltHelper": "Ex. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Lasă gol dacă nu se aplică.",
+  "wizardStufe1dMutterspracheLabel": "Limba maternă",
+  "wizardStufe1dMutterspracheHelper": "Pre-completat cu limba aplicației — schimbă dacă diferă."
 }

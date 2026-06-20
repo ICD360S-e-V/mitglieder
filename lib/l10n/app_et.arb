@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Vallaline",
   "wizardStufe1cFamilienstandVerheiratet": "Abielus",
   "wizardStufe1cFamilienstandGeschieden": "Lahutatud",
-  "wizardStufe1cFamilienstandVerwitwet": "Lesk"
+  "wizardStufe1cFamilienstandVerwitwet": "Lesk",
+  "wizardStufe1dTitle": "Sinu päritolu",
+  "wizardStufe1dPrompt": "See aitab meil pakkuda sulle õiget tuge — näiteks Aufenthalt nõustamist või sinu keelekogukonna leidmist.",
+  "wizardStufe1dStaatLabel": "Kodakondsus",
+  "wizardStufe1dStaatHelper": "Nt deutsch, rumänisch, ukrainisch. Mitu eraldatud komaga.",
+  "wizardStufe1dAufenthaltLabel": "Elamisstaatus (Aufenthaltsstatus) — vabatahtlik",
+  "wizardStufe1dAufenthaltHelper": "Nt unbefristet, befristet, Asyl, Duldung, EU-Bürger. Jäta tühjaks kui ei kehti.",
+  "wizardStufe1dMutterspracheLabel": "Emakeel",
+  "wizardStufe1dMutterspracheHelper": "Eeltäidetud rakenduse keelega — muuda kui erineb."
 }

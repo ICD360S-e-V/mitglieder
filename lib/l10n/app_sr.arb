@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Неожењен / Неудата",
   "wizardStufe1cFamilienstandVerheiratet": "Ожењен / Удата",
   "wizardStufe1cFamilienstandGeschieden": "Разведен/а",
-  "wizardStufe1cFamilienstandVerwitwet": "Удовац/Удовица"
+  "wizardStufe1cFamilienstandVerwitwet": "Удовац/Удовица",
+  "wizardStufe1dTitle": "Твоје порекло",
+  "wizardStufe1dPrompt": "Ово нам помаже да ти понудимо праву подршку — на пример савет о Aufenthalt-у или налажење твоје језичке заједнице.",
+  "wizardStufe1dStaatLabel": "Држављанство",
+  "wizardStufe1dStaatHelper": "Нпр. deutsch, rumänisch, ukrainisch. Више одвојених запетом.",
+  "wizardStufe1dAufenthaltLabel": "Статус боравка (Aufenthaltsstatus) — опционо",
+  "wizardStufe1dAufenthaltHelper": "Нпр. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Остави празно ако се не односи.",
+  "wizardStufe1dMutterspracheLabel": "Матерњи језик",
+  "wizardStufe1dMutterspracheHelper": "Унапред попуњено језиком апликације — промени ако је друкчије."
 }

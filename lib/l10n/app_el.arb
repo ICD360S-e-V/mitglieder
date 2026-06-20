@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Άγαμος/η",
   "wizardStufe1cFamilienstandVerheiratet": "Παντρεμένος/η",
   "wizardStufe1cFamilienstandGeschieden": "Διαζευγμένος/η",
-  "wizardStufe1cFamilienstandVerwitwet": "Χήρος/Χήρα"
+  "wizardStufe1cFamilienstandVerwitwet": "Χήρος/Χήρα",
+  "wizardStufe1dTitle": "Καταγωγή",
+  "wizardStufe1dPrompt": "Αυτό μας βοηθάει να σου προσφέρουμε τη σωστή υποστήριξη — π.χ. συμβουλές για Aufenthalt ή να βρεις τη γλωσσική σου κοινότητα.",
+  "wizardStufe1dStaatLabel": "Υπηκοότητα",
+  "wizardStufe1dStaatHelper": "Π.χ. deutsch, rumänisch, ukrainisch. Πολλά με κόμμα.",
+  "wizardStufe1dAufenthaltLabel": "Καθεστώς διαμονής (Aufenthaltsstatus) — προαιρετικό",
+  "wizardStufe1dAufenthaltHelper": "Π.χ. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Άφησε κενό αν δεν ισχύει.",
+  "wizardStufe1dMutterspracheLabel": "Μητρική γλώσσα",
+  "wizardStufe1dMutterspracheHelper": "Προσυμπληρωμένο με τη γλώσσα της εφαρμογής — άλλαξε αν διαφέρει."
 }

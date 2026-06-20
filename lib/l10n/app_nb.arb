@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Ugift",
   "wizardStufe1cFamilienstandVerheiratet": "Gift",
   "wizardStufe1cFamilienstandGeschieden": "Skilt",
-  "wizardStufe1cFamilienstandVerwitwet": "Enkemann/Enke"
+  "wizardStufe1cFamilienstandVerwitwet": "Enkemann/Enke",
+  "wizardStufe1dTitle": "Din bakgrunn",
+  "wizardStufe1dPrompt": "Dette hjelper oss å tilby deg riktig støtte — for eksempel rådgivning om Aufenthalt eller å finne ditt språkfellesskap.",
+  "wizardStufe1dStaatLabel": "Statsborgerskap",
+  "wizardStufe1dStaatHelper": "F.eks. deutsch, rumänisch, ukrainisch. Flere adskilt med komma.",
+  "wizardStufe1dAufenthaltLabel": "Oppholdsstatus (Aufenthaltsstatus) — valgfritt",
+  "wizardStufe1dAufenthaltHelper": "F.eks. unbefristet, befristet, Asyl, Duldung, EU-Bürger. La stå tomt hvis ikke aktuelt.",
+  "wizardStufe1dMutterspracheLabel": "Morsmål",
+  "wizardStufe1dMutterspracheHelper": "Forhåndsutfylt med app-språk — endre om annet."
 }

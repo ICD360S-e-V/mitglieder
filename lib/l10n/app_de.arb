@@ -1085,5 +1085,13 @@
   "wizardStufe1cFamilienstandLedig": "Ledig",
   "wizardStufe1cFamilienstandVerheiratet": "Verheiratet",
   "wizardStufe1cFamilienstandGeschieden": "Geschieden",
-  "wizardStufe1cFamilienstandVerwitwet": "Verwitwet"
+  "wizardStufe1cFamilienstandVerwitwet": "Verwitwet",
+  "wizardStufe1dTitle": "Herkunft",
+  "wizardStufe1dPrompt": "Das hilft uns, dir die richtige Unterstützung anzubieten — zum Beispiel Beratung beim Aufenthalt oder das Finden deiner Sprachcommunity.",
+  "wizardStufe1dStaatLabel": "Staatsangehörigkeit",
+  "wizardStufe1dStaatHelper": "Z.B. deutsch, rumänisch, ukrainisch. Mehrere mit Komma getrennt.",
+  "wizardStufe1dAufenthaltLabel": "Aufenthaltsstatus (optional)",
+  "wizardStufe1dAufenthaltHelper": "Z.B. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Leer lassen wenn nicht zutreffend.",
+  "wizardStufe1dMutterspracheLabel": "Muttersprache",
+  "wizardStufe1dMutterspracheHelper": "Vorausgefüllt mit der App-Sprache — ändere falls anders."
 }

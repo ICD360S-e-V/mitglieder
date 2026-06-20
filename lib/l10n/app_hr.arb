@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Neoženjen / Neudata",
   "wizardStufe1cFamilienstandVerheiratet": "Oženjen / Udata",
   "wizardStufe1cFamilienstandGeschieden": "Razveden/a",
-  "wizardStufe1cFamilienstandVerwitwet": "Udovac/Udovica"
+  "wizardStufe1cFamilienstandVerwitwet": "Udovac/Udovica",
+  "wizardStufe1dTitle": "Tvoje podrijetlo",
+  "wizardStufe1dPrompt": "To nam pomaže ponuditi ti pravu podršku — na primjer savjet o Aufenthaltu ili pronalazak tvoje jezične zajednice.",
+  "wizardStufe1dStaatLabel": "Državljanstvo",
+  "wizardStufe1dStaatHelper": "Npr. deutsch, rumänisch, ukrainisch. Više odvojiti zarezom.",
+  "wizardStufe1dAufenthaltLabel": "Boravišni status (Aufenthaltsstatus) — neobavezno",
+  "wizardStufe1dAufenthaltHelper": "Npr. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Ostavi prazno ako se ne odnosi.",
+  "wizardStufe1dMutterspracheLabel": "Materinski jezik",
+  "wizardStufe1dMutterspracheHelper": "Unaprijed ispunjeno jezikom aplikacije — promijeni ako je drugačije."
 }

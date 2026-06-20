@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Nőtlen / Hajadon",
   "wizardStufe1cFamilienstandVerheiratet": "Házas",
   "wizardStufe1cFamilienstandGeschieden": "Elvált",
-  "wizardStufe1cFamilienstandVerwitwet": "Özvegy"
+  "wizardStufe1cFamilienstandVerwitwet": "Özvegy",
+  "wizardStufe1dTitle": "Származásod",
+  "wizardStufe1dPrompt": "Ez segít nekünk a megfelelő támogatást felajánlani — például Aufenthalt-tanácsadás vagy a nyelvi közösséged megtalálása.",
+  "wizardStufe1dStaatLabel": "Állampolgárság",
+  "wizardStufe1dStaatHelper": "Pl. deutsch, rumänisch, ukrainisch. Többet vesszővel.",
+  "wizardStufe1dAufenthaltLabel": "Tartózkodási státusz (Aufenthaltsstatus) — opcionális",
+  "wizardStufe1dAufenthaltHelper": "Pl. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Hagyd üresen, ha nem releváns.",
+  "wizardStufe1dMutterspracheLabel": "Anyanyelv",
+  "wizardStufe1dMutterspracheHelper": "Az alkalmazás nyelvével előre kitöltve — módosítsd, ha más."
 }

@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Slobodný/á",
   "wizardStufe1cFamilienstandVerheiratet": "Ženatý / Vydatá",
   "wizardStufe1cFamilienstandGeschieden": "Rozvedený/á",
-  "wizardStufe1cFamilienstandVerwitwet": "Vdovec / Vdova"
+  "wizardStufe1cFamilienstandVerwitwet": "Vdovec / Vdova",
+  "wizardStufe1dTitle": "Tvoj pôvod",
+  "wizardStufe1dPrompt": "Pomáha nám to ponúknuť ti tú pravú podporu — napríklad poradenstvo k pobytu (Aufenthalt) alebo nájsť tvoju jazykovú komunitu.",
+  "wizardStufe1dStaatLabel": "Štátne občianstvo",
+  "wizardStufe1dStaatHelper": "Napr. deutsch, rumänisch, ukrainisch. Viaceré oddeliť čiarkou.",
+  "wizardStufe1dAufenthaltLabel": "Status pobytu (Aufenthaltsstatus) — voliteľné",
+  "wizardStufe1dAufenthaltHelper": "Napr. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Nechaj prázdne ak sa netýka.",
+  "wizardStufe1dMutterspracheLabel": "Materinský jazyk",
+  "wizardStufe1dMutterspracheHelper": "Predvyplnené jazykom aplikácie — zmeň ak je iný."
 }

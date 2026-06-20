@@ -1085,5 +1085,13 @@
   "wizardStufe1cFamilienstandLedig": "أعزب / عزباء",
   "wizardStufe1cFamilienstandVerheiratet": "متزوج / متزوجة",
   "wizardStufe1cFamilienstandGeschieden": "مطلق / مطلقة",
-  "wizardStufe1cFamilienstandVerwitwet": "أرمل / أرملة"
+  "wizardStufe1cFamilienstandVerwitwet": "أرمل / أرملة",
+  "wizardStufe1dTitle": "خلفيتك",
+  "wizardStufe1dPrompt": "يساعدنا هذا في تقديم الدعم المناسب — على سبيل المثال استشارة بخصوص الإقامة (Aufenthalt) أو إيجاد مجتمعك اللغوي.",
+  "wizardStufe1dStaatLabel": "الجنسية",
+  "wizardStufe1dStaatHelper": "مثلاً: deutsch، rumänisch، ukrainisch. عدة بفواصل.",
+  "wizardStufe1dAufenthaltLabel": "حالة الإقامة (Aufenthaltsstatus) — اختياري",
+  "wizardStufe1dAufenthaltHelper": "مثلاً: unbefristet, befristet, Asyl, Duldung, EU-Bürger. اتركه فارغًا إن لم ينطبق.",
+  "wizardStufe1dMutterspracheLabel": "اللغة الأم",
+  "wizardStufe1dMutterspracheHelper": "تم تعبئتها بلغة التطبيق — غيّرها إن كانت مختلفة."
 }

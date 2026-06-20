@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Solteiro/a",
   "wizardStufe1cFamilienstandVerheiratet": "Casado/a",
   "wizardStufe1cFamilienstandGeschieden": "Divorciado/a",
-  "wizardStufe1cFamilienstandVerwitwet": "Viúvo/a"
+  "wizardStufe1cFamilienstandVerwitwet": "Viúvo/a",
+  "wizardStufe1dTitle": "A tua origem",
+  "wizardStufe1dPrompt": "Isto ajuda-nos a oferecer-te o apoio certo — por exemplo aconselhamento sobre Aufenthalt ou encontrar a tua comunidade linguística.",
+  "wizardStufe1dStaatLabel": "Nacionalidade",
+  "wizardStufe1dStaatHelper": "P. ex. deutsch, rumänisch, ukrainisch. Várias separadas por vírgula.",
+  "wizardStufe1dAufenthaltLabel": "Estatuto de residência (Aufenthaltsstatus) — opcional",
+  "wizardStufe1dAufenthaltHelper": "P. ex. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Deixa em branco se não se aplica.",
+  "wizardStufe1dMutterspracheLabel": "Língua materna",
+  "wizardStufe1dMutterspracheHelper": "Pré-preenchido com o idioma da app — muda se for diferente."
 }

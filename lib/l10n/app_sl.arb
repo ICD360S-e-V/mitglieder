@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Samski/a",
   "wizardStufe1cFamilienstandVerheiratet": "Poročen/a",
   "wizardStufe1cFamilienstandGeschieden": "Ločen/a",
-  "wizardStufe1cFamilienstandVerwitwet": "Vdovec / Vdova"
+  "wizardStufe1cFamilienstandVerwitwet": "Vdovec / Vdova",
+  "wizardStufe1dTitle": "Tvoj izvor",
+  "wizardStufe1dPrompt": "To nam pomaga ponuditi ti pravo podporo — na primer nasvet glede Aufenthalt ali iskanje tvoje jezikovne skupnosti.",
+  "wizardStufe1dStaatLabel": "Državljanstvo",
+  "wizardStufe1dStaatHelper": "Npr. deutsch, rumänisch, ukrainisch. Več ločenih z vejico.",
+  "wizardStufe1dAufenthaltLabel": "Status bivanja (Aufenthaltsstatus) — neobvezno",
+  "wizardStufe1dAufenthaltHelper": "Npr. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Pusti prazno če ne velja.",
+  "wizardStufe1dMutterspracheLabel": "Materni jezik",
+  "wizardStufe1dMutterspracheHelper": "Vnaprej izpolnjeno z jezikom aplikacije — spremeni če je drug."
 }

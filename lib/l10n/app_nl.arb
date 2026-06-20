@@ -1064,5 +1064,13 @@
   "wizardStufe1cFamilienstandLedig": "Ongehuwd",
   "wizardStufe1cFamilienstandVerheiratet": "Gehuwd",
   "wizardStufe1cFamilienstandGeschieden": "Gescheiden",
-  "wizardStufe1cFamilienstandVerwitwet": "Weduwe/Weduwnaar"
+  "wizardStufe1cFamilienstandVerwitwet": "Weduwe/Weduwnaar",
+  "wizardStufe1dTitle": "Je achtergrond",
+  "wizardStufe1dPrompt": "Dit helpt ons je de juiste ondersteuning te bieden — bijvoorbeeld advies over Aufenthalt of je taalgemeenschap vinden.",
+  "wizardStufe1dStaatLabel": "Nationaliteit",
+  "wizardStufe1dStaatHelper": "Bv. deutsch, rumänisch, ukrainisch. Meerdere met komma.",
+  "wizardStufe1dAufenthaltLabel": "Verblijfsstatus (Aufenthaltsstatus) — optioneel",
+  "wizardStufe1dAufenthaltHelper": "Bv. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Laat leeg indien niet van toepassing.",
+  "wizardStufe1dMutterspracheLabel": "Moedertaal",
+  "wizardStufe1dMutterspracheHelper": "Vooraf ingevuld met de app-taal — wijzig indien anders."
 }
