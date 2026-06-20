@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../l10n/app_localizations.dart';
 import '../services/diagnostic_service.dart';
-import '../services/language_service.dart';
 
 /// Conversational diagnostic-consent surface — Claudiu asks for permission
 /// to send anonymous app diagnostics. Replaces the corporate AlertDialog
@@ -28,202 +28,9 @@ class DiagnosticConsentDialog extends StatefulWidget {
 class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
   bool _expanded = false;
 
-  // ---------------------------------------------------------------------------
-  // Per-language string table. Same approach as ClaudiuWelcome — inline until
-  // copy stabilises, then migrate to .arb across all 28 locales. English is
-  // the implicit fallback for any unknown language code.
-  // ---------------------------------------------------------------------------
-
-  static const Map<String, _Strings> _strings = {
-    'ro': _Strings(
-      greeting: 'Înainte să intri, am o întrebare',
-      ask:
-          'Pot trimite raportări anonime ca să-i ajutăm pe dezvoltatori să facă aplicația mai bună?',
-      yes: 'Da, vreau să ajut',
-      no: 'Nu, doar exploram',
-      tellMore: 'Spune-mi mai mult',
-      sendsHeader: '📤 Ce TRIMITEM (anonim):',
-      sends: [
-        'Un cod anonim al dispozitivului (nu mitgliedernummer-ul)',
-        'Rolul tău (membru / vorstand)',
-        'Sistemul (Linux / Android / iOS / Windows)',
-        'Limba aleasă',
-        'Nivelul + starea bateriei',
-        'Pe ce ecran ești',
-        'Durata sesiunii (secunde)',
-        'Erori dacă apar (ultimele 10)',
-        'Navigare (ultimele 20 ecrane)',
-      ],
-      neverHeader: '🛡️ Ce NU trimitem NICIODATĂ:',
-      never: [
-        'Numele tău real',
-        'Adresa de email',
-        'Numărul de telefon',
-        'Parola',
-        'Conținutul mesajelor din chat',
-        'Conținutul ticket-urilor',
-        'Documente sau atașamente',
-      ],
-      techHeader: '📡 Detalii tehnice:',
-      tech: [
-        'Trimite la fiecare 2 minute',
-        'Conexiune TLS criptată cu certificat fix (pinned)',
-        'Poți opri oricând din Setări',
-      ],
-    ),
-    'de': _Strings(
-      greeting: 'Bevor du loslegst, eine Frage',
-      ask:
-          'Darf ich anonyme Berichte senden, damit die Entwickler die App verbessern können?',
-      yes: 'Ja, ich helfe gerne',
-      no: 'Nein, ich schaue mich nur um',
-      tellMore: 'Mehr Details',
-      sendsHeader: '📤 Was wir SENDEN (anonym):',
-      sends: [
-        'Ein anonymer Gerätecode (NICHT die Mitgliedsnummer)',
-        'Deine Rolle (Mitglied / Vorstand)',
-        'Betriebssystem (Linux / Android / iOS / Windows)',
-        'Gewählte Sprache',
-        'Akkustand + Status',
-        'Aktueller Bildschirm',
-        'Sitzungsdauer (Sekunden)',
-        'Fehler falls vorhanden (letzte 10)',
-        'Navigation (letzte 20 Bildschirme)',
-      ],
-      neverHeader: '🛡️ Was wir NIE senden:',
-      never: [
-        'Dein echter Name',
-        'E-Mail-Adresse',
-        'Telefonnummer',
-        'Passwort',
-        'Inhalte deiner Chat-Nachrichten',
-        'Inhalte deiner Tickets',
-        'Dokumente oder Anhänge',
-      ],
-      techHeader: '📡 Technische Details:',
-      tech: [
-        'Wird alle 2 Minuten gesendet',
-        'TLS-verschlüsselte Verbindung mit Pinned-Zertifikat',
-        'Du kannst es jederzeit in den Einstellungen abschalten',
-      ],
-    ),
-    'en': _Strings(
-      greeting: 'Before you go in, one quick question',
-      ask:
-          'May I send anonymous reports so the developers can improve the app?',
-      yes: "Yes, I'd like to help",
-      no: "No, I'm just exploring",
-      tellMore: 'Tell me more',
-      sendsHeader: '📤 What we SEND (anonymous):',
-      sends: [
-        'An anonymous device code (NOT your member number)',
-        'Your role (member / board)',
-        'Operating system (Linux / Android / iOS / Windows)',
-        'Selected language',
-        'Battery level + state',
-        'Current screen',
-        'Session duration (seconds)',
-        'Errors if any (last 10)',
-        'Navigation (last 20 screens)',
-      ],
-      neverHeader: '🛡️ What we NEVER send:',
-      never: [
-        'Your real name',
-        'Email address',
-        'Phone number',
-        'Password',
-        'Chat message contents',
-        'Ticket contents',
-        'Documents or attachments',
-      ],
-      techHeader: '📡 Technical details:',
-      tech: [
-        'Sent every 2 minutes',
-        'TLS-encrypted connection, pinned certificate',
-        'You can turn it off any time in Settings',
-      ],
-    ),
-    'ru': _Strings(
-      greeting: 'Перед тем как войти, один вопрос',
-      ask:
-          'Можно отправлять анонимные отчёты, чтобы разработчики могли улучшить приложение?',
-      yes: 'Да, я хочу помочь',
-      no: 'Нет, я просто смотрю',
-      tellMore: 'Расскажи подробнее',
-      sendsHeader: '📤 Что мы ОТПРАВЛЯЕМ (анонимно):',
-      sends: [
-        'Анонимный код устройства (НЕ номер члена)',
-        'Ваша роль (член / правление)',
-        'Система (Linux / Android / iOS / Windows)',
-        'Выбранный язык',
-        'Уровень и состояние батареи',
-        'Текущий экран',
-        'Длительность сессии (секунды)',
-        'Ошибки, если есть (последние 10)',
-        'Навигация (последние 20 экранов)',
-      ],
-      neverHeader: '🛡️ Что мы НИКОГДА не отправляем:',
-      never: [
-        'Ваше настоящее имя',
-        'Адрес электронной почты',
-        'Номер телефона',
-        'Пароль',
-        'Содержимое сообщений чата',
-        'Содержимое тикетов',
-        'Документы или вложения',
-      ],
-      techHeader: '📡 Технические детали:',
-      tech: [
-        'Отправляется каждые 2 минуты',
-        'TLS-шифрование, фиксированный сертификат',
-        'Можно отключить в настройках',
-      ],
-    ),
-    'uk': _Strings(
-      greeting: 'Перш ніж увійти, одне запитання',
-      ask:
-          'Чи можу я надсилати анонімні звіти, щоб розробники могли покращити застосунок?',
-      yes: 'Так, я хочу допомогти',
-      no: 'Ні, я просто переглядаю',
-      tellMore: 'Розкажи більше',
-      sendsHeader: '📤 Що ми НАДСИЛАЄМО (анонімно):',
-      sends: [
-        'Анонімний код пристрою (НЕ номер члена)',
-        'Ваша роль (член / правління)',
-        'Система (Linux / Android / iOS / Windows)',
-        'Вибрана мова',
-        'Рівень і стан акумулятора',
-        'Поточний екран',
-        'Тривалість сесії (секунди)',
-        'Помилки, якщо є (останні 10)',
-        'Навігація (останні 20 екранів)',
-      ],
-      neverHeader: '🛡️ Що ми НІКОЛИ не надсилаємо:',
-      never: [
-        'Ваше справжнє ім\'я',
-        'Електронна адреса',
-        'Номер телефону',
-        'Пароль',
-        'Вміст повідомлень чату',
-        'Вміст тикетів',
-        'Документи або вкладення',
-      ],
-      techHeader: '📡 Технічні деталі:',
-      tech: [
-        'Надсилається кожні 2 хвилини',
-        'TLS-шифрування, фіксований сертифікат',
-        'Можна вимкнути в налаштуваннях',
-      ],
-    ),
-  };
-
-  static _Strings _stringsFor(String code) =>
-      _strings[code] ?? _strings['en']!;
-
   @override
   Widget build(BuildContext context) {
-    final code = LanguageService.instance.currentCode;
-    final s = _stringsFor(code);
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
 
     return Dialog(
@@ -237,11 +44,11 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _mascotAndBubble(s),
+              _mascotAndBubble(l10n),
               const SizedBox(height: 20),
               _option(
                 icon: Icons.check_circle_outline,
-                label: s.yes,
+                label: l10n.claudiuDiagnosticYes,
                 color: const Color(0xFF2E7D32),
                 onTap: () => _handleResponse(true),
               )
@@ -251,7 +58,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
               const SizedBox(height: 10),
               _option(
                 icon: Icons.cancel_outlined,
-                label: s.no,
+                label: l10n.claudiuDiagnosticNo,
                 color: Colors.grey.shade700,
                 onTap: () => _handleResponse(false),
               )
@@ -263,7 +70,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
                 icon: _expanded
                     ? Icons.expand_less
                     : Icons.help_outline,
-                label: s.tellMore,
+                label: l10n.claudiuDiagnosticTellMore,
                 color: theme.colorScheme.primary,
                 onTap: () => setState(() => _expanded = !_expanded),
               )
@@ -272,7 +79,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
                   .slideY(begin: 0.2, end: 0, delay: 1000.ms),
               AnimatedCrossFade(
                 firstChild: const SizedBox(height: 0),
-                secondChild: _transparency(s),
+                secondChild: _transparency(l10n),
                 crossFadeState: _expanded
                     ? CrossFadeState.showSecond
                     : CrossFadeState.showFirst,
@@ -289,7 +96,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
   // Mascot (placeholder Material icon — same as ClaudiuWelcome) + speech bubble.
   // ---------------------------------------------------------------------------
 
-  Widget _mascotAndBubble(_Strings s) {
+  Widget _mascotAndBubble(AppLocalizations l10n) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -319,18 +126,18 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
               color: const Color(0xFFE3F2FD),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(4),
-                topRight: Radius.circular(14),
-                bottomLeft: Radius.circular(14),
-                bottomRight: Radius.circular(14),
+              borderRadius: const BorderRadiusDirectional.only(
+                topStart: Radius.circular(4),
+                topEnd: Radius.circular(14),
+                bottomStart: Radius.circular(14),
+                bottomEnd: Radius.circular(14),
               ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  s.greeting,
+                  l10n.claudiuDiagnosticGreeting,
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -340,7 +147,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  s.ask,
+                  l10n.claudiuDiagnosticAsk,
                   style: TextStyle(
                     fontSize: 13.5,
                     color: Colors.grey[800],
@@ -372,15 +179,25 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
   // .dart's `_sendDiagnostics()` payload schema.
   // ---------------------------------------------------------------------------
 
-  Widget _transparency(_Strings s) {
+  Widget _transparency(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.only(top: 14),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _transparencySection(
-            header: s.sendsHeader,
-            items: s.sends,
+            header: l10n.claudiuDiagnosticSendsHeader,
+            items: [
+              l10n.claudiuDiagnosticSends1,
+              l10n.claudiuDiagnosticSends2,
+              l10n.claudiuDiagnosticSends3,
+              l10n.claudiuDiagnosticSends4,
+              l10n.claudiuDiagnosticSends5,
+              l10n.claudiuDiagnosticSends6,
+              l10n.claudiuDiagnosticSends7,
+              l10n.claudiuDiagnosticSends8,
+              l10n.claudiuDiagnosticSends9,
+            ],
             color: Colors.blue.shade700,
             iconBuilder: () => Icon(
               Icons.check,
@@ -390,8 +207,16 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
           ),
           const SizedBox(height: 12),
           _transparencySection(
-            header: s.neverHeader,
-            items: s.never,
+            header: l10n.claudiuDiagnosticNeverHeader,
+            items: [
+              l10n.claudiuDiagnosticNever1,
+              l10n.claudiuDiagnosticNever2,
+              l10n.claudiuDiagnosticNever3,
+              l10n.claudiuDiagnosticNever4,
+              l10n.claudiuDiagnosticNever5,
+              l10n.claudiuDiagnosticNever6,
+              l10n.claudiuDiagnosticNever7,
+            ],
             color: Colors.green.shade700,
             iconBuilder: () => Icon(
               Icons.close,
@@ -401,8 +226,12 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
           ),
           const SizedBox(height: 12),
           _transparencySection(
-            header: s.techHeader,
-            items: s.tech,
+            header: l10n.claudiuDiagnosticTechHeader,
+            items: [
+              l10n.claudiuDiagnosticTech1,
+              l10n.claudiuDiagnosticTech2,
+              l10n.claudiuDiagnosticTech3,
+            ],
             color: Colors.grey.shade700,
             iconBuilder: () =>
                 Icon(Icons.info_outline, size: 16, color: Colors.grey.shade700),
@@ -525,33 +354,6 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
   }
 }
 
-class _Strings {
-  final String greeting;
-  final String ask;
-  final String yes;
-  final String no;
-  final String tellMore;
-  final String sendsHeader;
-  final List<String> sends;
-  final String neverHeader;
-  final List<String> never;
-  final String techHeader;
-  final List<String> tech;
-
-  const _Strings({
-    required this.greeting,
-    required this.ask,
-    required this.yes,
-    required this.no,
-    required this.tellMore,
-    required this.sendsHeader,
-    required this.sends,
-    required this.neverHeader,
-    required this.never,
-    required this.techHeader,
-    required this.tech,
-  });
-}
 
 // ---------------------------------------------------------------------------
 // Same public helpers the previous version exposed — main.dart / welcome.dart

@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+import '../l10n/app_localizations.dart';
 import '../services/anonymous_chat_service.dart';
 import '../services/chat_service.dart';
-import '../services/language_service.dart';
 import '../widgets/icd360s_header.dart';
 
 /// Live anonymous chat surface — visitor side. Hits
@@ -45,85 +45,6 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
   Timer? _typingResetTimer;
   Timer? _pollTimer;
 
-  // ---------------------------------------------------------------------------
-  // Per-language strings (5 priority locales + English fallback).
-  // ---------------------------------------------------------------------------
-
-  static const Map<String, _Strings> _strings = {
-    'ro': _Strings(
-      title: 'Chat anonim',
-      greeting: 'Salut!',
-      welcome:
-          'Te ascult. Scrie-mi orice — nu am nevoie de numele tău. Răspund de îndată ce sunt aici.',
-      hint: 'Scrie un mesaj…',
-      waitingOperator: 'Așteptăm ca un operator să răspundă…',
-      connecting: 'Mă conectez…',
-      connectionFailed: 'Nu am putut deschide chat-ul. Încearcă din nou sau sună-ne.',
-      retry: 'Încearcă din nou',
-      online: 'Conectat',
-      offline: 'Reconectare…',
-      adminTyping: 'Operatorul scrie…',
-    ),
-    'de': _Strings(
-      title: 'Anonymer Chat',
-      greeting: 'Hallo!',
-      welcome:
-          'Ich höre dir zu. Schreib alles, was dich bewegt — ich brauche keinen Namen. Ich antworte, sobald ich da bin.',
-      hint: 'Nachricht schreiben…',
-      waitingOperator: 'Wir warten, bis ein Mitarbeiter antwortet…',
-      connecting: 'Verbinde…',
-      connectionFailed: 'Chat konnte nicht geöffnet werden. Versuch erneut oder ruf an.',
-      retry: 'Erneut versuchen',
-      online: 'Verbunden',
-      offline: 'Wiederverbindung…',
-      adminTyping: 'Mitarbeiter schreibt…',
-    ),
-    'en': _Strings(
-      title: 'Anonymous chat',
-      greeting: 'Hi!',
-      welcome:
-          "I'm listening. Write anything you'd like — no name needed. I'll reply as soon as I'm in.",
-      hint: 'Write a message…',
-      waitingOperator: 'Waiting for an operator to reply…',
-      connecting: 'Connecting…',
-      connectionFailed: "Couldn't open the chat. Try again or call us.",
-      retry: 'Try again',
-      online: 'Connected',
-      offline: 'Reconnecting…',
-      adminTyping: 'Operator is typing…',
-    ),
-    'ru': _Strings(
-      title: 'Анонимный чат',
-      greeting: 'Привет!',
-      welcome:
-          'Я слушаю. Пиши что угодно — имя не нужно. Отвечу, как только буду на связи.',
-      hint: 'Написать сообщение…',
-      waitingOperator: 'Ждём ответа оператора…',
-      connecting: 'Подключаюсь…',
-      connectionFailed: 'Не удалось открыть чат. Попробуй ещё раз или позвони.',
-      retry: 'Попробовать снова',
-      online: 'Подключено',
-      offline: 'Переподключение…',
-      adminTyping: 'Оператор печатает…',
-    ),
-    'uk': _Strings(
-      title: 'Анонімний чат',
-      greeting: 'Привіт!',
-      welcome:
-          'Я слухаю. Пиши що завгодно — імʼя не потрібне. Відповім, щойно буду на звʼязку.',
-      hint: 'Написати повідомлення…',
-      waitingOperator: 'Чекаємо на відповідь оператора…',
-      connecting: 'Підключаюсь…',
-      connectionFailed: 'Не вдалося відкрити чат. Спробуй ще раз або зателефонуй.',
-      retry: 'Спробувати ще раз',
-      online: 'Підключено',
-      offline: 'Перепідключення…',
-      adminTyping: 'Оператор пише…',
-    ),
-  };
-
-  static _Strings _stringsFor(String code) =>
-      _strings[code] ?? _strings['en']!;
 
   // ---------------------------------------------------------------------------
   // Lifecycle.
@@ -302,7 +223,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final s = _stringsFor(LanguageService.instance.currentCode);
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Container(
@@ -320,14 +241,14 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              _header(s),
+              _header(l10n),
               if (_failed)
-                Expanded(child: _errorView(s))
+                Expanded(child: _errorView(l10n))
               else if (_connecting)
-                Expanded(child: _loadingView(s))
+                Expanded(child: _loadingView(l10n))
               else
-                Expanded(child: _chatView(s)),
-              if (!_failed && !_connecting) _inputBar(s),
+                Expanded(child: _chatView(l10n)),
+              if (!_failed && !_connecting) _inputBar(l10n),
             ],
           ),
         ),
@@ -335,7 +256,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     );
   }
 
-  Widget _header(_Strings s) {
+  Widget _header(AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
@@ -354,7 +275,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  s.title,
+                  l10n.claudiuAnonymousChatTitle,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -375,7 +296,9 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      _wsConnected ? s.online : s.offline,
+                      _wsConnected
+                          ? l10n.claudiuAnonymousChatOnline
+                          : l10n.claudiuAnonymousChatOffline,
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.85),
                         fontSize: 11.5,
@@ -403,7 +326,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     );
   }
 
-  Widget _loadingView(_Strings s) {
+  Widget _loadingView(AppLocalizations l10n) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -411,7 +334,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
           const CircularProgressIndicator(color: Colors.white),
           const SizedBox(height: 16),
           Text(
-            s.connecting,
+            l10n.claudiuAnonymousChatConnecting,
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.85),
               fontSize: 14,
@@ -422,7 +345,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     );
   }
 
-  Widget _errorView(_Strings s) {
+  Widget _errorView(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
       child: Column(
@@ -433,7 +356,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
           Icon(Icons.cloud_off, color: Colors.amber.shade200, size: 56),
           const SizedBox(height: 16),
           Text(
-            s.connectionFailed,
+            l10n.claudiuAnonymousChatConnectionFailed,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.9),
@@ -445,7 +368,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
           ElevatedButton.icon(
             onPressed: _bootstrap,
             icon: const Icon(Icons.refresh),
-            label: Text(s.retry),
+            label: Text(l10n.claudiuAnonymousChatRetry),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white.withValues(alpha: 0.18),
               foregroundColor: Colors.white,
@@ -468,7 +391,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     );
   }
 
-  Widget _chatView(_Strings s) {
+  Widget _chatView(AppLocalizations l10n) {
     return Column(
       children: [
         Expanded(
@@ -476,17 +399,17 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
             controller: _scrollController,
             padding: const EdgeInsets.fromLTRB(16, 20, 16, 12),
             children: [
-              _claudiuWelcome(s),
+              _claudiuWelcome(l10n),
               if (_messages.isEmpty) ...[
                 const SizedBox(height: 24),
-                _waitingNote(s),
+                _waitingNote(l10n),
               ] else ...[
                 const SizedBox(height: 18),
                 for (final m in _messages) _messageBubble(m),
               ],
               if (_adminTyping) ...[
                 const SizedBox(height: 8),
-                _typingIndicator(s),
+                _typingIndicator(l10n),
               ],
             ],
           ),
@@ -495,7 +418,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     );
   }
 
-  Widget _claudiuWelcome(_Strings s) {
+  Widget _claudiuWelcome(AppLocalizations l10n) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -522,18 +445,18 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(4),
-                topRight: Radius.circular(12),
-                bottomLeft: Radius.circular(12),
-                bottomRight: Radius.circular(12),
+              borderRadius: const BorderRadiusDirectional.only(
+                topStart: Radius.circular(4),
+                topEnd: Radius.circular(12),
+                bottomStart: Radius.circular(12),
+                bottomEnd: Radius.circular(12),
               ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  s.greeting,
+                  l10n.claudiuAnonymousChatGreeting,
                   style: const TextStyle(
                     fontSize: 13.5,
                     fontWeight: FontWeight.w700,
@@ -542,7 +465,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  s.welcome,
+                  l10n.claudiuAnonymousChatWelcome,
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.grey[800],
@@ -566,7 +489,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     );
   }
 
-  Widget _waitingNote(_Strings s) {
+  Widget _waitingNote(AppLocalizations l10n) {
     return Center(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
@@ -588,7 +511,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
             ),
             const SizedBox(width: 10),
             Text(
-              s.waitingOperator,
+              l10n.claudiuAnonymousChatWaitingOperator,
               style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.85),
                 fontSize: 12.5,
@@ -666,7 +589,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     );
   }
 
-  Widget _typingIndicator(_Strings s) {
+  Widget _typingIndicator(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.only(left: 12, top: 4),
       child: Row(
@@ -700,7 +623,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
           ),
           const SizedBox(width: 8),
           Text(
-            s.adminTyping,
+            l10n.claudiuAnonymousChatAdminTyping,
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.75),
               fontSize: 11.5,
@@ -712,7 +635,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     );
   }
 
-  Widget _inputBar(_Strings s) {
+  Widget _inputBar(AppLocalizations l10n) {
     return Container(
       padding: EdgeInsets.fromLTRB(
         12,
@@ -736,7 +659,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
               maxLines: 4,
               style: const TextStyle(color: Colors.white, fontSize: 14),
               decoration: InputDecoration(
-                hintText: s.hint,
+                hintText: l10n.claudiuAnonymousChatHint,
                 hintStyle: TextStyle(
                   color: Colors.white.withValues(alpha: 0.55),
                   fontSize: 14,
@@ -809,30 +732,3 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
   }
 }
 
-class _Strings {
-  final String title;
-  final String greeting;
-  final String welcome;
-  final String hint;
-  final String waitingOperator;
-  final String connecting;
-  final String connectionFailed;
-  final String retry;
-  final String online;
-  final String offline;
-  final String adminTyping;
-
-  const _Strings({
-    required this.title,
-    required this.greeting,
-    required this.welcome,
-    required this.hint,
-    required this.waitingOperator,
-    required this.connecting,
-    required this.connectionFailed,
-    required this.retry,
-    required this.online,
-    required this.offline,
-    required this.adminTyping,
-  });
-}

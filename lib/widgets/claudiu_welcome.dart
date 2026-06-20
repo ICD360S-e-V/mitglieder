@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../l10n/app_localizations.dart';
 import '../screens/login.dart';
 import '../screens/problem_help.dart';
 import '../screens/register.dart';
-import '../services/language_service.dart';
 
 /// Conversational welcome surface — replaces the static button stack on
 /// WelcomeScreen with a chat-style flow centred on the Claudiu mascot.
@@ -40,169 +40,43 @@ class ClaudiuWelcome extends StatelessWidget {
   static const Duration _optionStagger = Duration(milliseconds: 200);
   static const Duration _optionDur = Duration(milliseconds: 350);
 
-  // ---------------------------------------------------------------------------
-  // Per-language string table. Inline (vs. .arb) until copy stabilises; once
-  // it does, migrate to AppLocalizations across all 28 ARB files. English is
-  // the implicit fallback for any unknown language code.
-  // ---------------------------------------------------------------------------
-
-  static const Map<String, _ClaudiuStrings> _strings = {
-    'ro': _ClaudiuStrings(
-      morning: 'Bună dimineața',
-      day: 'Bună ziua',
-      evening: 'Bună seara',
-      night: 'Bună seara',
-      visitor: 'drag vizitator',
-      ask: 'Cu ce te pot ajuta?',
-      becomeMember: 'Vreau să devin membru',
-      login: 'Sunt deja membru și vreau să mă autentific',
-      problem: 'Am o problemă cu aplicația',
-      emergency: 'Urgență — sună-ne',
-      claudiuName: 'Claudiu',
-      emergencyIntro: 'Înainte să suni — programul nostru de lucru:',
-      scheduleOffice: 'La birou',
-      scheduleField: 'Pe teren cu clienții',
-      outsideHoursNote:
-          'În afara acestui program preluăm doar urgențele. Poți să ne și scrii la același număr — te contactăm noi.',
-      callNow: 'Sună-ne acum',
-      sendSms: 'Trimite SMS',
-      smsBody:
-          'Urgență ICD360S e.V. — vă rog să mă contactați cât mai curând.',
-      closeButton: 'Închide',
-    ),
-    'de': _ClaudiuStrings(
-      morning: 'Guten Morgen',
-      day: 'Hallo',
-      evening: 'Guten Abend',
-      night: 'Guten Abend',
-      visitor: 'lieber Besucher',
-      ask: 'Wie kann ich dir helfen?',
-      becomeMember: 'Ich möchte Mitglied werden',
-      login: 'Ich bin bereits Mitglied und möchte mich anmelden',
-      problem: 'Ich habe ein Problem mit der App',
-      emergency: 'Notfall — ruf uns an',
-      claudiuName: 'Claudiu',
-      emergencyIntro: 'Bevor du anrufst — unsere Geschäftszeiten:',
-      scheduleOffice: 'Im Büro',
-      scheduleField: 'Beim Klienten vor Ort',
-      outsideHoursNote:
-          'Außerhalb dieser Zeiten nehmen wir nur Notfälle entgegen. Du kannst uns auch eine SMS schicken — wir melden uns zurück.',
-      callNow: 'Jetzt anrufen',
-      sendSms: 'SMS senden',
-      smsBody:
-          'Notfall ICD360S e.V. — bitte ruft mich so schnell wie möglich zurück.',
-      closeButton: 'Schließen',
-    ),
-    'en': _ClaudiuStrings(
-      morning: 'Good morning',
-      day: 'Hello',
-      evening: 'Good evening',
-      night: 'Good evening',
-      visitor: 'dear visitor',
-      ask: 'How can I help you?',
-      becomeMember: 'I want to become a member',
-      login: "I'm already a member and want to sign in",
-      problem: 'I have a problem with the app',
-      emergency: 'Emergency — call us',
-      claudiuName: 'Claudiu',
-      emergencyIntro: 'Before you call — our office hours:',
-      scheduleOffice: 'At the office',
-      scheduleField: 'On the field with our clients',
-      outsideHoursNote:
-          "Outside these hours we only handle emergencies. You can also text the same number — we'll get back to you.",
-      callNow: 'Call us now',
-      sendSms: 'Send SMS',
-      smsBody:
-          'Emergency at ICD360S e.V. — please contact me as soon as possible.',
-      closeButton: 'Close',
-    ),
-    'ru': _ClaudiuStrings(
-      morning: 'Доброе утро',
-      day: 'Здравствуйте',
-      evening: 'Добрый вечер',
-      night: 'Добрый вечер',
-      visitor: 'дорогой гость',
-      ask: 'Чем я могу помочь?',
-      becomeMember: 'Я хочу стать членом',
-      login: 'Я уже член и хочу войти',
-      problem: 'У меня проблема с приложением',
-      emergency: 'Срочно — позвоните нам',
-      claudiuName: 'Клаудиу',
-      emergencyIntro: 'Прежде чем звонить — наш график работы:',
-      scheduleOffice: 'В офисе',
-      scheduleField: 'На выезде с клиентами',
-      outsideHoursNote:
-          'Вне этого времени мы принимаем только срочные обращения. Можно также отправить SMS — мы свяжемся с вами.',
-      callNow: 'Позвонить сейчас',
-      sendSms: 'Отправить SMS',
-      smsBody:
-          'Срочно, ICD360S e.V. — пожалуйста, свяжитесь со мной как можно скорее.',
-      closeButton: 'Закрыть',
-    ),
-    'uk': _ClaudiuStrings(
-      morning: 'Доброго ранку',
-      day: 'Вітаю',
-      evening: 'Доброго вечора',
-      night: 'Доброго вечора',
-      visitor: 'дорогий відвідувачу',
-      ask: 'Чим я можу допомогти?',
-      becomeMember: 'Я хочу стати членом',
-      login: 'Я вже член і хочу увійти',
-      problem: 'У мене проблема з застосунком',
-      emergency: 'Терміново — зателефонуйте нам',
-      claudiuName: 'Клаудіу',
-      emergencyIntro: 'Перш ніж телефонувати — наш робочий графік:',
-      scheduleOffice: 'В офісі',
-      scheduleField: 'На виїзді з клієнтами',
-      outsideHoursNote:
-          'Поза цим часом ми приймаємо лише термінові звернення. Можна також надіслати SMS — ми зв\'яжемося з вами.',
-      callNow: 'Зателефонувати зараз',
-      sendSms: 'Надіслати SMS',
-      smsBody:
-          'Терміново, ICD360S e.V. — зв\'яжіться зі мною якнайшвидше.',
-      closeButton: 'Закрити',
-    ),
-  };
-
-  static _ClaudiuStrings _stringsFor(String code) =>
-      _strings[code] ?? _strings['en']!;
-
   /// 5–12 → morning, 12–18 → day, 18–22 → evening, otherwise → night.
-  static String _timeGreeting(_ClaudiuStrings s) {
+  static String _timeGreeting(AppLocalizations l10n) {
     final h = DateTime.now().hour;
-    if (h >= 5 && h < 12) return s.morning;
-    if (h >= 12 && h < 18) return s.day;
-    if (h >= 18 && h < 22) return s.evening;
-    return s.night;
+    if (h >= 5 && h < 12) return l10n.claudiuWelcomeMorning;
+    if (h >= 12 && h < 18) return l10n.claudiuWelcomeDay;
+    if (h >= 18 && h < 22) return l10n.claudiuWelcomeEvening;
+    return l10n.claudiuWelcomeNight;
   }
 
   @override
   Widget build(BuildContext context) {
-    final code = LanguageService.instance.currentCode;
-    final s = _stringsFor(code);
-    final greeting = '${_timeGreeting(s)}, ${s.visitor}!';
+    final l10n = AppLocalizations.of(context)!;
+    final greeting = '${_timeGreeting(l10n)}, ${l10n.claudiuWelcomeVisitor}!';
 
     final options = <_OptionData>[
-      _OptionData(Icons.person_add_alt_1, s.becomeMember, false, () {
+      _OptionData(Icons.person_add_alt_1, l10n.claudiuWelcomeBecomeMember,
+          false, () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => const RegisterPage()),
         );
       }),
-      _OptionData(Icons.login, s.login, false, () {
+      _OptionData(Icons.login, l10n.claudiuWelcomeLogin, false, () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => const LoginPage()),
         );
       }),
-      _OptionData(Icons.bug_report_outlined, s.problem, false, () {
+      _OptionData(Icons.bug_report_outlined, l10n.claudiuWelcomeProblem, false,
+          () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => const ProblemHelpScreen()),
         );
       }),
-      _OptionData(Icons.phone_in_talk, s.emergency, true, () {
-        _showEmergencySheet(context, s);
+      _OptionData(Icons.phone_in_talk, l10n.claudiuWelcomeEmergency, true, () {
+        _showEmergencySheet(context, l10n);
       }),
     ];
 
@@ -223,7 +97,7 @@ class ClaudiuWelcome extends StatelessWidget {
               SizedBox(width: 12 * scale),
               // Bubble holds until 2s after page open, then fades in.
               Expanded(
-                child: _bubble(s, greeting, scale)
+                child: _bubble(l10n, greeting, scale)
                     .animate()
                     .fadeIn(delay: _bubbleDelay, duration: 400.ms),
               ),
@@ -288,7 +162,7 @@ class ClaudiuWelcome extends StatelessWidget {
   // properly which my AnimatedBuilder + substring hack did not.
   // ---------------------------------------------------------------------------
 
-  Widget _bubble(_ClaudiuStrings s, String greeting, double scale) {
+  Widget _bubble(AppLocalizations l10n, String greeting, double scale) {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 16 * scale,
@@ -296,11 +170,11 @@ class ClaudiuWelcome extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: const Radius.circular(4),
-          topRight: Radius.circular(16 * scale),
-          bottomLeft: Radius.circular(16 * scale),
-          bottomRight: Radius.circular(16 * scale),
+        borderRadius: BorderRadiusDirectional.only(
+          topStart: const Radius.circular(4),
+          topEnd: Radius.circular(16 * scale),
+          bottomStart: Radius.circular(16 * scale),
+          bottomEnd: Radius.circular(16 * scale),
         ),
         boxShadow: [
           BoxShadow(
@@ -337,7 +211,7 @@ class ClaudiuWelcome extends StatelessWidget {
           ),
           SizedBox(height: 4 * scale),
           Text(
-            s.ask,
+            l10n.claudiuWelcomeAsk,
             style: TextStyle(
               fontSize: 14 * scale,
               color: Colors.grey[800],
@@ -346,7 +220,7 @@ class ClaudiuWelcome extends StatelessWidget {
           ),
           SizedBox(height: 6 * scale),
           Text(
-            '— ${s.claudiuName}',
+            '— ${l10n.claudiuWelcomeMascotName}',
             style: TextStyle(
               fontSize: 11 * scale,
               color: Colors.grey[500],
@@ -456,7 +330,7 @@ class ClaudiuWelcome extends StatelessWidget {
   /// callbacks.
   Future<void> _showEmergencySheet(
     BuildContext context,
-    _ClaudiuStrings s,
+    AppLocalizations l10n,
   ) async {
     await showModalBottomSheet<void>(
       context: context,
@@ -520,15 +394,15 @@ class ClaudiuWelcome extends StatelessWidget {
                               horizontal: 14, vertical: 10),
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4),
-                              topRight: Radius.circular(14),
-                              bottomLeft: Radius.circular(14),
-                              bottomRight: Radius.circular(14),
+                            borderRadius: const BorderRadiusDirectional.only(
+                              topStart: Radius.circular(4),
+                              topEnd: Radius.circular(14),
+                              bottomStart: Radius.circular(14),
+                              bottomEnd: Radius.circular(14),
                             ),
                           ),
                           child: Text(
-                            s.emergencyIntro,
+                            l10n.claudiuWelcomeEmergencyIntro,
                             style: const TextStyle(
                               fontSize: 13.5,
                               fontWeight: FontWeight.w600,
@@ -545,13 +419,13 @@ class ClaudiuWelcome extends StatelessWidget {
                   // Office hours.
                   _scheduleRow(
                     icon: Icons.business_outlined,
-                    label: s.scheduleOffice,
+                    label: l10n.claudiuWelcomeScheduleOffice,
                     window: _scheduleOfficeWindow,
                   ),
                   const SizedBox(height: 10),
                   _scheduleRow(
                     icon: Icons.directions_walk,
-                    label: s.scheduleField,
+                    label: l10n.claudiuWelcomeScheduleField,
                     window: _scheduleFieldWindow,
                   ),
                   const SizedBox(height: 14),
@@ -574,7 +448,7 @@ class ClaudiuWelcome extends StatelessWidget {
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            s.outsideHoursNote,
+                            l10n.claudiuWelcomeOutsideHoursNote,
                             style: TextStyle(
                               color: Colors.white.withValues(alpha: 0.9),
                               fontSize: 12.5,
@@ -590,7 +464,7 @@ class ClaudiuWelcome extends StatelessWidget {
                   // Call action.
                   _bigAction(
                     icon: Icons.phone_in_talk,
-                    label: s.callNow,
+                    label: l10n.claudiuWelcomeCallNow,
                     sub: _supportPhoneDisplay,
                     onTap: () {
                       Navigator.of(sheetCtx).pop();
@@ -601,11 +475,11 @@ class ClaudiuWelcome extends StatelessWidget {
                   // SMS action.
                   _bigAction(
                     icon: Icons.sms_outlined,
-                    label: s.sendSms,
+                    label: l10n.claudiuWelcomeSendSms,
                     sub: _supportPhoneDisplay,
                     onTap: () {
                       Navigator.of(sheetCtx).pop();
-                      _sms(s.smsBody);
+                      _sms(l10n.claudiuWelcomeSmsBody);
                     },
                   ),
                   const SizedBox(height: 14),
@@ -618,7 +492,7 @@ class ClaudiuWelcome extends StatelessWidget {
                         foregroundColor:
                             Colors.white.withValues(alpha: 0.85),
                       ),
-                      child: Text(s.closeButton),
+                      child: Text(l10n.claudiuWelcomeCloseButton),
                     ),
                   ),
                 ],
@@ -738,47 +612,3 @@ class _OptionData {
   const _OptionData(this.icon, this.label, this.danger, this.onTap);
 }
 
-class _ClaudiuStrings {
-  final String morning;
-  final String day;
-  final String evening;
-  final String night;
-  final String visitor;
-  final String ask;
-  final String becomeMember;
-  final String login;
-  final String problem;
-  final String emergency;
-  final String claudiuName;
-  // Emergency bottom sheet copy.
-  final String emergencyIntro;
-  final String scheduleOffice;
-  final String scheduleField;
-  final String outsideHoursNote;
-  final String callNow;
-  final String sendSms;
-  final String smsBody;
-  final String closeButton;
-
-  const _ClaudiuStrings({
-    required this.morning,
-    required this.day,
-    required this.evening,
-    required this.night,
-    required this.visitor,
-    required this.ask,
-    required this.becomeMember,
-    required this.login,
-    required this.problem,
-    required this.emergency,
-    required this.claudiuName,
-    required this.emergencyIntro,
-    required this.scheduleOffice,
-    required this.scheduleField,
-    required this.outsideHoursNote,
-    required this.callNow,
-    required this.sendSms,
-    required this.smsBody,
-    required this.closeButton,
-  });
-}

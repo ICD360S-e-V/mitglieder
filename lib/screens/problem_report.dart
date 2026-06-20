@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
-import '../services/language_service.dart';
 import '../widgets/icd360s_header.dart';
 
 /// "I have a problem with the app" surface — reached from the Claudiu
@@ -40,151 +40,6 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
   final TextEditingController _descController = TextEditingController();
   bool _isSending = false;
 
-  // ---------------------------------------------------------------------------
-  // Per-language string table. Same inline pattern as the other Claudiu
-  // surfaces — ro/de/en/ru/uk, English fallback for the rest.
-  // ---------------------------------------------------------------------------
-
-  static const Map<String, _Strings> _strings = {
-    'ro': _Strings(
-      title: 'Raportează o problemă',
-      greeting: 'Ce s-a întâmplat?',
-      ask: 'Spune-mi în detaliu și trimit raportul la echipă.',
-      includeHeader: 'Include în descrierea ta:',
-      includeBullets: [
-        'Ce făceai când a apărut problema',
-        'Ce mesaj de eroare ai văzut',
-        'Pe ce ecran erai',
-        'Aplicația crapă? Se închide? Apare ecran alb?',
-        'Se repetă mereu sau o singură dată',
-      ],
-      descriptionLabel: 'Descrierea ta',
-      descriptionHint:
-          'Ex: Când deschid ecranul de chat, apare un mesaj „Connection error" și aplicația nu mai răspunde…',
-      tooShort: 'Mai detaliază, te rog (minim $_minChars caractere)',
-      submit: 'Trimite raportul',
-      submitting: 'Trimit...',
-      sentTitle: 'Mulțumesc!',
-      sentBody:
-          'Raportul a fost trimis. Echipa noastră îl va analiza cât mai curând.',
-      sentClose: 'Înțeles',
-      sendFailed:
-          'Nu am putut trimite raportul. Sună-ne pentru asistență urgentă.',
-      alt: 'Sau, dacă e ceva urgent:',
-      callLabel: 'Sună-ne',
-    ),
-    'de': _Strings(
-      title: 'Problem melden',
-      greeting: 'Was ist passiert?',
-      ask: 'Beschreibe es im Detail, und ich leite den Bericht weiter.',
-      includeHeader: 'Bitte mit angeben:',
-      includeBullets: [
-        'Was du gerade gemacht hast',
-        'Welche Fehlermeldung erschien',
-        'Auf welchem Bildschirm du warst',
-        'Stürzt die App ab? Wird sie weiß? Schließt sie sich?',
-        'Passiert es einmalig oder wiederholt',
-      ],
-      descriptionLabel: 'Deine Beschreibung',
-      descriptionHint:
-          'Z.B.: Beim Öffnen des Chat-Bildschirms erscheint „Connection error" und die App reagiert nicht mehr…',
-      tooShort: 'Bitte etwas ausführlicher (mind. $_minChars Zeichen)',
-      submit: 'Bericht senden',
-      submitting: 'Wird gesendet…',
-      sentTitle: 'Danke!',
-      sentBody:
-          'Der Bericht wurde gesendet. Unser Team schaut so schnell wie möglich darauf.',
-      sentClose: 'Verstanden',
-      sendFailed:
-          'Bericht konnte nicht gesendet werden. Ruf uns bei dringenden Anliegen an.',
-      alt: 'Oder bei dringenden Anliegen:',
-      callLabel: 'Ruf uns an',
-    ),
-    'en': _Strings(
-      title: 'Report a problem',
-      greeting: 'What happened?',
-      ask: "Tell me in detail and I'll forward the report to the team.",
-      includeHeader: 'Please include:',
-      includeBullets: [
-        'What you were doing when the problem appeared',
-        'Any error message you saw',
-        'Which screen you were on',
-        'Does the app crash, close, or show a blank screen?',
-        'Does it happen every time or just once?',
-      ],
-      descriptionLabel: 'Your description',
-      descriptionHint:
-          "E.g.: When I open the chat screen I get a 'Connection error' message and the app stops responding…",
-      tooShort: 'A bit more detail, please (at least $_minChars characters)',
-      submit: 'Send report',
-      submitting: 'Sending…',
-      sentTitle: 'Thank you!',
-      sentBody:
-          'The report has been sent. Our team will look into it as soon as possible.',
-      sentClose: 'Got it',
-      sendFailed:
-          "Couldn't send the report. Please call us for urgent help.",
-      alt: "Or, if it's urgent:",
-      callLabel: 'Call us',
-    ),
-    'ru': _Strings(
-      title: 'Сообщить о проблеме',
-      greeting: 'Что случилось?',
-      ask: 'Расскажи подробно, и я передам отчёт команде.',
-      includeHeader: 'Пожалуйста, укажи:',
-      includeBullets: [
-        'Что ты делал, когда появилась проблема',
-        'Какое сообщение об ошибке появилось',
-        'На каком экране ты был',
-        'Приложение вылетает? Закрывается? Показывает белый экран?',
-        'Повторяется или это один раз?',
-      ],
-      descriptionLabel: 'Твоё описание',
-      descriptionHint:
-          'Напр.: При открытии чата появляется «Connection error» и приложение не отвечает…',
-      tooShort: 'Чуть подробнее, пожалуйста (минимум $_minChars символов)',
-      submit: 'Отправить отчёт',
-      submitting: 'Отправка…',
-      sentTitle: 'Спасибо!',
-      sentBody:
-          'Отчёт отправлен. Наша команда рассмотрит его как можно скорее.',
-      sentClose: 'Понятно',
-      sendFailed:
-          'Не удалось отправить отчёт. Позвони нам, если срочно.',
-      alt: 'Или, если срочно:',
-      callLabel: 'Позвонить',
-    ),
-    'uk': _Strings(
-      title: 'Повідомити про проблему',
-      greeting: 'Що сталося?',
-      ask: 'Розкажи детально, і я передам звіт команді.',
-      includeHeader: 'Будь ласка, вкажи:',
-      includeBullets: [
-        'Що ти робив, коли з\'явилася проблема',
-        'Яке повідомлення про помилку з\'явилося',
-        'На якому екрані ти був',
-        'Застосунок крашиться? Закривається? Показує білий екран?',
-        'Це повторюється чи разово?',
-      ],
-      descriptionLabel: 'Твій опис',
-      descriptionHint:
-          'Напр.: При відкритті чату з\'являється «Connection error» і застосунок не відповідає…',
-      tooShort: 'Трохи більше деталей, будь ласка (мінімум $_minChars символів)',
-      submit: 'Надіслати звіт',
-      submitting: 'Надсилання…',
-      sentTitle: 'Дякую!',
-      sentBody:
-          'Звіт надіслано. Наша команда розгляне його якомога швидше.',
-      sentClose: 'Зрозуміло',
-      sendFailed:
-          'Не вдалося надіслати звіт. Зателефонуй нам у разі терміновості.',
-      alt: 'Або, якщо терміново:',
-      callLabel: 'Зателефонувати',
-    ),
-  };
-
-  static _Strings _stringsFor(String code) =>
-      _strings[code] ?? _strings['en']!;
 
   @override
   void initState() {
@@ -202,7 +57,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
       !_isSending && _descController.text.trim().length >= _minChars;
 
   Future<void> _submit() async {
-    final s = _stringsFor(LanguageService.instance.currentCode);
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _isSending = true);
     try {
       final result = await ApiService().submitBugReport(
@@ -210,19 +65,19 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
       );
       if (!mounted) return;
       if (result['success'] == true) {
-        await _showSentDialog(s);
+        await _showSentDialog(l10n);
         if (mounted) Navigator.of(context).pop();
       } else {
-        _showFailedSnack(s);
+        _showFailedSnack(l10n);
       }
     } catch (_) {
-      if (mounted) _showFailedSnack(s);
+      if (mounted) _showFailedSnack(l10n);
     } finally {
       if (mounted) setState(() => _isSending = false);
     }
   }
 
-  Future<void> _showSentDialog(_Strings s) async {
+  Future<void> _showSentDialog(AppLocalizations l10n) async {
     await showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -231,24 +86,24 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
           children: [
             const Icon(Icons.check_circle, color: Color(0xFF2E7D32)),
             const SizedBox(width: 10),
-            Text(s.sentTitle),
+            Text(l10n.claudiuProblemReportSentTitle),
           ],
         ),
-        content: Text(s.sentBody),
+        content: Text(l10n.claudiuProblemReportSentBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: Text(s.sentClose),
+            child: Text(l10n.claudiuProblemReportSentClose),
           ),
         ],
       ),
     );
   }
 
-  void _showFailedSnack(_Strings s) {
+  void _showFailedSnack(AppLocalizations l10n) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(s.sendFailed),
+        content: Text(l10n.claudiuProblemReportSendFailed),
         backgroundColor: Colors.red.shade700,
         duration: const Duration(seconds: 5),
       ),
@@ -264,7 +119,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final s = _stringsFor(LanguageService.instance.currentCode);
+    final l10n = AppLocalizations.of(context)!;
     final charCount = _descController.text.trim().length;
 
     return Scaffold(
@@ -283,7 +138,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              _header(s),
+              _header(l10n),
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
@@ -292,15 +147,15 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                     children: [
                       const Icd360sHeader(compact: true),
                       const SizedBox(height: 16),
-                      _mascotAndBubble(s),
+                      _mascotAndBubble(l10n),
                       const SizedBox(height: 16),
-                      _checklist(s),
+                      _checklist(l10n),
                       const SizedBox(height: 16),
-                      _descriptionField(s, charCount),
+                      _descriptionField(l10n, charCount),
                       const SizedBox(height: 16),
-                      _submitButton(s),
+                      _submitButton(l10n),
                       const SizedBox(height: 24),
-                      _altCallSection(s),
+                      _altCallSection(l10n),
                     ],
                   ),
                 ),
@@ -312,7 +167,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
     );
   }
 
-  Widget _header(_Strings s) {
+  Widget _header(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       child: Row(
@@ -323,7 +178,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
           ),
           Expanded(
             child: Text(
-              s.title,
+              l10n.claudiuProblemReportTitle,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
@@ -338,7 +193,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
     );
   }
 
-  Widget _mascotAndBubble(_Strings s) {
+  Widget _mascotAndBubble(AppLocalizations l10n) {
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -377,11 +232,11 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(4),
-                  topRight: Radius.circular(14),
-                  bottomLeft: Radius.circular(14),
-                  bottomRight: Radius.circular(14),
+                borderRadius: const BorderRadiusDirectional.only(
+                  topStart: Radius.circular(4),
+                  topEnd: Radius.circular(14),
+                  bottomStart: Radius.circular(14),
+                  bottomEnd: Radius.circular(14),
                 ),
                 boxShadow: [
                   BoxShadow(
@@ -395,7 +250,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    s.greeting,
+                    l10n.claudiuProblemReportGreeting,
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
@@ -404,7 +259,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    s.ask,
+                    l10n.claudiuProblemReportAsk,
                     style: TextStyle(
                       fontSize: 13.5,
                       color: Colors.grey[800],
@@ -429,7 +284,14 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
     );
   }
 
-  Widget _checklist(_Strings s) {
+  Widget _checklist(AppLocalizations l10n) {
+    final bullets = [
+      l10n.claudiuProblemReportIncludeBullets1,
+      l10n.claudiuProblemReportIncludeBullets2,
+      l10n.claudiuProblemReportIncludeBullets3,
+      l10n.claudiuProblemReportIncludeBullets4,
+      l10n.claudiuProblemReportIncludeBullets5,
+    ];
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
@@ -441,7 +303,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '📋 ${s.includeHeader}',
+            '📋 ${l10n.claudiuProblemReportIncludeHeader}',
             style: const TextStyle(
               color: Colors.white,
               fontSize: 13.5,
@@ -449,7 +311,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
             ),
           ),
           const SizedBox(height: 8),
-          for (final bullet in s.includeBullets)
+          for (final bullet in bullets)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 3),
               child: Row(
@@ -480,12 +342,12 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
     );
   }
 
-  Widget _descriptionField(_Strings s, int charCount) {
+  Widget _descriptionField(AppLocalizations l10n, int charCount) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '✍️ ${s.descriptionLabel}',
+          '✍️ ${l10n.claudiuProblemReportDescriptionLabel}',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 13.5,
@@ -500,7 +362,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
           enabled: !_isSending,
           style: const TextStyle(color: Colors.white, fontSize: 14, height: 1.4),
           decoration: InputDecoration(
-            hintText: s.descriptionHint,
+            hintText: l10n.claudiuProblemReportDescriptionHint,
             hintStyle: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
               fontSize: 13,
@@ -529,7 +391,9 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
           children: [
             Expanded(
               child: Text(
-                charCount < _minChars ? s.tooShort : '',
+                charCount < _minChars
+                    ? l10n.claudiuProblemReportTooShort(_minChars)
+                    : '',
                 style: TextStyle(
                   color: Colors.amber.shade200,
                   fontSize: 11.5,
@@ -552,7 +416,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
     );
   }
 
-  Widget _submitButton(_Strings s) {
+  Widget _submitButton(AppLocalizations l10n) {
     return SizedBox(
       width: double.infinity,
       height: 54,
@@ -584,7 +448,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Text(s.submitting),
+                  Text(l10n.claudiuProblemReportSubmitting),
                 ],
               )
             : Row(
@@ -593,7 +457,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                   const Icon(Icons.send_outlined, size: 20),
                   const SizedBox(width: 10),
                   Text(
-                    s.submit,
+                    l10n.claudiuProblemReportSubmit,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -605,12 +469,12 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
     );
   }
 
-  Widget _altCallSection(_Strings s) {
+  Widget _altCallSection(AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '⬇️ ${s.alt}',
+          '⬇️ ${l10n.claudiuProblemReportAlt}',
           style: TextStyle(
             color: Colors.white.withValues(alpha: 0.75),
             fontSize: 12.5,
@@ -645,7 +509,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          s.callLabel,
+                          l10n.claudiuProblemReportCallLabel,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 13,
@@ -679,40 +543,3 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
   }
 }
 
-class _Strings {
-  final String title;
-  final String greeting;
-  final String ask;
-  final String includeHeader;
-  final List<String> includeBullets;
-  final String descriptionLabel;
-  final String descriptionHint;
-  final String tooShort;
-  final String submit;
-  final String submitting;
-  final String sentTitle;
-  final String sentBody;
-  final String sentClose;
-  final String sendFailed;
-  final String alt;
-  final String callLabel;
-
-  const _Strings({
-    required this.title,
-    required this.greeting,
-    required this.ask,
-    required this.includeHeader,
-    required this.includeBullets,
-    required this.descriptionLabel,
-    required this.descriptionHint,
-    required this.tooShort,
-    required this.submit,
-    required this.submitting,
-    required this.sentTitle,
-    required this.sentBody,
-    required this.sentClose,
-    required this.sendFailed,
-    required this.alt,
-    required this.callLabel,
-  });
-}

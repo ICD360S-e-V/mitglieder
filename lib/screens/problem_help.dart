@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../services/language_service.dart';
+import '../l10n/app_localizations.dart';
 import '../widgets/icd360s_header.dart';
 import 'anonymous_chat.dart';
 import 'problem_report.dart';
@@ -22,71 +22,6 @@ class ProblemHelpScreen extends StatelessWidget {
     this.supportPhone = '+4916094482053',
   });
 
-  // ---------------------------------------------------------------------------
-  // Per-language string table — ro/de/en/ru/uk, English fallback for the rest.
-  // ---------------------------------------------------------------------------
-
-  static const Map<String, _Strings> _strings = {
-    'ro': _Strings(
-      title: 'Cum te pot ajuta?',
-      greeting: 'Ce s-a întâmplat?',
-      ask: 'Cum vrei să-mi povestești?',
-      writeTitle: 'Scriu un raport',
-      writeBody: 'Cu detalii pas cu pas. Echipa primește textul și îl rezolvă mai târziu.',
-      chatTitle: 'Vorbim acum',
-      chatBody: 'Chat anonim cu un operator. Răspuns în timp real, dacă e cineva online.',
-      altCallHeader: 'Sau, dacă e ceva urgent:',
-      altCallLabel: 'Sună-ne',
-    ),
-    'de': _Strings(
-      title: 'Wie kann ich helfen?',
-      greeting: 'Was ist passiert?',
-      ask: 'Wie möchtest du es mir mitteilen?',
-      writeTitle: 'Bericht schreiben',
-      writeBody: 'Mit Schritt-für-Schritt-Details. Das Team erhält den Text und kümmert sich später darum.',
-      chatTitle: 'Jetzt sprechen',
-      chatBody: 'Anonymer Chat mit einem Mitarbeiter. Antwort in Echtzeit, falls jemand online ist.',
-      altCallHeader: 'Oder bei dringenden Anliegen:',
-      altCallLabel: 'Ruf uns an',
-    ),
-    'en': _Strings(
-      title: 'How can I help?',
-      greeting: 'What happened?',
-      ask: 'How would you like to tell me?',
-      writeTitle: 'Write a report',
-      writeBody: 'With step-by-step details. The team gets the text and resolves it later.',
-      chatTitle: "Let's talk now",
-      chatBody: 'Anonymous chat with an operator. Realtime reply if someone is online.',
-      altCallHeader: "Or, if it's urgent:",
-      altCallLabel: 'Call us',
-    ),
-    'ru': _Strings(
-      title: 'Чем я могу помочь?',
-      greeting: 'Что случилось?',
-      ask: 'Как тебе удобно рассказать?',
-      writeTitle: 'Написать отчёт',
-      writeBody: 'С подробностями шаг за шагом. Команда получит текст и разберётся позже.',
-      chatTitle: 'Поговорим сейчас',
-      chatBody: 'Анонимный чат с оператором. Ответ в реальном времени, если кто-то онлайн.',
-      altCallHeader: 'Или, если срочно:',
-      altCallLabel: 'Позвонить',
-    ),
-    'uk': _Strings(
-      title: 'Чим я можу допомогти?',
-      greeting: 'Що сталося?',
-      ask: 'Як тобі зручно розповісти?',
-      writeTitle: 'Написати звіт',
-      writeBody: 'З покроковими деталями. Команда отримає текст і розгляне пізніше.',
-      chatTitle: 'Поговорімо зараз',
-      chatBody: 'Анонімний чат з оператором. Відповідь у режимі реального часу, якщо хтось онлайн.',
-      altCallHeader: 'Або, якщо терміново:',
-      altCallLabel: 'Зателефонувати',
-    ),
-  };
-
-  static _Strings _stringsFor(String code) =>
-      _strings[code] ?? _strings['en']!;
-
   Future<void> _call() async {
     final uri = Uri(scheme: 'tel', path: supportPhone);
     if (await canLaunchUrl(uri)) {
@@ -96,7 +31,7 @@ class ProblemHelpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final s = _stringsFor(LanguageService.instance.currentCode);
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -113,7 +48,7 @@ class ProblemHelpScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              _header(context, s.title),
+              _header(context, l10n.claudiuProblemHelpTitle),
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
@@ -122,7 +57,7 @@ class ProblemHelpScreen extends StatelessWidget {
                     children: [
                       const Icd360sHeader(compact: true),
                       const SizedBox(height: 20),
-                      _mascotAndBubble(s),
+                      _mascotAndBubble(l10n),
                       const SizedBox(height: 24),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,8 +66,8 @@ class ProblemHelpScreen extends StatelessWidget {
                             child: _choiceCard(
                               context: context,
                               icon: Icons.edit_outlined,
-                              title: s.writeTitle,
-                              body: s.writeBody,
+                              title: l10n.claudiuProblemHelpWriteTitle,
+                              body: l10n.claudiuProblemHelpWriteBody,
                               onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -150,8 +85,8 @@ class ProblemHelpScreen extends StatelessWidget {
                             child: _choiceCard(
                               context: context,
                               icon: Icons.chat_bubble_outline,
-                              title: s.chatTitle,
-                              body: s.chatBody,
+                              title: l10n.claudiuProblemHelpChatTitle,
+                              body: l10n.claudiuProblemHelpChatBody,
                               onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -167,7 +102,7 @@ class ProblemHelpScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 28),
-                      _altCallSection(s),
+                      _altCallSection(l10n),
                     ],
                   ),
                 ),
@@ -205,7 +140,7 @@ class ProblemHelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _mascotAndBubble(_Strings s) {
+  Widget _mascotAndBubble(AppLocalizations l10n) {
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,11 +178,11 @@ class ProblemHelpScreen extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(4),
-                  topRight: Radius.circular(14),
-                  bottomLeft: Radius.circular(14),
-                  bottomRight: Radius.circular(14),
+                borderRadius: const BorderRadiusDirectional.only(
+                  topStart: Radius.circular(4),
+                  topEnd: Radius.circular(14),
+                  bottomStart: Radius.circular(14),
+                  bottomEnd: Radius.circular(14),
                 ),
                 boxShadow: [
                   BoxShadow(
@@ -261,7 +196,7 @@ class ProblemHelpScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    s.greeting,
+                    l10n.claudiuProblemHelpGreeting,
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
@@ -270,7 +205,7 @@ class ProblemHelpScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    s.ask,
+                    l10n.claudiuProblemHelpAsk,
                     style: TextStyle(
                       fontSize: 13.5,
                       color: Colors.grey[800],
@@ -357,12 +292,12 @@ class ProblemHelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _altCallSection(_Strings s) {
+  Widget _altCallSection(AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '📞 ${s.altCallHeader}',
+          '📞 ${l10n.claudiuProblemHelpAltCallHeader}',
           style: TextStyle(
             color: Colors.white.withValues(alpha: 0.75),
             fontSize: 12.5,
@@ -397,7 +332,7 @@ class ProblemHelpScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          s.altCallLabel,
+                          l10n.claudiuProblemHelpAltCallLabel,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 13,
@@ -431,26 +366,3 @@ class ProblemHelpScreen extends StatelessWidget {
   }
 }
 
-class _Strings {
-  final String title;
-  final String greeting;
-  final String ask;
-  final String writeTitle;
-  final String writeBody;
-  final String chatTitle;
-  final String chatBody;
-  final String altCallHeader;
-  final String altCallLabel;
-
-  const _Strings({
-    required this.title,
-    required this.greeting,
-    required this.ask,
-    required this.writeTitle,
-    required this.writeBody,
-    required this.chatTitle,
-    required this.chatBody,
-    required this.altCallHeader,
-    required this.altCallLabel,
-  });
-}

@@ -4,7 +4,6 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'package:cryptography/cryptography.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 
 /// Records every step of `main()` to a plain-text log file from the very
 /// first call, so that a startup that never reaches `runApp()` is still

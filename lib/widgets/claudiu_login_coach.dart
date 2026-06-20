@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../services/language_service.dart';
+import '../l10n/app_localizations.dart';
 
 /// Conversational coaching surface for the login screen — Claudiu sits
 /// above the two-box mitgliedernummer form and updates his speech bubble
@@ -93,103 +93,16 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
     });
   }
 
-  // ---------------------------------------------------------------------------
-  // String tables. Same inline pattern as ClaudiuWelcome — 5 priority
-  // locales, English fallback for the rest.
-  // ---------------------------------------------------------------------------
-
-  static const Map<String, _Strings> _strings = {
-    'ro': _Strings(
-      welcome: 'Bine ai revenit, drag membru!',
-      ask: 'Spune-mi numărul tău de membru.',
-      progress: 'Mai aproape… continuă să tastezi.',
-      ready: 'Perfect! Apasă butonul de mai jos.',
-      loading: 'Verific identitatea… 🔍',
-      foundPlain: 'Te-am găsit! Te conectez acum…',
-      foundNamed: 'Te-am găsit, {name}! Te conectez acum…',
-      error: 'Hm, nu găsesc numărul ăsta. Verifici dacă ai scris bine?',
-      forgotHeader: 'Ai uitat numărul de membru?',
-      noSms: 'Nu trimitem numărul prin email sau SMS.',
-      onlyWay:
-          'Singura cale: să ne întâlnim personal la sediul asociației, după verificare CI.',
-      contactUs: 'Contactează-ne pentru programare:',
-    ),
-    'de': _Strings(
-      welcome: 'Willkommen zurück, liebes Mitglied!',
-      ask: 'Bitte gib mir deine Mitgliedsnummer.',
-      progress: 'Fast geschafft… tippe weiter.',
-      ready: 'Perfekt! Drück jetzt den Anmelden-Knopf.',
-      loading: 'Ich prüfe die Identität… 🔍',
-      foundPlain: 'Gefunden! Du wirst jetzt eingeloggt…',
-      foundNamed: 'Gefunden, {name}! Du wirst jetzt eingeloggt…',
-      error:
-          'Hm, die Nummer finde ich nicht. Hast du dich vielleicht vertippt?',
-      forgotHeader: 'Mitgliedsnummer vergessen?',
-      noSms: 'Wir verschicken die Nummer nicht per E-Mail oder SMS.',
-      onlyWay:
-          'Der einzige Weg: ein persönlicher Termin im Vereinsbüro, mit Personalausweis.',
-      contactUs: 'Ruf uns an für einen Termin:',
-    ),
-    'en': _Strings(
-      welcome: 'Welcome back, dear member!',
-      ask: 'Please tell me your member number.',
-      progress: 'Getting closer… keep typing.',
-      ready: 'Perfect! Tap the button below.',
-      loading: "I'm verifying your identity… 🔍",
-      foundPlain: 'Found you! Signing you in…',
-      foundNamed: 'Found you, {name}! Signing you in…',
-      error: "Hm, I can't find that number. Did you type it correctly?",
-      forgotHeader: 'Forgot your member number?',
-      noSms: "We don't send the number by email or SMS.",
-      onlyWay:
-          'The only way: meet us in person at the association office, after ID verification.',
-      contactUs: 'Call us to book an appointment:',
-    ),
-    'ru': _Strings(
-      welcome: 'С возвращением, дорогой член!',
-      ask: 'Пожалуйста, скажи свой членский номер.',
-      progress: 'Почти… продолжай вводить.',
-      ready: 'Отлично! Нажми кнопку ниже.',
-      loading: 'Проверяю личность… 🔍',
-      foundPlain: 'Нашёл! Сейчас войдёшь…',
-      foundNamed: 'Нашёл, {name}! Сейчас войдёшь…',
-      error: 'Хм, такой номер не нахожу. Проверь, не ошибся ли?',
-      forgotHeader: 'Забыл членский номер?',
-      noSms: 'Мы не отправляем номер по email или SMS.',
-      onlyWay:
-          'Единственный путь: личная встреча в офисе ассоциации с удостоверением.',
-      contactUs: 'Позвони, чтобы записаться:',
-    ),
-    'uk': _Strings(
-      welcome: 'З поверненням, дорогий члене!',
-      ask: 'Скажи мені свій членський номер.',
-      progress: 'Майже… продовжуй вводити.',
-      ready: 'Чудово! Натисни кнопку нижче.',
-      loading: 'Перевіряю особу… 🔍',
-      foundPlain: 'Знайшов! Зараз увійдеш…',
-      foundNamed: 'Знайшов, {name}! Зараз увійдеш…',
-      error: 'Хм, такого номера не знаходжу. Перевір, чи правильно ввів?',
-      forgotHeader: 'Забув членський номер?',
-      noSms: 'Ми не надсилаємо номер електронною поштою або SMS.',
-      onlyWay:
-          'Єдиний шлях: особиста зустріч в офісі асоціації, з посвідченням.',
-      contactUs: 'Зателефонуй, щоб записатися:',
-    ),
-  };
-
-  static _Strings _stringsFor(String code) =>
-      _strings[code] ?? _strings['en']!;
-
-  String _currentMessage(_Strings s) {
-    if (widget.isLoading) return s.loading;
+  String _currentMessage(AppLocalizations l10n) {
+    if (widget.isLoading) return l10n.claudiuLoginLoading;
     if (widget.foundName != null && widget.foundName!.isNotEmpty) {
-      return s.foundNamed.replaceFirst('{name}', widget.foundName!);
+      return l10n.claudiuLoginFoundNamed(widget.foundName!);
     }
-    if (widget.foundName != null) return s.foundPlain;
-    if (widget.errorMessage != null) return s.error;
-    if (widget.digitCount == 5) return s.ready;
-    if (widget.digitCount > 0) return s.progress;
-    return s.ask;
+    if (widget.foundName != null) return l10n.claudiuLoginFoundPlain;
+    if (widget.errorMessage != null) return l10n.claudiuLoginError;
+    if (widget.digitCount == 5) return l10n.claudiuLoginReady;
+    if (widget.digitCount > 0) return l10n.claudiuLoginProgress;
+    return l10n.claudiuLoginAsk;
   }
 
   IconData _currentMascotIcon() {
@@ -202,9 +115,8 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
 
   @override
   Widget build(BuildContext context) {
-    final code = LanguageService.instance.currentCode;
-    final s = _stringsFor(code);
-    final message = _currentMessage(s);
+    final l10n = AppLocalizations.of(context)!;
+    final message = _currentMessage(l10n);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -224,7 +136,7 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
                   .fadeIn(duration: 400.ms),
               const SizedBox(width: 12),
               Expanded(
-                child: _bubble(s, message)
+                child: _bubble(l10n, message)
                     .animate()
                     .fadeIn(delay: 250.ms, duration: 400.ms),
               ),
@@ -234,7 +146,7 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
         // Forgot panel — animated reveal.
         AnimatedCrossFade(
           firstChild: const SizedBox(height: 0),
-          secondChild: _forgotPanel(s)
+          secondChild: _forgotPanel(l10n)
               .animate()
               .fadeIn(duration: 400.ms)
               .slideY(begin: 0.2, end: 0, duration: 400.ms),
@@ -272,16 +184,16 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
     );
   }
 
-  Widget _bubble(_Strings s, String message) {
+  Widget _bubble(AppLocalizations l10n, String message) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(4),
-          topRight: Radius.circular(14),
-          bottomLeft: Radius.circular(14),
-          bottomRight: Radius.circular(14),
+        borderRadius: const BorderRadiusDirectional.only(
+          topStart: Radius.circular(4),
+          topEnd: Radius.circular(14),
+          bottomStart: Radius.circular(14),
+          bottomEnd: Radius.circular(14),
         ),
         boxShadow: [
           BoxShadow(
@@ -297,7 +209,7 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
             child: Text(
-              s.welcome,
+              l10n.claudiuLoginWelcome,
               key: const ValueKey('welcome'),
               style: const TextStyle(
                 fontSize: 13,
@@ -334,7 +246,7 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
     );
   }
 
-  Widget _forgotPanel(_Strings s) {
+  Widget _forgotPanel(AppLocalizations l10n) {
     return Container(
       margin: const EdgeInsets.only(top: 16),
       decoration: BoxDecoration(
@@ -360,7 +272,7 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      s.forgotHeader,
+                      l10n.claudiuLoginForgotHeader,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -388,14 +300,14 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _infoLine(Icons.no_cell, s.noSms,
+                  _infoLine(Icons.no_cell, l10n.claudiuLoginNoSms,
                       color: Colors.amber.shade200),
                   const SizedBox(height: 6),
-                  _infoLine(Icons.handshake_outlined, s.onlyWay,
+                  _infoLine(Icons.handshake_outlined, l10n.claudiuLoginOnlyWay,
                       color: Colors.greenAccent.shade100),
                   const SizedBox(height: 12),
                   Text(
-                    s.contactUs,
+                    l10n.claudiuLoginContactUs,
                     style: TextStyle(
                       color: Colors.white.withValues(alpha: 0.8),
                       fontSize: 12.5,
@@ -488,32 +400,3 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
   }
 }
 
-class _Strings {
-  final String welcome;
-  final String ask;
-  final String progress;
-  final String ready;
-  final String loading;
-  final String foundPlain;
-  final String foundNamed;
-  final String error;
-  final String forgotHeader;
-  final String noSms;
-  final String onlyWay;
-  final String contactUs;
-
-  const _Strings({
-    required this.welcome,
-    required this.ask,
-    required this.progress,
-    required this.ready,
-    required this.loading,
-    required this.foundPlain,
-    required this.foundNamed,
-    required this.error,
-    required this.forgotHeader,
-    required this.noSms,
-    required this.onlyWay,
-    required this.contactUs,
-  });
-}
