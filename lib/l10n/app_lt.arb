@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Motina",
   "wizardStufe1b1RelationVater": "Tėvas",
   "wizardStufe1b1RelationSorgeberechtigter": "Teisinis globėjas",
-  "wizardStufe1b1RelationAndere": "Kitas globėjas"
+  "wizardStufe1b1RelationAndere": "Kitas globėjas",
+  "wizardStufe1cTitle": "Asmens duomenys",
+  "wizardStufe1cPrompt": "Tiesiog kad geriau tave pažinčiau. Tai liks tarp mūsų ir niekur viešai nebus rodoma.",
+  "wizardStufe1cGeschlechtLabel": "Lytis",
+  "wizardStufe1cGeschlechtMaennlich": "Vyras",
+  "wizardStufe1cGeschlechtWeiblich": "Moteris",
+  "wizardStufe1cGeschlechtDivers": "Kita",
+  "wizardStufe1cGeschlechtKeineAngabe": "Nenoriu sakyti",
+  "wizardStufe1cFamilienstandLabel": "Šeiminė padėtis",
+  "wizardStufe1cFamilienstandLedig": "Nevedęs / Netekėjusi",
+  "wizardStufe1cFamilienstandVerheiratet": "Vedęs / Ištekėjusi",
+  "wizardStufe1cFamilienstandGeschieden": "Išsiskyręs / Išsiskyrusi",
+  "wizardStufe1cFamilienstandVerwitwet": "Našlys / Našlė"
 }

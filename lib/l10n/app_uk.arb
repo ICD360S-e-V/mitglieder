@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Мати",
   "wizardStufe1b1RelationVater": "Батько",
   "wizardStufe1b1RelationSorgeberechtigter": "Законний опікун",
-  "wizardStufe1b1RelationAndere": "Інший опікун"
+  "wizardStufe1b1RelationAndere": "Інший опікун",
+  "wizardStufe1cTitle": "Особисті дані",
+  "wizardStufe1cPrompt": "Просто щоб я тебе трохи краще пізнав. Це залишиться між нами і ніде публічно не зʼявиться.",
+  "wizardStufe1cGeschlechtLabel": "Стать",
+  "wizardStufe1cGeschlechtMaennlich": "Чоловіча",
+  "wizardStufe1cGeschlechtWeiblich": "Жіноча",
+  "wizardStufe1cGeschlechtDivers": "Інше",
+  "wizardStufe1cGeschlechtKeineAngabe": "Не вказано",
+  "wizardStufe1cFamilienstandLabel": "Сімейний стан",
+  "wizardStufe1cFamilienstandLedig": "Неодружений / Незаміжня",
+  "wizardStufe1cFamilienstandVerheiratet": "Одружений / Заміжня",
+  "wizardStufe1cFamilienstandGeschieden": "Розлучений / Розлучена",
+  "wizardStufe1cFamilienstandVerwitwet": "Удівець / Удова"
 }

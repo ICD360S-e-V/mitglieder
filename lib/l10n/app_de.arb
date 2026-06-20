@@ -1073,5 +1073,17 @@
   "wizardStufe1b1RelationMutter": "Mutter",
   "wizardStufe1b1RelationVater": "Vater",
   "wizardStufe1b1RelationSorgeberechtigter": "Sorgeberechtigter",
-  "wizardStufe1b1RelationAndere": "Andere/r Erziehungsberechtigte/r"
+  "wizardStufe1b1RelationAndere": "Andere/r Erziehungsberechtigte/r",
+  "wizardStufe1cTitle": "Persönliche Details",
+  "wizardStufe1cPrompt": "Nur damit ich dich etwas besser kennenlerne. Diese Angaben bleiben unter uns und erscheinen nirgendwo öffentlich.",
+  "wizardStufe1cGeschlechtLabel": "Geschlecht",
+  "wizardStufe1cGeschlechtMaennlich": "Männlich",
+  "wizardStufe1cGeschlechtWeiblich": "Weiblich",
+  "wizardStufe1cGeschlechtDivers": "Divers",
+  "wizardStufe1cGeschlechtKeineAngabe": "Keine Angabe",
+  "wizardStufe1cFamilienstandLabel": "Familienstand",
+  "wizardStufe1cFamilienstandLedig": "Ledig",
+  "wizardStufe1cFamilienstandVerheiratet": "Verheiratet",
+  "wizardStufe1cFamilienstandGeschieden": "Geschieden",
+  "wizardStufe1cFamilienstandVerwitwet": "Verwitwet"
 }

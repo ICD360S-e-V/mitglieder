@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Majka",
   "wizardStufe1b1RelationVater": "Otac",
   "wizardStufe1b1RelationSorgeberechtigter": "Zakonski skrbnik",
-  "wizardStufe1b1RelationAndere": "Drugi skrbnik"
+  "wizardStufe1b1RelationAndere": "Drugi skrbnik",
+  "wizardStufe1cTitle": "Osobni podaci",
+  "wizardStufe1cPrompt": "Samo da te malo bolje upoznam. Ovo ostaje između nas i nije nigdje javno prikazano.",
+  "wizardStufe1cGeschlechtLabel": "Spol",
+  "wizardStufe1cGeschlechtMaennlich": "Muški",
+  "wizardStufe1cGeschlechtWeiblich": "Ženski",
+  "wizardStufe1cGeschlechtDivers": "Različito",
+  "wizardStufe1cGeschlechtKeineAngabe": "Ne želim odgovoriti",
+  "wizardStufe1cFamilienstandLabel": "Bračno stanje",
+  "wizardStufe1cFamilienstandLedig": "Neoženjen / Neudata",
+  "wizardStufe1cFamilienstandVerheiratet": "Oženjen / Udata",
+  "wizardStufe1cFamilienstandGeschieden": "Razveden/a",
+  "wizardStufe1cFamilienstandVerwitwet": "Udovac/Udovica"
 }

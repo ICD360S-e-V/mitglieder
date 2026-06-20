@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Matka",
   "wizardStufe1b1RelationVater": "Ojciec",
   "wizardStufe1b1RelationSorgeberechtigter": "Opiekun prawny",
-  "wizardStufe1b1RelationAndere": "Inny opiekun"
+  "wizardStufe1b1RelationAndere": "Inny opiekun",
+  "wizardStufe1cTitle": "Dane osobowe",
+  "wizardStufe1cPrompt": "Po prostu żebym cię trochę lepiej poznał. To zostaje między nami i nigdzie nie jest publicznie pokazywane.",
+  "wizardStufe1cGeschlechtLabel": "Płeć",
+  "wizardStufe1cGeschlechtMaennlich": "Mężczyzna",
+  "wizardStufe1cGeschlechtWeiblich": "Kobieta",
+  "wizardStufe1cGeschlechtDivers": "Inna",
+  "wizardStufe1cGeschlechtKeineAngabe": "Wolę nie podawać",
+  "wizardStufe1cFamilienstandLabel": "Stan cywilny",
+  "wizardStufe1cFamilienstandLedig": "Kawaler / Panna",
+  "wizardStufe1cFamilienstandVerheiratet": "Żonaty / Mężatka",
+  "wizardStufe1cFamilienstandGeschieden": "Rozwiedziony/a",
+  "wizardStufe1cFamilienstandVerwitwet": "Wdowiec / Wdowa"
 }

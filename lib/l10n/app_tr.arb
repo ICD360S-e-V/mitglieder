@@ -1073,5 +1073,17 @@
   "wizardStufe1b1RelationMutter": "Anne",
   "wizardStufe1b1RelationVater": "Baba",
   "wizardStufe1b1RelationSorgeberechtigter": "Yasal vasi",
-  "wizardStufe1b1RelationAndere": "Diğer vasi"
+  "wizardStufe1b1RelationAndere": "Diğer vasi",
+  "wizardStufe1cTitle": "Kişisel bilgiler",
+  "wizardStufe1cPrompt": "Sadece seni biraz daha tanımak için. Bu aramızda kalır ve hiçbir yerde herkese açık şekilde gösterilmez.",
+  "wizardStufe1cGeschlechtLabel": "Cinsiyet",
+  "wizardStufe1cGeschlechtMaennlich": "Erkek",
+  "wizardStufe1cGeschlechtWeiblich": "Kadın",
+  "wizardStufe1cGeschlechtDivers": "Diğer",
+  "wizardStufe1cGeschlechtKeineAngabe": "Söylemek istemiyorum",
+  "wizardStufe1cFamilienstandLabel": "Medeni durum",
+  "wizardStufe1cFamilienstandLedig": "Bekâr",
+  "wizardStufe1cFamilienstandVerheiratet": "Evli",
+  "wizardStufe1cFamilienstandGeschieden": "Boşanmış",
+  "wizardStufe1cFamilienstandVerwitwet": "Dul"
 }

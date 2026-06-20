@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Mor",
   "wizardStufe1b1RelationVater": "Far",
   "wizardStufe1b1RelationSorgeberechtigter": "Værge",
-  "wizardStufe1b1RelationAndere": "Anden værge"
+  "wizardStufe1b1RelationAndere": "Anden værge",
+  "wizardStufe1cTitle": "Personlige detaljer",
+  "wizardStufe1cPrompt": "Bare så jeg lærer dig lidt bedre at kende. Det her bliver mellem os og vises ikke offentligt nogen steder.",
+  "wizardStufe1cGeschlechtLabel": "Køn",
+  "wizardStufe1cGeschlechtMaennlich": "Mand",
+  "wizardStufe1cGeschlechtWeiblich": "Kvinde",
+  "wizardStufe1cGeschlechtDivers": "Diverse",
+  "wizardStufe1cGeschlechtKeineAngabe": "Foretrækker ikke at sige",
+  "wizardStufe1cFamilienstandLabel": "Civilstand",
+  "wizardStufe1cFamilienstandLedig": "Ugift",
+  "wizardStufe1cFamilienstandVerheiratet": "Gift",
+  "wizardStufe1cFamilienstandGeschieden": "Skilt",
+  "wizardStufe1cFamilienstandVerwitwet": "Enkemand/Enke"
 }

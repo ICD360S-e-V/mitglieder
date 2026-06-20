@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Anya",
   "wizardStufe1b1RelationVater": "Apa",
   "wizardStufe1b1RelationSorgeberechtigter": "Törvényes képviselő",
-  "wizardStufe1b1RelationAndere": "Más gondviselő"
+  "wizardStufe1b1RelationAndere": "Más gondviselő",
+  "wizardStufe1cTitle": "Személyes adatok",
+  "wizardStufe1cPrompt": "Csak hogy jobban megismerjelek. Ez köztünk marad és sehol nem jelenik meg nyilvánosan.",
+  "wizardStufe1cGeschlechtLabel": "Nem",
+  "wizardStufe1cGeschlechtMaennlich": "Férfi",
+  "wizardStufe1cGeschlechtWeiblich": "Nő",
+  "wizardStufe1cGeschlechtDivers": "Egyéb",
+  "wizardStufe1cGeschlechtKeineAngabe": "Nem kívánok válaszolni",
+  "wizardStufe1cFamilienstandLabel": "Családi állapot",
+  "wizardStufe1cFamilienstandLedig": "Nőtlen / Hajadon",
+  "wizardStufe1cFamilienstandVerheiratet": "Házas",
+  "wizardStufe1cFamilienstandGeschieden": "Elvált",
+  "wizardStufe1cFamilienstandVerwitwet": "Özvegy"
 }

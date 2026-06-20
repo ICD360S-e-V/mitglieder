@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Майка",
   "wizardStufe1b1RelationVater": "Баща",
   "wizardStufe1b1RelationSorgeberechtigter": "Законен настойник",
-  "wizardStufe1b1RelationAndere": "Друг настойник"
+  "wizardStufe1b1RelationAndere": "Друг настойник",
+  "wizardStufe1cTitle": "Лични данни",
+  "wizardStufe1cPrompt": "Само за да те опозная малко по-добре. Тази информация остава между нас и не се показва никъде публично.",
+  "wizardStufe1cGeschlechtLabel": "Пол",
+  "wizardStufe1cGeschlechtMaennlich": "Мъж",
+  "wizardStufe1cGeschlechtWeiblich": "Жена",
+  "wizardStufe1cGeschlechtDivers": "Друго",
+  "wizardStufe1cGeschlechtKeineAngabe": "Предпочитам да не казвам",
+  "wizardStufe1cFamilienstandLabel": "Семейно положение",
+  "wizardStufe1cFamilienstandLedig": "Несемеен/Несемейна",
+  "wizardStufe1cFamilienstandVerheiratet": "Семеен/Семейна",
+  "wizardStufe1cFamilienstandGeschieden": "Разведен/Разведена",
+  "wizardStufe1cFamilienstandVerwitwet": "Вдовец/Вдовица"
 }

@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Μητέρα",
   "wizardStufe1b1RelationVater": "Πατέρας",
   "wizardStufe1b1RelationSorgeberechtigter": "Νόμιμος κηδεμόνας",
-  "wizardStufe1b1RelationAndere": "Άλλος κηδεμόνας"
+  "wizardStufe1b1RelationAndere": "Άλλος κηδεμόνας",
+  "wizardStufe1cTitle": "Προσωπικές πληροφορίες",
+  "wizardStufe1cPrompt": "Απλά για να σε γνωρίσω λίγο καλύτερα. Αυτά μένουν μεταξύ μας και δεν εμφανίζονται δημόσια πουθενά.",
+  "wizardStufe1cGeschlechtLabel": "Φύλο",
+  "wizardStufe1cGeschlechtMaennlich": "Άνδρας",
+  "wizardStufe1cGeschlechtWeiblich": "Γυναίκα",
+  "wizardStufe1cGeschlechtDivers": "Διαφορετικό",
+  "wizardStufe1cGeschlechtKeineAngabe": "Προτιμώ να μην πω",
+  "wizardStufe1cFamilienstandLabel": "Οικογενειακή κατάσταση",
+  "wizardStufe1cFamilienstandLedig": "Άγαμος/η",
+  "wizardStufe1cFamilienstandVerheiratet": "Παντρεμένος/η",
+  "wizardStufe1cFamilienstandGeschieden": "Διαζευγμένος/η",
+  "wizardStufe1cFamilienstandVerwitwet": "Χήρος/Χήρα"
 }

@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Matka",
   "wizardStufe1b1RelationVater": "Otec",
   "wizardStufe1b1RelationSorgeberechtigter": "Zákonný zástupce",
-  "wizardStufe1b1RelationAndere": "Jiný zástupce"
+  "wizardStufe1b1RelationAndere": "Jiný zástupce",
+  "wizardStufe1cTitle": "Osobní údaje",
+  "wizardStufe1cPrompt": "Jen abych tě trochu lépe poznal. Tyto údaje zůstanou mezi námi a nikde se veřejně nezobrazí.",
+  "wizardStufe1cGeschlechtLabel": "Pohlaví",
+  "wizardStufe1cGeschlechtMaennlich": "Muž",
+  "wizardStufe1cGeschlechtWeiblich": "Žena",
+  "wizardStufe1cGeschlechtDivers": "Jiné",
+  "wizardStufe1cGeschlechtKeineAngabe": "Neuvedeno",
+  "wizardStufe1cFamilienstandLabel": "Rodinný stav",
+  "wizardStufe1cFamilienstandLedig": "Svobodný/á",
+  "wizardStufe1cFamilienstandVerheiratet": "Ženatý / Vdaná",
+  "wizardStufe1cFamilienstandGeschieden": "Rozvedený/á",
+  "wizardStufe1cFamilienstandVerwitwet": "Ovdovělý/á"
 }

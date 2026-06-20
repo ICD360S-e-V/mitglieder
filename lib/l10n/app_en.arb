@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Mother",
   "wizardStufe1b1RelationVater": "Father",
   "wizardStufe1b1RelationSorgeberechtigter": "Legal guardian",
-  "wizardStufe1b1RelationAndere": "Other guardian"
+  "wizardStufe1b1RelationAndere": "Other guardian",
+  "wizardStufe1cTitle": "Personal details",
+  "wizardStufe1cPrompt": "Just so I get to know you a bit better. This stays between us and isn't shown anywhere publicly.",
+  "wizardStufe1cGeschlechtLabel": "Gender",
+  "wizardStufe1cGeschlechtMaennlich": "Male",
+  "wizardStufe1cGeschlechtWeiblich": "Female",
+  "wizardStufe1cGeschlechtDivers": "Diverse",
+  "wizardStufe1cGeschlechtKeineAngabe": "Prefer not to say",
+  "wizardStufe1cFamilienstandLabel": "Marital status",
+  "wizardStufe1cFamilienstandLedig": "Single",
+  "wizardStufe1cFamilienstandVerheiratet": "Married",
+  "wizardStufe1cFamilienstandGeschieden": "Divorced",
+  "wizardStufe1cFamilienstandVerwitwet": "Widowed"
 }

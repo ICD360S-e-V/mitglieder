@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Мајка",
   "wizardStufe1b1RelationVater": "Отац",
   "wizardStufe1b1RelationSorgeberechtigter": "Законски старатељ",
-  "wizardStufe1b1RelationAndere": "Други старатељ"
+  "wizardStufe1b1RelationAndere": "Други старатељ",
+  "wizardStufe1cTitle": "Лични подаци",
+  "wizardStufe1cPrompt": "Само да те мало боље упознам. Ово остаје између нас и не приказује се нигде јавно.",
+  "wizardStufe1cGeschlechtLabel": "Пол",
+  "wizardStufe1cGeschlechtMaennlich": "Мушки",
+  "wizardStufe1cGeschlechtWeiblich": "Женски",
+  "wizardStufe1cGeschlechtDivers": "Друго",
+  "wizardStufe1cGeschlechtKeineAngabe": "Не желим да кажем",
+  "wizardStufe1cFamilienstandLabel": "Брачно стање",
+  "wizardStufe1cFamilienstandLedig": "Неожењен / Неудата",
+  "wizardStufe1cFamilienstandVerheiratet": "Ожењен / Удата",
+  "wizardStufe1cFamilienstandGeschieden": "Разведен/а",
+  "wizardStufe1cFamilienstandVerwitwet": "Удовац/Удовица"
 }

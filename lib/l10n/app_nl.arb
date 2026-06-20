@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Moeder",
   "wizardStufe1b1RelationVater": "Vader",
   "wizardStufe1b1RelationSorgeberechtigter": "Wettelijke voogd",
-  "wizardStufe1b1RelationAndere": "Andere voogd"
+  "wizardStufe1b1RelationAndere": "Andere voogd",
+  "wizardStufe1cTitle": "Persoonlijke gegevens",
+  "wizardStufe1cPrompt": "Gewoon om je iets beter te leren kennen. Dit blijft tussen ons en wordt nergens openbaar getoond.",
+  "wizardStufe1cGeschlechtLabel": "Geslacht",
+  "wizardStufe1cGeschlechtMaennlich": "Man",
+  "wizardStufe1cGeschlechtWeiblich": "Vrouw",
+  "wizardStufe1cGeschlechtDivers": "Divers",
+  "wizardStufe1cGeschlechtKeineAngabe": "Liever niet zeggen",
+  "wizardStufe1cFamilienstandLabel": "Burgerlijke staat",
+  "wizardStufe1cFamilienstandLedig": "Ongehuwd",
+  "wizardStufe1cFamilienstandVerheiratet": "Gehuwd",
+  "wizardStufe1cFamilienstandGeschieden": "Gescheiden",
+  "wizardStufe1cFamilienstandVerwitwet": "Weduwe/Weduwnaar"
 }

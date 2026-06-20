@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Ema",
   "wizardStufe1b1RelationVater": "Isa",
   "wizardStufe1b1RelationSorgeberechtigter": "Seaduslik esindaja",
-  "wizardStufe1b1RelationAndere": "Muu hooldaja"
+  "wizardStufe1b1RelationAndere": "Muu hooldaja",
+  "wizardStufe1cTitle": "Isikuandmed",
+  "wizardStufe1cPrompt": "Lihtsalt et sind veidi paremini tundma õppida. See jääb meie vahele ja ei kuvata kusagil avalikult.",
+  "wizardStufe1cGeschlechtLabel": "Sugu",
+  "wizardStufe1cGeschlechtMaennlich": "Mees",
+  "wizardStufe1cGeschlechtWeiblich": "Naine",
+  "wizardStufe1cGeschlechtDivers": "Muu",
+  "wizardStufe1cGeschlechtKeineAngabe": "Eelistan mitte öelda",
+  "wizardStufe1cFamilienstandLabel": "Perekonnaseis",
+  "wizardStufe1cFamilienstandLedig": "Vallaline",
+  "wizardStufe1cFamilienstandVerheiratet": "Abielus",
+  "wizardStufe1cFamilienstandGeschieden": "Lahutatud",
+  "wizardStufe1cFamilienstandVerwitwet": "Lesk"
 }

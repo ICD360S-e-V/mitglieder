@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Māte",
   "wizardStufe1b1RelationVater": "Tēvs",
   "wizardStufe1b1RelationSorgeberechtigter": "Likumīgais aizbildnis",
-  "wizardStufe1b1RelationAndere": "Cits aizbildnis"
+  "wizardStufe1b1RelationAndere": "Cits aizbildnis",
+  "wizardStufe1cTitle": "Personas dati",
+  "wizardStufe1cPrompt": "Vienkārši lai labāk tevi iepazītu. Tas paliek starp mums un netiek nekur publiski rādīts.",
+  "wizardStufe1cGeschlechtLabel": "Dzimums",
+  "wizardStufe1cGeschlechtMaennlich": "Vīrietis",
+  "wizardStufe1cGeschlechtWeiblich": "Sieviete",
+  "wizardStufe1cGeschlechtDivers": "Cits",
+  "wizardStufe1cGeschlechtKeineAngabe": "Nevēlos atklāt",
+  "wizardStufe1cFamilienstandLabel": "Ģimenes stāvoklis",
+  "wizardStufe1cFamilienstandLedig": "Neprecējies/usies",
+  "wizardStufe1cFamilienstandVerheiratet": "Precējies/usies",
+  "wizardStufe1cFamilienstandGeschieden": "Šķīries/usies",
+  "wizardStufe1cFamilienstandVerwitwet": "Atraitnis/e"
 }

@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Mor",
   "wizardStufe1b1RelationVater": "Far",
   "wizardStufe1b1RelationSorgeberechtigter": "Vårdnadshavare",
-  "wizardStufe1b1RelationAndere": "Annan vårdnadshavare"
+  "wizardStufe1b1RelationAndere": "Annan vårdnadshavare",
+  "wizardStufe1cTitle": "Personuppgifter",
+  "wizardStufe1cPrompt": "Bara så att jag lär känna dig lite bättre. Det här stannar mellan oss och visas inte offentligt någonstans.",
+  "wizardStufe1cGeschlechtLabel": "Kön",
+  "wizardStufe1cGeschlechtMaennlich": "Man",
+  "wizardStufe1cGeschlechtWeiblich": "Kvinna",
+  "wizardStufe1cGeschlechtDivers": "Annat",
+  "wizardStufe1cGeschlechtKeineAngabe": "Föredrar att inte säga",
+  "wizardStufe1cFamilienstandLabel": "Civilstånd",
+  "wizardStufe1cFamilienstandLedig": "Ogift",
+  "wizardStufe1cFamilienstandVerheiratet": "Gift",
+  "wizardStufe1cFamilienstandGeschieden": "Skild",
+  "wizardStufe1cFamilienstandVerwitwet": "Änkling/Änka"
 }

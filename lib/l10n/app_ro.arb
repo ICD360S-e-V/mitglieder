@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Mamă",
   "wizardStufe1b1RelationVater": "Tată",
   "wizardStufe1b1RelationSorgeberechtigter": "Tutore legal",
-  "wizardStufe1b1RelationAndere": "Alt tutore"
+  "wizardStufe1b1RelationAndere": "Alt tutore",
+  "wizardStufe1cTitle": "Detalii personale",
+  "wizardStufe1cPrompt": "Doar ca să te cunosc puțin mai bine. Aceste informații rămân între noi și nu apar nicăieri public.",
+  "wizardStufe1cGeschlechtLabel": "Gen",
+  "wizardStufe1cGeschlechtMaennlich": "Bărbat",
+  "wizardStufe1cGeschlechtWeiblich": "Femeie",
+  "wizardStufe1cGeschlechtDivers": "Divers",
+  "wizardStufe1cGeschlechtKeineAngabe": "Prefer să nu spun",
+  "wizardStufe1cFamilienstandLabel": "Stare civilă",
+  "wizardStufe1cFamilienstandLedig": "Necăsătorit/ă",
+  "wizardStufe1cFamilienstandVerheiratet": "Căsătorit/ă",
+  "wizardStufe1cFamilienstandGeschieden": "Divorțat/ă",
+  "wizardStufe1cFamilienstandVerwitwet": "Văduv/ă"
 }

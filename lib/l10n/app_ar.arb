@@ -1073,5 +1073,17 @@
   "wizardStufe1b1RelationMutter": "الأم",
   "wizardStufe1b1RelationVater": "الأب",
   "wizardStufe1b1RelationSorgeberechtigter": "الوصي القانوني",
-  "wizardStufe1b1RelationAndere": "وصي آخر"
+  "wizardStufe1b1RelationAndere": "وصي آخر",
+  "wizardStufe1cTitle": "تفاصيل شخصية",
+  "wizardStufe1cPrompt": "فقط لأتعرف عليك أكثر قليلاً. هذه المعلومات تبقى بيننا ولا تظهر في أي مكان علني.",
+  "wizardStufe1cGeschlechtLabel": "الجنس",
+  "wizardStufe1cGeschlechtMaennlich": "ذكر",
+  "wizardStufe1cGeschlechtWeiblich": "أنثى",
+  "wizardStufe1cGeschlechtDivers": "متنوع",
+  "wizardStufe1cGeschlechtKeineAngabe": "أفضل عدم القول",
+  "wizardStufe1cFamilienstandLabel": "الحالة الاجتماعية",
+  "wizardStufe1cFamilienstandLedig": "أعزب / عزباء",
+  "wizardStufe1cFamilienstandVerheiratet": "متزوج / متزوجة",
+  "wizardStufe1cFamilienstandGeschieden": "مطلق / مطلقة",
+  "wizardStufe1cFamilienstandVerwitwet": "أرمل / أرملة"
 }

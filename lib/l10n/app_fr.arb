@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Mère",
   "wizardStufe1b1RelationVater": "Père",
   "wizardStufe1b1RelationSorgeberechtigter": "Tuteur légal",
-  "wizardStufe1b1RelationAndere": "Autre tuteur"
+  "wizardStufe1b1RelationAndere": "Autre tuteur",
+  "wizardStufe1cTitle": "Informations personnelles",
+  "wizardStufe1cPrompt": "Juste pour mieux te connaître. Ça reste entre nous et n'est affiché nulle part publiquement.",
+  "wizardStufe1cGeschlechtLabel": "Genre",
+  "wizardStufe1cGeschlechtMaennlich": "Homme",
+  "wizardStufe1cGeschlechtWeiblich": "Femme",
+  "wizardStufe1cGeschlechtDivers": "Divers",
+  "wizardStufe1cGeschlechtKeineAngabe": "Préfère ne pas dire",
+  "wizardStufe1cFamilienstandLabel": "État civil",
+  "wizardStufe1cFamilienstandLedig": "Célibataire",
+  "wizardStufe1cFamilienstandVerheiratet": "Marié(e)",
+  "wizardStufe1cFamilienstandGeschieden": "Divorcé(e)",
+  "wizardStufe1cFamilienstandVerwitwet": "Veuf/Veuve"
 }

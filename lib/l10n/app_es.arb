@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Madre",
   "wizardStufe1b1RelationVater": "Padre",
   "wizardStufe1b1RelationSorgeberechtigter": "Tutor legal",
-  "wizardStufe1b1RelationAndere": "Otro tutor"
+  "wizardStufe1b1RelationAndere": "Otro tutor",
+  "wizardStufe1cTitle": "Datos personales",
+  "wizardStufe1cPrompt": "Solo para conocerte un poco mejor. Esto queda entre nosotros y no se muestra públicamente en ningún lado.",
+  "wizardStufe1cGeschlechtLabel": "Género",
+  "wizardStufe1cGeschlechtMaennlich": "Hombre",
+  "wizardStufe1cGeschlechtWeiblich": "Mujer",
+  "wizardStufe1cGeschlechtDivers": "Diverso",
+  "wizardStufe1cGeschlechtKeineAngabe": "Prefiero no decirlo",
+  "wizardStufe1cFamilienstandLabel": "Estado civil",
+  "wizardStufe1cFamilienstandLedig": "Soltero/a",
+  "wizardStufe1cFamilienstandVerheiratet": "Casado/a",
+  "wizardStufe1cFamilienstandGeschieden": "Divorciado/a",
+  "wizardStufe1cFamilienstandVerwitwet": "Viudo/a"
 }

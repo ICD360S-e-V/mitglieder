@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Äiti",
   "wizardStufe1b1RelationVater": "Isä",
   "wizardStufe1b1RelationSorgeberechtigter": "Laillinen huoltaja",
-  "wizardStufe1b1RelationAndere": "Muu huoltaja"
+  "wizardStufe1b1RelationAndere": "Muu huoltaja",
+  "wizardStufe1cTitle": "Henkilötiedot",
+  "wizardStufe1cPrompt": "Vain jotta tutustun sinuun vähän paremmin. Tämä jää meidän välillemme eikä näy missään julkisesti.",
+  "wizardStufe1cGeschlechtLabel": "Sukupuoli",
+  "wizardStufe1cGeschlechtMaennlich": "Mies",
+  "wizardStufe1cGeschlechtWeiblich": "Nainen",
+  "wizardStufe1cGeschlechtDivers": "Muunsukupuolinen",
+  "wizardStufe1cGeschlechtKeineAngabe": "En halua sanoa",
+  "wizardStufe1cFamilienstandLabel": "Siviilisääty",
+  "wizardStufe1cFamilienstandLedig": "Naimaton",
+  "wizardStufe1cFamilienstandVerheiratet": "Naimisissa",
+  "wizardStufe1cFamilienstandGeschieden": "Eronnut",
+  "wizardStufe1cFamilienstandVerwitwet": "Leski"
 }

@@ -1052,5 +1052,17 @@
   "wizardStufe1b1RelationMutter": "Mor",
   "wizardStufe1b1RelationVater": "Far",
   "wizardStufe1b1RelationSorgeberechtigter": "Verge",
-  "wizardStufe1b1RelationAndere": "Annen verge"
+  "wizardStufe1b1RelationAndere": "Annen verge",
+  "wizardStufe1cTitle": "Personlige opplysninger",
+  "wizardStufe1cPrompt": "Bare så jeg blir litt bedre kjent med deg. Dette blir mellom oss og vises ikke offentlig noe sted.",
+  "wizardStufe1cGeschlechtLabel": "Kjønn",
+  "wizardStufe1cGeschlechtMaennlich": "Mann",
+  "wizardStufe1cGeschlechtWeiblich": "Kvinne",
+  "wizardStufe1cGeschlechtDivers": "Annet",
+  "wizardStufe1cGeschlechtKeineAngabe": "Foretrekker å ikke si",
+  "wizardStufe1cFamilienstandLabel": "Sivilstand",
+  "wizardStufe1cFamilienstandLedig": "Ugift",
+  "wizardStufe1cFamilienstandVerheiratet": "Gift",
+  "wizardStufe1cFamilienstandGeschieden": "Skilt",
+  "wizardStufe1cFamilienstandVerwitwet": "Enkemann/Enke"
 }
