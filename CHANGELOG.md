@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.25.0...v1.25.1) (2026-06-20)
+
+
+### Refactor
+
+* **l10n:** migrate Claudiu inline _Strings to .arb across 28 locales ([52eb15f](https://github.com/ICD360S-e-V/mitglieder/commit/52eb15feed94882e54212df105804c669e08f77c))
+
 ## [1.25.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.24.1...v1.25.0) (2026-06-19)
 
 
