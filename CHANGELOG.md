@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.28.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.27.0...v1.28.0) (2026-06-20)
+
+
+### Features
+
+* **wizard:** intro story screen — Claudiu narrates 6 founding bubbles ([435da10](https://github.com/ICD360S-e-V/mitglieder/commit/435da10268d91ddf74accdb90a03277fa9a157bc))
+
 ## [1.27.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.26.1...v1.27.0) (2026-06-20)
 
 
