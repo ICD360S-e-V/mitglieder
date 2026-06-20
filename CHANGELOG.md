@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.31.0...v1.31.1) (2026-06-20)
+
+
+### Bug Fixes
+
+* **wizard:** drop unused wizard_service import from age gate screen ([3356e48](https://github.com/ICD360S-e-V/mitglieder/commit/3356e486d76b9b14ea9de176c3e089cabdb5d8d4))
+
 ## [1.31.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.30.0...v1.31.0) (2026-06-20)
 
 
