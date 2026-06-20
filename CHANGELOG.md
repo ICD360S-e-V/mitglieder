@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.30.0...v1.31.0) (2026-06-20)
+
+
+### Features
+
+* **wizard:** Stufe 1b1 — parent hint capture for 16-17 minors ([839e587](https://github.com/ICD360S-e-V/mitglieder/commit/839e5875c95d96cc45c508301004c1b5eb773d7f))
+
 ## [1.30.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.29.0...v1.30.0) (2026-06-20)
 
 
