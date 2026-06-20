@@ -3,7 +3,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
-import '../services/wizard_service.dart';
 import '../widgets/icd360s_header.dart';
 
 /// Terminal screen the wizard pivots to when `check_age.php` returns
