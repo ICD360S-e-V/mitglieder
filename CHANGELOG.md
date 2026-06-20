@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.29.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.28.0...v1.29.0) (2026-06-20)
+
+
+### Features
+
+* **wizard:** step shell + Stufe 1a (identity matching official docs) ([2beba44](https://github.com/ICD360S-e-V/mitglieder/commit/2beba44e4376f60b9fef5a739b097f89a10f8de9))
+
 ## [1.28.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.27.0...v1.28.0) (2026-06-20)
 
 
