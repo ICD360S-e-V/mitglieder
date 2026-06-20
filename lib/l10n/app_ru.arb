@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Статус пребывания (Aufenthaltsstatus) — необязательно",
   "wizardStufe1dAufenthaltHelper": "Например: unbefristet, befristet, Asyl, Duldung, EU-Bürger. Оставь пустым, если не применимо.",
   "wizardStufe1dMutterspracheLabel": "Родной язык",
-  "wizardStufe1dMutterspracheHelper": "Заполнено языком приложения — измени, если другой."
+  "wizardStufe1dMutterspracheHelper": "Заполнено языком приложения — измени, если другой.",
+  "wizardStufe1eTitle": "Адрес",
+  "wizardStufe1ePrompt": "Твой почтовый адрес — мы используем его для официальных документов (устав, договоры членства, уведомления).",
+  "wizardStufe1eStrasseLabel": "Улица",
+  "wizardStufe1eStrasseHelper": "Только название улицы — номер дома в соседнем поле.",
+  "wizardStufe1eHausnummerLabel": "№",
+  "wizardStufe1ePlzLabel": "PLZ (индекс)",
+  "wizardStufe1eOrtLabel": "Город",
+  "wizardStufe1eLandLabel": "Страна",
+  "wizardStufe1eLandHelper": "Предзаполнено: Deutschland.",
+  "wizardErrInvalidStreet": "Неверное название улицы",
+  "wizardErrInvalidHausnummer": "Неверный номер (напр. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Неверный индекс (только цифры)"
 }

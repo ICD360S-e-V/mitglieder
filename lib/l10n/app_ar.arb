@@ -1093,5 +1093,17 @@
   "wizardStufe1dAufenthaltLabel": "حالة الإقامة (Aufenthaltsstatus) — اختياري",
   "wizardStufe1dAufenthaltHelper": "مثلاً: unbefristet, befristet, Asyl, Duldung, EU-Bürger. اتركه فارغًا إن لم ينطبق.",
   "wizardStufe1dMutterspracheLabel": "اللغة الأم",
-  "wizardStufe1dMutterspracheHelper": "تم تعبئتها بلغة التطبيق — غيّرها إن كانت مختلفة."
+  "wizardStufe1dMutterspracheHelper": "تم تعبئتها بلغة التطبيق — غيّرها إن كانت مختلفة.",
+  "wizardStufe1eTitle": "العنوان",
+  "wizardStufe1ePrompt": "عنوانك البريدي — نستخدمه للوثائق الرسمية (النظام الأساسي، عقود العضوية، الإشعارات).",
+  "wizardStufe1eStrasseLabel": "الشارع",
+  "wizardStufe1eStrasseHelper": "اسم الشارع فقط — رقم المنزل في الحقل المجاور.",
+  "wizardStufe1eHausnummerLabel": "الرقم",
+  "wizardStufe1ePlzLabel": "PLZ (الرمز البريدي)",
+  "wizardStufe1eOrtLabel": "المدينة",
+  "wizardStufe1eLandLabel": "البلد",
+  "wizardStufe1eLandHelper": "تم تعبئتها مسبقًا بـ Deutschland.",
+  "wizardErrInvalidStreet": "اسم شارع غير صحيح",
+  "wizardErrInvalidHausnummer": "رقم غير صحيح (مثلاً 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "رمز بريدي غير صحيح (أرقام فقط)"
 }

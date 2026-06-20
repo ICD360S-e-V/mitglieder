@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Opholdsstatus (Aufenthaltsstatus) — valgfri",
   "wizardStufe1dAufenthaltHelper": "F.eks. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Lad tomt hvis ikke relevant.",
   "wizardStufe1dMutterspracheLabel": "Modersmål",
-  "wizardStufe1dMutterspracheHelper": "Forhåndsudfyldt med app-sprog — ændre hvis andet."
+  "wizardStufe1dMutterspracheHelper": "Forhåndsudfyldt med app-sprog — ændre hvis andet.",
+  "wizardStufe1eTitle": "Adresse",
+  "wizardStufe1ePrompt": "Din postadresse — vi bruger den til officielle dokumenter (Satzung, medlemskontrakter, meddelelser).",
+  "wizardStufe1eStrasseLabel": "Gade",
+  "wizardStufe1eStrasseHelper": "Kun gadenavnet — husnummer i feltet ved siden af.",
+  "wizardStufe1eHausnummerLabel": "Nr.",
+  "wizardStufe1ePlzLabel": "PLZ (postnr.)",
+  "wizardStufe1eOrtLabel": "By",
+  "wizardStufe1eLandLabel": "Land",
+  "wizardStufe1eLandHelper": "Forhåndsudfyldt: Deutschland.",
+  "wizardErrInvalidStreet": "Ugyldigt gadenavn",
+  "wizardErrInvalidHausnummer": "Ugyldigt nummer (f.eks. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Ugyldigt postnummer (kun cifre)"
 }

@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Статут на пребиваване (Aufenthaltsstatus) — по избор",
   "wizardStufe1dAufenthaltHelper": "Напр. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Остави празно ако не се прилага.",
   "wizardStufe1dMutterspracheLabel": "Майчин език",
-  "wizardStufe1dMutterspracheHelper": "Предварително попълнено с езика на приложението — промени ако е различен."
+  "wizardStufe1dMutterspracheHelper": "Предварително попълнено с езика на приложението — промени ако е различен.",
+  "wizardStufe1eTitle": "Адрес",
+  "wizardStufe1ePrompt": "Твоят пощенски адрес — използваме го за официални документи (устав, договори за членство, известия).",
+  "wizardStufe1eStrasseLabel": "Улица",
+  "wizardStufe1eStrasseHelper": "Само името на улицата — номерът в съседното поле.",
+  "wizardStufe1eHausnummerLabel": "№",
+  "wizardStufe1ePlzLabel": "PLZ (пощ. код)",
+  "wizardStufe1eOrtLabel": "Град",
+  "wizardStufe1eLandLabel": "Държава",
+  "wizardStufe1eLandHelper": "Предварително попълнено: Deutschland.",
+  "wizardErrInvalidStreet": "Невалидно име на улица",
+  "wizardErrInvalidHausnummer": "Невалиден номер (напр. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Невалиден пощенски код (само цифри)"
 }

@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Uppehållsstatus (Aufenthaltsstatus) — frivilligt",
   "wizardStufe1dAufenthaltHelper": "T.ex. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Lämna tomt om det inte gäller.",
   "wizardStufe1dMutterspracheLabel": "Modersmål",
-  "wizardStufe1dMutterspracheHelper": "Förifyllt med appens språk — ändra om annat."
+  "wizardStufe1dMutterspracheHelper": "Förifyllt med appens språk — ändra om annat.",
+  "wizardStufe1eTitle": "Adress",
+  "wizardStufe1ePrompt": "Din postadress — vi använder den för officiella dokument (stadgar, medlemskontrakt, meddelanden).",
+  "wizardStufe1eStrasseLabel": "Gata",
+  "wizardStufe1eStrasseHelper": "Bara gatunamnet — numret i fältet bredvid.",
+  "wizardStufe1eHausnummerLabel": "Nr.",
+  "wizardStufe1ePlzLabel": "PLZ (postnr.)",
+  "wizardStufe1eOrtLabel": "Ort",
+  "wizardStufe1eLandLabel": "Land",
+  "wizardStufe1eLandHelper": "Förifyllt: Deutschland.",
+  "wizardErrInvalidStreet": "Ogiltigt gatunamn",
+  "wizardErrInvalidHausnummer": "Ogiltigt nummer (t.ex. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Ogiltigt postnummer (endast siffror)"
 }

@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Uzturēšanās statuss (Aufenthaltsstatus) — pēc izvēles",
   "wizardStufe1dAufenthaltHelper": "Piem. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Atstāj tukšu, ja neattiecas.",
   "wizardStufe1dMutterspracheLabel": "Dzimtā valoda",
-  "wizardStufe1dMutterspracheHelper": "Iepriekš aizpildīts ar lietotnes valodu — maini, ja atšķiras."
+  "wizardStufe1dMutterspracheHelper": "Iepriekš aizpildīts ar lietotnes valodu — maini, ja atšķiras.",
+  "wizardStufe1eTitle": "Adrese",
+  "wizardStufe1ePrompt": "Tava pasta adrese — izmantojam to oficiāliem dokumentiem (statūti, biedru līgumi, paziņojumi).",
+  "wizardStufe1eStrasseLabel": "Iela",
+  "wizardStufe1eStrasseHelper": "Tikai ielas nosaukums — numurs blakus laukā.",
+  "wizardStufe1eHausnummerLabel": "Nr.",
+  "wizardStufe1ePlzLabel": "PLZ (pasta indekss)",
+  "wizardStufe1eOrtLabel": "Pilsēta",
+  "wizardStufe1eLandLabel": "Valsts",
+  "wizardStufe1eLandHelper": "Iepriekš aizpildīts: Deutschland.",
+  "wizardErrInvalidStreet": "Nederīgs ielas nosaukums",
+  "wizardErrInvalidHausnummer": "Nederīgs numurs (piem. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Nederīgs pasta indekss (tikai cipari)"
 }

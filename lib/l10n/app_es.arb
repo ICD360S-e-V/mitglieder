@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Estatus de residencia (Aufenthaltsstatus) — opcional",
   "wizardStufe1dAufenthaltHelper": "P. ej. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Déjalo vacío si no aplica.",
   "wizardStufe1dMutterspracheLabel": "Lengua materna",
-  "wizardStufe1dMutterspracheHelper": "Rellenado con el idioma de la app — cámbialo si es diferente."
+  "wizardStufe1dMutterspracheHelper": "Rellenado con el idioma de la app — cámbialo si es diferente.",
+  "wizardStufe1eTitle": "Dirección",
+  "wizardStufe1ePrompt": "Tu dirección postal — la usamos para documentos oficiales (Satzung, contratos de socio, notificaciones).",
+  "wizardStufe1eStrasseLabel": "Calle",
+  "wizardStufe1eStrasseHelper": "Solo el nombre de la calle — el número va al lado.",
+  "wizardStufe1eHausnummerLabel": "Nº",
+  "wizardStufe1ePlzLabel": "PLZ (C.P.)",
+  "wizardStufe1eOrtLabel": "Ciudad",
+  "wizardStufe1eLandLabel": "País",
+  "wizardStufe1eLandHelper": "Rellenado: Deutschland.",
+  "wizardErrInvalidStreet": "Nombre de calle no válido",
+  "wizardErrInvalidHausnummer": "Número no válido (p. ej. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Código postal no válido (solo dígitos)"
 }

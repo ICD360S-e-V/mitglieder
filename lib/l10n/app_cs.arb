@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Status pobytu (Aufenthaltsstatus) — volitelné",
   "wizardStufe1dAufenthaltHelper": "Např. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Nech prázdné pokud se netýká.",
   "wizardStufe1dMutterspracheLabel": "Mateřský jazyk",
-  "wizardStufe1dMutterspracheHelper": "Předvyplněno jazykem aplikace — změň pokud se liší."
+  "wizardStufe1dMutterspracheHelper": "Předvyplněno jazykem aplikace — změň pokud se liší.",
+  "wizardStufe1eTitle": "Adresa",
+  "wizardStufe1ePrompt": "Tvá poštovní adresa — používáme ji pro oficiální dokumenty (stanovy, členské smlouvy, oznámení).",
+  "wizardStufe1eStrasseLabel": "Ulice",
+  "wizardStufe1eStrasseHelper": "Jen název ulice — číslo do vedlejšího pole.",
+  "wizardStufe1eHausnummerLabel": "Č.",
+  "wizardStufe1ePlzLabel": "PLZ (PSČ)",
+  "wizardStufe1eOrtLabel": "Město",
+  "wizardStufe1eLandLabel": "Země",
+  "wizardStufe1eLandHelper": "Předvyplněno: Deutschland.",
+  "wizardErrInvalidStreet": "Neplatný název ulice",
+  "wizardErrInvalidHausnummer": "Neplatné číslo (např. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Neplatné PSČ (jen číslice)"
 }

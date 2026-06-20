@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Statut de ședere (Aufenthaltsstatus) — opțional",
   "wizardStufe1dAufenthaltHelper": "Ex. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Lasă gol dacă nu se aplică.",
   "wizardStufe1dMutterspracheLabel": "Limba maternă",
-  "wizardStufe1dMutterspracheHelper": "Pre-completat cu limba aplicației — schimbă dacă diferă."
+  "wizardStufe1dMutterspracheHelper": "Pre-completat cu limba aplicației — schimbă dacă diferă.",
+  "wizardStufe1eTitle": "Adresa",
+  "wizardStufe1ePrompt": "Adresa ta de corespondență — o folosim pentru documente oficiale (statute, contracte de membru, înștiințări).",
+  "wizardStufe1eStrasseLabel": "Strada",
+  "wizardStufe1eStrasseHelper": "Doar numele străzii — numărul în câmpul de lângă.",
+  "wizardStufe1eHausnummerLabel": "Nr.",
+  "wizardStufe1ePlzLabel": "PLZ (cod poștal)",
+  "wizardStufe1eOrtLabel": "Oraș",
+  "wizardStufe1eLandLabel": "Țara",
+  "wizardStufe1eLandHelper": "Pre-completat cu Deutschland.",
+  "wizardErrInvalidStreet": "Nume de stradă invalid",
+  "wizardErrInvalidHausnummer": "Număr invalid (ex: 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Cod poștal invalid (doar cifre)"
 }

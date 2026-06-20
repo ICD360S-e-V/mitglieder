@@ -1093,5 +1093,17 @@
   "wizardStufe1dAufenthaltLabel": "Oturum durumu (Aufenthaltsstatus) — isteğe bağlı",
   "wizardStufe1dAufenthaltHelper": "Örn. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Geçerli değilse boş bırak.",
   "wizardStufe1dMutterspracheLabel": "Ana dil",
-  "wizardStufe1dMutterspracheHelper": "Uygulama diliyle önceden dolduruldu — farklıysa değiştir."
+  "wizardStufe1dMutterspracheHelper": "Uygulama diliyle önceden dolduruldu — farklıysa değiştir.",
+  "wizardStufe1eTitle": "Adres",
+  "wizardStufe1ePrompt": "Posta adresin — onu resmi belgeler için kullanırız (tüzük, üyelik sözleşmeleri, bildirimler).",
+  "wizardStufe1eStrasseLabel": "Sokak",
+  "wizardStufe1eStrasseHelper": "Sadece sokak adı — numara yan kutuya.",
+  "wizardStufe1eHausnummerLabel": "No",
+  "wizardStufe1ePlzLabel": "PLZ (posta kodu)",
+  "wizardStufe1eOrtLabel": "Şehir",
+  "wizardStufe1eLandLabel": "Ülke",
+  "wizardStufe1eLandHelper": "Önceden dolduruldu: Deutschland.",
+  "wizardErrInvalidStreet": "Geçersiz sokak adı",
+  "wizardErrInvalidHausnummer": "Geçersiz numara (örn. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Geçersiz posta kodu (yalnızca rakam)"
 }

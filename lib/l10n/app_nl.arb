@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Verblijfsstatus (Aufenthaltsstatus) — optioneel",
   "wizardStufe1dAufenthaltHelper": "Bv. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Laat leeg indien niet van toepassing.",
   "wizardStufe1dMutterspracheLabel": "Moedertaal",
-  "wizardStufe1dMutterspracheHelper": "Vooraf ingevuld met de app-taal — wijzig indien anders."
+  "wizardStufe1dMutterspracheHelper": "Vooraf ingevuld met de app-taal — wijzig indien anders.",
+  "wizardStufe1eTitle": "Adres",
+  "wizardStufe1ePrompt": "Je postadres — we gebruiken het voor officiële documenten (statuten, lidcontracten, kennisgevingen).",
+  "wizardStufe1eStrasseLabel": "Straat",
+  "wizardStufe1eStrasseHelper": "Alleen de straatnaam — het huisnummer in het veld ernaast.",
+  "wizardStufe1eHausnummerLabel": "Nr.",
+  "wizardStufe1ePlzLabel": "PLZ (postcode)",
+  "wizardStufe1eOrtLabel": "Plaats",
+  "wizardStufe1eLandLabel": "Land",
+  "wizardStufe1eLandHelper": "Vooraf ingevuld: Deutschland.",
+  "wizardErrInvalidStreet": "Ongeldige straatnaam",
+  "wizardErrInvalidHausnummer": "Ongeldig nummer (bv. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Ongeldige postcode (alleen cijfers)"
 }

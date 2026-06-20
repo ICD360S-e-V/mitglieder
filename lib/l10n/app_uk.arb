@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Статус перебування (Aufenthaltsstatus) — необовʼязково",
   "wizardStufe1dAufenthaltHelper": "Наприклад: unbefristet, befristet, Asyl, Duldung, EU-Bürger. Залиш порожнім, якщо не застосовується.",
   "wizardStufe1dMutterspracheLabel": "Рідна мова",
-  "wizardStufe1dMutterspracheHelper": "Заповнено мовою застосунку — зміни, якщо інша."
+  "wizardStufe1dMutterspracheHelper": "Заповнено мовою застосунку — зміни, якщо інша.",
+  "wizardStufe1eTitle": "Адреса",
+  "wizardStufe1ePrompt": "Твоя поштова адреса — використовуємо її для офіційних документів (статут, договори членства, повідомлення).",
+  "wizardStufe1eStrasseLabel": "Вулиця",
+  "wizardStufe1eStrasseHelper": "Лише назва вулиці — номер у сусідньому полі.",
+  "wizardStufe1eHausnummerLabel": "№",
+  "wizardStufe1ePlzLabel": "PLZ (індекс)",
+  "wizardStufe1eOrtLabel": "Місто",
+  "wizardStufe1eLandLabel": "Країна",
+  "wizardStufe1eLandHelper": "Заповнено: Deutschland.",
+  "wizardErrInvalidStreet": "Невірна назва вулиці",
+  "wizardErrInvalidHausnummer": "Невірний номер (напр. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Невірний індекс (тільки цифри)"
 }

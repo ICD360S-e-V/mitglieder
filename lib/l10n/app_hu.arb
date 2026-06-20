@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Tartózkodási státusz (Aufenthaltsstatus) — opcionális",
   "wizardStufe1dAufenthaltHelper": "Pl. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Hagyd üresen, ha nem releváns.",
   "wizardStufe1dMutterspracheLabel": "Anyanyelv",
-  "wizardStufe1dMutterspracheHelper": "Az alkalmazás nyelvével előre kitöltve — módosítsd, ha más."
+  "wizardStufe1dMutterspracheHelper": "Az alkalmazás nyelvével előre kitöltve — módosítsd, ha más.",
+  "wizardStufe1eTitle": "Cím",
+  "wizardStufe1ePrompt": "A postacímed — hivatalos dokumentumokhoz használjuk (alapszabály, tagsági szerződések, értesítések).",
+  "wizardStufe1eStrasseLabel": "Utca",
+  "wizardStufe1eStrasseHelper": "Csak az utca neve — a házszám a mellette lévő mezőbe.",
+  "wizardStufe1eHausnummerLabel": "Sz.",
+  "wizardStufe1ePlzLabel": "PLZ (irányítószám)",
+  "wizardStufe1eOrtLabel": "Város",
+  "wizardStufe1eLandLabel": "Ország",
+  "wizardStufe1eLandHelper": "Előre kitöltve: Deutschland.",
+  "wizardErrInvalidStreet": "Érvénytelen utcanév",
+  "wizardErrInvalidHausnummer": "Érvénytelen szám (pl. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Érvénytelen irányítószám (csak számjegyek)"
 }

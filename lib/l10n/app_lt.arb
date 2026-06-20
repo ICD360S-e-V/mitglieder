@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Buvimo statusas (Aufenthaltsstatus) — neprivaloma",
   "wizardStufe1dAufenthaltHelper": "Pvz. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Palik tuščią jei netaikoma.",
   "wizardStufe1dMutterspracheLabel": "Gimtoji kalba",
-  "wizardStufe1dMutterspracheHelper": "Iš anksto užpildyta programos kalba — pakeisk jei kita."
+  "wizardStufe1dMutterspracheHelper": "Iš anksto užpildyta programos kalba — pakeisk jei kita.",
+  "wizardStufe1eTitle": "Adresas",
+  "wizardStufe1ePrompt": "Tavo pašto adresas — naudojame jį oficialiems dokumentams (įstatai, narystės sutartys, pranešimai).",
+  "wizardStufe1eStrasseLabel": "Gatvė",
+  "wizardStufe1eStrasseHelper": "Tik gatvės pavadinimas — numeris šalia esančiame laukelyje.",
+  "wizardStufe1eHausnummerLabel": "Nr.",
+  "wizardStufe1ePlzLabel": "PLZ (pašto kodas)",
+  "wizardStufe1eOrtLabel": "Miestas",
+  "wizardStufe1eLandLabel": "Šalis",
+  "wizardStufe1eLandHelper": "Iš anksto užpildyta: Deutschland.",
+  "wizardErrInvalidStreet": "Neteisingas gatvės pavadinimas",
+  "wizardErrInvalidHausnummer": "Neteisingas numeris (pvz. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Neteisingas pašto kodas (tik skaitmenys)"
 }

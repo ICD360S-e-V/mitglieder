@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Elamisstaatus (Aufenthaltsstatus) — vabatahtlik",
   "wizardStufe1dAufenthaltHelper": "Nt unbefristet, befristet, Asyl, Duldung, EU-Bürger. Jäta tühjaks kui ei kehti.",
   "wizardStufe1dMutterspracheLabel": "Emakeel",
-  "wizardStufe1dMutterspracheHelper": "Eeltäidetud rakenduse keelega — muuda kui erineb."
+  "wizardStufe1dMutterspracheHelper": "Eeltäidetud rakenduse keelega — muuda kui erineb.",
+  "wizardStufe1eTitle": "Aadress",
+  "wizardStufe1ePrompt": "Sinu postiaadress — kasutame seda ametlikele dokumentidele (põhikiri, liikmelepingud, teated).",
+  "wizardStufe1eStrasseLabel": "Tänav",
+  "wizardStufe1eStrasseHelper": "Ainult tänava nimi — number kõrvalolevasse lahtrisse.",
+  "wizardStufe1eHausnummerLabel": "Nr",
+  "wizardStufe1ePlzLabel": "PLZ (sihtnr)",
+  "wizardStufe1eOrtLabel": "Linn",
+  "wizardStufe1eLandLabel": "Riik",
+  "wizardStufe1eLandHelper": "Eeltäidetud: Deutschland.",
+  "wizardErrInvalidStreet": "Vigane tänava nimi",
+  "wizardErrInvalidHausnummer": "Vigane number (nt 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Vigane sihtnumber (ainult numbrid)"
 }

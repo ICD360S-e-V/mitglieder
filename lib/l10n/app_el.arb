@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Καθεστώς διαμονής (Aufenthaltsstatus) — προαιρετικό",
   "wizardStufe1dAufenthaltHelper": "Π.χ. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Άφησε κενό αν δεν ισχύει.",
   "wizardStufe1dMutterspracheLabel": "Μητρική γλώσσα",
-  "wizardStufe1dMutterspracheHelper": "Προσυμπληρωμένο με τη γλώσσα της εφαρμογής — άλλαξε αν διαφέρει."
+  "wizardStufe1dMutterspracheHelper": "Προσυμπληρωμένο με τη γλώσσα της εφαρμογής — άλλαξε αν διαφέρει.",
+  "wizardStufe1eTitle": "Διεύθυνση",
+  "wizardStufe1ePrompt": "Η ταχυδρομική σου διεύθυνση — τη χρησιμοποιούμε για επίσημα έγγραφα (καταστατικό, συμβάσεις μέλους, ειδοποιήσεις).",
+  "wizardStufe1eStrasseLabel": "Οδός",
+  "wizardStufe1eStrasseHelper": "Μόνο το όνομα της οδού — ο αριθμός στο διπλανό πεδίο.",
+  "wizardStufe1eHausnummerLabel": "Αρ.",
+  "wizardStufe1ePlzLabel": "PLZ (Τ.Κ.)",
+  "wizardStufe1eOrtLabel": "Πόλη",
+  "wizardStufe1eLandLabel": "Χώρα",
+  "wizardStufe1eLandHelper": "Προσυμπληρωμένο: Deutschland.",
+  "wizardErrInvalidStreet": "Μη έγκυρο όνομα οδού",
+  "wizardErrInvalidHausnummer": "Μη έγκυρος αριθμός (π.χ. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Μη έγκυρος Τ.Κ. (μόνο ψηφία)"
 }

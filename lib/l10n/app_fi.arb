@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Oleskelustatus (Aufenthaltsstatus) — valinnainen",
   "wizardStufe1dAufenthaltHelper": "Esim. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Jätä tyhjäksi jos ei sovellu.",
   "wizardStufe1dMutterspracheLabel": "Äidinkieli",
-  "wizardStufe1dMutterspracheHelper": "Esitäytetty sovelluksen kielellä — vaihda jos eri."
+  "wizardStufe1dMutterspracheHelper": "Esitäytetty sovelluksen kielellä — vaihda jos eri.",
+  "wizardStufe1eTitle": "Osoite",
+  "wizardStufe1ePrompt": "Postiosoitteesi — käytämme sitä virallisiin asiakirjoihin (säännöt, jäsensopimukset, ilmoitukset).",
+  "wizardStufe1eStrasseLabel": "Katu",
+  "wizardStufe1eStrasseHelper": "Vain kadunnimi — numero viereiseen kenttään.",
+  "wizardStufe1eHausnummerLabel": "Nro",
+  "wizardStufe1ePlzLabel": "PLZ (postinro)",
+  "wizardStufe1eOrtLabel": "Kaupunki",
+  "wizardStufe1eLandLabel": "Maa",
+  "wizardStufe1eLandHelper": "Esitäytetty: Deutschland.",
+  "wizardErrInvalidStreet": "Virheellinen kadunnimi",
+  "wizardErrInvalidHausnummer": "Virheellinen numero (esim. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Virheellinen postinumero (vain numerot)"
 }

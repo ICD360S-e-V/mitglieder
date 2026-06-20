@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Boravišni status (Aufenthaltsstatus) — neobavezno",
   "wizardStufe1dAufenthaltHelper": "Npr. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Ostavi prazno ako se ne odnosi.",
   "wizardStufe1dMutterspracheLabel": "Materinski jezik",
-  "wizardStufe1dMutterspracheHelper": "Unaprijed ispunjeno jezikom aplikacije — promijeni ako je drugačije."
+  "wizardStufe1dMutterspracheHelper": "Unaprijed ispunjeno jezikom aplikacije — promijeni ako je drugačije.",
+  "wizardStufe1eTitle": "Adresa",
+  "wizardStufe1ePrompt": "Tvoja poštanska adresa — koristimo je za službene dokumente (statut, članske ugovore, obavijesti).",
+  "wizardStufe1eStrasseLabel": "Ulica",
+  "wizardStufe1eStrasseHelper": "Samo naziv ulice — broj u susjedno polje.",
+  "wizardStufe1eHausnummerLabel": "Br.",
+  "wizardStufe1ePlzLabel": "PLZ (poštanski br.)",
+  "wizardStufe1eOrtLabel": "Grad",
+  "wizardStufe1eLandLabel": "Država",
+  "wizardStufe1eLandHelper": "Unaprijed ispunjeno: Deutschland.",
+  "wizardErrInvalidStreet": "Nevažeći naziv ulice",
+  "wizardErrInvalidHausnummer": "Nevažeći broj (npr. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Nevažeći poštanski broj (samo znamenke)"
 }

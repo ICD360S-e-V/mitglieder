@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Status pobytu (Aufenthaltsstatus) — opcjonalne",
   "wizardStufe1dAufenthaltHelper": "Np. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Zostaw puste, jeśli nie dotyczy.",
   "wizardStufe1dMutterspracheLabel": "Język ojczysty",
-  "wizardStufe1dMutterspracheHelper": "Wstępnie wypełnione językiem aplikacji — zmień jeśli inny."
+  "wizardStufe1dMutterspracheHelper": "Wstępnie wypełnione językiem aplikacji — zmień jeśli inny.",
+  "wizardStufe1eTitle": "Adres",
+  "wizardStufe1ePrompt": "Twój adres pocztowy — używamy go do oficjalnych dokumentów (statut, umowy członkowskie, powiadomienia).",
+  "wizardStufe1eStrasseLabel": "Ulica",
+  "wizardStufe1eStrasseHelper": "Tylko nazwa ulicy — numer w sąsiednim polu.",
+  "wizardStufe1eHausnummerLabel": "Nr",
+  "wizardStufe1ePlzLabel": "PLZ (kod pocztowy)",
+  "wizardStufe1eOrtLabel": "Miasto",
+  "wizardStufe1eLandLabel": "Kraj",
+  "wizardStufe1eLandHelper": "Wstępnie wypełnione: Deutschland.",
+  "wizardErrInvalidStreet": "Nieprawidłowa nazwa ulicy",
+  "wizardErrInvalidHausnummer": "Nieprawidłowy numer (np. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Nieprawidłowy kod pocztowy (tylko cyfry)"
 }

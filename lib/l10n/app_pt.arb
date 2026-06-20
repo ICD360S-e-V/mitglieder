@@ -1072,5 +1072,17 @@
   "wizardStufe1dAufenthaltLabel": "Estatuto de residência (Aufenthaltsstatus) — opcional",
   "wizardStufe1dAufenthaltHelper": "P. ex. unbefristet, befristet, Asyl, Duldung, EU-Bürger. Deixa em branco se não se aplica.",
   "wizardStufe1dMutterspracheLabel": "Língua materna",
-  "wizardStufe1dMutterspracheHelper": "Pré-preenchido com o idioma da app — muda se for diferente."
+  "wizardStufe1dMutterspracheHelper": "Pré-preenchido com o idioma da app — muda se for diferente.",
+  "wizardStufe1eTitle": "Endereço",
+  "wizardStufe1ePrompt": "A tua morada postal — usamo-la para documentos oficiais (Satzung, contratos de membro, avisos).",
+  "wizardStufe1eStrasseLabel": "Rua",
+  "wizardStufe1eStrasseHelper": "Apenas o nome da rua — o número vai no campo ao lado.",
+  "wizardStufe1eHausnummerLabel": "Nº",
+  "wizardStufe1ePlzLabel": "PLZ (cód. postal)",
+  "wizardStufe1eOrtLabel": "Cidade",
+  "wizardStufe1eLandLabel": "País",
+  "wizardStufe1eLandHelper": "Pré-preenchido: Deutschland.",
+  "wizardErrInvalidStreet": "Nome de rua inválido",
+  "wizardErrInvalidHausnummer": "Número inválido (p. ex. 12, 12a, 12/3)",
+  "wizardErrInvalidPlz": "Código postal inválido (apenas dígitos)"
 }
