@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Понятно",
   "claudiuProblemReportSendFailed": "Не удалось отправить отчёт. Позвони нам, если срочно.",
   "claudiuProblemReportAlt": "Или, если срочно:",
-  "claudiuProblemReportCallLabel": "Позвонить"
+  "claudiuProblemReportCallLabel": "Позвонить",
+  "claudiuApprovalGreeting": "Привет, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Привет! 👋",
+  "claudiuApprovalGladToSeeYou": "Рад, что ты пришёл!",
+  "claudiuApprovalCheckingForSafety": "Для твоей безопасности Vorsitzer сейчас проверяет твой запрос на вход. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Мы делаем это раз в 30 дней, чтобы убедиться, что это действительно ты. Это как чек-ап безопасности — максимум 5 минут.",
+  "claudiuApprovalSuccess": "Готово! 🎉 Vorsitzer тебя узнал. Сейчас войдёшь…",
+  "claudiuApprovalDenied": "Хм, Vorsitzer отклонил твой запрос. 😔",
+  "claudiuApprovalDeniedHelp": "Если думаешь, что это ошибка, позвони нам, и мы разберёмся.",
+  "claudiuApprovalExpired": "Прошло 5 минут, а ответа от Vorsitzer не было.",
+  "claudiuApprovalExpiredHelp": "Позвони нам и мы сможем одобрить твой запрос на месте. 📞",
+  "claudiuApprovalCallUs": "Позвонить",
+  "claudiuApprovalTryAgain": "Попробовать снова",
+  "claudiuApprovalCancel": "Отмена",
+  "claudiuApprovalClose": "Закрыть"
 }

@@ -983,5 +983,26 @@
   "claudiuProblemReportSentClose": "Verstanden",
   "claudiuProblemReportSendFailed": "Bericht konnte nicht gesendet werden. Ruf uns bei dringenden Anliegen an.",
   "claudiuProblemReportAlt": "Oder bei dringenden Anliegen:",
-  "claudiuProblemReportCallLabel": "Ruf uns an"
+  "claudiuProblemReportCallLabel": "Ruf uns an",
+  "claudiuApprovalGreeting": "Hallo, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Hallo! 👋",
+  "claudiuApprovalGladToSeeYou": "Schön, dass du da bist!",
+  "claudiuApprovalCheckingForSafety": "Zu deiner Sicherheit prüft ein Vorsitzer gerade deine Anmeldeanfrage. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Wir machen das alle 30 Tage, um sicher zu sein, dass du es bist. Es ist wie ein Sicherheits-Check-up — dauert maximal 5 Minuten.",
+  "claudiuApprovalSuccess": "Fertig! 🎉 Der Vorsitzer hat dich erkannt. Du wirst jetzt eingeloggt…",
+  "claudiuApprovalDenied": "Hm, der Vorsitzer hat deine Anfrage abgelehnt. 😔",
+  "claudiuApprovalDeniedHelp": "Wenn du denkst, das ist ein Fehler, ruf uns bitte an, damit wir es klären.",
+  "claudiuApprovalExpired": "Die 5 Minuten sind vorbei und wir haben keine Antwort vom Vorsitzer erhalten.",
+  "claudiuApprovalExpiredHelp": "Ruf uns an und wir können deine Anfrage direkt vor Ort genehmigen. 📞",
+  "claudiuApprovalCallUs": "Ruf uns an",
+  "claudiuApprovalTryAgain": "Erneut versuchen",
+  "claudiuApprovalCancel": "Abbrechen",
+  "claudiuApprovalClose": "Schließen"
 }

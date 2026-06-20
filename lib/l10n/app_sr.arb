@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Разумем",
   "claudiuProblemReportSendFailed": "Извештај није могуће послати. Позови нас за хитну помоћ.",
   "claudiuProblemReportAlt": "Или, ако је хитно:",
-  "claudiuProblemReportCallLabel": "Позови нас"
+  "claudiuProblemReportCallLabel": "Позови нас",
+  "claudiuApprovalGreeting": "Здраво, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Здраво! 👋",
+  "claudiuApprovalGladToSeeYou": "Драго ми је што си дошао!",
+  "claudiuApprovalCheckingForSafety": "За твоју безбедност, Vorsitzer тренутно проверава твој захтев за пријаву. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Ово радимо сваких 30 дана да бисмо били сигурни да си заиста ти. То је као безбедносна провера — највише 5 минута.",
+  "claudiuApprovalSuccess": "Готово! 🎉 Vorsitzer те препознао. Пријављујем те…",
+  "claudiuApprovalDenied": "Хм, Vorsitzer је одбио твој захтев. 😔",
+  "claudiuApprovalDeniedHelp": "Ако мислиш да је ово грешка, молим те позови нас да разјаснимо.",
+  "claudiuApprovalExpired": "Прошло је 5 минута и Vorsitzer није одговорио.",
+  "claudiuApprovalExpiredHelp": "Позови нас и можемо одмах одобрити твој захтев. 📞",
+  "claudiuApprovalCallUs": "Позови нас",
+  "claudiuApprovalTryAgain": "Покушај поново",
+  "claudiuApprovalCancel": "Откажи",
+  "claudiuApprovalClose": "Затвори"
 }

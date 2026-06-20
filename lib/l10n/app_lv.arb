@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Sapratu",
   "claudiuProblemReportSendFailed": "Ziņojumu nevarēja nosūtīt. Zvani mums steidzamai palīdzībai.",
   "claudiuProblemReportAlt": "Vai, ja steidzami:",
-  "claudiuProblemReportCallLabel": "Zvanīt"
+  "claudiuProblemReportCallLabel": "Zvanīt",
+  "claudiuApprovalGreeting": "Sveiks, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Sveiks! 👋",
+  "claudiuApprovalGladToSeeYou": "Priecājos, ka atnāci!",
+  "claudiuApprovalCheckingForSafety": "Tavas drošības labad Vorsitzer šobrīd pārbauda tavu pieteikšanās pieprasījumu. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Mēs to darām reizi 30 dienās, lai pārliecinātos, ka tas tiešām esi tu. Tas ir kā drošības pārbaude — ne ilgāk par 5 minūtēm.",
+  "claudiuApprovalSuccess": "Gatavs! 🎉 Vorsitzer tevi atpazina. Pieslēdzu…",
+  "claudiuApprovalDenied": "Hmm, Vorsitzer noraidīja tavu pieprasījumu. 😔",
+  "claudiuApprovalDeniedHelp": "Ja domā, ka tā ir kļūda, lūdzu zvani, lai noskaidrojam.",
+  "claudiuApprovalExpired": "5 minūtes ir pagājušas un Vorsitzer neatbildēja.",
+  "claudiuApprovalExpiredHelp": "Zvani mums un mēs varam apstiprināt tavu pieprasījumu uz vietas. 📞",
+  "claudiuApprovalCallUs": "Zvanīt",
+  "claudiuApprovalTryAgain": "Mēģināt vēlreiz",
+  "claudiuApprovalCancel": "Atcelt",
+  "claudiuApprovalClose": "Aizvērt"
 }

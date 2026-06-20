@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Entendido",
   "claudiuProblemReportSendFailed": "Não foi possível enviar o relatório. Liga-nos para ajuda urgente.",
   "claudiuProblemReportAlt": "Ou, se for urgente:",
-  "claudiuProblemReportCallLabel": "Liga-nos"
+  "claudiuProblemReportCallLabel": "Liga-nos",
+  "claudiuApprovalGreeting": "Olá, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Olá! 👋",
+  "claudiuApprovalGladToSeeYou": "Que bom que vieste!",
+  "claudiuApprovalCheckingForSafety": "Para tua segurança, um Vorsitzer está a verificar o teu pedido de início de sessão. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Fazemos isto a cada 30 dias para nos certificarmos de que és mesmo tu. É como um check-up de segurança — máximo 5 minutos.",
+  "claudiuApprovalSuccess": "Pronto! 🎉 O Vorsitzer reconheceu-te. A entrar…",
+  "claudiuApprovalDenied": "Hm, o Vorsitzer recusou o teu pedido. 😔",
+  "claudiuApprovalDeniedHelp": "Se achas que é um engano, por favor liga-nos para esclarecer.",
+  "claudiuApprovalExpired": "Passaram os 5 minutos e não tivemos resposta do Vorsitzer.",
+  "claudiuApprovalExpiredHelp": "Liga-nos e podemos aprovar o teu pedido na hora. 📞",
+  "claudiuApprovalCallUs": "Liga-nos",
+  "claudiuApprovalTryAgain": "Tentar de novo",
+  "claudiuApprovalCancel": "Cancelar",
+  "claudiuApprovalClose": "Fechar"
 }

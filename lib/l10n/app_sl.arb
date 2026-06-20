@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Razumem",
   "claudiuProblemReportSendFailed": "Poročila ni bilo mogoče poslati. Pokliči nas za nujno pomoč.",
   "claudiuProblemReportAlt": "Ali, če je nujno:",
-  "claudiuProblemReportCallLabel": "Pokliči nas"
+  "claudiuProblemReportCallLabel": "Pokliči nas",
+  "claudiuApprovalGreeting": "Živjo, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Živjo! 👋",
+  "claudiuApprovalGladToSeeYou": "Vesel sem, da si tu!",
+  "claudiuApprovalCheckingForSafety": "Za tvojo varnost Vorsitzer trenutno preverja tvojo zahtevo za prijavo. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 To naredimo vsakih 30 dni, da se prepričamo, da si res ti. Je kot varnostni pregled — največ 5 minut.",
+  "claudiuApprovalSuccess": "Končano! 🎉 Vorsitzer te je prepoznal. Prijavljam te…",
+  "claudiuApprovalDenied": "Hm, Vorsitzer je zavrnil tvojo zahtevo. 😔",
+  "claudiuApprovalDeniedHelp": "Če misliš, da je to napaka, nas prosim pokliči, da razjasnimo.",
+  "claudiuApprovalExpired": "Preteklo je 5 minut in od Vorsitzerja nismo prejeli odgovora.",
+  "claudiuApprovalExpiredHelp": "Pokliči nas in lahko tvojo zahtevo odobrimo takoj. 📞",
+  "claudiuApprovalCallUs": "Pokliči nas",
+  "claudiuApprovalTryAgain": "Poskusi znova",
+  "claudiuApprovalCancel": "Prekliči",
+  "claudiuApprovalClose": "Zapri"
 }

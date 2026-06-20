@@ -983,5 +983,26 @@
   "claudiuProblemReportSentClose": "Anladım",
   "claudiuProblemReportSendFailed": "Rapor gönderilemedi. Acil yardım için bizi ara.",
   "claudiuProblemReportAlt": "Veya acilse:",
-  "claudiuProblemReportCallLabel": "Bizi ara"
+  "claudiuProblemReportCallLabel": "Bizi ara",
+  "claudiuApprovalGreeting": "Merhaba, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Merhaba! 👋",
+  "claudiuApprovalGladToSeeYou": "Geldiğine sevindim!",
+  "claudiuApprovalCheckingForSafety": "Güvenliğin için, bir Vorsitzer giriş talebini şimdi kontrol ediyor. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Bunu her 30 günde bir, gerçekten sen olduğundan emin olmak için yapıyoruz. Bir güvenlik kontrolü gibi — en fazla 5 dakika.",
+  "claudiuApprovalSuccess": "Tamam! 🎉 Vorsitzer seni tanıdı. Giriş yapılıyor…",
+  "claudiuApprovalDenied": "Hm, Vorsitzer talebini reddetti. 😔",
+  "claudiuApprovalDeniedHelp": "Bu bir hata olduğunu düşünüyorsan, lütfen bizi ara, çözelim.",
+  "claudiuApprovalExpired": "5 dakika geçti ve Vorsitzer'den yanıt alamadık.",
+  "claudiuApprovalExpiredHelp": "Bizi ara, talebini hemen onaylayabiliriz. 📞",
+  "claudiuApprovalCallUs": "Bizi ara",
+  "claudiuApprovalTryAgain": "Tekrar dene",
+  "claudiuApprovalCancel": "İptal",
+  "claudiuApprovalClose": "Kapat"
 }

@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Rozumím",
   "claudiuProblemReportSendFailed": "Zprávu nelze odeslat. Zavolej nám pro naléhavou pomoc.",
   "claudiuProblemReportAlt": "Nebo, pokud je to naléhavé:",
-  "claudiuProblemReportCallLabel": "Zavolat"
+  "claudiuProblemReportCallLabel": "Zavolat",
+  "claudiuApprovalGreeting": "Ahoj, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Ahoj! 👋",
+  "claudiuApprovalGladToSeeYou": "Rád, že jsi tu!",
+  "claudiuApprovalCheckingForSafety": "Pro tvou bezpečnost Vorsitzer právě kontroluje tvou žádost o přihlášení. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Děláme to každých 30 dní, abychom se ujistili, že jsi to opravdu ty. Je to jako bezpečnostní kontrola — maximálně 5 minut.",
+  "claudiuApprovalSuccess": "Hotovo! 🎉 Vorsitzer tě poznal. Přihlašuji tě…",
+  "claudiuApprovalDenied": "Hm, Vorsitzer tvou žádost odmítl. 😔",
+  "claudiuApprovalDeniedHelp": "Pokud si myslíš, že je to omyl, zavolej nám, abychom to vyřešili.",
+  "claudiuApprovalExpired": "5 minut uplynulo a od Vorsitzera nepřišla žádná odpověď.",
+  "claudiuApprovalExpiredHelp": "Zavolej a můžeme tvou žádost schválit přímo na místě. 📞",
+  "claudiuApprovalCallUs": "Zavolat",
+  "claudiuApprovalTryAgain": "Zkusit znovu",
+  "claudiuApprovalCancel": "Zrušit",
+  "claudiuApprovalClose": "Zavřít"
 }

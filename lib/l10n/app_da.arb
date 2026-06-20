@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Forstået",
   "claudiuProblemReportSendFailed": "Kunne ikke sende rapporten. Ring til os for akut hjælp.",
   "claudiuProblemReportAlt": "Eller, hvis det haster:",
-  "claudiuProblemReportCallLabel": "Ring til os"
+  "claudiuProblemReportCallLabel": "Ring til os",
+  "claudiuApprovalGreeting": "Hej, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Hej! 👋",
+  "claudiuApprovalGladToSeeYou": "Jeg er glad for, at du er her!",
+  "claudiuApprovalCheckingForSafety": "For din sikkerhed tjekker en Vorsitzer nu din login-anmodning. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Vi gør dette hver 30. dag for at sikre, at det virkelig er dig. Det er som et sikkerhedstjek — tager maks 5 minutter.",
+  "claudiuApprovalSuccess": "Færdig! 🎉 Vorsitzer genkendte dig. Logger dig ind…",
+  "claudiuApprovalDenied": "Hm, Vorsitzer afviste din anmodning. 😔",
+  "claudiuApprovalDeniedHelp": "Hvis du tror, det er en fejl, så ring til os, så vi kan løse det.",
+  "claudiuApprovalExpired": "De 5 minutter er gået, og vi hørte ikke fra Vorsitzer.",
+  "claudiuApprovalExpiredHelp": "Ring til os, og vi kan godkende din anmodning direkte. 📞",
+  "claudiuApprovalCallUs": "Ring til os",
+  "claudiuApprovalTryAgain": "Prøv igen",
+  "claudiuApprovalCancel": "Annullér",
+  "claudiuApprovalClose": "Luk"
 }

@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Aišku",
   "claudiuProblemReportSendFailed": "Pranešimo išsiųsti nepavyko. Skambink dėl skubios pagalbos.",
   "claudiuProblemReportAlt": "Arba, jei skubu:",
-  "claudiuProblemReportCallLabel": "Skambinti"
+  "claudiuProblemReportCallLabel": "Skambinti",
+  "claudiuApprovalGreeting": "Sveikas, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Sveikas! 👋",
+  "claudiuApprovalGladToSeeYou": "Džiaugiuosi, kad atėjai!",
+  "claudiuApprovalCheckingForSafety": "Tavo saugumui Vorsitzer dabar tikrina tavo prisijungimo prašymą. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Tai darome kas 30 dienų, kad būtume tikri, jog tai tikrai tu. Tai kaip saugumo patikrinimas — maksimum 5 minutės.",
+  "claudiuApprovalSuccess": "Atlikta! 🎉 Vorsitzer tave atpažino. Jungiu…",
+  "claudiuApprovalDenied": "Hmm, Vorsitzer atmetė tavo prašymą. 😔",
+  "claudiuApprovalDeniedHelp": "Jei manai, kad tai klaida, paskambink, kad išsiaiškintume.",
+  "claudiuApprovalExpired": "Praėjo 5 minutės ir Vorsitzer neatsakė.",
+  "claudiuApprovalExpiredHelp": "Skambink ir galėsime patvirtinti tavo prašymą vietoje. 📞",
+  "claudiuApprovalCallUs": "Skambinti",
+  "claudiuApprovalTryAgain": "Bandyti vėl",
+  "claudiuApprovalCancel": "Atšaukti",
+  "claudiuApprovalClose": "Uždaryti"
 }

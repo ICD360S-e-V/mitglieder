@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Зрозуміло",
   "claudiuProblemReportSendFailed": "Не вдалося надіслати звіт. Зателефонуй нам у разі терміновості.",
   "claudiuProblemReportAlt": "Або, якщо терміново:",
-  "claudiuProblemReportCallLabel": "Зателефонувати"
+  "claudiuProblemReportCallLabel": "Зателефонувати",
+  "claudiuApprovalGreeting": "Привіт, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Привіт! 👋",
+  "claudiuApprovalGladToSeeYou": "Радий, що ти прийшов!",
+  "claudiuApprovalCheckingForSafety": "Для твоєї безпеки Vorsitzer перевіряє твій запит на вхід. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Ми робимо це раз на 30 днів, щоб переконатися, що це справді ти. Це як перевірка безпеки — максимум 5 хвилин.",
+  "claudiuApprovalSuccess": "Готово! 🎉 Vorsitzer тебе впізнав. Зараз увійдеш…",
+  "claudiuApprovalDenied": "Хм, Vorsitzer відхилив твій запит. 😔",
+  "claudiuApprovalDeniedHelp": "Якщо думаєш, що це помилка, зателефонуй нам, і ми розберемося.",
+  "claudiuApprovalExpired": "Минуло 5 хвилин, а відповіді від Vorsitzer не було.",
+  "claudiuApprovalExpiredHelp": "Зателефонуй і ми зможемо схвалити твій запит на місці. 📞",
+  "claudiuApprovalCallUs": "Зателефонувати",
+  "claudiuApprovalTryAgain": "Спробувати ще раз",
+  "claudiuApprovalCancel": "Скасувати",
+  "claudiuApprovalClose": "Закрити"
 }

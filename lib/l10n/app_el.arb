@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Κατάλαβα",
   "claudiuProblemReportSendFailed": "Δεν ήταν δυνατή η αποστολή της αναφοράς. Καλέστε μας για επείγουσα βοήθεια.",
   "claudiuProblemReportAlt": "Ή, αν είναι επείγον:",
-  "claudiuProblemReportCallLabel": "Καλέστε μας"
+  "claudiuProblemReportCallLabel": "Καλέστε μας",
+  "claudiuApprovalGreeting": "Γεια σου, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Γεια σου! 👋",
+  "claudiuApprovalGladToSeeYou": "Χαίρομαι που ήρθες!",
+  "claudiuApprovalCheckingForSafety": "Για την ασφάλειά σου, ένας Vorsitzer ελέγχει τώρα το αίτημα σύνδεσης. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Το κάνουμε αυτό κάθε 30 ημέρες για να είμαστε σίγουροι ότι είσαι εσύ. Είναι σαν έλεγχος ασφαλείας — διαρκεί το πολύ 5 λεπτά.",
+  "claudiuApprovalSuccess": "Έτοιμο! 🎉 Ο Vorsitzer σε αναγνώρισε. Σε συνδέω τώρα…",
+  "claudiuApprovalDenied": "Χμ, ο Vorsitzer απέρριψε το αίτημά σου. 😔",
+  "claudiuApprovalDeniedHelp": "Αν πιστεύεις ότι είναι λάθος, παρακαλώ κάλεσέ μας για να το ξεκαθαρίσουμε.",
+  "claudiuApprovalExpired": "Πέρασαν τα 5 λεπτά και δεν λάβαμε απάντηση από τον Vorsitzer.",
+  "claudiuApprovalExpiredHelp": "Κάλεσέ μας και μπορούμε να εγκρίνουμε το αίτημά σου άμεσα. 📞",
+  "claudiuApprovalCallUs": "Καλέστε μας",
+  "claudiuApprovalTryAgain": "Δοκίμασε ξανά",
+  "claudiuApprovalCancel": "Άκυρο",
+  "claudiuApprovalClose": "Κλείσιμο"
 }

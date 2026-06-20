@@ -983,5 +983,26 @@
   "claudiuProblemReportSentClose": "فهمت",
   "claudiuProblemReportSendFailed": "تعذر إرسال التقرير. اتصل بنا للمساعدة العاجلة.",
   "claudiuProblemReportAlt": "أو إذا كان الأمر طارئًا:",
-  "claudiuProblemReportCallLabel": "اتصل بنا"
+  "claudiuProblemReportCallLabel": "اتصل بنا",
+  "claudiuApprovalGreeting": "مرحبًا، {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "مرحبًا! 👋",
+  "claudiuApprovalGladToSeeYou": "سعيد بقدومك!",
+  "claudiuApprovalCheckingForSafety": "لسلامتك، يقوم Vorsitzer الآن بمراجعة طلب تسجيل الدخول الخاص بك. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 نقوم بهذا كل 30 يومًا للتأكد من أنك أنت حقًا. اعتبره فحصًا أمنيًا — يستغرق 5 دقائق كحد أقصى.",
+  "claudiuApprovalSuccess": "تم! 🎉 لقد تعرف عليك Vorsitzer. جاري تسجيل دخولك…",
+  "claudiuApprovalDenied": "حسنًا، رفض Vorsitzer طلبك. 😔",
+  "claudiuApprovalDeniedHelp": "إذا كنت تعتقد أن هذا خطأ، يرجى الاتصال بنا لنوضح الأمر.",
+  "claudiuApprovalExpired": "مرت 5 دقائق ولم نتلقَ ردًا من Vorsitzer.",
+  "claudiuApprovalExpiredHelp": "اتصل بنا ويمكننا الموافقة على طلبك مباشرةً. 📞",
+  "claudiuApprovalCallUs": "اتصل بنا",
+  "claudiuApprovalTryAgain": "حاول مجددًا",
+  "claudiuApprovalCancel": "إلغاء",
+  "claudiuApprovalClose": "إغلاق"
 }

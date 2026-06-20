@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Értem",
   "claudiuProblemReportSendFailed": "Nem sikerült elküldeni a jelentést. Hívj minket sürgős segítségért.",
   "claudiuProblemReportAlt": "Vagy, ha sürgős:",
-  "claudiuProblemReportCallLabel": "Hívj minket"
+  "claudiuProblemReportCallLabel": "Hívj minket",
+  "claudiuApprovalGreeting": "Szia, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Szia! 👋",
+  "claudiuApprovalGladToSeeYou": "Örülök, hogy itt vagy!",
+  "claudiuApprovalCheckingForSafety": "A biztonságod érdekében egy Vorsitzer most ellenőrzi a bejelentkezési kérésedet. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Ezt 30 naponta megtesszük, hogy biztosak legyünk, hogy tényleg te vagy. Olyan, mint egy biztonsági ellenőrzés — maximum 5 perc.",
+  "claudiuApprovalSuccess": "Kész! 🎉 A Vorsitzer felismert. Bejelentkezés…",
+  "claudiuApprovalDenied": "Hm, a Vorsitzer elutasította a kérésedet. 😔",
+  "claudiuApprovalDeniedHelp": "Ha úgy gondolod, ez tévedés, kérlek hívj minket, hogy tisztázzuk.",
+  "claudiuApprovalExpired": "Az 5 perc letelt, és a Vorsitzer nem válaszolt.",
+  "claudiuApprovalExpiredHelp": "Hívj minket és helyben jóváhagyhatjuk a kérésedet. 📞",
+  "claudiuApprovalCallUs": "Hívj minket",
+  "claudiuApprovalTryAgain": "Próbáld újra",
+  "claudiuApprovalCancel": "Mégse",
+  "claudiuApprovalClose": "Bezárás"
 }

@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Înțeles",
   "claudiuProblemReportSendFailed": "Nu am putut trimite raportul. Sună-ne pentru asistență urgentă.",
   "claudiuProblemReportAlt": "Sau, dacă e ceva urgent:",
-  "claudiuProblemReportCallLabel": "Sună-ne"
+  "claudiuProblemReportCallLabel": "Sună-ne",
+  "claudiuApprovalGreeting": "Bună, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Bună! 👋",
+  "claudiuApprovalGladToSeeYou": "Mă bucur că ai venit!",
+  "claudiuApprovalCheckingForSafety": "Pentru siguranța ta, un Vorsitzer verifică acum cererea ta de logare. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 Asta facem o dată la 30 de zile, ca să fim siguri că tu ești. E ca un check-up de securitate — durează maxim 5 minute.",
+  "claudiuApprovalSuccess": "Gata! 🎉 Vorsitzer-ul te-a recunoscut. Te conectez acum…",
+  "claudiuApprovalDenied": "Hm, Vorsitzer-ul a respins cererea ta. 😔",
+  "claudiuApprovalDeniedHelp": "Dacă crezi că e o greșeală, te rog sună-ne să clarificăm.",
+  "claudiuApprovalExpired": "Cele 5 minute au trecut și nu am primit răspuns de la Vorsitzer.",
+  "claudiuApprovalExpiredHelp": "Sună-ne și putem să-ți aprobăm direct cererea pe loc. 📞",
+  "claudiuApprovalCallUs": "Sună-ne",
+  "claudiuApprovalTryAgain": "Încearcă din nou",
+  "claudiuApprovalCancel": "Anulează",
+  "claudiuApprovalClose": "Închide"
 }

@@ -962,5 +962,26 @@
   "claudiuProblemReportSentClose": "Begrepen",
   "claudiuProblemReportSendFailed": "Kon het rapport niet versturen. Bel ons voor dringende hulp.",
   "claudiuProblemReportAlt": "Of, als het urgent is:",
-  "claudiuProblemReportCallLabel": "Bel ons"
+  "claudiuProblemReportCallLabel": "Bel ons",
+  "claudiuApprovalGreeting": "Hoi, {name}! 👋",
+  "@claudiuApprovalGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claudiuApprovalGreetingNoName": "Hoi! 👋",
+  "claudiuApprovalGladToSeeYou": "Fijn dat je er bent!",
+  "claudiuApprovalCheckingForSafety": "Voor jouw veiligheid controleert een Vorsitzer nu je inlogverzoek. 🛡️",
+  "claudiuApprovalMonthlyExplain": "💡 We doen dit elke 30 dagen om zeker te weten dat jij het bent. Het is als een veiligheidscheck — duurt maximaal 5 minuten.",
+  "claudiuApprovalSuccess": "Klaar! 🎉 De Vorsitzer heeft je herkend. Je wordt ingelogd…",
+  "claudiuApprovalDenied": "Hm, de Vorsitzer heeft je verzoek afgewezen. 😔",
+  "claudiuApprovalDeniedHelp": "Als je denkt dat dit een vergissing is, bel ons dan om het op te helderen.",
+  "claudiuApprovalExpired": "De 5 minuten zijn voorbij en we hebben niets van de Vorsitzer gehoord.",
+  "claudiuApprovalExpiredHelp": "Bel ons en we kunnen je verzoek direct goedkeuren. 📞",
+  "claudiuApprovalCallUs": "Bel ons",
+  "claudiuApprovalTryAgain": "Opnieuw proberen",
+  "claudiuApprovalCancel": "Annuleren",
+  "claudiuApprovalClose": "Sluiten"
 }
