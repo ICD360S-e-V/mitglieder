@@ -975,5 +975,12 @@
   "claudiuApprovalCallUs": "Skambinti",
   "claudiuApprovalTryAgain": "Bandyti vėl",
   "claudiuApprovalCancel": "Atšaukti",
-  "claudiuApprovalClose": "Uždaryti"
+  "claudiuApprovalClose": "Uždaryti",
+  "wizardIntroBubble1": "Sveikas, lankytojau! 👋 Ačiū, kad nori prisijungti prie mūsų šeimos.",
+  "wizardIntroBubble2": "Mano vardas Claudiu. 2025 m. pavasarį turėjau aiškią viziją: sukurti asociaciją, kuri padeda žmonėms, kuriems reikia pagalbos — savanoriškai, iš širdies, be nereikalingos biurokratijos. ❤️",
+  "wizardIntroBubble3": "Pradėjau kalbėtis su klientais, kuriuos lankydavau. Papasakojau jiems savo svajonę. Ir kiekvienas pasakė: „Taip, eime!\" 2025 m. liepą susitikome — 6 ryžtingi žmonės. Nusprendėme įkurti **ICD360S e.V.** Neu-Ulme. 📍",
+  "wizardIntroBubble4": "**2025 m. rugpjūčio 1 d.** asociacija oficialiai atgijo — Asociacijų registre. Pati gražiausia mano dovana. 🎂",
+  "wizardIntroBubble5": "Ką darome? Padedame pabėgėliams, neįgaliesiems, ekonomiškai pažeidžiamiems, **vaikams ir jaunimui** — administraciniais klausimais, vokiečių kalba, būstu, apsipirkimu, socialinėmis išmokomis. Mūsų Vorstand sudaro daugiausia neįgalūs žmonės — taip sprendimai kyla iš tikros gyvenimo patirties. 🤝",
+  "wizardIntroBubble6": "Dabar tavo eilė. Užregistruosime tave — tai užtruks apie 5 minutes. Eisime žingsnis po žingsnio, tavęs vieno nepaliksiu. ✨",
+  "wizardIntroStart": "Pradėkime"
 }

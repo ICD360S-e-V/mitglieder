@@ -975,5 +975,12 @@
   "claudiuApprovalCallUs": "Zavolat",
   "claudiuApprovalTryAgain": "Zkusit znovu",
   "claudiuApprovalCancel": "Zrušit",
-  "claudiuApprovalClose": "Zavřít"
+  "claudiuApprovalClose": "Zavřít",
+  "wizardIntroBubble1": "Ahoj, návštěvníku! 👋 Děkuji, že se chceš stát součástí naší rodiny.",
+  "wizardIntroBubble2": "Jmenuji se Claudiu. Na jaře 2025 jsem měl jasnou vizi: vytvořit spolek, který pomáhá lidem v nouzi — dobrovolně, ze srdce, bez zbytečné byrokracie. ❤️",
+  "wizardIntroBubble3": "Začal jsem mluvit s klienty, které jsem navštěvoval. Řekl jsem jim svůj sen. A každý řekl: „Ano, do toho!\" V červenci 2025 jsme se sešli — 6 odhodlaných lidí. Rozhodli jsme se založit **ICD360S e.V.** v Neu-Ulmu. 📍",
+  "wizardIntroBubble4": "**1. srpna 2025** spolek oficiálně ožil — ve spolkovém rejstříku. Můj nejkrásnější dárek. 🎂",
+  "wizardIntroBubble5": "Co děláme? Pomáháme uprchlíkům, lidem se zdravotním postižením, ekonomicky znevýhodněným, **dětem a mladým lidem** — s administrativními záležitostmi, němčinou, bydlením, nakupováním, sociálními dávkami. Náš Vorstand tvoří většinou lidé s postižením — rozhodnutí tak vycházejí z reálné zkušenosti. 🤝",
+  "wizardIntroBubble6": "Teď jsi na řadě ty. Pojďme tě zaregistrovat — trvá to asi 5 minut. Půjdeme krok za krokem, nenechám tě v tom samotného. ✨",
+  "wizardIntroStart": "Začněme"
 }

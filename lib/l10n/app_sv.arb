@@ -975,5 +975,12 @@
   "claudiuApprovalCallUs": "Ring oss",
   "claudiuApprovalTryAgain": "Försök igen",
   "claudiuApprovalCancel": "Avbryt",
-  "claudiuApprovalClose": "Stäng"
+  "claudiuApprovalClose": "Stäng",
+  "wizardIntroBubble1": "Hej, besökare! 👋 Tack för att du vill bli en del av vår familj.",
+  "wizardIntroBubble2": "Jag heter Claudiu. Våren 2025 hade jag en tydlig vision: att skapa en förening som hjälper människor i nöd — ideellt, från hjärtat, utan onödig byråkrati. ❤️",
+  "wizardIntroBubble3": "Jag började prata med klienterna jag besökte. Jag berättade min dröm för dem. Och alla sa: \"Ja, kör!\" I juli 2025 träffades vi sex — beslutsamma människor. Vi bestämde oss för att grunda **ICD360S e.V.** i Neu-Ulm. 📍",
+  "wizardIntroBubble4": "Den **1 augusti 2025** föddes föreningen officiellt — i föreningsregistret. Min vackraste gåva. 🎂",
+  "wizardIntroBubble5": "Vad gör vi? Vi hjälper flyktingar, personer med funktionsnedsättning, ekonomiskt utsatta, **barn och unga** — med administrativa frågor, tyska, bostad, inköp, sociala förmåner. Vår Vorstand består till största delen av personer med funktionsnedsättning — så besluten kommer från verklig livserfarenhet. 🤝",
+  "wizardIntroBubble6": "Nu är det din tur. Låt oss registrera dig — tar ungefär 5 minuter. Vi går steg för steg, jag lämnar dig inte ensam. ✨",
+  "wizardIntroStart": "Nu kör vi"
 }

@@ -975,5 +975,12 @@
   "claudiuApprovalCallUs": "Zadzwoń",
   "claudiuApprovalTryAgain": "Spróbuj ponownie",
   "claudiuApprovalCancel": "Anuluj",
-  "claudiuApprovalClose": "Zamknij"
+  "claudiuApprovalClose": "Zamknij",
+  "wizardIntroBubble1": "Cześć, gościu! 👋 Dziękuję, że chcesz dołączyć do naszej rodziny.",
+  "wizardIntroBubble2": "Nazywam się Claudiu. Wiosną 2025 roku miałem jasną wizję: stworzyć stowarzyszenie, które pomaga ludziom w potrzebie — wolontariacko, sercem, bez zbędnej biurokracji. ❤️",
+  "wizardIntroBubble3": "Zacząłem rozmawiać z klientami, których odwiedzałem. Opowiedziałem im swoje marzenie. I każdy powiedział: „Tak, działamy!\" W lipcu 2025 spotkaliśmy się — sześcioro zdecydowanych ludzi. Postanowiliśmy założyć **ICD360S e.V.** w Neu-Ulm. 📍",
+  "wizardIntroBubble4": "**1 sierpnia 2025** stowarzyszenie oficjalnie ożyło — w Rejestrze Stowarzyszeń. Mój najpiękniejszy prezent. 🎂",
+  "wizardIntroBubble5": "Co robimy? Pomagamy uchodźcom, osobom z niepełnosprawnościami, osobom w trudnej sytuacji ekonomicznej, **dzieciom i młodzieży** — w sprawach urzędowych, nauce niemieckiego, mieszkaniu, zakupach, świadczeniach socjalnych. Nasz Vorstand składa się głównie z osób z niepełnosprawnościami — dzięki temu decyzje wynikają z prawdziwego doświadczenia życiowego. 🤝",
+  "wizardIntroBubble6": "Teraz twoja kolej. Zapiszmy cię — trwa około 5 minut. Idziemy krok po kroku, nie zostawiam cię samego. ✨",
+  "wizardIntroStart": "Zaczynajmy"
 }

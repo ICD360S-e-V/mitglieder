@@ -975,5 +975,12 @@
   "claudiuApprovalCallUs": "Hívj minket",
   "claudiuApprovalTryAgain": "Próbáld újra",
   "claudiuApprovalCancel": "Mégse",
-  "claudiuApprovalClose": "Bezárás"
+  "claudiuApprovalClose": "Bezárás",
+  "wizardIntroBubble1": "Szia, látogató! 👋 Köszönöm, hogy csatlakozni szeretnél a családunkhoz.",
+  "wizardIntroBubble2": "A nevem Claudiu. 2025 tavaszán világos vízióm volt: létrehozni egy egyesületet, amely segít a rászorulóknak — önkéntesen, szívből, felesleges bürokrácia nélkül. ❤️",
+  "wizardIntroBubble3": "Elkezdtem beszélni az ügyfelekkel, akiket meglátogattam. Elmondtam nekik az álmomat. És mindenki azt mondta: „Igen, csináljuk!\" 2025 júliusában találkoztunk — hat elszánt ember. Úgy döntöttünk, megalapítjuk az **ICD360S e.V.**-t Neu-Ulmban. 📍",
+  "wizardIntroBubble4": "**2025. augusztus 1-jén** az egyesület hivatalosan életre kelt — az Egyesületi Nyilvántartásban. A legszebb ajándékom. 🎂",
+  "wizardIntroBubble5": "Mit csinálunk? Segítünk menekülteknek, fogyatékossággal élőknek, gazdaságilag hátrányos helyzetűeknek, **gyermekeknek és fiataloknak** — adminisztrációs ügyekben, német nyelvtanulásban, lakhatásban, bevásárlásban, szociális ellátásokban. Vorstandunkban többségben vannak fogyatékossággal élő emberek — így a döntések valódi élettapasztalatból születnek. 🤝",
+  "wizardIntroBubble6": "Most te jössz. Iratkozzunk fel — körülbelül 5 percig tart. Lépésről lépésre megyünk, nem hagylak magadra. ✨",
+  "wizardIntroStart": "Kezdjük"
 }

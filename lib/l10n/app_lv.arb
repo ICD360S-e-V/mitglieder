@@ -975,5 +975,12 @@
   "claudiuApprovalCallUs": "Zvanīt",
   "claudiuApprovalTryAgain": "Mēģināt vēlreiz",
   "claudiuApprovalCancel": "Atcelt",
-  "claudiuApprovalClose": "Aizvērt"
+  "claudiuApprovalClose": "Aizvērt",
+  "wizardIntroBubble1": "Sveiks, apmeklētāj! 👋 Paldies, ka vēlies pievienoties mūsu ģimenei.",
+  "wizardIntroBubble2": "Mani sauc Klaudio. 2025. gada pavasarī man bija skaidra vīzija: izveidot biedrību, kas palīdz cilvēkiem nelaimē — brīvprātīgi, no sirds, bez liekas birokrātijas. ❤️",
+  "wizardIntroBubble3": "Sāku runāt ar klientiem, kurus apmeklēju. Pastāstīju viņiem savu sapni. Un katrs teica: \"Jā, ejam!\" 2025. gada jūlijā mēs sešatā satikāmies — apņēmīgi cilvēki. Nolēmām dibināt **ICD360S e.V.** Neu-Ulmā. 📍",
+  "wizardIntroBubble4": "**2025. gada 1. augustā** biedrība oficiāli atdzima — Biedrību reģistrā. Mana visskaistākā dāvana. 🎂",
+  "wizardIntroBubble5": "Ko mēs darām? Palīdzam bēgļiem, cilvēkiem ar invaliditāti, ekonomiski neaizsargātajiem, **bērniem un jauniešiem** — administratīvajos jautājumos, vācu valodā, mājoklī, iepirkumos, sociālajos pabalstos. Mūsu Vorstand veido galvenokārt cilvēki ar invaliditāti — tā lēmumi nāk no reālas dzīves pieredzes. 🤝",
+  "wizardIntroBubble6": "Tagad ir tava kārta. Reģistrēsim tevi — aizņem apmēram 5 minūtes. Iesim soli pa solim, neatstāšu tevi vienu. ✨",
+  "wizardIntroStart": "Sāksim"
 }

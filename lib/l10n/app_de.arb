@@ -996,5 +996,12 @@
   "claudiuApprovalCallUs": "Ruf uns an",
   "claudiuApprovalTryAgain": "Erneut versuchen",
   "claudiuApprovalCancel": "Abbrechen",
-  "claudiuApprovalClose": "Schließen"
+  "claudiuApprovalClose": "Schließen",
+  "wizardIntroBubble1": "Hallo, Besucher! 👋 Danke, dass du Teil unserer Familie werden möchtest.",
+  "wizardIntroBubble2": "Ich heiße Claudiu. Im Frühjahr 2025 hatte ich eine klare Vision: einen Verein zu gründen, der Menschen in Not hilft — ehrenamtlich, von Herzen, ohne unnötige Bürokratie. ❤️",
+  "wizardIntroBubble3": "Ich fing an, mit den Klienten zu sprechen, die ich besuchte. Ich erzählte ihnen meinen Traum. Und jeder sagte: „Ja, los!\" Im Juli 2025 trafen wir uns — 6 entschlossene Menschen. Wir beschlossen, **ICD360S e.V.** in Neu-Ulm zu gründen. 📍",
+  "wizardIntroBubble4": "Am **1. August 2025** wurde der Verein offiziell ins Vereinsregister eingetragen — mein schönstes Geschenk. 🎂",
+  "wizardIntroBubble5": "Was machen wir? Wir helfen Geflüchteten, Menschen mit Behinderung, wirtschaftlich Benachteiligten, **Kindern und Jugendlichen** — bei Behördengängen, Deutsch lernen, Wohnungssuche, Einkäufen, Sozialleistungen. Unser Vorstand besteht mehrheitlich aus Menschen mit Behinderung — so kommen die Entscheidungen aus echter Lebenserfahrung. 🤝",
+  "wizardIntroBubble6": "Jetzt bist du dran. Lass uns dich anmelden — dauert ca. 5 Minuten. Wir gehen Schritt für Schritt, ich lasse dich nicht allein. ✨",
+  "wizardIntroStart": "Lass uns anfangen"
 }

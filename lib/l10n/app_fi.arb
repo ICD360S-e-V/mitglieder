@@ -975,5 +975,12 @@
   "claudiuApprovalCallUs": "Soita meille",
   "claudiuApprovalTryAgain": "Yritä uudelleen",
   "claudiuApprovalCancel": "Peruuta",
-  "claudiuApprovalClose": "Sulje"
+  "claudiuApprovalClose": "Sulje",
+  "wizardIntroBubble1": "Hei, vieras! 👋 Kiitos, että haluat liittyä perheeseemme.",
+  "wizardIntroBubble2": "Nimeni on Claudiu. Keväällä 2025 minulla oli selkeä visio: perustaa yhdistys, joka auttaa hädässä olevia ihmisiä — vapaaehtoisesti, sydämestä, ilman turhaa byrokratiaa. ❤️",
+  "wizardIntroBubble3": "Aloin puhua asiakkaiden kanssa, joita kävin tapaamassa. Kerroin heille unelmani. Ja jokainen sanoi: \"Kyllä, mennään!\" Heinäkuussa 2025 me kuusi tapasimme — päättäväiset ihmiset. Päätimme perustaa **ICD360S e.V.** Neu-Ulmiin. 📍",
+  "wizardIntroBubble4": "**1. elokuuta 2025** yhdistys heräsi virallisesti eloon — yhdistysrekisterissä. Kaunein lahjani. 🎂",
+  "wizardIntroBubble5": "Mitä teemme? Autamme pakolaisia, vammaisia, taloudellisesti heikossa asemassa olevia, **lapsia ja nuoria** — virastoasioissa, saksan oppimisessa, asumisessa, ostoksilla, sosiaalietuuksissa. Vorstandimme koostuu pääosin vammaisista — näin päätökset perustuvat aitoon elämänkokemukseen. 🤝",
+  "wizardIntroBubble6": "Nyt on sinun vuorosi. Rekisteröidään sinut — kestää noin 5 minuuttia. Etenemme askel kerrallaan, en jätä sinua yksin. ✨",
+  "wizardIntroStart": "Aloitetaan"
 }

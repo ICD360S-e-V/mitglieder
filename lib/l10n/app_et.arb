@@ -975,5 +975,12 @@
   "claudiuApprovalCallUs": "Helista",
   "claudiuApprovalTryAgain": "Proovi uuesti",
   "claudiuApprovalCancel": "Tühista",
-  "claudiuApprovalClose": "Sulge"
+  "claudiuApprovalClose": "Sulge",
+  "wizardIntroBubble1": "Tere, külaline! 👋 Aitäh, et soovid liituda meie perega.",
+  "wizardIntroBubble2": "Mu nimi on Claudiu. 2025. aasta kevadel oli mul selge nägemus: luua ühing, mis aitab abivajajaid — vabatahtlikult, südamest, ilma asjatu bürokraatiata. ❤️",
+  "wizardIntroBubble3": "Hakkasin rääkima klientidega, keda külastasin. Jutustasin neile oma unistuse. Ja igaüks ütles: „Jah, lähme!\" 2025. aasta juulis kohtusime — 6 otsustavat inimest. Otsustasime asutada **ICD360S e.V.** Neu-Ulmis. 📍",
+  "wizardIntroBubble4": "**1. augustil 2025** sai ühing ametlikult elu — Ühingute registris. Minu kõige ilusam kingitus. 🎂",
+  "wizardIntroBubble5": "Mida me teeme? Aitame pagulasi, puuetega inimesi, majanduslikult haavatavaid, **lapsi ja noori** — administratiivküsimuste, saksa keele, eluaseme, ostlemise ja sotsiaaltoetustega. Meie Vorstand koosneb peamiselt puuetega inimestest — nii tulevad otsused tegelikust elukogemusest. 🤝",
+  "wizardIntroBubble6": "Nüüd on sinu kord. Registreerime sind — võtab umbes 5 minutit. Liigume samm-sammult, ma ei jäta sind üksi. ✨",
+  "wizardIntroStart": "Alustame"
 }

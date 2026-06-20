@@ -996,5 +996,12 @@
   "claudiuApprovalCallUs": "Bizi ara",
   "claudiuApprovalTryAgain": "Tekrar dene",
   "claudiuApprovalCancel": "İptal",
-  "claudiuApprovalClose": "Kapat"
+  "claudiuApprovalClose": "Kapat",
+  "wizardIntroBubble1": "Merhaba, ziyaretçi! 👋 Ailemize katılmak istediğin için teşekkürler.",
+  "wizardIntroBubble2": "Adım Claudiu. 2025 baharında net bir vizyonum vardı: ihtiyacı olan insanlara yardım eden bir dernek kurmak — gönüllü olarak, kalpten, gereksiz bürokrasi olmadan. ❤️",
+  "wizardIntroBubble3": "Ziyaret ettiğim danışanlarla konuşmaya başladım. Onlara hayalimi anlattım. Ve her biri \"Evet, hadi!\" dedi. Temmuz 2025'te 6 kararlı insan olarak buluştuk. Neu-Ulm'da **ICD360S e.V.**'yi kurmaya karar verdik. 📍",
+  "wizardIntroBubble4": "**1 Ağustos 2025**'te dernek resmen hayata geldi — Dernekler Sicili'nde. En güzel hediyem. 🎂",
+  "wizardIntroBubble5": "Ne yapıyoruz? Mültecilere, engellilere, ekonomik olarak dezavantajlı kişilere, **çocuklara ve gençlere** yardım ediyoruz — idari işlemlerde, Almanca öğrenmede, konut bulmada, alışverişte, sosyal yardımlarda. Vorstand'ımızın büyük çoğunluğu engelli kişilerden oluşuyor — böylece kararlar gerçek yaşam deneyiminden geliyor. 🤝",
+  "wizardIntroBubble6": "Şimdi sıra sende. Seni kaydedelim — yaklaşık 5 dakika sürer. Adım adım gideceğiz, seni yalnız bırakmayacağım. ✨",
+  "wizardIntroStart": "Hadi başlayalım"
 }
