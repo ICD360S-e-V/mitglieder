@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.37.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.36.0...v1.37.0) (2026-06-21)
+
+
+### Features
+
+* **wizard:** Stufe 3 — Finanzielle Situation (+ conditional upload) ([34eac58](https://github.com/ICD360S-e-V/mitglieder/commit/34eac58c6c9188647febf9d9c6f427b74dc22a82))
+
 ## [1.36.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.35.0...v1.36.0) (2026-06-21)
 
 
