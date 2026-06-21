@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.40.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.39.0...v1.40.0) (2026-06-21)
+
+
+### Features
+
+* **wizard:** Stufe 6/7/8 — document acceptance with scroll-to-bottom ([0ae1323](https://github.com/ICD360S-e-V/mitglieder/commit/0ae1323988043f71eb6fa9c1f7cdcb35ebf1a502))
+
 ## [1.39.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.38.0...v1.39.0) (2026-06-21)
 
 
