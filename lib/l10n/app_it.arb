@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Socio sostenitore (Fördermitglied)",
   "wizardStufe2FoerderBody": "Sostieni l'associazione economicamente ma non partecipi attivamente alle decisioni. Senza diritto di voto. Buona scelta se vuoi aiutare da lontano.",
   "wizardStufe2EhrenTitle": "Socio onorario (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Conferito dal Vorstand per meriti speciali. Non lo scegli tu — viene assegnato come riconoscimento. Seleziona solo se sei già stato onorato."
+  "wizardStufe2EhrenBody": "Conferito dal Vorstand per meriti speciali. Non lo scegli tu — viene assegnato come riconoscimento. Seleziona solo se sei già stato onorato.",
+  "wizardStufe3Title": "Situazione finanziaria",
+  "wizardStufe3Prompt": "Ora la tua situazione finanziaria. Non per giudicarti — solo per esonerarti dalla quota se ricevi sussidi sociali.",
+  "wizardStufe3OptionBuergergeld": "Ricevo Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Ricevo aiuti dal Sozialamt",
+  "wizardStufe3OptionNein": "Non ricevo nessuna di queste",
+  "wizardStufe3FeeExemptTitle": "Quota: 0 € / mese 🎉",
+  "wizardStufe3FeeExemptBody": "Con Bürgergeld o Sozialamt sei completamente esonerato dalla quota secondo il nostro Satzung. Ci serve solo una prova.",
+  "wizardStufe3UploadTitle": "Carica Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, massimo 10 MB.",
+  "wizardStufe3UploadDone": "File caricato ✓",
+  "wizardStufe3UploadReplace": "Sostituisci file",
+  "wizardStufe3UploadRequired": "Per favore carica il Leistungsbescheid prima di continuare.",
+  "wizardStufe3FileTooLarge": "File troppo grande. Massimo 10 MB.",
+  "wizardStufe3UploadFailed": "Impossibile caricare il file. Riprova.",
+  "wizardStufe3RegularFeeTitle": "Quota: 25 € / mese",
+  "wizardStufe3RegularFeeBody": "La quota standard per i soci ordinari secondo il Satzung."
 }

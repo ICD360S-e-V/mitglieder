@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Podporujúci člen (Fördermitglied)",
   "wizardStufe2FoerderBody": "Podporuješ združenie finančne, ale aktívne sa nezúčastňuješ rozhodovania. Bez hlasovacieho práva. Dobré, ak chceš pomáhať na diaľku.",
   "wizardStufe2EhrenTitle": "Čestný člen (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Udeľuje predstavenstvo za zvláštne zásluhy. Nevyberáš si ho sám — udeľuje sa ako uznanie. Zvoľ len ak ti už táto pocta bola udelená."
+  "wizardStufe2EhrenBody": "Udeľuje predstavenstvo za zvláštne zásluhy. Nevyberáš si ho sám — udeľuje sa ako uznanie. Zvoľ len ak ti už táto pocta bola udelená.",
+  "wizardStufe3Title": "Finančná situácia",
+  "wizardStufe3Prompt": "Teraz k tvojej finančnej situácii. Nie aby som súdil — ale aby sme ťa oslobodili od príspevku, ak poberáš sociálne dávky.",
+  "wizardStufe3OptionBuergergeld": "Poberám Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Dostávam dávky od Sozialamtu",
+  "wizardStufe3OptionNein": "Nepoberám žiadne z týchto",
+  "wizardStufe3FeeExemptTitle": "Príspevok: 0 € / mesiac 🎉",
+  "wizardStufe3FeeExemptBody": "S Bürgergeld alebo Sozialamtom si podľa stanov úplne oslobodený od príspevku. Potrebujeme len doklad.",
+  "wizardStufe3UploadTitle": "Nahrať Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
+  "wizardStufe3UploadDone": "Súbor nahraný ✓",
+  "wizardStufe3UploadReplace": "Nahradiť súbor",
+  "wizardStufe3UploadRequired": "Prosím, pred pokračovaním nahraj Leistungsbescheid.",
+  "wizardStufe3FileTooLarge": "Súbor je príliš veľký. Maximálne 10 MB.",
+  "wizardStufe3UploadFailed": "Súbor sa nepodarilo nahrať. Skús to znova.",
+  "wizardStufe3RegularFeeTitle": "Príspevok: 25 € / mesiac",
+  "wizardStufe3RegularFeeBody": "Štandardný príspevok pre riadnych členov podľa stanov."
 }

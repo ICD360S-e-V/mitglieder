@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Kannattajajäsen (Fördermitglied)",
   "wizardStufe2FoerderBody": "Tuet yhdistystä taloudellisesti mutta et osallistu aktiivisesti päätöksiin. Ei äänioikeutta. Sopii jos haluat auttaa etäältä.",
   "wizardStufe2EhrenTitle": "Kunniajäsen (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Hallitus myöntää erityisistä ansioista. Et valitse sitä itse — se myönnetään tunnustuksena. Valitse vain jos sinut on jo kunnioitettu."
+  "wizardStufe2EhrenBody": "Hallitus myöntää erityisistä ansioista. Et valitse sitä itse — se myönnetään tunnustuksena. Valitse vain jos sinut on jo kunnioitettu.",
+  "wizardStufe3Title": "Taloudellinen tilanne",
+  "wizardStufe3Prompt": "Nyt taloudellisesta tilanteestasi. En tuomitse — vaan voidaksemme vapauttaa sinut maksusta jos saat sosiaaliturvaa.",
+  "wizardStufe3OptionBuergergeld": "Saan Bürgergeldiä",
+  "wizardStufe3OptionSozialamt": "Saan Sozialamt-tukia",
+  "wizardStufe3OptionNein": "En saa kumpaakaan",
+  "wizardStufe3FeeExemptTitle": "Maksu: 0 € / kk 🎉",
+  "wizardStufe3FeeExemptBody": "Bürgergeldillä tai Sozialamtilla olet sääntöjemme mukaan kokonaan maksuvapaa. Tarvitsemme vain todisteen.",
+  "wizardStufe3UploadTitle": "Lataa Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, enintään 10 MB.",
+  "wizardStufe3UploadDone": "Tiedosto ladattu ✓",
+  "wizardStufe3UploadReplace": "Korvaa tiedosto",
+  "wizardStufe3UploadRequired": "Lataa Leistungsbescheid ennen jatkamista.",
+  "wizardStufe3FileTooLarge": "Tiedosto on liian suuri. Enintään 10 MB.",
+  "wizardStufe3UploadFailed": "Tiedoston lataus epäonnistui. Yritä uudelleen.",
+  "wizardStufe3RegularFeeTitle": "Maksu: 25 € / kk",
+  "wizardStufe3RegularFeeBody": "Sääntöjen mukainen vakiojäsenmaksu varsinaisille jäsenille."
 }

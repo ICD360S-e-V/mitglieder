@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Toetajaliige (Fördermitglied)",
   "wizardStufe2FoerderBody": "Toetad ühingut rahaliselt, kuid ei osale aktiivselt otsustes. Hääleõiguseta. Hea kui soovid aidata kaugelt.",
   "wizardStufe2EhrenTitle": "Auliige (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Annab juhatus erilise teenistuse eest. Sa ei vali seda ise — antakse tunnustusena. Vali ainult, kui sind on juba pärjatud."
+  "wizardStufe2EhrenBody": "Annab juhatus erilise teenistuse eest. Sa ei vali seda ise — antakse tunnustusena. Vali ainult, kui sind on juba pärjatud.",
+  "wizardStufe3Title": "Rahaline olukord",
+  "wizardStufe3Prompt": "Nüüd sinu rahalisest olukorrast. Mitte selleks, et hinnata — vaid et vabastada sind liikmemaksust, kui saad sotsiaaltoetusi.",
+  "wizardStufe3OptionBuergergeld": "Saan Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Saan Sozialamt-toetusi",
+  "wizardStufe3OptionNein": "Ei saa kumbagi neist",
+  "wizardStufe3FeeExemptTitle": "Liikmemaks: 0 € / kuu 🎉",
+  "wizardStufe3FeeExemptBody": "Bürgergeld või Sozialamt korral oled meie põhikirja järgi liikmemaksust täielikult vabastatud. Vajame ainult tõendit.",
+  "wizardStufe3UploadTitle": "Lae üles Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, kuni 10 MB.",
+  "wizardStufe3UploadDone": "Fail üles laaditud ✓",
+  "wizardStufe3UploadReplace": "Asenda fail",
+  "wizardStufe3UploadRequired": "Palun lae Leistungsbescheid üles enne jätkamist.",
+  "wizardStufe3FileTooLarge": "Fail on liiga suur. Maksimaalselt 10 MB.",
+  "wizardStufe3UploadFailed": "Faili üleslaadimine ebaõnnestus. Proovi uuesti.",
+  "wizardStufe3RegularFeeTitle": "Liikmemaks: 25 € / kuu",
+  "wizardStufe3RegularFeeBody": "Põhikirja kohane standardne liikmemaks tavaliikmetele."
 }

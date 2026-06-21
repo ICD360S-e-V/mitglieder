@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Podporni član (Fördermitglied)",
   "wizardStufe2FoerderBody": "Društvo podpiraš finančno, a ne sodeluješ aktivno pri odločitvah. Brez glasovalne pravice. Dobro, če želiš pomagati od daleč.",
   "wizardStufe2EhrenTitle": "Častni član (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Podeli uprava za posebne zasluge. Ne izbereš ga sam — podeljen je kot priznanje. Izberi le, če si že bil počaščen."
+  "wizardStufe2EhrenBody": "Podeli uprava za posebne zasluge. Ne izbereš ga sam — podeljen je kot priznanje. Izberi le, če si že bil počaščen.",
+  "wizardStufe3Title": "Finančni položaj",
+  "wizardStufe3Prompt": "Zdaj o tvojem finančnem položaju. Ne da bi te sodil — le da te oprostimo članarine, če prejemaš socialne prejemke.",
+  "wizardStufe3OptionBuergergeld": "Prejemam Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Prejemam pomoč od Sozialamta",
+  "wizardStufe3OptionNein": "Ne prejemam nobenega",
+  "wizardStufe3FeeExemptTitle": "Članarina: 0 € / mesec 🎉",
+  "wizardStufe3FeeExemptBody": "Z Bürgergeld ali Sozialamt si po statutu popolnoma oproščen članarine. Potrebujemo le dokazilo.",
+  "wizardStufe3UploadTitle": "Naloži Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, največ 10 MB.",
+  "wizardStufe3UploadDone": "Datoteka naložena ✓",
+  "wizardStufe3UploadReplace": "Zamenjaj datoteko",
+  "wizardStufe3UploadRequired": "Prosim naloži Leistungsbescheid, preden nadaljuješ.",
+  "wizardStufe3FileTooLarge": "Datoteka je prevelika. Največ 10 MB.",
+  "wizardStufe3UploadFailed": "Datoteke ni bilo mogoče naložiti. Poskusi znova.",
+  "wizardStufe3RegularFeeTitle": "Članarina: 25 € / mesec",
+  "wizardStufe3RegularFeeBody": "Standardna članarina za redne člane po statutu."
 }

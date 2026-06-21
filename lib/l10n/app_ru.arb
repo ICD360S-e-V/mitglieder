@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Поддерживающий член (Fördermitglied)",
   "wizardStufe2FoerderBody": "Поддерживаешь ассоциацию финансово, но не участвуешь активно в решениях. Без права голоса. Подходит, если хочешь помогать на расстоянии.",
   "wizardStufe2EhrenTitle": "Почётный член (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Присуждается Vorstand за особые заслуги. Ты не выбираешь его сам — он даётся как признание. Выбери только если уже был удостоен."
+  "wizardStufe2EhrenBody": "Присуждается Vorstand за особые заслуги. Ты не выбираешь его сам — он даётся как признание. Выбери только если уже был удостоен.",
+  "wizardStufe3Title": "Финансовое положение",
+  "wizardStufe3Prompt": "Теперь о твоей финансовой ситуации. Не для того, чтобы судить — а чтобы освободить от взноса, если получаешь социальные выплаты.",
+  "wizardStufe3OptionBuergergeld": "Получаю Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Получаю пособие от Sozialamt",
+  "wizardStufe3OptionNein": "Не получаю ни одно из этих",
+  "wizardStufe3FeeExemptTitle": "Взнос: 0 € / месяц 🎉",
+  "wizardStufe3FeeExemptBody": "С Bürgergeld или Sozialamt ты полностью освобожден от взноса согласно уставу. Нужно только подтверждение.",
+  "wizardStufe3UploadTitle": "Загрузить Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, максимум 10 МБ.",
+  "wizardStufe3UploadDone": "Файл загружен ✓",
+  "wizardStufe3UploadReplace": "Заменить файл",
+  "wizardStufe3UploadRequired": "Загрузи Leistungsbescheid прежде чем продолжишь.",
+  "wizardStufe3FileTooLarge": "Файл слишком большой. Максимум 10 МБ.",
+  "wizardStufe3UploadFailed": "Не удалось загрузить файл. Попробуй ещё раз.",
+  "wizardStufe3RegularFeeTitle": "Взнос: 25 € / месяц",
+  "wizardStufe3RegularFeeBody": "Стандартный взнос для действительных членов согласно уставу."
 }

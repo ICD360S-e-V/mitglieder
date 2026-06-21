@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Podupirući član (Fördermitglied)",
   "wizardStufe2FoerderBody": "Podržavaš udrugu financijski, ali ne sudjeluješ aktivno u odlukama. Bez prava glasa. Dobro ako želiš pomagati izdaleka.",
   "wizardStufe2EhrenTitle": "Počasni član (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Dodjeljuje uprava za posebne zasluge. Ne biraš ga sam — dodjeljuje se kao priznanje. Odaberi samo ako si već počašćen."
+  "wizardStufe2EhrenBody": "Dodjeljuje uprava za posebne zasluge. Ne biraš ga sam — dodjeljuje se kao priznanje. Odaberi samo ako si već počašćen.",
+  "wizardStufe3Title": "Financijska situacija",
+  "wizardStufe3Prompt": "Sada o tvojoj financijskoj situaciji. Ne da te osuđujem — već da te oslobodimo članarine ako primaš socijalne naknade.",
+  "wizardStufe3OptionBuergergeld": "Primam Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Primam pomoć od Sozialamta",
+  "wizardStufe3OptionNein": "Ne primam ništa od navedenog",
+  "wizardStufe3FeeExemptTitle": "Članarina: 0 € / mjesec 🎉",
+  "wizardStufe3FeeExemptBody": "S Bürgergeldom ili Sozialamtom potpuno si oslobođen članarine prema statutu. Trebamo samo dokaz.",
+  "wizardStufe3UploadTitle": "Učitaj Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, najviše 10 MB.",
+  "wizardStufe3UploadDone": "Datoteka učitana ✓",
+  "wizardStufe3UploadReplace": "Zamijeni datoteku",
+  "wizardStufe3UploadRequired": "Molim učitaj Leistungsbescheid prije nego nastaviš.",
+  "wizardStufe3FileTooLarge": "Datoteka je prevelika. Najviše 10 MB.",
+  "wizardStufe3UploadFailed": "Datoteku nije bilo moguće učitati. Pokušaj ponovno.",
+  "wizardStufe3RegularFeeTitle": "Članarina: 25 € / mjesec",
+  "wizardStufe3RegularFeeBody": "Standardna članarina za redovne članove prema statutu."
 }

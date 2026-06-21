@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Steunend lid (Fördermitglied)",
   "wizardStufe2FoerderBody": "Je steunt de vereniging financieel maar neemt geen actief deel aan beslissingen. Geen stemrecht. Goed als je van afstand wilt helpen.",
   "wizardStufe2EhrenTitle": "Erelid (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Wordt door het bestuur toegekend voor bijzondere verdiensten. Je kiest het niet zelf — het wordt verleend als erkenning. Kies alleen als je al geëerd bent."
+  "wizardStufe2EhrenBody": "Wordt door het bestuur toegekend voor bijzondere verdiensten. Je kiest het niet zelf — het wordt verleend als erkenning. Kies alleen als je al geëerd bent.",
+  "wizardStufe3Title": "Financiële situatie",
+  "wizardStufe3Prompt": "Nu over je financiële situatie. Niet om te oordelen — alleen om je vrij te stellen van contributie als je sociale uitkeringen ontvangt.",
+  "wizardStufe3OptionBuergergeld": "Ik ontvang Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Ik ontvang uitkeringen van Sozialamt",
+  "wizardStufe3OptionNein": "Ik ontvang geen van deze",
+  "wizardStufe3FeeExemptTitle": "Contributie: € 0 / maand 🎉",
+  "wizardStufe3FeeExemptBody": "Met Bürgergeld of Sozialamt ben je volledig vrijgesteld van contributie volgens onze statuten. We hebben alleen een bewijs nodig.",
+  "wizardStufe3UploadTitle": "Leistungsbescheid uploaden",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
+  "wizardStufe3UploadDone": "Bestand geüpload ✓",
+  "wizardStufe3UploadReplace": "Bestand vervangen",
+  "wizardStufe3UploadRequired": "Upload de Leistungsbescheid voordat je verder gaat.",
+  "wizardStufe3FileTooLarge": "Bestand te groot. Maximaal 10 MB.",
+  "wizardStufe3UploadFailed": "Bestand uploaden mislukt. Probeer opnieuw.",
+  "wizardStufe3RegularFeeTitle": "Contributie: € 25 / maand",
+  "wizardStufe3RegularFeeBody": "De standaardcontributie voor gewone leden volgens onze statuten."
 }

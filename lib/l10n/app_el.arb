@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Υποστηρικτής (Fördermitglied)",
   "wizardStufe2FoerderBody": "Στηρίζεις τον σύλλογο οικονομικά αλλά δεν συμμετέχεις ενεργά στις αποφάσεις. Χωρίς δικαίωμα ψήφου. Καλό αν θες να βοηθήσεις από μακριά.",
   "wizardStufe2EhrenTitle": "Επίτιμο μέλος (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Απονέμεται από το Διοικητικό Συμβούλιο για ιδιαίτερες υπηρεσίες. Δεν το επιλέγεις μόνος — δίνεται ως αναγνώριση. Επίλεξε μόνο αν έχεις ήδη τιμηθεί."
+  "wizardStufe2EhrenBody": "Απονέμεται από το Διοικητικό Συμβούλιο για ιδιαίτερες υπηρεσίες. Δεν το επιλέγεις μόνος — δίνεται ως αναγνώριση. Επίλεξε μόνο αν έχεις ήδη τιμηθεί.",
+  "wizardStufe3Title": "Οικονομική κατάσταση",
+  "wizardStufe3Prompt": "Τώρα για την οικονομική σου κατάσταση. Όχι για να κρίνω — απλά για να σε απαλλάξουμε από τη συνδρομή αν λαμβάνεις κοινωνικά επιδόματα.",
+  "wizardStufe3OptionBuergergeld": "Λαμβάνω Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Λαμβάνω παροχές από το Sozialamt",
+  "wizardStufe3OptionNein": "Δεν λαμβάνω κανένα από αυτά",
+  "wizardStufe3FeeExemptTitle": "Συνδρομή: 0 € / μήνα 🎉",
+  "wizardStufe3FeeExemptBody": "Με Bürgergeld ή Sozialamt απαλλάσσεσαι πλήρως από τη συνδρομή σύμφωνα με το καταστατικό μας. Χρειαζόμαστε μόνο απόδειξη.",
+  "wizardStufe3UploadTitle": "Μεταφόρτωση Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, μέγ. 10 MB.",
+  "wizardStufe3UploadDone": "Το αρχείο μεταφορτώθηκε ✓",
+  "wizardStufe3UploadReplace": "Αντικατάσταση αρχείου",
+  "wizardStufe3UploadRequired": "Παρακαλώ μεταφόρτωσε το Leistungsbescheid πριν συνεχίσεις.",
+  "wizardStufe3FileTooLarge": "Το αρχείο είναι πολύ μεγάλο. Μέγιστο 10 MB.",
+  "wizardStufe3UploadFailed": "Δεν ήταν δυνατή η μεταφόρτωση. Δοκίμασε ξανά.",
+  "wizardStufe3RegularFeeTitle": "Συνδρομή: 25 € / μήνα",
+  "wizardStufe3RegularFeeBody": "Η τυπική συνδρομή για τακτικά μέλη βάσει του καταστατικού."
 }

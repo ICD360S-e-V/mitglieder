@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Membru susținător (Fördermitglied)",
   "wizardStufe2FoerderBody": "Sprijini asociația financiar, dar nu participi activ la decizii. Fără drept de vot. Bun dacă vrei să ajuți de la distanță.",
   "wizardStufe2EhrenTitle": "Membru de onoare (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Statut acordat de Vorstand pentru merite deosebite. Nu îl alegi singur — îl primești ca recunoaștere. Selectează doar dacă ai fost deja onorat."
+  "wizardStufe2EhrenBody": "Statut acordat de Vorstand pentru merite deosebite. Nu îl alegi singur — îl primești ca recunoaștere. Selectează doar dacă ai fost deja onorat.",
+  "wizardStufe3Title": "Situație financiară",
+  "wizardStufe3Prompt": "Acum despre situația ta financiară. Nu e ca să te judec — e ca să te scutim de cotizație dacă primești ajutor social.",
+  "wizardStufe3OptionBuergergeld": "Primesc Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Primesc ajutor de la Sozialamt",
+  "wizardStufe3OptionNein": "Nu primesc niciuna din acestea",
+  "wizardStufe3FeeExemptTitle": "Cotizație: 0 € / lună 🎉",
+  "wizardStufe3FeeExemptBody": "Cu Bürgergeld sau Sozialamt ești scutit complet de cotizație, conform Satzung-ului. Doar avem nevoie de o dovadă.",
+  "wizardStufe3UploadTitle": "Încarcă Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, maxim 10 MB.",
+  "wizardStufe3UploadDone": "Fișier încărcat ✓",
+  "wizardStufe3UploadReplace": "Înlocuiește fișierul",
+  "wizardStufe3UploadRequired": "Te rog încarcă Leistungsbescheid înainte să mergi mai departe.",
+  "wizardStufe3FileTooLarge": "Fișierul e prea mare. Maxim 10 MB.",
+  "wizardStufe3UploadFailed": "Nu am putut încărca fișierul. Încearcă din nou.",
+  "wizardStufe3RegularFeeTitle": "Cotizație: 25 € / lună",
+  "wizardStufe3RegularFeeBody": "Cotizația standard pentru membri ordinari, conform Satzung-ului."
 }

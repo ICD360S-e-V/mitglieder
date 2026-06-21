@@ -1120,5 +1120,21 @@
   "wizardStufe2FoerderTitle": "عضو داعم (Fördermitglied)",
   "wizardStufe2FoerderBody": "تدعم الجمعية ماليًا لكن لا تشارك بنشاط في القرارات. لا حق تصويت. مناسب إذا أردت المساعدة عن بُعد.",
   "wizardStufe2EhrenTitle": "عضو فخري (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "يُمنح من قبل مجلس الإدارة لمزايا خاصة. لا تختاره بنفسك — يُمنح كاعتراف. اختر فقط إذا تم تكريمك بالفعل."
+  "wizardStufe2EhrenBody": "يُمنح من قبل مجلس الإدارة لمزايا خاصة. لا تختاره بنفسك — يُمنح كاعتراف. اختر فقط إذا تم تكريمك بالفعل.",
+  "wizardStufe3Title": "الوضع المالي",
+  "wizardStufe3Prompt": "الآن عن وضعك المالي. ليس للحكم عليك — بل لإعفائك من الاشتراك إذا كنت تتلقى مساعدات اجتماعية.",
+  "wizardStufe3OptionBuergergeld": "أتلقى Bürgergeld",
+  "wizardStufe3OptionSozialamt": "أتلقى مساعدات من Sozialamt",
+  "wizardStufe3OptionNein": "لا أتلقى أيًا منها",
+  "wizardStufe3FeeExemptTitle": "الاشتراك: 0 € / شهر 🎉",
+  "wizardStufe3FeeExemptBody": "مع Bürgergeld أو Sozialamt أنت معفى من الاشتراك بالكامل وفقًا للنظام الأساسي. نحتاج فقط إلى إثبات.",
+  "wizardStufe3UploadTitle": "رفع Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG، 10 ميجابايت كحد أقصى.",
+  "wizardStufe3UploadDone": "تم رفع الملف ✓",
+  "wizardStufe3UploadReplace": "استبدال الملف",
+  "wizardStufe3UploadRequired": "يرجى رفع Leistungsbescheid قبل المتابعة.",
+  "wizardStufe3FileTooLarge": "الملف كبير جدًا. 10 ميجابايت كحد أقصى.",
+  "wizardStufe3UploadFailed": "تعذر رفع الملف. حاول مرة أخرى.",
+  "wizardStufe3RegularFeeTitle": "الاشتراك: 25 € / شهر",
+  "wizardStufe3RegularFeeBody": "الاشتراك القياسي للأعضاء العاديين وفقًا للنظام الأساسي."
 }

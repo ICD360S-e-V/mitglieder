@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Członek wspierający (Fördermitglied)",
   "wizardStufe2FoerderBody": "Wspierasz stowarzyszenie finansowo, ale nie uczestniczysz aktywnie w decyzjach. Bez prawa głosu. Dobre, jeśli chcesz pomagać z dystansu.",
   "wizardStufe2EhrenTitle": "Członek honorowy (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Przyznawany przez zarząd za szczególne zasługi. Nie wybierasz tego sam — to wyróżnienie. Wybierz tylko jeśli już zostałeś uhonorowany."
+  "wizardStufe2EhrenBody": "Przyznawany przez zarząd za szczególne zasługi. Nie wybierasz tego sam — to wyróżnienie. Wybierz tylko jeśli już zostałeś uhonorowany.",
+  "wizardStufe3Title": "Sytuacja finansowa",
+  "wizardStufe3Prompt": "Teraz o twojej sytuacji finansowej. Nie żeby cię oceniać — tylko żeby zwolnić ze składki jeśli otrzymujesz świadczenia socjalne.",
+  "wizardStufe3OptionBuergergeld": "Otrzymuję Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Otrzymuję świadczenia od Sozialamt",
+  "wizardStufe3OptionNein": "Nie otrzymuję żadnego z tych",
+  "wizardStufe3FeeExemptTitle": "Składka: 0 € / m-c 🎉",
+  "wizardStufe3FeeExemptBody": "Z Bürgergeld lub Sozialamt jesteś całkowicie zwolniony ze składki zgodnie z naszym statutem. Potrzebujemy tylko dowodu.",
+  "wizardStufe3UploadTitle": "Prześlij Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, maks. 10 MB.",
+  "wizardStufe3UploadDone": "Plik przesłany ✓",
+  "wizardStufe3UploadReplace": "Zamień plik",
+  "wizardStufe3UploadRequired": "Prześlij Leistungsbescheid, zanim przejdziesz dalej.",
+  "wizardStufe3FileTooLarge": "Plik za duży. Maksymalnie 10 MB.",
+  "wizardStufe3UploadFailed": "Nie udało się przesłać pliku. Spróbuj ponownie.",
+  "wizardStufe3RegularFeeTitle": "Składka: 25 € / m-c",
+  "wizardStufe3RegularFeeBody": "Standardowa składka dla członków zwyczajnych zgodnie ze statutem."
 }

@@ -1120,5 +1120,21 @@
   "wizardStufe2FoerderTitle": "Fördermitglied",
   "wizardStufe2FoerderBody": "Du unterstützt den Verein finanziell, nimmst aber nicht aktiv an Entscheidungen teil. Kein Stimmrecht. Gut, wenn du aus der Ferne helfen willst.",
   "wizardStufe2EhrenTitle": "Ehrenmitglied",
-  "wizardStufe2EhrenBody": "Wird vom Vorstand für besondere Verdienste verliehen. Du wählst es nicht selbst — es wird als Anerkennung gewährt. Wähle nur, wenn dir bereits diese Ehre zuteilwurde."
+  "wizardStufe2EhrenBody": "Wird vom Vorstand für besondere Verdienste verliehen. Du wählst es nicht selbst — es wird als Anerkennung gewährt. Wähle nur, wenn dir bereits diese Ehre zuteilwurde.",
+  "wizardStufe3Title": "Finanzielle Situation",
+  "wizardStufe3Prompt": "Jetzt zu deiner finanziellen Situation. Nicht um zu urteilen — sondern um dich vom Beitrag zu befreien, falls du Sozialleistungen beziehst.",
+  "wizardStufe3OptionBuergergeld": "Ich beziehe Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Ich beziehe Sozialamt-Leistungen",
+  "wizardStufe3OptionNein": "Ich beziehe keine dieser Leistungen",
+  "wizardStufe3FeeExemptTitle": "Beitrag: 0 € / Monat 🎉",
+  "wizardStufe3FeeExemptBody": "Mit Bürgergeld oder Sozialamt-Leistungen bist du laut Satzung komplett beitragsbefreit. Wir brauchen nur einen Nachweis.",
+  "wizardStufe3UploadTitle": "Leistungsbescheid hochladen",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, maximal 10 MB.",
+  "wizardStufe3UploadDone": "Datei hochgeladen ✓",
+  "wizardStufe3UploadReplace": "Datei ersetzen",
+  "wizardStufe3UploadRequired": "Bitte lade den Leistungsbescheid hoch, bevor es weitergeht.",
+  "wizardStufe3FileTooLarge": "Datei zu groß. Maximal 10 MB.",
+  "wizardStufe3UploadFailed": "Datei konnte nicht hochgeladen werden. Bitte erneut versuchen.",
+  "wizardStufe3RegularFeeTitle": "Beitrag: 25 € / Monat",
+  "wizardStufe3RegularFeeBody": "Regulärer Beitrag für ordentliche Mitglieder laut Satzung."
 }

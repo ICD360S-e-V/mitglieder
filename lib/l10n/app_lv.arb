@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Atbalsta biedrs (Fördermitglied)",
   "wizardStufe2FoerderBody": "Atbalsti biedrību finansiāli, bet aktīvi nepiedalies lēmumos. Bez balsstiesībām. Labi, ja vēlies palīdzēt no attāluma.",
   "wizardStufe2EhrenTitle": "Goda biedrs (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Piešķir valde par īpašiem nopelniem. Pats to neizvēlies — to piešķir kā atzinību. Izvēlies tikai, ja jau esi pagodināts."
+  "wizardStufe2EhrenBody": "Piešķir valde par īpašiem nopelniem. Pats to neizvēlies — to piešķir kā atzinību. Izvēlies tikai, ja jau esi pagodināts.",
+  "wizardStufe3Title": "Finansiālā situācija",
+  "wizardStufe3Prompt": "Tagad par tavu finansiālo situāciju. Ne lai vērtētu — bet lai atbrīvotu no biedru maksas, ja saņem sociālos pabalstus.",
+  "wizardStufe3OptionBuergergeld": "Saņemu Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Saņemu pabalstus no Sozialamt",
+  "wizardStufe3OptionNein": "Nesaņemu nevienu no šiem",
+  "wizardStufe3FeeExemptTitle": "Biedru maksa: 0 € / mēn. 🎉",
+  "wizardStufe3FeeExemptBody": "Ar Bürgergeld vai Sozialamt esi pilnībā atbrīvots no biedru maksas saskaņā ar mūsu statūtiem. Vajag tikai apliecinājumu.",
+  "wizardStufe3UploadTitle": "Augšupielādēt Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, līdz 10 MB.",
+  "wizardStufe3UploadDone": "Fails augšupielādēts ✓",
+  "wizardStufe3UploadReplace": "Aizstāt failu",
+  "wizardStufe3UploadRequired": "Lūdzu augšupielādē Leistungsbescheid pirms turpināt.",
+  "wizardStufe3FileTooLarge": "Fails ir pārāk liels. Maksimums 10 MB.",
+  "wizardStufe3UploadFailed": "Faila augšupielāde neizdevās. Mēģini vēlreiz.",
+  "wizardStufe3RegularFeeTitle": "Biedru maksa: 25 € / mēn.",
+  "wizardStufe3RegularFeeBody": "Standarta biedru maksa pilntiesīgiem biedriem saskaņā ar statūtiem."
 }

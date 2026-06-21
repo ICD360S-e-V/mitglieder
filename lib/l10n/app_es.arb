@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Miembro de apoyo (Fördermitglied)",
   "wizardStufe2FoerderBody": "Apoyas la asociación económicamente pero no participas activamente en las decisiones. Sin derecho a voto. Bueno si quieres ayudar a distancia.",
   "wizardStufe2EhrenTitle": "Miembro honorario (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Otorgado por el Vorstand por méritos especiales. No lo eliges tú — se concede como reconocimiento. Selecciona solo si ya has sido honrado."
+  "wizardStufe2EhrenBody": "Otorgado por el Vorstand por méritos especiales. No lo eliges tú — se concede como reconocimiento. Selecciona solo si ya has sido honrado.",
+  "wizardStufe3Title": "Situación financiera",
+  "wizardStufe3Prompt": "Ahora sobre tu situación financiera. No para juzgarte — solo para eximirte de la cuota si recibes prestaciones sociales.",
+  "wizardStufe3OptionBuergergeld": "Recibo Bürgergeld",
+  "wizardStufe3OptionSozialamt": "Recibo ayudas del Sozialamt",
+  "wizardStufe3OptionNein": "No recibo ninguna",
+  "wizardStufe3FeeExemptTitle": "Cuota: 0 € / mes 🎉",
+  "wizardStufe3FeeExemptBody": "Con Bürgergeld o Sozialamt estás totalmente exento de la cuota según nuestro Satzung. Solo necesitamos un comprobante.",
+  "wizardStufe3UploadTitle": "Subir Leistungsbescheid",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, máximo 10 MB.",
+  "wizardStufe3UploadDone": "Archivo subido ✓",
+  "wizardStufe3UploadReplace": "Sustituir archivo",
+  "wizardStufe3UploadRequired": "Por favor sube el Leistungsbescheid antes de continuar.",
+  "wizardStufe3FileTooLarge": "Archivo demasiado grande. Máximo 10 MB.",
+  "wizardStufe3UploadFailed": "No se pudo subir el archivo. Inténtalo de nuevo.",
+  "wizardStufe3RegularFeeTitle": "Cuota: 25 € / mes",
+  "wizardStufe3RegularFeeBody": "Cuota estándar para miembros ordinarios según el Satzung."
 }

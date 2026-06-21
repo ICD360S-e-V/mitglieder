@@ -1099,5 +1099,21 @@
   "wizardStufe2FoerderTitle": "Pártoló tag (Fördermitglied)",
   "wizardStufe2FoerderBody": "Anyagilag támogatod az egyesületet, de nem veszel részt aktívan a döntésekben. Nincs szavazati jog. Jó választás, ha távolról szeretnél segíteni.",
   "wizardStufe2EhrenTitle": "Tiszteletbeli tag (Ehrenmitglied)",
-  "wizardStufe2EhrenBody": "Az elnökség adományozza különleges érdemekért. Nem te választod — elismerésként kapod. Csak akkor jelöld, ha már megkaptad ezt a kitüntetést."
+  "wizardStufe2EhrenBody": "Az elnökség adományozza különleges érdemekért. Nem te választod — elismerésként kapod. Csak akkor jelöld, ha már megkaptad ezt a kitüntetést.",
+  "wizardStufe3Title": "Anyagi helyzet",
+  "wizardStufe3Prompt": "Most az anyagi helyzetedről. Nem ítélkezni — csak hogy mentesíthessünk a tagdíj alól, ha szociális ellátást kapsz.",
+  "wizardStufe3OptionBuergergeld": "Bürgergeldet kapok",
+  "wizardStufe3OptionSozialamt": "Sozialamt-támogatást kapok",
+  "wizardStufe3OptionNein": "Egyiket sem kapom",
+  "wizardStufe3FeeExemptTitle": "Tagdíj: 0 € / hó 🎉",
+  "wizardStufe3FeeExemptBody": "Bürgergelddel vagy Sozialamttal teljesen mentes vagy a tagdíj alól az alapszabály szerint. Csak igazolásra van szükségünk.",
+  "wizardStufe3UploadTitle": "Leistungsbescheid feltöltése",
+  "wizardStufe3UploadHint": "PDF / JPG / PNG, max. 10 MB.",
+  "wizardStufe3UploadDone": "Fájl feltöltve ✓",
+  "wizardStufe3UploadReplace": "Fájl cseréje",
+  "wizardStufe3UploadRequired": "Kérlek töltsd fel a Leistungsbescheidet, mielőtt továbblépsz.",
+  "wizardStufe3FileTooLarge": "A fájl túl nagy. Maximum 10 MB.",
+  "wizardStufe3UploadFailed": "Nem sikerült feltölteni a fájlt. Próbáld újra.",
+  "wizardStufe3RegularFeeTitle": "Tagdíj: 25 € / hó",
+  "wizardStufe3RegularFeeBody": "A rendes tagok szokásos tagdíja az alapszabály szerint."
 }
