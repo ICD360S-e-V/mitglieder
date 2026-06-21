@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Startdato",
+  "wizardStufe5Prompt": "Når vil du være offisielt ICD360S-medlem? Fra godkjenningen eller med tilbakevirkende kraft.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Fra Vorstand-godkjenningen",
+  "wizardStufe5OptionAbVerifizierungBody": "Det enkleste valget. Ingen tilbakevirkende kontingent.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Tilbakevirkende fra 01.08.2025 (stiftelse)",
+  "wizardStufe5OptionGruendungsdatumBody": "Du regnes som medlem fra foreningens første dag.",
+  "wizardStufe5OptionAnderesDatumTitle": "En annen dato",
+  "wizardStufe5OptionAnderesDatumBody": "Du velger en dato mellom 01.08.2025 og i dag.",
+  "wizardStufe5PickDate": "Trykk for å velge dato",
+  "wizardStufe5PickDateFirst": "Vennligst velg en dato først.",
+  "wizardStufe5DatePickerHelp": "Start på medlemskap",
+  "wizardStufe5DateRange": "Mellom {start} og i dag",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Tilbakevirkende kontingent",
+  "wizardStufe5RetroactiveBody": "Fra {start} til {end} er det {months} måneder. Ved 25 €/måned gir det {amount} € tilbakevirkende, i tillegg til løpende månedlig kontingent.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Tilbakevirkende kontingent: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Med Bürgergeld eller Sozialamt er du helt fritatt — heller ikke tilbakevirkende skylder du noe."
 }

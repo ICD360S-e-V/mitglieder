@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Début",
+  "wizardStufe5Prompt": "À partir de quand veux-tu être officiellement membre d'ICD360S ? Dès l'approbation ou rétroactivement.",
+  "wizardStufe5OptionAbVerifizierungTitle": "À partir de l'approbation du Vorstand",
+  "wizardStufe5OptionAbVerifizierungBody": "Le choix le plus simple. Pas de cotisation rétroactive.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Rétroactivement depuis le 01.08.2025 (fondation)",
+  "wizardStufe5OptionGruendungsdatumBody": "Tu comptes comme membre dès le premier jour de l'association.",
+  "wizardStufe5OptionAnderesDatumTitle": "Une autre date",
+  "wizardStufe5OptionAnderesDatumBody": "Tu choisis une date entre le 01.08.2025 et aujourd'hui.",
+  "wizardStufe5PickDate": "Appuie pour choisir une date",
+  "wizardStufe5PickDateFirst": "Choisis d'abord une date.",
+  "wizardStufe5DatePickerHelp": "Début de l'adhésion",
+  "wizardStufe5DateRange": "Entre le {start} et aujourd'hui",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Cotisation rétroactive",
+  "wizardStufe5RetroactiveBody": "De {start} à {end} cela fait {months} mois. À 25 €/mois cela représente {amount} € à payer rétroactivement, en plus de la cotisation mensuelle courante.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Cotisation rétroactive : 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Avec Bürgergeld ou Sozialamt tu es totalement exempté — même rétroactivement, tu ne dois rien."
 }

@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Sākums",
+  "wizardStufe5Prompt": "No kura brīža vēlies oficiāli būt ICD360S biedrs? No apstiprināšanas vai ar atpakaļejošu spēku.",
+  "wizardStufe5OptionAbVerifizierungTitle": "No Vorstand apstiprināšanas",
+  "wizardStufe5OptionAbVerifizierungBody": "Vienkāršākais izvēles veids. Bez atpakaļejoša maksājuma.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Ar atpakaļejošu spēku no 01.08.2025 (dibināšana)",
+  "wizardStufe5OptionGruendungsdatumBody": "Tu skaitīsies biedrs jau no biedrības pirmās dienas.",
+  "wizardStufe5OptionAnderesDatumTitle": "Cits datums",
+  "wizardStufe5OptionAnderesDatumBody": "Pats izvēlies datumu starp 01.08.2025 un šodien.",
+  "wizardStufe5PickDate": "Pieskaries, lai izvēlētos datumu",
+  "wizardStufe5PickDateFirst": "Lūdzu, vispirms izvēlies datumu.",
+  "wizardStufe5DatePickerHelp": "Dalības sākums",
+  "wizardStufe5DateRange": "Starp {start} un šodien",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Atpakaļejošā maksa",
+  "wizardStufe5RetroactiveBody": "No {start} līdz {end} ir {months} mēneši. Pie 25 €/mēn. tas ir {amount} € apmaksai ar atpakaļejošu spēku, papildus pašreizējai mēneša biedru maksai.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Atpakaļejošā maksa: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Ar Bürgergeld vai Sozialamt esi pilnībā atbrīvots — pat ar atpakaļejošu spēku neko nav jāmaksā."
 }

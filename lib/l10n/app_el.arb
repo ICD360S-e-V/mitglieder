@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Έναρξη",
+  "wizardStufe5Prompt": "Από πότε θες να γίνεις επίσημα μέλος του ICD360S; Από την έγκριση ή αναδρομικά.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Από την έγκριση του Vorstand",
+  "wizardStufe5OptionAbVerifizierungBody": "Η πιο απλή επιλογή. Καμία αναδρομική συνδρομή.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Αναδρομικά από 01.08.2025 (ίδρυση)",
+  "wizardStufe5OptionGruendungsdatumBody": "Θα θεωρείσαι μέλος από την πρώτη μέρα του συλλόγου.",
+  "wizardStufe5OptionAnderesDatumTitle": "Άλλη ημερομηνία",
+  "wizardStufe5OptionAnderesDatumBody": "Επιλέγεις μια ημερομηνία ανάμεσα στις 01.08.2025 και σήμερα.",
+  "wizardStufe5PickDate": "Πάτα για επιλογή ημερομηνίας",
+  "wizardStufe5PickDateFirst": "Πρώτα επίλεξε μια ημερομηνία.",
+  "wizardStufe5DatePickerHelp": "Έναρξη μέλους",
+  "wizardStufe5DateRange": "Ανάμεσα στις {start} και σήμερα",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Αναδρομική συνδρομή",
+  "wizardStufe5RetroactiveBody": "Από {start} έως {end} είναι {months} μήνες. Με 25 €/μήνα γίνονται {amount} € οφειλόμενα αναδρομικά, επιπλέον της τρέχουσας μηνιαίας συνδρομής.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Αναδρομική συνδρομή: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Με Bürgergeld ή Sozialamt είσαι πλήρως απαλλαγμένος — ακόμη και αναδρομικά δεν χρωστάς τίποτα."
 }

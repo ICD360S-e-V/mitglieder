@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Почетак",
+  "wizardStufe5Prompt": "Од када желиш да будеш званично члан ICD360S? Од одобрења или ретроактивно.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Од одобрења управе",
+  "wizardStufe5OptionAbVerifizierungBody": "Најједноставнији избор. Без ретроактивне чланарине.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Ретроактивно од 01.08.2025. (оснивање)",
+  "wizardStufe5OptionGruendungsdatumBody": "Биће се рачунати као члан од првог дана удружења.",
+  "wizardStufe5OptionAnderesDatumTitle": "Други датум",
+  "wizardStufe5OptionAnderesDatumBody": "Сам бираш датум између 01.08.2025. и данас.",
+  "wizardStufe5PickDate": "Додирни да изабереш датум",
+  "wizardStufe5PickDateFirst": "Молим те, прво изабери датум.",
+  "wizardStufe5DatePickerHelp": "Почетак чланства",
+  "wizardStufe5DateRange": "Између {start} и данас",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Ретроактивна чланарина",
+  "wizardStufe5RetroactiveBody": "Од {start} до {end} то је {months} месеци. По 25 €/месечно то износи {amount} € за плаћање ретроактивно, поред тренутне месечне чланарине.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Ретроактивна чланарина: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Са Bürgergeld или Sozialamt-ом потпуно си ослобођен — чак ни ретроактивно не дугујеш ништа."
 }

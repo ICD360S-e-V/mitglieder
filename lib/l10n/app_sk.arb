@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Začiatok",
+  "wizardStufe5Prompt": "Odkedy chceš byť oficiálne členom ICD360S? Od schválenia alebo spätne.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Od schválenia predstavenstvom",
+  "wizardStufe5OptionAbVerifizierungBody": "Najjednoduchšia voľba. Žiadny spätný príspevok.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Spätne od 01.08.2025 (založenie)",
+  "wizardStufe5OptionGruendungsdatumBody": "Budeš sa počítať za člena od prvého dňa združenia.",
+  "wizardStufe5OptionAnderesDatumTitle": "Iný dátum",
+  "wizardStufe5OptionAnderesDatumBody": "Sám si vyberáš dátum medzi 01.08.2025 a dneškom.",
+  "wizardStufe5PickDate": "Klepnutím vyber dátum",
+  "wizardStufe5PickDateFirst": "Najprv vyber dátum.",
+  "wizardStufe5DatePickerHelp": "Začiatok členstva",
+  "wizardStufe5DateRange": "Medzi {start} a dnešným dňom",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Spätný príspevok",
+  "wizardStufe5RetroactiveBody": "Od {start} do {end} je to {months} mesiacov. Pri 25 €/mesiac to robí {amount} € spätne, navyše k aktuálnemu mesačnému príspevku.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Spätný príspevok: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "S Bürgergeld alebo Sozialamtom si úplne oslobodený — ani spätne nič nedlhuješ."
 }

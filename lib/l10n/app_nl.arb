@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Begin",
+  "wizardStufe5Prompt": "Vanaf wanneer wil je officieel ICD360S-lid zijn? Vanaf de goedkeuring of met terugwerkende kracht.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Vanaf de goedkeuring van het Vorstand",
+  "wizardStufe5OptionAbVerifizierungBody": "De eenvoudigste keuze. Geen contributie met terugwerkende kracht.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Met terugwerkende kracht vanaf 01.08.2025 (oprichting)",
+  "wizardStufe5OptionGruendungsdatumBody": "Je telt als lid vanaf de eerste dag van de vereniging.",
+  "wizardStufe5OptionAnderesDatumTitle": "Een andere datum",
+  "wizardStufe5OptionAnderesDatumBody": "Je kiest zelf een datum tussen 01.08.2025 en vandaag.",
+  "wizardStufe5PickDate": "Tik om een datum te kiezen",
+  "wizardStufe5PickDateFirst": "Kies eerst een datum.",
+  "wizardStufe5DatePickerHelp": "Begin van het lidmaatschap",
+  "wizardStufe5DateRange": "Tussen {start} en vandaag",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Contributie met terugwerkende kracht",
+  "wizardStufe5RetroactiveBody": "Van {start} tot {end} zijn dat {months} maanden. Bij € 25/maand komt dat op € {amount} met terugwerkende kracht te betalen, bovenop de huidige maandcontributie.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Contributie met terugwerkende kracht: € 0 🎉",
+  "wizardStufe5FeeExemptBody": "Met Bürgergeld of Sozialamt ben je volledig vrijgesteld — ook met terugwerkende kracht ben je niets verschuldigd."
 }

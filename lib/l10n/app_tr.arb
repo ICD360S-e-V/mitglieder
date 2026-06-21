@@ -1162,5 +1162,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Başlangıç",
+  "wizardStufe5Prompt": "ICD360S üyeliğin ne zamandan itibaren resmen başlasın? Onaydan itibaren mi yoksa geriye dönük olarak mı?",
+  "wizardStufe5OptionAbVerifizierungTitle": "Vorstand'ın onayından itibaren",
+  "wizardStufe5OptionAbVerifizierungBody": "En basit seçim. Geriye dönük aidat yok.",
+  "wizardStufe5OptionGruendungsdatumTitle": "01.08.2025'e geriye dönük (kuruluş)",
+  "wizardStufe5OptionGruendungsdatumBody": "Derneğin ilk gününden itibaren üye sayılırsın.",
+  "wizardStufe5OptionAnderesDatumTitle": "Başka bir tarih",
+  "wizardStufe5OptionAnderesDatumBody": "01.08.2025 ile bugün arasında bir tarih seçersin.",
+  "wizardStufe5PickDate": "Tarih seçmek için dokun",
+  "wizardStufe5PickDateFirst": "Lütfen önce bir tarih seç.",
+  "wizardStufe5DatePickerHelp": "Üyelik başlangıcı",
+  "wizardStufe5DateRange": "{start} ile bugün arasında",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Geriye dönük aidat",
+  "wizardStufe5RetroactiveBody": "{start} - {end} arası {months} ay. Ayda 25 € üzerinden bu, mevcut aylık aidatın yanı sıra geriye dönük {amount} € borç anlamına gelir.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Geriye dönük aidat: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Bürgergeld veya Sozialamt ile tamamen muafsın — geriye dönük olarak da hiçbir şey ödemen gerekmez."
 }

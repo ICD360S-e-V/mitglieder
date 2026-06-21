@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Începutul",
+  "wizardStufe5Prompt": "Când vrei să fii oficial membru ICD360S? Poți alege din momentul aprobării sau retroactiv.",
+  "wizardStufe5OptionAbVerifizierungTitle": "De la aprobarea Vorstand-ului",
+  "wizardStufe5OptionAbVerifizierungBody": "Cea mai simplă alegere. Fără cotizație retroactivă.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Retroactiv din 01.08.2025 (Gründungsdatum)",
+  "wizardStufe5OptionGruendungsdatumBody": "Vei număra ca membru încă din prima zi a asociației.",
+  "wizardStufe5OptionAnderesDatumTitle": "O altă dată",
+  "wizardStufe5OptionAnderesDatumBody": "Alegi tu o dată între 01.08.2025 și azi.",
+  "wizardStufe5PickDate": "Apasă pentru a alege data",
+  "wizardStufe5PickDateFirst": "Te rog alege întâi o dată.",
+  "wizardStufe5DatePickerHelp": "Începutul calității de membru",
+  "wizardStufe5DateRange": "Între {start} și azi",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Cotizație retroactivă",
+  "wizardStufe5RetroactiveBody": "De la {start} până la {end} sunt {months} luni. La 25 €/lună înseamnă {amount} € de plată retroactivă, în plus față de cotizația lunară curentă.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Cotizație retroactivă: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Cu Bürgergeld sau Sozialamt ești scutit complet — chiar și retroactiv nu datorezi nimic."
 }

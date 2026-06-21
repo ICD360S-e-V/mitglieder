@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Początek",
+  "wizardStufe5Prompt": "Od kiedy chcesz oficjalnie być członkiem ICD360S? Od zatwierdzenia lub z mocą wsteczną.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Od zatwierdzenia przez Vorstand",
+  "wizardStufe5OptionAbVerifizierungBody": "Najprostszy wybór. Bez składki z mocą wsteczną.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Z mocą wsteczną od 01.08.2025 (założenie)",
+  "wizardStufe5OptionGruendungsdatumBody": "Będziesz liczony jako członek od pierwszego dnia stowarzyszenia.",
+  "wizardStufe5OptionAnderesDatumTitle": "Inna data",
+  "wizardStufe5OptionAnderesDatumBody": "Sam wybierasz datę między 01.08.2025 a dziś.",
+  "wizardStufe5PickDate": "Dotknij, aby wybrać datę",
+  "wizardStufe5PickDateFirst": "Najpierw wybierz datę.",
+  "wizardStufe5DatePickerHelp": "Początek członkostwa",
+  "wizardStufe5DateRange": "Pomiędzy {start} a dziś",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Składka z mocą wsteczną",
+  "wizardStufe5RetroactiveBody": "Od {start} do {end} to {months} miesięcy. Po 25 €/mies. to {amount} € do zapłaty z mocą wsteczną, oprócz bieżącej składki miesięcznej.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Składka z mocą wsteczną: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Z Bürgergeld lub Sozialamt jesteś całkowicie zwolniony — nawet z mocą wsteczną nic nie jesteś winien."
 }

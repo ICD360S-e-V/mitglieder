@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Kezdet",
+  "wizardStufe5Prompt": "Mikortól szeretnél hivatalosan ICD360S-tag lenni? A jóváhagyástól vagy visszamenőleg.",
+  "wizardStufe5OptionAbVerifizierungTitle": "A Vorstand jóváhagyásától",
+  "wizardStufe5OptionAbVerifizierungBody": "A legegyszerűbb választás. Nincs visszamenőleges tagdíj.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Visszamenőleg 2025.08.01-től (alapítás)",
+  "wizardStufe5OptionGruendungsdatumBody": "Tagnak számítasz az egyesület első napjától.",
+  "wizardStufe5OptionAnderesDatumTitle": "Más dátum",
+  "wizardStufe5OptionAnderesDatumBody": "Te választasz egy dátumot 2025.08.01. és ma között.",
+  "wizardStufe5PickDate": "Koppints a dátum kiválasztásához",
+  "wizardStufe5PickDateFirst": "Először válassz egy dátumot.",
+  "wizardStufe5DatePickerHelp": "Tagság kezdete",
+  "wizardStufe5DateRange": "{start} és ma között",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Visszamenőleges tagdíj",
+  "wizardStufe5RetroactiveBody": "{start}-tól {end}-ig {months} hónap. 25 €/hó esetén ez {amount} € visszamenőlegesen fizetendő, a folyó havi tagdíjon felül.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Visszamenőleges tagdíj: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Bürgergelddel vagy Sozialamttal teljesen mentes vagy — visszamenőleg sem tartozol semmivel."
 }

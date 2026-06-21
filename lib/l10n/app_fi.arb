@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Alkamispäivä",
+  "wizardStufe5Prompt": "Mistä lähtien haluat olla virallisesti ICD360S-jäsen? Hyväksynnästä alkaen vai takautuvasti.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Vorstandin hyväksynnästä alkaen",
+  "wizardStufe5OptionAbVerifizierungBody": "Yksinkertaisin valinta. Ei takautuvaa maksua.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Takautuvasti 01.08.2025 (perustaminen)",
+  "wizardStufe5OptionGruendungsdatumBody": "Sinut lasketaan jäseneksi yhdistyksen ensimmäisestä päivästä.",
+  "wizardStufe5OptionAnderesDatumTitle": "Muu päivä",
+  "wizardStufe5OptionAnderesDatumBody": "Valitset päivän väliltä 01.08.2025–tänään.",
+  "wizardStufe5PickDate": "Napauta valitaksesi päivän",
+  "wizardStufe5PickDateFirst": "Valitse ensin päivämäärä.",
+  "wizardStufe5DatePickerHelp": "Jäsenyyden alku",
+  "wizardStufe5DateRange": "{start} ja tämä päivä välillä",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Takautuva maksu",
+  "wizardStufe5RetroactiveBody": "{start} ja {end} välillä on {months} kuukautta. 25 €/kk laskien tämä on {amount} € maksettavaksi takautuvasti nykyisen kuukausimaksun lisäksi.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Takautuva maksu: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Bürgergeldillä tai Sozialamtilla olet täysin vapautettu — myöskään takautuvasti et ole velkaa."
 }

@@ -1162,5 +1162,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Beginn",
+  "wizardStufe5Prompt": "Ab wann möchtest du offiziell ICD360S-Mitglied sein? Ab der Freigabe oder rückwirkend.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Ab Freigabe durch den Vorstand",
+  "wizardStufe5OptionAbVerifizierungBody": "Die einfachste Wahl. Kein rückwirkender Beitrag.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Rückwirkend ab 01.08.2025 (Gründungsdatum)",
+  "wizardStufe5OptionGruendungsdatumBody": "Du zählst als Mitglied seit dem ersten Tag des Vereins.",
+  "wizardStufe5OptionAnderesDatumTitle": "Anderes Datum",
+  "wizardStufe5OptionAnderesDatumBody": "Du wählst ein Datum zwischen 01.08.2025 und heute.",
+  "wizardStufe5PickDate": "Tippen, um Datum zu wählen",
+  "wizardStufe5PickDateFirst": "Bitte wähle zuerst ein Datum.",
+  "wizardStufe5DatePickerHelp": "Mitgliedschaftsbeginn",
+  "wizardStufe5DateRange": "Zwischen {start} und heute",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Rückwirkender Beitrag",
+  "wizardStufe5RetroactiveBody": "Vom {start} bis {end} sind das {months} Monate. Bei 25 €/Monat ergibt das eine rückwirkende Zahlung von {amount} €, zusätzlich zum laufenden Monatsbeitrag.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Rückwirkender Beitrag: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Mit Bürgergeld oder Sozialamt bist du komplett befreit — auch rückwirkend nichts zu zahlen."
 }

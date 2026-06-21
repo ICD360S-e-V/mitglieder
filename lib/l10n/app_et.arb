@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Algus",
+  "wizardStufe5Prompt": "Millal soovid ametlikult ICD360S liige olla? Heakskiidust või tagasiulatuvalt.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Vorstand heakskiidust",
+  "wizardStufe5OptionAbVerifizierungBody": "Lihtsaim valik. Tagasiulatuvat liikmemaksu pole.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Tagasiulatuvalt alates 01.08.2025 (asutamine)",
+  "wizardStufe5OptionGruendungsdatumBody": "Loendud liikmena alates ühingu esimesest päevast.",
+  "wizardStufe5OptionAnderesDatumTitle": "Muu kuupäev",
+  "wizardStufe5OptionAnderesDatumBody": "Sina valid kuupäeva 01.08.2025 ja tänase vahel.",
+  "wizardStufe5PickDate": "Puuduta kuupäeva valimiseks",
+  "wizardStufe5PickDateFirst": "Palun vali kõigepealt kuupäev.",
+  "wizardStufe5DatePickerHelp": "Liikmestaatuse algus",
+  "wizardStufe5DateRange": "Vahemikus {start} kuni täna",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Tagasiulatuv liikmemaks",
+  "wizardStufe5RetroactiveBody": "Alates {start} kuni {end} on see {months} kuud. 25 €/kuus on see {amount} € tagasiulatuvalt tasumiseks, lisaks praegusele kuumaksule.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Tagasiulatuv liikmemaks: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Bürgergeld või Sozialamt korral oled täiesti vabastatud — ka tagasiulatuvalt ei võlgne midagi."
 }

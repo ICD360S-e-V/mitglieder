@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Начална дата",
+  "wizardStufe5Prompt": "Кога искаш да станеш официално член на ICD360S? От одобрението или с обратна сила.",
+  "wizardStufe5OptionAbVerifizierungTitle": "От одобрението на Vorstand",
+  "wizardStufe5OptionAbVerifizierungBody": "Най-простият избор. Без членски внос с обратна сила.",
+  "wizardStufe5OptionGruendungsdatumTitle": "С обратна сила от 01.08.2025 (учредяване)",
+  "wizardStufe5OptionGruendungsdatumBody": "Ще се считаш за член още от първия ден на сдружението.",
+  "wizardStufe5OptionAnderesDatumTitle": "Друга дата",
+  "wizardStufe5OptionAnderesDatumBody": "Сам избираш дата между 01.08.2025 и днес.",
+  "wizardStufe5PickDate": "Натисни, за да избереш дата",
+  "wizardStufe5PickDateFirst": "Моля, първо избери дата.",
+  "wizardStufe5DatePickerHelp": "Начало на членството",
+  "wizardStufe5DateRange": "Между {start} и днес",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Членски внос с обратна сила",
+  "wizardStufe5RetroactiveBody": "От {start} до {end} са {months} месеца. По 25 €/месец това прави {amount} € за изплащане с обратна сила, плюс текущия месечен внос.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Членски внос с обратна сила: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "С Bürgergeld или Sozialamt си напълно освободен — дори с обратна сила не дължиш нищо."
 }

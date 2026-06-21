@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Дата начала",
+  "wizardStufe5Prompt": "С какого момента ты хочешь стать официальным членом ICD360S? С момента одобрения или ретроактивно.",
+  "wizardStufe5OptionAbVerifizierungTitle": "С момента одобрения Vorstand",
+  "wizardStufe5OptionAbVerifizierungBody": "Самый простой вариант. Без ретроактивного взноса.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Ретроактивно с 01.08.2025 (дата основания)",
+  "wizardStufe5OptionGruendungsdatumBody": "Будешь считаться членом с первого дня ассоциации.",
+  "wizardStufe5OptionAnderesDatumTitle": "Другая дата",
+  "wizardStufe5OptionAnderesDatumBody": "Сам выбираешь дату между 01.08.2025 и сегодня.",
+  "wizardStufe5PickDate": "Нажми, чтобы выбрать дату",
+  "wizardStufe5PickDateFirst": "Сначала выбери дату.",
+  "wizardStufe5DatePickerHelp": "Дата начала членства",
+  "wizardStufe5DateRange": "Между {start} и сегодня",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Ретроактивный взнос",
+  "wizardStufe5RetroactiveBody": "С {start} по {end} это {months} месяцев. По 25 €/месяц получается {amount} € к доплате, помимо текущего месячного взноса.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Ретроактивный взнос: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "С Bürgergeld или Sozialamt ты полностью освобождён — даже ретроактивно ничего не должен."
 }

@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Start date",
+  "wizardStufe5Prompt": "When do you want your ICD360S membership to officially start? From approval onwards, or backdated.",
+  "wizardStufe5OptionAbVerifizierungTitle": "From the Vorstand approval",
+  "wizardStufe5OptionAbVerifizierungBody": "The simplest choice. No backdated fee.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Backdated to 01.08.2025 (founding date)",
+  "wizardStufe5OptionGruendungsdatumBody": "You'll count as a member from the very first day.",
+  "wizardStufe5OptionAnderesDatumTitle": "A different date",
+  "wizardStufe5OptionAnderesDatumBody": "You pick any date between 01.08.2025 and today.",
+  "wizardStufe5PickDate": "Tap to pick a date",
+  "wizardStufe5PickDateFirst": "Please pick a date first.",
+  "wizardStufe5DatePickerHelp": "Membership start date",
+  "wizardStufe5DateRange": "Between {start} and today",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Retroactive fee",
+  "wizardStufe5RetroactiveBody": "From {start} to {end} is {months} months. At €25/month that's €{amount} due retroactively, on top of the current monthly fee.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Retroactive fee: € 0 🎉",
+  "wizardStufe5FeeExemptBody": "With Bürgergeld or Sozialamt you're fully exempt — even retroactively nothing is owed."
 }

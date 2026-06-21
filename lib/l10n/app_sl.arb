@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Začetek",
+  "wizardStufe5Prompt": "Od kdaj želiš biti uradno član ICD360S? Od odobritve ali za nazaj.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Od odobritve Vorstanda",
+  "wizardStufe5OptionAbVerifizierungBody": "Najpreprostejša izbira. Brez članarine za nazaj.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Za nazaj od 01.08.2025 (ustanovitev)",
+  "wizardStufe5OptionGruendungsdatumBody": "Boš član že od prvega dne društva.",
+  "wizardStufe5OptionAnderesDatumTitle": "Drug datum",
+  "wizardStufe5OptionAnderesDatumBody": "Sam izbereš datum med 01.08.2025 in danes.",
+  "wizardStufe5PickDate": "Tapni za izbiro datuma",
+  "wizardStufe5PickDateFirst": "Prosim, najprej izberi datum.",
+  "wizardStufe5DatePickerHelp": "Začetek članstva",
+  "wizardStufe5DateRange": "Med {start} in danes",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Članarina za nazaj",
+  "wizardStufe5RetroactiveBody": "Od {start} do {end} je to {months} mesecev. Pri 25 €/mesec to znaša {amount} € za plačilo nazaj, poleg trenutne mesečne članarine.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Članarina za nazaj: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Z Bürgergeld ali Sozialamt si popolnoma oproščen — niti za nazaj ne dolguješ nič."
 }

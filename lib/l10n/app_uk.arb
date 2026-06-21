@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Дата початку",
+  "wizardStufe5Prompt": "З якого моменту ти хочеш бути офіційним членом ICD360S? З моменту схвалення або ретроактивно.",
+  "wizardStufe5OptionAbVerifizierungTitle": "З моменту схвалення Vorstand",
+  "wizardStufe5OptionAbVerifizierungBody": "Найпростіший варіант. Без ретроактивного внеску.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Ретроактивно з 01.08.2025 (дата заснування)",
+  "wizardStufe5OptionGruendungsdatumBody": "Будеш зараховуватися як член з першого дня асоціації.",
+  "wizardStufe5OptionAnderesDatumTitle": "Інша дата",
+  "wizardStufe5OptionAnderesDatumBody": "Сам обираєш дату між 01.08.2025 і сьогодні.",
+  "wizardStufe5PickDate": "Натисни, щоб обрати дату",
+  "wizardStufe5PickDateFirst": "Спочатку обери дату.",
+  "wizardStufe5DatePickerHelp": "Дата початку членства",
+  "wizardStufe5DateRange": "Між {start} і сьогодні",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Ретроактивний внесок",
+  "wizardStufe5RetroactiveBody": "З {start} по {end} це {months} місяців. По 25 €/місяць виходить {amount} € до доплати, окрім поточного місячного внеску.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Ретроактивний внесок: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "З Bürgergeld або Sozialamt ти повністю звільнений — навіть ретроактивно нічого не винен."
 }

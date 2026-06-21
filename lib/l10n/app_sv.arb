@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Startdatum",
+  "wizardStufe5Prompt": "Från när vill du officiellt vara ICD360S-medlem? Från godkännandet eller retroaktivt.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Från Vorstand-godkännandet",
+  "wizardStufe5OptionAbVerifizierungBody": "Det enklaste valet. Ingen retroaktiv avgift.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Retroaktivt från 01.08.2025 (grundande)",
+  "wizardStufe5OptionGruendungsdatumBody": "Du räknas som medlem från föreningens första dag.",
+  "wizardStufe5OptionAnderesDatumTitle": "Ett annat datum",
+  "wizardStufe5OptionAnderesDatumBody": "Du väljer ett datum mellan 01.08.2025 och idag.",
+  "wizardStufe5PickDate": "Tryck för att välja ett datum",
+  "wizardStufe5PickDateFirst": "Välj först ett datum.",
+  "wizardStufe5DatePickerHelp": "Medlemskapets början",
+  "wizardStufe5DateRange": "Mellan {start} och idag",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Retroaktiv avgift",
+  "wizardStufe5RetroactiveBody": "Från {start} till {end} är det {months} månader. Vid 25 €/månad blir det {amount} € att betala retroaktivt, utöver den löpande månadsavgiften.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Retroaktiv avgift: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Med Bürgergeld eller Sozialamt är du helt befriad — inte ens retroaktivt är du skyldig något."
 }

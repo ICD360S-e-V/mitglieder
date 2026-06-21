@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Pradžia",
+  "wizardStufe5Prompt": "Nuo kada nori būti oficialiu ICD360S nariu? Nuo patvirtinimo arba atgaline data.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Nuo Vorstand patvirtinimo",
+  "wizardStufe5OptionAbVerifizierungBody": "Paprasčiausias pasirinkimas. Be atgalinio mokesčio.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Atgaline data nuo 2025-08-01 (įsteigimas)",
+  "wizardStufe5OptionGruendungsdatumBody": "Būsi laikomas nariu nuo pirmosios asociacijos dienos.",
+  "wizardStufe5OptionAnderesDatumTitle": "Kita data",
+  "wizardStufe5OptionAnderesDatumBody": "Pats pasirinki datą tarp 2025-08-01 ir šios dienos.",
+  "wizardStufe5PickDate": "Bakstelėk, kad pasirinktum datą",
+  "wizardStufe5PickDateFirst": "Pirmiausia pasirinki datą.",
+  "wizardStufe5DatePickerHelp": "Narystės pradžia",
+  "wizardStufe5DateRange": "Tarp {start} ir šios dienos",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Atgalinis mokestis",
+  "wizardStufe5RetroactiveBody": "Nuo {start} iki {end} yra {months} mėn. Po 25 €/mėn. tai sudaro {amount} € atgaline data, papildomai prie esamo mėnesinio mokesčio.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Atgalinis mokestis: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Su Bürgergeld arba Sozialamt esi visiškai atleistas — net atgaline data nieko nesi skolingas."
 }

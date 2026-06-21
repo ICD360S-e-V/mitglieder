@@ -1162,5 +1162,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "تاريخ البدء",
+  "wizardStufe5Prompt": "متى تريد أن تصبح عضوًا رسميًا في ICD360S؟ من الموافقة أو بأثر رجعي.",
+  "wizardStufe5OptionAbVerifizierungTitle": "من موافقة مجلس الإدارة",
+  "wizardStufe5OptionAbVerifizierungBody": "الخيار الأبسط. لا اشتراك بأثر رجعي.",
+  "wizardStufe5OptionGruendungsdatumTitle": "بأثر رجعي من 01.08.2025 (تاريخ التأسيس)",
+  "wizardStufe5OptionGruendungsdatumBody": "ستُحتسب عضوًا منذ أول يوم في الجمعية.",
+  "wizardStufe5OptionAnderesDatumTitle": "تاريخ آخر",
+  "wizardStufe5OptionAnderesDatumBody": "تختار تاريخًا بين 01.08.2025 واليوم.",
+  "wizardStufe5PickDate": "اضغط لاختيار التاريخ",
+  "wizardStufe5PickDateFirst": "يرجى اختيار تاريخ أولاً.",
+  "wizardStufe5DatePickerHelp": "تاريخ بدء العضوية",
+  "wizardStufe5DateRange": "بين {start} واليوم",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "اشتراك بأثر رجعي",
+  "wizardStufe5RetroactiveBody": "من {start} إلى {end} هذا {months} شهرًا. بسعر 25 يورو/شهر، يصبح المبلغ {amount} يورو مستحقًا بأثر رجعي، إضافة إلى الاشتراك الشهري الجاري.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "الاشتراك بأثر رجعي: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "مع Bürgergeld أو Sozialamt أنت معفى تمامًا — حتى بأثر رجعي لا تدين بشيء."
 }

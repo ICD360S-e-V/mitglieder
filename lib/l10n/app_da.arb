@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Startdato",
+  "wizardStufe5Prompt": "Hvornår vil du officielt være ICD360S-medlem? Fra godkendelsen eller bagudrettet.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Fra Vorstand-godkendelsen",
+  "wizardStufe5OptionAbVerifizierungBody": "Det enkleste valg. Intet bagudrettet kontingent.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Bagudrettet fra 01.08.2025 (stiftelse)",
+  "wizardStufe5OptionGruendungsdatumBody": "Du regnes som medlem fra foreningens første dag.",
+  "wizardStufe5OptionAnderesDatumTitle": "Anden dato",
+  "wizardStufe5OptionAnderesDatumBody": "Du vælger en dato mellem 01.08.2025 og i dag.",
+  "wizardStufe5PickDate": "Tryk for at vælge dato",
+  "wizardStufe5PickDateFirst": "Vælg venligst en dato først.",
+  "wizardStufe5DatePickerHelp": "Medlemskabets start",
+  "wizardStufe5DateRange": "Mellem {start} og i dag",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Bagudrettet kontingent",
+  "wizardStufe5RetroactiveBody": "Fra {start} til {end} er det {months} måneder. Ved 25 €/måned giver det {amount} € at betale bagudrettet, oven i det løbende månedlige kontingent.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Bagudrettet kontingent: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Med Bürgergeld eller Sozialamt er du helt fritaget — også bagudrettet skylder du intet."
 }

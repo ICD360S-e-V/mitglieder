@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Inicio",
+  "wizardStufe5Prompt": "¿Cuándo quieres ser oficialmente miembro de ICD360S? Desde la aprobación o retroactivamente.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Desde la aprobación del Vorstand",
+  "wizardStufe5OptionAbVerifizierungBody": "La opción más sencilla. Sin cuota retroactiva.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Retroactivamente desde 01.08.2025 (fundación)",
+  "wizardStufe5OptionGruendungsdatumBody": "Contarás como miembro desde el primer día de la asociación.",
+  "wizardStufe5OptionAnderesDatumTitle": "Otra fecha",
+  "wizardStufe5OptionAnderesDatumBody": "Tú eliges una fecha entre 01.08.2025 y hoy.",
+  "wizardStufe5PickDate": "Toca para elegir fecha",
+  "wizardStufe5PickDateFirst": "Por favor elige una fecha primero.",
+  "wizardStufe5DatePickerHelp": "Inicio de la membresía",
+  "wizardStufe5DateRange": "Entre {start} y hoy",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Cuota retroactiva",
+  "wizardStufe5RetroactiveBody": "Desde {start} hasta {end} son {months} meses. A 25 €/mes son {amount} € a pagar retroactivamente, además de la cuota mensual actual.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Cuota retroactiva: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "Con Bürgergeld o Sozialamt estás totalmente exento — incluso retroactivamente no debes nada."
 }

@@ -1141,5 +1141,44 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardStufe5Title": "Začátek",
+  "wizardStufe5Prompt": "Od kdy chceš být oficiálně členem ICD360S? Od schválení nebo zpětně.",
+  "wizardStufe5OptionAbVerifizierungTitle": "Od schválení představenstvem",
+  "wizardStufe5OptionAbVerifizierungBody": "Nejjednodušší volba. Žádný zpětný příspěvek.",
+  "wizardStufe5OptionGruendungsdatumTitle": "Zpětně od 01.08.2025 (datum založení)",
+  "wizardStufe5OptionGruendungsdatumBody": "Budeš se počítat za člena od prvního dne spolku.",
+  "wizardStufe5OptionAnderesDatumTitle": "Jiné datum",
+  "wizardStufe5OptionAnderesDatumBody": "Vybíráš si datum mezi 01.08.2025 a dneškem.",
+  "wizardStufe5PickDate": "Klepnutím vyber datum",
+  "wizardStufe5PickDateFirst": "Nejprve vyber datum.",
+  "wizardStufe5DatePickerHelp": "Začátek členství",
+  "wizardStufe5DateRange": "Mezi {start} a dneškem",
+  "@wizardStufe5DateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5RetroactiveTitle": "Zpětný příspěvek",
+  "wizardStufe5RetroactiveBody": "Od {start} do {end} je to {months} měsíců. Při 25 €/měsíc to znamená {amount} € zpětně k uhrazení, navíc k aktuálnímu měsíčnímu příspěvku.",
+  "@wizardStufe5RetroactiveBody": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardStufe5FeeExemptTitle": "Zpětný příspěvek: 0 € 🎉",
+  "wizardStufe5FeeExemptBody": "S Bürgergeld nebo Sozialamtem jsi plně osvobozen — i zpětně nic nedlužíš."
 }
