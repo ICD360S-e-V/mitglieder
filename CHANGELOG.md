@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.38.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.37.0...v1.38.0) (2026-06-21)
+
+
+### Features
+
+* **wizard:** Stufe 4 — Zahlungsmethode + Zahlungstag ([e4b2ff2](https://github.com/ICD360S-e-V/mitglieder/commit/e4b2ff25c602c7a1d0b312f87647f4780ee4caa6))
+
 ## [1.37.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.36.0...v1.37.0) (2026-06-21)
 
 
