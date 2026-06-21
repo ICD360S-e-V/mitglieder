@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Takautuva maksu: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Bürgergeldillä tai Sozialamtilla olet täysin vapautettu — myöskään takautuvasti et ole velkaa."
+  "wizardStufe5FeeExemptBody": "Bürgergeldillä tai Sozialamtilla olet täysin vapautettu — myöskään takautuvasti et ole velkaa.",
+  "wizardDocumentPrompt": "Ennen kuin lopetamme, lue {doc} huolellisesti. On tärkeää tietää, mitä allekirjoitat.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Vieritä loppuun jatkaaksesi.",
+  "wizardDocumentScrolledOk": "Olet lukenut loppuun ✓",
+  "wizardDocumentOpenButton": "Avaa {doc} selaimessa",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Tällä alustalla avaamme dokumentin oletusselaimessasi.",
+  "wizardDocumentOpenedOk": "Dokumentti avattiin. Lue se huolellisesti.",
+  "wizardDocumentConfirm": "Vahvistan, että olen lukenut {doc} ja hyväksyn sen.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

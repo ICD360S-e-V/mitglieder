@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Składka z mocą wsteczną: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Z Bürgergeld lub Sozialamt jesteś całkowicie zwolniony — nawet z mocą wsteczną nic nie jesteś winien."
+  "wizardStufe5FeeExemptBody": "Z Bürgergeld lub Sozialamt jesteś całkowicie zwolniony — nawet z mocą wsteczną nic nie jesteś winien.",
+  "wizardDocumentPrompt": "Zanim skończymy, przeczytaj uważnie {doc}. Ważne, abyś wiedział, co podpisujesz.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Przewiń na dół, aby kontynuować.",
+  "wizardDocumentScrolledOk": "Przeczytałeś do końca ✓",
+  "wizardDocumentOpenButton": "Otwórz {doc} w przeglądarce",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Na tej platformie otwieramy dokument w domyślnej przeglądarce.",
+  "wizardDocumentOpenedOk": "Dokument został otwarty. Przeczytaj go uważnie.",
+  "wizardDocumentConfirm": "Potwierdzam, że przeczytałem(am) i zgadzam się z {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

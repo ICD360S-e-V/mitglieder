@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Atpakaļejošā maksa: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Ar Bürgergeld vai Sozialamt esi pilnībā atbrīvots — pat ar atpakaļejošu spēku neko nav jāmaksā."
+  "wizardStufe5FeeExemptBody": "Ar Bürgergeld vai Sozialamt esi pilnībā atbrīvots — pat ar atpakaļejošu spēku neko nav jāmaksā.",
+  "wizardDocumentPrompt": "Pirms pabeigt, lūdzu rūpīgi izlasi {doc}. Ir svarīgi zināt, ko paraksti.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Ritini līdz beigām, lai turpinātu.",
+  "wizardDocumentScrolledOk": "Tu izlasīji līdz galam ✓",
+  "wizardDocumentOpenButton": "Atvērt {doc} pārlūkprogrammā",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Šajā platformā atveram dokumentu tavā noklusētajā pārlūkprogrammā.",
+  "wizardDocumentOpenedOk": "Dokuments tika atvērts. Lūdzu, izlasi to rūpīgi.",
+  "wizardDocumentConfirm": "Apstiprinu, ka esmu izlasījis(usi) un piekrītu {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Ретроактивний внесок: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "З Bürgergeld або Sozialamt ти повністю звільнений — навіть ретроактивно нічого не винен."
+  "wizardStufe5FeeExemptBody": "З Bürgergeld або Sozialamt ти повністю звільнений — навіть ретроактивно нічого не винен.",
+  "wizardDocumentPrompt": "Перед тим, як завершити, уважно прочитай {doc}. Важливо знати, що підписуєш.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Прокрути до кінця, щоб продовжити.",
+  "wizardDocumentScrolledOk": "Ти прочитав до кінця ✓",
+  "wizardDocumentOpenButton": "Відкрити {doc} у браузері",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "На цій платформі ми відкриваємо документ у твоєму браузері за замовчуванням.",
+  "wizardDocumentOpenedOk": "Документ було відкрито. Прочитай уважно.",
+  "wizardDocumentConfirm": "Підтверджую, що прочитав і погоджуюся з {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

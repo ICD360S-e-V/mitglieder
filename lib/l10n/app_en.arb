@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Retroactive fee: € 0 🎉",
-  "wizardStufe5FeeExemptBody": "With Bürgergeld or Sozialamt you're fully exempt — even retroactively nothing is owed."
+  "wizardStufe5FeeExemptBody": "With Bürgergeld or Sozialamt you're fully exempt — even retroactively nothing is owed.",
+  "wizardDocumentPrompt": "Before we wrap up, please read the {doc} carefully. It's important you know what you're signing.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Scroll to the bottom to continue.",
+  "wizardDocumentScrolledOk": "You've read to the end ✓",
+  "wizardDocumentOpenButton": "Open {doc} in browser",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "On this platform we open the document in your default browser.",
+  "wizardDocumentOpenedOk": "The document was opened. Please read it carefully.",
+  "wizardDocumentConfirm": "I confirm that I've read and agree to the {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

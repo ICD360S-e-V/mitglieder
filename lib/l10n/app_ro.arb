@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Cotizație retroactivă: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Cu Bürgergeld sau Sozialamt ești scutit complet — chiar și retroactiv nu datorezi nimic."
+  "wizardStufe5FeeExemptBody": "Cu Bürgergeld sau Sozialamt ești scutit complet — chiar și retroactiv nu datorezi nimic.",
+  "wizardDocumentPrompt": "Înainte să închidem, te rog citește cu atenție {doc}. E important să știi ce semnezi.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Derulează până la sfârșit pentru a continua.",
+  "wizardDocumentScrolledOk": "Ai citit până la sfârșit ✓",
+  "wizardDocumentOpenButton": "Deschide {doc} în browser",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Pe această platformă deschidem documentul în browser-ul tău preferat.",
+  "wizardDocumentOpenedOk": "Documentul a fost deschis. Te rog citește-l cu atenție.",
+  "wizardDocumentConfirm": "Confirm că am citit și sunt de acord cu {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

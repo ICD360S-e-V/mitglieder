@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Tilbakevirkende kontingent: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Med Bürgergeld eller Sozialamt er du helt fritatt — heller ikke tilbakevirkende skylder du noe."
+  "wizardStufe5FeeExemptBody": "Med Bürgergeld eller Sozialamt er du helt fritatt — heller ikke tilbakevirkende skylder du noe.",
+  "wizardDocumentPrompt": "Før vi avslutter, vennligst les {doc} grundig. Det er viktig å vite hva du signerer.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Bla til bunnen for å fortsette.",
+  "wizardDocumentScrolledOk": "Du har lest til slutten ✓",
+  "wizardDocumentOpenButton": "Åpne {doc} i nettleseren",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "På denne plattformen åpner vi dokumentet i din standardnettleser.",
+  "wizardDocumentOpenedOk": "Dokumentet er åpnet. Vennligst les det nøye.",
+  "wizardDocumentConfirm": "Jeg bekrefter at jeg har lest og godtar {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -1201,5 +1201,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Rückwirkender Beitrag: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Mit Bürgergeld oder Sozialamt bist du komplett befreit — auch rückwirkend nichts zu zahlen."
+  "wizardStufe5FeeExemptBody": "Mit Bürgergeld oder Sozialamt bist du komplett befreit — auch rückwirkend nichts zu zahlen.",
+  "wizardDocumentPrompt": "Bevor wir abschließen, lies bitte sorgfältig die {doc}. Es ist wichtig zu wissen, was du unterschreibst.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Scroll bis zum Ende, um fortzufahren.",
+  "wizardDocumentScrolledOk": "Du hast bis zum Ende gelesen ✓",
+  "wizardDocumentOpenButton": "{doc} im Browser öffnen",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Auf dieser Plattform öffnen wir das Dokument in deinem Standard-Browser.",
+  "wizardDocumentOpenedOk": "Das Dokument wurde geöffnet. Bitte lies es sorgfältig.",
+  "wizardDocumentConfirm": "Ich bestätige, dass ich {doc} gelesen habe und damit einverstanden bin.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

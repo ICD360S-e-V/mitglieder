@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Atgalinis mokestis: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Su Bürgergeld arba Sozialamt esi visiškai atleistas — net atgaline data nieko nesi skolingas."
+  "wizardStufe5FeeExemptBody": "Su Bürgergeld arba Sozialamt esi visiškai atleistas — net atgaline data nieko nesi skolingas.",
+  "wizardDocumentPrompt": "Prieš užbaigiant, atidžiai perskaityk {doc}. Svarbu žinoti, ką pasirašai.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Slink iki galo, kad galėtum tęsti.",
+  "wizardDocumentScrolledOk": "Perskaitei iki galo ✓",
+  "wizardDocumentOpenButton": "Atidaryti {doc} naršyklėje",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Šioje platformoje atidarome dokumentą tavo numatytojoje naršyklėje.",
+  "wizardDocumentOpenedOk": "Dokumentas atidarytas. Atidžiai jį perskaityk.",
+  "wizardDocumentConfirm": "Patvirtinu, kad perskaičiau ir sutinku su {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

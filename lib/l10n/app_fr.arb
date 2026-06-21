@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Cotisation rétroactive : 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Avec Bürgergeld ou Sozialamt tu es totalement exempté — même rétroactivement, tu ne dois rien."
+  "wizardStufe5FeeExemptBody": "Avec Bürgergeld ou Sozialamt tu es totalement exempté — même rétroactivement, tu ne dois rien.",
+  "wizardDocumentPrompt": "Avant de conclure, lis attentivement le {doc}. C'est important de savoir ce que tu signes.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Fais défiler jusqu'en bas pour continuer.",
+  "wizardDocumentScrolledOk": "Tu as lu jusqu'au bout ✓",
+  "wizardDocumentOpenButton": "Ouvrir {doc} dans le navigateur",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Sur cette plateforme, nous ouvrons le document dans ton navigateur par défaut.",
+  "wizardDocumentOpenedOk": "Le document a été ouvert. Lis-le attentivement.",
+  "wizardDocumentConfirm": "Je confirme avoir lu et accepter le {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

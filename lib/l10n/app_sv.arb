@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Retroaktiv avgift: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Med Bürgergeld eller Sozialamt är du helt befriad — inte ens retroaktivt är du skyldig något."
+  "wizardStufe5FeeExemptBody": "Med Bürgergeld eller Sozialamt är du helt befriad — inte ens retroaktivt är du skyldig något.",
+  "wizardDocumentPrompt": "Innan vi avslutar, läs {doc} noggrant. Det är viktigt att veta vad du skriver under.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Skrolla till botten för att fortsätta.",
+  "wizardDocumentScrolledOk": "Du har läst till slutet ✓",
+  "wizardDocumentOpenButton": "Öppna {doc} i webbläsaren",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "På den här plattformen öppnar vi dokumentet i din standardwebbläsare.",
+  "wizardDocumentOpenedOk": "Dokumentet har öppnats. Läs det noggrant.",
+  "wizardDocumentConfirm": "Jag bekräftar att jag har läst och godkänner {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

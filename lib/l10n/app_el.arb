@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Αναδρομική συνδρομή: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Με Bürgergeld ή Sozialamt είσαι πλήρως απαλλαγμένος — ακόμη και αναδρομικά δεν χρωστάς τίποτα."
+  "wizardStufe5FeeExemptBody": "Με Bürgergeld ή Sozialamt είσαι πλήρως απαλλαγμένος — ακόμη και αναδρομικά δεν χρωστάς τίποτα.",
+  "wizardDocumentPrompt": "Πριν τελειώσουμε, παρακαλώ διάβασε προσεκτικά το {doc}. Είναι σημαντικό να ξέρεις τι υπογράφεις.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Κάνε κύλιση μέχρι το τέλος για να συνεχίσεις.",
+  "wizardDocumentScrolledOk": "Έχεις διαβάσει μέχρι το τέλος ✓",
+  "wizardDocumentOpenButton": "Άνοιξε το {doc} στο πρόγραμμα περιήγησης",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Σε αυτή την πλατφόρμα ανοίγουμε το έγγραφο στον προεπιλεγμένο σου περιηγητή.",
+  "wizardDocumentOpenedOk": "Το έγγραφο άνοιξε. Παρακαλώ διάβασέ το προσεκτικά.",
+  "wizardDocumentConfirm": "Επιβεβαιώνω ότι έχω διαβάσει και συμφωνώ με το {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

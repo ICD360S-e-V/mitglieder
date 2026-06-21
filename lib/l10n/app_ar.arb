@@ -1201,5 +1201,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "الاشتراك بأثر رجعي: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "مع Bürgergeld أو Sozialamt أنت معفى تمامًا — حتى بأثر رجعي لا تدين بشيء."
+  "wizardStufe5FeeExemptBody": "مع Bürgergeld أو Sozialamt أنت معفى تمامًا — حتى بأثر رجعي لا تدين بشيء.",
+  "wizardDocumentPrompt": "قبل أن ننتهي، يرجى قراءة {doc} بعناية. من المهم أن تعرف ما توقع عليه.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "مرر للأسفل حتى النهاية للمتابعة.",
+  "wizardDocumentScrolledOk": "لقد قرأت حتى النهاية ✓",
+  "wizardDocumentOpenButton": "افتح {doc} في المتصفح",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "على هذه المنصة، نفتح المستند في متصفحك الافتراضي.",
+  "wizardDocumentOpenedOk": "تم فتح المستند. يرجى قراءته بعناية.",
+  "wizardDocumentConfirm": "أؤكد أنني قرأت {doc} وأوافق عليها.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

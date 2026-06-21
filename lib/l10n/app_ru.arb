@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Ретроактивный взнос: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "С Bürgergeld или Sozialamt ты полностью освобождён — даже ретроактивно ничего не должен."
+  "wizardStufe5FeeExemptBody": "С Bürgergeld или Sozialamt ты полностью освобождён — даже ретроактивно ничего не должен.",
+  "wizardDocumentPrompt": "Прежде чем закончить, прочитай внимательно {doc}. Важно понимать, что ты подписываешь.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Прокрути до конца, чтобы продолжить.",
+  "wizardDocumentScrolledOk": "Ты прочитал до конца ✓",
+  "wizardDocumentOpenButton": "Открыть {doc} в браузере",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "На этой платформе мы открываем документ в твоём браузере по умолчанию.",
+  "wizardDocumentOpenedOk": "Документ был открыт. Прочитай его внимательно.",
+  "wizardDocumentConfirm": "Подтверждаю, что прочитал(а) и согласен(на) с {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

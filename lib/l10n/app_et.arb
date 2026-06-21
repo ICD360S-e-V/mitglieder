@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Tagasiulatuv liikmemaks: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Bürgergeld või Sozialamt korral oled täiesti vabastatud — ka tagasiulatuvalt ei võlgne midagi."
+  "wizardStufe5FeeExemptBody": "Bürgergeld või Sozialamt korral oled täiesti vabastatud — ka tagasiulatuvalt ei võlgne midagi.",
+  "wizardDocumentPrompt": "Enne lõpetamist palun loe hoolikalt {doc}. On oluline teada, mida sa allkirjastad.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Keri lõpuni, et jätkata.",
+  "wizardDocumentScrolledOk": "Sa lugesid lõpuni ✓",
+  "wizardDocumentOpenButton": "Ava {doc} brauseris",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Sellel platvormil avame dokumendi sinu vaikebrauseris.",
+  "wizardDocumentOpenedOk": "Dokument avati. Palun loe see hoolikalt läbi.",
+  "wizardDocumentConfirm": "Kinnitan, et olen lugenud ja nõustun {doc}-ga.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

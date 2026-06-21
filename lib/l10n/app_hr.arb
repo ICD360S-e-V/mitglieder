@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Retroaktivna članarina: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "S Bürgergeldom ili Sozialamtom potpuno si oslobođen — ni retroaktivno ne duguješ ništa."
+  "wizardStufe5FeeExemptBody": "S Bürgergeldom ili Sozialamtom potpuno si oslobođen — ni retroaktivno ne duguješ ništa.",
+  "wizardDocumentPrompt": "Prije nego završimo, molim pažljivo pročitaj {doc}. Važno je znati što potpisuješ.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Pomakni do dna za nastavak.",
+  "wizardDocumentScrolledOk": "Pročitao si do kraja ✓",
+  "wizardDocumentOpenButton": "Otvori {doc} u pregledniku",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Na ovoj platformi otvaramo dokument u tvojem zadanom pregledniku.",
+  "wizardDocumentOpenedOk": "Dokument je otvoren. Molim pažljivo ga pročitaj.",
+  "wizardDocumentConfirm": "Potvrđujem da sam pročitao(la) i slažem se s {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

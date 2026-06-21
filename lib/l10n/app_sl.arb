@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Članarina za nazaj: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Z Bürgergeld ali Sozialamt si popolnoma oproščen — niti za nazaj ne dolguješ nič."
+  "wizardStufe5FeeExemptBody": "Z Bürgergeld ali Sozialamt si popolnoma oproščen — niti za nazaj ne dolguješ nič.",
+  "wizardDocumentPrompt": "Preden zaključimo, prosim natančno preberi {doc}. Pomembno je vedeti, kaj podpisuješ.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Pomakni do konca za nadaljevanje.",
+  "wizardDocumentScrolledOk": "Prebral si do konca ✓",
+  "wizardDocumentOpenButton": "Odpri {doc} v brskalniku",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Na tej platformi dokument odpremo v privzetem brskalniku.",
+  "wizardDocumentOpenedOk": "Dokument je odprt. Prosim, natančno ga preberi.",
+  "wizardDocumentConfirm": "Potrjujem, da sem prebral(a) {doc} in se z njim strinjam.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

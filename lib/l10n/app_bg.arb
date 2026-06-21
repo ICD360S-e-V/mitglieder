@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Членски внос с обратна сила: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "С Bürgergeld или Sozialamt си напълно освободен — дори с обратна сила не дължиш нищо."
+  "wizardStufe5FeeExemptBody": "С Bürgergeld или Sozialamt си напълно освободен — дори с обратна сила не дължиш нищо.",
+  "wizardDocumentPrompt": "Преди да приключим, моля прочети внимателно {doc}. Важно е да знаеш какво подписваш.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Превърти до края, за да продължиш.",
+  "wizardDocumentScrolledOk": "Прочете до края ✓",
+  "wizardDocumentOpenButton": "Отвори {doc} в браузър",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "На тази платформа отваряме документа във браузъра ти по подразбиране.",
+  "wizardDocumentOpenedOk": "Документът беше отворен. Моля, прочети го внимателно.",
+  "wizardDocumentConfirm": "Потвърждавам, че прочетох и съм съгласен с {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

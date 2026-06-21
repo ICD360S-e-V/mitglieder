@@ -1201,5 +1201,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Geriye dönük aidat: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Bürgergeld veya Sozialamt ile tamamen muafsın — geriye dönük olarak da hiçbir şey ödemen gerekmez."
+  "wizardStufe5FeeExemptBody": "Bürgergeld veya Sozialamt ile tamamen muafsın — geriye dönük olarak da hiçbir şey ödemen gerekmez.",
+  "wizardDocumentPrompt": "Bitirmeden önce lütfen {doc}'u dikkatlice oku. Neyi imzaladığını bilmen önemli.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Devam etmek için en alta kaydır.",
+  "wizardDocumentScrolledOk": "Sona kadar okudun ✓",
+  "wizardDocumentOpenButton": "{doc}'u tarayıcıda aç",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Bu platformda belgeyi varsayılan tarayıcında açıyoruz.",
+  "wizardDocumentOpenedOk": "Belge açıldı. Lütfen dikkatlice oku.",
+  "wizardDocumentConfirm": "{doc}'u okuduğumu ve kabul ettiğimi onaylıyorum.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

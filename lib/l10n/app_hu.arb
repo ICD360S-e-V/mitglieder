@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Visszamenőleges tagdíj: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Bürgergelddel vagy Sozialamttal teljesen mentes vagy — visszamenőleg sem tartozol semmivel."
+  "wizardStufe5FeeExemptBody": "Bürgergelddel vagy Sozialamttal teljesen mentes vagy — visszamenőleg sem tartozol semmivel.",
+  "wizardDocumentPrompt": "Mielőtt befejezzük, kérlek olvasd el figyelmesen a {doc}-t. Fontos tudnod, mit írsz alá.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Görgess a végéig a folytatáshoz.",
+  "wizardDocumentScrolledOk": "Végigolvastad ✓",
+  "wizardDocumentOpenButton": "{doc} megnyitása a böngészőben",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Ezen a platformon az alapértelmezett böngészőben nyitjuk meg a dokumentumot.",
+  "wizardDocumentOpenedOk": "A dokumentum megnyílt. Olvasd el figyelmesen.",
+  "wizardDocumentConfirm": "Megerősítem, hogy elolvastam és elfogadom a {doc}-t.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

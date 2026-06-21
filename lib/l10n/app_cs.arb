@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Zpětný příspěvek: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "S Bürgergeld nebo Sozialamtem jsi plně osvobozen — i zpětně nic nedlužíš."
+  "wizardStufe5FeeExemptBody": "S Bürgergeld nebo Sozialamtem jsi plně osvobozen — i zpětně nic nedlužíš.",
+  "wizardDocumentPrompt": "Než to uzavřeme, prosím pečlivě si přečti {doc}. Je důležité vědět, co podepisuješ.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Posuň na konec, abys mohl pokračovat.",
+  "wizardDocumentScrolledOk": "Přečetl jsi až do konce ✓",
+  "wizardDocumentOpenButton": "Otevřít {doc} v prohlížeči",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Na této platformě otevíráme dokument ve výchozím prohlížeči.",
+  "wizardDocumentOpenedOk": "Dokument byl otevřen. Pečlivě si jej přečti.",
+  "wizardDocumentConfirm": "Potvrzuji, že jsem si přečetl(a) {doc} a souhlasím s ní.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

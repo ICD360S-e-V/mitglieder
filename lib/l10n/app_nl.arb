@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Contributie met terugwerkende kracht: € 0 🎉",
-  "wizardStufe5FeeExemptBody": "Met Bürgergeld of Sozialamt ben je volledig vrijgesteld — ook met terugwerkende kracht ben je niets verschuldigd."
+  "wizardStufe5FeeExemptBody": "Met Bürgergeld of Sozialamt ben je volledig vrijgesteld — ook met terugwerkende kracht ben je niets verschuldigd.",
+  "wizardDocumentPrompt": "Voor we afronden, lees alsjeblieft de {doc} aandachtig. Het is belangrijk dat je weet wat je tekent.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Scroll naar beneden om door te gaan.",
+  "wizardDocumentScrolledOk": "Je hebt tot het einde gelezen ✓",
+  "wizardDocumentOpenButton": "{doc} openen in browser",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "Op dit platform openen we het document in je standaardbrowser.",
+  "wizardDocumentOpenedOk": "Het document is geopend. Lees het aandachtig.",
+  "wizardDocumentConfirm": "Ik bevestig dat ik {doc} heb gelezen en ermee akkoord ga.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }

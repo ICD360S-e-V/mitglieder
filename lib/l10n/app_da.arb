@@ -1180,5 +1180,33 @@
     }
   },
   "wizardStufe5FeeExemptTitle": "Bagudrettet kontingent: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Med Bürgergeld eller Sozialamt er du helt fritaget — også bagudrettet skylder du intet."
+  "wizardStufe5FeeExemptBody": "Med Bürgergeld eller Sozialamt er du helt fritaget — også bagudrettet skylder du intet.",
+  "wizardDocumentPrompt": "Inden vi runder af, læs venligst {doc} grundigt. Det er vigtigt at vide, hvad du underskriver.",
+  "@wizardDocumentPrompt": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentScrollHint": "Scroll til bunden for at fortsætte.",
+  "wizardDocumentScrolledOk": "Du har læst til slutningen ✓",
+  "wizardDocumentOpenButton": "Åbn {doc} i browseren",
+  "@wizardDocumentOpenButton": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardDocumentExternalHint": "På denne platform åbner vi dokumentet i din standardbrowser.",
+  "wizardDocumentOpenedOk": "Dokumentet er åbnet. Læs det grundigt.",
+  "wizardDocumentConfirm": "Jeg bekræfter, at jeg har læst og accepterer {doc}.",
+  "@wizardDocumentConfirm": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  }
 }
