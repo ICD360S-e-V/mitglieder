@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Обећавам, позваћу само ако је важно. 📱",
   "wizardStufe1fEmailLabel": "Имејл адреса",
   "wizardStufe1fEmailHelper": "Користимо га за пријаву и званичне документе.",
-  "wizardErrInvalidEmail": "Неважећа имејл адреса"
+  "wizardErrInvalidEmail": "Неважећа имејл адреса",
+  "wizardStufe2Title": "Тип чланства",
+  "wizardStufe2Prompt": "Какав члан желиш да будеш? Хајде да ти објасним сваку опцију.",
+  "wizardStufe2OrdentlichTitle": "Редовни члан (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Сва права. Плаћаш месечну чланарину, гласаш на скупштини, можеш бити изабран у управу. Стандардни избор.",
+  "wizardStufe2FoerderTitle": "Подупирући члан (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Подржаваш удружење финансијски, али не учествујеш активно у одлукама. Без права гласа. Добро ако желиш да помажеш са даљине.",
+  "wizardStufe2EhrenTitle": "Почасни члан (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Додељује управа за посебне заслуге. Не бираш сам — додељује се као признање. Бирај само ако си већ почаствован."
 }

@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Ígérem, csak akkor hívlak, ha tényleg fontos. 📱",
   "wizardStufe1fEmailLabel": "E-mail cím",
   "wizardStufe1fEmailHelper": "Bejelentkezéshez és hivatalos dokumentumokhoz használjuk.",
-  "wizardErrInvalidEmail": "Érvénytelen e-mail cím"
+  "wizardErrInvalidEmail": "Érvénytelen e-mail cím",
+  "wizardStufe2Title": "Tagság típusa",
+  "wizardStufe2Prompt": "Milyen tag szeretnél lenni? Hadd magyarázzam el a lehetőségeket.",
+  "wizardStufe2OrdentlichTitle": "Rendes tag (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Teljes jogkör. Havi tagdíjat fizetsz, szavazol a közgyűlésen, megválasztható vagy az elnökségbe. Alapértelmezett választás.",
+  "wizardStufe2FoerderTitle": "Pártoló tag (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Anyagilag támogatod az egyesületet, de nem veszel részt aktívan a döntésekben. Nincs szavazati jog. Jó választás, ha távolról szeretnél segíteni.",
+  "wizardStufe2EhrenTitle": "Tiszteletbeli tag (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Az elnökség adományozza különleges érdemekért. Nem te választod — elismerésként kapod. Csak akkor jelöld, ha már megkaptad ezt a kitüntetést."
 }

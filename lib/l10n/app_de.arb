@@ -1112,5 +1112,13 @@
   "wizardStufe1fTelefonHelper": "Versprochen — wir rufen nur an, wenn es wirklich wichtig ist. 📱",
   "wizardStufe1fEmailLabel": "E-Mail-Adresse",
   "wizardStufe1fEmailHelper": "Wir nutzen sie als Login und für offizielle Unterlagen.",
-  "wizardErrInvalidEmail": "Ungültige E-Mail-Adresse"
+  "wizardErrInvalidEmail": "Ungültige E-Mail-Adresse",
+  "wizardStufe2Title": "Mitgliedsart",
+  "wizardStufe2Prompt": "Welche Art von Mitglied möchtest du sein? Lass mich dir jede Option erklären.",
+  "wizardStufe2OrdentlichTitle": "Ordentliches Mitglied",
+  "wizardStufe2OrdentlichBody": "Volle Rechte. Du zahlst monatlich Beitrag, stimmst in der Mitgliederversammlung ab und kannst in den Vorstand gewählt werden. Standardwahl.",
+  "wizardStufe2FoerderTitle": "Fördermitglied",
+  "wizardStufe2FoerderBody": "Du unterstützt den Verein finanziell, nimmst aber nicht aktiv an Entscheidungen teil. Kein Stimmrecht. Gut, wenn du aus der Ferne helfen willst.",
+  "wizardStufe2EhrenTitle": "Ehrenmitglied",
+  "wizardStufe2EhrenBody": "Wird vom Vorstand für besondere Verdienste verliehen. Du wählst es nicht selbst — es wird als Anerkennung gewährt. Wähle nur, wenn dir bereits diese Ehre zuteilwurde."
 }

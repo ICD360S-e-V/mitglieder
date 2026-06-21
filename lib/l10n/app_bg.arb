@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Обещавам, ще се обадя само ако е важно. 📱",
   "wizardStufe1fEmailLabel": "Имейл адрес",
   "wizardStufe1fEmailHelper": "Използваме го за вход и за официални документи.",
-  "wizardErrInvalidEmail": "Невалиден имейл адрес"
+  "wizardErrInvalidEmail": "Невалиден имейл адрес",
+  "wizardStufe2Title": "Тип членство",
+  "wizardStufe2Prompt": "Какъв член искаш да бъдеш? Нека ти обясня всяка опция.",
+  "wizardStufe2OrdentlichTitle": "Редовен член (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Пълни права. Плащаш месечен членски внос, гласуваш в Mitgliederversammlung, можеш да бъдеш избран в Vorstand. Стандартен избор.",
+  "wizardStufe2FoerderTitle": "Подкрепящ член (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Подкрепяш сдружението финансово, но не участваш активно в решенията. Без право на глас. Добре ако искаш да помагаш отдалечено.",
+  "wizardStufe2EhrenTitle": "Почетен член (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Присъжда се от Vorstand за специални заслуги. Не го избираш сам — получаваш го като признание. Избери само ако вече си отличен."
 }

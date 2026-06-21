@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Beloof dat ik alleen bel als het belangrijk is. 📱",
   "wizardStufe1fEmailLabel": "E-mailadres",
   "wizardStufe1fEmailHelper": "We gebruiken het als inlog en voor officiële documenten.",
-  "wizardErrInvalidEmail": "Ongeldig e-mailadres"
+  "wizardErrInvalidEmail": "Ongeldig e-mailadres",
+  "wizardStufe2Title": "Type lidmaatschap",
+  "wizardStufe2Prompt": "Wat voor lid wil je zijn? Laat me elke optie uitleggen.",
+  "wizardStufe2OrdentlichTitle": "Gewoon lid (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Volledige rechten. Je betaalt de maandelijkse contributie, stemt op de ledenvergadering, kunt in het bestuur worden gekozen. De standaardkeuze.",
+  "wizardStufe2FoerderTitle": "Steunend lid (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Je steunt de vereniging financieel maar neemt geen actief deel aan beslissingen. Geen stemrecht. Goed als je van afstand wilt helpen.",
+  "wizardStufe2EhrenTitle": "Erelid (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Wordt door het bestuur toegekend voor bijzondere verdiensten. Je kiest het niet zelf — het wordt verleend als erkenning. Kies alleen als je al geëerd bent."
 }

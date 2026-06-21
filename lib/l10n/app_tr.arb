@@ -1112,5 +1112,13 @@
   "wizardStufe1fTelefonHelper": "Söz veriyorum, sadece önemli olduğunda ararım. 📱",
   "wizardStufe1fEmailLabel": "E-posta adresi",
   "wizardStufe1fEmailHelper": "Giriş için ve resmi belgeler için kullanırız.",
-  "wizardErrInvalidEmail": "Geçersiz e-posta adresi"
+  "wizardErrInvalidEmail": "Geçersiz e-posta adresi",
+  "wizardStufe2Title": "Üyelik türü",
+  "wizardStufe2Prompt": "Ne tür bir üye olmak istiyorsun? Her seçeneği açıklayayım.",
+  "wizardStufe2OrdentlichTitle": "Asıl üye (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Tam haklar. Aylık aidat ödersin, Genel Kurul'da oy verirsin, Yönetim Kurulu'na seçilebilirsin. Standart seçim.",
+  "wizardStufe2FoerderTitle": "Destek üyesi (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Derneği maddi olarak desteklersin ama kararlara aktif katılmazsın. Oy hakkı yok. Uzaktan yardım etmek istiyorsan iyi seçim.",
+  "wizardStufe2EhrenTitle": "Onursal üye (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Yönetim Kurulu tarafından özel hizmetler için verilir. Bunu kendin seçemezsin — bir takdir olarak verilir. Yalnızca daha önce onurlandırıldıysan seç."
 }

@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Promit, nu te sun decât dacă e ceva important. 📱",
   "wizardStufe1fEmailLabel": "Adresa de email",
   "wizardStufe1fEmailHelper": "O folosim ca login și pentru documente oficiale.",
-  "wizardErrInvalidEmail": "Adresă de email invalidă"
+  "wizardErrInvalidEmail": "Adresă de email invalidă",
+  "wizardStufe2Title": "Tip de membru",
+  "wizardStufe2Prompt": "Ce fel de membru vrei să fii? Hai să-ți explic fiecare opțiune.",
+  "wizardStufe2OrdentlichTitle": "Membru ordinar (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Drepturi depline. Plătești cotizația lunară, votezi în Mitgliederversammlung, poți fi ales în Vorstand. Alegerea standard.",
+  "wizardStufe2FoerderTitle": "Membru susținător (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Sprijini asociația financiar, dar nu participi activ la decizii. Fără drept de vot. Bun dacă vrei să ajuți de la distanță.",
+  "wizardStufe2EhrenTitle": "Membru de onoare (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Statut acordat de Vorstand pentru merite deosebite. Nu îl alegi singur — îl primești ca recunoaștere. Selectează doar dacă ai fost deja onorat."
 }

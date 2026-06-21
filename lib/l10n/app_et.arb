@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Luban, et helistan ainult kui on midagi olulist. 📱",
   "wizardStufe1fEmailLabel": "E-posti aadress",
   "wizardStufe1fEmailHelper": "Kasutame seda sisselogimiseks ja ametlike dokumentide jaoks.",
-  "wizardErrInvalidEmail": "Vigane e-posti aadress"
+  "wizardErrInvalidEmail": "Vigane e-posti aadress",
+  "wizardStufe2Title": "Liikme tüüp",
+  "wizardStufe2Prompt": "Milline liige soovid olla? Las ma selgitan iga valiku.",
+  "wizardStufe2OrdentlichTitle": "Tavaline liige (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Täielikud õigused. Maksad igakuist liikmemaksu, hääletad üldkoosolekul, võid olla valitud juhatusse. Vaikevalik.",
+  "wizardStufe2FoerderTitle": "Toetajaliige (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Toetad ühingut rahaliselt, kuid ei osale aktiivselt otsustes. Hääleõiguseta. Hea kui soovid aidata kaugelt.",
+  "wizardStufe2EhrenTitle": "Auliige (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Annab juhatus erilise teenistuse eest. Sa ei vali seda ise — antakse tunnustusena. Vali ainult, kui sind on juba pärjatud."
 }

@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Υπόσχομαι, θα καλέσω μόνο αν είναι σημαντικό. 📱",
   "wizardStufe1fEmailLabel": "Διεύθυνση email",
   "wizardStufe1fEmailHelper": "Το χρησιμοποιούμε ως είσοδο και για επίσημα έγγραφα.",
-  "wizardErrInvalidEmail": "Μη έγκυρη διεύθυνση email"
+  "wizardErrInvalidEmail": "Μη έγκυρη διεύθυνση email",
+  "wizardStufe2Title": "Τύπος μέλους",
+  "wizardStufe2Prompt": "Τι είδους μέλος θες να γίνεις; Σου εξηγώ κάθε επιλογή.",
+  "wizardStufe2OrdentlichTitle": "Τακτικό μέλος (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Πλήρη δικαιώματα. Πληρώνεις μηνιαία συνδρομή, ψηφίζεις στη Γενική Συνέλευση, μπορείς να εκλεγείς στο Διοικητικό Συμβούλιο. Προεπιλογή.",
+  "wizardStufe2FoerderTitle": "Υποστηρικτής (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Στηρίζεις τον σύλλογο οικονομικά αλλά δεν συμμετέχεις ενεργά στις αποφάσεις. Χωρίς δικαίωμα ψήφου. Καλό αν θες να βοηθήσεις από μακριά.",
+  "wizardStufe2EhrenTitle": "Επίτιμο μέλος (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Απονέμεται από το Διοικητικό Συμβούλιο για ιδιαίτερες υπηρεσίες. Δεν το επιλέγεις μόνος — δίνεται ως αναγνώριση. Επίλεξε μόνο αν έχεις ήδη τιμηθεί."
 }

@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Žadu, skambinsiu tik tada, kai bus svarbu. 📱",
   "wizardStufe1fEmailLabel": "El. pašto adresas",
   "wizardStufe1fEmailHelper": "Naudojame jį prisijungimui ir oficialiems dokumentams.",
-  "wizardErrInvalidEmail": "Neteisingas el. pašto adresas"
+  "wizardErrInvalidEmail": "Neteisingas el. pašto adresas",
+  "wizardStufe2Title": "Narystės tipas",
+  "wizardStufe2Prompt": "Kokiu nariu nori būti? Paaiškinsiu kiekvieną variantą.",
+  "wizardStufe2OrdentlichTitle": "Tikrasis narys (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Pilnos teisės. Moki mėnesinį mokestį, balsuoji visuotiniame susirinkime, gali būti išrinktas į valdybą. Standartinis pasirinkimas.",
+  "wizardStufe2FoerderTitle": "Remiantis narys (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Remi asociaciją finansiškai, bet aktyviai nedalyvauji sprendimuose. Be balsavimo teisės. Gera, jei nori padėti iš toli.",
+  "wizardStufe2EhrenTitle": "Garbės narys (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Skiriama valdybos už ypatingus nuopelnus. Pats nesirinki — gauni kaip pripažinimą. Pasirink tik jei jau buvai pagerbtas."
 }

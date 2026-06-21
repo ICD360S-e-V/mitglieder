@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Lupaan, soitan vain jos asia on tärkeä. 📱",
   "wizardStufe1fEmailLabel": "Sähköpostiosoite",
   "wizardStufe1fEmailHelper": "Käytämme sitä sisäänkirjautumiseen ja virallisiin asiakirjoihin.",
-  "wizardErrInvalidEmail": "Virheellinen sähköpostiosoite"
+  "wizardErrInvalidEmail": "Virheellinen sähköpostiosoite",
+  "wizardStufe2Title": "Jäsenyystyyppi",
+  "wizardStufe2Prompt": "Millainen jäsen haluat olla? Selitän jokaisen vaihtoehdon.",
+  "wizardStufe2OrdentlichTitle": "Varsinainen jäsen (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Täydet oikeudet. Maksat kuukausimaksun, äänestät jäsenkokouksessa, voit tulla valituksi hallitukseen. Oletusvalinta.",
+  "wizardStufe2FoerderTitle": "Kannattajajäsen (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Tuet yhdistystä taloudellisesti mutta et osallistu aktiivisesti päätöksiin. Ei äänioikeutta. Sopii jos haluat auttaa etäältä.",
+  "wizardStufe2EhrenTitle": "Kunniajäsen (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Hallitus myöntää erityisistä ansioista. Et valitse sitä itse — se myönnetään tunnustuksena. Valitse vain jos sinut on jo kunnioitettu."
 }

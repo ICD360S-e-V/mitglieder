@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Обещаю, позвоню только если это действительно важно. 📱",
   "wizardStufe1fEmailLabel": "Адрес электронной почты",
   "wizardStufe1fEmailHelper": "Используем как логин и для официальных документов.",
-  "wizardErrInvalidEmail": "Неверный адрес email"
+  "wizardErrInvalidEmail": "Неверный адрес email",
+  "wizardStufe2Title": "Тип членства",
+  "wizardStufe2Prompt": "Каким членом ты хочешь стать? Дай мне объяснить каждую опцию.",
+  "wizardStufe2OrdentlichTitle": "Действительный член (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Полные права. Платишь ежемесячный взнос, голосуешь в Mitgliederversammlung, можешь быть избран в Vorstand. Стандартный выбор.",
+  "wizardStufe2FoerderTitle": "Поддерживающий член (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Поддерживаешь ассоциацию финансово, но не участвуешь активно в решениях. Без права голоса. Подходит, если хочешь помогать на расстоянии.",
+  "wizardStufe2EhrenTitle": "Почётный член (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Присуждается Vorstand за особые заслуги. Ты не выбираешь его сам — он даётся как признание. Выбери только если уже был удостоен."
 }

@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Obiecuję, zadzwonię tylko jeśli to ważne. 📱",
   "wizardStufe1fEmailLabel": "Adres e-mail",
   "wizardStufe1fEmailHelper": "Używamy go jako login i do oficjalnych dokumentów.",
-  "wizardErrInvalidEmail": "Nieprawidłowy adres e-mail"
+  "wizardErrInvalidEmail": "Nieprawidłowy adres e-mail",
+  "wizardStufe2Title": "Typ członkostwa",
+  "wizardStufe2Prompt": "Jakim członkiem chcesz być? Wyjaśnię ci każdą opcję.",
+  "wizardStufe2OrdentlichTitle": "Członek zwyczajny (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Pełne prawa. Płacisz miesięczną składkę, głosujesz na walnym zgromadzeniu, możesz być wybrany do zarządu. Domyślny wybór.",
+  "wizardStufe2FoerderTitle": "Członek wspierający (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Wspierasz stowarzyszenie finansowo, ale nie uczestniczysz aktywnie w decyzjach. Bez prawa głosu. Dobre, jeśli chcesz pomagać z dystansu.",
+  "wizardStufe2EhrenTitle": "Członek honorowy (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Przyznawany przez zarząd za szczególne zasługi. Nie wybierasz tego sam — to wyróżnienie. Wybierz tylko jeśli już zostałeś uhonorowany."
 }

@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Promesso, non chiamo se non è importante. 📱",
   "wizardStufe1fEmailLabel": "Indirizzo email",
   "wizardStufe1fEmailHelper": "La usiamo come login e per documenti ufficiali.",
-  "wizardErrInvalidEmail": "Indirizzo email non valido"
+  "wizardErrInvalidEmail": "Indirizzo email non valido",
+  "wizardStufe2Title": "Tipo di socio",
+  "wizardStufe2Prompt": "Che tipo di socio vuoi essere? Lascia che ti spieghi ogni opzione.",
+  "wizardStufe2OrdentlichTitle": "Socio ordinario (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Pieni diritti. Paghi la quota mensile, voti in assemblea, puoi essere eletto nel Vorstand. La scelta standard.",
+  "wizardStufe2FoerderTitle": "Socio sostenitore (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Sostieni l'associazione economicamente ma non partecipi attivamente alle decisioni. Senza diritto di voto. Buona scelta se vuoi aiutare da lontano.",
+  "wizardStufe2EhrenTitle": "Socio onorario (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Conferito dal Vorstand per meriti speciali. Non lo scegli tu — viene assegnato come riconoscimento. Seleziona solo se sei già stato onorato."
 }

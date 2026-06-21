@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Обіцяю, дзвонитиму лише коли це справді важливо. 📱",
   "wizardStufe1fEmailLabel": "Електронна адреса",
   "wizardStufe1fEmailHelper": "Використовуємо як логін і для офіційних документів.",
-  "wizardErrInvalidEmail": "Невірна електронна адреса"
+  "wizardErrInvalidEmail": "Невірна електронна адреса",
+  "wizardStufe2Title": "Тип членства",
+  "wizardStufe2Prompt": "Яким членом ти хочеш бути? Давай поясню кожну опцію.",
+  "wizardStufe2OrdentlichTitle": "Дійсний член (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Повні права. Платиш щомісячний внесок, голосуєш у Mitgliederversammlung, можеш бути обраним до Vorstand. Стандартний вибір.",
+  "wizardStufe2FoerderTitle": "Підтримуючий член (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Підтримуєш асоціацію фінансово, але не береш активної участі в рішеннях. Без права голосу. Добре, якщо хочеш допомагати на відстані.",
+  "wizardStufe2EhrenTitle": "Почесний член (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Присвоюється Vorstand за особливі заслуги. Не вибираєш сам — отримуєш як визнання. Обери лише якщо вже був удостоєний."
 }

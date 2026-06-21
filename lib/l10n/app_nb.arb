@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Lover at jeg bare ringer hvis det er viktig. 📱",
   "wizardStufe1fEmailLabel": "E-postadresse",
   "wizardStufe1fEmailHelper": "Vi bruker den som innlogging og til offisielle dokumenter.",
-  "wizardErrInvalidEmail": "Ugyldig e-postadresse"
+  "wizardErrInvalidEmail": "Ugyldig e-postadresse",
+  "wizardStufe2Title": "Medlemskapstype",
+  "wizardStufe2Prompt": "Hva slags medlem vil du være? La meg forklare hvert alternativ.",
+  "wizardStufe2OrdentlichTitle": "Ordinært medlem (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Fulle rettigheter. Du betaler månedlig kontingent, stemmer på medlemsmøtet, kan velges inn i styret. Standardvalget.",
+  "wizardStufe2FoerderTitle": "Støttemedlem (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Du støtter foreningen økonomisk, men deltar ikke aktivt i beslutninger. Ingen stemmerett. Bra hvis du vil hjelpe på avstand.",
+  "wizardStufe2EhrenTitle": "Æresmedlem (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Tildeles av styret for spesielle fortjenester. Du velger det ikke selv — det gis som anerkjennelse. Velg bare hvis du allerede er hedret."
 }

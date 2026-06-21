@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Promise, I won't call unless it's important. 📱",
   "wizardStufe1fEmailLabel": "Email address",
   "wizardStufe1fEmailHelper": "We use it as your login and for official documents.",
-  "wizardErrInvalidEmail": "Invalid email address"
+  "wizardErrInvalidEmail": "Invalid email address",
+  "wizardStufe2Title": "Membership type",
+  "wizardStufe2Prompt": "What kind of member do you want to be? Let me explain each option.",
+  "wizardStufe2OrdentlichTitle": "Regular member (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Full rights. You pay the monthly fee, vote in the Mitgliederversammlung, can be elected to the Vorstand. The default choice.",
+  "wizardStufe2FoerderTitle": "Supporting member (Fördermitglied)",
+  "wizardStufe2FoerderBody": "You support the association financially but don't take part in decisions. No voting right. Good if you want to help from a distance.",
+  "wizardStufe2EhrenTitle": "Honorary member (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Awarded by the Vorstand for special merit. You don't pick this yourself — it's granted as recognition. Only choose if you've already been honoured."
 }

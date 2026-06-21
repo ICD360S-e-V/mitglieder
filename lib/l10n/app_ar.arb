@@ -1112,5 +1112,13 @@
   "wizardStufe1fTelefonHelper": "وعد، لن أتصل إلا في الأمور المهمة. 📱",
   "wizardStufe1fEmailLabel": "البريد الإلكتروني",
   "wizardStufe1fEmailHelper": "نستخدمه لتسجيل الدخول وللوثائق الرسمية.",
-  "wizardErrInvalidEmail": "عنوان بريد إلكتروني غير صحيح"
+  "wizardErrInvalidEmail": "عنوان بريد إلكتروني غير صحيح",
+  "wizardStufe2Title": "نوع العضوية",
+  "wizardStufe2Prompt": "أي نوع من العضوية تريد؟ دعني أشرح لك كل خيار.",
+  "wizardStufe2OrdentlichTitle": "عضو عادي (ordentlich)",
+  "wizardStufe2OrdentlichBody": "حقوق كاملة. تدفع الاشتراك الشهري، تصوت في الاجتماع العام، يمكنك أن تُنتخب في مجلس الإدارة. الخيار الافتراضي.",
+  "wizardStufe2FoerderTitle": "عضو داعم (Fördermitglied)",
+  "wizardStufe2FoerderBody": "تدعم الجمعية ماليًا لكن لا تشارك بنشاط في القرارات. لا حق تصويت. مناسب إذا أردت المساعدة عن بُعد.",
+  "wizardStufe2EhrenTitle": "عضو فخري (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "يُمنح من قبل مجلس الإدارة لمزايا خاصة. لا تختاره بنفسك — يُمنح كاعتراف. اختر فقط إذا تم تكريمك بالفعل."
 }

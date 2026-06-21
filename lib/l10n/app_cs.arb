@@ -1091,5 +1091,13 @@
   "wizardStufe1fTelefonHelper": "Slib — zavolám jen když to bude opravdu důležité. 📱",
   "wizardStufe1fEmailLabel": "E-mailová adresa",
   "wizardStufe1fEmailHelper": "Používáme ho jako přihlášení a pro oficiální dokumenty.",
-  "wizardErrInvalidEmail": "Neplatná e-mailová adresa"
+  "wizardErrInvalidEmail": "Neplatná e-mailová adresa",
+  "wizardStufe2Title": "Typ členství",
+  "wizardStufe2Prompt": "Jakým typem člena chceš být? Vysvětlím ti každou možnost.",
+  "wizardStufe2OrdentlichTitle": "Řádný člen (ordentlich)",
+  "wizardStufe2OrdentlichBody": "Plná práva. Platíš měsíční příspěvek, hlasuješ na členské schůzi, můžeš být zvolen do představenstva. Výchozí volba.",
+  "wizardStufe2FoerderTitle": "Podporující člen (Fördermitglied)",
+  "wizardStufe2FoerderBody": "Podporuješ spolek finančně, ale neúčastníš se aktivně rozhodování. Bez hlasovacího práva. Hodí se, pokud chceš pomáhat na dálku.",
+  "wizardStufe2EhrenTitle": "Čestný člen (Ehrenmitglied)",
+  "wizardStufe2EhrenBody": "Udělován představenstvem za zvláštní zásluhy. Nevybíráš si ho sám — uděluje se jako uznání. Zvol jen pokud ti už byla tato pocta udělena."
 }
