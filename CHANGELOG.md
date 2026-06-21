@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.39.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.38.0...v1.39.0) (2026-06-21)
+
+
+### Features
+
+* **wizard:** Stufe 5 — Mitgliedschaftsbeginn (3 options + retroBeitrag) ([5559d40](https://github.com/ICD360S-e-V/mitglieder/commit/5559d40ac6a2a1583c2f7d889cee71d7fc6bf1ea))
+
 ## [1.38.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.37.0...v1.38.0) (2026-06-21)
 
 
