@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "A fájl túl nagy. Maximum 10 MB.",
   "wizardStufe3UploadFailed": "Nem sikerült feltölteni a fájlt. Próbáld újra.",
   "wizardStufe3RegularFeeTitle": "Tagdíj: 25 € / hó",
-  "wizardStufe3RegularFeeBody": "A rendes tagok szokásos tagdíja az alapszabály szerint."
+  "wizardStufe3RegularFeeBody": "A rendes tagok szokásos tagdíja az alapszabály szerint.",
+  "wizardStufe4Title": "Fizetés",
+  "wizardStufe4Prompt": "Hogyan szeretnéd fizetni a tagdíjat? És a hónap melyik napján?",
+  "wizardStufe4MethodUeberweisungTitle": "Banki átutalás (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "A fizetést te indítod minden hónapban a számládról.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (közvetlen beszedés)",
+  "wizardStufe4MethodSepaBody": "Az összeget automatikusan levonjuk a számládról. A legkényelmesebb, de IBAN és aláírt megbízás kell.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (állandó megbízás)",
+  "wizardStufe4MethodDauerauftragBody": "Bankodnál állandó megbízást állítasz be. A bank minden hónapban automatikusan átutalja az összeget.",
+  "wizardStufe4DayLabel": "Fizetési nap",
+  "wizardStufe4DayHint": "Válassz egy napot 1 és 31 között",
+  "wizardStufe4DayItem": "{day}. nap",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "A tagdíjat minden hónap {day}-én vonjuk le.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

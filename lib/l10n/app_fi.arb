@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Tiedosto on liian suuri. Enintään 10 MB.",
   "wizardStufe3UploadFailed": "Tiedoston lataus epäonnistui. Yritä uudelleen.",
   "wizardStufe3RegularFeeTitle": "Maksu: 25 € / kk",
-  "wizardStufe3RegularFeeBody": "Sääntöjen mukainen vakiojäsenmaksu varsinaisille jäsenille."
+  "wizardStufe3RegularFeeBody": "Sääntöjen mukainen vakiojäsenmaksu varsinaisille jäsenille.",
+  "wizardStufe4Title": "Maksu",
+  "wizardStufe4Prompt": "Miten haluat maksaa jäsenmaksun? Ja minä päivänä kuukaudessa?",
+  "wizardStufe4MethodUeberweisungTitle": "Tilisiirto (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Aloitat maksun itse kuukausittain tililtäsi.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (suoraveloitus)",
+  "wizardStufe4MethodSepaBody": "Veloitamme summan automaattisesti tililtäsi. Helpoin, mutta tarvitsemme IBANin ja allekirjoitetun valtakirjan.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (toistuva toimeksianto)",
+  "wizardStufe4MethodDauerauftragBody": "Asetat pankissasi toistuvan toimeksiannon. Pankki siirtää summan automaattisesti kuukausittain.",
+  "wizardStufe4DayLabel": "Maksupäivä",
+  "wizardStufe4DayHint": "Valitse päivä väliltä 1–31",
+  "wizardStufe4DayItem": "{day}. päivä",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Maksu veloitetaan {day}. päivänä joka kuukausi.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

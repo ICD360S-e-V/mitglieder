@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Файлът е твърде голям. Максимум 10 MB.",
   "wizardStufe3UploadFailed": "Файлът не може да бъде качен. Опитай отново.",
   "wizardStufe3RegularFeeTitle": "Членски внос: 25 € / месец",
-  "wizardStufe3RegularFeeBody": "Стандартен членски внос за редовни членове съгласно устава."
+  "wizardStufe3RegularFeeBody": "Стандартен членски внос за редовни членове съгласно устава.",
+  "wizardStufe4Title": "Плащане",
+  "wizardStufe4Prompt": "Как искаш да плащаш членския внос? И в кой ден от месеца предпочиташ да се удържа?",
+  "wizardStufe4MethodUeberweisungTitle": "Банков превод (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Ти инициираш плащането ръчно всеки месец от твоята сметка.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (директен дебит)",
+  "wizardStufe4MethodSepaBody": "Ние удържаме сумата автоматично от сметката ти. Най-удобно, но ни трябва IBAN и подписан мандат.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (постоянно нареждане)",
+  "wizardStufe4MethodDauerauftragBody": "Ти настройваш постоянно нареждане в банката си. Банката автоматично превежда сумата всеки месец.",
+  "wizardStufe4DayLabel": "Ден на плащане",
+  "wizardStufe4DayHint": "Избери ден между 1 и 31",
+  "wizardStufe4DayItem": "Ден {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Членският внос ще се удържа на {day}-то число всеки месец.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

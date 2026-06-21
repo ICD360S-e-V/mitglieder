@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Файл слишком большой. Максимум 10 МБ.",
   "wizardStufe3UploadFailed": "Не удалось загрузить файл. Попробуй ещё раз.",
   "wizardStufe3RegularFeeTitle": "Взнос: 25 € / месяц",
-  "wizardStufe3RegularFeeBody": "Стандартный взнос для действительных членов согласно уставу."
+  "wizardStufe3RegularFeeBody": "Стандартный взнос для действительных членов согласно уставу.",
+  "wizardStufe4Title": "Оплата",
+  "wizardStufe4Prompt": "Как хочешь платить взнос? И в какой день месяца тебе удобно?",
+  "wizardStufe4MethodUeberweisungTitle": "Банковский перевод (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Ты сам инициируешь оплату каждый месяц со своего счёта.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (прямой дебет)",
+  "wizardStufe4MethodSepaBody": "Мы списываем сумму автоматически с твоего счёта. Удобнее всего, но нужны IBAN и подписанное мандат.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (постоянное поручение)",
+  "wizardStufe4MethodDauerauftragBody": "Ты настраиваешь постоянное поручение в своём банке. Банк сам переводит сумму каждый месяц.",
+  "wizardStufe4DayLabel": "День оплаты",
+  "wizardStufe4DayHint": "Выбери день от 1 до 31",
+  "wizardStufe4DayItem": "{day}-е число",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Взнос будет списываться {day}-го числа каждого месяца.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "File troppo grande. Massimo 10 MB.",
   "wizardStufe3UploadFailed": "Impossibile caricare il file. Riprova.",
   "wizardStufe3RegularFeeTitle": "Quota: 25 € / mese",
-  "wizardStufe3RegularFeeBody": "La quota standard per i soci ordinari secondo il Satzung."
+  "wizardStufe3RegularFeeBody": "La quota standard per i soci ordinari secondo il Satzung.",
+  "wizardStufe4Title": "Pagamento",
+  "wizardStufe4Prompt": "Come vuoi pagare la quota? E in che giorno del mese preferisci l'addebito?",
+  "wizardStufe4MethodUeberweisungTitle": "Bonifico (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Avvii il pagamento manualmente ogni mese dal tuo conto.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (addebito diretto)",
+  "wizardStufe4MethodSepaBody": "Preleviamo l'importo automaticamente dal tuo conto. Più comodo, ma serve IBAN e un mandato firmato.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (ordine permanente)",
+  "wizardStufe4MethodDauerauftragBody": "Imposti un ordine permanente nella tua banca. La banca trasferisce l'importo automaticamente ogni mese.",
+  "wizardStufe4DayLabel": "Giorno di pagamento",
+  "wizardStufe4DayHint": "Scegli un giorno tra 1 e 31",
+  "wizardStufe4DayItem": "Giorno {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "La quota verrà addebitata il giorno {day} di ogni mese.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

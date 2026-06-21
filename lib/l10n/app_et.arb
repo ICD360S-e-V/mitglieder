@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Fail on liiga suur. Maksimaalselt 10 MB.",
   "wizardStufe3UploadFailed": "Faili üleslaadimine ebaõnnestus. Proovi uuesti.",
   "wizardStufe3RegularFeeTitle": "Liikmemaks: 25 € / kuu",
-  "wizardStufe3RegularFeeBody": "Põhikirja kohane standardne liikmemaks tavaliikmetele."
+  "wizardStufe3RegularFeeBody": "Põhikirja kohane standardne liikmemaks tavaliikmetele.",
+  "wizardStufe4Title": "Makse",
+  "wizardStufe4Prompt": "Kuidas soovid liikmemaksu maksta? Ja millisel kuupäeval kuus kõige sobivam?",
+  "wizardStufe4MethodUeberweisungTitle": "Pangaülekanne (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Sa algatad makse igal kuul ise oma kontolt.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (otsedebiteerimine)",
+  "wizardStufe4MethodSepaBody": "Veame summa automaatselt sinu kontolt. Kõige mugavam, kuid vajame IBAN-i ja allkirjastatud volitust.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (püsikorraldus)",
+  "wizardStufe4MethodDauerauftragBody": "Seadistad pangas püsikorralduse. Pank kannab summa igal kuul automaatselt.",
+  "wizardStufe4DayLabel": "Maksepäev",
+  "wizardStufe4DayHint": "Vali päev 1 ja 31 vahel",
+  "wizardStufe4DayItem": "{day}. päev",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Liikmemaksu võetakse iga kuu {day}. kuupäeval.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

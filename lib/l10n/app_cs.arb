@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Soubor je příliš velký. Maximálně 10 MB.",
   "wizardStufe3UploadFailed": "Soubor se nepodařilo nahrát. Zkus to znovu.",
   "wizardStufe3RegularFeeTitle": "Příspěvek: 25 € / měsíc",
-  "wizardStufe3RegularFeeBody": "Standardní příspěvek pro řádné členy podle stanov."
+  "wizardStufe3RegularFeeBody": "Standardní příspěvek pro řádné členy podle stanov.",
+  "wizardStufe4Title": "Platba",
+  "wizardStufe4Prompt": "Jak chceš platit příspěvek? A který den v měsíci ti vyhovuje?",
+  "wizardStufe4MethodUeberweisungTitle": "Bankovní převod (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Platbu zadáváš sám každý měsíc ze svého účtu.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (přímé inkaso)",
+  "wizardStufe4MethodSepaBody": "Strhneme částku automaticky z tvého účtu. Nejpohodlnější, ale potřebujeme IBAN a podepsané SEPA pověření.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (trvalý příkaz)",
+  "wizardStufe4MethodDauerauftragBody": "Nastavíš si trvalý příkaz ve své bance. Banka pak posílá částku automaticky každý měsíc.",
+  "wizardStufe4DayLabel": "Den platby",
+  "wizardStufe4DayHint": "Vyber den mezi 1 a 31",
+  "wizardStufe4DayItem": "{day}. den",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Příspěvek se bude strhávat {day}. den každého měsíce.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

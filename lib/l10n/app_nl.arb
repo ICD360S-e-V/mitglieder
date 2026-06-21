@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Bestand te groot. Maximaal 10 MB.",
   "wizardStufe3UploadFailed": "Bestand uploaden mislukt. Probeer opnieuw.",
   "wizardStufe3RegularFeeTitle": "Contributie: € 25 / maand",
-  "wizardStufe3RegularFeeBody": "De standaardcontributie voor gewone leden volgens onze statuten."
+  "wizardStufe3RegularFeeBody": "De standaardcontributie voor gewone leden volgens onze statuten.",
+  "wizardStufe4Title": "Betaling",
+  "wizardStufe4Prompt": "Hoe wil je de contributie betalen? En op welke dag van de maand?",
+  "wizardStufe4MethodUeberweisungTitle": "Overschrijving (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Je begint elke maand zelf de betaling vanaf je rekening.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (automatische incasso)",
+  "wizardStufe4MethodSepaBody": "We schrijven het bedrag automatisch van je rekening af. Het handigst, maar we hebben je IBAN en een ondertekend mandaat nodig.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (vaste opdracht)",
+  "wizardStufe4MethodDauerauftragBody": "Je stelt een vaste opdracht in bij je bank. Je bank maakt het bedrag elke maand automatisch over.",
+  "wizardStufe4DayLabel": "Betalingsdag",
+  "wizardStufe4DayHint": "Kies een dag tussen 1 en 31",
+  "wizardStufe4DayItem": "Dag {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "De contributie wordt op de {day}e van elke maand afgeschreven.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Archivo demasiado grande. Máximo 10 MB.",
   "wizardStufe3UploadFailed": "No se pudo subir el archivo. Inténtalo de nuevo.",
   "wizardStufe3RegularFeeTitle": "Cuota: 25 € / mes",
-  "wizardStufe3RegularFeeBody": "Cuota estándar para miembros ordinarios según el Satzung."
+  "wizardStufe3RegularFeeBody": "Cuota estándar para miembros ordinarios según el Satzung.",
+  "wizardStufe4Title": "Pago",
+  "wizardStufe4Prompt": "¿Cómo quieres pagar la cuota? ¿Y qué día del mes prefieres que se cobre?",
+  "wizardStufe4MethodUeberweisungTitle": "Transferencia (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Tú inicias el pago cada mes desde tu cuenta.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (domiciliación)",
+  "wizardStufe4MethodSepaBody": "Cargamos el importe automáticamente desde tu cuenta. Lo más cómodo, pero necesitamos IBAN y un mandato firmado.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (orden permanente)",
+  "wizardStufe4MethodDauerauftragBody": "Configuras una orden permanente en tu banco. Tu banco transfiere el importe automáticamente cada mes.",
+  "wizardStufe4DayLabel": "Día de pago",
+  "wizardStufe4DayHint": "Elige un día entre 1 y 31",
+  "wizardStufe4DayItem": "Día {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "La cuota se cobrará el día {day} de cada mes.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

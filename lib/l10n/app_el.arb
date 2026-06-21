@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Το αρχείο είναι πολύ μεγάλο. Μέγιστο 10 MB.",
   "wizardStufe3UploadFailed": "Δεν ήταν δυνατή η μεταφόρτωση. Δοκίμασε ξανά.",
   "wizardStufe3RegularFeeTitle": "Συνδρομή: 25 € / μήνα",
-  "wizardStufe3RegularFeeBody": "Η τυπική συνδρομή για τακτικά μέλη βάσει του καταστατικού."
+  "wizardStufe3RegularFeeBody": "Η τυπική συνδρομή για τακτικά μέλη βάσει του καταστατικού.",
+  "wizardStufe4Title": "Πληρωμή",
+  "wizardStufe4Prompt": "Πώς θέλεις να πληρώσεις τη συνδρομή; Και ποια ημέρα του μήνα προτιμάς να γίνεται η χρέωση;",
+  "wizardStufe4MethodUeberweisungTitle": "Τραπεζικό έμβασμα (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Ξεκινάς εσύ την πληρωμή κάθε μήνα από τον λογαριασμό σου.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (άμεση χρέωση)",
+  "wizardStufe4MethodSepaBody": "Χρεώνουμε αυτόματα από τον λογαριασμό σου. Πιο βολικό, αλλά χρειαζόμαστε IBAN και υπογεγραμμένη εντολή.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (πάγια εντολή)",
+  "wizardStufe4MethodDauerauftragBody": "Στήνεις πάγια εντολή στην τράπεζά σου. Η τράπεζα μεταφέρει το ποσό αυτόματα κάθε μήνα.",
+  "wizardStufe4DayLabel": "Ημέρα πληρωμής",
+  "wizardStufe4DayHint": "Επίλεξε ημέρα από 1 έως 31",
+  "wizardStufe4DayItem": "Ημέρα {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Η συνδρομή θα χρεώνεται την {day}η κάθε μήνα.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

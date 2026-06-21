@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Datoteka je prevelika. Največ 10 MB.",
   "wizardStufe3UploadFailed": "Datoteke ni bilo mogoče naložiti. Poskusi znova.",
   "wizardStufe3RegularFeeTitle": "Članarina: 25 € / mesec",
-  "wizardStufe3RegularFeeBody": "Standardna članarina za redne člane po statutu."
+  "wizardStufe3RegularFeeBody": "Standardna članarina za redne člane po statutu.",
+  "wizardStufe4Title": "Plačilo",
+  "wizardStufe4Prompt": "Kako želiš plačati članarino? In na kateri dan v mesecu?",
+  "wizardStufe4MethodUeberweisungTitle": "Bančno nakazilo (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Plačilo začneš sam vsak mesec s svojega računa.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (neposredna bremenitev)",
+  "wizardStufe4MethodSepaBody": "Znesek samodejno potegnemo s tvojega računa. Najbolj priročno, vendar potrebujemo IBAN in podpisano pooblastilo.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (trajni nalog)",
+  "wizardStufe4MethodDauerauftragBody": "V banki nastaviš trajni nalog. Banka znesek samodejno nakaže vsak mesec.",
+  "wizardStufe4DayLabel": "Dan plačila",
+  "wizardStufe4DayHint": "Izberi dan med 1 in 31",
+  "wizardStufe4DayItem": "{day}. dan",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Članarina bo bremenjena {day}. v vsakem mesecu.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

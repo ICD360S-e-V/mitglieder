@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Filen er for stor. Maks. 10 MB.",
   "wizardStufe3UploadFailed": "Filen kunne ikke uploades. Prøv igen.",
   "wizardStufe3RegularFeeTitle": "Kontingent: 25 € / måned",
-  "wizardStufe3RegularFeeBody": "Standardkontingent for ordinære medlemmer ifølge Satzung."
+  "wizardStufe3RegularFeeBody": "Standardkontingent for ordinære medlemmer ifølge Satzung.",
+  "wizardStufe4Title": "Betaling",
+  "wizardStufe4Prompt": "Hvordan vil du betale kontingent? Og hvilken dag i måneden skal det trækkes?",
+  "wizardStufe4MethodUeberweisungTitle": "Bankoverførsel (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Du starter selv betalingen hver måned fra din konto.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (direkte debitering)",
+  "wizardStufe4MethodSepaBody": "Vi trækker beløbet automatisk fra din konto. Mest praktisk, men vi har brug for IBAN og et underskrevet mandat.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (fast overførsel)",
+  "wizardStufe4MethodDauerauftragBody": "Du opretter en fast overførsel i din bank. Banken overfører beløbet automatisk hver måned.",
+  "wizardStufe4DayLabel": "Betalingsdag",
+  "wizardStufe4DayHint": "Vælg en dag mellem 1 og 31",
+  "wizardStufe4DayItem": "Dag {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Kontingentet trækkes den {day}. i hver måned.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

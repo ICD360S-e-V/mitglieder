@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Файл занадто великий. Максимум 10 МБ.",
   "wizardStufe3UploadFailed": "Не вдалося завантажити файл. Спробуй ще раз.",
   "wizardStufe3RegularFeeTitle": "Внесок: 25 € / місяць",
-  "wizardStufe3RegularFeeBody": "Стандартний внесок для дійсних членів за статутом."
+  "wizardStufe3RegularFeeBody": "Стандартний внесок для дійсних членів за статутом.",
+  "wizardStufe4Title": "Оплата",
+  "wizardStufe4Prompt": "Як ти хочеш сплачувати внесок? І в який день місяця тобі зручно?",
+  "wizardStufe4MethodUeberweisungTitle": "Банківський переказ (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Ти сам ініціюєш платіж щомісяця зі свого рахунку.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (прямий дебет)",
+  "wizardStufe4MethodSepaBody": "Ми автоматично списуємо суму з твого рахунку. Найзручніше, але нам потрібні IBAN і підписаний мандат.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (постійне доручення)",
+  "wizardStufe4MethodDauerauftragBody": "Ти налаштовуєш постійне доручення у своєму банку. Банк сам переказує суму щомісяця.",
+  "wizardStufe4DayLabel": "День оплати",
+  "wizardStufe4DayHint": "Вибери день від 1 до 31",
+  "wizardStufe4DayItem": "{day}-е число",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Внесок буде списуватися {day}-го числа щомісяця.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

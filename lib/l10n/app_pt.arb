@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Ficheiro demasiado grande. Máximo 10 MB.",
   "wizardStufe3UploadFailed": "Não foi possível carregar o ficheiro. Tenta de novo.",
   "wizardStufe3RegularFeeTitle": "Quota: 25 € / mês",
-  "wizardStufe3RegularFeeBody": "Quota padrão para membros ordinários segundo o Satzung."
+  "wizardStufe3RegularFeeBody": "Quota padrão para membros ordinários segundo o Satzung.",
+  "wizardStufe4Title": "Pagamento",
+  "wizardStufe4Prompt": "Como queres pagar a quota? E em que dia do mês preferes que seja debitada?",
+  "wizardStufe4MethodUeberweisungTitle": "Transferência (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Inicias tu o pagamento todos os meses a partir da tua conta.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (débito direto)",
+  "wizardStufe4MethodSepaBody": "Debitamos o valor automaticamente da tua conta. O mais cómodo, mas precisamos do IBAN e de um mandato assinado.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (ordem permanente)",
+  "wizardStufe4MethodDauerauftragBody": "Configuras uma ordem permanente no teu banco. O teu banco transfere o valor automaticamente todos os meses.",
+  "wizardStufe4DayLabel": "Dia do pagamento",
+  "wizardStufe4DayHint": "Escolhe um dia entre 1 e 31",
+  "wizardStufe4DayItem": "Dia {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "A quota será debitada no dia {day} de cada mês.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Plik za duży. Maksymalnie 10 MB.",
   "wizardStufe3UploadFailed": "Nie udało się przesłać pliku. Spróbuj ponownie.",
   "wizardStufe3RegularFeeTitle": "Składka: 25 € / m-c",
-  "wizardStufe3RegularFeeBody": "Standardowa składka dla członków zwyczajnych zgodnie ze statutem."
+  "wizardStufe3RegularFeeBody": "Standardowa składka dla członków zwyczajnych zgodnie ze statutem.",
+  "wizardStufe4Title": "Płatność",
+  "wizardStufe4Prompt": "Jak chcesz płacić składkę? I którego dnia miesiąca?",
+  "wizardStufe4MethodUeberweisungTitle": "Przelew (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Sam inicjujesz płatność co miesiąc ze swojego konta.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (polecenie zapłaty)",
+  "wizardStufe4MethodSepaBody": "Automatycznie pobieramy kwotę z twojego konta. Najwygodniejsze, ale potrzebujemy IBAN i podpisanego upoważnienia.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (zlecenie stałe)",
+  "wizardStufe4MethodDauerauftragBody": "Ustawiasz zlecenie stałe w swoim banku. Bank automatycznie przelewa kwotę co miesiąc.",
+  "wizardStufe4DayLabel": "Dzień płatności",
+  "wizardStufe4DayHint": "Wybierz dzień między 1 a 31",
+  "wizardStufe4DayItem": "Dzień {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Składka będzie pobierana {day}-go każdego miesiąca.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

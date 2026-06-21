@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Filen är för stor. Max 10 MB.",
   "wizardStufe3UploadFailed": "Det gick inte att ladda upp filen. Försök igen.",
   "wizardStufe3RegularFeeTitle": "Avgift: 25 € / månad",
-  "wizardStufe3RegularFeeBody": "Standardavgift för ordinarie medlemmar enligt stadgarna."
+  "wizardStufe3RegularFeeBody": "Standardavgift för ordinarie medlemmar enligt stadgarna.",
+  "wizardStufe4Title": "Betalning",
+  "wizardStufe4Prompt": "Hur vill du betala avgiften? Och vilken dag i månaden?",
+  "wizardStufe4MethodUeberweisungTitle": "Banköverföring (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Du startar själv betalningen varje månad från ditt konto.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (autogiro)",
+  "wizardStufe4MethodSepaBody": "Vi drar beloppet automatiskt från ditt konto. Bekvämast, men vi behöver IBAN och ett underskrivet mandat.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (stående överföring)",
+  "wizardStufe4MethodDauerauftragBody": "Du sätter upp en stående överföring i banken. Banken överför beloppet automatiskt varje månad.",
+  "wizardStufe4DayLabel": "Betaldag",
+  "wizardStufe4DayHint": "Välj en dag mellan 1 och 31",
+  "wizardStufe4DayItem": "Dag {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Avgiften dras den {day}:e varje månad.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

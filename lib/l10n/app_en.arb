@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "File too large. Maximum 10 MB.",
   "wizardStufe3UploadFailed": "Couldn't upload the file. Please try again.",
   "wizardStufe3RegularFeeTitle": "Fee: € 25 / month",
-  "wizardStufe3RegularFeeBody": "The standard fee for regular members under our Satzung."
+  "wizardStufe3RegularFeeBody": "The standard fee for regular members under our Satzung.",
+  "wizardStufe4Title": "Payment",
+  "wizardStufe4Prompt": "How would you like to pay the membership fee? And which day of the month should it be due?",
+  "wizardStufe4MethodUeberweisungTitle": "Bank transfer (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "You start the payment yourself each month from your account.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (direct debit)",
+  "wizardStufe4MethodSepaBody": "We pull the amount automatically from your account. Most convenient, but we'll need your IBAN and a signed mandate.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (standing order)",
+  "wizardStufe4MethodDauerauftragBody": "You set up a standing order at your bank. Your bank then transfers the amount automatically each month.",
+  "wizardStufe4DayLabel": "Payment day",
+  "wizardStufe4DayHint": "Pick a day between 1 and 31",
+  "wizardStufe4DayItem": "Day {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "The fee will be due on day {day} of every month.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

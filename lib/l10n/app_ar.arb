@@ -1136,5 +1136,31 @@
   "wizardStufe3FileTooLarge": "الملف كبير جدًا. 10 ميجابايت كحد أقصى.",
   "wizardStufe3UploadFailed": "تعذر رفع الملف. حاول مرة أخرى.",
   "wizardStufe3RegularFeeTitle": "الاشتراك: 25 € / شهر",
-  "wizardStufe3RegularFeeBody": "الاشتراك القياسي للأعضاء العاديين وفقًا للنظام الأساسي."
+  "wizardStufe3RegularFeeBody": "الاشتراك القياسي للأعضاء العاديين وفقًا للنظام الأساسي.",
+  "wizardStufe4Title": "الدفع",
+  "wizardStufe4Prompt": "كيف تريد دفع الاشتراك؟ وفي أي يوم من الشهر ترغب في الخصم؟",
+  "wizardStufe4MethodUeberweisungTitle": "تحويل بنكي (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "تقوم بإجراء الدفعة يدويًا كل شهر من حسابك.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (خصم مباشر)",
+  "wizardStufe4MethodSepaBody": "نسحب المبلغ تلقائيًا من حسابك. الأكثر راحة، لكن نحتاج إلى IBAN وتفويض موقع.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (أمر دائم)",
+  "wizardStufe4MethodDauerauftragBody": "تقوم بإعداد أمر دائم في بنكك. ينقل بنكك المبلغ تلقائيًا كل شهر.",
+  "wizardStufe4DayLabel": "يوم الدفع",
+  "wizardStufe4DayHint": "اختر يومًا بين 1 و 31",
+  "wizardStufe4DayItem": "اليوم {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "سيتم خصم الاشتراك في اليوم {day} من كل شهر.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

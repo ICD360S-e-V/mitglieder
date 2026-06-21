@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Failas per didelis. Daugiausia 10 MB.",
   "wizardStufe3UploadFailed": "Nepavyko įkelti failo. Bandyk dar kartą.",
   "wizardStufe3RegularFeeTitle": "Mokestis: 25 € / mėn.",
-  "wizardStufe3RegularFeeBody": "Standartinis mokestis tikriesiems nariams pagal įstatus."
+  "wizardStufe3RegularFeeBody": "Standartinis mokestis tikriesiems nariams pagal įstatus.",
+  "wizardStufe4Title": "Mokėjimas",
+  "wizardStufe4Prompt": "Kaip nori mokėti mokestį? Ir kurią mėnesio dieną tau patogiausia?",
+  "wizardStufe4MethodUeberweisungTitle": "Bankinis pavedimas (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Pats pradedi mokėjimą kiekvieną mėnesį iš savo sąskaitos.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (tiesioginis debetas)",
+  "wizardStufe4MethodSepaBody": "Sumą automatiškai nuskaitome iš tavo sąskaitos. Patogiausia, bet reikia IBAN ir pasirašyto įgaliojimo.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (nuolatinis pavedimas)",
+  "wizardStufe4MethodDauerauftragBody": "Banke nustatai nuolatinį pavedimą. Bankas kas mėnesį automatiškai perveda sumą.",
+  "wizardStufe4DayLabel": "Mokėjimo diena",
+  "wizardStufe4DayHint": "Pasirink dieną nuo 1 iki 31",
+  "wizardStufe4DayItem": "{day} d.",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Mokestis bus nuskaitomas {day}-ą kiekvieno mėnesio dieną.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

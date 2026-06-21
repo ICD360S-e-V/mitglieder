@@ -1136,5 +1136,31 @@
   "wizardStufe3FileTooLarge": "Dosya çok büyük. En fazla 10 MB.",
   "wizardStufe3UploadFailed": "Dosya yüklenemedi. Tekrar dene.",
   "wizardStufe3RegularFeeTitle": "Aidat: 25 € / ay",
-  "wizardStufe3RegularFeeBody": "Tüzüğümüze göre asıl üyeler için standart aidat."
+  "wizardStufe3RegularFeeBody": "Tüzüğümüze göre asıl üyeler için standart aidat.",
+  "wizardStufe4Title": "Ödeme",
+  "wizardStufe4Prompt": "Üyelik aidatını nasıl ödemek istersin? Ve ayın hangi günü çekilsin?",
+  "wizardStufe4MethodUeberweisungTitle": "Banka havalesi (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Her ay ödemeyi kendin başlatırsın.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (otomatik ödeme)",
+  "wizardStufe4MethodSepaBody": "Tutarı hesabından otomatik çekiyoruz. En kolayı ama IBAN ve imzalı yetki belgesi gerekiyor.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (düzenli talimat)",
+  "wizardStufe4MethodDauerauftragBody": "Bankanda düzenli talimat oluşturursun. Banka her ay tutarı otomatik aktarır.",
+  "wizardStufe4DayLabel": "Ödeme günü",
+  "wizardStufe4DayHint": "1 ile 31 arasında bir gün seç",
+  "wizardStufe4DayItem": "{day}. gün",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Aidat her ayın {day}. günü çekilecek.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

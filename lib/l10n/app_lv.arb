@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Fails ir pārāk liels. Maksimums 10 MB.",
   "wizardStufe3UploadFailed": "Faila augšupielāde neizdevās. Mēģini vēlreiz.",
   "wizardStufe3RegularFeeTitle": "Biedru maksa: 25 € / mēn.",
-  "wizardStufe3RegularFeeBody": "Standarta biedru maksa pilntiesīgiem biedriem saskaņā ar statūtiem."
+  "wizardStufe3RegularFeeBody": "Standarta biedru maksa pilntiesīgiem biedriem saskaņā ar statūtiem.",
+  "wizardStufe4Title": "Maksājums",
+  "wizardStufe4Prompt": "Kā vēlies maksāt biedru maksu? Un kurā mēneša dienā?",
+  "wizardStufe4MethodUeberweisungTitle": "Bankas pārskaitījums (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Maksājumu uzsāc pats katru mēnesi no sava konta.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (tiešais debets)",
+  "wizardStufe4MethodSepaBody": "Summu automātiski noņemam no tava konta. Visērtāk, bet vajag IBAN un parakstītu pilnvarojumu.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (pastāvīgais rīkojums)",
+  "wizardStufe4MethodDauerauftragBody": "Bankā iestati pastāvīgo rīkojumu. Banka summu pārskaita automātiski katru mēnesi.",
+  "wizardStufe4DayLabel": "Maksājuma diena",
+  "wizardStufe4DayHint": "Izvēlies dienu no 1 līdz 31",
+  "wizardStufe4DayItem": "{day}. diena",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Biedru maksa tiks ieturēta katra mēneša {day}. datumā.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

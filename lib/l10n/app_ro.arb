@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Fișierul e prea mare. Maxim 10 MB.",
   "wizardStufe3UploadFailed": "Nu am putut încărca fișierul. Încearcă din nou.",
   "wizardStufe3RegularFeeTitle": "Cotizație: 25 € / lună",
-  "wizardStufe3RegularFeeBody": "Cotizația standard pentru membri ordinari, conform Satzung-ului."
+  "wizardStufe3RegularFeeBody": "Cotizația standard pentru membri ordinari, conform Satzung-ului.",
+  "wizardStufe4Title": "Plata",
+  "wizardStufe4Prompt": "Cum vrei să plătești cotizația? Și în ce zi a lunii preferi să fie debitată?",
+  "wizardStufe4MethodUeberweisungTitle": "Transfer bancar (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Tu inițiezi plata manual în fiecare lună din contul tău.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (debit direct)",
+  "wizardStufe4MethodSepaBody": "Noi tragem suma automat din contul tău. Cel mai comod, dar avem nevoie de IBAN și un mandat semnat.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (ordin permanent)",
+  "wizardStufe4MethodDauerauftragBody": "Tu setezi un ordin permanent în banca ta. Banca ta trimite suma automat în fiecare lună.",
+  "wizardStufe4DayLabel": "Ziua plății",
+  "wizardStufe4DayHint": "Alege o zi între 1 și 31",
+  "wizardStufe4DayItem": "Ziua {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Cotizația va fi debitată în ziua {day} a fiecărei luni.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

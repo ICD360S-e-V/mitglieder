@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Fichier trop volumineux. 10 Mo max.",
   "wizardStufe3UploadFailed": "Impossible de téléverser le fichier. Réessaye.",
   "wizardStufe3RegularFeeTitle": "Cotisation : 25 € / mois",
-  "wizardStufe3RegularFeeBody": "Cotisation standard pour les membres ordinaires selon le Satzung."
+  "wizardStufe3RegularFeeBody": "Cotisation standard pour les membres ordinaires selon le Satzung.",
+  "wizardStufe4Title": "Paiement",
+  "wizardStufe4Prompt": "Comment veux-tu payer la cotisation ? Et quel jour du mois préfères-tu pour le prélèvement ?",
+  "wizardStufe4MethodUeberweisungTitle": "Virement (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Tu déclenches le paiement chaque mois depuis ton compte.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (prélèvement)",
+  "wizardStufe4MethodSepaBody": "Nous prélevons le montant automatiquement sur ton compte. Le plus pratique, mais il nous faut ton IBAN et un mandat signé.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (ordre permanent)",
+  "wizardStufe4MethodDauerauftragBody": "Tu mets en place un ordre permanent à ta banque. Ta banque transfère le montant automatiquement chaque mois.",
+  "wizardStufe4DayLabel": "Jour du paiement",
+  "wizardStufe4DayHint": "Choisis un jour entre 1 et 31",
+  "wizardStufe4DayItem": "Le {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "La cotisation sera prélevée le {day} de chaque mois.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

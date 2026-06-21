@@ -1136,5 +1136,31 @@
   "wizardStufe3FileTooLarge": "Datei zu groß. Maximal 10 MB.",
   "wizardStufe3UploadFailed": "Datei konnte nicht hochgeladen werden. Bitte erneut versuchen.",
   "wizardStufe3RegularFeeTitle": "Beitrag: 25 € / Monat",
-  "wizardStufe3RegularFeeBody": "Regulärer Beitrag für ordentliche Mitglieder laut Satzung."
+  "wizardStufe3RegularFeeBody": "Regulärer Beitrag für ordentliche Mitglieder laut Satzung.",
+  "wizardStufe4Title": "Zahlung",
+  "wizardStufe4Prompt": "Wie möchtest du den Beitrag zahlen? Und an welchem Tag im Monat soll abgebucht werden?",
+  "wizardStufe4MethodUeberweisungTitle": "Überweisung",
+  "wizardStufe4MethodUeberweisungBody": "Du löst die Zahlung jeden Monat manuell von deinem Konto aus.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift",
+  "wizardStufe4MethodSepaBody": "Wir ziehen den Betrag automatisch von deinem Konto ein. Am bequemsten, aber wir brauchen IBAN und ein Mandat.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag",
+  "wizardStufe4MethodDauerauftragBody": "Du richtest einen Dauerauftrag bei deiner Bank ein. Deine Bank überweist den Betrag jeden Monat automatisch.",
+  "wizardStufe4DayLabel": "Zahlungstag",
+  "wizardStufe4DayHint": "Wähle einen Tag zwischen 1 und 31",
+  "wizardStufe4DayItem": "Tag {day}",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Der Beitrag wird am {day}. jedes Monats abgebucht.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }

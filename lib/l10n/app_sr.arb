@@ -1115,5 +1115,31 @@
   "wizardStufe3FileTooLarge": "Датотека је превелика. Највише 10 MB.",
   "wizardStufe3UploadFailed": "Није било могуће отпремити датотеку. Покушај поново.",
   "wizardStufe3RegularFeeTitle": "Чланарина: 25 € / месечно",
-  "wizardStufe3RegularFeeBody": "Стандардна чланарина за редовне чланове према статуту."
+  "wizardStufe3RegularFeeBody": "Стандардна чланарина за редовне чланове према статуту.",
+  "wizardStufe4Title": "Плаћање",
+  "wizardStufe4Prompt": "Како желиш да плаћаш чланарину? И ког дана у месецу ти одговара?",
+  "wizardStufe4MethodUeberweisungTitle": "Банковни пренос (Überweisung)",
+  "wizardStufe4MethodUeberweisungBody": "Сам започињеш плаћање сваког месеца са свог рачуна.",
+  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift (директно задужење)",
+  "wizardStufe4MethodSepaBody": "Износ аутоматски скидамо са твог рачуна. Најпрактичније, али нам треба IBAN и потписано овлашћење.",
+  "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag (трајни налог)",
+  "wizardStufe4MethodDauerauftragBody": "Поставиш трајни налог у својој банци. Банка аутоматски преноси износ сваког месеца.",
+  "wizardStufe4DayLabel": "Дан плаћања",
+  "wizardStufe4DayHint": "Изабери дан између 1 и 31",
+  "wizardStufe4DayItem": "{day}. дан",
+  "@wizardStufe4DayItem": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "wizardStufe4DayReminder": "Чланарина ће се скидати {day}. сваког месеца.",
+  "@wizardStufe4DayReminder": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  }
 }
