@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.36.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.35.0...v1.36.0) (2026-06-21)
+
+
+### Features
+
+* **wizard:** Stufe 2 — Mitgliedsart (3 option cards) ([ad38ef8](https://github.com/ICD360S-e-V/mitglieder/commit/ad38ef8c2e9a236710b02cc56c76410d84bd12fb))
+
 ## [1.35.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.34.0...v1.35.0) (2026-06-20)
 
 
