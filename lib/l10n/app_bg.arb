@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Ще се свържем с родителя ти и ще уговорим среща (лично или видео разговор). Моля, имай търпение — процедурата може да отнеме до 7 дни. Ще получиш известие в приложението, щом родителят ти одобри.",
   "wizardFinalMinorCallTitle": "Обади ни се, ако искаш да поговорим",
   "wizardFinalMitgliedernummerLabel": "Твоят членски номер",
-  "wizardFinalCloseButton": "Обратно към началото"
+  "wizardFinalCloseButton": "Обратно към началото",
+  "wizardStufe4MethodComingSoon": "Скоро"
 }

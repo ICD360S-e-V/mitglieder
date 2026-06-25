@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Мы свяжемся с твоим родителем и назначим встречу (лично или видеозвонок). Прошу проявить терпение — процесс может занять до 7 дней. Получишь уведомление в приложении, как только родитель одобрит.",
   "wizardFinalMinorCallTitle": "Позвони, если хочешь поговорить",
   "wizardFinalMitgliedernummerLabel": "Твой номер члена",
-  "wizardFinalCloseButton": "Назад к началу"
+  "wizardFinalCloseButton": "Назад к началу",
+  "wizardStufe4MethodComingSoon": "Скоро"
 }

@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Θα επικοινωνήσουμε με τον γονέα σου και θα κανονίσουμε συνάντηση (από κοντά ή με βιντεοκλήση). Παρακαλώ κάνε υπομονή — η διαδικασία μπορεί να διαρκέσει έως 7 ημέρες. Θα λάβεις ειδοποίηση στην εφαρμογή μόλις ο γονέας σου εγκρίνει.",
   "wizardFinalMinorCallTitle": "Κάλεσέ μας αν θέλεις να μιλήσουμε",
   "wizardFinalMitgliedernummerLabel": "Ο αριθμός μέλους σου",
-  "wizardFinalCloseButton": "Πίσω στην αρχή"
+  "wizardFinalCloseButton": "Πίσω στην αρχή",
+  "wizardStufe4MethodComingSoon": "Σύντομα"
 }

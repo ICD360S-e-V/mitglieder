@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Contactaremos a tu padre/madre y concertaremos una reunión (en persona o videollamada). Por favor ten paciencia — el proceso puede tardar hasta 7 días. Recibirás una notificación en la app en cuanto tu padre/madre apruebe.",
   "wizardFinalMinorCallTitle": "Llámanos si quieres hablar",
   "wizardFinalMitgliedernummerLabel": "Tu número de socio",
-  "wizardFinalCloseButton": "Volver al inicio"
+  "wizardFinalCloseButton": "Volver al inicio",
+  "wizardStufe4MethodComingSoon": "Próximamente"
 }

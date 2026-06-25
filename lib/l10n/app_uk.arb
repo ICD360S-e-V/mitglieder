@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Ми звʼяжемося з твоїм батьком/матірʼю та призначимо зустріч (особисто або відеодзвінок). Прошу мати терпіння — процес може зайняти до 7 днів. Отримаєш сповіщення в застосунку, щойно батько/мати схвалять.",
   "wizardFinalMinorCallTitle": "Зателефонуй, якщо хочеш поговорити",
   "wizardFinalMitgliedernummerLabel": "Твій номер члена",
-  "wizardFinalCloseButton": "Назад до welcome"
+  "wizardFinalCloseButton": "Назад до welcome",
+  "wizardStufe4MethodComingSoon": "Скоро"
 }

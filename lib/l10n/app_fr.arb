@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Nous contacterons ton parent et organiserons un rendez-vous (en personne ou par appel vidéo). Sois patient — la procédure peut prendre jusqu'à 7 jours. Tu recevras une notification dans l'app dès que ton parent aura donné son accord.",
   "wizardFinalMinorCallTitle": "Appelle-nous si tu veux parler",
   "wizardFinalMitgliedernummerLabel": "Ton numéro de membre",
-  "wizardFinalCloseButton": "Retour à l'accueil"
+  "wizardFinalCloseButton": "Retour à l'accueil",
+  "wizardStufe4MethodComingSoon": "Bientôt disponible"
 }

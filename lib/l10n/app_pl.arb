@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Skontaktujemy się z twoim rodzicem i umówimy spotkanie (osobiście lub przez wideorozmowę). Prosimy o cierpliwość — proces może potrwać do 7 dni. Otrzymasz powiadomienie w aplikacji, gdy tylko rodzic zatwierdzi.",
   "wizardFinalMinorCallTitle": "Zadzwoń, jeśli chcesz porozmawiać",
   "wizardFinalMitgliedernummerLabel": "Twój numer członkowski",
-  "wizardFinalCloseButton": "Wróć do powitania"
+  "wizardFinalCloseButton": "Wróć do powitania",
+  "wizardStufe4MethodComingSoon": "Wkrótce"
 }

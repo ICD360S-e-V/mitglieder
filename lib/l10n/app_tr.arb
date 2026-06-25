@@ -1236,5 +1236,6 @@
   "wizardFinalMinorBody": "Velinizle iletişime geçeceğiz ve bir görüşme ayarlayacağız (yüz yüze veya görüntülü görüşme). Lütfen sabırlı ol — süreç en fazla 7 gün sürebilir. Velin onayladığı anda uygulamadan bir bildirim alacaksın.",
   "wizardFinalMinorCallTitle": "Konuşmak istersen bizi ara",
   "wizardFinalMitgliedernummerLabel": "Üye numaran",
-  "wizardFinalCloseButton": "Karşılama ekranına dön"
+  "wizardFinalCloseButton": "Karşılama ekranına dön",
+  "wizardStufe4MethodComingSoon": "Yakında"
 }

@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Vi kontakter forelderen din og avtaler et møte (personlig eller videosamtale). Vær tålmodig — prosessen kan ta opptil 7 dager. Du får et varsel i appen så snart forelderen din har godkjent.",
   "wizardFinalMinorCallTitle": "Ring oss hvis du vil snakke",
   "wizardFinalMitgliedernummerLabel": "Medlemsnummeret ditt",
-  "wizardFinalCloseButton": "Tilbake til velkomst"
+  "wizardFinalCloseButton": "Tilbake til velkomst",
+  "wizardStufe4MethodComingSoon": "Kommer snart"
 }

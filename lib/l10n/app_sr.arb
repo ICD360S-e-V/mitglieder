@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Контактираћемо твог родитеља и заказати састанак (лично или видео позивом). Молимо те за стрпљење — поступак може трајати до 7 дана. Добићеш обавештење у апликацији чим родитељ одобри.",
   "wizardFinalMinorCallTitle": "Позови нас ако желиш да разговарамо",
   "wizardFinalMitgliedernummerLabel": "Твој члански број",
-  "wizardFinalCloseButton": "Назад на почетну"
+  "wizardFinalCloseButton": "Назад на почетну",
+  "wizardStufe4MethodComingSoon": "Ускоро"
 }

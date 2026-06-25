@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Susisieksime su tavo tėvu/motina ir suderinsime susitikimą (asmeniškai arba per vaizdo skambutį). Prašom kantrybės — procesas gali užtrukti iki 7 dienų. Gausi pranešimą programėlėje, kai tik tėvas/motina patvirtins.",
   "wizardFinalMinorCallTitle": "Paskambink, jei nori pasikalbėti",
   "wizardFinalMitgliedernummerLabel": "Tavo nario numeris",
-  "wizardFinalCloseButton": "Atgal į pradžią"
+  "wizardFinalCloseButton": "Atgal į pradžią",
+  "wizardStufe4MethodComingSoon": "Netrukus"
 }

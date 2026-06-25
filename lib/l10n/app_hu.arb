@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Felvesszük a kapcsolatot a szülőddel és megbeszélünk egy találkozót (személyesen vagy videóhíváson). Légy türelemmel — a folyamat akár 7 napig is tarthat. Értesítést kapsz az alkalmazásban, amint a szülőd jóváhagyta.",
   "wizardFinalMinorCallTitle": "Hívj minket, ha beszélni szeretnél",
   "wizardFinalMitgliedernummerLabel": "Tagsági számod",
-  "wizardFinalCloseButton": "Vissza a kezdőlapra"
+  "wizardFinalCloseButton": "Vissza a kezdőlapra",
+  "wizardStufe4MethodComingSoon": "Hamarosan"
 }

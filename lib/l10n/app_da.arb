@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Vi kontakter din forælder og aftaler et møde (personligt eller videoopkald). Vær venligst tålmodig — processen kan tage op til 7 dage. Du får en notifikation i appen, så snart din forælder har godkendt.",
   "wizardFinalMinorCallTitle": "Ring til os, hvis du vil tale",
   "wizardFinalMitgliedernummerLabel": "Dit medlemsnummer",
-  "wizardFinalCloseButton": "Tilbage til velkomst"
+  "wizardFinalCloseButton": "Tilbage til velkomst",
+  "wizardStufe4MethodComingSoon": "Snart tilgængelig"
 }

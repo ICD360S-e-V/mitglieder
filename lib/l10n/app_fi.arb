@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Otamme yhteyttä vanhempaasi ja sovimme tapaamisen (paikan päällä tai videopuhelulla). Ole kärsivällinen — prosessi voi kestää jopa 7 päivää. Saat ilmoituksen sovelluksessa heti, kun vanhempasi on hyväksynyt.",
   "wizardFinalMinorCallTitle": "Soita meille, jos haluat puhua",
   "wizardFinalMitgliedernummerLabel": "Jäsennumerosi",
-  "wizardFinalCloseButton": "Takaisin alkuun"
+  "wizardFinalCloseButton": "Takaisin alkuun",
+  "wizardStufe4MethodComingSoon": "Tulossa pian"
 }

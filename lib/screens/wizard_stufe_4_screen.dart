@@ -43,6 +43,12 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
   void initState() {
     super.initState();
     _method = widget.initial?['zahlungsmethode'];
+    // Reset to null if the previously-stored method is no longer
+    // available — e.g. SEPA-Lastschrift selected in an old draft
+    // before we marked it "Coming soon".
+    if (_method != null && !_isMethodAvailable(_method!)) {
+      _method = null;
+    }
     final rawDay = widget.initial?['zahlungstag'];
     if (rawDay is int) {
       _day = rawDay;
@@ -54,7 +60,7 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
   Future<void> _submit() async {
     if (_saving) return;
     final l10n = AppLocalizations.of(context)!;
-    if (_method == null || _day == null) {
+    if (_method == null || _day == null || !_isMethodAvailable(_method!)) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.wizardErrRequired),
@@ -83,6 +89,12 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
     }
     widget.onNext();
   }
+
+  /// Whether a payment method is currently selectable. SEPA-Lastschrift
+  /// is opt-in for the future once the Gläubiger-ID and mandate
+  /// signature flow land — until then the card renders as a
+  /// "Coming soon" tile that can't be picked.
+  bool _isMethodAvailable(String key) => key != 'sepa_lastschrift';
 
   ({String title, String body, IconData icon}) _methodInfo(
     String key,
@@ -161,23 +173,25 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
 
   Widget _methodCard(String key, AppLocalizations l10n) {
     final info = _methodInfo(key, l10n);
-    final selected = _method == key;
+    final available = _isMethodAvailable(key);
+    final selected = _method == key && available;
+    final textOpacity = available ? 1.0 : 0.55;
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () => setState(() => _method = key),
+        onTap: available ? () => setState(() => _method = key) : null,
         borderRadius: BorderRadius.circular(12),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           decoration: BoxDecoration(
             color: selected
                 ? Colors.white.withValues(alpha: 0.2)
-                : Colors.white.withValues(alpha: 0.08),
+                : Colors.white.withValues(alpha: available ? 0.08 : 0.04),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: selected
                   ? Colors.white.withValues(alpha: 0.75)
-                  : Colors.white.withValues(alpha: 0.25),
+                  : Colors.white.withValues(alpha: available ? 0.25 : 0.15),
               width: selected ? 2 : 1,
             ),
           ),
@@ -185,35 +199,75 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(
-                selected
-                    ? Icons.radio_button_checked
-                    : Icons.radio_button_off,
-                color: selected
-                    ? Colors.white
-                    : Colors.white.withValues(alpha: 0.6),
+                !available
+                    ? Icons.lock_outline
+                    : (selected
+                        ? Icons.radio_button_checked
+                        : Icons.radio_button_off),
+                color: Colors.white.withValues(
+                  alpha: selected
+                      ? 1.0
+                      : (available ? 0.6 : 0.45),
+                ),
                 size: 22,
               ),
               const SizedBox(width: 10),
-              Icon(info.icon, color: Colors.white.withValues(alpha: 0.9), size: 22),
+              Icon(
+                info.icon,
+                color: Colors.white.withValues(alpha: textOpacity * 0.9),
+                size: 22,
+              ),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      info.title,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.5,
-                        fontWeight:
-                            selected ? FontWeight.w800 : FontWeight.w700,
-                      ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            info.title,
+                            style: TextStyle(
+                              color: Colors.white.withValues(alpha: textOpacity),
+                              fontSize: 14.5,
+                              fontWeight:
+                                  selected ? FontWeight.w800 : FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                        if (!available) ...[
+                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 3),
+                            decoration: BoxDecoration(
+                              color: Colors.amber.shade300
+                                  .withValues(alpha: 0.22),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: Colors.amber.shade200
+                                    .withValues(alpha: 0.55),
+                              ),
+                            ),
+                            child: Text(
+                              l10n.wizardStufe4MethodComingSoon,
+                              style: TextStyle(
+                                color: Colors.amber.shade100,
+                                fontSize: 10.5,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: 0.4,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ],
                     ),
                     const SizedBox(height: 4),
                     Text(
                       info.body,
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.85),
+                        color:
+                            Colors.white.withValues(alpha: textOpacity * 0.85),
                         fontSize: 12.5,
                         height: 1.4,
                       ),

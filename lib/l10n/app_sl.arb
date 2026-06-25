@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Stopili bomo v stik s tvojim staršem in dogovorili srečanje (osebno ali video klic). Prosim, bodi potrpežljiv — postopek lahko traja do 7 dni. Prejel boš obvestilo v aplikaciji, takoj ko starš odobri.",
   "wizardFinalMinorCallTitle": "Pokliči nas, če želiš govoriti",
   "wizardFinalMitgliedernummerLabel": "Tvoja članska številka",
-  "wizardFinalCloseButton": "Nazaj na pozdrav"
+  "wizardFinalCloseButton": "Nazaj na pozdrav",
+  "wizardStufe4MethodComingSoon": "Kmalu"
 }

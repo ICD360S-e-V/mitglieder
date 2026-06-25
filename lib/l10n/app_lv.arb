@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Sazināsimies ar tavu vecāku un norunāsim tikšanos (klātienē vai video zvanā). Lūdzu, esi pacietīgs — process var ilgt līdz 7 dienām. Saņemsi paziņojumu lietotnē, tiklīdz vecāks apstiprinās.",
   "wizardFinalMinorCallTitle": "Piezvani, ja vēlies parunāt",
   "wizardFinalMitgliedernummerLabel": "Tavs biedra numurs",
-  "wizardFinalCloseButton": "Atpakaļ uz sākumu"
+  "wizardFinalCloseButton": "Atpakaļ uz sākumu",
+  "wizardStufe4MethodComingSoon": "Drīzumā"
 }

@@ -1215,5 +1215,6 @@
   "wizardFinalMinorBody": "Contactaremos o teu progenitor e marcaremos um encontro (presencial ou videochamada). Por favor, tem paciência — o processo pode demorar até 7 dias. Receberás uma notificação na app assim que o teu progenitor aprovar.",
   "wizardFinalMinorCallTitle": "Liga-nos se quiseres falar",
   "wizardFinalMitgliedernummerLabel": "O teu número de membro",
-  "wizardFinalCloseButton": "Voltar ao início"
+  "wizardFinalCloseButton": "Voltar ao início",
+  "wizardStufe4MethodComingSoon": "Em breve"
 }

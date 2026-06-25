@@ -1236,5 +1236,6 @@
   "wizardFinalMinorBody": "سنتواصل مع والدك ونرتب لقاءً (شخصيًا أو عبر مكالمة فيديو). يرجى التحلي بالصبر — قد تستغرق العملية حتى 7 أيام. ستحصل على إشعار في التطبيق بمجرد موافقة والدك.",
   "wizardFinalMinorCallTitle": "اتصل بنا إذا أردت التحدث",
   "wizardFinalMitgliedernummerLabel": "رقم عضويتك",
-  "wizardFinalCloseButton": "العودة إلى البداية"
+  "wizardFinalCloseButton": "العودة إلى البداية",
+  "wizardStufe4MethodComingSoon": "قريبًا"
 }

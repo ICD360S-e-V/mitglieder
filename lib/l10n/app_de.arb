@@ -1236,5 +1236,6 @@
   "wizardFinalMinorBody": "Wir kontaktieren deinen Elternteil und vereinbaren ein Treffen (persönlich oder per Videoanruf). Bitte hab Geduld — der Vorgang kann bis zu 7 Tage dauern. Du bekommst eine In-App-Benachrichtigung, sobald dein Elternteil zugestimmt hat.",
   "wizardFinalMinorCallTitle": "Ruf uns an, wenn du sprechen möchtest",
   "wizardFinalMitgliedernummerLabel": "Deine Mitgliedsnummer",
-  "wizardFinalCloseButton": "Zurück zum Start"
+  "wizardFinalCloseButton": "Zurück zum Start",
+  "wizardStufe4MethodComingSoon": "Bald verfügbar"
 }
