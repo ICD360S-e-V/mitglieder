@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../screens/login.dart';
 import '../screens/problem_help.dart';
-import '../screens/register.dart';
+import '../screens/wizard_screen.dart';
 
 /// Conversational welcome surface — replaces the static button stack on
 /// WelcomeScreen with a chat-style flow centred on the Claudiu mascot.
@@ -59,7 +59,7 @@ class ClaudiuWelcome extends StatelessWidget {
           false, () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => const RegisterPage()),
+          MaterialPageRoute(builder: (_) => const WizardScreen()),
         );
       }),
       _OptionData(Icons.login, l10n.claudiuWelcomeLogin, false, () {
