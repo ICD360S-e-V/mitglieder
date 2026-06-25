@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../l10n/app_localizations.dart';
+import '../services/wizard_service.dart';
 import 'icd360s_header.dart';
 
 /// Reusable chrome for every step screen in the onboarding wizard.
@@ -98,6 +99,7 @@ class WizardStepShell extends StatelessWidget {
   }
 
   Widget _topBar(BuildContext context, AppLocalizations l10n) {
+    final mnr = WizardService().mitgliedernummer;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       child: Row(
@@ -124,7 +126,42 @@ class WizardStepShell extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 48),
+          if (mnr != null)
+            _mnrPill(mnr)
+          else
+            const SizedBox(width: 48),
+        ],
+      ),
+    );
+  }
+
+  /// Shown in the top-right corner once check_age.php has reserved a
+  /// mitgliedernummer for this draft. Same id the visitor will see on
+  /// the final screen — gives the visitor an early sense of identity
+  /// and ownership.
+  Widget _mnrPill(String mnr) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.18),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.45)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.badge_outlined, color: Colors.white, size: 14),
+          const SizedBox(width: 5),
+          Text(
+            mnr,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 12.5,
+              fontWeight: FontWeight.w800,
+              fontFamily: 'monospace',
+              letterSpacing: 0.9,
+            ),
+          ),
         ],
       ),
     );

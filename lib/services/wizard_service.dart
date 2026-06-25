@@ -132,6 +132,15 @@ class WizardService {
   static const String _kBlockKey      = 'wizard_blocked_under16_until';
 
   String? _cachedId;
+
+  /// Mitgliedernummer reserved by the server at check_age time (or
+  /// rehydrated from get_state on resume). Drives the small pill the
+  /// shell renders in every Stufe screen so the visitor sees their
+  /// number from Stufe 1c onwards. Null until the age verdict lands;
+  /// nulled on [resetLocal].
+  String? _mitgliedernummer;
+  String? get mitgliedernummer => _mitgliedernummer;
+
   late http.Client _client;
   final _log = LoggerService();
 
@@ -204,6 +213,7 @@ class WizardService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_kIdKey);
     _cachedId = null;
+    _mitgliedernummer = null;
   }
 
   // ---------------------------------------------------------------------------
@@ -283,8 +293,13 @@ class WizardService {
       if (r.statusCode != 200) return null;
       final body = jsonDecode(r.body) as Map<String, dynamic>;
       if (body['success'] != true) return null;
+      final mnr = body['mitgliedernummer'] as String?;
+      if (mnr != null && mnr.isNotEmpty) {
+        _mitgliedernummer = mnr;
+      }
       return {
         'current_step': body['current_step'],
+        'mitgliedernummer': mnr,
         'data': (body['data'] as Map<String, dynamic>?) ?? const {},
       };
     } catch (e) {
@@ -323,6 +338,13 @@ class WizardService {
         'too_young' => WizardAgeStatus.tooYoung,
         _           => null,
       };
+      // Server reserves the mitgliedernummer at this point (M for ok,
+      // J for minor; too_young drafts skip it). Cache for the shell
+      // pill so the visitor sees it from Stufe 1c onwards.
+      final mnr = body['mitgliedernummer'] as String?;
+      if (mnr != null && mnr.isNotEmpty) {
+        _mitgliedernummer = mnr;
+      }
       if (verdict == WizardAgeStatus.tooYoung) {
         await _markDeviceBlocked(birthdate);
       }
