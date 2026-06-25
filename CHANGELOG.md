@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.42.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.41.0...v1.42.0) (2026-06-25)
+
+
+### Features
+
+* **wizard:** orchestrator — state machine + welcome integration ([9c582bb](https://github.com/ICD360S-e-V/mitglieder/commit/9c582bb4f6dffb84ce07ef3932230910882e1de8))
+
 ## [1.41.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.40.0...v1.41.0) (2026-06-25)
 
 
