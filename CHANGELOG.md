@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.46.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.45.0...v1.46.0) (2026-06-25)
+
+
+### Features
+
+* **wizard:** re-add Stufe 1f email as optional, highlight E2E in-app channel ([374680b](https://github.com/ICD360S-e-V/mitglieder/commit/374680b1be73ea9f1340d5e38e497f103ffc84bf))
+
 ## [1.45.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.44.0...v1.45.0) (2026-06-25)
 
 
