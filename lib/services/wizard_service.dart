@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'device_key_service.dart';
 import 'http_client_factory.dart';
 import 'logger_service.dart';
 
@@ -397,8 +398,19 @@ class WizardService {
   // Internals.
   // ---------------------------------------------------------------------------
 
-  Map<String, String> _headers({bool includeJson = true}) => {
-        if (includeJson) 'Content-Type': 'application/json',
-        'User-Agent': 'ICD360S-Mitglied/1.0',
-      };
+  /// Headers attached to every wizard call. The server's
+  /// `validateApiKey()` accepts either a Device Key or a legacy API
+  /// key; we send the per-install Device Key the same way
+  /// `ApiService.register` does for the legacy register endpoint.
+  /// The visitor's device is already registered at this point — the
+  /// app's main() runs DeviceKeyService.initialize() before any UI is
+  /// shown — so the value is reliably non-null.
+  Map<String, String> _headers({bool includeJson = true}) {
+    final deviceKey = DeviceKeyService().deviceKey;
+    return {
+      if (includeJson) 'Content-Type': 'application/json',
+      'User-Agent': 'ICD360S-Mitglied/1.0',
+      if (deviceKey != null) 'X-Device-Key': deviceKey,
+    };
+  }
 }
