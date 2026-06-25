@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.44.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.43.0...v1.44.0) (2026-06-25)
+
+
+### Features
+
+* **wizard:** surface Satzung §6 rules inline across Stufe 4, 5 and final ([10d9165](https://github.com/ICD360S-e-V/mitglieder/commit/10d916545a35e2bbfb22c1f0da190dededb169db))
+
+
+### Refactor
+
+* **wizard:** drop email field from Stufe 1f — phone + in-app only ([673873f](https://github.com/ICD360S-e-V/mitglieder/commit/673873f6ba64a2f505e5f711105c1f1ec925426a))
+
 ## [1.43.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.42.1...v1.43.0) (2026-06-25)
 
 
