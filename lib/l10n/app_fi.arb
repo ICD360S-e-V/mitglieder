@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Valmis! Olet ilmoittautunut 🎉",
+  "wizardFinalAdultBody": "Tervetuloa ICD360S e.V.:hen! Olet suorittanut kaikki 8 vaihetta — Vorstand tarkistaa nyt ja hyväksyy jokaisen vaiheen enintään 3 päivän kuluessa. Saat ilmoituksen heti, kun tilisi on aktiivinen.",
+  "wizardFinalMinorTitle": "Pyyntösi on lähetetty 📨",
+  "wizardFinalMinorBody": "Otamme yhteyttä vanhempaasi ja sovimme tapaamisen (paikan päällä tai videopuhelulla). Ole kärsivällinen — prosessi voi kestää jopa 7 päivää. Saat ilmoituksen sovelluksessa heti, kun vanhempasi on hyväksynyt.",
+  "wizardFinalMinorCallTitle": "Soita meille, jos haluat puhua",
+  "wizardFinalMitgliedernummerLabel": "Jäsennumerosi",
+  "wizardFinalCloseButton": "Takaisin alkuun"
 }

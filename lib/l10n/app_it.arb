@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Fatto! Sei iscritto 🎉",
+  "wizardFinalAdultBody": "Benvenuto in ICD360S e.V.! Hai completato tutti gli 8 stage — il Vorstand sta verificando e approverà ogni passo entro max. 3 giorni. Riceverai una notifica appena il tuo account sarà attivo.",
+  "wizardFinalMinorTitle": "La tua richiesta è stata inviata 📨",
+  "wizardFinalMinorBody": "Contatteremo il tuo genitore e fisseremo un incontro (di persona o videochiamata). Ti chiediamo pazienza — il processo può richiedere fino a 7 giorni. Riceverai una notifica nell'app appena il genitore avrà approvato.",
+  "wizardFinalMinorCallTitle": "Chiamaci se vuoi parlare",
+  "wizardFinalMitgliedernummerLabel": "Il tuo numero di socio",
+  "wizardFinalCloseButton": "Torna alla home"
 }

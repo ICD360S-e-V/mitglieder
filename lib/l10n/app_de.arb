@@ -1229,5 +1229,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Geschafft! Du bist angemeldet 🎉",
+  "wizardFinalAdultBody": "Willkommen im ICD360S e.V.! Du hast alle 8 Stufen ausgefüllt — der Vorstand prüft jetzt und gibt jeden Schritt innerhalb von max. 3 Tagen frei. Du bekommst eine Benachrichtigung, sobald dein Konto aktiv ist.",
+  "wizardFinalMinorTitle": "Deine Anfrage wurde verschickt 📨",
+  "wizardFinalMinorBody": "Wir kontaktieren deinen Elternteil und vereinbaren ein Treffen (persönlich oder per Videoanruf). Bitte hab Geduld — der Vorgang kann bis zu 7 Tage dauern. Du bekommst eine In-App-Benachrichtigung, sobald dein Elternteil zugestimmt hat.",
+  "wizardFinalMinorCallTitle": "Ruf uns an, wenn du sprechen möchtest",
+  "wizardFinalMitgliedernummerLabel": "Deine Mitgliedsnummer",
+  "wizardFinalCloseButton": "Zurück zum Start"
 }

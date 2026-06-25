@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Atlikta! Esi užregistruotas 🎉",
+  "wizardFinalAdultBody": "Sveiki atvykę į ICD360S e.V.! Užbaigei visus 8 etapus — Vorstand dabar tikrina ir patvirtins kiekvieną žingsnį per maks. 3 dienas. Gausi pranešimą, kai paskyra bus aktyvi.",
+  "wizardFinalMinorTitle": "Tavo prašymas išsiųstas 📨",
+  "wizardFinalMinorBody": "Susisieksime su tavo tėvu/motina ir suderinsime susitikimą (asmeniškai arba per vaizdo skambutį). Prašom kantrybės — procesas gali užtrukti iki 7 dienų. Gausi pranešimą programėlėje, kai tik tėvas/motina patvirtins.",
+  "wizardFinalMinorCallTitle": "Paskambink, jei nori pasikalbėti",
+  "wizardFinalMitgliedernummerLabel": "Tavo nario numeris",
+  "wizardFinalCloseButton": "Atgal į pradžią"
 }

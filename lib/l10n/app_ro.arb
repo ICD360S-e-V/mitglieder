@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Gata, ești înscris! 🎉",
+  "wizardFinalAdultBody": "Bun venit în ICD360S e.V.! Ai completat toate cele 8 stadii — Vorstand-ul tău verifică acum și va aproba fiecare pas în maxim 3 zile. Te anunțăm prin notificare imediat ce contul tău e activ.",
+  "wizardFinalMinorTitle": "Cererea ta a fost trimisă 📨",
+  "wizardFinalMinorBody": "Îți vom contacta părintele și vom stabili o întâlnire (în persoană sau apel video). Te rugăm să ai răbdare — procedura poate dura până la 7 zile. Te anunțăm prin notificare în aplicație imediat ce părintele a aprobat.",
+  "wizardFinalMinorCallTitle": "Sună-ne dacă vrei să discutăm",
+  "wizardFinalMitgliedernummerLabel": "Numărul tău de membru",
+  "wizardFinalCloseButton": "Înapoi la welcome"
 }

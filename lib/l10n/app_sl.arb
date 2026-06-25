@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Gotovo! Si vpisan 🎉",
+  "wizardFinalAdultBody": "Dobrodošel v ICD360S e.V.! Dokončal si vseh 8 stopenj — Vorstand zdaj pregleduje in bo odobril vsak korak v največ 3 dneh. Prejel boš obvestilo, takoj ko bo račun aktiven.",
+  "wizardFinalMinorTitle": "Tvoja zahteva je bila poslana 📨",
+  "wizardFinalMinorBody": "Stopili bomo v stik s tvojim staršem in dogovorili srečanje (osebno ali video klic). Prosim, bodi potrpežljiv — postopek lahko traja do 7 dni. Prejel boš obvestilo v aplikaciji, takoj ko starš odobri.",
+  "wizardFinalMinorCallTitle": "Pokliči nas, če želiš govoriti",
+  "wizardFinalMitgliedernummerLabel": "Tvoja članska številka",
+  "wizardFinalCloseButton": "Nazaj na pozdrav"
 }

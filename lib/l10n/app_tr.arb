@@ -1229,5 +1229,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Tamam! Kaydın yapıldı 🎉",
+  "wizardFinalAdultBody": "ICD360S e.V.'ye hoş geldin! 8 aşamanın tamamını tamamladın — Vorstand inceliyor ve her adımı en fazla 3 gün içinde onaylayacak. Hesabın aktif olur olmaz bildirim alacaksın.",
+  "wizardFinalMinorTitle": "Talebin gönderildi 📨",
+  "wizardFinalMinorBody": "Velinizle iletişime geçeceğiz ve bir görüşme ayarlayacağız (yüz yüze veya görüntülü görüşme). Lütfen sabırlı ol — süreç en fazla 7 gün sürebilir. Velin onayladığı anda uygulamadan bir bildirim alacaksın.",
+  "wizardFinalMinorCallTitle": "Konuşmak istersen bizi ara",
+  "wizardFinalMitgliedernummerLabel": "Üye numaran",
+  "wizardFinalCloseButton": "Karşılama ekranına dön"
 }

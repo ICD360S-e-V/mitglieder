@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Ferdig! Du er meldt inn 🎉",
+  "wizardFinalAdultBody": "Velkommen til ICD360S e.V.! Du har fullført alle 8 trinn — Vorstand gjennomgår nå og godkjenner hvert trinn innen maks. 3 dager. Du får varsel så snart kontoen er aktiv.",
+  "wizardFinalMinorTitle": "Forespørselen din er sendt 📨",
+  "wizardFinalMinorBody": "Vi kontakter forelderen din og avtaler et møte (personlig eller videosamtale). Vær tålmodig — prosessen kan ta opptil 7 dager. Du får et varsel i appen så snart forelderen din har godkjent.",
+  "wizardFinalMinorCallTitle": "Ring oss hvis du vil snakke",
+  "wizardFinalMitgliedernummerLabel": "Medlemsnummeret ditt",
+  "wizardFinalCloseButton": "Tilbake til velkomst"
 }

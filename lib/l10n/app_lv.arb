@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Gatavs! Esi reģistrēts 🎉",
+  "wizardFinalAdultBody": "Laipni lūdzam ICD360S e.V.! Pabeidzi visus 8 posmus — Vorstand pārbauda un apstiprinās katru soli ne ilgāk kā 3 dienās. Saņemsi paziņojumu, tiklīdz konts būs aktīvs.",
+  "wizardFinalMinorTitle": "Tavs pieprasījums ir nosūtīts 📨",
+  "wizardFinalMinorBody": "Sazināsimies ar tavu vecāku un norunāsim tikšanos (klātienē vai video zvanā). Lūdzu, esi pacietīgs — process var ilgt līdz 7 dienām. Saņemsi paziņojumu lietotnē, tiklīdz vecāks apstiprinās.",
+  "wizardFinalMinorCallTitle": "Piezvani, ja vēlies parunāt",
+  "wizardFinalMitgliedernummerLabel": "Tavs biedra numurs",
+  "wizardFinalCloseButton": "Atpakaļ uz sākumu"
 }

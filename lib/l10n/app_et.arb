@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Valmis! Oled liige 🎉",
+  "wizardFinalAdultBody": "Tere tulemast ICD360S e.V.-sse! Lõpetasid kõik 8 etappi — Vorstand vaatab nüüd üle ja kinnitab iga sammu maksimaalselt 3 päeva jooksul. Saad teate, niipea kui konto on aktiivne.",
+  "wizardFinalMinorTitle": "Sinu päring on saadetud 📨",
+  "wizardFinalMinorBody": "Võtame ühendust sinu vanemaga ja lepime kohtumise kokku (kohapeal või videokõnega). Palun ole kannatlik — protsess võib kesta kuni 7 päeva. Saad rakenduses teate niipea, kui vanem on heaks kiitnud.",
+  "wizardFinalMinorCallTitle": "Helista, kui soovid rääkida",
+  "wizardFinalMitgliedernummerLabel": "Sinu liikmenumber",
+  "wizardFinalCloseButton": "Tagasi tervitusekraanile"
 }

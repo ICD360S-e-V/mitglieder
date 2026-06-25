@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "All set! You're enrolled 🎉",
+  "wizardFinalAdultBody": "Welcome to ICD360S e.V.! You've completed all 8 stages — the Vorstand is reviewing and will approve each step within 3 days max. You'll get a notification as soon as your account is active.",
+  "wizardFinalMinorTitle": "Your request has been sent 📨",
+  "wizardFinalMinorBody": "We'll contact your parent and arrange a meeting (in person or video call). Please be patient — the process can take up to 7 days. You'll get an in-app notification as soon as your parent approves.",
+  "wizardFinalMinorCallTitle": "Call us if you want to talk",
+  "wizardFinalMitgliedernummerLabel": "Your member number",
+  "wizardFinalCloseButton": "Back to welcome"
 }

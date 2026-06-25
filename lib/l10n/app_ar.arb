@@ -1229,5 +1229,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "تم! أنت مسجل 🎉",
+  "wizardFinalAdultBody": "مرحبًا بك في ICD360S e.V.! لقد أكملت كل المراحل الثماني — يقوم Vorstand بالمراجعة وسيوافق على كل خطوة خلال 3 أيام كحد أقصى. ستحصل على إشعار بمجرد تفعيل حسابك.",
+  "wizardFinalMinorTitle": "تم إرسال طلبك 📨",
+  "wizardFinalMinorBody": "سنتواصل مع والدك ونرتب لقاءً (شخصيًا أو عبر مكالمة فيديو). يرجى التحلي بالصبر — قد تستغرق العملية حتى 7 أيام. ستحصل على إشعار في التطبيق بمجرد موافقة والدك.",
+  "wizardFinalMinorCallTitle": "اتصل بنا إذا أردت التحدث",
+  "wizardFinalMitgliedernummerLabel": "رقم عضويتك",
+  "wizardFinalCloseButton": "العودة إلى البداية"
 }

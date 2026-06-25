@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Hotovo! Si zaregistrovaný 🎉",
+  "wizardFinalAdultBody": "Vitaj v ICD360S e.V.! Dokončil si všetkých 8 etáp — predstavenstvo to teraz kontroluje a schváli každý krok do max. 3 dní. Dostaneš upozornenie, len čo bude tvoj účet aktívny.",
+  "wizardFinalMinorTitle": "Tvoja žiadosť bola odoslaná 📨",
+  "wizardFinalMinorBody": "Spojíme sa s tvojím rodičom a dohodneme stretnutie (osobne alebo videohovorom). Prosíme o trpezlivosť — proces môže trvať až 7 dní. Dostaneš upozornenie v aplikácii, len čo rodič schváli.",
+  "wizardFinalMinorCallTitle": "Zavolaj nám, ak chceš hovoriť",
+  "wizardFinalMitgliedernummerLabel": "Tvoje členské číslo",
+  "wizardFinalCloseButton": "Späť na úvod"
 }

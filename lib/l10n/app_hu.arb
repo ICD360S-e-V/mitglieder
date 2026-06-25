@@ -1208,5 +1208,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardFinalAdultTitle": "Kész! Beiratkoztál 🎉",
+  "wizardFinalAdultBody": "Üdvözlünk az ICD360S e.V.-ben! Mind a 8 szakaszt teljesítetted — a Vorstand most ellenőrzi és minden lépést max. 3 napon belül jóváhagy. Értesítést kapsz, amint a fiókod aktív.",
+  "wizardFinalMinorTitle": "A kérésedet elküldtük 📨",
+  "wizardFinalMinorBody": "Felvesszük a kapcsolatot a szülőddel és megbeszélünk egy találkozót (személyesen vagy videóhíváson). Légy türelemmel — a folyamat akár 7 napig is tarthat. Értesítést kapsz az alkalmazásban, amint a szülőd jóváhagyta.",
+  "wizardFinalMinorCallTitle": "Hívj minket, ha beszélni szeretnél",
+  "wizardFinalMitgliedernummerLabel": "Tagsági számod",
+  "wizardFinalCloseButton": "Vissza a kezdőlapra"
 }
