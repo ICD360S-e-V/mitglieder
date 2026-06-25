@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.45.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.44.0...v1.45.0) (2026-06-25)
+
+
+### Features
+
+* **wizard:** reserve mitgliedernummer at check_age + show pill from Stufe 1c ([868f01c](https://github.com/ICD360S-e-V/mitglieder/commit/868f01c013cbd5be60c3ebed3928c6839964cc88))
+
 ## [1.44.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.43.0...v1.44.0) (2026-06-25)
 
 
