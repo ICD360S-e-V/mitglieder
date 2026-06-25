@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Ogiltigt nummer (t.ex. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Ogiltigt postnummer (endast siffror)",
   "wizardStufe1fTitle": "Kontakt",
-  "wizardStufe1fPrompt": "Hur når vi dig? Telefon endast vid akuta fall. Allt annat skriver vi i appen.",
+  "wizardStufe1fPrompt": "Hur når vi dig? Telefon endast vid akuta fall. Allt annat sker via vår egen end-to-end-krypterade kanal i appen — eller via e-post, om du hellre vill det.",
   "wizardStufe1fTelefonLabel": "Mobilnummer",
   "wizardStufe1fTelefonHelper": "Lovar att jag bara ringer om det är viktigt. 📱",
   "wizardStufe2Title": "Medlemskapstyp",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Om du ligger mer än 6 månader efter med avgiften stryker vi dig automatiskt (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "För att gå ur: skicka oss en skriftlig uppsägning 3 månader före 31 december (senast 30 september för att gälla från årsskiftet). Ingen minimitid (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Påminnelse: avgift 25 €/månad (eller 0 € med Bürgergeld / Sozialamt). För utträde: skriftligt senast 30 september. Om du får svårigheter, ring — vi hittar lösningar tillsammans.",
-  "wizardFinalAdultCallTitle": "Ring oss för att prata"
+  "wizardFinalAdultCallTitle": "Ring oss för att prata",
+  "wizardStufe1fEmailLabel": "E-postadress (valfritt)",
+  "wizardStufe1fEmailHelper": "Valfritt. Vi har vår egen end-to-end-krypterade app för kommunikation — lämna bara e-post om du också vill bli kontaktad där.",
+  "wizardErrInvalidEmail": "Ogiltig e-postadress"
 }

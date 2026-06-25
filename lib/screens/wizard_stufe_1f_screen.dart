@@ -5,10 +5,11 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
 
-/// Stufe 1f — Contact: Mobile phone only. The Vorstand reaches out by
-/// phone for urgent matters; everything else (Satzung, invoices,
-/// meeting reminders) goes through the in-app message channel, so we
-/// don't ask for an email address. Phone gets the +49 prefix
+/// Stufe 1f — Contact: Mobile phone (required) + Email (optional).
+/// The Vorstand reaches out by phone for urgent matters and uses the
+/// in-app end-to-end encrypted channel for everything else; the email
+/// is offered as a fallback for visitors who specifically want a copy
+/// of official communications by mail. Phone gets the +49 prefix
 /// pre-populated since the vast majority of new members live in
 /// Germany; visitors abroad just overwrite it.
 class WizardStufe1fScreen extends StatefulWidget {
@@ -30,9 +31,12 @@ class WizardStufe1fScreen extends StatefulWidget {
 class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
   final _formKey = GlobalKey<FormState>();
   late final TextEditingController _telefon;
+  late final TextEditingController _email;
   bool _saving = false;
 
   static final _phoneRegex = RegExp(r"^[+0-9\s\-/()]{5,20}$");
+  static final _emailRegex =
+      RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
 
   @override
   void initState() {
@@ -41,11 +45,13 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
     _telefon = TextEditingController(
       text: (initialPhone == null || initialPhone.isEmpty) ? '+49 ' : initialPhone,
     );
+    _email = TextEditingController(text: widget.initial?['email'] ?? '');
   }
 
   @override
   void dispose() {
     _telefon.dispose();
+    _email.dispose();
     super.dispose();
   }
 
@@ -55,6 +61,7 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
     setState(() => _saving = true);
     final ok = await WizardService().saveStep(WizardStep.stufe1f, {
       'telefon_mobil': _telefon.text.trim(),
+      'email': _email.text.trim().toLowerCase(),
     });
     if (!mounted) return;
     setState(() => _saving = false);
@@ -105,6 +112,29 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
                 if (v.isEmpty || v == '+49') return l10n.wizardErrRequired;
                 if (!_phoneRegex.hasMatch(v)) {
                   return l10n.wizardErrInvalidPhone;
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              controller: _email,
+              style: const TextStyle(color: Colors.white, fontSize: 15),
+              keyboardType: TextInputType.emailAddress,
+              maxLength: 255,
+              autocorrect: false,
+              decoration: _input(
+                label: l10n.wizardStufe1fEmailLabel,
+                helper: l10n.wizardStufe1fEmailHelper,
+                prefixIcon: Icons.email_outlined,
+              ),
+              // Optional field — empty is valid; only validate format
+              // when the visitor actually types something.
+              validator: (value) {
+                final v = (value ?? '').trim();
+                if (v.isEmpty) return null;
+                if (v.length > 255 || !_emailRegex.hasMatch(v)) {
+                  return l10n.wizardErrInvalidEmail;
                 }
                 return null;
               },

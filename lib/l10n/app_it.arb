@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Numero non valido (es. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "CAP non valido (solo cifre)",
   "wizardStufe1fTitle": "Contatto",
-  "wizardStufe1fPrompt": "Come ti contattiamo? Telefono solo per emergenze. Per il resto ti scriviamo in app.",
+  "wizardStufe1fPrompt": "Come ti contattiamo? Telefono solo per emergenze. Per il resto usiamo il nostro canale cifrato end-to-end in app — o l'email, se preferisci.",
   "wizardStufe1fTelefonLabel": "Cellulare",
   "wizardStufe1fTelefonHelper": "Promesso, non chiamo se non è importante. 📱",
   "wizardStufe2Title": "Tipo di socio",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Se accumuli più di 6 mesi di arretrato sulla quota, ti cancelliamo automaticamente (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Per uscire: inviaci la disdetta per iscritto 3 mesi prima del 31 dicembre (entro il 30 settembre per essere efficace a fine anno). Nessuna durata minima (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Promemoria: quota 25 €/mese (o 0 € con Bürgergeld / Sozialamt). Per uscire: per iscritto entro il 30 settembre. Se sorgono difficoltà, chiamaci — cerchiamo soluzioni insieme.",
-  "wizardFinalAdultCallTitle": "Chiamaci per parlarne"
+  "wizardFinalAdultCallTitle": "Chiamaci per parlarne",
+  "wizardStufe1fEmailLabel": "Indirizzo email (facoltativo)",
+  "wizardStufe1fEmailHelper": "Facoltativo. Abbiamo la nostra app cifrata end-to-end per comunicare — lascia l'email solo se vuoi che ti scriviamo anche lì.",
+  "wizardErrInvalidEmail": "Indirizzo email non valido"
 }

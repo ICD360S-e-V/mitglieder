@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Ongeldig nummer (bv. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Ongeldige postcode (alleen cijfers)",
   "wizardStufe1fTitle": "Contact",
-  "wizardStufe1fPrompt": "Hoe bereiken we je? Telefoon alleen voor noodgevallen. Voor de rest schrijven we je in de app.",
+  "wizardStufe1fPrompt": "Hoe bereiken we je? Telefoon alleen voor noodgevallen. Voor de rest gebruiken we ons eigen end-to-end versleutelde kanaal in de app — of e-mail, als je dat liever hebt.",
   "wizardStufe1fTelefonLabel": "Mobiel",
   "wizardStufe1fTelefonHelper": "Beloof dat ik alleen bel als het belangrijk is. 📱",
   "wizardStufe2Title": "Type lidmaatschap",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Als je meer dan 6 maanden achterloopt met de contributie, schrappen we je automatisch (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Om je af te melden: stuur de opzegging schriftelijk 3 maanden vóór 31 december (uiterlijk 30 september voor ingang aan het einde van het jaar). Geen minimale duur (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Herinnering: contributie € 25/maand (of € 0 met Bürgergeld / Sozialamt). Voor opzegging: schriftelijk vóór 30 september. Loop je tegen iets aan, bel ons — we zoeken samen oplossingen.",
-  "wizardFinalAdultCallTitle": "Bel ons voor een gesprek"
+  "wizardFinalAdultCallTitle": "Bel ons voor een gesprek",
+  "wizardStufe1fEmailLabel": "E-mailadres (optioneel)",
+  "wizardStufe1fEmailHelper": "Optioneel. We hebben onze eigen end-to-end versleutelde app voor communicatie — laat alleen een e-mail achter als je daar ook bereikt wilt worden.",
+  "wizardErrInvalidEmail": "Ongeldig e-mailadres"
 }

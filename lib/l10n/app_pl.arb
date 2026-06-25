@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Nieprawidłowy numer (np. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Nieprawidłowy kod pocztowy (tylko cyfry)",
   "wizardStufe1fTitle": "Kontakt",
-  "wizardStufe1fPrompt": "Jak się z tobą skontaktować? Telefon tylko w pilnych sprawach. Resztę napiszemy ci w aplikacji.",
+  "wizardStufe1fPrompt": "Jak się z tobą skontaktować? Telefon tylko w pilnych sprawach. Resztę załatwiamy przez nasz własny szyfrowany end-to-end kanał w aplikacji — albo mailem, jeśli wolisz.",
   "wizardStufe1fTelefonLabel": "Telefon komórkowy",
   "wizardStufe1fTelefonHelper": "Obiecuję, zadzwonię tylko jeśli to ważne. 📱",
   "wizardStufe2Title": "Typ członkostwa",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Jeśli zalegasz ze składką ponad 6 miesięcy, automatycznie cię skreślamy (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Aby się wypisać: prześlij wypowiedzenie pisemnie 3 miesiące przed 31 grudnia (do 30 września, by obowiązywało od końca roku). Brak okresu minimalnego (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Przypomnienie: składka 25 €/mies. (lub 0 € przy Bürgergeld / Sozialamt). Aby się wypisać: pisemnie do 30 września. Jeśli pojawią się trudności, zadzwoń — znajdziemy rozwiązanie razem.",
-  "wizardFinalAdultCallTitle": "Zadzwoń, porozmawiajmy"
+  "wizardFinalAdultCallTitle": "Zadzwoń, porozmawiajmy",
+  "wizardStufe1fEmailLabel": "Adres e-mail (opcjonalnie)",
+  "wizardStufe1fEmailHelper": "Opcjonalnie. Mamy własną aplikację z szyfrowaniem end-to-end do komunikacji — zostaw e-mail tylko jeśli chcesz, byśmy pisali też tam.",
+  "wizardErrInvalidEmail": "Nieprawidłowy adres e-mail"
 }

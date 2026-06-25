@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Érvénytelen szám (pl. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Érvénytelen irányítószám (csak számjegyek)",
   "wizardStufe1fTitle": "Elérhetőség",
-  "wizardStufe1fPrompt": "Hogyan érünk el? Telefon csak vészhelyzetre. Minden mást az appban írunk neked.",
+  "wizardStufe1fPrompt": "Hogyan érünk el? Telefon csak vészhelyzetre. Minden mást a saját, végpontok közötti titkosított csatornánkon írunk neked az appban — vagy e-mailben, ha úgy szereted.",
   "wizardStufe1fTelefonLabel": "Mobilszám",
   "wizardStufe1fTelefonHelper": "Ígérem, csak akkor hívlak, ha tényleg fontos. 📱",
   "wizardStufe2Title": "Tagság típusa",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Ha több mint 6 hónapja vagy elmaradásban a tagdíjjal, automatikusan töröljük (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Kilépéshez: küldd el a felmondást írásban 3 hónappal december 31. előtt (legkésőbb szeptember 30-ig, hogy év végén lépjen hatályba). Nincs minimális tagsági idő (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Emlékeztető: tagdíj 25 €/hó (vagy 0 € Bürgergelddel / Sozialamttal). Kilépéshez: írásban szeptember 30-ig. Ha nehézségeid lesznek, hívj minket — együtt találunk megoldást.",
-  "wizardFinalAdultCallTitle": "Hívj, hogy beszéljünk"
+  "wizardFinalAdultCallTitle": "Hívj, hogy beszéljünk",
+  "wizardStufe1fEmailLabel": "E-mail cím (opcionális)",
+  "wizardStufe1fEmailHelper": "Opcionális. Saját, végpontok közötti titkosított appunk van a kommunikációhoz — csak akkor add meg az e-mailt, ha úgy is el akarsz érhető lenni.",
+  "wizardErrInvalidEmail": "Érvénytelen e-mail cím"
 }

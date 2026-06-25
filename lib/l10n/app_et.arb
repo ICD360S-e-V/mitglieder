@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Vigane number (nt 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Vigane sihtnumber (ainult numbrid)",
   "wizardStufe1fTitle": "Kontakt",
-  "wizardStufe1fPrompt": "Kuidas sind kätte saame? Telefon ainult hädaolukordadeks. Kõik muu kirjutame sulle rakenduses.",
+  "wizardStufe1fPrompt": "Kuidas sind kätte saame? Telefon ainult hädaolukordadeks. Kõik muu käib meie enda otspunktist-otspunkti krüpteeritud rakenduse kanalis — või e-postiga, kui see sulle sobib.",
   "wizardStufe1fTelefonLabel": "Mobiilinumber",
   "wizardStufe1fTelefonHelper": "Luban, et helistan ainult kui on midagi olulist. 📱",
   "wizardStufe2Title": "Liikme tüüp",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Kui jääd liikmemaksuga rohkem kui 6 kuud võlgu, kustutame sind automaatselt (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Lahkumiseks: saada meile kirjalik ülesütlemine 3 kuud enne 31. detsembrit (hiljemalt 30. septembriks, et see jõustuks aasta lõpus). Minimaalset kestust pole (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Meeldetuletus: liikmemaks 25 €/kuus (või 0 € Bürgergeld / Sozialamt korral). Lahkumiseks: kirjalik teade hiljemalt 30. septembriks. Kui tekib raskusi, helista — leiame koos lahenduse.",
-  "wizardFinalAdultCallTitle": "Helista, arutame"
+  "wizardFinalAdultCallTitle": "Helista, arutame",
+  "wizardStufe1fEmailLabel": "E-posti aadress (valikuline)",
+  "wizardStufe1fEmailHelper": "Valikuline. Meil on oma otspunktist-otspunkti krüpteeritud rakendus suhtlemiseks — jäta e-post ainult siis, kui soovid, et sind ka seal kätte saaksime.",
+  "wizardErrInvalidEmail": "Vigane e-posti aadress"
 }

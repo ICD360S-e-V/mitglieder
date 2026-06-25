@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Număr invalid (ex: 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Cod poștal invalid (doar cifre)",
   "wizardStufe1fTitle": "Contact",
-  "wizardStufe1fPrompt": "Cum te contactăm? Telefonul îl folosim doar pentru urgențe. Pentru restul comunicăm prin aplicație.",
+  "wizardStufe1fPrompt": "Cum te contactăm? Telefonul îl folosim doar pentru urgențe. Pentru restul comunicăm prin aplicație (criptat end-to-end) sau prin email, dacă preferi.",
   "wizardStufe1fTelefonLabel": "Telefon mobil",
   "wizardStufe1fTelefonHelper": "Promit, nu te sun decât dacă e ceva important. 📱",
   "wizardStufe2Title": "Tip de membru",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Dacă rămâi cu cotizația în urmă mai mult de 6 luni, te radiem automat (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Pentru retragere: anunță-ne în scris cu 3 luni înainte de 31 decembrie (până la 30 septembrie pentru a ieși la sfârșitul anului). Nu există durată minimă (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Reamintire: cotizație 25 €/lună (sau 0 € pentru Bürgergeld / Sozialamt). Pentru retragere: anunță-ne în scris până la 30 septembrie. Dacă apar dificultăți, sună-ne — căutăm soluții împreună.",
-  "wizardFinalAdultCallTitle": "Sună-ne să discutăm"
+  "wizardFinalAdultCallTitle": "Sună-ne să discutăm",
+  "wizardStufe1fEmailLabel": "Adresa de email (opțional)",
+  "wizardStufe1fEmailHelper": "Opțional. Avem propria aplicație criptată end-to-end pentru comunicare — lasă emailul doar dacă vrei să te contactăm și pe acolo.",
+  "wizardErrInvalidEmail": "Adresă de email invalidă"
 }

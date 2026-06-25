@@ -1107,7 +1107,7 @@
   "wizardErrInvalidHausnummer": "Geçersiz numara (örn. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Geçersiz posta kodu (yalnızca rakam)",
   "wizardStufe1fTitle": "İletişim",
-  "wizardStufe1fPrompt": "Sana nasıl ulaşalım? Telefon yalnızca acil durumlar için. Geri kalan her şeyi uygulamadan yazarız.",
+  "wizardStufe1fPrompt": "Sana nasıl ulaşalım? Telefon yalnızca acil durumlar için. Geri kalan her şeyi kendi uygulamamızdaki uçtan uca şifreli kanaldan ya da e-posta ile (istersen) hallediyoruz.",
   "wizardStufe1fTelefonLabel": "Cep telefonu",
   "wizardStufe1fTelefonHelper": "Söz veriyorum, sadece önemli olduğunda ararım. 📱",
   "wizardStufe2Title": "Üyelik türü",
@@ -1238,5 +1238,8 @@
   "wizardStufe4StreichungWarning": "Aidatta 6 aydan fazla geride kalırsan otomatik olarak silinirsin (Tüzük §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Üyelikten ayrılmak için: 31 Aralık'tan 3 ay önce yazılı bildirimini gönder (yıl sonu itibarıyla geçerli olması için en geç 30 Eylül). Asgari süre yok (Tüzük §6 Abs. 3).",
   "wizardFinalRulesRecap": "Hatırlatma: aidat 25 €/ay (Bürgergeld / Sozialamt durumunda 0 €). Üyelikten ayrılmak için: 30 Eylül'e kadar yazılı bildirim. Sıkıntı çıkarsa ara — birlikte çözüm buluruz.",
-  "wizardFinalAdultCallTitle": "Konuşmak için ara"
+  "wizardFinalAdultCallTitle": "Konuşmak için ara",
+  "wizardStufe1fEmailLabel": "E-posta adresi (isteğe bağlı)",
+  "wizardStufe1fEmailHelper": "İsteğe bağlı. İletişim için kendi uçtan uca şifreli uygulamamız var — sadece e-posta ile de iletişim kurmamızı istiyorsan adresini bırak.",
+  "wizardErrInvalidEmail": "Geçersiz e-posta adresi"
 }

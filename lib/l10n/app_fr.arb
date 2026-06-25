@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Numéro invalide (p. ex. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Code postal invalide (chiffres uniquement)",
   "wizardStufe1fTitle": "Contact",
-  "wizardStufe1fPrompt": "Comment te joindre ? Téléphone uniquement pour les urgences. Pour le reste, on t'écrit dans l'app.",
+  "wizardStufe1fPrompt": "Comment te joindre ? Téléphone uniquement pour les urgences. Pour le reste, on utilise notre canal chiffré de bout en bout dans l'app — ou l'e-mail, si tu préfères.",
   "wizardStufe1fTelefonLabel": "Mobile",
   "wizardStufe1fTelefonHelper": "Promis, je n'appelle que si c'est important. 📱",
   "wizardStufe2Title": "Type de membre",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Si tu accumules plus de 6 mois de retard sur la cotisation, on te radie automatiquement (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Pour partir : envoie-nous ta démission par écrit 3 mois avant le 31 décembre (au plus tard le 30 septembre pour effet en fin d'année). Pas de durée minimale (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Rappel : cotisation 25 €/mois (ou 0 € avec Bürgergeld / Sozialamt). Pour partir : par écrit jusqu'au 30 septembre. Si tu rencontres des difficultés, appelle-nous — on cherche ensemble.",
-  "wizardFinalAdultCallTitle": "Appelle-nous pour en parler"
+  "wizardFinalAdultCallTitle": "Appelle-nous pour en parler",
+  "wizardStufe1fEmailLabel": "Adresse e-mail (facultatif)",
+  "wizardStufe1fEmailHelper": "Facultatif. On a notre propre app chiffrée de bout en bout pour communiquer — laisse ton e-mail seulement si tu veux qu'on te contacte aussi par là.",
+  "wizardErrInvalidEmail": "Adresse e-mail invalide"
 }

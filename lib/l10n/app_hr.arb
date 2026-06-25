@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Nevažeći broj (npr. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Nevažeći poštanski broj (samo znamenke)",
   "wizardStufe1fTitle": "Kontakt",
-  "wizardStufe1fPrompt": "Kako te kontaktirati? Telefon samo za hitne slučajeve. Za sve ostalo pišemo ti u aplikaciji.",
+  "wizardStufe1fPrompt": "Kako te kontaktirati? Telefon samo za hitne slučajeve. Za sve ostalo koristimo vlastiti end-to-end kriptirani kanal u aplikaciji — ili e-mail, ako ti tako više odgovara.",
   "wizardStufe1fTelefonLabel": "Mobitel",
   "wizardStufe1fTelefonHelper": "Obećavam, nazvat ću samo ako je važno. 📱",
   "wizardStufe2Title": "Vrsta članstva",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Ako kasniš s članarinom više od 6 mjeseci, automatski ćemo te brisati (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Za istup: pošalji nam pisanu obavijest 3 mjeseca prije 31. prosinca (najkasnije do 30. rujna kako bi proizvelo učinak na kraju godine). Nema minimalnog trajanja (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Podsjetnik: članarina 25 €/mjesec (ili 0 € s Bürgergeld / Sozialamt). Za istup: pisano do 30. rujna. Ako naiđeš na poteškoće, nazovi — zajedno tražimo rješenja.",
-  "wizardFinalAdultCallTitle": "Nazovi za razgovor"
+  "wizardFinalAdultCallTitle": "Nazovi za razgovor",
+  "wizardStufe1fEmailLabel": "E-mail adresa (neobavezno)",
+  "wizardStufe1fEmailHelper": "Neobavezno. Imamo vlastitu end-to-end kriptiranu aplikaciju za komunikaciju — ostavi e-mail samo ako želiš da te kontaktiramo i tamo.",
+  "wizardErrInvalidEmail": "Nevažeća e-mail adresa"
 }

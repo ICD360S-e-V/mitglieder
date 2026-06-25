@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Neplatné číslo (např. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Neplatné PSČ (jen číslice)",
   "wizardStufe1fTitle": "Kontakt",
-  "wizardStufe1fPrompt": "Jak tě zastihneme? Telefon jen na naléhavé případy. Na vše ostatní ti napíšeme v aplikaci.",
+  "wizardStufe1fPrompt": "Jak tě zastihneme? Telefon jen na naléhavé případy. Pro vše ostatní používáme náš vlastní E2E šifrovaný kanál v aplikaci — nebo e-mail, pokud ti to vyhovuje víc.",
   "wizardStufe1fTelefonLabel": "Mobilní číslo",
   "wizardStufe1fTelefonHelper": "Slib — zavolám jen když to bude opravdu důležité. 📱",
   "wizardStufe2Title": "Typ členství",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Pokud zaostaneš s příspěvkem o více než 6 měsíců, automaticky tě vyškrtneme (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "K odchodu: pošli nám výpověď písemně 3 měsíce před 31. prosincem (do 30. září, aby byla účinná na konci roku). Žádná minimální doba (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Připomenutí: příspěvek 25 €/měsíc (nebo 0 € s Bürgergeld / Sozialamt). K vystoupení: písemně do 30. září. Pokud nastanou potíže, zavolej — najdeme řešení společně.",
-  "wizardFinalAdultCallTitle": "Zavolej, ať si promluvíme"
+  "wizardFinalAdultCallTitle": "Zavolej, ať si promluvíme",
+  "wizardStufe1fEmailLabel": "E-mailová adresa (nepovinné)",
+  "wizardStufe1fEmailHelper": "Nepovinné. Máme vlastní E2E šifrovanou aplikaci pro komunikaci — e-mail nech, jen pokud chceš, abychom tě kontaktovali i tam.",
+  "wizardErrInvalidEmail": "Neplatná e-mailová adresa"
 }

@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Invalid number (e.g. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Invalid postal code (digits only)",
   "wizardStufe1fTitle": "Contact",
-  "wizardStufe1fPrompt": "How can we reach you? Phone only for emergencies. For everything else we'll message you in the app.",
+  "wizardStufe1fPrompt": "How can we reach you? Phone only for emergencies. For everything else we use our own end-to-end encrypted in-app channel — or email, if you'd rather have that.",
   "wizardStufe1fTelefonLabel": "Mobile number",
   "wizardStufe1fTelefonHelper": "Promise, I won't call unless it's important. 📱",
   "wizardStufe2Title": "Membership type",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "If you fall more than 6 months behind on dues, we'll automatically strike you off (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "To leave: send us your cancellation in writing 3 months before December 31 (by September 30 to take effect at year-end). No minimum membership duration (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Reminder: dues are €25/month (or €0 on Bürgergeld / Sozialamt). To leave: notice in writing by September 30. If you run into trouble, give us a call — we find solutions together.",
-  "wizardFinalAdultCallTitle": "Call us to talk it through"
+  "wizardFinalAdultCallTitle": "Call us to talk it through",
+  "wizardStufe1fEmailLabel": "Email address (optional)",
+  "wizardStufe1fEmailHelper": "Optional. We have our own end-to-end encrypted app for communication — only leave an email if you'd also like to be reached that way.",
+  "wizardErrInvalidEmail": "Invalid email address"
 }

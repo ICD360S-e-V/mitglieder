@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Número inválido (p. ex. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Código postal inválido (apenas dígitos)",
   "wizardStufe1fTitle": "Contacto",
-  "wizardStufe1fPrompt": "Como te contactamos? Telefone só para emergências. Para o resto, escrevemos-te na app.",
+  "wizardStufe1fPrompt": "Como te contactamos? Telefone só para emergências. Para o resto usamos o nosso próprio canal cifrado ponta-a-ponta na app — ou por email, se preferires.",
   "wizardStufe1fTelefonLabel": "Telemóvel",
   "wizardStufe1fTelefonHelper": "Prometo, só te ligo se for importante. 📱",
   "wizardStufe2Title": "Tipo de membro",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Se atrasares mais de 6 meses na quota, vamos retirar-te automaticamente (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Para sair: envia-nos a renúncia por escrito 3 meses antes de 31 de dezembro (até 30 de setembro para fazer efeito no final do ano). Não há duração mínima (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Lembrete: quota 25 €/mês (ou 0 € com Bürgergeld / Sozialamt). Para sair: por escrito até 30 de setembro. Se houver dificuldades, liga-nos — encontramos soluções juntos.",
-  "wizardFinalAdultCallTitle": "Liga-nos para conversar"
+  "wizardFinalAdultCallTitle": "Liga-nos para conversar",
+  "wizardStufe1fEmailLabel": "Endereço de email (opcional)",
+  "wizardStufe1fEmailHelper": "Opcional. Temos a nossa própria app cifrada ponta-a-ponta para comunicar — deixa o email só se quiseres que também te contactemos por aí.",
+  "wizardErrInvalidEmail": "Endereço de email inválido"
 }

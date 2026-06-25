@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Nederīgs numurs (piem. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Nederīgs pasta indekss (tikai cipari)",
   "wizardStufe1fTitle": "Kontakts",
-  "wizardStufe1fPrompt": "Kā tev sazināties? Tālrunis tikai ārkārtas gadījumiem. Visu pārējo rakstām lietotnē.",
+  "wizardStufe1fPrompt": "Kā tev sazināties? Tālrunis tikai ārkārtas gadījumiem. Visu pārējo darām mūsu pašu galapunktu šifrētajā kanālā lietotnē — vai e-pastā, ja tā tev ērtāk.",
   "wizardStufe1fTelefonLabel": "Mobilais",
   "wizardStufe1fTelefonHelper": "Solu, zvanīšu tikai tad, ja būs svarīgi. 📱",
   "wizardStufe2Title": "Biedra tips",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Ja kavēsi biedru maksu vairāk nekā 6 mēnešus, automātiski tevi izsvītrosim (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Lai izstātos: nosūti mums uzteikumu rakstiski 3 mēnešus pirms 31. decembra (līdz 30. septembrim, lai stātos spēkā gada beigās). Minimālā ilguma nav (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Atgādinājums: biedru maksa 25 €/mēn. (vai 0 € ar Bürgergeld / Sozialamt). Lai izstātos: rakstiski līdz 30. septembrim. Ja rodas grūtības, zvani — meklēsim risinājumus kopā.",
-  "wizardFinalAdultCallTitle": "Piezvani, parunāsim"
+  "wizardFinalAdultCallTitle": "Piezvani, parunāsim",
+  "wizardStufe1fEmailLabel": "E-pasta adrese (pēc izvēles)",
+  "wizardStufe1fEmailHelper": "Pēc izvēles. Mums ir sava galapunktu šifrēta lietotne saziņai — atstāj e-pastu tikai tad, ja gribi, lai sazināmies arī tur.",
+  "wizardErrInvalidEmail": "Nederīga e-pasta adrese"
 }

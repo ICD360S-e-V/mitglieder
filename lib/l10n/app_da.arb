@@ -1086,7 +1086,7 @@
   "wizardErrInvalidHausnummer": "Ugyldigt nummer (f.eks. 12, 12a, 12/3)",
   "wizardErrInvalidPlz": "Ugyldigt postnummer (kun cifre)",
   "wizardStufe1fTitle": "Kontakt",
-  "wizardStufe1fPrompt": "Hvordan kontakter vi dig? Telefon kun til nødstilfælde. Alt andet skriver vi til dig i appen.",
+  "wizardStufe1fPrompt": "Hvordan kontakter vi dig? Telefon kun til nødstilfælde. Alt andet sker via vores egen end-to-end krypterede kanal i appen — eller på e-mail, hvis du foretrækker det.",
   "wizardStufe1fTelefonLabel": "Mobilnummer",
   "wizardStufe1fTelefonHelper": "Lover at jeg kun ringer hvis det er vigtigt. 📱",
   "wizardStufe2Title": "Medlemstype",
@@ -1217,5 +1217,8 @@
   "wizardStufe4StreichungWarning": "Hvis du er mere end 6 måneder bagud med kontingentet, sletter vi dig automatisk (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "For at melde dig ud: send os din opsigelse skriftligt 3 måneder før 31. december (senest 30. september for at træde i kraft ved årets udgang). Ingen minimumsperiode (Satzung §6 Abs. 3).",
   "wizardFinalRulesRecap": "Påmindelse: kontingent 25 €/måned (eller 0 € med Bürgergeld / Sozialamt). For udmeldelse: skriftligt senest 30. september. Hvis du får problemer, ring — vi finder løsninger sammen.",
-  "wizardFinalAdultCallTitle": "Ring og lad os tale"
+  "wizardFinalAdultCallTitle": "Ring og lad os tale",
+  "wizardStufe1fEmailLabel": "E-mailadresse (valgfrit)",
+  "wizardStufe1fEmailHelper": "Valgfrit. Vi har vores egen end-to-end krypterede app til kommunikation — angiv kun e-mail, hvis du også vil kontaktes der.",
+  "wizardErrInvalidEmail": "Ugyldig e-mailadresse"
 }
