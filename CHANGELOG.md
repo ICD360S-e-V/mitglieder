@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.40.0...v1.41.0) (2026-06-25)
+
+
+### Features
+
+* **wizard:** final screen — adult celebration + minor waiting variants ([264fe0e](https://github.com/ICD360S-e-V/mitglieder/commit/264fe0e23e485506245721084c3287c0822c8fc4))
+
 ## [1.40.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.39.0...v1.40.0) (2026-06-21)
 
 
