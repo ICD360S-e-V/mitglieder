@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.43.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.42.1...v1.43.0) (2026-06-25)
+
+
+### Features
+
+* **wizard:** mark SEPA-Lastschrift as "Coming soon" in Stufe 4 ([c7ebb53](https://github.com/ICD360S-e-V/mitglieder/commit/c7ebb537f07504b84e37d134c3eb1e3051b865a1))
+
 ## [1.42.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.42.0...v1.42.1) (2026-06-25)
 
 
