@@ -166,6 +166,43 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
               ],
             ),
           ],
+          const SizedBox(height: 16),
+          _streichungWarning(l10n),
+        ],
+      ),
+    );
+  }
+
+  /// Heads-up about §6 Abs. 3 Satzung: a member who runs 6 months
+  /// behind on dues gets struck off automatically. Surfaced here so
+  /// the visitor sees the consequence at the moment they're picking
+  /// how to pay.
+  Widget _streichungWarning(AppLocalizations l10n) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.amber.shade300.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Colors.amber.shade300.withValues(alpha: 0.55),
+        ),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.warning_amber,
+              color: Colors.amber.shade200, size: 20),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              l10n.wizardStufe4StreichungWarning,
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.92),
+                fontSize: 12.5,
+                height: 1.4,
+              ),
+            ),
+          ),
         ],
       ),
     );

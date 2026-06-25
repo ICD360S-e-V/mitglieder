@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Sună-ne dacă vrei să discutăm",
   "wizardFinalMitgliedernummerLabel": "Numărul tău de membru",
   "wizardFinalCloseButton": "Înapoi la welcome",
-  "wizardStufe4MethodComingSoon": "Disponibil în viitor"
+  "wizardStufe4MethodComingSoon": "Disponibil în viitor",
+  "wizardStufe4StreichungWarning": "Dacă rămâi cu cotizația în urmă mai mult de 6 luni, te radiem automat (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Pentru retragere: anunță-ne în scris cu 3 luni înainte de 31 decembrie (până la 30 septembrie pentru a ieși la sfârșitul anului). Nu există durată minimă (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Reamintire: cotizație 25 €/lună (sau 0 € pentru Bürgergeld / Sozialamt). Pentru retragere: anunță-ne în scris până la 30 septembrie. Dacă apar dificultăți, sună-ne — căutăm soluții împreună.",
+  "wizardFinalAdultCallTitle": "Sună-ne să discutăm"
 }

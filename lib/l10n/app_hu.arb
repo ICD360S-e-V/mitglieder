@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Hívj minket, ha beszélni szeretnél",
   "wizardFinalMitgliedernummerLabel": "Tagsági számod",
   "wizardFinalCloseButton": "Vissza a kezdőlapra",
-  "wizardStufe4MethodComingSoon": "Hamarosan"
+  "wizardStufe4MethodComingSoon": "Hamarosan",
+  "wizardStufe4StreichungWarning": "Ha több mint 6 hónapja vagy elmaradásban a tagdíjjal, automatikusan töröljük (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Kilépéshez: küldd el a felmondást írásban 3 hónappal december 31. előtt (legkésőbb szeptember 30-ig, hogy év végén lépjen hatályba). Nincs minimális tagsági idő (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Emlékeztető: tagdíj 25 €/hó (vagy 0 € Bürgergelddel / Sozialamttal). Kilépéshez: írásban szeptember 30-ig. Ha nehézségeid lesznek, hívj minket — együtt találunk megoldást.",
+  "wizardFinalAdultCallTitle": "Hívj, hogy beszéljünk"
 }

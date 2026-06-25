@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Nazovi nas ako želiš razgovarati",
   "wizardFinalMitgliedernummerLabel": "Tvoj članski broj",
   "wizardFinalCloseButton": "Natrag na dobrodošlicu",
-  "wizardStufe4MethodComingSoon": "Uskoro"
+  "wizardStufe4MethodComingSoon": "Uskoro",
+  "wizardStufe4StreichungWarning": "Ako kasniš s članarinom više od 6 mjeseci, automatski ćemo te brisati (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Za istup: pošalji nam pisanu obavijest 3 mjeseca prije 31. prosinca (najkasnije do 30. rujna kako bi proizvelo učinak na kraju godine). Nema minimalnog trajanja (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Podsjetnik: članarina 25 €/mjesec (ili 0 € s Bürgergeld / Sozialamt). Za istup: pisano do 30. rujna. Ako naiđeš na poteškoće, nazovi — zajedno tražimo rješenja.",
+  "wizardFinalAdultCallTitle": "Nazovi za razgovor"
 }

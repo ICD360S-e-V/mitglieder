@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Appelle-nous si tu veux parler",
   "wizardFinalMitgliedernummerLabel": "Ton numéro de membre",
   "wizardFinalCloseButton": "Retour à l'accueil",
-  "wizardStufe4MethodComingSoon": "Bientôt disponible"
+  "wizardStufe4MethodComingSoon": "Bientôt disponible",
+  "wizardStufe4StreichungWarning": "Si tu accumules plus de 6 mois de retard sur la cotisation, on te radie automatiquement (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Pour partir : envoie-nous ta démission par écrit 3 mois avant le 31 décembre (au plus tard le 30 septembre pour effet en fin d'année). Pas de durée minimale (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Rappel : cotisation 25 €/mois (ou 0 € avec Bürgergeld / Sozialamt). Pour partir : par écrit jusqu'au 30 septembre. Si tu rencontres des difficultés, appelle-nous — on cherche ensemble.",
+  "wizardFinalAdultCallTitle": "Appelle-nous pour en parler"
 }

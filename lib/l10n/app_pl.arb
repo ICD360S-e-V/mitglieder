@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Zadzwoń, jeśli chcesz porozmawiać",
   "wizardFinalMitgliedernummerLabel": "Twój numer członkowski",
   "wizardFinalCloseButton": "Wróć do powitania",
-  "wizardStufe4MethodComingSoon": "Wkrótce"
+  "wizardStufe4MethodComingSoon": "Wkrótce",
+  "wizardStufe4StreichungWarning": "Jeśli zalegasz ze składką ponad 6 miesięcy, automatycznie cię skreślamy (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Aby się wypisać: prześlij wypowiedzenie pisemnie 3 miesiące przed 31 grudnia (do 30 września, by obowiązywało od końca roku). Brak okresu minimalnego (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Przypomnienie: składka 25 €/mies. (lub 0 € przy Bürgergeld / Sozialamt). Aby się wypisać: pisemnie do 30 września. Jeśli pojawią się trudności, zadzwoń — znajdziemy rozwiązanie razem.",
+  "wizardFinalAdultCallTitle": "Zadzwoń, porozmawiajmy"
 }

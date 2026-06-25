@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Pokliči nas, če želiš govoriti",
   "wizardFinalMitgliedernummerLabel": "Tvoja članska številka",
   "wizardFinalCloseButton": "Nazaj na pozdrav",
-  "wizardStufe4MethodComingSoon": "Kmalu"
+  "wizardStufe4MethodComingSoon": "Kmalu",
+  "wizardStufe4StreichungWarning": "Če zaostaneš s članarino več kot 6 mesecev, te samodejno izbrišemo (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Za izstop: pošlji nam pisno odpoved 3 mesece pred 31. decembrom (do 30. septembra, da bo veljala ob koncu leta). Brez minimalnega trajanja (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Opomnik: članarina 25 €/mesec (ali 0 € z Bürgergeld / Sozialamt). Za izstop: pisno do 30. septembra. Če bo težko, pokliči — rešitve iščemo skupaj.",
+  "wizardFinalAdultCallTitle": "Pokliči za pogovor"
 }

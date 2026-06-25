@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Ring oss om du vill prata",
   "wizardFinalMitgliedernummerLabel": "Ditt medlemsnummer",
   "wizardFinalCloseButton": "Tillbaka till start",
-  "wizardStufe4MethodComingSoon": "Kommer snart"
+  "wizardStufe4MethodComingSoon": "Kommer snart",
+  "wizardStufe4StreichungWarning": "Om du ligger mer än 6 månader efter med avgiften stryker vi dig automatiskt (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "För att gå ur: skicka oss en skriftlig uppsägning 3 månader före 31 december (senast 30 september för att gälla från årsskiftet). Ingen minimitid (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Påminnelse: avgift 25 €/månad (eller 0 € med Bürgergeld / Sozialamt). För utträde: skriftligt senast 30 september. Om du får svårigheter, ring — vi hittar lösningar tillsammans.",
+  "wizardFinalAdultCallTitle": "Ring oss för att prata"
 }

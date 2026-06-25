@@ -1237,5 +1237,9 @@
   "wizardFinalMinorCallTitle": "Konuşmak istersen bizi ara",
   "wizardFinalMitgliedernummerLabel": "Üye numaran",
   "wizardFinalCloseButton": "Karşılama ekranına dön",
-  "wizardStufe4MethodComingSoon": "Yakında"
+  "wizardStufe4MethodComingSoon": "Yakında",
+  "wizardStufe4StreichungWarning": "Aidatta 6 aydan fazla geride kalırsan otomatik olarak silinirsin (Tüzük §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Üyelikten ayrılmak için: 31 Aralık'tan 3 ay önce yazılı bildirimini gönder (yıl sonu itibarıyla geçerli olması için en geç 30 Eylül). Asgari süre yok (Tüzük §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Hatırlatma: aidat 25 €/ay (Bürgergeld / Sozialamt durumunda 0 €). Üyelikten ayrılmak için: 30 Eylül'e kadar yazılı bildirim. Sıkıntı çıkarsa ara — birlikte çözüm buluruz.",
+  "wizardFinalAdultCallTitle": "Konuşmak için ara"
 }

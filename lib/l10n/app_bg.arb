@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Обади ни се, ако искаш да поговорим",
   "wizardFinalMitgliedernummerLabel": "Твоят членски номер",
   "wizardFinalCloseButton": "Обратно към началото",
-  "wizardStufe4MethodComingSoon": "Скоро"
+  "wizardStufe4MethodComingSoon": "Скоро",
+  "wizardStufe4StreichungWarning": "Ако изостанеш с членския внос повече от 6 месеца, ще те отпишем автоматично (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "За напускане: изпрати ни писмено предизвестие 3 месеца преди 31 декември (до 30 септември за да влезе в сила в края на годината). Няма минимален срок (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Напомняне: членски внос 25 €/месец (или 0 € при Bürgergeld / Sozialamt). За напускане: писмено известие до 30 септември. Ако възникнат трудности, обади се — намираме решения заедно.",
+  "wizardFinalAdultCallTitle": "Обади се да поговорим"
 }

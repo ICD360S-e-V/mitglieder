@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Позвони, если хочешь поговорить",
   "wizardFinalMitgliedernummerLabel": "Твой номер члена",
   "wizardFinalCloseButton": "Назад к началу",
-  "wizardStufe4MethodComingSoon": "Скоро"
+  "wizardStufe4MethodComingSoon": "Скоро",
+  "wizardStufe4StreichungWarning": "Если ты задолжаешь более 6 месяцев по взносу, мы автоматически тебя вычеркнем (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Для выхода: пришли заявление об отказе в письменном виде за 3 месяца до 31 декабря (до 30 сентября, чтобы вступило в силу к концу года). Минимального срока нет (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Напоминание: взнос 25 €/месяц (или 0 € при Bürgergeld / Sozialamt). Для выхода: письменное уведомление до 30 сентября. Если возникнут трудности, позвони — найдём решение вместе.",
+  "wizardFinalAdultCallTitle": "Позвони, чтобы обсудить"
 }

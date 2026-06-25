@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Helista, kui soovid rääkida",
   "wizardFinalMitgliedernummerLabel": "Sinu liikmenumber",
   "wizardFinalCloseButton": "Tagasi tervitusekraanile",
-  "wizardStufe4MethodComingSoon": "Tulemas"
+  "wizardStufe4MethodComingSoon": "Tulemas",
+  "wizardStufe4StreichungWarning": "Kui jääd liikmemaksuga rohkem kui 6 kuud võlgu, kustutame sind automaatselt (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Lahkumiseks: saada meile kirjalik ülesütlemine 3 kuud enne 31. detsembrit (hiljemalt 30. septembriks, et see jõustuks aasta lõpus). Minimaalset kestust pole (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Meeldetuletus: liikmemaks 25 €/kuus (või 0 € Bürgergeld / Sozialamt korral). Lahkumiseks: kirjalik teade hiljemalt 30. septembriks. Kui tekib raskusi, helista — leiame koos lahenduse.",
+  "wizardFinalAdultCallTitle": "Helista, arutame"
 }

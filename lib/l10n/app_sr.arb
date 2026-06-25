@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Позови нас ако желиш да разговарамо",
   "wizardFinalMitgliedernummerLabel": "Твој члански број",
   "wizardFinalCloseButton": "Назад на почетну",
-  "wizardStufe4MethodComingSoon": "Ускоро"
+  "wizardStufe4MethodComingSoon": "Ускоро",
+  "wizardStufe4StreichungWarning": "Ако касниш са чланарином више од 6 месеци, аутоматски ћемо те брисати (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "За иступ: пошаљи нам отказ писмено 3 месеца пре 31. децембра (најкасније до 30. септембра да би ступило на снагу крајем године). Нема минималног трајања (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Подсетник: чланарина 25 €/месечно (или 0 € са Bürgergeld / Sozialamt). За иступ: писмено до 30. септембра. Ако наиђеш на потешкоће, позови — заједно тражимо решења.",
+  "wizardFinalAdultCallTitle": "Позови да поразговарамо"
 }

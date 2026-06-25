@@ -92,10 +92,10 @@ class WizardFinalScreen extends StatelessWidget {
                         _mitgliedernummerCard(l10n),
                         const SizedBox(height: 14),
                         _bodyBubble(l10n, isMinor),
-                        if (isMinor) ...[
-                          const SizedBox(height: 12),
-                          _callAction(l10n),
-                        ],
+                        const SizedBox(height: 12),
+                        _rulesRecapBubble(l10n),
+                        const SizedBox(height: 12),
+                        _callAction(l10n, isMinor),
                       ],
                     ),
                   ),
@@ -227,7 +227,48 @@ class WizardFinalScreen extends StatelessWidget {
     ).animate().fadeIn(delay: 700.ms, duration: 500.ms);
   }
 
-  Widget _callAction(AppLocalizations l10n) {
+  /// Recap of the rules from Satzung §6 that were also reminded in
+  /// Stufe 3 / 4 / 5 inline. The bubble re-grounds the visitor
+  /// against the contract they just signed: monthly fee, cancellation
+  /// notice, what happens if dues fall behind. Same text for adult
+  /// and minor — minors are members too once the parent consents.
+  Widget _rulesRecapBubble(AppLocalizations l10n) {
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.amber.shade300.withValues(alpha: 0.18),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: Colors.amber.shade300.withValues(alpha: 0.55),
+        ),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.lightbulb_outline,
+              color: Colors.amber.shade100, size: 22),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              l10n.wizardFinalRulesRecap,
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.92),
+                fontSize: 13,
+                height: 1.5,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ).animate().fadeIn(delay: 800.ms, duration: 500.ms);
+  }
+
+  Widget _callAction(AppLocalizations l10n, bool isMinor) {
+    // The minor variant labels the action around nudging the parent,
+    // the adult variant around discussing rules and payment.
+    final title = isMinor
+        ? l10n.wizardFinalMinorCallTitle
+        : l10n.wizardFinalAdultCallTitle;
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -252,7 +293,7 @@ class WizardFinalScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      l10n.wizardFinalMinorCallTitle,
+                      title,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,

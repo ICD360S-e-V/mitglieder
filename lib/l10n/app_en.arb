@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Call us if you want to talk",
   "wizardFinalMitgliedernummerLabel": "Your member number",
   "wizardFinalCloseButton": "Back to welcome",
-  "wizardStufe4MethodComingSoon": "Coming soon"
+  "wizardStufe4MethodComingSoon": "Coming soon",
+  "wizardStufe4StreichungWarning": "If you fall more than 6 months behind on dues, we'll automatically strike you off (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "To leave: send us your cancellation in writing 3 months before December 31 (by September 30 to take effect at year-end). No minimum membership duration (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Reminder: dues are €25/month (or €0 on Bürgergeld / Sozialamt). To leave: notice in writing by September 30. If you run into trouble, give us a call — we find solutions together.",
+  "wizardFinalAdultCallTitle": "Call us to talk it through"
 }

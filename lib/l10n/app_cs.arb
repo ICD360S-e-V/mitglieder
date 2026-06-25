@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Zavolej, pokud si chceš promluvit",
   "wizardFinalMitgliedernummerLabel": "Tvé členské číslo",
   "wizardFinalCloseButton": "Zpět na úvod",
-  "wizardStufe4MethodComingSoon": "Již brzy"
+  "wizardStufe4MethodComingSoon": "Již brzy",
+  "wizardStufe4StreichungWarning": "Pokud zaostaneš s příspěvkem o více než 6 měsíců, automaticky tě vyškrtneme (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "K odchodu: pošli nám výpověď písemně 3 měsíce před 31. prosincem (do 30. září, aby byla účinná na konci roku). Žádná minimální doba (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Připomenutí: příspěvek 25 €/měsíc (nebo 0 € s Bürgergeld / Sozialamt). K vystoupení: písemně do 30. září. Pokud nastanou potíže, zavolej — najdeme řešení společně.",
+  "wizardFinalAdultCallTitle": "Zavolej, ať si promluvíme"
 }

@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Chiamaci se vuoi parlare",
   "wizardFinalMitgliedernummerLabel": "Il tuo numero di socio",
   "wizardFinalCloseButton": "Torna alla home",
-  "wizardStufe4MethodComingSoon": "Prossimamente"
+  "wizardStufe4MethodComingSoon": "Prossimamente",
+  "wizardStufe4StreichungWarning": "Se accumuli più di 6 mesi di arretrato sulla quota, ti cancelliamo automaticamente (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Per uscire: inviaci la disdetta per iscritto 3 mesi prima del 31 dicembre (entro il 30 settembre per essere efficace a fine anno). Nessuna durata minima (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Promemoria: quota 25 €/mese (o 0 € con Bürgergeld / Sozialamt). Per uscire: per iscritto entro il 30 settembre. Se sorgono difficoltà, chiamaci — cerchiamo soluzioni insieme.",
+  "wizardFinalAdultCallTitle": "Chiamaci per parlarne"
 }

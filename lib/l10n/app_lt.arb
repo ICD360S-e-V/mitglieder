@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Paskambink, jei nori pasikalbėti",
   "wizardFinalMitgliedernummerLabel": "Tavo nario numeris",
   "wizardFinalCloseButton": "Atgal į pradžią",
-  "wizardStufe4MethodComingSoon": "Netrukus"
+  "wizardStufe4MethodComingSoon": "Netrukus",
+  "wizardStufe4StreichungWarning": "Jei vėluosi su mokesčiu daugiau nei 6 mėnesius, automatiškai tave išbraukiame (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Norėdamas išstoti: atsiųsk mums pranešimą raštu likus 3 mėnesiams iki gruodžio 31 d. (iki rugsėjo 30 d., kad įsigaliotų metų gale). Minimalaus laikotarpio nėra (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Priminimas: mokestis 25 €/mėn. (arba 0 € su Bürgergeld / Sozialamt). Norėdamas išstoti: raštu iki rugsėjo 30 d. Jei iškils sunkumų, paskambink — ieškosime sprendimų kartu.",
+  "wizardFinalAdultCallTitle": "Paskambink pasikalbėti"
 }

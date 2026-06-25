@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Bel ons als je wilt praten",
   "wizardFinalMitgliedernummerLabel": "Je lidnummer",
   "wizardFinalCloseButton": "Terug naar welkom",
-  "wizardStufe4MethodComingSoon": "Binnenkort beschikbaar"
+  "wizardStufe4MethodComingSoon": "Binnenkort beschikbaar",
+  "wizardStufe4StreichungWarning": "Als je meer dan 6 maanden achterloopt met de contributie, schrappen we je automatisch (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Om je af te melden: stuur de opzegging schriftelijk 3 maanden vóór 31 december (uiterlijk 30 september voor ingang aan het einde van het jaar). Geen minimale duur (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Herinnering: contributie € 25/maand (of € 0 met Bürgergeld / Sozialamt). Voor opzegging: schriftelijk vóór 30 september. Loop je tegen iets aan, bel ons — we zoeken samen oplossingen.",
+  "wizardFinalAdultCallTitle": "Bel ons voor een gesprek"
 }

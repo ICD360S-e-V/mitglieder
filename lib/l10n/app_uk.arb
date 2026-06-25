@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Зателефонуй, якщо хочеш поговорити",
   "wizardFinalMitgliedernummerLabel": "Твій номер члена",
   "wizardFinalCloseButton": "Назад до welcome",
-  "wizardStufe4MethodComingSoon": "Скоро"
+  "wizardStufe4MethodComingSoon": "Скоро",
+  "wizardStufe4StreichungWarning": "Якщо ти заборгуєш більше 6 місяців за внеском, ми автоматично виключимо тебе (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Для виходу: надішли заяву про вихід письмово за 3 місяці до 31 грудня (до 30 вересня, щоб набуло чинності в кінці року). Мінімального терміну немає (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Нагадування: внесок 25 €/місяць (або 0 € при Bürgergeld / Sozialamt). Для виходу: письмово до 30 вересня. Якщо виникнуть труднощі — зателефонуй, разом знайдемо рішення.",
+  "wizardFinalAdultCallTitle": "Зателефонуй, щоб обговорити"
 }

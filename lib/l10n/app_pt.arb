@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Liga-nos se quiseres falar",
   "wizardFinalMitgliedernummerLabel": "O teu número de membro",
   "wizardFinalCloseButton": "Voltar ao início",
-  "wizardStufe4MethodComingSoon": "Em breve"
+  "wizardStufe4MethodComingSoon": "Em breve",
+  "wizardStufe4StreichungWarning": "Se atrasares mais de 6 meses na quota, vamos retirar-te automaticamente (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Para sair: envia-nos a renúncia por escrito 3 meses antes de 31 de dezembro (até 30 de setembro para fazer efeito no final do ano). Não há duração mínima (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Lembrete: quota 25 €/mês (ou 0 € com Bürgergeld / Sozialamt). Para sair: por escrito até 30 de setembro. Se houver dificuldades, liga-nos — encontramos soluções juntos.",
+  "wizardFinalAdultCallTitle": "Liga-nos para conversar"
 }

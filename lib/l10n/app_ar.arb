@@ -1237,5 +1237,9 @@
   "wizardFinalMinorCallTitle": "اتصل بنا إذا أردت التحدث",
   "wizardFinalMitgliedernummerLabel": "رقم عضويتك",
   "wizardFinalCloseButton": "العودة إلى البداية",
-  "wizardStufe4MethodComingSoon": "قريبًا"
+  "wizardStufe4MethodComingSoon": "قريبًا",
+  "wizardStufe4StreichungWarning": "إذا تأخرت في دفع الاشتراك لأكثر من 6 أشهر، سنشطبك تلقائيًا (النظام الأساسي §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "للانسحاب: أرسل لنا إخطار الإلغاء كتابة قبل 3 أشهر من 31 ديسمبر (بحد أقصى 30 سبتمبر ليصبح ساري المفعول في نهاية العام). لا توجد مدة أدنى (النظام الأساسي §6 Abs. 3).",
+  "wizardFinalRulesRecap": "تذكير: الاشتراك 25 €/شهر (أو 0 € مع Bürgergeld / Sozialamt). للانسحاب: إشعار خطي حتى 30 سبتمبر. إذا واجهت صعوبات، اتصل بنا — نجد حلولًا معًا.",
+  "wizardFinalAdultCallTitle": "اتصل بنا للتحدث"
 }

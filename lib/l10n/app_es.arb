@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Llámanos si quieres hablar",
   "wizardFinalMitgliedernummerLabel": "Tu número de socio",
   "wizardFinalCloseButton": "Volver al inicio",
-  "wizardStufe4MethodComingSoon": "Próximamente"
+  "wizardStufe4MethodComingSoon": "Próximamente",
+  "wizardStufe4StreichungWarning": "Si te retrasas más de 6 meses con la cuota, te eliminaremos automáticamente (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Para darte de baja: envíanos la cancelación por escrito 3 meses antes del 31 de diciembre (hasta el 30 de septiembre para que sea efectiva a fin de año). No hay duración mínima (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Recordatorio: cuota 25 €/mes (o 0 € con Bürgergeld / Sozialamt). Para darte de baja: por escrito hasta el 30 de septiembre. Si surgen dificultades, llámanos — buscamos soluciones juntos.",
+  "wizardFinalAdultCallTitle": "Llámanos para hablar"
 }

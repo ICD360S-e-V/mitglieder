@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Κάλεσέ μας αν θέλεις να μιλήσουμε",
   "wizardFinalMitgliedernummerLabel": "Ο αριθμός μέλους σου",
   "wizardFinalCloseButton": "Πίσω στην αρχή",
-  "wizardStufe4MethodComingSoon": "Σύντομα"
+  "wizardStufe4MethodComingSoon": "Σύντομα",
+  "wizardStufe4StreichungWarning": "Αν καθυστερήσεις τη συνδρομή πάνω από 6 μήνες, θα σε διαγράψουμε αυτόματα (Καταστατικό §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Για αποχώρηση: στείλε μας την παραίτησή σου γραπτώς 3 μήνες πριν τις 31 Δεκεμβρίου (έως 30 Σεπτεμβρίου για να ισχύσει στο τέλος του έτους). Δεν υπάρχει ελάχιστη διάρκεια (Καταστατικό §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Υπενθύμιση: συνδρομή 25 €/μήνα (ή 0 € με Bürgergeld / Sozialamt). Για αποχώρηση: γραπτή ειδοποίηση μέχρι 30 Σεπτεμβρίου. Αν έχεις δυσκολίες, κάλεσέ μας — βρίσκουμε λύσεις μαζί.",
+  "wizardFinalAdultCallTitle": "Κάλεσέ μας για συζήτηση"
 }

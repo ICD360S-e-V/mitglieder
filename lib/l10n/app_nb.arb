@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Ring oss hvis du vil snakke",
   "wizardFinalMitgliedernummerLabel": "Medlemsnummeret ditt",
   "wizardFinalCloseButton": "Tilbake til velkomst",
-  "wizardStufe4MethodComingSoon": "Kommer snart"
+  "wizardStufe4MethodComingSoon": "Kommer snart",
+  "wizardStufe4StreichungWarning": "Hvis du er mer enn 6 måneder på etterskudd med kontingenten, stryker vi deg automatisk (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "For å melde deg ut: send oss oppsigelsen skriftlig 3 måneder før 31. desember (senest 30. september for å gjelde ved årsslutt). Ingen minimumstid (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Påminnelse: kontingent 25 €/måned (eller 0 € med Bürgergeld / Sozialamt). For å melde deg ut: skriftlig innen 30. september. Hvis det oppstår vansker, ring — vi finner løsninger sammen.",
+  "wizardFinalAdultCallTitle": "Ring oss for å snakke"
 }

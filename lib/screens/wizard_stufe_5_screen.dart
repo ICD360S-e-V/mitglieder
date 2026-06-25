@@ -179,6 +179,44 @@ class _WizardStufe5ScreenState extends State<WizardStufe5Screen> {
             const SizedBox(height: 14),
             _feePreview(l10n).animate().fadeIn(duration: 250.ms),
           ],
+          const SizedBox(height: 16),
+          _kuendigungInfo(l10n),
+        ],
+      ),
+    );
+  }
+
+  /// Neutral info pill about Satzung §6 Abs. 3: notice has to reach
+  /// us by 30 September to take effect on 31 December — no minimum
+  /// membership duration but the deadline is what it is. Placed at
+  /// the end of Stufe 5 so the start-of-membership decision and the
+  /// end-of-membership rule live next to each other.
+  Widget _kuendigungInfo(AppLocalizations l10n) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.lightBlueAccent.shade100.withValues(alpha: 0.14),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Colors.lightBlueAccent.shade100.withValues(alpha: 0.45),
+        ),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.info_outline,
+              color: Colors.lightBlueAccent.shade100, size: 20),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              l10n.wizardStufe5KuendigungInfo,
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.92),
+                fontSize: 12.5,
+                height: 1.4,
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -1216,5 +1216,9 @@
   "wizardFinalMinorCallTitle": "Soita meille, jos haluat puhua",
   "wizardFinalMitgliedernummerLabel": "Jäsennumerosi",
   "wizardFinalCloseButton": "Takaisin alkuun",
-  "wizardStufe4MethodComingSoon": "Tulossa pian"
+  "wizardStufe4MethodComingSoon": "Tulossa pian",
+  "wizardStufe4StreichungWarning": "Jos jäät yli 6 kuukautta jälkeen maksusta, poistamme sinut automaattisesti (Satzung §6 Abs. 3).",
+  "wizardStufe5KuendigungInfo": "Eroamiseen: lähetä irtisanominen kirjallisesti 3 kuukautta ennen 31. joulukuuta (viimeistään 30. syyskuuta, jotta tulee voimaan vuoden lopussa). Vähimmäisjäsenyyttä ei ole (Satzung §6 Abs. 3).",
+  "wizardFinalRulesRecap": "Muistutus: maksu 25 €/kk (tai 0 € Bürgergeldillä / Sozialamtilla). Eroamiseen: kirjallinen ilmoitus 30. syyskuuta mennessä. Jos tulee vaikeuksia, soita — etsitään ratkaisuja yhdessä.",
+  "wizardFinalAdultCallTitle": "Soita, niin jutellaan"
 }
