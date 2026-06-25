@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.42.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.42.0...v1.42.1) (2026-06-25)
+
+
+### Bug Fixes
+
+* **wizard:** send X-Device-Key header so server validateApiKey passes ([3ecd907](https://github.com/ICD360S-e-V/mitglieder/commit/3ecd907c64628e4113341e9f0057bc27ae71c335))
+
 ## [1.42.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.41.0...v1.42.0) (2026-06-25)
 
 
