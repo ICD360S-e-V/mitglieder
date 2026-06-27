@@ -6,6 +6,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/icd360s_header.dart';
+import '../widgets/wizard_chat_fab.dart';
 import 'anonymous_chat.dart';
 
 /// Terminal screen of the onboarding wizard. Two variants drive off
@@ -118,6 +119,14 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     return PopScope(
       canPop: _withdrawn,
       child: Scaffold(
+      // Live-chat affordance persists from the wizard's per-step shell
+      // onto the final / waiting screen — the user explicitly asked
+      // for it to be reachable "chiar daca persoana e in asteptare
+      // pentru validare". The card mid-screen is the primary CTA;
+      // this FAB stays put while the visitor scrolls through the
+      // status timeline and conversational bubbles.
+      floatingActionButton: const WizardChatFab(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

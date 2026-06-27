@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../l10n/app_localizations.dart';
-import '../screens/anonymous_chat.dart';
 import '../services/wizard_service.dart';
 import 'icd360s_header.dart';
+import 'wizard_chat_fab.dart';
 
 /// Reusable chrome for every step screen in the onboarding wizard.
 /// Provides the consistent ICD360S blue gradient background, the
@@ -61,9 +61,9 @@ class WizardStepShell extends StatelessWidget {
       // Live-chat affordance pinned at end-of-screen, present on every
       // wizard step. The visitor can ask Claudiu anything mid-flow
       // (e.g. a question about Stufe 3 Bescheid) without losing
-      // progress. Anchored above the bottom Next/Back row via the
-      // FloatingActionButtonLocation.endTop.
-      floatingActionButton: _ChatFab(),
+      // progress. Shared with the final / duplicate / age-gate
+      // surfaces so the affordance reads identically everywhere.
+      floatingActionButton: const WizardChatFab(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Container(
         decoration: const BoxDecoration(
@@ -321,33 +321,3 @@ class WizardStepShell extends StatelessWidget {
   }
 }
 
-/// Live chat affordance used on every wizard step. Opens
-/// [AnonymousChatScreen] — the same anonymous chat the welcome
-/// screen's "Am o problemă" → "Vorbim acum" path uses, so visitor
-/// and Vorstand share one inbox. Subtle by design: small white pill
-/// with the chat icon + label, so it doesn't compete with the Next
-/// button for primary attention.
-class _ChatFab extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    return FloatingActionButton.extended(
-      heroTag: 'wizard_chat_fab',
-      backgroundColor: Colors.white,
-      foregroundColor: const Color(0xFF0d47a1),
-      elevation: 4,
-      onPressed: () => Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => const AnonymousChatScreen()),
-      ),
-      icon: const Icon(Icons.chat_bubble_outline, size: 20),
-      label: Text(
-        l10n.wizardChatHelp,
-        style: const TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.w800,
-          letterSpacing: 0.3,
-        ),
-      ),
-    );
-  }
-}
