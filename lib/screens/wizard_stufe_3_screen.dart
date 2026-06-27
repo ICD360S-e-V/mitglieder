@@ -47,11 +47,13 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   bool _uploading = false;
   bool _saving = false;
 
-  // Mirror the server-side caps so we can fail fast without burning
-  // a round-trip. Keep these in sync with upload_leistungsbescheid.php.
+  // Mirror the per-file caps so we can fail fast without burning a
+  // round-trip. The 100 MB cumulative cap is enforced exclusively
+  // server-side (we don't track per-file sizes once they're accepted)
+  // and surfaced through the 413 path. Keep in sync with
+  // upload_leistungsbescheid.php.
   static const int _kMaxCount       = 20;
   static const int _kMaxPerFile     = 10 * 1024 * 1024;    // 10 MB
-  static const int _kMaxTotalBytes  = 100 * 1024 * 1024;   // 100 MB
 
   static const _options = <String>[
     'buergergeld',
