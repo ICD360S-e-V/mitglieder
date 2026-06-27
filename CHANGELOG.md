@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.50.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.50.0...v1.50.1) (2026-06-27)
+
+
+### Bug Fixes
+
+* **wizard:** drop "first meeting" timeline step — out of scope for registration flow ([9b1fbdf](https://github.com/ICD360S-e-V/mitglieder/commit/9b1fbdf2246ebee58ae76003751b73b06c6f419d))
+
 ## [1.50.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.7...v1.50.0) (2026-06-27)
 
 
