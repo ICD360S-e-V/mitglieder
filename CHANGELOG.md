@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.49.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.4...v1.49.5) (2026-06-27)
+
+
+### Bug Fixes
+
+* **wizard:** Stufe 6/7/8 — Android keeps inline WebView, others route to OS browser ([5e80d66](https://github.com/ICD360S-e-V/mitglieder/commit/5e80d662ae6b1e554e0c27f4e92692c1128bfa29))
+
 ## [1.49.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.3...v1.49.4) (2026-06-27)
 
 
