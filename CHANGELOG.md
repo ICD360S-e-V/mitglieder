@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.49.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.1...v1.49.2) (2026-06-27)
+
+
+### Bug Fixes
+
+* **wizard:** drop unused _kMaxTotalBytes constant breaking analyze ([eacebbd](https://github.com/ICD360S-e-V/mitglieder/commit/eacebbd252426c216f2ceb6ced82486ad8cac0f3))
+
 ## [1.49.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.0...v1.49.1) (2026-06-27)
 
 
