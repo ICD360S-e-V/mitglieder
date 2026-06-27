@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.56.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.56.1...v1.56.2) (2026-06-27)
+
+
+### Bug Fixes
+
+* **ci:** clean stale flatpak rofiles via /proc/mounts (shell -e fails on broken bind) ([602e7ea](https://github.com/ICD360S-e-V/mitglieder/commit/602e7ea81a96d198cea2d14b9a85d6f662efd9d3))
+
 ## [1.56.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.56.0...v1.56.1) (2026-06-27)
 
 
