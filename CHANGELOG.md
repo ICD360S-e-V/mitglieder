@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.47.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.46.0...v1.47.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** add ALG I and Krankengeld as fee-exempt categories in Stufe 3 ([6c37c9b](https://github.com/ICD360S-e-V/mitglieder/commit/6c37c9b9bf9278ffd5ce7b8e5dbb026e22fbdc04))
+
 ## [1.46.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.45.0...v1.46.0) (2026-06-25)
 
 
