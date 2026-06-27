@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.54.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.53.1...v1.54.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** duplicate-applicant probe at Stufe 1b + polite handoff screen ([039baf9](https://github.com/ICD360S-e-V/mitglieder/commit/039baf9e1794e33f54a4b6cff2cb58e5d3fbea18))
+
 ## [1.53.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.53.0...v1.53.1) (2026-06-27)
 
 
