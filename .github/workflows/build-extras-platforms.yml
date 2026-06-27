@@ -273,34 +273,14 @@ jobs:
         if: steps.dart-tool-cache.outputs.cache-hit != 'true'
         run: flutter gen-l10n
 
-      - name: Replace flutter_webrtc plugin junction with a real directory copy
-        # The Windows runner ships CMake ≥3.30, whose bundled libarchive
-        # refuses to extract archives through filesystem symlinks/junctions:
-        #   CMake Error: Cannot extract through symlink
-        #   …\windows\flutter\ephemeral\.plugin_symlinks\flutter_webrtc
-        # `flutter pub get` creates that path as a Windows junction pointing
-        # at the package in the pub cache, and flutter_webrtc's
-        # third_party/CMakeLists.txt then tries file(ARCHIVE_EXTRACT) inside
-        # it. Replacing the junction with a regular copy keeps Flutter happy
-        # and removes the symlink CMake refuses to traverse.
-        shell: pwsh
-        run: |
-          $sym = "windows/flutter/ephemeral/.plugin_symlinks/flutter_webrtc"
-          if (-not (Test-Path $sym)) {
-            Write-Host "$sym does not exist yet — flutter build will create it; skipping"
-            exit 0
-          }
-          $item = Get-Item $sym -Force
-          if (-not $item.Target) {
-            Write-Host "$sym is not a junction; nothing to do"
-            exit 0
-          }
-          $target = ($item.Target | Select-Object -First 1).TrimEnd('\','/')
-          Write-Host "flutter_webrtc junction → $target"
-          [System.IO.Directory]::Delete($sym, $false)
-          $rc = (Start-Process robocopy -ArgumentList $target, $sym, '/E','/NFL','/NDL','/NJH','/NJS' -Wait -NoNewWindow -PassThru).ExitCode
-          if ($rc -gt 7) { throw "robocopy failed with code $rc" }
-          Write-Host "Replaced junction with copy at $sym"
+      # flutter_webrtc 1.5.2 (2026-06-20) fixes the libwebrtc symlink
+      # extraction path natively, so the previous junction→copy
+      # workaround for CMake ≥3.30 is no longer needed. Keeping the
+      # junction in place lets flutter_tools' internal
+      # createPlatformPluginSymlinks check pass too — replacing it
+      # with a real directory was actually breaking the build because
+      # Flutter then tried to re-create the symlink over an existing
+      # directory and failed with PathExistsException (errno 183).
 
       - name: Compute build number from version
         id: ver

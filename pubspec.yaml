@@ -75,7 +75,11 @@ dependencies:
   # CMake 3.30+ refused to extract through the .plugin_symlinks junction
   # on Windows — and on Linux 1.4.x ships the version the rest of the
   # ICD360S stack is tested against.
-  flutter_webrtc: ^1.4.1
+  # 1.5.2 ships a Windows fix for libwebrtc extraction through a
+  # symlink (PR #2100, 2026-06-20). Lets us remove the runner-side
+  # junction→copy workaround that was previously needed for
+  # CMake ≥3.30 — see build-extras-platforms.yml.
+  flutter_webrtc: ^1.5.2
 
   # Battery level monitoring
   battery_plus: ^7.0.0
