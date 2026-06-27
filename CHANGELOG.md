@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.49.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.3...v1.49.4) (2026-06-27)
+
+
+### Bug Fixes
+
+* **ci:** bump flutter_webrtc to ^1.5.2 + drop Windows junction workaround ([efe13ac](https://github.com/ICD360S-e-V/mitglieder/commit/efe13ace5b585d066f9d57855b546c70d6b6da6b))
+
 ## [1.49.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.2...v1.49.3) (2026-06-27)
 
 
