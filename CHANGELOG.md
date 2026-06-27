@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.49.7](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.6...v1.49.7) (2026-06-27)
+
+
+### Bug Fixes
+
+* **ci:** force WebRTC-SDK pod upgrade so flutter_webrtc 1.5.2 macOS build resolves ([b9bc377](https://github.com/ICD360S-e-V/mitglieder/commit/b9bc3778a39ed81b0eacac5487ca36e882f48fcd))
+
 ## [1.49.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.5...v1.49.6) (2026-06-27)
 
 
