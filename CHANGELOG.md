@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.53.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.52.0...v1.53.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** GDPR-friendly withdraw — anonymise row + hash for abuse throttle ([7800a09](https://github.com/ICD360S-e-V/mitglieder/commit/7800a0902409e2f93ffc2b5d7c2ab78c7eea2c0a))
+
 ## [1.52.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.51.1...v1.52.0) (2026-06-27)
 
 
