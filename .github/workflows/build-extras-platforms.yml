@@ -13,8 +13,15 @@ on:
     tags: ['v*']
   workflow_dispatch:
 
+# Single concurrency lane across ALL refs. When a newer tag arrives
+# while an older Windows/iOS/macOS build is still running/queued, the
+# older one is cancelled — only the latest version's installers append
+# to the GitHub Release the priority workflow created. Trade-off:
+# ~10-15 min of cancelled-build work in the worst case, vs ~2h of
+# queue pile-up before this fix (each version bump previously got its
+# own lane via github.ref).
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: mitglieder-extras
   cancel-in-progress: true
 
 env:
