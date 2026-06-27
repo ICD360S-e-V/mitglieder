@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Klaar! Je bent ingeschreven 🎉",
-  "wizardFinalAdultBody": "Welkom bij ICD360S e.V.! Je hebt alle 8 fases doorlopen — Vorstand controleert nu en keurt elke stap binnen maximaal 1 werkdag goed. We sturen je een melding in de app zodra je account actief is.",
   "wizardFinalMinorTitle": "Je verzoek is verzonden 📨",
   "wizardFinalMinorBody": "We nemen contact op met je ouder en regelen een afspraak (in persoon of videogesprek). Heb geduld — het proces kan tot 7 dagen duren. Je krijgt een melding in de app zodra je ouder heeft goedgekeurd.",
   "wizardFinalMinorCallTitle": "Bel ons als je wilt praten",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "De browser kon niet worden geopend. De link staat op het klembord — plak hem in een browser om verder te gaan.",
   "wizardFinalTimelineSubmitted": "Aanvraag ontvangen",
-  "wizardFinalTimelineProcessing": "Vorstand controleert · max. 1 werkdag",
+  "wizardFinalTimelineProcessing": "Vorstand controleert · meestal 1 werkdag, tot 7",
   "wizardFinalTimelineActivated": "Account geactiveerd",
-  "wizardFinalTimelineFirstMeeting": "Welkom op je eerste bijeenkomst"
+  "wizardFinalTimelineFirstMeeting": "Welkom op je eerste bijeenkomst",
+  "wizardFinalAdultThank": "Bedankt dat je het inschrijfformulier hebt ingevuld! 🎉",
+  "wizardFinalAdultUsual": "Je aanvraag is binnen. We valideren hem meestal binnen één werkdag.",
+  "wizardFinalAdultExceptional": "Soms kan het tot 7 werkdagen duren. En als iets niet klopt, sturen we je terug naar het formulier om het aan te passen 🙂"
 }

@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Valmis! Oled liige 🎉",
-  "wizardFinalAdultBody": "Tere tulemast ICD360S e.V.-sse! Said kõik 8 etappi läbi — Vorstand kontrollib praegu ja kinnitab iga sammu maksimaalselt 1 tööpäevaga. Anname rakenduses teada, niipea kui sinu konto on aktiivne.",
   "wizardFinalMinorTitle": "Sinu päring on saadetud 📨",
   "wizardFinalMinorBody": "Võtame ühendust sinu vanemaga ja lepime kohtumise kokku (kohapeal või videokõnega). Palun ole kannatlik — protsess võib kesta kuni 7 päeva. Saad rakenduses teate niipea, kui vanem on heaks kiitnud.",
   "wizardFinalMinorCallTitle": "Helista, kui soovid rääkida",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Brauserit ei õnnestunud avada. Link on lõikepuhvris — kleebi see brauserisse, et jätkata.",
   "wizardFinalTimelineSubmitted": "Avaldus vastu võetud",
-  "wizardFinalTimelineProcessing": "Vorstand kontrollib · max 1 tööpäev",
+  "wizardFinalTimelineProcessing": "Vorstand kontrollib · tavaliselt 1 tööpäev, kuni 7",
   "wizardFinalTimelineActivated": "Konto aktiveeritud",
-  "wizardFinalTimelineFirstMeeting": "Tere tulemast esimesele koosolekule"
+  "wizardFinalTimelineFirstMeeting": "Tere tulemast esimesele koosolekule",
+  "wizardFinalAdultThank": "Aitäh, et täitsid registreerimisvormi! 🎉",
+  "wizardFinalAdultUsual": "Sinu avaldus on meil. Tavaliselt kinnitame selle ühe tööpäeva jooksul.",
+  "wizardFinalAdultExceptional": "Mõnikord võib see võtta kuni 7 tööpäeva. Ja kui midagi ei klapi, saadame su tagasi vormi, et saaksid parandada 🙂"
 }

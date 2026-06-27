@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Готово! Записан си 🎉",
-  "wizardFinalAdultBody": "Добре дошъл в ICD360S e.V.! Премина и осемте етапа — Vorstand преглежда сега и ще одобри всяка стъпка най-късно за 1 работен ден. Ще те уведомим в приложението веднага щом профилът ти стане активен.",
   "wizardFinalMinorTitle": "Заявката ти е изпратена 📨",
   "wizardFinalMinorBody": "Ще се свържем с родителя ти и ще уговорим среща (лично или видео разговор). Моля, имай търпение — процедурата може да отнеме до 7 дни. Ще получиш известие в приложението, щом родителят ти одобри.",
   "wizardFinalMinorCallTitle": "Обади ни се, ако искаш да поговорим",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Не успях да отворя браузъра. Линкът е копиран в клипборда — постави го в браузър, за да продължиш.",
   "wizardFinalTimelineSubmitted": "Заявката е получена",
-  "wizardFinalTimelineProcessing": "Vorstand преглежда · макс. 1 работен ден",
+  "wizardFinalTimelineProcessing": "Vorstand преглежда · обикновено 1 работен ден, до 7",
   "wizardFinalTimelineActivated": "Профилът е активиран",
-  "wizardFinalTimelineFirstMeeting": "Добре дошъл на първото събрание"
+  "wizardFinalTimelineFirstMeeting": "Добре дошъл на първото събрание",
+  "wizardFinalAdultThank": "Благодарим, че попълни регистрационната форма! 🎉",
+  "wizardFinalAdultUsual": "Заявката ти е при нас. Обикновено я валидираме в рамките на един работен ден.",
+  "wizardFinalAdultExceptional": "Понякога може да отнеме до 7 работни дни. А ако нещо не съвпада, ще те върнем към формата, за да го коригираш 🙂"
 }

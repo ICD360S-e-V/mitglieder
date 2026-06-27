@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "C'est fait ! Tu es inscrit 🎉",
-  "wizardFinalAdultBody": "Bienvenue à l'ICD360S e.V. ! Tu as terminé les 8 étapes — le Vorstand examine maintenant et validera chaque étape en 1 jour ouvré maximum. On te notifie dans l'app dès que ton compte est actif.",
   "wizardFinalMinorTitle": "Ta demande a été envoyée 📨",
   "wizardFinalMinorBody": "Nous contacterons ton parent et organiserons un rendez-vous (en personne ou par appel vidéo). Sois patient — la procédure peut prendre jusqu'à 7 jours. Tu recevras une notification dans l'app dès que ton parent aura donné son accord.",
   "wizardFinalMinorCallTitle": "Appelle-nous si tu veux parler",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Impossible d'ouvrir le navigateur. Le lien est dans le presse-papiers — colle-le dans un navigateur pour continuer.",
   "wizardFinalTimelineSubmitted": "Demande reçue",
-  "wizardFinalTimelineProcessing": "Vorstand examine · 1 jour ouvré max.",
+  "wizardFinalTimelineProcessing": "Vorstand examine · en général 1 jour ouvré, jusqu’à 7",
   "wizardFinalTimelineActivated": "Compte activé",
-  "wizardFinalTimelineFirstMeeting": "Bienvenue à ta première réunion"
+  "wizardFinalTimelineFirstMeeting": "Bienvenue à ta première réunion",
+  "wizardFinalAdultThank": "Merci d'avoir rempli le formulaire d'inscription ! 🎉",
+  "wizardFinalAdultUsual": "Ta demande est entre nos mains. On la valide en général en un jour ouvré.",
+  "wizardFinalAdultExceptional": "Parfois ça peut prendre jusqu'à 7 jours ouvrés. Et si quelque chose ne colle pas, on te renvoie au formulaire pour corriger 🙂"
 }

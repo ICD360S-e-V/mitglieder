@@ -1226,7 +1226,6 @@
     }
   },
   "wizardFinalAdultTitle": "Geschafft! Du bist angemeldet 🎉",
-  "wizardFinalAdultBody": "Willkommen im ICD360S e.V.! Du hast alle 8 Stufen abgeschlossen — der Vorstand prüft jetzt und gibt jeden Schritt innerhalb von maximal 1 Werktag frei. Wir benachrichtigen dich in der App, sobald dein Konto aktiv ist.",
   "wizardFinalMinorTitle": "Deine Anfrage wurde verschickt 📨",
   "wizardFinalMinorBody": "Wir kontaktieren deinen Elternteil und vereinbaren ein Treffen (persönlich oder per Videoanruf). Bitte hab Geduld — der Vorgang kann bis zu 7 Tage dauern. Du bekommst eine In-App-Benachrichtigung, sobald dein Elternteil zugestimmt hat.",
   "wizardFinalMinorCallTitle": "Ruf uns an, wenn du sprechen möchtest",
@@ -1259,7 +1258,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Konnte den Browser nicht öffnen. Der Link wurde in die Zwischenablage kopiert — füge ihn in einen Browser ein, um fortzufahren.",
   "wizardFinalTimelineSubmitted": "Antrag eingegangen",
-  "wizardFinalTimelineProcessing": "Vorstand prüft · max. 1 Werktag",
+  "wizardFinalTimelineProcessing": "Vorstand prüft · meist 1 Werktag, max. 7",
   "wizardFinalTimelineActivated": "Konto aktiviert",
-  "wizardFinalTimelineFirstMeeting": "Willkommen bei der ersten Versammlung"
+  "wizardFinalTimelineFirstMeeting": "Willkommen bei der ersten Versammlung",
+  "wizardFinalAdultThank": "Vielen Dank, dass du das Anmeldeformular ausgefüllt hast! 🎉",
+  "wizardFinalAdultUsual": "Dein Antrag ist bei uns angekommen. Normalerweise prüfen wir ihn innerhalb von einem Werktag.",
+  "wizardFinalAdultExceptional": "Manchmal kann es bis zu 7 Werktage dauern. Falls etwas nicht passt, schicken wir dich zurück ins Formular, damit du es korrigieren kannst 🙂"
 }

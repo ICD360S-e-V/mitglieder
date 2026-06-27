@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Gotovo! Si vpisan 🎉",
-  "wizardFinalAdultBody": "Dobrodošel v ICD360S e.V.! Opravil si vseh 8 stopenj — Vorstand zdaj preverja in vsak korak odobri najkasneje v 1 delovnem dnevu. Obvestili te bomo v aplikaciji, ko bo tvoj račun aktiven.",
   "wizardFinalMinorTitle": "Tvoja zahteva je bila poslana 📨",
   "wizardFinalMinorBody": "Stopili bomo v stik s tvojim staršem in dogovorili srečanje (osebno ali video klic). Prosim, bodi potrpežljiv — postopek lahko traja do 7 dni. Prejel boš obvestilo v aplikaciji, takoj ko starš odobri.",
   "wizardFinalMinorCallTitle": "Pokliči nas, če želiš govoriti",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Brskalnika ni bilo mogoče odpreti. Povezava je v odložišču — prilepi jo v brskalnik za nadaljevanje.",
   "wizardFinalTimelineSubmitted": "Vloga prejeta",
-  "wizardFinalTimelineProcessing": "Vorstand preverja · največ 1 delovni dan",
+  "wizardFinalTimelineProcessing": "Vorstand preverja · običajno 1 delovni dan, do 7",
   "wizardFinalTimelineActivated": "Račun aktiviran",
-  "wizardFinalTimelineFirstMeeting": "Dobrodošel na prvem srečanju"
+  "wizardFinalTimelineFirstMeeting": "Dobrodošel na prvem srečanju",
+  "wizardFinalAdultThank": "Hvala, da si izpolnil prijavni obrazec! 🎉",
+  "wizardFinalAdultUsual": "Tvoja vloga je pri nas. Običajno jo potrdimo v enem delovnem dnevu.",
+  "wizardFinalAdultExceptional": "Včasih lahko traja do 7 delovnih dni. In če kaj ne ujema, te pošljemo nazaj v obrazec, da popraviš 🙂"
 }

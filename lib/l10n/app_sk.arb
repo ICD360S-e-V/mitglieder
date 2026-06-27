@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Hotovo! Si zaregistrovaný 🎉",
-  "wizardFinalAdultBody": "Vitaj v ICD360S e.V.! Dokončil si všetkých 8 fáz — Vorstand teraz kontroluje a každý krok schváli najneskôr do 1 pracovného dňa. Pošleme ti oznámenie v aplikácii, hneď ako bude tvoj účet aktívny.",
   "wizardFinalMinorTitle": "Tvoja žiadosť bola odoslaná 📨",
   "wizardFinalMinorBody": "Spojíme sa s tvojím rodičom a dohodneme stretnutie (osobne alebo videohovorom). Prosíme o trpezlivosť — proces môže trvať až 7 dní. Dostaneš upozornenie v aplikácii, len čo rodič schváli.",
   "wizardFinalMinorCallTitle": "Zavolaj nám, ak chceš hovoriť",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Nepodarilo sa otvoriť prehliadač. Odkaz bol skopírovaný do schránky — vlož ho do prehliadača, aby si pokračoval.",
   "wizardFinalTimelineSubmitted": "Žiadosť prijatá",
-  "wizardFinalTimelineProcessing": "Vorstand kontroluje · max. 1 pracovný deň",
+  "wizardFinalTimelineProcessing": "Vorstand kontroluje · zvyčajne 1 pracovný deň, max. 7",
   "wizardFinalTimelineActivated": "Účet aktivovaný",
-  "wizardFinalTimelineFirstMeeting": "Vitaj na prvom stretnutí"
+  "wizardFinalTimelineFirstMeeting": "Vitaj na prvom stretnutí",
+  "wizardFinalAdultThank": "Ďakujeme, že si vyplnil registračný formulár! 🎉",
+  "wizardFinalAdultUsual": "Tvoja žiadosť je u nás. Zvyčajne ju overujeme do jedného pracovného dňa.",
+  "wizardFinalAdultExceptional": "Niekedy to môže trvať až 7 pracovných dní. A ak niečo nesedí, pošleme ťa späť do formulára, aby si to opravil 🙂"
 }

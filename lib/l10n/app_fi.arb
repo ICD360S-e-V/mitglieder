@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Valmis! Olet ilmoittautunut 🎉",
-  "wizardFinalAdultBody": "Tervetuloa ICD360S e.V.:hen! Olet käynyt kaikki 8 vaihetta läpi — Vorstand tarkistaa nyt ja hyväksyy jokaisen vaiheen enintään 1 arkipäivän kuluessa. Ilmoitamme sovelluksessa heti, kun tilisi on aktiivinen.",
   "wizardFinalMinorTitle": "Pyyntösi on lähetetty 📨",
   "wizardFinalMinorBody": "Otamme yhteyttä vanhempaasi ja sovimme tapaamisen (paikan päällä tai videopuhelulla). Ole kärsivällinen — prosessi voi kestää jopa 7 päivää. Saat ilmoituksen sovelluksessa heti, kun vanhempasi on hyväksynyt.",
   "wizardFinalMinorCallTitle": "Soita meille, jos haluat puhua",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Selainta ei voitu avata. Linkki on leikepöydällä — liitä se selaimeen jatkaaksesi.",
   "wizardFinalTimelineSubmitted": "Hakemus vastaanotettu",
-  "wizardFinalTimelineProcessing": "Vorstand tarkistaa · enintään 1 arkipäivä",
+  "wizardFinalTimelineProcessing": "Vorstand tarkistaa · yleensä 1 arkipäivä, enintään 7",
   "wizardFinalTimelineActivated": "Tili aktivoitu",
-  "wizardFinalTimelineFirstMeeting": "Tervetuloa ensimmäiseen kokoukseen"
+  "wizardFinalTimelineFirstMeeting": "Tervetuloa ensimmäiseen kokoukseen",
+  "wizardFinalAdultThank": "Kiitos, että täytit rekisteröintilomakkeen! 🎉",
+  "wizardFinalAdultUsual": "Hakemuksesi on meillä. Yleensä tarkistamme sen yhden arkipäivän kuluessa.",
+  "wizardFinalAdultExceptional": "Joskus se voi viedä jopa 7 arkipäivää. Ja jos jokin ei täsmää, lähetämme sinut takaisin lomakkeeseen korjaamaan 🙂"
 }

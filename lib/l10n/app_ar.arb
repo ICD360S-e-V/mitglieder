@@ -1226,7 +1226,6 @@
     }
   },
   "wizardFinalAdultTitle": "تم! أنت مسجل 🎉",
-  "wizardFinalAdultBody": "مرحبًا بك في ICD360S e.V.! أكملت جميع المراحل الثماني — يقوم مجلس الإدارة (Vorstand) بالمراجعة الآن وسيوافق على كل خطوة خلال يوم عمل واحد كحد أقصى. سنعلمك عبر إشعار في التطبيق فور تفعيل حسابك.",
   "wizardFinalMinorTitle": "تم إرسال طلبك 📨",
   "wizardFinalMinorBody": "سنتواصل مع والدك ونرتب لقاءً (شخصيًا أو عبر مكالمة فيديو). يرجى التحلي بالصبر — قد تستغرق العملية حتى 7 أيام. ستحصل على إشعار في التطبيق بمجرد موافقة والدك.",
   "wizardFinalMinorCallTitle": "اتصل بنا إذا أردت التحدث",
@@ -1259,7 +1258,10 @@
   },
   "wizardDocumentExternalOpenFailed": "تعذّر فتح المتصفح. تم نسخ الرابط إلى الحافظة — الصقه في متصفح للمتابعة.",
   "wizardFinalTimelineSubmitted": "تم استلام طلبك",
-  "wizardFinalTimelineProcessing": "مجلس الإدارة يراجع · بحد أقصى يوم عمل واحد",
+  "wizardFinalTimelineProcessing": "مجلس الإدارة يراجع · عادةً يوم عمل واحد، حتى 7",
   "wizardFinalTimelineActivated": "تم تفعيل الحساب",
-  "wizardFinalTimelineFirstMeeting": "مرحبًا بك في أول اجتماع"
+  "wizardFinalTimelineFirstMeeting": "مرحبًا بك في أول اجتماع",
+  "wizardFinalAdultThank": "شكرًا لإكمالك نموذج التسجيل! 🎉",
+  "wizardFinalAdultUsual": "وصلنا طلبك. عادةً نتحقق منه خلال يوم عمل واحد.",
+  "wizardFinalAdultExceptional": "أحيانًا قد يستغرق الأمر حتى 7 أيام عمل. وإذا لم يكن شيء ما متطابقًا، فسنعيدك إلى النموذج لتصحيحه 🙂"
 }

@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Pronto! Estás inscrito 🎉",
-  "wizardFinalAdultBody": "Bem-vindo ao ICD360S e.V.! Completaste todas as 8 fases — o Vorstand está a verificar e aprovará cada passo no máximo em 1 dia útil. Avisamos-te na app assim que a tua conta estiver ativa.",
   "wizardFinalMinorTitle": "O teu pedido foi enviado 📨",
   "wizardFinalMinorBody": "Contactaremos o teu progenitor e marcaremos um encontro (presencial ou videochamada). Por favor, tem paciência — o processo pode demorar até 7 dias. Receberás uma notificação na app assim que o teu progenitor aprovar.",
   "wizardFinalMinorCallTitle": "Liga-nos se quiseres falar",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Não foi possível abrir o navegador. O link foi copiado para a área de transferência — cola-o num navegador para continuar.",
   "wizardFinalTimelineSubmitted": "Pedido recebido",
-  "wizardFinalTimelineProcessing": "Vorstand está a verificar · máx. 1 dia útil",
+  "wizardFinalTimelineProcessing": "Vorstand está a verificar · normalmente 1 dia útil, até 7",
   "wizardFinalTimelineActivated": "Conta ativada",
-  "wizardFinalTimelineFirstMeeting": "Bem-vindo à tua primeira reunião"
+  "wizardFinalTimelineFirstMeeting": "Bem-vindo à tua primeira reunião",
+  "wizardFinalAdultThank": "Obrigado por preencheres o formulário de inscrição! 🎉",
+  "wizardFinalAdultUsual": "O teu pedido está connosco. Normalmente validamo-lo num dia útil.",
+  "wizardFinalAdultExceptional": "Por vezes pode demorar até 7 dias úteis. E se algo não bater certo, mandamos-te de volta ao formulário para corrigires 🙂"
 }

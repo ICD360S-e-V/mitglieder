@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Gotovo! Upisan si 🎉",
-  "wizardFinalAdultBody": "Dobrodošao u ICD360S e.V.! Završio si svih 8 faza — Vorstand sada provjerava i odobrit će svaki korak najkasnije u roku od 1 radnog dana. Javit ćemo ti obavijest u aplikaciji čim ti se račun aktivira.",
   "wizardFinalMinorTitle": "Tvoj zahtjev je poslan 📨",
   "wizardFinalMinorBody": "Kontaktirat ćemo tvog roditelja i dogovoriti susret (osobno ili videopozivom). Molim te budi strpljiv — proces može trajati do 7 dana. Dobit ćeš obavijest u aplikaciji čim roditelj odobri.",
   "wizardFinalMinorCallTitle": "Nazovi nas ako želiš razgovarati",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Nisam mogao otvoriti preglednik. Link je u međuspremniku — zalijepi ga u preglednik za nastavak.",
   "wizardFinalTimelineSubmitted": "Zahtjev je primljen",
-  "wizardFinalTimelineProcessing": "Vorstand provjerava · najviše 1 radni dan",
+  "wizardFinalTimelineProcessing": "Vorstand provjerava · obično 1 radni dan, do 7",
   "wizardFinalTimelineActivated": "Račun aktiviran",
-  "wizardFinalTimelineFirstMeeting": "Dobrodošao na prvi sastanak"
+  "wizardFinalTimelineFirstMeeting": "Dobrodošao na prvi sastanak",
+  "wizardFinalAdultThank": "Hvala što si ispunio obrazac za registraciju! 🎉",
+  "wizardFinalAdultUsual": "Tvoj zahtjev je kod nas. Obično ga potvrdimo u roku od jednog radnog dana.",
+  "wizardFinalAdultExceptional": "Ponekad može potrajati do 7 radnih dana. A ako se nešto ne poklapa, vraćamo te na obrazac da to ispraviš 🙂"
 }

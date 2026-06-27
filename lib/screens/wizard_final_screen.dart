@@ -375,9 +375,63 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   }
 
   Widget _bodyBubble(AppLocalizations l10n, bool isMinor) {
-    final body = isMinor
-        ? l10n.wizardFinalMinorBody
-        : l10n.wizardFinalAdultBody;
+    if (isMinor) {
+      return _minorBubble(l10n);
+    }
+    // Adult flow: three conversational beats. They cascade in with a
+    // slight slide-up + fade so the screen feels like Claudiu is
+    // talking the visitor through what happens next, rather than a
+    // wall of paragraph text.
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _convBubble(l10n.wizardFinalAdultThank,        delayMs: 1300),
+        const SizedBox(height: 8),
+        _convBubble(l10n.wizardFinalAdultUsual,        delayMs: 1900),
+        const SizedBox(height: 8),
+        _convBubble(l10n.wizardFinalAdultExceptional,  delayMs: 2500),
+      ],
+    );
+  }
+
+  /// Single chat-style bubble in the adult conversational body.
+  Widget _convBubble(String text, {required int delayMs}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.14),
+        borderRadius: const BorderRadiusDirectional.only(
+          topStart: Radius.circular(4),
+          topEnd: Radius.circular(14),
+          bottomStart: Radius.circular(14),
+          bottomEnd: Radius.circular(14),
+        ),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 13.5,
+          height: 1.45,
+        ),
+      ),
+    )
+        .animate()
+        .fadeIn(delay: delayMs.ms, duration: 500.ms)
+        .slideY(
+          begin: 0.08,
+          end: 0,
+          delay: delayMs.ms,
+          duration: 500.ms,
+          curve: Curves.easeOut,
+        );
+  }
+
+  /// Minor flow keeps the existing single-paragraph bubble — the
+  /// content there is about contacting the parent, which reads more
+  /// naturally as one block than as a cascade.
+  Widget _minorBubble(AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
       decoration: BoxDecoration(
@@ -388,7 +442,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
         ),
       ),
       child: Text(
-        body,
+        l10n.wizardFinalMinorBody,
         style: const TextStyle(
           color: Colors.white,
           fontSize: 13.5,

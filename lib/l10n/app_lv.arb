@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Gatavs! Esi reģistrēts 🎉",
-  "wizardFinalAdultBody": "Laipni lūdzam ICD360S e.V.! Pabeidzi visus 8 posmus — Vorstand pārbauda un apstiprinās katru soli ne ilgāk kā 1 darba dienā. Paziņosim lietotnē, tiklīdz tavs konts būs aktīvs.",
   "wizardFinalMinorTitle": "Tavs pieprasījums ir nosūtīts 📨",
   "wizardFinalMinorBody": "Sazināsimies ar tavu vecāku un norunāsim tikšanos (klātienē vai video zvanā). Lūdzu, esi pacietīgs — process var ilgt līdz 7 dienām. Saņemsi paziņojumu lietotnē, tiklīdz vecāks apstiprinās.",
   "wizardFinalMinorCallTitle": "Piezvani, ja vēlies parunāt",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Pārlūku neizdevās atvērt. Saite ir kopēta starpliktuvē — ielīmē to pārlūkā, lai turpinātu.",
   "wizardFinalTimelineSubmitted": "Pieteikums saņemts",
-  "wizardFinalTimelineProcessing": "Vorstand pārbauda · ne ilgāk kā 1 darba diena",
+  "wizardFinalTimelineProcessing": "Vorstand pārbauda · parasti 1 darba diena, līdz 7",
   "wizardFinalTimelineActivated": "Konts aktivizēts",
-  "wizardFinalTimelineFirstMeeting": "Laipni lūdzam pirmajā sapulcē"
+  "wizardFinalTimelineFirstMeeting": "Laipni lūdzam pirmajā sapulcē",
+  "wizardFinalAdultThank": "Paldies, ka aizpildīji reģistrācijas formu! 🎉",
+  "wizardFinalAdultUsual": "Tavs pieteikums ir pie mums. Parasti to apstiprinām vienas darba dienas laikā.",
+  "wizardFinalAdultExceptional": "Dažreiz tas var aizņemt līdz 7 darba dienām. Un, ja kaut kas neatbilst, mēs nosūtīsim tevi atpakaļ pie formas, lai labotu 🙂"
 }

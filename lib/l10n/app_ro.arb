@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Gata, ești înscris! 🎉",
-  "wizardFinalAdultBody": "Bun venit în ICD360S e.V.! Ai completat toate cele 8 stadii — Vorstand-ul tău verifică acum și va aproba fiecare pas în maxim 1 zi lucrătoare. Te anunțăm prin notificare imediat ce contul tău e activ.",
   "wizardFinalMinorTitle": "Cererea ta a fost trimisă 📨",
   "wizardFinalMinorBody": "Îți vom contacta părintele și vom stabili o întâlnire (în persoană sau apel video). Te rugăm să ai răbdare — procedura poate dura până la 7 zile. Te anunțăm prin notificare în aplicație imediat ce părintele a aprobat.",
   "wizardFinalMinorCallTitle": "Sună-ne dacă vrei să discutăm",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Nu am putut deschide browserul. Link-ul a fost copiat în clipboard — lipește-l într-un browser pentru a continua.",
   "wizardFinalTimelineSubmitted": "Cererea ta a fost primită",
-  "wizardFinalTimelineProcessing": "Vorstand verifică · maxim 1 zi lucrătoare",
+  "wizardFinalTimelineProcessing": "Vorstand verifică · de obicei 1 zi, maxim 7 lucrătoare",
   "wizardFinalTimelineActivated": "Cont activat",
-  "wizardFinalTimelineFirstMeeting": "Bun venit la prima ședință"
+  "wizardFinalTimelineFirstMeeting": "Bun venit la prima ședință",
+  "wizardFinalAdultThank": "Îți mulțumim că ai completat formularul de înregistrare! 🎉",
+  "wizardFinalAdultUsual": "Cererea ta a ajuns la noi. De obicei o validăm într-o zi lucrătoare.",
+  "wizardFinalAdultExceptional": "Uneori poate dura până la 7 zile lucrătoare. Și dacă ceva nu corespunde, te trimitem înapoi la formular ca să corectezi 🙂"
 }

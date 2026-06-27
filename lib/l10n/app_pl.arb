@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Gotowe! Jesteś zapisany 🎉",
-  "wizardFinalAdultBody": "Witaj w ICD360S e.V.! Ukończyłeś wszystkie 8 etapów — Vorstand teraz weryfikuje i zatwierdzi każdy krok w ciągu maksymalnie 1 dnia roboczego. Powiadomimy cię w aplikacji, gdy tylko konto stanie się aktywne.",
   "wizardFinalMinorTitle": "Twoja prośba została wysłana 📨",
   "wizardFinalMinorBody": "Skontaktujemy się z twoim rodzicem i umówimy spotkanie (osobiście lub przez wideorozmowę). Prosimy o cierpliwość — proces może potrwać do 7 dni. Otrzymasz powiadomienie w aplikacji, gdy tylko rodzic zatwierdzi.",
   "wizardFinalMinorCallTitle": "Zadzwoń, jeśli chcesz porozmawiać",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Nie udało się otworzyć przeglądarki. Link został skopiowany do schowka — wklej go w przeglądarce, aby kontynuować.",
   "wizardFinalTimelineSubmitted": "Wniosek otrzymany",
-  "wizardFinalTimelineProcessing": "Vorstand weryfikuje · maks. 1 dzień roboczy",
+  "wizardFinalTimelineProcessing": "Vorstand weryfikuje · zwykle 1 dzień roboczy, do 7",
   "wizardFinalTimelineActivated": "Konto aktywowane",
-  "wizardFinalTimelineFirstMeeting": "Witaj na pierwszym spotkaniu"
+  "wizardFinalTimelineFirstMeeting": "Witaj na pierwszym spotkaniu",
+  "wizardFinalAdultThank": "Dziękujemy za wypełnienie formularza rejestracyjnego! 🎉",
+  "wizardFinalAdultUsual": "Twój wniosek jest u nas. Zwykle weryfikujemy go w ciągu jednego dnia roboczego.",
+  "wizardFinalAdultExceptional": "Czasem może to potrwać do 7 dni roboczych. A jeśli coś się nie zgadza, odeślemy cię z powrotem do formularza, byś poprawił 🙂"
 }

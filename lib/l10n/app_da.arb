@@ -1205,7 +1205,6 @@
     }
   },
   "wizardFinalAdultTitle": "Færdig! Du er meldt ind 🎉",
-  "wizardFinalAdultBody": "Velkommen til ICD360S e.V.! Du har gennemført alle 8 trin — Vorstand gennemgår nu og godkender hvert trin inden for højst 1 hverdag. Vi giver besked i appen, så snart din konto er aktiv.",
   "wizardFinalMinorTitle": "Din anmodning er sendt 📨",
   "wizardFinalMinorBody": "Vi kontakter din forælder og aftaler et møde (personligt eller videoopkald). Vær venligst tålmodig — processen kan tage op til 7 dage. Du får en notifikation i appen, så snart din forælder har godkendt.",
   "wizardFinalMinorCallTitle": "Ring til os, hvis du vil tale",
@@ -1238,7 +1237,10 @@
   },
   "wizardDocumentExternalOpenFailed": "Kunne ikke åbne browseren. Linket er kopieret til udklipsholderen — indsæt det i en browser for at fortsætte.",
   "wizardFinalTimelineSubmitted": "Ansøgning modtaget",
-  "wizardFinalTimelineProcessing": "Vorstand gennemgår · maks. 1 hverdag",
+  "wizardFinalTimelineProcessing": "Vorstand gennemgår · normalt 1 hverdag, maks. 7",
   "wizardFinalTimelineActivated": "Konto aktiveret",
-  "wizardFinalTimelineFirstMeeting": "Velkommen til dit første møde"
+  "wizardFinalTimelineFirstMeeting": "Velkommen til dit første møde",
+  "wizardFinalAdultThank": "Tak fordi du udfyldte registreringsformularen! 🎉",
+  "wizardFinalAdultUsual": "Din ansøgning er nu hos os. Vi godkender den normalt inden for én hverdag.",
+  "wizardFinalAdultExceptional": "Nogle gange kan det tage op til 7 hverdage. Og hvis noget ikke stemmer, sender vi dig tilbage til formularen, så du kan rette det 🙂"
 }
