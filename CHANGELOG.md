@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.51.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.51.0...v1.51.1) (2026-06-27)
+
+
+### Bug Fixes
+
+* **wizard:** final screen is non-dismissable, system back becomes no-op ([6e3d641](https://github.com/ICD360S-e-V/mitglieder/commit/6e3d641074f4ec967cccc1c9bbede7bed2da5743))
+
 ## [1.51.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.50.1...v1.51.0) (2026-06-27)
 
 
