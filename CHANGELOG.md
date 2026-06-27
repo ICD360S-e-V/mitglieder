@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.53.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.53.0...v1.53.1) (2026-06-27)
+
+
+### Documentation
+
+* **wizard:** switch withdraw to 3-year retention model (DSGVO Art. 6(1)(f) + §195 BGB) ([326fdfe](https://github.com/ICD360S-e-V/mitglieder/commit/326fdfeade07a4fbe8bbc16a906ad96787d998f3))
+
 ## [1.53.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.52.0...v1.53.0) (2026-06-27)
 
 
