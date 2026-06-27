@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
@@ -9,17 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
-
-/// One row in the Bescheid list. `path` is the relative path the
-/// server returned (`wizard_leistungsbescheid/abc_xxxx.pdf`); `name`
-/// is whatever we have to show the visitor — either the original
-/// filename from the picker or, for a freshly-rehydrated draft, the
-/// last segment of the server path.
-class _BescheidFile {
-  final String path;
-  final String name;
-  const _BescheidFile({required this.path, required this.name});
-}
 
 /// Stufe 3 — Finanzielle Situation. Five radio options covering every
 /// fee-exempt social benefit the Vorstand accepts under Satzung §6
@@ -55,7 +43,7 @@ class WizardStufe3Screen extends StatefulWidget {
 
 class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   String? _situation;
-  final List<_BescheidFile> _files = [];
+  final List<WizardBescheidFile> _files = [];
   bool _uploading = false;
   bool _saving = false;
 
@@ -84,36 +72,13 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   void initState() {
     super.initState();
     _situation = widget.initial?['finanzielle_situation'];
-    final raw = widget.initial?['leistungsbescheid_file'];
-    final paths = _parsePathField(raw);
-    for (final p in paths) {
-      _files.add(_BescheidFile(path: p, name: p.split('/').last));
-    }
-  }
-
-  /// Wizard_drafts.data_leistungsbescheid_file is now TEXT and can
-  /// hold either a JSON array (the new shape) or a bare string
-  /// (legacy single-file drafts created before the multi-file change).
-  /// Both decode into a list cleanly.
-  List<String> _parsePathField(dynamic raw) {
+    // Files come pre-parsed by the orchestrator via getState — the
+    // server returns a JOIN of wizard_draft_files at the top level
+    // and the orchestrator forwards the list under this key.
+    final raw = widget.initial?['leistungsbescheid_files'];
     if (raw is List) {
-      return raw.whereType<String>().where((s) => s.isNotEmpty).toList();
+      _files.addAll(raw.whereType<WizardBescheidFile>());
     }
-    if (raw is String && raw.isNotEmpty) {
-      final t = raw.trim();
-      if (t.startsWith('[')) {
-        try {
-          final decoded = jsonDecode(t);
-          if (decoded is List) {
-            return decoded.whereType<String>().where((s) => s.isNotEmpty).toList();
-          }
-        } catch (_) {
-          // fall through to legacy single-path interpretation
-        }
-      }
-      return [t];
-    }
-    return const [];
   }
 
   bool get _needsUpload =>
@@ -270,23 +235,10 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
           _toast(msg, Colors.amber.shade800);
           break;
         }
-        final originalName =
-            file.path.split(Platform.pathSeparator).last;
         setState(() {
-          final prev = {for (final b in _files) b.path: b};
           _files
             ..clear()
-            ..addAll(res.allFiles.map((p) {
-              // Prefer the original picker name for the freshly added
-              // file; pre-existing items keep their previously known
-              // name; unknown paths (rare — e.g. another session
-              // adding files) fall back to the path tail.
-              if (p == res.freshPath) {
-                return _BescheidFile(path: p, name: originalName);
-              }
-              return prev[p] ??
-                  _BescheidFile(path: p, name: p.split('/').last);
-            }));
+            ..addAll(res.allFiles);
         });
       }
     } finally {
@@ -294,22 +246,22 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
     }
   }
 
-  Future<void> _deleteFile(_BescheidFile f) async {
+  Future<void> _deleteFile(WizardBescheidFile f) async {
     if (_uploading) return;
     final l10n = AppLocalizations.of(context)!;
     setState(() => _uploading = true);
-    final updated = await WizardService().deleteLeistungsbescheid(f.path);
+    final updated = await WizardService().deleteLeistungsbescheid(f.id);
     if (!mounted) return;
     setState(() => _uploading = false);
     if (updated == null) {
       _toast(l10n.wizardStufe3UploadFailed, Colors.red.shade700);
       return;
     }
+    // Sync to the server's authoritative list.
     setState(() {
-      _files.removeWhere((x) => x.path == f.path);
-      // Sync against the server's updated array so any divergence is
-      // corrected (e.g. a stale entry the server already cleaned up).
-      _files.retainWhere((x) => updated.contains(x.path));
+      _files
+        ..clear()
+        ..addAll(updated);
     });
   }
 
@@ -700,7 +652,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
     );
   }
 
-  Widget _fileRow(_BescheidFile f, AppLocalizations l10n) {
+  Widget _fileRow(WizardBescheidFile f, AppLocalizations l10n) {
     final ext = f.name.contains('.')
         ? f.name.split('.').last.toLowerCase()
         : '';

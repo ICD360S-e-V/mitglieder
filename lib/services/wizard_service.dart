@@ -100,24 +100,53 @@ class WizardStartResult {
   });
 }
 
+/// One row from `wizard_draft_files` — the relational sidecar that
+/// holds every Stufe 3 Bescheid upload. The id is the canonical
+/// identifier (used for delete); name, path, size and mime are
+/// surfaced for the UI list.
+class WizardBescheidFile {
+  final int id;
+  final String name;
+  final String path;
+  final int size;
+  final String mimeType;
+
+  const WizardBescheidFile({
+    required this.id,
+    required this.name,
+    required this.path,
+    required this.size,
+    required this.mimeType,
+  });
+
+  factory WizardBescheidFile.fromJson(Map<String, dynamic> j) =>
+      WizardBescheidFile(
+        id:       (j['id'] as num).toInt(),
+        name:     (j['file_name'] as String?) ?? '',
+        path:     (j['file_path'] as String?) ?? '',
+        size:     (j['file_size'] as num?)?.toInt() ?? 0,
+        mimeType: (j['mime_type'] as String?) ?? '',
+      );
+}
+
 /// Outcome of a single Stufe 3 file upload. Success carries the
-/// server-side path the file landed at + the full ordered list of
-/// every Bescheid in the draft (so the UI can rerender deterministically
-/// without merging local state). Error carries the HTTP status and the
+/// freshly-inserted row plus the full ordered list of every Bescheid
+/// row in the draft (so the UI can rerender deterministically without
+/// merging local state). Error carries the HTTP status and the
 /// server's `message` so the screen can show a precise toast — 413 for
-/// the 10 MB or 100 MB caps, 409 for "20 files already", anything
-/// else is generic.
+/// the 10 MB or 100 MB caps, 409 for "20 files already", anything else
+/// is generic.
 class WizardLeistungsbescheidUploadResult {
   final bool isSuccess;
-  final String? freshPath;
-  final List<String> allFiles;
+  final WizardBescheidFile? freshFile;
+  final List<WizardBescheidFile> allFiles;
   final int totalBytes;
   final int? errorCode;
   final String? errorMessage;
 
   const WizardLeistungsbescheidUploadResult._({
     required this.isSuccess,
-    this.freshPath,
+    this.freshFile,
     this.allFiles = const [],
     this.totalBytes = 0,
     this.errorCode,
@@ -125,13 +154,13 @@ class WizardLeistungsbescheidUploadResult {
   });
 
   factory WizardLeistungsbescheidUploadResult.success({
-    required String? freshPath,
-    required List<String> allFiles,
+    required WizardBescheidFile? freshFile,
+    required List<WizardBescheidFile> allFiles,
     required int totalBytes,
   }) =>
       WizardLeistungsbescheidUploadResult._(
         isSuccess: true,
-        freshPath: freshPath,
+        freshFile: freshFile,
         allFiles: allFiles,
         totalBytes: totalBytes,
       );
@@ -344,10 +373,16 @@ class WizardService {
       if (mnr != null && mnr.isNotEmpty) {
         _mitgliedernummer = mnr;
       }
+      final filesRaw = body['leistungsbescheid_files'] as List<dynamic>?;
+      final files = (filesRaw ?? const [])
+          .whereType<Map<String, dynamic>>()
+          .map(WizardBescheidFile.fromJson)
+          .toList();
       return {
-        'current_step': body['current_step'],
-        'mitgliedernummer': mnr,
-        'data': (body['data'] as Map<String, dynamic>?) ?? const {},
+        'current_step':            body['current_step'],
+        'mitgliedernummer':        mnr,
+        'data':                    (body['data'] as Map<String, dynamic>?) ?? const {},
+        'leistungsbescheid_files': files,
       };
     } catch (e) {
       _log.error('wizard.getState: $e', tag: 'WIZ');
@@ -437,9 +472,16 @@ class WizardService {
         );
       }
       final filesRaw = (body['files'] as List<dynamic>?) ?? const [];
-      final files = filesRaw.whereType<String>().toList();
+      final files = filesRaw
+          .whereType<Map<String, dynamic>>()
+          .map(WizardBescheidFile.fromJson)
+          .toList();
+      final freshRaw = body['file'];
+      final fresh = (freshRaw is Map<String, dynamic>)
+          ? WizardBescheidFile.fromJson(freshRaw)
+          : null;
       return WizardLeistungsbescheidUploadResult.success(
-        freshPath: body['file_path'] as String?,
+        freshFile: fresh,
         allFiles: files,
         totalBytes: (body['total_bytes'] as num?)?.toInt() ?? 0,
       );
@@ -455,8 +497,11 @@ class WizardService {
   /// Drops one previously-uploaded Bescheid from the draft (and from
   /// disk on the server). Returns the trimmed list on success or null
   /// on failure. The UI normally calls this when the visitor taps the
-  /// trash icon on an item before submitting Stufe 3.
-  Future<List<String>?> deleteLeistungsbescheid(String relPath) async {
+  /// trash icon on an item before submitting Stufe 3. The row is
+  /// identified by its `wizard_draft_files.id` — server-side joined
+  /// against the visitor's draft so a hostile client can't drop a
+  /// sibling draft's file.
+  Future<List<WizardBescheidFile>?> deleteLeistungsbescheid(int fileId) async {
     try {
       final id = await ensureId();
       final r = await _client
@@ -465,7 +510,7 @@ class WizardService {
             headers: _headers(),
             body: jsonEncode({
               'anonymous_id': id,
-              'file_path':    relPath,
+              'file_id':      fileId,
             }),
           )
           .timeout(const Duration(seconds: 15));
@@ -476,7 +521,8 @@ class WizardService {
       final body = jsonDecode(r.body) as Map<String, dynamic>;
       if (body['success'] != true) return null;
       return ((body['files'] as List<dynamic>?) ?? const [])
-          .whereType<String>()
+          .whereType<Map<String, dynamic>>()
+          .map(WizardBescheidFile.fromJson)
           .toList();
     } catch (e) {
       _log.error('wizard.delete: $e', tag: 'WIZ');

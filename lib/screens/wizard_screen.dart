@@ -146,7 +146,14 @@ class _WizardScreenState extends State<WizardScreen> {
 
     // 2) Pull whatever the visitor previously saved.
     final state = await WizardService().getState();
-    final data = (state?['data'] as Map<String, dynamic>?) ?? const {};
+    final dataRaw = (state?['data'] as Map<String, dynamic>?) ?? const {};
+    // Stufe 3 reads files from data['leistungsbescheid_files'] — the
+    // wizard_draft_files JOIN sits at the top of the getState payload,
+    // so we merge it into the data map here.
+    final data = <String, dynamic>{
+      ...dataRaw,
+      'leistungsbescheid_files': state?['leistungsbescheid_files'] ?? const [],
+    };
 
     // 3) Recompute age status from the stored birthdate (resume case).
     WizardAgeStatus? ageStatus;
@@ -281,7 +288,12 @@ class _WizardScreenState extends State<WizardScreen> {
   Future<void> _refreshData() async {
     final state = await WizardService().getState();
     if (state == null || !mounted) return;
-    setState(() => _data = (state['data'] as Map<String, dynamic>?) ?? const {});
+    final dataRaw = (state['data'] as Map<String, dynamic>?) ?? const {};
+    setState(() => _data = <String, dynamic>{
+          ...dataRaw,
+          'leistungsbescheid_files':
+              state['leistungsbescheid_files'] ?? const [],
+        });
   }
 
   Future<void> _goNext() async {
