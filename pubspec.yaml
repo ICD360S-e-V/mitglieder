@@ -70,15 +70,11 @@ dependencies:
   # WebSocket for real-time chat
   web_socket_channel: ^3.0.1
 
-  # WebRTC for voice/video calls. Pinned to ^1.4.1 to match Vorsitzer
-  # because earlier ^1.2.1 was resolving to a libwebrtc.zip that
-  # CMake 3.30+ refused to extract through the .plugin_symlinks junction
-  # on Windows — and on Linux 1.4.x ships the version the rest of the
-  # ICD360S stack is tested against.
-  # 1.5.2 ships a Windows fix for libwebrtc extraction through a
-  # symlink (PR #2100, 2026-06-20). Lets us remove the runner-side
-  # junction→copy workaround that was previously needed for
-  # CMake ≥3.30 — see build-extras-platforms.yml.
+  # WebRTC for voice/video calls. 1.5.2 (2026-06-20, PR #2100) ships
+  # the Windows-side libwebrtc extraction fix that makes CMake ≥3.30
+  # happy when the plugin is loaded through the .plugin_symlinks
+  # junction — so we no longer need the runner-side junction→copy
+  # workaround in build-extras-platforms.yml.
   flutter_webrtc: ^1.5.2
 
   # Battery level monitoring
