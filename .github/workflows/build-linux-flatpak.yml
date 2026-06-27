@@ -125,6 +125,25 @@ jobs:
           echo "version=$VER" >> "$GITHUB_OUTPUT"
           echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
 
+      - name: Patch flutter_webrtc rtc_types.h to include <stdint.h>
+        # flutter_webrtc 1.5.2's third_party/libwebrtc/include/rtc_types.h
+        # uses uint32_t without including <stdint.h>. clang-21 on Ubuntu
+        # 26.04 stops at the first "unknown type name 'uint32_t'" — fix
+        # by prepending the include in-place. Idempotent guard so the
+        # step is safe on already-patched caches.
+        run: |
+          HEADER=$(find ~/.pub-cache -path '*flutter_webrtc-1.5*/third_party/libwebrtc/include/rtc_types.h' | head -1)
+          if [ -z "$HEADER" ]; then
+            echo "rtc_types.h not found — skipping (flutter_webrtc may not be in pub cache yet)"
+            exit 0
+          fi
+          if grep -q '#include <stdint.h>' "$HEADER"; then
+            echo "$HEADER already patched"
+            exit 0
+          fi
+          sed -i '1i #include <stdint.h>' "$HEADER"
+          echo "Patched $HEADER"
+
       - name: Build Linux
         env:
           # Ubuntu 26.04 clang-21 defaults to -Werror=deprecated-declarations;
