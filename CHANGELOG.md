@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.56.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.55.0...v1.56.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** live-chat FAB also on final / waiting + duplicate + age-gate ([4c8ec35](https://github.com/ICD360S-e-V/mitglieder/commit/4c8ec351c12735bb7507336d5526bbdd93f90be6))
+
 ## [1.55.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.54.0...v1.55.0) (2026-06-27)
 
 
