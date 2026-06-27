@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.51.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.50.1...v1.51.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** final screen — Status Card replaces verbose timeline + tap to expand ([436f541](https://github.com/ICD360S-e-V/mitglieder/commit/436f54189b0c797ea160391bda944ac498dd05ae))
+
 ## [1.50.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.50.0...v1.50.1) (2026-06-27)
 
 
