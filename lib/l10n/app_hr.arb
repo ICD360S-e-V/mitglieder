@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Nisam mogao otvoriti preglednik. Link je u međuspremniku — zalijepi ga u preglednik za nastavak."
 }

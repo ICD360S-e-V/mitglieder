@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Pārlūku neizdevās atvērt. Saite ir kopēta starpliktuvē — ielīmē to pārlūkā, lai turpinātu."
 }

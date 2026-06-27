@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Nepodařilo se otevřít prohlížeč. Odkaz byl zkopírován do schránky — vlož ho do prohlížeče, abys pokračoval."
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -15,15 +16,19 @@ import '../widgets/wizard_step_shell.dart';
 ///   • Stufe 7 — Datenschutzerklärung
 ///   • Stufe 8 — Widerrufsbelehrung
 ///
-/// On platforms that support an embedded WebView (Android / iOS /
-/// macOS) the doc renders inline and a JavaScript scroll listener
-/// flips a flag when the visitor reaches the bottom. Only then does
-/// the "I have read and agree" checkbox light up — proof they at
-/// least scrolled the page rather than instantly tapping a tickbox.
+/// **Android** renders the document inline via webview_flutter — most
+/// modern Android phones ship a system WebView and an in-app reading
+/// experience is what visitors expect on the small screen. A JavaScript
+/// scroll listener flips a flag when the visitor reaches the bottom,
+/// which is the only thing that lights up the "I have read and agree"
+/// checkbox (proof they at least scrolled instead of insta-ticking).
 ///
-/// On platforms without WebView (Linux, Windows, web) we open the
-/// URL in the system browser and enable the checkbox after the
-/// visitor returns — same legal outcome, simpler UX.
+/// **iOS / macOS / Linux / Windows** open the URL in the user's default
+/// browser via url_launcher. We checked: Apple platforms route through
+/// Safari (default system browser, which is what users expect), Linux
+/// goes through `xdg-open` / portal `org.freedesktop.portal.OpenURI`,
+/// and Windows uses the shell open verb. After the visitor returns we
+/// enable the checkbox — same legal outcome, native browser UX.
 class WizardDocumentAcceptScreen extends StatefulWidget {
   /// Which Stufe this is (6, 7 or 8). Used for the top-bar
   /// indicator + the WizardStep enum lookup.
@@ -75,8 +80,11 @@ class WizardDocumentAcceptScreen extends StatefulWidget {
 
 class _WizardDocumentAcceptScreenState
     extends State<WizardDocumentAcceptScreen> {
-  static bool get _supportsInlineWebView =>
-      Platform.isAndroid || Platform.isIOS || Platform.isMacOS;
+  /// Only Android uses the inline WebView. Everything else lands on
+  /// the system browser via url_launcher — Safari on Apple, default
+  /// browser on Linux / Windows. Per design call after the user
+  /// noticed many comparable apps open Apple platforms in Safari too.
+  static bool get _supportsInlineWebView => Platform.isAndroid;
 
   WebViewController? _webController;
   bool _scrolledToBottom = false;
@@ -145,16 +153,43 @@ class _WizardDocumentAcceptScreenState
   }
 
   Future<void> _openExternal() async {
+    final l10n = AppLocalizations.of(context)!;
     final uri = Uri.parse(widget.url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-      if (mounted) {
-        setState(() {
-          _opened = true;
-          _scrolledToBottom = true; // can't detect from external browser
-        });
-      }
+    bool launched = false;
+    try {
+      // canLaunchUrl can return false inside Flatpak sandbox even when
+      // the portal would have happily handled it, so we attempt the
+      // launch regardless and let it tell us via the boolean return.
+      launched = await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
+    } catch (_) {
+      launched = false;
     }
+    if (!mounted) return;
+    if (launched) {
+      setState(() {
+        _opened = true;
+        _scrolledToBottom = true; // can't detect from external browser
+      });
+      return;
+    }
+    // Last-ditch UX: copy the URL to the clipboard so the visitor can
+    // paste it into a browser tab manually, and tell them what
+    // happened. This is the path you hit on a Linux Flatpak missing
+    // the org.freedesktop.portal.OpenURI talk-name, or on a runner
+    // without xdg-open installed.
+    await Clipboard.setData(ClipboardData(text: widget.url));
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(l10n.wizardDocumentExternalOpenFailed),
+        backgroundColor: Colors.red.shade700,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 6),
+      ),
+    );
   }
 
   bool get _canConfirm => _scrolledToBottom || _opened;

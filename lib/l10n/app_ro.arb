@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Nu am putut deschide browserul. Link-ul a fost copiat în clipboard — lipește-l într-un browser pentru a continua."
 }

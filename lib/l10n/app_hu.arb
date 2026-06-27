@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Nem sikerült megnyitni a böngészőt. A link a vágólapra került — illeszd be egy böngészőbe a folytatáshoz."
 }

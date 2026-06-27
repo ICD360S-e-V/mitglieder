@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Nepavyko atidaryti naršyklės. Nuoroda nukopijuota į iškarpinę — įklijuok ją naršyklėje, kad tęstum."
 }

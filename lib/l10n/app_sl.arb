@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Brskalnika ni bilo mogoče odpreti. Povezava je v odložišču — prilepi jo v brskalnik za nadaljevanje."
 }

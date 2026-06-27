@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Brauserit ei õnnestunud avada. Link on lõikepuhvris — kleebi see brauserisse, et jätkata."
 }

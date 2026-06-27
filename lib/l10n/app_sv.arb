@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Det gick inte att öppna webbläsaren. Länken är kopierad till urklipp — klistra in den i en webbläsare för att fortsätta."
 }

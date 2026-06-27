@@ -1256,5 +1256,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Tarayıcı açılamadı. Bağlantı panoya kopyalandı — devam etmek için bir tarayıcıya yapıştır."
 }

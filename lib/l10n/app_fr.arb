@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Impossible d'ouvrir le navigateur. Le lien est dans le presse-papiers — colle-le dans un navigateur pour continuer."
 }

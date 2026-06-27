@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Nie udało się otworzyć przeglądarki. Link został skopiowany do schowka — wklej go w przeglądarce, aby kontynuować."
 }

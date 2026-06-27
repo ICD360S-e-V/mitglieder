@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "De browser kon niet worden geopend. De link staat op het klembord — plak hem in een browser om verder te gaan."
 }

@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Kunne ikke åpne nettleseren. Lenken er kopiert til utklippstavlen — lim den inn i en nettleser for å fortsette."
 }

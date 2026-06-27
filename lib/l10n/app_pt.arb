@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Não foi possível abrir o navegador. O link foi copiado para a área de transferência — cola-o num navegador para continuar."
 }

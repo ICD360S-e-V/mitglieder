@@ -33,6 +33,11 @@ finish-args:
   - --talk-name=org.kde.kwalletd6
   # Auto-start on login
   - --talk-name=org.freedesktop.portal.Background
+  # Open URLs in the user's default browser — url_launcher routes
+  # external links through this portal when running sandboxed.
+  # Without it, the Stufe 6/7/8 "Open Satzung" button silently
+  # no-ops on Flatpak builds.
+  - --talk-name=org.freedesktop.portal.OpenURI
 
   # NetworkManager on the SYSTEM bus, needed by connectivity_plus's
   # checkConnectivity(). Without this the plugin hangs forever inside the

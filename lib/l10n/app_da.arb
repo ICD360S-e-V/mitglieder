@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Kunne ikke åbne browseren. Linket er kopieret til udklipsholderen — indsæt det i en browser for at fortsætte."
 }

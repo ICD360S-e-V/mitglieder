@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "No se pudo abrir el navegador. El enlace está en el portapapeles — pégalo en un navegador para continuar."
 }

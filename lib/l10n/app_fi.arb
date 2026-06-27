@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Selainta ei voitu avata. Linkki on leikepöydällä — liitä se selaimeen jatkaaksesi."
 }

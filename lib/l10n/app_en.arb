@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Couldn't open your browser. The link is on your clipboard — paste it in a browser to continue."
 }

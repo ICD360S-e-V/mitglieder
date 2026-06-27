@@ -1235,5 +1235,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "wizardDocumentExternalOpenFailed": "Impossibile aprire il browser. Il link è negli appunti — incollalo in un browser per continuare."
 }
