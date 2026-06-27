@@ -206,15 +206,18 @@ jobs:
           sed -i '' 's/CODE_SIGN_STYLE = Automatic/CODE_SIGN_STYLE = Manual/g' macos/Runner.xcodeproj/project.pbxproj
           sed -i '' 's/CODE_SIGN_ENTITLEMENTS = .*$/CODE_SIGN_ENTITLEMENTS = "";/g' macos/Runner.xcodeproj/project.pbxproj
 
-      - name: Update CocoaPods spec repos
-        # flutter_webrtc 1.5.2's macOS podspec pins WebRTC-SDK to a
-        # version (144.7559.09) that didn't exist in the cached
-        # macos-latest specs repo. Refresh the cache so `pod install`
-        # (run internally by `flutter build macos`) finds the new
-        # WebRTC-SDK version. Cheap — runs in ~30s on a warm runner.
+      - name: Bump WebRTC-SDK lock to match flutter_webrtc 1.5.2
+        # flutter_webrtc 1.5.2's macOS podspec requires
+        # WebRTC-SDK = 144.7559.09, but Podfile.lock was pinned to
+        # 144.7559.01 from an older snapshot — CocoaPods refuses to
+        # bridge that gap with plain `pod install`. `pod update
+        # WebRTC-SDK` (with --repo-update so the trunk specs are
+        # current) re-resolves only that pod, rewriting the lock to
+        # the latest 144.7559.x available. `flutter build macos`
+        # then calls pod install on a satisfiable lock.
         run: |
           cd macos
-          pod repo update
+          pod update WebRTC-SDK --repo-update
           cd ..
 
       - name: Build macOS
