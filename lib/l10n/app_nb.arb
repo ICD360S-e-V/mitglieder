@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Avvist",
   "wizardFinalStufeStatusSkipped": "Hoppet over",
   "wizardFinalStufeFilledAt": "Utfylt:",
-  "wizardFinalStufeReviewedAt": "Gjennomgått:"
+  "wizardFinalStufeReviewedAt": "Gjennomgått:",
+  "wizardFinalWithdrawLink": "Trekk søknad tilbake",
+  "wizardFinalWithdrawDialogTitle": "Trekke søknaden tilbake?",
+  "wizardFinalWithdrawDialogBody": "Søknaden din blir markert som trukket tilbake av deg. Dataene blir værende i databasen for revisjon (GDPR), men kontoen aktiveres ikke. Du kan starte registreringen på nytt når som helst med et nytt medlemsnummer.",
+  "wizardFinalWithdrawKeep": "Nei, jeg venter",
+  "wizardFinalWithdrawConfirm": "Ja, trekk tilbake"
 }

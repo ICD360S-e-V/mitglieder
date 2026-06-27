@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Hylätty",
   "wizardFinalStufeStatusSkipped": "Ohitettu",
   "wizardFinalStufeFilledAt": "Täytetty:",
-  "wizardFinalStufeReviewedAt": "Tarkistettu:"
+  "wizardFinalStufeReviewedAt": "Tarkistettu:",
+  "wizardFinalWithdrawLink": "Peruuta hakemus",
+  "wizardFinalWithdrawDialogTitle": "Perutaanko hakemus?",
+  "wizardFinalWithdrawDialogBody": "Hakemuksesi merkitään sinun perumaksi. Tiedot säilyvät tietokannassa tarkastusta varten (GDPR), mutta tiliä ei aktivoida. Voit aloittaa rekisteröitymisen uudelleen milloin tahansa uudella jäsennumerolla.",
+  "wizardFinalWithdrawKeep": "Ei, odotan",
+  "wizardFinalWithdrawConfirm": "Kyllä, peru"
 }

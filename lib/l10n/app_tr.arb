@@ -1268,5 +1268,10 @@
   "wizardFinalStufeStatusRejected": "Reddedildi",
   "wizardFinalStufeStatusSkipped": "Atlandı",
   "wizardFinalStufeFilledAt": "Dolduruldu:",
-  "wizardFinalStufeReviewedAt": "İncelendi:"
+  "wizardFinalStufeReviewedAt": "İncelendi:",
+  "wizardFinalWithdrawLink": "Başvuruyu geri çek",
+  "wizardFinalWithdrawDialogTitle": "Başvurunu geri mi çekiyorsun?",
+  "wizardFinalWithdrawDialogBody": "Başvurun, senin tarafından geri çekilmiş olarak işaretlenecek. Denetim (GDPR) için veriler veritabanında kalır, ancak hesap etkinleştirilmez. Yeni bir üye numarasıyla kaydı istediğin zaman yeniden başlatabilirsin.",
+  "wizardFinalWithdrawKeep": "Hayır, bekliyorum",
+  "wizardFinalWithdrawConfirm": "Evet, geri çek"
 }

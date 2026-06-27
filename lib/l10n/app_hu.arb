@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Elutasítva",
   "wizardFinalStufeStatusSkipped": "Kihagyva",
   "wizardFinalStufeFilledAt": "Kitöltve:",
-  "wizardFinalStufeReviewedAt": "Ellenőrizve:"
+  "wizardFinalStufeReviewedAt": "Ellenőrizve:",
+  "wizardFinalWithdrawLink": "Kérelem visszavonása",
+  "wizardFinalWithdrawDialogTitle": "Visszavonod a kérelmet?",
+  "wizardFinalWithdrawDialogBody": "A kérelmedet visszavontnak jelöljük. Az adatok auditálás céljából (GDPR) az adatbázisban maradnak, de a fiók nem lesz aktiválva. Bármikor újrakezdheted a regisztrációt új tagsági számmal.",
+  "wizardFinalWithdrawKeep": "Nem, várok",
+  "wizardFinalWithdrawConfirm": "Igen, visszavonom"
 }

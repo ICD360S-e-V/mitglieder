@@ -1268,5 +1268,10 @@
   "wizardFinalStufeStatusRejected": "مرفوض",
   "wizardFinalStufeStatusSkipped": "تم تخطيه",
   "wizardFinalStufeFilledAt": "تم الملء في:",
-  "wizardFinalStufeReviewedAt": "تمت المراجعة في:"
+  "wizardFinalStufeReviewedAt": "تمت المراجعة في:",
+  "wizardFinalWithdrawLink": "سحب الطلب",
+  "wizardFinalWithdrawDialogTitle": "هل تريد سحب الطلب؟",
+  "wizardFinalWithdrawDialogBody": "سيتم وضع علامة على طلبك بأنه مسحوب من قِبَلك. تبقى البيانات في قاعدة البيانات لأغراض التدقيق (GDPR)، لكن لن يتم تفعيل الحساب. يمكنك إعادة التسجيل في أي وقت برقم عضوية جديد.",
+  "wizardFinalWithdrawKeep": "لا، سأنتظر",
+  "wizardFinalWithdrawConfirm": "نعم، اسحب"
 }

@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Atmesta",
   "wizardFinalStufeStatusSkipped": "Praleista",
   "wizardFinalStufeFilledAt": "Užpildyta:",
-  "wizardFinalStufeReviewedAt": "Patikrinta:"
+  "wizardFinalStufeReviewedAt": "Patikrinta:",
+  "wizardFinalWithdrawLink": "Atšaukti prašymą",
+  "wizardFinalWithdrawDialogTitle": "Atšaukti prašymą?",
+  "wizardFinalWithdrawDialogBody": "Tavo prašymas bus pažymėtas kaip atšauktas tavęs. Duomenys lieka duomenų bazėje audito tikslais (GDPR), bet paskyra nebus aktyvuota. Registraciją gali pradėti iš naujo bet kada su nauju nario numeriu.",
+  "wizardFinalWithdrawKeep": "Ne, palauksiu",
+  "wizardFinalWithdrawConfirm": "Taip, atšaukti"
 }

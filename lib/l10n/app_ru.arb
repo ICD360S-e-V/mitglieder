@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Отклонено",
   "wizardFinalStufeStatusSkipped": "Пропущено",
   "wizardFinalStufeFilledAt": "Заполнено:",
-  "wizardFinalStufeReviewedAt": "Проверено:"
+  "wizardFinalStufeReviewedAt": "Проверено:",
+  "wizardFinalWithdrawLink": "Отозвать заявку",
+  "wizardFinalWithdrawDialogTitle": "Отозвать заявку?",
+  "wizardFinalWithdrawDialogBody": "Твоя заявка будет помечена как отозванная тобой. Данные останутся в базе для аудита (GDPR), но аккаунт не будет активирован. Ты сможешь пройти регистрацию заново в любой момент с новым номером.",
+  "wizardFinalWithdrawKeep": "Нет, подожду",
+  "wizardFinalWithdrawConfirm": "Да, отозвать"
 }

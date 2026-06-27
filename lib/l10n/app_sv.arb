@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Avvisad",
   "wizardFinalStufeStatusSkipped": "Hoppade över",
   "wizardFinalStufeFilledAt": "Ifylld:",
-  "wizardFinalStufeReviewedAt": "Granskad:"
+  "wizardFinalStufeReviewedAt": "Granskad:",
+  "wizardFinalWithdrawLink": "Dra tillbaka ansökan",
+  "wizardFinalWithdrawDialogTitle": "Dra tillbaka ansökan?",
+  "wizardFinalWithdrawDialogBody": "Din ansökan markeras som tillbakadragen av dig. Datan stannar i databasen för revision (GDPR), men kontot aktiveras inte. Du kan när som helst börja om registreringen med ett nytt medlemsnummer.",
+  "wizardFinalWithdrawKeep": "Nej, jag väntar",
+  "wizardFinalWithdrawConfirm": "Ja, dra tillbaka"
 }

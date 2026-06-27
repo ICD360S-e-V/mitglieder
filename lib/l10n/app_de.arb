@@ -1268,5 +1268,10 @@
   "wizardFinalStufeStatusRejected": "Abgelehnt",
   "wizardFinalStufeStatusSkipped": "Übersprungen",
   "wizardFinalStufeFilledAt": "Ausgefüllt am:",
-  "wizardFinalStufeReviewedAt": "Geprüft am:"
+  "wizardFinalStufeReviewedAt": "Geprüft am:",
+  "wizardFinalWithdrawLink": "Antrag zurückziehen",
+  "wizardFinalWithdrawDialogTitle": "Antrag zurückziehen?",
+  "wizardFinalWithdrawDialogBody": "Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) in der Datenbank, dein Konto wird jedoch nicht aktiviert. Du kannst die Anmeldung jederzeit mit einer neuen Mitgliedernummer neu starten.",
+  "wizardFinalWithdrawKeep": "Nein, ich warte",
+  "wizardFinalWithdrawConfirm": "Ja, zurückziehen"
 }

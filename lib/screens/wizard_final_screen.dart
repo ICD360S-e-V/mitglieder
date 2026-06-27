@@ -54,6 +54,15 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   /// from ⏳ În verificare → ✓ Activat and stops the polling timer.
   bool _isActive = false;
 
+  /// True after the visitor confirmed they want to withdraw the
+  /// request. PopScope.canPop reads this — back-gesture stays
+  /// blocked while we wait, but Navigator.pop after the explicit
+  /// withdraw call works because canPop is briefly true.
+  bool _withdrawn = false;
+
+  /// Guards against double-tap on the withdraw link.
+  bool _withdrawing = false;
+
   /// Per-Stufe verifizierung snapshot from check_status.php. Drives
   /// the chronological details sheet (tap the status card to open).
   List<WizardStufeStatus> _stufen = const [];
@@ -121,7 +130,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     // / desktop ESC are absorbed silently; backgrounding via the
     // platform home gesture is the normal way to leave the screen.
     return PopScope(
-      canPop: false,
+      canPop: _withdrawn,
       child: Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -163,7 +172,9 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                   _callAction(l10n, isMinor),
                   const SizedBox(height: 16),
                   _bodyBubble(l10n, isMinor),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 22),
+                  _withdrawLink(l10n),
+                  const SizedBox(height: 4),
                 ],
               ),
             ),
@@ -172,6 +183,87 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       ),
       ),
     );
+  }
+
+  /// Discreet text-only affordance at the bottom of the screen: the
+  /// visitor can voluntarily retract their application. Designed to
+  /// be undertorquished (low contrast, small font) so a thumb resting
+  /// on the screen doesn't trigger it accidentally — taps still open
+  /// a hard confirmation dialog before anything irreversible happens.
+  Widget _withdrawLink(AppLocalizations l10n) {
+    return Center(
+      child: TextButton(
+        onPressed: _withdrawing ? null : _confirmWithdraw,
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.white.withValues(alpha: 0.65),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        ),
+        child: Text(
+          l10n.wizardFinalWithdrawLink,
+          style: TextStyle(
+            color: Colors.white.withValues(alpha: 0.65),
+            fontSize: 12.5,
+            fontWeight: FontWeight.w500,
+            decoration: TextDecoration.underline,
+            decorationColor: Colors.white.withValues(alpha: 0.35),
+          ),
+        ),
+      ),
+    ).animate().fadeIn(delay: 3000.ms, duration: 600.ms);
+  }
+
+  Future<void> _confirmWithdraw() async {
+    final l10n = AppLocalizations.of(context)!;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.wizardFinalWithdrawDialogTitle),
+        content: Text(l10n.wizardFinalWithdrawDialogBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text(l10n.wizardFinalWithdrawKeep),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            style: TextButton.styleFrom(foregroundColor: Colors.red.shade700),
+            child: Text(l10n.wizardFinalWithdrawConfirm),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    await _withdraw();
+  }
+
+  Future<void> _withdraw() async {
+    if (_withdrawing) return;
+    setState(() => _withdrawing = true);
+    final ok = await WizardService().withdrawRequest();
+    if (!mounted) return;
+    if (!ok) {
+      setState(() => _withdrawing = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.wizardErrSaveFailed),
+          backgroundColor: Colors.red.shade700,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+      return;
+    }
+    // Stop the polling timer, wipe the local anonymous_id so a fresh
+    // visitor on this device starts clean, then let PopScope allow
+    // the back-navigation we're about to issue.
+    _statusTimer?.cancel();
+    await WizardService().resetLocal();
+    if (!mounted) return;
+    setState(() => _withdrawn = true);
+    // canPop is now true; pop the wizard route. The orchestrator's
+    // onClose hook (if any) is intentionally bypassed — the withdraw
+    // already did the resetLocal cleanup directly.
+    await Future<void>.delayed(Duration.zero);
+    if (mounted) Navigator.of(context).maybePop();
   }
 
   Widget _mascot(bool isMinor) {

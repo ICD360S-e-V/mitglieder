@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Afgewezen",
   "wizardFinalStufeStatusSkipped": "Overgeslagen",
   "wizardFinalStufeFilledAt": "Ingevuld:",
-  "wizardFinalStufeReviewedAt": "Gecontroleerd:"
+  "wizardFinalStufeReviewedAt": "Gecontroleerd:",
+  "wizardFinalWithdrawLink": "Aanvraag intrekken",
+  "wizardFinalWithdrawDialogTitle": "Aanvraag intrekken?",
+  "wizardFinalWithdrawDialogBody": "Je aanvraag wordt gemarkeerd als ingetrokken-door-jou. De gegevens blijven in de database voor audit (AVG), maar het account wordt niet geactiveerd. Je kunt de registratie altijd opnieuw beginnen met een nieuw lidnummer.",
+  "wizardFinalWithdrawKeep": "Nee, ik wacht",
+  "wizardFinalWithdrawConfirm": "Ja, intrekken"
 }

@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Отхвърлено",
   "wizardFinalStufeStatusSkipped": "Пропуснато",
   "wizardFinalStufeFilledAt": "Попълнено:",
-  "wizardFinalStufeReviewedAt": "Прегледано:"
+  "wizardFinalStufeReviewedAt": "Прегледано:",
+  "wizardFinalWithdrawLink": "Оттегли заявката",
+  "wizardFinalWithdrawDialogTitle": "Да оттеглим заявката?",
+  "wizardFinalWithdrawDialogBody": "Заявката ще бъде маркирана като оттеглена от теб. Данните остават в базата за одит (GDPR), но профилът няма да бъде активиран. Винаги можеш да започнеш регистрацията отново с нов членски номер.",
+  "wizardFinalWithdrawKeep": "Не, ще изчакам",
+  "wizardFinalWithdrawConfirm": "Да, оттегли"
 }

@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Rejeitado",
   "wizardFinalStufeStatusSkipped": "Ignorado",
   "wizardFinalStufeFilledAt": "Preenchido:",
-  "wizardFinalStufeReviewedAt": "Verificado:"
+  "wizardFinalStufeReviewedAt": "Verificado:",
+  "wizardFinalWithdrawLink": "Retirar pedido",
+  "wizardFinalWithdrawDialogTitle": "Retirar o teu pedido?",
+  "wizardFinalWithdrawDialogBody": "O teu pedido será marcado como retirado por ti. Os dados permanecem na base de dados para auditoria (RGPD), mas a conta não será ativada. Podes reiniciar o registo a qualquer momento com um novo número de membro.",
+  "wizardFinalWithdrawKeep": "Não, vou esperar",
+  "wizardFinalWithdrawConfirm": "Sim, retirar"
 }

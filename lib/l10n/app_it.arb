@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Respinto",
   "wizardFinalStufeStatusSkipped": "Saltato",
   "wizardFinalStufeFilledAt": "Compilato:",
-  "wizardFinalStufeReviewedAt": "Revisionato:"
+  "wizardFinalStufeReviewedAt": "Revisionato:",
+  "wizardFinalWithdrawLink": "Ritira la richiesta",
+  "wizardFinalWithdrawDialogTitle": "Vuoi ritirare la richiesta?",
+  "wizardFinalWithdrawDialogBody": "La tua richiesta verrà segnata come ritirata da te. I dati restano nel database per audit (GDPR), ma l'account non verrà attivato. Puoi ricominciare la registrazione quando vuoi con un nuovo numero socio.",
+  "wizardFinalWithdrawKeep": "No, aspetto",
+  "wizardFinalWithdrawConfirm": "Sì, ritira"
 }

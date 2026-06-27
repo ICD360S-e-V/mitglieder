@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Zamítnuto",
   "wizardFinalStufeStatusSkipped": "Přeskočeno",
   "wizardFinalStufeFilledAt": "Vyplněno:",
-  "wizardFinalStufeReviewedAt": "Zkontrolováno:"
+  "wizardFinalStufeReviewedAt": "Zkontrolováno:",
+  "wizardFinalWithdrawLink": "Zrušit žádost",
+  "wizardFinalWithdrawDialogTitle": "Zrušit žádost?",
+  "wizardFinalWithdrawDialogBody": "Tvoje žádost bude označena jako zrušena tebou. Data zůstanou v databázi pro audit (GDPR), ale účet nebude aktivován. Registraci můžeš kdykoli zopakovat s novým členským číslem.",
+  "wizardFinalWithdrawKeep": "Ne, počkám",
+  "wizardFinalWithdrawConfirm": "Ano, zrušit"
 }

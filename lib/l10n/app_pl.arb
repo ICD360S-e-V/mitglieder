@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Odrzucone",
   "wizardFinalStufeStatusSkipped": "Pominięte",
   "wizardFinalStufeFilledAt": "Wypełnione:",
-  "wizardFinalStufeReviewedAt": "Sprawdzone:"
+  "wizardFinalStufeReviewedAt": "Sprawdzone:",
+  "wizardFinalWithdrawLink": "Wycofaj wniosek",
+  "wizardFinalWithdrawDialogTitle": "Wycofać wniosek?",
+  "wizardFinalWithdrawDialogBody": "Twój wniosek zostanie oznaczony jako wycofany przez ciebie. Dane pozostają w bazie do celów audytu (RODO), ale konto nie zostanie aktywowane. Możesz w każdej chwili rozpocząć rejestrację od nowa z nowym numerem członkowskim.",
+  "wizardFinalWithdrawKeep": "Nie, poczekam",
+  "wizardFinalWithdrawConfirm": "Tak, wycofaj"
 }

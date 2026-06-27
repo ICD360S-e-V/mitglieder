@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Odbijeno",
   "wizardFinalStufeStatusSkipped": "Preskočeno",
   "wizardFinalStufeFilledAt": "Ispunjeno:",
-  "wizardFinalStufeReviewedAt": "Pregledano:"
+  "wizardFinalStufeReviewedAt": "Pregledano:",
+  "wizardFinalWithdrawLink": "Povuci zahtjev",
+  "wizardFinalWithdrawDialogTitle": "Povući zahtjev?",
+  "wizardFinalWithdrawDialogBody": "Tvoj zahtjev bit će označen kao povučen od strane tebe. Podaci ostaju u bazi radi revizije (GDPR), ali račun neće biti aktiviran. Registraciju možeš pokrenuti ponovno bilo kada s novim brojem člana.",
+  "wizardFinalWithdrawKeep": "Ne, čekat ću",
+  "wizardFinalWithdrawConfirm": "Da, povuci"
 }

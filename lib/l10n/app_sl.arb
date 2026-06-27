@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Zavrnjeno",
   "wizardFinalStufeStatusSkipped": "Preskočeno",
   "wizardFinalStufeFilledAt": "Izpolnjeno:",
-  "wizardFinalStufeReviewedAt": "Pregledano:"
+  "wizardFinalStufeReviewedAt": "Pregledano:",
+  "wizardFinalWithdrawLink": "Umakni vlogo",
+  "wizardFinalWithdrawDialogTitle": "Umakneš vlogo?",
+  "wizardFinalWithdrawDialogBody": "Tvoja vloga bo označena kot umaknjena od tebe. Podatki ostanejo v bazi za revizijo (GDPR), a račun ne bo aktiviran. Prijavo lahko kadarkoli začneš znova z novo članarno številko.",
+  "wizardFinalWithdrawKeep": "Ne, počakam",
+  "wizardFinalWithdrawConfirm": "Da, umakni"
 }

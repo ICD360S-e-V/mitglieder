@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Απορρίφθηκε",
   "wizardFinalStufeStatusSkipped": "Παραλείφθηκε",
   "wizardFinalStufeFilledAt": "Συμπληρώθηκε:",
-  "wizardFinalStufeReviewedAt": "Ελέγχθηκε:"
+  "wizardFinalStufeReviewedAt": "Ελέγχθηκε:",
+  "wizardFinalWithdrawLink": "Απόσυρση αίτησης",
+  "wizardFinalWithdrawDialogTitle": "Απόσυρση της αίτησής σου;",
+  "wizardFinalWithdrawDialogBody": "Η αίτησή σου θα επισημανθεί ως αποσυρμένη από σένα. Τα δεδομένα παραμένουν στη βάση για έλεγχο (GDPR), αλλά ο λογαριασμός δεν θα ενεργοποιηθεί. Μπορείς να ξαναξεκινήσεις την εγγραφή ανά πάσα στιγμή με νέο αριθμό μέλους.",
+  "wizardFinalWithdrawKeep": "Όχι, θα περιμένω",
+  "wizardFinalWithdrawConfirm": "Ναι, απόσυρση"
 }

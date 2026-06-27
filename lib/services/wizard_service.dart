@@ -628,6 +628,35 @@ class WizardService {
     }
   }
 
+  /// Records a voluntary cancellation from the final screen — the
+  /// visitor changed their mind before the Vorstand approved. The
+  /// user row stays in the database for audit (registration
+  /// timestamps, consent records, Bescheid uploads) but is marked
+  /// `status = 'gekuendigt_selbst'` with `deactivated_at` populated.
+  /// Idempotent server-side; safe to call twice.
+  Future<bool> withdrawRequest() async {
+    try {
+      final id = await ensureId();
+      final r = await _client
+          .post(
+            Uri.parse('$_baseUrl/withdraw.php'),
+            headers: _headers(),
+            body: jsonEncode({'anonymous_id': id}),
+          )
+          .timeout(const Duration(seconds: 15));
+      if (r.statusCode != 200) {
+        _log.error('wizard.withdraw HTTP ${r.statusCode}: ${r.body}',
+            tag: 'WIZ');
+        return false;
+      }
+      final body = jsonDecode(r.body) as Map<String, dynamic>;
+      return body['success'] == true;
+    } catch (e) {
+      _log.error('wizard.withdraw: $e', tag: 'WIZ');
+      return false;
+    }
+  }
+
   /// Lightweight status probe used by WizardFinalScreen while it
   /// polls every 30 s. Returns the user's current status (or null
   /// if finalize hasn't created the user row yet — shouldn't happen

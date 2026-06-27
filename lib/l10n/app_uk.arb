@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Відхилено",
   "wizardFinalStufeStatusSkipped": "Пропущено",
   "wizardFinalStufeFilledAt": "Заповнено:",
-  "wizardFinalStufeReviewedAt": "Перевірено:"
+  "wizardFinalStufeReviewedAt": "Перевірено:",
+  "wizardFinalWithdrawLink": "Відкликати заявку",
+  "wizardFinalWithdrawDialogTitle": "Відкликати заявку?",
+  "wizardFinalWithdrawDialogBody": "Твоя заявка буде позначена як відкликана тобою. Дані залишаться в базі для аудиту (GDPR), але акаунт не буде активовано. Ти зможеш пройти реєстрацію заново будь-коли з новим номером.",
+  "wizardFinalWithdrawKeep": "Ні, зачекаю",
+  "wizardFinalWithdrawConfirm": "Так, відкликати"
 }

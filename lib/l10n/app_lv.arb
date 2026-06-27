@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Noraidīts",
   "wizardFinalStufeStatusSkipped": "Izlaists",
   "wizardFinalStufeFilledAt": "Aizpildīts:",
-  "wizardFinalStufeReviewedAt": "Pārbaudīts:"
+  "wizardFinalStufeReviewedAt": "Pārbaudīts:",
+  "wizardFinalWithdrawLink": "Atsaukt pieteikumu",
+  "wizardFinalWithdrawDialogTitle": "Atsaukt pieteikumu?",
+  "wizardFinalWithdrawDialogBody": "Tavs pieteikums tiks atzīmēts kā tevis atsaukts. Dati paliek datubāzē auditam (GDPR), bet konts netiks aktivizēts. Reģistrāciju vari sākt no jauna jebkurā brīdī ar jaunu biedru numuru.",
+  "wizardFinalWithdrawKeep": "Nē, gaidīšu",
+  "wizardFinalWithdrawConfirm": "Jā, atsaukt"
 }

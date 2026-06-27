@@ -1247,5 +1247,10 @@
   "wizardFinalStufeStatusRejected": "Respins",
   "wizardFinalStufeStatusSkipped": "Sărit",
   "wizardFinalStufeFilledAt": "Completat:",
-  "wizardFinalStufeReviewedAt": "Verificat:"
+  "wizardFinalStufeReviewedAt": "Verificat:",
+  "wizardFinalWithdrawLink": "Anulează cererea",
+  "wizardFinalWithdrawDialogTitle": "Anulezi cererea?",
+  "wizardFinalWithdrawDialogBody": "Cererea ta va fi marcată ca anulată de tine. Datele rămân în baza de date pentru audit (DSGVO), dar contul nu va mai fi activat. Vei putea reîncepe înregistrarea oricând cu un alt număr de membru.",
+  "wizardFinalWithdrawKeep": "Nu, mai aștept",
+  "wizardFinalWithdrawConfirm": "Da, anulează"
 }
