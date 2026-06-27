@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "With Bürgergeld, Sozialamt, ALG I or Krankengeld you're fully exempt under Satzung §6. We just need a proof document (Leistungsbescheid or Bescheinigung from the authority / health insurance).",
   "wizardStufe3UploadTitle": "Upload Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
-  "wizardStufe3UploadDone": "File uploaded ✓",
-  "wizardStufe3UploadReplace": "Replace file",
   "wizardStufe3UploadRequired": "Please upload the Leistungsbescheid before continuing.",
   "wizardStufe3FileTooLarge": "File too large. Maximum 10 MB.",
   "wizardStufe3UploadFailed": "Couldn't upload the file. Please try again.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Optional. We have our own end-to-end encrypted app for communication — only leave an email if you'd also like to be reached that way.",
   "wizardErrInvalidEmail": "Invalid email address",
   "wizardStufe3OptionAlg1": "I receive Arbeitslosengeld I (ALG I, unemployment benefit)",
-  "wizardStufe3OptionKrankengeld": "I receive Krankengeld (long-term sick pay)"
+  "wizardStufe3OptionKrankengeld": "I receive Krankengeld (long-term sick pay)",
+  "wizardStufe3UploadAddMore": "Add another document",
+  "wizardStufe3UploadLimitCount": "Limit reached: up to 20 documents.",
+  "wizardStufe3UploadLimitTotal": "100 MB total limit reached. Delete an existing file first.",
+  "wizardStufe3UploadDeleteTooltip": "Delete",
+  "wizardStufe3UploadCounter": "{count} / {max} documents",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

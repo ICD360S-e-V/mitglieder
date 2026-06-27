@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Bürgergeldillä, Sozialamtilla, ALG I:llä tai Krankengeldillä olet Satzungin §6 mukaan kokonaan vapaa jäsenmaksusta. Tarvitsemme vain todisteen (Leistungsbescheid tai todistus viranomaiselta / sairauskassalta).",
   "wizardStufe3UploadTitle": "Lataa Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, enintään 10 MB.",
-  "wizardStufe3UploadDone": "Tiedosto ladattu ✓",
-  "wizardStufe3UploadReplace": "Korvaa tiedosto",
   "wizardStufe3UploadRequired": "Lataa Leistungsbescheid ennen jatkamista.",
   "wizardStufe3FileTooLarge": "Tiedosto on liian suuri. Enintään 10 MB.",
   "wizardStufe3UploadFailed": "Tiedoston lataus epäonnistui. Yritä uudelleen.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Valinnainen. Meillä on oma päästä päähän salattu sovellus viestintään — jätä sähköposti vain jos haluat, että otamme yhteyttä myös sitä kautta.",
   "wizardErrInvalidEmail": "Virheellinen sähköpostiosoite",
   "wizardStufe3OptionAlg1": "Saan Arbeitslosengeld I (ALG I, työttömyyspäiväraha)",
-  "wizardStufe3OptionKrankengeld": "Saan Krankengeld (sairauspäiväraha pitkäaikaisesta sairaudesta)"
+  "wizardStufe3OptionKrankengeld": "Saan Krankengeld (sairauspäiväraha pitkäaikaisesta sairaudesta)",
+  "wizardStufe3UploadAddMore": "Lisää uusi asiakirja",
+  "wizardStufe3UploadLimitCount": "Raja saavutettu: enintään 20 asiakirjaa.",
+  "wizardStufe3UploadLimitTotal": "Kokonaisraja 100 MB saavutettu. Poista olemassa oleva tiedosto.",
+  "wizardStufe3UploadDeleteTooltip": "Poista",
+  "wizardStufe3UploadCounter": "{count} / {max} asiakirjaa",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

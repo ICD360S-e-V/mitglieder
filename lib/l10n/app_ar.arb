@@ -1127,8 +1127,6 @@
   "wizardStufe3FeeExemptBody": "مع Bürgergeld أو Sozialamt أو ALG I أو Krankengeld أنت معفى كاملاً من الاشتراك بموجب §6 من النظام الأساسي. نحتاج فقط إلى إثبات (Leistungsbescheid أو شهادة من السلطة / صندوق التأمين الصحي).",
   "wizardStufe3UploadTitle": "رفع Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG، 10 ميجابايت كحد أقصى.",
-  "wizardStufe3UploadDone": "تم رفع الملف ✓",
-  "wizardStufe3UploadReplace": "استبدال الملف",
   "wizardStufe3UploadRequired": "يرجى رفع Leistungsbescheid قبل المتابعة.",
   "wizardStufe3FileTooLarge": "الملف كبير جدًا. 10 ميجابايت كحد أقصى.",
   "wizardStufe3UploadFailed": "تعذر رفع الملف. حاول مرة أخرى.",
@@ -1243,5 +1241,20 @@
   "wizardStufe1fEmailHelper": "اختياري. لدينا تطبيقنا الخاص للتواصل مع تشفير من طرف إلى طرف — اترك بريدك الإلكتروني فقط إذا أردت أن نتواصل معك هناك أيضًا.",
   "wizardErrInvalidEmail": "بريد إلكتروني غير صالح",
   "wizardStufe3OptionAlg1": "أتلقى Arbeitslosengeld I (ALG I، إعانة البطالة)",
-  "wizardStufe3OptionKrankengeld": "أتلقى Krankengeld (بدل المرض طويل الأمد)"
+  "wizardStufe3OptionKrankengeld": "أتلقى Krankengeld (بدل المرض طويل الأمد)",
+  "wizardStufe3UploadAddMore": "إضافة وثيقة أخرى",
+  "wizardStufe3UploadLimitCount": "تم بلوغ الحد الأقصى: 20 وثيقة كحد أعلى.",
+  "wizardStufe3UploadLimitTotal": "تم بلوغ الحد الإجمالي 100 ميغابايت. احذف ملفًا موجودًا أولاً.",
+  "wizardStufe3UploadDeleteTooltip": "حذف",
+  "wizardStufe3UploadCounter": "{count} / {max} وثائق",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

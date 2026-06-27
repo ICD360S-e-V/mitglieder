@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Med Bürgergeld, Sozialamt, ALG I eller Krankengeld är du helt befriad från avgiften enligt Satzung §6. Vi behöver bara ett intyg (Leistungsbescheid eller intyg från myndigheten / sjukkassan).",
   "wizardStufe3UploadTitle": "Ladda upp Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
-  "wizardStufe3UploadDone": "Filen uppladdad ✓",
-  "wizardStufe3UploadReplace": "Ersätt fil",
   "wizardStufe3UploadRequired": "Ladda upp Leistungsbescheid innan du fortsätter.",
   "wizardStufe3FileTooLarge": "Filen är för stor. Max 10 MB.",
   "wizardStufe3UploadFailed": "Det gick inte att ladda upp filen. Försök igen.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Valfritt. Vi har vår egen end-to-end-krypterade app för kommunikation — lämna bara e-post om du också vill bli kontaktad där.",
   "wizardErrInvalidEmail": "Ogiltig e-postadress",
   "wizardStufe3OptionAlg1": "Jag får Arbeitslosengeld I (ALG I, arbetslöshetsersättning)",
-  "wizardStufe3OptionKrankengeld": "Jag får Krankengeld (sjukpenning vid längre sjukdom)"
+  "wizardStufe3OptionKrankengeld": "Jag får Krankengeld (sjukpenning vid längre sjukdom)",
+  "wizardStufe3UploadAddMore": "Lägg till ett dokument till",
+  "wizardStufe3UploadLimitCount": "Gränsen är nådd: max 20 dokument.",
+  "wizardStufe3UploadLimitTotal": "Total gräns på 100 MB nådd. Ta bort en befintlig fil.",
+  "wizardStufe3UploadDeleteTooltip": "Ta bort",
+  "wizardStufe3UploadCounter": "{count} / {max} dokument",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

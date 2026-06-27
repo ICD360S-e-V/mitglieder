@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Z Bürgergeldem, Sozialamtem, ALG I lub Krankengeldem jesteś całkowicie zwolniony ze składki zgodnie z Satzung §6. Potrzebujemy tylko dowodu (Leistungsbescheid lub zaświadczenia z urzędu / kasy chorych).",
   "wizardStufe3UploadTitle": "Prześlij Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, maks. 10 MB.",
-  "wizardStufe3UploadDone": "Plik przesłany ✓",
-  "wizardStufe3UploadReplace": "Zamień plik",
   "wizardStufe3UploadRequired": "Prześlij Leistungsbescheid, zanim przejdziesz dalej.",
   "wizardStufe3FileTooLarge": "Plik za duży. Maksymalnie 10 MB.",
   "wizardStufe3UploadFailed": "Nie udało się przesłać pliku. Spróbuj ponownie.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Opcjonalnie. Mamy własną aplikację z szyfrowaniem end-to-end do komunikacji — zostaw e-mail tylko jeśli chcesz, byśmy pisali też tam.",
   "wizardErrInvalidEmail": "Nieprawidłowy adres e-mail",
   "wizardStufe3OptionAlg1": "Pobieram Arbeitslosengeld I (ALG I, zasiłek dla bezrobotnych)",
-  "wizardStufe3OptionKrankengeld": "Pobieram Krankengeld (zasiłek chorobowy długoterminowy)"
+  "wizardStufe3OptionKrankengeld": "Pobieram Krankengeld (zasiłek chorobowy długoterminowy)",
+  "wizardStufe3UploadAddMore": "Dodaj kolejny dokument",
+  "wizardStufe3UploadLimitCount": "Osiągnięty limit: maksymalnie 20 dokumentów.",
+  "wizardStufe3UploadLimitTotal": "Osiągnięty łączny limit 100 MB. Usuń istniejący plik.",
+  "wizardStufe3UploadDeleteTooltip": "Usuń",
+  "wizardStufe3UploadCounter": "{count} / {max} dokumentów",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

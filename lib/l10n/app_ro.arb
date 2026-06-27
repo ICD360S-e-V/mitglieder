@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Cu Bürgergeld, Sozialamt, ALG I sau Krankengeld ești scutit complet de cotizație, conform Satzung-ului §6. Avem nevoie doar de o dovadă (Leistungsbescheid sau Bescheinigung de la autoritate / casa de asigurări).",
   "wizardStufe3UploadTitle": "Încarcă Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, maxim 10 MB.",
-  "wizardStufe3UploadDone": "Fișier încărcat ✓",
-  "wizardStufe3UploadReplace": "Înlocuiește fișierul",
   "wizardStufe3UploadRequired": "Te rog încarcă Leistungsbescheid înainte să mergi mai departe.",
   "wizardStufe3FileTooLarge": "Fișierul e prea mare. Maxim 10 MB.",
   "wizardStufe3UploadFailed": "Nu am putut încărca fișierul. Încearcă din nou.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Opțional. Avem propria aplicație criptată end-to-end pentru comunicare — lasă emailul doar dacă vrei să te contactăm și pe acolo.",
   "wizardErrInvalidEmail": "Adresă de email invalidă",
   "wizardStufe3OptionAlg1": "Primesc Arbeitslosengeld I (ALG I)",
-  "wizardStufe3OptionKrankengeld": "Primesc Krankengeld (concediu medical prelungit)"
+  "wizardStufe3OptionKrankengeld": "Primesc Krankengeld (concediu medical prelungit)",
+  "wizardStufe3UploadAddMore": "Adaugă alt document",
+  "wizardStufe3UploadLimitCount": "Ai atins limita: maxim 20 documente.",
+  "wizardStufe3UploadLimitTotal": "Ai atins limita totală de 100 MB. Șterge un fișier existent.",
+  "wizardStufe3UploadDeleteTooltip": "Șterge",
+  "wizardStufe3UploadCounter": "{count} / {max} documente",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

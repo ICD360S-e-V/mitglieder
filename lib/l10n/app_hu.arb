@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Bürgergelddel, Sozialamttal, ALG I-vel vagy Krankengelddel a Satzung §6 szerint teljesen mentes vagy a tagdíj alól. Csak egy igazolás kell (Leistungsbescheid vagy igazolás a hatóságtól / egészségbiztosítótól).",
   "wizardStufe3UploadTitle": "Leistungsbescheid feltöltése",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max. 10 MB.",
-  "wizardStufe3UploadDone": "Fájl feltöltve ✓",
-  "wizardStufe3UploadReplace": "Fájl cseréje",
   "wizardStufe3UploadRequired": "Kérlek töltsd fel a Leistungsbescheidet, mielőtt továbblépsz.",
   "wizardStufe3FileTooLarge": "A fájl túl nagy. Maximum 10 MB.",
   "wizardStufe3UploadFailed": "Nem sikerült feltölteni a fájlt. Próbáld újra.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Opcionális. Saját, végpontok közötti titkosított appunk van a kommunikációhoz — csak akkor add meg az e-mailt, ha úgy is el akarsz érhető lenni.",
   "wizardErrInvalidEmail": "Érvénytelen e-mail cím",
   "wizardStufe3OptionAlg1": "Arbeitslosengeld I-et (ALG I, álláskeresési járadék) kapok",
-  "wizardStufe3OptionKrankengeld": "Krankengeldet kapok (hosszabb betegség idejére)"
+  "wizardStufe3OptionKrankengeld": "Krankengeldet kapok (hosszabb betegség idejére)",
+  "wizardStufe3UploadAddMore": "Még egy dokumentum hozzáadása",
+  "wizardStufe3UploadLimitCount": "Elérted a határt: legfeljebb 20 dokumentum.",
+  "wizardStufe3UploadLimitTotal": "Elérted az összesen 100 MB határt. Törölj egy meglévő fájlt.",
+  "wizardStufe3UploadDeleteTooltip": "Törlés",
+  "wizardStufe3UploadCounter": "{count} / {max} dokumentum",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

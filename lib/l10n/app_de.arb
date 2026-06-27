@@ -1127,8 +1127,6 @@
   "wizardStufe3FeeExemptBody": "Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Wir brauchen nur einen Nachweis (Leistungsbescheid oder Bescheinigung der Behörde / Krankenkasse).",
   "wizardStufe3UploadTitle": "Leistungsbescheid hochladen",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, maximal 10 MB.",
-  "wizardStufe3UploadDone": "Datei hochgeladen ✓",
-  "wizardStufe3UploadReplace": "Datei ersetzen",
   "wizardStufe3UploadRequired": "Bitte lade den Leistungsbescheid hoch, bevor es weitergeht.",
   "wizardStufe3FileTooLarge": "Datei zu groß. Maximal 10 MB.",
   "wizardStufe3UploadFailed": "Datei konnte nicht hochgeladen werden. Bitte erneut versuchen.",
@@ -1243,5 +1241,20 @@
   "wizardStufe1fEmailHelper": "Optional. Wir haben unsere eigene Ende-zu-Ende-verschlüsselte App für die Kommunikation — gib uns die E-Mail nur, wenn wir dich auch dort erreichen sollen.",
   "wizardErrInvalidEmail": "Ungültige E-Mail-Adresse",
   "wizardStufe3OptionAlg1": "Ich beziehe Arbeitslosengeld I (ALG I)",
-  "wizardStufe3OptionKrankengeld": "Ich beziehe Krankengeld"
+  "wizardStufe3OptionKrankengeld": "Ich beziehe Krankengeld",
+  "wizardStufe3UploadAddMore": "Weiteres Dokument hinzufügen",
+  "wizardStufe3UploadLimitCount": "Limit erreicht: maximal 20 Dokumente.",
+  "wizardStufe3UploadLimitTotal": "Gesamtlimit 100 MB erreicht. Lösche eine bestehende Datei.",
+  "wizardStufe3UploadDeleteTooltip": "Löschen",
+  "wizardStufe3UploadCounter": "{count} / {max} Dokumente",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

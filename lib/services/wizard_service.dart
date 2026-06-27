@@ -100,6 +100,53 @@ class WizardStartResult {
   });
 }
 
+/// Outcome of a single Stufe 3 file upload. Success carries the
+/// server-side path the file landed at + the full ordered list of
+/// every Bescheid in the draft (so the UI can rerender deterministically
+/// without merging local state). Error carries the HTTP status and the
+/// server's `message` so the screen can show a precise toast — 413 for
+/// the 10 MB or 100 MB caps, 409 for "20 files already", anything
+/// else is generic.
+class WizardLeistungsbescheidUploadResult {
+  final bool isSuccess;
+  final String? freshPath;
+  final List<String> allFiles;
+  final int totalBytes;
+  final int? errorCode;
+  final String? errorMessage;
+
+  const WizardLeistungsbescheidUploadResult._({
+    required this.isSuccess,
+    this.freshPath,
+    this.allFiles = const [],
+    this.totalBytes = 0,
+    this.errorCode,
+    this.errorMessage,
+  });
+
+  factory WizardLeistungsbescheidUploadResult.success({
+    required String? freshPath,
+    required List<String> allFiles,
+    required int totalBytes,
+  }) =>
+      WizardLeistungsbescheidUploadResult._(
+        isSuccess: true,
+        freshPath: freshPath,
+        allFiles: allFiles,
+        totalBytes: totalBytes,
+      );
+
+  factory WizardLeistungsbescheidUploadResult.error({
+    required int code,
+    required String? message,
+  }) =>
+      WizardLeistungsbescheidUploadResult._(
+        isSuccess: false,
+        errorCode: code,
+        errorMessage: message,
+      );
+}
+
 /// Result returned from `finalize.php` once the wizard is done. For
 /// adults the `mitgliedernummer` is the live member id; for minors
 /// the same field carries the placeholder id pending parent linkage.
@@ -355,10 +402,18 @@ class WizardService {
     }
   }
 
-  /// Multipart upload for Stufe 3 (only when finanzielle_situation
-  /// is buergergeld/sozialamt). Returns the relative server path
-  /// (e.g. `wizard_leistungsbescheid/abc.pdf`).
-  Future<String?> uploadLeistungsbescheid(File file) async {
+  /// Outcome of a Stufe 3 upload call. `freshPath` is the path the
+  /// server saved this specific file to, while `allFiles` is the
+  /// whole array after the append — the UI keeps both so it can
+  /// highlight the latest tile and render the full list.
+  ///
+  /// On the server cap responses (409 / 413) we still return so the
+  /// caller can show a precise toast; in that case [freshPath] is
+  /// null and [errorMessage] carries the server's `message`.
+  /// [errorCode] mirrors the HTTP status so the UI can switch on it.
+  Future<WizardLeistungsbescheidUploadResult> uploadLeistungsbescheid(
+    File file,
+  ) async {
     try {
       final id = await ensureId();
       final uri = Uri.parse('$_baseUrl/upload_leistungsbescheid.php');
@@ -368,15 +423,63 @@ class WizardService {
       req.files.add(await http.MultipartFile.fromPath('file', file.path));
       final streamed = await req.send().timeout(const Duration(seconds: 60));
       final r = await http.Response.fromStream(streamed);
-      if (r.statusCode != 200) {
+      Map<String, dynamic>? body;
+      try {
+        body = jsonDecode(r.body) as Map<String, dynamic>;
+      } catch (_) {
+        body = null;
+      }
+      if (r.statusCode != 200 || body == null || body['success'] != true) {
         _log.error('wizard.upload HTTP ${r.statusCode}: ${r.body}', tag: 'WIZ');
+        return WizardLeistungsbescheidUploadResult.error(
+          code: r.statusCode,
+          message: body?['message']?.toString(),
+        );
+      }
+      final filesRaw = (body['files'] as List<dynamic>?) ?? const [];
+      final files = filesRaw.whereType<String>().toList();
+      return WizardLeistungsbescheidUploadResult.success(
+        freshPath: body['file_path'] as String?,
+        allFiles: files,
+        totalBytes: (body['total_bytes'] as num?)?.toInt() ?? 0,
+      );
+    } catch (e) {
+      _log.error('wizard.upload: $e', tag: 'WIZ');
+      return WizardLeistungsbescheidUploadResult.error(
+        code: 0,
+        message: null,
+      );
+    }
+  }
+
+  /// Drops one previously-uploaded Bescheid from the draft (and from
+  /// disk on the server). Returns the trimmed list on success or null
+  /// on failure. The UI normally calls this when the visitor taps the
+  /// trash icon on an item before submitting Stufe 3.
+  Future<List<String>?> deleteLeistungsbescheid(String relPath) async {
+    try {
+      final id = await ensureId();
+      final r = await _client
+          .post(
+            Uri.parse('$_baseUrl/delete_leistungsbescheid.php'),
+            headers: _headers(),
+            body: jsonEncode({
+              'anonymous_id': id,
+              'file_path':    relPath,
+            }),
+          )
+          .timeout(const Duration(seconds: 15));
+      if (r.statusCode != 200) {
+        _log.error('wizard.delete HTTP ${r.statusCode}: ${r.body}', tag: 'WIZ');
         return null;
       }
       final body = jsonDecode(r.body) as Map<String, dynamic>;
       if (body['success'] != true) return null;
-      return body['file_path'] as String?;
+      return ((body['files'] as List<dynamic>?) ?? const [])
+          .whereType<String>()
+          .toList();
     } catch (e) {
-      _log.error('wizard.upload: $e', tag: 'WIZ');
+      _log.error('wizard.delete: $e', tag: 'WIZ');
       return null;
     }
   }

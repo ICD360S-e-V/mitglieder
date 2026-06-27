@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "S Bürgergeldem, Sozialamtem, ALG I nebo Krankengeldem jsi podle Satzung §6 plně osvobozen od příspěvku. Potřebujeme jen doklad (Leistungsbescheid nebo potvrzení od úřadu / zdravotní pojišťovny).",
   "wizardStufe3UploadTitle": "Nahrát Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
-  "wizardStufe3UploadDone": "Soubor nahrán ✓",
-  "wizardStufe3UploadReplace": "Nahradit soubor",
   "wizardStufe3UploadRequired": "Před pokračováním prosím nahraj Leistungsbescheid.",
   "wizardStufe3FileTooLarge": "Soubor je příliš velký. Maximálně 10 MB.",
   "wizardStufe3UploadFailed": "Soubor se nepodařilo nahrát. Zkus to znovu.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Nepovinné. Máme vlastní E2E šifrovanou aplikaci pro komunikaci — e-mail nech, jen pokud chceš, abychom tě kontaktovali i tam.",
   "wizardErrInvalidEmail": "Neplatná e-mailová adresa",
   "wizardStufe3OptionAlg1": "Pobírám Arbeitslosengeld I (ALG I, podpora v nezaměstnanosti)",
-  "wizardStufe3OptionKrankengeld": "Pobírám Krankengeld (nemocenské po dlouhodobé pracovní neschopnosti)"
+  "wizardStufe3OptionKrankengeld": "Pobírám Krankengeld (nemocenské po dlouhodobé pracovní neschopnosti)",
+  "wizardStufe3UploadAddMore": "Přidat další dokument",
+  "wizardStufe3UploadLimitCount": "Dosažen limit: nejvýše 20 dokumentů.",
+  "wizardStufe3UploadLimitTotal": "Dosažen celkový limit 100 MB. Smaž některý existující soubor.",
+  "wizardStufe3UploadDeleteTooltip": "Smazat",
+  "wizardStufe3UploadCounter": "{count} / {max} dokumentů",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

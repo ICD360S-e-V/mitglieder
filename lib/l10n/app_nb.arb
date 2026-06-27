@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Med Bürgergeld, Sozialamt, ALG I eller Krankengeld er du helt fritatt for kontingent etter Satzung §6. Vi trenger bare et bevis (Leistungsbescheid eller attest fra myndigheten / sykekassen).",
   "wizardStufe3UploadTitle": "Last opp Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, maks 10 MB.",
-  "wizardStufe3UploadDone": "Fil lastet opp ✓",
-  "wizardStufe3UploadReplace": "Erstatt fil",
   "wizardStufe3UploadRequired": "Last opp Leistungsbescheid før du fortsetter.",
   "wizardStufe3FileTooLarge": "Filen er for stor. Maks 10 MB.",
   "wizardStufe3UploadFailed": "Kunne ikke laste opp filen. Prøv igjen.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Valgfritt. Vi har vår egen ende-til-ende-krypterte app for kommunikasjon — legg igjen e-posten kun hvis du også vil kontaktes der.",
   "wizardErrInvalidEmail": "Ugyldig e-postadresse",
   "wizardStufe3OptionAlg1": "Jeg mottar Arbeitslosengeld I (ALG I, dagpenger ved arbeidsledighet)",
-  "wizardStufe3OptionKrankengeld": "Jeg mottar Krankengeld (sykepenger ved langtidssykmelding)"
+  "wizardStufe3OptionKrankengeld": "Jeg mottar Krankengeld (sykepenger ved langtidssykmelding)",
+  "wizardStufe3UploadAddMore": "Legg til et dokument til",
+  "wizardStufe3UploadLimitCount": "Grensen er nådd: maks 20 dokumenter.",
+  "wizardStufe3UploadLimitTotal": "Total grense på 100 MB nådd. Slett en eksisterende fil.",
+  "wizardStufe3UploadDeleteTooltip": "Slett",
+  "wizardStufe3UploadCounter": "{count} / {max} dokumenter",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

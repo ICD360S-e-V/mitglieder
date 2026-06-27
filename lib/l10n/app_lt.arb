@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Su Bürgergeldu, Sozialamtu, ALG I ar Krankengeldu pagal Satzung §6 esi visiškai atleistas nuo mokesčio. Mums tereikia įrodymo (Leistungsbescheid arba pažymos iš institucijos / sveikatos draudimo kasos).",
   "wizardStufe3UploadTitle": "Įkelti Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, iki 10 MB.",
-  "wizardStufe3UploadDone": "Failas įkeltas ✓",
-  "wizardStufe3UploadReplace": "Pakeisti failą",
   "wizardStufe3UploadRequired": "Prieš tęsiant, įkelk Leistungsbescheid.",
   "wizardStufe3FileTooLarge": "Failas per didelis. Daugiausia 10 MB.",
   "wizardStufe3UploadFailed": "Nepavyko įkelti failo. Bandyk dar kartą.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Neprivaloma. Turime savo abipusiu šifravimu apsaugotą programėlę bendravimui — palik el. paštą tik jei nori, kad rašytume ir ten.",
   "wizardErrInvalidEmail": "Neteisingas el. pašto adresas",
   "wizardStufe3OptionAlg1": "Gaunu Arbeitslosengeld I (ALG I, nedarbo išmoką)",
-  "wizardStufe3OptionKrankengeld": "Gaunu Krankengeld (ilgalaikės ligos pašalpą)"
+  "wizardStufe3OptionKrankengeld": "Gaunu Krankengeld (ilgalaikės ligos pašalpą)",
+  "wizardStufe3UploadAddMore": "Pridėti dar dokumentą",
+  "wizardStufe3UploadLimitCount": "Pasiekta riba: ne daugiau kaip 20 dokumentų.",
+  "wizardStufe3UploadLimitTotal": "Pasiekta bendra 100 MB riba. Ištrink esamą failą.",
+  "wizardStufe3UploadDeleteTooltip": "Ištrinti",
+  "wizardStufe3UploadCounter": "{count} / {max} dokumentų",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

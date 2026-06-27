@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Met Bürgergeld, Sozialamt, ALG I of Krankengeld ben je volgens Satzung §6 volledig vrijgesteld van contributie. We hebben alleen een bewijs nodig (Leistungsbescheid of verklaring van de instantie / zorgverzekeraar).",
   "wizardStufe3UploadTitle": "Leistungsbescheid uploaden",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
-  "wizardStufe3UploadDone": "Bestand geüpload ✓",
-  "wizardStufe3UploadReplace": "Bestand vervangen",
   "wizardStufe3UploadRequired": "Upload de Leistungsbescheid voordat je verder gaat.",
   "wizardStufe3FileTooLarge": "Bestand te groot. Maximaal 10 MB.",
   "wizardStufe3UploadFailed": "Bestand uploaden mislukt. Probeer opnieuw.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Optioneel. We hebben onze eigen end-to-end versleutelde app voor communicatie — laat alleen een e-mail achter als je daar ook bereikt wilt worden.",
   "wizardErrInvalidEmail": "Ongeldig e-mailadres",
   "wizardStufe3OptionAlg1": "Ik ontvang Arbeitslosengeld I (ALG I, WW-uitkering)",
-  "wizardStufe3OptionKrankengeld": "Ik ontvang Krankengeld (langdurige ziekteuitkering)"
+  "wizardStufe3OptionKrankengeld": "Ik ontvang Krankengeld (langdurige ziekteuitkering)",
+  "wizardStufe3UploadAddMore": "Nog een document toevoegen",
+  "wizardStufe3UploadLimitCount": "Limiet bereikt: maximaal 20 documenten.",
+  "wizardStufe3UploadLimitTotal": "Totale limiet van 100 MB bereikt. Verwijder een bestaand bestand.",
+  "wizardStufe3UploadDeleteTooltip": "Verwijderen",
+  "wizardStufe3UploadCounter": "{count} / {max} documenten",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

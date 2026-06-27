@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Bürgergeldi, Sozialamti, ALG I või Krankengeldiga oled vastavalt Satzungi §6-le liikmemaksust täielikult vabastatud. Vajame ainult tõendit (Leistungsbescheid või kinnitus ametiasutuselt / haigekassalt).",
   "wizardStufe3UploadTitle": "Lae üles Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, kuni 10 MB.",
-  "wizardStufe3UploadDone": "Fail üles laaditud ✓",
-  "wizardStufe3UploadReplace": "Asenda fail",
   "wizardStufe3UploadRequired": "Palun lae Leistungsbescheid üles enne jätkamist.",
   "wizardStufe3FileTooLarge": "Fail on liiga suur. Maksimaalselt 10 MB.",
   "wizardStufe3UploadFailed": "Faili üleslaadimine ebaõnnestus. Proovi uuesti.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Valikuline. Meil on oma otspunktist-otspunkti krüpteeritud rakendus suhtlemiseks — jäta e-post ainult siis, kui soovid, et sind ka seal kätte saaksime.",
   "wizardErrInvalidEmail": "Vigane e-posti aadress",
   "wizardStufe3OptionAlg1": "Saan Arbeitslosengeld I (ALG I, töötuskindlustushüvitis)",
-  "wizardStufe3OptionKrankengeld": "Saan Krankengeld (pikaajaline haigushüvitis)"
+  "wizardStufe3OptionKrankengeld": "Saan Krankengeld (pikaajaline haigushüvitis)",
+  "wizardStufe3UploadAddMore": "Lisa veel üks dokument",
+  "wizardStufe3UploadLimitCount": "Piir täis: kuni 20 dokumenti.",
+  "wizardStufe3UploadLimitTotal": "Saavutatud kogu maht 100 MB. Kustuta üks olemasolev fail.",
+  "wizardStufe3UploadDeleteTooltip": "Kustuta",
+  "wizardStufe3UploadCounter": "{count} / {max} dokumenti",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

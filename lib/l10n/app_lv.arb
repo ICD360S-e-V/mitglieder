@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Ar Bürgergeld, Sozialamt, ALG I vai Krankengeld saskaņā ar Satzung §6 esi pilnībā atbrīvots no biedru maksas. Mums vajadzīgs tikai pierādījums (Leistungsbescheid vai izziņa no iestādes / veselības apdrošināšanas).",
   "wizardStufe3UploadTitle": "Augšupielādēt Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, līdz 10 MB.",
-  "wizardStufe3UploadDone": "Fails augšupielādēts ✓",
-  "wizardStufe3UploadReplace": "Aizstāt failu",
   "wizardStufe3UploadRequired": "Lūdzu augšupielādē Leistungsbescheid pirms turpināt.",
   "wizardStufe3FileTooLarge": "Fails ir pārāk liels. Maksimums 10 MB.",
   "wizardStufe3UploadFailed": "Faila augšupielāde neizdevās. Mēģini vēlreiz.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Pēc izvēles. Mums ir sava galapunktu šifrēta lietotne saziņai — atstāj e-pastu tikai tad, ja gribi, lai sazināmies arī tur.",
   "wizardErrInvalidEmail": "Nederīga e-pasta adrese",
   "wizardStufe3OptionAlg1": "Saņemu Arbeitslosengeld I (ALG I, bezdarbnieka pabalstu)",
-  "wizardStufe3OptionKrankengeld": "Saņemu Krankengeld (ilgstošas slimības pabalstu)"
+  "wizardStufe3OptionKrankengeld": "Saņemu Krankengeld (ilgstošas slimības pabalstu)",
+  "wizardStufe3UploadAddMore": "Pievienot vēl dokumentu",
+  "wizardStufe3UploadLimitCount": "Sasniegts limits: ne vairāk kā 20 dokumenti.",
+  "wizardStufe3UploadLimitTotal": "Sasniegts kopējais limits 100 MB. Dzēs esošo failu.",
+  "wizardStufe3UploadDeleteTooltip": "Dzēst",
+  "wizardStufe3UploadCounter": "{count} / {max} dokumenti",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

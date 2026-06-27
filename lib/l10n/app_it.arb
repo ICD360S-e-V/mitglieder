@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Con Bürgergeld, Sozialamt, ALG I o Krankengeld sei completamente esente dalla quota secondo lo Statuto §6. Ci serve solo un giustificativo (Leistungsbescheid o attestato dell'ente / cassa malattia).",
   "wizardStufe3UploadTitle": "Carica Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, massimo 10 MB.",
-  "wizardStufe3UploadDone": "File caricato ✓",
-  "wizardStufe3UploadReplace": "Sostituisci file",
   "wizardStufe3UploadRequired": "Per favore carica il Leistungsbescheid prima di continuare.",
   "wizardStufe3FileTooLarge": "File troppo grande. Massimo 10 MB.",
   "wizardStufe3UploadFailed": "Impossibile caricare il file. Riprova.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Facoltativo. Abbiamo la nostra app cifrata end-to-end per comunicare — lascia l'email solo se vuoi che ti scriviamo anche lì.",
   "wizardErrInvalidEmail": "Indirizzo email non valido",
   "wizardStufe3OptionAlg1": "Ricevo Arbeitslosengeld I (ALG I, indennità di disoccupazione)",
-  "wizardStufe3OptionKrankengeld": "Ricevo Krankengeld (indennità di malattia di lunga durata)"
+  "wizardStufe3OptionKrankengeld": "Ricevo Krankengeld (indennità di malattia di lunga durata)",
+  "wizardStufe3UploadAddMore": "Aggiungi un altro documento",
+  "wizardStufe3UploadLimitCount": "Limite raggiunto: massimo 20 documenti.",
+  "wizardStufe3UploadLimitTotal": "Limite totale di 100 MB raggiunto. Elimina un file esistente.",
+  "wizardStufe3UploadDeleteTooltip": "Elimina",
+  "wizardStufe3UploadCounter": "{count} / {max} documenti",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

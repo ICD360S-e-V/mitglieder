@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "З Bürgergeld, Sozialamt, ALG I чи Krankengeld ти повністю звільнений від внеску згідно з Satzung §6. Нам потрібне лише підтвердження (Leistungsbescheid чи довідка від відомства / лікарняної каси).",
   "wizardStufe3UploadTitle": "Завантажити Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, максимум 10 МБ.",
-  "wizardStufe3UploadDone": "Файл завантажено ✓",
-  "wizardStufe3UploadReplace": "Замінити файл",
   "wizardStufe3UploadRequired": "Завантаж Leistungsbescheid перш ніж продовжити.",
   "wizardStufe3FileTooLarge": "Файл занадто великий. Максимум 10 МБ.",
   "wizardStufe3UploadFailed": "Не вдалося завантажити файл. Спробуй ще раз.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Необовʼязково. У нас є власний застосунок зі наскрізним шифруванням — залишай email лише якщо хочеш, щоб ми писали й туди.",
   "wizardErrInvalidEmail": "Невірна адреса електронної пошти",
   "wizardStufe3OptionAlg1": "Отримую Arbeitslosengeld I (ALG I, допомога по безробіттю)",
-  "wizardStufe3OptionKrankengeld": "Отримую Krankengeld (допомога з хвороби)"
+  "wizardStufe3OptionKrankengeld": "Отримую Krankengeld (допомога з хвороби)",
+  "wizardStufe3UploadAddMore": "Додати ще документ",
+  "wizardStufe3UploadLimitCount": "Досягнуто ліміту: до 20 документів.",
+  "wizardStufe3UploadLimitTotal": "Досягнуто ліміту 100 МБ. Видали один із наявних файлів.",
+  "wizardStufe3UploadDeleteTooltip": "Видалити",
+  "wizardStufe3UploadCounter": "{count} / {max} документів",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

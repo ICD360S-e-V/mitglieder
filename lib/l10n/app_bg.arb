@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "С Bürgergeld, Sozialamt, ALG I или Krankengeld си напълно освободен от членски внос съгласно Satzung §6. Нужно ни е само доказателство (Leistungsbescheid или удостоверение от службата / здравната каса).",
   "wizardStufe3UploadTitle": "Качи Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, макс. 10 MB.",
-  "wizardStufe3UploadDone": "Файлът е качен ✓",
-  "wizardStufe3UploadReplace": "Замени файла",
   "wizardStufe3UploadRequired": "Моля, качи Leistungsbescheid преди да продължиш.",
   "wizardStufe3FileTooLarge": "Файлът е твърде голям. Максимум 10 MB.",
   "wizardStufe3UploadFailed": "Файлът не може да бъде качен. Опитай отново.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "По избор. Имаме собствено приложение с end-to-end криптиране за комуникация — остави имейл само ако искаш да те търсим и там.",
   "wizardErrInvalidEmail": "Невалиден имейл адрес",
   "wizardStufe3OptionAlg1": "Получавам Arbeitslosengeld I (ALG I, обезщетение за безработица)",
-  "wizardStufe3OptionKrankengeld": "Получавам Krankengeld (обезщетение за продължителна болест)"
+  "wizardStufe3OptionKrankengeld": "Получавам Krankengeld (обезщетение за продължителна болест)",
+  "wizardStufe3UploadAddMore": "Добави друг документ",
+  "wizardStufe3UploadLimitCount": "Достигнат лимит: до 20 документа.",
+  "wizardStufe3UploadLimitTotal": "Достигнат общ лимит 100 МБ. Изтрий съществуващ файл.",
+  "wizardStufe3UploadDeleteTooltip": "Изтрий",
+  "wizardStufe3UploadCounter": "{count} / {max} документа",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

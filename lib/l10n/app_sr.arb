@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Са Bürgergeldom, Sozialamtom, ALG I или Krankengeldom потпуно си ослобођен чланарине према Сатзунг-у §6. Треба нам само доказ (Leistungsbescheid или потврда од органа / здравствене касе).",
   "wizardStufe3UploadTitle": "Отпреми Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, највише 10 MB.",
-  "wizardStufe3UploadDone": "Датотека отпремљена ✓",
-  "wizardStufe3UploadReplace": "Замени датотеку",
   "wizardStufe3UploadRequired": "Молим те отпреми Leistungsbescheid пре него што наставиш.",
   "wizardStufe3FileTooLarge": "Датотека је превелика. Највише 10 MB.",
   "wizardStufe3UploadFailed": "Није било могуће отпремити датотеку. Покушај поново.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Опционо. Имамо сопствену апликацију са end-to-end енкрипцијом за комуникацију — остави мејл само ако желиш да те контактирамо и тамо.",
   "wizardErrInvalidEmail": "Неважећа имејл адреса",
   "wizardStufe3OptionAlg1": "Примам Arbeitslosengeld I (ALG I, накнаду за незапослене)",
-  "wizardStufe3OptionKrankengeld": "Примам Krankengeld (накнаду за дуготрајну болест)"
+  "wizardStufe3OptionKrankengeld": "Примам Krankengeld (накнаду за дуготрајну болест)",
+  "wizardStufe3UploadAddMore": "Додај још један документ",
+  "wizardStufe3UploadLimitCount": "Достигао си границу: највише 20 докумената.",
+  "wizardStufe3UploadLimitTotal": "Достигао си укупно ограничење од 100 MB. Обриши постојећи фајл.",
+  "wizardStufe3UploadDeleteTooltip": "Обриши",
+  "wizardStufe3UploadCounter": "{count} / {max} докумената",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }

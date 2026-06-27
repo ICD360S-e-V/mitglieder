@@ -1106,8 +1106,6 @@
   "wizardStufe3FeeExemptBody": "Con Bürgergeld, Sozialamt, ALG I o Krankengeld estás totalmente exento de la cuota según Satzung §6. Solo necesitamos un comprobante (Leistungsbescheid o certificado de la autoridad / seguro de salud).",
   "wizardStufe3UploadTitle": "Subir Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, máximo 10 MB.",
-  "wizardStufe3UploadDone": "Archivo subido ✓",
-  "wizardStufe3UploadReplace": "Sustituir archivo",
   "wizardStufe3UploadRequired": "Por favor sube el Leistungsbescheid antes de continuar.",
   "wizardStufe3FileTooLarge": "Archivo demasiado grande. Máximo 10 MB.",
   "wizardStufe3UploadFailed": "No se pudo subir el archivo. Inténtalo de nuevo.",
@@ -1222,5 +1220,20 @@
   "wizardStufe1fEmailHelper": "Opcional. Tenemos nuestra propia app cifrada de extremo a extremo para comunicarnos — deja el email solo si quieres que también te escribamos por ahí.",
   "wizardErrInvalidEmail": "Dirección de email no válida",
   "wizardStufe3OptionAlg1": "Recibo Arbeitslosengeld I (ALG I, prestación por desempleo)",
-  "wizardStufe3OptionKrankengeld": "Recibo Krankengeld (prestación por enfermedad de larga duración)"
+  "wizardStufe3OptionKrankengeld": "Recibo Krankengeld (prestación por enfermedad de larga duración)",
+  "wizardStufe3UploadAddMore": "Añadir otro documento",
+  "wizardStufe3UploadLimitCount": "Has alcanzado el límite: máximo 20 documentos.",
+  "wizardStufe3UploadLimitTotal": "Has alcanzado el límite total de 100 MB. Elimina un archivo existente.",
+  "wizardStufe3UploadDeleteTooltip": "Eliminar",
+  "wizardStufe3UploadCounter": "{count} / {max} documentos",
+  "@wizardStufe3UploadCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }
