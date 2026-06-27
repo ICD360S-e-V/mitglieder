@@ -112,15 +112,16 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isMinor = result.isMinor;
-    // System back (Android / iOS swipe / desktop ESC) is the only exit
-    // affordance now — the dedicated "Acasă" button has been retired.
-    // PopScope catches the pop attempt and runs the same cleanup the
-    // button used to (resets anonymous_id, then lets the navigator pop).
+    // Non-dismissable on purpose. The visitor has just submitted the
+    // application — there is nowhere meaningful for them to "go
+    // back" to. The Vorstand reviews the request and a push
+    // notification will let them know when the account is active;
+    // until then the only useful actions are tapping the Status Card
+    // for details or Sună-ne to talk to us. System back / iOS swipe
+    // / desktop ESC are absorbed silently; backgrounding via the
+    // platform home gesture is the normal way to leave the screen.
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) onClose();
-      },
       child: Scaffold(
       body: Container(
         decoration: BoxDecoration(
