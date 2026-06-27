@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.56.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.56.0...v1.56.1) (2026-06-27)
+
+
+### Bug Fixes
+
+* **ci:** force-clean stale flatpak-builder rofiles mounts before checkout ([43372f0](https://github.com/ICD360S-e-V/mitglieder/commit/43372f0c663bf8ea41079ba16757484fee0fe7d0))
+
 ## [1.56.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.55.0...v1.56.0) (2026-06-27)
 
 
