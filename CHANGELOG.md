@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.49.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.0...v1.49.1) (2026-06-27)
+
+
+### Refactor
+
+* **wizard:** Stufe 3 files moved to relational wizard_draft_files table ([a05138c](https://github.com/ICD360S-e-V/mitglieder/commit/a05138c854d774251ca6bf75d95b4e64aad1a4f8))
+
 ## [1.49.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.48.0...v1.49.0) (2026-06-27)
 
 
