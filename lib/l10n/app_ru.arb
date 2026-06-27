@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Получаю пособие от Sozialamt",
   "wizardStufe3OptionNein": "Не получаю ни одно из этих",
   "wizardStufe3FeeExemptTitle": "Взнос: 0 € / месяц 🎉",
-  "wizardStufe3FeeExemptBody": "С Bürgergeld или Sozialamt ты полностью освобожден от взноса согласно уставу. Нужно только подтверждение.",
+  "wizardStufe3FeeExemptBody": "С Bürgergeld, Sozialamt, ALG I или Krankengeld ты полностью освобождён от взноса по Satzung §6. Нам нужно только подтверждение (Leistungsbescheid или справка от ведомства / больничной кассы).",
   "wizardStufe3UploadTitle": "Загрузить Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, максимум 10 МБ.",
   "wizardStufe3UploadDone": "Файл загружен ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Позвони, чтобы обсудить",
   "wizardStufe1fEmailLabel": "Адрес электронной почты (необязательно)",
   "wizardStufe1fEmailHelper": "Необязательно. У нас есть собственное приложение с end-to-end шифрованием для общения — оставляй email только если хочешь, чтобы мы писали и туда.",
-  "wizardErrInvalidEmail": "Неверный адрес электронной почты"
+  "wizardErrInvalidEmail": "Неверный адрес электронной почты",
+  "wizardStufe3OptionAlg1": "Получаю Arbeitslosengeld I (ALG I, пособие по безработице)",
+  "wizardStufe3OptionKrankengeld": "Получаю Krankengeld (пособие по длительной болезни)"
 }

@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Saan Sozialamt-tukia",
   "wizardStufe3OptionNein": "En saa kumpaakaan",
   "wizardStufe3FeeExemptTitle": "Maksu: 0 € / kk 🎉",
-  "wizardStufe3FeeExemptBody": "Bürgergeldillä tai Sozialamtilla olet sääntöjemme mukaan kokonaan maksuvapaa. Tarvitsemme vain todisteen.",
+  "wizardStufe3FeeExemptBody": "Bürgergeldillä, Sozialamtilla, ALG I:llä tai Krankengeldillä olet Satzungin §6 mukaan kokonaan vapaa jäsenmaksusta. Tarvitsemme vain todisteen (Leistungsbescheid tai todistus viranomaiselta / sairauskassalta).",
   "wizardStufe3UploadTitle": "Lataa Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, enintään 10 MB.",
   "wizardStufe3UploadDone": "Tiedosto ladattu ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Soita, niin jutellaan",
   "wizardStufe1fEmailLabel": "Sähköpostiosoite (valinnainen)",
   "wizardStufe1fEmailHelper": "Valinnainen. Meillä on oma päästä päähän salattu sovellus viestintään — jätä sähköposti vain jos haluat, että otamme yhteyttä myös sitä kautta.",
-  "wizardErrInvalidEmail": "Virheellinen sähköpostiosoite"
+  "wizardErrInvalidEmail": "Virheellinen sähköpostiosoite",
+  "wizardStufe3OptionAlg1": "Saan Arbeitslosengeld I (ALG I, työttömyyspäiväraha)",
+  "wizardStufe3OptionKrankengeld": "Saan Krankengeld (sairauspäiväraha pitkäaikaisesta sairaudesta)"
 }

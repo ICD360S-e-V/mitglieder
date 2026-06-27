@@ -1124,7 +1124,7 @@
   "wizardStufe3OptionSozialamt": "Ich beziehe Sozialamt-Leistungen",
   "wizardStufe3OptionNein": "Ich beziehe keine dieser Leistungen",
   "wizardStufe3FeeExemptTitle": "Beitrag: 0 € / Monat 🎉",
-  "wizardStufe3FeeExemptBody": "Mit Bürgergeld oder Sozialamt-Leistungen bist du laut Satzung komplett beitragsbefreit. Wir brauchen nur einen Nachweis.",
+  "wizardStufe3FeeExemptBody": "Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Wir brauchen nur einen Nachweis (Leistungsbescheid oder Bescheinigung der Behörde / Krankenkasse).",
   "wizardStufe3UploadTitle": "Leistungsbescheid hochladen",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, maximal 10 MB.",
   "wizardStufe3UploadDone": "Datei hochgeladen ✓",
@@ -1241,5 +1241,7 @@
   "wizardFinalAdultCallTitle": "Ruf uns an, um zu sprechen",
   "wizardStufe1fEmailLabel": "E-Mail-Adresse (optional)",
   "wizardStufe1fEmailHelper": "Optional. Wir haben unsere eigene Ende-zu-Ende-verschlüsselte App für die Kommunikation — gib uns die E-Mail nur, wenn wir dich auch dort erreichen sollen.",
-  "wizardErrInvalidEmail": "Ungültige E-Mail-Adresse"
+  "wizardErrInvalidEmail": "Ungültige E-Mail-Adresse",
+  "wizardStufe3OptionAlg1": "Ich beziehe Arbeitslosengeld I (ALG I)",
+  "wizardStufe3OptionKrankengeld": "Ich beziehe Krankengeld"
 }

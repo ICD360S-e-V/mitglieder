@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Jag får förmåner från Sozialamt",
   "wizardStufe3OptionNein": "Jag får ingen av dessa",
   "wizardStufe3FeeExemptTitle": "Avgift: 0 € / månad 🎉",
-  "wizardStufe3FeeExemptBody": "Med Bürgergeld eller Sozialamt är du helt avgiftsbefriad enligt våra stadgar. Vi behöver bara ett intyg.",
+  "wizardStufe3FeeExemptBody": "Med Bürgergeld, Sozialamt, ALG I eller Krankengeld är du helt befriad från avgiften enligt Satzung §6. Vi behöver bara ett intyg (Leistungsbescheid eller intyg från myndigheten / sjukkassan).",
   "wizardStufe3UploadTitle": "Ladda upp Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
   "wizardStufe3UploadDone": "Filen uppladdad ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Ring oss för att prata",
   "wizardStufe1fEmailLabel": "E-postadress (valfritt)",
   "wizardStufe1fEmailHelper": "Valfritt. Vi har vår egen end-to-end-krypterade app för kommunikation — lämna bara e-post om du också vill bli kontaktad där.",
-  "wizardErrInvalidEmail": "Ogiltig e-postadress"
+  "wizardErrInvalidEmail": "Ogiltig e-postadress",
+  "wizardStufe3OptionAlg1": "Jag får Arbeitslosengeld I (ALG I, arbetslöshetsersättning)",
+  "wizardStufe3OptionKrankengeld": "Jag får Krankengeld (sjukpenning vid längre sjukdom)"
 }

@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Saņemu pabalstus no Sozialamt",
   "wizardStufe3OptionNein": "Nesaņemu nevienu no šiem",
   "wizardStufe3FeeExemptTitle": "Biedru maksa: 0 € / mēn. 🎉",
-  "wizardStufe3FeeExemptBody": "Ar Bürgergeld vai Sozialamt esi pilnībā atbrīvots no biedru maksas saskaņā ar mūsu statūtiem. Vajag tikai apliecinājumu.",
+  "wizardStufe3FeeExemptBody": "Ar Bürgergeld, Sozialamt, ALG I vai Krankengeld saskaņā ar Satzung §6 esi pilnībā atbrīvots no biedru maksas. Mums vajadzīgs tikai pierādījums (Leistungsbescheid vai izziņa no iestādes / veselības apdrošināšanas).",
   "wizardStufe3UploadTitle": "Augšupielādēt Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, līdz 10 MB.",
   "wizardStufe3UploadDone": "Fails augšupielādēts ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Piezvani, parunāsim",
   "wizardStufe1fEmailLabel": "E-pasta adrese (pēc izvēles)",
   "wizardStufe1fEmailHelper": "Pēc izvēles. Mums ir sava galapunktu šifrēta lietotne saziņai — atstāj e-pastu tikai tad, ja gribi, lai sazināmies arī tur.",
-  "wizardErrInvalidEmail": "Nederīga e-pasta adrese"
+  "wizardErrInvalidEmail": "Nederīga e-pasta adrese",
+  "wizardStufe3OptionAlg1": "Saņemu Arbeitslosengeld I (ALG I, bezdarbnieka pabalstu)",
+  "wizardStufe3OptionKrankengeld": "Saņemu Krankengeld (ilgstošas slimības pabalstu)"
 }

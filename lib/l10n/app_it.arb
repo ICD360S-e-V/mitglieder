@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Ricevo aiuti dal Sozialamt",
   "wizardStufe3OptionNein": "Non ricevo nessuna di queste",
   "wizardStufe3FeeExemptTitle": "Quota: 0 € / mese 🎉",
-  "wizardStufe3FeeExemptBody": "Con Bürgergeld o Sozialamt sei completamente esonerato dalla quota secondo il nostro Satzung. Ci serve solo una prova.",
+  "wizardStufe3FeeExemptBody": "Con Bürgergeld, Sozialamt, ALG I o Krankengeld sei completamente esente dalla quota secondo lo Statuto §6. Ci serve solo un giustificativo (Leistungsbescheid o attestato dell'ente / cassa malattia).",
   "wizardStufe3UploadTitle": "Carica Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, massimo 10 MB.",
   "wizardStufe3UploadDone": "File caricato ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Chiamaci per parlarne",
   "wizardStufe1fEmailLabel": "Indirizzo email (facoltativo)",
   "wizardStufe1fEmailHelper": "Facoltativo. Abbiamo la nostra app cifrata end-to-end per comunicare — lascia l'email solo se vuoi che ti scriviamo anche lì.",
-  "wizardErrInvalidEmail": "Indirizzo email non valido"
+  "wizardErrInvalidEmail": "Indirizzo email non valido",
+  "wizardStufe3OptionAlg1": "Ricevo Arbeitslosengeld I (ALG I, indennità di disoccupazione)",
+  "wizardStufe3OptionKrankengeld": "Ricevo Krankengeld (indennità di malattia di lunga durata)"
 }

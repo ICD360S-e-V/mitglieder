@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Recibo ayudas del Sozialamt",
   "wizardStufe3OptionNein": "No recibo ninguna",
   "wizardStufe3FeeExemptTitle": "Cuota: 0 € / mes 🎉",
-  "wizardStufe3FeeExemptBody": "Con Bürgergeld o Sozialamt estás totalmente exento de la cuota según nuestro Satzung. Solo necesitamos un comprobante.",
+  "wizardStufe3FeeExemptBody": "Con Bürgergeld, Sozialamt, ALG I o Krankengeld estás totalmente exento de la cuota según Satzung §6. Solo necesitamos un comprobante (Leistungsbescheid o certificado de la autoridad / seguro de salud).",
   "wizardStufe3UploadTitle": "Subir Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, máximo 10 MB.",
   "wizardStufe3UploadDone": "Archivo subido ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Llámanos para hablar",
   "wizardStufe1fEmailLabel": "Dirección de email (opcional)",
   "wizardStufe1fEmailHelper": "Opcional. Tenemos nuestra propia app cifrada de extremo a extremo para comunicarnos — deja el email solo si quieres que también te escribamos por ahí.",
-  "wizardErrInvalidEmail": "Dirección de email no válida"
+  "wizardErrInvalidEmail": "Dirección de email no válida",
+  "wizardStufe3OptionAlg1": "Recibo Arbeitslosengeld I (ALG I, prestación por desempleo)",
+  "wizardStufe3OptionKrankengeld": "Recibo Krankengeld (prestación por enfermedad de larga duración)"
 }

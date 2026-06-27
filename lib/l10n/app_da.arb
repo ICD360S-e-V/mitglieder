@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Jeg modtager ydelser fra Sozialamt",
   "wizardStufe3OptionNein": "Jeg modtager ingen af disse",
   "wizardStufe3FeeExemptTitle": "Kontingent: 0 € / måned 🎉",
-  "wizardStufe3FeeExemptBody": "Med Bürgergeld eller Sozialamt er du helt fritaget for kontingent ifølge vores Satzung. Vi mangler bare dokumentation.",
+  "wizardStufe3FeeExemptBody": "Med Bürgergeld, Sozialamt, ALG I eller Krankengeld er du helt fritaget for kontingent efter Satzung §6. Vi har kun brug for et bevis (Leistungsbescheid eller bekræftelse fra myndigheden / sygekassen).",
   "wizardStufe3UploadTitle": "Upload Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, maks. 10 MB.",
   "wizardStufe3UploadDone": "Fil uploadet ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Ring og lad os tale",
   "wizardStufe1fEmailLabel": "E-mailadresse (valgfrit)",
   "wizardStufe1fEmailHelper": "Valgfrit. Vi har vores egen end-to-end krypterede app til kommunikation — angiv kun e-mail, hvis du også vil kontaktes der.",
-  "wizardErrInvalidEmail": "Ugyldig e-mailadresse"
+  "wizardErrInvalidEmail": "Ugyldig e-mailadresse",
+  "wizardStufe3OptionAlg1": "Jeg modtager Arbeitslosengeld I (ALG I, arbejdsløshedsdagpenge)",
+  "wizardStufe3OptionKrankengeld": "Jeg modtager Krankengeld (sygedagpenge)"
 }

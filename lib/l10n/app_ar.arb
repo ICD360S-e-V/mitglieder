@@ -1124,7 +1124,7 @@
   "wizardStufe3OptionSozialamt": "أتلقى مساعدات من Sozialamt",
   "wizardStufe3OptionNein": "لا أتلقى أيًا منها",
   "wizardStufe3FeeExemptTitle": "الاشتراك: 0 € / شهر 🎉",
-  "wizardStufe3FeeExemptBody": "مع Bürgergeld أو Sozialamt أنت معفى من الاشتراك بالكامل وفقًا للنظام الأساسي. نحتاج فقط إلى إثبات.",
+  "wizardStufe3FeeExemptBody": "مع Bürgergeld أو Sozialamt أو ALG I أو Krankengeld أنت معفى كاملاً من الاشتراك بموجب §6 من النظام الأساسي. نحتاج فقط إلى إثبات (Leistungsbescheid أو شهادة من السلطة / صندوق التأمين الصحي).",
   "wizardStufe3UploadTitle": "رفع Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG، 10 ميجابايت كحد أقصى.",
   "wizardStufe3UploadDone": "تم رفع الملف ✓",
@@ -1241,5 +1241,7 @@
   "wizardFinalAdultCallTitle": "اتصل بنا للتحدث",
   "wizardStufe1fEmailLabel": "البريد الإلكتروني (اختياري)",
   "wizardStufe1fEmailHelper": "اختياري. لدينا تطبيقنا الخاص للتواصل مع تشفير من طرف إلى طرف — اترك بريدك الإلكتروني فقط إذا أردت أن نتواصل معك هناك أيضًا.",
-  "wizardErrInvalidEmail": "بريد إلكتروني غير صالح"
+  "wizardErrInvalidEmail": "بريد إلكتروني غير صالح",
+  "wizardStufe3OptionAlg1": "أتلقى Arbeitslosengeld I (ALG I، إعانة البطالة)",
+  "wizardStufe3OptionKrankengeld": "أتلقى Krankengeld (بدل المرض طويل الأمد)"
 }

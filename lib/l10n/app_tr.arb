@@ -1124,7 +1124,7 @@
   "wizardStufe3OptionSozialamt": "Sozialamt'tan yardım alıyorum",
   "wizardStufe3OptionNein": "Bunlardan hiçbirini almıyorum",
   "wizardStufe3FeeExemptTitle": "Aidat: 0 € / ay 🎉",
-  "wizardStufe3FeeExemptBody": "Bürgergeld veya Sozialamt ile tüzüğümüze göre aidattan tamamen muafsın. Sadece bir belge gerekiyor.",
+  "wizardStufe3FeeExemptBody": "Bürgergeld, Sozialamt, ALG I veya Krankengeld ile Tüzük §6 uyarınca aidattan tamamen muafsın. Bize sadece bir belge (Leistungsbescheid veya kurum / hastalık sigortasından alınan belge) lazım.",
   "wizardStufe3UploadTitle": "Leistungsbescheid yükle",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, en fazla 10 MB.",
   "wizardStufe3UploadDone": "Dosya yüklendi ✓",
@@ -1241,5 +1241,7 @@
   "wizardFinalAdultCallTitle": "Konuşmak için ara",
   "wizardStufe1fEmailLabel": "E-posta adresi (isteğe bağlı)",
   "wizardStufe1fEmailHelper": "İsteğe bağlı. İletişim için kendi uçtan uca şifreli uygulamamız var — sadece e-posta ile de iletişim kurmamızı istiyorsan adresini bırak.",
-  "wizardErrInvalidEmail": "Geçersiz e-posta adresi"
+  "wizardErrInvalidEmail": "Geçersiz e-posta adresi",
+  "wizardStufe3OptionAlg1": "Arbeitslosengeld I (ALG I, işsizlik yardımı) alıyorum",
+  "wizardStufe3OptionKrankengeld": "Krankengeld (uzun süreli hastalık ödeneği) alıyorum"
 }

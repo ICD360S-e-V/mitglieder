@@ -8,17 +8,19 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
 
-/// Stufe 3 — Finanzielle Situation. Three radio options mirroring the
-/// existing `verifizierung_tab.dart` flow:
+/// Stufe 3 — Finanzielle Situation. Five radio options covering every
+/// fee-exempt social benefit the Vorstand accepts under Satzung §6
+/// Abs. 4 ("Ermäßigung, Stundung oder Erlass möglich"):
 ///
-///   • bürgergeld → membership fee waived; upload Leistungsbescheid
-///                  (PDF/JPG/PNG ≤ 10 MB) so the Vorstand can verify
-///   • sozialamt  → same exemption + same upload requirement
-///   • nein       → regular monthly fee applies
+///   • bürgergeld   → fee waived; upload Leistungsbescheid (Jobcenter)
+///   • sozialamt    → fee waived; upload Sozialhilfebescheid
+///   • alg1         → fee waived; upload ALG-I-Bescheid (Arbeitsagentur)
+///   • krankengeld  → fee waived; upload Krankengeld-Bescheinigung
+///                    (Krankenkasse)
+///   • nein         → regular monthly fee applies
 ///
-/// When the visitor picks one of the exempt options the screen
-/// reveals a green "fee exempt" hint and a file-picker tile beneath
-/// it. The upload calls `WizardService().uploadLeistungsbescheid()`
+/// All four exempt options share the same upload tile (PDF/JPG/PNG
+/// ≤ 10 MB). The upload calls `WizardService().uploadLeistungsbescheid()`
 /// which streams the file to `/api/public/wizard/upload_leistungsbescheid.php`
 /// and writes the relative path into the draft so finalize.php picks
 /// it up later.
@@ -45,7 +47,20 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   bool _uploading = false;
   bool _saving = false;
 
-  static const _options = <String>['buergergeld', 'sozialamt', 'nein'];
+  static const _options = <String>[
+    'buergergeld',
+    'sozialamt',
+    'alg1',
+    'krankengeld',
+    'nein',
+  ];
+
+  static const _exemptOptions = <String>{
+    'buergergeld',
+    'sozialamt',
+    'alg1',
+    'krankengeld',
+  };
 
   @override
   void initState() {
@@ -59,7 +74,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   }
 
   bool get _needsUpload =>
-      _situation == 'buergergeld' || _situation == 'sozialamt';
+      _situation != null && _exemptOptions.contains(_situation);
 
   Future<void> _pickAndUpload() async {
     final l10n = AppLocalizations.of(context)!;
@@ -157,6 +172,16 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
           title: l10n.wizardStufe3OptionSozialamt,
           icon: Icons.health_and_safety,
           color: Colors.lightBlueAccent,
+        ),
+        'alg1' => (
+          title: l10n.wizardStufe3OptionAlg1,
+          icon: Icons.business_center,
+          color: Colors.deepOrangeAccent,
+        ),
+        'krankengeld' => (
+          title: l10n.wizardStufe3OptionKrankengeld,
+          icon: Icons.medical_services,
+          color: Colors.pinkAccent,
         ),
         'nein' => (
           title: l10n.wizardStufe3OptionNein,

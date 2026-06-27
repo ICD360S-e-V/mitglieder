@@ -93,9 +93,17 @@ class _WizardScreenState extends State<WizardScreen> {
   /// Set after Stufe 8 + finalize succeeds. Drives [WizardFinalScreen].
   WizardFinalizeResult? _finalizeResult;
 
+  /// Visitor falls into the fee-exempt bucket when their Stufe 3
+  /// answer is one of the recognised social benefits — Bürgergeld
+  /// (SGB II), Sozialamt (SGB XII), Arbeitslosengeld I (SGB III) or
+  /// Krankengeld (SGB V). Satzung §6 Abs. 4 allows the Vorstand to
+  /// grant Erlass for these categories without amending the bylaws.
   bool get _isBeitragsfrei {
     final fs = _data['finanzielle_situation'];
-    return fs == 'buergergeld' || fs == 'sozialamt';
+    return fs == 'buergergeld' ||
+        fs == 'sozialamt' ||
+        fs == 'alg1' ||
+        fs == 'krankengeld';
   }
 
   bool get _isMinor => _ageStatus == WizardAgeStatus.minor;

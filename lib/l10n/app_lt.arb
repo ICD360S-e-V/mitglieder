@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Gaunu išmokas iš Sozialamto",
   "wizardStufe3OptionNein": "Negaunu nė vienos",
   "wizardStufe3FeeExemptTitle": "Mokestis: 0 € / mėn. 🎉",
-  "wizardStufe3FeeExemptBody": "Su Bürgergeld arba Sozialamt esi visiškai atleistas nuo mokesčio pagal mūsų įstatus. Tik reikia įrodymo.",
+  "wizardStufe3FeeExemptBody": "Su Bürgergeldu, Sozialamtu, ALG I ar Krankengeldu pagal Satzung §6 esi visiškai atleistas nuo mokesčio. Mums tereikia įrodymo (Leistungsbescheid arba pažymos iš institucijos / sveikatos draudimo kasos).",
   "wizardStufe3UploadTitle": "Įkelti Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, iki 10 MB.",
   "wizardStufe3UploadDone": "Failas įkeltas ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Paskambink pasikalbėti",
   "wizardStufe1fEmailLabel": "El. pašto adresas (neprivaloma)",
   "wizardStufe1fEmailHelper": "Neprivaloma. Turime savo abipusiu šifravimu apsaugotą programėlę bendravimui — palik el. paštą tik jei nori, kad rašytume ir ten.",
-  "wizardErrInvalidEmail": "Neteisingas el. pašto adresas"
+  "wizardErrInvalidEmail": "Neteisingas el. pašto adresas",
+  "wizardStufe3OptionAlg1": "Gaunu Arbeitslosengeld I (ALG I, nedarbo išmoką)",
+  "wizardStufe3OptionKrankengeld": "Gaunu Krankengeld (ilgalaikės ligos pašalpą)"
 }

@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Saan Sozialamt-toetusi",
   "wizardStufe3OptionNein": "Ei saa kumbagi neist",
   "wizardStufe3FeeExemptTitle": "Liikmemaks: 0 € / kuu 🎉",
-  "wizardStufe3FeeExemptBody": "Bürgergeld või Sozialamt korral oled meie põhikirja järgi liikmemaksust täielikult vabastatud. Vajame ainult tõendit.",
+  "wizardStufe3FeeExemptBody": "Bürgergeldi, Sozialamti, ALG I või Krankengeldiga oled vastavalt Satzungi §6-le liikmemaksust täielikult vabastatud. Vajame ainult tõendit (Leistungsbescheid või kinnitus ametiasutuselt / haigekassalt).",
   "wizardStufe3UploadTitle": "Lae üles Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, kuni 10 MB.",
   "wizardStufe3UploadDone": "Fail üles laaditud ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Helista, arutame",
   "wizardStufe1fEmailLabel": "E-posti aadress (valikuline)",
   "wizardStufe1fEmailHelper": "Valikuline. Meil on oma otspunktist-otspunkti krüpteeritud rakendus suhtlemiseks — jäta e-post ainult siis, kui soovid, et sind ka seal kätte saaksime.",
-  "wizardErrInvalidEmail": "Vigane e-posti aadress"
+  "wizardErrInvalidEmail": "Vigane e-posti aadress",
+  "wizardStufe3OptionAlg1": "Saan Arbeitslosengeld I (ALG I, töötuskindlustushüvitis)",
+  "wizardStufe3OptionKrankengeld": "Saan Krankengeld (pikaajaline haigushüvitis)"
 }

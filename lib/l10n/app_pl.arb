@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Otrzymuję świadczenia od Sozialamt",
   "wizardStufe3OptionNein": "Nie otrzymuję żadnego z tych",
   "wizardStufe3FeeExemptTitle": "Składka: 0 € / m-c 🎉",
-  "wizardStufe3FeeExemptBody": "Z Bürgergeld lub Sozialamt jesteś całkowicie zwolniony ze składki zgodnie z naszym statutem. Potrzebujemy tylko dowodu.",
+  "wizardStufe3FeeExemptBody": "Z Bürgergeldem, Sozialamtem, ALG I lub Krankengeldem jesteś całkowicie zwolniony ze składki zgodnie z Satzung §6. Potrzebujemy tylko dowodu (Leistungsbescheid lub zaświadczenia z urzędu / kasy chorych).",
   "wizardStufe3UploadTitle": "Prześlij Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, maks. 10 MB.",
   "wizardStufe3UploadDone": "Plik przesłany ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Zadzwoń, porozmawiajmy",
   "wizardStufe1fEmailLabel": "Adres e-mail (opcjonalnie)",
   "wizardStufe1fEmailHelper": "Opcjonalnie. Mamy własną aplikację z szyfrowaniem end-to-end do komunikacji — zostaw e-mail tylko jeśli chcesz, byśmy pisali też tam.",
-  "wizardErrInvalidEmail": "Nieprawidłowy adres e-mail"
+  "wizardErrInvalidEmail": "Nieprawidłowy adres e-mail",
+  "wizardStufe3OptionAlg1": "Pobieram Arbeitslosengeld I (ALG I, zasiłek dla bezrobotnych)",
+  "wizardStufe3OptionKrankengeld": "Pobieram Krankengeld (zasiłek chorobowy długoterminowy)"
 }

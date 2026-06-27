@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Sozialamt-támogatást kapok",
   "wizardStufe3OptionNein": "Egyiket sem kapom",
   "wizardStufe3FeeExemptTitle": "Tagdíj: 0 € / hó 🎉",
-  "wizardStufe3FeeExemptBody": "Bürgergelddel vagy Sozialamttal teljesen mentes vagy a tagdíj alól az alapszabály szerint. Csak igazolásra van szükségünk.",
+  "wizardStufe3FeeExemptBody": "Bürgergelddel, Sozialamttal, ALG I-vel vagy Krankengelddel a Satzung §6 szerint teljesen mentes vagy a tagdíj alól. Csak egy igazolás kell (Leistungsbescheid vagy igazolás a hatóságtól / egészségbiztosítótól).",
   "wizardStufe3UploadTitle": "Leistungsbescheid feltöltése",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max. 10 MB.",
   "wizardStufe3UploadDone": "Fájl feltöltve ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Hívj, hogy beszéljünk",
   "wizardStufe1fEmailLabel": "E-mail cím (opcionális)",
   "wizardStufe1fEmailHelper": "Opcionális. Saját, végpontok közötti titkosított appunk van a kommunikációhoz — csak akkor add meg az e-mailt, ha úgy is el akarsz érhető lenni.",
-  "wizardErrInvalidEmail": "Érvénytelen e-mail cím"
+  "wizardErrInvalidEmail": "Érvénytelen e-mail cím",
+  "wizardStufe3OptionAlg1": "Arbeitslosengeld I-et (ALG I, álláskeresési járadék) kapok",
+  "wizardStufe3OptionKrankengeld": "Krankengeldet kapok (hosszabb betegség idejére)"
 }

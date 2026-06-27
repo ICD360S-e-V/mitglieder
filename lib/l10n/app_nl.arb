@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Ik ontvang uitkeringen van Sozialamt",
   "wizardStufe3OptionNein": "Ik ontvang geen van deze",
   "wizardStufe3FeeExemptTitle": "Contributie: € 0 / maand 🎉",
-  "wizardStufe3FeeExemptBody": "Met Bürgergeld of Sozialamt ben je volledig vrijgesteld van contributie volgens onze statuten. We hebben alleen een bewijs nodig.",
+  "wizardStufe3FeeExemptBody": "Met Bürgergeld, Sozialamt, ALG I of Krankengeld ben je volgens Satzung §6 volledig vrijgesteld van contributie. We hebben alleen een bewijs nodig (Leistungsbescheid of verklaring van de instantie / zorgverzekeraar).",
   "wizardStufe3UploadTitle": "Leistungsbescheid uploaden",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
   "wizardStufe3UploadDone": "Bestand geüpload ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Bel ons voor een gesprek",
   "wizardStufe1fEmailLabel": "E-mailadres (optioneel)",
   "wizardStufe1fEmailHelper": "Optioneel. We hebben onze eigen end-to-end versleutelde app voor communicatie — laat alleen een e-mail achter als je daar ook bereikt wilt worden.",
-  "wizardErrInvalidEmail": "Ongeldig e-mailadres"
+  "wizardErrInvalidEmail": "Ongeldig e-mailadres",
+  "wizardStufe3OptionAlg1": "Ik ontvang Arbeitslosengeld I (ALG I, WW-uitkering)",
+  "wizardStufe3OptionKrankengeld": "Ik ontvang Krankengeld (langdurige ziekteuitkering)"
 }

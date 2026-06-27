@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Prejemam pomoč od Sozialamta",
   "wizardStufe3OptionNein": "Ne prejemam nobenega",
   "wizardStufe3FeeExemptTitle": "Članarina: 0 € / mesec 🎉",
-  "wizardStufe3FeeExemptBody": "Z Bürgergeld ali Sozialamt si po statutu popolnoma oproščen članarine. Potrebujemo le dokazilo.",
+  "wizardStufe3FeeExemptBody": "Z Bürgergeldom, Sozialamtom, ALG I ali Krankengeldom si po Satzungu §6 popolnoma oproščen članarine. Potrebujemo le dokazilo (Leistungsbescheid ali potrdilo organa / zdravstvene blagajne).",
   "wizardStufe3UploadTitle": "Naloži Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, največ 10 MB.",
   "wizardStufe3UploadDone": "Datoteka naložena ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Pokliči za pogovor",
   "wizardStufe1fEmailLabel": "E-poštni naslov (neobvezno)",
   "wizardStufe1fEmailHelper": "Neobvezno. Imamo lastno aplikacijo z end-to-end šifriranjem za komunikacijo — e-pošto pusti samo, če želiš, da te kontaktiramo tudi tam.",
-  "wizardErrInvalidEmail": "Neveljaven e-poštni naslov"
+  "wizardErrInvalidEmail": "Neveljaven e-poštni naslov",
+  "wizardStufe3OptionAlg1": "Prejemam Arbeitslosengeld I (ALG I, nadomestilo za brezposelnost)",
+  "wizardStufe3OptionKrankengeld": "Prejemam Krankengeld (nadomestilo za dolgotrajno bolezen)"
 }

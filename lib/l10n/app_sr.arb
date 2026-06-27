@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Примам помоћ од Sozialamta",
   "wizardStufe3OptionNein": "Не примам ниједно од овога",
   "wizardStufe3FeeExemptTitle": "Чланарина: 0 € / месечно 🎉",
-  "wizardStufe3FeeExemptBody": "Са Bürgergeld или Sozialamt-ом потпуно си ослобођен чланарине према статуту. Треба нам само доказ.",
+  "wizardStufe3FeeExemptBody": "Са Bürgergeldom, Sozialamtom, ALG I или Krankengeldom потпуно си ослобођен чланарине према Сатзунг-у §6. Треба нам само доказ (Leistungsbescheid или потврда од органа / здравствене касе).",
   "wizardStufe3UploadTitle": "Отпреми Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, највише 10 MB.",
   "wizardStufe3UploadDone": "Датотека отпремљена ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Позови да поразговарамо",
   "wizardStufe1fEmailLabel": "Имејл адреса (опционо)",
   "wizardStufe1fEmailHelper": "Опционо. Имамо сопствену апликацију са end-to-end енкрипцијом за комуникацију — остави мејл само ако желиш да те контактирамо и тамо.",
-  "wizardErrInvalidEmail": "Неважећа имејл адреса"
+  "wizardErrInvalidEmail": "Неважећа имејл адреса",
+  "wizardStufe3OptionAlg1": "Примам Arbeitslosengeld I (ALG I, накнаду за незапослене)",
+  "wizardStufe3OptionKrankengeld": "Примам Krankengeld (накнаду за дуготрајну болест)"
 }

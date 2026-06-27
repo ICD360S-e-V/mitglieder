@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Je reçois des aides du Sozialamt",
   "wizardStufe3OptionNein": "Je ne reçois aucune de ces aides",
   "wizardStufe3FeeExemptTitle": "Cotisation : 0 € / mois 🎉",
-  "wizardStufe3FeeExemptBody": "Avec Bürgergeld ou Sozialamt, tu es totalement exempté de cotisation selon notre Satzung. Il nous faut juste un justificatif.",
+  "wizardStufe3FeeExemptBody": "Avec Bürgergeld, Sozialamt, ALG I ou Krankengeld tu es totalement exempté de cotisation selon Satzung §6. Il nous faut juste un justificatif (Leistungsbescheid ou attestation de l'administration / caisse maladie).",
   "wizardStufe3UploadTitle": "Téléverser Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, 10 Mo max.",
   "wizardStufe3UploadDone": "Fichier téléversé ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Appelle-nous pour en parler",
   "wizardStufe1fEmailLabel": "Adresse e-mail (facultatif)",
   "wizardStufe1fEmailHelper": "Facultatif. On a notre propre app chiffrée de bout en bout pour communiquer — laisse ton e-mail seulement si tu veux qu'on te contacte aussi par là.",
-  "wizardErrInvalidEmail": "Adresse e-mail invalide"
+  "wizardErrInvalidEmail": "Adresse e-mail invalide",
+  "wizardStufe3OptionAlg1": "Je perçois Arbeitslosengeld I (ALG I, allocation chômage)",
+  "wizardStufe3OptionKrankengeld": "Je perçois Krankengeld (indemnités maladie longue durée)"
 }

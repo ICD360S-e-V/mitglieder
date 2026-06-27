@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "I receive Sozialamt benefits",
   "wizardStufe3OptionNein": "I don't receive any of these",
   "wizardStufe3FeeExemptTitle": "Fee: € 0 / month 🎉",
-  "wizardStufe3FeeExemptBody": "With Bürgergeld or Sozialamt you're fully fee-exempt under our Satzung. We just need a proof.",
+  "wizardStufe3FeeExemptBody": "With Bürgergeld, Sozialamt, ALG I or Krankengeld you're fully exempt under Satzung §6. We just need a proof document (Leistungsbescheid or Bescheinigung from the authority / health insurance).",
   "wizardStufe3UploadTitle": "Upload Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
   "wizardStufe3UploadDone": "File uploaded ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Call us to talk it through",
   "wizardStufe1fEmailLabel": "Email address (optional)",
   "wizardStufe1fEmailHelper": "Optional. We have our own end-to-end encrypted app for communication — only leave an email if you'd also like to be reached that way.",
-  "wizardErrInvalidEmail": "Invalid email address"
+  "wizardErrInvalidEmail": "Invalid email address",
+  "wizardStufe3OptionAlg1": "I receive Arbeitslosengeld I (ALG I, unemployment benefit)",
+  "wizardStufe3OptionKrankengeld": "I receive Krankengeld (long-term sick pay)"
 }

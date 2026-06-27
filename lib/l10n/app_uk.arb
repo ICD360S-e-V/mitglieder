@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Отримую допомогу від Sozialamt",
   "wizardStufe3OptionNein": "Не отримую жодного",
   "wizardStufe3FeeExemptTitle": "Внесок: 0 € / місяць 🎉",
-  "wizardStufe3FeeExemptBody": "З Bürgergeld або Sozialamt ти повністю звільнений від внеску за нашим статутом. Нам потрібне лише підтвердження.",
+  "wizardStufe3FeeExemptBody": "З Bürgergeld, Sozialamt, ALG I чи Krankengeld ти повністю звільнений від внеску згідно з Satzung §6. Нам потрібне лише підтвердження (Leistungsbescheid чи довідка від відомства / лікарняної каси).",
   "wizardStufe3UploadTitle": "Завантажити Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, максимум 10 МБ.",
   "wizardStufe3UploadDone": "Файл завантажено ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Зателефонуй, щоб обговорити",
   "wizardStufe1fEmailLabel": "Електронна адреса (необовʼязково)",
   "wizardStufe1fEmailHelper": "Необовʼязково. У нас є власний застосунок зі наскрізним шифруванням — залишай email лише якщо хочеш, щоб ми писали й туди.",
-  "wizardErrInvalidEmail": "Невірна адреса електронної пошти"
+  "wizardErrInvalidEmail": "Невірна адреса електронної пошти",
+  "wizardStufe3OptionAlg1": "Отримую Arbeitslosengeld I (ALG I, допомога по безробіттю)",
+  "wizardStufe3OptionKrankengeld": "Отримую Krankengeld (допомога з хвороби)"
 }

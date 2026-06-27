@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Jeg mottar ytelser fra Sozialamt",
   "wizardStufe3OptionNein": "Jeg mottar ingen av disse",
   "wizardStufe3FeeExemptTitle": "Kontingent: 0 € / måned 🎉",
-  "wizardStufe3FeeExemptBody": "Med Bürgergeld eller Sozialamt er du helt fritatt for kontingent etter våre vedtekter. Vi trenger bare dokumentasjon.",
+  "wizardStufe3FeeExemptBody": "Med Bürgergeld, Sozialamt, ALG I eller Krankengeld er du helt fritatt for kontingent etter Satzung §6. Vi trenger bare et bevis (Leistungsbescheid eller attest fra myndigheten / sykekassen).",
   "wizardStufe3UploadTitle": "Last opp Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, maks 10 MB.",
   "wizardStufe3UploadDone": "Fil lastet opp ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Ring oss for å snakke",
   "wizardStufe1fEmailLabel": "E-postadresse (valgfritt)",
   "wizardStufe1fEmailHelper": "Valgfritt. Vi har vår egen ende-til-ende-krypterte app for kommunikasjon — legg igjen e-posten kun hvis du også vil kontaktes der.",
-  "wizardErrInvalidEmail": "Ugyldig e-postadresse"
+  "wizardErrInvalidEmail": "Ugyldig e-postadresse",
+  "wizardStufe3OptionAlg1": "Jeg mottar Arbeitslosengeld I (ALG I, dagpenger ved arbeidsledighet)",
+  "wizardStufe3OptionKrankengeld": "Jeg mottar Krankengeld (sykepenger ved langtidssykmelding)"
 }

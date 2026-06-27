@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Λαμβάνω παροχές από το Sozialamt",
   "wizardStufe3OptionNein": "Δεν λαμβάνω κανένα από αυτά",
   "wizardStufe3FeeExemptTitle": "Συνδρομή: 0 € / μήνα 🎉",
-  "wizardStufe3FeeExemptBody": "Με Bürgergeld ή Sozialamt απαλλάσσεσαι πλήρως από τη συνδρομή σύμφωνα με το καταστατικό μας. Χρειαζόμαστε μόνο απόδειξη.",
+  "wizardStufe3FeeExemptBody": "Με Bürgergeld, Sozialamt, ALG I ή Krankengeld απαλλάσσεσαι πλήρως από τη συνδρομή σύμφωνα με το Καταστατικό §6. Χρειαζόμαστε μόνο μια απόδειξη (Leistungsbescheid ή βεβαίωση από την αρχή / το ταμείο υγείας).",
   "wizardStufe3UploadTitle": "Μεταφόρτωση Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, μέγ. 10 MB.",
   "wizardStufe3UploadDone": "Το αρχείο μεταφορτώθηκε ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Κάλεσέ μας για συζήτηση",
   "wizardStufe1fEmailLabel": "Διεύθυνση email (προαιρετικά)",
   "wizardStufe1fEmailHelper": "Προαιρετικό. Έχουμε τη δική μας εφαρμογή με κρυπτογράφηση από άκρη σε άκρη για επικοινωνία — άφησε email μόνο αν θέλεις να σε βρίσκουμε κι εκεί.",
-  "wizardErrInvalidEmail": "Μη έγκυρη διεύθυνση email"
+  "wizardErrInvalidEmail": "Μη έγκυρη διεύθυνση email",
+  "wizardStufe3OptionAlg1": "Λαμβάνω Arbeitslosengeld I (ALG I, επίδομα ανεργίας)",
+  "wizardStufe3OptionKrankengeld": "Λαμβάνω Krankengeld (επίδομα μακροχρόνιας ασθένειας)"
 }

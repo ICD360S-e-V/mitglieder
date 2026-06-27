@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Получавам помощи от Sozialamt",
   "wizardStufe3OptionNein": "Не получавам нито едно от тези",
   "wizardStufe3FeeExemptTitle": "Членски внос: 0 € / месец 🎉",
-  "wizardStufe3FeeExemptBody": "С Bürgergeld или Sozialamt си напълно освободен от вноска по устава. Нужно ни е само доказателство.",
+  "wizardStufe3FeeExemptBody": "С Bürgergeld, Sozialamt, ALG I или Krankengeld си напълно освободен от членски внос съгласно Satzung §6. Нужно ни е само доказателство (Leistungsbescheid или удостоверение от службата / здравната каса).",
   "wizardStufe3UploadTitle": "Качи Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, макс. 10 MB.",
   "wizardStufe3UploadDone": "Файлът е качен ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Обади се да поговорим",
   "wizardStufe1fEmailLabel": "Имейл адрес (по избор)",
   "wizardStufe1fEmailHelper": "По избор. Имаме собствено приложение с end-to-end криптиране за комуникация — остави имейл само ако искаш да те търсим и там.",
-  "wizardErrInvalidEmail": "Невалиден имейл адрес"
+  "wizardErrInvalidEmail": "Невалиден имейл адрес",
+  "wizardStufe3OptionAlg1": "Получавам Arbeitslosengeld I (ALG I, обезщетение за безработица)",
+  "wizardStufe3OptionKrankengeld": "Получавам Krankengeld (обезщетение за продължителна болест)"
 }

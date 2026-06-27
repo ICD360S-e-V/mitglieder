@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Primesc ajutor de la Sozialamt",
   "wizardStufe3OptionNein": "Nu primesc niciuna din acestea",
   "wizardStufe3FeeExemptTitle": "Cotizație: 0 € / lună 🎉",
-  "wizardStufe3FeeExemptBody": "Cu Bürgergeld sau Sozialamt ești scutit complet de cotizație, conform Satzung-ului. Doar avem nevoie de o dovadă.",
+  "wizardStufe3FeeExemptBody": "Cu Bürgergeld, Sozialamt, ALG I sau Krankengeld ești scutit complet de cotizație, conform Satzung-ului §6. Avem nevoie doar de o dovadă (Leistungsbescheid sau Bescheinigung de la autoritate / casa de asigurări).",
   "wizardStufe3UploadTitle": "Încarcă Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, maxim 10 MB.",
   "wizardStufe3UploadDone": "Fișier încărcat ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Sună-ne să discutăm",
   "wizardStufe1fEmailLabel": "Adresa de email (opțional)",
   "wizardStufe1fEmailHelper": "Opțional. Avem propria aplicație criptată end-to-end pentru comunicare — lasă emailul doar dacă vrei să te contactăm și pe acolo.",
-  "wizardErrInvalidEmail": "Adresă de email invalidă"
+  "wizardErrInvalidEmail": "Adresă de email invalidă",
+  "wizardStufe3OptionAlg1": "Primesc Arbeitslosengeld I (ALG I)",
+  "wizardStufe3OptionKrankengeld": "Primesc Krankengeld (concediu medical prelungit)"
 }

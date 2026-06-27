@@ -1103,7 +1103,7 @@
   "wizardStufe3OptionSozialamt": "Dostávam dávky od Sozialamtu",
   "wizardStufe3OptionNein": "Nepoberám žiadne z týchto",
   "wizardStufe3FeeExemptTitle": "Príspevok: 0 € / mesiac 🎉",
-  "wizardStufe3FeeExemptBody": "S Bürgergeld alebo Sozialamtom si podľa stanov úplne oslobodený od príspevku. Potrebujeme len doklad.",
+  "wizardStufe3FeeExemptBody": "S Bürgergeldom, Sozialamtom, ALG I alebo Krankengeldom si podľa Satzung §6 úplne oslobodený od príspevku. Potrebujeme len doklad (Leistungsbescheid alebo potvrdenie od úradu / zdravotnej poisťovne).",
   "wizardStufe3UploadTitle": "Nahrať Leistungsbescheid",
   "wizardStufe3UploadHint": "PDF / JPG / PNG, max 10 MB.",
   "wizardStufe3UploadDone": "Súbor nahraný ✓",
@@ -1220,5 +1220,7 @@
   "wizardFinalAdultCallTitle": "Zavolaj, porozprávame sa",
   "wizardStufe1fEmailLabel": "E-mailová adresa (nepovinné)",
   "wizardStufe1fEmailHelper": "Nepovinné. Máme vlastnú end-to-end šifrovanú aplikáciu pre komunikáciu — e-mail nechaj len ak chceš, aby sme ťa kontaktovali aj tam.",
-  "wizardErrInvalidEmail": "Neplatná e-mailová adresa"
+  "wizardErrInvalidEmail": "Neplatná e-mailová adresa",
+  "wizardStufe3OptionAlg1": "Poberám Arbeitslosengeld I (ALG I, podpora v nezamestnanosti)",
+  "wizardStufe3OptionKrankengeld": "Poberám Krankengeld (nemocenské po dlhšej PN)"
 }
