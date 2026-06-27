@@ -463,7 +463,15 @@ class _WizardScreenState extends State<WizardScreen> {
       case WizardStep.stufe7:
       case WizardStep.stufe8:
         final spec = _kDocs.firstWhere((d) => d.step == _step);
+        // ValueKey per dataKey forces Flutter to instantiate a fresh
+        // State for each document. Without it, _confirmed / _opened /
+        // _scrolledToBottom leak from one stufe to the next because
+        // the orchestrator returns the same widget type at the same
+        // tree position — the visitor would arrive at Stufe 7 with
+        // the checkbox already ticked and the WebView pointing at
+        // the previous URL.
         return WizardDocumentAcceptScreen(
+          key: ValueKey(spec.dataKey),
           stepNumber: spec.stepNumber,
           step: spec.step,
           dataKey: spec.dataKey,
