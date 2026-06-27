@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.49.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.48.0...v1.49.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** Stufe 3 multi-file Leistungsbescheid (up to 20 / 100 MB) ([1edfba7](https://github.com/ICD360S-e-V/mitglieder/commit/1edfba7e953b159cd306b156c5607bd45324f25a))
+
 ## [1.48.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.47.0...v1.48.0) (2026-06-27)
 
 
