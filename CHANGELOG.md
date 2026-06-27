@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.55.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.54.0...v1.55.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** live chat over phone everywhere — FAB on every step + replaces "Sună-ne" CTAs ([4252f21](https://github.com/ICD360S-e-V/mitglieder/commit/4252f21a940df4f3ae2e3eb8fe9b74731ee0d1d4))
+
 ## [1.54.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.53.1...v1.54.0) (2026-06-27)
 
 
