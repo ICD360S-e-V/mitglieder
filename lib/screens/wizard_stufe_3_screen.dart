@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
@@ -76,14 +77,112 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   bool get _needsUpload =>
       _situation != null && _exemptOptions.contains(_situation);
 
-  Future<void> _pickAndUpload() async {
+  /// Bottom sheet offering Camera / Gallery / Documents — camera +
+  /// gallery only show on Android / iOS since image_picker has no
+  /// desktop backend. Visitors on desktop see only the file picker
+  /// option, same as the legacy verifizierung_tab.dart flow.
+  Future<void> _showAttachmentSheet() async {
     final l10n = AppLocalizations.of(context)!;
+    final isMobile = Platform.isAndroid || Platform.isIOS;
+    await showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (sheetCtx) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 40,
+              height: 4,
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            if (isMobile) ...[
+              ListTile(
+                leading: const Icon(Icons.camera_alt,
+                    color: Color(0xFF0d47a1)),
+                title: Text(l10n.camera),
+                onTap: () {
+                  Navigator.pop(sheetCtx);
+                  _pickFromImage(ImageSource.camera);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library,
+                    color: Color(0xFF0d47a1)),
+                title: Text(l10n.gallery),
+                onTap: () {
+                  Navigator.pop(sheetCtx);
+                  _pickFromImage(ImageSource.gallery);
+                },
+              ),
+            ],
+            ListTile(
+              leading: const Icon(Icons.attach_file,
+                  color: Color(0xFF0d47a1)),
+              title: Text(l10n.documents),
+              subtitle: Text(
+                l10n.wizardStufe3UploadHint,
+                style: const TextStyle(fontSize: 11.5),
+              ),
+              onTap: () {
+                Navigator.pop(sheetCtx);
+                _pickFromFiles();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// Camera or gallery — both go through ImagePicker which yields a
+  /// jpg. Same 10 MB size cap as the document path.
+  Future<void> _pickFromImage(ImageSource source) async {
+    try {
+      final picker = ImagePicker();
+      final XFile? picked = await picker.pickImage(
+        source: source,
+        // Compress to keep the upload reasonable for a Bescheid photo.
+        imageQuality: 85,
+        maxWidth: 2400,
+      );
+      if (picked == null) return;
+      await _uploadFile(File(picked.path));
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              AppLocalizations.of(context)!.wizardStufe3UploadFailed),
+          backgroundColor: Colors.red.shade700,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+  }
+
+  /// File system picker — mirrors the verifizierung_tab.dart filter
+  /// set (PDF / JPG / JPEG / PNG).
+  Future<void> _pickFromFiles() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: const ['pdf', 'jpg', 'jpeg', 'png'],
     );
     if (result == null || result.files.single.path == null) return;
-    final file = File(result.files.single.path!);
+    await _uploadFile(File(result.files.single.path!));
+  }
+
+  /// Shared upload tail. Enforces the 10 MB cap and surfaces snackbar
+  /// errors so the three picker paths all behave the same.
+  Future<void> _uploadFile(File file) async {
+    final l10n = AppLocalizations.of(context)!;
     final size = await file.length();
     if (size > 10 * 1024 * 1024) {
       if (!mounted) return;
@@ -112,7 +211,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
     }
     setState(() {
       _uploadedPath = relPath;
-      _uploadedName = result.files.single.name;
+      _uploadedName = file.path.split(Platform.pathSeparator).last;
     });
   }
 
@@ -357,7 +456,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: _uploading ? null : _pickAndUpload,
+        onTap: _uploading ? null : _showAttachmentSheet,
         borderRadius: BorderRadius.circular(12),
         child: Container(
           padding: const EdgeInsets.all(14),
@@ -422,7 +521,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
               ),
               if (uploaded)
                 IconButton(
-                  onPressed: _uploading ? null : _pickAndUpload,
+                  onPressed: _uploading ? null : _showAttachmentSheet,
                   tooltip: l10n.wizardStufe3UploadReplace,
                   icon: const Icon(Icons.refresh, color: Colors.white),
                 ),
