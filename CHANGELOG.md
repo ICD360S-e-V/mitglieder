@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.48.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.47.0...v1.48.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** Stufe 3 upload — camera + gallery + documents picker sheet ([4a61eb6](https://github.com/ICD360S-e-V/mitglieder/commit/4a61eb6f486aff571b995982a8bc5a435cd9a30b))
+
 ## [1.47.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.46.0...v1.47.0) (2026-06-27)
 
 
