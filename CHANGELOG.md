@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.49.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.5...v1.49.6) (2026-06-27)
+
+
+### Bug Fixes
+
+* **ci:** work around flutter_webrtc 1.5.2 Linux header + macOS pod issues ([093b7ce](https://github.com/ICD360S-e-V/mitglieder/commit/093b7ce0fa4c99daf916bc15608f8351ba032dd4))
+
 ## [1.49.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.4...v1.49.5) (2026-06-27)
 
 
