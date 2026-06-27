@@ -446,8 +446,14 @@ class WizardService {
   /// caller can show a precise toast; in that case [freshPath] is
   /// null and [errorMessage] carries the server's `message`.
   /// [errorCode] mirrors the HTTP status so the UI can switch on it.
+  /// [category] must be one of the 4 fee-exempt buckets recognised by
+  /// the server (`buergergeld`, `sozialamt`, `alg1`, `krankengeld`).
+  /// It steers the storage subfolder so each Behörde's Bescheide land
+  /// in their own bucket on disk — easier auditing for the Vorstand,
+  /// no mixed-bag folder.
   Future<WizardLeistungsbescheidUploadResult> uploadLeistungsbescheid(
     File file,
+    String category,
   ) async {
     try {
       final id = await ensureId();
@@ -455,6 +461,7 @@ class WizardService {
       final req = http.MultipartRequest('POST', uri);
       req.headers.addAll(_headers(includeJson: false));
       req.fields['anonymous_id'] = id;
+      req.fields['category']     = category;
       req.files.add(await http.MultipartFile.fromPath('file', file.path));
       final streamed = await req.send().timeout(const Duration(seconds: 60));
       final r = await http.Response.fromStream(streamed);

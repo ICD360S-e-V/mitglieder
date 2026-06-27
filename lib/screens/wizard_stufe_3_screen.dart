@@ -223,7 +223,12 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
           _toast(l10n.wizardStufe3FileTooLarge, Colors.red.shade700);
           continue;
         }
-        final res = await WizardService().uploadLeistungsbescheid(file);
+        // The radio is non-null here because _showAttachmentSheet is
+        // gated behind _needsUpload, which itself requires a category.
+        final res = await WizardService().uploadLeistungsbescheid(
+          file,
+          _situation!,
+        );
         if (!mounted) return;
         if (!res.isSuccess) {
           // 413 = the server tripped the 100 MB cumulative cap, 409 =
