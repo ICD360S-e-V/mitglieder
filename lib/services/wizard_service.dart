@@ -176,20 +176,59 @@ class WizardLeistungsbescheidUploadResult {
       );
 }
 
+/// One row from `user_verifizierung`. The bottom sheet on the final
+/// screen renders these chronologically (Stufe 1 → 8) so the visitor
+/// sees what's been filled and what the Vorstand has signed off.
+class WizardStufeStatus {
+  final int stufe;
+  /// 'offen' | 'ausgefuellt' | 'geprueft' | 'abgelehnt'.
+  final String status;
+  /// When the visitor finished filling this Stufe in the wizard.
+  /// Null for Stufe 4 of fee-exempt members (never filled — skipped).
+  final DateTime? ausgefuelltAm;
+  /// When the Vorstand reviewed it. Null until they have.
+  final DateTime? geprueftAm;
+
+  const WizardStufeStatus({
+    required this.stufe,
+    required this.status,
+    this.ausgefuelltAm,
+    this.geprueftAm,
+  });
+
+  factory WizardStufeStatus.fromJson(Map<String, dynamic> j) =>
+      WizardStufeStatus(
+        stufe:          (j['stufe'] as num).toInt(),
+        status:         (j['status'] as String?) ?? 'offen',
+        ausgefuelltAm:  _parseDt(j['ausgefuellt_am']),
+        geprueftAm:     _parseDt(j['geprueft_am']),
+      );
+
+  static DateTime? _parseDt(dynamic raw) {
+    if (raw is! String || raw.isEmpty) return null;
+    // MariaDB returns 'YYYY-MM-DD HH:MM:SS' in local time. DateTime.parse
+    // accepts that with a space replaced by 'T'.
+    return DateTime.tryParse(raw.replaceFirst(' ', 'T'));
+  }
+}
+
 /// Snapshot returned by check_status.php — used by the final screen
-/// to flip its 4-step timeline when the Vorstand approves the visitor.
+/// to flip the Status Card from "În verificare" to "Activat" when the
+/// Vorstand approves, and to drive the chronological details sheet.
 class WizardStatusProbe {
   final String? mitgliedernummer;
   final int? userId;
   final String? status;
   final bool isActive;
   final bool isMinor;
+  final List<WizardStufeStatus> stufen;
   const WizardStatusProbe({
     this.mitgliedernummer,
     this.userId,
     this.status,
     this.isActive = false,
     this.isMinor = false,
+    this.stufen = const [],
   });
 }
 
@@ -606,12 +645,18 @@ class WizardService {
       if (r.statusCode != 200) return null;
       final body = jsonDecode(r.body) as Map<String, dynamic>;
       if (body['success'] != true) return null;
+      final stufenRaw = body['stufen'] as List<dynamic>?;
+      final stufen = (stufenRaw ?? const [])
+          .whereType<Map<String, dynamic>>()
+          .map(WizardStufeStatus.fromJson)
+          .toList();
       return WizardStatusProbe(
         mitgliedernummer: body['mitgliedernummer'] as String?,
         userId:           (body['user_id'] as num?)?.toInt(),
         status:           body['status'] as String?,
         isActive:         body['is_active'] == true,
         isMinor:          body['is_minor'] == true,
+        stufen:           stufen,
       );
     } catch (e) {
       _log.error('wizard.checkUserStatus: $e', tag: 'WIZ');

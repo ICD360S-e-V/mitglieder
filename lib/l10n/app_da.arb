@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Vi kontakter din forælder og aftaler et møde (personligt eller videoopkald). Vær venligst tålmodig — processen kan tage op til 7 dage. Du får en notifikation i appen, så snart din forælder har godkendt.",
   "wizardFinalMinorCallTitle": "Ring til os, hvis du vil tale",
   "wizardFinalMitgliedernummerLabel": "Dit medlemsnummer",
-  "wizardFinalCloseButton": "Tilbage til velkomst",
   "wizardStufe4MethodComingSoon": "Snart tilgængelig",
   "wizardStufe4StreichungWarning": "Hvis du er mere end 6 måneder bagud med kontingentet, sletter vi dig automatisk (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "For at melde dig ud: send os din opsigelse skriftligt 3 måneder før 31. december (senest 30. september for at træde i kraft ved årets udgang). Ingen minimumsperiode (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Påmindelse: kontingent 25 €/måned (eller 0 € med Bürgergeld / Sozialamt). For udmeldelse: skriftligt senest 30. september. Hvis du får problemer, ring — vi finder løsninger sammen.",
   "wizardFinalAdultCallTitle": "Ring og lad os tale",
   "wizardStufe1fEmailLabel": "E-mailadresse (valgfrit)",
   "wizardStufe1fEmailHelper": "Valgfrit. Vi har vores egen end-to-end krypterede app til kommunikation — angiv kun e-mail, hvis du også vil kontaktes der.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Kunne ikke åbne browseren. Linket er kopieret til udklipsholderen — indsæt det i en browser for at fortsætte.",
-  "wizardFinalTimelineSubmitted": "Ansøgning modtaget",
   "wizardFinalTimelineProcessing": "Vorstand gennemgår · normalt 1 hverdag, maks. 7",
   "wizardFinalTimelineActivated": "Konto aktiveret",
   "wizardFinalAdultThank": "Tak fordi du udfyldte registreringsformularen! 🎉",
   "wizardFinalAdultUsual": "Din ansøgning er nu hos os. Vi godkender den normalt inden for én hverdag.",
-  "wizardFinalAdultExceptional": "Nogle gange kan det tage op til 7 hverdage. Og hvis noget ikke stemmer, sender vi dig tilbage til formularen, så du kan rette det 🙂"
+  "wizardFinalAdultExceptional": "Nogle gange kan det tage op til 7 hverdage. Og hvis noget ikke stemmer, sender vi dig tilbage til formularen, så du kan rette det 🙂",
+  "wizardFinalStatusTitle": "ANSØGNINGSSTATUS",
+  "wizardFinalStufeSheetTitle": "Ansøgningsdetaljer",
+  "wizardFinalStufeSheetHint": "De 8 trin du har udfyldt. Vorstand gennemgår dem ét ad gangen — du ser i realtid, hvad der er godkendt.",
+  "wizardFinalStufeStatusPending": "Afventer gennemgang",
+  "wizardFinalStufeStatusApproved": "Godkendt",
+  "wizardFinalStufeStatusRejected": "Afvist",
+  "wizardFinalStufeStatusSkipped": "Sprunget over",
+  "wizardFinalStufeFilledAt": "Udfyldt:",
+  "wizardFinalStufeReviewedAt": "Gennemgået:"
 }

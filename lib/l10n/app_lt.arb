@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Susisieksime su tavo tėvu/motina ir suderinsime susitikimą (asmeniškai arba per vaizdo skambutį). Prašom kantrybės — procesas gali užtrukti iki 7 dienų. Gausi pranešimą programėlėje, kai tik tėvas/motina patvirtins.",
   "wizardFinalMinorCallTitle": "Paskambink, jei nori pasikalbėti",
   "wizardFinalMitgliedernummerLabel": "Tavo nario numeris",
-  "wizardFinalCloseButton": "Atgal į pradžią",
   "wizardStufe4MethodComingSoon": "Netrukus",
   "wizardStufe4StreichungWarning": "Jei vėluosi su mokesčiu daugiau nei 6 mėnesius, automatiškai tave išbraukiame (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Norėdamas išstoti: atsiųsk mums pranešimą raštu likus 3 mėnesiams iki gruodžio 31 d. (iki rugsėjo 30 d., kad įsigaliotų metų gale). Minimalaus laikotarpio nėra (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Priminimas: mokestis 25 €/mėn. (arba 0 € su Bürgergeld / Sozialamt). Norėdamas išstoti: raštu iki rugsėjo 30 d. Jei iškils sunkumų, paskambink — ieškosime sprendimų kartu.",
   "wizardFinalAdultCallTitle": "Paskambink pasikalbėti",
   "wizardStufe1fEmailLabel": "El. pašto adresas (neprivaloma)",
   "wizardStufe1fEmailHelper": "Neprivaloma. Turime savo abipusiu šifravimu apsaugotą programėlę bendravimui — palik el. paštą tik jei nori, kad rašytume ir ten.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Nepavyko atidaryti naršyklės. Nuoroda nukopijuota į iškarpinę — įklijuok ją naršyklėje, kad tęstum.",
-  "wizardFinalTimelineSubmitted": "Prašymas gautas",
   "wizardFinalTimelineProcessing": "Vorstand tikrina · paprastai 1 darbo diena, iki 7",
   "wizardFinalTimelineActivated": "Paskyra aktyvuota",
   "wizardFinalAdultThank": "Ačiū, kad užpildei registracijos formą! 🎉",
   "wizardFinalAdultUsual": "Tavo prašymas pas mus. Paprastai jį patvirtiname per vieną darbo dieną.",
-  "wizardFinalAdultExceptional": "Kartais tai gali užtrukti iki 7 darbo dienų. O jei kažkas neatitinka, grąžinsime tave į formą, kad pataisytum 🙂"
+  "wizardFinalAdultExceptional": "Kartais tai gali užtrukti iki 7 darbo dienų. O jei kažkas neatitinka, grąžinsime tave į formą, kad pataisytum 🙂",
+  "wizardFinalStatusTitle": "PRAŠYMO BŪSENA",
+  "wizardFinalStufeSheetTitle": "Prašymo informacija",
+  "wizardFinalStufeSheetHint": "8 etapai, kuriuos užpildei. Vorstand juos tikrina po vieną — realiu laiku matai, kas patvirtinta.",
+  "wizardFinalStufeStatusPending": "Laukia patikrinimo",
+  "wizardFinalStufeStatusApproved": "Patvirtinta",
+  "wizardFinalStufeStatusRejected": "Atmesta",
+  "wizardFinalStufeStatusSkipped": "Praleista",
+  "wizardFinalStufeFilledAt": "Užpildyta:",
+  "wizardFinalStufeReviewedAt": "Patikrinta:"
 }

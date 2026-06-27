@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "We'll contact your parent and arrange a meeting (in person or video call). Please be patient — the process can take up to 7 days. You'll get an in-app notification as soon as your parent approves.",
   "wizardFinalMinorCallTitle": "Call us if you want to talk",
   "wizardFinalMitgliedernummerLabel": "Your member number",
-  "wizardFinalCloseButton": "Back to welcome",
   "wizardStufe4MethodComingSoon": "Coming soon",
   "wizardStufe4StreichungWarning": "If you fall more than 6 months behind on dues, we'll automatically strike you off (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "To leave: send us your cancellation in writing 3 months before December 31 (by September 30 to take effect at year-end). No minimum membership duration (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Reminder: dues are €25/month (or €0 on Bürgergeld / Sozialamt). To leave: notice in writing by September 30. If you run into trouble, give us a call — we find solutions together.",
   "wizardFinalAdultCallTitle": "Call us to talk it through",
   "wizardStufe1fEmailLabel": "Email address (optional)",
   "wizardStufe1fEmailHelper": "Optional. We have our own end-to-end encrypted app for communication — only leave an email if you'd also like to be reached that way.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Couldn't open your browser. The link is on your clipboard — paste it in a browser to continue.",
-  "wizardFinalTimelineSubmitted": "Application received",
   "wizardFinalTimelineProcessing": "Vorstand reviewing · usually 1 business day, up to 7",
   "wizardFinalTimelineActivated": "Account activated",
   "wizardFinalAdultThank": "Thank you for completing the registration form! 🎉",
   "wizardFinalAdultUsual": "Your application is with us now. We usually validate it within one business day.",
-  "wizardFinalAdultExceptional": "Sometimes it takes up to 7 business days. And if anything doesn't add up, we'll send you back to the form so you can fix it 🙂"
+  "wizardFinalAdultExceptional": "Sometimes it takes up to 7 business days. And if anything doesn't add up, we'll send you back to the form so you can fix it 🙂",
+  "wizardFinalStatusTitle": "APPLICATION STATUS",
+  "wizardFinalStufeSheetTitle": "Application details",
+  "wizardFinalStufeSheetHint": "The 8 stages you filled in. The Vorstand reviews them one by one — you see in real time which ones have been validated.",
+  "wizardFinalStufeStatusPending": "Awaiting review",
+  "wizardFinalStufeStatusApproved": "Approved",
+  "wizardFinalStufeStatusRejected": "Rejected",
+  "wizardFinalStufeStatusSkipped": "Skipped",
+  "wizardFinalStufeFilledAt": "Filled in:",
+  "wizardFinalStufeReviewedAt": "Reviewed:"
 }

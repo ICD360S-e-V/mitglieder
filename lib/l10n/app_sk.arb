@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Spojíme sa s tvojím rodičom a dohodneme stretnutie (osobne alebo videohovorom). Prosíme o trpezlivosť — proces môže trvať až 7 dní. Dostaneš upozornenie v aplikácii, len čo rodič schváli.",
   "wizardFinalMinorCallTitle": "Zavolaj nám, ak chceš hovoriť",
   "wizardFinalMitgliedernummerLabel": "Tvoje členské číslo",
-  "wizardFinalCloseButton": "Späť na úvod",
   "wizardStufe4MethodComingSoon": "Čoskoro",
   "wizardStufe4StreichungWarning": "Ak budeš v meškaní s príspevkom viac ako 6 mesiacov, automaticky ťa vyškrtneme (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Na vystúpenie: pošli nám výpoveď písomne 3 mesiace pred 31. decembrom (do 30. septembra, aby bola účinná na konci roka). Žiadna minimálna doba (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Pripomenutie: príspevok 25 €/mesiac (alebo 0 € s Bürgergeld / Sozialamt). Na vystúpenie: písomne do 30. septembra. Ak nastanú ťažkosti, zavolaj — nájdeme riešenia spoločne.",
   "wizardFinalAdultCallTitle": "Zavolaj, porozprávame sa",
   "wizardStufe1fEmailLabel": "E-mailová adresa (nepovinné)",
   "wizardStufe1fEmailHelper": "Nepovinné. Máme vlastnú end-to-end šifrovanú aplikáciu pre komunikáciu — e-mail nechaj len ak chceš, aby sme ťa kontaktovali aj tam.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Nepodarilo sa otvoriť prehliadač. Odkaz bol skopírovaný do schránky — vlož ho do prehliadača, aby si pokračoval.",
-  "wizardFinalTimelineSubmitted": "Žiadosť prijatá",
   "wizardFinalTimelineProcessing": "Vorstand kontroluje · zvyčajne 1 pracovný deň, max. 7",
   "wizardFinalTimelineActivated": "Účet aktivovaný",
   "wizardFinalAdultThank": "Ďakujeme, že si vyplnil registračný formulár! 🎉",
   "wizardFinalAdultUsual": "Tvoja žiadosť je u nás. Zvyčajne ju overujeme do jedného pracovného dňa.",
-  "wizardFinalAdultExceptional": "Niekedy to môže trvať až 7 pracovných dní. A ak niečo nesedí, pošleme ťa späť do formulára, aby si to opravil 🙂"
+  "wizardFinalAdultExceptional": "Niekedy to môže trvať až 7 pracovných dní. A ak niečo nesedí, pošleme ťa späť do formulára, aby si to opravil 🙂",
+  "wizardFinalStatusTitle": "STAV ŽIADOSTI",
+  "wizardFinalStufeSheetTitle": "Detaily žiadosti",
+  "wizardFinalStufeSheetHint": "Osem fáz, ktoré si vyplnil. Vorstand ich kontroluje jednu po druhej — vidíš v reálnom čase, čo už bolo schválené.",
+  "wizardFinalStufeStatusPending": "Čaká na kontrolu",
+  "wizardFinalStufeStatusApproved": "Schválené",
+  "wizardFinalStufeStatusRejected": "Zamietnuté",
+  "wizardFinalStufeStatusSkipped": "Preskočené",
+  "wizardFinalStufeFilledAt": "Vyplnené:",
+  "wizardFinalStufeReviewedAt": "Skontrolované:"
 }

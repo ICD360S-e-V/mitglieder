@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Îți vom contacta părintele și vom stabili o întâlnire (în persoană sau apel video). Te rugăm să ai răbdare — procedura poate dura până la 7 zile. Te anunțăm prin notificare în aplicație imediat ce părintele a aprobat.",
   "wizardFinalMinorCallTitle": "Sună-ne dacă vrei să discutăm",
   "wizardFinalMitgliedernummerLabel": "Numărul tău de membru",
-  "wizardFinalCloseButton": "Înapoi la welcome",
   "wizardStufe4MethodComingSoon": "Disponibil în viitor",
   "wizardStufe4StreichungWarning": "Dacă rămâi cu cotizația în urmă mai mult de 6 luni, te radiem automat (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Pentru retragere: anunță-ne în scris cu 3 luni înainte de 31 decembrie (până la 30 septembrie pentru a ieși la sfârșitul anului). Nu există durată minimă (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Reamintire: cotizație 25 €/lună (sau 0 € pentru Bürgergeld / Sozialamt). Pentru retragere: anunță-ne în scris până la 30 septembrie. Dacă apar dificultăți, sună-ne — căutăm soluții împreună.",
   "wizardFinalAdultCallTitle": "Sună-ne să discutăm",
   "wizardStufe1fEmailLabel": "Adresa de email (opțional)",
   "wizardStufe1fEmailHelper": "Opțional. Avem propria aplicație criptată end-to-end pentru comunicare — lasă emailul doar dacă vrei să te contactăm și pe acolo.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Nu am putut deschide browserul. Link-ul a fost copiat în clipboard — lipește-l într-un browser pentru a continua.",
-  "wizardFinalTimelineSubmitted": "Cererea ta a fost primită",
   "wizardFinalTimelineProcessing": "Vorstand verifică · de obicei 1 zi, maxim 7 lucrătoare",
   "wizardFinalTimelineActivated": "Cont activat",
   "wizardFinalAdultThank": "Îți mulțumim că ai completat formularul de înregistrare! 🎉",
   "wizardFinalAdultUsual": "Cererea ta a ajuns la noi. De obicei o validăm într-o zi lucrătoare.",
-  "wizardFinalAdultExceptional": "Uneori poate dura până la 7 zile lucrătoare. Și dacă ceva nu corespunde, te trimitem înapoi la formular ca să corectezi 🙂"
+  "wizardFinalAdultExceptional": "Uneori poate dura până la 7 zile lucrătoare. Și dacă ceva nu corespunde, te trimitem înapoi la formular ca să corectezi 🙂",
+  "wizardFinalStatusTitle": "STATUS CERERE",
+  "wizardFinalStufeSheetTitle": "Detalii cerere",
+  "wizardFinalStufeSheetHint": "Cei 8 pași pe care i-ai completat. Vorstand-ul îi verifică pe rând — vezi în timp real ce a fost validat.",
+  "wizardFinalStufeStatusPending": "În așteptarea verificării",
+  "wizardFinalStufeStatusApproved": "Verificat",
+  "wizardFinalStufeStatusRejected": "Respins",
+  "wizardFinalStufeStatusSkipped": "Sărit",
+  "wizardFinalStufeFilledAt": "Completat:",
+  "wizardFinalStufeReviewedAt": "Verificat:"
 }

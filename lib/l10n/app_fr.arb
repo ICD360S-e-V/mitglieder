@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Nous contacterons ton parent et organiserons un rendez-vous (en personne ou par appel vidéo). Sois patient — la procédure peut prendre jusqu'à 7 jours. Tu recevras une notification dans l'app dès que ton parent aura donné son accord.",
   "wizardFinalMinorCallTitle": "Appelle-nous si tu veux parler",
   "wizardFinalMitgliedernummerLabel": "Ton numéro de membre",
-  "wizardFinalCloseButton": "Retour à l'accueil",
   "wizardStufe4MethodComingSoon": "Bientôt disponible",
   "wizardStufe4StreichungWarning": "Si tu accumules plus de 6 mois de retard sur la cotisation, on te radie automatiquement (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Pour partir : envoie-nous ta démission par écrit 3 mois avant le 31 décembre (au plus tard le 30 septembre pour effet en fin d'année). Pas de durée minimale (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Rappel : cotisation 25 €/mois (ou 0 € avec Bürgergeld / Sozialamt). Pour partir : par écrit jusqu'au 30 septembre. Si tu rencontres des difficultés, appelle-nous — on cherche ensemble.",
   "wizardFinalAdultCallTitle": "Appelle-nous pour en parler",
   "wizardStufe1fEmailLabel": "Adresse e-mail (facultatif)",
   "wizardStufe1fEmailHelper": "Facultatif. On a notre propre app chiffrée de bout en bout pour communiquer — laisse ton e-mail seulement si tu veux qu'on te contacte aussi par là.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Impossible d'ouvrir le navigateur. Le lien est dans le presse-papiers — colle-le dans un navigateur pour continuer.",
-  "wizardFinalTimelineSubmitted": "Demande reçue",
   "wizardFinalTimelineProcessing": "Vorstand examine · en général 1 jour ouvré, jusqu’à 7",
   "wizardFinalTimelineActivated": "Compte activé",
   "wizardFinalAdultThank": "Merci d'avoir rempli le formulaire d'inscription ! 🎉",
   "wizardFinalAdultUsual": "Ta demande est entre nos mains. On la valide en général en un jour ouvré.",
-  "wizardFinalAdultExceptional": "Parfois ça peut prendre jusqu'à 7 jours ouvrés. Et si quelque chose ne colle pas, on te renvoie au formulaire pour corriger 🙂"
+  "wizardFinalAdultExceptional": "Parfois ça peut prendre jusqu'à 7 jours ouvrés. Et si quelque chose ne colle pas, on te renvoie au formulaire pour corriger 🙂",
+  "wizardFinalStatusTitle": "STATUT DE LA DEMANDE",
+  "wizardFinalStufeSheetTitle": "Détails de la demande",
+  "wizardFinalStufeSheetHint": "Les 8 étapes que tu as remplies. Le Vorstand les vérifie une par une — tu vois en temps réel ce qui a été validé.",
+  "wizardFinalStufeStatusPending": "En attente de vérification",
+  "wizardFinalStufeStatusApproved": "Validé",
+  "wizardFinalStufeStatusRejected": "Rejeté",
+  "wizardFinalStufeStatusSkipped": "Sauté",
+  "wizardFinalStufeFilledAt": "Rempli :",
+  "wizardFinalStufeReviewedAt": "Vérifié :"
 }

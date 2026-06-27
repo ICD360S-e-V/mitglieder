@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Võtame ühendust sinu vanemaga ja lepime kohtumise kokku (kohapeal või videokõnega). Palun ole kannatlik — protsess võib kesta kuni 7 päeva. Saad rakenduses teate niipea, kui vanem on heaks kiitnud.",
   "wizardFinalMinorCallTitle": "Helista, kui soovid rääkida",
   "wizardFinalMitgliedernummerLabel": "Sinu liikmenumber",
-  "wizardFinalCloseButton": "Tagasi tervitusekraanile",
   "wizardStufe4MethodComingSoon": "Tulemas",
   "wizardStufe4StreichungWarning": "Kui jääd liikmemaksuga rohkem kui 6 kuud võlgu, kustutame sind automaatselt (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Lahkumiseks: saada meile kirjalik ülesütlemine 3 kuud enne 31. detsembrit (hiljemalt 30. septembriks, et see jõustuks aasta lõpus). Minimaalset kestust pole (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Meeldetuletus: liikmemaks 25 €/kuus (või 0 € Bürgergeld / Sozialamt korral). Lahkumiseks: kirjalik teade hiljemalt 30. septembriks. Kui tekib raskusi, helista — leiame koos lahenduse.",
   "wizardFinalAdultCallTitle": "Helista, arutame",
   "wizardStufe1fEmailLabel": "E-posti aadress (valikuline)",
   "wizardStufe1fEmailHelper": "Valikuline. Meil on oma otspunktist-otspunkti krüpteeritud rakendus suhtlemiseks — jäta e-post ainult siis, kui soovid, et sind ka seal kätte saaksime.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Brauserit ei õnnestunud avada. Link on lõikepuhvris — kleebi see brauserisse, et jätkata.",
-  "wizardFinalTimelineSubmitted": "Avaldus vastu võetud",
   "wizardFinalTimelineProcessing": "Vorstand kontrollib · tavaliselt 1 tööpäev, kuni 7",
   "wizardFinalTimelineActivated": "Konto aktiveeritud",
   "wizardFinalAdultThank": "Aitäh, et täitsid registreerimisvormi! 🎉",
   "wizardFinalAdultUsual": "Sinu avaldus on meil. Tavaliselt kinnitame selle ühe tööpäeva jooksul.",
-  "wizardFinalAdultExceptional": "Mõnikord võib see võtta kuni 7 tööpäeva. Ja kui midagi ei klapi, saadame su tagasi vormi, et saaksid parandada 🙂"
+  "wizardFinalAdultExceptional": "Mõnikord võib see võtta kuni 7 tööpäeva. Ja kui midagi ei klapi, saadame su tagasi vormi, et saaksid parandada 🙂",
+  "wizardFinalStatusTitle": "AVALDUSE OLEK",
+  "wizardFinalStufeSheetTitle": "Avalduse üksikasjad",
+  "wizardFinalStufeSheetHint": "Kaheksa etappi, mille täitsid. Vorstand vaatab need ühekaupa läbi — näed reaalajas, mis on juba kinnitatud.",
+  "wizardFinalStufeStatusPending": "Ootab ülevaatamist",
+  "wizardFinalStufeStatusApproved": "Kinnitatud",
+  "wizardFinalStufeStatusRejected": "Tagasi lükatud",
+  "wizardFinalStufeStatusSkipped": "Vahele jäetud",
+  "wizardFinalStufeFilledAt": "Täidetud:",
+  "wizardFinalStufeReviewedAt": "Kontrollitud:"
 }

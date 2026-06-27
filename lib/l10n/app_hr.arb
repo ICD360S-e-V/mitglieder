@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Kontaktirat ćemo tvog roditelja i dogovoriti susret (osobno ili videopozivom). Molim te budi strpljiv — proces može trajati do 7 dana. Dobit ćeš obavijest u aplikaciji čim roditelj odobri.",
   "wizardFinalMinorCallTitle": "Nazovi nas ako želiš razgovarati",
   "wizardFinalMitgliedernummerLabel": "Tvoj članski broj",
-  "wizardFinalCloseButton": "Natrag na dobrodošlicu",
   "wizardStufe4MethodComingSoon": "Uskoro",
   "wizardStufe4StreichungWarning": "Ako kasniš s članarinom više od 6 mjeseci, automatski ćemo te brisati (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Za istup: pošalji nam pisanu obavijest 3 mjeseca prije 31. prosinca (najkasnije do 30. rujna kako bi proizvelo učinak na kraju godine). Nema minimalnog trajanja (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Podsjetnik: članarina 25 €/mjesec (ili 0 € s Bürgergeld / Sozialamt). Za istup: pisano do 30. rujna. Ako naiđeš na poteškoće, nazovi — zajedno tražimo rješenja.",
   "wizardFinalAdultCallTitle": "Nazovi za razgovor",
   "wizardStufe1fEmailLabel": "E-mail adresa (neobavezno)",
   "wizardStufe1fEmailHelper": "Neobavezno. Imamo vlastitu end-to-end kriptiranu aplikaciju za komunikaciju — ostavi e-mail samo ako želiš da te kontaktiramo i tamo.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Nisam mogao otvoriti preglednik. Link je u međuspremniku — zalijepi ga u preglednik za nastavak.",
-  "wizardFinalTimelineSubmitted": "Zahtjev je primljen",
   "wizardFinalTimelineProcessing": "Vorstand provjerava · obično 1 radni dan, do 7",
   "wizardFinalTimelineActivated": "Račun aktiviran",
   "wizardFinalAdultThank": "Hvala što si ispunio obrazac za registraciju! 🎉",
   "wizardFinalAdultUsual": "Tvoj zahtjev je kod nas. Obično ga potvrdimo u roku od jednog radnog dana.",
-  "wizardFinalAdultExceptional": "Ponekad može potrajati do 7 radnih dana. A ako se nešto ne poklapa, vraćamo te na obrazac da to ispraviš 🙂"
+  "wizardFinalAdultExceptional": "Ponekad može potrajati do 7 radnih dana. A ako se nešto ne poklapa, vraćamo te na obrazac da to ispraviš 🙂",
+  "wizardFinalStatusTitle": "STATUS ZAHTJEVA",
+  "wizardFinalStufeSheetTitle": "Detalji zahtjeva",
+  "wizardFinalStufeSheetHint": "8 faza koje si ispunio. Vorstand ih provjerava jednu po jednu — vidiš u stvarnom vremenu što je potvrđeno.",
+  "wizardFinalStufeStatusPending": "Čeka pregled",
+  "wizardFinalStufeStatusApproved": "Odobreno",
+  "wizardFinalStufeStatusRejected": "Odbijeno",
+  "wizardFinalStufeStatusSkipped": "Preskočeno",
+  "wizardFinalStufeFilledAt": "Ispunjeno:",
+  "wizardFinalStufeReviewedAt": "Pregledano:"
 }

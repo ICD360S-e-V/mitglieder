@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Vi kontaktar din förälder och bokar ett möte (personligt eller videosamtal). Var tålmodig — processen kan ta upp till 7 dagar. Du får en notis i appen så snart din förälder har godkänt.",
   "wizardFinalMinorCallTitle": "Ring oss om du vill prata",
   "wizardFinalMitgliedernummerLabel": "Ditt medlemsnummer",
-  "wizardFinalCloseButton": "Tillbaka till start",
   "wizardStufe4MethodComingSoon": "Kommer snart",
   "wizardStufe4StreichungWarning": "Om du ligger mer än 6 månader efter med avgiften stryker vi dig automatiskt (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "För att gå ur: skicka oss en skriftlig uppsägning 3 månader före 31 december (senast 30 september för att gälla från årsskiftet). Ingen minimitid (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Påminnelse: avgift 25 €/månad (eller 0 € med Bürgergeld / Sozialamt). För utträde: skriftligt senast 30 september. Om du får svårigheter, ring — vi hittar lösningar tillsammans.",
   "wizardFinalAdultCallTitle": "Ring oss för att prata",
   "wizardStufe1fEmailLabel": "E-postadress (valfritt)",
   "wizardStufe1fEmailHelper": "Valfritt. Vi har vår egen end-to-end-krypterade app för kommunikation — lämna bara e-post om du också vill bli kontaktad där.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Det gick inte att öppna webbläsaren. Länken är kopierad till urklipp — klistra in den i en webbläsare för att fortsätta.",
-  "wizardFinalTimelineSubmitted": "Ansökan mottagen",
   "wizardFinalTimelineProcessing": "Vorstand granskar · vanligtvis 1 arbetsdag, upp till 7",
   "wizardFinalTimelineActivated": "Konto aktiverat",
   "wizardFinalAdultThank": "Tack för att du fyllde i registreringsformuläret! 🎉",
   "wizardFinalAdultUsual": "Din ansökan är hos oss. Vi validerar den oftast inom en arbetsdag.",
-  "wizardFinalAdultExceptional": "Ibland kan det ta upp till 7 arbetsdagar. Och om något inte stämmer skickar vi tillbaka dig till formuläret så att du kan rätta till det 🙂"
+  "wizardFinalAdultExceptional": "Ibland kan det ta upp till 7 arbetsdagar. Och om något inte stämmer skickar vi tillbaka dig till formuläret så att du kan rätta till det 🙂",
+  "wizardFinalStatusTitle": "ANSÖKNINGSSTATUS",
+  "wizardFinalStufeSheetTitle": "Detaljer för ansökan",
+  "wizardFinalStufeSheetHint": "De 8 stegen du fyllde i. Vorstand granskar dem ett i taget — du ser i realtid vad som godkänts.",
+  "wizardFinalStufeStatusPending": "Väntar på granskning",
+  "wizardFinalStufeStatusApproved": "Godkänd",
+  "wizardFinalStufeStatusRejected": "Avvisad",
+  "wizardFinalStufeStatusSkipped": "Hoppade över",
+  "wizardFinalStufeFilledAt": "Ifylld:",
+  "wizardFinalStufeReviewedAt": "Granskad:"
 }

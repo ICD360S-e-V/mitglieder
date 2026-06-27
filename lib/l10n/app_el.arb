@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Θα επικοινωνήσουμε με τον γονέα σου και θα κανονίσουμε συνάντηση (από κοντά ή με βιντεοκλήση). Παρακαλώ κάνε υπομονή — η διαδικασία μπορεί να διαρκέσει έως 7 ημέρες. Θα λάβεις ειδοποίηση στην εφαρμογή μόλις ο γονέας σου εγκρίνει.",
   "wizardFinalMinorCallTitle": "Κάλεσέ μας αν θέλεις να μιλήσουμε",
   "wizardFinalMitgliedernummerLabel": "Ο αριθμός μέλους σου",
-  "wizardFinalCloseButton": "Πίσω στην αρχή",
   "wizardStufe4MethodComingSoon": "Σύντομα",
   "wizardStufe4StreichungWarning": "Αν καθυστερήσεις τη συνδρομή πάνω από 6 μήνες, θα σε διαγράψουμε αυτόματα (Καταστατικό §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Για αποχώρηση: στείλε μας την παραίτησή σου γραπτώς 3 μήνες πριν τις 31 Δεκεμβρίου (έως 30 Σεπτεμβρίου για να ισχύσει στο τέλος του έτους). Δεν υπάρχει ελάχιστη διάρκεια (Καταστατικό §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Υπενθύμιση: συνδρομή 25 €/μήνα (ή 0 € με Bürgergeld / Sozialamt). Για αποχώρηση: γραπτή ειδοποίηση μέχρι 30 Σεπτεμβρίου. Αν έχεις δυσκολίες, κάλεσέ μας — βρίσκουμε λύσεις μαζί.",
   "wizardFinalAdultCallTitle": "Κάλεσέ μας για συζήτηση",
   "wizardStufe1fEmailLabel": "Διεύθυνση email (προαιρετικά)",
   "wizardStufe1fEmailHelper": "Προαιρετικό. Έχουμε τη δική μας εφαρμογή με κρυπτογράφηση από άκρη σε άκρη για επικοινωνία — άφησε email μόνο αν θέλεις να σε βρίσκουμε κι εκεί.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Δεν μπόρεσα να ανοίξω το πρόγραμμα περιήγησης. Ο σύνδεσμος αντιγράφηκε στο πρόχειρο — επικόλλησέ τον σε ένα πρόγραμμα περιήγησης για να συνεχίσεις.",
-  "wizardFinalTimelineSubmitted": "Η αίτησή σου παρελήφθη",
   "wizardFinalTimelineProcessing": "Το Vorstand ελέγχει · συνήθως 1 εργάσιμη, έως 7",
   "wizardFinalTimelineActivated": "Ο λογαριασμός ενεργοποιήθηκε",
   "wizardFinalAdultThank": "Ευχαριστούμε που συμπλήρωσες τη φόρμα εγγραφής! 🎉",
   "wizardFinalAdultUsual": "Η αίτησή σου είναι σε εμάς. Συνήθως την επικυρώνουμε εντός μίας εργάσιμης ημέρας.",
-  "wizardFinalAdultExceptional": "Μερικές φορές μπορεί να χρειαστούν έως 7 εργάσιμες ημέρες. Και αν κάτι δεν ταιριάζει, θα σε επιστρέψουμε στη φόρμα για να το διορθώσεις 🙂"
+  "wizardFinalAdultExceptional": "Μερικές φορές μπορεί να χρειαστούν έως 7 εργάσιμες ημέρες. Και αν κάτι δεν ταιριάζει, θα σε επιστρέψουμε στη φόρμα για να το διορθώσεις 🙂",
+  "wizardFinalStatusTitle": "ΚΑΤΑΣΤΑΣΗ ΑΙΤΗΣΗΣ",
+  "wizardFinalStufeSheetTitle": "Λεπτομέρειες αίτησης",
+  "wizardFinalStufeSheetHint": "Τα 8 στάδια που συμπλήρωσες. Το Vorstand τα ελέγχει ένα προς ένα — βλέπεις σε πραγματικό χρόνο τι έχει εγκριθεί.",
+  "wizardFinalStufeStatusPending": "Σε αναμονή ελέγχου",
+  "wizardFinalStufeStatusApproved": "Εγκρίθηκε",
+  "wizardFinalStufeStatusRejected": "Απορρίφθηκε",
+  "wizardFinalStufeStatusSkipped": "Παραλείφθηκε",
+  "wizardFinalStufeFilledAt": "Συμπληρώθηκε:",
+  "wizardFinalStufeReviewedAt": "Ελέγχθηκε:"
 }

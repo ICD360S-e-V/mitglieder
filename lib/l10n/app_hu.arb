@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Felvesszük a kapcsolatot a szülőddel és megbeszélünk egy találkozót (személyesen vagy videóhíváson). Légy türelemmel — a folyamat akár 7 napig is tarthat. Értesítést kapsz az alkalmazásban, amint a szülőd jóváhagyta.",
   "wizardFinalMinorCallTitle": "Hívj minket, ha beszélni szeretnél",
   "wizardFinalMitgliedernummerLabel": "Tagsági számod",
-  "wizardFinalCloseButton": "Vissza a kezdőlapra",
   "wizardStufe4MethodComingSoon": "Hamarosan",
   "wizardStufe4StreichungWarning": "Ha több mint 6 hónapja vagy elmaradásban a tagdíjjal, automatikusan töröljük (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Kilépéshez: küldd el a felmondást írásban 3 hónappal december 31. előtt (legkésőbb szeptember 30-ig, hogy év végén lépjen hatályba). Nincs minimális tagsági idő (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Emlékeztető: tagdíj 25 €/hó (vagy 0 € Bürgergelddel / Sozialamttal). Kilépéshez: írásban szeptember 30-ig. Ha nehézségeid lesznek, hívj minket — együtt találunk megoldást.",
   "wizardFinalAdultCallTitle": "Hívj, hogy beszéljünk",
   "wizardStufe1fEmailLabel": "E-mail cím (opcionális)",
   "wizardStufe1fEmailHelper": "Opcionális. Saját, végpontok közötti titkosított appunk van a kommunikációhoz — csak akkor add meg az e-mailt, ha úgy is el akarsz érhető lenni.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Nem sikerült megnyitni a böngészőt. A link a vágólapra került — illeszd be egy böngészőbe a folytatáshoz.",
-  "wizardFinalTimelineSubmitted": "Kérelem beérkezett",
   "wizardFinalTimelineProcessing": "Vorstand ellenőriz · általában 1 munkanap, max. 7",
   "wizardFinalTimelineActivated": "Fiók aktiválva",
   "wizardFinalAdultThank": "Köszönjük, hogy kitöltötted a regisztrációs űrlapot! 🎉",
   "wizardFinalAdultUsual": "A kérelmed nálunk van. Általában egy munkanapon belül érvényesítjük.",
-  "wizardFinalAdultExceptional": "Néha akár 7 munkanapig is eltarthat. És ha valami nem stimmel, visszaküldünk az űrlapra, hogy javíthasd 🙂"
+  "wizardFinalAdultExceptional": "Néha akár 7 munkanapig is eltarthat. És ha valami nem stimmel, visszaküldünk az űrlapra, hogy javíthasd 🙂",
+  "wizardFinalStatusTitle": "KÉRELEM ÁLLAPOTA",
+  "wizardFinalStufeSheetTitle": "Kérelem részletei",
+  "wizardFinalStufeSheetHint": "A 8 fázis, amit kitöltöttél. A Vorstand egyenként ellenőrzi — valós időben látod, mi lett jóváhagyva.",
+  "wizardFinalStufeStatusPending": "Ellenőrzésre vár",
+  "wizardFinalStufeStatusApproved": "Jóváhagyva",
+  "wizardFinalStufeStatusRejected": "Elutasítva",
+  "wizardFinalStufeStatusSkipped": "Kihagyva",
+  "wizardFinalStufeFilledAt": "Kitöltve:",
+  "wizardFinalStufeReviewedAt": "Ellenőrizve:"
 }

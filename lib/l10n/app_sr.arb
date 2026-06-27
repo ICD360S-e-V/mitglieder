@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Контактираћемо твог родитеља и заказати састанак (лично или видео позивом). Молимо те за стрпљење — поступак може трајати до 7 дана. Добићеш обавештење у апликацији чим родитељ одобри.",
   "wizardFinalMinorCallTitle": "Позови нас ако желиш да разговарамо",
   "wizardFinalMitgliedernummerLabel": "Твој члански број",
-  "wizardFinalCloseButton": "Назад на почетну",
   "wizardStufe4MethodComingSoon": "Ускоро",
   "wizardStufe4StreichungWarning": "Ако касниш са чланарином више од 6 месеци, аутоматски ћемо те брисати (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "За иступ: пошаљи нам отказ писмено 3 месеца пре 31. децембра (најкасније до 30. септембра да би ступило на снагу крајем године). Нема минималног трајања (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Подсетник: чланарина 25 €/месечно (или 0 € са Bürgergeld / Sozialamt). За иступ: писмено до 30. септембра. Ако наиђеш на потешкоће, позови — заједно тражимо решења.",
   "wizardFinalAdultCallTitle": "Позови да поразговарамо",
   "wizardStufe1fEmailLabel": "Имејл адреса (опционо)",
   "wizardStufe1fEmailHelper": "Опционо. Имамо сопствену апликацију са end-to-end енкрипцијом за комуникацију — остави мејл само ако желиш да те контактирамо и тамо.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Нисам могао да отворим прегледач. Линк је копиран у клипборд — налепи га у прегледач за наставак.",
-  "wizardFinalTimelineSubmitted": "Захтев је примљен",
   "wizardFinalTimelineProcessing": "Vorstand проверава · обично 1 радни дан, до 7",
   "wizardFinalTimelineActivated": "Налог активиран",
   "wizardFinalAdultThank": "Хвала што си попунио регистрациони формулар! 🎉",
   "wizardFinalAdultUsual": "Твој захтев је код нас. Обично га потврђујемо у року од једног радног дана.",
-  "wizardFinalAdultExceptional": "Понекад може потрајати до 7 радних дана. А ако нешто не одговара, вратићемо те у формулар да исправиш 🙂"
+  "wizardFinalAdultExceptional": "Понекад може потрајати до 7 радних дана. А ако нешто не одговара, вратићемо те у формулар да исправиш 🙂",
+  "wizardFinalStatusTitle": "СТАТУС ЗАХТЕВА",
+  "wizardFinalStufeSheetTitle": "Детаљи захтева",
+  "wizardFinalStufeSheetHint": "8 фаза које си попунио. Vorstand их прегледа једну по једну — у реалном времену видиш шта је потврђено.",
+  "wizardFinalStufeStatusPending": "Чека преглед",
+  "wizardFinalStufeStatusApproved": "Одобрено",
+  "wizardFinalStufeStatusRejected": "Одбијено",
+  "wizardFinalStufeStatusSkipped": "Прескочено",
+  "wizardFinalStufeFilledAt": "Попуњено:",
+  "wizardFinalStufeReviewedAt": "Прегледано:"
 }

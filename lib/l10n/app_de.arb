@@ -1230,11 +1230,9 @@
   "wizardFinalMinorBody": "Wir kontaktieren deinen Elternteil und vereinbaren ein Treffen (persönlich oder per Videoanruf). Bitte hab Geduld — der Vorgang kann bis zu 7 Tage dauern. Du bekommst eine In-App-Benachrichtigung, sobald dein Elternteil zugestimmt hat.",
   "wizardFinalMinorCallTitle": "Ruf uns an, wenn du sprechen möchtest",
   "wizardFinalMitgliedernummerLabel": "Deine Mitgliedsnummer",
-  "wizardFinalCloseButton": "Zurück zum Start",
   "wizardStufe4MethodComingSoon": "Bald verfügbar",
   "wizardStufe4StreichungWarning": "Wenn du mit dem Beitrag mehr als 6 Monate im Rückstand bist, werden wir dich automatisch streichen (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Zum Austritt: schicke uns deine Kündigung schriftlich 3 Monate vor dem 31. Dezember (also bis 30. September für Wirksamkeit zum Jahresende). Keine Mindestlaufzeit (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Erinnerung: Beitrag 25 €/Monat (oder 0 € bei Bürgergeld / Sozialamt). Zum Austritt: schriftlich bis 30. September. Falls Schwierigkeiten auftreten, ruf uns an — wir finden gemeinsam eine Lösung.",
   "wizardFinalAdultCallTitle": "Ruf uns an, um zu sprechen",
   "wizardStufe1fEmailLabel": "E-Mail-Adresse (optional)",
   "wizardStufe1fEmailHelper": "Optional. Wir haben unsere eigene Ende-zu-Ende-verschlüsselte App für die Kommunikation — gib uns die E-Mail nur, wenn wir dich auch dort erreichen sollen.",
@@ -1257,10 +1255,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Konnte den Browser nicht öffnen. Der Link wurde in die Zwischenablage kopiert — füge ihn in einen Browser ein, um fortzufahren.",
-  "wizardFinalTimelineSubmitted": "Antrag eingegangen",
   "wizardFinalTimelineProcessing": "Vorstand prüft · meist 1 Werktag, max. 7",
   "wizardFinalTimelineActivated": "Konto aktiviert",
   "wizardFinalAdultThank": "Vielen Dank, dass du das Anmeldeformular ausgefüllt hast! 🎉",
   "wizardFinalAdultUsual": "Dein Antrag ist bei uns angekommen. Normalerweise prüfen wir ihn innerhalb von einem Werktag.",
-  "wizardFinalAdultExceptional": "Manchmal kann es bis zu 7 Werktage dauern. Falls etwas nicht passt, schicken wir dich zurück ins Formular, damit du es korrigieren kannst 🙂"
+  "wizardFinalAdultExceptional": "Manchmal kann es bis zu 7 Werktage dauern. Falls etwas nicht passt, schicken wir dich zurück ins Formular, damit du es korrigieren kannst 🙂",
+  "wizardFinalStatusTitle": "ANTRAGSSTATUS",
+  "wizardFinalStufeSheetTitle": "Antragsdetails",
+  "wizardFinalStufeSheetHint": "Die 8 Stufen, die du ausgefüllt hast. Der Vorstand prüft sie nacheinander — du siehst in Echtzeit, was schon geprüft wurde.",
+  "wizardFinalStufeStatusPending": "Wartet auf Prüfung",
+  "wizardFinalStufeStatusApproved": "Geprüft",
+  "wizardFinalStufeStatusRejected": "Abgelehnt",
+  "wizardFinalStufeStatusSkipped": "Übersprungen",
+  "wizardFinalStufeFilledAt": "Ausgefüllt am:",
+  "wizardFinalStufeReviewedAt": "Geprüft am:"
 }

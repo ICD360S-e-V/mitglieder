@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "We nemen contact op met je ouder en regelen een afspraak (in persoon of videogesprek). Heb geduld — het proces kan tot 7 dagen duren. Je krijgt een melding in de app zodra je ouder heeft goedgekeurd.",
   "wizardFinalMinorCallTitle": "Bel ons als je wilt praten",
   "wizardFinalMitgliedernummerLabel": "Je lidnummer",
-  "wizardFinalCloseButton": "Terug naar welkom",
   "wizardStufe4MethodComingSoon": "Binnenkort beschikbaar",
   "wizardStufe4StreichungWarning": "Als je meer dan 6 maanden achterloopt met de contributie, schrappen we je automatisch (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Om je af te melden: stuur de opzegging schriftelijk 3 maanden vóór 31 december (uiterlijk 30 september voor ingang aan het einde van het jaar). Geen minimale duur (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Herinnering: contributie € 25/maand (of € 0 met Bürgergeld / Sozialamt). Voor opzegging: schriftelijk vóór 30 september. Loop je tegen iets aan, bel ons — we zoeken samen oplossingen.",
   "wizardFinalAdultCallTitle": "Bel ons voor een gesprek",
   "wizardStufe1fEmailLabel": "E-mailadres (optioneel)",
   "wizardStufe1fEmailHelper": "Optioneel. We hebben onze eigen end-to-end versleutelde app voor communicatie — laat alleen een e-mail achter als je daar ook bereikt wilt worden.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "De browser kon niet worden geopend. De link staat op het klembord — plak hem in een browser om verder te gaan.",
-  "wizardFinalTimelineSubmitted": "Aanvraag ontvangen",
   "wizardFinalTimelineProcessing": "Vorstand controleert · meestal 1 werkdag, tot 7",
   "wizardFinalTimelineActivated": "Account geactiveerd",
   "wizardFinalAdultThank": "Bedankt dat je het inschrijfformulier hebt ingevuld! 🎉",
   "wizardFinalAdultUsual": "Je aanvraag is binnen. We valideren hem meestal binnen één werkdag.",
-  "wizardFinalAdultExceptional": "Soms kan het tot 7 werkdagen duren. En als iets niet klopt, sturen we je terug naar het formulier om het aan te passen 🙂"
+  "wizardFinalAdultExceptional": "Soms kan het tot 7 werkdagen duren. En als iets niet klopt, sturen we je terug naar het formulier om het aan te passen 🙂",
+  "wizardFinalStatusTitle": "STATUS AANVRAAG",
+  "wizardFinalStufeSheetTitle": "Details aanvraag",
+  "wizardFinalStufeSheetHint": "De 8 fases die je hebt ingevuld. Vorstand controleert ze één voor één — je ziet in real time wat goedgekeurd is.",
+  "wizardFinalStufeStatusPending": "Wacht op controle",
+  "wizardFinalStufeStatusApproved": "Goedgekeurd",
+  "wizardFinalStufeStatusRejected": "Afgewezen",
+  "wizardFinalStufeStatusSkipped": "Overgeslagen",
+  "wizardFinalStufeFilledAt": "Ingevuld:",
+  "wizardFinalStufeReviewedAt": "Gecontroleerd:"
 }

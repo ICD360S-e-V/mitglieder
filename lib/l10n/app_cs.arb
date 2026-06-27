@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Spojíme se s tvým rodičem a domluvíme schůzku (osobně nebo videohovorem). Prosíme o trpělivost — proces může trvat až 7 dní. Dostaneš upozornění v aplikaci, jakmile rodič schválí.",
   "wizardFinalMinorCallTitle": "Zavolej, pokud si chceš promluvit",
   "wizardFinalMitgliedernummerLabel": "Tvé členské číslo",
-  "wizardFinalCloseButton": "Zpět na úvod",
   "wizardStufe4MethodComingSoon": "Již brzy",
   "wizardStufe4StreichungWarning": "Pokud zaostaneš s příspěvkem o více než 6 měsíců, automaticky tě vyškrtneme (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "K odchodu: pošli nám výpověď písemně 3 měsíce před 31. prosincem (do 30. září, aby byla účinná na konci roku). Žádná minimální doba (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Připomenutí: příspěvek 25 €/měsíc (nebo 0 € s Bürgergeld / Sozialamt). K vystoupení: písemně do 30. září. Pokud nastanou potíže, zavolej — najdeme řešení společně.",
   "wizardFinalAdultCallTitle": "Zavolej, ať si promluvíme",
   "wizardStufe1fEmailLabel": "E-mailová adresa (nepovinné)",
   "wizardStufe1fEmailHelper": "Nepovinné. Máme vlastní E2E šifrovanou aplikaci pro komunikaci — e-mail nech, jen pokud chceš, abychom tě kontaktovali i tam.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Nepodařilo se otevřít prohlížeč. Odkaz byl zkopírován do schránky — vlož ho do prohlížeče, abys pokračoval.",
-  "wizardFinalTimelineSubmitted": "Žádost přijata",
   "wizardFinalTimelineProcessing": "Vorstand kontroluje · obvykle 1 pracovní den, max. 7",
   "wizardFinalTimelineActivated": "Účet aktivován",
   "wizardFinalAdultThank": "Děkujeme, že jsi vyplnil registrační formulář! 🎉",
   "wizardFinalAdultUsual": "Tvoje žádost je u nás. Obvykle ji ověřujeme do jednoho pracovního dne.",
-  "wizardFinalAdultExceptional": "Občas to může trvat až 7 pracovních dnů. A pokud něco nesedí, pošleme tě zpátky do formuláře, abys to opravil 🙂"
+  "wizardFinalAdultExceptional": "Občas to může trvat až 7 pracovních dnů. A pokud něco nesedí, pošleme tě zpátky do formuláře, abys to opravil 🙂",
+  "wizardFinalStatusTitle": "STAV ŽÁDOSTI",
+  "wizardFinalStufeSheetTitle": "Detaily žádosti",
+  "wizardFinalStufeSheetHint": "Osm fází, které jsi vyplnil. Vorstand je kontroluje jednu po druhé — vidíš v reálném čase, co už bylo schváleno.",
+  "wizardFinalStufeStatusPending": "Čeká na kontrolu",
+  "wizardFinalStufeStatusApproved": "Schváleno",
+  "wizardFinalStufeStatusRejected": "Zamítnuto",
+  "wizardFinalStufeStatusSkipped": "Přeskočeno",
+  "wizardFinalStufeFilledAt": "Vyplněno:",
+  "wizardFinalStufeReviewedAt": "Zkontrolováno:"
 }

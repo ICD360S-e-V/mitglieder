@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Мы свяжемся с твоим родителем и назначим встречу (лично или видеозвонок). Прошу проявить терпение — процесс может занять до 7 дней. Получишь уведомление в приложении, как только родитель одобрит.",
   "wizardFinalMinorCallTitle": "Позвони, если хочешь поговорить",
   "wizardFinalMitgliedernummerLabel": "Твой номер члена",
-  "wizardFinalCloseButton": "Назад к началу",
   "wizardStufe4MethodComingSoon": "Скоро",
   "wizardStufe4StreichungWarning": "Если ты задолжаешь более 6 месяцев по взносу, мы автоматически тебя вычеркнем (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Для выхода: пришли заявление об отказе в письменном виде за 3 месяца до 31 декабря (до 30 сентября, чтобы вступило в силу к концу года). Минимального срока нет (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Напоминание: взнос 25 €/месяц (или 0 € при Bürgergeld / Sozialamt). Для выхода: письменное уведомление до 30 сентября. Если возникнут трудности, позвони — найдём решение вместе.",
   "wizardFinalAdultCallTitle": "Позвони, чтобы обсудить",
   "wizardStufe1fEmailLabel": "Адрес электронной почты (необязательно)",
   "wizardStufe1fEmailHelper": "Необязательно. У нас есть собственное приложение с end-to-end шифрованием для общения — оставляй email только если хочешь, чтобы мы писали и туда.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Не удалось открыть браузер. Ссылка скопирована в буфер обмена — вставь её в браузер, чтобы продолжить.",
-  "wizardFinalTimelineSubmitted": "Заявка получена",
   "wizardFinalTimelineProcessing": "Vorstand проверяет · обычно 1 рабочий день, максимум 7",
   "wizardFinalTimelineActivated": "Аккаунт активирован",
   "wizardFinalAdultThank": "Спасибо, что заполнил форму регистрации! 🎉",
   "wizardFinalAdultUsual": "Твоя заявка у нас. Обычно мы её проверяем за один рабочий день.",
-  "wizardFinalAdultExceptional": "Иногда может занять до 7 рабочих дней. А если что-то не сходится, мы вернём тебя в форму, чтобы исправить 🙂"
+  "wizardFinalAdultExceptional": "Иногда может занять до 7 рабочих дней. А если что-то не сходится, мы вернём тебя в форму, чтобы исправить 🙂",
+  "wizardFinalStatusTitle": "СТАТУС ЗАЯВКИ",
+  "wizardFinalStufeSheetTitle": "Детали заявки",
+  "wizardFinalStufeSheetHint": "Восемь этапов, которые ты прошёл. Vorstand проверяет их по очереди — ты видишь в реальном времени, что уже одобрено.",
+  "wizardFinalStufeStatusPending": "Ожидает проверки",
+  "wizardFinalStufeStatusApproved": "Одобрено",
+  "wizardFinalStufeStatusRejected": "Отклонено",
+  "wizardFinalStufeStatusSkipped": "Пропущено",
+  "wizardFinalStufeFilledAt": "Заполнено:",
+  "wizardFinalStufeReviewedAt": "Проверено:"
 }

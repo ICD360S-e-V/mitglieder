@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Sazināsimies ar tavu vecāku un norunāsim tikšanos (klātienē vai video zvanā). Lūdzu, esi pacietīgs — process var ilgt līdz 7 dienām. Saņemsi paziņojumu lietotnē, tiklīdz vecāks apstiprinās.",
   "wizardFinalMinorCallTitle": "Piezvani, ja vēlies parunāt",
   "wizardFinalMitgliedernummerLabel": "Tavs biedra numurs",
-  "wizardFinalCloseButton": "Atpakaļ uz sākumu",
   "wizardStufe4MethodComingSoon": "Drīzumā",
   "wizardStufe4StreichungWarning": "Ja kavēsi biedru maksu vairāk nekā 6 mēnešus, automātiski tevi izsvītrosim (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Lai izstātos: nosūti mums uzteikumu rakstiski 3 mēnešus pirms 31. decembra (līdz 30. septembrim, lai stātos spēkā gada beigās). Minimālā ilguma nav (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Atgādinājums: biedru maksa 25 €/mēn. (vai 0 € ar Bürgergeld / Sozialamt). Lai izstātos: rakstiski līdz 30. septembrim. Ja rodas grūtības, zvani — meklēsim risinājumus kopā.",
   "wizardFinalAdultCallTitle": "Piezvani, parunāsim",
   "wizardStufe1fEmailLabel": "E-pasta adrese (pēc izvēles)",
   "wizardStufe1fEmailHelper": "Pēc izvēles. Mums ir sava galapunktu šifrēta lietotne saziņai — atstāj e-pastu tikai tad, ja gribi, lai sazināmies arī tur.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Pārlūku neizdevās atvērt. Saite ir kopēta starpliktuvē — ielīmē to pārlūkā, lai turpinātu.",
-  "wizardFinalTimelineSubmitted": "Pieteikums saņemts",
   "wizardFinalTimelineProcessing": "Vorstand pārbauda · parasti 1 darba diena, līdz 7",
   "wizardFinalTimelineActivated": "Konts aktivizēts",
   "wizardFinalAdultThank": "Paldies, ka aizpildīji reģistrācijas formu! 🎉",
   "wizardFinalAdultUsual": "Tavs pieteikums ir pie mums. Parasti to apstiprinām vienas darba dienas laikā.",
-  "wizardFinalAdultExceptional": "Dažreiz tas var aizņemt līdz 7 darba dienām. Un, ja kaut kas neatbilst, mēs nosūtīsim tevi atpakaļ pie formas, lai labotu 🙂"
+  "wizardFinalAdultExceptional": "Dažreiz tas var aizņemt līdz 7 darba dienām. Un, ja kaut kas neatbilst, mēs nosūtīsim tevi atpakaļ pie formas, lai labotu 🙂",
+  "wizardFinalStatusTitle": "PIETEIKUMA STATUSS",
+  "wizardFinalStufeSheetTitle": "Pieteikuma informācija",
+  "wizardFinalStufeSheetHint": "8 posmi, ko aizpildīji. Vorstand pārbauda tos pa vienam — reālajā laikā redzi, kas ir apstiprināts.",
+  "wizardFinalStufeStatusPending": "Gaida pārbaudi",
+  "wizardFinalStufeStatusApproved": "Apstiprināts",
+  "wizardFinalStufeStatusRejected": "Noraidīts",
+  "wizardFinalStufeStatusSkipped": "Izlaists",
+  "wizardFinalStufeFilledAt": "Aizpildīts:",
+  "wizardFinalStufeReviewedAt": "Pārbaudīts:"
 }

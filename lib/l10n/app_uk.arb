@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Ми звʼяжемося з твоїм батьком/матірʼю та призначимо зустріч (особисто або відеодзвінок). Прошу мати терпіння — процес може зайняти до 7 днів. Отримаєш сповіщення в застосунку, щойно батько/мати схвалять.",
   "wizardFinalMinorCallTitle": "Зателефонуй, якщо хочеш поговорити",
   "wizardFinalMitgliedernummerLabel": "Твій номер члена",
-  "wizardFinalCloseButton": "Назад до welcome",
   "wizardStufe4MethodComingSoon": "Скоро",
   "wizardStufe4StreichungWarning": "Якщо ти заборгуєш більше 6 місяців за внеском, ми автоматично виключимо тебе (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Для виходу: надішли заяву про вихід письмово за 3 місяці до 31 грудня (до 30 вересня, щоб набуло чинності в кінці року). Мінімального терміну немає (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Нагадування: внесок 25 €/місяць (або 0 € при Bürgergeld / Sozialamt). Для виходу: письмово до 30 вересня. Якщо виникнуть труднощі — зателефонуй, разом знайдемо рішення.",
   "wizardFinalAdultCallTitle": "Зателефонуй, щоб обговорити",
   "wizardStufe1fEmailLabel": "Електронна адреса (необовʼязково)",
   "wizardStufe1fEmailHelper": "Необовʼязково. У нас є власний застосунок зі наскрізним шифруванням — залишай email лише якщо хочеш, щоб ми писали й туди.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Не вдалося відкрити браузер. Посилання скопійовано в буфер обміну — встав його в браузер, щоб продовжити.",
-  "wizardFinalTimelineSubmitted": "Заявку отримано",
   "wizardFinalTimelineProcessing": "Vorstand перевіряє · зазвичай 1 робочий день, максимум 7",
   "wizardFinalTimelineActivated": "Акаунт активовано",
   "wizardFinalAdultThank": "Дякуємо, що заповнив реєстраційну форму! 🎉",
   "wizardFinalAdultUsual": "Твоя заявка у нас. Зазвичай ми її перевіряємо за один робочий день.",
-  "wizardFinalAdultExceptional": "Іноді це може зайняти до 7 робочих днів. А якщо щось не сходиться, ми повернемо тебе у форму, щоб виправити 🙂"
+  "wizardFinalAdultExceptional": "Іноді це може зайняти до 7 робочих днів. А якщо щось не сходиться, ми повернемо тебе у форму, щоб виправити 🙂",
+  "wizardFinalStatusTitle": "СТАТУС ЗАЯВКИ",
+  "wizardFinalStufeSheetTitle": "Деталі заявки",
+  "wizardFinalStufeSheetHint": "Вісім етапів, які ти пройшов. Vorstand перевіряє їх по черзі — ти бачиш у реальному часі, що вже схвалено.",
+  "wizardFinalStufeStatusPending": "Очікує перевірки",
+  "wizardFinalStufeStatusApproved": "Схвалено",
+  "wizardFinalStufeStatusRejected": "Відхилено",
+  "wizardFinalStufeStatusSkipped": "Пропущено",
+  "wizardFinalStufeFilledAt": "Заповнено:",
+  "wizardFinalStufeReviewedAt": "Перевірено:"
 }

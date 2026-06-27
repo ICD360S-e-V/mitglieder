@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Contatteremo il tuo genitore e fisseremo un incontro (di persona o videochiamata). Ti chiediamo pazienza — il processo può richiedere fino a 7 giorni. Riceverai una notifica nell'app appena il genitore avrà approvato.",
   "wizardFinalMinorCallTitle": "Chiamaci se vuoi parlare",
   "wizardFinalMitgliedernummerLabel": "Il tuo numero di socio",
-  "wizardFinalCloseButton": "Torna alla home",
   "wizardStufe4MethodComingSoon": "Prossimamente",
   "wizardStufe4StreichungWarning": "Se accumuli più di 6 mesi di arretrato sulla quota, ti cancelliamo automaticamente (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Per uscire: inviaci la disdetta per iscritto 3 mesi prima del 31 dicembre (entro il 30 settembre per essere efficace a fine anno). Nessuna durata minima (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Promemoria: quota 25 €/mese (o 0 € con Bürgergeld / Sozialamt). Per uscire: per iscritto entro il 30 settembre. Se sorgono difficoltà, chiamaci — cerchiamo soluzioni insieme.",
   "wizardFinalAdultCallTitle": "Chiamaci per parlarne",
   "wizardStufe1fEmailLabel": "Indirizzo email (facoltativo)",
   "wizardStufe1fEmailHelper": "Facoltativo. Abbiamo la nostra app cifrata end-to-end per comunicare — lascia l'email solo se vuoi che ti scriviamo anche lì.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Impossibile aprire il browser. Il link è negli appunti — incollalo in un browser per continuare.",
-  "wizardFinalTimelineSubmitted": "Richiesta ricevuta",
   "wizardFinalTimelineProcessing": "Vorstand sta verificando · di solito 1 giorno lavorativo, fino a 7",
   "wizardFinalTimelineActivated": "Account attivato",
   "wizardFinalAdultThank": "Grazie per aver completato il modulo di registrazione! 🎉",
   "wizardFinalAdultUsual": "La tua richiesta è ora da noi. Di solito la convalidiamo entro un giorno lavorativo.",
-  "wizardFinalAdultExceptional": "A volte può richiedere fino a 7 giorni lavorativi. E se qualcosa non torna, ti rimandiamo al modulo per correggerlo 🙂"
+  "wizardFinalAdultExceptional": "A volte può richiedere fino a 7 giorni lavorativi. E se qualcosa non torna, ti rimandiamo al modulo per correggerlo 🙂",
+  "wizardFinalStatusTitle": "STATO DELLA RICHIESTA",
+  "wizardFinalStufeSheetTitle": "Dettagli della richiesta",
+  "wizardFinalStufeSheetHint": "Le 8 fasi che hai completato. Il Vorstand le verifica una per una — vedi in tempo reale cosa è stato validato.",
+  "wizardFinalStufeStatusPending": "In attesa di revisione",
+  "wizardFinalStufeStatusApproved": "Approvato",
+  "wizardFinalStufeStatusRejected": "Respinto",
+  "wizardFinalStufeStatusSkipped": "Saltato",
+  "wizardFinalStufeFilledAt": "Compilato:",
+  "wizardFinalStufeReviewedAt": "Revisionato:"
 }

@@ -1230,11 +1230,9 @@
   "wizardFinalMinorBody": "سنتواصل مع والدك ونرتب لقاءً (شخصيًا أو عبر مكالمة فيديو). يرجى التحلي بالصبر — قد تستغرق العملية حتى 7 أيام. ستحصل على إشعار في التطبيق بمجرد موافقة والدك.",
   "wizardFinalMinorCallTitle": "اتصل بنا إذا أردت التحدث",
   "wizardFinalMitgliedernummerLabel": "رقم عضويتك",
-  "wizardFinalCloseButton": "العودة إلى البداية",
   "wizardStufe4MethodComingSoon": "قريبًا",
   "wizardStufe4StreichungWarning": "إذا تأخرت في دفع الاشتراك لأكثر من 6 أشهر، سنشطبك تلقائيًا (النظام الأساسي §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "للانسحاب: أرسل لنا إخطار الإلغاء كتابة قبل 3 أشهر من 31 ديسمبر (بحد أقصى 30 سبتمبر ليصبح ساري المفعول في نهاية العام). لا توجد مدة أدنى (النظام الأساسي §6 Abs. 3).",
-  "wizardFinalRulesRecap": "تذكير: الاشتراك 25 €/شهر (أو 0 € مع Bürgergeld / Sozialamt). للانسحاب: إشعار خطي حتى 30 سبتمبر. إذا واجهت صعوبات، اتصل بنا — نجد حلولًا معًا.",
   "wizardFinalAdultCallTitle": "اتصل بنا للتحدث",
   "wizardStufe1fEmailLabel": "البريد الإلكتروني (اختياري)",
   "wizardStufe1fEmailHelper": "اختياري. لدينا تطبيقنا الخاص للتواصل مع تشفير من طرف إلى طرف — اترك بريدك الإلكتروني فقط إذا أردت أن نتواصل معك هناك أيضًا.",
@@ -1257,10 +1255,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "تعذّر فتح المتصفح. تم نسخ الرابط إلى الحافظة — الصقه في متصفح للمتابعة.",
-  "wizardFinalTimelineSubmitted": "تم استلام طلبك",
   "wizardFinalTimelineProcessing": "مجلس الإدارة يراجع · عادةً يوم عمل واحد، حتى 7",
   "wizardFinalTimelineActivated": "تم تفعيل الحساب",
   "wizardFinalAdultThank": "شكرًا لإكمالك نموذج التسجيل! 🎉",
   "wizardFinalAdultUsual": "وصلنا طلبك. عادةً نتحقق منه خلال يوم عمل واحد.",
-  "wizardFinalAdultExceptional": "أحيانًا قد يستغرق الأمر حتى 7 أيام عمل. وإذا لم يكن شيء ما متطابقًا، فسنعيدك إلى النموذج لتصحيحه 🙂"
+  "wizardFinalAdultExceptional": "أحيانًا قد يستغرق الأمر حتى 7 أيام عمل. وإذا لم يكن شيء ما متطابقًا، فسنعيدك إلى النموذج لتصحيحه 🙂",
+  "wizardFinalStatusTitle": "حالة الطلب",
+  "wizardFinalStufeSheetTitle": "تفاصيل الطلب",
+  "wizardFinalStufeSheetHint": "المراحل الثماني التي أكملتها. يراجعها مجلس الإدارة واحدة تلو الأخرى — ترى في الوقت الفعلي ما تم التحقق منه.",
+  "wizardFinalStufeStatusPending": "بانتظار المراجعة",
+  "wizardFinalStufeStatusApproved": "تم التحقق",
+  "wizardFinalStufeStatusRejected": "مرفوض",
+  "wizardFinalStufeStatusSkipped": "تم تخطيه",
+  "wizardFinalStufeFilledAt": "تم الملء في:",
+  "wizardFinalStufeReviewedAt": "تمت المراجعة في:"
 }

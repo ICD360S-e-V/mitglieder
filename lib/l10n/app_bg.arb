@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Ще се свържем с родителя ти и ще уговорим среща (лично или видео разговор). Моля, имай търпение — процедурата може да отнеме до 7 дни. Ще получиш известие в приложението, щом родителят ти одобри.",
   "wizardFinalMinorCallTitle": "Обади ни се, ако искаш да поговорим",
   "wizardFinalMitgliedernummerLabel": "Твоят членски номер",
-  "wizardFinalCloseButton": "Обратно към началото",
   "wizardStufe4MethodComingSoon": "Скоро",
   "wizardStufe4StreichungWarning": "Ако изостанеш с членския внос повече от 6 месеца, ще те отпишем автоматично (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "За напускане: изпрати ни писмено предизвестие 3 месеца преди 31 декември (до 30 септември за да влезе в сила в края на годината). Няма минимален срок (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Напомняне: членски внос 25 €/месец (или 0 € при Bürgergeld / Sozialamt). За напускане: писмено известие до 30 септември. Ако възникнат трудности, обади се — намираме решения заедно.",
   "wizardFinalAdultCallTitle": "Обади се да поговорим",
   "wizardStufe1fEmailLabel": "Имейл адрес (по избор)",
   "wizardStufe1fEmailHelper": "По избор. Имаме собствено приложение с end-to-end криптиране за комуникация — остави имейл само ако искаш да те търсим и там.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Не успях да отворя браузъра. Линкът е копиран в клипборда — постави го в браузър, за да продължиш.",
-  "wizardFinalTimelineSubmitted": "Заявката е получена",
   "wizardFinalTimelineProcessing": "Vorstand преглежда · обикновено 1 работен ден, до 7",
   "wizardFinalTimelineActivated": "Профилът е активиран",
   "wizardFinalAdultThank": "Благодарим, че попълни регистрационната форма! 🎉",
   "wizardFinalAdultUsual": "Заявката ти е при нас. Обикновено я валидираме в рамките на един работен ден.",
-  "wizardFinalAdultExceptional": "Понякога може да отнеме до 7 работни дни. А ако нещо не съвпада, ще те върнем към формата, за да го коригираш 🙂"
+  "wizardFinalAdultExceptional": "Понякога може да отнеме до 7 работни дни. А ако нещо не съвпада, ще те върнем към формата, за да го коригираш 🙂",
+  "wizardFinalStatusTitle": "СТАТУС НА ЗАЯВКАТА",
+  "wizardFinalStufeSheetTitle": "Детайли на заявката",
+  "wizardFinalStufeSheetHint": "8-те етапа, които си попълнил. Vorstand ги преглежда един по един — виждаш в реално време какво е валидирано.",
+  "wizardFinalStufeStatusPending": "Очаква преглед",
+  "wizardFinalStufeStatusApproved": "Одобрено",
+  "wizardFinalStufeStatusRejected": "Отхвърлено",
+  "wizardFinalStufeStatusSkipped": "Пропуснато",
+  "wizardFinalStufeFilledAt": "Попълнено:",
+  "wizardFinalStufeReviewedAt": "Прегледано:"
 }

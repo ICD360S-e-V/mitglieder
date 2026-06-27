@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Contactaremos o teu progenitor e marcaremos um encontro (presencial ou videochamada). Por favor, tem paciência — o processo pode demorar até 7 dias. Receberás uma notificação na app assim que o teu progenitor aprovar.",
   "wizardFinalMinorCallTitle": "Liga-nos se quiseres falar",
   "wizardFinalMitgliedernummerLabel": "O teu número de membro",
-  "wizardFinalCloseButton": "Voltar ao início",
   "wizardStufe4MethodComingSoon": "Em breve",
   "wizardStufe4StreichungWarning": "Se atrasares mais de 6 meses na quota, vamos retirar-te automaticamente (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Para sair: envia-nos a renúncia por escrito 3 meses antes de 31 de dezembro (até 30 de setembro para fazer efeito no final do ano). Não há duração mínima (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Lembrete: quota 25 €/mês (ou 0 € com Bürgergeld / Sozialamt). Para sair: por escrito até 30 de setembro. Se houver dificuldades, liga-nos — encontramos soluções juntos.",
   "wizardFinalAdultCallTitle": "Liga-nos para conversar",
   "wizardStufe1fEmailLabel": "Endereço de email (opcional)",
   "wizardStufe1fEmailHelper": "Opcional. Temos a nossa própria app cifrada ponta-a-ponta para comunicar — deixa o email só se quiseres que também te contactemos por aí.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Não foi possível abrir o navegador. O link foi copiado para a área de transferência — cola-o num navegador para continuar.",
-  "wizardFinalTimelineSubmitted": "Pedido recebido",
   "wizardFinalTimelineProcessing": "Vorstand está a verificar · normalmente 1 dia útil, até 7",
   "wizardFinalTimelineActivated": "Conta ativada",
   "wizardFinalAdultThank": "Obrigado por preencheres o formulário de inscrição! 🎉",
   "wizardFinalAdultUsual": "O teu pedido está connosco. Normalmente validamo-lo num dia útil.",
-  "wizardFinalAdultExceptional": "Por vezes pode demorar até 7 dias úteis. E se algo não bater certo, mandamos-te de volta ao formulário para corrigires 🙂"
+  "wizardFinalAdultExceptional": "Por vezes pode demorar até 7 dias úteis. E se algo não bater certo, mandamos-te de volta ao formulário para corrigires 🙂",
+  "wizardFinalStatusTitle": "ESTADO DO PEDIDO",
+  "wizardFinalStufeSheetTitle": "Detalhes do pedido",
+  "wizardFinalStufeSheetHint": "As 8 fases que preencheste. O Vorstand verifica-as uma a uma — vês em tempo real o que foi validado.",
+  "wizardFinalStufeStatusPending": "A aguardar verificação",
+  "wizardFinalStufeStatusApproved": "Aprovado",
+  "wizardFinalStufeStatusRejected": "Rejeitado",
+  "wizardFinalStufeStatusSkipped": "Ignorado",
+  "wizardFinalStufeFilledAt": "Preenchido:",
+  "wizardFinalStufeReviewedAt": "Verificado:"
 }

@@ -1230,11 +1230,9 @@
   "wizardFinalMinorBody": "Velinizle iletişime geçeceğiz ve bir görüşme ayarlayacağız (yüz yüze veya görüntülü görüşme). Lütfen sabırlı ol — süreç en fazla 7 gün sürebilir. Velin onayladığı anda uygulamadan bir bildirim alacaksın.",
   "wizardFinalMinorCallTitle": "Konuşmak istersen bizi ara",
   "wizardFinalMitgliedernummerLabel": "Üye numaran",
-  "wizardFinalCloseButton": "Karşılama ekranına dön",
   "wizardStufe4MethodComingSoon": "Yakında",
   "wizardStufe4StreichungWarning": "Aidatta 6 aydan fazla geride kalırsan otomatik olarak silinirsin (Tüzük §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Üyelikten ayrılmak için: 31 Aralık'tan 3 ay önce yazılı bildirimini gönder (yıl sonu itibarıyla geçerli olması için en geç 30 Eylül). Asgari süre yok (Tüzük §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Hatırlatma: aidat 25 €/ay (Bürgergeld / Sozialamt durumunda 0 €). Üyelikten ayrılmak için: 30 Eylül'e kadar yazılı bildirim. Sıkıntı çıkarsa ara — birlikte çözüm buluruz.",
   "wizardFinalAdultCallTitle": "Konuşmak için ara",
   "wizardStufe1fEmailLabel": "E-posta adresi (isteğe bağlı)",
   "wizardStufe1fEmailHelper": "İsteğe bağlı. İletişim için kendi uçtan uca şifreli uygulamamız var — sadece e-posta ile de iletişim kurmamızı istiyorsan adresini bırak.",
@@ -1257,10 +1255,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Tarayıcı açılamadı. Bağlantı panoya kopyalandı — devam etmek için bir tarayıcıya yapıştır.",
-  "wizardFinalTimelineSubmitted": "Başvurun alındı",
   "wizardFinalTimelineProcessing": "Vorstand inceliyor · genelde 1 iş günü, en fazla 7",
   "wizardFinalTimelineActivated": "Hesap aktif",
   "wizardFinalAdultThank": "Kayıt formunu doldurduğun için teşekkürler! 🎉",
   "wizardFinalAdultUsual": "Başvurun bizde. Genelde bir iş günü içinde doğruluyoruz.",
-  "wizardFinalAdultExceptional": "Bazen 7 iş gününe kadar sürebilir. Bir şey uymazsa, düzeltebilmen için formu yeniden açıyoruz 🙂"
+  "wizardFinalAdultExceptional": "Bazen 7 iş gününe kadar sürebilir. Bir şey uymazsa, düzeltebilmen için formu yeniden açıyoruz 🙂",
+  "wizardFinalStatusTitle": "BAŞVURU DURUMU",
+  "wizardFinalStufeSheetTitle": "Başvuru detayları",
+  "wizardFinalStufeSheetHint": "Tamamladığın 8 aşama. Vorstand bunları sırayla inceler — gerçek zamanlı olarak neyin onaylandığını görürsün.",
+  "wizardFinalStufeStatusPending": "İnceleme bekliyor",
+  "wizardFinalStufeStatusApproved": "Onaylandı",
+  "wizardFinalStufeStatusRejected": "Reddedildi",
+  "wizardFinalStufeStatusSkipped": "Atlandı",
+  "wizardFinalStufeFilledAt": "Dolduruldu:",
+  "wizardFinalStufeReviewedAt": "İncelendi:"
 }

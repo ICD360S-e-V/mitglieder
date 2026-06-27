@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Contactaremos a tu padre/madre y concertaremos una reunión (en persona o videollamada). Por favor ten paciencia — el proceso puede tardar hasta 7 días. Recibirás una notificación en la app en cuanto tu padre/madre apruebe.",
   "wizardFinalMinorCallTitle": "Llámanos si quieres hablar",
   "wizardFinalMitgliedernummerLabel": "Tu número de socio",
-  "wizardFinalCloseButton": "Volver al inicio",
   "wizardStufe4MethodComingSoon": "Próximamente",
   "wizardStufe4StreichungWarning": "Si te retrasas más de 6 meses con la cuota, te eliminaremos automáticamente (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Para darte de baja: envíanos la cancelación por escrito 3 meses antes del 31 de diciembre (hasta el 30 de septiembre para que sea efectiva a fin de año). No hay duración mínima (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Recordatorio: cuota 25 €/mes (o 0 € con Bürgergeld / Sozialamt). Para darte de baja: por escrito hasta el 30 de septiembre. Si surgen dificultades, llámanos — buscamos soluciones juntos.",
   "wizardFinalAdultCallTitle": "Llámanos para hablar",
   "wizardStufe1fEmailLabel": "Dirección de email (opcional)",
   "wizardStufe1fEmailHelper": "Opcional. Tenemos nuestra propia app cifrada de extremo a extremo para comunicarnos — deja el email solo si quieres que también te escribamos por ahí.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "No se pudo abrir el navegador. El enlace está en el portapapeles — pégalo en un navegador para continuar.",
-  "wizardFinalTimelineSubmitted": "Solicitud recibida",
   "wizardFinalTimelineProcessing": "Vorstand revisando · normalmente 1 día laborable, hasta 7",
   "wizardFinalTimelineActivated": "Cuenta activada",
   "wizardFinalAdultThank": "¡Gracias por completar el formulario de registro! 🎉",
   "wizardFinalAdultUsual": "Tu solicitud ya está con nosotros. Normalmente la validamos en un día laborable.",
-  "wizardFinalAdultExceptional": "A veces puede tardar hasta 7 días laborables. Y si algo no cuadra, te enviamos de vuelta al formulario para que lo corrijas 🙂"
+  "wizardFinalAdultExceptional": "A veces puede tardar hasta 7 días laborables. Y si algo no cuadra, te enviamos de vuelta al formulario para que lo corrijas 🙂",
+  "wizardFinalStatusTitle": "ESTADO DE LA SOLICITUD",
+  "wizardFinalStufeSheetTitle": "Detalles de la solicitud",
+  "wizardFinalStufeSheetHint": "Las 8 etapas que has completado. El Vorstand las revisa una a una — ves en tiempo real qué se ha validado.",
+  "wizardFinalStufeStatusPending": "En espera de revisión",
+  "wizardFinalStufeStatusApproved": "Aprobado",
+  "wizardFinalStufeStatusRejected": "Rechazado",
+  "wizardFinalStufeStatusSkipped": "Omitido",
+  "wizardFinalStufeFilledAt": "Rellenado:",
+  "wizardFinalStufeReviewedAt": "Revisado:"
 }

@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Vi kontakter forelderen din og avtaler et møte (personlig eller videosamtale). Vær tålmodig — prosessen kan ta opptil 7 dager. Du får et varsel i appen så snart forelderen din har godkjent.",
   "wizardFinalMinorCallTitle": "Ring oss hvis du vil snakke",
   "wizardFinalMitgliedernummerLabel": "Medlemsnummeret ditt",
-  "wizardFinalCloseButton": "Tilbake til velkomst",
   "wizardStufe4MethodComingSoon": "Kommer snart",
   "wizardStufe4StreichungWarning": "Hvis du er mer enn 6 måneder på etterskudd med kontingenten, stryker vi deg automatisk (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "For å melde deg ut: send oss oppsigelsen skriftlig 3 måneder før 31. desember (senest 30. september for å gjelde ved årsslutt). Ingen minimumstid (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Påminnelse: kontingent 25 €/måned (eller 0 € med Bürgergeld / Sozialamt). For å melde deg ut: skriftlig innen 30. september. Hvis det oppstår vansker, ring — vi finner løsninger sammen.",
   "wizardFinalAdultCallTitle": "Ring oss for å snakke",
   "wizardStufe1fEmailLabel": "E-postadresse (valgfritt)",
   "wizardStufe1fEmailHelper": "Valgfritt. Vi har vår egen ende-til-ende-krypterte app for kommunikasjon — legg igjen e-posten kun hvis du også vil kontaktes der.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Kunne ikke åpne nettleseren. Lenken er kopiert til utklippstavlen — lim den inn i en nettleser for å fortsette.",
-  "wizardFinalTimelineSubmitted": "Søknad mottatt",
   "wizardFinalTimelineProcessing": "Vorstand gjennomgår · vanligvis 1 virkedag, opptil 7",
   "wizardFinalTimelineActivated": "Konto aktivert",
   "wizardFinalAdultThank": "Takk for at du fylte ut registreringsskjemaet! 🎉",
   "wizardFinalAdultUsual": "Søknaden din er hos oss. Vi godkjenner den vanligvis innen én virkedag.",
-  "wizardFinalAdultExceptional": "Iblant kan det ta opptil 7 virkedager. Og hvis noe ikke stemmer, sender vi deg tilbake til skjemaet for å rette opp 🙂"
+  "wizardFinalAdultExceptional": "Iblant kan det ta opptil 7 virkedager. Og hvis noe ikke stemmer, sender vi deg tilbake til skjemaet for å rette opp 🙂",
+  "wizardFinalStatusTitle": "SØKNADSSTATUS",
+  "wizardFinalStufeSheetTitle": "Detaljer for søknaden",
+  "wizardFinalStufeSheetHint": "De 8 trinnene du fylte ut. Vorstand gjennomgår dem ett etter ett — du ser i sanntid hva som er godkjent.",
+  "wizardFinalStufeStatusPending": "Venter på gjennomgang",
+  "wizardFinalStufeStatusApproved": "Godkjent",
+  "wizardFinalStufeStatusRejected": "Avvist",
+  "wizardFinalStufeStatusSkipped": "Hoppet over",
+  "wizardFinalStufeFilledAt": "Utfylt:",
+  "wizardFinalStufeReviewedAt": "Gjennomgått:"
 }

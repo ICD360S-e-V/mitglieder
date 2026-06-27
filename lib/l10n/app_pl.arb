@@ -1209,11 +1209,9 @@
   "wizardFinalMinorBody": "Skontaktujemy się z twoim rodzicem i umówimy spotkanie (osobiście lub przez wideorozmowę). Prosimy o cierpliwość — proces może potrwać do 7 dni. Otrzymasz powiadomienie w aplikacji, gdy tylko rodzic zatwierdzi.",
   "wizardFinalMinorCallTitle": "Zadzwoń, jeśli chcesz porozmawiać",
   "wizardFinalMitgliedernummerLabel": "Twój numer członkowski",
-  "wizardFinalCloseButton": "Wróć do powitania",
   "wizardStufe4MethodComingSoon": "Wkrótce",
   "wizardStufe4StreichungWarning": "Jeśli zalegasz ze składką ponad 6 miesięcy, automatycznie cię skreślamy (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Aby się wypisać: prześlij wypowiedzenie pisemnie 3 miesiące przed 31 grudnia (do 30 września, by obowiązywało od końca roku). Brak okresu minimalnego (Satzung §6 Abs. 3).",
-  "wizardFinalRulesRecap": "Przypomnienie: składka 25 €/mies. (lub 0 € przy Bürgergeld / Sozialamt). Aby się wypisać: pisemnie do 30 września. Jeśli pojawią się trudności, zadzwoń — znajdziemy rozwiązanie razem.",
   "wizardFinalAdultCallTitle": "Zadzwoń, porozmawiajmy",
   "wizardStufe1fEmailLabel": "Adres e-mail (opcjonalnie)",
   "wizardStufe1fEmailHelper": "Opcjonalnie. Mamy własną aplikację z szyfrowaniem end-to-end do komunikacji — zostaw e-mail tylko jeśli chcesz, byśmy pisali też tam.",
@@ -1236,10 +1234,18 @@
     }
   },
   "wizardDocumentExternalOpenFailed": "Nie udało się otworzyć przeglądarki. Link został skopiowany do schowka — wklej go w przeglądarce, aby kontynuować.",
-  "wizardFinalTimelineSubmitted": "Wniosek otrzymany",
   "wizardFinalTimelineProcessing": "Vorstand weryfikuje · zwykle 1 dzień roboczy, do 7",
   "wizardFinalTimelineActivated": "Konto aktywowane",
   "wizardFinalAdultThank": "Dziękujemy za wypełnienie formularza rejestracyjnego! 🎉",
   "wizardFinalAdultUsual": "Twój wniosek jest u nas. Zwykle weryfikujemy go w ciągu jednego dnia roboczego.",
-  "wizardFinalAdultExceptional": "Czasem może to potrwać do 7 dni roboczych. A jeśli coś się nie zgadza, odeślemy cię z powrotem do formularza, byś poprawił 🙂"
+  "wizardFinalAdultExceptional": "Czasem może to potrwać do 7 dni roboczych. A jeśli coś się nie zgadza, odeślemy cię z powrotem do formularza, byś poprawił 🙂",
+  "wizardFinalStatusTitle": "STATUS WNIOSKU",
+  "wizardFinalStufeSheetTitle": "Szczegóły wniosku",
+  "wizardFinalStufeSheetHint": "8 etapów, które ukończyłeś. Vorstand sprawdza je po kolei — widzisz w czasie rzeczywistym, co zostało zatwierdzone.",
+  "wizardFinalStufeStatusPending": "Czeka na weryfikację",
+  "wizardFinalStufeStatusApproved": "Zatwierdzone",
+  "wizardFinalStufeStatusRejected": "Odrzucone",
+  "wizardFinalStufeStatusSkipped": "Pominięte",
+  "wizardFinalStufeFilledAt": "Wypełnione:",
+  "wizardFinalStufeReviewedAt": "Sprawdzone:"
 }
