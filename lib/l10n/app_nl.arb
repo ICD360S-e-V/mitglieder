@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Wil je af en toe vrijwilligerswerk doen (elke leeftijd, met toestemming van je ouders), bel ons — we steunen graag jongeren die de wereld willen veranderen.",
-  "wizardAgeGateCallUs": "Bel ons",
   "wizardAgeGateBackHome": "Terug naar welkom",
   "wizardErrInvalidPhone": "Ongeldig telefoonnummer",
   "wizardStufe1b1Title": "Toestemming ouder",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Klaar! Je bent ingeschreven 🎉",
   "wizardFinalMinorTitle": "Je verzoek is verzonden 📨",
   "wizardFinalMinorBody": "We nemen contact op met je ouder en regelen een afspraak (in persoon of videogesprek). Heb geduld — het proces kan tot 7 dagen duren. Je krijgt een melding in de app zodra je ouder heeft goedgekeurd.",
-  "wizardFinalMinorCallTitle": "Bel ons als je wilt praten",
   "wizardFinalMitgliedernummerLabel": "Je lidnummer",
   "wizardStufe4MethodComingSoon": "Binnenkort beschikbaar",
   "wizardStufe4StreichungWarning": "Als je meer dan 6 maanden achterloopt met de contributie, schrappen we je automatisch (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Om je af te melden: stuur de opzegging schriftelijk 3 maanden vóór 31 december (uiterlijk 30 september voor ingang aan het einde van het jaar). Geen minimale duur (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Bel ons voor een gesprek",
   "wizardStufe1fEmailLabel": "E-mailadres (optioneel)",
   "wizardStufe1fEmailHelper": "Optioneel. We hebben onze eigen end-to-end versleutelde app voor communicatie — laat alleen een e-mail achter als je daar ook bereikt wilt worden.",
   "wizardErrInvalidEmail": "Ongeldig e-mailadres",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Je hebt eerder al een aanvraag gedaan",
   "wizardDuplicatePreviouslyWithdrawnBody": "Je naam en geboortedatum komen overeen met een oudere aanvraag die je destijds had ingetrokken. Welkom terug — bel ons voordat je verdergaat, zodat de Vorstand kan beslissen hoe we het aanpakken.",
   "wizardDuplicateCallUsTitle": "Bel ons",
-  "wizardDuplicateCallUsBody": "Je naam en geboortedatum staan al bij ons, maar de details kunnen we niet via de app delen. Bel ons — de Vorstand legt de situatie persoonlijk uit."
+  "wizardDuplicateCallUsBody": "Je naam en geboortedatum staan al bij ons, maar de details kunnen we niet via de app delen. Bel ons — de Vorstand legt de situatie persoonlijk uit.",
+  "wizardChatHelp": "Even praten",
+  "wizardChatHelpSubtitle": "Live chat met de Vorstand · snel antwoord"
 }

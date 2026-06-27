@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Ako želiš povremeno volontirati (bilo koja dob, uz pristanak roditelja), nazovi nas — rado podržavamo mlade koji žele promijeniti svijet.",
-  "wizardAgeGateCallUs": "Nazovi nas",
   "wizardAgeGateBackHome": "Natrag na dobrodošlicu",
   "wizardErrInvalidPhone": "Nevažeći broj telefona",
   "wizardStufe1b1Title": "Roditeljska suglasnost",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Gotovo! Upisan si 🎉",
   "wizardFinalMinorTitle": "Tvoj zahtjev je poslan 📨",
   "wizardFinalMinorBody": "Kontaktirat ćemo tvog roditelja i dogovoriti susret (osobno ili videopozivom). Molim te budi strpljiv — proces može trajati do 7 dana. Dobit ćeš obavijest u aplikaciji čim roditelj odobri.",
-  "wizardFinalMinorCallTitle": "Nazovi nas ako želiš razgovarati",
   "wizardFinalMitgliedernummerLabel": "Tvoj članski broj",
   "wizardStufe4MethodComingSoon": "Uskoro",
   "wizardStufe4StreichungWarning": "Ako kasniš s članarinom više od 6 mjeseci, automatski ćemo te brisati (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Za istup: pošalji nam pisanu obavijest 3 mjeseca prije 31. prosinca (najkasnije do 30. rujna kako bi proizvelo učinak na kraju godine). Nema minimalnog trajanja (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Nazovi za razgovor",
   "wizardStufe1fEmailLabel": "E-mail adresa (neobavezno)",
   "wizardStufe1fEmailHelper": "Neobavezno. Imamo vlastitu end-to-end kriptiranu aplikaciju za komunikaciju — ostavi e-mail samo ako želiš da te kontaktiramo i tamo.",
   "wizardErrInvalidEmail": "Nevažeća e-mail adresa",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Već si nekad podnio zahtjev",
   "wizardDuplicatePreviouslyWithdrawnBody": "Tvoje ime i datum rođenja podudaraju se sa starijim zahtjevom koji si bio povukao. Dobrodošao natrag — nazovi nas prije nego nastaviš, kako bi Vorstand odlučio kako dalje.",
   "wizardDuplicateCallUsTitle": "Molimo, nazovi nas",
-  "wizardDuplicateCallUsBody": "Tvoje ime i datum rođenja već se nalaze kod nas, ali pojedinosti ne možemo dijeliti kroz aplikaciju. Nazovi nas — Vorstand će ti objasniti situaciju izravno."
+  "wizardDuplicateCallUsBody": "Tvoje ime i datum rođenja već se nalaze kod nas, ali pojedinosti ne možemo dijeliti kroz aplikaciju. Nazovi nas — Vorstand će ti objasniti situaciju izravno.",
+  "wizardChatHelp": "Razgovarajmo",
+  "wizardChatHelpSubtitle": "Chat uživo s Vorstandom · brz odgovor"
 }

@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Kui soovid juhuslikult vabatahtlikuna aidata (mistahes vanus, vanemate nõusolekul), helista — meile meeldib toetada noori, kes tahavad maailma muuta.",
-  "wizardAgeGateCallUs": "Helista",
   "wizardAgeGateBackHome": "Tagasi tervitusekraanile",
   "wizardErrInvalidPhone": "Vigane telefoninumber",
   "wizardStufe1b1Title": "Vanema nõusolek",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Valmis! Oled liige 🎉",
   "wizardFinalMinorTitle": "Sinu päring on saadetud 📨",
   "wizardFinalMinorBody": "Võtame ühendust sinu vanemaga ja lepime kohtumise kokku (kohapeal või videokõnega). Palun ole kannatlik — protsess võib kesta kuni 7 päeva. Saad rakenduses teate niipea, kui vanem on heaks kiitnud.",
-  "wizardFinalMinorCallTitle": "Helista, kui soovid rääkida",
   "wizardFinalMitgliedernummerLabel": "Sinu liikmenumber",
   "wizardStufe4MethodComingSoon": "Tulemas",
   "wizardStufe4StreichungWarning": "Kui jääd liikmemaksuga rohkem kui 6 kuud võlgu, kustutame sind automaatselt (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Lahkumiseks: saada meile kirjalik ülesütlemine 3 kuud enne 31. detsembrit (hiljemalt 30. septembriks, et see jõustuks aasta lõpus). Minimaalset kestust pole (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Helista, arutame",
   "wizardStufe1fEmailLabel": "E-posti aadress (valikuline)",
   "wizardStufe1fEmailHelper": "Valikuline. Meil on oma otspunktist-otspunkti krüpteeritud rakendus suhtlemiseks — jäta e-post ainult siis, kui soovid, et sind ka seal kätte saaksime.",
   "wizardErrInvalidEmail": "Vigane e-posti aadress",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Oled juba varem avalduse esitanud",
   "wizardDuplicatePreviouslyWithdrawnBody": "Sinu nimi ja sünnikuupäev sobivad vanema avaldusega, mille olid tagasi võtnud. Tere tulemast tagasi — palun helista enne jätkamist, et Vorstand saaks otsustada, kuidas edasi tegutseme.",
   "wizardDuplicateCallUsTitle": "Palun helista meile",
-  "wizardDuplicateCallUsBody": "Sinu nimi ja sünnikuupäev on meil juba olemas, kuid me ei saa üksikasju rakenduse kaudu jagada. Palun helista meile — Vorstand selgitab olukorra otse."
+  "wizardDuplicateCallUsBody": "Sinu nimi ja sünnikuupäev on meil juba olemas, kuid me ei saa üksikasju rakenduse kaudu jagada. Palun helista meile — Vorstand selgitab olukorra otse.",
+  "wizardChatHelp": "Räägime",
+  "wizardChatHelpSubtitle": "Otsesuhtlus Vorstandiga · kiire vastus"
 }

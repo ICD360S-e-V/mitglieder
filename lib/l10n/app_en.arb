@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "If you want to volunteer occasionally (any age, with your parents' consent), give us a call — we love supporting young people who want to change the world.",
-  "wizardAgeGateCallUs": "Call us",
   "wizardAgeGateBackHome": "Back to welcome",
   "wizardErrInvalidPhone": "Invalid phone number",
   "wizardStufe1b1Title": "Parental consent",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "All set! You're enrolled 🎉",
   "wizardFinalMinorTitle": "Your request has been sent 📨",
   "wizardFinalMinorBody": "We'll contact your parent and arrange a meeting (in person or video call). Please be patient — the process can take up to 7 days. You'll get an in-app notification as soon as your parent approves.",
-  "wizardFinalMinorCallTitle": "Call us if you want to talk",
   "wizardFinalMitgliedernummerLabel": "Your member number",
   "wizardStufe4MethodComingSoon": "Coming soon",
   "wizardStufe4StreichungWarning": "If you fall more than 6 months behind on dues, we'll automatically strike you off (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "To leave: send us your cancellation in writing 3 months before December 31 (by September 30 to take effect at year-end). No minimum membership duration (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Call us to talk it through",
   "wizardStufe1fEmailLabel": "Email address (optional)",
   "wizardStufe1fEmailHelper": "Optional. We have our own end-to-end encrypted app for communication — only leave an email if you'd also like to be reached that way.",
   "wizardErrInvalidEmail": "Invalid email address",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "You've applied before",
   "wizardDuplicatePreviouslyWithdrawnBody": "Your name and date of birth match an older application you'd withdrawn. Welcome back — please give us a call before continuing so the Vorstand can decide how to proceed.",
   "wizardDuplicateCallUsTitle": "Please give us a call",
-  "wizardDuplicateCallUsBody": "Your name and date of birth already appear in our records, but we can't share the details through the app. Please give us a call — the Vorstand will explain the situation directly."
+  "wizardDuplicateCallUsBody": "Your name and date of birth already appear in our records, but we can't share the details through the app. Please give us a call — the Vorstand will explain the situation directly.",
+  "wizardChatHelp": "Let's talk",
+  "wizardChatHelpSubtitle": "Live chat with the Vorstand · quick reply"
 }

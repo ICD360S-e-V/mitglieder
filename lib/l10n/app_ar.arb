@@ -1058,7 +1058,6 @@
     }
   },
   "wizardAgeGateBody2": "إذا أردت التطوع بشكل عرضي (في أي عمر، بموافقة الوالدين)، اتصل بنا — يسعدنا دعم الشباب الذين يريدون تغيير العالم.",
-  "wizardAgeGateCallUs": "اتصل بنا",
   "wizardAgeGateBackHome": "العودة إلى البداية",
   "wizardErrInvalidPhone": "رقم هاتف غير صحيح",
   "wizardStufe1b1Title": "موافقة الوالدين",
@@ -1228,12 +1227,10 @@
   "wizardFinalAdultTitle": "تم! أنت مسجل 🎉",
   "wizardFinalMinorTitle": "تم إرسال طلبك 📨",
   "wizardFinalMinorBody": "سنتواصل مع والدك ونرتب لقاءً (شخصيًا أو عبر مكالمة فيديو). يرجى التحلي بالصبر — قد تستغرق العملية حتى 7 أيام. ستحصل على إشعار في التطبيق بمجرد موافقة والدك.",
-  "wizardFinalMinorCallTitle": "اتصل بنا إذا أردت التحدث",
   "wizardFinalMitgliedernummerLabel": "رقم عضويتك",
   "wizardStufe4MethodComingSoon": "قريبًا",
   "wizardStufe4StreichungWarning": "إذا تأخرت في دفع الاشتراك لأكثر من 6 أشهر، سنشطبك تلقائيًا (النظام الأساسي §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "للانسحاب: أرسل لنا إخطار الإلغاء كتابة قبل 3 أشهر من 31 ديسمبر (بحد أقصى 30 سبتمبر ليصبح ساري المفعول في نهاية العام). لا توجد مدة أدنى (النظام الأساسي §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "اتصل بنا للتحدث",
   "wizardStufe1fEmailLabel": "البريد الإلكتروني (اختياري)",
   "wizardStufe1fEmailHelper": "اختياري. لدينا تطبيقنا الخاص للتواصل مع تشفير من طرف إلى طرف — اترك بريدك الإلكتروني فقط إذا أردت أن نتواصل معك هناك أيضًا.",
   "wizardErrInvalidEmail": "بريد إلكتروني غير صالح",
@@ -1284,5 +1281,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "لقد قدمت طلبًا من قبل",
   "wizardDuplicatePreviouslyWithdrawnBody": "اسمك وتاريخ ميلادك يتطابقان مع طلب أقدم سحبته. أهلًا بعودتك — يرجى الاتصال بنا قبل المتابعة حتى يقرر مجلس الإدارة كيف نتقدم.",
   "wizardDuplicateCallUsTitle": "يرجى الاتصال بنا",
-  "wizardDuplicateCallUsBody": "اسمك وتاريخ ميلادك موجودان لدينا بالفعل، لكن لا يمكننا مشاركة التفاصيل عبر التطبيق. يرجى الاتصال بنا — مجلس الإدارة سيشرح لك الأمر مباشرة."
+  "wizardDuplicateCallUsBody": "اسمك وتاريخ ميلادك موجودان لدينا بالفعل، لكن لا يمكننا مشاركة التفاصيل عبر التطبيق. يرجى الاتصال بنا — مجلس الإدارة سيشرح لك الأمر مباشرة.",
+  "wizardChatHelp": "لنتحدث",
+  "wizardChatHelpSubtitle": "دردشة مباشرة مع مجلس الإدارة · رد سريع"
 }

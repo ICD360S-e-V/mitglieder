@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Jos haluat auttaa silloin tällöin vapaaehtoisena (kaikenikäisille, vanhempien suostumuksella), soita meille — tuemme mielellämme nuoria, jotka haluavat muuttaa maailmaa.",
-  "wizardAgeGateCallUs": "Soita meille",
   "wizardAgeGateBackHome": "Takaisin alkuun",
   "wizardErrInvalidPhone": "Virheellinen puhelinnumero",
   "wizardStufe1b1Title": "Vanhemman suostumus",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Valmis! Olet ilmoittautunut 🎉",
   "wizardFinalMinorTitle": "Pyyntösi on lähetetty 📨",
   "wizardFinalMinorBody": "Otamme yhteyttä vanhempaasi ja sovimme tapaamisen (paikan päällä tai videopuhelulla). Ole kärsivällinen — prosessi voi kestää jopa 7 päivää. Saat ilmoituksen sovelluksessa heti, kun vanhempasi on hyväksynyt.",
-  "wizardFinalMinorCallTitle": "Soita meille, jos haluat puhua",
   "wizardFinalMitgliedernummerLabel": "Jäsennumerosi",
   "wizardStufe4MethodComingSoon": "Tulossa pian",
   "wizardStufe4StreichungWarning": "Jos jäät yli 6 kuukautta jälkeen maksusta, poistamme sinut automaattisesti (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Eroamiseen: lähetä irtisanominen kirjallisesti 3 kuukautta ennen 31. joulukuuta (viimeistään 30. syyskuuta, jotta tulee voimaan vuoden lopussa). Vähimmäisjäsenyyttä ei ole (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Soita, niin jutellaan",
   "wizardStufe1fEmailLabel": "Sähköpostiosoite (valinnainen)",
   "wizardStufe1fEmailHelper": "Valinnainen. Meillä on oma päästä päähän salattu sovellus viestintään — jätä sähköposti vain jos haluat, että otamme yhteyttä myös sitä kautta.",
   "wizardErrInvalidEmail": "Virheellinen sähköpostiosoite",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Olet hakenut aiemmin",
   "wizardDuplicatePreviouslyWithdrawnBody": "Nimesi ja syntymäaikasi vastaavat vanhempaa hakemusta, jonka olit perunut. Tervetuloa takaisin — soita meille ennen jatkamista, jotta Vorstand voi päättää, miten etenemme.",
   "wizardDuplicateCallUsTitle": "Soita meille",
-  "wizardDuplicateCallUsBody": "Nimesi ja syntymäaikasi näkyvät jo tietokannassamme, mutta emme voi kertoa yksityiskohtia sovelluksen kautta. Soita meille — Vorstand selittää tilanteen suoraan."
+  "wizardDuplicateCallUsBody": "Nimesi ja syntymäaikasi näkyvät jo tietokannassamme, mutta emme voi kertoa yksityiskohtia sovelluksen kautta. Soita meille — Vorstand selittää tilanteen suoraan.",
+  "wizardChatHelp": "Jutellaan",
+  "wizardChatHelpSubtitle": "Live-chat Vorstandin kanssa · nopea vastaus"
 }

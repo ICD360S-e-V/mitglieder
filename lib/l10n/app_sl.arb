@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Če želiš občasno prostovoljiti (katera koli starost, s soglasjem staršev), pokliči nas — radi podpiramo mlade, ki želijo spremeniti svet.",
-  "wizardAgeGateCallUs": "Pokliči nas",
   "wizardAgeGateBackHome": "Nazaj na pozdrav",
   "wizardErrInvalidPhone": "Neveljavna telefonska številka",
   "wizardStufe1b1Title": "Soglasje staršev",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Gotovo! Si vpisan 🎉",
   "wizardFinalMinorTitle": "Tvoja zahteva je bila poslana 📨",
   "wizardFinalMinorBody": "Stopili bomo v stik s tvojim staršem in dogovorili srečanje (osebno ali video klic). Prosim, bodi potrpežljiv — postopek lahko traja do 7 dni. Prejel boš obvestilo v aplikaciji, takoj ko starš odobri.",
-  "wizardFinalMinorCallTitle": "Pokliči nas, če želiš govoriti",
   "wizardFinalMitgliedernummerLabel": "Tvoja članska številka",
   "wizardStufe4MethodComingSoon": "Kmalu",
   "wizardStufe4StreichungWarning": "Če zaostaneš s članarino več kot 6 mesecev, te samodejno izbrišemo (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Za izstop: pošlji nam pisno odpoved 3 mesece pred 31. decembrom (do 30. septembra, da bo veljala ob koncu leta). Brez minimalnega trajanja (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Pokliči za pogovor",
   "wizardStufe1fEmailLabel": "E-poštni naslov (neobvezno)",
   "wizardStufe1fEmailHelper": "Neobvezno. Imamo lastno aplikacijo z end-to-end šifriranjem za komunikacijo — e-pošto pusti samo, če želiš, da te kontaktiramo tudi tam.",
   "wizardErrInvalidEmail": "Neveljaven e-poštni naslov",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Že prej si oddal vlogo",
   "wizardDuplicatePreviouslyWithdrawnBody": "Tvoje ime in datum rojstva se ujemata s starejšo vlogo, ki si jo umaknil. Dobrodošel nazaj — pokliči nas pred nadaljevanjem, da Vorstand odloči, kako naprej.",
   "wizardDuplicateCallUsTitle": "Prosim, pokliči nas",
-  "wizardDuplicateCallUsBody": "Tvoje ime in datum rojstva že obstajata pri nas, vendar podrobnosti ne moremo deliti prek aplikacije. Pokliči nas — Vorstand bo situacijo razložil neposredno."
+  "wizardDuplicateCallUsBody": "Tvoje ime in datum rojstva že obstajata pri nas, vendar podrobnosti ne moremo deliti prek aplikacije. Pokliči nas — Vorstand bo situacijo razložil neposredno.",
+  "wizardChatHelp": "Pogovorimo se",
+  "wizardChatHelpSubtitle": "Klepet v živo z Vorstandom · hiter odgovor"
 }

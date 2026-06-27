@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Jei nori savanoriauti retkarčiais (bet kuriame amžiuje, su tėvų sutikimu), paskambink — mums patinka palaikyti jaunimą, kuris nori keisti pasaulį.",
-  "wizardAgeGateCallUs": "Paskambink",
   "wizardAgeGateBackHome": "Atgal į pradžią",
   "wizardErrInvalidPhone": "Neteisingas telefono numeris",
   "wizardStufe1b1Title": "Tėvų sutikimas",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Atlikta! Esi užregistruotas 🎉",
   "wizardFinalMinorTitle": "Tavo prašymas išsiųstas 📨",
   "wizardFinalMinorBody": "Susisieksime su tavo tėvu/motina ir suderinsime susitikimą (asmeniškai arba per vaizdo skambutį). Prašom kantrybės — procesas gali užtrukti iki 7 dienų. Gausi pranešimą programėlėje, kai tik tėvas/motina patvirtins.",
-  "wizardFinalMinorCallTitle": "Paskambink, jei nori pasikalbėti",
   "wizardFinalMitgliedernummerLabel": "Tavo nario numeris",
   "wizardStufe4MethodComingSoon": "Netrukus",
   "wizardStufe4StreichungWarning": "Jei vėluosi su mokesčiu daugiau nei 6 mėnesius, automatiškai tave išbraukiame (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Norėdamas išstoti: atsiųsk mums pranešimą raštu likus 3 mėnesiams iki gruodžio 31 d. (iki rugsėjo 30 d., kad įsigaliotų metų gale). Minimalaus laikotarpio nėra (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Paskambink pasikalbėti",
   "wizardStufe1fEmailLabel": "El. pašto adresas (neprivaloma)",
   "wizardStufe1fEmailHelper": "Neprivaloma. Turime savo abipusiu šifravimu apsaugotą programėlę bendravimui — palik el. paštą tik jei nori, kad rašytume ir ten.",
   "wizardErrInvalidEmail": "Neteisingas el. pašto adresas",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Anksčiau jau buvai pateikęs prašymą",
   "wizardDuplicatePreviouslyWithdrawnBody": "Tavo vardas ir gimimo data sutampa su senesniu prašymu, kurį buvai atšaukęs. Sveikas grįžęs — paskambink prieš tęsdamas, kad Vorstand nuspręstų, kaip elgsimės.",
   "wizardDuplicateCallUsTitle": "Prašome, paskambink",
-  "wizardDuplicateCallUsBody": "Tavo vardas ir gimimo data jau yra mūsų įrašuose, bet detalių per programėlę pateikti negalime. Paskambink — Vorstand paaiškins situaciją tiesiogiai."
+  "wizardDuplicateCallUsBody": "Tavo vardas ir gimimo data jau yra mūsų įrašuose, bet detalių per programėlę pateikti negalime. Paskambink — Vorstand paaiškins situaciją tiesiogiai.",
+  "wizardChatHelp": "Pasikalbėkim",
+  "wizardChatHelpSubtitle": "Tiesioginis pokalbis su Vorstand · greitas atsakymas"
 }

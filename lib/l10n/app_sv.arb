@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Vill du volontära då och då (vilken ålder som helst, med föräldrarnas medgivande), ring oss — vi stöttar gärna unga som vill förändra världen.",
-  "wizardAgeGateCallUs": "Ring oss",
   "wizardAgeGateBackHome": "Tillbaka till start",
   "wizardErrInvalidPhone": "Ogiltigt telefonnummer",
   "wizardStufe1b1Title": "Föräldrasamtycke",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Klart! Du är inskriven 🎉",
   "wizardFinalMinorTitle": "Din begäran har skickats 📨",
   "wizardFinalMinorBody": "Vi kontaktar din förälder och bokar ett möte (personligt eller videosamtal). Var tålmodig — processen kan ta upp till 7 dagar. Du får en notis i appen så snart din förälder har godkänt.",
-  "wizardFinalMinorCallTitle": "Ring oss om du vill prata",
   "wizardFinalMitgliedernummerLabel": "Ditt medlemsnummer",
   "wizardStufe4MethodComingSoon": "Kommer snart",
   "wizardStufe4StreichungWarning": "Om du ligger mer än 6 månader efter med avgiften stryker vi dig automatiskt (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "För att gå ur: skicka oss en skriftlig uppsägning 3 månader före 31 december (senast 30 september för att gälla från årsskiftet). Ingen minimitid (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Ring oss för att prata",
   "wizardStufe1fEmailLabel": "E-postadress (valfritt)",
   "wizardStufe1fEmailHelper": "Valfritt. Vi har vår egen end-to-end-krypterade app för kommunikation — lämna bara e-post om du också vill bli kontaktad där.",
   "wizardErrInvalidEmail": "Ogiltig e-postadress",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Du har ansökt tidigare",
   "wizardDuplicatePreviouslyWithdrawnBody": "Ditt namn och födelsedatum matchar en äldre ansökan som du dragit tillbaka. Välkommen tillbaka — ring oss innan du fortsätter så Vorstand kan besluta hur vi går vidare.",
   "wizardDuplicateCallUsTitle": "Vänligen ring oss",
-  "wizardDuplicateCallUsBody": "Ditt namn och födelsedatum finns redan hos oss, men vi kan inte dela detaljerna via appen. Ring oss — Vorstand förklarar situationen direkt."
+  "wizardDuplicateCallUsBody": "Ditt namn och födelsedatum finns redan hos oss, men vi kan inte dela detaljerna via appen. Ring oss — Vorstand förklarar situationen direkt.",
+  "wizardChatHelp": "Vi pratar",
+  "wizardChatHelpSubtitle": "Livechatt med Vorstand · snabbt svar"
 }

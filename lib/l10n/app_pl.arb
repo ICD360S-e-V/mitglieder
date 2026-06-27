@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Jeśli chcesz pomagać jako wolontariusz okazjonalnie (każdy wiek, za zgodą rodziców), zadzwoń — uwielbiamy wspierać młodych, którzy chcą zmieniać świat.",
-  "wizardAgeGateCallUs": "Zadzwoń",
   "wizardAgeGateBackHome": "Wróć na powitanie",
   "wizardErrInvalidPhone": "Nieprawidłowy numer telefonu",
   "wizardStufe1b1Title": "Zgoda rodzica",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Gotowe! Jesteś zapisany 🎉",
   "wizardFinalMinorTitle": "Twoja prośba została wysłana 📨",
   "wizardFinalMinorBody": "Skontaktujemy się z twoim rodzicem i umówimy spotkanie (osobiście lub przez wideorozmowę). Prosimy o cierpliwość — proces może potrwać do 7 dni. Otrzymasz powiadomienie w aplikacji, gdy tylko rodzic zatwierdzi.",
-  "wizardFinalMinorCallTitle": "Zadzwoń, jeśli chcesz porozmawiać",
   "wizardFinalMitgliedernummerLabel": "Twój numer członkowski",
   "wizardStufe4MethodComingSoon": "Wkrótce",
   "wizardStufe4StreichungWarning": "Jeśli zalegasz ze składką ponad 6 miesięcy, automatycznie cię skreślamy (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Aby się wypisać: prześlij wypowiedzenie pisemnie 3 miesiące przed 31 grudnia (do 30 września, by obowiązywało od końca roku). Brak okresu minimalnego (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Zadzwoń, porozmawiajmy",
   "wizardStufe1fEmailLabel": "Adres e-mail (opcjonalnie)",
   "wizardStufe1fEmailHelper": "Opcjonalnie. Mamy własną aplikację z szyfrowaniem end-to-end do komunikacji — zostaw e-mail tylko jeśli chcesz, byśmy pisali też tam.",
   "wizardErrInvalidEmail": "Nieprawidłowy adres e-mail",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Już wcześniej składałeś wniosek",
   "wizardDuplicatePreviouslyWithdrawnBody": "Twoje imię i data urodzenia pasują do starszego wniosku, który wycofałeś. Witaj z powrotem — zadzwoń przed kontynuacją, by Vorstand zdecydował, jak postępujemy.",
   "wizardDuplicateCallUsTitle": "Prosimy, zadzwoń",
-  "wizardDuplicateCallUsBody": "Twoje imię i data urodzenia są już w naszej bazie, ale szczegółów nie możemy podać przez aplikację. Zadzwoń do nas — Vorstand wyjaśni sytuację bezpośrednio."
+  "wizardDuplicateCallUsBody": "Twoje imię i data urodzenia są już w naszej bazie, ale szczegółów nie możemy podać przez aplikację. Zadzwoń do nas — Vorstand wyjaśni sytuację bezpośrednio.",
+  "wizardChatHelp": "Porozmawiajmy",
+  "wizardChatHelpSubtitle": "Czat na żywo z Vorstandem · szybka odpowiedź"
 }

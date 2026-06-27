@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Pokud chceš příležitostně pomáhat jako dobrovolník (jakýkoli věk, se souhlasem rodičů), zavolej nám — rádi podporujeme mladé lidi, kteří chtějí měnit svět.",
-  "wizardAgeGateCallUs": "Zavolat",
   "wizardAgeGateBackHome": "Zpět na úvod",
   "wizardErrInvalidPhone": "Neplatné telefonní číslo",
   "wizardStufe1b1Title": "Souhlas rodiče",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Hotovo! Jsi přihlášen 🎉",
   "wizardFinalMinorTitle": "Tvá žádost byla odeslána 📨",
   "wizardFinalMinorBody": "Spojíme se s tvým rodičem a domluvíme schůzku (osobně nebo videohovorem). Prosíme o trpělivost — proces může trvat až 7 dní. Dostaneš upozornění v aplikaci, jakmile rodič schválí.",
-  "wizardFinalMinorCallTitle": "Zavolej, pokud si chceš promluvit",
   "wizardFinalMitgliedernummerLabel": "Tvé členské číslo",
   "wizardStufe4MethodComingSoon": "Již brzy",
   "wizardStufe4StreichungWarning": "Pokud zaostaneš s příspěvkem o více než 6 měsíců, automaticky tě vyškrtneme (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "K odchodu: pošli nám výpověď písemně 3 měsíce před 31. prosincem (do 30. září, aby byla účinná na konci roku). Žádná minimální doba (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Zavolej, ať si promluvíme",
   "wizardStufe1fEmailLabel": "E-mailová adresa (nepovinné)",
   "wizardStufe1fEmailHelper": "Nepovinné. Máme vlastní E2E šifrovanou aplikaci pro komunikaci — e-mail nech, jen pokud chceš, abychom tě kontaktovali i tam.",
   "wizardErrInvalidEmail": "Neplatná e-mailová adresa",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Už jsi jednou žádost podal",
   "wizardDuplicatePreviouslyWithdrawnBody": "Tvoje jméno a datum narození odpovídají starší žádosti, kterou jsi zrušil. Vítej zpátky — zavolej nám, než budeš pokračovat, ať Vorstand rozhodne, jak dál.",
   "wizardDuplicateCallUsTitle": "Prosím, zavolej nám",
-  "wizardDuplicateCallUsBody": "Tvoje jméno a datum narození u nás už figurují, ale podrobnosti přes aplikaci sdělit nemůžeme. Zavolej nám — Vorstand ti situaci vysvětlí osobně."
+  "wizardDuplicateCallUsBody": "Tvoje jméno a datum narození u nás už figurují, ale podrobnosti přes aplikaci sdělit nemůžeme. Zavolej nám — Vorstand ti situaci vysvětlí osobně.",
+  "wizardChatHelp": "Promluvíme si",
+  "wizardChatHelpSubtitle": "Živý chat s Vorstandem · rychlá odpověď"
 }

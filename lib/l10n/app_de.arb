@@ -1058,7 +1058,6 @@
     }
   },
   "wizardAgeGateBody2": "Wenn du dich punktuell als Ehrenamtliche*r engagieren möchtest (jedes Alter, mit Erlaubnis der Eltern), ruf uns an — wir freuen uns, junge Menschen zu unterstützen, die die Welt verändern wollen.",
-  "wizardAgeGateCallUs": "Ruf uns an",
   "wizardAgeGateBackHome": "Zurück zum Start",
   "wizardErrInvalidPhone": "Ungültige Telefonnummer",
   "wizardStufe1b1Title": "Einwilligung Eltern",
@@ -1228,12 +1227,10 @@
   "wizardFinalAdultTitle": "Geschafft! Du bist angemeldet 🎉",
   "wizardFinalMinorTitle": "Deine Anfrage wurde verschickt 📨",
   "wizardFinalMinorBody": "Wir kontaktieren deinen Elternteil und vereinbaren ein Treffen (persönlich oder per Videoanruf). Bitte hab Geduld — der Vorgang kann bis zu 7 Tage dauern. Du bekommst eine In-App-Benachrichtigung, sobald dein Elternteil zugestimmt hat.",
-  "wizardFinalMinorCallTitle": "Ruf uns an, wenn du sprechen möchtest",
   "wizardFinalMitgliedernummerLabel": "Deine Mitgliedsnummer",
   "wizardStufe4MethodComingSoon": "Bald verfügbar",
   "wizardStufe4StreichungWarning": "Wenn du mit dem Beitrag mehr als 6 Monate im Rückstand bist, werden wir dich automatisch streichen (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Zum Austritt: schicke uns deine Kündigung schriftlich 3 Monate vor dem 31. Dezember (also bis 30. September für Wirksamkeit zum Jahresende). Keine Mindestlaufzeit (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Ruf uns an, um zu sprechen",
   "wizardStufe1fEmailLabel": "E-Mail-Adresse (optional)",
   "wizardStufe1fEmailHelper": "Optional. Wir haben unsere eigene Ende-zu-Ende-verschlüsselte App für die Kommunikation — gib uns die E-Mail nur, wenn wir dich auch dort erreichen sollen.",
   "wizardErrInvalidEmail": "Ungültige E-Mail-Adresse",
@@ -1284,5 +1281,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Du hattest schon einmal einen Antrag",
   "wizardDuplicatePreviouslyWithdrawnBody": "Dein Name und dein Geburtsdatum stimmen mit einem älteren Antrag überein, den du zurückgezogen hattest. Willkommen zurück — bitte ruf uns vor dem Fortfahren an, damit der Vorstand entscheiden kann, wie wir weitermachen.",
   "wizardDuplicateCallUsTitle": "Bitte ruf uns an",
-  "wizardDuplicateCallUsBody": "Dein Name und Geburtsdatum sind bei uns bereits vorhanden, aber wir können dir die Details nicht über die App mitteilen. Bitte ruf uns an — der Vorstand erklärt dir die Situation direkt."
+  "wizardDuplicateCallUsBody": "Dein Name und Geburtsdatum sind bei uns bereits vorhanden, aber wir können dir die Details nicht über die App mitteilen. Bitte ruf uns an — der Vorstand erklärt dir die Situation direkt.",
+  "wizardChatHelp": "Lass uns reden",
+  "wizardChatHelpSubtitle": "Live-Chat mit dem Vorstand · schnelle Antwort"
 }

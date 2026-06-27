@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Se vuoi fare volontariato occasionalmente (qualsiasi età, con il consenso dei genitori), chiamaci — ci piace sostenere i giovani che vogliono cambiare il mondo.",
-  "wizardAgeGateCallUs": "Chiamaci",
   "wizardAgeGateBackHome": "Torna alla home",
   "wizardErrInvalidPhone": "Numero di telefono non valido",
   "wizardStufe1b1Title": "Consenso del genitore",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Fatto! Sei iscritto 🎉",
   "wizardFinalMinorTitle": "La tua richiesta è stata inviata 📨",
   "wizardFinalMinorBody": "Contatteremo il tuo genitore e fisseremo un incontro (di persona o videochiamata). Ti chiediamo pazienza — il processo può richiedere fino a 7 giorni. Riceverai una notifica nell'app appena il genitore avrà approvato.",
-  "wizardFinalMinorCallTitle": "Chiamaci se vuoi parlare",
   "wizardFinalMitgliedernummerLabel": "Il tuo numero di socio",
   "wizardStufe4MethodComingSoon": "Prossimamente",
   "wizardStufe4StreichungWarning": "Se accumuli più di 6 mesi di arretrato sulla quota, ti cancelliamo automaticamente (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Per uscire: inviaci la disdetta per iscritto 3 mesi prima del 31 dicembre (entro il 30 settembre per essere efficace a fine anno). Nessuna durata minima (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Chiamaci per parlarne",
   "wizardStufe1fEmailLabel": "Indirizzo email (facoltativo)",
   "wizardStufe1fEmailHelper": "Facoltativo. Abbiamo la nostra app cifrata end-to-end per comunicare — lascia l'email solo se vuoi che ti scriviamo anche lì.",
   "wizardErrInvalidEmail": "Indirizzo email non valido",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Hai già fatto richiesta in passato",
   "wizardDuplicatePreviouslyWithdrawnBody": "Il tuo nome e la tua data di nascita corrispondono a una richiesta più vecchia che avevi ritirato. Bentornato — chiamaci prima di continuare così il Vorstand decide come procedere.",
   "wizardDuplicateCallUsTitle": "Per favore, chiamaci",
-  "wizardDuplicateCallUsBody": "Il tuo nome e la tua data di nascita risultano già nei nostri archivi, ma non possiamo condividere i dettagli tramite l'app. Chiamaci — il Vorstand ti spiegherà la situazione direttamente."
+  "wizardDuplicateCallUsBody": "Il tuo nome e la tua data di nascita risultano già nei nostri archivi, ma non possiamo condividere i dettagli tramite l'app. Chiamaci — il Vorstand ti spiegherà la situazione direttamente.",
+  "wizardChatHelp": "Parliamone",
+  "wizardChatHelpSubtitle": "Chat live con il Vorstand · risposta veloce"
 }

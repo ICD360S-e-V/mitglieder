@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
 import '../widgets/icd360s_header.dart';
+import 'anonymous_chat.dart';
 
 /// Terminal screen the wizard pivots to when `check_age.php` returns
 /// `tooYoung`. Satzung §6 sets the floor at 16; visitors below that
@@ -18,11 +18,6 @@ class WizardAgeGateScreen extends StatelessWidget {
   /// personal rather than generic.
   final int age;
 
-  /// Phone shown on the Call action. Same default as the rest of
-  /// Claudiu's surfaces; a future contact-info endpoint can override
-  /// it without touching the screen.
-  final String supportPhone;
-
   /// Closes the wizard and pops the navigator back to welcome.
   final VoidCallback onExit;
 
@@ -30,15 +25,7 @@ class WizardAgeGateScreen extends StatelessWidget {
     super.key,
     required this.age,
     required this.onExit,
-    this.supportPhone = '+4916094482053',
   });
-
-  Future<void> _call() async {
-    final uri = Uri(scheme: 'tel', path: supportPhone);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +79,7 @@ class WizardAgeGateScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                _callAction(l10n),
+                _chatAction(context, l10n),
                 const SizedBox(height: 10),
                 TextButton(
                   onPressed: onExit,
@@ -187,11 +174,13 @@ class WizardAgeGateScreen extends StatelessWidget {
     );
   }
 
-  Widget _callAction(AppLocalizations l10n) {
+  Widget _chatAction(BuildContext context, AppLocalizations l10n) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: _call,
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const AnonymousChatScreen()),
+        ),
         borderRadius: BorderRadius.circular(12),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
@@ -205,14 +194,15 @@ class WizardAgeGateScreen extends StatelessWidget {
           ),
           child: Row(
             children: [
-              const Icon(Icons.phone_in_talk, color: Colors.white, size: 22),
+              const Icon(Icons.chat_bubble_outline,
+                  color: Colors.white, size: 22),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      l10n.wizardAgeGateCallUs,
+                      l10n.wizardChatHelp,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 15,
@@ -221,11 +211,10 @@ class WizardAgeGateScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      supportPhone,
+                      l10n.wizardChatHelpSubtitle,
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.85),
                         fontSize: 12.5,
-                        letterSpacing: 0.6,
                       ),
                     ),
                   ],

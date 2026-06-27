@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Ha alkalmanként önkénteskedni szeretnél (bármilyen kor, szülői engedéllyel), hívj minket — szívesen támogatunk fiatalokat, akik meg akarják változtatni a világot.",
-  "wizardAgeGateCallUs": "Hívj minket",
   "wizardAgeGateBackHome": "Vissza a kezdőképernyőre",
   "wizardErrInvalidPhone": "Érvénytelen telefonszám",
   "wizardStufe1b1Title": "Szülői beleegyezés",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Kész! Beiratkoztál 🎉",
   "wizardFinalMinorTitle": "A kérésedet elküldtük 📨",
   "wizardFinalMinorBody": "Felvesszük a kapcsolatot a szülőddel és megbeszélünk egy találkozót (személyesen vagy videóhíváson). Légy türelemmel — a folyamat akár 7 napig is tarthat. Értesítést kapsz az alkalmazásban, amint a szülőd jóváhagyta.",
-  "wizardFinalMinorCallTitle": "Hívj minket, ha beszélni szeretnél",
   "wizardFinalMitgliedernummerLabel": "Tagsági számod",
   "wizardStufe4MethodComingSoon": "Hamarosan",
   "wizardStufe4StreichungWarning": "Ha több mint 6 hónapja vagy elmaradásban a tagdíjjal, automatikusan töröljük (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Kilépéshez: küldd el a felmondást írásban 3 hónappal december 31. előtt (legkésőbb szeptember 30-ig, hogy év végén lépjen hatályba). Nincs minimális tagsági idő (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Hívj, hogy beszéljünk",
   "wizardStufe1fEmailLabel": "E-mail cím (opcionális)",
   "wizardStufe1fEmailHelper": "Opcionális. Saját, végpontok közötti titkosított appunk van a kommunikációhoz — csak akkor add meg az e-mailt, ha úgy is el akarsz érhető lenni.",
   "wizardErrInvalidEmail": "Érvénytelen e-mail cím",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Korábban már jelentkeztél",
   "wizardDuplicatePreviouslyWithdrawnBody": "A neved és születési időd egyezik egy régebbi kérelemmel, amit visszavontál. Üdv újra — kérjük, hívj minket a folytatás előtt, hogy a Vorstand eldönthesse, hogyan tovább.",
   "wizardDuplicateCallUsTitle": "Kérjük, hívj minket",
-  "wizardDuplicateCallUsBody": "A neved és születési időd már szerepel a nyilvántartásunkban, de a részleteket nem oszthatjuk meg az appon keresztül. Hívj minket — a Vorstand közvetlenül elmagyarázza a helyzetet."
+  "wizardDuplicateCallUsBody": "A neved és születési időd már szerepel a nyilvántartásunkban, de a részleteket nem oszthatjuk meg az appon keresztül. Hívj minket — a Vorstand közvetlenül elmagyarázza a helyzetet.",
+  "wizardChatHelp": "Beszéljünk",
+  "wizardChatHelpSubtitle": "Élő chat a Vorstanddal · gyors válasz"
 }

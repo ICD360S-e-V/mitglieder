@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Se quiseres fazer voluntariado pontual (qualquer idade, com consentimento dos pais), liga-nos — adoramos apoiar jovens que querem mudar o mundo.",
-  "wizardAgeGateCallUs": "Liga-nos",
   "wizardAgeGateBackHome": "Voltar ao início",
   "wizardErrInvalidPhone": "Número de telefone inválido",
   "wizardStufe1b1Title": "Consentimento dos pais",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Pronto! Estás inscrito 🎉",
   "wizardFinalMinorTitle": "O teu pedido foi enviado 📨",
   "wizardFinalMinorBody": "Contactaremos o teu progenitor e marcaremos um encontro (presencial ou videochamada). Por favor, tem paciência — o processo pode demorar até 7 dias. Receberás uma notificação na app assim que o teu progenitor aprovar.",
-  "wizardFinalMinorCallTitle": "Liga-nos se quiseres falar",
   "wizardFinalMitgliedernummerLabel": "O teu número de membro",
   "wizardStufe4MethodComingSoon": "Em breve",
   "wizardStufe4StreichungWarning": "Se atrasares mais de 6 meses na quota, vamos retirar-te automaticamente (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Para sair: envia-nos a renúncia por escrito 3 meses antes de 31 de dezembro (até 30 de setembro para fazer efeito no final do ano). Não há duração mínima (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Liga-nos para conversar",
   "wizardStufe1fEmailLabel": "Endereço de email (opcional)",
   "wizardStufe1fEmailHelper": "Opcional. Temos a nossa própria app cifrada ponta-a-ponta para comunicar — deixa o email só se quiseres que também te contactemos por aí.",
   "wizardErrInvalidEmail": "Endereço de email inválido",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Já te candidataste antes",
   "wizardDuplicatePreviouslyWithdrawnBody": "O teu nome e data de nascimento coincidem com um pedido mais antigo que tinhas retirado. Bem-vindo de volta — por favor liga-nos antes de continuares para o Vorstand decidir como prosseguir.",
   "wizardDuplicateCallUsTitle": "Por favor, liga-nos",
-  "wizardDuplicateCallUsBody": "O teu nome e data de nascimento já constam dos nossos registos, mas não podemos partilhar os detalhes através da app. Liga-nos — o Vorstand explicará a situação diretamente."
+  "wizardDuplicateCallUsBody": "O teu nome e data de nascimento já constam dos nossos registos, mas não podemos partilhar os detalhes através da app. Liga-nos — o Vorstand explicará a situação diretamente.",
+  "wizardChatHelp": "Vamos falar",
+  "wizardChatHelpSubtitle": "Chat ao vivo com o Vorstand · resposta rápida"
 }

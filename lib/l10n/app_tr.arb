@@ -1058,7 +1058,6 @@
     }
   },
   "wizardAgeGateBody2": "Ara sıra gönüllü olmak istersen (her yaşta, ailenin onayıyla), bizi ara — dünyayı değiştirmek isteyen gençleri desteklemeyi seviyoruz.",
-  "wizardAgeGateCallUs": "Bizi ara",
   "wizardAgeGateBackHome": "Karşılama ekranına dön",
   "wizardErrInvalidPhone": "Geçersiz telefon numarası",
   "wizardStufe1b1Title": "Veli onayı",
@@ -1228,12 +1227,10 @@
   "wizardFinalAdultTitle": "Tamam! Kaydın yapıldı 🎉",
   "wizardFinalMinorTitle": "Talebin gönderildi 📨",
   "wizardFinalMinorBody": "Velinizle iletişime geçeceğiz ve bir görüşme ayarlayacağız (yüz yüze veya görüntülü görüşme). Lütfen sabırlı ol — süreç en fazla 7 gün sürebilir. Velin onayladığı anda uygulamadan bir bildirim alacaksın.",
-  "wizardFinalMinorCallTitle": "Konuşmak istersen bizi ara",
   "wizardFinalMitgliedernummerLabel": "Üye numaran",
   "wizardStufe4MethodComingSoon": "Yakında",
   "wizardStufe4StreichungWarning": "Aidatta 6 aydan fazla geride kalırsan otomatik olarak silinirsin (Tüzük §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Üyelikten ayrılmak için: 31 Aralık'tan 3 ay önce yazılı bildirimini gönder (yıl sonu itibarıyla geçerli olması için en geç 30 Eylül). Asgari süre yok (Tüzük §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Konuşmak için ara",
   "wizardStufe1fEmailLabel": "E-posta adresi (isteğe bağlı)",
   "wizardStufe1fEmailHelper": "İsteğe bağlı. İletişim için kendi uçtan uca şifreli uygulamamız var — sadece e-posta ile de iletişim kurmamızı istiyorsan adresini bırak.",
   "wizardErrInvalidEmail": "Geçersiz e-posta adresi",
@@ -1284,5 +1281,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Daha önce başvuru yapmıştın",
   "wizardDuplicatePreviouslyWithdrawnBody": "İsmin ve doğum tarihin daha önce geri çektiğin eski bir başvuruyla eşleşiyor. Tekrar hoş geldin — devam etmeden önce Vorstand'ın nasıl ilerleyeceğine karar verebilmesi için bizi ara.",
   "wizardDuplicateCallUsTitle": "Lütfen bizi ara",
-  "wizardDuplicateCallUsBody": "İsmin ve doğum tarihin kayıtlarımızda zaten var, ama detayları uygulama üzerinden paylaşamayız. Lütfen ara — Vorstand sana durumu doğrudan açıklayacak."
+  "wizardDuplicateCallUsBody": "İsmin ve doğum tarihin kayıtlarımızda zaten var, ama detayları uygulama üzerinden paylaşamayız. Lütfen ara — Vorstand sana durumu doğrudan açıklayacak.",
+  "wizardChatHelp": "Konuşalım",
+  "wizardChatHelpSubtitle": "Vorstand ile canlı sohbet · hızlı yanıt"
 }

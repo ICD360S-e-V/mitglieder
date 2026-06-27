@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Ja vēlies brīvprātīgi palīdzēt laiku pa laikam (jebkurā vecumā, ar vecāku piekrišanu), piezvani — mums patīk atbalstīt jauniešus, kuri vēlas mainīt pasauli.",
-  "wizardAgeGateCallUs": "Zvani mums",
   "wizardAgeGateBackHome": "Atpakaļ uz sākumu",
   "wizardErrInvalidPhone": "Nederīgs tālruņa numurs",
   "wizardStufe1b1Title": "Vecāku piekrišana",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Gatavs! Esi reģistrēts 🎉",
   "wizardFinalMinorTitle": "Tavs pieprasījums ir nosūtīts 📨",
   "wizardFinalMinorBody": "Sazināsimies ar tavu vecāku un norunāsim tikšanos (klātienē vai video zvanā). Lūdzu, esi pacietīgs — process var ilgt līdz 7 dienām. Saņemsi paziņojumu lietotnē, tiklīdz vecāks apstiprinās.",
-  "wizardFinalMinorCallTitle": "Piezvani, ja vēlies parunāt",
   "wizardFinalMitgliedernummerLabel": "Tavs biedra numurs",
   "wizardStufe4MethodComingSoon": "Drīzumā",
   "wizardStufe4StreichungWarning": "Ja kavēsi biedru maksu vairāk nekā 6 mēnešus, automātiski tevi izsvītrosim (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Lai izstātos: nosūti mums uzteikumu rakstiski 3 mēnešus pirms 31. decembra (līdz 30. septembrim, lai stātos spēkā gada beigās). Minimālā ilguma nav (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Piezvani, parunāsim",
   "wizardStufe1fEmailLabel": "E-pasta adrese (pēc izvēles)",
   "wizardStufe1fEmailHelper": "Pēc izvēles. Mums ir sava galapunktu šifrēta lietotne saziņai — atstāj e-pastu tikai tad, ja gribi, lai sazināmies arī tur.",
   "wizardErrInvalidEmail": "Nederīga e-pasta adrese",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Esi jau iepriekš iesniedzis pieteikumu",
   "wizardDuplicatePreviouslyWithdrawnBody": "Tavs vārds un dzimšanas datums sakrīt ar vecāku pieteikumu, ko biji atsaucis. Laipni atpakaļ — pirms turpināšanas zvani mums, lai Vorstand izlemtu, kā rīkojamies.",
   "wizardDuplicateCallUsTitle": "Lūdzu, zvani mums",
-  "wizardDuplicateCallUsBody": "Tavs vārds un dzimšanas datums jau ir mūsu uzskaitē, bet detaļas caur lietotni nevaram dalīt. Lūdzu, zvani — Vorstand izskaidros situāciju tieši."
+  "wizardDuplicateCallUsBody": "Tavs vārds un dzimšanas datums jau ir mūsu uzskaitē, bet detaļas caur lietotni nevaram dalīt. Lūdzu, zvani — Vorstand izskaidros situāciju tieši.",
+  "wizardChatHelp": "Parunāsim",
+  "wizardChatHelpSubtitle": "Tiešsaistes čats ar Vorstand · ātra atbilde"
 }

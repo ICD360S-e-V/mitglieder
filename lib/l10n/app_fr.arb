@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Si tu veux faire du bénévolat ponctuel (à tout âge, avec l'accord de tes parents), appelle-nous — on adore soutenir les jeunes qui veulent changer le monde.",
-  "wizardAgeGateCallUs": "Appelle-nous",
   "wizardAgeGateBackHome": "Retour à l'accueil",
   "wizardErrInvalidPhone": "Numéro de téléphone invalide",
   "wizardStufe1b1Title": "Accord parental",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "C'est fait ! Tu es inscrit 🎉",
   "wizardFinalMinorTitle": "Ta demande a été envoyée 📨",
   "wizardFinalMinorBody": "Nous contacterons ton parent et organiserons un rendez-vous (en personne ou par appel vidéo). Sois patient — la procédure peut prendre jusqu'à 7 jours. Tu recevras une notification dans l'app dès que ton parent aura donné son accord.",
-  "wizardFinalMinorCallTitle": "Appelle-nous si tu veux parler",
   "wizardFinalMitgliedernummerLabel": "Ton numéro de membre",
   "wizardStufe4MethodComingSoon": "Bientôt disponible",
   "wizardStufe4StreichungWarning": "Si tu accumules plus de 6 mois de retard sur la cotisation, on te radie automatiquement (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Pour partir : envoie-nous ta démission par écrit 3 mois avant le 31 décembre (au plus tard le 30 septembre pour effet en fin d'année). Pas de durée minimale (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Appelle-nous pour en parler",
   "wizardStufe1fEmailLabel": "Adresse e-mail (facultatif)",
   "wizardStufe1fEmailHelper": "Facultatif. On a notre propre app chiffrée de bout en bout pour communiquer — laisse ton e-mail seulement si tu veux qu'on te contacte aussi par là.",
   "wizardErrInvalidEmail": "Adresse e-mail invalide",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Tu as déjà déposé une demande",
   "wizardDuplicatePreviouslyWithdrawnBody": "Ton nom et ta date de naissance correspondent à une demande plus ancienne que tu avais retirée. Re-bienvenue — appelle-nous avant de continuer pour que le Vorstand décide comment on procède.",
   "wizardDuplicateCallUsTitle": "Appelle-nous, s’il te plaît",
-  "wizardDuplicateCallUsBody": "Ton nom et ta date de naissance figurent déjà chez nous, mais on ne peut pas te donner les détails via l'app. Appelle-nous — le Vorstand t'expliquera la situation directement."
+  "wizardDuplicateCallUsBody": "Ton nom et ta date de naissance figurent déjà chez nous, mais on ne peut pas te donner les détails via l'app. Appelle-nous — le Vorstand t'expliquera la situation directement.",
+  "wizardChatHelp": "Parlons",
+  "wizardChatHelpSubtitle": "Chat en direct avec le Vorstand · réponse rapide"
 }

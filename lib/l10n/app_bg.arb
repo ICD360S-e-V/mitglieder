@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Ако искаш да помагаш като доброволец понякога (всякаква възраст, със съгласието на родителите), обади се — обичаме да подкрепяме млади, които искат да променят света.",
-  "wizardAgeGateCallUs": "Обади се",
   "wizardAgeGateBackHome": "Обратно към началото",
   "wizardErrInvalidPhone": "Невалиден телефонен номер",
   "wizardStufe1b1Title": "Съгласие на родител",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Готово! Записан си 🎉",
   "wizardFinalMinorTitle": "Заявката ти е изпратена 📨",
   "wizardFinalMinorBody": "Ще се свържем с родителя ти и ще уговорим среща (лично или видео разговор). Моля, имай търпение — процедурата може да отнеме до 7 дни. Ще получиш известие в приложението, щом родителят ти одобри.",
-  "wizardFinalMinorCallTitle": "Обади ни се, ако искаш да поговорим",
   "wizardFinalMitgliedernummerLabel": "Твоят членски номер",
   "wizardStufe4MethodComingSoon": "Скоро",
   "wizardStufe4StreichungWarning": "Ако изостанеш с членския внос повече от 6 месеца, ще те отпишем автоматично (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "За напускане: изпрати ни писмено предизвестие 3 месеца преди 31 декември (до 30 септември за да влезе в сила в края на годината). Няма минимален срок (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Обади се да поговорим",
   "wizardStufe1fEmailLabel": "Имейл адрес (по избор)",
   "wizardStufe1fEmailHelper": "По избор. Имаме собствено приложение с end-to-end криптиране за комуникация — остави имейл само ако искаш да те търсим и там.",
   "wizardErrInvalidEmail": "Невалиден имейл адрес",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Подавал си заявка преди",
   "wizardDuplicatePreviouslyWithdrawnBody": "Името и датата ти на раждане съвпадат със стара заявка, която си оттеглил. Добре дошъл обратно — обади ни се преди да продължиш, за да реши Vorstand как ще процедираме.",
   "wizardDuplicateCallUsTitle": "Моля, обади ни се",
-  "wizardDuplicateCallUsBody": "Името и датата ти на раждане вече фигурират при нас, но не можем да споделим подробности през приложението. Обади ни се — Vorstand ще ти обясни директно."
+  "wizardDuplicateCallUsBody": "Името и датата ти на раждане вече фигурират при нас, но не можем да споделим подробности през приложението. Обади ни се — Vorstand ще ти обясни директно.",
+  "wizardChatHelp": "Да поговорим",
+  "wizardChatHelpSubtitle": "Чат на живо с Vorstand · бърз отговор"
 }

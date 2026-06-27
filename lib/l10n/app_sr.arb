@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Ако желиш да повремено волонтираш (било који узраст, са пристанком родитеља), позови — радо подржавамо младе који желе да промене свет.",
-  "wizardAgeGateCallUs": "Позови нас",
   "wizardAgeGateBackHome": "Назад на почетну",
   "wizardErrInvalidPhone": "Неважећи број телефона",
   "wizardStufe1b1Title": "Сагласност родитеља",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Готово! Уписан си 🎉",
   "wizardFinalMinorTitle": "Твој захтев је послат 📨",
   "wizardFinalMinorBody": "Контактираћемо твог родитеља и заказати састанак (лично или видео позивом). Молимо те за стрпљење — поступак може трајати до 7 дана. Добићеш обавештење у апликацији чим родитељ одобри.",
-  "wizardFinalMinorCallTitle": "Позови нас ако желиш да разговарамо",
   "wizardFinalMitgliedernummerLabel": "Твој члански број",
   "wizardStufe4MethodComingSoon": "Ускоро",
   "wizardStufe4StreichungWarning": "Ако касниш са чланарином више од 6 месеци, аутоматски ћемо те брисати (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "За иступ: пошаљи нам отказ писмено 3 месеца пре 31. децембра (најкасније до 30. септембра да би ступило на снагу крајем године). Нема минималног трајања (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Позови да поразговарамо",
   "wizardStufe1fEmailLabel": "Имејл адреса (опционо)",
   "wizardStufe1fEmailHelper": "Опционо. Имамо сопствену апликацију са end-to-end енкрипцијом за комуникацију — остави мејл само ако желиш да те контактирамо и тамо.",
   "wizardErrInvalidEmail": "Неважећа имејл адреса",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Већ си раније поднео захтев",
   "wizardDuplicatePreviouslyWithdrawnBody": "Твоје име и датум рођења поклапају се са старијим захтевом који си повукао. Добродошао назад — позови нас пре наставка да Vorstand одлучи како даље.",
   "wizardDuplicateCallUsTitle": "Молимо, позови нас",
-  "wizardDuplicateCallUsBody": "Твоје име и датум рођења већ су код нас, али детаље не можемо делити кроз апликацију. Позови нас — Vorstand ће ти ситуацију објаснити директно."
+  "wizardDuplicateCallUsBody": "Твоје име и датум рођења већ су код нас, али детаље не можемо делити кроз апликацију. Позови нас — Vorstand ће ти ситуацију објаснити директно.",
+  "wizardChatHelp": "Хајде да разговарамо",
+  "wizardChatHelpSubtitle": "Чет уживо са Vorstand-ом · брз одговор"
 }

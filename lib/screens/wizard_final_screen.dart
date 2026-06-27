@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/icd360s_header.dart';
+import 'anonymous_chat.dart';
 
 /// Terminal screen of the onboarding wizard. Two variants drive off
 /// the [WizardFinalizeResult]:
@@ -28,11 +28,6 @@ import '../widgets/icd360s_header.dart';
 class WizardFinalScreen extends StatefulWidget {
   final WizardFinalizeResult result;
 
-  /// Phone surfaced on the "call us" affordance for minors. Same
-  /// default as the rest of Claudiu's surfaces; a future contact
-  /// endpoint can swap one constant.
-  final String supportPhone;
-
   /// Closes the wizard and returns the user to the welcome screen.
   /// The orchestrator wipes the local anonymous_id before invoking
   /// so a new visitor on the same device starts clean.
@@ -42,7 +37,6 @@ class WizardFinalScreen extends StatefulWidget {
     super.key,
     required this.result,
     required this.onClose,
-    this.supportPhone = '+4916094482053',
   });
 
   @override
@@ -106,16 +100,8 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     if (_isActive) _statusTimer?.cancel();
   }
 
-  Future<void> _call() async {
-    final uri = Uri(scheme: 'tel', path: widget.supportPhone);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
-  }
-
   WizardFinalizeResult get result => widget.result;
   VoidCallback get onClose => widget.onClose;
-  String get supportPhone => widget.supportPhone;
 
   @override
   Widget build(BuildContext context) {
@@ -737,15 +723,12 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   }
 
   Widget _callAction(AppLocalizations l10n, bool isMinor) {
-    // The minor variant labels the action around nudging the parent,
-    // the adult variant around discussing rules and payment.
-    final title = isMinor
-        ? l10n.wizardFinalMinorCallTitle
-        : l10n.wizardFinalAdultCallTitle;
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: _call,
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const AnonymousChatScreen()),
+        ),
         borderRadius: BorderRadius.circular(12),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
@@ -759,14 +742,15 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           ),
           child: Row(
             children: [
-              const Icon(Icons.phone_in_talk, color: Colors.white, size: 22),
+              const Icon(Icons.chat_bubble_outline,
+                  color: Colors.white, size: 22),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      title,
+                      l10n.wizardChatHelp,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -775,11 +759,10 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      supportPhone,
+                      l10n.wizardChatHelpSubtitle,
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.85),
                         fontSize: 12.5,
-                        letterSpacing: 0.6,
                       ),
                     ),
                   ],

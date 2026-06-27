@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Hvis du vil bidra som frivillig av og til (uansett alder, med foreldres samtykke), ring oss — vi støtter gjerne unge som vil forandre verden.",
-  "wizardAgeGateCallUs": "Ring oss",
   "wizardAgeGateBackHome": "Tilbake til velkomstskjermen",
   "wizardErrInvalidPhone": "Ugyldig telefonnummer",
   "wizardStufe1b1Title": "Foreldresamtykke",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Ferdig! Du er meldt inn 🎉",
   "wizardFinalMinorTitle": "Forespørselen din er sendt 📨",
   "wizardFinalMinorBody": "Vi kontakter forelderen din og avtaler et møte (personlig eller videosamtale). Vær tålmodig — prosessen kan ta opptil 7 dager. Du får et varsel i appen så snart forelderen din har godkjent.",
-  "wizardFinalMinorCallTitle": "Ring oss hvis du vil snakke",
   "wizardFinalMitgliedernummerLabel": "Medlemsnummeret ditt",
   "wizardStufe4MethodComingSoon": "Kommer snart",
   "wizardStufe4StreichungWarning": "Hvis du er mer enn 6 måneder på etterskudd med kontingenten, stryker vi deg automatisk (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "For å melde deg ut: send oss oppsigelsen skriftlig 3 måneder før 31. desember (senest 30. september for å gjelde ved årsslutt). Ingen minimumstid (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Ring oss for å snakke",
   "wizardStufe1fEmailLabel": "E-postadresse (valgfritt)",
   "wizardStufe1fEmailHelper": "Valgfritt. Vi har vår egen ende-til-ende-krypterte app for kommunikasjon — legg igjen e-posten kun hvis du også vil kontaktes der.",
   "wizardErrInvalidEmail": "Ugyldig e-postadresse",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Du har søkt tidligere",
   "wizardDuplicatePreviouslyWithdrawnBody": "Navnet og fødselsdatoen din matcher en eldre søknad du trakk tilbake. Velkommen tilbake — ring oss før du fortsetter, så Vorstand kan bestemme hvordan vi går videre.",
   "wizardDuplicateCallUsTitle": "Ring oss",
-  "wizardDuplicateCallUsBody": "Navnet og fødselsdatoen din finnes allerede i registrene våre, men vi kan ikke dele detaljene gjennom appen. Ring oss — Vorstand forklarer situasjonen direkte."
+  "wizardDuplicateCallUsBody": "Navnet og fødselsdatoen din finnes allerede i registrene våre, men vi kan ikke dele detaljene gjennom appen. Ring oss — Vorstand forklarer situasjonen direkte.",
+  "wizardChatHelp": "La oss prate",
+  "wizardChatHelpSubtitle": "Live chat med Vorstand · raskt svar"
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/icd360s_header.dart';
+import 'anonymous_chat.dart';
 
 /// Polite "you already have an account" screen routed from Stufe 1b
 /// when check_age.php finds a users row with the same lowercased
@@ -27,11 +27,6 @@ import '../widgets/icd360s_header.dart';
 class WizardDuplicateScreen extends StatelessWidget {
   final WizardDuplicateAction action;
 
-  /// Phone surfaced on the "call us" affordance. Same default as the
-  /// rest of Claudiu's surfaces; a future contact endpoint can swap
-  /// one constant.
-  final String supportPhone;
-
   /// Returns the visitor to the welcome screen.
   final VoidCallback onClose;
 
@@ -39,15 +34,7 @@ class WizardDuplicateScreen extends StatelessWidget {
     super.key,
     required this.action,
     required this.onClose,
-    this.supportPhone = '+4916094482053',
   });
-
-  Future<void> _call() async {
-    final uri = Uri(scheme: 'tel', path: supportPhone);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
-  }
 
   String _title(AppLocalizations l10n) => switch (action) {
         WizardDuplicateAction.login              => l10n.wizardDuplicateLoginTitle,
@@ -139,7 +126,7 @@ class WizardDuplicateScreen extends StatelessWidget {
                           ),
                         ).animate().fadeIn(delay: 500.ms, duration: 500.ms),
                         const SizedBox(height: 16),
-                        _callAction(l10n),
+                        _chatAction(context, l10n),
                       ],
                     ),
                   ),
@@ -179,11 +166,13 @@ class WizardDuplicateScreen extends StatelessWidget {
     );
   }
 
-  Widget _callAction(AppLocalizations l10n) {
+  Widget _chatAction(BuildContext context, AppLocalizations l10n) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: _call,
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const AnonymousChatScreen()),
+        ),
         borderRadius: BorderRadius.circular(12),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
@@ -197,14 +186,15 @@ class WizardDuplicateScreen extends StatelessWidget {
           ),
           child: Row(
             children: [
-              const Icon(Icons.phone_in_talk, color: Colors.white, size: 22),
+              const Icon(Icons.chat_bubble_outline,
+                  color: Colors.white, size: 22),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      l10n.wizardFinalAdultCallTitle,
+                      l10n.wizardChatHelp,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -213,11 +203,10 @@ class WizardDuplicateScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      supportPhone,
+                      l10n.wizardChatHelpSubtitle,
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.85),
                         fontSize: 12.5,
-                        letterSpacing: 0.6,
                       ),
                     ),
                   ],

@@ -1037,7 +1037,6 @@
     }
   },
   "wizardAgeGateBody2": "Dacă vrei să te implici punctual ca voluntar (orice vârstă, cu acordul părinților), sună-ne și vorbim — ne face plăcere să ajutăm tinerii care vor să schimbe lumea.",
-  "wizardAgeGateCallUs": "Sună-ne",
   "wizardAgeGateBackHome": "Înapoi la welcome",
   "wizardErrInvalidPhone": "Număr de telefon invalid",
   "wizardStufe1b1Title": "Acord părinte",
@@ -1207,12 +1206,10 @@
   "wizardFinalAdultTitle": "Gata, ești înscris! 🎉",
   "wizardFinalMinorTitle": "Cererea ta a fost trimisă 📨",
   "wizardFinalMinorBody": "Îți vom contacta părintele și vom stabili o întâlnire (în persoană sau apel video). Te rugăm să ai răbdare — procedura poate dura până la 7 zile. Te anunțăm prin notificare în aplicație imediat ce părintele a aprobat.",
-  "wizardFinalMinorCallTitle": "Sună-ne dacă vrei să discutăm",
   "wizardFinalMitgliedernummerLabel": "Numărul tău de membru",
   "wizardStufe4MethodComingSoon": "Disponibil în viitor",
   "wizardStufe4StreichungWarning": "Dacă rămâi cu cotizația în urmă mai mult de 6 luni, te radiem automat (Satzung §6 Abs. 3).",
   "wizardStufe5KuendigungInfo": "Pentru retragere: anunță-ne în scris cu 3 luni înainte de 31 decembrie (până la 30 septembrie pentru a ieși la sfârșitul anului). Nu există durată minimă (Satzung §6 Abs. 3).",
-  "wizardFinalAdultCallTitle": "Sună-ne să discutăm",
   "wizardStufe1fEmailLabel": "Adresa de email (opțional)",
   "wizardStufe1fEmailHelper": "Opțional. Avem propria aplicație criptată end-to-end pentru comunicare — lasă emailul doar dacă vrei să te contactăm și pe acolo.",
   "wizardErrInvalidEmail": "Adresă de email invalidă",
@@ -1263,5 +1260,7 @@
   "wizardDuplicatePreviouslyWithdrawnTitle": "Ai mai depus o cerere",
   "wizardDuplicatePreviouslyWithdrawnBody": "Numele și data ta de naștere se potrivesc cu o cerere veche pe care ai retras-o. Bun venit înapoi — te rugăm să ne suni înainte de a continua, ca Vorstand-ul să poată decide cum procedăm.",
   "wizardDuplicateCallUsTitle": "Te rugăm să ne suni",
-  "wizardDuplicateCallUsBody": "Numele și data ta de naștere apar deja la noi, dar nu îți putem da detalii prin aplicație. Te rugăm să ne suni — Vorstand-ul îți va explica situația direct."
+  "wizardDuplicateCallUsBody": "Numele și data ta de naștere apar deja la noi, dar nu îți putem da detalii prin aplicație. Te rugăm să ne suni — Vorstand-ul îți va explica situația direct.",
+  "wizardChatHelp": "Vorbim acum",
+  "wizardChatHelpSubtitle": "Chat live cu Vorstand-ul · răspuns rapid"
 }
