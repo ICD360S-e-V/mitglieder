@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.49.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.2...v1.49.3) (2026-06-27)
+
+
+### Bug Fixes
+
+* **wizard:** Stufe 3 upload — fix "Failed to store" + per-Behörde subfolder ([c18106f](https://github.com/ICD360S-e-V/mitglieder/commit/c18106fa318577ad70a0c059c56661091d956d26))
+
 ## [1.49.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.1...v1.49.2) (2026-06-27)
 
 
