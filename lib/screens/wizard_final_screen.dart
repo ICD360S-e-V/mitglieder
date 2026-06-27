@@ -290,14 +290,8 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           _timelineRow(
             label: l10n.wizardFinalTimelineActivated,
             state: _isActive ? _StepState.done : _StepState.upcoming,
-            isLast: false,
-            delayMs: 1000,
-          ),
-          _timelineRow(
-            label: l10n.wizardFinalTimelineFirstMeeting,
-            state: _StepState.upcoming,
             isLast: true,
-            delayMs: 1150,
+            delayMs: 1000,
           ),
         ],
       ),

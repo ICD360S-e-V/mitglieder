@@ -1239,7 +1239,6 @@
   "wizardFinalTimelineSubmitted": "Ansökan mottagen",
   "wizardFinalTimelineProcessing": "Vorstand granskar · vanligtvis 1 arbetsdag, upp till 7",
   "wizardFinalTimelineActivated": "Konto aktiverat",
-  "wizardFinalTimelineFirstMeeting": "Välkommen till ditt första möte",
   "wizardFinalAdultThank": "Tack för att du fyllde i registreringsformuläret! 🎉",
   "wizardFinalAdultUsual": "Din ansökan är hos oss. Vi validerar den oftast inom en arbetsdag.",
   "wizardFinalAdultExceptional": "Ibland kan det ta upp till 7 arbetsdagar. Och om något inte stämmer skickar vi tillbaka dig till formuläret så att du kan rätta till det 🙂"

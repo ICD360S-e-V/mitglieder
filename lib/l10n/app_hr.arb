@@ -1239,7 +1239,6 @@
   "wizardFinalTimelineSubmitted": "Zahtjev je primljen",
   "wizardFinalTimelineProcessing": "Vorstand provjerava · obično 1 radni dan, do 7",
   "wizardFinalTimelineActivated": "Račun aktiviran",
-  "wizardFinalTimelineFirstMeeting": "Dobrodošao na prvi sastanak",
   "wizardFinalAdultThank": "Hvala što si ispunio obrazac za registraciju! 🎉",
   "wizardFinalAdultUsual": "Tvoj zahtjev je kod nas. Obično ga potvrdimo u roku od jednog radnog dana.",
   "wizardFinalAdultExceptional": "Ponekad može potrajati do 7 radnih dana. A ako se nešto ne poklapa, vraćamo te na obrazac da to ispraviš 🙂"

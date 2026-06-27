@@ -1239,7 +1239,6 @@
   "wizardFinalTimelineSubmitted": "Ansøgning modtaget",
   "wizardFinalTimelineProcessing": "Vorstand gennemgår · normalt 1 hverdag, maks. 7",
   "wizardFinalTimelineActivated": "Konto aktiveret",
-  "wizardFinalTimelineFirstMeeting": "Velkommen til dit første møde",
   "wizardFinalAdultThank": "Tak fordi du udfyldte registreringsformularen! 🎉",
   "wizardFinalAdultUsual": "Din ansøgning er nu hos os. Vi godkender den normalt inden for én hverdag.",
   "wizardFinalAdultExceptional": "Nogle gange kan det tage op til 7 hverdage. Og hvis noget ikke stemmer, sender vi dig tilbage til formularen, så du kan rette det 🙂"

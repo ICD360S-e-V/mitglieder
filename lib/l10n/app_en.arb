@@ -1239,7 +1239,6 @@
   "wizardFinalTimelineSubmitted": "Application received",
   "wizardFinalTimelineProcessing": "Vorstand reviewing · usually 1 business day, up to 7",
   "wizardFinalTimelineActivated": "Account activated",
-  "wizardFinalTimelineFirstMeeting": "Welcome to your first meeting",
   "wizardFinalAdultThank": "Thank you for completing the registration form! 🎉",
   "wizardFinalAdultUsual": "Your application is with us now. We usually validate it within one business day.",
   "wizardFinalAdultExceptional": "Sometimes it takes up to 7 business days. And if anything doesn't add up, we'll send you back to the form so you can fix it 🙂"

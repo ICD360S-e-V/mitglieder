@@ -1239,7 +1239,6 @@
   "wizardFinalTimelineSubmitted": "Aanvraag ontvangen",
   "wizardFinalTimelineProcessing": "Vorstand controleert · meestal 1 werkdag, tot 7",
   "wizardFinalTimelineActivated": "Account geactiveerd",
-  "wizardFinalTimelineFirstMeeting": "Welkom op je eerste bijeenkomst",
   "wizardFinalAdultThank": "Bedankt dat je het inschrijfformulier hebt ingevuld! 🎉",
   "wizardFinalAdultUsual": "Je aanvraag is binnen. We valideren hem meestal binnen één werkdag.",
   "wizardFinalAdultExceptional": "Soms kan het tot 7 werkdagen duren. En als iets niet klopt, sturen we je terug naar het formulier om het aan te passen 🙂"
