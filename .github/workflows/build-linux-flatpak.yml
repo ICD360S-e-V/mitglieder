@@ -95,6 +95,29 @@ jobs:
     # ~/.pub-cache persists across builds on NVMe; no cache wrappers needed.
     runs-on: [self-hosted, linux, x64]
     steps:
+      - name: Force-clean stale flatpak-builder rofiles bind-mounts
+        # When a previous build is cancelled mid-flatpak-builder (e.g.
+        # by the newest-wins concurrency policy), its rofiles bind-mounts
+        # stay attached to broken fds → "Transport endpoint is not
+        # connected" on the next clean. actions/checkout's `git clean
+        # -ffdx` then can't rmdir them and the job dies. Lazy-unmount
+        # any leftovers and nuke the rofiles tree before checkout runs.
+        shell: bash
+        run: |
+          set +e
+          WS="${GITHUB_WORKSPACE:-$(pwd)}"
+          cd "$WS" 2>/dev/null || exit 0
+          if [ -d flatpak/.flatpak-builder/rofiles ]; then
+            for d in flatpak/.flatpak-builder/rofiles/rofiles-*; do
+              [ -e "$d" ] || continue
+              echo "Unmounting stale: $d"
+              umount -l "$d" 2>/dev/null
+              fusermount -u "$d" 2>/dev/null
+            done
+            echo "Removing rofiles tree"
+            rm -rf flatpak/.flatpak-builder/rofiles 2>/dev/null
+          fi
+          exit 0
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Get dependencies + l10n + analyze
         run: |
@@ -115,6 +138,21 @@ jobs:
     # pre-installed; /opt/flutter holds the SDK; NVMe IS the cache.
     runs-on: [self-hosted, linux, x64]
     steps:
+      - name: Force-clean stale flatpak-builder rofiles bind-mounts
+        shell: bash
+        run: |
+          set +e
+          WS="${GITHUB_WORKSPACE:-$(pwd)}"
+          cd "$WS" 2>/dev/null || exit 0
+          if [ -d flatpak/.flatpak-builder/rofiles ]; then
+            for d in flatpak/.flatpak-builder/rofiles/rofiles-*; do
+              [ -e "$d" ] || continue
+              umount -l "$d" 2>/dev/null
+              fusermount -u "$d" 2>/dev/null
+            done
+            rm -rf flatpak/.flatpak-builder/rofiles 2>/dev/null
+          fi
+          exit 0
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Get dependencies + l10n
@@ -263,6 +301,21 @@ jobs:
     runs-on: [self-hosted, linux, x64]
     timeout-minutes: 30
     steps:
+      - name: Force-clean stale flatpak-builder rofiles bind-mounts
+        shell: bash
+        run: |
+          set +e
+          WS="${GITHUB_WORKSPACE:-$(pwd)}"
+          cd "$WS" 2>/dev/null || exit 0
+          if [ -d flatpak/.flatpak-builder/rofiles ]; then
+            for d in flatpak/.flatpak-builder/rofiles/rofiles-*; do
+              [ -e "$d" ] || continue
+              umount -l "$d" 2>/dev/null
+              fusermount -u "$d" 2>/dev/null
+            done
+            rm -rf flatpak/.flatpak-builder/rofiles 2>/dev/null
+          fi
+          exit 0
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
