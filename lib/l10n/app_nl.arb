@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Aanvraag intrekken?",
   "wizardFinalWithdrawDialogBody": "Je aanvraag wordt gemarkeerd als ingetrokken-door-jou. De gegevens blijven in de database voor audit (AVG), maar het account wordt niet geactiveerd. Je kunt de registratie altijd opnieuw beginnen met een nieuw lidnummer.",
   "wizardFinalWithdrawKeep": "Nee, ik wacht",
-  "wizardFinalWithdrawConfirm": "Ja, intrekken"
+  "wizardFinalWithdrawConfirm": "Ja, intrekken",
+  "wizardErrTooManyWithdrawals": "Je aanvraag kan niet automatisch worden verwerkt. Bel ons of kom persoonlijk langs bij de Vorstand om je registratie voort te zetten."
 }

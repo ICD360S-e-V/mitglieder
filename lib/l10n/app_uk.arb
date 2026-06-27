@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Відкликати заявку?",
   "wizardFinalWithdrawDialogBody": "Твоя заявка буде позначена як відкликана тобою. Дані залишаться в базі для аудиту (GDPR), але акаунт не буде активовано. Ти зможеш пройти реєстрацію заново будь-коли з новим номером.",
   "wizardFinalWithdrawKeep": "Ні, зачекаю",
-  "wizardFinalWithdrawConfirm": "Так, відкликати"
+  "wizardFinalWithdrawConfirm": "Так, відкликати",
+  "wizardErrTooManyWithdrawals": "Твою заявку не вдається обробити автоматично. Зателефонуй нам або прийди особисто до Vorstand, щоб продовжити реєстрацію."
 }

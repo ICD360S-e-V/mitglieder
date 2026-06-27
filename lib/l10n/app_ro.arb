@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Anulezi cererea?",
   "wizardFinalWithdrawDialogBody": "Cererea ta va fi marcată ca anulată de tine. Datele rămân în baza de date pentru audit (DSGVO), dar contul nu va mai fi activat. Vei putea reîncepe înregistrarea oricând cu un alt număr de membru.",
   "wizardFinalWithdrawKeep": "Nu, mai aștept",
-  "wizardFinalWithdrawConfirm": "Da, anulează"
+  "wizardFinalWithdrawConfirm": "Da, anulează",
+  "wizardErrTooManyWithdrawals": "Cererea ta nu poate fi procesată automat. Sună-ne sau vino în persoană la Vorstand pentru a continua înregistrarea."
 }

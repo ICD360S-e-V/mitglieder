@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Zrušiť žiadosť?",
   "wizardFinalWithdrawDialogBody": "Tvoja žiadosť bude označená ako zrušená tebou. Údaje zostávajú v databáze na audit (GDPR), ale účet nebude aktivovaný. Registráciu môžeš kedykoľvek začať odznova s novým členským číslom.",
   "wizardFinalWithdrawKeep": "Nie, počkám",
-  "wizardFinalWithdrawConfirm": "Áno, zrušiť"
+  "wizardFinalWithdrawConfirm": "Áno, zrušiť",
+  "wizardErrTooManyWithdrawals": "Tvoju žiadosť nemožno spracovať automaticky. Zavolaj nám alebo príď osobne k Vorstandu, aby si pokračoval v registrácii."
 }

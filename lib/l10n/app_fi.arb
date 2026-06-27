@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Perutaanko hakemus?",
   "wizardFinalWithdrawDialogBody": "Hakemuksesi merkitään sinun perumaksi. Tiedot säilyvät tietokannassa tarkastusta varten (GDPR), mutta tiliä ei aktivoida. Voit aloittaa rekisteröitymisen uudelleen milloin tahansa uudella jäsennumerolla.",
   "wizardFinalWithdrawKeep": "Ei, odotan",
-  "wizardFinalWithdrawConfirm": "Kyllä, peru"
+  "wizardFinalWithdrawConfirm": "Kyllä, peru",
+  "wizardErrTooManyWithdrawals": "Hakemustasi ei voi käsitellä automaattisesti. Soita meille tai tule käymään Vorstandilla henkilökohtaisesti, jotta voit jatkaa rekisteröitymistä."
 }

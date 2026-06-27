@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Atšaukti prašymą?",
   "wizardFinalWithdrawDialogBody": "Tavo prašymas bus pažymėtas kaip atšauktas tavęs. Duomenys lieka duomenų bazėje audito tikslais (GDPR), bet paskyra nebus aktyvuota. Registraciją gali pradėti iš naujo bet kada su nauju nario numeriu.",
   "wizardFinalWithdrawKeep": "Ne, palauksiu",
-  "wizardFinalWithdrawConfirm": "Taip, atšaukti"
+  "wizardFinalWithdrawConfirm": "Taip, atšaukti",
+  "wizardErrTooManyWithdrawals": "Tavo prašymas negali būti apdorotas automatiškai. Paskambink mums arba ateik asmeniškai pas Vorstandą, kad tęstum registraciją."
 }

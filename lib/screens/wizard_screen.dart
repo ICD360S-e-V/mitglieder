@@ -93,6 +93,11 @@ class _WizardScreenState extends State<WizardScreen> {
   /// Set after Stufe 8 + finalize succeeds. Drives [WizardFinalScreen].
   WizardFinalizeResult? _finalizeResult;
 
+  /// Last error code returned by finalize.php — surfaces specific UX
+  /// when the server rejects with a recognised code (e.g.
+  /// 'too_many_withdrawals'). Null when error was a generic failure.
+  String? _errorCode;
+
   /// Visitor falls into the fee-exempt bucket when their Stufe 3
   /// answer is one of the recognised social benefits — Bürgergeld
   /// (SGB II), Sozialamt (SGB XII), Arbeitslosengeld I (SGB III) or
@@ -322,12 +327,16 @@ class _WizardScreenState extends State<WizardScreen> {
   Future<void> _finalize() async {
     if (!mounted) return;
     setState(() => _phase = _Phase.loading);
-    final result = await WizardService().finalize();
+    final outcome = await WizardService().finalize();
     if (!mounted) return;
-    if (result == null) {
-      setState(() => _phase = _Phase.error);
+    if (!outcome.isSuccess) {
+      setState(() {
+        _errorCode = outcome.errorCode;
+        _phase = _Phase.error;
+      });
       return;
     }
+    final result = outcome.result!;
     setState(() {
       _finalizeResult = result;
       _phase = _Phase.finished;
@@ -351,7 +360,10 @@ class _WizardScreenState extends State<WizardScreen> {
       case _Phase.loading:
         return _LoadingScaffold();
       case _Phase.error:
-        return _ErrorScaffold(onRetry: _bootstrap);
+        return _ErrorScaffold(
+          onRetry: _bootstrap,
+          errorCode: _errorCode,
+        );
       case _Phase.ageGate:
         return WizardAgeGateScreen(
           age: _gateAge,
@@ -521,11 +533,20 @@ class _LoadingScaffold extends StatelessWidget {
 
 class _ErrorScaffold extends StatelessWidget {
   final VoidCallback onRetry;
-  const _ErrorScaffold({required this.onRetry});
+  final String? errorCode;
+  const _ErrorScaffold({required this.onRetry, this.errorCode});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    // `too_many_withdrawals` = finalize.php rejected because the
+    // applicant's name+DOB hash matched ≥3 recent withdrawn rows.
+    // Retry won't help — they need to talk to a human.
+    final isAbuseBlock = errorCode == 'too_many_withdrawals';
+    final icon = isAbuseBlock ? Icons.report_outlined : Icons.cloud_off;
+    final message = isAbuseBlock
+        ? l10n.wizardErrTooManyWithdrawals
+        : l10n.wizardErrSaveFailed;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -545,10 +566,10 @@ class _ErrorScaffold extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.cloud_off, size: 56, color: Colors.white70),
+                Icon(icon, size: 56, color: Colors.white70),
                 const SizedBox(height: 16),
                 Text(
-                  l10n.wizardErrSaveFailed,
+                  message,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     color: Colors.white,

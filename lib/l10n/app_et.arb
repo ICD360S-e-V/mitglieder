@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Tühistada avaldus?",
   "wizardFinalWithdrawDialogBody": "Sinu avaldus märgitakse sinu poolt tagasi võetuks. Andmed jäävad andmebaasi auditeerimiseks (GDPR), kuid kontot ei aktiveerita. Sa võid registreerimise igal ajal uue liikmenumbriga uuesti alustada.",
   "wizardFinalWithdrawKeep": "Ei, jään ootama",
-  "wizardFinalWithdrawConfirm": "Jah, tühistada"
+  "wizardFinalWithdrawConfirm": "Jah, tühistada",
+  "wizardErrTooManyWithdrawals": "Sinu avaldust ei saa automaatselt töödelda. Helista meile või tule isiklikult Vorstandi juurde, et registreerimist jätkata."
 }

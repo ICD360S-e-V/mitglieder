@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Trekke søknaden tilbake?",
   "wizardFinalWithdrawDialogBody": "Søknaden din blir markert som trukket tilbake av deg. Dataene blir værende i databasen for revisjon (GDPR), men kontoen aktiveres ikke. Du kan starte registreringen på nytt når som helst med et nytt medlemsnummer.",
   "wizardFinalWithdrawKeep": "Nei, jeg venter",
-  "wizardFinalWithdrawConfirm": "Ja, trekk tilbake"
+  "wizardFinalWithdrawConfirm": "Ja, trekk tilbake",
+  "wizardErrTooManyWithdrawals": "Søknaden din kan ikke behandles automatisk. Ring oss eller kom personlig innom Vorstand for å fortsette registreringen."
 }

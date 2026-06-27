@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Да оттеглим заявката?",
   "wizardFinalWithdrawDialogBody": "Заявката ще бъде маркирана като оттеглена от теб. Данните остават в базата за одит (GDPR), но профилът няма да бъде активиран. Винаги можеш да започнеш регистрацията отново с нов членски номер.",
   "wizardFinalWithdrawKeep": "Не, ще изчакам",
-  "wizardFinalWithdrawConfirm": "Да, оттегли"
+  "wizardFinalWithdrawConfirm": "Да, оттегли",
+  "wizardErrTooManyWithdrawals": "Заявката ти не може да бъде обработена автоматично. Обади ни се или ела лично при Vorstand, за да продължиш регистрацията."
 }

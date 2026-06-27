@@ -1273,5 +1273,6 @@
   "wizardFinalWithdrawDialogTitle": "Başvurunu geri mi çekiyorsun?",
   "wizardFinalWithdrawDialogBody": "Başvurun, senin tarafından geri çekilmiş olarak işaretlenecek. Denetim (GDPR) için veriler veritabanında kalır, ancak hesap etkinleştirilmez. Yeni bir üye numarasıyla kaydı istediğin zaman yeniden başlatabilirsin.",
   "wizardFinalWithdrawKeep": "Hayır, bekliyorum",
-  "wizardFinalWithdrawConfirm": "Evet, geri çek"
+  "wizardFinalWithdrawConfirm": "Evet, geri çek",
+  "wizardErrTooManyWithdrawals": "Başvurun otomatik olarak işlenemez. Lütfen bizi ara veya kayda devam etmek için Vorstand'a şahsen gel."
 }

@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Retirer ta demande ?",
   "wizardFinalWithdrawDialogBody": "Ta demande sera marquée comme retirée par toi. Les données restent dans la base pour audit (RGPD), mais le compte ne sera pas activé. Tu peux relancer l'inscription à tout moment avec un nouveau numéro de membre.",
   "wizardFinalWithdrawKeep": "Non, j’attends",
-  "wizardFinalWithdrawConfirm": "Oui, retirer"
+  "wizardFinalWithdrawConfirm": "Oui, retirer",
+  "wizardErrTooManyWithdrawals": "Ta demande ne peut pas être traitée automatiquement. Appelle-nous ou viens en personne au Vorstand pour continuer ton inscription."
 }

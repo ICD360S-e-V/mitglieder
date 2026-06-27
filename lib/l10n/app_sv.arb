@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Dra tillbaka ansökan?",
   "wizardFinalWithdrawDialogBody": "Din ansökan markeras som tillbakadragen av dig. Datan stannar i databasen för revision (GDPR), men kontot aktiveras inte. Du kan när som helst börja om registreringen med ett nytt medlemsnummer.",
   "wizardFinalWithdrawKeep": "Nej, jag väntar",
-  "wizardFinalWithdrawConfirm": "Ja, dra tillbaka"
+  "wizardFinalWithdrawConfirm": "Ja, dra tillbaka",
+  "wizardErrTooManyWithdrawals": "Din ansökan kan inte hanteras automatiskt. Ring oss eller kom personligen till Vorstand för att fortsätta registreringen."
 }

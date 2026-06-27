@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Wycofać wniosek?",
   "wizardFinalWithdrawDialogBody": "Twój wniosek zostanie oznaczony jako wycofany przez ciebie. Dane pozostają w bazie do celów audytu (RODO), ale konto nie zostanie aktywowane. Możesz w każdej chwili rozpocząć rejestrację od nowa z nowym numerem członkowskim.",
   "wizardFinalWithdrawKeep": "Nie, poczekam",
-  "wizardFinalWithdrawConfirm": "Tak, wycofaj"
+  "wizardFinalWithdrawConfirm": "Tak, wycofaj",
+  "wizardErrTooManyWithdrawals": "Twojego wniosku nie da się przetworzyć automatycznie. Zadzwoń do nas lub przyjdź osobiście do Vorstandu, żeby kontynuować rejestrację."
 }

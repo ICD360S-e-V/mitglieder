@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Withdraw your application?",
   "wizardFinalWithdrawDialogBody": "Your application will be marked as withdrawn-by-you. The data stays in the database for audit (GDPR), but the account won't be activated. You can restart the registration any time with a new member number.",
   "wizardFinalWithdrawKeep": "No, I'll wait",
-  "wizardFinalWithdrawConfirm": "Yes, withdraw"
+  "wizardFinalWithdrawConfirm": "Yes, withdraw",
+  "wizardErrTooManyWithdrawals": "Your application can't be processed automatically. Please give us a call or come in person to the Vorstand to continue your registration."
 }

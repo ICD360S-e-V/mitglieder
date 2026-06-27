@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Απόσυρση της αίτησής σου;",
   "wizardFinalWithdrawDialogBody": "Η αίτησή σου θα επισημανθεί ως αποσυρμένη από σένα. Τα δεδομένα παραμένουν στη βάση για έλεγχο (GDPR), αλλά ο λογαριασμός δεν θα ενεργοποιηθεί. Μπορείς να ξαναξεκινήσεις την εγγραφή ανά πάσα στιγμή με νέο αριθμό μέλους.",
   "wizardFinalWithdrawKeep": "Όχι, θα περιμένω",
-  "wizardFinalWithdrawConfirm": "Ναι, απόσυρση"
+  "wizardFinalWithdrawConfirm": "Ναι, απόσυρση",
+  "wizardErrTooManyWithdrawals": "Η αίτησή σου δεν μπορεί να γίνει αυτόματα. Κάλεσέ μας ή έλα αυτοπροσώπως στο Vorstand για να συνεχίσεις την εγγραφή."
 }

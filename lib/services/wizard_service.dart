@@ -232,6 +232,23 @@ class WizardStatusProbe {
   });
 }
 
+/// Envelope returned by [WizardService.finalize]. Either carries a
+/// [WizardFinalizeResult] (success) or an [errorCode] the orchestrator
+/// can switch on. `too_many_withdrawals` is the anti-abuse 429 path —
+/// the applicant's name+DOB hash matched ≥3 recent withdrawn rows,
+/// finalize.php rejected the automated path.
+class WizardFinalizeOutcome {
+  final WizardFinalizeResult? result;
+  final String? errorCode;
+  const WizardFinalizeOutcome._({this.result, this.errorCode});
+  factory WizardFinalizeOutcome.success(WizardFinalizeResult r) =>
+      WizardFinalizeOutcome._(result: r);
+  factory WizardFinalizeOutcome.failure({String? code}) =>
+      WizardFinalizeOutcome._(errorCode: code);
+
+  bool get isSuccess => result != null;
+}
+
 /// Result returned from `finalize.php` once the wizard is done. For
 /// adults the `mitgliedernummer` is the live member id; for minors
 /// the same field carries the placeholder id pending parent linkage.
@@ -598,7 +615,7 @@ class WizardService {
   /// the [WizardFinalizeResult.isMinor] flag tells the UI whether to
   /// route the visitor to the "waiting for parent" screen or the
   /// regular "thank you, Vorstand will review" screen.
-  Future<WizardFinalizeResult?> finalize() async {
+  Future<WizardFinalizeOutcome> finalize() async {
     try {
       final id = await ensureId();
       final r = await _client
@@ -608,23 +625,34 @@ class WizardService {
             body: jsonEncode({'anonymous_id': id}),
           )
           .timeout(const Duration(seconds: 30));
+      Map<String, dynamic>? body;
+      try {
+        body = jsonDecode(r.body) as Map<String, dynamic>;
+      } catch (_) {
+        body = null;
+      }
       if (r.statusCode != 201 && r.statusCode != 200) {
         _log.error('wizard.finalize HTTP ${r.statusCode}: ${r.body}',
             tag: 'WIZ');
-        return null;
+        // 429 = anti-abuse throttle. The server returns
+        // {success:false, message, code:'too_many_withdrawals',
+        // recent_withdrawals:N}.
+        final code = body?['code'] as String?;
+        return WizardFinalizeOutcome.failure(code: code);
       }
-      final body = jsonDecode(r.body) as Map<String, dynamic>;
-      if (body['success'] != true) return null;
-      return WizardFinalizeResult(
+      if (body == null || body['success'] != true) {
+        return WizardFinalizeOutcome.failure(code: body?['code'] as String?);
+      }
+      return WizardFinalizeOutcome.success(WizardFinalizeResult(
         mitgliedernummer: body['mitgliedernummer'] as String,
         userId: (body['user_id'] as num).toInt(),
         status: body['status'] as String,
         isMinor: body['is_minor'] == true,
         message: (body['message'] as String?) ?? '',
-      );
+      ));
     } catch (e) {
       _log.error('wizard.finalize: $e', tag: 'WIZ');
-      return null;
+      return WizardFinalizeOutcome.failure();
     }
   }
 

@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "¿Retirar la solicitud?",
   "wizardFinalWithdrawDialogBody": "Tu solicitud quedará marcada como retirada por ti. Los datos siguen en la base para auditoría (GDPR), pero la cuenta no se activará. Puedes reiniciar el registro cuando quieras con un nuevo número de miembro.",
   "wizardFinalWithdrawKeep": "No, voy a esperar",
-  "wizardFinalWithdrawConfirm": "Sí, retirar"
+  "wizardFinalWithdrawConfirm": "Sí, retirar",
+  "wizardErrTooManyWithdrawals": "Tu solicitud no se puede procesar automáticamente. Llámanos o pásate personalmente por el Vorstand para continuar el registro."
 }

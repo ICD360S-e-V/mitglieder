@@ -1252,5 +1252,6 @@
   "wizardFinalWithdrawDialogTitle": "Повлачиш захтев?",
   "wizardFinalWithdrawDialogBody": "Твој захтев ће бити означен као повучен од тебе. Подаци остају у бази ради ревизије (GDPR), али налог неће бити активиран. Регистрацију можеш почети поново у било ком тренутку са новим бројем чланства.",
   "wizardFinalWithdrawKeep": "Не, сачекаћу",
-  "wizardFinalWithdrawConfirm": "Да, повуци"
+  "wizardFinalWithdrawConfirm": "Да, повуци",
+  "wizardErrTooManyWithdrawals": "Твој захтев не може бити аутоматски обрађен. Позови нас или дођи лично код Vorstand-а да наставиш регистрацију."
 }
