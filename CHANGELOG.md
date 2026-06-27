@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.52.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.51.1...v1.52.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** voluntary withdraw — discreet link + hard confirm + audit-friendly row ([d2c459e](https://github.com/ICD360S-e-V/mitglieder/commit/d2c459e228c9628d03b2222247c84edcf997b812))
+
 ## [1.51.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.51.0...v1.51.1) (2026-06-27)
 
 
