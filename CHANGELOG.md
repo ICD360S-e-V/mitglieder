@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.50.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.7...v1.50.0) (2026-06-27)
+
+
+### Features
+
+* **wizard:** final screen — live status timeline + 1-business-day copy ([e2146c8](https://github.com/ICD360S-e-V/mitglieder/commit/e2146c8ba4b69effa44c147b1c0f26603e5ad168))
+* **wizard:** final screen adult body becomes 3 conversational Claudiu beats ([93a98a6](https://github.com/ICD360S-e-V/mitglieder/commit/93a98a6ffddd9f8183e143ee4e3ea8b1a129cd2f))
+
+
+### Bug Fixes
+
+* **wizard:** Stufe 6/7/8 — ValueKey per dataKey to stop state bleed + per-Stufe timestamps ([17dcc6a](https://github.com/ICD360S-e-V/mitglieder/commit/17dcc6ab83f442eeb41ce418f07b2eefbcc9ebce))
+
 ## [1.49.7](https://github.com/ICD360S-e-V/mitglieder/compare/v1.49.6...v1.49.7) (2026-06-27)
 
 
