@@ -1205,7 +1205,7 @@
     }
   },
   "wizardFinalAdultTitle": "Valmis! Olet ilmoittautunut 🎉",
-  "wizardFinalAdultBody": "Tervetuloa ICD360S e.V.:hen! Olet suorittanut kaikki 8 vaihetta — Vorstand tarkistaa nyt ja hyväksyy jokaisen vaiheen enintään 3 päivän kuluessa. Saat ilmoituksen heti, kun tilisi on aktiivinen.",
+  "wizardFinalAdultBody": "Tervetuloa ICD360S e.V.:hen! Olet käynyt kaikki 8 vaihetta läpi — Vorstand tarkistaa nyt ja hyväksyy jokaisen vaiheen enintään 1 arkipäivän kuluessa. Ilmoitamme sovelluksessa heti, kun tilisi on aktiivinen.",
   "wizardFinalMinorTitle": "Pyyntösi on lähetetty 📨",
   "wizardFinalMinorBody": "Otamme yhteyttä vanhempaasi ja sovimme tapaamisen (paikan päällä tai videopuhelulla). Ole kärsivällinen — prosessi voi kestää jopa 7 päivää. Saat ilmoituksen sovelluksessa heti, kun vanhempasi on hyväksynyt.",
   "wizardFinalMinorCallTitle": "Soita meille, jos haluat puhua",
@@ -1236,5 +1236,9 @@
       }
     }
   },
-  "wizardDocumentExternalOpenFailed": "Selainta ei voitu avata. Linkki on leikepöydällä — liitä se selaimeen jatkaaksesi."
+  "wizardDocumentExternalOpenFailed": "Selainta ei voitu avata. Linkki on leikepöydällä — liitä se selaimeen jatkaaksesi.",
+  "wizardFinalTimelineSubmitted": "Hakemus vastaanotettu",
+  "wizardFinalTimelineProcessing": "Vorstand tarkistaa · enintään 1 arkipäivä",
+  "wizardFinalTimelineActivated": "Tili aktivoitu",
+  "wizardFinalTimelineFirstMeeting": "Tervetuloa ensimmäiseen kokoukseen"
 }

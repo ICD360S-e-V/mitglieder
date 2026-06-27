@@ -1226,7 +1226,7 @@
     }
   },
   "wizardFinalAdultTitle": "Tamam! Kaydın yapıldı 🎉",
-  "wizardFinalAdultBody": "ICD360S e.V.'ye hoş geldin! 8 aşamanın tamamını tamamladın — Vorstand inceliyor ve her adımı en fazla 3 gün içinde onaylayacak. Hesabın aktif olur olmaz bildirim alacaksın.",
+  "wizardFinalAdultBody": "ICD360S e.V.'ye hoş geldin! Sekiz aşamayı da tamamladın — Vorstand şimdi inceliyor ve her adımı en geç 1 iş gününde onaylayacak. Hesabın aktifleşir aktifleşmez uygulamada bildiririz.",
   "wizardFinalMinorTitle": "Talebin gönderildi 📨",
   "wizardFinalMinorBody": "Velinizle iletişime geçeceğiz ve bir görüşme ayarlayacağız (yüz yüze veya görüntülü görüşme). Lütfen sabırlı ol — süreç en fazla 7 gün sürebilir. Velin onayladığı anda uygulamadan bir bildirim alacaksın.",
   "wizardFinalMinorCallTitle": "Konuşmak istersen bizi ara",
@@ -1257,5 +1257,9 @@
       }
     }
   },
-  "wizardDocumentExternalOpenFailed": "Tarayıcı açılamadı. Bağlantı panoya kopyalandı — devam etmek için bir tarayıcıya yapıştır."
+  "wizardDocumentExternalOpenFailed": "Tarayıcı açılamadı. Bağlantı panoya kopyalandı — devam etmek için bir tarayıcıya yapıştır.",
+  "wizardFinalTimelineSubmitted": "Başvurun alındı",
+  "wizardFinalTimelineProcessing": "Vorstand inceliyor · en fazla 1 iş günü",
+  "wizardFinalTimelineActivated": "Hesap aktif",
+  "wizardFinalTimelineFirstMeeting": "İlk toplantına hoş geldin"
 }

@@ -1205,7 +1205,7 @@
     }
   },
   "wizardFinalAdultTitle": "Atlikta! Esi užregistruotas 🎉",
-  "wizardFinalAdultBody": "Sveiki atvykę į ICD360S e.V.! Užbaigei visus 8 etapus — Vorstand dabar tikrina ir patvirtins kiekvieną žingsnį per maks. 3 dienas. Gausi pranešimą, kai paskyra bus aktyvi.",
+  "wizardFinalAdultBody": "Sveikas atvykęs į ICD360S e.V.! Įveikei visus 8 etapus — Vorstand dabar tikrina ir patvirtins kiekvieną žingsnį per ne ilgiau kaip 1 darbo dieną. Pranešime programėlėje, kai tik tavo paskyra taps aktyvi.",
   "wizardFinalMinorTitle": "Tavo prašymas išsiųstas 📨",
   "wizardFinalMinorBody": "Susisieksime su tavo tėvu/motina ir suderinsime susitikimą (asmeniškai arba per vaizdo skambutį). Prašom kantrybės — procesas gali užtrukti iki 7 dienų. Gausi pranešimą programėlėje, kai tik tėvas/motina patvirtins.",
   "wizardFinalMinorCallTitle": "Paskambink, jei nori pasikalbėti",
@@ -1236,5 +1236,9 @@
       }
     }
   },
-  "wizardDocumentExternalOpenFailed": "Nepavyko atidaryti naršyklės. Nuoroda nukopijuota į iškarpinę — įklijuok ją naršyklėje, kad tęstum."
+  "wizardDocumentExternalOpenFailed": "Nepavyko atidaryti naršyklės. Nuoroda nukopijuota į iškarpinę — įklijuok ją naršyklėje, kad tęstum.",
+  "wizardFinalTimelineSubmitted": "Prašymas gautas",
+  "wizardFinalTimelineProcessing": "Vorstand tikrina · ne ilgiau kaip 1 darbo diena",
+  "wizardFinalTimelineActivated": "Paskyra aktyvuota",
+  "wizardFinalTimelineFirstMeeting": "Sveikas atvykęs į pirmąjį susirinkimą"
 }

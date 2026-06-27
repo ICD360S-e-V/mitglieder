@@ -1205,7 +1205,7 @@
     }
   },
   "wizardFinalAdultTitle": "All set! You're enrolled 🎉",
-  "wizardFinalAdultBody": "Welcome to ICD360S e.V.! You've completed all 8 stages — the Vorstand is reviewing and will approve each step within 3 days max. You'll get a notification as soon as your account is active.",
+  "wizardFinalAdultBody": "Welcome to ICD360S e.V.! You've completed all 8 stages — the Vorstand is reviewing now and will sign off on each step within 1 business day at most. We'll notify you in the app the moment your account goes active.",
   "wizardFinalMinorTitle": "Your request has been sent 📨",
   "wizardFinalMinorBody": "We'll contact your parent and arrange a meeting (in person or video call). Please be patient — the process can take up to 7 days. You'll get an in-app notification as soon as your parent approves.",
   "wizardFinalMinorCallTitle": "Call us if you want to talk",
@@ -1236,5 +1236,9 @@
       }
     }
   },
-  "wizardDocumentExternalOpenFailed": "Couldn't open your browser. The link is on your clipboard — paste it in a browser to continue."
+  "wizardDocumentExternalOpenFailed": "Couldn't open your browser. The link is on your clipboard — paste it in a browser to continue.",
+  "wizardFinalTimelineSubmitted": "Application received",
+  "wizardFinalTimelineProcessing": "Vorstand reviewing · 1 business day max",
+  "wizardFinalTimelineActivated": "Account activated",
+  "wizardFinalTimelineFirstMeeting": "Welcome to your first meeting"
 }

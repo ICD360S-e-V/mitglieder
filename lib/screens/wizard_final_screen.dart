@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -23,7 +25,7 @@ import '../widgets/icd360s_header.dart';
 /// screen. The minor variant also surfaces the support phone in
 /// case the visitor wants to nudge the parent or ask follow-up
 /// questions.
-class WizardFinalScreen extends StatelessWidget {
+class WizardFinalScreen extends StatefulWidget {
   final WizardFinalizeResult result;
 
   /// Phone surfaced on the "call us" affordance for minors. Same
@@ -43,12 +45,62 @@ class WizardFinalScreen extends StatelessWidget {
     this.supportPhone = '+4916094482053',
   });
 
+  @override
+  State<WizardFinalScreen> createState() => _WizardFinalScreenState();
+}
+
+class _WizardFinalScreenState extends State<WizardFinalScreen> {
+  /// True once `users.status === 'active'`. Lights up step 3 of the
+  /// timeline green and stops the polling timer.
+  bool _isActive = false;
+
+  /// Live ticker so the timeline flips the moment the Vorstand
+  /// approves. 30 s cadence is gentle on the server, snappy enough
+  /// for a screen the visitor stares at for a few minutes at most.
+  Timer? _statusTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    _kickOffStatusPolling();
+  }
+
+  @override
+  void dispose() {
+    _statusTimer?.cancel();
+    super.dispose();
+  }
+
+  void _kickOffStatusPolling() {
+    // Probe once immediately so a visitor returning to a finalized
+    // wizard sees the up-to-date timeline without a 30 s delay, then
+    // settle into the periodic cadence.
+    _checkStatus();
+    _statusTimer = Timer.periodic(
+      const Duration(seconds: 30),
+      (_) => _checkStatus(),
+    );
+  }
+
+  Future<void> _checkStatus() async {
+    final probe = await WizardService().checkUserStatus();
+    if (!mounted || probe == null) return;
+    if (probe.isActive && !_isActive) {
+      setState(() => _isActive = true);
+      _statusTimer?.cancel();
+    }
+  }
+
   Future<void> _call() async {
-    final uri = Uri(scheme: 'tel', path: supportPhone);
+    final uri = Uri(scheme: 'tel', path: widget.supportPhone);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
   }
+
+  WizardFinalizeResult get result => widget.result;
+  VoidCallback get onClose => widget.onClose;
+  String get supportPhone => widget.supportPhone;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +142,10 @@ class WizardFinalScreen extends StatelessWidget {
                         _titleBubble(l10n, isMinor),
                         const SizedBox(height: 14),
                         _mitgliedernummerCard(l10n),
+                        if (!isMinor) ...[
+                          const SizedBox(height: 14),
+                          _timeline(l10n),
+                        ],
                         const SizedBox(height: 14),
                         _bodyBubble(l10n, isMinor),
                         const SizedBox(height: 12),
@@ -201,6 +257,121 @@ class WizardFinalScreen extends StatelessWidget {
         ],
       ),
     ).animate().fadeIn(delay: 500.ms, duration: 500.ms);
+  }
+
+  /// 4-step timeline shown only on the adult flow. Step 1 is always
+  /// done (we just got here), step 2 turns from pending → done when
+  /// the polling probe sees `users.status === 'active'`, step 3
+  /// mirrors that, step 4 stays "upcoming" since the first meeting
+  /// is a future event the Vorstand will schedule separately.
+  Widget _timeline(AppLocalizations l10n) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(14, 14, 14, 8),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.10),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          _timelineRow(
+            label: l10n.wizardFinalTimelineSubmitted,
+            state: _StepState.done,
+            isLast: false,
+            delayMs: 700,
+          ),
+          _timelineRow(
+            label: l10n.wizardFinalTimelineProcessing,
+            state: _isActive ? _StepState.done : _StepState.inProgress,
+            isLast: false,
+            delayMs: 850,
+          ),
+          _timelineRow(
+            label: l10n.wizardFinalTimelineActivated,
+            state: _isActive ? _StepState.done : _StepState.upcoming,
+            isLast: false,
+            delayMs: 1000,
+          ),
+          _timelineRow(
+            label: l10n.wizardFinalTimelineFirstMeeting,
+            state: _StepState.upcoming,
+            isLast: true,
+            delayMs: 1150,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _timelineRow({
+    required String label,
+    required _StepState state,
+    required bool isLast,
+    required int delayMs,
+  }) {
+    final Color iconColor = switch (state) {
+      _StepState.done       => Colors.lightGreenAccent.shade100,
+      _StepState.inProgress => Colors.amber.shade100,
+      _StepState.upcoming   => Colors.white.withValues(alpha: 0.45),
+    };
+    final IconData iconData = switch (state) {
+      _StepState.done       => Icons.check_circle,
+      _StepState.inProgress => Icons.hourglass_top,
+      _StepState.upcoming   => Icons.radio_button_unchecked,
+    };
+    Widget icon = Icon(iconData, color: iconColor, size: 22);
+    if (state == _StepState.inProgress) {
+      icon = icon
+          .animate(onPlay: (c) => c.repeat(reverse: true))
+          .fadeIn(duration: 1200.ms)
+          .then()
+          .fadeOut(duration: 1200.ms);
+    }
+    final textColor = state == _StepState.upcoming
+        ? Colors.white.withValues(alpha: 0.55)
+        : Colors.white;
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            children: [
+              const SizedBox(height: 2),
+              icon,
+              if (!isLast)
+                Expanded(
+                  child: Container(
+                    width: 2,
+                    margin: const EdgeInsets.symmetric(vertical: 4),
+                    color: state == _StepState.done
+                        ? Colors.lightGreenAccent.shade100
+                            .withValues(alpha: 0.55)
+                        : Colors.white.withValues(alpha: 0.20),
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 2, bottom: 14),
+              child: Text(
+                label,
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 13.5,
+                  fontWeight: state == _StepState.done
+                      ? FontWeight.w700
+                      : FontWeight.w600,
+                  height: 1.35,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ).animate().fadeIn(delay: delayMs.ms, duration: 400.ms);
   }
 
   Widget _bodyBubble(AppLocalizations l10n, bool isMinor) {
@@ -348,3 +519,6 @@ class WizardFinalScreen extends StatelessWidget {
     ).animate().fadeIn(delay: 1000.ms, duration: 500.ms);
   }
 }
+
+/// Visual state for a row in the 4-step adult timeline.
+enum _StepState { done, inProgress, upcoming }

@@ -1205,7 +1205,7 @@
     }
   },
   "wizardFinalAdultTitle": "Gatavs! Esi reģistrēts 🎉",
-  "wizardFinalAdultBody": "Laipni lūdzam ICD360S e.V.! Pabeidzi visus 8 posmus — Vorstand pārbauda un apstiprinās katru soli ne ilgāk kā 3 dienās. Saņemsi paziņojumu, tiklīdz konts būs aktīvs.",
+  "wizardFinalAdultBody": "Laipni lūdzam ICD360S e.V.! Pabeidzi visus 8 posmus — Vorstand pārbauda un apstiprinās katru soli ne ilgāk kā 1 darba dienā. Paziņosim lietotnē, tiklīdz tavs konts būs aktīvs.",
   "wizardFinalMinorTitle": "Tavs pieprasījums ir nosūtīts 📨",
   "wizardFinalMinorBody": "Sazināsimies ar tavu vecāku un norunāsim tikšanos (klātienē vai video zvanā). Lūdzu, esi pacietīgs — process var ilgt līdz 7 dienām. Saņemsi paziņojumu lietotnē, tiklīdz vecāks apstiprinās.",
   "wizardFinalMinorCallTitle": "Piezvani, ja vēlies parunāt",
@@ -1236,5 +1236,9 @@
       }
     }
   },
-  "wizardDocumentExternalOpenFailed": "Pārlūku neizdevās atvērt. Saite ir kopēta starpliktuvē — ielīmē to pārlūkā, lai turpinātu."
+  "wizardDocumentExternalOpenFailed": "Pārlūku neizdevās atvērt. Saite ir kopēta starpliktuvē — ielīmē to pārlūkā, lai turpinātu.",
+  "wizardFinalTimelineSubmitted": "Pieteikums saņemts",
+  "wizardFinalTimelineProcessing": "Vorstand pārbauda · ne ilgāk kā 1 darba diena",
+  "wizardFinalTimelineActivated": "Konts aktivizēts",
+  "wizardFinalTimelineFirstMeeting": "Laipni lūdzam pirmajā sapulcē"
 }

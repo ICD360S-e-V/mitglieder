@@ -176,6 +176,23 @@ class WizardLeistungsbescheidUploadResult {
       );
 }
 
+/// Snapshot returned by check_status.php — used by the final screen
+/// to flip its 4-step timeline when the Vorstand approves the visitor.
+class WizardStatusProbe {
+  final String? mitgliedernummer;
+  final int? userId;
+  final String? status;
+  final bool isActive;
+  final bool isMinor;
+  const WizardStatusProbe({
+    this.mitgliedernummer,
+    this.userId,
+    this.status,
+    this.isActive = false,
+    this.isMinor = false,
+  });
+}
+
 /// Result returned from `finalize.php` once the wizard is done. For
 /// adults the `mitgliedernummer` is the live member id; for minors
 /// the same field carries the placeholder id pending parent linkage.
@@ -568,6 +585,36 @@ class WizardService {
       );
     } catch (e) {
       _log.error('wizard.finalize: $e', tag: 'WIZ');
+      return null;
+    }
+  }
+
+  /// Lightweight status probe used by WizardFinalScreen while it
+  /// polls every 30 s. Returns the user's current status (or null
+  /// if finalize hasn't created the user row yet — shouldn't happen
+  /// since the screen is only rendered post-finalize).
+  Future<WizardStatusProbe?> checkUserStatus() async {
+    try {
+      final id = await ensureId();
+      final r = await _client
+          .post(
+            Uri.parse('$_baseUrl/check_status.php'),
+            headers: _headers(),
+            body: jsonEncode({'anonymous_id': id}),
+          )
+          .timeout(const Duration(seconds: 10));
+      if (r.statusCode != 200) return null;
+      final body = jsonDecode(r.body) as Map<String, dynamic>;
+      if (body['success'] != true) return null;
+      return WizardStatusProbe(
+        mitgliedernummer: body['mitgliedernummer'] as String?,
+        userId:           (body['user_id'] as num?)?.toInt(),
+        status:           body['status'] as String?,
+        isActive:         body['is_active'] == true,
+        isMinor:          body['is_minor'] == true,
+      );
+    } catch (e) {
+      _log.error('wizard.checkUserStatus: $e', tag: 'WIZ');
       return null;
     }
   }

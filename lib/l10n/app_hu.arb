@@ -1205,7 +1205,7 @@
     }
   },
   "wizardFinalAdultTitle": "Kész! Beiratkoztál 🎉",
-  "wizardFinalAdultBody": "Üdvözlünk az ICD360S e.V.-ben! Mind a 8 szakaszt teljesítetted — a Vorstand most ellenőrzi és minden lépést max. 3 napon belül jóváhagy. Értesítést kapsz, amint a fiókod aktív.",
+  "wizardFinalAdultBody": "Üdv az ICD360S e.V.-ben! Mind a 8 fázist teljesítetted — a Vorstand most ellenőriz és minden lépést legfeljebb 1 munkanapon belül jóváhagy. Értesítünk az appban, amint a fiókod aktívvá válik.",
   "wizardFinalMinorTitle": "A kérésedet elküldtük 📨",
   "wizardFinalMinorBody": "Felvesszük a kapcsolatot a szülőddel és megbeszélünk egy találkozót (személyesen vagy videóhíváson). Légy türelemmel — a folyamat akár 7 napig is tarthat. Értesítést kapsz az alkalmazásban, amint a szülőd jóváhagyta.",
   "wizardFinalMinorCallTitle": "Hívj minket, ha beszélni szeretnél",
@@ -1236,5 +1236,9 @@
       }
     }
   },
-  "wizardDocumentExternalOpenFailed": "Nem sikerült megnyitni a böngészőt. A link a vágólapra került — illeszd be egy böngészőbe a folytatáshoz."
+  "wizardDocumentExternalOpenFailed": "Nem sikerült megnyitni a böngészőt. A link a vágólapra került — illeszd be egy böngészőbe a folytatáshoz.",
+  "wizardFinalTimelineSubmitted": "Kérelem beérkezett",
+  "wizardFinalTimelineProcessing": "Vorstand ellenőriz · max. 1 munkanap",
+  "wizardFinalTimelineActivated": "Fiók aktiválva",
+  "wizardFinalTimelineFirstMeeting": "Üdv az első találkozón"
 }
