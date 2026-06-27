@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "O teu pedido será marcado como retirado por ti. Os dados permanecem na base de dados para auditoria (RGPD), mas a conta não será ativada. Podes reiniciar o registo a qualquer momento com um novo número de membro.",
   "wizardFinalWithdrawKeep": "Não, vou esperar",
   "wizardFinalWithdrawConfirm": "Sim, retirar",
-  "wizardErrTooManyWithdrawals": "O teu pedido não pode ser processado automaticamente. Liga-nos ou passa pessoalmente pelo Vorstand para continuar o registo."
+  "wizardErrTooManyWithdrawals": "O teu pedido não pode ser processado automaticamente. Liga-nos ou passa pessoalmente pelo Vorstand para continuar o registo.",
+  "wizardDuplicateLoginTitle": "Parece que já és sócio",
+  "wizardDuplicateLoginBody": "Com o teu nome e data de nascimento já encontramos uma conta ativa. Por favor, usa 'Já sou sócio' no ecrã inicial para iniciar sessão. Se já não tens acesso, liga-nos.",
+  "wizardDuplicatePendingTitle": "O teu pedido já está connosco",
+  "wizardDuplicatePendingBody": "Com o teu nome e data de nascimento já temos um pedido em análise. O Vorstand está a tratar dele — avisamos-te na app assim que a tua conta estiver ativa. Liga-nos se quiseres conversar.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Não conseguimos processar este pedido agora",
+  "wizardDuplicateRecentlyWithdrawnBody": "O teu nome e data de nascimento coincidem com um pedido retirado recentemente. Por favor, liga-nos para falar com o Vorstand antes de continuares.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Já te candidataste antes",
+  "wizardDuplicatePreviouslyWithdrawnBody": "O teu nome e data de nascimento coincidem com um pedido mais antigo que tinhas retirado. Bem-vindo de volta — por favor liga-nos antes de continuares para o Vorstand decidir como prosseguir.",
+  "wizardDuplicateCallUsTitle": "Por favor, liga-nos",
+  "wizardDuplicateCallUsBody": "O teu nome e data de nascimento já constam dos nossos registos, mas não podemos partilhar os detalhes através da app. Liga-nos — o Vorstand explicará a situação diretamente."
 }

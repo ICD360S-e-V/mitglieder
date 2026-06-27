@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Tvoj zahtjev bit će označen kao povučen od strane tebe. Podaci ostaju u bazi radi revizije (GDPR), ali račun neće biti aktiviran. Registraciju možeš pokrenuti ponovno bilo kada s novim brojem člana.",
   "wizardFinalWithdrawKeep": "Ne, čekat ću",
   "wizardFinalWithdrawConfirm": "Da, povuci",
-  "wizardErrTooManyWithdrawals": "Tvoj zahtjev ne može se obraditi automatski. Nazovi nas ili dođi osobno u Vorstand kako bi nastavio registraciju."
+  "wizardErrTooManyWithdrawals": "Tvoj zahtjev ne može se obraditi automatski. Nazovi nas ili dođi osobno u Vorstand kako bi nastavio registraciju.",
+  "wizardDuplicateLoginTitle": "Čini se da si već naš član",
+  "wizardDuplicateLoginBody": "S tvojim imenom i datumom rođenja već nalazimo aktivan račun. Molimo, koristi \"Već sam član\" na početnom zaslonu da se prijaviš. Ako više nemaš pristup, nazovi nas.",
+  "wizardDuplicatePendingTitle": "Tvoj zahtjev je već kod nas",
+  "wizardDuplicatePendingBody": "S tvojim imenom i datumom rođenja već imamo zahtjev u razmatranju. Vorstand radi na njemu — javit ćemo ti obavijest u aplikaciji čim tvoj račun bude aktivan. Nazovi ako želiš razgovarati.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Sada ne možemo obraditi ovaj zahtjev",
+  "wizardDuplicateRecentlyWithdrawnBody": "Tvoje ime i datum rođenja podudaraju se s nedavno povučenim zahtjevom. Molimo nazovi nas kako bi razgovarao s Vorstandom prije nego što nastaviš.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Već si nekad podnio zahtjev",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Tvoje ime i datum rođenja podudaraju se sa starijim zahtjevom koji si bio povukao. Dobrodošao natrag — nazovi nas prije nego nastaviš, kako bi Vorstand odlučio kako dalje.",
+  "wizardDuplicateCallUsTitle": "Molimo, nazovi nas",
+  "wizardDuplicateCallUsBody": "Tvoje ime i datum rođenja već se nalaze kod nas, ali pojedinosti ne možemo dijeliti kroz aplikaciju. Nazovi nas — Vorstand će ti objasniti situaciju izravno."
 }

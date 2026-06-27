@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "A kérelmedet visszavontnak jelöljük. Az adatok auditálás céljából (GDPR) az adatbázisban maradnak, de a fiók nem lesz aktiválva. Bármikor újrakezdheted a regisztrációt új tagsági számmal.",
   "wizardFinalWithdrawKeep": "Nem, várok",
   "wizardFinalWithdrawConfirm": "Igen, visszavonom",
-  "wizardErrTooManyWithdrawals": "A kérelmedet nem tudjuk automatikusan feldolgozni. Hívj fel minket vagy gyere be személyesen a Vorstandhoz a regisztráció folytatásához."
+  "wizardErrTooManyWithdrawals": "A kérelmedet nem tudjuk automatikusan feldolgozni. Hívj fel minket vagy gyere be személyesen a Vorstandhoz a regisztráció folytatásához.",
+  "wizardDuplicateLoginTitle": "Úgy tűnik, már a tagunk vagy",
+  "wizardDuplicateLoginBody": "A neveddel és születési idődddel már találunk egy aktív fiókot. Kérlek, használd a \"Már tag vagyok\" gombot a kezdőképernyőn a bejelentkezéshez. Ha nincs hozzáférésed, hívj minket.",
+  "wizardDuplicatePendingTitle": "A kérelmed már nálunk van",
+  "wizardDuplicatePendingBody": "A neveddel és születési idődddel már van egy folyamatban lévő kérelmünk. A Vorstand dolgozik rajta — értesítünk az appban, amint a fiókod aktívvá válik. Hívj, ha beszélnél velünk.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Most nem tudjuk feldolgozni ezt a kérelmet",
+  "wizardDuplicateRecentlyWithdrawnBody": "A neved és születési időd egyezik egy nemrég visszavont kérelemmel. Kérjük, hívj minket, hogy a folytatás előtt beszélj a Vorstanddal.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Korábban már jelentkeztél",
+  "wizardDuplicatePreviouslyWithdrawnBody": "A neved és születési időd egyezik egy régebbi kérelemmel, amit visszavontál. Üdv újra — kérjük, hívj minket a folytatás előtt, hogy a Vorstand eldönthesse, hogyan tovább.",
+  "wizardDuplicateCallUsTitle": "Kérjük, hívj minket",
+  "wizardDuplicateCallUsBody": "A neved és születési időd már szerepel a nyilvántartásunkban, de a részleteket nem oszthatjuk meg az appon keresztül. Hívj minket — a Vorstand közvetlenül elmagyarázza a helyzetet."
 }

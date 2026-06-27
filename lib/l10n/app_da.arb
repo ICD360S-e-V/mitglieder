@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Din ansøgning markeres som tilbagetrukket af dig. Dataene bliver i databasen til revision (GDPR), men kontoen aktiveres ikke. Du kan starte registreringen forfra når som helst med et nyt medlemsnummer.",
   "wizardFinalWithdrawKeep": "Nej, jeg venter",
   "wizardFinalWithdrawConfirm": "Ja, træk tilbage",
-  "wizardErrTooManyWithdrawals": "Din ansøgning kan ikke behandles automatisk. Ring til os eller kom personligt forbi Vorstand for at fortsætte registreringen."
+  "wizardErrTooManyWithdrawals": "Din ansøgning kan ikke behandles automatisk. Ring til os eller kom personligt forbi Vorstand for at fortsætte registreringen.",
+  "wizardDuplicateLoginTitle": "Det ser ud til, at du allerede er medlem",
+  "wizardDuplicateLoginBody": "Med dit navn og fødselsdato finder vi allerede en aktiv konto. Brug venligst \"Jeg er allerede medlem\" på startskærmen for at logge ind. Hvis du ikke har adgang, så ring til os.",
+  "wizardDuplicatePendingTitle": "Din ansøgning er allerede hos os",
+  "wizardDuplicatePendingBody": "Vi har allerede en ansøgning til behandling under dit navn og fødselsdato. Vorstand er i gang — vi giver besked i appen, så snart din konto er aktiv. Ring, hvis du vil tale om det.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Vi kan ikke behandle denne ansøgning nu",
+  "wizardDuplicateRecentlyWithdrawnBody": "Dit navn og fødselsdato matcher en nyligt tilbagetrukket ansøgning. Ring til os for at tale med Vorstand, før du går videre.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Du har søgt før",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Dit navn og fødselsdato matcher en ældre ansøgning, som du trak tilbage. Velkommen tilbage — ring til os, før du fortsætter, så Vorstand kan beslutte, hvordan vi går videre.",
+  "wizardDuplicateCallUsTitle": "Ring venligst til os",
+  "wizardDuplicateCallUsBody": "Dit navn og fødselsdato findes allerede hos os, men vi kan ikke dele detaljerne via appen. Ring til os — Vorstand forklarer situationen direkte."
 }

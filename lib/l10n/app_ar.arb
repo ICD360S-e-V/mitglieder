@@ -1274,5 +1274,15 @@
   "wizardFinalWithdrawDialogBody": "سيتم وضع علامة على طلبك بأنه مسحوب من قِبَلك. تبقى البيانات في قاعدة البيانات لأغراض التدقيق (GDPR)، لكن لن يتم تفعيل الحساب. يمكنك إعادة التسجيل في أي وقت برقم عضوية جديد.",
   "wizardFinalWithdrawKeep": "لا، سأنتظر",
   "wizardFinalWithdrawConfirm": "نعم، اسحب",
-  "wizardErrTooManyWithdrawals": "لا يمكن معالجة طلبك تلقائيًا. اتصل بنا أو احضر شخصيًا إلى Vorstand لمتابعة التسجيل."
+  "wizardErrTooManyWithdrawals": "لا يمكن معالجة طلبك تلقائيًا. اتصل بنا أو احضر شخصيًا إلى Vorstand لمتابعة التسجيل.",
+  "wizardDuplicateLoginTitle": "يبدو أنك عضو لدينا بالفعل",
+  "wizardDuplicateLoginBody": "وفقًا لاسمك وتاريخ ميلادك، نجد بالفعل حسابًا نشطًا. يرجى استخدام \"أنا عضو بالفعل\" على الشاشة الرئيسية لتسجيل الدخول. إذا فقدت الوصول، اتصل بنا.",
+  "wizardDuplicatePendingTitle": "طلبك معنا بالفعل",
+  "wizardDuplicatePendingBody": "لدينا بالفعل طلب قيد المراجعة باسمك وتاريخ ميلادك. مجلس الإدارة يعمل عليه — سنُعلِمك عبر إشعار في التطبيق فور تفعيل حسابك. اتصل بنا إذا أردت التحدث.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "لا يمكننا معالجة هذا الطلب الآن",
+  "wizardDuplicateRecentlyWithdrawnBody": "اسمك وتاريخ ميلادك يتطابقان مع طلب تم سحبه مؤخرًا. يرجى الاتصال بنا للتحدث مع مجلس الإدارة قبل المتابعة.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "لقد قدمت طلبًا من قبل",
+  "wizardDuplicatePreviouslyWithdrawnBody": "اسمك وتاريخ ميلادك يتطابقان مع طلب أقدم سحبته. أهلًا بعودتك — يرجى الاتصال بنا قبل المتابعة حتى يقرر مجلس الإدارة كيف نتقدم.",
+  "wizardDuplicateCallUsTitle": "يرجى الاتصال بنا",
+  "wizardDuplicateCallUsBody": "اسمك وتاريخ ميلادك موجودان لدينا بالفعل، لكن لا يمكننا مشاركة التفاصيل عبر التطبيق. يرجى الاتصال بنا — مجلس الإدارة سيشرح لك الأمر مباشرة."
 }

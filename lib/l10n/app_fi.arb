@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Hakemuksesi merkitään sinun perumaksi. Tiedot säilyvät tietokannassa tarkastusta varten (GDPR), mutta tiliä ei aktivoida. Voit aloittaa rekisteröitymisen uudelleen milloin tahansa uudella jäsennumerolla.",
   "wizardFinalWithdrawKeep": "Ei, odotan",
   "wizardFinalWithdrawConfirm": "Kyllä, peru",
-  "wizardErrTooManyWithdrawals": "Hakemustasi ei voi käsitellä automaattisesti. Soita meille tai tule käymään Vorstandilla henkilökohtaisesti, jotta voit jatkaa rekisteröitymistä."
+  "wizardErrTooManyWithdrawals": "Hakemustasi ei voi käsitellä automaattisesti. Soita meille tai tule käymään Vorstandilla henkilökohtaisesti, jotta voit jatkaa rekisteröitymistä.",
+  "wizardDuplicateLoginTitle": "Näyttää siltä, että olet jo jäsenemme",
+  "wizardDuplicateLoginBody": "Nimellä ja syntymäajalla löydämme jo aktiivisen tilin. Käytä etusivulla \"Olen jo jäsen\" -kohtaa kirjautuaksesi. Jos sinulla ei ole enää pääsyä, soita meille.",
+  "wizardDuplicatePendingTitle": "Hakemuksesi on jo meillä",
+  "wizardDuplicatePendingBody": "Nimellä ja syntymäajalla meillä on jo hakemus käsittelyssä. Vorstand tutkii sitä — ilmoitamme sovelluksessa heti, kun tilisi on aktiivinen. Soita, jos haluat keskustella.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Emme voi käsitellä tätä hakemusta nyt",
+  "wizardDuplicateRecentlyWithdrawnBody": "Nimesi ja syntymäaikasi vastaavat hiljattain peruttua hakemusta. Soita meille, jotta voit puhua Vorstandin kanssa ennen kuin jatkat.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Olet hakenut aiemmin",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Nimesi ja syntymäaikasi vastaavat vanhempaa hakemusta, jonka olit perunut. Tervetuloa takaisin — soita meille ennen jatkamista, jotta Vorstand voi päättää, miten etenemme.",
+  "wizardDuplicateCallUsTitle": "Soita meille",
+  "wizardDuplicateCallUsBody": "Nimesi ja syntymäaikasi näkyvät jo tietokannassamme, mutta emme voi kertoa yksityiskohtia sovelluksen kautta. Soita meille — Vorstand selittää tilanteen suoraan."
 }

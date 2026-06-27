@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Tu solicitud quedará marcada como retirada por ti. Los datos siguen en la base para auditoría (GDPR), pero la cuenta no se activará. Puedes reiniciar el registro cuando quieras con un nuevo número de miembro.",
   "wizardFinalWithdrawKeep": "No, voy a esperar",
   "wizardFinalWithdrawConfirm": "Sí, retirar",
-  "wizardErrTooManyWithdrawals": "Tu solicitud no se puede procesar automáticamente. Llámanos o pásate personalmente por el Vorstand para continuar el registro."
+  "wizardErrTooManyWithdrawals": "Tu solicitud no se puede procesar automáticamente. Llámanos o pásate personalmente por el Vorstand para continuar el registro.",
+  "wizardDuplicateLoginTitle": "Parece que ya eres socio",
+  "wizardDuplicateLoginBody": "Con tu nombre y fecha de nacimiento ya encontramos una cuenta activa. Por favor, usa \"Ya soy socio\" en la pantalla principal para iniciar sesión. Si ya no tienes acceso, llámanos.",
+  "wizardDuplicatePendingTitle": "Tu solicitud ya está con nosotros",
+  "wizardDuplicatePendingBody": "Con tu nombre y fecha de nacimiento ya tenemos una solicitud en revisión. El Vorstand está trabajando en ella — te avisaremos en la app en cuanto tu cuenta esté activa. Llámanos si quieres comentar.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Ahora no podemos procesar esta solicitud",
+  "wizardDuplicateRecentlyWithdrawnBody": "Tu nombre y fecha de nacimiento coinciden con una solicitud retirada recientemente. Por favor, llámanos para hablar con el Vorstand antes de seguir.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Ya has solicitado antes",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Tu nombre y fecha de nacimiento coinciden con una solicitud anterior que retiraste. Bienvenido de nuevo — por favor llámanos antes de continuar para que el Vorstand decida cómo procedemos.",
+  "wizardDuplicateCallUsTitle": "Por favor, llámanos",
+  "wizardDuplicateCallUsBody": "Tu nombre y fecha de nacimiento ya constan en nuestros registros, pero no podemos compartir los detalles por la app. Llámanos — el Vorstand te explicará directamente la situación."
 }

@@ -23,7 +23,10 @@ class WizardStufe1bScreen extends StatefulWidget {
 
   /// Called once the step saves successfully. The provided status
   /// tells the parent which screen to render next.
-  final void Function(WizardAgeStatus status) onAdvance;
+  final void Function(
+    WizardAgeStatus status, {
+    WizardDuplicateAction? duplicateAction,
+  }) onAdvance;
 
   /// Back arrow + Back button handler. Null disables them.
   final VoidCallback? onBack;
@@ -96,10 +99,12 @@ class _WizardStufe1bScreenState extends State<WizardStufe1bScreen> {
     }
     setState(() => _saving = true);
 
-    // 1) Server age verdict — single source of truth.
-    final verdict = await WizardService().checkAge(_date!);
+    // 1) Server age verdict — single source of truth. Also returns
+    //    a duplicate flag if a users row already matches this
+    //    applicant's name + DOB.
+    final ageResult = await WizardService().checkAge(_date!);
     if (!mounted) return;
-    if (verdict == null) {
+    if (ageResult == null) {
       setState(() => _saving = false);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -110,17 +115,20 @@ class _WizardStufe1bScreenState extends State<WizardStufe1bScreen> {
       );
       return;
     }
+    final verdict = ageResult.status;
 
     // 2) Under-16: device gets locked (already done inside checkAge),
     //    don't persist any further data. Tell the parent to navigate
     //    to the AgeGate screen.
     if (verdict == WizardAgeStatus.tooYoung) {
       setState(() => _saving = false);
-      widget.onAdvance(verdict);
+      widget.onAdvance(verdict, duplicateAction: null);
       return;
     }
 
-    // 3) Otherwise persist 1b and let the parent decide next.
+    // 3) Persist 1b first — that way a duplicate-action visitor whose
+    //    record we want to surface to the Vorstand still has an audit
+    //    trail of having reached this screen.
     final iso = '${_date!.year.toString().padLeft(4, '0')}-'
         '${_date!.month.toString().padLeft(2, '0')}-'
         '${_date!.day.toString().padLeft(2, '0')}';
@@ -140,7 +148,7 @@ class _WizardStufe1bScreenState extends State<WizardStufe1bScreen> {
       );
       return;
     }
-    widget.onAdvance(verdict);
+    widget.onAdvance(verdict, duplicateAction: ageResult.duplicateAction);
   }
 
   @override

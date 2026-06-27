@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Your application will be marked as withdrawn-by-you. The data stays in the database for audit (GDPR), but the account won't be activated. You can restart the registration any time with a new member number.",
   "wizardFinalWithdrawKeep": "No, I'll wait",
   "wizardFinalWithdrawConfirm": "Yes, withdraw",
-  "wizardErrTooManyWithdrawals": "Your application can't be processed automatically. Please give us a call or come in person to the Vorstand to continue your registration."
+  "wizardErrTooManyWithdrawals": "Your application can't be processed automatically. Please give us a call or come in person to the Vorstand to continue your registration.",
+  "wizardDuplicateLoginTitle": "Looks like you're already a member",
+  "wizardDuplicateLoginBody": "We already find an active account under your name and date of birth. Please tap 'I'm already a member' on the welcome screen to log in. If you can't access it any more, give us a call.",
+  "wizardDuplicatePendingTitle": "Your application is already with us",
+  "wizardDuplicatePendingBody": "We already have an application in review under your name and date of birth. The Vorstand is working on it — we'll notify you in the app the moment your account goes active. Call us if you want to talk it through.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "We can't process this application now",
+  "wizardDuplicateRecentlyWithdrawnBody": "Your name and date of birth match a recently withdrawn application. Please give us a call so you can speak with the Vorstand before going further.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "You've applied before",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Your name and date of birth match an older application you'd withdrawn. Welcome back — please give us a call before continuing so the Vorstand can decide how to proceed.",
+  "wizardDuplicateCallUsTitle": "Please give us a call",
+  "wizardDuplicateCallUsBody": "Your name and date of birth already appear in our records, but we can't share the details through the app. Please give us a call — the Vorstand will explain the situation directly."
 }

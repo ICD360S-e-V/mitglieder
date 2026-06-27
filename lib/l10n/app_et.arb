@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Sinu avaldus märgitakse sinu poolt tagasi võetuks. Andmed jäävad andmebaasi auditeerimiseks (GDPR), kuid kontot ei aktiveerita. Sa võid registreerimise igal ajal uue liikmenumbriga uuesti alustada.",
   "wizardFinalWithdrawKeep": "Ei, jään ootama",
   "wizardFinalWithdrawConfirm": "Jah, tühistada",
-  "wizardErrTooManyWithdrawals": "Sinu avaldust ei saa automaatselt töödelda. Helista meile või tule isiklikult Vorstandi juurde, et registreerimist jätkata."
+  "wizardErrTooManyWithdrawals": "Sinu avaldust ei saa automaatselt töödelda. Helista meile või tule isiklikult Vorstandi juurde, et registreerimist jätkata.",
+  "wizardDuplicateLoginTitle": "Tundub, et oled juba meie liige",
+  "wizardDuplicateLoginBody": "Sinu nime ja sünnikuupäevaga leiame juba aktiivse konto. Palun kasuta avakuval „Olen juba liige\", et sisse logida. Kui sul pole enam ligipääsu, helista meile.",
+  "wizardDuplicatePendingTitle": "Sinu avaldus on juba meil",
+  "wizardDuplicatePendingBody": "Sinu nime ja sünnikuupäevaga on meil juba avaldus läbivaatamisel. Vorstand tegeleb sellega — teavitame rakenduses, niipea kui konto on aktiivne. Helista, kui tahad rääkida.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Praegu ei saa seda avaldust töödelda",
+  "wizardDuplicateRecentlyWithdrawnBody": "Sinu nimi ja sünnikuupäev sobivad hiljuti tagasi võetud avaldusega. Palun helista meile, et rääkida Vorstandiga enne jätkamist.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Oled juba varem avalduse esitanud",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Sinu nimi ja sünnikuupäev sobivad vanema avaldusega, mille olid tagasi võtnud. Tere tulemast tagasi — palun helista enne jätkamist, et Vorstand saaks otsustada, kuidas edasi tegutseme.",
+  "wizardDuplicateCallUsTitle": "Palun helista meile",
+  "wizardDuplicateCallUsBody": "Sinu nimi ja sünnikuupäev on meil juba olemas, kuid me ei saa üksikasju rakenduse kaudu jagada. Palun helista meile — Vorstand selgitab olukorra otse."
 }

@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Ta demande sera marquée comme retirée par toi. Les données restent dans la base pour audit (RGPD), mais le compte ne sera pas activé. Tu peux relancer l'inscription à tout moment avec un nouveau numéro de membre.",
   "wizardFinalWithdrawKeep": "Non, j’attends",
   "wizardFinalWithdrawConfirm": "Oui, retirer",
-  "wizardErrTooManyWithdrawals": "Ta demande ne peut pas être traitée automatiquement. Appelle-nous ou viens en personne au Vorstand pour continuer ton inscription."
+  "wizardErrTooManyWithdrawals": "Ta demande ne peut pas être traitée automatiquement. Appelle-nous ou viens en personne au Vorstand pour continuer ton inscription.",
+  "wizardDuplicateLoginTitle": "On dirait que tu es déjà membre",
+  "wizardDuplicateLoginBody": "Avec ton nom et ta date de naissance, on trouve déjà un compte actif. Utilise « Je suis déjà membre » sur l'écran d'accueil pour te connecter. Si tu n'as plus accès, appelle-nous.",
+  "wizardDuplicatePendingTitle": "Ta demande est déjà chez nous",
+  "wizardDuplicatePendingBody": "Avec ton nom et ta date de naissance, on a déjà une demande en cours d'examen. Le Vorstand y travaille — on te notifie dans l'app dès que ton compte est actif. Appelle-nous si tu veux en discuter.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "On ne peut pas traiter cette demande maintenant",
+  "wizardDuplicateRecentlyWithdrawnBody": "Ton nom et ta date de naissance correspondent à une demande retirée récemment. Appelle-nous pour parler avec le Vorstand avant de continuer.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Tu as déjà déposé une demande",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Ton nom et ta date de naissance correspondent à une demande plus ancienne que tu avais retirée. Re-bienvenue — appelle-nous avant de continuer pour que le Vorstand décide comment on procède.",
+  "wizardDuplicateCallUsTitle": "Appelle-nous, s’il te plaît",
+  "wizardDuplicateCallUsBody": "Ton nom et ta date de naissance figurent déjà chez nous, mais on ne peut pas te donner les détails via l'app. Appelle-nous — le Vorstand t'expliquera la situation directement."
 }

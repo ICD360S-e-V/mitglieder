@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Twój wniosek zostanie oznaczony jako wycofany przez ciebie. Dane pozostają w bazie do celów audytu (RODO), ale konto nie zostanie aktywowane. Możesz w każdej chwili rozpocząć rejestrację od nowa z nowym numerem członkowskim.",
   "wizardFinalWithdrawKeep": "Nie, poczekam",
   "wizardFinalWithdrawConfirm": "Tak, wycofaj",
-  "wizardErrTooManyWithdrawals": "Twojego wniosku nie da się przetworzyć automatycznie. Zadzwoń do nas lub przyjdź osobiście do Vorstandu, żeby kontynuować rejestrację."
+  "wizardErrTooManyWithdrawals": "Twojego wniosku nie da się przetworzyć automatycznie. Zadzwoń do nas lub przyjdź osobiście do Vorstandu, żeby kontynuować rejestrację.",
+  "wizardDuplicateLoginTitle": "Wygląda na to, że już jesteś naszym członkiem",
+  "wizardDuplicateLoginBody": "Z twoim imieniem i datą urodzenia znajdujemy już aktywne konto. Skorzystaj z \"Jestem już członkiem\" na ekranie głównym, by się zalogować. Jeśli nie masz dostępu, zadzwoń.",
+  "wizardDuplicatePendingTitle": "Twój wniosek już jest u nas",
+  "wizardDuplicatePendingBody": "Z twoim imieniem i datą urodzenia mamy już wniosek w trakcie weryfikacji. Vorstand nad nim pracuje — powiadomimy cię w aplikacji, gdy konto stanie się aktywne. Zadzwoń, jeśli chcesz porozmawiać.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Nie możemy teraz przetworzyć tego wniosku",
+  "wizardDuplicateRecentlyWithdrawnBody": "Twoje imię i data urodzenia pasują do niedawno wycofanego wniosku. Zadzwoń do nas, aby porozmawiać z Vorstandem zanim ruszysz dalej.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Już wcześniej składałeś wniosek",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Twoje imię i data urodzenia pasują do starszego wniosku, który wycofałeś. Witaj z powrotem — zadzwoń przed kontynuacją, by Vorstand zdecydował, jak postępujemy.",
+  "wizardDuplicateCallUsTitle": "Prosimy, zadzwoń",
+  "wizardDuplicateCallUsBody": "Twoje imię i data urodzenia są już w naszej bazie, ale szczegółów nie możemy podać przez aplikację. Zadzwoń do nas — Vorstand wyjaśni sytuację bezpośrednio."
 }

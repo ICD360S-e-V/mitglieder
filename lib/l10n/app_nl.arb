@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Je aanvraag wordt gemarkeerd als ingetrokken-door-jou. De gegevens blijven in de database voor audit (AVG), maar het account wordt niet geactiveerd. Je kunt de registratie altijd opnieuw beginnen met een nieuw lidnummer.",
   "wizardFinalWithdrawKeep": "Nee, ik wacht",
   "wizardFinalWithdrawConfirm": "Ja, intrekken",
-  "wizardErrTooManyWithdrawals": "Je aanvraag kan niet automatisch worden verwerkt. Bel ons of kom persoonlijk langs bij de Vorstand om je registratie voort te zetten."
+  "wizardErrTooManyWithdrawals": "Je aanvraag kan niet automatisch worden verwerkt. Bel ons of kom persoonlijk langs bij de Vorstand om je registratie voort te zetten.",
+  "wizardDuplicateLoginTitle": "Het lijkt erop dat je al lid bent",
+  "wizardDuplicateLoginBody": "Met je naam en geboortedatum vinden we al een actief account. Gebruik \"Ik ben al lid\" op het startscherm om in te loggen. Lukt dat niet meer, bel ons dan.",
+  "wizardDuplicatePendingTitle": "Je aanvraag is al bij ons",
+  "wizardDuplicatePendingBody": "Met je naam en geboortedatum is er al een aanvraag in behandeling. Vorstand werkt eraan — we sturen je een melding in de app zodra je account actief is. Bel ons als je wilt overleggen.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "We kunnen deze aanvraag nu niet verwerken",
+  "wizardDuplicateRecentlyWithdrawnBody": "Je naam en geboortedatum komen overeen met een onlangs ingetrokken aanvraag. Bel ons om eerst met de Vorstand te overleggen voordat je verdergaat.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Je hebt eerder al een aanvraag gedaan",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Je naam en geboortedatum komen overeen met een oudere aanvraag die je destijds had ingetrokken. Welkom terug — bel ons voordat je verdergaat, zodat de Vorstand kan beslissen hoe we het aanpakken.",
+  "wizardDuplicateCallUsTitle": "Bel ons",
+  "wizardDuplicateCallUsBody": "Je naam en geboortedatum staan al bij ons, maar de details kunnen we niet via de app delen. Bel ons — de Vorstand legt de situatie persoonlijk uit."
 }

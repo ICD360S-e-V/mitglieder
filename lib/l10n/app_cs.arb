@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Tvoje žádost bude označena jako zrušena tebou. Data zůstanou v databázi pro audit (GDPR), ale účet nebude aktivován. Registraci můžeš kdykoli zopakovat s novým členským číslem.",
   "wizardFinalWithdrawKeep": "Ne, počkám",
   "wizardFinalWithdrawConfirm": "Ano, zrušit",
-  "wizardErrTooManyWithdrawals": "Tvoji žádost nelze zpracovat automaticky. Zavolej nám nebo přijď osobně k Vorstandu, abys mohl pokračovat v registraci."
+  "wizardErrTooManyWithdrawals": "Tvoji žádost nelze zpracovat automaticky. Zavolej nám nebo přijď osobně k Vorstandu, abys mohl pokračovat v registraci.",
+  "wizardDuplicateLoginTitle": "Vypadá to, že už jsi naším členem",
+  "wizardDuplicateLoginBody": "Podle tvého jména a data narození už nacházíme aktivní účet. Použij prosím \"Jsem už člen\" na úvodní obrazovce, aby ses přihlásil. Pokud nemáš přístup, zavolej nám.",
+  "wizardDuplicatePendingTitle": "Tvoje žádost je už u nás",
+  "wizardDuplicatePendingBody": "Podle tvého jména a data narození máme už žádost v posuzování. Vorstand na ní pracuje — pošleme ti oznámení v aplikaci, jakmile bude tvůj účet aktivní. Zavolej, pokud si chceš popovídat.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Tuto žádost teď nemůžeme zpracovat",
+  "wizardDuplicateRecentlyWithdrawnBody": "Tvoje jméno a datum narození odpovídají nedávno zrušené žádosti. Zavolej nám, ať si o tom promluvíš s Vorstandem, než budeš pokračovat.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Už jsi jednou žádost podal",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Tvoje jméno a datum narození odpovídají starší žádosti, kterou jsi zrušil. Vítej zpátky — zavolej nám, než budeš pokračovat, ať Vorstand rozhodne, jak dál.",
+  "wizardDuplicateCallUsTitle": "Prosím, zavolej nám",
+  "wizardDuplicateCallUsBody": "Tvoje jméno a datum narození u nás už figurují, ale podrobnosti přes aplikaci sdělit nemůžeme. Zavolej nám — Vorstand ti situaci vysvětlí osobně."
 }

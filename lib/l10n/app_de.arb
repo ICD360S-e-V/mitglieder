@@ -1274,5 +1274,15 @@
   "wizardFinalWithdrawDialogBody": "Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) in der Datenbank, dein Konto wird jedoch nicht aktiviert. Du kannst die Anmeldung jederzeit mit einer neuen Mitgliedernummer neu starten.",
   "wizardFinalWithdrawKeep": "Nein, ich warte",
   "wizardFinalWithdrawConfirm": "Ja, zurückziehen",
-  "wizardErrTooManyWithdrawals": "Dein Antrag kann nicht automatisch bearbeitet werden. Bitte ruf uns an oder komm persönlich beim Vorstand vorbei, um die Anmeldung fortzusetzen."
+  "wizardErrTooManyWithdrawals": "Dein Antrag kann nicht automatisch bearbeitet werden. Bitte ruf uns an oder komm persönlich beim Vorstand vorbei, um die Anmeldung fortzusetzen.",
+  "wizardDuplicateLoginTitle": "Du scheinst bereits Mitglied zu sein",
+  "wizardDuplicateLoginBody": "Mit deinem Namen und Geburtsdatum finden wir bereits ein aktives Konto. Bitte nutze „Ich bin bereits Mitglied\" auf dem Startbildschirm, um dich anzumelden. Wenn du keinen Zugang mehr hast, ruf uns an.",
+  "wizardDuplicatePendingTitle": "Dein Antrag ist bereits bei uns",
+  "wizardDuplicatePendingBody": "Mit deinem Namen und Geburtsdatum finden wir bereits einen laufenden Antrag. Der Vorstand prüft ihn gerade — wir benachrichtigen dich in der App, sobald dein Konto aktiv ist. Wenn du sprechen möchtest, ruf uns an.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Wir können den Antrag jetzt nicht bearbeiten",
+  "wizardDuplicateRecentlyWithdrawnBody": "Dein Name und dein Geburtsdatum stimmen mit einem kürzlich zurückgezogenen Antrag überein. Bitte ruf uns an, um vor dem Weitermachen mit dem Vorstand zu sprechen.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Du hattest schon einmal einen Antrag",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Dein Name und dein Geburtsdatum stimmen mit einem älteren Antrag überein, den du zurückgezogen hattest. Willkommen zurück — bitte ruf uns vor dem Fortfahren an, damit der Vorstand entscheiden kann, wie wir weitermachen.",
+  "wizardDuplicateCallUsTitle": "Bitte ruf uns an",
+  "wizardDuplicateCallUsBody": "Dein Name und Geburtsdatum sind bei uns bereits vorhanden, aber wir können dir die Details nicht über die App mitteilen. Bitte ruf uns an — der Vorstand erklärt dir die Situation direkt."
 }

@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Cererea ta va fi marcată ca anulată de tine. Datele rămân în baza de date pentru audit (DSGVO), dar contul nu va mai fi activat. Vei putea reîncepe înregistrarea oricând cu un alt număr de membru.",
   "wizardFinalWithdrawKeep": "Nu, mai aștept",
   "wizardFinalWithdrawConfirm": "Da, anulează",
-  "wizardErrTooManyWithdrawals": "Cererea ta nu poate fi procesată automat. Sună-ne sau vino în persoană la Vorstand pentru a continua înregistrarea."
+  "wizardErrTooManyWithdrawals": "Cererea ta nu poate fi procesată automat. Sună-ne sau vino în persoană la Vorstand pentru a continua înregistrarea.",
+  "wizardDuplicateLoginTitle": "Se pare că ești deja membru",
+  "wizardDuplicateLoginBody": "Cu numele și data ta de naștere găsim deja un cont activ. Te rugăm să folosești \"Sunt deja membru\" pe ecranul principal pentru a te autentifica. Dacă nu mai ai acces, sună-ne.",
+  "wizardDuplicatePendingTitle": "Cererea ta e deja la noi",
+  "wizardDuplicatePendingBody": "Cu numele și data ta de naștere am găsit deja o cerere în curs de verificare. Vorstand-ul lucrează la ea — te anunțăm prin notificare imediat ce contul tău e activ. Dacă vrei să discutăm, sună-ne.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Nu putem procesa cererea acum",
+  "wizardDuplicateRecentlyWithdrawnBody": "Numele și data ta de naștere se potrivesc cu o cerere retrasă recent. Te rugăm să ne suni pentru a vorbi cu Vorstand-ul înainte de a continua.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Ai mai depus o cerere",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Numele și data ta de naștere se potrivesc cu o cerere veche pe care ai retras-o. Bun venit înapoi — te rugăm să ne suni înainte de a continua, ca Vorstand-ul să poată decide cum procedăm.",
+  "wizardDuplicateCallUsTitle": "Te rugăm să ne suni",
+  "wizardDuplicateCallUsBody": "Numele și data ta de naștere apar deja la noi, dar nu îți putem da detalii prin aplicație. Te rugăm să ne suni — Vorstand-ul îți va explica situația direct."
 }

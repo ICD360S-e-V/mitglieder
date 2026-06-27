@@ -4,6 +4,7 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import 'wizard_age_gate_screen.dart';
 import 'wizard_document_accept_screen.dart';
+import 'wizard_duplicate_screen.dart';
 import 'wizard_final_screen.dart';
 import 'wizard_intro_screen.dart';
 import 'wizard_stufe_1a_screen.dart';
@@ -33,7 +34,7 @@ class WizardScreen extends StatefulWidget {
 }
 
 /// Lifecycle phases. Drives the top-level switch in [build].
-enum _Phase { loading, active, ageGate, finished, error }
+enum _Phase { loading, active, ageGate, duplicateFound, finished, error }
 
 /// Document metadata fed into the reusable Stufe 6/7/8 screen.
 class _DocSpec {
@@ -97,6 +98,10 @@ class _WizardScreenState extends State<WizardScreen> {
   /// when the server rejects with a recognised code (e.g.
   /// 'too_many_withdrawals'). Null when error was a generic failure.
   String? _errorCode;
+
+  /// Duplicate-applicant action returned by check_age.php — drives the
+  /// "you already have an account" screen routed from Stufe 1b.
+  WizardDuplicateAction? _duplicateAction;
 
   /// Visitor falls into the fee-exempt bucket when their Stufe 3
   /// answer is one of the recognised social benefits — Bürgergeld
@@ -369,6 +374,11 @@ class _WizardScreenState extends State<WizardScreen> {
           age: _gateAge,
           onExit: () => Navigator.of(context).maybePop(),
         );
+      case _Phase.duplicateFound:
+        return WizardDuplicateScreen(
+          action: _duplicateAction!,
+          onClose: () => Navigator.of(context).maybePop(),
+        );
       case _Phase.finished:
         return WizardFinalScreen(
           result: _finalizeResult!,
@@ -394,7 +404,7 @@ class _WizardScreenState extends State<WizardScreen> {
         return WizardStufe1bScreen(
           initial: _data,
           onBack: _goBack,
-          onAdvance: (status) async {
+          onAdvance: (status, {duplicateAction}) async {
             // Recompute gate age from the just-typed birthdate (the
             // service already saved it before returning the verdict).
             await _refreshData();
@@ -407,6 +417,18 @@ class _WizardScreenState extends State<WizardScreen> {
             setState(() => _ageStatus = status);
             if (status == WizardAgeStatus.tooYoung) {
               setState(() => _phase = _Phase.ageGate);
+              return;
+            }
+            // Duplicate-registration probe — if the server matched the
+            // applicant against an existing users row, divert to a
+            // polite "you already have an account" screen instead of
+            // continuing the wizard. recentlyWithdrawn maps to a hard
+            // block via the abuse window (mirrors finalize.php's 429).
+            if (duplicateAction != null) {
+              setState(() {
+                _duplicateAction = duplicateAction;
+                _phase = _Phase.duplicateFound;
+              });
               return;
             }
             // ok / minor — route via _nextStep so the skip stays

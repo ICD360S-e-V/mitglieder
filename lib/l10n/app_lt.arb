@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Tavo prašymas bus pažymėtas kaip atšauktas tavęs. Duomenys lieka duomenų bazėje audito tikslais (GDPR), bet paskyra nebus aktyvuota. Registraciją gali pradėti iš naujo bet kada su nauju nario numeriu.",
   "wizardFinalWithdrawKeep": "Ne, palauksiu",
   "wizardFinalWithdrawConfirm": "Taip, atšaukti",
-  "wizardErrTooManyWithdrawals": "Tavo prašymas negali būti apdorotas automatiškai. Paskambink mums arba ateik asmeniškai pas Vorstandą, kad tęstum registraciją."
+  "wizardErrTooManyWithdrawals": "Tavo prašymas negali būti apdorotas automatiškai. Paskambink mums arba ateik asmeniškai pas Vorstandą, kad tęstum registraciją.",
+  "wizardDuplicateLoginTitle": "Atrodo, kad jau esi mūsų narys",
+  "wizardDuplicateLoginBody": "Pagal tavo vardą ir gimimo datą jau randame aktyvią paskyrą. Pagrindiniame ekrane pasirink \"Jau esu narys\", kad prisijungtum. Jei prieigos nebėra, paskambink.",
+  "wizardDuplicatePendingTitle": "Tavo prašymas jau pas mus",
+  "wizardDuplicatePendingBody": "Pagal tavo vardą ir gimimo datą jau turime svarstomą prašymą. Vorstand jį tikrina — pranešime programėlėje, kai paskyra taps aktyvi. Paskambink, jei nori pasikalbėti.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Šiuo metu negalime apdoroti šio prašymo",
+  "wizardDuplicateRecentlyWithdrawnBody": "Tavo vardas ir gimimo data sutampa su neseniai atšauktu prašymu. Paskambink, kad pasikalbėtum su Vorstand prieš tęsdamas.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Anksčiau jau buvai pateikęs prašymą",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Tavo vardas ir gimimo data sutampa su senesniu prašymu, kurį buvai atšaukęs. Sveikas grįžęs — paskambink prieš tęsdamas, kad Vorstand nuspręstų, kaip elgsimės.",
+  "wizardDuplicateCallUsTitle": "Prašome, paskambink",
+  "wizardDuplicateCallUsBody": "Tavo vardas ir gimimo data jau yra mūsų įrašuose, bet detalių per programėlę pateikti negalime. Paskambink — Vorstand paaiškins situaciją tiesiogiai."
 }

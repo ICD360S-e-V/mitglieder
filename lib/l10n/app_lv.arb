@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Tavs pieteikums tiks atzīmēts kā tevis atsaukts. Dati paliek datubāzē auditam (GDPR), bet konts netiks aktivizēts. Reģistrāciju vari sākt no jauna jebkurā brīdī ar jaunu biedru numuru.",
   "wizardFinalWithdrawKeep": "Nē, gaidīšu",
   "wizardFinalWithdrawConfirm": "Jā, atsaukt",
-  "wizardErrTooManyWithdrawals": "Tavu pieteikumu nevar apstrādāt automātiski. Piezvani mums vai atnāc personīgi pie Vorstand, lai turpinātu reģistrāciju."
+  "wizardErrTooManyWithdrawals": "Tavu pieteikumu nevar apstrādāt automātiski. Piezvani mums vai atnāc personīgi pie Vorstand, lai turpinātu reģistrāciju.",
+  "wizardDuplicateLoginTitle": "Šķiet, ka jau esi mūsu biedrs",
+  "wizardDuplicateLoginBody": "Pēc tava vārda un dzimšanas datuma jau atrodam aktīvu kontu. Lūdzu, izmanto \"Es jau esmu biedrs\" sākuma ekrānā, lai pieteiktos. Ja vairs nav piekļuves, zvani mums.",
+  "wizardDuplicatePendingTitle": "Tavs pieteikums jau ir pie mums",
+  "wizardDuplicatePendingBody": "Pēc tava vārda un dzimšanas datuma mums jau ir pieteikums izskatīšanā. Vorstand pie tā strādā — paziņosim lietotnē, kad konts būs aktīvs. Zvani, ja vēlies parunāt.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Šobrīd nevaram apstrādāt šo pieteikumu",
+  "wizardDuplicateRecentlyWithdrawnBody": "Tavs vārds un dzimšanas datums sakrīt ar nesen atsauktu pieteikumu. Lūdzu, zvani mums, lai pirms turpināšanas runātu ar Vorstand.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Esi jau iepriekš iesniedzis pieteikumu",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Tavs vārds un dzimšanas datums sakrīt ar vecāku pieteikumu, ko biji atsaucis. Laipni atpakaļ — pirms turpināšanas zvani mums, lai Vorstand izlemtu, kā rīkojamies.",
+  "wizardDuplicateCallUsTitle": "Lūdzu, zvani mums",
+  "wizardDuplicateCallUsBody": "Tavs vārds un dzimšanas datums jau ir mūsu uzskaitē, bet detaļas caur lietotni nevaram dalīt. Lūdzu, zvani — Vorstand izskaidros situāciju tieši."
 }

@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Tvoja žiadosť bude označená ako zrušená tebou. Údaje zostávajú v databáze na audit (GDPR), ale účet nebude aktivovaný. Registráciu môžeš kedykoľvek začať odznova s novým členským číslom.",
   "wizardFinalWithdrawKeep": "Nie, počkám",
   "wizardFinalWithdrawConfirm": "Áno, zrušiť",
-  "wizardErrTooManyWithdrawals": "Tvoju žiadosť nemožno spracovať automaticky. Zavolaj nám alebo príď osobne k Vorstandu, aby si pokračoval v registrácii."
+  "wizardErrTooManyWithdrawals": "Tvoju žiadosť nemožno spracovať automaticky. Zavolaj nám alebo príď osobne k Vorstandu, aby si pokračoval v registrácii.",
+  "wizardDuplicateLoginTitle": "Vyzerá to, že si už naším členom",
+  "wizardDuplicateLoginBody": "Podľa tvojho mena a dátumu narodenia už nájdeme aktívny účet. Použi \"Som už členom\" na úvodnej obrazovke, aby si sa prihlásil. Ak nemáš prístup, zavolaj nám.",
+  "wizardDuplicatePendingTitle": "Tvoja žiadosť je už u nás",
+  "wizardDuplicatePendingBody": "Podľa tvojho mena a dátumu narodenia už máme žiadosť v posudzovaní. Vorstand na nej pracuje — pošleme ti oznámenie v aplikácii, hneď ako bude tvoj účet aktívny. Zavolaj, ak chceš pokecať.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Túto žiadosť teraz nemôžeme spracovať",
+  "wizardDuplicateRecentlyWithdrawnBody": "Tvoje meno a dátum narodenia sa zhodujú s nedávno zrušenou žiadosťou. Zavolaj nám, aby si pred pokračovaním hovoril s Vorstandom.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Už si v minulosti žiadosť podal",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Tvoje meno a dátum narodenia sa zhodujú so staršou žiadosťou, ktorú si zrušil. Vitaj späť — zavolaj nám pred pokračovaním, aby Vorstand rozhodol, ako pôjdeme ďalej.",
+  "wizardDuplicateCallUsTitle": "Prosím, zavolaj nám",
+  "wizardDuplicateCallUsBody": "Tvoje meno a dátum narodenia sa už nachádzajú u nás, ale detaily cez aplikáciu zdieľať nemôžeme. Zavolaj nám — Vorstand ti situáciu vysvetlí osobne."
 }

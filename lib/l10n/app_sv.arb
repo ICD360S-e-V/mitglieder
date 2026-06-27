@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "Din ansökan markeras som tillbakadragen av dig. Datan stannar i databasen för revision (GDPR), men kontot aktiveras inte. Du kan när som helst börja om registreringen med ett nytt medlemsnummer.",
   "wizardFinalWithdrawKeep": "Nej, jag väntar",
   "wizardFinalWithdrawConfirm": "Ja, dra tillbaka",
-  "wizardErrTooManyWithdrawals": "Din ansökan kan inte hanteras automatiskt. Ring oss eller kom personligen till Vorstand för att fortsätta registreringen."
+  "wizardErrTooManyWithdrawals": "Din ansökan kan inte hanteras automatiskt. Ring oss eller kom personligen till Vorstand för att fortsätta registreringen.",
+  "wizardDuplicateLoginTitle": "Det ser ut som att du redan är medlem",
+  "wizardDuplicateLoginBody": "Med ditt namn och födelsedatum hittar vi redan ett aktivt konto. Använd \"Jag är redan medlem\" på startskärmen för att logga in. Om du inte har tillgång längre, ring oss.",
+  "wizardDuplicatePendingTitle": "Din ansökan är redan hos oss",
+  "wizardDuplicatePendingBody": "Med ditt namn och födelsedatum har vi redan en ansökan under granskning. Vorstand jobbar med den — vi meddelar dig i appen så snart ditt konto är aktivt. Ring oss om du vill prata.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Vi kan inte behandla denna ansökan nu",
+  "wizardDuplicateRecentlyWithdrawnBody": "Ditt namn och födelsedatum matchar en nyligen tillbakadragen ansökan. Ring oss för att prata med Vorstand innan du går vidare.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Du har ansökt tidigare",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Ditt namn och födelsedatum matchar en äldre ansökan som du dragit tillbaka. Välkommen tillbaka — ring oss innan du fortsätter så Vorstand kan besluta hur vi går vidare.",
+  "wizardDuplicateCallUsTitle": "Vänligen ring oss",
+  "wizardDuplicateCallUsBody": "Ditt namn och födelsedatum finns redan hos oss, men vi kan inte dela detaljerna via appen. Ring oss — Vorstand förklarar situationen direkt."
 }

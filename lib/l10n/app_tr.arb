@@ -1274,5 +1274,15 @@
   "wizardFinalWithdrawDialogBody": "Başvurun, senin tarafından geri çekilmiş olarak işaretlenecek. Denetim (GDPR) için veriler veritabanında kalır, ancak hesap etkinleştirilmez. Yeni bir üye numarasıyla kaydı istediğin zaman yeniden başlatabilirsin.",
   "wizardFinalWithdrawKeep": "Hayır, bekliyorum",
   "wizardFinalWithdrawConfirm": "Evet, geri çek",
-  "wizardErrTooManyWithdrawals": "Başvurun otomatik olarak işlenemez. Lütfen bizi ara veya kayda devam etmek için Vorstand'a şahsen gel."
+  "wizardErrTooManyWithdrawals": "Başvurun otomatik olarak işlenemez. Lütfen bizi ara veya kayda devam etmek için Vorstand'a şahsen gel.",
+  "wizardDuplicateLoginTitle": "Görünüşe göre zaten üyemizsin",
+  "wizardDuplicateLoginBody": "İsmin ve doğum tarihinle zaten aktif bir hesap buluyoruz. Lütfen ana ekranda 'Zaten üyeyim' seçeneğini kullanarak giriş yap. Erişimin yoksa bizi ara.",
+  "wizardDuplicatePendingTitle": "Başvurun zaten bizde",
+  "wizardDuplicatePendingBody": "İsmin ve doğum tarihinle inceleme aşamasında bir başvurun zaten var. Vorstand üzerinde çalışıyor — hesabın aktif olur olmaz uygulamadan haber veririz. Konuşmak istersen bizi ara.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Bu başvuruyu şu anda işleyemiyoruz",
+  "wizardDuplicateRecentlyWithdrawnBody": "İsmin ve doğum tarihin yakın zamanda geri çekilen bir başvuruyla eşleşiyor. Lütfen devam etmeden önce Vorstand ile konuşmak için bizi ara.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Daha önce başvuru yapmıştın",
+  "wizardDuplicatePreviouslyWithdrawnBody": "İsmin ve doğum tarihin daha önce geri çektiğin eski bir başvuruyla eşleşiyor. Tekrar hoş geldin — devam etmeden önce Vorstand'ın nasıl ilerleyeceğine karar verebilmesi için bizi ara.",
+  "wizardDuplicateCallUsTitle": "Lütfen bizi ara",
+  "wizardDuplicateCallUsBody": "İsmin ve doğum tarihin kayıtlarımızda zaten var, ama detayları uygulama üzerinden paylaşamayız. Lütfen ara — Vorstand sana durumu doğrudan açıklayacak."
 }

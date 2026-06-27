@@ -1253,5 +1253,15 @@
   "wizardFinalWithdrawDialogBody": "La tua richiesta verrà segnata come ritirata da te. I dati restano nel database per audit (GDPR), ma l'account non verrà attivato. Puoi ricominciare la registrazione quando vuoi con un nuovo numero socio.",
   "wizardFinalWithdrawKeep": "No, aspetto",
   "wizardFinalWithdrawConfirm": "Sì, ritira",
-  "wizardErrTooManyWithdrawals": "La tua richiesta non può essere elaborata automaticamente. Chiamaci o vieni di persona dal Vorstand per proseguire la registrazione."
+  "wizardErrTooManyWithdrawals": "La tua richiesta non può essere elaborata automaticamente. Chiamaci o vieni di persona dal Vorstand per proseguire la registrazione.",
+  "wizardDuplicateLoginTitle": "Sembra che tu sia già un socio",
+  "wizardDuplicateLoginBody": "Con il tuo nome e la tua data di nascita troviamo già un account attivo. Per favore, usa 'Sono già socio' nella schermata principale per accedere. Se non hai più accesso, chiamaci.",
+  "wizardDuplicatePendingTitle": "La tua richiesta è già da noi",
+  "wizardDuplicatePendingBody": "Con il tuo nome e la tua data di nascita abbiamo già una richiesta in valutazione. Il Vorstand ci sta lavorando — ti avviseremo nell'app non appena il tuo account sarà attivo. Chiamaci se vuoi parlarne.",
+  "wizardDuplicateRecentlyWithdrawnTitle": "Non possiamo elaborare questa richiesta adesso",
+  "wizardDuplicateRecentlyWithdrawnBody": "Il tuo nome e la tua data di nascita corrispondono a una richiesta ritirata di recente. Chiamaci per parlare con il Vorstand prima di continuare.",
+  "wizardDuplicatePreviouslyWithdrawnTitle": "Hai già fatto richiesta in passato",
+  "wizardDuplicatePreviouslyWithdrawnBody": "Il tuo nome e la tua data di nascita corrispondono a una richiesta più vecchia che avevi ritirato. Bentornato — chiamaci prima di continuare così il Vorstand decide come procedere.",
+  "wizardDuplicateCallUsTitle": "Per favore, chiamaci",
+  "wizardDuplicateCallUsBody": "Il tuo nome e la tua data di nascita risultano già nei nostri archivi, ma non possiamo condividere i dettagli tramite l'app. Chiamaci — il Vorstand ti spiegherà la situazione direttamente."
 }

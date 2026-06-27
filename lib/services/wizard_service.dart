@@ -17,6 +17,52 @@ import 'logger_service.dart';
 /// finalize-time.
 enum WizardAgeStatus { ok, minor, tooYoung }
 
+/// Politely-styled action codes the server emits when an applicant's
+/// (vorname, nachname, geburtsdatum) already exists in users.
+///   • login                — active account; nudge to the login screen.
+///   • pending              — application under review; nudge to wait.
+///   • recentlyWithdrawn    — gekuendigt_selbst within 90 days; hard
+///                            block, mirrors the finalize abuse throttle.
+///   • previouslyWithdrawn  — gekuendigt_selbst outside 90 days; OK to
+///                            re-register but Vorstand should know.
+///   • callUs               — sensitive status (gesperrt, ausgeschlossen,
+///                            verstorben …); decline to enumerate, send
+///                            the visitor to the phone line.
+enum WizardDuplicateAction {
+  login,
+  pending,
+  recentlyWithdrawn,
+  previouslyWithdrawn,
+  callUs,
+}
+
+WizardDuplicateAction? _parseDuplicateAction(String? raw) {
+  switch (raw) {
+    case 'login':                return WizardDuplicateAction.login;
+    case 'pending':              return WizardDuplicateAction.pending;
+    case 'recently_withdrawn':   return WizardDuplicateAction.recentlyWithdrawn;
+    case 'previously_withdrawn': return WizardDuplicateAction.previouslyWithdrawn;
+    case 'call_us':              return WizardDuplicateAction.callUs;
+    default:                     return null;
+  }
+}
+
+/// Outcome of a /check_age.php call. `status` is the age verdict;
+/// `mitgliedernummer` is the server-reserved id (or null on too_young);
+/// `duplicateAction` is non-null when a users row already matches the
+/// applicant — the orchestrator routes to a polite "you already have
+/// an account" screen instead of advancing the wizard.
+class WizardCheckAgeResult {
+  final WizardAgeStatus status;
+  final String? mitgliedernummer;
+  final WizardDuplicateAction? duplicateAction;
+  const WizardCheckAgeResult({
+    required this.status,
+    this.mitgliedernummer,
+    this.duplicateAction,
+  });
+}
+
 /// Mirror of the wizard step labels accepted by save_step.php.
 /// Order matches the natural flow but the wizard widget enforces
 /// step-by-step traversal, not this enum's index.
@@ -467,7 +513,7 @@ class WizardService {
   /// birthdate. If the verdict is `tooYoung`, the device is flagged
   /// locally so a subsequent wizard attempt is short-circuited at the
   /// welcome screen.
-  Future<WizardAgeStatus?> checkAge(DateTime birthdate) async {
+  Future<WizardCheckAgeResult?> checkAge(DateTime birthdate) async {
     try {
       final id = await ensureId();
       final iso = '${birthdate.year.toString().padLeft(4, '0')}-'
@@ -493,6 +539,7 @@ class WizardService {
         'too_young' => WizardAgeStatus.tooYoung,
         _           => null,
       };
+      if (verdict == null) return null;
       // Server reserves the mitgliedernummer at this point (M for ok,
       // J for minor; too_young drafts skip it). Cache for the shell
       // pill so the visitor sees it from Stufe 1c onwards.
@@ -503,7 +550,17 @@ class WizardService {
       if (verdict == WizardAgeStatus.tooYoung) {
         await _markDeviceBlocked(birthdate);
       }
-      return verdict;
+      // Duplicate probe — server-side it joins by lowercased name + DOB.
+      final dup = body['duplicate'] as Map<String, dynamic>?;
+      WizardDuplicateAction? duplicateAction;
+      if (dup != null && dup['found'] == true) {
+        duplicateAction = _parseDuplicateAction(dup['action'] as String?);
+      }
+      return WizardCheckAgeResult(
+        status:           verdict,
+        mitgliedernummer: mnr,
+        duplicateAction:  duplicateAction,
+      );
     } catch (e) {
       _log.error('wizard.checkAge: $e', tag: 'WIZ');
       return null;
