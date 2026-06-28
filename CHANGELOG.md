@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.57.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.56.2...v1.57.0) (2026-06-28)
+
+
+### Features
+
+* **wizard:** live registration drafts in Vorstand panel + Stufe 1d/1f rework ([3ca79f2](https://github.com/ICD360S-e-V/mitglieder/commit/3ca79f28c1348b9f9b10430925c4f181163b4b6c))
+
 ## [1.56.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.56.1...v1.56.2) (2026-06-27)
 
 
