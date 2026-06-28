@@ -460,11 +460,14 @@ class ApiService {
     return jsonDecode(response.body);
   }
 
-  // Update personal data (Stufe 1)
+  // Update personal data (Stufe 1). Mirrors the full set of fields the
+  // wizard collects in Stufe 1a–1f so the Verifizierung tab can display
+  // and edit every column without losing data on save.
   Future<Map<String, dynamic>> updatePersonalData({
     required String vorname,
     String? vorname2,
     required String nachname,
+    String? geburtsname,
     required String strasse,
     required String hausnummer,
     required String plz,
@@ -473,9 +476,13 @@ class ApiService {
     String? land,
     String? telefonMobil,
     String? telefonFix,
+    String? email,
     String? geburtsdatum,
     String? geburtsort,
+    String? geschlecht,
+    String? familienstand,
     String? staatsangehoerigkeit,
+    String? aufenthaltsstatus,
     String? muttersprache,
     String? mitgliedsart,
   }) async {
@@ -492,9 +499,14 @@ class ApiService {
       'telefon_mobil': telefonMobil ?? '',
       'telefon_fix': telefonFix ?? '',
     };
+    if (geburtsname != null && geburtsname.isNotEmpty) body['geburtsname'] = geburtsname;
+    if (email != null && email.isNotEmpty) body['email'] = email;
     if (geburtsdatum != null && geburtsdatum.isNotEmpty) body['geburtsdatum'] = geburtsdatum;
     if (geburtsort != null && geburtsort.isNotEmpty) body['geburtsort'] = geburtsort;
+    if (geschlecht != null && geschlecht.isNotEmpty) body['geschlecht'] = geschlecht;
+    if (familienstand != null && familienstand.isNotEmpty) body['familienstand'] = familienstand;
     if (staatsangehoerigkeit != null && staatsangehoerigkeit.isNotEmpty) body['staatsangehoerigkeit'] = staatsangehoerigkeit;
+    if (aufenthaltsstatus != null && aufenthaltsstatus.isNotEmpty) body['aufenthaltsstatus'] = aufenthaltsstatus;
     if (muttersprache != null && muttersprache.isNotEmpty) body['muttersprache'] = muttersprache;
     if (mitgliedsart != null && mitgliedsart.isNotEmpty) body['mitgliedsart'] = mitgliedsart;
 

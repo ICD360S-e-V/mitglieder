@@ -25,15 +25,29 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   Map<String, dynamic> _personalData = {};
   Map<String, dynamic> _documentAcceptances = {};
 
-  // Stufe 1: Personal data controllers
+  // Stufe 1: Personal data controllers — mirror every column the
+  // registration wizard writes via finalize.php so the Verifizierung
+  // tab can display and edit every field collected in Stufe 1a–1f
+  // (vorname, nachname, geburtsname, geburtsdatum, geburtsort,
+  // geschlecht, familienstand, staatsangehoerigkeit, aufenthaltsstatus,
+  // muttersprache, address + land, telefon_mobil, email).
   final _vornameController = TextEditingController();
   final _nachnameController = TextEditingController();
+  final _geburtsnameController = TextEditingController();
+  final _geburtsortController = TextEditingController();
   final _strasseController = TextEditingController();
   final _hausnummerController = TextEditingController();
   final _plzController = TextEditingController();
   final _ortController = TextEditingController();
+  final _landController = TextEditingController();
   final _telefonMobilController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _staatsangehoerigkeitController = TextEditingController();
+  final _mutterspracheController = TextEditingController();
   DateTime? _selectedGeburtsdatum;
+  String? _selectedGeschlecht;
+  String? _selectedFamilienstand;
+  String? _selectedAufenthaltsstatus;
 
   // Stufe 2: Mitgliedsart
   String? _selectedMitgliedsart;
@@ -115,19 +129,106 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   @override
   void initState() {
     super.initState();
+    _staatsangehoerigkeitController.addListener(_onCitizenshipChanged);
     _loadVerifizierung();
   }
 
   @override
   void dispose() {
+    _staatsangehoerigkeitController.removeListener(_onCitizenshipChanged);
     _vornameController.dispose();
     _nachnameController.dispose();
+    _geburtsnameController.dispose();
+    _geburtsortController.dispose();
     _strasseController.dispose();
     _hausnummerController.dispose();
     _plzController.dispose();
     _ortController.dispose();
+    _landController.dispose();
     _telefonMobilController.dispose();
+    _emailController.dispose();
+    _staatsangehoerigkeitController.dispose();
+    _mutterspracheController.dispose();
     super.dispose();
+  }
+
+  // --------------------------------------------------------------------------
+  // Aufenthaltsstatus conditional logic — mirrors wizard Stufe 1d so the
+  // member's Verifizierung view shows the same buckets the visitor saw at
+  // registration: German citizen → "kein Titel erforderlich", EU/EEA/CH →
+  // Freizügigkeit fixed, third-country → dropdown of German residence
+  // titles (Aufenthaltserlaubnis, Niederlassung, GFK refugee, etc.).
+  // --------------------------------------------------------------------------
+
+  static const _euEeaAdjectives = <String>{
+    'österreichisch', 'osterreichisch', 'austrian',
+    'belgisch', 'belgian',
+    'bulgarisch', 'bulgarian',
+    'kroatisch', 'croatian',
+    'zyprisch', 'cypriot',
+    'tschechisch', 'czech',
+    'dänisch', 'danisch', 'danish',
+    'estnisch', 'estonian',
+    'finnisch', 'finnish',
+    'französisch', 'franzosisch', 'french',
+    'griechisch', 'greek',
+    'ungarisch', 'hungarian',
+    'irisch', 'irish',
+    'italienisch', 'italian',
+    'lettisch', 'latvian',
+    'litauisch', 'lithuanian',
+    'luxemburgisch', 'luxembourgish',
+    'maltesisch', 'maltese',
+    'niederländisch', 'niederlandisch', 'dutch',
+    'polnisch', 'polish',
+    'portugiesisch', 'portuguese',
+    'rumänisch', 'rumanisch', 'romanian',
+    'slowakisch', 'slovak',
+    'slowenisch', 'slovenian',
+    'spanisch', 'spanish',
+    'schwedisch', 'swedish',
+    'isländisch', 'islandisch', 'icelandic',
+    'liechtensteinisch',
+    'norwegisch', 'norwegian',
+    'schweizerisch', 'swiss',
+  };
+
+  static const _residenceTitles = <String>[
+    'aufenthaltserlaubnis',
+    'niederlassungserlaubnis',
+    'daueraufenthalt_eu',
+    'blaue_karte_eu',
+    'asylberechtigt',
+    'fluechtling_gfk',
+    'subsidiaerer_schutz',
+    'aufenthaltsgestattung',
+    'duldung',
+    'humanitaer',
+    'sonstige',
+  ];
+
+  String get _citizenshipBucket {
+    final lower = _staatsangehoerigkeitController.text.trim().toLowerCase();
+    if (lower.isEmpty) return 'none';
+    if (lower == 'deutsch' || lower == 'german') return 'german';
+    if (_euEeaAdjectives.contains(lower)) return 'eu_eea';
+    return 'third';
+  }
+
+  void _onCitizenshipChanged() {
+    if (!mounted) return;
+    final bucket = _citizenshipBucket;
+    setState(() {
+      if (bucket == 'german') {
+        _selectedAufenthaltsstatus = 'deutsch';
+      } else if (bucket == 'eu_eea') {
+        _selectedAufenthaltsstatus = 'eu_eea_freizuegigkeit';
+      } else if (bucket == 'third' &&
+          (_selectedAufenthaltsstatus == 'deutsch' ||
+              _selectedAufenthaltsstatus == 'eu_eea_freizuegigkeit')) {
+        _selectedAufenthaltsstatus = null;
+      }
+    });
   }
 
   Future<void> _loadVerifizierung() async {
@@ -168,14 +269,69 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   void _populateFormFields() {
     _vornameController.text = _personalData['vorname'] ?? '';
     _nachnameController.text = _personalData['nachname'] ?? '';
+    _geburtsnameController.text = _personalData['geburtsname'] ?? '';
+    _geburtsortController.text = _personalData['geburtsort'] ?? '';
     _strasseController.text = _personalData['strasse'] ?? '';
     _hausnummerController.text = _personalData['hausnummer'] ?? '';
     _plzController.text = _personalData['plz'] ?? '';
     _ortController.text = _personalData['ort'] ?? '';
+    _landController.text = _personalData['land'] ?? '';
     _telefonMobilController.text = _personalData['telefon_mobil'] ?? '';
+    _emailController.text = _personalData['email'] ?? '';
+    // Setting the citizenship controller below triggers _onCitizenshipChanged
+    // which would clobber the loaded aufenthaltsstatus. Suppress by
+    // removing the listener for the load, then re-attaching.
+    _staatsangehoerigkeitController
+        .removeListener(_onCitizenshipChanged);
+    _staatsangehoerigkeitController.text =
+        _personalData['staatsangehoerigkeit'] ?? '';
+    _staatsangehoerigkeitController.addListener(_onCitizenshipChanged);
+    _mutterspracheController.text = _personalData['muttersprache'] ?? '';
 
     final gd = _personalData['geburtsdatum'];
     _selectedGeburtsdatum = gd != null ? DateTime.tryParse(gd.toString()) : null;
+
+    const validGeschlecht = {'maennlich', 'weiblich', 'divers'};
+    final g = _personalData['geschlecht']?.toString() ?? '';
+    _selectedGeschlecht = validGeschlecht.contains(g) ? g : null;
+
+    const validFamilienstand = {
+      'ledig', 'verheiratet', 'geschieden', 'verwitwet',
+    };
+    final fst = _personalData['familienstand']?.toString() ?? '';
+    _selectedFamilienstand = validFamilienstand.contains(fst) ? fst : null;
+
+    // Aufenthaltsstatus — accept the canonical enum keys plus the two
+    // synthetic markers ('deutsch', 'eu_eea_freizuegigkeit'). Legacy
+    // free-text values from the original free-text wizard get mapped
+    // to the closest enum key so the member sees their data carried
+    // over instead of an empty dropdown.
+    final raw = _personalData['aufenthaltsstatus']?.toString() ?? '';
+    final a = raw.toLowerCase().trim();
+    if (a == 'deutsch' ||
+        a == 'eu_eea_freizuegigkeit' ||
+        _residenceTitles.contains(a)) {
+      _selectedAufenthaltsstatus = a;
+    } else if (a.contains('befristet') && !a.contains('unbefristet')) {
+      _selectedAufenthaltsstatus = 'aufenthaltserlaubnis';
+    } else if (a.contains('unbefristet') ||
+        a.contains('niederlassung')) {
+      _selectedAufenthaltsstatus = 'niederlassungserlaubnis';
+    } else if (a.contains('eu-bürger') ||
+        a.contains('eu burger') ||
+        a.contains('freizug')) {
+      _selectedAufenthaltsstatus = 'eu_eea_freizuegigkeit';
+    } else if (a.contains('asyl')) {
+      _selectedAufenthaltsstatus = 'asylberechtigt';
+    } else if (a.contains('flücht') || a.contains('fluecht')) {
+      _selectedAufenthaltsstatus = 'fluechtling_gfk';
+    } else if (a.contains('subsid')) {
+      _selectedAufenthaltsstatus = 'subsidiaerer_schutz';
+    } else if (a.contains('duldung')) {
+      _selectedAufenthaltsstatus = 'duldung';
+    } else {
+      _selectedAufenthaltsstatus = null;
+    }
 
     final ma = _personalData['mitgliedsart']?.toString() ?? '';
     _selectedMitgliedsart = _getMitgliedsartLabels().containsKey(ma) ? ma : null;
@@ -301,8 +457,22 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         _hausnummerController.text.trim().isEmpty ||
         _plzController.text.trim().isEmpty ||
         _ortController.text.trim().isEmpty ||
-        _telefonMobilController.text.trim().isEmpty) {
+        _telefonMobilController.text.trim().isEmpty ||
+        _staatsangehoerigkeitController.text.trim().isEmpty ||
+        _mutterspracheController.text.trim().isEmpty) {
       _showSnackBar(AppLocalizations.of(context)!.fillRequiredFields, isError: true);
+      return;
+    }
+    // Third-country citizens must explicitly pick an Aufenthaltstitel
+    // before save — the dropdown is shown but a fresh load leaves it
+    // null until the visitor confirms.
+    if (_citizenshipBucket == 'third' &&
+        (_selectedAufenthaltsstatus == null ||
+            _selectedAufenthaltsstatus!.isEmpty)) {
+      _showSnackBar(
+        AppLocalizations.of(context)!.wizardStufe1dAufenthaltRequired,
+        isError: true,
+      );
       return;
     }
 
@@ -311,12 +481,21 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       final result = await _apiService.updatePersonalData(
         vorname: _vornameController.text.trim(),
         nachname: _nachnameController.text.trim(),
+        geburtsname: _geburtsnameController.text.trim(),
         strasse: _strasseController.text.trim(),
         hausnummer: _hausnummerController.text.trim(),
         plz: _plzController.text.trim(),
         ort: _ortController.text.trim(),
+        land: _landController.text.trim(),
         telefonMobil: _telefonMobilController.text.trim(),
+        email: _emailController.text.trim(),
         geburtsdatum: DateFormat('yyyy-MM-dd').format(_selectedGeburtsdatum!),
+        geburtsort: _geburtsortController.text.trim(),
+        geschlecht: _selectedGeschlecht,
+        familienstand: _selectedFamilienstand,
+        staatsangehoerigkeit: _staatsangehoerigkeitController.text.trim(),
+        aufenthaltsstatus: _selectedAufenthaltsstatus,
+        muttersprache: _mutterspracheController.text.trim(),
       );
 
       if (!mounted) return;
@@ -906,7 +1085,14 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           ],
         ),
         const SizedBox(height: 12),
-        // Telefonnummer
+        // Land
+        _buildTextField(
+          controller: _landController,
+          label: AppLocalizations.of(context)!.wizardStufe1eLandLabel,
+          enabled: canEdit,
+        ),
+        const SizedBox(height: 12),
+        // Telefonnummer + Email
         _buildTextField(
           controller: _telefonMobilController,
           label: AppLocalizations.of(context)!.phoneRequired,
@@ -921,6 +1107,66 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             style: TextStyle(fontSize: 11, color: Colors.grey.shade500, fontStyle: FontStyle.italic),
           ),
         ),
+        const SizedBox(height: 12),
+        _buildTextField(
+          controller: _emailController,
+          label: AppLocalizations.of(context)!.email,
+          enabled: canEdit,
+          keyboardType: TextInputType.emailAddress,
+        ),
+        const SizedBox(height: 20),
+        // Geburt section: Geburtsname + Geburtsort
+        Row(
+          children: [
+            Expanded(
+              child: _buildTextField(
+                controller: _geburtsnameController,
+                label: AppLocalizations.of(context)!.wizardStufe1aGeburtsnameLabel,
+                enabled: canEdit,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: _buildTextField(
+                controller: _geburtsortController,
+                label: AppLocalizations.of(context)!.wizardStufe1bGeburtsortLabel,
+                enabled: canEdit,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        // Geschlecht + Familienstand (dropdowns)
+        Row(
+          children: [
+            Expanded(child: _buildGeschlechtDropdown(canEdit)),
+            const SizedBox(width: 12),
+            Expanded(child: _buildFamilienstandDropdown(canEdit)),
+          ],
+        ),
+        const SizedBox(height: 20),
+        // Staatsangehörigkeit + Muttersprache + conditional Aufenthaltsstatus
+        Row(
+          children: [
+            Expanded(
+              child: _buildTextField(
+                controller: _staatsangehoerigkeitController,
+                label: AppLocalizations.of(context)!.wizardStufe1dStaatLabel,
+                enabled: canEdit,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: _buildTextField(
+                controller: _mutterspracheController,
+                label: AppLocalizations.of(context)!.wizardStufe1dMutterspracheLabel,
+                enabled: canEdit,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        _buildAufenthaltsstatusField(canEdit),
         if (canEdit) ...[
           const SizedBox(height: 16),
           _buildSaveButton(onPressed: _saveStufe1),
@@ -928,6 +1174,163 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       ],
     );
   }
+
+  Widget _buildGeschlechtDropdown(bool canEdit) {
+    final l = AppLocalizations.of(context)!;
+    final labels = {
+      'maennlich': l.wizardStufe1cGeschlechtMaennlich,
+      'weiblich':  l.wizardStufe1cGeschlechtWeiblich,
+      'divers':    l.wizardStufe1cGeschlechtDivers,
+    };
+    return DropdownButtonFormField<String>(
+      initialValue: _selectedGeschlecht,
+      isExpanded: true,
+      decoration: InputDecoration(
+        labelText: l.wizardStufe1cGeschlechtLabel,
+        prefixIcon: const Icon(Icons.person_outline),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        filled: true,
+        fillColor: canEdit ? Colors.white : Colors.grey.shade100,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      ),
+      items: labels.entries
+          .map((e) => DropdownMenuItem(value: e.key, child: Text(e.value)))
+          .toList(),
+      onChanged: canEdit ? (v) => setState(() => _selectedGeschlecht = v) : null,
+    );
+  }
+
+  Widget _buildFamilienstandDropdown(bool canEdit) {
+    final l = AppLocalizations.of(context)!;
+    final labels = {
+      'ledig': l.wizardStufe1cFamilienstandLedig,
+      'verheiratet': l.wizardStufe1cFamilienstandVerheiratet,
+      'geschieden': l.wizardStufe1cFamilienstandGeschieden,
+      'verwitwet': l.wizardStufe1cFamilienstandVerwitwet,
+    };
+    return DropdownButtonFormField<String>(
+      initialValue: _selectedFamilienstand,
+      isExpanded: true,
+      decoration: InputDecoration(
+        labelText: l.wizardStufe1cFamilienstandLabel,
+        prefixIcon: const Icon(Icons.favorite_outline),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        filled: true,
+        fillColor: canEdit ? Colors.white : Colors.grey.shade100,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      ),
+      items: labels.entries
+          .map((e) => DropdownMenuItem(value: e.key, child: Text(e.value)))
+          .toList(),
+      onChanged: canEdit ? (v) => setState(() => _selectedFamilienstand = v) : null,
+    );
+  }
+
+  /// Verifizierung-flavoured counterpart of the wizard's Stufe 1d
+  /// Aufenthaltsstatus field — same buckets (German / EU-EEA-CH /
+  /// third-country) but rendered on a white surface to match the rest
+  /// of the verifizierung tab.
+  Widget _buildAufenthaltsstatusField(bool canEdit) {
+    final l = AppLocalizations.of(context)!;
+    final bucket = _citizenshipBucket;
+    if (bucket == 'german') {
+      return _aufenthaltsstatusBadge(
+        l.wizardStufe1dAufenthaltGerman,
+        Icons.verified_user_outlined,
+      );
+    }
+    if (bucket == 'eu_eea') {
+      return _aufenthaltsstatusBadge(
+        l.wizardStufe1dAufenthaltEuEea,
+        Icons.public_outlined,
+      );
+    }
+    if (bucket == 'none') {
+      return _aufenthaltsstatusBadge(
+        l.wizardStufe1dAufenthaltAwaitingCitizenship,
+        Icons.info_outline,
+        dim: true,
+      );
+    }
+    return DropdownButtonFormField<String>(
+      initialValue: _selectedAufenthaltsstatus,
+      isExpanded: true,
+      decoration: InputDecoration(
+        labelText: l.wizardStufe1dAufenthaltLabel,
+        prefixIcon: const Icon(Icons.badge_outlined),
+        helperText: l.wizardStufe1dAufenthaltHelper,
+        helperMaxLines: 3,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        filled: true,
+        fillColor: canEdit ? Colors.white : Colors.grey.shade100,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      ),
+      items: [
+        for (final v in _residenceTitles)
+          DropdownMenuItem<String>(
+            value: v,
+            child: Text(
+              _residenceTitleLabel(v, l),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+      ],
+      onChanged: canEdit
+          ? (v) => setState(() => _selectedAufenthaltsstatus = v)
+          : null,
+    );
+  }
+
+  Widget _aufenthaltsstatusBadge(String text, IconData icon,
+      {bool dim = false}) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
+      decoration: BoxDecoration(
+        color: dim ? Colors.grey.shade100 : Colors.blue.shade50,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: dim ? Colors.grey.shade300 : Colors.blue.shade200,
+        ),
+      ),
+      child: Row(
+        children: [
+          Icon(icon,
+              color: dim ? Colors.grey.shade600 : Colors.blue.shade700,
+              size: 20),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: dim ? Colors.grey.shade700 : Colors.blue.shade900,
+                fontSize: 13.5,
+                fontWeight: FontWeight.w600,
+                height: 1.4,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _residenceTitleLabel(String key, AppLocalizations l) => switch (key) {
+        'aufenthaltserlaubnis' =>
+          'Aufenthaltserlaubnis (${l.wizardStufe1dAufenthaltTempHint})',
+        'niederlassungserlaubnis' =>
+          'Niederlassungserlaubnis (${l.wizardStufe1dAufenthaltPermHint})',
+        'daueraufenthalt_eu' => 'Daueraufenthalt-EU',
+        'blaue_karte_eu' => 'Blaue Karte EU',
+        'asylberechtigt' => 'Asylberechtigt (Art. 16a GG)',
+        'fluechtling_gfk' => 'Anerkannter Flüchtling (GFK § 25 Abs. 2)',
+        'subsidiaerer_schutz' => 'Subsidiärer Schutz (§ 25 Abs. 2 Satz 1 Alt. 2)',
+        'aufenthaltsgestattung' =>
+          'Aufenthaltsgestattung (${l.wizardStufe1dAufenthaltAsylumProcessHint})',
+        'duldung' => 'Duldung (§ 60a)',
+        'humanitaer' => 'Humanitärer Aufenthalt (§ 25 Abs. 4/5)',
+        'sonstige' => l.wizardStufe1dAufenthaltOther,
+        _ => key,
+      };
 
   Future<void> _pickGeburtsdatum() async {
     final picked = await showDatePicker(

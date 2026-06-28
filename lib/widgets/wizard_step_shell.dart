@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../l10n/app_localizations.dart';
+import '../screens/anonymous_chat.dart';
 import '../services/wizard_service.dart';
 import 'icd360s_header.dart';
-import 'wizard_chat_fab.dart';
 
 /// Reusable chrome for every step screen in the onboarding wizard.
 /// Provides the consistent ICD360S blue gradient background, the
@@ -58,13 +58,6 @@ class WizardStepShell extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      // Live-chat affordance pinned at end-of-screen, present on every
-      // wizard step. The visitor can ask Claudiu anything mid-flow
-      // (e.g. a question about Stufe 3 Bescheid) without losing
-      // progress. Shared with the final / duplicate / age-gate
-      // surfaces so the affordance reads identically everywhere.
-      floatingActionButton: const WizardChatFab(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -134,10 +127,21 @@ class WizardStepShell extends StatelessWidget {
               ),
             ),
           ),
-          if (mnr != null)
-            _mnrPill(mnr)
-          else
-            const SizedBox(width: 48),
+          // Live-chat affordance pinned in the top bar — replaces the
+          // previous endFloat FAB, which overlapped the bottom Next
+          // button. Same anonymous chat the welcome screen's "Am o
+          // problemă → Vorbim acum" path uses, so visitor and Vorstand
+          // share one inbox throughout registration.
+          IconButton(
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => const AnonymousChatScreen(),
+              ),
+            ),
+            icon: const Icon(Icons.chat_bubble_outline, color: Colors.white),
+            tooltip: l10n.wizardChatHelp,
+          ),
+          if (mnr != null) _mnrPill(mnr),
         ],
       ),
     );

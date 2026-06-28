@@ -3,7 +3,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 import '../l10n/app_localizations.dart';
 import '../widgets/icd360s_header.dart';
-import '../widgets/wizard_chat_fab.dart';
 import 'anonymous_chat.dart';
 
 /// Terminal screen the wizard pivots to when `check_age.php` returns
@@ -34,8 +33,6 @@ class WizardAgeGateScreen extends StatelessWidget {
     final yearsLeft = (16 - age).clamp(1, 100);
 
     return Scaffold(
-      floatingActionButton: const WizardChatFab(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(

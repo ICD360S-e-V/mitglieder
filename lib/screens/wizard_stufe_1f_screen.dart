@@ -5,13 +5,15 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
 
-/// Stufe 1f — Contact: Mobile phone (required) + Email (optional).
+/// Stufe 1f — Contact: Mobile phone (required) + Email (auto-derived).
 /// The Vorstand reaches out by phone for urgent matters and uses the
-/// in-app end-to-end encrypted channel for everything else; the email
-/// is offered as a fallback for visitors who specifically want a copy
-/// of official communications by mail. Phone gets the +49 prefix
-/// pre-populated since the vast majority of new members live in
-/// Germany; visitors abroad just overwrite it.
+/// in-app end-to-end encrypted channel for everything else. The email
+/// is **not** typed by the visitor — every member gets a managed
+/// `<mitgliedernummer>@icd360s.de` mailbox provisioned the moment the
+/// Vorstand validates the application. We display it read-only here so
+/// the visitor knows what their member email will be. Phone gets the
+/// +49 prefix pre-populated since the vast majority of new members live
+/// in Germany; visitors abroad just overwrite it.
 class WizardStufe1fScreen extends StatefulWidget {
   final Map<String, dynamic>? initial;
   final VoidCallback onNext;
@@ -31,12 +33,9 @@ class WizardStufe1fScreen extends StatefulWidget {
 class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
   final _formKey = GlobalKey<FormState>();
   late final TextEditingController _telefon;
-  late final TextEditingController _email;
   bool _saving = false;
 
   static final _phoneRegex = RegExp(r"^[+0-9\s\-/()]{5,20}$");
-  static final _emailRegex =
-      RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
 
   @override
   void initState() {
@@ -45,14 +44,20 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
     _telefon = TextEditingController(
       text: (initialPhone == null || initialPhone.isEmpty) ? '+49 ' : initialPhone,
     );
-    _email = TextEditingController(text: widget.initial?['email'] ?? '');
   }
 
   @override
   void dispose() {
     _telefon.dispose();
-    _email.dispose();
     super.dispose();
+  }
+
+  /// Auto-derived from the mitgliedernummer reserved at Stufe 1b.
+  /// Lowercased to match the canonical email storage convention.
+  String? get _derivedEmail {
+    final mnr = WizardService().mitgliedernummer;
+    if (mnr == null || mnr.isEmpty) return null;
+    return '${mnr.toLowerCase()}@icd360s.de';
   }
 
   Future<void> _submit() async {
@@ -61,7 +66,10 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
     setState(() => _saving = true);
     final ok = await WizardService().saveStep(WizardStep.stufe1f, {
       'telefon_mobil': _telefon.text.trim(),
-      'email': _email.text.trim().toLowerCase(),
+      // Email is server-derivable from mitgliedernummer but we send it
+      // so the saved draft is self-describing — the Vorstand panel can
+      // show what the assigned address will be without recomputing.
+      'email': _derivedEmail ?? '',
     });
     if (!mounted) return;
     setState(() => _saving = false);
@@ -116,31 +124,69 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
                 return null;
               },
             ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _email,
-              style: const TextStyle(color: Colors.white, fontSize: 15),
-              keyboardType: TextInputType.emailAddress,
-              maxLength: 255,
-              autocorrect: false,
-              decoration: _input(
-                label: l10n.wizardStufe1fEmailLabel,
-                helper: l10n.wizardStufe1fEmailHelper,
-                prefixIcon: Icons.email_outlined,
-              ),
-              // Optional field — empty is valid; only validate format
-              // when the visitor actually types something.
-              validator: (value) {
-                final v = (value ?? '').trim();
-                if (v.isEmpty) return null;
-                if (v.length > 255 || !_emailRegex.hasMatch(v)) {
-                  return l10n.wizardErrInvalidEmail;
-                }
-                return null;
-              },
-            ),
+            const SizedBox(height: 20),
+            _emailInfoCard(l10n),
           ],
         ),
+      ),
+    );
+  }
+
+  /// Read-only display of the auto-assigned member email. When the
+  /// mitgliedernummer isn't cached yet (defensive — should only happen
+  /// if the visitor somehow lands here without passing Stufe 1b), we
+  /// fall back to a placeholder so the layout doesn't collapse.
+  Widget _emailInfoCard(AppLocalizations l10n) {
+    final email = _derivedEmail;
+    return Container(
+      padding: const EdgeInsets.fromLTRB(14, 12, 14, 14),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Colors.white.withValues(alpha: 0.3),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.alternate_email,
+                  color: Colors.white.withValues(alpha: 0.85), size: 18),
+              const SizedBox(width: 8),
+              Text(
+                l10n.wizardStufe1fEmailLabel,
+                style: TextStyle(
+                  color: Colors.white.withValues(alpha: 0.85),
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.3,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          SelectableText(
+            email ?? '—',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+              fontFamily: 'monospace',
+              letterSpacing: 0.4,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            l10n.wizardStufe1fEmailHelper,
+            style: TextStyle(
+              color: Colors.white.withValues(alpha: 0.7),
+              fontSize: 11.5,
+              height: 1.45,
+            ),
+          ),
+        ],
       ),
     );
   }

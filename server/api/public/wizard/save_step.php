@@ -86,6 +86,25 @@ if (!isset($stepFields[$step])) {
     jsonResponse(false, [], 'Unknown step');
 }
 
+// Every wizard sub-step that maps to a Verifizierung Stufe also
+// stamps the precise completion moment (date + time + second). The
+// Vorstand needs this for DSGVO Art. 7 audit (when did the visitor
+// actually consent / submit / accept) and for the wizard timeline
+// view in the admin app. Sub-stufen 1a..1f and 1b1 all roll up to
+// stufe1; 3 and 3_upload to stufe3. 6/7/8 keep their dedicated
+// _read_at columns. intro_done has no Stufe, so no stamp.
+$stufeTimestampColumn = match ($step) {
+    '1a', '1b', '1b1', '1c', '1d', '1e', '1f' => 'stufe1_completed_at',
+    '2'        => 'stufe2_completed_at',
+    '3', '3_upload' => 'stufe3_completed_at',
+    '4'        => 'stufe4_completed_at',
+    '5'        => 'stufe5_completed_at',
+    '6'        => 'data_satzung_read_at',
+    '7'        => 'data_datenschutz_read_at',
+    '8'        => 'data_widerrufsbelehrung_read_at',
+    default    => null,
+};
+
 $allowed = $stepFields[$step];
 $updates = [];
 $params  = [];
@@ -109,7 +128,7 @@ foreach ($data as $key => $value) {
 try {
     $pdo = getDBConnection();
 
-    $stmt = $pdo->prepare('SELECT id FROM wizard_drafts WHERE anonymous_id = ?');
+    $stmt = $pdo->prepare('SELECT id, user_id FROM wizard_drafts WHERE anonymous_id = ?');
     $stmt->execute([$anonymous_id]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$row) {
@@ -117,6 +136,7 @@ try {
         jsonResponse(false, [], 'Wizard draft not found');
     }
     $draftId = (int)$row['id'];
+    $stubUserId = (int)($row['user_id'] ?? 0);
 
     if (empty($updates)) {
         // Only the cursor moves (e.g. intro_done).
@@ -131,9 +151,102 @@ try {
         }
         $params[] = $step;
         $params[] = $draftId;
+        // Stamp the per-Stufe completion column on the same UPDATE
+        // so the timestamp is atomic with the data write.
+        $extraSql = ($stufeTimestampColumn !== null)
+            ? ", $stufeTimestampColumn = NOW()" : '';
         $sql = 'UPDATE wizard_drafts SET ' . implode(', ', $setParts)
+             . $extraSql
              . ', current_step = ?, last_active = NOW() WHERE id = ?';
         $pdo->prepare($sql)->execute($params);
+    }
+
+    // Mirror the saved fields to the users stub created by check_age.php
+    // at Stufe 1b. Lets the Vorstand see the registration progress
+    // live in Mitgliederverwaltung's "Nicht verifiziert" tab without
+    // waiting for finalize. Non-fatal — a mirror failure must not
+    // block the visitor's saveStep.
+    if ($stubUserId > 0 && !empty($updates)) {
+        try {
+            // wizard_drafts column → users column. parent_hint_*,
+            // satzung_read flags, and leistungsbescheid_file are
+            // intentionally not mirrored at save time (parent_hints
+            // are minor-only and copied at finalize; doc flags are
+            // booleans, not relevant for verifizierung view).
+            static $userMirror = [
+                'data_vorname'                       => 'vorname',
+                'data_nachname'                      => 'nachname',
+                'data_geburtsname'                   => 'geburtsname',
+                'data_geburtsdatum'                  => 'geburtsdatum',
+                'data_geburtsort'                    => 'geburtsort',
+                'data_geschlecht'                    => 'geschlecht',
+                'data_familienstand'                 => 'familienstand',
+                'data_staatsangehoerigkeit'          => 'staatsangehoerigkeit',
+                'data_aufenthaltsstatus'             => 'aufenthaltsstatus',
+                'data_muttersprache'                 => 'muttersprache',
+                'data_strasse'                       => 'strasse',
+                'data_hausnummer'                    => 'hausnummer',
+                'data_plz'                           => 'plz',
+                'data_ort'                           => 'ort',
+                'data_land'                          => 'land',
+                'data_telefon_mobil'                 => 'telefon_mobil',
+                'data_email'                         => 'email',
+                'data_mitgliedsart'                  => 'mitgliedsart',
+                'data_finanzielle_situation'         => 'finanzielle_situation',
+                'data_zahlungsmethode'               => 'zahlungsmethode',
+                'data_zahlungstag'                   => 'zahlungstag',
+                'data_mitgliedschaftsbeginn_option'  => 'mitgliedschaftsbeginn_option',
+                'data_mitgliedschaftsbeginn_datum'   => 'mitgliedschaftsbeginn_datum',
+            ];
+            $mirrorSets = [];
+            $mirrorVals = [];
+            foreach ($updates as $col => $val) {
+                if (isset($userMirror[$col])) {
+                    $mirrorSets[] = $userMirror[$col] . ' = ?';
+                    $mirrorVals[] = $val;
+                }
+            }
+            if (!empty($mirrorSets)) {
+                $mirrorVals[] = $stubUserId;
+                $pdo->prepare('UPDATE users SET ' . implode(', ', $mirrorSets) . ' WHERE id = ?')
+                    ->execute($mirrorVals);
+                // Keep users.name in sync when vorname / nachname change.
+                if (isset($updates['data_vorname']) || isset($updates['data_nachname'])) {
+                    $pdo->prepare('UPDATE users
+                                      SET name = TRIM(CONCAT(COALESCE(vorname, ""), " ", COALESCE(nachname, "")))
+                                    WHERE id = ?')
+                        ->execute([$stubUserId]);
+                }
+            }
+            // Mark user_verifizierung Stufe as "ausgefuellt" once its
+            // last sub-step lands. For Stufe 1, that's 1f (or 1f
+            // having been saved at some point). For the others, the
+            // step itself is the trigger. The 'ausgefuellt_am' is
+            // sourced from wizard_drafts.stufeN_completed_at when the
+            // mirror runs, so the timestamp matches the wizard write.
+            $completionStufe = match ($step) {
+                '1f'        => 1,
+                '2'         => 2,
+                '3', '3_upload' => 3,
+                '4'         => 4,
+                '5'         => 5,
+                '6'         => 6,
+                '7'         => 7,
+                '8'         => 8,
+                default     => null,
+            };
+            if ($completionStufe !== null) {
+                $pdo->prepare(
+                    'UPDATE user_verifizierung
+                        SET status = "ausgefuellt",
+                            ausgefuellt_am = COALESCE(ausgefuellt_am, NOW())
+                      WHERE user_id = ? AND stufe = ?
+                        AND status IN ("offen", "abgelehnt")'
+                )->execute([$stubUserId, $completionStufe]);
+            }
+        } catch (PDOException $e) {
+            error_log('[wizard/save_step user_mirror] ' . $e->getMessage());
+        }
     }
 
     jsonResponse(true, [

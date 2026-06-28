@@ -4,7 +4,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/icd360s_header.dart';
-import '../widgets/wizard_chat_fab.dart';
 import 'anonymous_chat.dart';
 
 /// Polite "you already have an account" screen routed from Stufe 1b
@@ -70,8 +69,6 @@ class WizardDuplicateScreen extends StatelessWidget {
         ? Colors.red.shade700
         : const Color(0xFF1565c0);
     return Scaffold(
-      floatingActionButton: const WizardChatFab(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
