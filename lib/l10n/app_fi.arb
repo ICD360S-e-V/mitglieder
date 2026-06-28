@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Odottaa tarkistusta",
   "wizardFinalStufeStatusApproved": "Hyväksytty",
   "wizardFinalStufeStatusRejected": "Hylätty",
+  "wizardFinalStatusRejectionCount": "{count} vaihe vaatii korjausta",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Vorstandin perustelu:",
+  "wizardFinalStufeCorrectNow": "Korjaa nyt",
   "wizardFinalStufeStatusSkipped": "Ohitettu",
   "wizardFinalStufeFilledAt": "Täytetty:",
   "wizardFinalStufeReviewedAt": "Tarkistettu:",

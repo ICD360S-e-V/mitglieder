@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Laukia patikrinimo",
   "wizardFinalStufeStatusApproved": "Patvirtinta",
   "wizardFinalStufeStatusRejected": "Atmesta",
+  "wizardFinalStatusRejectionCount": "{count} žingsnis reikalauja pataisymo",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Vorstando priežastis:",
+  "wizardFinalStufeCorrectNow": "Taisyti dabar",
   "wizardFinalStufeStatusSkipped": "Praleista",
   "wizardFinalStufeFilledAt": "Užpildyta:",
   "wizardFinalStufeReviewedAt": "Patikrinta:",

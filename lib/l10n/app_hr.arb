@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Čeka pregled",
   "wizardFinalStufeStatusApproved": "Odobreno",
   "wizardFinalStufeStatusRejected": "Odbijeno",
+  "wizardFinalStatusRejectionCount": "{count} korak treba ispravak",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Razlog Vorstanda:",
+  "wizardFinalStufeCorrectNow": "Ispravi sada",
   "wizardFinalStufeStatusSkipped": "Preskočeno",
   "wizardFinalStufeFilledAt": "Ispunjeno:",
   "wizardFinalStufeReviewedAt": "Pregledano:",

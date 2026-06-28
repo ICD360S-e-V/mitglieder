@@ -1285,6 +1285,14 @@
   "wizardFinalStufeStatusPending": "بانتظار المراجعة",
   "wizardFinalStufeStatusApproved": "تم التحقق",
   "wizardFinalStufeStatusRejected": "مرفوض",
+  "wizardFinalStatusRejectionCount": "{count} خطوة تحتاج إلى تصحيح",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "سبب المجلس:",
+  "wizardFinalStufeCorrectNow": "تصحيح الآن",
   "wizardFinalStufeStatusSkipped": "تم تخطيه",
   "wizardFinalStufeFilledAt": "تم الملء في:",
   "wizardFinalStufeReviewedAt": "تمت المراجعة في:",

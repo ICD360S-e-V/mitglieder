@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Очікує перевірки",
   "wizardFinalStufeStatusApproved": "Схвалено",
   "wizardFinalStufeStatusRejected": "Відхилено",
+  "wizardFinalStatusRejectionCount": "{count} крок потребує виправлення",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Причина Vorstand:",
+  "wizardFinalStufeCorrectNow": "Виправити зараз",
   "wizardFinalStufeStatusSkipped": "Пропущено",
   "wizardFinalStufeFilledAt": "Заповнено:",
   "wizardFinalStufeReviewedAt": "Перевірено:",

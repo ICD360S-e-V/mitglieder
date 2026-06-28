@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "În așteptarea verificării",
   "wizardFinalStufeStatusApproved": "Verificat",
   "wizardFinalStufeStatusRejected": "Respins",
+  "wizardFinalStatusRejectionCount": "{count} pas necesită corectare",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Motivul Vorstand-ului:",
+  "wizardFinalStufeCorrectNow": "Corectează acum",
   "wizardFinalStufeStatusSkipped": "Sărit",
   "wizardFinalStufeFilledAt": "Completat:",
   "wizardFinalStufeReviewedAt": "Verificat:",

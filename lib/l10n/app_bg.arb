@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Очаква преглед",
   "wizardFinalStufeStatusApproved": "Одобрено",
   "wizardFinalStufeStatusRejected": "Отхвърлено",
+  "wizardFinalStatusRejectionCount": "{count} стъпка изисква корекция",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Причина от Vorstand:",
+  "wizardFinalStufeCorrectNow": "Коригирай сега",
   "wizardFinalStufeStatusSkipped": "Пропуснато",
   "wizardFinalStufeFilledAt": "Попълнено:",
   "wizardFinalStufeReviewedAt": "Прегледано:",

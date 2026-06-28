@@ -7,6 +7,16 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/icd360s_header.dart';
 import 'anonymous_chat.dart';
+import 'wizard_stufe_1a_screen.dart';
+import 'wizard_stufe_1b_screen.dart';
+import 'wizard_stufe_1c_screen.dart';
+import 'wizard_stufe_1d_screen.dart';
+import 'wizard_stufe_1e_screen.dart';
+import 'wizard_stufe_1f_screen.dart';
+import 'wizard_stufe_2_screen.dart';
+import 'wizard_stufe_3_screen.dart';
+import 'wizard_stufe_4_screen.dart';
+import 'wizard_stufe_5_screen.dart';
 
 /// Terminal screen of the onboarding wizard. Two variants drive off
 /// the [WizardFinalizeResult]:
@@ -56,6 +66,11 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
 
   /// Guards against double-tap on the withdraw link.
   bool _withdrawing = false;
+
+  /// Guards the "Corectează acum" buttons in the rejection sheet so a
+  /// double-tap doesn't push two correction screens on top of each
+  /// other while the data fetch is in flight.
+  bool _correcting = false;
 
   /// Per-Stufe verifizierung snapshot from check_status.php. Drives
   /// the chronological details sheet (tap the status card to open).
@@ -357,19 +372,34 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   int get _geprueftCount =>
       _stufen.where((s) => s.status == 'geprueft').length;
 
+  /// Stufen the Vorstand explicitly rejected — visitor needs to fix
+  /// these before the application can move forward.
+  List<WizardStufeStatus> get _rejectedStufen =>
+      _stufen.where((s) => s.status == 'abgelehnt').toList();
+
   Widget _statusCard(AppLocalizations l10n) {
-    final activeIcon = _isActive ? Icons.check_circle : Icons.hourglass_top;
-    final activeTint = _isActive
-        ? Colors.lightGreenAccent.shade100
-        : Colors.amber.shade100;
-    final mainLabel = _isActive
-        ? l10n.wizardFinalTimelineActivated
-        : l10n.wizardFinalTimelineProcessing;
+    final hasRejection = _rejectedStufen.isNotEmpty;
     final reviewed = _geprueftCount;
     final progress = reviewed / 8;
 
+    final activeIcon = hasRejection
+        ? Icons.error_outline
+        : (_isActive ? Icons.check_circle : Icons.hourglass_top);
+    final activeTint = hasRejection
+        ? Colors.red.shade100
+        : (_isActive
+            ? Colors.lightGreenAccent.shade100
+            : Colors.amber.shade100);
+    final mainLabel = hasRejection
+        ? l10n.wizardFinalStatusRejectionCount(_rejectedStufen.length)
+        : (_isActive
+            ? l10n.wizardFinalTimelineActivated
+            : l10n.wizardFinalTimelineProcessing);
+
     Widget iconWidget = Icon(activeIcon, color: activeTint, size: 26);
-    if (!_isActive) {
+    if (!_isActive && !hasRejection) {
+      // Pulsing hourglass while waiting. Rejection is a hard stop —
+      // don't pulse; the static red error icon reads as "action needed".
       iconWidget = iconWidget
           .animate(onPlay: (c) => c.repeat(reverse: true))
           .fadeIn(duration: 1200.ms)
@@ -439,9 +469,11 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                   minHeight: 6,
                   backgroundColor: Colors.white.withValues(alpha: 0.15),
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    _isActive
-                        ? Colors.lightGreenAccent.shade200
-                        : Colors.amber.shade200,
+                    hasRejection
+                        ? Colors.red.shade200
+                        : (_isActive
+                            ? Colors.lightGreenAccent.shade200
+                            : Colors.amber.shade200),
                   ),
                 ),
               ),
@@ -495,6 +527,142 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
         ],
       ),
     );
+  }
+
+  // ---------------------------------------------------------------------------
+  // Correction flow — invoked from the "Corectează acum" button on a
+  // rejected stufe row in the bottom sheet.
+  //
+  // Re-uses the original wizard step screens so we don't fork the form
+  // UI; their saveStep call already mirrors the data into users +
+  // flips user_verifizierung from 'abgelehnt' back to 'ausgefuellt'
+  // server-side (save_step.php). The polling on this screen picks the
+  // change up within 30s, the red badge becomes amber, and the
+  // Vorstand re-reviews.
+  //
+  // Stufe 1 has 6 sub-screens (1a–1f). Vorstand rejection is per-stufe
+  // not per-field, so we chain through all of them — the visitor edits
+  // anything that's wrong on the way.
+  // ---------------------------------------------------------------------------
+
+  Future<void> _correctStufe(int stufe) async {
+    if (_correcting) return;
+    setState(() => _correcting = true);
+    // Close the bottom sheet first so the correction screen pushes on
+    // top of WizardFinalScreen, not on top of the sheet.
+    if (Navigator.of(context).canPop()) {
+      Navigator.of(context).pop();
+    }
+    try {
+      final state = await WizardService().getState();
+      if (!mounted) return;
+      final initial =
+          (state?['data'] as Map<String, dynamic>?) ?? const <String, dynamic>{};
+      switch (stufe) {
+        case 1:
+          await _pushStufe1Chain(0, initial);
+        case 2:
+          await Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => WizardStufe2Screen(
+              initial: initial,
+              onNext: () => Navigator.of(context).pop(),
+              onBack: () => Navigator.of(context).pop(),
+            ),
+          ));
+        case 3:
+          await Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => WizardStufe3Screen(
+              initial: initial,
+              onNext: () => Navigator.of(context).pop(),
+              onBack: () => Navigator.of(context).pop(),
+            ),
+          ));
+        case 4:
+          await Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => WizardStufe4Screen(
+              initial: initial,
+              onNext: () => Navigator.of(context).pop(),
+              onBack: () => Navigator.of(context).pop(),
+            ),
+          ));
+        case 5:
+          await Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => WizardStufe5Screen(
+              initial: initial,
+              isBeitragsfrei: _isBeitragsfreiFromData(initial),
+              onNext: () => Navigator.of(context).pop(),
+              onBack: () => Navigator.of(context).pop(),
+            ),
+          ));
+        default:
+          // Stufe 6/7/8 are legal-document accepts; the Vorstand
+          // shouldn't be able to reject them. If it happens anyway,
+          // bail silently — the chat button on the screen is the
+          // visitor's escalation path.
+          break;
+      }
+      // Force an immediate status refresh after the correction screen
+      // pops so the rejected badge flips back to amber without waiting
+      // for the 30 s polling tick.
+      if (mounted) {
+        await _checkStatus();
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _correcting = false);
+      }
+    }
+  }
+
+  /// Chain Stufe 1's six sub-screens (1a–1f). At each onNext we pop the
+  /// current screen and re-push the next, refreshing `initial` from the
+  /// server in between so the new sub-screen sees the just-saved data.
+  /// After 1f saves, the chain bottoms out and we return to the final
+  /// screen.
+  Future<void> _pushStufe1Chain(int subStep, Map<String, dynamic> initial) async {
+    if (!mounted) return;
+    Widget screen;
+    Future<void> advance() async {
+      if (!mounted) return;
+      Navigator.of(context).pop();
+      if (subStep >= 5) return; // 1f was the last — done.
+      // Refresh initial so the next sub-screen reflects what was just
+      // saved (mirror to users + draft both updated).
+      final state = await WizardService().getState();
+      if (!mounted) return;
+      final fresh =
+          (state?['data'] as Map<String, dynamic>?) ?? initial;
+      await _pushStufe1Chain(subStep + 1, fresh);
+    }
+    switch (subStep) {
+      case 0:
+        screen = WizardStufe1aScreen(initial: initial, onNext: advance);
+      case 1:
+        screen = WizardStufe1bScreen(
+          initial: initial,
+          // We don't re-gate by age — the visitor is already a member.
+          onAdvance: (_, {duplicateAction}) => advance(),
+        );
+      case 2:
+        screen = WizardStufe1cScreen(initial: initial, onNext: advance);
+      case 3:
+        screen = WizardStufe1dScreen(initial: initial, onNext: advance);
+      case 4:
+        screen = WizardStufe1eScreen(initial: initial, onNext: advance);
+      case 5:
+        screen = WizardStufe1fScreen(initial: initial, onNext: advance);
+      default:
+        return;
+    }
+    await Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+  }
+
+  bool _isBeitragsfreiFromData(Map<String, dynamic> data) {
+    final fs = data['finanzielle_situation'];
+    return fs == 'buergergeld' ||
+        fs == 'sozialamt' ||
+        fs == 'alg1' ||
+        fs == 'krankengeld';
   }
 
   /// Chronological details bottom sheet. Tap the Status Card to open.
@@ -591,6 +759,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   ) {
     final title = _stufeTitle(stufe, l10n);
     final status = data?.status ?? 'offen';
+    final isRejected = status == 'abgelehnt';
     final (badgeIcon, badgeColor, badgeText) =
         _statusBadge(status, l10n);
     final timestamp = data?.geprueftAm ?? data?.ausgefuelltAm;
@@ -600,9 +769,12 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.grey.shade50,
+        color: isRejected ? Colors.red.shade50 : Colors.grey.shade50,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(
+          color: isRejected ? Colors.red.shade200 : Colors.grey.shade300,
+          width: isRejected ? 1.5 : 1,
+        ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -677,6 +849,64 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                     ],
                   ),
                 ),
+                if (isRejected) ...[
+                  if (data?.notiz != null && data!.notiz!.isNotEmpty) ...[
+                    const SizedBox(height: 8),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.red.shade100.withValues(alpha: 0.6),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.red.shade300),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            l10n.wizardFinalStufeRejectionReason,
+                            style: TextStyle(
+                              color: Colors.red.shade900,
+                              fontSize: 10.5,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                          const SizedBox(height: 3),
+                          Text(
+                            data.notiz!,
+                            style: TextStyle(
+                              color: Colors.red.shade900,
+                              fontSize: 12.5,
+                              height: 1.4,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                  const SizedBox(height: 8),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton.icon(
+                      onPressed: _correcting
+                          ? null
+                          : () => _correctStufe(stufe),
+                      icon: const Icon(Icons.edit, size: 16),
+                      label: Text(l10n.wizardFinalStufeCorrectNow),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.red.shade700,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 6),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          side: BorderSide(color: Colors.red.shade400),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Afventer gennemgang",
   "wizardFinalStufeStatusApproved": "Godkendt",
   "wizardFinalStufeStatusRejected": "Afvist",
+  "wizardFinalStatusRejectionCount": "{count} trin kræver rettelse",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Begrundelse fra Vorstand:",
+  "wizardFinalStufeCorrectNow": "Ret nu",
   "wizardFinalStufeStatusSkipped": "Sprunget over",
   "wizardFinalStufeFilledAt": "Udfyldt:",
   "wizardFinalStufeReviewedAt": "Gennemgået:",

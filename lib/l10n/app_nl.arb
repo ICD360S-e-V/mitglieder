@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Wacht op controle",
   "wizardFinalStufeStatusApproved": "Goedgekeurd",
   "wizardFinalStufeStatusRejected": "Afgewezen",
+  "wizardFinalStatusRejectionCount": "{count} stap vereist correctie",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Reden van het Vorstand:",
+  "wizardFinalStufeCorrectNow": "Nu corrigeren",
   "wizardFinalStufeStatusSkipped": "Overgeslagen",
   "wizardFinalStufeFilledAt": "Ingevuld:",
   "wizardFinalStufeReviewedAt": "Gecontroleerd:",

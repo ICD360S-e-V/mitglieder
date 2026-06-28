@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Czeka na weryfikację",
   "wizardFinalStufeStatusApproved": "Zatwierdzone",
   "wizardFinalStufeStatusRejected": "Odrzucone",
+  "wizardFinalStatusRejectionCount": "{count} krok wymaga poprawy",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Powód Vorstandu:",
+  "wizardFinalStufeCorrectNow": "Popraw teraz",
   "wizardFinalStufeStatusSkipped": "Pominięte",
   "wizardFinalStufeFilledAt": "Wypełnione:",
   "wizardFinalStufeReviewedAt": "Sprawdzone:",

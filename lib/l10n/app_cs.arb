@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Čeká na kontrolu",
   "wizardFinalStufeStatusApproved": "Schváleno",
   "wizardFinalStufeStatusRejected": "Zamítnuto",
+  "wizardFinalStatusRejectionCount": "{count} krok vyžaduje opravu",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Důvod od Vorstandu:",
+  "wizardFinalStufeCorrectNow": "Opravit nyní",
   "wizardFinalStufeStatusSkipped": "Přeskočeno",
   "wizardFinalStufeFilledAt": "Vyplněno:",
   "wizardFinalStufeReviewedAt": "Zkontrolováno:",

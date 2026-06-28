@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Ootab ülevaatamist",
   "wizardFinalStufeStatusApproved": "Kinnitatud",
   "wizardFinalStufeStatusRejected": "Tagasi lükatud",
+  "wizardFinalStatusRejectionCount": "{count} samm vajab parandust",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Vorstandi põhjus:",
+  "wizardFinalStufeCorrectNow": "Paranda kohe",
   "wizardFinalStufeStatusSkipped": "Vahele jäetud",
   "wizardFinalStufeFilledAt": "Täidetud:",
   "wizardFinalStufeReviewedAt": "Kontrollitud:",

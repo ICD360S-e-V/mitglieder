@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Σε αναμονή ελέγχου",
   "wizardFinalStufeStatusApproved": "Εγκρίθηκε",
   "wizardFinalStufeStatusRejected": "Απορρίφθηκε",
+  "wizardFinalStatusRejectionCount": "{count} βήμα χρειάζεται διόρθωση",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Αιτιολογία του Vorstand:",
+  "wizardFinalStufeCorrectNow": "Διόρθωση τώρα",
   "wizardFinalStufeStatusSkipped": "Παραλείφθηκε",
   "wizardFinalStufeFilledAt": "Συμπληρώθηκε:",
   "wizardFinalStufeReviewedAt": "Ελέγχθηκε:",

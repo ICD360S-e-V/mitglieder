@@ -1285,6 +1285,14 @@
   "wizardFinalStufeStatusPending": "İnceleme bekliyor",
   "wizardFinalStufeStatusApproved": "Onaylandı",
   "wizardFinalStufeStatusRejected": "Reddedildi",
+  "wizardFinalStatusRejectionCount": "{count} adım düzeltilmeli",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Vorstand'ın gerekçesi:",
+  "wizardFinalStufeCorrectNow": "Şimdi düzelt",
   "wizardFinalStufeStatusSkipped": "Atlandı",
   "wizardFinalStufeFilledAt": "Dolduruldu:",
   "wizardFinalStufeReviewedAt": "İncelendi:",

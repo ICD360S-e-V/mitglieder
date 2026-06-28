@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Venter på gjennomgang",
   "wizardFinalStufeStatusApproved": "Godkjent",
   "wizardFinalStufeStatusRejected": "Avvist",
+  "wizardFinalStatusRejectionCount": "{count} trinn må rettes",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Begrunnelse fra Vorstand:",
+  "wizardFinalStufeCorrectNow": "Rett nå",
   "wizardFinalStufeStatusSkipped": "Hoppet over",
   "wizardFinalStufeFilledAt": "Utfylt:",
   "wizardFinalStufeReviewedAt": "Gjennomgått:",

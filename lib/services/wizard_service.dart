@@ -234,12 +234,16 @@ class WizardStufeStatus {
   final DateTime? ausgefuelltAm;
   /// When the Vorstand reviewed it. Null until they have.
   final DateTime? geprueftAm;
+  /// Vorstand's reason / instructions when status is 'abgelehnt'.
+  /// Null for any other status.
+  final String? notiz;
 
   const WizardStufeStatus({
     required this.stufe,
     required this.status,
     this.ausgefuelltAm,
     this.geprueftAm,
+    this.notiz,
   });
 
   factory WizardStufeStatus.fromJson(Map<String, dynamic> j) =>
@@ -248,6 +252,8 @@ class WizardStufeStatus {
         status:         (j['status'] as String?) ?? 'offen',
         ausgefuelltAm:  _parseDt(j['ausgefuellt_am']),
         geprueftAm:     _parseDt(j['geprueft_am']),
+        notiz:          (j['notiz'] is String && (j['notiz'] as String).isNotEmpty)
+                          ? j['notiz'] as String : null,
       );
 
   static DateTime? _parseDt(dynamic raw) {

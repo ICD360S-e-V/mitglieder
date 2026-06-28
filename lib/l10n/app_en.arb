@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Awaiting review",
   "wizardFinalStufeStatusApproved": "Approved",
   "wizardFinalStufeStatusRejected": "Rejected",
+  "wizardFinalStatusRejectionCount": "{count} step needs correction",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Vorstand's reason:",
+  "wizardFinalStufeCorrectNow": "Fix now",
   "wizardFinalStufeStatusSkipped": "Skipped",
   "wizardFinalStufeFilledAt": "Filled in:",
   "wizardFinalStufeReviewedAt": "Reviewed:",

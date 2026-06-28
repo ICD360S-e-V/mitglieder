@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Gaida pārbaudi",
   "wizardFinalStufeStatusApproved": "Apstiprināts",
   "wizardFinalStufeStatusRejected": "Noraidīts",
+  "wizardFinalStatusRejectionCount": "{count} solis prasa labojumu",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Vorstanda iemesls:",
+  "wizardFinalStufeCorrectNow": "Labot tagad",
   "wizardFinalStufeStatusSkipped": "Izlaists",
   "wizardFinalStufeFilledAt": "Aizpildīts:",
   "wizardFinalStufeReviewedAt": "Pārbaudīts:",

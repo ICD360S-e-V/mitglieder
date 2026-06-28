@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Ellenőrzésre vár",
   "wizardFinalStufeStatusApproved": "Jóváhagyva",
   "wizardFinalStufeStatusRejected": "Elutasítva",
+  "wizardFinalStatusRejectionCount": "{count} lépés javításra szorul",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "A Vorstand indoklása:",
+  "wizardFinalStufeCorrectNow": "Javítás most",
   "wizardFinalStufeStatusSkipped": "Kihagyva",
   "wizardFinalStufeFilledAt": "Kitöltve:",
   "wizardFinalStufeReviewedAt": "Ellenőrizve:",

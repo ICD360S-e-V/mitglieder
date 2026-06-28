@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "In attesa di revisione",
   "wizardFinalStufeStatusApproved": "Approvato",
   "wizardFinalStufeStatusRejected": "Respinto",
+  "wizardFinalStatusRejectionCount": "{count} passaggio richiede correzione",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Motivo del Vorstand:",
+  "wizardFinalStufeCorrectNow": "Correggi ora",
   "wizardFinalStufeStatusSkipped": "Saltato",
   "wizardFinalStufeFilledAt": "Compilato:",
   "wizardFinalStufeReviewedAt": "Revisionato:",

@@ -1264,6 +1264,14 @@
   "wizardFinalStufeStatusPending": "Väntar på granskning",
   "wizardFinalStufeStatusApproved": "Godkänd",
   "wizardFinalStufeStatusRejected": "Avvisad",
+  "wizardFinalStatusRejectionCount": "{count} steg behöver korrigeras",
+  "@wizardFinalStatusRejectionCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "wizardFinalStufeRejectionReason": "Skäl från Vorstand:",
+  "wizardFinalStufeCorrectNow": "Rätta nu",
   "wizardFinalStufeStatusSkipped": "Hoppade över",
   "wizardFinalStufeFilledAt": "Ifylld:",
   "wizardFinalStufeReviewedAt": "Granskad:",
