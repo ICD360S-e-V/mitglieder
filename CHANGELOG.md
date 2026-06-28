@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.58.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.57.0...v1.58.0) (2026-06-28)
+
+
+### Features
+
+* **wizard:** drop M/J prefix from auto-derived member email ([679b62f](https://github.com/ICD360S-e-V/mitglieder/commit/679b62fec87aaf66e18158043cb792aa074d9db9))
+
 ## [1.57.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.56.2...v1.57.0) (2026-06-28)
 
 
