@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.59.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.58.0...v1.59.0) (2026-06-28)
+
+
+### Features
+
+* **wizard:** resume pending registration + interactive chat + X/8 status ([aabdf00](https://github.com/ICD360S-e-V/mitglieder/commit/aabdf00f55af22266a575ef080b85f8b5cb44737))
+
 ## [1.58.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.57.0...v1.58.0) (2026-06-28)
 
 
