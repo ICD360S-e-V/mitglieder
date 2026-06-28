@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.60.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.59.0...v1.60.0) (2026-06-28)
+
+
+### Features
+
+* **wizard:** visualise Vorstand rejections + correction navigation ([f7b66f5](https://github.com/ICD360S-e-V/mitglieder/commit/f7b66f593b1b0937b8e7a9f8b9688d03ae421373))
+
 ## [1.59.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.58.0...v1.59.0) (2026-06-28)
 
 
