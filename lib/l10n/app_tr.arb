@@ -943,6 +943,13 @@
   "claudiuAnonymousChatWelcome": "Seni dinliyorum. İstediğini yaz — isim gerekmez. Geldiğimde hemen yanıtlarım.",
   "claudiuAnonymousChatHint": "Bir mesaj yaz…",
   "claudiuAnonymousChatWaitingOperator": "Bir operatörün yanıtlamasını bekliyoruz…",
+  "claudiuVorsitzerConnectedTitle": "Selam!",
+  "claudiuVorsitzerConnectedBody": "Yazdığın için sağ ol — şimdi bir Vorsitzer ile bağlantıdasın. Üyelik başvurun konusunda nasıl yardımcı olabileceğimizi söyle.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Doğrulama ne kadar sürer?",
+  "claudiuQuickReplyDocuments": "Hangi belgelere ihtiyacım var?",
+  "claudiuQuickReplyStepProblem": "Bir adımda takıldım",
+  "claudiuQuickReplyHuman": "Şimdi biriyle konuşabilir miyim?",
   "claudiuAnonymousChatConnecting": "Bağlanılıyor…",
   "claudiuAnonymousChatConnectionFailed": "Sohbet açılamadı. Tekrar dene veya bizi ara.",
   "claudiuAnonymousChatRetry": "Tekrar dene",
@@ -1266,6 +1273,13 @@
   "wizardFinalAdultUsual": "Başvurun bizde. Genelde bir iş günü içinde doğruluyoruz.",
   "wizardFinalAdultExceptional": "Bazen 7 iş gününe kadar sürebilir. Bir şey uymazsa, düzeltebilmen için formu yeniden açıyoruz 🙂",
   "wizardFinalStatusTitle": "BAŞVURU DURUMU",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} adım Vorstand tarafından doğrulandı",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Başvuru detayları",
   "wizardFinalStufeSheetHint": "Tamamladığın 8 aşama. Vorstand bunları sırayla inceler — gerçek zamanlı olarak neyin onaylandığını görürsün.",
   "wizardFinalStufeStatusPending": "İnceleme bekliyor",

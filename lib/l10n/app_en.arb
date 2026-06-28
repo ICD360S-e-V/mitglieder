@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "I'm listening. Write anything you'd like — no name needed. I'll reply as soon as I'm in.",
   "claudiuAnonymousChatHint": "Write a message…",
   "claudiuAnonymousChatWaitingOperator": "Waiting for an operator to reply…",
+  "claudiuVorsitzerConnectedTitle": "Hi!",
+  "claudiuVorsitzerConnectedBody": "Thanks for reaching out — you're now connected with a Vorsitzer. Tell us how we can help with your membership application.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "How long does validation take?",
+  "claudiuQuickReplyDocuments": "Which documents do I need?",
+  "claudiuQuickReplyStepProblem": "I'm stuck on a step",
+  "claudiuQuickReplyHuman": "Can I talk to someone now?",
   "claudiuAnonymousChatConnecting": "Connecting…",
   "claudiuAnonymousChatConnectionFailed": "Couldn't open the chat. Try again or call us.",
   "claudiuAnonymousChatRetry": "Try again",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Your application is with us now. We usually validate it within one business day.",
   "wizardFinalAdultExceptional": "Sometimes it takes up to 7 business days. And if anything doesn't add up, we'll send you back to the form so you can fix it 🙂",
   "wizardFinalStatusTitle": "APPLICATION STATUS",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} steps validated by the Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Application details",
   "wizardFinalStufeSheetHint": "The 8 stages you filled in. The Vorstand reviews them one by one — you see in real time which ones have been validated.",
   "wizardFinalStufeStatusPending": "Awaiting review",

@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Σε ακούω. Γράψε ό,τι θες — χωρίς όνομα. Θα απαντήσω μόλις είμαι εδώ.",
   "claudiuAnonymousChatHint": "Γράψε ένα μήνυμα…",
   "claudiuAnonymousChatWaitingOperator": "Περιμένουμε απάντηση από χειριστή…",
+  "claudiuVorsitzerConnectedTitle": "Γεια!",
+  "claudiuVorsitzerConnectedBody": "Ευχαριστούμε που μας έγραψες — τώρα είσαι σε επαφή με έναν Vorsitzer. Πες μας πώς μπορούμε να σε βοηθήσουμε με την αίτηση μέλους.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Πόσο χρόνο παίρνει ο έλεγχος;",
+  "claudiuQuickReplyDocuments": "Ποια έγγραφα χρειάζομαι;",
+  "claudiuQuickReplyStepProblem": "Έχω κολλήσει σε ένα βήμα",
+  "claudiuQuickReplyHuman": "Μπορώ να μιλήσω με κάποιον τώρα;",
   "claudiuAnonymousChatConnecting": "Σύνδεση…",
   "claudiuAnonymousChatConnectionFailed": "Δεν μπόρεσα να ανοίξω τη συνομιλία. Δοκίμασε ξανά ή κάλεσε.",
   "claudiuAnonymousChatRetry": "Δοκίμασε ξανά",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Η αίτησή σου είναι σε εμάς. Συνήθως την επικυρώνουμε εντός μίας εργάσιμης ημέρας.",
   "wizardFinalAdultExceptional": "Μερικές φορές μπορεί να χρειαστούν έως 7 εργάσιμες ημέρες. Και αν κάτι δεν ταιριάζει, θα σε επιστρέψουμε στη φόρμα για να το διορθώσεις 🙂",
   "wizardFinalStatusTitle": "ΚΑΤΑΣΤΑΣΗ ΑΙΤΗΣΗΣ",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} βήματα επικυρώθηκαν από το Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Λεπτομέρειες αίτησης",
   "wizardFinalStufeSheetHint": "Τα 8 στάδια που συμπλήρωσες. Το Vorstand τα ελέγχει ένα προς ένα — βλέπεις σε πραγματικό χρόνο τι έχει εγκριθεί.",
   "wizardFinalStufeStatusPending": "Σε αναμονή ελέγχου",

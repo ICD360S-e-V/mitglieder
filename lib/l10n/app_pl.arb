@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Słucham. Pisz co chcesz — imię niepotrzebne. Odpowiem, jak tylko będę.",
   "claudiuAnonymousChatHint": "Napisz wiadomość…",
   "claudiuAnonymousChatWaitingOperator": "Czekamy na odpowiedź operatora…",
+  "claudiuVorsitzerConnectedTitle": "Cześć!",
+  "claudiuVorsitzerConnectedBody": "Dzięki, że napisałeś — jesteś teraz w kontakcie z Vorsitzerem. Powiedz, w czym możemy pomóc z twoim wnioskiem o członkostwo.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Ile trwa weryfikacja?",
+  "claudiuQuickReplyDocuments": "Jakie dokumenty są mi potrzebne?",
+  "claudiuQuickReplyStepProblem": "Utknąłem na jednym kroku",
+  "claudiuQuickReplyHuman": "Mogę teraz z kimś porozmawiać?",
   "claudiuAnonymousChatConnecting": "Łączenie…",
   "claudiuAnonymousChatConnectionFailed": "Nie udało się otworzyć czatu. Spróbuj ponownie lub zadzwoń.",
   "claudiuAnonymousChatRetry": "Spróbuj ponownie",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Twój wniosek jest u nas. Zwykle weryfikujemy go w ciągu jednego dnia roboczego.",
   "wizardFinalAdultExceptional": "Czasem może to potrwać do 7 dni roboczych. A jeśli coś się nie zgadza, odeślemy cię z powrotem do formularza, byś poprawił 🙂",
   "wizardFinalStatusTitle": "STATUS WNIOSKU",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} kroków zatwierdzonych przez Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Szczegóły wniosku",
   "wizardFinalStufeSheetHint": "8 etapów, które ukończyłeś. Vorstand sprawdza je po kolei — widzisz w czasie rzeczywistym, co zostało zatwierdzone.",
   "wizardFinalStufeStatusPending": "Czeka na weryfikację",

@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Kuuntelen. Kirjoita mitä haluat — nimeä ei tarvita. Vastaan heti kun olen täällä.",
   "claudiuAnonymousChatHint": "Kirjoita viesti…",
   "claudiuAnonymousChatWaitingOperator": "Odotetaan operaattorin vastausta…",
+  "claudiuVorsitzerConnectedTitle": "Hei!",
+  "claudiuVorsitzerConnectedBody": "Kiitos kun otit yhteyttä — olet nyt yhteydessä Vorsitzeriin. Kerro miten voimme auttaa jäsenhakemuksessasi.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Kauanko tarkistus kestää?",
+  "claudiuQuickReplyDocuments": "Mitä dokumentteja tarvitsen?",
+  "claudiuQuickReplyStepProblem": "Olen jumissa yhdessä vaiheessa",
+  "claudiuQuickReplyHuman": "Voinko puhua jonkun kanssa nyt?",
   "claudiuAnonymousChatConnecting": "Yhdistetään…",
   "claudiuAnonymousChatConnectionFailed": "Keskustelua ei voitu avata. Yritä uudelleen tai soita meille.",
   "claudiuAnonymousChatRetry": "Yritä uudelleen",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Hakemuksesi on meillä. Yleensä tarkistamme sen yhden arkipäivän kuluessa.",
   "wizardFinalAdultExceptional": "Joskus se voi viedä jopa 7 arkipäivää. Ja jos jokin ei täsmää, lähetämme sinut takaisin lomakkeeseen korjaamaan 🙂",
   "wizardFinalStatusTitle": "HAKEMUKSEN TILA",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} vaihetta Vorstandin vahvistamaa",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Hakemuksen tiedot",
   "wizardFinalStufeSheetHint": "Kahdeksan täyttämääsi vaihetta. Vorstand käy ne läpi yksi kerrallaan — näet reaaliaikaisesti, mitkä on hyväksytty.",
   "wizardFinalStufeStatusPending": "Odottaa tarkistusta",

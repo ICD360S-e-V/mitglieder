@@ -350,6 +350,13 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   /// One row, two states: ⏳ În verificare (amber, pulsing hourglass)
   /// or ✓ Activat (green check). The 30 s polling timer flips it
   /// from one to the other when the Vorstand approves.
+  /// Count of user_verifizierung rows the Vorstand has reviewed
+  /// (status='geprueft'). Drives the "X/8" pill on the Status Card +
+  /// the linear progress bar — visitor sees concrete movement as each
+  /// Stufe gets approved instead of staring at an opaque "in progress".
+  int get _geprueftCount =>
+      _stufen.where((s) => s.status == 'geprueft').length;
+
   Widget _statusCard(AppLocalizations l10n) {
     final activeIcon = _isActive ? Icons.check_circle : Icons.hourglass_top;
     final activeTint = _isActive
@@ -358,6 +365,8 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     final mainLabel = _isActive
         ? l10n.wizardFinalTimelineActivated
         : l10n.wizardFinalTimelineProcessing;
+    final reviewed = _geprueftCount;
+    final progress = reviewed / 8;
 
     Widget iconWidget = Icon(activeIcon, color: activeTint, size: 26);
     if (!_isActive) {
@@ -380,46 +389,112 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
             borderRadius: BorderRadius.circular(14),
             border: Border.all(color: Colors.white.withValues(alpha: 0.30)),
           ),
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              iconWidget,
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l10n.wizardFinalStatusTitle,
-                      style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.75),
-                        fontSize: 11.5,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.6,
-                      ),
+              Row(
+                children: [
+                  iconWidget,
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l10n.wizardFinalStatusTitle,
+                          style: TextStyle(
+                            color: Colors.white.withValues(alpha: 0.75),
+                            fontSize: 11.5,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.6,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          mainLabel,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            height: 1.35,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 2),
-                    Text(
-                      mainLabel,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        height: 1.35,
-                      ),
-                    ),
-                  ],
+                  ),
+                  _progressPill(reviewed),
+                  const SizedBox(width: 6),
+                  Icon(
+                    Icons.chevron_right,
+                    color: Colors.white.withValues(alpha: 0.7),
+                    size: 22,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: LinearProgressIndicator(
+                  value: progress.clamp(0.0, 1.0),
+                  minHeight: 6,
+                  backgroundColor: Colors.white.withValues(alpha: 0.15),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    _isActive
+                        ? Colors.lightGreenAccent.shade200
+                        : Colors.amber.shade200,
+                  ),
                 ),
               ),
-              Icon(
-                Icons.chevron_right,
-                color: Colors.white.withValues(alpha: 0.7),
-                size: 22,
+              const SizedBox(height: 6),
+              Text(
+                l10n.wizardFinalStatusStepsValidated(reviewed, 8),
+                style: TextStyle(
+                  color: Colors.white.withValues(alpha: 0.7),
+                  fontSize: 11.5,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ],
           ),
         ),
       ),
     ).animate().fadeIn(delay: 700.ms, duration: 500.ms);
+  }
+
+  /// Compact "X/8" pill rendered to the right of the status text.
+  /// Tinted green once fully reviewed, amber while the Vorstand is
+  /// still working through it.
+  Widget _progressPill(int reviewed) {
+    final done = reviewed >= 8;
+    final tint = done
+        ? Colors.lightGreenAccent.shade100
+        : Colors.amber.shade100;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.18),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: tint.withValues(alpha: 0.6)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (done)
+            Padding(
+              padding: const EdgeInsets.only(right: 4),
+              child: Icon(Icons.check, color: tint, size: 13),
+            ),
+          Text(
+            '$reviewed/8',
+            style: TextStyle(
+              color: tint,
+              fontSize: 12.5,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   /// Chronological details bottom sheet. Tap the Status Card to open.
@@ -433,6 +508,12 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      // Constrain max height so the sheet never grows past most of
+      // the screen, then put the 8 stufen rows inside a scrollable
+      // region. Header (handle + title + hint) stays pinned at top.
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.of(context).size.height * 0.85,
       ),
       builder: (sheetCtx) => SafeArea(
         child: StatefulBuilder(
@@ -472,7 +553,14 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                     ),
                   ),
                   const SizedBox(height: 14),
-                  ..._stufenRows(l10n),
+                  Flexible(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: _stufenRows(l10n),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             );

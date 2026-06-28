@@ -4,11 +4,14 @@ import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/diagnostic_service.dart';
 import '../services/secure_storage_helper.dart';
+import '../services/wizard_service.dart';
 import '../widgets/claudiu_welcome.dart';
 import '../widgets/diagnostic_consent_dialog.dart';
 import '../widgets/eastern.dart';
 import 'mitglied_dashboard.dart';
 import 'webview_screen.dart';
+import 'wizard_final_screen.dart';
+import 'wizard_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -59,10 +62,71 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       if (!mounted) return;
       setState(() => _isAutoLogging = true);
       await _performAutoLogin(savedMnr);
-    } else {
-      debugPrint('[Welcome] NO AUTO-LOGIN: No saved mitgliedernummer');
+      // If auto-login navigated us away (pushReplacement → dashboard)
+      // mounted is false and we skip the wizard probe.
       if (!mounted) return;
-      setState(() => _isLoading = false);
+    }
+    // Visitor finalised the wizard previously and closed the app while
+    // waiting on Vorstand validation — resume them on the final/waiting
+    // screen instead of dropping them on the welcome buttons. Also
+    // handles the mid-wizard resume (status = 'nicht_verifiziert').
+    await _resumePendingRegistration();
+    if (mounted) {
+      setState(() {
+        _isLoading = false;
+        _isAutoLogging = false;
+      });
+    }
+  }
+
+  /// Probes the server for any wizard registration this device started.
+  /// Three resumption paths:
+  ///   • status 'neu' / 'waiting_for_parent_consent' → push
+  ///     [WizardFinalScreen] so the visitor sees their Status Card +
+  ///     X/8 progress + chat affordance immediately on app launch.
+  ///   • status 'nicht_verifiziert' → push [WizardScreen] which jumps
+  ///     to whichever step is current_step in wizard_drafts.
+  ///   • anything else (no draft / active member / withdrawn) → no-op;
+  ///     the welcome screen renders normally.
+  Future<void> _resumePendingRegistration() async {
+    try {
+      final probe = await WizardService().checkUserStatus();
+      if (!mounted || probe == null) return;
+      final status = probe.status;
+      if (status == 'neu' || status == 'waiting_for_parent_consent') {
+        if (probe.userId == null) return;
+        await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => WizardFinalScreen(
+              result: WizardFinalizeResult(
+                mitgliedernummer: probe.mitgliedernummer ?? '',
+                userId:           probe.userId!,
+                status:           status!,
+                isMinor:          probe.isMinor,
+                // message is only displayed on the immediate post-
+                // finalize render; the polling on the screen rewrites
+                // the visible labels from check_status.php so an
+                // empty string here is harmless on resume.
+                message:          '',
+              ),
+              onClose: () async {
+                await WizardService().resetLocal();
+                if (mounted) Navigator.of(context).maybePop();
+              },
+            ),
+          ),
+        );
+      } else if (status == 'nicht_verifiziert' || status == null) {
+        // status==null happens when wizard_drafts exists but the
+        // users stub hasn't been created yet (visitor closed app at
+        // Stufe 1a, before check_age.php ran). WizardScreen will
+        // resume to whichever current_step is recorded.
+        await Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const WizardScreen()),
+        );
+      }
+    } catch (e) {
+      debugPrint('[Welcome] Pending registration probe failed: $e');
     }
   }
 
@@ -98,12 +162,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     } catch (e) {
       debugPrint('[Welcome] Auto-login failed: $e');
     }
-    if (mounted) {
-      setState(() {
-        _isLoading = false;
-        _isAutoLogging = false;
-      });
-    }
+    // Loading flags are cleared by _checkAutoLogin after the wizard
+    // resume probe completes — keeps the spinner up across both
+    // probes so the welcome buttons don't flash mid-redirect.
   }
 
   // Helper function for responsive font size

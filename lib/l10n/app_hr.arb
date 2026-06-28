@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Slušam te. Piši što god želiš — bez imena. Odgovaram čim sam unutra.",
   "claudiuAnonymousChatHint": "Napiši poruku…",
   "claudiuAnonymousChatWaitingOperator": "Čekamo da operater odgovori…",
+  "claudiuVorsitzerConnectedTitle": "Bok!",
+  "claudiuVorsitzerConnectedBody": "Hvala što si nam se javio — sada si u kontaktu s Vorsitzerom. Reci nam kako ti možemo pomoći oko prijave za članstvo.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Koliko dugo traje provjera?",
+  "claudiuQuickReplyDocuments": "Koji dokumenti su mi potrebni?",
+  "claudiuQuickReplyStepProblem": "Zapeo sam na jednom koraku",
+  "claudiuQuickReplyHuman": "Mogu li sada razgovarati s nekim?",
   "claudiuAnonymousChatConnecting": "Spajanje…",
   "claudiuAnonymousChatConnectionFailed": "Nije moguće otvoriti chat. Pokušaj ponovno ili nas nazovi.",
   "claudiuAnonymousChatRetry": "Pokušaj ponovno",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Tvoj zahtjev je kod nas. Obično ga potvrdimo u roku od jednog radnog dana.",
   "wizardFinalAdultExceptional": "Ponekad može potrajati do 7 radnih dana. A ako se nešto ne poklapa, vraćamo te na obrazac da to ispraviš 🙂",
   "wizardFinalStatusTitle": "STATUS ZAHTJEVA",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} koraka potvrdio Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Detalji zahtjeva",
   "wizardFinalStufeSheetHint": "8 faza koje si ispunio. Vorstand ih provjerava jednu po jednu — vidiš u stvarnom vremenu što je potvrđeno.",
   "wizardFinalStufeStatusPending": "Čeka pregled",

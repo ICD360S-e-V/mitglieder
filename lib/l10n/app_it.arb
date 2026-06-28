@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Ti ascolto. Scrivi qualunque cosa — niente nome. Risponderò appena sono qui.",
   "claudiuAnonymousChatHint": "Scrivi un messaggio…",
   "claudiuAnonymousChatWaitingOperator": "In attesa della risposta di un operatore…",
+  "claudiuVorsitzerConnectedTitle": "Ciao!",
+  "claudiuVorsitzerConnectedBody": "Grazie per averci scritto — ora sei in contatto con un Vorsitzer. Dicci come possiamo aiutarti con la tua domanda di iscrizione.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Quanto dura la verifica?",
+  "claudiuQuickReplyDocuments": "Quali documenti mi servono?",
+  "claudiuQuickReplyStepProblem": "Sono bloccato su un passaggio",
+  "claudiuQuickReplyHuman": "Posso parlare con qualcuno adesso?",
   "claudiuAnonymousChatConnecting": "Connessione…",
   "claudiuAnonymousChatConnectionFailed": "Impossibile aprire la chat. Riprova o chiamaci.",
   "claudiuAnonymousChatRetry": "Riprova",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "La tua richiesta è ora da noi. Di solito la convalidiamo entro un giorno lavorativo.",
   "wizardFinalAdultExceptional": "A volte può richiedere fino a 7 giorni lavorativi. E se qualcosa non torna, ti rimandiamo al modulo per correggerlo 🙂",
   "wizardFinalStatusTitle": "STATO DELLA RICHIESTA",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} passaggi convalidati dal Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Dettagli della richiesta",
   "wizardFinalStufeSheetHint": "Le 8 fasi che hai completato. Il Vorstand le verifica una per una — vedi in tempo reale cosa è stato validato.",
   "wizardFinalStufeStatusPending": "In attesa di revisione",

@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Jeg lytter. Skriv hvad du vil — intet navn nødvendigt. Jeg svarer så snart jeg er her.",
   "claudiuAnonymousChatHint": "Skriv en besked…",
   "claudiuAnonymousChatWaitingOperator": "Venter på at en operatør svarer…",
+  "claudiuVorsitzerConnectedTitle": "Hej!",
+  "claudiuVorsitzerConnectedBody": "Tak fordi du skrev — du er nu forbundet med en Vorsitzer. Fortæl os, hvordan vi kan hjælpe med din medlemsansøgning.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Hvor lang tid tager godkendelsen?",
+  "claudiuQuickReplyDocuments": "Hvilke dokumenter skal jeg bruge?",
+  "claudiuQuickReplyStepProblem": "Jeg er kørt fast i et trin",
+  "claudiuQuickReplyHuman": "Kan jeg tale med nogen lige nu?",
   "claudiuAnonymousChatConnecting": "Forbinder…",
   "claudiuAnonymousChatConnectionFailed": "Kunne ikke åbne chatten. Prøv igen eller ring til os.",
   "claudiuAnonymousChatRetry": "Prøv igen",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Din ansøgning er nu hos os. Vi godkender den normalt inden for én hverdag.",
   "wizardFinalAdultExceptional": "Nogle gange kan det tage op til 7 hverdage. Og hvis noget ikke stemmer, sender vi dig tilbage til formularen, så du kan rette det 🙂",
   "wizardFinalStatusTitle": "ANSØGNINGSSTATUS",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} trin valideret af Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Ansøgningsdetaljer",
   "wizardFinalStufeSheetHint": "De 8 trin du har udfyldt. Vorstand gennemgår dem ét ad gangen — du ser i realtid, hvad der er godkendt.",
   "wizardFinalStufeStatusPending": "Afventer gennemgang",

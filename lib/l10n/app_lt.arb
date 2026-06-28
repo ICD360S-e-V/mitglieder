@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Klausau. Rašyk ką nori — vardo nereikia. Atsakysiu kai tik būsiu.",
   "claudiuAnonymousChatHint": "Parašyk žinutę…",
   "claudiuAnonymousChatWaitingOperator": "Laukiame operatoriaus atsakymo…",
+  "claudiuVorsitzerConnectedTitle": "Sveiki!",
+  "claudiuVorsitzerConnectedBody": "Ačiū, kad parašei — dabar esi susisiekęs su Vorsitzeriu. Pasakyk, kuo galime padėti dėl narystės paraiškos.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Kiek užtrunka patikrinimas?",
+  "claudiuQuickReplyDocuments": "Kokių dokumentų man reikia?",
+  "claudiuQuickReplyStepProblem": "Įstrigau prie vieno žingsnio",
+  "claudiuQuickReplyHuman": "Ar galiu dabar pakalbėti su kuo nors?",
   "claudiuAnonymousChatConnecting": "Jungiamasi…",
   "claudiuAnonymousChatConnectionFailed": "Nepavyko atidaryti pokalbio. Pabandyk dar kartą arba paskambink.",
   "claudiuAnonymousChatRetry": "Bandyti vėl",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Tavo prašymas pas mus. Paprastai jį patvirtiname per vieną darbo dieną.",
   "wizardFinalAdultExceptional": "Kartais tai gali užtrukti iki 7 darbo dienų. O jei kažkas neatitinka, grąžinsime tave į formą, kad pataisytum 🙂",
   "wizardFinalStatusTitle": "PRAŠYMO BŪSENA",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} žingsnių patvirtino Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Prašymo informacija",
   "wizardFinalStufeSheetHint": "8 etapai, kuriuos užpildei. Vorstand juos tikrina po vieną — realiu laiku matai, kas patvirtinta.",
   "wizardFinalStufeStatusPending": "Laukia patikrinimo",

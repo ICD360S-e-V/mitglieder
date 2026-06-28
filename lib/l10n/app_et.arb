@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Ma kuulan. Kirjuta mida tahad — nime pole vaja. Vastan niipea kui sees olen.",
   "claudiuAnonymousChatHint": "Kirjuta sõnum…",
   "claudiuAnonymousChatWaitingOperator": "Ootame operaatori vastust…",
+  "claudiuVorsitzerConnectedTitle": "Tere!",
+  "claudiuVorsitzerConnectedBody": "Aitäh, et ühendust võtsid — oled nüüd ühenduses Vorsitzeriga. Räägi, kuidas saame su liikmestaotluse osas aidata.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Kui kaua kontroll võtab?",
+  "claudiuQuickReplyDocuments": "Milliseid dokumente vajan?",
+  "claudiuQuickReplyStepProblem": "Olen ühe sammu juures kinni",
+  "claudiuQuickReplyHuman": "Kas saan kohe kellegagi rääkida?",
   "claudiuAnonymousChatConnecting": "Ühendamine…",
   "claudiuAnonymousChatConnectionFailed": "Vestlust ei õnnestunud avada. Proovi uuesti või helista.",
   "claudiuAnonymousChatRetry": "Proovi uuesti",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Sinu avaldus on meil. Tavaliselt kinnitame selle ühe tööpäeva jooksul.",
   "wizardFinalAdultExceptional": "Mõnikord võib see võtta kuni 7 tööpäeva. Ja kui midagi ei klapi, saadame su tagasi vormi, et saaksid parandada 🙂",
   "wizardFinalStatusTitle": "AVALDUSE OLEK",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} sammu kinnitanud Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Avalduse üksikasjad",
   "wizardFinalStufeSheetHint": "Kaheksa etappi, mille täitsid. Vorstand vaatab need ühekaupa läbi — näed reaalajas, mis on juba kinnitatud.",
   "wizardFinalStufeStatusPending": "Ootab ülevaatamist",

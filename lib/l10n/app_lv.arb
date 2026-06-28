@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Es klausos. Raksti ko vēlies — vārds nav vajadzīgs. Atbildēšu, tiklīdz būšu klāt.",
   "claudiuAnonymousChatHint": "Uzraksti ziņu…",
   "claudiuAnonymousChatWaitingOperator": "Gaidām operatora atbildi…",
+  "claudiuVorsitzerConnectedTitle": "Sveiki!",
+  "claudiuVorsitzerConnectedBody": "Paldies, ka uzrakstīji — tagad esi kontaktā ar Vorsitzer. Pastāsti, kā varam palīdzēt ar tavu dalības pieteikumu.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Cik ilgs ir pārbaudes process?",
+  "claudiuQuickReplyDocuments": "Kādi dokumenti man ir vajadzīgi?",
+  "claudiuQuickReplyStepProblem": "Esmu iestrēdzis pie viena soļa",
+  "claudiuQuickReplyHuman": "Vai varu tagad parunāt ar kādu?",
   "claudiuAnonymousChatConnecting": "Savienojas…",
   "claudiuAnonymousChatConnectionFailed": "Sarunu nevarēja atvērt. Mēģini vēlreiz vai zvani mums.",
   "claudiuAnonymousChatRetry": "Mēģināt vēlreiz",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Tavs pieteikums ir pie mums. Parasti to apstiprinām vienas darba dienas laikā.",
   "wizardFinalAdultExceptional": "Dažreiz tas var aizņemt līdz 7 darba dienām. Un, ja kaut kas neatbilst, mēs nosūtīsim tevi atpakaļ pie formas, lai labotu 🙂",
   "wizardFinalStatusTitle": "PIETEIKUMA STATUSS",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} soļus apstiprinājis Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Pieteikuma informācija",
   "wizardFinalStufeSheetHint": "8 posmi, ko aizpildīji. Vorstand pārbauda tos pa vienam — reālajā laikā redzi, kas ir apstiprināts.",
   "wizardFinalStufeStatusPending": "Gaida pārbaudi",

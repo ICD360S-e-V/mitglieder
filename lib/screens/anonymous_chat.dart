@@ -401,8 +401,10 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
             children: [
               _claudiuWelcome(l10n),
               if (_messages.isEmpty) ...[
-                const SizedBox(height: 24),
-                _waitingNote(l10n),
+                const SizedBox(height: 12),
+                _vorsitzerConnectedGreeting(l10n),
+                const SizedBox(height: 14),
+                _quickReplyChips(l10n),
               ] else ...[
                 const SizedBox(height: 18),
                 for (final m in _messages) _messageBubble(m),
@@ -489,38 +491,145 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     );
   }
 
-  Widget _waitingNote(AppLocalizations l10n) {
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.08),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const SizedBox(
-              width: 14,
-              height: 14,
-              child: CircularProgressIndicator(
-                color: Colors.white,
-                strokeWidth: 2,
+  /// Second welcome bubble shown right after Claudiu's hello. Frames
+  /// the visitor as "already connected with a Vorsitzer" so they
+  /// don't feel parked in a queue. Renders identically to an admin
+  /// message bubble for visual continuity with replies that follow.
+  Widget _vorsitzerConnectedGreeting(AppLocalizations l10n) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: 56,
+          height: 56,
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.18),
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.white.withValues(alpha: 0.45),
+              width: 2,
+            ),
+          ),
+          child: const Icon(
+            Icons.support_agent,
+            size: 30,
+            color: Colors.white,
+          ),
+        )
+            .animate(delay: 600.ms)
+            .slideX(begin: -0.5, end: 0, duration: 500.ms)
+            .fadeIn(),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: const BorderRadiusDirectional.only(
+                topStart: Radius.circular(4),
+                topEnd: Radius.circular(12),
+                bottomStart: Radius.circular(12),
+                bottomEnd: Radius.circular(12),
               ),
             ),
-            const SizedBox(width: 10),
-            Text(
-              l10n.claudiuAnonymousChatWaitingOperator,
-              style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.85),
-                fontSize: 12.5,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.claudiuVorsitzerConnectedTitle,
+                  style: const TextStyle(
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xFF0d47a1),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  l10n.claudiuVorsitzerConnectedBody,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey[800],
+                    height: 1.45,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '— ${l10n.claudiuVorsitzerConnectedSender}',
+                  style: TextStyle(
+                    fontSize: 10.5,
+                    color: Colors.grey[500],
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ],
             ),
-          ],
+          ).animate(delay: 750.ms).fadeIn(duration: 400.ms),
         ),
+      ],
+    );
+  }
+
+  /// Tappable suggestion chips for the most common opening questions.
+  /// Tapping a chip auto-sends the matching message, so the visitor
+  /// goes from "blank chat" to "first message sent" in one tap.
+  Widget _quickReplyChips(AppLocalizations l10n) {
+    final suggestions = <String>[
+      l10n.claudiuQuickReplyValidationTime,
+      l10n.claudiuQuickReplyDocuments,
+      l10n.claudiuQuickReplyStepProblem,
+      l10n.claudiuQuickReplyHuman,
+    ];
+    return Padding(
+      padding: const EdgeInsets.only(left: 66),
+      child: Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          for (var i = 0; i < suggestions.length; i++)
+            _quickReplyChip(suggestions[i], delay: 950 + i * 120),
+        ],
       ),
     );
+  }
+
+  Widget _quickReplyChip(String label, {required int delay}) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: _sending ? null : () => _sendQuickReply(label),
+        borderRadius: BorderRadius.circular(18),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.16),
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(
+              color: Colors.white.withValues(alpha: 0.5),
+            ),
+          ),
+          child: Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 12.5,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      )
+          .animate(delay: delay.ms)
+          .slideY(begin: 0.3, end: 0, duration: 350.ms)
+          .fadeIn(),
+    );
+  }
+
+  /// Send a prefab message in one tap. Reuses the same path as the
+  /// text field so the WS push, optimistic update and scroll-to-bottom
+  /// behave identically to a typed message.
+  Future<void> _sendQuickReply(String text) async {
+    if (_sending) return;
+    _inputController.text = text;
+    await _send();
   }
 
   Widget _messageBubble(ChatMessage m) {

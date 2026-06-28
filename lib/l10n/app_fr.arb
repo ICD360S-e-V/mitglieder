@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Je t'écoute. Écris ce que tu veux — pas besoin de nom. Je réponds dès que je suis là.",
   "claudiuAnonymousChatHint": "Écris un message…",
   "claudiuAnonymousChatWaitingOperator": "En attente d'un opérateur…",
+  "claudiuVorsitzerConnectedTitle": "Salut !",
+  "claudiuVorsitzerConnectedBody": "Merci de nous avoir écrit — tu es maintenant en contact avec un Vorsitzer. Dis-nous comment on peut t'aider pour ta demande d'adhésion.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Combien de temps prend la validation ?",
+  "claudiuQuickReplyDocuments": "Quels documents me faut-il ?",
+  "claudiuQuickReplyStepProblem": "Je suis bloqué sur une étape",
+  "claudiuQuickReplyHuman": "Je peux parler à quelqu'un maintenant ?",
   "claudiuAnonymousChatConnecting": "Connexion…",
   "claudiuAnonymousChatConnectionFailed": "Impossible d'ouvrir le chat. Réessaie ou appelle-nous.",
   "claudiuAnonymousChatRetry": "Réessayer",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Ta demande est entre nos mains. On la valide en général en un jour ouvré.",
   "wizardFinalAdultExceptional": "Parfois ça peut prendre jusqu'à 7 jours ouvrés. Et si quelque chose ne colle pas, on te renvoie au formulaire pour corriger 🙂",
   "wizardFinalStatusTitle": "STATUT DE LA DEMANDE",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} étapes validées par le Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Détails de la demande",
   "wizardFinalStufeSheetHint": "Les 8 étapes que tu as remplies. Le Vorstand les vérifie une par une — tu vois en temps réel ce qui a été validé.",
   "wizardFinalStufeStatusPending": "En attente de vérification",

@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Слушам ви. Пишете каквото искате — не е нужно име. Ще отговоря веднага щом съм тук.",
   "claudiuAnonymousChatHint": "Напишете съобщение…",
   "claudiuAnonymousChatWaitingOperator": "Чакаме оператор да отговори…",
+  "claudiuVorsitzerConnectedTitle": "Здравей!",
+  "claudiuVorsitzerConnectedBody": "Благодарим, че се свърза с нас — вече си в чат с Vorsitzer. Кажи как можем да ти помогнем с молбата за членство.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Колко време отнема проверката?",
+  "claudiuQuickReplyDocuments": "Какви документи са ми нужни?",
+  "claudiuQuickReplyStepProblem": "Заседнал съм на една стъпка",
+  "claudiuQuickReplyHuman": "Мога ли да говоря с някого сега?",
   "claudiuAnonymousChatConnecting": "Свързване…",
   "claudiuAnonymousChatConnectionFailed": "Чатът не може да се отвори. Опитайте отново или се обадете.",
   "claudiuAnonymousChatRetry": "Опитайте отново",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Заявката ти е при нас. Обикновено я валидираме в рамките на един работен ден.",
   "wizardFinalAdultExceptional": "Понякога може да отнеме до 7 работни дни. А ако нещо не съвпада, ще те върнем към формата, за да го коригираш 🙂",
   "wizardFinalStatusTitle": "СТАТУС НА ЗАЯВКАТА",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} стъпки, проверени от Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Детайли на заявката",
   "wizardFinalStufeSheetHint": "8-те етапа, които си попълнил. Vorstand ги преглежда един по един — виждаш в реално време какво е валидирано.",
   "wizardFinalStufeStatusPending": "Очаква преглед",

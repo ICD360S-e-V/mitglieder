@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Poslušam. Piši karkoli — brez imena. Odgovorim, takoj ko bom tu.",
   "claudiuAnonymousChatHint": "Napiši sporočilo…",
   "claudiuAnonymousChatWaitingOperator": "Čakamo, da operater odgovori…",
+  "claudiuVorsitzerConnectedTitle": "Živjo!",
+  "claudiuVorsitzerConnectedBody": "Hvala, ker si nam pisal — zdaj si v stiku z Vorsitzerjem. Povej, kako ti lahko pomagamo z vlogo za članstvo.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Koliko časa traja preverjanje?",
+  "claudiuQuickReplyDocuments": "Katere dokumente potrebujem?",
+  "claudiuQuickReplyStepProblem": "Zataknil sem se pri enem koraku",
+  "claudiuQuickReplyHuman": "Lahko zdaj s kom govorim?",
   "claudiuAnonymousChatConnecting": "Povezovanje…",
   "claudiuAnonymousChatConnectionFailed": "Klepeta ni bilo mogoče odpreti. Poskusi znova ali pokliči.",
   "claudiuAnonymousChatRetry": "Poskusi znova",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Tvoja vloga je pri nas. Običajno jo potrdimo v enem delovnem dnevu.",
   "wizardFinalAdultExceptional": "Včasih lahko traja do 7 delovnih dni. In če kaj ne ujema, te pošljemo nazaj v obrazec, da popraviš 🙂",
   "wizardFinalStatusTitle": "STANJE VLOGE",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} korakov je potrdil Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Podrobnosti vloge",
   "wizardFinalStufeSheetHint": "8 stopenj, ki si jih opravil. Vorstand jih pregleduje eno za drugo — v realnem času vidiš, kaj je že potrjeno.",
   "wizardFinalStufeStatusPending": "Čaka na pregled",

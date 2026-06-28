@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Te ascult. Scrie-mi orice — nu am nevoie de numele tău. Răspund de îndată ce sunt aici.",
   "claudiuAnonymousChatHint": "Scrie un mesaj…",
   "claudiuAnonymousChatWaitingOperator": "Așteptăm ca un operator să răspundă…",
+  "claudiuVorsitzerConnectedTitle": "Bună!",
+  "claudiuVorsitzerConnectedBody": "Mulțumim că ai ajuns aici — ești conectat acum cu un vorsitzer. Scrie-ne cu ce te putem ajuta în ceea ce privește cererea ta de aderare în asociația noastră non-profit.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Cât timp durează validarea?",
+  "claudiuQuickReplyDocuments": "Ce documente am nevoie?",
+  "claudiuQuickReplyStepProblem": "Am o problemă cu un pas",
+  "claudiuQuickReplyHuman": "Vreau să vorbesc cu cineva acum",
   "claudiuAnonymousChatConnecting": "Mă conectez…",
   "claudiuAnonymousChatConnectionFailed": "Nu am putut deschide chat-ul. Încearcă din nou sau sună-ne.",
   "claudiuAnonymousChatRetry": "Încearcă din nou",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Cererea ta a ajuns la noi. De obicei o validăm într-o zi lucrătoare.",
   "wizardFinalAdultExceptional": "Uneori poate dura până la 7 zile lucrătoare. Și dacă ceva nu corespunde, te trimitem înapoi la formular ca să corectezi 🙂",
   "wizardFinalStatusTitle": "STATUS CERERE",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} pași validați de Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Detalii cerere",
   "wizardFinalStufeSheetHint": "Cei 8 pași pe care i-ai completat. Vorstand-ul îi verifică pe rând — vezi în timp real ce a fost validat.",
   "wizardFinalStufeStatusPending": "În așteptarea verificării",

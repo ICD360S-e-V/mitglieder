@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Ik luister. Schrijf wat je wilt — geen naam nodig. Ik antwoord zodra ik er ben.",
   "claudiuAnonymousChatHint": "Schrijf een bericht…",
   "claudiuAnonymousChatWaitingOperator": "Wachten op antwoord van een medewerker…",
+  "claudiuVorsitzerConnectedTitle": "Hoi!",
+  "claudiuVorsitzerConnectedBody": "Bedankt dat je contact opneemt — je hebt nu een Vorsitzer aan de lijn. Vertel ons hoe we je kunnen helpen met je lidmaatschapsaanvraag.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Hoe lang duurt de controle?",
+  "claudiuQuickReplyDocuments": "Welke documenten heb ik nodig?",
+  "claudiuQuickReplyStepProblem": "Ik loop vast bij een stap",
+  "claudiuQuickReplyHuman": "Kan ik nu iemand spreken?",
   "claudiuAnonymousChatConnecting": "Verbinden…",
   "claudiuAnonymousChatConnectionFailed": "Kon de chat niet openen. Probeer opnieuw of bel ons.",
   "claudiuAnonymousChatRetry": "Opnieuw proberen",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Je aanvraag is binnen. We valideren hem meestal binnen één werkdag.",
   "wizardFinalAdultExceptional": "Soms kan het tot 7 werkdagen duren. En als iets niet klopt, sturen we je terug naar het formulier om het aan te passen 🙂",
   "wizardFinalStatusTitle": "STATUS AANVRAAG",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} stappen gevalideerd door het Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Details aanvraag",
   "wizardFinalStufeSheetHint": "De 8 fases die je hebt ingevuld. Vorstand controleert ze één voor één — je ziet in real time wat goedgekeurd is.",
   "wizardFinalStufeStatusPending": "Wacht op controle",

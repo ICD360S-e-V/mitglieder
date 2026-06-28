@@ -922,6 +922,13 @@
   "claudiuAnonymousChatWelcome": "Počúvam. Napíš čokoľvek — meno netreba. Odpoviem hneď, ako budem.",
   "claudiuAnonymousChatHint": "Napíš správu…",
   "claudiuAnonymousChatWaitingOperator": "Čakáme na odpoveď operátora…",
+  "claudiuVorsitzerConnectedTitle": "Ahoj!",
+  "claudiuVorsitzerConnectedBody": "Ďakujeme, že si nám napísal — teraz si v spojení s Vorsitzerom. Napíš, s čím ti môžeme pomôcť ohľadom prihlášky o členstvo.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "Ako dlho trvá overenie?",
+  "claudiuQuickReplyDocuments": "Aké dokumenty potrebujem?",
+  "claudiuQuickReplyStepProblem": "Zasekol som sa pri jednom kroku",
+  "claudiuQuickReplyHuman": "Môžem teraz s niekým hovoriť?",
   "claudiuAnonymousChatConnecting": "Pripájanie…",
   "claudiuAnonymousChatConnectionFailed": "Nepodarilo sa otvoriť chat. Skús znova alebo zavolaj.",
   "claudiuAnonymousChatRetry": "Skúsiť znova",
@@ -1245,6 +1252,13 @@
   "wizardFinalAdultUsual": "Tvoja žiadosť je u nás. Zvyčajne ju overujeme do jedného pracovného dňa.",
   "wizardFinalAdultExceptional": "Niekedy to môže trvať až 7 pracovných dní. A ak niečo nesedí, pošleme ťa späť do formulára, aby si to opravil 🙂",
   "wizardFinalStatusTitle": "STAV ŽIADOSTI",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} krokov overených predstavenstvom Vorstand",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "Detaily žiadosti",
   "wizardFinalStufeSheetHint": "Osem fáz, ktoré si vyplnil. Vorstand ich kontroluje jednu po druhej — vidíš v reálnom čase, čo už bolo schválené.",
   "wizardFinalStufeStatusPending": "Čaká na kontrolu",

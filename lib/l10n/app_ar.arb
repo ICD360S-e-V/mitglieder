@@ -943,6 +943,13 @@
   "claudiuAnonymousChatWelcome": "أنا أسمعك. اكتب ما تريد — لا حاجة للاسم. سأرد فور وصولي.",
   "claudiuAnonymousChatHint": "اكتب رسالة…",
   "claudiuAnonymousChatWaitingOperator": "في انتظار رد الموظف…",
+  "claudiuVorsitzerConnectedTitle": "مرحبًا!",
+  "claudiuVorsitzerConnectedBody": "شكرًا على تواصلك — أنت الآن متصل بـ Vorsitzer. أخبرنا كيف يمكننا مساعدتك في طلب العضوية.",
+  "claudiuVorsitzerConnectedSender": "Vorsitzer",
+  "claudiuQuickReplyValidationTime": "كم تستغرق عملية التحقق؟",
+  "claudiuQuickReplyDocuments": "ما المستندات التي أحتاجها؟",
+  "claudiuQuickReplyStepProblem": "أنا عالق في إحدى الخطوات",
+  "claudiuQuickReplyHuman": "هل يمكنني التحدث مع شخص الآن؟",
   "claudiuAnonymousChatConnecting": "جاري الاتصال…",
   "claudiuAnonymousChatConnectionFailed": "تعذر فتح الدردشة. حاول مرة أخرى أو اتصل بنا.",
   "claudiuAnonymousChatRetry": "حاول مجددًا",
@@ -1266,6 +1273,13 @@
   "wizardFinalAdultUsual": "وصلنا طلبك. عادةً نتحقق منه خلال يوم عمل واحد.",
   "wizardFinalAdultExceptional": "أحيانًا قد يستغرق الأمر حتى 7 أيام عمل. وإذا لم يكن شيء ما متطابقًا، فسنعيدك إلى النموذج لتصحيحه 🙂",
   "wizardFinalStatusTitle": "حالة الطلب",
+  "wizardFinalStatusStepsValidated": "{reviewed}/{total} خطوات تم التحقق منها من قبل المجلس التنفيذي",
+  "@wizardFinalStatusStepsValidated": {
+    "placeholders": {
+      "reviewed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
   "wizardFinalStufeSheetTitle": "تفاصيل الطلب",
   "wizardFinalStufeSheetHint": "المراحل الثماني التي أكملتها. يراجعها مجلس الإدارة واحدة تلو الأخرى — ترى في الوقت الفعلي ما تم التحقق منه.",
   "wizardFinalStufeStatusPending": "بانتظار المراجعة",
