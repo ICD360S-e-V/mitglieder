@@ -53,11 +53,12 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
   }
 
   /// Auto-derived from the mitgliedernummer reserved at Stufe 1b.
-  /// Lowercased to match the canonical email storage convention.
+  /// The M/J prefix is dropped so the email reads identically for
+  /// adults and minors — `M12345` becomes `12345@icd360s.de`.
   String? get _derivedEmail {
     final mnr = WizardService().mitgliedernummer;
-    if (mnr == null || mnr.isEmpty) return null;
-    return '${mnr.toLowerCase()}@icd360s.de';
+    if (mnr == null || mnr.length < 2) return null;
+    return '${mnr.substring(1)}@icd360s.de';
   }
 
   Future<void> _submit() async {

@@ -224,10 +224,11 @@ try {
     // The wizard no longer collects an email address — every formal
     // communication goes through the in-app channel and urgent stuff
     // through phone — but users.email is still NOT NULL UNIQUE, so we
-    // derive a per-member placeholder from the mitgliedernummer. The
-    // domain is icd360s.de so any future catch-all routing just
-    // works.
-    $autoEmail = strtolower($mnr) . '@icd360s.de';
+    // derive a per-member placeholder from the digit portion of the
+    // mitgliedernummer (e.g. M12345 → 12345@icd360s.de). The M/J
+    // prefix stays on the membership number itself; the email reads
+    // identically for adults and minors.
+    $autoEmail = substr($mnr, 1) . '@icd360s.de';
 
     // Email collision check — only when we're INSERTing a fresh row.
     // If a stub already exists for this draft, it owns the email and

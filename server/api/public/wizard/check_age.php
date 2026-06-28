@@ -104,12 +104,22 @@ if ($status !== 'too_young') {
         } else {
             for ($i = 0; $i < 100; $i++) {
                 $candidate = $prefix . random_int(10000, 99999);
+                $digits    = substr($candidate, 1);
+                // The derived email drops the prefix and uses the
+                // digits only (<digits>@icd360s.de). To keep emails
+                // unique across M and J buckets we reject candidates
+                // whose digit portion collides with an existing mnr
+                // of the opposite prefix.
                 $check = $pdo->prepare(
-                    'SELECT 1 FROM users WHERE mitgliedernummer = ?
+                    'SELECT 1 FROM users
+                       WHERE mitgliedernummer = ?
+                          OR SUBSTRING(mitgliedernummer, 2) = ?
                      UNION ALL
-                     SELECT 1 FROM wizard_drafts WHERE mitgliedernummer = ?'
+                     SELECT 1 FROM wizard_drafts
+                       WHERE mitgliedernummer = ?
+                          OR SUBSTRING(mitgliedernummer, 2) = ?'
                 );
-                $check->execute([$candidate, $candidate]);
+                $check->execute([$candidate, $digits, $candidate, $digits]);
                 if (!$check->fetchColumn()) {
                     $mitgliedernummer = $candidate;
                     break;
@@ -217,7 +227,10 @@ if ($mitgliedernummer !== null
     && !$duplicate['found']
     && $draftVorname !== '' && $draftNachname !== '') {
     try {
-        $autoEmail = strtolower($mitgliedernummer) . '@icd360s.de';
+        // Auto-derived email drops the M/J prefix — digits only —
+        // so the address reads cleanly (12345@icd360s.de) and is the
+        // same for the visitor regardless of adult/minor bucketing.
+        $autoEmail = substr($mitgliedernummer, 1) . '@icd360s.de';
         $combinedName = trim($draftVorname . ' ' . $draftNachname);
         if ($existingUserId === 0) {
             // Fresh insert. INSERT IGNORE protects against a parallel
