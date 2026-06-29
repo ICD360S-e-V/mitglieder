@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.63.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.62.0...v1.63.0) (2026-06-29)
+
+
+### Features
+
+* **wizard:** Datenminimierung on withdraw + 3-year anonymisation cron ([2f60393](https://github.com/ICD360S-e-V/mitglieder/commit/2f6039336753bd12ed09cf20bd5b93e41616b7e8))
+
 ## [1.62.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.61.0...v1.62.0) (2026-06-29)
 
 
