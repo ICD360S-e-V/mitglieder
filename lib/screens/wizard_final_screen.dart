@@ -852,64 +852,189 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                 if (isRejected) ...[
                   if (data?.notiz != null && data!.notiz!.isNotEmpty) ...[
                     const SizedBox(height: 8),
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: Colors.red.shade100.withValues(alpha: 0.6),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.red.shade300),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            l10n.wizardFinalStufeRejectionReason,
-                            style: TextStyle(
-                              color: Colors.red.shade900,
-                              fontSize: 10.5,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                          const SizedBox(height: 3),
-                          Text(
-                            data.notiz!,
-                            style: TextStyle(
-                              color: Colors.red.shade900,
-                              fontSize: 12.5,
-                              height: 1.4,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    _notizBox(data.notiz!, l10n),
                   ],
-                  const SizedBox(height: 8),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton.icon(
-                      onPressed: _correcting
-                          ? null
-                          : () => _correctStufe(stufe),
-                      icon: const Icon(Icons.edit, size: 16),
-                      label: Text(l10n.wizardFinalStufeCorrectNow),
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.red.shade700,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 6),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          side: BorderSide(color: Colors.red.shade400),
+                  // Stufe 6/7/8 are legal-document accepts; the server
+                  // now rejects 'abgelehnt' for them with HTTP 400, so
+                  // they shouldn't appear here. Defensive: hide the CTA
+                  // anyway in case an old draft slipped through.
+                  if (stufe <= 5) ...[
+                    const SizedBox(height: 8),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton.icon(
+                        onPressed: _correcting
+                            ? null
+                            : () => _correctStufe(stufe),
+                        icon: const Icon(Icons.edit, size: 16),
+                        label: Text(l10n.wizardFinalStufeCorrectNow),
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.red.shade700,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 6),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: BorderSide(color: Colors.red.shade400),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ],
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  /// Parse a multi-line notiz coming back from check_status.php into
+  /// labeled per-field rows. Vorsitzer's Verifizierung tab now lets the
+  /// Vorstand ✓/✗ individual Stufe-1 fields and aggregates the picked
+  /// reasons into a notiz of the form:
+  ///
+  ///     Vorname: Bitte vollständig eintragen
+  ///     Geburtsdatum: TT.MM.JJJJ-Format verwenden
+  ///     Telefon: Vorwahl fehlt
+  ///
+  /// We split by newline, try the `^Field: Reason$` pattern, and look
+  /// the label up in a German→column-name map. Lines that don't match
+  /// keep their full text and `field` stays null (caller renders them
+  /// as a general note in the same red box). Plain notiz strings
+  /// without any `:` still work — they all fall through to the
+  /// `field=null` branch.
+  static const Map<String, String> _notizFieldMap = {
+    // canonical German labels vorsitzer emits
+    'vorname': 'vorname',
+    'nachname': 'nachname',
+    'geburtsname': 'geburtsname',
+    'geburtsdatum': 'geburtsdatum',
+    'geburtsort': 'geburtsort',
+    'geschlecht': 'geschlecht',
+    'familienstand': 'familienstand',
+    'staatsangehörigkeit': 'staatsangehoerigkeit',
+    'staatsangehoerigkeit': 'staatsangehoerigkeit',
+    'aufenthaltsstatus': 'aufenthaltsstatus',
+    'muttersprache': 'muttersprache',
+    'straße': 'strasse',
+    'strasse': 'strasse',
+    'hausnummer': 'hausnummer',
+    'plz': 'plz',
+    'ort': 'ort',
+    'land': 'land',
+    'telefon': 'telefon_mobil',
+    'telefon (mobil)': 'telefon_mobil',
+    'telefonnummer': 'telefon_mobil',
+    'telefon mobil': 'telefon_mobil',
+    'e-mail': 'email',
+    'email': 'email',
+  };
+
+  /// One parsed notiz line. `fieldKey` is the DB column the line is
+  /// pinned to (vorname, geburtsdatum, …) or null when the line is a
+  /// freeform note. `label` keeps the original German label as the
+  /// Vorstand wrote it — we use it as-is for display rather than
+  /// re-localizing, so the visitor sees the same field name the
+  /// reviewer typed.
+  List<({String? fieldKey, String label, String reason})> _parseNotiz(
+      String notiz) {
+    final out = <({String? fieldKey, String label, String reason})>[];
+    final pattern = RegExp(r'^\s*([^:]+?):\s*(.+?)\s*$');
+    for (final raw in notiz.split('\n')) {
+      final line = raw.trim();
+      if (line.isEmpty) continue;
+      final m = pattern.firstMatch(line);
+      if (m == null) {
+        out.add((fieldKey: null, label: '', reason: line));
+        continue;
+      }
+      final label = m.group(1)!.trim();
+      final reason = m.group(2)!.trim();
+      final key = _notizFieldMap[label.toLowerCase()];
+      out.add((fieldKey: key, label: label, reason: reason));
+    }
+    return out;
+  }
+
+  /// Render the rejection notiz as either a stack of per-field rows
+  /// (when the Vorstand wrote it in `Field: Reason` form) or a single
+  /// red text block (legacy / freeform notiz). The header always reads
+  /// "Vorstand's reason:" — the field labels below carry the detail.
+  Widget _notizBox(String notiz, AppLocalizations l10n) {
+    final parsed = _parseNotiz(notiz);
+    final hasLabeledLines = parsed.any((p) => p.label.isNotEmpty);
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.red.shade100.withValues(alpha: 0.6),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.red.shade300),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.wizardFinalStufeRejectionReason,
+            style: TextStyle(
+              color: Colors.red.shade900,
+              fontSize: 10.5,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.5,
+            ),
+          ),
+          const SizedBox(height: 4),
+          if (!hasLabeledLines)
+            Text(
+              notiz,
+              style: TextStyle(
+                color: Colors.red.shade900,
+                fontSize: 12.5,
+                height: 1.4,
+              ),
+            )
+          else
+            ...parsed.map((p) {
+              final isLabeled = p.label.isNotEmpty;
+              return Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.close,
+                      color: Colors.red.shade700,
+                      size: 14,
+                    ),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: RichText(
+                        text: TextSpan(
+                          style: TextStyle(
+                            color: Colors.red.shade900,
+                            fontSize: 12.5,
+                            height: 1.4,
+                          ),
+                          children: [
+                            if (isLabeled) ...[
+                              TextSpan(
+                                text: '${p.label}: ',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                              TextSpan(text: p.reason),
+                            ] else
+                              TextSpan(text: p.reason),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }),
         ],
       ),
     );
