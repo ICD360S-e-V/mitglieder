@@ -76,6 +76,18 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   /// the chronological details sheet (tap the status card to open).
   List<WizardStufeStatus> _stufen = const [];
 
+  /// Snapshot of the visitor's wizard_drafts data, fetched once on
+  /// mount and refreshed whenever a correction screen pops. Drives the
+  /// per-Stufe data preview in the sheet (tap a Stufe row → expands
+  /// to show what was actually filled).
+  Map<String, dynamic> _userData = const {};
+
+  /// Which stufe row in the bottom sheet is currently expanded to show
+  /// its filled-data preview. Null = all rows collapsed. Survives
+  /// across sheet open/close so the visitor doesn't have to re-tap
+  /// after dismissing and re-opening.
+  int? _sheetExpandedStufe;
+
   /// Live ticker so the status card + details sheet flip the moment
   /// the Vorstand approves. 30 s cadence is gentle on the server,
   /// snappy enough for a screen the visitor stares at for a few
@@ -86,6 +98,18 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   void initState() {
     super.initState();
     _kickOffStatusPolling();
+    _loadUserData();
+  }
+
+  /// Pull the visitor's wizard_drafts data so the sheet can render the
+  /// actual field values under each Stufe. Non-fatal — if the fetch
+  /// fails, the sheet falls back to "no data available" placeholders
+  /// rather than erroring.
+  Future<void> _loadUserData() async {
+    final state = await WizardService().getState();
+    if (!mounted) return;
+    final data = (state?['data'] as Map<String, dynamic>?) ?? const {};
+    setState(() => _userData = data);
   }
 
   @override
@@ -603,9 +627,11 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       }
       // Force an immediate status refresh after the correction screen
       // pops so the rejected badge flips back to amber without waiting
-      // for the 30 s polling tick.
+      // for the 30 s polling tick. Also re-pull the draft data so the
+      // sheet's per-Stufe field preview reflects the edits.
       if (mounted) {
         await _checkStatus();
+        await _loadUserData();
       }
     } finally {
       if (mounted) {
@@ -685,7 +711,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       ),
       builder: (sheetCtx) => SafeArea(
         child: StatefulBuilder(
-          builder: (innerCtx, _) {
+          builder: (innerCtx, setSheetState) {
             return Padding(
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
               child: Column(
@@ -725,7 +751,14 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: _stufenRows(l10n),
+                        children: _stufenRows(
+                          l10n,
+                          expandedStufe: _sheetExpandedStufe,
+                          onToggle: (stufe) => setSheetState(() {
+                            _sheetExpandedStufe =
+                                _sheetExpandedStufe == stufe ? null : stufe;
+                          }),
+                        ),
                       ),
                     ),
                   ),
@@ -740,14 +773,24 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
 
   /// Build the 8 rows. When the probe hasn't returned yet we still
   /// render placeholders so the sheet has shape — no empty spinner.
-  List<Widget> _stufenRows(AppLocalizations l10n) {
+  List<Widget> _stufenRows(
+    AppLocalizations l10n, {
+    required int? expandedStufe,
+    required ValueChanged<int> onToggle,
+  }) {
     final byStufe = {for (final s in _stufen) s.stufe: s};
     return List.generate(8, (i) {
       final stufe = i + 1;
       final data = byStufe[stufe];
       return Padding(
         padding: const EdgeInsets.only(bottom: 8),
-        child: _stufenRow(stufe, data, l10n),
+        child: _stufenRow(
+          stufe,
+          data,
+          l10n,
+          expanded: expandedStufe == stufe,
+          onToggle: () => onToggle(stufe),
+        ),
       );
     });
   }
@@ -755,8 +798,10 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   Widget _stufenRow(
     int stufe,
     WizardStufeStatus? data,
-    AppLocalizations l10n,
-  ) {
+    AppLocalizations l10n, {
+    required bool expanded,
+    required VoidCallback onToggle,
+  }) {
     final title = _stufeTitle(stufe, l10n);
     final status = data?.status ?? 'offen';
     final isRejected = status == 'abgelehnt';
@@ -766,10 +811,15 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     final timestampPrefix = data?.geprueftAm != null
         ? l10n.wizardFinalStufeReviewedAt
         : l10n.wizardFinalStufeFilledAt;
-    return Container(
+    return Material(
+      color: isRejected ? Colors.red.shade50 : Colors.grey.shade50,
+      borderRadius: BorderRadius.circular(10),
+      child: InkWell(
+        onTap: onToggle,
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: isRejected ? Colors.red.shade50 : Colors.grey.shade50,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: isRejected ? Colors.red.shade200 : Colors.grey.shade300,
@@ -803,13 +853,28 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: Color(0xFF0d47a1),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          color: Color(0xFF0d47a1),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                    AnimatedRotation(
+                      turns: expanded ? 0.5 : 0,
+                      duration: const Duration(milliseconds: 200),
+                      child: Icon(
+                        Icons.expand_more,
+                        color: Colors.grey.shade600,
+                        size: 22,
+                      ),
+                    ),
+                  ],
                 ),
                 if (timestamp != null) ...[
                   const SizedBox(height: 2),
@@ -881,13 +946,256 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                     ),
                   ],
                 ],
+                if (expanded) ...[
+                  const SizedBox(height: 10),
+                  _stufenDataPreview(stufe, l10n),
+                ],
               ],
             ),
           ),
         ],
       ),
+        ),
+      ),
     );
   }
+
+  /// Per-Stufe data preview rendered under the row when expanded.
+  /// Pulls values from _userData (the wizard_drafts snapshot fetched
+  /// on mount) and formats them as a compact "Label: value" list.
+  /// Stufe 6/7/8 don't carry data, just a "Read on …" line driven by
+  /// the ausgefuellt_am timestamp on the verifizierung row.
+  Widget _stufenDataPreview(int stufe, AppLocalizations l10n) {
+    final entries = _previewEntriesFor(stufe, l10n);
+    if (entries.isEmpty) {
+      return Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        child: Text(
+          l10n.wizardFinalStufeNoDataYet,
+          style: TextStyle(
+            color: Colors.grey.shade600,
+            fontSize: 12.5,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      );
+    }
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          for (var i = 0; i < entries.length; i++) ...[
+            if (i > 0) const SizedBox(height: 6),
+            _previewLine(entries[i].label, entries[i].value),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _previewLine(String label, String value) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: 120,
+          child: Text(
+            label,
+            style: TextStyle(
+              color: Colors.grey.shade700,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            value.isEmpty ? '—' : value,
+            style: TextStyle(
+              color: value.isEmpty
+                  ? Colors.grey.shade400
+                  : const Color(0xFF0d47a1),
+              fontSize: 12.5,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Map a Stufe number to the list of (label, value) pairs we want to
+  /// preview under its expanded row. Values come from _userData. Empty
+  /// list means "no preview available for this Stufe yet" — the caller
+  /// renders the placeholder.
+  List<({String label, String value})> _previewEntriesFor(
+      int stufe, AppLocalizations l10n) {
+    final d = _userData;
+    if (d.isEmpty && stufe <= 5) return const [];
+    String s(String key) => (d[key] ?? '').toString().trim();
+
+    switch (stufe) {
+      case 1:
+        final addressLine = [s('strasse'), s('hausnummer')]
+            .where((p) => p.isNotEmpty)
+            .join(' ');
+        final cityLine = [s('plz'), s('ort')]
+            .where((p) => p.isNotEmpty)
+            .join(' ');
+        return [
+          (label: l10n.wizardStufe1aVornameLabel,         value: s('vorname')),
+          (label: l10n.wizardStufe1aNachnameLabel,        value: s('nachname')),
+          if (s('geburtsname').isNotEmpty)
+            (label: l10n.wizardStufe1aGeburtsnameLabel,   value: s('geburtsname')),
+          (label: l10n.wizardStufe1bGeburtsdatumLabel,    value: _fmtBirthdate(s('geburtsdatum'))),
+          (label: l10n.wizardStufe1bGeburtsortLabel,      value: s('geburtsort')),
+          (label: l10n.wizardStufe1cGeschlechtLabel,      value: _geschlechtLabel(s('geschlecht'), l10n)),
+          (label: l10n.wizardStufe1cFamilienstandLabel,   value: _familienstandLabel(s('familienstand'), l10n)),
+          (label: l10n.wizardStufe1dStaatLabel,           value: s('staatsangehoerigkeit')),
+          (label: l10n.wizardStufe1dAufenthaltLabel,      value: _aufenthaltsstatusLabel(s('aufenthaltsstatus'), l10n)),
+          (label: l10n.wizardStufe1dMutterspracheLabel,   value: s('muttersprache')),
+          (label: l10n.wizardStufe1eStrasseLabel,         value: addressLine),
+          (label: l10n.wizardStufe1ePlzLabel,             value: cityLine),
+          (label: l10n.wizardStufe1eLandLabel,            value: s('land')),
+          (label: l10n.wizardStufe1fTelefonLabel,         value: s('telefon_mobil')),
+          (label: l10n.wizardStufe1fEmailLabel,           value: s('email')),
+        ];
+      case 2:
+        return [
+          (label: l10n.wizardStufe2Title,
+           value: _mitgliedsartLabel(s('mitgliedsart'), l10n)),
+        ];
+      case 3:
+        return [
+          (label: l10n.wizardStufe3Title,
+           value: _finanzielleSituationLabel(s('finanzielle_situation'), l10n)),
+        ];
+      case 4:
+        if (_isBeitragsfreiFromData(d)) {
+          return [
+            (label: l10n.wizardStufe4Title,
+             value: l10n.wizardFinalStufeBeitragsfrei),
+          ];
+        }
+        return [
+          (label: 'Zahlungsmethode',
+           value: _zahlungsmethodeLabel(s('zahlungsmethode'), l10n)),
+          (label: 'Zahlungstag',
+           value: s('zahlungstag')),
+        ];
+      case 5:
+        final opt = s('mitgliedschaftsbeginn_option');
+        final dt  = s('mitgliedschaftsbeginn_datum');
+        final value = opt == 'anderes_datum' && dt.isNotEmpty
+            ? '${_mitgliedschaftsbeginnLabel(opt, l10n)} (${_fmtBirthdate(dt)})'
+            : _mitgliedschaftsbeginnLabel(opt, l10n);
+        return [
+          (label: l10n.wizardStufe5Title, value: value),
+        ];
+      case 6:
+      case 7:
+      case 8:
+        // Documents have no payload — surface accepted-at if we have it.
+        final stufeStatus = _stufen.firstWhere(
+          (st) => st.stufe == stufe,
+          orElse: () => const WizardStufeStatus(stufe: 0, status: 'offen'),
+        );
+        final ts = stufeStatus.ausgefuelltAm;
+        return [
+          (label: l10n.wizardFinalStufeReadAt,
+           value: ts != null ? _fmtDateTime(ts) : '—'),
+        ];
+      default:
+        return const [];
+    }
+  }
+
+  String _fmtBirthdate(String iso) {
+    if (iso.isEmpty) return '';
+    final dt = DateTime.tryParse(iso);
+    if (dt == null) return iso;
+    String two(int v) => v.toString().padLeft(2, '0');
+    return '${two(dt.day)}.${two(dt.month)}.${dt.year}';
+  }
+
+  String _geschlechtLabel(String key, AppLocalizations l10n) => switch (key) {
+        'maennlich' => l10n.wizardStufe1cGeschlechtMaennlich,
+        'weiblich'  => l10n.wizardStufe1cGeschlechtWeiblich,
+        'divers'    => l10n.wizardStufe1cGeschlechtDivers,
+        _           => key,
+      };
+
+  String _familienstandLabel(String key, AppLocalizations l10n) => switch (key) {
+        'ledig'       => l10n.wizardStufe1cFamilienstandLedig,
+        'verheiratet' => l10n.wizardStufe1cFamilienstandVerheiratet,
+        'geschieden'  => l10n.wizardStufe1cFamilienstandGeschieden,
+        'verwitwet'   => l10n.wizardStufe1cFamilienstandVerwitwet,
+        _             => key,
+      };
+
+  String _aufenthaltsstatusLabel(String key, AppLocalizations l10n) => switch (key) {
+        ''                          => '',
+        'deutsch'                   => l10n.wizardStufe1dAufenthaltGerman,
+        'eu_eea_freizuegigkeit'     => l10n.wizardStufe1dAufenthaltEuEea,
+        'aufenthaltserlaubnis'      =>
+          'Aufenthaltserlaubnis (${l10n.wizardStufe1dAufenthaltTempHint})',
+        'niederlassungserlaubnis'   =>
+          'Niederlassungserlaubnis (${l10n.wizardStufe1dAufenthaltPermHint})',
+        'daueraufenthalt_eu'        => 'Daueraufenthalt-EU',
+        'blaue_karte_eu'            => 'Blaue Karte EU',
+        'asylberechtigt'            => 'Asylberechtigt (Art. 16a GG)',
+        'fluechtling_gfk'           => 'Anerkannter Flüchtling (GFK § 25 Abs. 2)',
+        'subsidiaerer_schutz'       => 'Subsidiärer Schutz',
+        'aufenthaltsgestattung'     =>
+          'Aufenthaltsgestattung (${l10n.wizardStufe1dAufenthaltAsylumProcessHint})',
+        'duldung'                   => 'Duldung (§ 60a)',
+        'humanitaer'                => 'Humanitärer Aufenthalt (§ 25 Abs. 4/5)',
+        'sonstige'                  => l10n.wizardStufe1dAufenthaltOther,
+        _                           => key,  // Vorstand-written free text passes through
+      };
+
+  String _mitgliedsartLabel(String key, AppLocalizations l10n) => switch (key) {
+        'ordentlich'      => l10n.memberType_ordentlich,
+        'foerdermitglied' => l10n.memberType_foerder,
+        'ehrenmitglied'   => l10n.memberType_ehren,
+        _                 => key,
+      };
+
+  String _finanzielleSituationLabel(String key, AppLocalizations l10n) => switch (key) {
+        'buergergeld'   => 'Bürgergeld (SGB II)',
+        'sozialamt'     => 'Sozialamt (SGB XII)',
+        'alg1'          => 'Arbeitslosengeld I',
+        'krankengeld'   => 'Krankengeld',
+        'nein'          => l10n.wizardFinalStufeNotExempt,
+        _               => key,
+      };
+
+  String _zahlungsmethodeLabel(String key, AppLocalizations l10n) => switch (key) {
+        'ueberweisung'      => l10n.payMethod_ueberweisung,
+        'sepa_lastschrift'  => 'SEPA-Lastschrift',
+        'dauerauftrag'      => l10n.payMethod_dauerauftrag,
+        _                   => key,
+      };
+
+  String _mitgliedschaftsbeginnLabel(String key, AppLocalizations l10n) => switch (key) {
+        'ab_verifizierung' => l10n.wizardFinalStufeBeginAtVerification,
+        'gruendungsdatum'  => l10n.wizardFinalStufeBeginAtFoundation,
+        'anderes_datum'    => l10n.wizardFinalStufeBeginAtCustom,
+        _                  => key,
+      };
 
   /// Parse a multi-line notiz coming back from check_status.php into
   /// labeled per-field rows. Vorsitzer's Verifizierung tab now lets the
