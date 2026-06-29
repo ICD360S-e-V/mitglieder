@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.61.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.60.0...v1.61.0) (2026-06-29)
+
+
+### Features
+
+* **wizard:** parse Vorstand's multi-line notiz into per-field reasons ([84f6f1b](https://github.com/ICD360S-e-V/mitglieder/commit/84f6f1b4bd69804fd71b0bb4399a1e2331f00dd4))
+
 ## [1.60.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.59.0...v1.60.0) (2026-06-28)
 
 
