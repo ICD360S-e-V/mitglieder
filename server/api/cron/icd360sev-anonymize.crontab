@@ -1,0 +1,5 @@
+# ICD360S wizard — daily anonymisation sweep of withdrawn registrations
+# whose 3-year retention window has elapsed. Runs at 03:15 each night
+# (low-traffic window). Script is idempotent + capped at 1000 rows/run.
+# Repo source: server/api/cron/anonymize_expired_users.php
+15 3 * * * root /usr/local/bin/php /var/www/icd360sev.icd360s.de/api/cron/anonymize_expired_users.php >> /var/log/icd360sev-anonymize.log 2>&1
