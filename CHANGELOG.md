@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.64.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.64.0...v1.64.1) (2026-06-29)
+
+
+### Bug Fixes
+
+* **wizard:** use canonical trailing-slash URLs for legal documents ([2655b41](https://github.com/ICD360S-e-V/mitglieder/commit/2655b41c029a38f204b82dca025a3cf25624dfdb))
+
 ## [1.64.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.63.0...v1.64.0) (2026-06-29)
 
 
