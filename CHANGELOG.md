@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.62.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.61.0...v1.62.0) (2026-06-29)
+
+
+### Features
+
+* **wizard:** tap a Stufe row to preview the filled data ([c632b1d](https://github.com/ICD360S-e-V/mitglieder/commit/c632b1d918b269ff1b7bcc19671a77b4b1fa8ee6))
+
 ## [1.61.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.60.0...v1.61.0) (2026-06-29)
 
 
