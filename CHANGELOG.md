@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.64.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.63.0...v1.64.0) (2026-06-29)
+
+
+### Features
+
+* **wizard:** full audit trail for Satzung/Datenschutz/Widerrufsbelehrung acceptance ([7bc49eb](https://github.com/ICD360S-e-V/mitglieder/commit/7bc49eb1ee2547ec96f99db0eaef68b281ed9c8f))
+
 ## [1.63.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.62.0...v1.63.0) (2026-06-29)
 
 
