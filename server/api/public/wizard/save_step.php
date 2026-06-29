@@ -86,6 +86,67 @@ if (!isset($stepFields[$step])) {
     jsonResponse(false, [], 'Unknown step');
 }
 
+/**
+ * Fetch + cache the current version metadata for one of the three legal
+ * documents the wizard surfaces at Stufe 6/7/8. The SHA256 of the
+ * fetched HTML is what we anchor the per-user acceptance against, so
+ * an after-the-fact change on icd360s.de is detectable from the
+ * `document_acceptances.document_content_hash` snapshot.
+ *
+ * Cached on disk for 1 hour to avoid hitting the public site on every
+ * save_step call. Falls back to a stale cache entry if the live fetch
+ * fails (network blip) — last-known good is better than null.
+ *
+ * Returns null only when both the live fetch and the cache lookup fail
+ * (cold path, no public site, no cache file). Callers must handle null
+ * by logging + continuing — the audit-trail row is best-effort.
+ */
+function lookup_document_metadata(string $kind): ?array {
+    static $urls = [
+        'satzung'             => 'https://icd360s.de/satzung360s/',
+        'datenschutz'         => 'https://icd360s.de/datenschutz',
+        'widerrufsbelehrung'  => 'https://icd360s.de/widerrufsrecht',
+    ];
+    if (!isset($urls[$kind])) return null;
+    $url       = $urls[$kind];
+    $cacheDir  = sys_get_temp_dir() . '/icd360sev_doc_cache';
+    if (!is_dir($cacheDir)) @mkdir($cacheDir, 0700, true);
+    $cacheFile = $cacheDir . '/' . $kind . '.json';
+
+    if (is_file($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+        $cached = @json_decode((string)@file_get_contents($cacheFile), true);
+        if (is_array($cached) && !empty($cached['content_hash'])) {
+            return ['url' => $url] + $cached;
+        }
+    }
+
+    $ctx = stream_context_create([
+        'http' => [
+            'timeout' => 10,
+            'header'  => "User-Agent: ICD360S-wizard-server/1.0\r\n",
+        ],
+        'ssl'  => ['verify_peer' => true, 'verify_peer_name' => true],
+    ]);
+    $html = @file_get_contents($url, false, $ctx);
+    if ($html === false || strlen($html) < 100) {
+        if (is_file($cacheFile)) {
+            $cached = @json_decode((string)@file_get_contents($cacheFile), true);
+            if (is_array($cached) && !empty($cached['content_hash'])) {
+                return ['url' => $url] + $cached;
+            }
+        }
+        return null;
+    }
+
+    $meta = [
+        'url'          => $url,
+        'version'      => date('Y-m-d'),
+        'content_hash' => hash('sha256', $html),
+    ];
+    @file_put_contents($cacheFile, json_encode($meta));
+    return $meta;
+}
+
 // Every wizard sub-step that maps to a Verifizierung Stufe also
 // stamps the precise completion moment (date + time + second). The
 // Vorstand needs this for DSGVO Art. 7 audit (when did the visitor
@@ -243,6 +304,74 @@ try {
                       WHERE user_id = ? AND stufe = ?
                         AND status IN ("offen", "abgelehnt")'
                 )->execute([$stubUserId, $completionStufe]);
+            }
+
+            // Stufen 6/7/8 = legal-document accepts. Capture the full
+            // audit-trail evidence row in document_acceptances. Mirrors
+            // the pattern already in use for parent_consent_signatures.
+            // UPSERT lets the visitor re-accept after a (would-be)
+            // Vorstand rejection (though we currently block such
+            // rejections server-side; the upsert is future-proofing).
+            $docKind = match ($step) {
+                '6' => 'satzung',
+                '7' => 'datenschutz',
+                '8' => 'widerrufsbelehrung',
+                default => null,
+            };
+            if ($docKind !== null) {
+                $meta = lookup_document_metadata($docKind);
+                if ($meta !== null) {
+                    $scrolledToEnd = isset($data['scrolled_to_end'])
+                        ? (int)((bool)$data['scrolled_to_end']) : 0;
+                    $acceptedLocal = isset($data['accepted_at_local'])
+                        ? substr((string)$data['accepted_at_local'], 0, 50) : null;
+                    $ipAddress = substr(
+                        (string)($_SERVER['REMOTE_ADDR'] ?? '0.0.0.0'), 0, 45
+                    );
+                    $userAgent = substr(
+                        (string)($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 500
+                    );
+                    $deviceId  = substr($anonymous_id, 0, 64);
+                    $acceptedUtc = gmdate('Y-m-d H:i:s');
+
+                    // Canonical concatenation, then SHA256, gives a
+                    // tamper-evidence anchor: any later DB mutation
+                    // breaks the recomputation.
+                    $fullHashInput = implode('|', [
+                        $stubUserId, $docKind, $meta['version'], $meta['url'],
+                        $meta['content_hash'], $acceptedUtc, $acceptedLocal ?? '',
+                        $ipAddress, $userAgent, $deviceId, $scrolledToEnd,
+                    ]);
+                    $fullHash = hash('sha256', $fullHashInput);
+
+                    $pdo->prepare(
+                        'INSERT INTO document_acceptances
+                          (user_id, document_kind, document_version, document_url,
+                           document_content_hash, accepted_at_utc, accepted_at_local,
+                           ip_address, user_agent, device_id, scrolled_to_end,
+                           full_hash)
+                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                         ON DUPLICATE KEY UPDATE
+                           document_version      = VALUES(document_version),
+                           document_url          = VALUES(document_url),
+                           document_content_hash = VALUES(document_content_hash),
+                           accepted_at_utc       = VALUES(accepted_at_utc),
+                           accepted_at_local     = VALUES(accepted_at_local),
+                           ip_address            = VALUES(ip_address),
+                           user_agent            = VALUES(user_agent),
+                           device_id             = VALUES(device_id),
+                           scrolled_to_end       = VALUES(scrolled_to_end),
+                           full_hash             = VALUES(full_hash)'
+                    )->execute([
+                        $stubUserId, $docKind, $meta['version'], $meta['url'],
+                        $meta['content_hash'], $acceptedUtc, $acceptedLocal,
+                        $ipAddress, $userAgent, $deviceId, $scrolledToEnd,
+                        $fullHash,
+                    ]);
+                } else {
+                    error_log('[wizard/save_step] document metadata lookup '
+                              . 'failed for kind=' . $docKind . ' step=' . $step);
+                }
             }
         } catch (PDOException $e) {
             error_log('[wizard/save_step user_mirror] ' . $e->getMessage());

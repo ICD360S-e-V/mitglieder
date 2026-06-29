@@ -198,8 +198,20 @@ class _WizardDocumentAcceptScreenState
   Future<void> _submit() async {
     if (!_canSubmit) return;
     setState(() => _saving = true);
+    // The server's save_step.php uses these two extra signals to
+    // populate the document_acceptances audit trail (Art. 7 DSGVO
+    // Beweislast). scrolled_to_end captures whether the visitor
+    // reached the bottom of the in-app WebView (true when accept was
+    // gated by scroll), or false when they opened the document in an
+    // external browser (we can't track scroll there). accepted_at_local
+    // is the wall-clock with the device's IANA timezone so the audit
+    // row carries the visitor's perceived moment of consent, not just
+    // the server-side UTC.
+    final localTs = DateTime.now().toIso8601String();
     final ok = await WizardService().saveStep(widget.step, {
       widget.dataKey: 1,
+      'scrolled_to_end': _scrolledToBottom,
+      'accepted_at_local': localTs,
     });
     if (!mounted) return;
     setState(() => _saving = false);
