@@ -102,10 +102,16 @@ if (!isset($stepFields[$step])) {
  * by logging + continuing — the audit-trail row is best-effort.
  */
 function lookup_document_metadata(string $kind): ?array {
+    // Canonical URLs — trailing slash matters. icd360s.de returns 301
+    // for the non-slash variants of /datenschutz and /widerrufsrecht.
+    // PHP's follow_location is on by default so the hash still hits
+    // the right HTML, but storing the canonical form keeps
+    // document_acceptances.document_url aligned with what the Vorstand
+    // UI in vorsitzer opens for the live-version comparison.
     static $urls = [
         'satzung'             => 'https://icd360s.de/satzung360s/',
-        'datenschutz'         => 'https://icd360s.de/datenschutz',
-        'widerrufsbelehrung'  => 'https://icd360s.de/widerrufsrecht',
+        'datenschutz'         => 'https://icd360s.de/datenschutz/',
+        'widerrufsbelehrung'  => 'https://icd360s.de/widerrufsrecht/',
     ];
     if (!isset($urls[$kind])) return null;
     $url       = $urls[$kind];

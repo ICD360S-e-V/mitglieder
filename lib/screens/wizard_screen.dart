@@ -65,14 +65,14 @@ const _kDocs = <_DocSpec>[
     step: WizardStep.stufe7,
     dataKey: 'datenschutz_read',
     documentName: 'Datenschutzerklärung',
-    url: 'https://icd360s.de/datenschutz',
+    url: 'https://icd360s.de/datenschutz/',
   ),
   _DocSpec(
     stepNumber: 8,
     step: WizardStep.stufe8,
     dataKey: 'widerrufsbelehrung_read',
     documentName: 'Widerrufsbelehrung',
-    url: 'https://icd360s.de/widerrufsrecht',
+    url: 'https://icd360s.de/widerrufsrecht/',
   ),
 ];
 
