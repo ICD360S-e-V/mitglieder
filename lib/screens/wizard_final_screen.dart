@@ -1071,7 +1071,11 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           (label: l10n.wizardStufe1ePlzLabel,             value: cityLine),
           (label: l10n.wizardStufe1eLandLabel,            value: s('land')),
           (label: l10n.wizardStufe1fTelefonLabel,         value: s('telefon_mobil')),
-          (label: l10n.wizardStufe1fEmailLabel,           value: s('email')),
+          // Email is computed live from the mitgliedernummer so the
+          // preview always shows the canonical digits-only address
+          // (M12345 → 12345@icd360s.de), even when the draft was
+          // saved before the prefix-strip migration.
+          (label: l10n.wizardStufe1fEmailLabel,           value: _derivedEmailFromMnr() ?? s('email')),
         ];
       case 2:
         return [
@@ -1121,6 +1125,16 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       default:
         return const [];
     }
+  }
+
+  /// Derive the canonical `<digits>@icd360s.de` email from the cached
+  /// mitgliedernummer. Returns null if the mnr isn't available yet
+  /// (defensive — the Stufe-1 preview should always have it because
+  /// finalize/check_age guarantee one before this screen renders).
+  String? _derivedEmailFromMnr() {
+    final mnr = widget.result.mitgliedernummer;
+    if (mnr.length < 2) return null;
+    return '${mnr.substring(1)}@icd360s.de';
   }
 
   String _fmtBirthdate(String iso) {
