@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Reden van het Vorstand:",
   "wizardFinalStufeCorrectNow": "Nu corrigeren",
+  "wizardFinalApprovalsHeader": "Vorstand-goedkeuringen ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Wachten op 2e Vorstand",
+  "wizardFinalApprovalRejected": "AFGEWEZEN",
   "wizardFinalStufeNoDataYet": "Gegevens nog niet beschikbaar.",
   "wizardFinalStufeReadAt": "Gelezen op:",
   "wizardFinalStufeBeitragsfrei": "Contributievrij (geen betaling vereist)",

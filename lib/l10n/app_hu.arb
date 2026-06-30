@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "A Vorstand indoklása:",
   "wizardFinalStufeCorrectNow": "Javítás most",
+  "wizardFinalApprovalsHeader": "Vorstand jóváhagyások ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Várjuk a 2. Vorstandot",
+  "wizardFinalApprovalRejected": "ELUTASÍTVA",
   "wizardFinalStufeNoDataYet": "Az adatok még nem érhetők el.",
   "wizardFinalStufeReadAt": "Olvasva:",
   "wizardFinalStufeBeitragsfrei": "Tagdíjmentes (nincs fizetés)",

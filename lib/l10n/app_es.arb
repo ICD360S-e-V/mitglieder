@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Motivo del Vorstand:",
   "wizardFinalStufeCorrectNow": "Corregir ahora",
+  "wizardFinalApprovalsHeader": "Aprobaciones del Vorstand ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Esperando al 2.º Vorstand",
+  "wizardFinalApprovalRejected": "RECHAZADO",
   "wizardFinalStufeNoDataYet": "Datos aún no disponibles.",
   "wizardFinalStufeReadAt": "Leído el:",
   "wizardFinalStufeBeitragsfrei": "Exento de cuota (sin pago)",

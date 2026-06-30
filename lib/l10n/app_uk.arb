@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Причина Vorstand:",
   "wizardFinalStufeCorrectNow": "Виправити зараз",
+  "wizardFinalApprovalsHeader": "Схвалення Vorstand ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Очікуємо 2-го Vorstand",
+  "wizardFinalApprovalRejected": "ВІДХИЛЕНО",
   "wizardFinalStufeNoDataYet": "Дані поки що недоступні.",
   "wizardFinalStufeReadAt": "Прочитано:",
   "wizardFinalStufeBeitragsfrei": "Звільнено від внеску (без оплати)",

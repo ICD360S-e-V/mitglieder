@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Motivul Vorstand-ului:",
   "wizardFinalStufeCorrectNow": "Corectează acum",
+  "wizardFinalApprovalsHeader": "Aprobări Vorstand ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Așteptăm al 2-lea Vorstand",
+  "wizardFinalApprovalRejected": "RESPINS",
   "wizardFinalStufeNoDataYet": "Datele nu sunt încă disponibile.",
   "wizardFinalStufeReadAt": "Citit la:",
   "wizardFinalStufeBeitragsfrei": "Scutit de contribuție (fără plată)",

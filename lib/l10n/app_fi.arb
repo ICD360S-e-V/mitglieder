@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Vorstandin perustelu:",
   "wizardFinalStufeCorrectNow": "Korjaa nyt",
+  "wizardFinalApprovalsHeader": "Vorstandin hyväksynnät ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Odotetaan 2. Vorstandia",
+  "wizardFinalApprovalRejected": "HYLÄTTY",
   "wizardFinalStufeNoDataYet": "Tietoja ei ole vielä saatavilla.",
   "wizardFinalStufeReadAt": "Luettu:",
   "wizardFinalStufeBeitragsfrei": "Maksuvapaa (ei maksua)",

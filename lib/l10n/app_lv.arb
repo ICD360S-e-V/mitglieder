@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Vorstanda iemesls:",
   "wizardFinalStufeCorrectNow": "Labot tagad",
+  "wizardFinalApprovalsHeader": "Vorstanda apstiprinājumi ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Gaida 2. Vorstandu",
+  "wizardFinalApprovalRejected": "NORAIDĪTS",
   "wizardFinalStufeNoDataYet": "Dati vēl nav pieejami.",
   "wizardFinalStufeReadAt": "Izlasīts:",
   "wizardFinalStufeBeitragsfrei": "Atbrīvots no biedra naudas (nav jāmaksā)",

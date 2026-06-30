@@ -1293,6 +1293,15 @@
   },
   "wizardFinalStufeRejectionReason": "سبب المجلس:",
   "wizardFinalStufeCorrectNow": "تصحيح الآن",
+  "wizardFinalApprovalsHeader": "اعتمادات Vorstand ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "بانتظار عضو Vorstand الثاني",
+  "wizardFinalApprovalRejected": "مرفوض",
   "wizardFinalStufeNoDataYet": "البيانات غير متوفرة بعد.",
   "wizardFinalStufeReadAt": "تمت القراءة في:",
   "wizardFinalStufeBeitragsfrei": "معفى من الرسوم (لا يلزم الدفع)",

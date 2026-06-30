@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Причина от Vorstand:",
   "wizardFinalStufeCorrectNow": "Исправить сейчас",
+  "wizardFinalApprovalsHeader": "Одобрения Vorstand ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Ожидаем 2-го Vorstand",
+  "wizardFinalApprovalRejected": "ОТКЛОНЕНО",
   "wizardFinalStufeNoDataYet": "Данные пока недоступны.",
   "wizardFinalStufeReadAt": "Прочитано:",
   "wizardFinalStufeBeitragsfrei": "Освобождён от взноса (без оплаты)",

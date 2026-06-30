@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Begrunnelse fra Vorstand:",
   "wizardFinalStufeCorrectNow": "Rett nå",
+  "wizardFinalApprovalsHeader": "Vorstand-godkjenninger ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Venter på 2. Vorstand",
+  "wizardFinalApprovalRejected": "AVVIST",
   "wizardFinalStufeNoDataYet": "Data er ikke tilgjengelig ennå.",
   "wizardFinalStufeReadAt": "Lest:",
   "wizardFinalStufeBeitragsfrei": "Kontingentfri (ingen betaling)",

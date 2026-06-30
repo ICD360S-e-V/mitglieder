@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Begrundelse fra Vorstand:",
   "wizardFinalStufeCorrectNow": "Ret nu",
+  "wizardFinalApprovalsHeader": "Vorstand-godkendelser ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Afventer 2. Vorstand",
+  "wizardFinalApprovalRejected": "AFVIST",
   "wizardFinalStufeNoDataYet": "Data er endnu ikke tilgængelige.",
   "wizardFinalStufeReadAt": "Læst den:",
   "wizardFinalStufeBeitragsfrei": "Kontingentfri (ingen betaling)",

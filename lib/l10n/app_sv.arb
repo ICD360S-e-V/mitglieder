@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Skäl från Vorstand:",
   "wizardFinalStufeCorrectNow": "Rätta nu",
+  "wizardFinalApprovalsHeader": "Vorstand-godkännanden ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Väntar på 2:a Vorstand",
+  "wizardFinalApprovalRejected": "AVVISAD",
   "wizardFinalStufeNoDataYet": "Data ännu inte tillgänglig.",
   "wizardFinalStufeReadAt": "Läst:",
   "wizardFinalStufeBeitragsfrei": "Avgiftsbefriad (ingen betalning)",

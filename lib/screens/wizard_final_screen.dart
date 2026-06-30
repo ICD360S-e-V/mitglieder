@@ -393,13 +393,19 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   /// (status='geprueft'). Drives the "X/8" pill on the Status Card +
   /// the linear progress bar — visitor sees concrete movement as each
   /// Stufe gets approved instead of staring at an opaque "in progress".
+  /// Count of Stufen that satisfy the dual-approval rule: 2 distinct
+  /// geprueft votes recorded and no abgelehnt vote. Drives the X/8
+  /// pill on the Status Card + the linear progress bar.
   int get _geprueftCount =>
-      _stufen.where((s) => s.status == 'geprueft').length;
+      _stufen.where((s) => s.isFullyApproved).length;
 
-  /// Stufen the Vorstand explicitly rejected — visitor needs to fix
-  /// these before the application can move forward.
+  /// Stufen blocked by any Vorstand abgelehnt vote — visitor needs to
+  /// correct these before the application can move forward. Includes
+  /// rows where the user_verifizierung row carries status='abgelehnt'
+  /// AND rows where a single approval row has decision='abgelehnt'
+  /// (model.isRejected covers both).
   List<WizardStufeStatus> get _rejectedStufen =>
-      _stufen.where((s) => s.status == 'abgelehnt').toList();
+      _stufen.where((s) => s.isRejected).toList();
 
   Widget _statusCard(AppLocalizations l10n) {
     final hasRejection = _rejectedStufen.isNotEmpty;
@@ -888,31 +894,40 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                   ),
                 ],
                 const SizedBox(height: 6),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8, vertical: 3),
-                  decoration: BoxDecoration(
-                    color: badgeColor.withValues(alpha: 0.16),
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                        color: badgeColor.withValues(alpha: 0.55)),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(badgeIcon, color: badgeColor, size: 14),
-                      const SizedBox(width: 4),
-                      Text(
-                        badgeText,
-                        style: TextStyle(
-                          color: badgeColor.shade900,
-                          fontSize: 11.5,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.3,
-                        ),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: badgeColor.withValues(alpha: 0.16),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                            color: badgeColor.withValues(alpha: 0.55)),
                       ),
-                    ],
-                  ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(badgeIcon, color: badgeColor, size: 14),
+                          const SizedBox(width: 4),
+                          Text(
+                            badgeText,
+                            style: TextStyle(
+                              color: badgeColor.shade900,
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.3,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    // Dual-approval dots: ◉◉ when both Vorstand votes
+                    // are in, ◉◯ at 1/2, ◯◯ when no Vorstand has voted
+                    // yet, ✗◯ / ✗✗ when any abgelehnt landed.
+                    _approvalDots(data),
+                  ],
                 ),
                 if (isRejected) ...[
                   if (data?.notiz != null && data!.notiz!.isNotEmpty) ...[
@@ -949,6 +964,10 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                 if (expanded) ...[
                   const SizedBox(height: 10),
                   _stufenDataPreview(stufe, l10n),
+                  if (data != null && data.approvals.isNotEmpty) ...[
+                    const SizedBox(height: 8),
+                    _approvalsList(data, l10n),
+                  ],
                 ],
               ],
             ),
@@ -965,6 +984,157 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   /// on mount) and formats them as a compact "Label: value" list.
   /// Stufe 6/7/8 don't carry data, just a "Read on …" line driven by
   /// the ausgefuellt_am timestamp on the verifizierung row.
+  /// Two dots showing the dual-approval progress on a Stufe row.
+  /// ●● = both votes in (Vorstand-approved final), ●○ = waiting on
+  /// the 2. Vorstand, ○○ = no votes yet. Any abgelehnt vote turns the
+  /// dot red with an ✗ — the visitor needs to correct + the cycle
+  /// restarts.
+  Widget _approvalDots(WizardStufeStatus? data) {
+    final approvals = data?.approvals ?? const [];
+    Widget dot(int slot) {
+      if (slot >= approvals.length) {
+        return Icon(Icons.radio_button_unchecked,
+            color: Colors.grey.shade400, size: 14);
+      }
+      final a = approvals[slot];
+      if (a.isRejection) {
+        return Icon(Icons.cancel,
+            color: Colors.red.shade600, size: 14);
+      }
+      return Icon(Icons.check_circle,
+          color: Colors.green.shade600, size: 14);
+    }
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        dot(0),
+        const SizedBox(width: 3),
+        dot(1),
+      ],
+    );
+  }
+
+  /// List of who voted what + when, rendered under the expanded
+  /// Stufe row. Lets the visitor see exactly which Vorstand members
+  /// have validated their data so far and which are still pending.
+  Widget _approvalsList(WizardStufeStatus data, AppLocalizations l10n) {
+    final approved = data.approvals.where((a) => a.isApproval).toList();
+    final rejected = data.approvals.where((a) => a.isRejection).toList();
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.wizardFinalApprovalsHeader(approved.length, 2),
+            style: TextStyle(
+              color: Colors.grey.shade700,
+              fontSize: 11,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.4,
+            ),
+          ),
+          const SizedBox(height: 6),
+          for (final a in approved) ...[
+            _approvalLine(
+              icon: Icons.check_circle,
+              tint: Colors.green.shade700,
+              name: a.approverName,
+              timestamp: a.approvedAt,
+            ),
+            const SizedBox(height: 4),
+          ],
+          if (approved.length < 2 && rejected.isEmpty)
+            _approvalLine(
+              icon: Icons.schedule,
+              tint: Colors.grey.shade500,
+              name: l10n.wizardFinalApprovalAwaiting,
+              timestamp: null,
+            ),
+          for (final r in rejected) ...[
+            const SizedBox(height: 4),
+            _approvalLine(
+              icon: Icons.cancel,
+              tint: Colors.red.shade700,
+              name: r.approverName,
+              timestamp: r.approvedAt,
+              suffix: l10n.wizardFinalApprovalRejected,
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _approvalLine({
+    required IconData icon,
+    required Color tint,
+    required String name,
+    required DateTime? timestamp,
+    String? suffix,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, color: tint, size: 14),
+        const SizedBox(width: 6),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      name,
+                      style: TextStyle(
+                        color: const Color(0xFF0d47a1),
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  if (suffix != null)
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 6, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: tint.withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        suffix,
+                        style: TextStyle(
+                          color: tint,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              if (timestamp != null)
+                Text(
+                  _fmtDateTime(timestamp),
+                  style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 11,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _stufenDataPreview(int stufe, AppLocalizations l10n) {
     final entries = _previewEntriesFor(stufe, l10n);
     if (entries.isEmpty) {

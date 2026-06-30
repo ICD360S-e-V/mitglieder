@@ -225,6 +225,35 @@ class WizardLeistungsbescheidUploadResult {
 /// One row from `user_verifizierung`. The bottom sheet on the final
 /// screen renders these chronologically (Stufe 1 → 8) so the visitor
 /// sees what's been filled and what the Vorstand has signed off.
+/// One Vorstand vote on one Stufe. Dual-approval rule: a Stufe needs
+/// 2 distinct geprueft votes before it counts as finally `geprueft`,
+/// and any single abgelehnt vote blocks it immediately.
+class WizardStufeApproval {
+  /// 'geprueft' | 'abgelehnt'.
+  final String decision;
+  final DateTime? approvedAt;
+  /// Display name of the Vorstand member who cast this vote.
+  final String approverName;
+  /// Per-vote optional note (the rejection reason, for `abgelehnt`).
+  final String? notiz;
+  const WizardStufeApproval({
+    required this.decision,
+    required this.approverName,
+    this.approvedAt,
+    this.notiz,
+  });
+  factory WizardStufeApproval.fromJson(Map<String, dynamic> j) =>
+      WizardStufeApproval(
+        decision:     (j['decision'] as String?) ?? 'geprueft',
+        approverName: (j['approver_name'] as String?) ?? 'Vorstand',
+        approvedAt:   WizardStufeStatus._parseDt(j['approved_at']),
+        notiz:        (j['notiz'] is String && (j['notiz'] as String).isNotEmpty)
+                        ? j['notiz'] as String : null,
+      );
+  bool get isApproval => decision == 'geprueft';
+  bool get isRejection => decision == 'abgelehnt';
+}
+
 class WizardStufeStatus {
   final int stufe;
   /// 'offen' | 'ausgefuellt' | 'geprueft' | 'abgelehnt'.
@@ -237,6 +266,10 @@ class WizardStufeStatus {
   /// Vorstand's reason / instructions when status is 'abgelehnt'.
   /// Null for any other status.
   final String? notiz;
+  /// All Vorstand votes recorded for this Stufe, oldest-first.
+  /// Dual-approval rule: 2 geprueft votes = final approved, 1
+  /// abgelehnt vote = blocked. Empty list = no Vorstand has voted yet.
+  final List<WizardStufeApproval> approvals;
 
   const WizardStufeStatus({
     required this.stufe,
@@ -244,17 +277,39 @@ class WizardStufeStatus {
     this.ausgefuelltAm,
     this.geprueftAm,
     this.notiz,
+    this.approvals = const [],
   });
 
-  factory WizardStufeStatus.fromJson(Map<String, dynamic> j) =>
-      WizardStufeStatus(
-        stufe:          (j['stufe'] as num).toInt(),
-        status:         (j['status'] as String?) ?? 'offen',
-        ausgefuelltAm:  _parseDt(j['ausgefuellt_am']),
-        geprueftAm:     _parseDt(j['geprueft_am']),
-        notiz:          (j['notiz'] is String && (j['notiz'] as String).isNotEmpty)
-                          ? j['notiz'] as String : null,
-      );
+  factory WizardStufeStatus.fromJson(Map<String, dynamic> j) {
+    final apsRaw = j['approvals'] as List<dynamic>?;
+    final aps = (apsRaw ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map(WizardStufeApproval.fromJson)
+        .toList();
+    return WizardStufeStatus(
+      stufe:          (j['stufe'] as num).toInt(),
+      status:         (j['status'] as String?) ?? 'offen',
+      ausgefuelltAm:  _parseDt(j['ausgefuellt_am']),
+      geprueftAm:     _parseDt(j['geprueft_am']),
+      notiz:          (j['notiz'] is String && (j['notiz'] as String).isNotEmpty)
+                        ? j['notiz'] as String : null,
+      approvals:      aps,
+    );
+  }
+
+  /// Count of geprueft votes recorded so far (out of the 2 required).
+  int get approvalCount =>
+      approvals.where((a) => a.isApproval).length;
+
+  /// True when at least one Vorstand member voted abgelehnt — blocks
+  /// the Stufe immediately, no need to wait for further votes.
+  bool get isRejected =>
+      status == 'abgelehnt' ||
+      approvals.any((a) => a.isRejection);
+
+  /// True when the dual-approval rule has been satisfied: 2 distinct
+  /// geprueft votes and no abgelehnt vote.
+  bool get isFullyApproved => approvalCount >= 2 && !isRejected;
 
   static DateTime? _parseDt(dynamic raw) {
     if (raw is! String || raw.isEmpty) return null;

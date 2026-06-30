@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Powód Vorstandu:",
   "wizardFinalStufeCorrectNow": "Popraw teraz",
+  "wizardFinalApprovalsHeader": "Zatwierdzenia Vorstandu ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Czekamy na 2. Vorstand",
+  "wizardFinalApprovalRejected": "ODRZUCONE",
   "wizardFinalStufeNoDataYet": "Dane jeszcze niedostępne.",
   "wizardFinalStufeReadAt": "Przeczytano:",
   "wizardFinalStufeBeitragsfrei": "Zwolniony ze składki (bez opłaty)",

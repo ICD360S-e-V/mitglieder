@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Vorstandi põhjus:",
   "wizardFinalStufeCorrectNow": "Paranda kohe",
+  "wizardFinalApprovalsHeader": "Vorstandi heakskiidud ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Ootame 2. Vorstandi",
+  "wizardFinalApprovalRejected": "TAGASI LÜKATUD",
   "wizardFinalStufeNoDataYet": "Andmed pole veel saadaval.",
   "wizardFinalStufeReadAt": "Loetud:",
   "wizardFinalStufeBeitragsfrei": "Liikmemaksuvaba (makse pole nõutav)",

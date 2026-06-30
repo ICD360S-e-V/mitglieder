@@ -87,6 +87,33 @@ try {
     // geprueft_am is when the Vorstand signed it off.
     $stufen = [];
     if ($userId !== null) {
+        // Per-stufe approval list — every Vorstand vote (geprueft or
+        // abgelehnt) cast against this applicant. The mitglieder UI
+        // renders two dots per Stufe (◉◉ / ◉◯ / ◯◯) on the strength of
+        // this list. Sorted ASC so the first element is the earliest
+        // vote (typically the first Vorstand to review).
+        $aStmt = $pdo->prepare(
+            'SELECT va.stufe, va.decision, va.approved_at,
+                    va.notiz, va.approved_by,
+                    COALESCE(u.name, u.vorname, "Vorstand") AS approver_name
+               FROM verifizierung_approvals va
+               LEFT JOIN users u ON u.id = va.approved_by
+              WHERE va.user_id = ?
+              ORDER BY va.stufe ASC, va.approved_at ASC'
+        );
+        $aStmt->execute([$userId]);
+        $approvalsByStufe = [];
+        foreach ($aStmt->fetchAll(PDO::FETCH_ASSOC) as $av) {
+            $s = (int)$av['stufe'];
+            $approvalsByStufe[$s] ??= [];
+            $approvalsByStufe[$s][] = [
+                'decision'       => $av['decision'],
+                'approved_at'    => $av['approved_at'],
+                'approver_name'  => $av['approver_name'],
+                'notiz'          => $av['notiz'],
+            ];
+        }
+
         $sstmt = $pdo->prepare(
             'SELECT stufe, status, ausgefuellt_am, geprueft_am, notiz
                FROM user_verifizierung
@@ -95,8 +122,9 @@ try {
         );
         $sstmt->execute([$userId]);
         foreach ($sstmt->fetchAll(PDO::FETCH_ASSOC) as $sr) {
+            $s = (int)$sr['stufe'];
             $stufen[] = [
-                'stufe'           => (int)$sr['stufe'],
+                'stufe'           => $s,
                 'status'          => $sr['status'],
                 'ausgefuellt_am'  => $sr['ausgefuellt_am'],
                 'geprueft_am'     => $sr['geprueft_am'],
@@ -104,6 +132,10 @@ try {
                 // visitor sees it inline on the rejection row so they
                 // know what to correct before re-opening the step.
                 'notiz'           => $sr['notiz'],
+                // Two-of-N dual-approval evidence list. Mitglieder UI
+                // renders ◉ per geprueft vote and ✗ per abgelehnt.
+                // Empty list when no Vorstand member has voted yet.
+                'approvals'       => $approvalsByStufe[$s] ?? [],
             ];
         }
     }

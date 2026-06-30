@@ -1293,6 +1293,15 @@
   },
   "wizardFinalStufeRejectionReason": "Begründung vom Vorstand:",
   "wizardFinalStufeCorrectNow": "Jetzt korrigieren",
+  "wizardFinalApprovalsHeader": "Vorstand-Bestätigungen ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Warten auf 2. Vorstand",
+  "wizardFinalApprovalRejected": "ABGELEHNT",
   "wizardFinalStufeNoDataYet": "Daten sind noch nicht verfügbar.",
   "wizardFinalStufeReadAt": "Gelesen am:",
   "wizardFinalStufeBeitragsfrei": "Beitragsfrei (kein Beitrag erforderlich)",

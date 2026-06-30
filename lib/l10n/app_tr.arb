@@ -1293,6 +1293,15 @@
   },
   "wizardFinalStufeRejectionReason": "Vorstand'ın gerekçesi:",
   "wizardFinalStufeCorrectNow": "Şimdi düzelt",
+  "wizardFinalApprovalsHeader": "Vorstand onayları ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "2. Vorstand bekleniyor",
+  "wizardFinalApprovalRejected": "REDDEDİLDİ",
   "wizardFinalStufeNoDataYet": "Veriler henüz mevcut değil.",
   "wizardFinalStufeReadAt": "Okundu:",
   "wizardFinalStufeBeitragsfrei": "Aidattan muaf (ödeme gerekmez)",

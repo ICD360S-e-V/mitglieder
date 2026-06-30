@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Vorstando priežastis:",
   "wizardFinalStufeCorrectNow": "Taisyti dabar",
+  "wizardFinalApprovalsHeader": "Vorstando patvirtinimai ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Laukiama 2-ojo Vorstando",
+  "wizardFinalApprovalRejected": "ATMESTA",
   "wizardFinalStufeNoDataYet": "Duomenys dar neprieinami.",
   "wizardFinalStufeReadAt": "Perskaityta:",
   "wizardFinalStufeBeitragsfrei": "Atleista nuo mokesčio (mokėti nereikia)",

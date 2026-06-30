@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Razlog Vorstanda:",
   "wizardFinalStufeCorrectNow": "Ispravi sada",
+  "wizardFinalApprovalsHeader": "Odobrenja Vorstanda ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Čeka se 2. Vorstand",
+  "wizardFinalApprovalRejected": "ODBIJENO",
   "wizardFinalStufeNoDataYet": "Podaci još nisu dostupni.",
   "wizardFinalStufeReadAt": "Pročitano:",
   "wizardFinalStufeBeitragsfrei": "Oslobođeno članarine (bez plaćanja)",

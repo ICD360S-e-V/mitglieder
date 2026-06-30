@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Αιτιολογία του Vorstand:",
   "wizardFinalStufeCorrectNow": "Διόρθωση τώρα",
+  "wizardFinalApprovalsHeader": "Εγκρίσεις Vorstand ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Αναμονή 2ου Vorstand",
+  "wizardFinalApprovalRejected": "ΑΠΟΡΡΙΦΘΗΚΕ",
   "wizardFinalStufeNoDataYet": "Τα δεδομένα δεν είναι ακόμη διαθέσιμα.",
   "wizardFinalStufeReadAt": "Διαβάστηκε στις:",
   "wizardFinalStufeBeitragsfrei": "Απαλλαγή εισφοράς (χωρίς πληρωμή)",

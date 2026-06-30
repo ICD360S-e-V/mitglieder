@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Dôvod od Vorstandu:",
   "wizardFinalStufeCorrectNow": "Opraviť teraz",
+  "wizardFinalApprovalsHeader": "Schválenia Vorstandu ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Čaká sa na 2. Vorstand",
+  "wizardFinalApprovalRejected": "ZAMIETNUTÉ",
   "wizardFinalStufeNoDataYet": "Údaje zatiaľ nie sú k dispozícii.",
   "wizardFinalStufeReadAt": "Prečítané:",
   "wizardFinalStufeBeitragsfrei": "Oslobodené od príspevku (bez platby)",

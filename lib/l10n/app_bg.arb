@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Причина от Vorstand:",
   "wizardFinalStufeCorrectNow": "Коригирай сега",
+  "wizardFinalApprovalsHeader": "Одобрения от Vorstand ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Чакаме 2-ри Vorstand",
+  "wizardFinalApprovalRejected": "ОТХВЪРЛЕНО",
   "wizardFinalStufeNoDataYet": "Данните още не са налични.",
   "wizardFinalStufeReadAt": "Прочетено на:",
   "wizardFinalStufeBeitragsfrei": "Освободен от вноска (без плащане)",

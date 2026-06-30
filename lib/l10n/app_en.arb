@@ -1272,6 +1272,15 @@
   },
   "wizardFinalStufeRejectionReason": "Vorstand's reason:",
   "wizardFinalStufeCorrectNow": "Fix now",
+  "wizardFinalApprovalsHeader": "Vorstand approvals ({current}/{total})",
+  "@wizardFinalApprovalsHeader": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "wizardFinalApprovalAwaiting": "Awaiting 2nd Vorstand",
+  "wizardFinalApprovalRejected": "REJECTED",
   "wizardFinalStufeNoDataYet": "Data not available yet.",
   "wizardFinalStufeReadAt": "Read on:",
   "wizardFinalStufeBeitragsfrei": "Fee-exempt (no payment required)",
