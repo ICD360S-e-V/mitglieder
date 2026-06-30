@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.65.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.64.2...v1.65.0) (2026-06-30)
+
+
+### Features
+
+* **wizard:** dual approval — every Stufe needs 2 distinct Vorstand votes ([e531467](https://github.com/ICD360S-e-V/mitglieder/commit/e531467cc6178e206f74df06f7c910aec168cc7e))
+
 ## [1.64.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.64.1...v1.64.2) (2026-06-30)
 
 
