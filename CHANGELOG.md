@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.64.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.64.1...v1.64.2) (2026-06-30)
+
+
+### Bug Fixes
+
+* **wizard:** compute Stufe 1 preview email live from mnr ([16c9272](https://github.com/ICD360S-e-V/mitglieder/commit/16c9272f61574ea2fb33d624a747b60c1c3d44a2))
+
 ## [1.64.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.64.0...v1.64.1) (2026-06-29)
 
 
