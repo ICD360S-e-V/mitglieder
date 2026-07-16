@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.65.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.65.0...v1.65.1) (2026-07-16)
+
+
+### Bug Fixes
+
+* **voice-call:** route call audio to speaker on Android/iOS ([c49f593](https://github.com/ICD360S-e-V/mitglieder/commit/c49f593faeaf02e834aae0934bb17df00b2fe1b6))
+
 ## [1.65.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.64.2...v1.65.0) (2026-06-30)
 
 
