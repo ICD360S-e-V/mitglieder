@@ -76,6 +76,8 @@ dependencies:
   # junction — so we no longer need the runner-side junction→copy
   # workaround in build-extras-platforms.yml.
   flutter_webrtc: ^1.5.2
+  # System ringtone/ringback while a call is ringing (no bundled audio asset).
+  flutter_ringtone_player: ^4.0.0
 
   # Battery level monitoring
   battery_plus: ^7.0.0

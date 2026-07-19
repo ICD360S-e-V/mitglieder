@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:http/io_client.dart';
 import 'api_service.dart';
 import 'logger_service.dart';
@@ -912,7 +913,23 @@ class VoiceCallService {
   void _setCallState(CallState state) {
     _log.info('VoiceCallService: STATE CHANGE: $_callState → $state (notifying listeners)', tag: 'CALL');
     _callState = state;
+    _updateRingSound(state);
     _callStateController.add(state);
+  }
+
+  /// Ringtone (callee, incoming) / ringback (caller, outgoing) while the call is
+  /// ringing; stopped as soon as it connects or ends (via _cleanup →
+  /// _setCallState(idle)). Uses the system ringtone — no bundled audio asset.
+  void _updateRingSound(CallState state) {
+    try {
+      if (state == CallState.ringing || state == CallState.calling) {
+        FlutterRingtonePlayer().playRingtone(looping: true, asAlarm: false);
+      } else {
+        FlutterRingtonePlayer().stop();
+      }
+    } catch (e) {
+      _log.warning('VoiceCallService: ring sound error: $e', tag: 'CALL');
+    }
   }
 
   /// Cleanup resources
