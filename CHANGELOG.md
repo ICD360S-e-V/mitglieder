@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.66.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.0...v1.66.1) (2026-07-19)
+
+
+### Bug Fixes
+
+* **voice-call:** force relay-only ICE (iceTransportPolicy: relay) ([#181](https://github.com/ICD360S-e-V/mitglieder/issues/181)) ([929381d](https://github.com/ICD360S-e-V/mitglieder/commit/929381d6b9f5ed5d94140d1513957a88995cbd8d))
+
 ## [1.66.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.65.2...v1.66.0) (2026-07-19)
 
 
