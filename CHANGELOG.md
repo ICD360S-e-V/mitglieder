@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.68.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.1...v1.68.2) (2026-07-19)
+
+
+### Bug Fixes
+
+* **voice-call:** drop legacy offerToReceive*, force unified-plan + SDP/RTP logs ([#201](https://github.com/ICD360S-e-V/mitglieder/issues/201)) ([64a8f68](https://github.com/ICD360S-e-V/mitglieder/commit/64a8f685d04f05e88edd5d46ea0c643eae6d3eea))
+
 ## [1.68.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.0...v1.68.1) (2026-07-19)
 
 
