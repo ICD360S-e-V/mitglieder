@@ -17,6 +17,7 @@ import '../services/chat_service.dart';
 import '../services/network_info_service.dart';
 import '../services/voice_call_service.dart';
 import '../services/logger_service.dart';
+import '../utils/message_emotion.dart';
 import 'file_viewer.dart';
 import 'incoming_call_dialog.dart';
 import 'video_call_screen.dart';
@@ -878,6 +879,25 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     });
   }
 
+  // ==================== Reaction Methods ====================
+
+  // Global tap position of the reaction trigger, captured on tap-down so the
+  // emoji bar can anchor exactly where the finger landed.
+  Offset _reactTapPos = Offset.zero;
+
+  Future<void> _openReactionPicker(Map<String, dynamic> msg, MessageEmotion? current) async {
+    final pick = await showEmotionPicker(context, _reactTapPos, current: current);
+    if (pick == null || !mounted) return;
+    setState(() {
+      if (pick.emotion == null) {
+        msg.remove('reaction');
+      } else {
+        msg['reaction'] = pick.emotion!.storageKey;
+      }
+    });
+    // Deocamdată local (test UX). Persistența pe server + broadcast WebSocket vin la pasul următor.
+  }
+
   // ==================== Chat Methods ====================
 
   Future<void> _sendMessage() async {
@@ -1720,6 +1740,12 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     final attachments = msg['attachments'] as List? ?? [];
     final messageText = rawMessage ?? '';
 
+    // WhatsApp-style reaction. The member may react ONLY to the other party's
+    // messages (support / Vorsitzer). On the member's own messages a reaction
+    // set by the Vorsitzer is shown read-only (no smiley trigger).
+    final reaction = emotionFromKey(msg['reaction']);
+    final canReact = !isOwn;
+
     // Countdown bar: status=read + expires_at in future
     double? expireProgress;
     if (msg['status'] == 'read' && msg['expires_at'] != null) {
@@ -1761,94 +1787,119 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           ],
           // Message bubble
           Flexible(
-            child: Container(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.65,
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                gradient: isOwn
-                    ? const LinearGradient(
-                        colors: [Color(0xFF667eea), Color(0xFF764ba2)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      )
-                    : null,
-                color: isOwn ? null : Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(20),
-                  topRight: const Radius.circular(20),
-                  bottomLeft: Radius.circular(isOwn ? 20 : 4),
-                  bottomRight: Radius.circular(isOwn ? 4 : 20),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.08),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.65,
                   ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Sender name for support
-                  if (!isOwn && isSupport)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 4),
-                      child: Text(
-                        msg['sender_name'] ?? 'Support',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
-                          color: Colors.purple.shade700,
-                        ),
-                      ),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  decoration: BoxDecoration(
+                    gradient: isOwn
+                        ? const LinearGradient(
+                            colors: [Color(0xFF667eea), Color(0xFF764ba2)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          )
+                        : null,
+                    color: isOwn ? null : Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: const Radius.circular(20),
+                      topRight: const Radius.circular(20),
+                      bottomLeft: Radius.circular(isOwn ? 20 : 4),
+                      bottomRight: Radius.circular(isOwn ? 4 : 20),
                     ),
-                  // Message text (URLs are tappable and open in external browser)
-                  if (messageText.isNotEmpty)
-                    _buildLinkedText(messageText, isOwn),
-                  // Attachments
-                  if (attachments.isNotEmpty) ...[
-                    if (messageText.isNotEmpty) const SizedBox(height: 8),
-                    ...attachments.map((att) => _buildModernAttachment(att, isOwn)),
-                  ],
-                  // Countdown bar: thin progress strip that fills over 5 minutes
-                  // from read_at toward expires_at — synced for sender & recipient.
-                  if (expireProgress != null) ...[
-                    const SizedBox(height: 6),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(2),
-                      child: LinearProgressIndicator(
-                        value: expireProgress,
-                        minHeight: 3,
-                        backgroundColor: (isOwn ? Colors.white : Colors.grey.shade300).withValues(alpha: 0.35),
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          isOwn ? Colors.white70 : Colors.lightBlue.shade300,
-                        ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.08),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
                       ),
-                    ),
-                  ],
-                  // Time and read receipt
-                  const SizedBox(height: 6),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        _formatTime(msg['created_at']),
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: isOwn ? Colors.white70 : Colors.grey.shade500,
-                        ),
-                      ),
-                      if (isOwn) ...[
-                        const SizedBox(width: 4),
-                        _buildReadReceipt(msg),
-                      ],
                     ],
                   ),
-                ],
-              ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Sender name for support
+                      if (!isOwn && isSupport)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 4),
+                          child: Text(
+                            msg['sender_name'] ?? 'Support',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: Colors.purple.shade700,
+                            ),
+                          ),
+                        ),
+                      // Message text (URLs are tappable and open in external browser)
+                      if (messageText.isNotEmpty)
+                        _buildLinkedText(messageText, isOwn),
+                      // Attachments
+                      if (attachments.isNotEmpty) ...[
+                        if (messageText.isNotEmpty) const SizedBox(height: 8),
+                        ...attachments.map((att) => _buildModernAttachment(att, isOwn)),
+                      ],
+                      // Countdown bar: thin progress strip that fills over 5 minutes
+                      // from read_at toward expires_at — synced for sender & recipient.
+                      if (expireProgress != null) ...[
+                        const SizedBox(height: 6),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(2),
+                          child: LinearProgressIndicator(
+                            value: expireProgress,
+                            minHeight: 3,
+                            backgroundColor: (isOwn ? Colors.white : Colors.grey.shade300).withValues(alpha: 0.35),
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              isOwn ? Colors.white70 : Colors.lightBlue.shade300,
+                            ),
+                          ),
+                        ),
+                      ],
+                      // Time and read receipt
+                      const SizedBox(height: 6),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            _formatTime(msg['created_at']),
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: isOwn ? Colors.white70 : Colors.grey.shade500,
+                            ),
+                          ),
+                          if (isOwn) ...[
+                            const SizedBox(width: 4),
+                            _buildReadReceipt(msg),
+                          ],
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                // WhatsApp-style reaction control in the top-right corner.
+                // IMPORTANT: positive offset — a child that overflows its parent
+                // does NOT receive taps in Flutter, so keep it inside the bubble.
+                if (reaction != null || canReact)
+                  Positioned(
+                    top: 2,
+                    right: 2,
+                    child: canReact
+                        ? GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onTapDown: (d) => _reactTapPos = d.globalPosition,
+                            onTap: () => _openReactionPicker(msg, reaction),
+                            child: reaction != null
+                                ? EmotionBadge(emotion: reaction)
+                                : const AddReactionButton(),
+                          )
+                        : (reaction != null
+                            ? EmotionBadge(emotion: reaction)
+                            : const SizedBox.shrink()),
+                  ),
+              ],
             ),
           ),
         ],
