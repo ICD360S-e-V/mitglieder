@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:http/io_client.dart';
 import 'api_service.dart';
 import 'logger_service.dart';
@@ -135,6 +136,8 @@ class VoiceCallService {
   bool _isVideoCall = false; // this call negotiated video (camera)
   bool _isCameraOff = false; // user toggled the local camera off
   Timer? _statsTimer; // periodic getStats logging for ICE diagnostics
+  AudioPlayer? _ringbackPlayer; // looping "ring-ring" for the caller
+  AudioPlayer? _sfxPlayer; // one-shot busy/rejected tone
 
   /// Set when [startCall] returns false. Reset to null at the start of every
   /// [startCall]. Callers read this to show a specific user-facing message.
@@ -419,6 +422,7 @@ class VoiceCallService {
   void handleCallRejected(String reason) {
     _log.info('VoiceCallService: handleCallRejected() - reason: $reason, current state: $_callState', tag: 'CALL');
     if (_callState == CallState.calling) {
+      _playRejectedSound(); // busy tone before teardown (separate player survives _cleanup)
       _cleanup();
     } else {
       _log.debug('VoiceCallService: handleCallRejected() - not in calling state, ignoring', tag: 'CALL');
@@ -927,13 +931,53 @@ class VoiceCallService {
   /// _setCallState(idle)). Uses the system ringtone — no bundled audio asset.
   void _updateRingSound(CallState state) {
     try {
-      if (state == CallState.ringing || state == CallState.calling) {
+      if (state == CallState.ringing) {
+        // Callee: the full system ringtone.
         FlutterRingtonePlayer().playRingtone(looping: true, asAlarm: false);
-      } else {
+        _stopRingback();
+      } else if (state == CallState.calling) {
+        // Caller: a quiet "ring-ring" ringback, NOT the full system ringtone.
         FlutterRingtonePlayer().stop();
+        _playRingback();
+      } else {
+        // connecting / inCall / idle: silence.
+        FlutterRingtonePlayer().stop();
+        _stopRingback();
       }
     } catch (e) {
       _log.warning('VoiceCallService: ring sound error: $e', tag: 'CALL');
+    }
+  }
+
+  Future<void> _playRingback() async {
+    try {
+      _ringbackPlayer ??= AudioPlayer();
+      if (_ringbackPlayer!.playing) return;
+      await _ringbackPlayer!.setAsset('assets/sounds/ringback.wav');
+      await _ringbackPlayer!.setLoopMode(LoopMode.one);
+      await _ringbackPlayer!.play();
+    } catch (e) {
+      _log.warning('VoiceCallService: ringback error: $e', tag: 'CALL');
+    }
+  }
+
+  Future<void> _stopRingback() async {
+    try {
+      await _ringbackPlayer?.stop();
+    } catch (_) {}
+  }
+
+  /// Busy/rejected tone (~3s) for the caller when the callee rejects or is busy.
+  /// A separate player so _cleanup() (which stops the ringback) doesn't cut it.
+  Future<void> _playRejectedSound() async {
+    try {
+      _sfxPlayer ??= AudioPlayer();
+      await _sfxPlayer!.stop();
+      await _sfxPlayer!.setAsset('assets/sounds/rejected.wav');
+      await _sfxPlayer!.setLoopMode(LoopMode.off);
+      await _sfxPlayer!.play();
+    } catch (e) {
+      _log.warning('VoiceCallService: rejected tone error: $e', tag: 'CALL');
     }
   }
 
@@ -1003,6 +1047,8 @@ class VoiceCallService {
   /// Dispose service
   void dispose() {
     _cleanup();
+    _ringbackPlayer?.dispose();
+    _sfxPlayer?.dispose();
     _callStateController.close();
     _remoteStreamController.close();
     _incomingCallController.close();
