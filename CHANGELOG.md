@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.66.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.65.2...v1.66.0) (2026-07-19)
+
+
+### Features
+
+* 1080p video calls + Opus 64k voice quality ([#179](https://github.com/ICD360S-e-V/mitglieder/issues/179)) ([625e338](https://github.com/ICD360S-e-V/mitglieder/commit/625e338e3d3c794ac50f43ff7c53cc1394fb4e2a))
+
 ## [1.65.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.65.1...v1.65.2) (2026-07-19)
 
 
