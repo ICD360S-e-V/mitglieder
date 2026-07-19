@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.65.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.65.1...v1.65.2) (2026-07-19)
+
+
+### Bug Fixes
+
+* **voice-call:** coordinated call-flow hardening + ephemeral TURN ([#175](https://github.com/ICD360S-e-V/mitglieder/issues/175)) ([2ea6a06](https://github.com/ICD360S-e-V/mitglieder/commit/2ea6a06f2e3bbf48a16138a79aab3c2db8503432))
+
 ## [1.65.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.65.0...v1.65.1) (2026-07-16)
 
 
