@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.66.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.5...v1.66.6) (2026-07-19)
+
+
+### Bug Fixes
+
+* **voice-call:** earpiece default + speaker toggle + ringback/busy tones ([#193](https://github.com/ICD360S-e-V/mitglieder/issues/193)) ([c91a991](https://github.com/ICD360S-e-V/mitglieder/commit/c91a991c5a5b8070475387b5df0cd54786c182da))
+
 ## [1.66.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.4...v1.66.5) (2026-07-19)
 
 
