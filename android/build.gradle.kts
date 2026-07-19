@@ -23,6 +23,11 @@ subprojects {
                 sourceCompatibility = JavaVersion.VERSION_17
                 targetCompatibility = JavaVersion.VERSION_17
             }
+            // Force every Android subproject up to the app's compileSdk. Some
+            // plugins (e.g. flutter_ringtone_player, compiled against android-33)
+            // otherwise fail checkReleaseAarMetadata against androidx libs
+            // (fragment 1.7.1, window 1.2.0, activity 1.8.1) that require 34+.
+            android.compileSdkVersion(36)
         }
 
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
