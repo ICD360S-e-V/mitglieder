@@ -10,7 +10,9 @@ class InCallOverlay extends StatefulWidget {
   final String remoteName;
   final Duration callDuration;
   final bool isMuted;
+  final bool isSpeakerOn;
   final VoidCallback onToggleMute;
+  final VoidCallback onToggleSpeaker;
   final VoidCallback onEndCall;
 
   const InCallOverlay({
@@ -18,7 +20,9 @@ class InCallOverlay extends StatefulWidget {
     required this.remoteName,
     required this.callDuration,
     required this.isMuted,
+    required this.isSpeakerOn,
     required this.onToggleMute,
+    required this.onToggleSpeaker,
     required this.onEndCall,
   });
 
@@ -200,6 +204,18 @@ class _InCallOverlayState extends State<InCallOverlay> with SingleTickerProvider
             ],
           ),
           const SizedBox(width: 16),
+
+          // Speaker button — audio call starts on the earpiece; tap for loudspeaker.
+          IconButton(
+            icon: Icon(
+              widget.isSpeakerOn ? Icons.volume_up : Icons.volume_down,
+              color: widget.isSpeakerOn ? Colors.white : Colors.white70,
+            ),
+            onPressed: widget.onToggleSpeaker,
+            tooltip: widget.isSpeakerOn
+                ? AppLocalizations.of(context)!.speakerOn
+                : AppLocalizations.of(context)!.speakerOff,
+          ),
 
           // Mute button
           IconButton(

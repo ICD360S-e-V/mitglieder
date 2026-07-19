@@ -76,8 +76,10 @@ dependencies:
   # junction — so we no longer need the runner-side junction→copy
   # workaround in build-extras-platforms.yml.
   flutter_webrtc: ^1.5.2
-  # System ringtone/ringback while a call is ringing (no bundled audio asset).
+  # System ringtone (callee) while a call is ringing (no bundled audio asset).
   flutter_ringtone_player: ^4.0.0
+  # Ringback (caller) + busy/rejected tones — generated WAVs in assets/sounds/.
+  just_audio: ^0.10.5
 
   # Battery level monitoring
   battery_plus: ^7.0.0
@@ -194,6 +196,7 @@ flutter:
   assets:
     - assets/app_icon.ico
     - assets/flags/
+    - assets/sounds/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

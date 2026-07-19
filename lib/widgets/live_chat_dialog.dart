@@ -2072,7 +2072,12 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           remoteName: _remoteName,
           callDuration: _callDuration,
           isMuted: _voiceCallService.isMuted,
+          isSpeakerOn: _voiceCallService.isSpeakerOn,
           onToggleMute: _toggleMute,
+          onToggleSpeaker: () {
+            _voiceCallService.toggleSpeaker();
+            if (mounted) setState(() {});
+          },
           onEndCall: _endCall,
         ),
       );
