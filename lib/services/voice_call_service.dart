@@ -527,13 +527,39 @@ class VoiceCallService {
   /// Must run while the audio session is active (after getUserMedia), else the
   /// AudioManager mode is not yet MODE_IN_COMMUNICATION and the call is ignored.
   void _applyAudioRoute() {
-    if (!Platform.isAndroid && !Platform.isIOS) return;
     try {
-      Helper.setSpeakerphoneOn(_isSpeakerOn);
-      _log.info('VoiceCallService: 🔊 Audio route → ${_isSpeakerOn ? "SPEAKER" : "earpiece"}', tag: 'CALL');
+      if (Platform.isAndroid) {
+        // Prefer a connected Bluetooth / wired headset over the loudspeaker.
+        // setSpeakerphoneOn(true) would FORCE the speaker and bypass BT — the bug.
+        if (_isSpeakerOn) {
+          Helper.setSpeakerphoneOnButPreferBluetooth();
+        } else {
+          Helper.setSpeakerphoneOn(false); // earpiece / headset
+        }
+      } else if (Platform.isIOS) {
+        // iOS routes Bluetooth through the audio session automatically.
+        Helper.setSpeakerphoneOn(_isSpeakerOn);
+      } else {
+        return; // desktop: handled by the system audio stack
+      }
+      _log.info('VoiceCallService: 🔊 Audio route applied (speaker=$_isSpeakerOn, prefer-BT on Android)', tag: 'CALL');
     } catch (e) {
-      _log.warning('VoiceCallService: setSpeakerphoneOn failed: $e', tag: 'CALL');
+      _log.warning('VoiceCallService: _applyAudioRoute failed: $e', tag: 'CALL');
     }
+  }
+
+  /// Auto-switch the audio route mid-call when a Bluetooth / wired device is
+  /// (dis)connected — no user action needed. Set after the peer connection is
+  /// created; cleared in _cleanup.
+  void _setupAudioDeviceListener() {
+    if (!Platform.isAndroid && !Platform.isIOS) return;
+    navigator.mediaDevices.ondevicechange = (_) {
+      // Small delay so the OS has finished (dis)connecting the device before we
+      // re-assert the route.
+      Future.delayed(const Duration(milliseconds: 800), () {
+        if (_callState != CallState.idle) _applyAudioRoute();
+      });
+    };
   }
 
   /// Toggle the local camera on/off during a video call (audio keeps flowing).
@@ -760,6 +786,7 @@ class VoiceCallService {
     // relay↔relay pair gets nominated with bytes flowing both ways. Stopped in
     // _cleanup.
     _startStatsLogging();
+    _setupAudioDeviceListener();
   }
 
   /// Get local audio stream.
@@ -923,6 +950,9 @@ class VoiceCallService {
   void _cleanup() {
     _log.info('VoiceCallService: _cleanup() - releasing WebRTC resources', tag: 'CALL');
     _stopStatsLogging();
+    if (Platform.isAndroid || Platform.isIOS) {
+      navigator.mediaDevices.ondevicechange = null;
+    }
     _localStream?.getTracks().forEach((track) => track.stop());
     _localStream?.dispose();
     _localStream = null;
