@@ -70,6 +70,8 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
 
   // Voice call state - most WebRTC state now managed by VoiceCallService
   Timer? _callDurationTimer;
+  // Ring-timeout: auto-cancels an outgoing call that is never answered (#3).
+  Timer? _ringTimeoutTimer;
   Duration _callDuration = Duration.zero;
   String _remoteName = 'Support';
 
@@ -125,38 +127,23 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   void initState() {
     super.initState();
 
-    // Configure VoiceCallService signaling via ChatService
-    _voiceCallService.onSignalingMessage = (message) {
-      final type = message['type'] as String;
-      final convId = message['conversation_id'] as int;
+    // NOTE: VoiceCallService.onSignalingMessage is owned solely by the dashboard
+    // (MitgliedDashboard), which is always alive while this dialog is open. Setting
+    // it here too caused a two-writer race on the singleton (#3). The dashboard
+    // handler covers every frame type (offer/answer/reject/end/ice).
 
-      switch (type) {
-        case 'call_offer':
-          _chatService.sendCallOffer(convId, message['sdp'] as String, message['sdp_type'] as String);
-          break;
-        case 'call_answer':
-          _chatService.sendCallAnswer(convId, message['sdp'] as String, message['sdp_type'] as String);
-          break;
-        case 'call_reject':
-          _chatService.sendCallReject(convId, message['reason'] as String);
-          break;
-        case 'call_end':
-          _chatService.sendCallEnd(convId);
-          break;
-        case 'ice_candidate':
-          _chatService.sendIceCandidate(
-            convId,
-            message['candidate'] as String,
-            message['sdp_mid'] as String,
-            message['sdp_mline_index'] as int,
-          );
-          break;
-      }
-    };
-
-    // Listen to VoiceCallService state changes to update UI
+    // Listen to VoiceCallService state changes to update UI + drive call timers.
     _callStateSubscription = _voiceCallService.callStateStream.listen((state) {
       _log.info('LiveChat: VoiceCallService state changed to: $state', tag: 'CALL');
+      if (state == CallState.inCall) {
+        // Connected for real: stop the ring-timeout and start the duration
+        // clock from zero so ring/connect time isn't counted (#4).
+        _ringTimeoutTimer?.cancel();
+        _startCallDurationTimer();
+      } else if (state == CallState.idle) {
+        _ringTimeoutTimer?.cancel();
+        _callDurationTimer?.cancel();
+      }
       if (mounted) {
         setState(() {}); // Trigger UI rebuild
       }
@@ -244,6 +231,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     _messageExpiredSubscription?.cancel();
     _callOfferSubscription?.cancel();
     _callStateSubscription?.cancel();
+    _ringTimeoutTimer?.cancel();
     // Don't call _endCallCleanup() in dispose - widget is already defunct
     // Just cancel the timer and clear pending data without setState
     _callDurationTimer?.cancel();
@@ -548,6 +536,9 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       if (!mounted) return;
       if (convId == _conversationId) {
         _showError(AppLocalizations.of(context)!.callSupportBusy);
+        // Reset the call machine to idle (no call_end signal needed — the peer
+        // is busy) so the call button returns and the member can retry (#5).
+        _voiceCallService.handleCallEnded();
         _endCallCleanup();
       }
     });
@@ -644,6 +635,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           final message = switch (_voiceCallService.lastStartFailure) {
             CallStartFailure.micPermissionDenied => l.callErrorMicPermissionDenied,
             CallStartFailure.micNotFound => l.callErrorMicNotFound,
+            CallStartFailure.turnUnavailable => l.callFailed,
             _ => l.errorStartingCall,
           };
           _showError(message);
@@ -654,9 +646,12 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
 
       _log.info('LiveChat: Call to support started successfully via VoiceCallService', tag: 'CALL');
 
-      if (mounted) {
-        _startCallDurationTimer();
-      }
+      // Arm the ring-timeout. If support never answers — or the offer never
+      // reaches a live client because no admin joined the room — the call would
+      // otherwise hang on "Anrufen…" forever (#3). The duration timer is NOT
+      // started here; it starts on the inCall transition so ring time is
+      // excluded (#4).
+      _armRingTimeout();
 
     } catch (e) {
       _log.error('LiveChat: _startCall() error: $e', tag: 'CALL');
@@ -679,9 +674,10 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       _remoteName = answererName;
       await _voiceCallService.handleCallAnswer(sdp, sdpType);
       _log.info('LiveChat: Call answer handled successfully via VoiceCallService', tag: 'CALL');
-      if (mounted) {
-        _startCallDurationTimer();
-      }
+      // Ring-timeout stays armed until the inCall transition (it covers the
+      // "answered but still connecting" window too, per the coordinated spec);
+      // the callState listener cancels it on inCall/idle. The duration timer
+      // also starts on inCall, not here (#4).
     } catch (e) {
       _log.error('LiveChat: _handleCallAnswer() error: $e', tag: 'CALL');
       if (mounted) {
@@ -748,6 +744,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   void _endCallCleanup() {
     _log.info('LiveChat: _endCallCleanup() - cleaning up UI state', tag: 'CALL');
     _callDurationTimer?.cancel();
+    _ringTimeoutTimer?.cancel();
     _pendingSdp = null;
     _pendingSdpType = null;
     if (mounted) {
@@ -775,10 +772,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       }
 
       _log.info('LiveChat: Call accepted successfully via VoiceCallService', tag: 'CALL');
-
-      if (mounted) {
-        _startCallDurationTimer();
-      }
+      // Duration timer starts on the inCall transition (once connected), not here (#4).
 
     } catch (e) {
       _log.error('LiveChat: _acceptCall() error: $e', tag: 'CALL');
@@ -807,9 +801,31 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
 
   void _startCallDurationTimer() {
     _callDurationTimer?.cancel();
+    _callDuration = Duration.zero; // reset so ring/connect time isn't counted (#4)
     _callDurationTimer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (mounted) {
         setState(() => _callDuration += const Duration(seconds: 1));
+      }
+    });
+  }
+
+  /// Ring-timeout for an outgoing call. If we're still in calling/connecting
+  /// after 45s (support never answered, or the offer reached no live client
+  /// because no admin joined the conversation room), end the call and surface a
+  /// clear "could not connect" message instead of hanging on "Anrufen…".
+  ///
+  /// 45s is coordinated with the vorsitzer app: the caller (45s) always gives up
+  /// BEFORE the callee auto-rejects (60s ring), so the two ends never show
+  /// contradictory messages (#2, coordinated).
+  void _armRingTimeout() {
+    _ringTimeoutTimer?.cancel();
+    _ringTimeoutTimer = Timer(const Duration(seconds: 45), () {
+      if (!mounted) return;
+      final s = _voiceCallService.callState;
+      if (s == CallState.calling || s == CallState.connecting) {
+        _log.warning('LiveChat: ring timeout (45s) - support did not answer, ending call', tag: 'CALL');
+        _showError(AppLocalizations.of(context)!.callFailed);
+        _endCall();
       }
     });
   }
