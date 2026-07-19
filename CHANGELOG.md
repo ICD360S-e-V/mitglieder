@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.68.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.67.0...v1.68.0) (2026-07-19)
+
+
+### Features
+
+* **chat:** persist message reactions + live WebSocket sync ([#197](https://github.com/ICD360S-e-V/mitglieder/issues/197)) ([505ac7d](https://github.com/ICD360S-e-V/mitglieder/commit/505ac7df74d0eed310b77f2d8a8cfe9576ab305a))
+
 ## [1.67.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.6...v1.67.0) (2026-07-19)
 
 
