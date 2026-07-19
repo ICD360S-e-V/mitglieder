@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.66.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.4...v1.66.5) (2026-07-19)
+
+
+### Bug Fixes
+
+* **android:** force plugin compileSdk to 36 (fixes ringtone AAR metadata) ([#191](https://github.com/ICD360S-e-V/mitglieder/issues/191)) ([0dbd948](https://github.com/ICD360S-e-V/mitglieder/commit/0dbd948aba5e565d5a342816faa23936b4ee62c4))
+
 ## [1.66.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.3...v1.66.4) (2026-07-19)
 
 
