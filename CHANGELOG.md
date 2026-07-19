@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.67.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.6...v1.67.0) (2026-07-19)
+
+
+### Features
+
+* **chat:** WhatsApp-style reactions on live chat messages ([#195](https://github.com/ICD360S-e-V/mitglieder/issues/195)) ([8844f4f](https://github.com/ICD360S-e-V/mitglieder/commit/8844f4f11e9ab5c4c9455bcfe14d39ebccafdbe5))
+
 ## [1.66.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.5...v1.66.6) (2026-07-19)
 
 
