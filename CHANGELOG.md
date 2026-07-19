@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.66.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.3...v1.66.4) (2026-07-19)
+
+
+### Bug Fixes
+
+* **voice-call:** play system ringtone/ringback while a call is ringing ([#189](https://github.com/ICD360S-e-V/mitglieder/issues/189)) ([acb5142](https://github.com/ICD360S-e-V/mitglieder/commit/acb5142cea7af65e48aa4ac18ce60450afb20417))
+
 ## [1.66.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.2...v1.66.3) (2026-07-19)
 
 
