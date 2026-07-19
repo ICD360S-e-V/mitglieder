@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../l10n/app_localizations.dart';
 import 'eastern.dart';
 import '../services/api_service.dart';
@@ -18,6 +19,7 @@ import '../services/voice_call_service.dart';
 import '../services/logger_service.dart';
 import 'file_viewer.dart';
 import 'incoming_call_dialog.dart';
+import 'video_call_screen.dart';
 import '../utils/error_helpers.dart';
 
 final _log = LoggerService();
@@ -662,6 +664,52 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       if (mounted) {
         _endCallCleanup();
       }
+    }
+  }
+
+  /// Start a VIDEO call to support (member taps the camera button). Requests the
+  /// camera up-front, starts a video call, then pushes the full-screen video UI.
+  Future<void> _startVideoCall() async {
+    _log.info('LiveChat: _startVideoCall() initiated by member', tag: 'CALL');
+    if (_conversationId == null || _voiceCallService.callState != CallState.idle || !mounted) {
+      return;
+    }
+
+    // Ask for the camera up-front (the mic is requested by getUserMedia). If it
+    // is denied the call still proceeds and degrades to audio-only.
+    await Permission.camera.request();
+    if (!mounted) return;
+
+    final navigator = Navigator.of(context);
+    final remoteName = _supportOnline ? _supportName : 'Support';
+    try {
+      final success = await _voiceCallService.startCall(_conversationId!, 'support', 'Support', video: true);
+      if (!success) {
+        if (mounted) {
+          final l = AppLocalizations.of(context)!;
+          final message = switch (_voiceCallService.lastStartFailure) {
+            CallStartFailure.micPermissionDenied => l.callErrorMicPermissionDenied,
+            CallStartFailure.micNotFound => l.callErrorMicNotFound,
+            CallStartFailure.turnUnavailable => l.callFailed,
+            _ => l.errorStartingCall,
+          };
+          _showError(message);
+        }
+        return;
+      }
+      _armRingTimeout();
+      if (mounted) {
+        navigator.push(MaterialPageRoute(
+          fullscreenDialog: true,
+          builder: (_) => VideoCallScreen(remoteName: remoteName),
+        ));
+      }
+    } catch (e) {
+      _log.error('LiveChat: _startVideoCall() error: $e', tag: 'CALL');
+      if (mounted) {
+        _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
+      }
+      await _voiceCallService.endCall();
     }
   }
 
@@ -1498,8 +1546,8 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
               ],
             ),
           ),
-          // Voice call button
-          if (_voiceCallService.callState == CallState.idle)
+          // Voice + video call buttons (audio call vs "camera"/video call)
+          if (_voiceCallService.callState == CallState.idle) ...[
             Container(
               decoration: BoxDecoration(
                 color: Colors.green.shade50,
@@ -1511,6 +1559,19 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                 tooltip: AppLocalizations.of(context)!.callSupport,
               ),
             ),
+            const SizedBox(width: 6),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.videocam, color: Color(0xFF2196F3)),
+                onPressed: _isConnected ? _startVideoCall : null,
+                tooltip: AppLocalizations.of(context)!.camera,
+              ),
+            ),
+          ],
           const SizedBox(width: 8),
           // Close button
           Container(

@@ -11,6 +11,7 @@ import '../services/heartbeat_service.dart';
 import '../services/background_service.dart';
 import '../services/voice_call_service.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' show RTCIceConnectionState;
+import '../widgets/video_call_screen.dart';
 import '../widgets/legal_footer.dart';
 import '../widgets/live_chat_dialog.dart';
 import '../widgets/update_dialog.dart';
@@ -403,7 +404,9 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           fullscreenDialog: true,
-          builder: (ctx) => _buildActiveCallScreen(event.callerName, event.conversationId),
+          builder: (ctx) => _voiceCallService.isVideoCall
+              ? VideoCallScreen(remoteName: event.callerName)
+              : _buildActiveCallScreen(event.callerName, event.conversationId),
         ),
       );
       _log.info('🎯 Navigation to active call screen complete', tag: 'CALL');
