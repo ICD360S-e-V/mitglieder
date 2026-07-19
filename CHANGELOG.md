@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.66.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.1...v1.66.2) (2026-07-19)
+
+
+### Chores
+
+* release 1.66.2 ([#185](https://github.com/ICD360S-e-V/mitglieder/issues/185)) ([877a2d9](https://github.com/ICD360S-e-V/mitglieder/commit/877a2d99bb73108b24780428bde75dd959f15106))
+
 ## [1.66.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.0...v1.66.1) (2026-07-19)
 
 
