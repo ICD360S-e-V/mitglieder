@@ -224,9 +224,9 @@ class VoiceCallService {
       });
       _log.info('VoiceCallService: ✅ All local tracks added to peer connection', tag: 'CALL');
 
-      // Cap the outgoing video bitrate for a 1080p call (~4 Mbps), matching the
-      // coturn tuning.
-      if (video) await _applyVideoBitrateCap();
+      // Cap the outgoing bitrates (video ~8 Mbps @60fps + audio 64k) to match
+      // the vorsitzer app.
+      if (video) await _applyBitrateCaps();
 
       // Create offer
       _log.debug('VoiceCallService: Creating SDP offer...', tag: 'CALL');
@@ -336,8 +336,9 @@ class VoiceCallService {
       });
       _log.info('VoiceCallService: ✅ All local tracks added for ACCEPT', tag: 'CALL');
 
-      // Cap outgoing video bitrate (~4 Mbps) for a 1080p call.
-      if (_isVideoCall) await _applyVideoBitrateCap();
+      // Cap outgoing bitrates (video ~8 Mbps @60fps + audio 64k) to match the
+      // vorsitzer app.
+      if (_isVideoCall) await _applyBitrateCaps();
 
       // Set remote description (the offer)
       _log.debug('VoiceCallService: Setting remote description (offer)...', tag: 'CALL');
@@ -606,30 +607,37 @@ class VoiceCallService {
     }
   }
 
-  /// Cap the outgoing video bitrate on the RTP sender (~4 Mbps @30fps for 1080p,
-  /// matching the coturn relay tuning). Modifies existing encodings in place
-  /// where possible — replacing the list wholesale throws on some platforms.
-  Future<void> _applyVideoBitrateCap() async {
+  /// Cap the outgoing RTP bitrates, kept identical to the vorsitzer app so both
+  /// ends match: video ~8 Mbps @60fps (1080p), audio 64 kbps. Modifies existing
+  /// encodings in place where possible — replacing the list wholesale throws on
+  /// some platforms.
+  Future<void> _applyBitrateCaps() async {
     if (_peerConnection == null) return;
     try {
       final senders = await _peerConnection!.getSenders();
       for (final sender in senders) {
-        if (sender.track?.kind != 'video') continue;
+        final kind = sender.track?.kind;
+        if (kind != 'video' && kind != 'audio') continue;
+        final isVideo = kind == 'video';
+        final maxBitrate = isVideo ? 8000000 : 64000;
+        final int? maxFramerate = isVideo ? 60 : null;
         final params = sender.parameters;
         final existing = params.encodings;
         if (existing != null && existing.isNotEmpty) {
           for (final enc in existing) {
-            enc.maxBitrate = 4000000;
-            enc.maxFramerate = 30;
+            enc.maxBitrate = maxBitrate;
+            if (maxFramerate != null) enc.maxFramerate = maxFramerate;
           }
         } else {
-          params.encodings = [RTCRtpEncoding(maxBitrate: 4000000, maxFramerate: 30)];
+          params.encodings = [
+            RTCRtpEncoding(maxBitrate: maxBitrate, maxFramerate: maxFramerate),
+          ];
         }
         await sender.setParameters(params);
-        _log.info('VoiceCallService: 🎥 Video bitrate capped at ~4 Mbps @30fps', tag: 'CALL');
+        _log.info('VoiceCallService: 🎚️ ${isVideo ? "Video ~8 Mbps @60fps" : "Audio 64 kbps"} bitrate cap applied', tag: 'CALL');
       }
     } catch (e) {
-      _log.warning('VoiceCallService: _applyVideoBitrateCap failed: $e', tag: 'CALL');
+      _log.warning('VoiceCallService: _applyBitrateCaps failed: $e', tag: 'CALL');
     }
   }
 
@@ -882,8 +890,8 @@ class VoiceCallService {
       'noiseSuppression': true,
       'autoGainControl': true,
     };
-    // 1080p @30fps front camera; the send bitrate is capped separately on the
-    // RTP sender (see _applyVideoBitrateCap).
+    // 1080p @60fps front camera; the send bitrate is capped separately on the
+    // RTP sender (see _applyBitrateCaps).
     final Map<String, dynamic> constraints = {
       'audio': audioConstraints,
       'video': video
@@ -891,7 +899,7 @@ class VoiceCallService {
               'facingMode': 'user',
               'width': {'ideal': 1920},
               'height': {'ideal': 1080},
-              'frameRate': {'ideal': 30},
+              'frameRate': {'ideal': 60},
             }
           : false,
     };
