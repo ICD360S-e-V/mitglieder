@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.68.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.2...v1.68.3) (2026-07-19)
+
+
+### Bug Fixes
+
+* **voice-call:** match vorsitzer media params (relay already forced here) ([#203](https://github.com/ICD360S-e-V/mitglieder/issues/203)) ([f9a48d4](https://github.com/ICD360S-e-V/mitglieder/commit/f9a48d45270d730f5a416fadc154fd996c82aa3c))
+
 ## [1.68.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.1...v1.68.2) (2026-07-19)
 
 
