@@ -133,6 +133,7 @@ class VoiceCallService {
   bool _isSpeakerOn = true;
   bool _isVideoCall = false; // this call negotiated video (camera)
   bool _isCameraOff = false; // user toggled the local camera off
+  Timer? _statsTimer; // periodic getStats logging for ICE diagnostics
 
   /// Set when [startCall] returns false. Reset to null at the start of every
   /// [startCall]. Callers read this to show a specific user-facing message.
@@ -752,6 +753,13 @@ class VoiceCallService {
         _log.warning('VoiceCallService: ⚠️⚠️⚠️ onTrack event but NO STREAMS! This is abnormal!', tag: 'CALL');
       }
     };
+
+    // ICE diagnostics: log candidate-pairs + candidate types every 3s while the
+    // connection is establishing and during the call, so a failed mobile call
+    // shows whether relay candidates appear on BOTH ends and whether a
+    // relay↔relay pair gets nominated with bytes flowing both ways. Stopped in
+    // _cleanup.
+    _startStatsLogging();
   }
 
   /// Get local audio stream.
@@ -881,8 +889,40 @@ class VoiceCallService {
   }
 
   /// Cleanup resources
+  /// Periodic getStats logging for ICE diagnostics (candidate-pairs + candidate
+  /// types), uploaded via LoggerService. A failed mobile call then shows the
+  /// decisive data: do `relay` candidates appear on both ends, and does a
+  /// relay↔relay pair reach state=succeeded/nominated with bytesSent>0 AND
+  /// bytesReceived>0 (vs strictly one-way → the "media 1 direction + 15s" bug).
+  void _startStatsLogging() {
+    _statsTimer?.cancel();
+    _statsTimer = Timer.periodic(const Duration(seconds: 3), (_) async {
+      final pc = _peerConnection;
+      if (pc == null) return;
+      try {
+        final reports = await pc.getStats();
+        for (final r in reports) {
+          final v = r.values;
+          if (r.type == 'candidate-pair') {
+            _log.info('[PAIR] state=${v['state']} nominated=${v['nominated']} sent=${v['bytesSent']} recv=${v['bytesReceived']} L=${v['localCandidateId']} R=${v['remoteCandidateId']}', tag: 'ICESTAT');
+          } else if (r.type == 'local-candidate' || r.type == 'remote-candidate') {
+            _log.info('[CAND] ${r.type} ${v['candidateType']} ${v['protocol']} ${v['ip'] ?? v['address']}:${v['port']}', tag: 'ICESTAT');
+          }
+        }
+      } catch (e) {
+        _log.warning('VoiceCallService: getStats logging error: $e', tag: 'ICESTAT');
+      }
+    });
+  }
+
+  void _stopStatsLogging() {
+    _statsTimer?.cancel();
+    _statsTimer = null;
+  }
+
   void _cleanup() {
     _log.info('VoiceCallService: _cleanup() - releasing WebRTC resources', tag: 'CALL');
+    _stopStatsLogging();
     _localStream?.getTracks().forEach((track) => track.stop());
     _localStream?.dispose();
     _localStream = null;
