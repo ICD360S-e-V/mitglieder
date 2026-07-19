@@ -225,7 +225,10 @@ class VoiceCallService {
         'offerToReceiveAudio': true,
         'offerToReceiveVideo': video,
       });
-      await _peerConnection!.setLocalDescription(offer);
+      // Tune Opus for voice (64 kbps, mono, in-band FEC + DTX). Send the same
+      // tuned SDP we set locally so both ends agree on the codec params.
+      final localOffer = RTCSessionDescription(_tuneOpus(offer.sdp), offer.type);
+      await _peerConnection!.setLocalDescription(localOffer);
       _log.info('VoiceCallService: SDP offer created and set as local description', tag: 'CALL');
 
       // Send offer via WebSocket
@@ -234,8 +237,8 @@ class VoiceCallService {
         'type': 'call_offer',
         'conversation_id': conversationId,
         'target_user_id': targetUserId,
-        'sdp': offer.sdp,
-        'sdp_type': offer.type,
+        'sdp': localOffer.sdp,
+        'sdp_type': localOffer.type,
       });
 
       return true;
@@ -338,7 +341,9 @@ class VoiceCallService {
       // Create answer
       _log.debug('VoiceCallService: Creating SDP answer...', tag: 'CALL');
       final answer = await _peerConnection!.createAnswer();
-      await _peerConnection!.setLocalDescription(answer);
+      // Tune Opus for voice (64 kbps, mono, FEC + DTX); send the tuned SDP.
+      final localAnswer = RTCSessionDescription(_tuneOpus(answer.sdp), answer.type);
+      await _peerConnection!.setLocalDescription(localAnswer);
       _log.info('VoiceCallService: SDP answer created and set as local description', tag: 'CALL');
 
       // Send answer via WebSocket
@@ -346,8 +351,8 @@ class VoiceCallService {
       onSignalingMessage?.call({
         'type': 'call_answer',
         'conversation_id': _currentConversationId,
-        'sdp': answer.sdp,
-        'sdp_type': answer.type,
+        'sdp': localAnswer.sdp,
+        'sdp_type': localAnswer.type,
       });
 
       return true;
@@ -584,6 +589,27 @@ class VoiceCallService {
     } catch (e) {
       _log.warning('VoiceCallService: _applyVideoBitrateCap failed: $e', tag: 'CALL');
     }
+  }
+
+  /// Tune the Opus codec in a local SDP for voice: 64 kbps max, mono, in-band
+  /// FEC (packet-loss resilience) + DTX. Applied to the offer/answer before
+  /// setLocalDescription. Kept identical to the vorsitzer app.
+  String _tuneOpus(String? sdp) {
+    if (sdp == null || sdp.isEmpty) return sdp ?? '';
+    final rtpmap = RegExp(r'a=rtpmap:(\d+) opus/48000/2', caseSensitive: false).firstMatch(sdp);
+    if (rtpmap == null) return sdp;
+    final pt = rtpmap.group(1)!;
+    const wanted = {'maxaveragebitrate': '64000', 'stereo': '0', 'useinbandfec': '1', 'usedtx': '1'};
+    final fmtp = RegExp('a=fmtp:$pt ([^\\r\\n]*)').firstMatch(sdp);
+    if (fmtp != null) {
+      final current = fmtp.group(1)!;
+      final keys = current.split(';').map((kv) => kv.split('=').first.trim()).toSet();
+      final adds = wanted.entries.where((e) => !keys.contains(e.key)).map((e) => '${e.key}=${e.value}');
+      if (adds.isEmpty) return sdp;
+      return sdp.replaceFirst(fmtp.group(0)!, 'a=fmtp:$pt $current;${adds.join(';')}');
+    }
+    return sdp.replaceFirst(rtpmap.group(0)!,
+        '${rtpmap.group(0)!}\r\na=fmtp:$pt ${wanted.entries.map((e) => "${e.key}=${e.value}").join(";")}');
   }
 
   /// Create WebRTC peer connection
