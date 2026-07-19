@@ -230,15 +230,17 @@ class VoiceCallService {
 
       // Create offer
       _log.debug('VoiceCallService: Creating SDP offer...', tag: 'CALL');
-      final offer = await _peerConnection!.createOffer({
-        'offerToReceiveAudio': true,
-        'offerToReceiveVideo': video,
-      });
+      // No legacy offerToReceive* constraints: under unified-plan they can
+      // degrade the m=video line (encoder stops emitting RTP). The audio+video
+      // transceivers already come from addTrack above, so the offer carries
+      // both m=audio and m=video as sendrecv.
+      final offer = await _peerConnection!.createOffer();
       // Tune Opus for voice (64 kbps, mono, in-band FEC + DTX). Send the same
       // tuned SDP we set locally so both ends agree on the codec params.
       final localOffer = RTCSessionDescription(_tuneOpus(offer.sdp), offer.type);
       await _peerConnection!.setLocalDescription(localOffer);
       _log.info('VoiceCallService: SDP offer created and set as local description', tag: 'CALL');
+      _logSdpSummary('caller-local-offer', localOffer.sdp);
 
       // Send offer via WebSocket
       _log.info('VoiceCallService: Sending call_offer via signaling', tag: 'CALL');
@@ -344,6 +346,7 @@ class VoiceCallService {
       );
       _remoteDescriptionSet = true;
       _log.info('VoiceCallService: Remote description set successfully', tag: 'CALL');
+      _logSdpSummary('callee-remote-offer', sdp);
 
       // Process queued ICE candidates (Fix 1)
       await _processQueuedIceCandidates();
@@ -355,6 +358,7 @@ class VoiceCallService {
       final localAnswer = RTCSessionDescription(_tuneOpus(answer.sdp), answer.type);
       await _peerConnection!.setLocalDescription(localAnswer);
       _log.info('VoiceCallService: SDP answer created and set as local description', tag: 'CALL');
+      _logSdpSummary('callee-local-answer', localAnswer.sdp);
 
       // Send answer via WebSocket
       _log.info('VoiceCallService: Sending call_answer via signaling', tag: 'CALL');
@@ -406,6 +410,7 @@ class VoiceCallService {
       );
       _remoteDescriptionSet = true;
       _log.info('VoiceCallService: Remote description (answer) set successfully', tag: 'CALL');
+      _logSdpSummary('caller-remote-answer', sdp);
 
       // Process queued ICE candidates (Fix 1)
       await _processQueuedIceCandidates();
@@ -649,6 +654,43 @@ class VoiceCallService {
         '${rtpmap.group(0)!}\r\na=fmtp:$pt ${wanted.entries.map((e) => "${e.key}=${e.value}").join(";")}');
   }
 
+  /// Log a compact per-m-line summary of an SDP (media kind, direction,
+  /// codecs) after each set*Description. Confirms `m=video` is `sendrecv` on
+  /// BOTH the offer and the answer — the decisive signal that video was
+  /// negotiated. Tag 'SDP' and format kept IDENTICAL to the vorsitzer app so
+  /// the two ends' logs correlate line-for-line. Labels used:
+  /// caller-local-offer, callee-remote-offer, callee-local-answer,
+  /// caller-remote-answer.
+  void _logSdpSummary(String label, String? sdp) {
+    if (sdp == null || sdp.isEmpty) {
+      _log.info('SDP[$label]: <empty>', tag: 'SDP');
+      return;
+    }
+    String? mLine;
+    String dir = '?';
+    final codecs = <String>[];
+    void flush() {
+      if (mLine != null) {
+        _log.info('SDP[$label] $mLine dir=$dir codecs=[${codecs.join(",")}]', tag: 'SDP');
+      }
+    }
+    for (final raw in sdp.split(RegExp(r'\r?\n'))) {
+      final l = raw.trim();
+      if (l.startsWith('m=')) {
+        flush();
+        mLine = l;
+        dir = '?';
+        codecs.clear();
+      } else if (l == 'a=sendrecv' || l == 'a=sendonly' || l == 'a=recvonly' || l == 'a=inactive') {
+        dir = l.substring(2);
+      } else if (l.startsWith('a=rtpmap:')) {
+        final pp = l.split(' ');
+        if (pp.length > 1) codecs.add(pp[1]);
+      }
+    }
+    flush();
+  }
+
   /// Create WebRTC peer connection
   Future<void> _createPeerConnection() async {
     _log.debug('VoiceCallService: Creating RTCPeerConnection...', tag: 'CALL');
@@ -676,6 +718,11 @@ class VoiceCallService {
     // rtcpMuxPolicy:'require' (also the default) keeps RTP+RTCP on that one port.
     _peerConnection = await createPeerConnection({
       ...iceServers,
+      // Explicit unified-plan. Under unified-plan the legacy
+      // offerToReceiveAudio/Video constraints can corrupt the m=video line so
+      // the encoder emits no RTP (local preview still works) — we drop them
+      // from createOffer and let addTrack drive the transceivers instead.
+      'sdpSemantics': 'unified-plan',
       'iceTransportPolicy': 'relay',
       'bundlePolicy': 'max-bundle',
       'rtcpMuxPolicy': 'require',
@@ -1013,11 +1060,12 @@ class VoiceCallService {
           } else if (r.type == 'local-candidate' || r.type == 'remote-candidate') {
             _log.info('[CAND] ${r.type} ${v['candidateType']} ${v['protocol']} ${v['ip'] ?? v['address']}:${v['port']}', tag: 'ICESTAT');
           } else if (r.type == 'outbound-rtp') {
-            // Decisive video-flow check: for a working video call there must be
-            // an outbound-rtp with kind=video whose bytesSent keeps growing.
-            _log.info('[OUT] kind=${v['kind'] ?? v['mediaType']} bytesSent=${v['bytesSent']} packetsSent=${v['packetsSent']} framesEncoded=${v['framesEncoded']}', tag: 'ICESTAT');
+            // Decisive video-flow check: a working video call must show an
+            // outbound-rtp with kind=video whose framesEncoded/bytesSent grow.
+            // Format kept IDENTICAL to the vorsitzer app so both logs correlate.
+            _log.info('[OUT-RTP] kind=${v['kind'] ?? v['mediaType']} bytesSent=${v['bytesSent']} framesEncoded=${v['framesEncoded']} ${v['frameWidth']}x${v['frameHeight']}', tag: 'ICESTAT');
           } else if (r.type == 'inbound-rtp') {
-            _log.info('[IN] kind=${v['kind'] ?? v['mediaType']} bytesReceived=${v['bytesReceived']} packetsReceived=${v['packetsReceived']} framesDecoded=${v['framesDecoded']}', tag: 'ICESTAT');
+            _log.info('[IN-RTP] kind=${v['kind'] ?? v['mediaType']} bytesRecv=${v['bytesReceived']} framesDecoded=${v['framesDecoded']}', tag: 'ICESTAT');
           }
         }
       } catch (e) {
