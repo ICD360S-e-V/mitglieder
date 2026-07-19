@@ -131,6 +131,8 @@ class VoiceCallService {
   int? _currentConversationId;
   bool _isMuted = false;
   bool _isSpeakerOn = true;
+  bool _isVideoCall = false; // this call negotiated video (camera)
+  bool _isCameraOff = false; // user toggled the local camera off
 
   /// Set when [startCall] returns false. Reset to null at the start of every
   /// [startCall]. Callers read this to show a specific user-facing message.
@@ -156,6 +158,10 @@ class VoiceCallService {
   CallState get callState => _callState;
   bool get isMuted => _isMuted;
   bool get isSpeakerOn => _isSpeakerOn;
+  bool get isVideoCall => _isVideoCall;
+  bool get isCameraOff => _isCameraOff;
+  MediaStream? get localStream => _localStream;
+  MediaStream? get remoteStream => _remoteStream;
   int? get currentConversationId => _currentConversationId;
 
   // Callback for sending signaling messages via WebSocket
@@ -170,7 +176,7 @@ class VoiceCallService {
   ///
   /// On failure returns false; the caller can read [lastStartFailure] for
   /// the reason and map it to a localised user-facing message.
-  Future<bool> startCall(int conversationId, String targetUserId, String targetUserName) async {
+  Future<bool> startCall(int conversationId, String targetUserId, String targetUserName, {bool video = false}) async {
     _log.info('VoiceCallService: startCall() - conv: $conversationId, target: $targetUserName', tag: 'CALL');
     _lastStartFailure = null;
     if (_callState != CallState.idle) {
@@ -180,11 +186,12 @@ class VoiceCallService {
 
     try {
       _currentConversationId = conversationId;
+      _isVideoCall = video;
       _setCallState(CallState.calling);
 
-      // Get local audio stream
-      _log.debug('VoiceCallService: Getting local audio stream...', tag: 'CALL');
-      _localStream = await _getLocalStream();
+      // Get local audio (+ camera, for a video call) stream
+      _log.debug('VoiceCallService: Getting local ${video ? "audio+video" : "audio"} stream...', tag: 'CALL');
+      _localStream = await _getLocalStream(video: video);
       if (_localStream == null) {
         _log.error('VoiceCallService: Failed to get local stream', tag: 'CALL');
         _lastStartFailure ??= CallStartFailure.unknown;
@@ -208,11 +215,15 @@ class VoiceCallService {
       });
       _log.info('VoiceCallService: ✅ All local tracks added to peer connection', tag: 'CALL');
 
+      // Cap the outgoing video bitrate for a 1080p call (~4 Mbps), matching the
+      // coturn tuning.
+      if (video) await _applyVideoBitrateCap();
+
       // Create offer
       _log.debug('VoiceCallService: Creating SDP offer...', tag: 'CALL');
       final offer = await _peerConnection!.createOffer({
         'offerToReceiveAudio': true,
-        'offerToReceiveVideo': false,
+        'offerToReceiveVideo': video,
       });
       await _peerConnection!.setLocalDescription(offer);
       _log.info('VoiceCallService: SDP offer created and set as local description', tag: 'CALL');
@@ -280,9 +291,14 @@ class VoiceCallService {
     try {
       _setCallState(CallState.connecting);
 
-      // Get local audio stream
-      _log.debug('VoiceCallService: Getting local audio stream for accept...', tag: 'CALL');
-      _localStream = await _getLocalStream();
+      // A video call is signalled by a video m-line in the caller's offer — no
+      // extra signaling field needed. Mirror it so we send our camera too.
+      final wantsVideo = sdp.contains('m=video');
+      _isVideoCall = wantsVideo;
+
+      // Get local audio (+ camera, if this is a video call) stream
+      _log.debug('VoiceCallService: Getting local ${wantsVideo ? "audio+video" : "audio"} stream for accept...', tag: 'CALL');
+      _localStream = await _getLocalStream(video: wantsVideo);
       if (_localStream == null) {
         _log.error('VoiceCallService: Failed to get local stream for accept', tag: 'CALL');
         await endCall();
@@ -304,6 +320,9 @@ class VoiceCallService {
         trackIndex++;
       });
       _log.info('VoiceCallService: ✅ All local tracks added for ACCEPT', tag: 'CALL');
+
+      // Cap outgoing video bitrate (~4 Mbps) for a 1080p call.
+      if (_isVideoCall) await _applyVideoBitrateCap();
 
       // Set remote description (the offer)
       _log.debug('VoiceCallService: Setting remote description (offer)...', tag: 'CALL');
@@ -511,6 +530,62 @@ class VoiceCallService {
     }
   }
 
+  /// Toggle the local camera on/off during a video call (audio keeps flowing).
+  void toggleCamera() {
+    final videoTracks = _localStream?.getVideoTracks() ?? const [];
+    if (videoTracks.isEmpty) {
+      _log.warning('VoiceCallService: toggleCamera() - no local video track', tag: 'CALL');
+      return;
+    }
+    _isCameraOff = !_isCameraOff;
+    _log.info('VoiceCallService: Camera off: $_isCameraOff', tag: 'CALL');
+    for (final t in videoTracks) {
+      t.enabled = !_isCameraOff;
+    }
+  }
+
+  /// Switch between front and back camera during a video call.
+  Future<void> switchCamera() async {
+    final videoTracks = _localStream?.getVideoTracks() ?? const [];
+    if (videoTracks.isEmpty) {
+      _log.warning('VoiceCallService: switchCamera() - no local video track', tag: 'CALL');
+      return;
+    }
+    try {
+      await Helper.switchCamera(videoTracks.first);
+      _log.info('VoiceCallService: 🔄 Camera switched', tag: 'CALL');
+    } catch (e) {
+      _log.warning('VoiceCallService: switchCamera failed: $e', tag: 'CALL');
+    }
+  }
+
+  /// Cap the outgoing video bitrate on the RTP sender (~4 Mbps @30fps for 1080p,
+  /// matching the coturn relay tuning). Modifies existing encodings in place
+  /// where possible — replacing the list wholesale throws on some platforms.
+  Future<void> _applyVideoBitrateCap() async {
+    if (_peerConnection == null) return;
+    try {
+      final senders = await _peerConnection!.getSenders();
+      for (final sender in senders) {
+        if (sender.track?.kind != 'video') continue;
+        final params = sender.parameters;
+        final existing = params.encodings;
+        if (existing != null && existing.isNotEmpty) {
+          for (final enc in existing) {
+            enc.maxBitrate = 4000000;
+            enc.maxFramerate = 30;
+          }
+        } else {
+          params.encodings = [RTCRtpEncoding(maxBitrate: 4000000, maxFramerate: 30)];
+        }
+        await sender.setParameters(params);
+        _log.info('VoiceCallService: 🎥 Video bitrate capped at ~4 Mbps @30fps', tag: 'CALL');
+      }
+    } catch (e) {
+      _log.warning('VoiceCallService: _applyVideoBitrateCap failed: $e', tag: 'CALL');
+    }
+  }
+
   /// Create WebRTC peer connection
   Future<void> _createPeerConnection() async {
     _log.debug('VoiceCallService: Creating RTCPeerConnection...', tag: 'CALL');
@@ -661,20 +736,44 @@ class VoiceCallService {
   /// On failure, classifies the error into [_lastStartFailure] so the
   /// caller can show an actionable message ("enable mic in Windows
   /// Privacy" vs "no microphone connected" vs generic).
-  Future<MediaStream?> _getLocalStream() async {
-    _log.info('VoiceCallService: 🎤 Requesting microphone access (default device)...', tag: 'CALL');
+  Future<MediaStream?> _getLocalStream({bool video = false}) async {
+    _log.info('VoiceCallService: 🎤 Requesting ${video ? "camera + microphone" : "microphone"} access...', tag: 'CALL');
+
+    const audioConstraints = {
+      'echoCancellation': true,
+      'noiseSuppression': true,
+      'autoGainControl': true,
+    };
+    // 1080p @30fps front camera; the send bitrate is capped separately on the
+    // RTP sender (see _applyVideoBitrateCap).
+    final Map<String, dynamic> constraints = {
+      'audio': audioConstraints,
+      'video': video
+          ? {
+              'facingMode': 'user',
+              'width': {'ideal': 1920},
+              'height': {'ideal': 1080},
+              'frameRate': {'ideal': 30},
+            }
+          : false,
+    };
 
     final MediaStream stream;
     try {
-      stream = await navigator.mediaDevices.getUserMedia(const {
-        'audio': {
-          'echoCancellation': true,
-          'noiseSuppression': true,
-          'autoGainControl': true,
-        },
-        'video': false,
-      });
+      stream = await navigator.mediaDevices.getUserMedia(constraints);
     } catch (e) {
+      // A video call that can't open the camera should still connect as
+      // audio-only rather than fail outright.
+      if (video) {
+        _log.warning('VoiceCallService: getUserMedia(audio+video) failed, falling back to audio-only: $e', tag: 'CALL');
+        try {
+          return await navigator.mediaDevices.getUserMedia({'audio': audioConstraints, 'video': false});
+        } catch (e2) {
+          _lastStartFailure = _classifyMediaError(e2);
+          _log.error('VoiceCallService: ❌ audio-only fallback also failed [${_lastStartFailure!.name}]: $e2', tag: 'CALL');
+          rethrow;
+        }
+      }
       _lastStartFailure = _classifyMediaError(e);
       _log.error(
         'VoiceCallService: ❌ getUserMedia(audio) failed [${_lastStartFailure!.name}]: $e',
@@ -768,6 +867,8 @@ class VoiceCallService {
     _currentConversationId = null;
     _isMuted = false;
     _isSpeakerOn = true;
+    _isVideoCall = false;
+    _isCameraOff = false;
 
     _setCallState(CallState.idle);
     _log.debug('VoiceCallService: Cleanup completed, state reset to idle', tag: 'CALL');
