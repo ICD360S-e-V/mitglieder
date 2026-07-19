@@ -131,7 +131,7 @@ class VoiceCallService {
   CallState _callState = CallState.idle;
   int? _currentConversationId;
   bool _isMuted = false;
-  bool _isSpeakerOn = true;
+  bool _isSpeakerOn = false; // audio calls start on the earpiece; video → speaker
   bool _isVideoCall = false; // this call negotiated video (camera)
   bool _isCameraOff = false; // user toggled the local camera off
   Timer? _statsTimer; // periodic getStats logging for ICE diagnostics
@@ -189,6 +189,10 @@ class VoiceCallService {
     try {
       _currentConversationId = conversationId;
       _isVideoCall = video;
+      // Audio call → earpiece (held to the ear); video call → loudspeaker
+      // (looking at the screen). The OS auto-routes to Bluetooth when a BT
+      // device is connected and speakerphone is off.
+      _isSpeakerOn = video;
       _setCallState(CallState.calling);
 
       // Get local audio (+ camera, for a video call) stream
@@ -300,6 +304,7 @@ class VoiceCallService {
       // extra signaling field needed. Mirror it so we send our camera too.
       final wantsVideo = sdp.contains('m=video');
       _isVideoCall = wantsVideo;
+      _isSpeakerOn = wantsVideo; // audio → earpiece, video → loudspeaker
 
       // Get local audio (+ camera, if this is a video call) stream
       _log.debug('VoiceCallService: Getting local ${wantsVideo ? "audio+video" : "audio"} stream for accept...', tag: 'CALL');
@@ -987,7 +992,7 @@ class VoiceCallService {
 
     _currentConversationId = null;
     _isMuted = false;
-    _isSpeakerOn = true;
+    _isSpeakerOn = false;
     _isVideoCall = false;
     _isCameraOff = false;
 
