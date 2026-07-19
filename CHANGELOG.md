@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.66.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.2...v1.66.3) (2026-07-19)
+
+
+### Bug Fixes
+
+* **voice-call:** route Android call audio to Bluetooth/wired headset ([#187](https://github.com/ICD360S-e-V/mitglieder/issues/187)) ([2b62d93](https://github.com/ICD360S-e-V/mitglieder/commit/2b62d9308aa4ac4d288884c68e91d313b379c892))
+
 ## [1.66.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.66.1...v1.66.2) (2026-07-19)
 
 
