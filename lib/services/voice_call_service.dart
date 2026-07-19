@@ -664,9 +664,21 @@ class VoiceCallService {
     // CLAT address, cross-family), so media never flows and the call drops at
     // ~15s on ICE consent timeout. Our coturn relay is proven (relay-to-relay,
     // 0% loss), so route all media through it and skip the dead-end candidates.
+    // Force a SINGLE bundled transport for audio+video. With the default
+    // 'balanced' bundle policy the video m-line gets its own ICE transport,
+    // which — on iceTransportPolicy:'relay' — needs a SECOND coturn allocation
+    // (same ephemeral username). coturn's use-auth-secret user-quota can reject
+    // that second allocation, so it never nominates: audio flows on the first
+    // relay (~100 KB) while video's transport stalls and drags the whole
+    // PeerConnection to ICE-consent FAILED at ~15s (the "remote black on both
+    // sides + call drops at 15s" bug). max-bundle marks video bundle-only →
+    // one transport, one allocation, video rides the proven audio relay path.
+    // rtcpMuxPolicy:'require' (also the default) keeps RTP+RTCP on that one port.
     _peerConnection = await createPeerConnection({
       ...iceServers,
       'iceTransportPolicy': 'relay',
+      'bundlePolicy': 'max-bundle',
+      'rtcpMuxPolicy': 'require',
     });
     _log.info('VoiceCallService: RTCPeerConnection created successfully', tag: 'CALL');
 
@@ -1000,6 +1012,12 @@ class VoiceCallService {
             _log.info('[PAIR] state=${v['state']} nominated=${v['nominated']} sent=${v['bytesSent']} recv=${v['bytesReceived']} L=${v['localCandidateId']} R=${v['remoteCandidateId']}', tag: 'ICESTAT');
           } else if (r.type == 'local-candidate' || r.type == 'remote-candidate') {
             _log.info('[CAND] ${r.type} ${v['candidateType']} ${v['protocol']} ${v['ip'] ?? v['address']}:${v['port']}', tag: 'ICESTAT');
+          } else if (r.type == 'outbound-rtp') {
+            // Decisive video-flow check: for a working video call there must be
+            // an outbound-rtp with kind=video whose bytesSent keeps growing.
+            _log.info('[OUT] kind=${v['kind'] ?? v['mediaType']} bytesSent=${v['bytesSent']} packetsSent=${v['packetsSent']} framesEncoded=${v['framesEncoded']}', tag: 'ICESTAT');
+          } else if (r.type == 'inbound-rtp') {
+            _log.info('[IN] kind=${v['kind'] ?? v['mediaType']} bytesReceived=${v['bytesReceived']} packetsReceived=${v['packetsReceived']} framesDecoded=${v['framesDecoded']}', tag: 'ICESTAT');
           }
         }
       } catch (e) {
