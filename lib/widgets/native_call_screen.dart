@@ -42,7 +42,10 @@ class _NativeCallScreenState extends State<NativeCallScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _pulseController;
   Timer? _autoRejectTimer;
-  int _secondsRemaining = 30;
+  // Callee ring window. Coordinated with the caller-side ring-timeout (45s) so
+  // the caller always gives up BEFORE the callee auto-rejects — no contradictory
+  // messages at the two ends (caller 45s / callee 60s).
+  int _secondsRemaining = 60;
 
   @override
   void initState() {
@@ -59,7 +62,7 @@ class _NativeCallScreenState extends State<NativeCallScreen>
       duration: const Duration(milliseconds: 1500),
     )..repeat();
 
-    // Auto-reject incoming call after 30 seconds
+    // Auto-reject incoming call after 60 seconds (coordinated with 45s caller timeout)
     if (widget.isIncoming && !widget.isActive) {
       _autoRejectTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
         if (mounted) {

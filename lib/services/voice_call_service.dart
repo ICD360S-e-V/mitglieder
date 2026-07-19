@@ -20,7 +20,11 @@ enum CallStartFailure {
   /// device is exclusively held by another app.
   micNotFound,
 
-  /// Something else — TURN, signaling, internal WebRTC error.
+  /// TURN credentials could not be fetched (offline / 401 / backend down). Our
+  /// coturn is the only relay, so no call can be established without them.
+  turnUnavailable,
+
+  /// Something else — signaling or internal WebRTC error.
   unknown,
 }
 
@@ -36,7 +40,12 @@ class VoiceCallService {
   static Map<String, dynamic>? _cachedIceServers;
   static DateTime? _cacheExpiry;
 
-  /// Fetch TURN credentials from server (cached for 24h)
+  /// Fetch ephemeral TURN credentials from our backend and assemble the ICE
+  /// server list. The server uses coturn's short-lived credentials (use-auth-
+  /// secret / TURN REST API): it returns a time-limited username/password plus
+  /// the URI list, and we build the iceServers here. GDPR: only our own coturn,
+  /// never a third-party STUN. Cached until ~90% of the TTL so a new call never
+  /// receives an already-expired credential.
   static Future<Map<String, dynamic>> _getIceServers() async {
     if (_cachedIceServers != null && _cacheExpiry != null && DateTime.now().isBefore(_cacheExpiry!)) {
       return _cachedIceServers!;
@@ -53,27 +62,50 @@ class VoiceCallService {
       final httpClient = HttpClient()..connectionTimeout = const Duration(seconds: 10);
       final client = IOClient(httpClient);
       try {
-        final response = await client.post(
+        final response = await client.get(
           Uri.parse('${ApiService.baseUrl}/auth/turn_credentials.php'),
           headers: {
-            'Content-Type': 'application/json',
             'Authorization': 'Bearer $token',
           },
         ).timeout(const Duration(seconds: 10));
 
         if (response.statusCode == 200) {
-          final data = jsonDecode(response.body);
-          if (data['success'] == true && data['ice_servers'] != null) {
-            _cachedIceServers = {
-              'iceServers': List<Map<String, dynamic>>.from(
-                (data['ice_servers'] as List).map((e) => Map<String, dynamic>.from(e)),
-              ),
-            };
-            final ttl = data['ttl'] as int? ?? 86400;
-            _cacheExpiry = DateTime.now().add(Duration(seconds: ttl));
-            debugPrint('[VoiceCall] TURN credentials fetched, cached for ${ttl}s');
-            return _cachedIceServers!;
+          final data = jsonDecode(response.body) as Map<String, dynamic>;
+          // Ephemeral contract: { username, password, ttl, uris:[...] }. There
+          // is no 'success' field — presence of uris + username + password is
+          // the validity signal. The credential applies to every turn(s): URI.
+          final uris = (data['uris'] as List?)?.map((e) => e.toString()).toList() ?? const <String>[];
+          final username = data['username']?.toString();
+          final password = data['password']?.toString();
+
+          if (uris.isNotEmpty && username != null && password != null) {
+            final stunUris = uris.where((u) => u.startsWith('stun:')).toList();
+            final turnUris = uris.where((u) => u.startsWith('turn:') || u.startsWith('turns:')).toList();
+
+            final servers = <Map<String, dynamic>>[];
+            if (stunUris.isNotEmpty) {
+              servers.add({'urls': stunUris});
+            }
+            if (turnUris.isNotEmpty) {
+              servers.add({
+                'urls': turnUris,
+                'username': username,
+                'credential': password,
+              });
+            }
+
+            if (servers.isNotEmpty) {
+              _cachedIceServers = {'iceServers': servers};
+              final ttl = (data['ttl'] as num?)?.toInt() ?? 86400;
+              // Refresh before the credential actually expires (90% of TTL).
+              final safeTtl = ttl > 60 ? (ttl * 9 ~/ 10) : ttl;
+              _cacheExpiry = DateTime.now().add(Duration(seconds: safeTtl));
+              debugPrint('[VoiceCall] Ephemeral TURN fetched (${servers.length} ICE entries), cached ${safeTtl}s of ${ttl}s TTL');
+              return _cachedIceServers!;
+            }
           }
+          debugPrint('[VoiceCall] turn_credentials response missing uris/username/password — call will fail');
+          return _emptyIceServers;
         }
         debugPrint('[VoiceCall] TURN fetch failed (${response.statusCode}) — call will fail (no ICE servers)');
         return _emptyIceServers;
@@ -109,11 +141,16 @@ class VoiceCallService {
   final _callStateController = StreamController<CallState>.broadcast();
   final _remoteStreamController = StreamController<MediaStream?>.broadcast();
   final _incomingCallController = StreamController<IncomingCall>.broadcast();
+  // Real ICE connection state for the network-quality indicator (#6a).
+  // Mirrors the vorsitzer app's VoiceCallService (shared contract) so the two
+  // ends stay convergent.
+  final _iceConnectionStateController = StreamController<RTCIceConnectionState?>.broadcast();
 
   // Public streams
   Stream<CallState> get callStateStream => _callStateController.stream;
   Stream<MediaStream?> get remoteStreamStream => _remoteStreamController.stream;
   Stream<IncomingCall> get incomingCallStream => _incomingCallController.stream;
+  Stream<RTCIceConnectionState?> get iceConnectionStateStream => _iceConnectionStateController.stream;
 
   // Getters
   CallState get callState => _callState;
@@ -193,8 +230,11 @@ class VoiceCallService {
       return true;
     } catch (e) {
       _log.error('VoiceCallService: startCall() error: $e', tag: 'CALL');
-      // _getLocalStream classifies its own failures into _lastStartFailure.
-      // Anything else is unknown.
+      // _getLocalStream classifies mic failures into _lastStartFailure.
+      // A missing TURN relay gets its own reason; anything else is unknown.
+      if (e.toString().contains('TURN_UNAVAILABLE')) {
+        _lastStartFailure = CallStartFailure.turnUnavailable;
+      }
       _lastStartFailure ??= CallStartFailure.unknown;
       await endCall();
       return false;
@@ -475,6 +515,12 @@ class VoiceCallService {
   Future<void> _createPeerConnection() async {
     _log.debug('VoiceCallService: Creating RTCPeerConnection...', tag: 'CALL');
     final iceServers = await _getIceServers();
+    // No TURN, no call: our coturn is the only relay (GDPR: no third-party
+    // STUN), so a member on strict/mobile NAT cannot connect without it. Fail
+    // fast with a clear reason instead of gathering only unusable candidates.
+    if ((iceServers['iceServers'] as List).isEmpty) {
+      throw StateError('TURN_UNAVAILABLE');
+    }
     _peerConnection = await createPeerConnection(iceServers);
     _log.info('VoiceCallService: RTCPeerConnection created successfully', tag: 'CALL');
 
@@ -504,6 +550,8 @@ class VoiceCallService {
     // Handle ICE connection state
     _peerConnection!.onIceConnectionState = (state) {
       _log.info('VoiceCallService: ✓ ICE Connection State: $state', tag: 'CALL');
+      // Feed the network-quality indicator (#6a).
+      _iceConnectionStateController.add(state);
     };
 
     // Handle signaling state
@@ -731,6 +779,7 @@ class VoiceCallService {
     _callStateController.close();
     _remoteStreamController.close();
     _incomingCallController.close();
+    _iceConnectionStateController.close();
   }
 }
 

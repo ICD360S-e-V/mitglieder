@@ -10,6 +10,7 @@ import '../services/chat_service.dart';
 import '../services/heartbeat_service.dart';
 import '../services/background_service.dart';
 import '../services/voice_call_service.dart';
+import 'package:flutter_webrtc/flutter_webrtc.dart' show RTCIceConnectionState;
 import '../widgets/legal_footer.dart';
 import '../widgets/live_chat_dialog.dart';
 import '../widgets/update_dialog.dart';
@@ -222,6 +223,15 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
             message['sdp_type'] as String,
           );
           break;
+        case 'call_reject':
+          // Emitted by VoiceCallService when auto-rejecting a second, concurrent
+          // incoming call as busy. This handler is the sole owner of signaling,
+          // so it must cover call_reject too (#3).
+          _chatService.sendCallReject(
+            conversationId,
+            message['reason'] as String,
+          );
+          break;
         case 'call_end':
           _chatService.sendCallEnd(conversationId);
           break;
@@ -405,48 +415,81 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   }
 
   Widget _buildActiveCallScreen(String remoteName, int conversationId) {
-    return StreamBuilder<CallState>(
-      stream: _voiceCallService.callStateStream,
-      initialData: _voiceCallService.callState,
-      builder: (context, stateSnapshot) {
-        final callState = stateSnapshot.data ?? CallState.idle;
+    // StatefulBuilder gives this pushed route a LOCAL rebuild. Mute/speaker
+    // toggles flip a bool in VoiceCallService but emit nothing on callStateStream,
+    // so a parent setState wouldn't refresh this route and the icons would freeze
+    // (#1). setLocalState re-reads isMuted/isSpeakerOn each toggle.
+    return StatefulBuilder(
+      builder: (context, setLocalState) {
+        return StreamBuilder<CallState>(
+          stream: _voiceCallService.callStateStream,
+          initialData: _voiceCallService.callState,
+          builder: (context, stateSnapshot) {
+            final callState = stateSnapshot.data ?? CallState.idle;
 
-        // If call ended, pop the screen
-        if (callState == CallState.idle) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (Navigator.of(context).canPop()) {
-              Navigator.of(context).pop();
+            // If call ended, pop the screen
+            if (callState == CallState.idle) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (Navigator.of(context).canPop()) {
+                  Navigator.of(context).pop();
+                }
+              });
             }
-          });
-        }
 
-        return NativeCallScreen(
-          remoteName: remoteName,
-          isIncoming: false,
-          isActive: true,
-          callDuration: _callDuration,
-          isMuted: _voiceCallService.isMuted,
-          isSpeakerOn: _voiceCallService.isSpeakerOn,
-          onToggleMute: () {
-            _voiceCallService.toggleMute();
-            setState(() {});
+            return StreamBuilder<RTCIceConnectionState?>(
+              stream: _voiceCallService.iceConnectionStateStream,
+              builder: (context, iceSnapshot) {
+                return NativeCallScreen(
+                  remoteName: remoteName,
+                  isIncoming: false,
+                  isActive: true,
+                  callDuration: _callDuration,
+                  isMuted: _voiceCallService.isMuted,
+                  isSpeakerOn: _voiceCallService.isSpeakerOn,
+                  onToggleMute: () {
+                    _voiceCallService.toggleMute();
+                    setLocalState(() {});
+                  },
+                  onToggleSpeaker: () {
+                    _voiceCallService.toggleSpeaker();
+                    setLocalState(() {});
+                  },
+                  onEndCall: () async {
+                    final navigator = Navigator.of(context);
+                    // endCall() already emits the call_end frame via
+                    // onSignalingMessage — don't send it a second time (#4).
+                    await _voiceCallService.endCall();
+                    if (mounted && navigator.canPop()) {
+                      navigator.pop();
+                    }
+                  },
+                  connectionQuality: _mapIceQuality(iceSnapshot.data),
+                );
+              },
+            );
           },
-          onToggleSpeaker: () {
-            _voiceCallService.toggleSpeaker();
-            setState(() {});
-          },
-          onEndCall: () async {
-            final navigator = Navigator.of(context);
-            await _voiceCallService.endCall();
-            _chatService.sendCallEnd(conversationId);
-            if (mounted && navigator.canPop()) {
-              navigator.pop();
-            }
-          },
-          connectionQuality: 'good', // Based on ICE connection state
         );
       },
     );
+  }
+
+  /// Map the real ICE connection state to the NativeCallScreen quality buckets,
+  /// replacing the old hardcoded 'good' (#6a). Fed by iceConnectionStateStream.
+  String _mapIceQuality(RTCIceConnectionState? s) {
+    switch (s) {
+      case RTCIceConnectionState.RTCIceConnectionStateConnected:
+      case RTCIceConnectionState.RTCIceConnectionStateCompleted:
+        return 'good';
+      case RTCIceConnectionState.RTCIceConnectionStateChecking:
+      case RTCIceConnectionState.RTCIceConnectionStateNew:
+        return 'poor';
+      case RTCIceConnectionState.RTCIceConnectionStateDisconnected:
+      case RTCIceConnectionState.RTCIceConnectionStateFailed:
+      case RTCIceConnectionState.RTCIceConnectionStateClosed:
+        return 'disconnected';
+      default:
+        return 'good';
+    }
   }
 
   Future<void> _connectWebSocket() async {
