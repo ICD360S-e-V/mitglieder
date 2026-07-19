@@ -99,6 +99,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   StreamSubscription? _callBusySubscription;
   StreamSubscription? _readReceiptSubscription;
   StreamSubscription? _messageExpiredSubscription;
+  StreamSubscription? _reactionUpdateSubscription;
   StreamSubscription? _callOfferSubscription;
   StreamSubscription? _callStateSubscription;
 
@@ -232,6 +233,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     _callBusySubscription?.cancel();
     _readReceiptSubscription?.cancel();
     _messageExpiredSubscription?.cancel();
+    _reactionUpdateSubscription?.cancel();
     _callOfferSubscription?.cancel();
     _callStateSubscription?.cancel();
     _ringTimeoutTimer?.cancel();
@@ -596,6 +598,21 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       });
     });
 
+    // Reaction-update listener: the other party added/changed/removed a
+    // reaction on a message → mirror it in place on the matching bubble.
+    _reactionUpdateSubscription = _chatService.reactionUpdateStream.listen((event) {
+      if (!mounted || event.conversationId != _conversationId) return;
+      final idx = _messages.indexWhere((m) => m['id'] == event.messageId);
+      if (idx < 0) return;
+      setState(() {
+        if (event.reaction == null) {
+          _messages[idx].remove('reaction');
+        } else {
+          _messages[idx]['reaction'] = event.reaction;
+        }
+      });
+    });
+
     // Connect and authenticate
     _log.info('LiveChat: Calling chatService.connect(${widget.mitgliedernummer})', tag: 'CHAT');
     final connected = await _chatService.connect(widget.mitgliedernummer);
@@ -888,14 +905,52 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   Future<void> _openReactionPicker(Map<String, dynamic> msg, MessageEmotion? current) async {
     final pick = await showEmotionPicker(context, _reactTapPos, current: current);
     if (pick == null || !mounted) return;
+
+    // Optimistic update → persist on server → broadcast over WS. Any failure
+    // (network, or the server's 403 ownership check) reverts the local change.
+    final previous = msg['reaction'];
+    final newKey = pick.emotion?.storageKey; // null => remove
     setState(() {
-      if (pick.emotion == null) {
+      if (newKey == null) {
         msg.remove('reaction');
       } else {
-        msg['reaction'] = pick.emotion!.storageKey;
+        msg['reaction'] = newKey;
       }
     });
-    // Deocamdată local (test UX). Persistența pe server + broadcast WebSocket vin la pasul următor.
+
+    final rawId = msg['id'];
+    final messageId = rawId is int ? rawId : int.tryParse(rawId?.toString() ?? '');
+    final conversationId = _conversationId;
+    if (messageId == null || conversationId == null) return;
+
+    void revert() {
+      if (!mounted) return;
+      setState(() {
+        if (previous == null) {
+          msg.remove('reaction');
+        } else {
+          msg['reaction'] = previous;
+        }
+      });
+    }
+
+    try {
+      final res = await _apiService.reactToMessage(
+        conversationId: conversationId,
+        messageId: messageId,
+        mitgliedernummer: widget.mitgliedernummer,
+        reaction: newKey ?? '',
+      );
+      if (res['success'] == true) {
+        if (_isConnected) {
+          _chatService.sendReactionUpdate(conversationId, messageId, newKey ?? '');
+        }
+      } else {
+        revert();
+      }
+    } catch (_) {
+      revert();
+    }
   }
 
   // ==================== Chat Methods ====================

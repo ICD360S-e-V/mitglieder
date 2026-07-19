@@ -679,6 +679,29 @@ class ApiService {
     return jsonDecode(response.body);
   }
 
+  // Set (or clear) a WhatsApp-style reaction on a chat message.
+  // reaction = enum key ('love'|'laugh'|'happy'|'thanks'|'sad'|'angry') or '' to remove.
+  // Server enforces ownership (can't react to your own message) → 403 on violation.
+  Future<Map<String, dynamic>> reactToMessage({
+    required int conversationId,
+    required int messageId,
+    required String mitgliedernummer,
+    required String reaction,
+  }) async {
+    final response = await _client.post(
+      Uri.parse('$baseUrl/chat/react.php'),
+      headers: _headers,
+      body: jsonEncode({
+        'conversation_id': conversationId,
+        'message_id': messageId,
+        'mitgliedernummer': mitgliedernummer,
+        'reaction': reaction,
+      }),
+    );
+
+    return jsonDecode(response.body);
+  }
+
   // Get support online status
   Future<Map<String, dynamic>> getSupportStatus() async {
     final response = await _client.post(

@@ -37,6 +37,9 @@ class ChatService {
   // Stream controller for message expiry (5-min TTL after read; server NULLed body)
   final _messageExpiredController = StreamController<MessageExpiredEvent>.broadcast();
 
+  // Stream controller for WhatsApp-style reaction updates (add/change/remove)
+  final _reactionUpdateController = StreamController<ReactionUpdateEvent>.broadcast();
+
   // Stream controller for new device login notifications
   final _newDeviceLoginController = StreamController<NewDeviceLoginEvent>.broadcast();
 
@@ -62,6 +65,9 @@ class ChatService {
 
   // Public stream - Message Expired (delete-on-read tombstones from server)
   Stream<MessageExpiredEvent> get messageExpiredStream => _messageExpiredController.stream;
+
+  // Public stream - Reaction Updates
+  Stream<ReactionUpdateEvent> get reactionUpdateStream => _reactionUpdateController.stream;
 
   // Public stream - New Device Login
   Stream<NewDeviceLoginEvent> get newDeviceLoginStream => _newDeviceLoginController.stream;
@@ -245,6 +251,18 @@ class ChatService {
       'conversation_id': conversationId,
       'message_ids': messageIds,
       'status': status, // 'delivered' or 'read'
+    });
+  }
+
+  /// Broadcast a reaction change so the other party updates in place.
+  /// reaction = enum key or '' to remove. Server excludes the sender from the
+  /// broadcast, so there is no echo back to us.
+  void sendReactionUpdate(int conversationId, int messageId, String reaction) {
+    _send({
+      'type': 'reaction_update',
+      'conversation_id': conversationId,
+      'message_id': messageId,
+      'reaction': reaction, // '' pentru ștergere
     });
   }
 
@@ -453,6 +471,10 @@ class ChatService {
           _messageExpiredController.add(MessageExpiredEvent.fromJson(json));
           break;
 
+        case 'reaction_update':
+          _reactionUpdateController.add(ReactionUpdateEvent.fromJson(json));
+          break;
+
         case 'error':
           _errorController.add(json['error'] ?? 'Unknown error');
           break;
@@ -477,6 +499,7 @@ class ChatService {
     _callBusyController.close();
     _readReceiptController.close();
     _messageExpiredController.close();
+    _reactionUpdateController.close();
     _newDeviceLoginController.close();
     _ticketNotificationController.close();
   }
@@ -663,6 +686,29 @@ class MessageExpiredEvent {
       conversationId: json['conversation_id'] ?? 0,
       messageIds: List<int>.from(json['message_ids'] ?? []),
       timestamp: DateTime.tryParse(json['timestamp'] ?? '') ?? DateTime.now(),
+    );
+  }
+}
+
+/// Reaction-update event: another party added, changed, or removed a
+/// WhatsApp-style reaction on a message. reaction == null means removed.
+class ReactionUpdateEvent {
+  final int conversationId;
+  final int messageId;
+  final String? reaction;
+
+  ReactionUpdateEvent({
+    required this.conversationId,
+    required this.messageId,
+    this.reaction,
+  });
+
+  factory ReactionUpdateEvent.fromJson(Map<String, dynamic> json) {
+    final r = json['reaction'];
+    return ReactionUpdateEvent(
+      conversationId: json['conversation_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      reaction: (r == null || r == '') ? null : r.toString(),
     );
   }
 }
