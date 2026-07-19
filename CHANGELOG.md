@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.68.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.0...v1.68.1) (2026-07-19)
+
+
+### Bug Fixes
+
+* **voice-call:** max-bundle so video shares the audio relay allocation ([#199](https://github.com/ICD360S-e-V/mitglieder/issues/199)) ([a5f044a](https://github.com/ICD360S-e-V/mitglieder/commit/a5f044a0dcda61ee058deebcce88b554a4ae0190))
+
 ## [1.68.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.67.0...v1.68.0) (2026-07-19)
 
 
