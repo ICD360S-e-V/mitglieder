@@ -622,7 +622,15 @@ class VoiceCallService {
     if ((iceServers['iceServers'] as List).isEmpty) {
       throw StateError('TURN_UNAVAILABLE');
     }
-    _peerConnection = await createPeerConnection(iceServers);
+    // Force relay-only ICE. On mobile IPv6-only / 464XLAT (CLAT) networks the
+    // host/srflx candidates never converge (the client offers a bogus 192.0.0.4
+    // CLAT address, cross-family), so media never flows and the call drops at
+    // ~15s on ICE consent timeout. Our coturn relay is proven (relay-to-relay,
+    // 0% loss), so route all media through it and skip the dead-end candidates.
+    _peerConnection = await createPeerConnection({
+      ...iceServers,
+      'iceTransportPolicy': 'relay',
+    });
     _log.info('VoiceCallService: RTCPeerConnection created successfully', tag: 'CALL');
 
     // Handle ICE candidates (our local candidates to send to remote peer)
