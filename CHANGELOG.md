@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.69.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.4...v1.69.0) (2026-07-24)
+
+
+### Features
+
+* **call:** show a video badge on the incoming-call screen ([#207](https://github.com/ICD360S-e-V/mitglieder/issues/207)) ([0683499](https://github.com/ICD360S-e-V/mitglieder/commit/0683499feb0490c8bb2bc7784f5ddc3166cfb3b7))
+
 ## [1.68.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.3...v1.68.4) (2026-07-24)
 
 
