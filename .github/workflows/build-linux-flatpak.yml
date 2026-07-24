@@ -5,6 +5,13 @@
 # build-android.yml; Windows + Apple stay in build-extras-platforms.yml.
 # This workflow OWNS the GitHub Release: it creates the release tag with
 # Linux + Flatpak assets, and the other two workflows append.
+#
+# Runners: migrated off the retired [self-hosted, linux, x64] box to
+# GitHub-hosted runners. analyze + build-linux run on ubuntu-latest with
+# Flutter provisioned by subosito/flutter-action and the desktop toolchain
+# installed per-run; flatpak runs inside the official Flathub freedesktop
+# 24.08 container (modern flatpak-builder installs to /app/lib, so no lib64
+# breakage — same approach as the Vorsitzer app).
 name: Build Linux + Flatpak (priority)
 
 on:
@@ -16,21 +23,15 @@ on:
 # while an older Linux/Flatpak build is still running/queued, the
 # older one is cancelled — only the latest version's .deb/.AppImage/
 # .flatpak ships and the GitHub Release this workflow owns is created
-# for that tag. Trade-off: ~10-15 min of cancelled-build work in the
-# worst case, vs ~2h of queue pile-up before this fix (each version
-# bump previously got its own lane via github.ref).
+# for that tag.
 concurrency:
   group: mitglieder-release
   cancel-in-progress: true
 
 env:
-  # Matches Vorsitzer's known-working desktop build. Flutter 3.41 on Linux
-  # leaves the Flutter content area blank in a Proxmox VM without GPU
-  # passthrough (Mesa warnings are the same as Vorsitzer's — they're noise,
-  # not the cause; the actual difference is which GL path the renderer
-  # picks). Pinning to 3.38.4 brings Mitglieder's renderer in line with
-  # Vorsitzer, which is the only iteration that reliably ends with the
-  # welcome screen visible on the test VM.
+  # Matches Vorsitzer's known-working desktop build. Pinning to 3.38.4 brings
+  # Mitglieder's renderer in line with Vorsitzer, which is the only iteration
+  # that reliably ends with the welcome screen visible on the test VM.
   FLUTTER_VERSION: '3.38.4'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -84,49 +85,21 @@ jobs:
           fi
 
   # ============================================
-  # ANALYZE: flutter analyze fails fast on type/import errors before any
-  # platform build burns 20+ minutes only to fail at the same problem.
+  # ANALYZE
   # ============================================
   analyze:
     name: Analyze
     needs: detect-changes
     if: needs.detect-changes.outputs.linux == 'true'
-    # Self-hosted runner on 10.10.10.60 — Flutter SDK at /opt/flutter,
-    # ~/.pub-cache persists across builds on NVMe; no cache wrappers needed.
-    runs-on: [self-hosted, linux, x64]
+    runs-on: ubuntu-latest
     steps:
-      - name: Force-clean stale flatpak-builder rofiles bind-mounts
-        # When a previous build is cancelled mid-flatpak-builder (e.g.
-        # by the newest-wins concurrency policy), its rofiles bind-mounts
-        # stay attached to broken fds → "Transport endpoint is not
-        # connected" on the next clean. actions/checkout's `git clean
-        # -ffdx` then can't rmdir them and the job dies. Lazy-unmount
-        # any leftovers and nuke the rofiles tree before checkout runs.
-        shell: bash
-        run: |
-          set +e
-          # IMPORTANT: a broken bind-mount returns "Transport endpoint is
-          # not connected" on stat(), so shell tests like [ -e "$d" ] and
-          # glob expansion silently skip the very directory we need to
-          # clean. Read /proc/mounts directly — the kernel mount table
-          # lists the bind-mount independently of the source fd, so we
-          # can unmount it by its target path regardless.
-          awk '$2 ~ /\/flatpak\/\.flatpak-builder\/rofiles\/rofiles-/ {print $2}' /proc/mounts \
-            | while read -r mp; do
-                echo "Lazy-unmount: $mp"
-                umount -l "$mp" 2>/dev/null \
-                  || fusermount -u "$mp" 2>/dev/null \
-                  || true
-              done
-          # Now that no stale mounts hold the dirs open, force-remove
-          # the whole rofiles tree from the workspace.
-          WS="${GITHUB_WORKSPACE:-$(pwd)}"
-          cd "$WS" 2>/dev/null && rm -rf flatpak/.flatpak-builder/rofiles 2>/dev/null
-          exit 0
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
       - name: Get dependencies + l10n + analyze
         run: |
-          export PATH="/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:$PATH"
           flutter pub get
           flutter gen-l10n
           flutter analyze --no-fatal-infos
@@ -138,31 +111,39 @@ jobs:
     name: Linux
     needs: [detect-changes, analyze]
     if: needs.detect-changes.outputs.linux == 'true'
-    # Self-hosted runner — apt deps (clang/cmake/ninja/libgtk/libsecret/
-    # libjsoncpp/libnotify/libayatana/rpm/ruby-dev/fpm/appimagetool)
-    # pre-installed; /opt/flutter holds the SDK; NVMe IS the cache.
-    runs-on: [self-hosted, linux, x64]
+    runs-on: ubuntu-latest
     steps:
-      - name: Force-clean stale flatpak-builder rofiles bind-mounts
-        shell: bash
-        run: |
-          set +e
-          WS="${GITHUB_WORKSPACE:-$(pwd)}"
-          cd "$WS" 2>/dev/null || exit 0
-          if [ -d flatpak/.flatpak-builder/rofiles ]; then
-            for d in flatpak/.flatpak-builder/rofiles/rofiles-*; do
-              [ -e "$d" ] || continue
-              umount -l "$d" 2>/dev/null
-              fusermount -u "$d" 2>/dev/null
-            done
-            rm -rf flatpak/.flatpak-builder/rofiles 2>/dev/null
-          fi
-          exit 0
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Install Linux build + packaging dependencies
+        # Cloud runners ship none of the desktop toolchain. clang/cmake/ninja +
+        # GTK are what `flutter build linux` needs; libsecret/libjsoncpp/libnotify/
+        # libayatana are plugin requirements. rpm + fpm (via gem) + appimagetool
+        # produce the .deb/.rpm/.AppImage the self-hosted runner had preinstalled.
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            clang cmake ninja-build pkg-config \
+            libgtk-3-dev liblzma-dev \
+            libsecret-1-dev libjsoncpp-dev libnotify-dev \
+            libayatana-appindicator3-dev \
+            rpm ruby ruby-dev build-essential
+          sudo gem install --no-document fpm
+          # appimagetool as a static binary; APPIMAGE_EXTRACT_AND_RUN avoids
+          # needing FUSE (not available on GitHub-hosted runners).
+          sudo wget -qO /usr/local/bin/appimagetool \
+            https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+          sudo chmod +x /usr/local/bin/appimagetool
 
       - name: Get dependencies + l10n
         run: |
-          export PATH="/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:$PATH"
           flutter pub get
           flutter gen-l10n
 
@@ -176,15 +157,14 @@ jobs:
           echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
 
       - name: Patch flutter_webrtc rtc_types.h to include <stdint.h>
-        # flutter_webrtc 1.5.2's third_party/libwebrtc/include/rtc_types.h
-        # uses uint32_t without including <stdint.h>. clang-21 on Ubuntu
-        # 26.04 stops at the first "unknown type name 'uint32_t'" — fix
-        # by prepending the include in-place. Idempotent guard so the
-        # step is safe on already-patched caches.
+        # flutter_webrtc 1.5.2's third_party/libwebrtc/include/rtc_types.h uses
+        # uint32_t without including <stdint.h>. clang stops at the first
+        # "unknown type name 'uint32_t'" — fix by prepending the include.
+        # Idempotent guard so the step is safe on already-patched caches.
         run: |
           HEADER=$(find ~/.pub-cache -path '*flutter_webrtc-1.5*/third_party/libwebrtc/include/rtc_types.h' | head -1)
           if [ -z "$HEADER" ]; then
-            echo "rtc_types.h not found — skipping (flutter_webrtc may not be in pub cache yet)"
+            echo "rtc_types.h not found — skipping"
             exit 0
           fi
           if grep -q '#include <stdint.h>' "$HEADER"; then
@@ -196,15 +176,14 @@ jobs:
 
       - name: Build Linux
         env:
-          # Ubuntu 26.04 clang-21 defaults to -Werror=deprecated-declarations;
-          # tray_manager and other plugins call deprecated GTK/appindicator
-          # APIs that would otherwise break the build.
+          # clang defaults to -Werror=deprecated-declarations; tray_manager and
+          # other plugins call deprecated GTK/appindicator APIs.
           CFLAGS: "-Wno-error=deprecated-declarations"
           CXXFLAGS: "-Wno-error=deprecated-declarations"
           VERSION: ${{ steps.ver.outputs.version }}
           BUILD_NUMBER: ${{ steps.ver.outputs.build_number }}
         run: |
-          export PATH="/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:$PATH"
+          flutter config --enable-linux-desktop
           flutter build linux --release \
             --no-tree-shake-icons \
             --build-name="$VERSION" \
@@ -217,10 +196,6 @@ jobs:
           name: icd360sev-linux
           path: build/linux/x64/release/bundle/
           if-no-files-found: error
-
-      # --- Linux Packages ---
-      # ruby-dev / rpm / fpm / appimagetool / libfuse2t64 are pre-installed
-      # on the self-hosted runner; no install step needed.
 
       - name: Create .deb
         run: |
@@ -266,6 +241,10 @@ jobs:
           if-no-files-found: error
 
       - name: Create AppImage
+        env:
+          # No FUSE on GitHub-hosted runners → run the appimagetool AppImage by
+          # self-extracting instead of mounting.
+          APPIMAGE_EXTRACT_AND_RUN: '1'
         run: |
           BUNDLE=build/linux/x64/release/bundle
           mkdir -p AppDir/usr/bin AppDir/usr/lib AppDir/usr/share/applications
@@ -299,28 +278,18 @@ jobs:
     name: Flatpak
     needs: [detect-changes, build-linux]
     if: needs.detect-changes.outputs.linux == 'true'
-    # Self-hosted runner. flatpak 1.16.6 + flatpak-builder + freedesktop
-    # runtime/sdk 24.08 already installed. ~/.cache/flatpak-builder/build/
-    # stays warm across tags so libayatana / appindicator dependencies
-    # are not recompiled when the manifest is unchanged.
-    runs-on: [self-hosted, linux, x64]
-    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    # Build inside Flathub's official image for our exact runtime. It ships a
+    # modern flatpak-builder (installs into /app/lib, not /app/lib64) plus the
+    # freedesktop 24.08 Platform+Sdk and all build tooling — so no apt/runtime
+    # install is needed and the lib64 breakage a bare ubuntu-latest runner hits
+    # does not occur. --privileged is required for the bwrap sandbox
+    # flatpak-builder runs each module in. Same setup as Vorsitzer.
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:freedesktop-24.08
+      options: --privileged
+    timeout-minutes: 60
     steps:
-      - name: Force-clean stale flatpak-builder rofiles bind-mounts
-        shell: bash
-        run: |
-          set +e
-          WS="${GITHUB_WORKSPACE:-$(pwd)}"
-          cd "$WS" 2>/dev/null || exit 0
-          if [ -d flatpak/.flatpak-builder/rofiles ]; then
-            for d in flatpak/.flatpak-builder/rofiles/rofiles-*; do
-              [ -e "$d" ] || continue
-              umount -l "$d" 2>/dev/null
-              fusermount -u "$d" 2>/dev/null
-            done
-            rm -rf flatpak/.flatpak-builder/rofiles 2>/dev/null
-          fi
-          exit 0
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
@@ -328,15 +297,22 @@ jobs:
           name: icd360sev-linux
           path: flatpak/bundle
 
+      - name: Ensure flathub remote (for --install-deps-from)
+        run: |
+          flatpak remote-add --if-not-exists --user \
+            flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+      - name: Cache flatpak-builder build state
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: flatpak/.flatpak-builder
+          key: flatpak-builder-${{ hashFiles('flatpak/de.icd360s.Mitglieder.yml') }}
+          restore-keys: flatpak-builder-
+
       - name: Make Flutter binary executable
         run: chmod +x flatpak/bundle/icd360sev_mitglied
 
       - name: Import Flatpak signing GPG key (idempotent)
-        # The key (ID 244C2F8A661420E8, "ICD360S e.V. Flatpak Builds") is
-        # already on the self-hosted runner's keyring from the initial
-        # generation. We still re-import the secret on every run so a
-        # fresh VM / rebuilt runner image can sign without manual
-        # intervention. gpg --import is idempotent.
         env:
           GPG_PRIVATE_KEY: ${{ secrets.FLATPAK_GPG_PRIVATE_KEY }}
         run: |
@@ -350,7 +326,9 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG 244C2F8A661420E8 | head -3
 
       - name: Clone Flathub shared-modules
-        run: git clone --depth 1 --branch master https://github.com/flathub/shared-modules.git flatpak/shared-modules
+        run: |
+          rm -rf flatpak/shared-modules
+          git clone --depth 1 --branch master https://github.com/flathub/shared-modules.git flatpak/shared-modules
 
       - name: Inject current version into AppStream metainfo
         run: |
@@ -377,28 +355,15 @@ jobs:
           cat flatpak/de.icd360s.Mitglieder.metainfo.xml
 
       - name: Build Flatpak bundle + .flatpakref descriptor
-        # Direct flatpak-builder call — the runner already has the
-        # runtime/SDK on disk and ~/.cache/flatpak-builder/ stays warm.
-        # NO --force-clean: that flag wipes the persistent cache and
-        # rebuilds the whole stack every tag.
-        #
-        # The .flatpak single-file bundle is offline-install only —
-        # `flatpak update` against a bundle install is documented to be
-        # impossible (flatpak#552). The .flatpakref companion we generate
-        # below is the supported update path: when a user installs the
-        # .flatpakref, flatpak auto-adds the SuggestRemoteName remote
-        # pointing at our Pages OSTree repo, after which `flatpak update`
-        # picks up every new tag automatically.
+        # Direct flatpak-builder call — the container already has the runtime/SDK.
+        # NO --force-clean (it wipes the cache and rebuilds every tag).
+        # --disable-rofiles-fuse: rofiles-fuse is unreliable inside a container
+        # even with --privileged, so use plain copies.
         working-directory: flatpak
         run: |
           rm -rf ../build ../repo
-          # --gpg-sign on flatpak-builder + build-bundle + build-update-repo
-          # signs every OSTree commit and the summary file with the ICD360S
-          # signing key. Without signatures, modern Flatpak refuses to install
-          # from custom remotes ("Can't pull from untrusted non-gpg verified
-          # remote") and the .flatpakref install flow breaks for users.
           flatpak-builder --user --install-deps-from=flathub \
-            --repo=../repo --ccache \
+            --repo=../repo --ccache --disable-rofiles-fuse \
             --gpg-sign=244C2F8A661420E8 \
             ../build de.icd360s.Mitglieder.yml
           flatpak build-bundle \
@@ -407,9 +372,6 @@ jobs:
             ../repo \
             ../icd360sev-mitglied.flatpak \
             de.icd360s.Mitglieder
-          # Embed the public-key base64 (committed at .github/flatpak-pubkey.b64)
-          # into the .flatpakref so Flatpak auto-configures gpg-verify=true with
-          # this exact key when a user installs via the descriptor.
           PUBKEY=$(tr -d '\n' < "$GITHUB_WORKSPACE/.github/flatpak-pubkey.b64")
           cat > ../de.icd360s.Mitglieder.flatpakref <<REFEOF
           [Flatpak Ref]
@@ -437,8 +399,6 @@ jobs:
           path: de.icd360s.Mitglieder.flatpakref
           if-no-files-found: error
 
-      # ---- OSTree repo for `flatpak update` (served from GitHub Pages) ----
-
       - name: Update OSTree repo metadata + static deltas
         run: |
           flatpak build-update-repo --generate-static-deltas \
@@ -451,9 +411,6 @@ jobs:
         run: |
           mkdir -p pages-out
           cp -r repo pages-out/repo
-          # Embed the ICD360S signing key (committed at
-          # .github/flatpak-pubkey.b64) so `flatpak remote-add --from`
-          # auto-configures gpg-verify=true with this exact key.
           PUBKEY=$(tr -d '\n' < "$GITHUB_WORKSPACE/.github/flatpak-pubkey.b64")
           cat > pages-out/icd360s-mitglieder.flatpakrepo <<EOF
           [Flatpak Repo]
@@ -527,12 +484,6 @@ jobs:
 
   # ============================================
   # RELEASE — Linux + Flatpak only
-  # ----------------------------------------------------------------------
-  # This workflow OWNS the GitHub Release creation: it tags first with
-  # Linux + Flatpak assets + version_mitglieder_linux.json manifest, so
-  # the download buttons in the Actions UI become clickable as soon as
-  # Linux finishes (the slowest of the three platforms here). The Android
-  # and extras workflows append to this same release tag.
   # ============================================
   release:
     name: Release (Linux + Flatpak)
@@ -553,15 +504,11 @@ jobs:
       - name: Prepare release files
         run: |
           mkdir -p release/
-          # Linux raw bundle + packages + flatpak
           cd artifacts/icd360sev-linux && tar czf ../../release/icd360sev-linux.tar.gz . && cd ../..
           cp artifacts/icd360sev-linux-deb/*.deb release/icd360sev-mitglied.deb
           cp artifacts/icd360sev-linux-rpm/*.rpm release/icd360sev-mitglied.rpm
           cp artifacts/icd360sev-linux-appimage/*.AppImage release/icd360sev-mitglied.AppImage
           cp artifacts/icd360sev-flatpak/icd360sev-mitglied.flatpak release/icd360sev-mitglied.flatpak
-          # .flatpakref is the auto-update-capable installer; instruct users
-          # to prefer it over the .flatpak bundle (which is offline-only and
-          # cannot be updated in place per flatpak#552).
           cp artifacts/icd360sev-flatpakref/de.icd360s.Mitglieder.flatpakref release/de.icd360s.Mitglieder.flatpakref
           echo "Release files:"
           ls -lh release/
