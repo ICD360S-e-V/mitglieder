@@ -164,6 +164,10 @@ class VoiceCallService {
   bool get isMuted => _isMuted;
   bool get isSpeakerOn => _isSpeakerOn;
   bool get isVideoCall => _isVideoCall;
+
+  /// Whether an incoming offer SDP is a real (sending) video call — lets the
+  /// incoming-call UI show the video badge before the call is accepted.
+  bool offerSendsVideo(String? sdp) => _offerSendsVideo(sdp);
   bool get isCameraOff => _isCameraOff;
   MediaStream? get localStream => _localStream;
   MediaStream? get remoteStream => _remoteStream;

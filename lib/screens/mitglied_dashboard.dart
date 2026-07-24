@@ -335,6 +335,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         builder: (ctx) => NativeCallScreen(
           remoteName: event.callerName,
           isIncoming: true,
+          isVideo: _voiceCallService.offerSendsVideo(event.sdp),
           isActive: false,
           isMuted: false,
           isSpeakerOn: true,
@@ -445,6 +446,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
                 return NativeCallScreen(
                   remoteName: remoteName,
                   isIncoming: false,
+                  isVideo: _voiceCallService.isVideoCall,
                   isActive: true,
                   callDuration: _callDuration,
                   isMuted: _voiceCallService.isMuted,

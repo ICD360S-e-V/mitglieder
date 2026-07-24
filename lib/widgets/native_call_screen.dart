@@ -17,11 +17,13 @@ class NativeCallScreen extends StatefulWidget {
   final VoidCallback onToggleSpeaker;
   final VoidCallback onEndCall;
   final String? connectionQuality; // 'excellent', 'good', 'poor', 'disconnected'
+  final bool isVideo; // caller is sending video → show the video badge
 
   const NativeCallScreen({
     super.key,
     required this.remoteName,
     this.isIncoming = false,
+    this.isVideo = false,
     this.isActive = false,
     this.callDuration,
     required this.isMuted,
@@ -158,13 +160,22 @@ class _NativeCallScreenState extends State<NativeCallScreen>
 
         const SizedBox(height: 8),
 
-        // "Eingehender Anruf" text
-        Text(
-          AppLocalizations.of(context)!.incomingCallTitle,
-          style: const TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
-          ),
+        // "Eingehender Anruf" text (+ camera icon for video calls)
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (widget.isVideo) ...[
+              const Icon(Icons.videocam, color: Colors.white70, size: 18),
+              const SizedBox(width: 6),
+            ],
+            Text(
+              AppLocalizations.of(context)!.incomingCallTitle,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+              ),
+            ),
+          ],
         ),
 
         const SizedBox(height: 24),
