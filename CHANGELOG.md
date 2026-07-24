@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.68.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.3...v1.68.4) (2026-07-24)
+
+
+### Bug Fixes
+
+* **call:** camera off on audio calls + WS keepalive against ~60s drop ([#205](https://github.com/ICD360S-e-V/mitglieder/issues/205)) ([47cf383](https://github.com/ICD360S-e-V/mitglieder/commit/47cf383820f6d7f5832e775a6e72b283b21a90fa))
+
 ## [1.68.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.2...v1.68.3) (2026-07-19)
 
 
