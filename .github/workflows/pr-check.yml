@@ -2,7 +2,8 @@ name: PR Check
 
 # Gives every pull request a fast status check (the build workflows only run on
 # v* tags, so PRs previously had no CI at all). Mirrors the `analyze` job from
-# build-linux-flatpak.yml: self-hosted runner, Flutter at /opt/flutter.
+# build-linux-flatpak.yml. Runs on a GitHub-hosted runner (the self-hosted
+# runner was retired) with Flutter provisioned by subosito/flutter-action.
 # workflow_dispatch lets you run it on demand against any branch.
 on:
   pull_request:
@@ -15,12 +16,15 @@ concurrency:
 jobs:
   analyze:
     name: Analyze
-    runs-on: [self-hosted, linux, x64]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: '3.38.4'
+          cache: true
       - name: pub get + l10n + analyze
         run: |
-          export PATH="/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:$PATH"
           flutter pub get
           flutter gen-l10n
           flutter analyze --no-fatal-infos

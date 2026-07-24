@@ -98,6 +98,14 @@ class ChatService {
       // Security: Proper SSL certificate validation for WebSocket
       // Let Android/iOS trust store validate the certificate chain
       final webSocket = await WebSocket.connect(wsUrl);
+      // Keepalive: ping every 20s. The signaling channel goes completely idle
+      // once a call's ICE negotiation finishes, and an idle TCP connection gets
+      // reaped by mobile-carrier / CGNAT boxes after ~60s. When that happens the
+      // server's onClose fires and broadcasts call_ended (reason 'disconnected')
+      // to the peer — i.e. calls dropped at ~1 min. These ping frames keep the
+      // NAT mapping warm (the server auto-replies pong); pingInterval also gives
+      // faster dead-connection detection → quicker reconnect.
+      webSocket.pingInterval = const Duration(seconds: 20);
       _channel = IOWebSocketChannel(webSocket);
 
       final completer = Completer<bool>();

@@ -294,6 +294,45 @@ class VoiceCallService {
     ));
   }
 
+  /// Whether the caller's offer actually SENDS video — i.e. this is a real
+  /// video call, not a voice call that merely carries a passive video m-line.
+  ///
+  /// `sdp.contains('m=video')` was too loose: an *audio* call can still include
+  /// a `recvonly`/`inactive` video m-line (e.g. a recvonly transceiver kept open
+  /// so the call could later be upgraded). Treating that as a video call made
+  /// this side open its own camera on a plain voice call. We count it as video
+  /// only when the m=video section is not rejected (port ≠ 0) and its direction
+  /// lets the caller send (sendrecv / sendonly).
+  bool _offerSendsVideo(String? sdp) {
+    if (sdp == null || sdp.isEmpty) return false;
+    final lines = sdp.split(RegExp(r'\r\n|\r|\n'));
+    var inVideo = false;
+    var videoActive = false; // m=video port != 0 (not a rejected m-line)
+    String? direction;
+    for (final line in lines) {
+      if (line.startsWith('m=')) {
+        if (inVideo) break; // reached the next m-section → video section done
+        if (line.startsWith('m=video')) {
+          inVideo = true;
+          // "m=video <port> ..." — port 0 means the m-line is rejected/disabled.
+          final parts = line.split(' ');
+          videoActive = parts.length > 1 && parts[1] != '0';
+        }
+        continue;
+      }
+      if (inVideo &&
+          (line == 'a=sendrecv' ||
+              line == 'a=sendonly' ||
+              line == 'a=recvonly' ||
+              line == 'a=inactive')) {
+        direction = line.substring(2);
+      }
+    }
+    if (!inVideo || !videoActive) return false;
+    final dir = direction ?? 'sendrecv'; // SDP default when unspecified
+    return dir == 'sendrecv' || dir == 'sendonly';
+  }
+
   /// Accept incoming call
   Future<bool> acceptCall(String sdp, String sdpType) async {
     _log.info('VoiceCallService: acceptCall() - current state: $_callState', tag: 'CALL');
@@ -305,9 +344,12 @@ class VoiceCallService {
     try {
       _setCallState(CallState.connecting);
 
-      // A video call is signalled by a video m-line in the caller's offer — no
-      // extra signaling field needed. Mirror it so we send our camera too.
-      final wantsVideo = sdp.contains('m=video');
+      // A video call is signalled by the caller ACTUALLY SENDING video in the
+      // offer — not merely a video m-line being present. A voice call can carry
+      // a passive (recvonly/inactive) video m-line, which must not turn our
+      // camera on. Mirror real video so we send our camera too. See
+      // _offerSendsVideo().
+      final wantsVideo = _offerSendsVideo(sdp);
       _isVideoCall = wantsVideo;
       _isSpeakerOn = wantsVideo; // audio → earpiece, video → loudspeaker
 
