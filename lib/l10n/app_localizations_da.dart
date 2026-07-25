@@ -9,12 +9,6 @@ class AppLocalizationsDa extends AppLocalizations {
   AppLocalizationsDa([String locale = 'da']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Medlemsportal';
-
-  @override
-  String get memberPortal => 'Medlemsportal';
-
-  @override
   String get welcomeLoading => 'Indlæser...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get memberNumberHint => 'Indtast medlemsnummer';
 
   @override
-  String get password => 'Adgangskode';
-
-  @override
-  String get passwordHint => 'Indtast adgangskode';
-
-  @override
   String get confirmPassword => 'Bekræft adgangskode';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Indtast ny adgangskode';
-
-  @override
-  String get saveCredentials => 'Gem loginoplysninger';
-
-  @override
-  String get autoLogin => 'Automatisk login';
-
-  @override
-  String get forgotPassword => 'Glemt adgangskode?';
 
   @override
   String get firstName => 'Fornavn og efternavn';
@@ -90,22 +69,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get passwordsNotMatch => 'Adgangskoderne matcher ikke';
 
   @override
-  String get recoveryCode => 'Gendannelseskode (6 cifre)';
-
-  @override
-  String get recoveryCodeHelper =>
-      'Husk denne kode til gendannelse af adgangskode';
-
-  @override
-  String get recoveryCodeHint => 'Indtast gendannelseskode';
-
-  @override
-  String get recoveryCodeInvalid => 'Koden skal have præcis 6 cifre';
-
-  @override
-  String get loginFailed => 'Login mislykkedes';
-
-  @override
   String get registrationFailed => 'Registrering mislykkedes';
 
   @override
@@ -119,20 +82,7 @@ class AppLocalizationsDa extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'For mange enheder';
-
-  @override
-  String get maxDevicesMessage =>
-      'Du er allerede logget ind på 3 enheder.\nVælg en enhed at logge ud fra:';
-
-  @override
-  String get unknownDevice => 'Ukendt enhed';
-
-  @override
   String get unknown => 'Ukendt';
-
-  @override
-  String get logoutError => 'Logud-fejl';
 
   @override
   String error(String error) {
@@ -146,39 +96,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get resetPassword => 'Nulstil adgangskode';
 
   @override
-  String get forgotPasswordTitle => 'Glemt adgangskode';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Indtast dit medlemsnummer og gendannelseskoden, du oprettede ved registrering.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Adgangskode nulstillet!\n\nDu kan nu logge ind med din nye adgangskode.';
-
-  @override
-  String get passwordResetFailed => 'Nulstilling af adgangskode mislykkedes';
-
-  @override
-  String get needHelp => 'Brug for hjælp?';
-
-  @override
-  String get helpQuestion => 'Problemer med login eller registrering?';
-
-  @override
-  String get helpDescription =>
-      'Kontakt os via WhatsApp og beskriv, hvad der ikke virker. Vi svarer hurtigst muligt!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Forespørgsel via ICD360S-appen';
-
-  @override
-  String get whatsappMessage => 'Hej, jeg har et problem med ICD360S-appen. ';
-
-  @override
   String get imprint => 'Impressum';
 
   @override
@@ -189,15 +106,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get revocation => 'Fortrydelsesret';
-
-  @override
-  String get cancellation => 'Opsigelse';
-
-  @override
-  String get allRightsReserved => 'Alle rettigheder forbeholdes.';
-
-  @override
-  String get enterCredentials => 'Indtast medlemsnummer og adgangskode';
 
   @override
   String get appointments => 'Aftaler';
@@ -252,13 +160,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get close => 'Luk';
 
   @override
-  String get membership => 'Medlemskab';
-
-  @override
   String get myAppointments => 'Mine aftaler';
-
-  @override
-  String get appointmentsLoadingReady => 'Indlæser aftaler - API klar!';
 
   @override
   String get priority => 'Prioritet';
@@ -267,16 +169,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get messageLabel => 'Besked';
 
   @override
-  String get createdOn => 'Oprettet';
-
-  @override
-  String get handler => 'Håndterer';
-
-  @override
   String get reportProblems => 'Rapporter problemer';
-
-  @override
-  String get reportProblem => 'Rapporter problem';
 
   @override
   String get weRespondIn24Hours =>
@@ -309,41 +202,13 @@ class AppLocalizationsDa extends AppLocalizations {
   String get myTickets => 'Mine sager';
 
   @override
-  String get newTicket => 'Ny sag';
-
-  @override
-  String get noOpenTickets => 'Ingen åbne sager';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Har du et spørgsmål eller problem?\nOpret en ny sag.';
-
-  @override
-  String get whatIsTheProblem => 'Hvad er problemet?';
-
-  @override
-  String get describeTheProblem => 'Beskriv problemet';
-
-  @override
-  String get howUrgentIsIt => 'Hvor hastende er det?';
-
-  @override
   String get low => 'Lav';
-
-  @override
-  String get medium => 'Mellem';
 
   @override
   String get high => 'Høj';
 
   @override
   String get submit => 'Send';
-
-  @override
-  String get fillSubjectAndMessage => 'Udfyld emne og besked';
-
-  @override
-  String get ticketCreated => 'Sag oprettet';
 
   @override
   String get errorCreatingTicket => 'Fejl ved oprettelse af sag';
@@ -364,12 +229,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get changePassword => 'Skift adgangskode';
 
   @override
-  String get newEmailAddress => 'Ny e-mailadresse';
-
-  @override
-  String get currentPassword => 'Nuværende adgangskode';
-
-  @override
   String get saveEmail => 'Gem e-mail';
 
   @override
@@ -377,9 +236,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Enhed logget ud';
-
-  @override
-  String get passwordChangedSuccessfully => 'Adgangskode ændret';
 
   @override
   String get emailChangedSuccessfully => 'E-mail ændret';
@@ -392,23 +248,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get validEmailRequired => 'Angiv en gyldig e-mailadresse';
-
-  @override
-  String get passwordTooShort => 'Adgangskoden skal være mindst 6 tegn';
-
-  @override
-  String get maxDevicesReached => 'Du er logget ind på maksimalt 3 enheder.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Du er logget ind på $count ud af 3 enheder.';
-  }
-
-  @override
-  String get noActiveSessions => 'Ingen aktive sessioner';
-
-  @override
-  String get logoutFromDevice => 'Log ud fra denne enhed';
 
   @override
   String get confirmLogoutDevice => 'Log ud fra enhed?';
@@ -538,6 +377,18 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get appWillRestart => 'Appen genstartes automatisk.';
+
+  @override
+  String get autoUpdateEnableTitle => 'Install future updates automatically';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'The app downloads and installs updates on its own and restarts briefly. No further prompts.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Version $version is being installed in the background. The app will restart shortly.';
+  }
 
   @override
   String get later => 'Senere';
@@ -920,9 +771,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get errorConnecting => 'Forbindelsesfejl';
 
   @override
-  String get errorAcceptingCall => 'Fejl ved accept af opkald';
-
-  @override
   String get errorDownloading => 'Fejl ved download';
 
   @override
@@ -954,11 +802,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get file => 'Fil';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name skriver...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Ny besked fra';
@@ -1027,19 +870,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get logsCopied => 'Logs kopieret!';
-
-  @override
-  String get diagnosticDataTitle => 'Diagnosticeringsdata';
-
-  @override
-  String get diagnosticDescription =>
-      'Vil du sende anonyme diagnosticeringsdata for at forbedre appen?';
-
-  @override
-  String get noThanks => 'Nej tak';
-
-  @override
-  String get yesEnable => 'Ja, aktiver';
 
   @override
   String get passwordMinEightChars => 'Adgangskoden skal være mindst 8 tegn';
@@ -1217,9 +1047,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get emailChangedSuccess => 'E-mail ændret';
 
   @override
-  String get newPasswordMinChars => 'Ny adgangskode (min. 6 tegn)';
-
-  @override
   String get reasonLabel2 => 'Årsag';
 
   @override
@@ -1227,9 +1054,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Download';
-
-  @override
-  String get connectionErrorGeneric => 'Forbindelsesfejl';
 
   @override
   String get copyLogs => 'Kopiér logfiler';
@@ -1245,12 +1069,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get unknownValue => 'Ukendt';
-
-  @override
-  String get bankTransfer => 'Bankoverførsel';
-
-  @override
-  String get standingOrder => 'Fast overførsel';
 
   @override
   String get payment => 'Betaling';
@@ -1617,15 +1435,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get statusAccepted => 'Accepteret';
 
   @override
-  String get memberNumberTooLong => 'Medlemsnummer for langt (maks. 20 tegn)';
-
-  @override
-  String get onlyUppercaseAndNumbers => 'Kun store bogstaver og tal er tilladt';
-
-  @override
-  String get passwordTooLong => 'Adgangskode for lang (maks. 100 tegn)';
-
-  @override
   String get nameTooLong => 'Navn for langt (maks. 100 tegn)';
 
   @override
@@ -1756,15 +1565,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get openFile => 'Åbn';
 
   @override
-  String get diagnosticErrors => 'Fejlrapporter til forbedring';
-
-  @override
-  String get diagnosticAnonymousStats => 'Anonyme brugsstatistikker';
-
-  @override
-  String get diagnosticPerformance => 'App-ydeevnedata';
-
-  @override
   String get noMicrophoneError =>
       'Ingen mikrofon fundet. Tilslut en mikrofon og prøv igen.';
 
@@ -1789,9 +1589,6 @@ class AppLocalizationsDa extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'Konti, der ikke verificeres inden for 30 dage, vil automatisk blive suspenderet.';
-
-  @override
-  String get ipClean => 'IP ren - ikke opført';
 
   @override
   String get documentsProvidedByBoard => 'Dokumenter leveres af bestyrelsen.';
@@ -1829,13 +1626,6 @@ class AppLocalizationsDa extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp => 'Vil du hjælpe os med at forbedre appen?';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Ingen personlige data indsamles. Denne indstilling kan ændres når som helst.';
-
-  @override
   String logEntries(int count) {
     return '$count poster';
   }
@@ -1845,15 +1635,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Nyt login registreret';
-
-  @override
-  String get waitingForMember => 'Venter på medlem';
-
-  @override
-  String get waitingForStaff => 'Venter på medarbejder';
-
-  @override
-  String get waitingForAuthority => 'Venter på myndighed';
 
   @override
   String get errorNoInternet =>
@@ -1881,14 +1662,7 @@ class AppLocalizationsDa extends AppLocalizations {
       'DNS problem detected. Check your connection or try another network.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Please open your browser and sign in to the WiFi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Slow connection.';
-
-  @override
-  String get securityBannerNetworkOffline => 'No network connection.';
 
   @override
   String get securityPermissionDialogTitle =>
@@ -1911,4 +1685,1144 @@ class AppLocalizationsDa extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'No microphone was found. Connect a headset or microphone and try again.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Godmorgen';
+
+  @override
+  String get claudiuWelcomeDay => 'Goddag';
+
+  @override
+  String get claudiuWelcomeEvening => 'Godaften';
+
+  @override
+  String get claudiuWelcomeNight => 'Godaften';
+
+  @override
+  String get claudiuWelcomeVisitor => 'kære besøgende';
+
+  @override
+  String get claudiuWelcomeAsk => 'Hvordan kan jeg hjælpe?';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Jeg vil gerne blive medlem';
+
+  @override
+  String get claudiuWelcomeLogin => 'Jeg er allerede medlem og vil logge ind';
+
+  @override
+  String get claudiuWelcomeProblem => 'Jeg har et problem med appen';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Nødstilfælde — ring til os';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Claudiu';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro =>
+      'Før du ringer — vores åbningstider:';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'På kontoret';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'I felten med klienter';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'Uden for disse tider tager vi kun nødstilfælde. Du kan også sende sms til samme nummer — vi vender tilbage.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Ring nu';
+
+  @override
+  String get claudiuWelcomeSendSms => 'Send SMS';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Nødstilfælde ICD360S e.V. — kontakt mig venligst hurtigst muligt.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Luk';
+
+  @override
+  String get claudiuLoginWelcome => 'Velkommen tilbage, kære medlem!';
+
+  @override
+  String get claudiuLoginAsk => 'Fortæl mig venligst dit medlemsnummer.';
+
+  @override
+  String get claudiuLoginProgress => 'Næsten… bliv ved med at skrive.';
+
+  @override
+  String get claudiuLoginReady => 'Perfekt! Tryk på knappen nedenfor.';
+
+  @override
+  String get claudiuLoginLoading => 'Tjekker identitet… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Fandt dig! Logger ind…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Fandt dig, $name! Logger ind…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Hm, jeg kan ikke finde det nummer. Skrev du det rigtigt?';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Glemt dit medlemsnummer?';
+
+  @override
+  String get claudiuLoginNoSms =>
+      'Vi sender ikke nummeret via e-mail eller sms.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Den eneste vej: et personligt møde på foreningens kontor, efter ID-kontrol.';
+
+  @override
+  String get claudiuLoginContactUs => 'Ring for at aftale tid:';
+
+  @override
+  String get claudiuDiagnosticGreeting =>
+      'Før du går ind, et hurtigt spørgsmål';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Må jeg sende anonyme rapporter, så udviklerne kan forbedre appen?';
+
+  @override
+  String get claudiuDiagnosticYes => 'Ja, jeg vil gerne hjælpe';
+
+  @override
+  String get claudiuDiagnosticNo => 'Nej, jeg kigger bare';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Fortæl mig mere';
+
+  @override
+  String get claudiuDiagnosticSendsHeader => '📤 Hvad vi SENDER (anonymt):';
+
+  @override
+  String get claudiuDiagnosticSends1 =>
+      'En anonym enhedskode (IKKE dit medlemsnummer)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Din rolle (medlem / bestyrelse)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Operativsystem (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Valgt sprog';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Batteriniveau + tilstand';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Nuværende skærm';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Sessionens varighed (sekunder)';
+
+  @override
+  String get claudiuDiagnosticSends8 => 'Fejl hvis nogen (sidste 10)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Navigation (sidste 20 skærme)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader => '🛡️ Hvad vi ALDRIG sender:';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Dit rigtige navn';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'E-mailadresse';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Telefonnummer';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Adgangskode';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Indhold af chatbeskeder';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Indhold af tickets';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Dokumenter eller vedhæftninger';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Tekniske detaljer:';
+
+  @override
+  String get claudiuDiagnosticTech1 => 'Sendes hvert 2. minut';
+
+  @override
+  String get claudiuDiagnosticTech2 =>
+      'TLS-krypteret forbindelse, fastlåst certifikat';
+
+  @override
+  String get claudiuDiagnosticTech3 =>
+      'Du kan slå det fra når som helst i Indstillinger';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Hvordan kan jeg hjælpe?';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Hvad skete der?';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Hvordan vil du fortælle mig det?';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Skriv en rapport';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'Med trin-for-trin detaljer. Teamet får teksten og løser det senere.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Lad os tale nu';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Anonym chat med en operatør. Svar i realtid hvis nogen er online.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Eller, hvis det haster:';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Ring til os';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Anonym chat';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Hej!';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Jeg lytter. Skriv hvad du vil — intet navn nødvendigt. Jeg svarer så snart jeg er her.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Skriv en besked…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator =>
+      'Venter på at en operatør svarer…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Hej!';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Tak fordi du skrev — du er nu forbundet med en Vorsitzer. Fortæl os, hvordan vi kan hjælpe med din medlemsansøgning.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime =>
+      'Hvor lang tid tager godkendelsen?';
+
+  @override
+  String get claudiuQuickReplyDocuments => 'Hvilke dokumenter skal jeg bruge?';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Jeg er kørt fast i et trin';
+
+  @override
+  String get claudiuQuickReplyHuman => 'Kan jeg tale med nogen lige nu?';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Forbinder…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Kunne ikke åbne chatten. Prøv igen eller ring til os.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Prøv igen';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Forbundet';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Genopretter forbindelse…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'Operatøren skriver…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Rapportér et problem';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Hvad skete der?';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Fortæl detaljeret, og jeg sender rapporten videre til teamet.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Inkluder venligst:';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Hvad du gjorde, da problemet opstod';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Eventuelle fejlmeddelelser du så';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 => 'Hvilken skærm du var på';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'Crasher appen, lukker den, eller viser den en blank skærm?';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Sker det hver gang eller kun en gang?';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Din beskrivelse';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'F.eks.: Når jeg åbner chatten, får jeg en \"Connection error\"-besked og appen reagerer ikke…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Lidt flere detaljer, tak (mindst $count tegn)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Send rapport';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Sender…';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Tak!';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'Rapporten er sendt. Vores team kigger på det hurtigst muligt.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Forstået';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Kunne ikke sende rapporten. Ring til os for akut hjælp.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Eller, hvis det haster:';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Ring til os';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Hej, $name! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Hej! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Jeg er glad for, at du er her!';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'For din sikkerhed tjekker en Vorsitzer nu din login-anmodning. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Vi gør dette hver 30. dag for at sikre, at det virkelig er dig. Det er som et sikkerhedstjek — tager maks 5 minutter.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'Færdig! 🎉 Vorsitzer genkendte dig. Logger dig ind…';
+
+  @override
+  String get claudiuApprovalDenied => 'Hm, Vorsitzer afviste din anmodning. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Hvis du tror, det er en fejl, så ring til os, så vi kan løse det.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      'De 5 minutter er gået, og vi hørte ikke fra Vorsitzer.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Ring til os, og vi kan godkende din anmodning direkte. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Ring til os';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Prøv igen';
+
+  @override
+  String get claudiuApprovalCancel => 'Annullér';
+
+  @override
+  String get claudiuApprovalClose => 'Luk';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Hej, besøgende! 👋 Tak, fordi du vil blive en del af vores familie.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'Jeg hedder Claudiu. I foråret 2025 havde jeg en klar vision: at skabe en forening, der hjælper mennesker i nød — frivilligt, fra hjertet, uden unødigt bureaukrati. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'Jeg begyndte at tale med klienterne, jeg besøgte. Jeg fortalte dem min drøm. Og hver eneste sagde: \"Ja, lad os gøre det!\" I juli 2025 mødtes vi — 6 beslutsomme mennesker. Vi besluttede at grundlægge **ICD360S e.V.** i Neu-Ulm. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      'Den **1. august 2025** kom foreningen officielt til live — i foreningsregistret. Min smukkeste gave. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Hvad gør vi? Vi hjælper flygtninge, mennesker med handicap, økonomisk ugunstigt stillede, **børn og unge** — med administrative forhold, tysk, bolig, indkøb, sociale ydelser. Vores Vorstand består hovedsageligt af mennesker med handicap — så beslutninger kommer fra ægte livserfaring. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'Nu er det din tur. Lad os tilmelde dig — tager cirka 5 minutter. Vi går trin for trin, jeg lader dig ikke i stikken. ✨';
+
+  @override
+  String get wizardIntroStart => 'Lad os starte';
+
+  @override
+  String get wizardBack => 'Tilbage';
+
+  @override
+  String get wizardNext => 'Næste';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return 'Trin $step af $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Dette felt er påkrævet';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'For kort (mindst $count tegn)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters =>
+      'Kun bogstaver, mellemrum, bindestreger og apostroffer';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Kunne ikke gemme. Tjek forbindelsen og prøv igen.';
+
+  @override
+  String get wizardStufe1aTitle => 'Identitet';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Lad os lære dig officielt at kende. Skriv dit navn præcis som det står på Personalausweis, Reisepass eller Aufenthaltstitel — så det matcher dine dokumenter.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (fornavne)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Alle dine fornavne, præcis som på dokumentet. Med mellemrum eller bindestreg (fx Hans-Peter, Maria Anna).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (efternavn)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'Dit nuværende efternavn.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (fødenavn) — valgfri';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Kun hvis det adskiller sig fra Familienname — fx før ægteskab.';
+
+  @override
+  String get wizardStufe1bTitle => 'Fødselsdag';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'Vi vil gerne fejre din fødselsdag sammen med dig! 🎂 Det hjælper os også at vide, at du er mindst 16 — sådan står der i vores Satzung.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Fødselsdato';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper => 'Tryk for at vælge en dato';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Fødested';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper => 'By / sted hvor du blev født.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Det er jeg ked af… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Vores Satzung siger, at du skal være mindst 16 for at blive medlem. Du er $age — jeg håber vi ses igen om $years år! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Hvis du vil hjælpe lejlighedsvis som frivillig (enhver alder, med forældres samtykke), ring til os — vi støtter gerne unge, der vil forandre verden.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Tilbage til velkomstskærm';
+
+  @override
+  String get wizardErrInvalidPhone => 'Ugyldigt telefonnummer';
+
+  @override
+  String get wizardStufe1b1Title => 'Forældresamtykke';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Du er mindreårig (16-17) — i henhold til §106 BGB skal vi have samtykke fra en forælder eller værge. Fortæl mig navn og telefonnummer. En Vorsitzer ringer og aftaler et møde (personligt eller videoopkald). Ingen e-mail — vi vil være sikre på, at vi taler med den rigtige person.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Forælders fornavn';
+
+  @override
+  String get wizardStufe1b1VornameHelper =>
+      'Som det står på forælderens Personalausweis.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Forælders efternavn';
+
+  @override
+  String get wizardStufe1b1NachnameHelper =>
+      'Som det står på forælderens Personalausweis.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Forælders mobilnummer';
+
+  @override
+  String get wizardStufe1b1TelefonHelper =>
+      'En Vorsitzer ringer til dette nummer.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Forhold til barnet:';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Mor';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Far';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Værge';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Anden værge';
+
+  @override
+  String get wizardStufe1cTitle => 'Personlige detaljer';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Bare så jeg lærer dig lidt bedre at kende. Det her bliver mellem os og vises ikke offentligt nogen steder.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Køn';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Mand';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Kvinde';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Diverse';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'Foretrækker ikke at sige';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'Civilstand';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Ugift';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Gift';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Skilt';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Enkemand/Enke';
+
+  @override
+  String get wizardStufe1dTitle => 'Din baggrund';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Det hjælper os med at tilbyde dig den rigtige støtte — for eksempel rådgivning om Aufenthalt eller at finde dit sprogfællesskab.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Statsborgerskab';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'F.eks. deutsch, rumänisch, ukrainisch. Flere adskilt med komma.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Opholdsstatus (Aufenthaltsstatus) — valgfri';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Vælg titlen fra din Aufenthaltskarte / afgørelse. Vorstand sammenligner med dine dokumenter.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Udfyld statsborgerskab ovenfor først — vi viser kun de relevante muligheder.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Ingen Aufenthaltstitel nødvendig — tysk statsborger.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'EU/EØS/CH-borger — fri bevægelighed (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'midlertidig';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'permanent ophold';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'asylprocedure';
+
+  @override
+  String get wizardStufe1dAufenthaltOther => 'Andet (angiv venligst i chatten)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired =>
+      'Vælg venligst en Aufenthaltstitel.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Modersmål';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Forhåndsudfyldt med app-sprog — ændre hvis andet.';
+
+  @override
+  String get wizardStufe1eTitle => 'Adresse';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'Din postadresse — vi bruger den til officielle dokumenter (Satzung, medlemskontrakter, meddelelser).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Gade';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Kun gadenavnet — husnummer i feltet ved siden af.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => 'Nr.';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (postnr.)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'By';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Land';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Forhåndsudfyldt: Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Ugyldigt gadenavn';
+
+  @override
+  String get wizardErrInvalidHausnummer =>
+      'Ugyldigt nummer (f.eks. 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz => 'Ugyldigt postnummer (kun cifre)';
+
+  @override
+  String get wizardStufe1fTitle => 'Kontakt';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Hvordan kontakter vi dig? Telefonen er kun til nødstilfælde — alt andet sker via vores egen end-to-end krypterede kanal i appen. Din medlems-e-mail tildeles automatisk og vises nedenfor.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Mobilnummer';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Lover at jeg kun ringer hvis det er vigtigt. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Medlemstype';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Hvilken slags medlem vil du være? Lad mig forklare hver mulighed.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Ordinært medlem (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Fulde rettigheder. Du betaler månedligt kontingent, stemmer i Mitgliederversammlung, kan vælges til Vorstand. Standardvalg.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Støttemedlem (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Du støtter foreningen økonomisk, men deltager ikke aktivt i beslutninger. Ingen stemmeret. Godt hvis du vil hjælpe på afstand.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Æresmedlem (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Tildeles af Vorstand for særlige fortjenester. Du vælger det ikke selv — det tildeles som anerkendelse. Vælg kun hvis du allerede er blevet hædret.';
+
+  @override
+  String get wizardStufe3Title => 'Økonomisk situation';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Nu om din økonomiske situation. Ikke for at dømme — bare så vi kan fritage dig fra kontingent, hvis du modtager sociale ydelser.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Jeg modtager Bürgergeld';
+
+  @override
+  String get wizardStufe3OptionSozialamt =>
+      'Jeg modtager ydelser fra Sozialamt';
+
+  @override
+  String get wizardStufe3OptionNein => 'Jeg modtager ingen af disse';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Kontingent: 0 € / måned 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'Med Bürgergeld, Sozialamt, ALG I eller Krankengeld er du helt fritaget for kontingent efter Satzung §6. Vi har kun brug for et bevis (Leistungsbescheid eller bekræftelse fra myndigheden / sygekassen).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Upload Leistungsbescheid';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, maks. 10 MB.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Upload venligst Leistungsbescheid før du fortsætter.';
+
+  @override
+  String get wizardStufe3FileTooLarge => 'Filen er for stor. Maks. 10 MB.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Filen kunne ikke uploades. Prøv igen.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Kontingent: 25 € / måned';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'Standardkontingent for ordinære medlemmer ifølge Satzung.';
+
+  @override
+  String get wizardStufe4Title => 'Betaling';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Hvordan vil du betale kontingent? Og hvilken dag i måneden skal det trækkes?';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle =>
+      'Bankoverførsel (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'Du starter selv betalingen hver måned fra din konto.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle =>
+      'SEPA-Lastschrift (direkte debitering)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Vi trækker beløbet automatisk fra din konto. Mest praktisk, men vi har brug for IBAN og et underskrevet mandat.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (fast overførsel)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Du opretter en fast overførsel i din bank. Banken overfører beløbet automatisk hver måned.';
+
+  @override
+  String get wizardStufe4DayLabel => 'Betalingsdag';
+
+  @override
+  String get wizardStufe4DayHint => 'Vælg en dag mellem 1 og 31';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return 'Dag $day';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'Kontingentet trækkes den $day. i hver måned.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Startdato';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'Hvornår vil du officielt være ICD360S-medlem? Fra godkendelsen eller bagudrettet.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle =>
+      'Fra Vorstand-godkendelsen';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'Det enkleste valg. Intet bagudrettet kontingent.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Bagudrettet fra 01.08.2025 (stiftelse)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Du regnes som medlem fra foreningens første dag.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'Anden dato';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Du vælger en dato mellem 01.08.2025 og i dag.';
+
+  @override
+  String get wizardStufe5PickDate => 'Tryk for at vælge dato';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Vælg venligst en dato først.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Medlemskabets start';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return 'Mellem $start og i dag';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Bagudrettet kontingent';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return 'Fra $start til $end er det $months måneder. Ved 25 €/måned giver det $amount € at betale bagudrettet, oven i det løbende månedlige kontingent.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Bagudrettet kontingent: 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'Med Bürgergeld eller Sozialamt er du helt fritaget — også bagudrettet skylder du intet.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Inden vi runder af, læs venligst $doc grundigt. Det er vigtigt at vide, hvad du underskriver.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint => 'Scroll til bunden for at fortsætte.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Du har læst til slutningen ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return 'Åbn $doc i browseren';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'På denne platform åbner vi dokumentet i din standardbrowser.';
+
+  @override
+  String get wizardDocumentOpenedOk => 'Dokumentet er åbnet. Læs det grundigt.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Jeg bekræfter, at jeg har læst og accepterer $doc.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'Færdig! Du er meldt ind 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'Din anmodning er sendt 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Vi kontakter din forælder og aftaler et møde (personligt eller videoopkald). Vær venligst tålmodig — processen kan tage op til 7 dage. Du får en notifikation i appen, så snart din forælder har godkendt.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Dit medlemsnummer';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Snart tilgængelig';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Hvis du er mere end 6 måneder bagud med kontingentet, sletter vi dig automatisk (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'For at melde dig ud: send os din opsigelse skriftligt 3 måneder før 31. december (senest 30. september for at træde i kraft ved årets udgang). Ingen minimumsperiode (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'Din medlems-e-mail';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Tildeles automatisk ud fra dit medlemsnummer. Aktiveres i samme øjeblik, som bestyrelsen (Vorstand) godkender din ansøgning. Vi har vores egen e-mail-app — send og modtag krypterede e-mails, enkelt og gratis.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Ugyldig e-mailadresse';
+
+  @override
+  String get wizardStufe3OptionAlg1 =>
+      'Jeg modtager Arbeitslosengeld I (ALG I, arbejdsløshedsdagpenge)';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Jeg modtager Krankengeld (sygedagpenge)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Tilføj et dokument til';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Grænse nået: højst 20 dokumenter.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Samlet grænse 100 MB nået. Slet en eksisterende fil først.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Slet';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max dokumenter';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Kunne ikke åbne browseren. Linket er kopieret til udklipsholderen — indsæt det i en browser for at fortsætte.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Vorstand gennemgår · normalt 1 hverdag, maks. 7';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Konto aktiveret';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Tak fordi du udfyldte registreringsformularen! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'Din ansøgning er nu hos os. Vi godkender den normalt inden for én hverdag.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Nogle gange kan det tage op til 7 hverdage. Og hvis noget ikke stemmer, sender vi dig tilbage til formularen, så du kan rette det 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'ANSØGNINGSSTATUS';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total trin valideret af Vorstand';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Ansøgningsdetaljer';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      'De 8 trin du har udfyldt. Vorstand gennemgår dem ét ad gangen — du ser i realtid, hvad der er godkendt.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'Afventer gennemgang';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Godkendt';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Afvist';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count trin kræver rettelse';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'Begrundelse fra Vorstand:';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Ret nu';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Vorstand-godkendelser ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'Afventer 2. Vorstand';
+
+  @override
+  String get wizardFinalApprovalRejected => 'AFVIST';
+
+  @override
+  String get wizardFinalStufeNoDataYet => 'Data er endnu ikke tilgængelige.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Læst den:';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei => 'Kontingentfri (ingen betaling)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Ingen sociale ydelser';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification => 'Starter ved verificering';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation =>
+      'Stiftelsesdato (med tilbagevirkende kraft)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Anden dato';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Sprunget over';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Udfyldt:';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Gennemgået:';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Træk ansøgning tilbage';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Trække ansøgningen tilbage?';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'Din ansøgning markeres som tilbagetrukket af dig. Dataene bliver i databasen til revision (GDPR), men kontoen aktiveres ikke. Du kan starte registreringen forfra når som helst med et nyt medlemsnummer.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Nej, jeg venter';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Ja, træk tilbage';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'Din ansøgning kan ikke behandles automatisk. Ring til os eller kom personligt forbi Vorstand for at fortsætte registreringen.';
+
+  @override
+  String get wizardDuplicateLoginTitle =>
+      'Det ser ud til, at du allerede er medlem';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'Med dit navn og fødselsdato finder vi allerede en aktiv konto. Brug venligst \"Jeg er allerede medlem\" på startskærmen for at logge ind. Hvis du ikke har adgang, så ring til os.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'Din ansøgning er allerede hos os';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'Vi har allerede en ansøgning til behandling under dit navn og fødselsdato. Vorstand er i gang — vi giver besked i appen, så snart din konto er aktiv. Ring, hvis du vil tale om det.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'Vi kan ikke behandle denne ansøgning nu';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'Dit navn og fødselsdato matcher en nyligt tilbagetrukket ansøgning. Ring til os for at tale med Vorstand, før du går videre.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle => 'Du har søgt før';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'Dit navn og fødselsdato matcher en ældre ansøgning, som du trak tilbage. Velkommen tilbage — ring til os, før du fortsætter, så Vorstand kan beslutte, hvordan vi går videre.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Ring venligst til os';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'Dit navn og fødselsdato findes allerede hos os, men vi kan ikke dele detaljerne via appen. Ring til os — Vorstand forklarer situationen direkte.';
+
+  @override
+  String get wizardChatHelp => 'Lad os snakke';
+
+  @override
+  String get wizardChatHelpSubtitle => 'Livechat med Vorstand · hurtigt svar';
 }

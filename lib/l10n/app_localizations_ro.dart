@@ -9,12 +9,6 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Portal Membri';
-
-  @override
-  String get memberPortal => 'Portal Membri';
-
-  @override
   String get welcomeLoading => 'Se încarcă...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get memberNumberHint => 'Introduceți numărul de membru';
 
   @override
-  String get password => 'Parolă';
-
-  @override
-  String get passwordHint => 'Introduceți parola';
-
-  @override
   String get confirmPassword => 'Confirmați Parola';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Introduceți parola nouă';
-
-  @override
-  String get saveCredentials => 'Salvează datele de autentificare';
-
-  @override
-  String get autoLogin => 'Autentificare automată';
-
-  @override
-  String get forgotPassword => 'Ai uitat parola?';
 
   @override
   String get firstName => 'Prenume și Nume';
@@ -90,22 +69,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get passwordsNotMatch => 'Parolele nu coincid';
 
   @override
-  String get recoveryCode => 'Cod de Recuperare (6 cifre)';
-
-  @override
-  String get recoveryCodeHelper =>
-      'Memorați acest cod pentru recuperarea parolei';
-
-  @override
-  String get recoveryCodeHint => 'Introduceți codul de recuperare';
-
-  @override
-  String get recoveryCodeInvalid => 'Codul trebuie să aibă exact 6 cifre';
-
-  @override
-  String get loginFailed => 'Autentificare eșuată';
-
-  @override
   String get registrationFailed => 'Înregistrare eșuată';
 
   @override
@@ -119,20 +82,7 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'Prea multe dispozitive';
-
-  @override
-  String get maxDevicesMessage =>
-      'Sunteți deja conectat pe 3 dispozitive.\nSelectați un dispozitiv pentru deconectare:';
-
-  @override
-  String get unknownDevice => 'Dispozitiv necunoscut';
-
-  @override
   String get unknown => 'Necunoscut';
-
-  @override
-  String get logoutError => 'Eroare la deconectare';
 
   @override
   String error(String error) {
@@ -146,39 +96,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get resetPassword => 'Resetare Parolă';
 
   @override
-  String get forgotPasswordTitle => 'Ai Uitat Parola';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Introduceți numărul de membru și codul de recuperare creat la înregistrare.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Parola a fost resetată cu succes!\n\nAcum vă puteți autentifica cu noua parolă.';
-
-  @override
-  String get passwordResetFailed => 'Resetarea parolei a eșuat';
-
-  @override
-  String get needHelp => 'Ai nevoie de ajutor?';
-
-  @override
-  String get helpQuestion => 'Probleme cu autentificarea sau înregistrarea?';
-
-  @override
-  String get helpDescription =>
-      'Contactați-ne prin WhatsApp și descrieți exact ce nu funcționează. Vom răspunde cât mai curând!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Solicitare prin aplicația ICD360S';
-
-  @override
-  String get whatsappMessage => 'Bună, am o problemă cu aplicația ICD360S. ';
-
-  @override
   String get imprint => 'Impressum';
 
   @override
@@ -189,15 +106,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get revocation => 'Drept de Retragere';
-
-  @override
-  String get cancellation => 'Anulare';
-
-  @override
-  String get allRightsReserved => 'Toate drepturile rezervate.';
-
-  @override
-  String get enterCredentials => 'Introduceți numărul de membru și parola';
 
   @override
   String get appointments => 'Programări';
@@ -253,13 +161,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get close => 'Închide';
 
   @override
-  String get membership => 'Membru';
-
-  @override
   String get myAppointments => 'Programările mele';
-
-  @override
-  String get appointmentsLoadingReady => 'Se încarcă programări - API gata!';
 
   @override
   String get priority => 'Prioritate';
@@ -268,16 +170,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get messageLabel => 'Mesaj';
 
   @override
-  String get createdOn => 'Creat';
-
-  @override
-  String get handler => 'Responsabil';
-
-  @override
   String get reportProblems => 'Raportați probleme';
-
-  @override
-  String get reportProblem => 'Raportați problemă';
 
   @override
   String get weRespondIn24Hours => 'Vom răspunde în maxim 24 de ore!';
@@ -309,42 +202,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get myTickets => 'Ticketele mele';
 
   @override
-  String get newTicket => 'Ticket nou';
-
-  @override
-  String get noOpenTickets => 'Niciun ticket deschis';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Aveți o întrebare sau problemă?\nCreați un ticket nou.';
-
-  @override
-  String get whatIsTheProblem => 'Care este problema?';
-
-  @override
-  String get describeTheProblem => 'Descrieți problema';
-
-  @override
-  String get howUrgentIsIt => 'Cât de urgent este?';
-
-  @override
   String get low => 'Scăzut';
-
-  @override
-  String get medium => 'Mediu';
 
   @override
   String get high => 'Ridicat';
 
   @override
   String get submit => 'Trimite';
-
-  @override
-  String get fillSubjectAndMessage =>
-      'Vă rugăm să completați subiectul și mesajul';
-
-  @override
-  String get ticketCreated => 'Ticketul a fost creat';
 
   @override
   String get errorCreatingTicket => 'Eroare la crearea ticketului';
@@ -365,12 +229,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get changePassword => 'Schimbă parola';
 
   @override
-  String get newEmailAddress => 'Adresă email nouă';
-
-  @override
-  String get currentPassword => 'Parola curentă';
-
-  @override
   String get saveEmail => 'Salvează email';
 
   @override
@@ -378,9 +236,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Dispozitiv deconectat';
-
-  @override
-  String get passwordChangedSuccessfully => 'Parola a fost schimbată cu succes';
 
   @override
   String get emailChangedSuccessfully => 'Email-ul a fost schimbat cu succes';
@@ -394,23 +249,6 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get validEmailRequired =>
       'Vă rugăm să introduceți o adresă email validă';
-
-  @override
-  String get passwordTooShort => 'Parola trebuie să aibă cel puțin 6 caractere';
-
-  @override
-  String get maxDevicesReached => 'Sunteți conectat pe maximum 3 dispozitive.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Sunteți conectat pe $count din 3 dispozitive.';
-  }
-
-  @override
-  String get noActiveSessions => 'Nicio sesiune activă';
-
-  @override
-  String get logoutFromDevice => 'Deconectare de pe acest dispozitiv';
 
   @override
   String get confirmLogoutDevice => 'Deconectare dispozitiv?';
@@ -540,6 +378,19 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get appWillRestart => 'Aplicația se va reporni automat.';
+
+  @override
+  String get autoUpdateEnableTitle =>
+      'Instalează automat actualizările viitoare';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'Aplicația descarcă și instalează actualizările singură și repornește pentru scurt timp. Fără alte întrebări.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Versiunea $version se instalează în fundal. Aplicația va reporni imediat.';
+  }
 
   @override
   String get later => 'Mai târziu';
@@ -924,9 +775,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get errorConnecting => 'Eroare de conectare';
 
   @override
-  String get errorAcceptingCall => 'Eroare la acceptarea apelului';
-
-  @override
   String get errorDownloading => 'Eroare la descărcare';
 
   @override
@@ -958,11 +806,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get file => 'Fișier';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name scrie...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Mesaj nou de la';
@@ -1031,19 +874,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get logsCopied => 'Loguri copiate!';
-
-  @override
-  String get diagnosticDataTitle => 'Date de diagnosticare';
-
-  @override
-  String get diagnosticDescription =>
-      'Doriți să trimiteți date anonime de diagnosticare pentru a îmbunătăți aplicația?';
-
-  @override
-  String get noThanks => 'Nu, mulțumesc';
-
-  @override
-  String get yesEnable => 'Da, activează';
 
   @override
   String get passwordMinEightChars =>
@@ -1222,9 +1052,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get emailChangedSuccess => 'Email schimbat cu succes';
 
   @override
-  String get newPasswordMinChars => 'Parolă nouă (min. 6 caractere)';
-
-  @override
   String get reasonLabel2 => 'Motiv';
 
   @override
@@ -1232,9 +1059,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Descarcă';
-
-  @override
-  String get connectionErrorGeneric => 'Eroare de conexiune';
 
   @override
   String get copyLogs => 'Copiază loguri';
@@ -1250,12 +1074,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get unknownValue => 'Necunoscut';
-
-  @override
-  String get bankTransfer => 'Transfer bancar';
-
-  @override
-  String get standingOrder => 'Ordin permanent';
 
   @override
   String get payment => 'Plată';
@@ -1624,17 +1442,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get statusAccepted => 'Acceptat';
 
   @override
-  String get memberNumberTooLong =>
-      'Număr de membru prea lung (max 20 caractere)';
-
-  @override
-  String get onlyUppercaseAndNumbers =>
-      'Doar litere mari și cifre sunt permise';
-
-  @override
-  String get passwordTooLong => 'Parola prea lungă (max 100 caractere)';
-
-  @override
   String get nameTooLong => 'Numele prea lung (max 100 caractere)';
 
   @override
@@ -1765,15 +1572,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get openFile => 'Deschide';
 
   @override
-  String get diagnosticErrors => 'Rapoarte de erori pentru îmbunătățire';
-
-  @override
-  String get diagnosticAnonymousStats => 'Statistici de utilizare anonime';
-
-  @override
-  String get diagnosticPerformance => 'Date de performanță ale aplicației';
-
-  @override
   String get noMicrophoneError =>
       'Nu s-a găsit niciun microfon. Conectați un microfon și încercați din nou.';
 
@@ -1798,9 +1596,6 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'Conturile care nu sunt verificate în 30 de zile vor fi suspendate automat.';
-
-  @override
-  String get ipClean => 'IP curat - nelistat';
 
   @override
   String get documentsProvidedByBoard =>
@@ -1839,13 +1634,6 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp => 'Doriți să ne ajutați să îmbunătățim aplicația?';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Nu se colectează date personale. Această setare poate fi modificată oricând.';
-
-  @override
   String logEntries(int count) {
     return '$count înregistrări';
   }
@@ -1855,15 +1643,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Autentificare nouă detectată';
-
-  @override
-  String get waitingForMember => 'Se așteaptă membrul';
-
-  @override
-  String get waitingForStaff => 'Se așteaptă personalul';
-
-  @override
-  String get waitingForAuthority => 'Se așteaptă autoritatea';
 
   @override
   String get errorNoInternet =>
@@ -1893,14 +1672,7 @@ class AppLocalizationsRo extends AppLocalizations {
       'Problema DNS detectata. Verifica conexiunea sau incearca alta retea.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Deschide browser-ul si conecteaza-te la WiFi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Conexiune lenta.';
-
-  @override
-  String get securityBannerNetworkOffline => 'Fara conexiune la retea.';
 
   @override
   String get securityPermissionDialogTitle => 'Posibil atac de retea detectat';
@@ -1922,4 +1694,1141 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'Nu a fost gasit niciun microfon. Conecteaza casti sau un microfon si incearca din nou.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Bună dimineața';
+
+  @override
+  String get claudiuWelcomeDay => 'Bună ziua';
+
+  @override
+  String get claudiuWelcomeEvening => 'Bună seara';
+
+  @override
+  String get claudiuWelcomeNight => 'Bună seara';
+
+  @override
+  String get claudiuWelcomeVisitor => 'drag vizitator';
+
+  @override
+  String get claudiuWelcomeAsk => 'Cu ce te pot ajuta?';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Vreau să devin membru';
+
+  @override
+  String get claudiuWelcomeLogin =>
+      'Sunt deja membru și vreau să mă autentific';
+
+  @override
+  String get claudiuWelcomeProblem => 'Am o problemă cu aplicația';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Urgență — sună-ne';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Claudiu';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro =>
+      'Înainte să suni — programul nostru de lucru:';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'La birou';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'Pe teren cu clienții';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'În afara acestui program preluăm doar urgențele. Poți să ne și scrii la același număr — te contactăm noi.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Sună-ne acum';
+
+  @override
+  String get claudiuWelcomeSendSms => 'Trimite SMS';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Urgență ICD360S e.V. — vă rog să mă contactați cât mai curând.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Închide';
+
+  @override
+  String get claudiuLoginWelcome => 'Bine ai revenit, drag membru!';
+
+  @override
+  String get claudiuLoginAsk => 'Spune-mi numărul tău de membru.';
+
+  @override
+  String get claudiuLoginProgress => 'Mai aproape… continuă să tastezi.';
+
+  @override
+  String get claudiuLoginReady => 'Perfect! Apasă butonul de mai jos.';
+
+  @override
+  String get claudiuLoginLoading => 'Verific identitatea… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Te-am găsit! Te conectez acum…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Te-am găsit, $name! Te conectez acum…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Hm, nu găsesc numărul ăsta. Verifici dacă ai scris bine?';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Ai uitat numărul de membru?';
+
+  @override
+  String get claudiuLoginNoSms => 'Nu trimitem numărul prin email sau SMS.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Singura cale: să ne întâlnim personal la sediul asociației, după verificare CI.';
+
+  @override
+  String get claudiuLoginContactUs => 'Contactează-ne pentru programare:';
+
+  @override
+  String get claudiuDiagnosticGreeting => 'Înainte să intri, am o întrebare';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Pot trimite raportări anonime ca să-i ajutăm pe dezvoltatori să facă aplicația mai bună?';
+
+  @override
+  String get claudiuDiagnosticYes => 'Da, vreau să ajut';
+
+  @override
+  String get claudiuDiagnosticNo => 'Nu, doar exploram';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Spune-mi mai mult';
+
+  @override
+  String get claudiuDiagnosticSendsHeader => '📤 Ce TRIMITEM (anonim):';
+
+  @override
+  String get claudiuDiagnosticSends1 =>
+      'Un cod anonim al dispozitivului (nu mitgliedernummer-ul)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Rolul tău (membru / vorstand)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Sistemul (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Limba aleasă';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Nivelul + starea bateriei';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Pe ce ecran ești';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Durata sesiunii (secunde)';
+
+  @override
+  String get claudiuDiagnosticSends8 => 'Erori dacă apar (ultimele 10)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Navigare (ultimele 20 ecrane)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader => '🛡️ Ce NU trimitem NICIODATĂ:';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Numele tău real';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'Adresa de email';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Numărul de telefon';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Parola';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Conținutul mesajelor din chat';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Conținutul ticket-urilor';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Documente sau atașamente';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Detalii tehnice:';
+
+  @override
+  String get claudiuDiagnosticTech1 => 'Trimite la fiecare 2 minute';
+
+  @override
+  String get claudiuDiagnosticTech2 =>
+      'Conexiune TLS criptată cu certificat fix (pinned)';
+
+  @override
+  String get claudiuDiagnosticTech3 => 'Poți opri oricând din Setări';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Cum te pot ajuta?';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Ce s-a întâmplat?';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Cum vrei să-mi povestești?';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Scriu un raport';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'Cu detalii pas cu pas. Echipa primește textul și îl rezolvă mai târziu.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Vorbim acum';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Chat anonim cu un operator. Răspuns în timp real, dacă e cineva online.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Sau, dacă e ceva urgent:';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Sună-ne';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Chat anonim';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Salut!';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Te ascult. Scrie-mi orice — nu am nevoie de numele tău. Răspund de îndată ce sunt aici.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Scrie un mesaj…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator =>
+      'Așteptăm ca un operator să răspundă…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Bună!';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Mulțumim că ai ajuns aici — ești conectat acum cu un vorsitzer. Scrie-ne cu ce te putem ajuta în ceea ce privește cererea ta de aderare în asociația noastră non-profit.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime => 'Cât timp durează validarea?';
+
+  @override
+  String get claudiuQuickReplyDocuments => 'Ce documente am nevoie?';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Am o problemă cu un pas';
+
+  @override
+  String get claudiuQuickReplyHuman => 'Vreau să vorbesc cu cineva acum';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Mă conectez…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Nu am putut deschide chat-ul. Încearcă din nou sau sună-ne.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Încearcă din nou';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Conectat';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Reconectare…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'Operatorul scrie…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Raportează o problemă';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Ce s-a întâmplat?';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Spune-mi în detaliu și trimit raportul la echipă.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Include în descrierea ta:';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Ce făceai când a apărut problema';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Ce mesaj de eroare ai văzut';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 => 'Pe ce ecran erai';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'Aplicația crapă? Se închide? Apare ecran alb?';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Se repetă mereu sau o singură dată';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Descrierea ta';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'Ex: Când deschid ecranul de chat, apare un mesaj „Connection error\" și aplicația nu mai răspunde…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Mai detaliază, te rog (minim $count caractere)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Trimite raportul';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Trimit...';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Mulțumesc!';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'Raportul a fost trimis. Echipa noastră îl va analiza cât mai curând.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Înțeles';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Nu am putut trimite raportul. Sună-ne pentru asistență urgentă.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Sau, dacă e ceva urgent:';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Sună-ne';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Bună, $name! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Bună! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Mă bucur că ai venit!';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'Pentru siguranța ta, un Vorsitzer verifică acum cererea ta de logare. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Asta facem o dată la 30 de zile, ca să fim siguri că tu ești. E ca un check-up de securitate — durează maxim 5 minute.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'Gata! 🎉 Vorsitzer-ul te-a recunoscut. Te conectez acum…';
+
+  @override
+  String get claudiuApprovalDenied =>
+      'Hm, Vorsitzer-ul a respins cererea ta. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Dacă crezi că e o greșeală, te rog sună-ne să clarificăm.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      'Cele 5 minute au trecut și nu am primit răspuns de la Vorsitzer.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Sună-ne și putem să-ți aprobăm direct cererea pe loc. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Sună-ne';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Încearcă din nou';
+
+  @override
+  String get claudiuApprovalCancel => 'Anulează';
+
+  @override
+  String get claudiuApprovalClose => 'Închide';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Bună, vizitator! 👋 Îți mulțumesc că vrei să intri în familia noastră.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'Mă numesc Claudiu. În primăvara lui 2025 am avut o viziune clară: să creez o asociație care să ajute oamenii care au nevoie — voluntar, cu inima, fără birocrație stufoasă. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'Am început să vorbesc cu clienții pe care îi vizitam. Le-am spus visul meu. Și fiecare a zis: „Da, hai!\" În iulie 2025 ne-am întâlnit 6 oameni hotărâți. Am decis să fondăm **ICD360S e.V.** în Neu-Ulm. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      'Pe **1 august 2025**, asociația a prins viață oficial — în Registrul Asociațiilor. Cel mai frumos cadou al meu. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Ce facem? Ajutăm refugiați, persoane cu dizabilități, oameni dezavantajați economic, **copii și tineri** — cu probleme administrative, limba germană, locuință, cumpărături, prestații sociale. Vorstandul nostru e majoritar format din oameni cu dizabilități — așa ne asigurăm că deciziile vin din experiență reală. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'Acum e timpul tău. Hai să te înscriem — durează vreo 5 minute. Mergem pas cu pas, nu te las singur. ✨';
+
+  @override
+  String get wizardIntroStart => 'Hai să începem';
+
+  @override
+  String get wizardBack => 'Înapoi';
+
+  @override
+  String get wizardNext => 'Mai departe';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return 'Pas $step din $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Acest câmp e obligatoriu';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'Prea scurt (minim $count caractere)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters => 'Doar litere, spații, cratime și apostrof';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Nu am putut salva. Verifică conexiunea și încearcă din nou.';
+
+  @override
+  String get wizardStufe1aTitle => 'Identitate';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Hai să te cunoaștem oficial. Te rog să scrii numele tău exact cum apare pe Personalausweis, Reisepass sau Aufenthaltstitel — așa rămâne consistent cu actele.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (prenumele)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Toate prenumele tale, exact ca pe acte. Folosește spațiu sau cratimă (ex: Hans-Peter, Maria Anna, José María).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (numele de familie)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'Numele de familie actual.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (numele de naștere) — opțional';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Doar dacă diferă de Familienname — ex. înainte de căsătorie.';
+
+  @override
+  String get wizardStufe1bTitle => 'Ziua de naștere';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'Vrem să sărbătorim împreună cu tine ziua ta de naștere! 🎂 Ne ajută și să știm că ai cel puțin 16 ani — așa zice Satzung-ul nostru.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Data nașterii';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper => 'Apasă să selectezi data';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Locul nașterii';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper =>
+      'Orașul / localitatea unde te-ai născut.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Îmi pare rău… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Satzung-ul nostru spune că trebuie să ai cel puțin 16 ani să fii membru. Tu ai $age ani — sper să te revedem peste $years ani! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Dacă vrei să te implici punctual ca voluntar (orice vârstă, cu acordul părinților), sună-ne și vorbim — ne face plăcere să ajutăm tinerii care vor să schimbe lumea.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Înapoi la welcome';
+
+  @override
+  String get wizardErrInvalidPhone => 'Număr de telefon invalid';
+
+  @override
+  String get wizardStufe1b1Title => 'Acord părinte';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Ești minor (16-17 ani) — conform §106 BGB avem nevoie de acordul unui părinte sau tutore legal. Spune-mi cum îl cheamă și numărul lui de telefon. Un Vorsitzer îl va suna și va stabili o întâlnire (în persoană sau apel video). Nu trimitem email — vrem să fim siguri că vorbim cu persoana reală.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Prenume părinte';
+
+  @override
+  String get wizardStufe1b1VornameHelper =>
+      'Ca pe Personalausweis al părintelui.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Nume părinte';
+
+  @override
+  String get wizardStufe1b1NachnameHelper =>
+      'Ca pe Personalausweis al părintelui.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Telefon mobil părinte';
+
+  @override
+  String get wizardStufe1b1TelefonHelper =>
+      'Pe acest număr îl va suna un Vorsitzer.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Relația cu copilul:';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Mamă';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Tată';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Tutore legal';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Alt tutore';
+
+  @override
+  String get wizardStufe1cTitle => 'Detalii personale';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Doar ca să te cunosc puțin mai bine. Aceste informații rămân între noi și nu apar nicăieri public.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Gen';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Bărbat';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Femeie';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Divers';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'Prefer să nu spun';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'Stare civilă';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Necăsătorit/ă';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Căsătorit/ă';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Divorțat/ă';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Văduv/ă';
+
+  @override
+  String get wizardStufe1dTitle => 'Originea ta';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Asta ne ajută să-ți oferim ajutorul potrivit — de ex. dacă ai nevoie de consiliere pe Aufenthalt sau să găsești comunitatea ta lingvistică.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Cetățenie';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'Ex. deutsch, rumänisch, ukrainisch. Mai multe, despărțite cu virgulă.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Statut de ședere (Aufenthaltsstatus) — opțional';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Alege titlul din Aufenthaltskarte / decizia ta. Vorstand-ul îl verifică cu documentele tale.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Completează mai întâi cetățenia de mai sus — îți arăt doar opțiunile potrivite.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Niciun titlu de ședere necesar — cetățean german.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'Cetățean UE/SEE/CH — libertatea de circulație (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'permis temporar';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'permis permanent';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'în procedura de azil';
+
+  @override
+  String get wizardStufe1dAufenthaltOther =>
+      'Altele (te rog precizează în chat)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired =>
+      'Te rog alege un statut de ședere.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Limba maternă';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Pre-completat cu limba aplicației — schimbă dacă diferă.';
+
+  @override
+  String get wizardStufe1eTitle => 'Adresa';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'Adresa ta de corespondență — o folosim pentru documente oficiale (statute, contracte de membru, înștiințări).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Strada';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Doar numele străzii — numărul în câmpul de lângă.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => 'Nr.';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (cod poștal)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'Oraș';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Țara';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Pre-completat cu Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Nume de stradă invalid';
+
+  @override
+  String get wizardErrInvalidHausnummer => 'Număr invalid (ex: 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz => 'Cod poștal invalid (doar cifre)';
+
+  @override
+  String get wizardStufe1fTitle => 'Contact';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Cum te contactăm? Telefonul îl folosim doar pentru urgențe — pentru restul comunicăm prin aplicație (criptat end-to-end). Adresa ta de membru e generată automat și o vezi mai jos.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Telefon mobil';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Promit, nu te sun decât dacă e ceva important. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Tip de membru';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Ce fel de membru vrei să fii? Hai să-ți explic fiecare opțiune.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Membru ordinar (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Drepturi depline. Plătești cotizația lunară, votezi în Mitgliederversammlung, poți fi ales în Vorstand. Alegerea standard.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Membru susținător (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Sprijini asociația financiar, dar nu participi activ la decizii. Fără drept de vot. Bun dacă vrei să ajuți de la distanță.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Membru de onoare (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Statut acordat de Vorstand pentru merite deosebite. Nu îl alegi singur — îl primești ca recunoaștere. Selectează doar dacă ai fost deja onorat.';
+
+  @override
+  String get wizardStufe3Title => 'Situație financiară';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Acum despre situația ta financiară. Nu e ca să te judec — e ca să te scutim de cotizație dacă primești ajutor social.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Primesc Bürgergeld';
+
+  @override
+  String get wizardStufe3OptionSozialamt => 'Primesc ajutor de la Sozialamt';
+
+  @override
+  String get wizardStufe3OptionNein => 'Nu primesc niciuna din acestea';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Cotizație: 0 € / lună 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'Cu Bürgergeld, Sozialamt, ALG I sau Krankengeld ești scutit complet de cotizație, conform Satzung-ului §6. Avem nevoie doar de o dovadă (Leistungsbescheid sau Bescheinigung de la autoritate / casa de asigurări).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Încarcă Leistungsbescheid';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, maxim 10 MB.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Te rog încarcă Leistungsbescheid înainte să mergi mai departe.';
+
+  @override
+  String get wizardStufe3FileTooLarge => 'Fișierul e prea mare. Maxim 10 MB.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Nu am putut încărca fișierul. Încearcă din nou.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Cotizație: 25 € / lună';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'Cotizația standard pentru membri ordinari, conform Satzung-ului.';
+
+  @override
+  String get wizardStufe4Title => 'Plata';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Cum vrei să plătești cotizația? Și în ce zi a lunii preferi să fie debitată?';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle =>
+      'Transfer bancar (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'Tu inițiezi plata manual în fiecare lună din contul tău.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (debit direct)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Noi tragem suma automat din contul tău. Cel mai comod, dar avem nevoie de IBAN și un mandat semnat.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (ordin permanent)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Tu setezi un ordin permanent în banca ta. Banca ta trimite suma automat în fiecare lună.';
+
+  @override
+  String get wizardStufe4DayLabel => 'Ziua plății';
+
+  @override
+  String get wizardStufe4DayHint => 'Alege o zi între 1 și 31';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return 'Ziua $day';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'Cotizația va fi debitată în ziua $day a fiecărei luni.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Începutul';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'Când vrei să fii oficial membru ICD360S? Poți alege din momentul aprobării sau retroactiv.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle =>
+      'De la aprobarea Vorstand-ului';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'Cea mai simplă alegere. Fără cotizație retroactivă.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Retroactiv din 01.08.2025 (Gründungsdatum)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Vei număra ca membru încă din prima zi a asociației.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'O altă dată';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Alegi tu o dată între 01.08.2025 și azi.';
+
+  @override
+  String get wizardStufe5PickDate => 'Apasă pentru a alege data';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Te rog alege întâi o dată.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Începutul calității de membru';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return 'Între $start și azi';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Cotizație retroactivă';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return 'De la $start până la $end sunt $months luni. La 25 €/lună înseamnă $amount € de plată retroactivă, în plus față de cotizația lunară curentă.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Cotizație retroactivă: 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'Cu Bürgergeld sau Sozialamt ești scutit complet — chiar și retroactiv nu datorezi nimic.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Înainte să închidem, te rog citește cu atenție $doc. E important să știi ce semnezi.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint =>
+      'Derulează până la sfârșit pentru a continua.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Ai citit până la sfârșit ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return 'Deschide $doc în browser';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'Pe această platformă deschidem documentul în browser-ul tău preferat.';
+
+  @override
+  String get wizardDocumentOpenedOk =>
+      'Documentul a fost deschis. Te rog citește-l cu atenție.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Confirm că am citit și sunt de acord cu $doc.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'Gata, ești înscris! 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'Cererea ta a fost trimisă 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Îți vom contacta părintele și vom stabili o întâlnire (în persoană sau apel video). Te rugăm să ai răbdare — procedura poate dura până la 7 zile. Te anunțăm prin notificare în aplicație imediat ce părintele a aprobat.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Numărul tău de membru';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Disponibil în viitor';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Dacă rămâi cu cotizația în urmă mai mult de 6 luni, te radiem automat (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'Pentru retragere: anunță-ne în scris cu 3 luni înainte de 31 decembrie (până la 30 septembrie pentru a ieși la sfârșitul anului). Nu există durată minimă (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'Adresa ta de membru';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Atribuită automat pe baza numărului tău de membru. Se activează imediat ce Vorstand-ul validează cererea ta. Avem o aplicație de email dedicată — trimiți și primești emailuri criptate, simplu și gratuit.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Adresă de email invalidă';
+
+  @override
+  String get wizardStufe3OptionAlg1 => 'Primesc Arbeitslosengeld I (ALG I)';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Primesc Krankengeld (concediu medical prelungit)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Adaugă alt document';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Ai atins limita: maxim 20 documente.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Ai atins limita totală de 100 MB. Șterge un fișier existent.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Șterge';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max documente';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Nu am putut deschide browserul. Link-ul a fost copiat în clipboard — lipește-l într-un browser pentru a continua.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Vorstand verifică · de obicei 1 zi, maxim 7 lucrătoare';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Cont activat';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Îți mulțumim că ai completat formularul de înregistrare! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'Cererea ta a ajuns la noi. De obicei o validăm într-o zi lucrătoare.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Uneori poate dura până la 7 zile lucrătoare. Și dacă ceva nu corespunde, te trimitem înapoi la formular ca să corectezi 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'STATUS CERERE';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total pași validați de Vorstand';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Detalii cerere';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      'Cei 8 pași pe care i-ai completat. Vorstand-ul îi verifică pe rând — vezi în timp real ce a fost validat.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'În așteptarea verificării';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Verificat';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Respins';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count pas necesită corectare';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'Motivul Vorstand-ului:';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Corectează acum';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Aprobări Vorstand ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'Așteptăm al 2-lea Vorstand';
+
+  @override
+  String get wizardFinalApprovalRejected => 'RESPINS';
+
+  @override
+  String get wizardFinalStufeNoDataYet => 'Datele nu sunt încă disponibile.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Citit la:';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei =>
+      'Scutit de contribuție (fără plată)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Fără ajutoare sociale';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification => 'Începe la validare';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation => 'Data fondării (retroactiv)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Dată personalizată';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Sărit';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Completat:';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Verificat:';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Anulează cererea';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Anulezi cererea?';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'Cererea ta va fi marcată ca anulată de tine. Datele rămân în baza de date pentru audit (DSGVO), dar contul nu va mai fi activat. Vei putea reîncepe înregistrarea oricând cu un alt număr de membru.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Nu, mai aștept';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Da, anulează';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'Cererea ta nu poate fi procesată automat. Sună-ne sau vino în persoană la Vorstand pentru a continua înregistrarea.';
+
+  @override
+  String get wizardDuplicateLoginTitle => 'Se pare că ești deja membru';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'Cu numele și data ta de naștere găsim deja un cont activ. Te rugăm să folosești \"Sunt deja membru\" pe ecranul principal pentru a te autentifica. Dacă nu mai ai acces, sună-ne.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'Cererea ta e deja la noi';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'Cu numele și data ta de naștere am găsit deja o cerere în curs de verificare. Vorstand-ul lucrează la ea — te anunțăm prin notificare imediat ce contul tău e activ. Dacă vrei să discutăm, sună-ne.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'Nu putem procesa cererea acum';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'Numele și data ta de naștere se potrivesc cu o cerere retrasă recent. Te rugăm să ne suni pentru a vorbi cu Vorstand-ul înainte de a continua.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle => 'Ai mai depus o cerere';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'Numele și data ta de naștere se potrivesc cu o cerere veche pe care ai retras-o. Bun venit înapoi — te rugăm să ne suni înainte de a continua, ca Vorstand-ul să poată decide cum procedăm.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Te rugăm să ne suni';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'Numele și data ta de naștere apar deja la noi, dar nu îți putem da detalii prin aplicație. Te rugăm să ne suni — Vorstand-ul îți va explica situația direct.';
+
+  @override
+  String get wizardChatHelp => 'Vorbim acum';
+
+  @override
+  String get wizardChatHelpSubtitle =>
+      'Chat live cu Vorstand-ul · răspuns rapid';
 }

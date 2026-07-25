@@ -167,6 +167,16 @@
   "downloadProgress": "Download: {percent}%",
   "installationStarting": "Installation starter...",
   "appWillRestart": "Appen genstartes automatisk.",
+  "autoUpdateEnableTitle": "Install future updates automatically",
+  "autoUpdateEnableHint": "The app downloads and installs updates on its own and restarts briefly. No further prompts.",
+  "autoUpdateInstalling": "Version {version} is being installed in the background. The app will restart shortly.",
+  "@autoUpdateInstalling": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "later": "Senere",
   "updateNow": "Opdater nu",
   "downloading": "Downloader...",

@@ -9,12 +9,6 @@ class AppLocalizationsHu extends AppLocalizations {
   AppLocalizationsHu([String locale = 'hu']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Tagportál';
-
-  @override
-  String get memberPortal => 'Tagportál';
-
-  @override
   String get welcomeLoading => 'Betöltés...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get memberNumberHint => 'Adja meg a tagsági számot';
 
   @override
-  String get password => 'Jelszó';
-
-  @override
-  String get passwordHint => 'Adja meg a jelszót';
-
-  @override
   String get confirmPassword => 'Jelszó megerősítése';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Adja meg az új jelszót';
-
-  @override
-  String get saveCredentials => 'Bejelentkezési adatok mentése';
-
-  @override
-  String get autoLogin => 'Automatikus bejelentkezés';
-
-  @override
-  String get forgotPassword => 'Elfelejtette jelszavát?';
 
   @override
   String get firstName => 'Keresztnév és vezetéknév';
@@ -90,22 +69,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get passwordsNotMatch => 'A jelszavak nem egyeznek';
 
   @override
-  String get recoveryCode => 'Helyreállítási kód (6 számjegy)';
-
-  @override
-  String get recoveryCodeHelper =>
-      'Jegyezze meg ezt a kódot a jelszó helyreállításához';
-
-  @override
-  String get recoveryCodeHint => 'Adja meg a helyreállítási kódot';
-
-  @override
-  String get recoveryCodeInvalid => 'A kód pontosan 6 számjegyből álljon';
-
-  @override
-  String get loginFailed => 'Bejelentkezés sikertelen';
-
-  @override
   String get registrationFailed => 'Regisztráció sikertelen';
 
   @override
@@ -119,20 +82,7 @@ class AppLocalizationsHu extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'Túl sok eszköz';
-
-  @override
-  String get maxDevicesMessage =>
-      'Már 3 eszközön van bejelentkezve.\nVálasszon egy eszközt a kijelentkezéshez:';
-
-  @override
-  String get unknownDevice => 'Ismeretlen eszköz';
-
-  @override
   String get unknown => 'Ismeretlen';
-
-  @override
-  String get logoutError => 'Kijelentkezési hiba';
 
   @override
   String error(String error) {
@@ -146,41 +96,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get resetPassword => 'Jelszó visszaállítása';
 
   @override
-  String get forgotPasswordTitle => 'Elfelejtett jelszó';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Adja meg tagsági számát és a regisztrációkor létrehozott helyreállítási kódot.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Jelszó sikeresen visszaállítva!\n\nMost bejelentkezhet új jelszavával.';
-
-  @override
-  String get passwordResetFailed => 'Jelszó visszaállítása sikertelen';
-
-  @override
-  String get needHelp => 'Segítségre van szüksége?';
-
-  @override
-  String get helpQuestion =>
-      'Probléma a bejelentkezéssel vagy regisztrációval?';
-
-  @override
-  String get helpDescription =>
-      'Lépjen kapcsolatba velünk WhatsApp-on és írja le pontosan, mi nem működik. Amint lehet, válaszolunk!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Kérdés az ICD360S alkalmazáson keresztül';
-
-  @override
-  String get whatsappMessage =>
-      'Üdvözlöm, problémám van az ICD360S alkalmazással. ';
-
-  @override
   String get imprint => 'Impresszum';
 
   @override
@@ -191,15 +106,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get revocation => 'Elállási jog';
-
-  @override
-  String get cancellation => 'Lemondás';
-
-  @override
-  String get allRightsReserved => 'Minden jog fenntartva.';
-
-  @override
-  String get enterCredentials => 'Adja meg a tagsági számot és jelszót';
 
   @override
   String get appointments => 'Találkozók';
@@ -253,13 +159,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get close => 'Bezár';
 
   @override
-  String get membership => 'Tagság';
-
-  @override
   String get myAppointments => 'Találkozóim';
-
-  @override
-  String get appointmentsLoadingReady => 'Találkozók betöltése - API kész!';
 
   @override
   String get priority => 'Prioritás';
@@ -268,16 +168,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get messageLabel => 'Üzenet';
 
   @override
-  String get createdOn => 'Létrehozva';
-
-  @override
-  String get handler => 'Kezelő';
-
-  @override
   String get reportProblems => 'Problémák jelentése';
-
-  @override
-  String get reportProblem => 'Probléma jelentése';
 
   @override
   String get weRespondIn24Hours => 'Legfeljebb 24 órán belül válaszolunk!';
@@ -308,42 +199,13 @@ class AppLocalizationsHu extends AppLocalizations {
   String get myTickets => 'Jegyeim';
 
   @override
-  String get newTicket => 'Új jegy';
-
-  @override
-  String get noOpenTickets => 'Nincsenek nyitott jegyek';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Van kérdése vagy problémája?\nHozzon létre egy új jegyet.';
-
-  @override
-  String get whatIsTheProblem => 'Mi a probléma?';
-
-  @override
-  String get describeTheProblem => 'Írja le a problémát';
-
-  @override
-  String get howUrgentIsIt => 'Mennyire sürgős?';
-
-  @override
   String get low => 'Alacsony';
-
-  @override
-  String get medium => 'Közepes';
 
   @override
   String get high => 'Magas';
 
   @override
   String get submit => 'Küldés';
-
-  @override
-  String get fillSubjectAndMessage =>
-      'Kérjük, töltse ki a tárgyat és az üzenetet';
-
-  @override
-  String get ticketCreated => 'Jegy létrehozva';
 
   @override
   String get errorCreatingTicket => 'Hiba a jegy létrehozásakor';
@@ -364,12 +226,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get changePassword => 'Jelszó módosítása';
 
   @override
-  String get newEmailAddress => 'Új e-mail cím';
-
-  @override
-  String get currentPassword => 'Jelenlegi jelszó';
-
-  @override
   String get saveEmail => 'E-mail mentése';
 
   @override
@@ -377,9 +233,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Eszköz kijelentkeztetve';
-
-  @override
-  String get passwordChangedSuccessfully => 'Jelszó sikeresen módosítva';
 
   @override
   String get emailChangedSuccessfully => 'E-mail sikeresen módosítva';
@@ -392,25 +245,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get validEmailRequired => 'Kérjük, adjon meg érvényes e-mail címet';
-
-  @override
-  String get passwordTooShort =>
-      'A jelszónak legalább 6 karakter hosszúnak kell lennie';
-
-  @override
-  String get maxDevicesReached =>
-      'Ön a maximális 3 eszközön van bejelentkezve.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Ön $count eszközön van bejelentkezve a 3-ból.';
-  }
-
-  @override
-  String get noActiveSessions => 'Nincsenek aktív munkamenetek';
-
-  @override
-  String get logoutFromDevice => 'Kijelentkezés erről az eszközről';
 
   @override
   String get confirmLogoutDevice => 'Kijelentkezik az eszközről?';
@@ -540,6 +374,18 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get appWillRestart => 'Az alkalmazás automatikusan újraindul.';
+
+  @override
+  String get autoUpdateEnableTitle => 'Install future updates automatically';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'The app downloads and installs updates on its own and restarts briefly. No further prompts.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Version $version is being installed in the background. The app will restart shortly.';
+  }
 
   @override
   String get later => 'Később';
@@ -924,9 +770,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get errorConnecting => 'Csatlakozási hiba';
 
   @override
-  String get errorAcceptingCall => 'Hiba a hívás fogadásakor';
-
-  @override
   String get errorDownloading => 'Letöltési hiba';
 
   @override
@@ -958,11 +801,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get file => 'Fájl';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name gépel...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Új üzenet tőle:';
@@ -1031,19 +869,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get logsCopied => 'Naplók másolva!';
-
-  @override
-  String get diagnosticDataTitle => 'Diagnosztikai adatok';
-
-  @override
-  String get diagnosticDescription =>
-      'Szeretne névtelen diagnosztikai adatokat küldeni az alkalmazás javítása érdekében?';
-
-  @override
-  String get noThanks => 'Nem, köszönöm';
-
-  @override
-  String get yesEnable => 'Igen, engedélyezés';
 
   @override
   String get passwordMinEightChars =>
@@ -1223,9 +1048,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get emailChangedSuccess => 'E-mail sikeresen módosítva';
 
   @override
-  String get newPasswordMinChars => 'Új jelszó (min. 6 karakter)';
-
-  @override
   String get reasonLabel2 => 'Ok';
 
   @override
@@ -1233,9 +1055,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Letöltés';
-
-  @override
-  String get connectionErrorGeneric => 'Kapcsolódási hiba';
 
   @override
   String get copyLogs => 'Naplók másolása';
@@ -1251,12 +1070,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get unknownValue => 'Ismeretlen';
-
-  @override
-  String get bankTransfer => 'Banki átutalás';
-
-  @override
-  String get standingOrder => 'Állandó megbízás';
 
   @override
   String get payment => 'Fizetés';
@@ -1624,16 +1437,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get statusAccepted => 'Elfogadva';
 
   @override
-  String get memberNumberTooLong => 'Tagsági szám túl hosszú (max 20 karakter)';
-
-  @override
-  String get onlyUppercaseAndNumbers =>
-      'Csak nagybetűk és számok engedélyezettek';
-
-  @override
-  String get passwordTooLong => 'Jelszó túl hosszú (max 100 karakter)';
-
-  @override
   String get nameTooLong => 'Név túl hosszú (max 100 karakter)';
 
   @override
@@ -1764,15 +1567,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get openFile => 'Megnyitás';
 
   @override
-  String get diagnosticErrors => 'Hibajelentések fejlesztéshez';
-
-  @override
-  String get diagnosticAnonymousStats => 'Névtelen használati statisztikák';
-
-  @override
-  String get diagnosticPerformance => 'Alkalmazás teljesítményadatok';
-
-  @override
   String get noMicrophoneError =>
       'Nem található mikrofon. Csatlakoztasson egy mikrofont és próbálja újra.';
 
@@ -1797,9 +1591,6 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'A 30 napon belül nem ellenőrzött fiókok automatikusan felfüggesztésre kerülnek.';
-
-  @override
-  String get ipClean => 'IP tiszta - nem listázott';
 
   @override
   String get documentsProvidedByBoard =>
@@ -1838,14 +1629,6 @@ class AppLocalizationsHu extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp =>
-      'Szeretne segíteni az alkalmazás fejlesztésében?';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Személyes adatok nem kerülnek gyűjtésre. Ez a beállítás bármikor módosítható.';
-
-  @override
   String logEntries(int count) {
     return '$count bejegyzés';
   }
@@ -1855,15 +1638,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Új bejelentkezés észlelve';
-
-  @override
-  String get waitingForMember => 'Tagra várakozás';
-
-  @override
-  String get waitingForStaff => 'Munkatársra várakozás';
-
-  @override
-  String get waitingForAuthority => 'Hatóságra várakozás';
 
   @override
   String get errorNoInternet =>
@@ -1891,14 +1665,7 @@ class AppLocalizationsHu extends AppLocalizations {
       'DNS problem detected. Check your connection or try another network.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Please open your browser and sign in to the WiFi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Slow connection.';
-
-  @override
-  String get securityBannerNetworkOffline => 'No network connection.';
 
   @override
   String get securityPermissionDialogTitle =>
@@ -1921,4 +1688,1148 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'No microphone was found. Connect a headset or microphone and try again.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Jó reggelt';
+
+  @override
+  String get claudiuWelcomeDay => 'Jó napot';
+
+  @override
+  String get claudiuWelcomeEvening => 'Jó estét';
+
+  @override
+  String get claudiuWelcomeNight => 'Jó estét';
+
+  @override
+  String get claudiuWelcomeVisitor => 'kedves látogató';
+
+  @override
+  String get claudiuWelcomeAsk => 'Hogyan segíthetek?';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Tag szeretnék lenni';
+
+  @override
+  String get claudiuWelcomeLogin =>
+      'Már tag vagyok és be szeretnék jelentkezni';
+
+  @override
+  String get claudiuWelcomeProblem => 'Problémám van az alkalmazással';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Sürgős — hívjon minket';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Claudiu';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro =>
+      'Mielőtt felhívnál — nyitvatartásunk:';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'Az irodában';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'Terepen ügyfelekkel';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'Ezen időszakon kívül csak sürgős ügyeket intézünk. SMS-t is küldhetsz ugyanerre a számra — visszahívunk.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Hívj most';
+
+  @override
+  String get claudiuWelcomeSendSms => 'SMS küldése';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Sürgős ICD360S e.V. — kérem, vegye fel velem a kapcsolatot mielőbb.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Bezárás';
+
+  @override
+  String get claudiuLoginWelcome => 'Üdv újra, kedves tag!';
+
+  @override
+  String get claudiuLoginAsk => 'Kérlek, mondd a tagsági számodat.';
+
+  @override
+  String get claudiuLoginProgress => 'Mindjárt… írj tovább.';
+
+  @override
+  String get claudiuLoginReady => 'Tökéletes! Nyomd meg az alábbi gombot.';
+
+  @override
+  String get claudiuLoginLoading => 'Ellenőrzöm a személyazonosságot… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Megtaláltalak! Bejelentkezés…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Megtaláltalak, $name! Bejelentkezés…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Hm, ezt a számot nem találom. Helyesen írtad be?';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Elfelejtetted a tagsági számodat?';
+
+  @override
+  String get claudiuLoginNoSms =>
+      'A számot nem küldjük e-mailben vagy SMS-ben.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Egyetlen mód: személyes találkozó az egyesület irodájában, személyi igazolvány ellenőrzésével.';
+
+  @override
+  String get claudiuLoginContactUs => 'Hívj minket időpontért:';
+
+  @override
+  String get claudiuDiagnosticGreeting => 'Mielőtt belépnél, egy gyors kérdés';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Küldhetek névtelen jelentéseket, hogy a fejlesztők javíthassák az alkalmazást?';
+
+  @override
+  String get claudiuDiagnosticYes => 'Igen, segíteni szeretnék';
+
+  @override
+  String get claudiuDiagnosticNo => 'Nem, csak nézelődöm';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Mondj többet';
+
+  @override
+  String get claudiuDiagnosticSendsHeader => '📤 Amit KÜLDÜNK (anonim):';
+
+  @override
+  String get claudiuDiagnosticSends1 => 'Anonim eszközkód (NEM a tagsági szám)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Szereped (tag / elnökség)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Operációs rendszer (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Választott nyelv';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Akkumulátor szintje és állapota';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Aktuális képernyő';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Munkamenet hossza (másodperc)';
+
+  @override
+  String get claudiuDiagnosticSends8 => 'Hibák, ha vannak (utolsó 10)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Navigáció (utolsó 20 képernyő)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader => '🛡️ Amit SOHA nem küldünk:';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Az igazi neved';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'E-mail cím';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Telefonszám';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Jelszó';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Csevegő üzenetek tartalma';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Jegyek tartalma';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Dokumentumok vagy mellékletek';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Technikai részletek:';
+
+  @override
+  String get claudiuDiagnosticTech1 => '2 percenként küldve';
+
+  @override
+  String get claudiuDiagnosticTech2 =>
+      'TLS-titkosított kapcsolat, rögzített tanúsítvánnyal';
+
+  @override
+  String get claudiuDiagnosticTech3 =>
+      'Bármikor kikapcsolhatod a Beállításokban';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Hogyan segíthetek?';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Mi történt?';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Hogyan szeretnéd elmondani?';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Jelentés írása';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'Lépésről lépésre részletekkel. A csapat megkapja a szöveget és később megoldja.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Beszéljünk most';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Anonim csevegés egy ügyintézővel. Valós idejű válasz, ha valaki online.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Vagy, ha sürgős:';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Hívj minket';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Anonim csevegés';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Szia!';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Hallgatlak. Írj bármit — név sem kell. Válaszolok, amint itt vagyok.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Írj egy üzenetet…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator =>
+      'Várjuk, hogy egy ügyintéző válaszoljon…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Szia!';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Köszönjük, hogy írtál — most egy Vorsitzerrel vagy kapcsolatban. Mondd el, miben segíthetünk a tagsági kérelmeddel.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime =>
+      'Mennyi ideig tart az ellenőrzés?';
+
+  @override
+  String get claudiuQuickReplyDocuments =>
+      'Milyen dokumentumokra van szükségem?';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Elakadtam egy lépésnél';
+
+  @override
+  String get claudiuQuickReplyHuman => 'Beszélhetek most valakivel?';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Csatlakozás…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Nem sikerült megnyitni a csevegést. Próbáld újra vagy hívj minket.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Próbáld újra';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Csatlakozva';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Újracsatlakozás…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'Az ügyintéző gépel…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Probléma jelentése';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Mi történt?';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Mondd el részletesen, és továbbítom a jelentést a csapatnak.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Kérlek, tartalmazza:';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Mit csináltál, amikor a probléma jelentkezett';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Bármilyen hibaüzenet, amit láttál';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 => 'Melyik képernyőn voltál';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'Az alkalmazás összeomlik, bezárul vagy üres képernyőt mutat?';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Mindig megtörténik vagy csak egyszer?';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Leírásod';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'Pl.: Amikor megnyitom a csevegő képernyőt, „Connection error\" üzenet jön és az alkalmazás nem válaszol…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Egy kicsit részletesebben kérlek (legalább $count karakter)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Jelentés küldése';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Küldés…';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Köszönöm!';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'A jelentést elküldtük. Csapatunk a lehető leghamarabb megnézi.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Értem';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Nem sikerült elküldeni a jelentést. Hívj minket sürgős segítségért.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Vagy, ha sürgős:';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Hívj minket';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Szia, $name! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Szia! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Örülök, hogy itt vagy!';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'A biztonságod érdekében egy Vorsitzer most ellenőrzi a bejelentkezési kérésedet. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Ezt 30 naponta megtesszük, hogy biztosak legyünk, hogy tényleg te vagy. Olyan, mint egy biztonsági ellenőrzés — maximum 5 perc.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'Kész! 🎉 A Vorsitzer felismert. Bejelentkezés…';
+
+  @override
+  String get claudiuApprovalDenied =>
+      'Hm, a Vorsitzer elutasította a kérésedet. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Ha úgy gondolod, ez tévedés, kérlek hívj minket, hogy tisztázzuk.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      'Az 5 perc letelt, és a Vorsitzer nem válaszolt.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Hívj minket és helyben jóváhagyhatjuk a kérésedet. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Hívj minket';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Próbáld újra';
+
+  @override
+  String get claudiuApprovalCancel => 'Mégse';
+
+  @override
+  String get claudiuApprovalClose => 'Bezárás';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Szia, látogató! 👋 Köszönöm, hogy csatlakozni szeretnél a családunkhoz.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'A nevem Claudiu. 2025 tavaszán világos vízióm volt: létrehozni egy egyesületet, amely segít a rászorulóknak — önkéntesen, szívből, felesleges bürokrácia nélkül. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'Elkezdtem beszélni az ügyfelekkel, akiket meglátogattam. Elmondtam nekik az álmomat. És mindenki azt mondta: „Igen, csináljuk!\" 2025 júliusában találkoztunk — hat elszánt ember. Úgy döntöttünk, megalapítjuk az **ICD360S e.V.**-t Neu-Ulmban. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      '**2025. augusztus 1-jén** az egyesület hivatalosan életre kelt — az Egyesületi Nyilvántartásban. A legszebb ajándékom. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Mit csinálunk? Segítünk menekülteknek, fogyatékossággal élőknek, gazdaságilag hátrányos helyzetűeknek, **gyermekeknek és fiataloknak** — adminisztrációs ügyekben, német nyelvtanulásban, lakhatásban, bevásárlásban, szociális ellátásokban. Vorstandunkban többségben vannak fogyatékossággal élő emberek — így a döntések valódi élettapasztalatból születnek. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'Most te jössz. Iratkozzunk fel — körülbelül 5 percig tart. Lépésről lépésre megyünk, nem hagylak magadra. ✨';
+
+  @override
+  String get wizardIntroStart => 'Kezdjük';
+
+  @override
+  String get wizardBack => 'Vissza';
+
+  @override
+  String get wizardNext => 'Tovább';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return '$step. lépés / $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Ez a mező kötelező';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'Túl rövid (legalább $count karakter)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters =>
+      'Csak betűk, szóközök, kötőjelek és aposztrófok';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Mentés sikertelen. Ellenőrizd a kapcsolatot és próbáld újra.';
+
+  @override
+  String get wizardStufe1aTitle => 'Személyazonosság';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Ismerkedjünk meg hivatalosan. Írd be a neved pontosan úgy, ahogy a Personalausweis, Reisepass vagy Aufenthaltstitel okiraton szerepel — hogy egyezzen a dokumentumaiddal.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (utónevek)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Minden utóneved pontosan úgy, ahogy a dokumentumon. Szóközzel vagy kötőjellel (pl. Hans-Peter, Maria Anna).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (vezetéknév)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'A jelenlegi vezetékneved.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (születési név) — opcionális';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Csak ha eltér a Familiennametől — pl. házasság előtti név.';
+
+  @override
+  String get wizardStufe1bTitle => 'Születésnap';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'Szeretnénk veled ünnepelni a születésnapod! 🎂 És segít megerősíteni, hogy elmúltál 16 — így szól az alapszabályunk.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Születési dátum';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper =>
+      'Koppints a dátum kiválasztásához';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Születési hely';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper =>
+      'Város / település, ahol születtél.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Sajnálom… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Az alapszabályunk szerint legalább 16 évesnek kell lenned a tagsághoz. $age éves vagy — remélem találkozunk $years év múlva! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Ha alkalmanként önkénteskedni szeretnél (bármilyen kor, szülői engedéllyel), hívj minket — szívesen támogatunk fiatalokat, akik meg akarják változtatni a világot.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Vissza a kezdőképernyőre';
+
+  @override
+  String get wizardErrInvalidPhone => 'Érvénytelen telefonszám';
+
+  @override
+  String get wizardStufe1b1Title => 'Szülői beleegyezés';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Kiskorú vagy (16-17) — a BGB §106 szerint szükségünk van egy szülő vagy törvényes képviselő beleegyezésére. Mondd a nevét és telefonszámát. Egy Vorsitzer felhívja és megbeszél vele egy találkozót (személyesen vagy videóhíváson). Email nincs — biztosak akarunk lenni, hogy a megfelelő emberrel beszélünk.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Szülő keresztneve';
+
+  @override
+  String get wizardStufe1b1VornameHelper =>
+      'Ahogy a szülő Personalausweisén szerepel.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Szülő vezetékneve';
+
+  @override
+  String get wizardStufe1b1NachnameHelper =>
+      'Ahogy a szülő Personalausweisén szerepel.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Szülő mobilszáma';
+
+  @override
+  String get wizardStufe1b1TelefonHelper => 'Erre a számra hív egy Vorsitzer.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Kapcsolat a gyermekkel:';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Anya';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Apa';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Törvényes képviselő';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Más gondviselő';
+
+  @override
+  String get wizardStufe1cTitle => 'Személyes adatok';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Csak hogy jobban megismerjelek. Ez köztünk marad és sehol nem jelenik meg nyilvánosan.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Nem';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Férfi';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Nő';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Egyéb';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'Nem kívánok válaszolni';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'Családi állapot';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Nőtlen / Hajadon';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Házas';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Elvált';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Özvegy';
+
+  @override
+  String get wizardStufe1dTitle => 'Származásod';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Ez segít nekünk a megfelelő támogatást felajánlani — például Aufenthalt-tanácsadás vagy a nyelvi közösséged megtalálása.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Állampolgárság';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'Pl. deutsch, rumänisch, ukrainisch. Többet vesszővel.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Tartózkodási státusz (Aufenthaltsstatus) — opcionális';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Válaszd ki a címet az Aufenthaltskarte / határozat alapján. A Vorstand összeveti a dokumentumaiddal.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Először töltsd ki fent az állampolgárságot — csak a megfelelő opciókat mutatjuk.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Nincs szükség Aufenthaltstitelre — német állampolgár.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'EU/EGT/CH állampolgár — szabad mozgás (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'ideiglenes';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'állandó tartózkodás';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'menekültügyi eljárás';
+
+  @override
+  String get wizardStufe1dAufenthaltOther =>
+      'Egyéb (kérlek pontosítsd a chatben)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired =>
+      'Kérlek válassz egy Aufenthaltstitelt.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Anyanyelv';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Az alkalmazás nyelvével előre kitöltve — módosítsd, ha más.';
+
+  @override
+  String get wizardStufe1eTitle => 'Cím';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'A postacímed — hivatalos dokumentumokhoz használjuk (alapszabály, tagsági szerződések, értesítések).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Utca';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Csak az utca neve — a házszám a mellette lévő mezőbe.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => 'Sz.';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (irányítószám)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'Város';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Ország';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Előre kitöltve: Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Érvénytelen utcanév';
+
+  @override
+  String get wizardErrInvalidHausnummer =>
+      'Érvénytelen szám (pl. 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz =>
+      'Érvénytelen irányítószám (csak számjegyek)';
+
+  @override
+  String get wizardStufe1fTitle => 'Elérhetőség';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Hogyan érünk el? A telefon csak vészhelyzetre — minden mást a saját, végpontok közötti titkosított csatornánkon intézünk az appban. A tag-e-mailedet automatikusan kapod meg, és lent láthatod.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Mobilszám';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Ígérem, csak akkor hívlak, ha tényleg fontos. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Tagság típusa';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Milyen tag szeretnél lenni? Hadd magyarázzam el a lehetőségeket.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Rendes tag (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Teljes jogkör. Havi tagdíjat fizetsz, szavazol a közgyűlésen, megválasztható vagy az elnökségbe. Alapértelmezett választás.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Pártoló tag (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Anyagilag támogatod az egyesületet, de nem veszel részt aktívan a döntésekben. Nincs szavazati jog. Jó választás, ha távolról szeretnél segíteni.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Tiszteletbeli tag (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Az elnökség adományozza különleges érdemekért. Nem te választod — elismerésként kapod. Csak akkor jelöld, ha már megkaptad ezt a kitüntetést.';
+
+  @override
+  String get wizardStufe3Title => 'Anyagi helyzet';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Most az anyagi helyzetedről. Nem ítélkezni — csak hogy mentesíthessünk a tagdíj alól, ha szociális ellátást kapsz.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Bürgergeldet kapok';
+
+  @override
+  String get wizardStufe3OptionSozialamt => 'Sozialamt-támogatást kapok';
+
+  @override
+  String get wizardStufe3OptionNein => 'Egyiket sem kapom';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Tagdíj: 0 € / hó 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'Bürgergelddel, Sozialamttal, ALG I-vel vagy Krankengelddel a Satzung §6 szerint teljesen mentes vagy a tagdíj alól. Csak egy igazolás kell (Leistungsbescheid vagy igazolás a hatóságtól / egészségbiztosítótól).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Leistungsbescheid feltöltése';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, max. 10 MB.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Kérlek töltsd fel a Leistungsbescheidet, mielőtt továbblépsz.';
+
+  @override
+  String get wizardStufe3FileTooLarge => 'A fájl túl nagy. Maximum 10 MB.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Nem sikerült feltölteni a fájlt. Próbáld újra.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Tagdíj: 25 € / hó';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'A rendes tagok szokásos tagdíja az alapszabály szerint.';
+
+  @override
+  String get wizardStufe4Title => 'Fizetés';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Hogyan szeretnéd fizetni a tagdíjat? És a hónap melyik napján?';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle =>
+      'Banki átutalás (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'A fizetést te indítod minden hónapban a számládról.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle =>
+      'SEPA-Lastschrift (közvetlen beszedés)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Az összeget automatikusan levonjuk a számládról. A legkényelmesebb, de IBAN és aláírt megbízás kell.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (állandó megbízás)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Bankodnál állandó megbízást állítasz be. A bank minden hónapban automatikusan átutalja az összeget.';
+
+  @override
+  String get wizardStufe4DayLabel => 'Fizetési nap';
+
+  @override
+  String get wizardStufe4DayHint => 'Válassz egy napot 1 és 31 között';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return '$day. nap';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'A tagdíjat minden hónap $day-én vonjuk le.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Kezdet';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'Mikortól szeretnél hivatalosan ICD360S-tag lenni? A jóváhagyástól vagy visszamenőleg.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle =>
+      'A Vorstand jóváhagyásától';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'A legegyszerűbb választás. Nincs visszamenőleges tagdíj.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Visszamenőleg 2025.08.01-től (alapítás)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Tagnak számítasz az egyesület első napjától.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'Más dátum';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Te választasz egy dátumot 2025.08.01. és ma között.';
+
+  @override
+  String get wizardStufe5PickDate => 'Koppints a dátum kiválasztásához';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Először válassz egy dátumot.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Tagság kezdete';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return '$start és ma között';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Visszamenőleges tagdíj';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return '$start-tól $end-ig $months hónap. 25 €/hó esetén ez $amount € visszamenőlegesen fizetendő, a folyó havi tagdíjon felül.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Visszamenőleges tagdíj: 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'Bürgergelddel vagy Sozialamttal teljesen mentes vagy — visszamenőleg sem tartozol semmivel.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Mielőtt befejezzük, kérlek olvasd el figyelmesen a $doc-t. Fontos tudnod, mit írsz alá.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint => 'Görgess a végéig a folytatáshoz.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Végigolvastad ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return '$doc megnyitása a böngészőben';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'Ezen a platformon az alapértelmezett böngészőben nyitjuk meg a dokumentumot.';
+
+  @override
+  String get wizardDocumentOpenedOk =>
+      'A dokumentum megnyílt. Olvasd el figyelmesen.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Megerősítem, hogy elolvastam és elfogadom a $doc-t.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'Kész! Beiratkoztál 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'A kérésedet elküldtük 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Felvesszük a kapcsolatot a szülőddel és megbeszélünk egy találkozót (személyesen vagy videóhíváson). Légy türelemmel — a folyamat akár 7 napig is tarthat. Értesítést kapsz az alkalmazásban, amint a szülőd jóváhagyta.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Tagsági számod';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Hamarosan';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Ha több mint 6 hónapja vagy elmaradásban a tagdíjjal, automatikusan töröljük (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'Kilépéshez: küldd el a felmondást írásban 3 hónappal december 31. előtt (legkésőbb szeptember 30-ig, hogy év végén lépjen hatályba). Nincs minimális tagsági idő (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'A tag-e-mailed';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Automatikusan a tagsági számodból generálódik. Abban a pillanatban aktiválódik, amikor az elnökség (Vorstand) jóváhagyja a jelentkezésedet. Saját e-mail-alkalmazásunk van — küldj és fogadj titkosított e-maileket, egyszerűen és ingyen.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Érvénytelen e-mail cím';
+
+  @override
+  String get wizardStufe3OptionAlg1 =>
+      'Arbeitslosengeld I-et (ALG I, álláskeresési járadék) kapok';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Krankengeldet kapok (hosszabb betegség idejére)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Még egy dokumentum hozzáadása';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Elérted a határt: legfeljebb 20 dokumentum.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Elérted az összesen 100 MB határt. Törölj egy meglévő fájlt.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Törlés';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max dokumentum';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Nem sikerült megnyitni a böngészőt. A link a vágólapra került — illeszd be egy böngészőbe a folytatáshoz.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Vorstand ellenőriz · általában 1 munkanap, max. 7';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Fiók aktiválva';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Köszönjük, hogy kitöltötted a regisztrációs űrlapot! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'A kérelmed nálunk van. Általában egy munkanapon belül érvényesítjük.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Néha akár 7 munkanapig is eltarthat. És ha valami nem stimmel, visszaküldünk az űrlapra, hogy javíthasd 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'KÉRELEM ÁLLAPOTA';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total lépést hagyott jóvá a Vorstand';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Kérelem részletei';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      'A 8 fázis, amit kitöltöttél. A Vorstand egyenként ellenőrzi — valós időben látod, mi lett jóváhagyva.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'Ellenőrzésre vár';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Jóváhagyva';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Elutasítva';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count lépés javításra szorul';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'A Vorstand indoklása:';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Javítás most';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Vorstand jóváhagyások ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'Várjuk a 2. Vorstandot';
+
+  @override
+  String get wizardFinalApprovalRejected => 'ELUTASÍTVA';
+
+  @override
+  String get wizardFinalStufeNoDataYet => 'Az adatok még nem érhetők el.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Olvasva:';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei => 'Tagdíjmentes (nincs fizetés)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Nincs szociális juttatás';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification => 'Verifikációkor kezdődik';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation =>
+      'Alapítás dátuma (visszamenőleg)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Egyéni dátum';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Kihagyva';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Kitöltve:';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Ellenőrizve:';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Kérelem visszavonása';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Visszavonod a kérelmet?';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'A kérelmedet visszavontnak jelöljük. Az adatok auditálás céljából (GDPR) az adatbázisban maradnak, de a fiók nem lesz aktiválva. Bármikor újrakezdheted a regisztrációt új tagsági számmal.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Nem, várok';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Igen, visszavonom';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'A kérelmedet nem tudjuk automatikusan feldolgozni. Hívj fel minket vagy gyere be személyesen a Vorstandhoz a regisztráció folytatásához.';
+
+  @override
+  String get wizardDuplicateLoginTitle => 'Úgy tűnik, már a tagunk vagy';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'A neveddel és születési idődddel már találunk egy aktív fiókot. Kérlek, használd a \"Már tag vagyok\" gombot a kezdőképernyőn a bejelentkezéshez. Ha nincs hozzáférésed, hívj minket.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'A kérelmed már nálunk van';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'A neveddel és születési idődddel már van egy folyamatban lévő kérelmünk. A Vorstand dolgozik rajta — értesítünk az appban, amint a fiókod aktívvá válik. Hívj, ha beszélnél velünk.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'Most nem tudjuk feldolgozni ezt a kérelmet';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'A neved és születési időd egyezik egy nemrég visszavont kérelemmel. Kérjük, hívj minket, hogy a folytatás előtt beszélj a Vorstanddal.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle =>
+      'Korábban már jelentkeztél';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'A neved és születési időd egyezik egy régebbi kérelemmel, amit visszavontál. Üdv újra — kérjük, hívj minket a folytatás előtt, hogy a Vorstand eldönthesse, hogyan tovább.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Kérjük, hívj minket';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'A neved és születési időd már szerepel a nyilvántartásunkban, de a részleteket nem oszthatjuk meg az appon keresztül. Hívj minket — a Vorstand közvetlenül elmagyarázza a helyzetet.';
+
+  @override
+  String get wizardChatHelp => 'Beszéljünk';
+
+  @override
+  String get wizardChatHelpSubtitle => 'Élő chat a Vorstanddal · gyors válasz';
 }

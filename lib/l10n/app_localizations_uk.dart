@@ -9,12 +9,6 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Портал учасників';
-
-  @override
-  String get memberPortal => 'Портал учасників';
-
-  @override
   String get welcomeLoading => 'Завантаження...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get memberNumberHint => 'Введіть номер учасника';
 
   @override
-  String get password => 'Пароль';
-
-  @override
-  String get passwordHint => 'Введіть пароль';
-
-  @override
   String get confirmPassword => 'Підтвердіть пароль';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Введіть новий пароль';
-
-  @override
-  String get saveCredentials => 'Зберегти дані входу';
-
-  @override
-  String get autoLogin => 'Автоматичний вхід';
-
-  @override
-  String get forgotPassword => 'Забули пароль?';
 
   @override
   String get firstName => 'Ім\'я та прізвище';
@@ -90,22 +69,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get passwordsNotMatch => 'Паролі не збігаються';
 
   @override
-  String get recoveryCode => 'Код відновлення (6 цифр)';
-
-  @override
-  String get recoveryCodeHelper =>
-      'Запам\'ятайте цей код для відновлення пароля';
-
-  @override
-  String get recoveryCodeHint => 'Введіть код відновлення';
-
-  @override
-  String get recoveryCodeInvalid => 'Код має складатися з 6 цифр';
-
-  @override
-  String get loginFailed => 'Помилка входу';
-
-  @override
   String get registrationFailed => 'Помилка реєстрації';
 
   @override
@@ -119,20 +82,7 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'Забагато пристроїв';
-
-  @override
-  String get maxDevicesMessage =>
-      'Ви вже увійшли на 3 пристроях.\nВиберіть пристрій для виходу:';
-
-  @override
-  String get unknownDevice => 'Невідомий пристрій';
-
-  @override
   String get unknown => 'Невідомо';
-
-  @override
-  String get logoutError => 'Помилка виходу';
 
   @override
   String error(String error) {
@@ -146,39 +96,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get resetPassword => 'Скинути пароль';
 
   @override
-  String get forgotPasswordTitle => 'Забули пароль';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Введіть номер учасника та код відновлення, створений під час реєстрації.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Пароль успішно скинуто!\n\nТепер ви можете увійти з новим паролем.';
-
-  @override
-  String get passwordResetFailed => 'Скидання пароля не вдалося';
-
-  @override
-  String get needHelp => 'Потрібна допомога?';
-
-  @override
-  String get helpQuestion => 'Проблеми з входом або реєстрацією?';
-
-  @override
-  String get helpDescription =>
-      'Зв\'яжіться з нами через WhatsApp та опишіть, що не працює. Ми відповімо якнайшвидше!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Запит через додаток ICD360S';
-
-  @override
-  String get whatsappMessage => 'Вітаю, у мене проблема з додатком ICD360S. ';
-
-  @override
   String get imprint => 'Імпресум';
 
   @override
@@ -189,15 +106,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get revocation => 'Право відкликання';
-
-  @override
-  String get cancellation => 'Скасування';
-
-  @override
-  String get allRightsReserved => 'Всі права захищені.';
-
-  @override
-  String get enterCredentials => 'Введіть номер учасника та пароль';
 
   @override
   String get appointments => 'Зустрічі';
@@ -252,14 +160,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get close => 'Закрити';
 
   @override
-  String get membership => 'Членство';
-
-  @override
   String get myAppointments => 'Мої зустрічі';
-
-  @override
-  String get appointmentsLoadingReady =>
-      'Завантаження зустрічей - API готовий!';
 
   @override
   String get priority => 'Пріоритет';
@@ -268,16 +169,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get messageLabel => 'Повідомлення';
 
   @override
-  String get createdOn => 'Створено';
-
-  @override
-  String get handler => 'Обробник';
-
-  @override
   String get reportProblems => 'Повідомити про проблеми';
-
-  @override
-  String get reportProblem => 'Повідомити про проблему';
 
   @override
   String get weRespondIn24Hours => 'Ми відповімо вам протягом 24 годин!';
@@ -309,42 +201,13 @@ class AppLocalizationsUk extends AppLocalizations {
   String get myTickets => 'Мої заявки';
 
   @override
-  String get newTicket => 'Нова заявка';
-
-  @override
-  String get noOpenTickets => 'Немає відкритих заявок';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Є питання або проблема?\nСтворіть нову заявку.';
-
-  @override
-  String get whatIsTheProblem => 'У чому проблема?';
-
-  @override
-  String get describeTheProblem => 'Опишіть проблему';
-
-  @override
-  String get howUrgentIsIt => 'Наскільки це терміново?';
-
-  @override
   String get low => 'Низький';
-
-  @override
-  String get medium => 'Середній';
 
   @override
   String get high => 'Високий';
 
   @override
   String get submit => 'Надіслати';
-
-  @override
-  String get fillSubjectAndMessage =>
-      'Будь ласка, заповніть тему та повідомлення';
-
-  @override
-  String get ticketCreated => 'Заявку створено';
 
   @override
   String get errorCreatingTicket => 'Помилка створення заявки';
@@ -365,12 +228,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get changePassword => 'Змінити пароль';
 
   @override
-  String get newEmailAddress => 'Нова адреса email';
-
-  @override
-  String get currentPassword => 'Поточний пароль';
-
-  @override
   String get saveEmail => 'Зберегти email';
 
   @override
@@ -378,9 +235,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Пристрій відключено';
-
-  @override
-  String get passwordChangedSuccessfully => 'Пароль успішно змінено';
 
   @override
   String get emailChangedSuccessfully => 'Email успішно змінено';
@@ -393,23 +247,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get validEmailRequired => 'Будь ласка, введіть дійсну адресу email';
-
-  @override
-  String get passwordTooShort => 'Пароль повинен містити не менше 6 символів';
-
-  @override
-  String get maxDevicesReached => 'Ви увійшли на максимум з 3 пристроїв.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Ви увійшли на $count з 3 пристроїв.';
-  }
-
-  @override
-  String get noActiveSessions => 'Немає активних сеансів';
-
-  @override
-  String get logoutFromDevice => 'Вийти з цього пристрою';
 
   @override
   String get confirmLogoutDevice => 'Вийти з пристрою?';
@@ -541,6 +378,19 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get appWillRestart => 'Додаток буде перезапущено автоматично.';
+
+  @override
+  String get autoUpdateEnableTitle =>
+      'Автоматично встановлювати майбутні оновлення';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'Застосунок сам завантажить і встановить оновлення та ненадовго перезапуститься. Без додаткових запитань.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Версія $version встановлюється у фоновому режимі. Застосунок скоро перезапуститься.';
+  }
 
   @override
   String get later => 'Пізніше';
@@ -923,9 +773,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get errorConnecting => 'Помилка з\'єднання';
 
   @override
-  String get errorAcceptingCall => 'Помилка прийняття дзвінка';
-
-  @override
   String get errorDownloading => 'Помилка завантаження';
 
   @override
@@ -957,11 +804,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get file => 'Файл';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name друкує...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Нове повідомлення від';
@@ -1030,19 +872,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get logsCopied => 'Логи скопійовано!';
-
-  @override
-  String get diagnosticDataTitle => 'Діагностичні дані';
-
-  @override
-  String get diagnosticDescription =>
-      'Бажаєте надсилати анонімні діагностичні дані для покращення додатку?';
-
-  @override
-  String get noThanks => 'Ні, дякую';
-
-  @override
-  String get yesEnable => 'Так, увімкнути';
 
   @override
   String get passwordMinEightChars =>
@@ -1221,9 +1050,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get emailChangedSuccess => 'Email успішно змінено';
 
   @override
-  String get newPasswordMinChars => 'Новий пароль (мін. 6 символів)';
-
-  @override
   String get reasonLabel2 => 'Причина';
 
   @override
@@ -1231,9 +1057,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Завантажити';
-
-  @override
-  String get connectionErrorGeneric => 'Помилка з\'єднання';
 
   @override
   String get copyLogs => 'Копіювати логи';
@@ -1249,12 +1072,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get unknownValue => 'Невідомо';
-
-  @override
-  String get bankTransfer => 'Банківський переказ';
-
-  @override
-  String get standingOrder => 'Постійне доручення';
 
   @override
   String get payment => 'Оплата';
@@ -1626,16 +1443,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get statusAccepted => 'Прийнято';
 
   @override
-  String get memberNumberTooLong =>
-      'Номер учасника занадто довгий (макс. 20 символів)';
-
-  @override
-  String get onlyUppercaseAndNumbers => 'Дозволено лише великі літери та цифри';
-
-  @override
-  String get passwordTooLong => 'Пароль занадто довгий (макс. 100 символів)';
-
-  @override
   String get nameTooLong => 'Ім\'я занадто довге (макс. 100 символів)';
 
   @override
@@ -1766,15 +1573,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get openFile => 'Відкрити';
 
   @override
-  String get diagnosticErrors => 'Звіти про помилки для покращення';
-
-  @override
-  String get diagnosticAnonymousStats => 'Анонімна статистика використання';
-
-  @override
-  String get diagnosticPerformance => 'Дані про продуктивність додатку';
-
-  @override
   String get noMicrophoneError =>
       'Мікрофон не знайдено. Підключіть мікрофон і спробуйте ще раз.';
 
@@ -1799,9 +1597,6 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'Облікові записи, не підтверджені протягом 30 днів, будуть автоматично заблоковані.';
-
-  @override
-  String get ipClean => 'IP чистий - не в списку';
 
   @override
   String get documentsProvidedByBoard => 'Документи надаються правлінням.';
@@ -1838,13 +1633,6 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp => 'Бажаєте допомогти нам покращити додаток?';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Особисті дані не збираються. Цей параметр можна змінити в будь-який час.';
-
-  @override
   String logEntries(int count) {
     return '$count записів';
   }
@@ -1854,15 +1642,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Виявлено новий вхід';
-
-  @override
-  String get waitingForMember => 'Очікування учасника';
-
-  @override
-  String get waitingForStaff => 'Очікування співробітника';
-
-  @override
-  String get waitingForAuthority => 'Очікування органу влади';
 
   @override
   String get errorNoInternet =>
@@ -1890,14 +1669,7 @@ class AppLocalizationsUk extends AppLocalizations {
       'Виявлено проблему з DNS. Перевірте з\'єднання або спробуйте іншу мережу.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Відкрийте браузер і увійдіть у Wi-Fi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Повільне з\'єднання.';
-
-  @override
-  String get securityBannerNetworkOffline => 'Немає з\'єднання з мережею.';
 
   @override
   String get securityPermissionDialogTitle => 'Виявлено можливу мережеву атаку';
@@ -1919,4 +1691,1143 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'Мікрофон не знайдено. Під\'єднайте гарнітуру або мікрофон і спробуйте знову.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Доброго ранку';
+
+  @override
+  String get claudiuWelcomeDay => 'Вітаю';
+
+  @override
+  String get claudiuWelcomeEvening => 'Доброго вечора';
+
+  @override
+  String get claudiuWelcomeNight => 'Доброго вечора';
+
+  @override
+  String get claudiuWelcomeVisitor => 'дорогий відвідувачу';
+
+  @override
+  String get claudiuWelcomeAsk => 'Чим я можу допомогти?';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Я хочу стати членом';
+
+  @override
+  String get claudiuWelcomeLogin => 'Я вже член і хочу увійти';
+
+  @override
+  String get claudiuWelcomeProblem => 'У мене проблема з застосунком';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Терміново — зателефонуйте нам';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Клаудіу';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro =>
+      'Перш ніж телефонувати — наш робочий графік:';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'В офісі';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'На виїзді з клієнтами';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'Поза цим часом ми приймаємо лише термінові звернення. Можна також надіслати SMS — ми звʼяжемося з вами.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Зателефонувати зараз';
+
+  @override
+  String get claudiuWelcomeSendSms => 'Надіслати SMS';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Терміново, ICD360S e.V. — звʼяжіться зі мною якнайшвидше.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Закрити';
+
+  @override
+  String get claudiuLoginWelcome => 'З поверненням, дорогий члене!';
+
+  @override
+  String get claudiuLoginAsk => 'Скажи мені свій членський номер.';
+
+  @override
+  String get claudiuLoginProgress => 'Майже… продовжуй вводити.';
+
+  @override
+  String get claudiuLoginReady => 'Чудово! Натисни кнопку нижче.';
+
+  @override
+  String get claudiuLoginLoading => 'Перевіряю особу… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Знайшов! Зараз увійдеш…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Знайшов, $name! Зараз увійдеш…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Хм, такого номера не знаходжу. Перевір, чи правильно ввів?';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Забув членський номер?';
+
+  @override
+  String get claudiuLoginNoSms =>
+      'Ми не надсилаємо номер електронною поштою або SMS.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Єдиний шлях: особиста зустріч в офісі асоціації, з посвідченням.';
+
+  @override
+  String get claudiuLoginContactUs => 'Зателефонуй, щоб записатися:';
+
+  @override
+  String get claudiuDiagnosticGreeting => 'Перш ніж увійти, одне запитання';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Чи можу я надсилати анонімні звіти, щоб розробники могли покращити застосунок?';
+
+  @override
+  String get claudiuDiagnosticYes => 'Так, я хочу допомогти';
+
+  @override
+  String get claudiuDiagnosticNo => 'Ні, я просто переглядаю';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Розкажи більше';
+
+  @override
+  String get claudiuDiagnosticSendsHeader => '📤 Що ми НАДСИЛАЄМО (анонімно):';
+
+  @override
+  String get claudiuDiagnosticSends1 =>
+      'Анонімний код пристрою (НЕ номер члена)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Ваша роль (член / правління)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Система (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Вибрана мова';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Рівень і стан акумулятора';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Поточний екран';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Тривалість сесії (секунди)';
+
+  @override
+  String get claudiuDiagnosticSends8 => 'Помилки, якщо є (останні 10)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Навігація (останні 20 екранів)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader => '🛡️ Що ми НІКОЛИ не надсилаємо:';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Ваше справжнє імʼя';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'Електронна адреса';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Номер телефону';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Пароль';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Вміст повідомлень чату';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Вміст тикетів';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Документи або вкладення';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Технічні деталі:';
+
+  @override
+  String get claudiuDiagnosticTech1 => 'Надсилається кожні 2 хвилини';
+
+  @override
+  String get claudiuDiagnosticTech2 => 'TLS-шифрування, фіксований сертифікат';
+
+  @override
+  String get claudiuDiagnosticTech3 => 'Можна вимкнути в налаштуваннях';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Чим я можу допомогти?';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Що сталося?';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Як тобі зручно розповісти?';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Написати звіт';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'З покроковими деталями. Команда отримає текст і розгляне пізніше.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Поговорімо зараз';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Анонімний чат з оператором. Відповідь у режимі реального часу, якщо хтось онлайн.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Або, якщо терміново:';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Зателефонувати';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Анонімний чат';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Привіт!';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Я слухаю. Пиши що завгодно — імʼя не потрібне. Відповім, щойно буду на звʼязку.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Написати повідомлення…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator =>
+      'Чекаємо на відповідь оператора…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Привіт!';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Дякуємо, що написав — ти на звʼязку з Vorsitzer. Розкажи, з чим ми можемо допомогти щодо твоєї заявки на членство.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime =>
+      'Скільки часу триває перевірка?';
+
+  @override
+  String get claudiuQuickReplyDocuments => 'Які документи мені потрібні?';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Я застряг на одному кроці';
+
+  @override
+  String get claudiuQuickReplyHuman => 'Можна зараз з кимось поговорити?';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Підключаюсь…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Не вдалося відкрити чат. Спробуй ще раз або зателефонуй.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Спробувати ще раз';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Підключено';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Перепідключення…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'Оператор пише…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Повідомити про проблему';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Що сталося?';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Розкажи детально, і я передам звіт команді.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Будь ласка, вкажи:';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Що ти робив, коли зʼявилася проблема';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Яке повідомлення про помилку зʼявилося';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 => 'На якому екрані ти був';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'Застосунок крашиться? Закривається? Показує білий екран?';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Це повторюється чи разово?';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Твій опис';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'Напр.: При відкритті чату зʼявляється «Connection error» і застосунок не відповідає…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Трохи більше деталей, будь ласка (мінімум $count символів)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Надіслати звіт';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Надсилання…';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Дякую!';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'Звіт надіслано. Наша команда розгляне його якомога швидше.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Зрозуміло';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Не вдалося надіслати звіт. Зателефонуй нам у разі терміновості.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Або, якщо терміново:';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Зателефонувати';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Привіт, $name! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Привіт! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Радий, що ти прийшов!';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'Для твоєї безпеки Vorsitzer перевіряє твій запит на вхід. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Ми робимо це раз на 30 днів, щоб переконатися, що це справді ти. Це як перевірка безпеки — максимум 5 хвилин.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'Готово! 🎉 Vorsitzer тебе впізнав. Зараз увійдеш…';
+
+  @override
+  String get claudiuApprovalDenied => 'Хм, Vorsitzer відхилив твій запит. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Якщо думаєш, що це помилка, зателефонуй нам, і ми розберемося.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      'Минуло 5 хвилин, а відповіді від Vorsitzer не було.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Зателефонуй і ми зможемо схвалити твій запит на місці. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Зателефонувати';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Спробувати ще раз';
+
+  @override
+  String get claudiuApprovalCancel => 'Скасувати';
+
+  @override
+  String get claudiuApprovalClose => 'Закрити';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Привіт, гостю! 👋 Дякую, що хочеш стати частиною нашої родини.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'Мене звати Клаудіу. Навесні 2025 року в мене було чітке бачення: створити асоціацію, яка допомагає людям у потребі — добровільно, від серця, без зайвої бюрократії. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'Я почав говорити з клієнтами, яких відвідував. Розповів їм свою мрію. І кожен сказав: «Так, давай!» У липні 2025 ми зустрілися — 6 рішучих людей. Вирішили заснувати **ICD360S e.V.** у Ной-Ульмі. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      '**1 серпня 2025 року** асоціація офіційно з\'явилася — у Реєстрі асоціацій. Найкрасивіший подарунок для мене. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Що ми робимо? Допомагаємо біженцям, людям з інвалідністю, економічно вразливим, **дітям і молоді** — з адміністративними питаннями, вивченням німецької, житлом, покупками, соціальними виплатами. Наш Vorstand переважно складається з людей з інвалідністю — так рішення приймаються з реального життєвого досвіду. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'Тепер твоя черга. Запишемо тебе — займе близько 5 хвилин. Йдемо крок за кроком, я тебе не залишу. ✨';
+
+  @override
+  String get wizardIntroStart => 'Почнімо';
+
+  @override
+  String get wizardBack => 'Назад';
+
+  @override
+  String get wizardNext => 'Далі';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return 'Крок $step з $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Це поле обовʼязкове';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'Занадто коротко (мінімум $count символів)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters => 'Лише букви, пробіли, дефіси та апострофи';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Не вдалося зберегти. Перевір зʼєднання і спробуй ще раз.';
+
+  @override
+  String get wizardStufe1aTitle => 'Особа';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Знайомимося офіційно. Напиши своє імʼя точно так, як у Personalausweis, Reisepass або Aufenthaltstitel — щоб збігалося з документами.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (імена)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Усі імена точно як у документі. Через пробіл або дефіс (наприклад, Hans-Peter, Maria Anna).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (прізвище)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'Твоє теперішнє прізвище.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (прізвище при народженні) — необовʼязково';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Лише якщо відрізняється від Familienname — наприклад, до шлюбу.';
+
+  @override
+  String get wizardStufe1bTitle => 'День народження';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'Хочемо святкувати твій день народження разом! 🎂 І нам важливо знати, що тобі щонайменше 16 — так пише наш статут.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Дата народження';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper => 'Натисни, щоб вибрати дату';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Місце народження';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper =>
+      'Місто / населений пункт, де ти народився.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Мені шкода… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Наш статут каже, що для членства потрібно бути щонайменше 16. Тобі $age — сподіваюся побачити тебе через $years років! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Якщо хочеш іноді допомагати як волонтер (будь-який вік, зі згодою батьків), зателефонуй — ми любимо підтримувати молодь, яка хоче змінювати світ.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Назад на головну';
+
+  @override
+  String get wizardErrInvalidPhone => 'Невірний номер телефону';
+
+  @override
+  String get wizardStufe1b1Title => 'Згода батьків';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Ти неповнолітній (16-17) — згідно з §106 BGB нам потрібна згода батька, матері або законного опікуна. Скажи імʼя та номер телефону. Vorsitzer зателефонує та домовиться про зустріч (особисто або відеодзвінок). Без email — хочемо бути впевненими, що говоримо з реальною людиною.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Імʼя батька / матері';
+
+  @override
+  String get wizardStufe1b1VornameHelper =>
+      'Як у Personalausweis батька / матері.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Прізвище батька / матері';
+
+  @override
+  String get wizardStufe1b1NachnameHelper =>
+      'Як у Personalausweis батька / матері.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Мобільний батька / матері';
+
+  @override
+  String get wizardStufe1b1TelefonHelper =>
+      'На цей номер зателефонує Vorsitzer.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Стосунок до дитини:';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Мати';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Батько';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Законний опікун';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Інший опікун';
+
+  @override
+  String get wizardStufe1cTitle => 'Особисті дані';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Просто щоб я тебе трохи краще пізнав. Це залишиться між нами і ніде публічно не зʼявиться.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Стать';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Чоловіча';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Жіноча';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Інше';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'Не вказано';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'Сімейний стан';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Неодружений / Незаміжня';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Одружений / Заміжня';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Розлучений / Розлучена';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Удівець / Удова';
+
+  @override
+  String get wizardStufe1dTitle => 'Походження';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Це допомагає нам запропонувати тобі правильну допомогу — наприклад, поради щодо Aufenthalt або пошук твоєї мовної спільноти.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Громадянство';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'Наприклад: deutsch, rumänisch, ukrainisch. Декілька через кому.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Статус перебування (Aufenthaltsstatus) — необовʼязково';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Обери назву зі своєї Aufenthaltskarte / рішення. Vorstand звіряє з твоїми документами.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Спочатку вкажи громадянство вище — покажемо лише відповідні варіанти.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Aufenthaltstitel не потрібен — громадянин Німеччини.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'Громадянин ЄС/ЄЕП/Швейцарії — свобода пересування (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'тимчасовий';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'постійне проживання';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'процедура притулку';
+
+  @override
+  String get wizardStufe1dAufenthaltOther => 'Інше (уточни в чаті)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired =>
+      'Будь ласка, обери Aufenthaltstitel.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Рідна мова';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Заповнено мовою застосунку — зміни, якщо інша.';
+
+  @override
+  String get wizardStufe1eTitle => 'Адреса';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'Твоя поштова адреса — використовуємо її для офіційних документів (статут, договори членства, повідомлення).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Вулиця';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Лише назва вулиці — номер у сусідньому полі.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => '№';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (індекс)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'Місто';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Країна';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Заповнено: Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Невірна назва вулиці';
+
+  @override
+  String get wizardErrInvalidHausnummer =>
+      'Невірний номер (напр. 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz => 'Невірний індекс (тільки цифри)';
+
+  @override
+  String get wizardStufe1fTitle => 'Контакт';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Як з тобою звʼязатися? Телефон — лише для термінових випадків, усе інше йде через наш власний наскрізно зашифрований канал у застосунку. Твій членський email призначається автоматично, і ти бачиш його нижче.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Мобільний';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Обіцяю, дзвонитиму лише коли це справді важливо. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Тип членства';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Яким членом ти хочеш бути? Давай поясню кожну опцію.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Дійсний член (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Повні права. Платиш щомісячний внесок, голосуєш у Mitgliederversammlung, можеш бути обраним до Vorstand. Стандартний вибір.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Підтримуючий член (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Підтримуєш асоціацію фінансово, але не береш активної участі в рішеннях. Без права голосу. Добре, якщо хочеш допомагати на відстані.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Почесний член (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Присвоюється Vorstand за особливі заслуги. Не вибираєш сам — отримуєш як визнання. Обери лише якщо вже був удостоєний.';
+
+  @override
+  String get wizardStufe3Title => 'Фінансовий стан';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Тепер про твій фінансовий стан. Не для того, щоб судити — а щоб звільнити від внеску, якщо отримуєш соціальну допомогу.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Отримую Bürgergeld';
+
+  @override
+  String get wizardStufe3OptionSozialamt => 'Отримую допомогу від Sozialamt';
+
+  @override
+  String get wizardStufe3OptionNein => 'Не отримую жодного';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Внесок: 0 € / місяць 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'З Bürgergeld, Sozialamt, ALG I чи Krankengeld ти повністю звільнений від внеску згідно з Satzung §6. Нам потрібне лише підтвердження (Leistungsbescheid чи довідка від відомства / лікарняної каси).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Завантажити Leistungsbescheid';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, максимум 10 МБ.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Завантаж Leistungsbescheid перш ніж продовжити.';
+
+  @override
+  String get wizardStufe3FileTooLarge =>
+      'Файл занадто великий. Максимум 10 МБ.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Не вдалося завантажити файл. Спробуй ще раз.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Внесок: 25 € / місяць';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'Стандартний внесок для дійсних членів за статутом.';
+
+  @override
+  String get wizardStufe4Title => 'Оплата';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Як ти хочеш сплачувати внесок? І в який день місяця тобі зручно?';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle =>
+      'Банківський переказ (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'Ти сам ініціюєш платіж щомісяця зі свого рахунку.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (прямий дебет)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Ми автоматично списуємо суму з твого рахунку. Найзручніше, але нам потрібні IBAN і підписаний мандат.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (постійне доручення)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Ти налаштовуєш постійне доручення у своєму банку. Банк сам переказує суму щомісяця.';
+
+  @override
+  String get wizardStufe4DayLabel => 'День оплати';
+
+  @override
+  String get wizardStufe4DayHint => 'Вибери день від 1 до 31';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return '$day-е число';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'Внесок буде списуватися $day-го числа щомісяця.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Дата початку';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'З якого моменту ти хочеш бути офіційним членом ICD360S? З моменту схвалення або ретроактивно.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle =>
+      'З моменту схвалення Vorstand';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'Найпростіший варіант. Без ретроактивного внеску.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Ретроактивно з 01.08.2025 (дата заснування)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Будеш зараховуватися як член з першого дня асоціації.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'Інша дата';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Сам обираєш дату між 01.08.2025 і сьогодні.';
+
+  @override
+  String get wizardStufe5PickDate => 'Натисни, щоб обрати дату';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Спочатку обери дату.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Дата початку членства';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return 'Між $start і сьогодні';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Ретроактивний внесок';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return 'З $start по $end це $months місяців. По 25 €/місяць виходить $amount € до доплати, окрім поточного місячного внеску.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Ретроактивний внесок: 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'З Bürgergeld або Sozialamt ти повністю звільнений — навіть ретроактивно нічого не винен.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Перед тим, як завершити, уважно прочитай $doc. Важливо знати, що підписуєш.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint => 'Прокрути до кінця, щоб продовжити.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Ти прочитав до кінця ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return 'Відкрити $doc у браузері';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'На цій платформі ми відкриваємо документ у твоєму браузері за замовчуванням.';
+
+  @override
+  String get wizardDocumentOpenedOk =>
+      'Документ було відкрито. Прочитай уважно.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Підтверджую, що прочитав і погоджуюся з $doc.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'Готово! Ти зареєстрований 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'Заявку надіслано 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Ми звʼяжемося з твоїм батьком/матірʼю та призначимо зустріч (особисто або відеодзвінок). Прошу мати терпіння — процес може зайняти до 7 днів. Отримаєш сповіщення в застосунку, щойно батько/мати схвалять.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Твій номер члена';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Скоро';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Якщо ти заборгуєш більше 6 місяців за внеском, ми автоматично виключимо тебе (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'Для виходу: надішли заяву про вихід письмово за 3 місяці до 31 грудня (до 30 вересня, щоб набуло чинності в кінці року). Мінімального терміну немає (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'Твій членський email';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Призначається автоматично на основі твого членського номера. Активується в той момент, коли правління (Vorstand) затвердить твою заявку. У нас є власний поштовий застосунок — надсилай і отримуй зашифровані листи, просто й безкоштовно.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Невірна адреса електронної пошти';
+
+  @override
+  String get wizardStufe3OptionAlg1 =>
+      'Отримую Arbeitslosengeld I (ALG I, допомога по безробіттю)';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Отримую Krankengeld (допомога з хвороби)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Додати ще документ';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Досягнуто ліміту: до 20 документів.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Досягнуто ліміту 100 МБ. Видали один із наявних файлів.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Видалити';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max документів';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Не вдалося відкрити браузер. Посилання скопійовано в буфер обміну — встав його в браузер, щоб продовжити.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Vorstand перевіряє · зазвичай 1 робочий день, максимум 7';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Акаунт активовано';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Дякуємо, що заповнив реєстраційну форму! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'Твоя заявка у нас. Зазвичай ми її перевіряємо за один робочий день.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Іноді це може зайняти до 7 робочих днів. А якщо щось не сходиться, ми повернемо тебе у форму, щоб виправити 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'СТАТУС ЗАЯВКИ';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total кроків перевірено правлінням Vorstand';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Деталі заявки';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      'Вісім етапів, які ти пройшов. Vorstand перевіряє їх по черзі — ти бачиш у реальному часі, що вже схвалено.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'Очікує перевірки';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Схвалено';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Відхилено';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count крок потребує виправлення';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'Причина Vorstand:';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Виправити зараз';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Схвалення Vorstand ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'Очікуємо 2-го Vorstand';
+
+  @override
+  String get wizardFinalApprovalRejected => 'ВІДХИЛЕНО';
+
+  @override
+  String get wizardFinalStufeNoDataYet => 'Дані поки що недоступні.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Прочитано:';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei =>
+      'Звільнено від внеску (без оплати)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Без соціальних допомог';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification =>
+      'Починається при верифікації';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation =>
+      'Дата заснування (заднім числом)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Інша дата';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Пропущено';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Заповнено:';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Перевірено:';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Відкликати заявку';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Відкликати заявку?';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'Твоя заявка буде позначена як відкликана тобою. Дані залишаться в базі для аудиту (GDPR), але акаунт не буде активовано. Ти зможеш пройти реєстрацію заново будь-коли з новим номером.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Ні, зачекаю';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Так, відкликати';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'Твою заявку не вдається обробити автоматично. Зателефонуй нам або прийди особисто до Vorstand, щоб продовжити реєстрацію.';
+
+  @override
+  String get wizardDuplicateLoginTitle => 'Схоже, ти вже наш член';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'За твоїм імʼям та датою народження ми вже знаходимо активний акаунт. Скористайся «Я вже член» на головному екрані, щоб увійти. Якщо немає доступу — зателефонуй.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'Твоя заявка вже у нас';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'За твоїм імʼям і датою народження ми вже маємо заявку на розгляді. Vorstand працює над нею — повідомимо в застосунку, щойно акаунт стане активним. Зателефонуй, якщо хочеш обговорити.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'Ми не можемо обробити заявку зараз';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'Твоє імʼя та дата народження збігаються з нещодавно відкликаною заявкою. Зателефонуй нам, щоб поговорити з Vorstand до того, як продовжиш.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle => 'Ти вже подавав заявку';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'Твоє імʼя та дата народження збігаються зі старою заявкою, яку ти відкликав. З поверненням — зателефонуй нам перед продовженням, щоб Vorstand вирішив, як діємо далі.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Будь ласка, зателефонуй';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'Твоє імʼя та дата народження вже в наших записах, але не можемо повідомити деталі через застосунок. Зателефонуй — Vorstand пояснить ситуацію напряму.';
+
+  @override
+  String get wizardChatHelp => 'Поговоримо';
+
+  @override
+  String get wizardChatHelpSubtitle =>
+      'Живий чат із Vorstand · швидка відповідь';
 }

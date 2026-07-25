@@ -167,6 +167,16 @@
   "downloadProgress": "Descărcare: {percent}%",
   "installationStarting": "Instalarea se inițiază...",
   "appWillRestart": "Aplicația se va reporni automat.",
+  "autoUpdateEnableTitle": "Instalează automat actualizările viitoare",
+  "autoUpdateEnableHint": "Aplicația descarcă și instalează actualizările singură și repornește pentru scurt timp. Fără alte întrebări.",
+  "autoUpdateInstalling": "Versiunea {version} se instalează în fundal. Aplicația va reporni imediat.",
+  "@autoUpdateInstalling": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "later": "Mai târziu",
   "updateNow": "Actualizează acum",
   "downloading": "Se descarcă...",

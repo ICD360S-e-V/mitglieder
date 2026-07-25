@@ -9,12 +9,6 @@ class AppLocalizationsEl extends AppLocalizations {
   AppLocalizationsEl([String locale = 'el']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Πύλη Μελών';
-
-  @override
-  String get memberPortal => 'Πύλη Μελών';
-
-  @override
   String get welcomeLoading => 'Φόρτωση...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get memberNumberHint => 'Εισάγετε τον αριθμό μέλους';
 
   @override
-  String get password => 'Κωδικός';
-
-  @override
-  String get passwordHint => 'Εισάγετε τον κωδικό';
-
-  @override
   String get confirmPassword => 'Επιβεβαίωση Κωδικού';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Εισάγετε νέο κωδικό';
-
-  @override
-  String get saveCredentials => 'Αποθήκευση στοιχείων';
-
-  @override
-  String get autoLogin => 'Αυτόματη σύνδεση';
-
-  @override
-  String get forgotPassword => 'Ξεχάσατε τον κωδικό;';
 
   @override
   String get firstName => 'Όνομα και Επώνυμο';
@@ -92,22 +71,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get passwordsNotMatch => 'Οι κωδικοί δεν ταιριάζουν';
 
   @override
-  String get recoveryCode => 'Κωδικός Ανάκτησης (6 ψηφία)';
-
-  @override
-  String get recoveryCodeHelper =>
-      'Θυμηθείτε αυτόν τον κωδικό για ανάκτηση κωδικού';
-
-  @override
-  String get recoveryCodeHint => 'Εισάγετε κωδικό ανάκτησης';
-
-  @override
-  String get recoveryCodeInvalid => 'Ο κωδικός πρέπει να έχει ακριβώς 6 ψηφία';
-
-  @override
-  String get loginFailed => 'Αποτυχία σύνδεσης';
-
-  @override
   String get registrationFailed => 'Αποτυχία εγγραφής';
 
   @override
@@ -121,20 +84,7 @@ class AppLocalizationsEl extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'Πάρα πολλές συσκευές';
-
-  @override
-  String get maxDevicesMessage =>
-      'Είστε ήδη συνδεδεμένοι σε 3 συσκευές.\nΕπιλέξτε συσκευή για αποσύνδεση:';
-
-  @override
-  String get unknownDevice => 'Άγνωστη συσκευή';
-
-  @override
   String get unknown => 'Άγνωστο';
-
-  @override
-  String get logoutError => 'Σφάλμα αποσύνδεσης';
 
   @override
   String error(String error) {
@@ -148,40 +98,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get resetPassword => 'Επαναφορά Κωδικού';
 
   @override
-  String get forgotPasswordTitle => 'Ξεχάσατε τον Κωδικό';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Εισάγετε τον αριθμό μέλους και τον κωδικό ανάκτησης που δημιουργήσατε κατά την εγγραφή.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Ο κωδικός επαναφέρθηκε επιτυχώς!\n\nΤώρα μπορείτε να συνδεθείτε με τον νέο κωδικό.';
-
-  @override
-  String get passwordResetFailed => 'Αποτυχία επαναφοράς κωδικού';
-
-  @override
-  String get needHelp => 'Χρειάζεστε βοήθεια;';
-
-  @override
-  String get helpQuestion => 'Προβλήματα με τη σύνδεση ή την εγγραφή;';
-
-  @override
-  String get helpDescription =>
-      'Επικοινωνήστε μέσω WhatsApp και περιγράψτε τι δεν λειτουργεί. Θα απαντήσουμε το συντομότερο!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Ερώτημα μέσω εφαρμογής ICD360S';
-
-  @override
-  String get whatsappMessage =>
-      'Γεια σας, έχω πρόβλημα με την εφαρμογή ICD360S. ';
-
-  @override
   String get imprint => 'Impressum';
 
   @override
@@ -192,15 +108,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get revocation => 'Δικαίωμα Υπαναχώρησης';
-
-  @override
-  String get cancellation => 'Ακύρωση';
-
-  @override
-  String get allRightsReserved => 'Με επιφύλαξη παντός δικαιώματος.';
-
-  @override
-  String get enterCredentials => 'Εισάγετε αριθμό μέλους και κωδικό';
 
   @override
   String get appointments => 'Ραντεβού';
@@ -256,13 +163,7 @@ class AppLocalizationsEl extends AppLocalizations {
   String get close => 'Κλείσιμο';
 
   @override
-  String get membership => 'Μέλος';
-
-  @override
   String get myAppointments => 'Τα ραντεβού μου';
-
-  @override
-  String get appointmentsLoadingReady => 'Φόρτωση ραντεβού - API έτοιμο!';
 
   @override
   String get priority => 'Προτεραιότητα';
@@ -271,16 +172,7 @@ class AppLocalizationsEl extends AppLocalizations {
   String get messageLabel => 'Μήνυμα';
 
   @override
-  String get createdOn => 'Δημιουργήθηκε';
-
-  @override
-  String get handler => 'Διαχειριστής';
-
-  @override
   String get reportProblems => 'Αναφορά προβλημάτων';
-
-  @override
-  String get reportProblem => 'Αναφορά προβλήματος';
 
   @override
   String get weRespondIn24Hours => 'Θα σας απαντήσουμε εντός 24 ωρών!';
@@ -312,41 +204,13 @@ class AppLocalizationsEl extends AppLocalizations {
   String get myTickets => 'Τα αιτήματά μου';
 
   @override
-  String get newTicket => 'Νέο αίτημα';
-
-  @override
-  String get noOpenTickets => 'Δεν υπάρχουν ανοιχτά αιτήματα';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Έχετε ερώτηση ή πρόβλημα;\nΔημιουργήστε ένα νέο αίτημα.';
-
-  @override
-  String get whatIsTheProblem => 'Ποιο είναι το πρόβλημα;';
-
-  @override
-  String get describeTheProblem => 'Περιγράψτε το πρόβλημα';
-
-  @override
-  String get howUrgentIsIt => 'Πόσο επείγον είναι;';
-
-  @override
   String get low => 'Χαμηλή';
-
-  @override
-  String get medium => 'Μεσαία';
 
   @override
   String get high => 'Υψηλή';
 
   @override
   String get submit => 'Υποβολή';
-
-  @override
-  String get fillSubjectAndMessage => 'Συμπληρώστε το θέμα και το μήνυμα';
-
-  @override
-  String get ticketCreated => 'Το αίτημα δημιουργήθηκε';
 
   @override
   String get errorCreatingTicket => 'Σφάλμα κατά τη δημιουργία αιτήματος';
@@ -367,12 +231,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get changePassword => 'Αλλαγή κωδικού';
 
   @override
-  String get newEmailAddress => 'Νέα διεύθυνση email';
-
-  @override
-  String get currentPassword => 'Τρέχων κωδικός';
-
-  @override
   String get saveEmail => 'Αποθήκευση email';
 
   @override
@@ -380,9 +238,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Η συσκευή αποσυνδέθηκε';
-
-  @override
-  String get passwordChangedSuccessfully => 'Ο κωδικός άλλαξε επιτυχώς';
 
   @override
   String get emailChangedSuccessfully => 'Το email άλλαξε επιτυχώς';
@@ -395,25 +250,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get validEmailRequired => 'Εισαγάγετε μια έγκυρη διεύθυνση email';
-
-  @override
-  String get passwordTooShort =>
-      'Ο κωδικός πρέπει να έχει τουλάχιστον 6 χαρακτήρες';
-
-  @override
-  String get maxDevicesReached =>
-      'Είστε συνδεδεμένοι στο μέγιστο των 3 συσκευών.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Είστε συνδεδεμένοι σε $count από 3 συσκευές.';
-  }
-
-  @override
-  String get noActiveSessions => 'Δεν υπάρχουν ενεργές συνεδρίες';
-
-  @override
-  String get logoutFromDevice => 'Αποσύνδεση από αυτή τη συσκευή';
 
   @override
   String get confirmLogoutDevice => 'Αποσύνδεση συσκευής;';
@@ -544,6 +380,18 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get appWillRestart => 'Η εφαρμογή θα επανεκκινηθεί αυτόματα.';
+
+  @override
+  String get autoUpdateEnableTitle => 'Install future updates automatically';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'The app downloads and installs updates on its own and restarts briefly. No further prompts.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Version $version is being installed in the background. The app will restart shortly.';
+  }
 
   @override
   String get later => 'Αργότερα';
@@ -926,9 +774,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get errorConnecting => 'Σφάλμα σύνδεσης';
 
   @override
-  String get errorAcceptingCall => 'Σφάλμα αποδοχής κλήσης';
-
-  @override
   String get errorDownloading => 'Σφάλμα λήψης';
 
   @override
@@ -960,11 +805,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get file => 'Αρχείο';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name γράφει...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Νέο μήνυμα από';
@@ -1033,19 +873,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get logsCopied => 'Αρχεία καταγραφής αντιγράφηκαν!';
-
-  @override
-  String get diagnosticDataTitle => 'Διαγνωστικά δεδομένα';
-
-  @override
-  String get diagnosticDescription =>
-      'Θέλετε να στέλνετε ανώνυμα διαγνωστικά δεδομένα για τη βελτίωση της εφαρμογής;';
-
-  @override
-  String get noThanks => 'Όχι, ευχαριστώ';
-
-  @override
-  String get yesEnable => 'Ναι, ενεργοποίηση';
 
   @override
   String get passwordMinEightChars =>
@@ -1225,9 +1052,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get emailChangedSuccess => 'Το email άλλαξε επιτυχώς';
 
   @override
-  String get newPasswordMinChars => 'Νέος κωδικός (ελάχ. 6 χαρακτήρες)';
-
-  @override
   String get reasonLabel2 => 'Λόγος';
 
   @override
@@ -1235,9 +1059,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Λήψη';
-
-  @override
-  String get connectionErrorGeneric => 'Σφάλμα σύνδεσης';
 
   @override
   String get copyLogs => 'Αντιγραφή αρχείων καταγραφής';
@@ -1253,12 +1074,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get unknownValue => 'Άγνωστο';
-
-  @override
-  String get bankTransfer => 'Τραπεζικό έμβασμα';
-
-  @override
-  String get standingOrder => 'Πάγια εντολή';
 
   @override
   String get payment => 'Πληρωμή';
@@ -1629,17 +1444,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get statusAccepted => 'Αποδεκτό';
 
   @override
-  String get memberNumberTooLong =>
-      'Αριθμός μέλους πολύ μεγάλος (μέγ. 20 χαρακτήρες)';
-
-  @override
-  String get onlyUppercaseAndNumbers =>
-      'Επιτρέπονται μόνο κεφαλαία γράμματα και αριθμοί';
-
-  @override
-  String get passwordTooLong => 'Κωδικός πολύ μεγάλος (μέγ. 100 χαρακτήρες)';
-
-  @override
   String get nameTooLong => 'Όνομα πολύ μεγάλο (μέγ. 100 χαρακτήρες)';
 
   @override
@@ -1770,15 +1574,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get openFile => 'Άνοιγμα';
 
   @override
-  String get diagnosticErrors => 'Αναφορές σφαλμάτων για βελτίωση';
-
-  @override
-  String get diagnosticAnonymousStats => 'Ανώνυμα στατιστικά χρήσης';
-
-  @override
-  String get diagnosticPerformance => 'Δεδομένα απόδοσης εφαρμογής';
-
-  @override
   String get noMicrophoneError =>
       'Δεν βρέθηκε μικρόφωνο. Συνδέστε ένα μικρόφωνο και δοκιμάστε ξανά.';
 
@@ -1803,9 +1598,6 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'Οι λογαριασμοί που δεν επαληθεύονται εντός 30 ημερών θα ανασταλούν αυτόματα.';
-
-  @override
-  String get ipClean => 'IP καθαρή - μη καταχωρημένη';
 
   @override
   String get documentsProvidedByBoard =>
@@ -1844,14 +1636,6 @@ class AppLocalizationsEl extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp =>
-      'Θέλετε να μας βοηθήσετε να βελτιώσουμε την εφαρμογή;';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Δεν συλλέγονται προσωπικά δεδομένα. Αυτή η ρύθμιση μπορεί να αλλάξει ανά πάσα στιγμή.';
-
-  @override
   String logEntries(int count) {
     return '$count εγγραφές';
   }
@@ -1861,15 +1645,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Εντοπίστηκε νέα σύνδεση';
-
-  @override
-  String get waitingForMember => 'Αναμονή μέλους';
-
-  @override
-  String get waitingForStaff => 'Αναμονή προσωπικού';
-
-  @override
-  String get waitingForAuthority => 'Αναμονή αρχής';
 
   @override
   String get errorNoInternet =>
@@ -1898,14 +1673,7 @@ class AppLocalizationsEl extends AppLocalizations {
       'DNS problem detected. Check your connection or try another network.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Please open your browser and sign in to the WiFi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Slow connection.';
-
-  @override
-  String get securityBannerNetworkOffline => 'No network connection.';
 
   @override
   String get securityPermissionDialogTitle =>
@@ -1928,4 +1696,1149 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'No microphone was found. Connect a headset or microphone and try again.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Καλημέρα';
+
+  @override
+  String get claudiuWelcomeDay => 'Γεια σας';
+
+  @override
+  String get claudiuWelcomeEvening => 'Καλησπέρα';
+
+  @override
+  String get claudiuWelcomeNight => 'Καλησπέρα';
+
+  @override
+  String get claudiuWelcomeVisitor => 'αγαπητέ επισκέπτη';
+
+  @override
+  String get claudiuWelcomeAsk => 'Πώς μπορώ να σε βοηθήσω;';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Θέλω να γίνω μέλος';
+
+  @override
+  String get claudiuWelcomeLogin => 'Είμαι ήδη μέλος και θέλω να συνδεθώ';
+
+  @override
+  String get claudiuWelcomeProblem => 'Έχω πρόβλημα με την εφαρμογή';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Επείγον — καλέστε μας';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Claudiu';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro =>
+      'Πριν καλέσεις — οι ώρες λειτουργίας μας:';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'Στο γραφείο';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'Στο πεδίο με τους πελάτες';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'Εκτός αυτών των ωρών αντιμετωπίζουμε μόνο επείγοντα. Μπορείς και να μας στείλεις SMS — θα σε καλέσουμε.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Κάλεσε τώρα';
+
+  @override
+  String get claudiuWelcomeSendSms => 'Στείλε SMS';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Επείγον ICD360S e.V. — παρακαλώ επικοινωνήστε μαζί μου το συντομότερο.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Κλείσιμο';
+
+  @override
+  String get claudiuLoginWelcome => 'Καλώς ήρθες πίσω, αγαπητέ μέλος!';
+
+  @override
+  String get claudiuLoginAsk => 'Πες μου τον αριθμό μέλους σου, παρακαλώ.';
+
+  @override
+  String get claudiuLoginProgress => 'Πλησιάζουμε… συνέχισε.';
+
+  @override
+  String get claudiuLoginReady => 'Τέλεια! Πάτα το κουμπί παρακάτω.';
+
+  @override
+  String get claudiuLoginLoading => 'Επαληθεύω την ταυτότητα… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Σε βρήκα! Συνδέεσαι τώρα…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Σε βρήκα, $name! Συνδέεσαι τώρα…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Χμ, δεν βρίσκω αυτόν τον αριθμό. Τον έγραψες σωστά;';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Ξέχασες τον αριθμό μέλους;';
+
+  @override
+  String get claudiuLoginNoSms => 'Δεν στέλνουμε τον αριθμό με email ή SMS.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Ο μοναδικός τρόπος: προσωπική συνάντηση στα γραφεία του συλλόγου, μετά από έλεγχο ταυτότητας.';
+
+  @override
+  String get claudiuLoginContactUs => 'Κάλεσέ μας για ραντεβού:';
+
+  @override
+  String get claudiuDiagnosticGreeting => 'Πριν μπεις, μια γρήγορη ερώτηση';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Μπορώ να στέλνω ανώνυμες αναφορές ώστε οι προγραμματιστές να βελτιώνουν την εφαρμογή;';
+
+  @override
+  String get claudiuDiagnosticYes => 'Ναι, θέλω να βοηθήσω';
+
+  @override
+  String get claudiuDiagnosticNo => 'Όχι, απλώς εξερευνώ';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Πες μου περισσότερα';
+
+  @override
+  String get claudiuDiagnosticSendsHeader => '📤 Τι ΣΤΕΛΝΟΥΜΕ (ανώνυμα):';
+
+  @override
+  String get claudiuDiagnosticSends1 =>
+      'Ένας ανώνυμος κωδικός συσκευής (ΟΧΙ ο αριθμός μέλους)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Ο ρόλος σου (μέλος / διοίκηση)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Λειτουργικό σύστημα (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Επιλεγμένη γλώσσα';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Επίπεδο και κατάσταση μπαταρίας';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Τρέχουσα οθόνη';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Διάρκεια συνεδρίας (δευτερόλεπτα)';
+
+  @override
+  String get claudiuDiagnosticSends8 => 'Σφάλματα αν υπάρχουν (τελευταία 10)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Πλοήγηση (τελευταίες 20 οθόνες)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader => '🛡️ Τι ΠΟΤΕ δεν στέλνουμε:';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Το πραγματικό σου όνομα';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'Διεύθυνση email';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Αριθμός τηλεφώνου';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Κωδικός';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Περιεχόμενο μηνυμάτων συνομιλίας';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Περιεχόμενο εισιτηρίων';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Έγγραφα ή συνημμένα';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Τεχνικές λεπτομέρειες:';
+
+  @override
+  String get claudiuDiagnosticTech1 => 'Στέλνεται κάθε 2 λεπτά';
+
+  @override
+  String get claudiuDiagnosticTech2 =>
+      'TLS-κρυπτογραφημένη σύνδεση με σταθερό πιστοποιητικό';
+
+  @override
+  String get claudiuDiagnosticTech3 =>
+      'Μπορείς να το απενεργοποιήσεις οποιαδήποτε στιγμή στις Ρυθμίσεις';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Πώς μπορώ να βοηθήσω;';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Τι συνέβη;';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Πώς θες να μου το πεις;';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Συντάξτε αναφορά';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'Με βήμα-προς-βήμα λεπτομέρειες. Η ομάδα λαμβάνει το κείμενο και το επιλύει αργότερα.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Ας μιλήσουμε τώρα';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Ανώνυμη συνομιλία με χειριστή. Απάντηση σε πραγματικό χρόνο αν κάποιος είναι συνδεδεμένος.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Ή, αν είναι επείγον:';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Καλέστε μας';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Ανώνυμη συνομιλία';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Γεια!';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Σε ακούω. Γράψε ό,τι θες — χωρίς όνομα. Θα απαντήσω μόλις είμαι εδώ.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Γράψε ένα μήνυμα…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator =>
+      'Περιμένουμε απάντηση από χειριστή…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Γεια!';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Ευχαριστούμε που μας έγραψες — τώρα είσαι σε επαφή με έναν Vorsitzer. Πες μας πώς μπορούμε να σε βοηθήσουμε με την αίτηση μέλους.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime => 'Πόσο χρόνο παίρνει ο έλεγχος;';
+
+  @override
+  String get claudiuQuickReplyDocuments => 'Ποια έγγραφα χρειάζομαι;';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Έχω κολλήσει σε ένα βήμα';
+
+  @override
+  String get claudiuQuickReplyHuman => 'Μπορώ να μιλήσω με κάποιον τώρα;';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Σύνδεση…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Δεν μπόρεσα να ανοίξω τη συνομιλία. Δοκίμασε ξανά ή κάλεσε.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Δοκίμασε ξανά';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Συνδεδεμένος';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Επανασύνδεση…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'Ο χειριστής γράφει…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Αναφορά προβλήματος';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Τι συνέβη;';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Πες μου με λεπτομέρειες και θα προωθήσω την αναφορά στην ομάδα.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Παρακαλώ συμπεριέλαβε:';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Τι έκανες όταν εμφανίστηκε το πρόβλημα';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Οποιοδήποτε μήνυμα σφάλματος είδες';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 => 'Σε ποια οθόνη ήσουν';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'Η εφαρμογή κολλάει, κλείνει ή εμφανίζει λευκή οθόνη;';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Συμβαίνει κάθε φορά ή μόνο μία φορά;';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Η περιγραφή σου';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'Π.χ.: Όταν ανοίγω την οθόνη συνομιλίας, εμφανίζεται μήνυμα \"Connection error\" και η εφαρμογή δεν ανταποκρίνεται…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Λίγο πιο λεπτομερές, παρακαλώ (τουλάχιστον $count χαρακτήρες)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Αποστολή αναφοράς';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Αποστολή…';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Ευχαριστώ!';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'Η αναφορά εστάλη. Η ομάδα μας θα την εξετάσει το συντομότερο.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Κατάλαβα';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Δεν ήταν δυνατή η αποστολή της αναφοράς. Καλέστε μας για επείγουσα βοήθεια.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Ή, αν είναι επείγον:';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Καλέστε μας';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Γεια σου, $name! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Γεια σου! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Χαίρομαι που ήρθες!';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'Για την ασφάλειά σου, ένας Vorsitzer ελέγχει τώρα το αίτημα σύνδεσης. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Το κάνουμε αυτό κάθε 30 ημέρες για να είμαστε σίγουροι ότι είσαι εσύ. Είναι σαν έλεγχος ασφαλείας — διαρκεί το πολύ 5 λεπτά.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'Έτοιμο! 🎉 Ο Vorsitzer σε αναγνώρισε. Σε συνδέω τώρα…';
+
+  @override
+  String get claudiuApprovalDenied =>
+      'Χμ, ο Vorsitzer απέρριψε το αίτημά σου. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Αν πιστεύεις ότι είναι λάθος, παρακαλώ κάλεσέ μας για να το ξεκαθαρίσουμε.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      'Πέρασαν τα 5 λεπτά και δεν λάβαμε απάντηση από τον Vorsitzer.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Κάλεσέ μας και μπορούμε να εγκρίνουμε το αίτημά σου άμεσα. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Καλέστε μας';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Δοκίμασε ξανά';
+
+  @override
+  String get claudiuApprovalCancel => 'Άκυρο';
+
+  @override
+  String get claudiuApprovalClose => 'Κλείσιμο';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Γεια σου, επισκέπτη! 👋 Σ\'ευχαριστώ που θες να γίνεις μέλος της οικογένειάς μας.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'Με λένε Κλαούντιου. Την άνοιξη του 2025 είχα ένα ξεκάθαρο όραμα: να δημιουργήσω έναν σύλλογο που βοηθάει ανθρώπους σε ανάγκη — εθελοντικά, με την καρδιά, χωρίς γραφειοκρατικές περιπλοκές. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'Άρχισα να μιλάω με τους πελάτες που επισκεπτόμουν. Τους είπα το όνειρό μου. Και κάθε ένας είπε: «Ναι, πάμε!» Τον Ιούλιο του 2025 συναντηθήκαμε — 6 αποφασισμένοι άνθρωποι. Αποφασίσαμε να ιδρύσουμε το **ICD360S e.V.** στο Νόι-Ουλμ. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      'Την **1η Αυγούστου 2025**, ο σύλλογος ζωντάνεψε επίσημα — στο Μητρώο Συλλόγων. Το πιο όμορφο δώρο μου. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Τι κάνουμε; Βοηθάμε πρόσφυγες, άτομα με αναπηρία, οικονομικά μειονεκτούντες, **παιδιά και νέους** — με διοικητικά θέματα, γερμανικά, στέγαση, ψώνια, κοινωνικά επιδόματα. Το Vorstand μας αποτελείται κυρίως από άτομα με αναπηρία — έτσι οι αποφάσεις προέρχονται από αληθινή εμπειρία ζωής. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'Τώρα είναι η σειρά σου. Ας σε εγγράψουμε — διαρκεί περίπου 5 λεπτά. Πάμε βήμα-βήμα, δεν σε αφήνω μόνο. ✨';
+
+  @override
+  String get wizardIntroStart => 'Ας ξεκινήσουμε';
+
+  @override
+  String get wizardBack => 'Πίσω';
+
+  @override
+  String get wizardNext => 'Επόμενο';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return 'Βήμα $step από $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Αυτό το πεδίο είναι υποχρεωτικό';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'Πολύ σύντομο (τουλάχιστον $count χαρακτήρες)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters =>
+      'Μόνο γράμματα, κενά, παύλες και απόστροφοι';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Δεν ήταν δυνατή η αποθήκευση. Έλεγξε τη σύνδεση και προσπάθησε ξανά.';
+
+  @override
+  String get wizardStufe1aTitle => 'Ταυτότητα';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Ας γνωριστούμε επίσημα. Γράψε το όνομά σου ακριβώς όπως εμφανίζεται στο Personalausweis, Reisepass ή Aufenthaltstitel — ώστε να ταιριάζει με τα έγγραφά σου.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (όνομα)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Όλα τα ονόματά σου, ακριβώς όπως στην ταυτότητα. Με κενό ή παύλα (π.χ. Hans-Peter, Maria Anna).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (επώνυμο)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'Το τρέχον επώνυμό σου.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (όνομα γέννησης) — προαιρετικό';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Μόνο αν διαφέρει από το Familienname — π.χ. πριν τον γάμο.';
+
+  @override
+  String get wizardStufe1bTitle => 'Γενέθλια';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'Θα θέλαμε να γιορτάσουμε τα γενέθλιά σου μαζί! 🎂 Μας βοηθάει επίσης να επιβεβαιώσουμε ότι είσαι τουλάχιστον 16 — έτσι λέει το καταστατικό μας.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Ημερομηνία γέννησης';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper =>
+      'Πάτα για να επιλέξεις ημερομηνία';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Τόπος γέννησης';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper =>
+      'Πόλη / οικισμός όπου γεννήθηκες.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Λυπάμαι… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Το καταστατικό μας λέει ότι πρέπει να είσαι τουλάχιστον 16 για να γίνεις μέλος. Είσαι $age — ελπίζω να σε δω σε $years χρόνια! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Αν θες να βοηθάς περιστασιακά εθελοντικά (οποιαδήποτε ηλικία, με συγκατάθεση γονέων), κάλεσέ μας — μας αρέσει να στηρίζουμε νέους που θέλουν ν\' αλλάξουν τον κόσμο.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Πίσω στην αρχική';
+
+  @override
+  String get wizardErrInvalidPhone => 'Μη έγκυρος αριθμός τηλεφώνου';
+
+  @override
+  String get wizardStufe1b1Title => 'Γονική συναίνεση';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Είσαι ανήλικος (16-17) — βάσει §106 BGB χρειαζόμαστε τη συναίνεση γονέα ή νόμιμου κηδεμόνα. Πες μου όνομα και τηλέφωνο. Ένας Vorsitzer θα τους καλέσει και θα κανονίσει συνάντηση (από κοντά ή με βιντεοκλήση). Όχι email — θέλουμε να βεβαιωθούμε ότι μιλάμε με το σωστό άτομο.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Όνομα γονέα';
+
+  @override
+  String get wizardStufe1b1VornameHelper =>
+      'Όπως εμφανίζεται στο Personalausweis του γονέα.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Επώνυμο γονέα';
+
+  @override
+  String get wizardStufe1b1NachnameHelper =>
+      'Όπως εμφανίζεται στο Personalausweis του γονέα.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Κινητό γονέα';
+
+  @override
+  String get wizardStufe1b1TelefonHelper =>
+      'Ένας Vorsitzer θα καλέσει αυτόν τον αριθμό.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Σχέση με το παιδί:';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Μητέρα';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Πατέρας';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Νόμιμος κηδεμόνας';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Άλλος κηδεμόνας';
+
+  @override
+  String get wizardStufe1cTitle => 'Προσωπικές πληροφορίες';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Απλά για να σε γνωρίσω λίγο καλύτερα. Αυτά μένουν μεταξύ μας και δεν εμφανίζονται δημόσια πουθενά.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Φύλο';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Άνδρας';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Γυναίκα';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Διαφορετικό';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'Προτιμώ να μην πω';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'Οικογενειακή κατάσταση';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Άγαμος/η';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Παντρεμένος/η';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Διαζευγμένος/η';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Χήρος/Χήρα';
+
+  @override
+  String get wizardStufe1dTitle => 'Καταγωγή';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Αυτό μας βοηθάει να σου προσφέρουμε τη σωστή υποστήριξη — π.χ. συμβουλές για Aufenthalt ή να βρεις τη γλωσσική σου κοινότητα.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Υπηκοότητα';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'Π.χ. deutsch, rumänisch, ukrainisch. Πολλά με κόμμα.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Καθεστώς διαμονής (Aufenthaltsstatus) — προαιρετικό';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Διάλεξε τον τίτλο από την Aufenthaltskarte / την απόφαση σου. Το Vorstand το διασταυρώνει με τα έγγραφά σου.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Συμπλήρωσε πρώτα την υπηκοότητα παραπάνω — θα δείξουμε μόνο τις σχετικές επιλογές.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Δεν χρειάζεται Aufenthaltstitel — Γερμανός πολίτης.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'Πολίτης ΕΕ/ΕΟΧ/CH — ελευθερία κυκλοφορίας (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'προσωρινός';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'μόνιμη διαμονή';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'διαδικασία ασύλου';
+
+  @override
+  String get wizardStufe1dAufenthaltOther => 'Άλλο (διευκρίνισε στο chat)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired =>
+      'Διάλεξε έναν Aufenthaltstitel.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Μητρική γλώσσα';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Προσυμπληρωμένο με τη γλώσσα της εφαρμογής — άλλαξε αν διαφέρει.';
+
+  @override
+  String get wizardStufe1eTitle => 'Διεύθυνση';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'Η ταχυδρομική σου διεύθυνση — τη χρησιμοποιούμε για επίσημα έγγραφα (καταστατικό, συμβάσεις μέλους, ειδοποιήσεις).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Οδός';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Μόνο το όνομα της οδού — ο αριθμός στο διπλανό πεδίο.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => 'Αρ.';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (Τ.Κ.)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'Πόλη';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Χώρα';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Προσυμπληρωμένο: Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Μη έγκυρο όνομα οδού';
+
+  @override
+  String get wizardErrInvalidHausnummer =>
+      'Μη έγκυρος αριθμός (π.χ. 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz => 'Μη έγκυρος Τ.Κ. (μόνο ψηφία)';
+
+  @override
+  String get wizardStufe1fTitle => 'Επικοινωνία';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Πώς θα σε βρούμε; Το τηλέφωνο είναι μόνο για επείγοντα — όλα τα υπόλοιπα γίνονται μέσα από το δικό μας κανάλι στην εφαρμογή με κρυπτογράφηση από άκρη σε άκρη. Το email μέλους σου εκχωρείται αυτόματα και εμφανίζεται παρακάτω.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Κινητό';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Υπόσχομαι, θα καλέσω μόνο αν είναι σημαντικό. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Τύπος μέλους';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Τι είδους μέλος θες να γίνεις; Σου εξηγώ κάθε επιλογή.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Τακτικό μέλος (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Πλήρη δικαιώματα. Πληρώνεις μηνιαία συνδρομή, ψηφίζεις στη Γενική Συνέλευση, μπορείς να εκλεγείς στο Διοικητικό Συμβούλιο. Προεπιλογή.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Υποστηρικτής (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Στηρίζεις τον σύλλογο οικονομικά αλλά δεν συμμετέχεις ενεργά στις αποφάσεις. Χωρίς δικαίωμα ψήφου. Καλό αν θες να βοηθήσεις από μακριά.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Επίτιμο μέλος (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Απονέμεται από το Διοικητικό Συμβούλιο για ιδιαίτερες υπηρεσίες. Δεν το επιλέγεις μόνος — δίνεται ως αναγνώριση. Επίλεξε μόνο αν έχεις ήδη τιμηθεί.';
+
+  @override
+  String get wizardStufe3Title => 'Οικονομική κατάσταση';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Τώρα για την οικονομική σου κατάσταση. Όχι για να κρίνω — απλά για να σε απαλλάξουμε από τη συνδρομή αν λαμβάνεις κοινωνικά επιδόματα.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Λαμβάνω Bürgergeld';
+
+  @override
+  String get wizardStufe3OptionSozialamt => 'Λαμβάνω παροχές από το Sozialamt';
+
+  @override
+  String get wizardStufe3OptionNein => 'Δεν λαμβάνω κανένα από αυτά';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Συνδρομή: 0 € / μήνα 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'Με Bürgergeld, Sozialamt, ALG I ή Krankengeld απαλλάσσεσαι πλήρως από τη συνδρομή σύμφωνα με το Καταστατικό §6. Χρειαζόμαστε μόνο μια απόδειξη (Leistungsbescheid ή βεβαίωση από την αρχή / το ταμείο υγείας).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Μεταφόρτωση Leistungsbescheid';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, μέγ. 10 MB.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Παρακαλώ μεταφόρτωσε το Leistungsbescheid πριν συνεχίσεις.';
+
+  @override
+  String get wizardStufe3FileTooLarge =>
+      'Το αρχείο είναι πολύ μεγάλο. Μέγιστο 10 MB.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Δεν ήταν δυνατή η μεταφόρτωση. Δοκίμασε ξανά.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Συνδρομή: 25 € / μήνα';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'Η τυπική συνδρομή για τακτικά μέλη βάσει του καταστατικού.';
+
+  @override
+  String get wizardStufe4Title => 'Πληρωμή';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Πώς θέλεις να πληρώσεις τη συνδρομή; Και ποια ημέρα του μήνα προτιμάς να γίνεται η χρέωση;';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle =>
+      'Τραπεζικό έμβασμα (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'Ξεκινάς εσύ την πληρωμή κάθε μήνα από τον λογαριασμό σου.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (άμεση χρέωση)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Χρεώνουμε αυτόματα από τον λογαριασμό σου. Πιο βολικό, αλλά χρειαζόμαστε IBAN και υπογεγραμμένη εντολή.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (πάγια εντολή)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Στήνεις πάγια εντολή στην τράπεζά σου. Η τράπεζα μεταφέρει το ποσό αυτόματα κάθε μήνα.';
+
+  @override
+  String get wizardStufe4DayLabel => 'Ημέρα πληρωμής';
+
+  @override
+  String get wizardStufe4DayHint => 'Επίλεξε ημέρα από 1 έως 31';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return 'Ημέρα $day';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'Η συνδρομή θα χρεώνεται την $dayη κάθε μήνα.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Έναρξη';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'Από πότε θες να γίνεις επίσημα μέλος του ICD360S; Από την έγκριση ή αναδρομικά.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle =>
+      'Από την έγκριση του Vorstand';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'Η πιο απλή επιλογή. Καμία αναδρομική συνδρομή.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Αναδρομικά από 01.08.2025 (ίδρυση)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Θα θεωρείσαι μέλος από την πρώτη μέρα του συλλόγου.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'Άλλη ημερομηνία';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Επιλέγεις μια ημερομηνία ανάμεσα στις 01.08.2025 και σήμερα.';
+
+  @override
+  String get wizardStufe5PickDate => 'Πάτα για επιλογή ημερομηνίας';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Πρώτα επίλεξε μια ημερομηνία.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Έναρξη μέλους';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return 'Ανάμεσα στις $start και σήμερα';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Αναδρομική συνδρομή';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return 'Από $start έως $end είναι $months μήνες. Με 25 €/μήνα γίνονται $amount € οφειλόμενα αναδρομικά, επιπλέον της τρέχουσας μηνιαίας συνδρομής.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Αναδρομική συνδρομή: 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'Με Bürgergeld ή Sozialamt είσαι πλήρως απαλλαγμένος — ακόμη και αναδρομικά δεν χρωστάς τίποτα.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Πριν τελειώσουμε, παρακαλώ διάβασε προσεκτικά το $doc. Είναι σημαντικό να ξέρεις τι υπογράφεις.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint =>
+      'Κάνε κύλιση μέχρι το τέλος για να συνεχίσεις.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Έχεις διαβάσει μέχρι το τέλος ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return 'Άνοιξε το $doc στο πρόγραμμα περιήγησης';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'Σε αυτή την πλατφόρμα ανοίγουμε το έγγραφο στον προεπιλεγμένο σου περιηγητή.';
+
+  @override
+  String get wizardDocumentOpenedOk =>
+      'Το έγγραφο άνοιξε. Παρακαλώ διάβασέ το προσεκτικά.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Επιβεβαιώνω ότι έχω διαβάσει και συμφωνώ με το $doc.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'Έτοιμο! Έχεις εγγραφεί 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'Το αίτημά σου εστάλη 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Θα επικοινωνήσουμε με τον γονέα σου και θα κανονίσουμε συνάντηση (από κοντά ή με βιντεοκλήση). Παρακαλώ κάνε υπομονή — η διαδικασία μπορεί να διαρκέσει έως 7 ημέρες. Θα λάβεις ειδοποίηση στην εφαρμογή μόλις ο γονέας σου εγκρίνει.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Ο αριθμός μέλους σου';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Σύντομα';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Αν καθυστερήσεις τη συνδρομή πάνω από 6 μήνες, θα σε διαγράψουμε αυτόματα (Καταστατικό §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'Για αποχώρηση: στείλε μας την παραίτησή σου γραπτώς 3 μήνες πριν τις 31 Δεκεμβρίου (έως 30 Σεπτεμβρίου για να ισχύσει στο τέλος του έτους). Δεν υπάρχει ελάχιστη διάρκεια (Καταστατικό §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'Το email μέλους σου';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Εκχωρείται αυτόματα από τον αριθμό μέλους σου. Ενεργοποιείται τη στιγμή που το διοικητικό συμβούλιο (Vorstand) επικυρώνει την αίτησή σου. Έχουμε τη δική μας εφαρμογή email — στείλε και λάβε κρυπτογραφημένα email, απλά και δωρεάν.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Μη έγκυρη διεύθυνση email';
+
+  @override
+  String get wizardStufe3OptionAlg1 =>
+      'Λαμβάνω Arbeitslosengeld I (ALG I, επίδομα ανεργίας)';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Λαμβάνω Krankengeld (επίδομα μακροχρόνιας ασθένειας)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Πρόσθεσε άλλο έγγραφο';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Έφτασες στο όριο: έως 20 έγγραφα.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Έφτασες το συνολικό όριο 100 MB. Διέγραψε ένα υπάρχον αρχείο.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Διαγραφή';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max έγγραφα';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Δεν μπόρεσα να ανοίξω το πρόγραμμα περιήγησης. Ο σύνδεσμος αντιγράφηκε στο πρόχειρο — επικόλλησέ τον σε ένα πρόγραμμα περιήγησης για να συνεχίσεις.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Το Vorstand ελέγχει · συνήθως 1 εργάσιμη, έως 7';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Ο λογαριασμός ενεργοποιήθηκε';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Ευχαριστούμε που συμπλήρωσες τη φόρμα εγγραφής! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'Η αίτησή σου είναι σε εμάς. Συνήθως την επικυρώνουμε εντός μίας εργάσιμης ημέρας.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Μερικές φορές μπορεί να χρειαστούν έως 7 εργάσιμες ημέρες. Και αν κάτι δεν ταιριάζει, θα σε επιστρέψουμε στη φόρμα για να το διορθώσεις 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'ΚΑΤΑΣΤΑΣΗ ΑΙΤΗΣΗΣ';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total βήματα επικυρώθηκαν από το Vorstand';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Λεπτομέρειες αίτησης';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      'Τα 8 στάδια που συμπλήρωσες. Το Vorstand τα ελέγχει ένα προς ένα — βλέπεις σε πραγματικό χρόνο τι έχει εγκριθεί.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'Σε αναμονή ελέγχου';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Εγκρίθηκε';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Απορρίφθηκε';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count βήμα χρειάζεται διόρθωση';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'Αιτιολογία του Vorstand:';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Διόρθωση τώρα';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Εγκρίσεις Vorstand ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'Αναμονή 2ου Vorstand';
+
+  @override
+  String get wizardFinalApprovalRejected => 'ΑΠΟΡΡΙΦΘΗΚΕ';
+
+  @override
+  String get wizardFinalStufeNoDataYet =>
+      'Τα δεδομένα δεν είναι ακόμη διαθέσιμα.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Διαβάστηκε στις:';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei =>
+      'Απαλλαγή εισφοράς (χωρίς πληρωμή)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Χωρίς κοινωνικές παροχές';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification =>
+      'Έναρξη κατά την επαλήθευση';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation =>
+      'Ημερομηνία ίδρυσης (αναδρομικά)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Άλλη ημερομηνία';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Παραλείφθηκε';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Συμπληρώθηκε:';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Ελέγχθηκε:';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Απόσυρση αίτησης';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Απόσυρση της αίτησής σου;';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'Η αίτησή σου θα επισημανθεί ως αποσυρμένη από σένα. Τα δεδομένα παραμένουν στη βάση για έλεγχο (GDPR), αλλά ο λογαριασμός δεν θα ενεργοποιηθεί. Μπορείς να ξαναξεκινήσεις την εγγραφή ανά πάσα στιγμή με νέο αριθμό μέλους.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Όχι, θα περιμένω';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Ναι, απόσυρση';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'Η αίτησή σου δεν μπορεί να γίνει αυτόματα. Κάλεσέ μας ή έλα αυτοπροσώπως στο Vorstand για να συνεχίσεις την εγγραφή.';
+
+  @override
+  String get wizardDuplicateLoginTitle => 'Φαίνεται ότι είσαι ήδη μέλος μας';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'Με το όνομα και την ημερομηνία γέννησής σου βρίσκουμε ήδη ενεργό λογαριασμό. Χρησιμοποίησε το \"Είμαι ήδη μέλος\" στην αρχική οθόνη για να συνδεθείς. Αν δεν έχεις πια πρόσβαση, κάλεσέ μας.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'Η αίτησή σου είναι ήδη σε εμάς';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'Με το όνομα και την ημερομηνία γέννησής σου έχουμε ήδη αίτηση υπό εξέταση. Το Vorstand εργάζεται πάνω της — θα σου στείλουμε ειδοποίηση στην εφαρμογή μόλις ενεργοποιηθεί ο λογαριασμός. Κάλεσέ μας αν θέλεις να μιλήσουμε.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'Δεν μπορούμε να επεξεργαστούμε αυτή την αίτηση τώρα';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'Το όνομα και η ημερομηνία γέννησής σου ταιριάζουν με πρόσφατα αποσυρμένη αίτηση. Κάλεσέ μας για να μιλήσεις με το Vorstand πριν συνεχίσεις.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle =>
+      'Έχεις υποβάλει αίτηση στο παρελθόν';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'Το όνομα και η ημερομηνία γέννησής σου ταιριάζουν με παλαιότερη αίτηση που είχες αποσύρει. Καλώς ήρθες ξανά — κάλεσέ μας πριν συνεχίσεις, ώστε το Vorstand να αποφασίσει πώς προχωράμε.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Κάλεσέ μας, σε παρακαλώ';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'Το όνομα και η ημερομηνία γέννησής σου εμφανίζονται ήδη στα αρχεία μας, αλλά δεν μπορούμε να σου τα κοινοποιήσουμε μέσω της εφαρμογής. Κάλεσέ μας — το Vorstand θα σου εξηγήσει απευθείας.';
+
+  @override
+  String get wizardChatHelp => 'Ας μιλήσουμε';
+
+  @override
+  String get wizardChatHelpSubtitle =>
+      'Live chat με το Vorstand · γρήγορη απάντηση';
 }

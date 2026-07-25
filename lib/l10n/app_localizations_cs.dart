@@ -9,12 +9,6 @@ class AppLocalizationsCs extends AppLocalizations {
   AppLocalizationsCs([String locale = 'cs']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Portál členů';
-
-  @override
-  String get memberPortal => 'Portál členů';
-
-  @override
   String get welcomeLoading => 'Načítání...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get memberNumberHint => 'Zadejte číslo člena';
 
   @override
-  String get password => 'Heslo';
-
-  @override
-  String get passwordHint => 'Zadejte heslo';
-
-  @override
   String get confirmPassword => 'Potvrďte heslo';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Zadejte nové heslo';
-
-  @override
-  String get saveCredentials => 'Uložit přihlašovací údaje';
-
-  @override
-  String get autoLogin => 'Automatické přihlášení';
-
-  @override
-  String get forgotPassword => 'Zapomněli jste heslo?';
 
   @override
   String get firstName => 'Jméno a příjmení';
@@ -90,22 +69,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get passwordsNotMatch => 'Hesla se neshodují';
 
   @override
-  String get recoveryCode => 'Kód pro obnovení (6 číslic)';
-
-  @override
-  String get recoveryCodeHelper =>
-      'Zapamatujte si tento kód pro obnovení hesla';
-
-  @override
-  String get recoveryCodeHint => 'Zadejte kód pro obnovení';
-
-  @override
-  String get recoveryCodeInvalid => 'Kód musí mít přesně 6 číslic';
-
-  @override
-  String get loginFailed => 'Přihlášení se nezdařilo';
-
-  @override
   String get registrationFailed => 'Registrace se nezdařila';
 
   @override
@@ -119,20 +82,7 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'Příliš mnoho zařízení';
-
-  @override
-  String get maxDevicesMessage =>
-      'Jste již přihlášeni na 3 zařízeních.\nVyberte zařízení k odhlášení:';
-
-  @override
-  String get unknownDevice => 'Neznámé zařízení';
-
-  @override
   String get unknown => 'Neznámé';
-
-  @override
-  String get logoutError => 'Chyba při odhlášení';
 
   @override
   String error(String error) {
@@ -146,39 +96,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get resetPassword => 'Obnovit heslo';
 
   @override
-  String get forgotPasswordTitle => 'Zapomenuté heslo';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Zadejte číslo člena a kód pro obnovení vytvořený při registraci.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Heslo bylo úspěšně obnoveno!\n\nNyní se můžete přihlásit novým heslem.';
-
-  @override
-  String get passwordResetFailed => 'Obnovení hesla se nezdařilo';
-
-  @override
-  String get needHelp => 'Potřebujete pomoc?';
-
-  @override
-  String get helpQuestion => 'Problémy s přihlášením nebo registrací?';
-
-  @override
-  String get helpDescription =>
-      'Kontaktujte nás přes WhatsApp a popište přesně, co nefunguje. Odpovíme co nejdříve!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Dotaz přes aplikaci ICD360S';
-
-  @override
-  String get whatsappMessage => 'Dobrý den, mám problém s aplikací ICD360S. ';
-
-  @override
   String get imprint => 'Impressum';
 
   @override
@@ -189,15 +106,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get revocation => 'Právo na odstoupení';
-
-  @override
-  String get cancellation => 'Zrušení';
-
-  @override
-  String get allRightsReserved => 'Všechna práva vyhrazena.';
-
-  @override
-  String get enterCredentials => 'Zadejte číslo člena a heslo';
 
   @override
   String get appointments => 'Schůzky';
@@ -251,13 +159,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get close => 'Zavřít';
 
   @override
-  String get membership => 'Členství';
-
-  @override
   String get myAppointments => 'Moje schůzky';
-
-  @override
-  String get appointmentsLoadingReady => 'Načítání schůzek - API připraveno!';
 
   @override
   String get priority => 'Priorita';
@@ -266,16 +168,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get messageLabel => 'Zpráva';
 
   @override
-  String get createdOn => 'Vytvořeno';
-
-  @override
-  String get handler => 'Správce';
-
-  @override
   String get reportProblems => 'Nahlásit problémy';
-
-  @override
-  String get reportProblem => 'Nahlásit problém';
 
   @override
   String get weRespondIn24Hours => 'Odpovíme vám do maximálně 24 hodin!';
@@ -307,41 +200,13 @@ class AppLocalizationsCs extends AppLocalizations {
   String get myTickets => 'Moje tikety';
 
   @override
-  String get newTicket => 'Nový tiket';
-
-  @override
-  String get noOpenTickets => 'Žádné otevřené tikety';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Máte otázku nebo problém?\nVytvořte nový tiket.';
-
-  @override
-  String get whatIsTheProblem => 'Jaký je problém?';
-
-  @override
-  String get describeTheProblem => 'Popište problém';
-
-  @override
-  String get howUrgentIsIt => 'Jak naléhavé?';
-
-  @override
   String get low => 'Nízká';
-
-  @override
-  String get medium => 'Střední';
 
   @override
   String get high => 'Vysoká';
 
   @override
   String get submit => 'Odeslat';
-
-  @override
-  String get fillSubjectAndMessage => 'Vyplňte předmět a zprávu';
-
-  @override
-  String get ticketCreated => 'Tiket vytvořen';
 
   @override
   String get errorCreatingTicket => 'Chyba při vytváření tiketu';
@@ -362,12 +227,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get changePassword => 'Změnit heslo';
 
   @override
-  String get newEmailAddress => 'Nová emailová adresa';
-
-  @override
-  String get currentPassword => 'Aktuální heslo';
-
-  @override
   String get saveEmail => 'Uložit email';
 
   @override
@@ -375,9 +234,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Zařízení odhlášeno';
-
-  @override
-  String get passwordChangedSuccessfully => 'Heslo úspěšně změněno';
 
   @override
   String get emailChangedSuccessfully => 'Email úspěšně změněn';
@@ -390,24 +246,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get validEmailRequired => 'Zadejte platnou emailovou adresu';
-
-  @override
-  String get passwordTooShort => 'Heslo musí mít alespoň 6 znaků';
-
-  @override
-  String get maxDevicesReached =>
-      'Jste přihlášeni na maximálním počtu 3 zařízení.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Jste přihlášeni na $count ze 3 zařízení.';
-  }
-
-  @override
-  String get noActiveSessions => 'Žádné aktivní relace';
-
-  @override
-  String get logoutFromDevice => 'Odhlásit z tohoto zařízení';
 
   @override
   String get confirmLogoutDevice => 'Odhlásit zařízení?';
@@ -539,6 +377,18 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get appWillRestart => 'Aplikace se automaticky restartuje.';
+
+  @override
+  String get autoUpdateEnableTitle => 'Install future updates automatically';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'The app downloads and installs updates on its own and restarts briefly. No further prompts.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Version $version is being installed in the background. The app will restart shortly.';
+  }
 
   @override
   String get later => 'Později';
@@ -922,9 +772,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get errorConnecting => 'Chyba připojení';
 
   @override
-  String get errorAcceptingCall => 'Chyba při přijímání hovoru';
-
-  @override
   String get errorDownloading => 'Chyba stahování';
 
   @override
@@ -956,11 +803,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get file => 'Soubor';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name píše...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Nová zpráva od';
@@ -1029,19 +871,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get logsCopied => 'Logy zkopírovány!';
-
-  @override
-  String get diagnosticDataTitle => 'Diagnostická data';
-
-  @override
-  String get diagnosticDescription =>
-      'Chcete odesílat anonymní diagnostická data pro zlepšení aplikace?';
-
-  @override
-  String get noThanks => 'Ne, děkuji';
-
-  @override
-  String get yesEnable => 'Ano, povolit';
 
   @override
   String get passwordMinEightChars => 'Heslo musí mít alespoň 8 znaků';
@@ -1219,9 +1048,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get emailChangedSuccess => 'E-mail úspěšně změněn';
 
   @override
-  String get newPasswordMinChars => 'Nové heslo (min. 6 znaků)';
-
-  @override
   String get reasonLabel2 => 'Důvod';
 
   @override
@@ -1229,9 +1055,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Stáhnout';
-
-  @override
-  String get connectionErrorGeneric => 'Chyba připojení';
 
   @override
   String get copyLogs => 'Kopírovat logy';
@@ -1247,12 +1070,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get unknownValue => 'Neznámé';
-
-  @override
-  String get bankTransfer => 'Bankovní převod';
-
-  @override
-  String get standingOrder => 'Trvalý příkaz';
 
   @override
   String get payment => 'Platba';
@@ -1618,16 +1435,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get statusAccepted => 'Přijato';
 
   @override
-  String get memberNumberTooLong => 'Číslo člena příliš dlouhé (max 20 znaků)';
-
-  @override
-  String get onlyUppercaseAndNumbers =>
-      'Povolena jsou pouze velká písmena a čísla';
-
-  @override
-  String get passwordTooLong => 'Heslo příliš dlouhé (max 100 znaků)';
-
-  @override
   String get nameTooLong => 'Jméno příliš dlouhé (max 100 znaků)';
 
   @override
@@ -1757,15 +1564,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get openFile => 'Otevřít';
 
   @override
-  String get diagnosticErrors => 'Hlášení chyb pro vylepšení';
-
-  @override
-  String get diagnosticAnonymousStats => 'Anonymní statistiky použití';
-
-  @override
-  String get diagnosticPerformance => 'Údaje o výkonu aplikace';
-
-  @override
   String get noMicrophoneError =>
       'Mikrofon nebyl nalezen. Připojte mikrofon a zkuste to znovu.';
 
@@ -1790,9 +1588,6 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'Účty neověřené do 30 dnů budou automaticky pozastaveny.';
-
-  @override
-  String get ipClean => 'IP čistá - neuvedena';
 
   @override
   String get documentsProvidedByBoard => 'Dokumenty poskytuje představenstvo.';
@@ -1830,13 +1625,6 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp => 'Chcete nám pomoci vylepšit aplikaci?';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Žádné osobní údaje nejsou shromažďovány. Toto nastavení lze kdykoli změnit.';
-
-  @override
   String logEntries(int count) {
     return '$count záznamů';
   }
@@ -1846,15 +1634,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Zjištěno nové přihlášení';
-
-  @override
-  String get waitingForMember => 'Čekání na člena';
-
-  @override
-  String get waitingForStaff => 'Čekání na pracovníka';
-
-  @override
-  String get waitingForAuthority => 'Čekání na úřad';
 
   @override
   String get errorNoInternet =>
@@ -1882,14 +1661,7 @@ class AppLocalizationsCs extends AppLocalizations {
       'DNS problem detected. Check your connection or try another network.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Please open your browser and sign in to the WiFi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Slow connection.';
-
-  @override
-  String get securityBannerNetworkOffline => 'No network connection.';
 
   @override
   String get securityPermissionDialogTitle =>
@@ -1912,4 +1684,1141 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'No microphone was found. Connect a headset or microphone and try again.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Dobré ráno';
+
+  @override
+  String get claudiuWelcomeDay => 'Dobrý den';
+
+  @override
+  String get claudiuWelcomeEvening => 'Dobrý večer';
+
+  @override
+  String get claudiuWelcomeNight => 'Dobrý večer';
+
+  @override
+  String get claudiuWelcomeVisitor => 'milý návštěvníku';
+
+  @override
+  String get claudiuWelcomeAsk => 'Jak ti mohu pomoci?';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Chci se stát členem';
+
+  @override
+  String get claudiuWelcomeLogin => 'Už jsem členem a chci se přihlásit';
+
+  @override
+  String get claudiuWelcomeProblem => 'Mám problém s aplikací';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Naléhavé — zavolejte nám';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Claudiu';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro =>
+      'Než zavoláš — naše pracovní hodiny:';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'V kanceláři';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'V terénu s klienty';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'Mimo tyto hodiny řešíme pouze naléhavé případy. Můžeš nám i napsat SMS na stejné číslo — ozveme se ti.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Zavolat hned';
+
+  @override
+  String get claudiuWelcomeSendSms => 'Poslat SMS';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Naléhavé ICD360S e.V. — prosím, kontaktujte mě co nejdříve.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Zavřít';
+
+  @override
+  String get claudiuLoginWelcome => 'Vítej zpět, milý člene!';
+
+  @override
+  String get claudiuLoginAsk => 'Prosím, řekni mi své členské číslo.';
+
+  @override
+  String get claudiuLoginProgress => 'Skoro… piš dál.';
+
+  @override
+  String get claudiuLoginReady => 'Perfektní! Klikni na tlačítko níže.';
+
+  @override
+  String get claudiuLoginLoading => 'Ověřuji identitu… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Našel jsem tě! Přihlašuji…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Našel jsem tě, $name! Přihlašuji…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Hm, to číslo nemůžu najít. Napsal jsi ho správně?';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Zapomněl jsi členské číslo?';
+
+  @override
+  String get claudiuLoginNoSms => 'Číslo neposíláme e-mailem ani SMS.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Jediná cesta: osobní schůzka v kanceláři spolku, po ověření občanského průkazu.';
+
+  @override
+  String get claudiuLoginContactUs => 'Zavolej a domluv si termín:';
+
+  @override
+  String get claudiuDiagnosticGreeting => 'Než vstoupíš, jedna otázka';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Mohu posílat anonymní zprávy, aby vývojáři mohli vylepšit aplikaci?';
+
+  @override
+  String get claudiuDiagnosticYes => 'Ano, rád pomohu';
+
+  @override
+  String get claudiuDiagnosticNo => 'Ne, jen se rozhlížím';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Řekni mi víc';
+
+  @override
+  String get claudiuDiagnosticSendsHeader => '📤 Co POSÍLÁME (anonymně):';
+
+  @override
+  String get claudiuDiagnosticSends1 =>
+      'Anonymní kód zařízení (NE členské číslo)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Tvoje role (člen / představenstvo)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Operační systém (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Zvolený jazyk';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Stav baterie + nabití';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Aktuální obrazovka';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Délka relace (sekundy)';
+
+  @override
+  String get claudiuDiagnosticSends8 =>
+      'Chyby, pokud nějaké jsou (posledních 10)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Navigace (posledních 20 obrazovek)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader => '🛡️ Co NIKDY neposíláme:';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Tvoje skutečné jméno';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'E-mailová adresa';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Telefonní číslo';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Heslo';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Obsah chatových zpráv';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Obsah tiketů';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Dokumenty nebo přílohy';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Technické detaily:';
+
+  @override
+  String get claudiuDiagnosticTech1 => 'Odesílá se každé 2 minuty';
+
+  @override
+  String get claudiuDiagnosticTech2 =>
+      'TLS-šifrované spojení s připnutým certifikátem';
+
+  @override
+  String get claudiuDiagnosticTech3 => 'Můžeš to kdykoli vypnout v Nastavení';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Jak ti mohu pomoci?';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Co se stalo?';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Jak mi to chceš říct?';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Napsat zprávu';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'S podrobnostmi krok za krokem. Tým dostane text a vyřeší jej později.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Pojďme si promluvit';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Anonymní chat s operátorem. Odpověď v reálném čase, pokud je někdo online.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Nebo, pokud je to naléhavé:';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Zavolat';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Anonymní chat';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Ahoj!';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Poslouchám. Napiš cokoli — jméno nepotřebuji. Odpovím, jakmile budu tady.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Napiš zprávu…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator =>
+      'Čekáme na odpověď operátora…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Ahoj!';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Díky, že ses ozval — teď jsi ve spojení s Vorsitzerem. Napiš, s čím ti můžeme pomoct ohledně přihlášky o členství.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime => 'Jak dlouho trvá ověření?';
+
+  @override
+  String get claudiuQuickReplyDocuments => 'Jaké dokumenty potřebuji?';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Zasekl jsem se u jednoho kroku';
+
+  @override
+  String get claudiuQuickReplyHuman => 'Můžu teď s někým mluvit?';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Připojuji se…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Nepodařilo se otevřít chat. Zkus to znovu nebo zavolej.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Zkusit znovu';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Připojeno';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Opětovné připojení…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'Operátor píše…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Nahlásit problém';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Co se stalo?';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Řekni mi to podrobně a já předám zprávu týmu.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Prosím uveď:';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Co jsi dělal, když problém nastal';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Jaké chybové hlášení se objevilo';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 =>
+      'Na které obrazovce jsi byl';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'Aplikace padá? Zavírá se? Ukazuje bílou obrazovku?';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Stává se to pokaždé nebo jen jednou?';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Tvůj popis';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'Např.: Když otevřu chat, objeví se „Connection error\" a aplikace přestane reagovat…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Trochu více detailů, prosím (alespoň $count znaků)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Odeslat zprávu';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Odesílá se…';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Děkuji!';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'Zpráva byla odeslána. Náš tým se na to podívá co nejdříve.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Rozumím';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Zprávu nelze odeslat. Zavolej nám pro naléhavou pomoc.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Nebo, pokud je to naléhavé:';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Zavolat';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Ahoj, $name! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Ahoj! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Rád, že jsi tu!';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'Pro tvou bezpečnost Vorsitzer právě kontroluje tvou žádost o přihlášení. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Děláme to každých 30 dní, abychom se ujistili, že jsi to opravdu ty. Je to jako bezpečnostní kontrola — maximálně 5 minut.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'Hotovo! 🎉 Vorsitzer tě poznal. Přihlašuji tě…';
+
+  @override
+  String get claudiuApprovalDenied => 'Hm, Vorsitzer tvou žádost odmítl. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Pokud si myslíš, že je to omyl, zavolej nám, abychom to vyřešili.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      '5 minut uplynulo a od Vorsitzera nepřišla žádná odpověď.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Zavolej a můžeme tvou žádost schválit přímo na místě. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Zavolat';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Zkusit znovu';
+
+  @override
+  String get claudiuApprovalCancel => 'Zrušit';
+
+  @override
+  String get claudiuApprovalClose => 'Zavřít';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Ahoj, návštěvníku! 👋 Děkuji, že se chceš stát součástí naší rodiny.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'Jmenuji se Claudiu. Na jaře 2025 jsem měl jasnou vizi: vytvořit spolek, který pomáhá lidem v nouzi — dobrovolně, ze srdce, bez zbytečné byrokracie. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'Začal jsem mluvit s klienty, které jsem navštěvoval. Řekl jsem jim svůj sen. A každý řekl: „Ano, do toho!\" V červenci 2025 jsme se sešli — 6 odhodlaných lidí. Rozhodli jsme se založit **ICD360S e.V.** v Neu-Ulmu. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      '**1. srpna 2025** spolek oficiálně ožil — ve spolkovém rejstříku. Můj nejkrásnější dárek. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Co děláme? Pomáháme uprchlíkům, lidem se zdravotním postižením, ekonomicky znevýhodněným, **dětem a mladým lidem** — s administrativními záležitostmi, němčinou, bydlením, nakupováním, sociálními dávkami. Náš Vorstand tvoří většinou lidé s postižením — rozhodnutí tak vycházejí z reálné zkušenosti. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'Teď jsi na řadě ty. Pojďme tě zaregistrovat — trvá to asi 5 minut. Půjdeme krok za krokem, nenechám tě v tom samotného. ✨';
+
+  @override
+  String get wizardIntroStart => 'Začněme';
+
+  @override
+  String get wizardBack => 'Zpět';
+
+  @override
+  String get wizardNext => 'Dále';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return 'Krok $step z $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Toto pole je povinné';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'Příliš krátké (alespoň $count znaků)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters =>
+      'Pouze písmena, mezery, pomlčky a apostrofy';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Uložení selhalo. Zkontroluj připojení a zkus to znovu.';
+
+  @override
+  String get wizardStufe1aTitle => 'Identita';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Pojďme se oficiálně seznámit. Napiš své jméno přesně tak, jak je na Personalausweis, Reisepass nebo Aufenthaltstitel — ať to sedí s doklady.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (křestní jména)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Všechna tvá křestní jména přesně jako na dokladu. S mezerou nebo pomlčkou (např. Hans-Peter, Maria Anna).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (příjmení)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'Tvé aktuální příjmení.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (rodné příjmení) — volitelné';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Pouze pokud se liší od Familienname — např. před svatbou.';
+
+  @override
+  String get wizardStufe1bTitle => 'Datum narození';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'Rádi bychom s tebou oslavili tvé narozeniny! 🎂 A pomáhá nám to ověřit, že máš aspoň 16 — tak to říká naše stanova.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Datum narození';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper => 'Klepnutím vyber datum';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Místo narození';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper => 'Město / místo, kde ses narodil.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Je mi líto… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Naše stanovy říkají, že musíš mít alespoň 16 let, abys mohl být členem. Je ti $age — doufám, že se vidíme za $years let! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Pokud chceš příležitostně pomáhat jako dobrovolník (jakýkoli věk, se souhlasem rodičů), zavolej nám — rádi podporujeme mladé lidi, kteří chtějí měnit svět.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Zpět na úvod';
+
+  @override
+  String get wizardErrInvalidPhone => 'Neplatné telefonní číslo';
+
+  @override
+  String get wizardStufe1b1Title => 'Souhlas rodiče';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Jsi nezletilý (16-17) — podle §106 BGB potřebujeme souhlas rodiče nebo zákonného zástupce. Řekni mi jméno a telefonní číslo. Vorsitzer zavolá a domluví schůzku (osobně nebo videohovorem). Žádný e-mail — chceme mít jistotu, že mluvíme se správnou osobou.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Jméno rodiče';
+
+  @override
+  String get wizardStufe1b1VornameHelper => 'Jak je v Personalausweis rodiče.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Příjmení rodiče';
+
+  @override
+  String get wizardStufe1b1NachnameHelper => 'Jak je v Personalausweis rodiče.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Mobil rodiča';
+
+  @override
+  String get wizardStufe1b1TelefonHelper => 'Na toto číslo zavolá Vorsitzer.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Vztah k dítěti:';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Matka';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Otec';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Zákonný zástupce';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Jiný zástupce';
+
+  @override
+  String get wizardStufe1cTitle => 'Osobní údaje';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Jen abych tě trochu lépe poznal. Tyto údaje zůstanou mezi námi a nikde se veřejně nezobrazí.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Pohlaví';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Muž';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Žena';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Jiné';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'Neuvedeno';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'Rodinný stav';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Svobodný/á';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Ženatý / Vdaná';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Rozvedený/á';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Ovdovělý/á';
+
+  @override
+  String get wizardStufe1dTitle => 'Tvůj původ';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Pomáhá nám to nabídnout ti tu pravou pomoc — například poradenství k pobytu (Aufenthalt) nebo najít tvou jazykovou komunitu.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Státní občanství';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'Např. deutsch, rumänisch, ukrainisch. Více oddělit čárkou.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Status pobytu (Aufenthaltsstatus) — volitelné';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Vyber titul ze svojí Aufenthaltskarte / rozhodnutí. Vorstand to porovná s tvými dokumenty.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Nejdřív vyplň státní příslušnost výše — zobrazíme jen vhodné možnosti.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Aufenthaltstitel není potřeba — německý občan.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'Občan EU/EHP/CH — volný pohyb (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'dočasný';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'trvalý pobyt';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'azylové řízení';
+
+  @override
+  String get wizardStufe1dAufenthaltOther => 'Jiné (upřesni v chatu)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired =>
+      'Vyber prosím Aufenthaltstitel.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Mateřský jazyk';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Předvyplněno jazykem aplikace — změň pokud se liší.';
+
+  @override
+  String get wizardStufe1eTitle => 'Adresa';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'Tvá poštovní adresa — používáme ji pro oficiální dokumenty (stanovy, členské smlouvy, oznámení).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Ulice';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Jen název ulice — číslo do vedlejšího pole.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => 'Č.';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (PSČ)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'Město';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Země';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Předvyplněno: Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Neplatný název ulice';
+
+  @override
+  String get wizardErrInvalidHausnummer =>
+      'Neplatné číslo (např. 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz => 'Neplatné PSČ (jen číslice)';
+
+  @override
+  String get wizardStufe1fTitle => 'Kontakt';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Jak tě zastihneme? Telefon je jen pro naléhavé případy — všechno ostatní jde přes náš vlastní E2E šifrovaný kanál v aplikaci. Tvůj členský e-mail se přiřazuje automaticky a uvidíš ho níže.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Mobilní číslo';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Slib — zavolám jen když to bude opravdu důležité. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Typ členství';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Jakým typem člena chceš být? Vysvětlím ti každou možnost.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Řádný člen (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Plná práva. Platíš měsíční příspěvek, hlasuješ na členské schůzi, můžeš být zvolen do představenstva. Výchozí volba.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Podporující člen (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Podporuješ spolek finančně, ale neúčastníš se aktivně rozhodování. Bez hlasovacího práva. Hodí se, pokud chceš pomáhat na dálku.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Čestný člen (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Udělován představenstvem za zvláštní zásluhy. Nevybíráš si ho sám — uděluje se jako uznání. Zvol jen pokud ti už byla tato pocta udělena.';
+
+  @override
+  String get wizardStufe3Title => 'Finanční situace';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Teď k tvé finanční situaci. Ne abych soudil — ale abychom tě osvobodili od příspěvku, pokud pobíráš sociální dávky.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Pobírám Bürgergeld';
+
+  @override
+  String get wizardStufe3OptionSozialamt => 'Dostávám dávky od Sozialamtu';
+
+  @override
+  String get wizardStufe3OptionNein => 'Nepobírám žádné z těchto';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Příspěvek: 0 € / měsíc 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'S Bürgergeldem, Sozialamtem, ALG I nebo Krankengeldem jsi podle Satzung §6 plně osvobozen od příspěvku. Potřebujeme jen doklad (Leistungsbescheid nebo potvrzení od úřadu / zdravotní pojišťovny).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Nahrát Leistungsbescheid';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, max 10 MB.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Před pokračováním prosím nahraj Leistungsbescheid.';
+
+  @override
+  String get wizardStufe3FileTooLarge =>
+      'Soubor je příliš velký. Maximálně 10 MB.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Soubor se nepodařilo nahrát. Zkus to znovu.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Příspěvek: 25 € / měsíc';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'Standardní příspěvek pro řádné členy podle stanov.';
+
+  @override
+  String get wizardStufe4Title => 'Platba';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Jak chceš platit příspěvek? A který den v měsíci ti vyhovuje?';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle =>
+      'Bankovní převod (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'Platbu zadáváš sám každý měsíc ze svého účtu.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (přímé inkaso)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Strhneme částku automaticky z tvého účtu. Nejpohodlnější, ale potřebujeme IBAN a podepsané SEPA pověření.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (trvalý příkaz)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Nastavíš si trvalý příkaz ve své bance. Banka pak posílá částku automaticky každý měsíc.';
+
+  @override
+  String get wizardStufe4DayLabel => 'Den platby';
+
+  @override
+  String get wizardStufe4DayHint => 'Vyber den mezi 1 a 31';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return '$day. den';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'Příspěvek se bude strhávat $day. den každého měsíce.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Začátek';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'Od kdy chceš být oficiálně členem ICD360S? Od schválení nebo zpětně.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle =>
+      'Od schválení představenstvem';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'Nejjednodušší volba. Žádný zpětný příspěvek.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Zpětně od 01.08.2025 (datum založení)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Budeš se počítat za člena od prvního dne spolku.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'Jiné datum';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Vybíráš si datum mezi 01.08.2025 a dneškem.';
+
+  @override
+  String get wizardStufe5PickDate => 'Klepnutím vyber datum';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Nejprve vyber datum.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Začátek členství';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return 'Mezi $start a dneškem';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Zpětný příspěvek';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return 'Od $start do $end je to $months měsíců. Při 25 €/měsíc to znamená $amount € zpětně k uhrazení, navíc k aktuálnímu měsíčnímu příspěvku.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Zpětný příspěvek: 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'S Bürgergeld nebo Sozialamtem jsi plně osvobozen — i zpětně nic nedlužíš.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Než to uzavřeme, prosím pečlivě si přečti $doc. Je důležité vědět, co podepisuješ.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint =>
+      'Posuň na konec, abys mohl pokračovat.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Přečetl jsi až do konce ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return 'Otevřít $doc v prohlížeči';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'Na této platformě otevíráme dokument ve výchozím prohlížeči.';
+
+  @override
+  String get wizardDocumentOpenedOk =>
+      'Dokument byl otevřen. Pečlivě si jej přečti.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Potvrzuji, že jsem si přečetl(a) $doc a souhlasím s ní.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'Hotovo! Jsi přihlášen 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'Tvá žádost byla odeslána 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Spojíme se s tvým rodičem a domluvíme schůzku (osobně nebo videohovorem). Prosíme o trpělivost — proces může trvat až 7 dní. Dostaneš upozornění v aplikaci, jakmile rodič schválí.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Tvé členské číslo';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Již brzy';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Pokud zaostaneš s příspěvkem o více než 6 měsíců, automaticky tě vyškrtneme (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'K odchodu: pošli nám výpověď písemně 3 měsíce před 31. prosincem (do 30. září, aby byla účinná na konci roku). Žádná minimální doba (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'Tvůj členský e-mail';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Přiřazuje se automaticky podle tvého členského čísla. Aktivuje se ve chvíli, kdy představenstvo (Vorstand) schválí tvou přihlášku. Máme vlastní e-mailovou aplikaci — posílej a přijímej šifrované e-maily, jednoduše a zdarma.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Neplatná e-mailová adresa';
+
+  @override
+  String get wizardStufe3OptionAlg1 =>
+      'Pobírám Arbeitslosengeld I (ALG I, podpora v nezaměstnanosti)';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Pobírám Krankengeld (nemocenské po dlouhodobé pracovní neschopnosti)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Přidat další dokument';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Dosažen limit: nejvýše 20 dokumentů.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Dosažen celkový limit 100 MB. Smaž některý existující soubor.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Smazat';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max dokumentů';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Nepodařilo se otevřít prohlížeč. Odkaz byl zkopírován do schránky — vlož ho do prohlížeče, abys pokračoval.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Vorstand kontroluje · obvykle 1 pracovní den, max. 7';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Účet aktivován';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Děkujeme, že jsi vyplnil registrační formulář! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'Tvoje žádost je u nás. Obvykle ji ověřujeme do jednoho pracovního dne.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Občas to může trvat až 7 pracovních dnů. A pokud něco nesedí, pošleme tě zpátky do formuláře, abys to opravil 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'STAV ŽÁDOSTI';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total kroků ověřeno představenstvem Vorstand';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Detaily žádosti';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      'Osm fází, které jsi vyplnil. Vorstand je kontroluje jednu po druhé — vidíš v reálném čase, co už bylo schváleno.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'Čeká na kontrolu';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Schváleno';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Zamítnuto';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count krok vyžaduje opravu';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'Důvod od Vorstandu:';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Opravit nyní';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Schválení Vorstandu ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'Čeká se na 2. Vorstand';
+
+  @override
+  String get wizardFinalApprovalRejected => 'ZAMÍTNUTO';
+
+  @override
+  String get wizardFinalStufeNoDataYet => 'Data zatím nejsou k dispozici.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Přečteno:';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei =>
+      'Osvobozeno od příspěvku (bez platby)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Bez sociálních dávek';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification => 'Začíná ověřením';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation => 'Datum založení (zpětně)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Vlastní datum';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Přeskočeno';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Vyplněno:';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Zkontrolováno:';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Zrušit žádost';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Zrušit žádost?';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'Tvoje žádost bude označena jako zrušena tebou. Data zůstanou v databázi pro audit (GDPR), ale účet nebude aktivován. Registraci můžeš kdykoli zopakovat s novým členským číslem.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Ne, počkám';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Ano, zrušit';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'Tvoji žádost nelze zpracovat automaticky. Zavolej nám nebo přijď osobně k Vorstandu, abys mohl pokračovat v registraci.';
+
+  @override
+  String get wizardDuplicateLoginTitle => 'Vypadá to, že už jsi naším členem';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'Podle tvého jména a data narození už nacházíme aktivní účet. Použij prosím \"Jsem už člen\" na úvodní obrazovce, aby ses přihlásil. Pokud nemáš přístup, zavolej nám.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'Tvoje žádost je už u nás';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'Podle tvého jména a data narození máme už žádost v posuzování. Vorstand na ní pracuje — pošleme ti oznámení v aplikaci, jakmile bude tvůj účet aktivní. Zavolej, pokud si chceš popovídat.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'Tuto žádost teď nemůžeme zpracovat';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'Tvoje jméno a datum narození odpovídají nedávno zrušené žádosti. Zavolej nám, ať si o tom promluvíš s Vorstandem, než budeš pokračovat.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle =>
+      'Už jsi jednou žádost podal';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'Tvoje jméno a datum narození odpovídají starší žádosti, kterou jsi zrušil. Vítej zpátky — zavolej nám, než budeš pokračovat, ať Vorstand rozhodne, jak dál.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Prosím, zavolej nám';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'Tvoje jméno a datum narození u nás už figurují, ale podrobnosti přes aplikaci sdělit nemůžeme. Zavolej nám — Vorstand ti situaci vysvětlí osobně.';
+
+  @override
+  String get wizardChatHelp => 'Promluvíme si';
+
+  @override
+  String get wizardChatHelpSubtitle =>
+      'Živý chat s Vorstandem · rychlá odpověď';
 }

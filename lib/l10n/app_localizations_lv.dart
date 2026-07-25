@@ -9,12 +9,6 @@ class AppLocalizationsLv extends AppLocalizations {
   AppLocalizationsLv([String locale = 'lv']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Biedru portāls';
-
-  @override
-  String get memberPortal => 'Biedru portāls';
-
-  @override
   String get welcomeLoading => 'Ielādē...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get memberNumberHint => 'Ievadiet biedra numuru';
 
   @override
-  String get password => 'Parole';
-
-  @override
-  String get passwordHint => 'Ievadiet paroli';
-
-  @override
   String get confirmPassword => 'Apstiprināt paroli';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Ievadiet jaunu paroli';
-
-  @override
-  String get saveCredentials => 'Saglabāt pieteikšanās datus';
-
-  @override
-  String get autoLogin => 'Automātiska pieteikšanās';
-
-  @override
-  String get forgotPassword => 'Aizmirsāt paroli?';
 
   @override
   String get firstName => 'Vārds un uzvārds';
@@ -90,21 +69,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get passwordsNotMatch => 'Paroles nesakrīt';
 
   @override
-  String get recoveryCode => 'Atjaunošanas kods (6 cipari)';
-
-  @override
-  String get recoveryCodeHelper => 'Atcerieties šo kodu paroles atjaunošanai';
-
-  @override
-  String get recoveryCodeHint => 'Ievadiet atjaunošanas kodu';
-
-  @override
-  String get recoveryCodeInvalid => 'Kodam jābūt tieši 6 cipariem';
-
-  @override
-  String get loginFailed => 'Pieteikšanās neizdevās';
-
-  @override
   String get registrationFailed => 'Reģistrācija neizdevās';
 
   @override
@@ -118,20 +82,7 @@ class AppLocalizationsLv extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'Pārāk daudz ierīču';
-
-  @override
-  String get maxDevicesMessage =>
-      'Jūs jau esat pieteicies 3 ierīcēs.\nIzvēlieties ierīci izrakstīšanai:';
-
-  @override
-  String get unknownDevice => 'Nezināma ierīce';
-
-  @override
   String get unknown => 'Nezināms';
-
-  @override
-  String get logoutError => 'Izrakstīšanās kļūda';
 
   @override
   String error(String error) {
@@ -145,39 +96,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get resetPassword => 'Atiestatīt paroli';
 
   @override
-  String get forgotPasswordTitle => 'Aizmirsta parole';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Ievadiet savu biedra numuru un reģistrācijas laikā izveidoto atjaunošanas kodu.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Parole atiestatīta!\n\nTagad varat pieteikties ar jauno paroli.';
-
-  @override
-  String get passwordResetFailed => 'Paroles atiestatīšana neizdevās';
-
-  @override
-  String get needHelp => 'Nepieciešama palīdzība?';
-
-  @override
-  String get helpQuestion => 'Problēmas ar pieteikšanos vai reģistrāciju?';
-
-  @override
-  String get helpDescription =>
-      'Sazinieties ar mums caur WhatsApp un aprakstiet, kas nedarbojas. Atbildēsim pēc iespējas ātrāk!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Pieprasījums caur ICD360S lietotni';
-
-  @override
-  String get whatsappMessage => 'Sveiki, man ir problēma ar ICD360S lietotni. ';
-
-  @override
   String get imprint => 'Impressum';
 
   @override
@@ -188,15 +106,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get revocation => 'Atteikuma tiesības';
-
-  @override
-  String get cancellation => 'Atcelšana';
-
-  @override
-  String get allRightsReserved => 'Visas tiesības aizsargātas.';
-
-  @override
-  String get enterCredentials => 'Ievadiet biedra numuru un paroli';
 
   @override
   String get appointments => 'Tikšanās';
@@ -250,13 +159,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get close => 'Aizvērt';
 
   @override
-  String get membership => 'Dalība';
-
-  @override
   String get myAppointments => 'Mani tikšanās';
-
-  @override
-  String get appointmentsLoadingReady => 'Ielādē tikšanās - API gatavs!';
 
   @override
   String get priority => 'Prioritāte';
@@ -265,16 +168,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get messageLabel => 'Ziņojums';
 
   @override
-  String get createdOn => 'Izveidots';
-
-  @override
-  String get handler => 'Apstrādātājs';
-
-  @override
   String get reportProblems => 'Ziņot par problēmām';
-
-  @override
-  String get reportProblem => 'Ziņot par problēmu';
 
   @override
   String get weRespondIn24Hours =>
@@ -306,41 +200,13 @@ class AppLocalizationsLv extends AppLocalizations {
   String get myTickets => 'Manas pieteikumi';
 
   @override
-  String get newTicket => 'Jauns pieteikums';
-
-  @override
-  String get noOpenTickets => 'Nav atvērtu pieteikumu';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Vai jums ir jautājums vai problēma?\nIzveidojiet jaunu pieteikumu.';
-
-  @override
-  String get whatIsTheProblem => 'Kāda ir problēma?';
-
-  @override
-  String get describeTheProblem => 'Aprakstiet problēmu';
-
-  @override
-  String get howUrgentIsIt => 'Cik steidzami?';
-
-  @override
   String get low => 'Zems';
-
-  @override
-  String get medium => 'Vidējs';
 
   @override
   String get high => 'Augsts';
 
   @override
   String get submit => 'Iesniegt';
-
-  @override
-  String get fillSubjectAndMessage => 'Lūdzu, aizpildiet tēmu un ziņojumu';
-
-  @override
-  String get ticketCreated => 'Pieteikums izveidots';
 
   @override
   String get errorCreatingTicket => 'Kļūda, izveidojot pieteikumu';
@@ -361,12 +227,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get changePassword => 'Mainīt paroli';
 
   @override
-  String get newEmailAddress => 'Jauna e-pasta adrese';
-
-  @override
-  String get currentPassword => 'Pašreizējā parole';
-
-  @override
   String get saveEmail => 'Saglabāt e-pastu';
 
   @override
@@ -374,9 +234,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Ierīce atteikta';
-
-  @override
-  String get passwordChangedSuccessfully => 'Parole veiksmīgi mainīta';
 
   @override
   String get emailChangedSuccessfully => 'E-pasts veiksmīgi mainīts';
@@ -389,23 +246,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get validEmailRequired => 'Lūdzu, ievadiet derīgu e-pasta adresi';
-
-  @override
-  String get passwordTooShort => 'Parolei jābūt vismaz 6 rakstzīmēm';
-
-  @override
-  String get maxDevicesReached => 'Esat pieteicies maksimāli 3 ierīcēs.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Esat pieteicies $count no 3 ierīcēm.';
-  }
-
-  @override
-  String get noActiveSessions => 'Nav aktīvu sesiju';
-
-  @override
-  String get logoutFromDevice => 'Iziet no šīs ierīces';
 
   @override
   String get confirmLogoutDevice => 'Iziet no ierīces?';
@@ -535,6 +375,18 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get appWillRestart => 'Lietotne tiks automātiski restartēta.';
+
+  @override
+  String get autoUpdateEnableTitle => 'Install future updates automatically';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'The app downloads and installs updates on its own and restarts briefly. No further prompts.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Version $version is being installed in the background. The app will restart shortly.';
+  }
 
   @override
   String get later => 'Vēlāk';
@@ -917,9 +769,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get errorConnecting => 'Savienojuma kļūda';
 
   @override
-  String get errorAcceptingCall => 'Kļūda pieņemot zvanu';
-
-  @override
   String get errorDownloading => 'Lejupielādes kļūda';
 
   @override
@@ -951,11 +800,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get file => 'Fails';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name raksta...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Jauna ziņa no';
@@ -1024,19 +868,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get logsCopied => 'Žurnāli nokopēti!';
-
-  @override
-  String get diagnosticDataTitle => 'Diagnostikas dati';
-
-  @override
-  String get diagnosticDescription =>
-      'Vai vēlaties sūtīt anonīmus diagnostikas datus lietotnes uzlabošanai?';
-
-  @override
-  String get noThanks => 'Nē, paldies';
-
-  @override
-  String get yesEnable => 'Jā, iespējot';
 
   @override
   String get passwordMinEightChars => 'Parolei jābūt vismaz 8 rakstzīmēm';
@@ -1214,9 +1045,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get emailChangedSuccess => 'E-pasts nomainīts';
 
   @override
-  String get newPasswordMinChars => 'Jauna parole (min. 6 rakstzīmes)';
-
-  @override
   String get reasonLabel2 => 'Iemesls';
 
   @override
@@ -1224,9 +1052,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Lejupielādēt';
-
-  @override
-  String get connectionErrorGeneric => 'Savienojuma kļūda';
 
   @override
   String get copyLogs => 'Kopēt žurnālus';
@@ -1242,12 +1067,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get unknownValue => 'Nezināms';
-
-  @override
-  String get bankTransfer => 'Bankas pārskaitījums';
-
-  @override
-  String get standingOrder => 'Pastāvīgais maksājums';
 
   @override
   String get payment => 'Maksājums';
@@ -1615,16 +1434,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get statusAccepted => 'Pieņemts';
 
   @override
-  String get memberNumberTooLong =>
-      'Biedra numurs pārāk garš (maks. 20 rakstzīmes)';
-
-  @override
-  String get onlyUppercaseAndNumbers => 'Atļauti tikai lielie burti un cipari';
-
-  @override
-  String get passwordTooLong => 'Parole pārāk gara (maks. 100 rakstzīmes)';
-
-  @override
   String get nameTooLong => 'Vārds pārāk garš (maks. 100 rakstzīmes)';
 
   @override
@@ -1755,15 +1564,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get openFile => 'Atvērt';
 
   @override
-  String get diagnosticErrors => 'Kļūdu ziņojumi uzlabošanai';
-
-  @override
-  String get diagnosticAnonymousStats => 'Anonīma lietošanas statistika';
-
-  @override
-  String get diagnosticPerformance => 'Lietotnes veiktspējas dati';
-
-  @override
   String get noMicrophoneError =>
       'Mikrofons nav atrasts. Pievienojiet mikrofonu un mēģiniet vēlreiz.';
 
@@ -1788,9 +1588,6 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'Konti, kas nav verificēti 30 dienu laikā, tiks automātiski apturēti.';
-
-  @override
-  String get ipClean => 'IP tīra - nav sarakstā';
 
   @override
   String get documentsProvidedByBoard => 'Dokumentus nodrošina valde.';
@@ -1827,13 +1624,6 @@ class AppLocalizationsLv extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp => 'Vai vēlaties palīdzēt mums uzlabot lietotni?';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Personas dati netiek vākti. Šo iestatījumu var mainīt jebkurā laikā.';
-
-  @override
   String logEntries(int count) {
     return '$count ieraksti';
   }
@@ -1843,15 +1633,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Konstatēta jauna pieslēgšanās';
-
-  @override
-  String get waitingForMember => 'Gaida biedru';
-
-  @override
-  String get waitingForStaff => 'Gaida darbinieku';
-
-  @override
-  String get waitingForAuthority => 'Gaida iestādi';
 
   @override
   String get errorNoInternet =>
@@ -1879,14 +1660,7 @@ class AppLocalizationsLv extends AppLocalizations {
       'DNS problem detected. Check your connection or try another network.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Please open your browser and sign in to the WiFi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Slow connection.';
-
-  @override
-  String get securityBannerNetworkOffline => 'No network connection.';
 
   @override
   String get securityPermissionDialogTitle =>
@@ -1909,4 +1683,1142 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'No microphone was found. Connect a headset or microphone and try again.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Labrīt';
+
+  @override
+  String get claudiuWelcomeDay => 'Sveiki';
+
+  @override
+  String get claudiuWelcomeEvening => 'Labvakar';
+
+  @override
+  String get claudiuWelcomeNight => 'Labvakar';
+
+  @override
+  String get claudiuWelcomeVisitor => 'mīļais apmeklētāj';
+
+  @override
+  String get claudiuWelcomeAsk => 'Kā varu palīdzēt?';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Vēlos kļūt par biedru';
+
+  @override
+  String get claudiuWelcomeLogin => 'Jau esmu biedrs un vēlos pieteikties';
+
+  @override
+  String get claudiuWelcomeProblem => 'Man ir problēma ar lietotni';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Steidzami — zvaniet mums';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Claudiu';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro => 'Pirms zvanāt — mūsu darba laiks:';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'Birojā';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'Pie klientiem';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'Ārpus šī laika izskatām tikai steidzamus gadījumus. Variet arī sūtīt SMS uz to pašu numuru — sazināsimies.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Zvanīt tagad';
+
+  @override
+  String get claudiuWelcomeSendSms => 'Sūtīt SMS';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Steidzami ICD360S e.V. — lūdzu, sazinieties pēc iespējas ātrāk.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Aizvērt';
+
+  @override
+  String get claudiuLoginWelcome => 'Laipni lūdzam atpakaļ, dārgais biedr!';
+
+  @override
+  String get claudiuLoginAsk => 'Lūdzu, pasaki savu biedra numuru.';
+
+  @override
+  String get claudiuLoginProgress => 'Gandrīz… raksti tālāk.';
+
+  @override
+  String get claudiuLoginReady => 'Lieliski! Nospied pogu zemāk.';
+
+  @override
+  String get claudiuLoginLoading => 'Pārbaudu identitāti… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Atradu tevi! Pieslēdzu…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Atradu tevi, $name! Pieslēdzu…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Hmm, šo numuru neatrodu. Vai pareizi ievadīji?';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Aizmirsi biedra numuru?';
+
+  @override
+  String get claudiuLoginNoSms => 'Numuru nesūtām pa e-pastu vai SMS.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Vienīgais veids: personiska tikšanās biedrības birojā, pēc personas dokumenta pārbaudes.';
+
+  @override
+  String get claudiuLoginContactUs => 'Zvani, lai rezervētu tikšanos:';
+
+  @override
+  String get claudiuDiagnosticGreeting =>
+      'Pirms ieiešanas, viens ātrs jautājums';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Vai drīkstu sūtīt anonīmus ziņojumus, lai izstrādātāji uzlabotu lietotni?';
+
+  @override
+  String get claudiuDiagnosticYes => 'Jā, vēlos palīdzēt';
+
+  @override
+  String get claudiuDiagnosticNo => 'Nē, tikai apskatos';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Pastāsti vairāk';
+
+  @override
+  String get claudiuDiagnosticSendsHeader => '📤 Ko mēs SŪTĀM (anonīmi):';
+
+  @override
+  String get claudiuDiagnosticSends1 =>
+      'Anonīms ierīces kods (NEVIS biedra numurs)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Tava loma (biedrs / valde)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Operētājsistēma (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Izvēlētā valoda';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Akumulatora līmenis un stāvoklis';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Pašreizējais ekrāns';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Sesijas ilgums (sekundes)';
+
+  @override
+  String get claudiuDiagnosticSends8 => 'Kļūdas, ja ir (pēdējās 10)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Navigācija (pēdējie 20 ekrāni)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader => '🛡️ Ko mēs NEKAD nesūtām:';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Tavs īstais vārds';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'E-pasta adrese';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Tālruņa numurs';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Parole';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Tērzēšanas ziņojumu saturs';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Biļešu saturs';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Dokumenti vai pielikumi';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Tehniskā informācija:';
+
+  @override
+  String get claudiuDiagnosticTech1 => 'Sūta ik pēc 2 minūtēm';
+
+  @override
+  String get claudiuDiagnosticTech2 =>
+      'TLS-šifrēts savienojums ar piesprausto sertifikātu';
+
+  @override
+  String get claudiuDiagnosticTech3 =>
+      'Variet to izslēgt jebkurā laikā Iestatījumos';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Kā varu palīdzēt?';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Kas notika?';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Kā vēlies man pastāstīt?';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Rakstīt ziņojumu';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'Ar soli pa solim informāciju. Komanda saņem tekstu un atrisina vēlāk.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Parunāsim tūlīt';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Anonīma saruna ar operatoru. Atbilde reāllaikā, ja kāds ir tiešsaistē.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Vai, ja steidzami:';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Zvanīt';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Anonīma saruna';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Sveiki!';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Es klausos. Raksti ko vēlies — vārds nav vajadzīgs. Atbildēšu, tiklīdz būšu klāt.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Uzraksti ziņu…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator => 'Gaidām operatora atbildi…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Sveiki!';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Paldies, ka uzrakstīji — tagad esi kontaktā ar Vorsitzer. Pastāsti, kā varam palīdzēt ar tavu dalības pieteikumu.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime =>
+      'Cik ilgs ir pārbaudes process?';
+
+  @override
+  String get claudiuQuickReplyDocuments => 'Kādi dokumenti man ir vajadzīgi?';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Esmu iestrēdzis pie viena soļa';
+
+  @override
+  String get claudiuQuickReplyHuman => 'Vai varu tagad parunāt ar kādu?';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Savienojas…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Sarunu nevarēja atvērt. Mēģini vēlreiz vai zvani mums.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Mēģināt vēlreiz';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Savienots';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Atjauno savienojumu…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'Operators raksta…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Ziņot par problēmu';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Kas notika?';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Pastāsti detalizēti, un es nodošu ziņojumu komandai.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Lūdzu, ietver:';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Ko tu darīji, kad problēma parādījās';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Jebkurš kļūdas paziņojums, ko redzēji';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 => 'Kurā ekrānā biji';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'Vai lietotne avarē, aizveras vai parāda baltu ekrānu?';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Vai tas notiek katru reizi vai tikai vienreiz?';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Tavs apraksts';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'Piem.: Atverot sarunas ekrānu, parādās ziņojums \"Connection error\" un lietotne pārstāj reaģēt…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Mazliet vairāk detaļu, lūdzu (vismaz $count rakstzīmes)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Sūtīt ziņojumu';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Sūta…';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Paldies!';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'Ziņojums ir nosūtīts. Mūsu komanda to izskatīs pēc iespējas ātrāk.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Sapratu';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Ziņojumu nevarēja nosūtīt. Zvani mums steidzamai palīdzībai.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Vai, ja steidzami:';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Zvanīt';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Sveiks, $name! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Sveiks! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Priecājos, ka atnāci!';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'Tavas drošības labad Vorsitzer šobrīd pārbauda tavu pieteikšanās pieprasījumu. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Mēs to darām reizi 30 dienās, lai pārliecinātos, ka tas tiešām esi tu. Tas ir kā drošības pārbaude — ne ilgāk par 5 minūtēm.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'Gatavs! 🎉 Vorsitzer tevi atpazina. Pieslēdzu…';
+
+  @override
+  String get claudiuApprovalDenied =>
+      'Hmm, Vorsitzer noraidīja tavu pieprasījumu. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Ja domā, ka tā ir kļūda, lūdzu zvani, lai noskaidrojam.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      '5 minūtes ir pagājušas un Vorsitzer neatbildēja.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Zvani mums un mēs varam apstiprināt tavu pieprasījumu uz vietas. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Zvanīt';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Mēģināt vēlreiz';
+
+  @override
+  String get claudiuApprovalCancel => 'Atcelt';
+
+  @override
+  String get claudiuApprovalClose => 'Aizvērt';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Sveiks, apmeklētāj! 👋 Paldies, ka vēlies pievienoties mūsu ģimenei.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'Mani sauc Klaudio. 2025. gada pavasarī man bija skaidra vīzija: izveidot biedrību, kas palīdz cilvēkiem nelaimē — brīvprātīgi, no sirds, bez liekas birokrātijas. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'Sāku runāt ar klientiem, kurus apmeklēju. Pastāstīju viņiem savu sapni. Un katrs teica: \"Jā, ejam!\" 2025. gada jūlijā mēs sešatā satikāmies — apņēmīgi cilvēki. Nolēmām dibināt **ICD360S e.V.** Neu-Ulmā. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      '**2025. gada 1. augustā** biedrība oficiāli atdzima — Biedrību reģistrā. Mana visskaistākā dāvana. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Ko mēs darām? Palīdzam bēgļiem, cilvēkiem ar invaliditāti, ekonomiski neaizsargātajiem, **bērniem un jauniešiem** — administratīvajos jautājumos, vācu valodā, mājoklī, iepirkumos, sociālajos pabalstos. Mūsu Vorstand veido galvenokārt cilvēki ar invaliditāti — tā lēmumi nāk no reālas dzīves pieredzes. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'Tagad ir tava kārta. Reģistrēsim tevi — aizņem apmēram 5 minūtes. Iesim soli pa solim, neatstāšu tevi vienu. ✨';
+
+  @override
+  String get wizardIntroStart => 'Sāksim';
+
+  @override
+  String get wizardBack => 'Atpakaļ';
+
+  @override
+  String get wizardNext => 'Tālāk';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return '$step. solis no $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Šis lauks ir obligāts';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'Pārāk īss (vismaz $count rakstzīmes)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters =>
+      'Tikai burti, atstarpes, defises un apostrofi';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Saglabāt neizdevās. Pārbaudi savienojumu un mēģini vēlreiz.';
+
+  @override
+  String get wizardStufe1aTitle => 'Identitāte';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Iepazīsimies oficiāli. Lūdzu, ieraksti savu vārdu tieši tā, kā tas redzams Personalausweis, Reisepass vai Aufenthaltstitel — lai atbilstu dokumentiem.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (vārdi)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Visi tavi vārdi tieši kā dokumentā. Ar atstarpi vai defisi (piem., Hans-Peter, Maria Anna).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (uzvārds)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'Tavs pašreizējais uzvārds.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (dzimšanas vārds) — pēc izvēles';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Tikai ja atšķiras no Familienname — piem., pirms laulības.';
+
+  @override
+  String get wizardStufe1bTitle => 'Dzimšanas diena';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'Mēs vēlamies svinēt tavu dzimšanas dienu kopā! 🎂 Tas arī palīdz mums apstiprināt, ka tev ir vismaz 16 — tā teikts mūsu statūtos.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Dzimšanas datums';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper =>
+      'Pieskaries, lai izvēlētos datumu';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Dzimšanas vieta';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper => 'Pilsēta / vieta, kur tu dzimi.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Man žēl… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Mūsu statūti saka, ka biedrim jābūt vismaz 16. Tev ir $age — ceru tikties pēc $years gadiem! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Ja vēlies brīvprātīgi palīdzēt laiku pa laikam (jebkurā vecumā, ar vecāku piekrišanu), piezvani — mums patīk atbalstīt jauniešus, kuri vēlas mainīt pasauli.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Atpakaļ uz sākumu';
+
+  @override
+  String get wizardErrInvalidPhone => 'Nederīgs tālruņa numurs';
+
+  @override
+  String get wizardStufe1b1Title => 'Vecāku piekrišana';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Esi nepilngadīgs (16-17) — saskaņā ar §106 BGB mums vajadzīga vecāku vai aizbildņa piekrišana. Pasaki vārdu un tālruņa numuru. Vorsitzer piezvanīs un norunās tikšanos (klātienē vai video zvanā). Bez e-pasta — vēlamies pārliecināties, ka runājam ar īsto personu.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Vecāka vārds';
+
+  @override
+  String get wizardStufe1b1VornameHelper => 'Kā vecāka Personalausweisā.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Vecāka uzvārds';
+
+  @override
+  String get wizardStufe1b1NachnameHelper => 'Kā vecāka Personalausweisā.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Vecāka mobilais';
+
+  @override
+  String get wizardStufe1b1TelefonHelper => 'Šim numuram piezvanīs Vorsitzer.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Attiecības ar bērnu:';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Māte';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Tēvs';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Likumīgais aizbildnis';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Cits aizbildnis';
+
+  @override
+  String get wizardStufe1cTitle => 'Personas dati';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Vienkārši lai labāk tevi iepazītu. Tas paliek starp mums un netiek nekur publiski rādīts.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Dzimums';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Vīrietis';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Sieviete';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Cits';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'Nevēlos atklāt';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'Ģimenes stāvoklis';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Neprecējies/usies';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Precējies/usies';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Šķīries/usies';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Atraitnis/e';
+
+  @override
+  String get wizardStufe1dTitle => 'Tava izcelsme';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Tas mums palīdz piedāvāt tev pareizo atbalstu — piemēram, konsultāciju par Aufenthalt vai atrast tavu valodas kopienu.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Pilsonība';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'Piem. deutsch, rumänisch, ukrainisch. Vairākas atdalītas ar komatu.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Uzturēšanās statuss (Aufenthaltsstatus) — pēc izvēles';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Izvēlies titulu no savas Aufenthaltskarte / lēmuma. Vorstand to salīdzina ar taviem dokumentiem.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Vispirms augšā aizpildi pilsonību — rādīsim tikai atbilstošās opcijas.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Aufenthaltstitel nav nepieciešams — Vācijas pilsonis.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'ES/EEZ/CH pilsonis — pārvietošanās brīvība (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'pagaidu';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'pastāvīga uzturēšanās';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'patvēruma procedūra';
+
+  @override
+  String get wizardStufe1dAufenthaltOther => 'Cits (lūdzu norādi čatā)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired =>
+      'Lūdzu izvēlies Aufenthaltstitel.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Dzimtā valoda';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Iepriekš aizpildīts ar lietotnes valodu — maini, ja atšķiras.';
+
+  @override
+  String get wizardStufe1eTitle => 'Adrese';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'Tava pasta adrese — izmantojam to oficiāliem dokumentiem (statūti, biedru līgumi, paziņojumi).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Iela';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Tikai ielas nosaukums — numurs blakus laukā.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => 'Nr.';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (pasta indekss)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'Pilsēta';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Valsts';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Iepriekš aizpildīts: Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Nederīgs ielas nosaukums';
+
+  @override
+  String get wizardErrInvalidHausnummer =>
+      'Nederīgs numurs (piem. 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz => 'Nederīgs pasta indekss (tikai cipari)';
+
+  @override
+  String get wizardStufe1fTitle => 'Kontakts';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Kā tev sazināties? Tālrunis ir tikai ārkārtas gadījumiem — viss pārējais notiek mūsu pašu galapunktu šifrētajā kanālā lietotnē. Tavs biedra e-pasts tiek piešķirts automātiski un parādīts zemāk.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Mobilais';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Solu, zvanīšu tikai tad, ja būs svarīgi. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Biedra tips';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Kāds biedrs vēlies būt? Ļauj man paskaidrot katru variantu.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Pilntiesīgs biedrs (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Pilnas tiesības. Maksā ikmēneša biedru maksu, balso kopsapulcē, vari tikt ievēlēts valdē. Standarta izvēle.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Atbalsta biedrs (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Atbalsti biedrību finansiāli, bet aktīvi nepiedalies lēmumos. Bez balsstiesībām. Labi, ja vēlies palīdzēt no attāluma.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Goda biedrs (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Piešķir valde par īpašiem nopelniem. Pats to neizvēlies — to piešķir kā atzinību. Izvēlies tikai, ja jau esi pagodināts.';
+
+  @override
+  String get wizardStufe3Title => 'Finansiālā situācija';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Tagad par tavu finansiālo situāciju. Ne lai vērtētu — bet lai atbrīvotu no biedru maksas, ja saņem sociālos pabalstus.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Saņemu Bürgergeld';
+
+  @override
+  String get wizardStufe3OptionSozialamt => 'Saņemu pabalstus no Sozialamt';
+
+  @override
+  String get wizardStufe3OptionNein => 'Nesaņemu nevienu no šiem';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Biedru maksa: 0 € / mēn. 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'Ar Bürgergeld, Sozialamt, ALG I vai Krankengeld saskaņā ar Satzung §6 esi pilnībā atbrīvots no biedru maksas. Mums vajadzīgs tikai pierādījums (Leistungsbescheid vai izziņa no iestādes / veselības apdrošināšanas).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Augšupielādēt Leistungsbescheid';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, līdz 10 MB.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Lūdzu augšupielādē Leistungsbescheid pirms turpināt.';
+
+  @override
+  String get wizardStufe3FileTooLarge =>
+      'Fails ir pārāk liels. Maksimums 10 MB.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Faila augšupielāde neizdevās. Mēģini vēlreiz.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Biedru maksa: 25 € / mēn.';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'Standarta biedru maksa pilntiesīgiem biedriem saskaņā ar statūtiem.';
+
+  @override
+  String get wizardStufe4Title => 'Maksājums';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Kā vēlies maksāt biedru maksu? Un kurā mēneša dienā?';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle =>
+      'Bankas pārskaitījums (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'Maksājumu uzsāc pats katru mēnesi no sava konta.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (tiešais debets)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Summu automātiski noņemam no tava konta. Visērtāk, bet vajag IBAN un parakstītu pilnvarojumu.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (pastāvīgais rīkojums)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Bankā iestati pastāvīgo rīkojumu. Banka summu pārskaita automātiski katru mēnesi.';
+
+  @override
+  String get wizardStufe4DayLabel => 'Maksājuma diena';
+
+  @override
+  String get wizardStufe4DayHint => 'Izvēlies dienu no 1 līdz 31';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return '$day. diena';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'Biedru maksa tiks ieturēta katra mēneša $day. datumā.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Sākums';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'No kura brīža vēlies oficiāli būt ICD360S biedrs? No apstiprināšanas vai ar atpakaļejošu spēku.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle =>
+      'No Vorstand apstiprināšanas';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'Vienkāršākais izvēles veids. Bez atpakaļejoša maksājuma.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Ar atpakaļejošu spēku no 01.08.2025 (dibināšana)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Tu skaitīsies biedrs jau no biedrības pirmās dienas.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'Cits datums';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Pats izvēlies datumu starp 01.08.2025 un šodien.';
+
+  @override
+  String get wizardStufe5PickDate => 'Pieskaries, lai izvēlētos datumu';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Lūdzu, vispirms izvēlies datumu.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Dalības sākums';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return 'Starp $start un šodien';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Atpakaļejošā maksa';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return 'No $start līdz $end ir $months mēneši. Pie 25 €/mēn. tas ir $amount € apmaksai ar atpakaļejošu spēku, papildus pašreizējai mēneša biedru maksai.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Atpakaļejošā maksa: 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'Ar Bürgergeld vai Sozialamt esi pilnībā atbrīvots — pat ar atpakaļejošu spēku neko nav jāmaksā.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Pirms pabeigt, lūdzu rūpīgi izlasi $doc. Ir svarīgi zināt, ko paraksti.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint => 'Ritini līdz beigām, lai turpinātu.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Tu izlasīji līdz galam ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return 'Atvērt $doc pārlūkprogrammā';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'Šajā platformā atveram dokumentu tavā noklusētajā pārlūkprogrammā.';
+
+  @override
+  String get wizardDocumentOpenedOk =>
+      'Dokuments tika atvērts. Lūdzu, izlasi to rūpīgi.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Apstiprinu, ka esmu izlasījis(usi) un piekrītu $doc.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'Gatavs! Esi reģistrēts 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'Tavs pieprasījums ir nosūtīts 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Sazināsimies ar tavu vecāku un norunāsim tikšanos (klātienē vai video zvanā). Lūdzu, esi pacietīgs — process var ilgt līdz 7 dienām. Saņemsi paziņojumu lietotnē, tiklīdz vecāks apstiprinās.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Tavs biedra numurs';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Drīzumā';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Ja kavēsi biedru maksu vairāk nekā 6 mēnešus, automātiski tevi izsvītrosim (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'Lai izstātos: nosūti mums uzteikumu rakstiski 3 mēnešus pirms 31. decembra (līdz 30. septembrim, lai stātos spēkā gada beigās). Minimālā ilguma nav (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'Tavs biedra e-pasts';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Tiek piešķirts automātiski, balstoties uz tavu biedra numuru. Tiek aktivizēts brīdī, kad valde (Vorstand) apstiprina tavu pieteikumu. Mums ir sava e-pasta lietotne — sūti un saņem šifrētus e-pastus, vienkārši un bez maksas.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Nederīga e-pasta adrese';
+
+  @override
+  String get wizardStufe3OptionAlg1 =>
+      'Saņemu Arbeitslosengeld I (ALG I, bezdarbnieka pabalstu)';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Saņemu Krankengeld (ilgstošas slimības pabalstu)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Pievienot vēl dokumentu';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Sasniegts limits: ne vairāk kā 20 dokumenti.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Sasniegts kopējais limits 100 MB. Dzēs esošo failu.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Dzēst';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max dokumenti';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Pārlūku neizdevās atvērt. Saite ir kopēta starpliktuvē — ielīmē to pārlūkā, lai turpinātu.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Vorstand pārbauda · parasti 1 darba diena, līdz 7';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Konts aktivizēts';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Paldies, ka aizpildīji reģistrācijas formu! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'Tavs pieteikums ir pie mums. Parasti to apstiprinām vienas darba dienas laikā.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Dažreiz tas var aizņemt līdz 7 darba dienām. Un, ja kaut kas neatbilst, mēs nosūtīsim tevi atpakaļ pie formas, lai labotu 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'PIETEIKUMA STATUSS';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total soļus apstiprinājis Vorstand';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Pieteikuma informācija';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      '8 posmi, ko aizpildīji. Vorstand pārbauda tos pa vienam — reālajā laikā redzi, kas ir apstiprināts.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'Gaida pārbaudi';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Apstiprināts';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Noraidīts';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count solis prasa labojumu';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'Vorstanda iemesls:';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Labot tagad';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Vorstanda apstiprinājumi ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'Gaida 2. Vorstandu';
+
+  @override
+  String get wizardFinalApprovalRejected => 'NORAIDĪTS';
+
+  @override
+  String get wizardFinalStufeNoDataYet => 'Dati vēl nav pieejami.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Izlasīts:';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei =>
+      'Atbrīvots no biedra naudas (nav jāmaksā)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Bez sociāliem pabalstiem';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification => 'Sākas pēc verifikācijas';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation =>
+      'Dibināšanas datums (ar atpakaļejošu spēku)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Cits datums';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Izlaists';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Aizpildīts:';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Pārbaudīts:';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Atsaukt pieteikumu';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Atsaukt pieteikumu?';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'Tavs pieteikums tiks atzīmēts kā tevis atsaukts. Dati paliek datubāzē auditam (GDPR), bet konts netiks aktivizēts. Reģistrāciju vari sākt no jauna jebkurā brīdī ar jaunu biedru numuru.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Nē, gaidīšu';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Jā, atsaukt';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'Tavu pieteikumu nevar apstrādāt automātiski. Piezvani mums vai atnāc personīgi pie Vorstand, lai turpinātu reģistrāciju.';
+
+  @override
+  String get wizardDuplicateLoginTitle => 'Šķiet, ka jau esi mūsu biedrs';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'Pēc tava vārda un dzimšanas datuma jau atrodam aktīvu kontu. Lūdzu, izmanto \"Es jau esmu biedrs\" sākuma ekrānā, lai pieteiktos. Ja vairs nav piekļuves, zvani mums.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'Tavs pieteikums jau ir pie mums';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'Pēc tava vārda un dzimšanas datuma mums jau ir pieteikums izskatīšanā. Vorstand pie tā strādā — paziņosim lietotnē, kad konts būs aktīvs. Zvani, ja vēlies parunāt.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'Šobrīd nevaram apstrādāt šo pieteikumu';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'Tavs vārds un dzimšanas datums sakrīt ar nesen atsauktu pieteikumu. Lūdzu, zvani mums, lai pirms turpināšanas runātu ar Vorstand.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle =>
+      'Esi jau iepriekš iesniedzis pieteikumu';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'Tavs vārds un dzimšanas datums sakrīt ar vecāku pieteikumu, ko biji atsaucis. Laipni atpakaļ — pirms turpināšanas zvani mums, lai Vorstand izlemtu, kā rīkojamies.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Lūdzu, zvani mums';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'Tavs vārds un dzimšanas datums jau ir mūsu uzskaitē, bet detaļas caur lietotni nevaram dalīt. Lūdzu, zvani — Vorstand izskaidros situāciju tieši.';
+
+  @override
+  String get wizardChatHelp => 'Parunāsim';
+
+  @override
+  String get wizardChatHelpSubtitle =>
+      'Tiešsaistes čats ar Vorstand · ātra atbilde';
 }
