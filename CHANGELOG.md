@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.72.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.71.0...v1.72.0) (2026-07-25)
+
+
+### Features
+
+* **fernwartung:** visualise member taps on mobile view-only sessions ([#216](https://github.com/ICD360S-e-V/mitglieder/issues/216)) ([5d6c08d](https://github.com/ICD360S-e-V/mitglieder/commit/5d6c08d97c21a7cb76fc9e43a59296238048ebbe))
+
 ## [1.71.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.70.0...v1.71.0) (2026-07-25)
 
 
