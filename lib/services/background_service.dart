@@ -426,6 +426,9 @@ class BackgroundService {
       case 'call_offer':
         await _showCallNotification(message, notificationsPlugin);
         break;
+      case 'remote_offer':
+        await _showRemoteNotification(message, notificationsPlugin);
+        break;
       case 'pong':
         debugPrint('[BackgroundService] Pong received - connection alive');
         break;
@@ -560,6 +563,46 @@ class BackgroundService {
       payload: 'call:${message['from']}',
     );
     debugPrint('[BackgroundService] Call notification shown');
+  }
+
+  /// Show notification for an incoming Fernwartung (remote support) request while
+  /// the app is backgrounded. Alerts the member to open the app, where the
+  /// consent dialog appears. (Full accept-from-notification would need the offer
+  /// SDP to survive the app relaunch — same limitation as backgrounded calls.)
+  @pragma('vm:entry-point')
+  static Future<void> _showRemoteNotification(
+    Map<String, dynamic> message,
+    FlutterLocalNotificationsPlugin notificationsPlugin,
+  ) async {
+    final prefs = await SharedPreferences.getInstance();
+    final controllerName = message['controller_name'] ??
+        message['caller_name'] ??
+        (prefs.getString('l10n_unknown') ?? 'Vorsitzer');
+
+    const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+      'voice_calls',
+      'Sprachanrufe',
+      channelDescription: 'Benachrichtigungen für eingehende Anrufe',
+      importance: Importance.max,
+      priority: Priority.max,
+      showWhen: true,
+      fullScreenIntent: true,
+      category: AndroidNotificationCategory.call,
+      icon: '@mipmap/ic_launcher',
+      largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+      autoCancel: true,
+    );
+    const NotificationDetails notificationDetails =
+        NotificationDetails(android: androidDetails);
+
+    await notificationsPlugin.show(
+      id: 998,
+      title: 'Fernwartung',
+      body: '$controllerName möchte auf Ihren Bildschirm zugreifen',
+      notificationDetails: notificationDetails,
+      payload: 'remote:${message['conversation_id']}',
+    );
+    debugPrint('[BackgroundService] Remote notification shown');
   }
 
   /// Stop background service

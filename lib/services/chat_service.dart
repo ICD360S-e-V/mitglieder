@@ -32,6 +32,15 @@ class ChatService {
   final _iceCandidateController = StreamController<IceCandidateEvent>.broadcast();
   final _callBusyController = StreamController<int>.broadcast();
 
+  // Stream controllers for remote-control (Fernwartung) events. Separate feature
+  // from voice calls — its own frame types so the two never mix. (This app is the
+  // AGENT side: it receives remote_offer and shares its screen after consent.)
+  final _remoteOfferController = StreamController<RemoteOfferEvent>.broadcast();
+  final _remoteAnswerController = StreamController<RemoteAnswerEvent>.broadcast();
+  final _remoteRejectedController = StreamController<RemoteRejectedEvent>.broadcast();
+  final _remoteEndedController = StreamController<RemoteEndedEvent>.broadcast();
+  final _remoteIceController = StreamController<RemoteIceEvent>.broadcast();
+
   // Stream controller for read receipts
   final _readReceiptController = StreamController<ReadReceiptEvent>.broadcast();
 
@@ -60,6 +69,13 @@ class ChatService {
   Stream<CallEndedEvent> get callEndedStream => _callEndedController.stream;
   Stream<IceCandidateEvent> get iceCandidateStream => _iceCandidateController.stream;
   Stream<int> get callBusyStream => _callBusyController.stream;
+
+  // Public streams - Remote Control (Fernwartung)
+  Stream<RemoteOfferEvent> get remoteOfferStream => _remoteOfferController.stream;
+  Stream<RemoteAnswerEvent> get remoteAnswerStream => _remoteAnswerController.stream;
+  Stream<RemoteRejectedEvent> get remoteRejectedStream => _remoteRejectedController.stream;
+  Stream<RemoteEndedEvent> get remoteEndedStream => _remoteEndedController.stream;
+  Stream<RemoteIceEvent> get remoteIceStream => _remoteIceController.stream;
 
   // Public stream - Read Receipts
   Stream<ReadReceiptEvent> get readReceiptStream => _readReceiptController.stream;
@@ -250,6 +266,61 @@ class ChatService {
   void sendIceCandidate(int conversationId, String candidate, String sdpMid, int sdpMLineIndex) {
     _send({
       'type': 'ice_candidate',
+      'conversation_id': conversationId,
+      'candidate': candidate,
+      'sdp_mid': sdpMid,
+      'sdp_mline_index': sdpMLineIndex,
+    });
+  }
+
+  // ==================== Remote Control (Fernwartung) Methods ====================
+  // Separate signaling from voice calls; own frame types so the two never mix.
+
+  /// Vorsitzer → member: request a remote-control session (carries the WebRTC offer).
+  void sendRemoteOffer(int conversationId, String targetUserId, String sdp, String sdpType,
+      {String? controllerName}) {
+    _send({
+      'type': 'remote_offer',
+      'conversation_id': conversationId,
+      'target_user_id': targetUserId,
+      'sdp': sdp,
+      'sdp_type': sdpType,
+      if (controllerName != null) 'controller_name': controllerName,
+    });
+  }
+
+  /// Member → Vorsitzer: accept and answer the session (carries the WebRTC answer).
+  void sendRemoteAnswer(int conversationId, String sdp, String sdpType) {
+    _send({
+      'type': 'remote_answer',
+      'conversation_id': conversationId,
+      'sdp': sdp,
+      'sdp_type': sdpType,
+    });
+  }
+
+  /// Member → Vorsitzer: decline the remote-control request.
+  void sendRemoteReject(int conversationId, String reason) {
+    _send({
+      'type': 'remote_reject',
+      'conversation_id': conversationId,
+      'reason': reason,
+    });
+  }
+
+  /// Either side: tear the remote-control session down.
+  void sendRemoteEnd(int conversationId) {
+    _send({
+      'type': 'remote_end',
+      'conversation_id': conversationId,
+    });
+  }
+
+  /// ICE candidate for the remote-control peer connection. Own frame type so it
+  /// is never mixed with the voice-call ice_candidate stream.
+  void sendRemoteIce(int conversationId, String candidate, String sdpMid, int sdpMLineIndex) {
+    _send({
+      'type': 'remote_ice',
       'conversation_id': conversationId,
       'candidate': candidate,
       'sdp_mid': sdpMid,
@@ -476,6 +547,53 @@ class ChatService {
           _callBusyController.add(json['conversation_id'] ?? 0);
           break;
 
+        // Remote-control (Fernwartung) events. This app is the AGENT: it acts on
+        // remote_offer (consent prompt), remote_ice and remote_ended.
+        case 'remote_offer':
+          _log.info('🖥️ WebSocket: REMOTE_OFFER received from ${json['controller_name'] ?? json['caller_name']}', tag: 'REMOTE');
+          _remoteOfferController.add(RemoteOfferEvent(
+            conversationId: json['conversation_id'] ?? 0,
+            controllerId: json['controller_id']?.toString() ?? json['caller_id']?.toString() ?? '',
+            controllerName: json['controller_name'] ?? json['caller_name'] ?? '',
+            sdp: json['sdp'] ?? '',
+            sdpType: json['sdp_type'] ?? 'offer',
+          ));
+          break;
+
+        case 'remote_answer':
+          _remoteAnswerController.add(RemoteAnswerEvent(
+            conversationId: json['conversation_id'] ?? 0,
+            answererId: json['answerer_id']?.toString() ?? '',
+            sdp: json['sdp'] ?? '',
+            sdpType: json['sdp_type'] ?? 'answer',
+          ));
+          break;
+
+        case 'remote_rejected':
+          _remoteRejectedController.add(RemoteRejectedEvent(
+            conversationId: json['conversation_id'] ?? 0,
+            rejectedBy: json['rejected_by'] ?? '',
+            reason: json['reason'] ?? 'rejected',
+          ));
+          break;
+
+        case 'remote_ended':
+          _remoteEndedController.add(RemoteEndedEvent(
+            conversationId: json['conversation_id'] ?? 0,
+            endedBy: json['ended_by'] ?? '',
+            reason: json['reason'],
+          ));
+          break;
+
+        case 'remote_ice':
+          _remoteIceController.add(RemoteIceEvent(
+            conversationId: json['conversation_id'] ?? 0,
+            candidate: json['candidate'] ?? '',
+            sdpMid: json['sdp_mid'] ?? '',
+            sdpMLineIndex: json['sdp_mline_index'] ?? 0,
+          ));
+          break;
+
         case 'read_receipt':
           _readReceiptController.add(ReadReceiptEvent.fromJson(json));
           break;
@@ -515,6 +633,11 @@ class ChatService {
     _reactionUpdateController.close();
     _newDeviceLoginController.close();
     _ticketNotificationController.close();
+    _remoteOfferController.close();
+    _remoteAnswerController.close();
+    _remoteRejectedController.close();
+    _remoteEndedController.close();
+    _remoteIceController.close();
   }
 }
 
@@ -635,6 +758,83 @@ class IceCandidateEvent {
   final int sdpMLineIndex;
 
   IceCandidateEvent({
+    required this.conversationId,
+    required this.candidate,
+    required this.sdpMid,
+    required this.sdpMLineIndex,
+  });
+}
+
+// ==================== Remote Control (Fernwartung) Event Models ====================
+
+/// Incoming remote-control request — this app shows a consent prompt before any
+/// screen is shared.
+class RemoteOfferEvent {
+  final int conversationId;
+  final String controllerId;
+  final String controllerName;
+  final String sdp;
+  final String sdpType;
+
+  RemoteOfferEvent({
+    required this.conversationId,
+    required this.controllerId,
+    required this.controllerName,
+    required this.sdp,
+    required this.sdpType,
+  });
+}
+
+/// Remote-control answer (received by the Vorsitzer/controller side).
+class RemoteAnswerEvent {
+  final int conversationId;
+  final String answererId;
+  final String sdp;
+  final String sdpType;
+
+  RemoteAnswerEvent({
+    required this.conversationId,
+    required this.answererId,
+    required this.sdp,
+    required this.sdpType,
+  });
+}
+
+/// Remote-control request declined by the member.
+class RemoteRejectedEvent {
+  final int conversationId;
+  final String rejectedBy;
+  final String reason;
+
+  RemoteRejectedEvent({
+    required this.conversationId,
+    required this.rejectedBy,
+    required this.reason,
+  });
+}
+
+/// Remote-control session ended by either side.
+class RemoteEndedEvent {
+  final int conversationId;
+  final String endedBy;
+  final String? reason;
+
+  RemoteEndedEvent({
+    required this.conversationId,
+    required this.endedBy,
+    this.reason,
+  });
+}
+
+/// ICE candidate for the remote-control peer connection (separate from the
+/// voice-call IceCandidateEvent).
+class RemoteIceEvent {
+  final int conversationId;
+  final String candidate;
+  final String sdpMid;
+  final int sdpMLineIndex;
+
+  RemoteIceEvent({
     required this.conversationId,
     required this.candidate,
     required this.sdpMid,

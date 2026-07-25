@@ -159,6 +159,13 @@ dependencies:
   # Multi-monitor support
   screen_retriever: ^0.2.0
 
+  # Fernwartung (remote support): native input injection on the AGENT side.
+  # win32 (SendInput) is Windows-only at runtime but already a transitive dep
+  # via window_manager, so it is present in every build. ffi backs the Linux
+  # XTest injector. Guarded by Platform checks — no-op off their target OS.
+  win32: ^5.15.0
+  ffi: ^2.1.0
+
   # System tray icon and menu
   tray_manager: ^0.5.2
 
