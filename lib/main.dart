@@ -18,6 +18,7 @@ import 'services/startup_diagnostics.dart';
 import 'services/update_service.dart';
 import 'services/platform/platform_factory.dart';
 import 'widgets/network_security_banner.dart';
+import 'widgets/remote_touch_overlay.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -168,8 +169,12 @@ class _MitgliedAppState extends State<MitgliedApp> {
               elevation: 0,
             ),
           ),
-          builder: (context, child) => NetworkSecurityBanner(
-            child: child ?? const SizedBox.shrink(),
+          builder: (context, child) => RemoteTouchOverlay(
+            // During a Fernwartung session, marks where the member taps so the
+            // Vorsitzer sees it in the shared screen.
+            child: NetworkSecurityBanner(
+              child: child ?? const SizedBox.shrink(),
+            ),
           ),
           home: _languagePicked
               ? const WelcomeScreen()
