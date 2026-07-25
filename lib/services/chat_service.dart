@@ -5,6 +5,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
 import 'notification_service.dart';
 import 'logger_service.dart';
+import 'api_service.dart';
 
 final _log = LoggerService();
 
@@ -134,11 +135,15 @@ class ChatService {
         },
       );
 
-      // Send authentication message
-      _log.info('Sending auth for $mitgliedernummer', tag: 'WS');
+      // Send authentication message. Include the JWT so the server can verify the
+      // connection and bind it to the token's user, matching what the background
+      // service already sends. In the body (not the URL) so it never hits logs.
+      final token = ApiService().token;
+      _log.info('Sending auth for $mitgliedernummer (token: ${token != null ? 'present' : 'MISSING'})', tag: 'WS');
       _send({
         'type': 'auth',
         'mitgliedernummer': mitgliedernummer,
+        if (token != null) 'token': token,
       });
 
       // Wait for auth response with timeout
