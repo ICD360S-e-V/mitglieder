@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.69.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.69.0...v1.69.1) (2026-07-25)
+
+
+### Bug Fixes
+
+* **chat:** send session token in the WebSocket auth message ([#210](https://github.com/ICD360S-e-V/mitglieder/issues/210)) ([b120c4e](https://github.com/ICD360S-e-V/mitglieder/commit/b120c4ecfaf8855109c5f2257f84c9ac776b8208))
+
 ## [1.69.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.68.4...v1.69.0) (2026-07-24)
 
 
