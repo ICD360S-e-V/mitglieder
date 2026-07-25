@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.70.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.69.1...v1.70.0) (2026-07-25)
+
+
+### Features
+
+* **windows:** bundle VC++ runtime, add unattended updates ([#212](https://github.com/ICD360S-e-V/mitglieder/issues/212)) ([5f0489e](https://github.com/ICD360S-e-V/mitglieder/commit/5f0489e98827a35ab8a8f60e67ca580ca5f790ce))
+
 ## [1.69.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.69.0...v1.69.1) (2026-07-25)
 
 
