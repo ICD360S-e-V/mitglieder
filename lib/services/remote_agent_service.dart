@@ -7,6 +7,7 @@ import 'dart:io';
 import 'api_service.dart';
 import 'chat_service.dart';
 import 'logger_service.dart';
+import 'secure_screen.dart';
 import 'remote_input/input_injector.dart';
 
 final _log = LoggerService();
@@ -124,6 +125,9 @@ class RemoteAgentService {
       // rest is room-broadcast). Members are otherwise only in a room when the
       // chat is open.
       _chat.joinConversation(offer.conversationId);
+      // Android: drop FLAG_SECURE so MediaProjection can actually capture the
+      // app (otherwise the shared screen is black). Restored on cleanup.
+      await SecureScreen.setSecure(false);
       _injector = createInputInjector();
       await _createPeerConnection();
 
@@ -294,6 +298,8 @@ class RemoteAgentService {
   }
 
   void _cleanup() {
+    // Restore the screenshot/recording block the instant the session ends.
+    SecureScreen.setSecure(true);
     _iceSub?.cancel();
     _endedSub?.cancel();
     _iceSub = null;

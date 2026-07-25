@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.MethodChannel
 
 /**
  * MainActivity that starts the RestartService on app launch.
@@ -15,6 +17,33 @@ import io.flutter.embedding.android.FlutterActivity
 class MainActivity : FlutterActivity() {
     companion object {
         const val TAG = "MainActivity"
+        const val SECURE_CHANNEL = "de.icd360sev.mitglied/secure_screen"
+    }
+
+    // Fernwartung: FLAG_SECURE blocks the app from being screen-recorded — which
+    // also blocks MediaProjection during a consented remote-support session, so
+    // the shared screen would be black. Toggle it off only while sharing, then
+    // restore it. Called from Dart (RemoteAgentService) on session start/stop.
+    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+        super.configureFlutterEngine(flutterEngine)
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, SECURE_CHANNEL)
+            .setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "setSecure" -> {
+                        val secure = call.argument<Boolean>("secure") ?: true
+                        runOnUiThread {
+                            if (secure) {
+                                window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                            } else {
+                                window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                            }
+                            Log.d(TAG, "FLAG_SECURE set to $secure")
+                        }
+                        result.success(null)
+                    }
+                    else -> result.notImplemented()
+                }
+            }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
