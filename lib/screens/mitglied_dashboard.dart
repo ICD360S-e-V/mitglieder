@@ -32,6 +32,9 @@ import '../widgets/member_calendar_view.dart';
 import '../widgets/eastern.dart';
 import '../widgets/native_call_screen.dart';
 import '../services/notification_service.dart';
+import '../services/remote_agent_service.dart';
+import '../widgets/remote_consent_dialog.dart';
+import '../widgets/remote_sharing_banner.dart';
 import '../services/termin_service.dart';
 import 'welcome.dart';
 
@@ -83,6 +86,9 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   StreamSubscription<ChatMessage>? _messageSubscription;
   StreamSubscription<CallOfferEvent>? _callOfferSubscription;
   StreamSubscription<int>? _ticketNotificationSubscription;
+  // Fernwartung (remote support) — receives remote_offer, shows consent prompt.
+  StreamSubscription<RemoteOfferEvent>? _remoteOfferSubscription;
+  final RemoteAgentService _remoteAgent = RemoteAgentService();
 
   // Background conversation ID for receiving messages
   int? _backgroundConversationId;
@@ -92,6 +98,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   String? _zahlungsmethodeLabel;
   bool _paymentReminderShownToday = false;
   Timer? _paymentReminderTimer;
+  Timer? _updateCheckTimer;
 
   // Pending termine count for badge
   int _pendingTerminCount = 0;
@@ -202,6 +209,15 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       _checkPaymentReminder();
     });
 
+    // Re-check for updates every 6h. The startup check above is enough for
+    // phones, which get killed and relaunched constantly, but a desktop
+    // install commonly stays open for days and would otherwise never notice a
+    // release. With automatic updates enabled this is what actually applies
+    // them unattended.
+    _updateCheckTimer = Timer.periodic(const Duration(hours: 6), (_) {
+      _checkForUpdates();
+    });
+
     // Setup voice call signaling callback
     _voiceCallService.onSignalingMessage = (message) {
       final type = message['type'] as String;
@@ -277,12 +293,14 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     WidgetsBinding.instance.removeObserver(this);
     _messageSubscription?.cancel();
     _callOfferSubscription?.cancel();
+    _remoteOfferSubscription?.cancel();
     _ticketNotificationSubscription?.cancel();
     _callDurationTimer?.cancel();
     _ticketRefreshTimer?.cancel();
     _paymentReminderTimer?.cancel();
     _terminPollTimer?.cancel();
     _deviceDataTimer?.cancel();
+    _updateCheckTimer?.cancel();
     _heartbeatService.stop();
     _ticketNotificationService.stop();
     NtfyService().stop();
@@ -304,6 +322,11 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       }
     });
 
+    // Fernwartung: a Vorsitzer requests remote access → show the consent prompt.
+    _remoteOfferSubscription = _chatService.remoteOfferStream.listen((event) {
+      if (mounted) _handleRemoteOffer(event);
+    });
+
     // Listen for ticket notifications - also reload ticket list
     _ticketNotificationSubscription = _ticketNotificationService.notificationStream.listen((count) {
       if (mounted) {
@@ -313,6 +336,31 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         _loadTickets();
       }
     });
+  }
+
+  /// Fernwartung request: show the consent prompt. Nothing is shared unless the
+  /// member taps "Erlauben". A session already running auto-declines new requests.
+  void _handleRemoteOffer(RemoteOfferEvent event) {
+    _log.info('MitgliedDash: Fernwartung request from ${event.controllerName} (conv: ${event.conversationId})', tag: 'REMOTE');
+    if (_remoteAgent.isSharing) {
+      _chatService.sendRemoteReject(event.conversationId, 'busy');
+      return;
+    }
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => RemoteConsentDialog(
+        controllerName: event.controllerName,
+        onAccept: () {
+          Navigator.of(ctx).pop();
+          _remoteAgent.accept(event);
+        },
+        onDecline: () {
+          Navigator.of(ctx).pop();
+          _remoteAgent.decline(event);
+        },
+      ),
+    );
   }
 
   void _handleIncomingCall(CallOfferEvent event) {
@@ -881,6 +929,9 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       body: SeasonalBackground(
         child: Column(
           children: [
+            // Always-on-top: shows only while a Fernwartung session is active,
+            // with a one-tap Stop. Renders nothing otherwise.
+            const RemoteSharingBanner(),
             if (widget.status == 'neu')
               TrialWarningBanner(daysRemaining: _daysRemaining),
             Expanded(child: _buildMainContent()),
