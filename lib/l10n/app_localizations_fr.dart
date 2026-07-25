@@ -9,12 +9,6 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Portail Membres';
-
-  @override
-  String get memberPortal => 'Portail Membres';
-
-  @override
   String get welcomeLoading => 'Chargement...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get memberNumberHint => 'Veuillez entrer le numéro de membre';
 
   @override
-  String get password => 'Mot de passe';
-
-  @override
-  String get passwordHint => 'Veuillez entrer le mot de passe';
-
-  @override
   String get confirmPassword => 'Confirmer le mot de passe';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Veuillez entrer le nouveau mot de passe';
-
-  @override
-  String get saveCredentials => 'Enregistrer les identifiants';
-
-  @override
-  String get autoLogin => 'Connexion automatique';
-
-  @override
-  String get forgotPassword => 'Mot de passe oublié ?';
 
   @override
   String get firstName => 'Prénom et Nom';
@@ -91,22 +70,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get passwordsNotMatch => 'Les mots de passe ne correspondent pas';
 
   @override
-  String get recoveryCode => 'Code de Récupération (6 chiffres)';
-
-  @override
-  String get recoveryCodeHelper =>
-      'Mémorisez ce code pour récupérer votre mot de passe';
-
-  @override
-  String get recoveryCodeHint => 'Veuillez entrer le code de récupération';
-
-  @override
-  String get recoveryCodeInvalid => 'Le code doit avoir exactement 6 chiffres';
-
-  @override
-  String get loginFailed => 'Échec de connexion';
-
-  @override
   String get registrationFailed => 'Échec d\'inscription';
 
   @override
@@ -120,20 +83,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'Trop d\'appareils';
-
-  @override
-  String get maxDevicesMessage =>
-      'Vous êtes déjà connecté sur 3 appareils.\nSélectionnez un appareil à déconnecter:';
-
-  @override
-  String get unknownDevice => 'Appareil inconnu';
-
-  @override
   String get unknown => 'Inconnu';
-
-  @override
-  String get logoutError => 'Erreur de déconnexion';
 
   @override
   String error(String error) {
@@ -147,40 +97,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get resetPassword => 'Réinitialiser le mot de passe';
 
   @override
-  String get forgotPasswordTitle => 'Mot de passe oublié';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Entrez votre numéro de membre et le code de récupération créé lors de l\'inscription.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Mot de passe réinitialisé avec succès!\n\nVous pouvez maintenant vous connecter avec votre nouveau mot de passe.';
-
-  @override
-  String get passwordResetFailed => 'Échec de réinitialisation';
-
-  @override
-  String get needHelp => 'Besoin d\'aide ?';
-
-  @override
-  String get helpQuestion => 'Des problèmes de connexion ou d\'inscription ?';
-
-  @override
-  String get helpDescription =>
-      'Contactez-nous via WhatsApp et décrivez exactement ce qui ne fonctionne pas. Nous répondrons dès que possible!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Demande via l\'application ICD360S';
-
-  @override
-  String get whatsappMessage =>
-      'Bonjour, j\'ai un problème avec l\'application ICD360S. ';
-
-  @override
   String get imprint => 'Mentions Légales';
 
   @override
@@ -191,16 +107,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get revocation => 'Droit de Rétractation';
-
-  @override
-  String get cancellation => 'Résiliation';
-
-  @override
-  String get allRightsReserved => 'Tous droits réservés.';
-
-  @override
-  String get enterCredentials =>
-      'Veuillez entrer le numéro de membre et le mot de passe';
 
   @override
   String get appointments => 'Rendez-vous';
@@ -256,14 +162,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get close => 'Fermer';
 
   @override
-  String get membership => 'Adhésion';
-
-  @override
   String get myAppointments => 'Mes rendez-vous';
-
-  @override
-  String get appointmentsLoadingReady =>
-      'Chargement des rendez-vous - API prêt!';
 
   @override
   String get priority => 'Priorité';
@@ -272,16 +171,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get messageLabel => 'Message';
 
   @override
-  String get createdOn => 'Créé';
-
-  @override
-  String get handler => 'Gestionnaire';
-
-  @override
   String get reportProblems => 'Signaler des problèmes';
-
-  @override
-  String get reportProblem => 'Signaler un problème';
 
   @override
   String get weRespondIn24Hours =>
@@ -314,41 +204,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get myTickets => 'Mes tickets';
 
   @override
-  String get newTicket => 'Nouveau ticket';
-
-  @override
-  String get noOpenTickets => 'Aucun ticket ouvert';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Vous avez une question ou un problème?\nCréez un nouveau ticket.';
-
-  @override
-  String get whatIsTheProblem => 'Quel est le problème ?';
-
-  @override
-  String get describeTheProblem => 'Décrivez le problème';
-
-  @override
-  String get howUrgentIsIt => 'Quelle est l\'urgence ?';
-
-  @override
   String get low => 'Faible';
-
-  @override
-  String get medium => 'Moyen';
 
   @override
   String get high => 'Élevé';
 
   @override
   String get submit => 'Soumettre';
-
-  @override
-  String get fillSubjectAndMessage => 'Veuillez remplir le sujet et le message';
-
-  @override
-  String get ticketCreated => 'Ticket créé';
 
   @override
   String get errorCreatingTicket => 'Erreur lors de la création du ticket';
@@ -369,12 +231,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get changePassword => 'Changer le mot de passe';
 
   @override
-  String get newEmailAddress => 'Nouvelle adresse email';
-
-  @override
-  String get currentPassword => 'Mot de passe actuel';
-
-  @override
   String get saveEmail => 'Enregistrer l\'email';
 
   @override
@@ -382,9 +238,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Appareil déconnecté';
-
-  @override
-  String get passwordChangedSuccessfully => 'Mot de passe modifié avec succès';
 
   @override
   String get emailChangedSuccessfully => 'Email modifié avec succès';
@@ -398,25 +251,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get validEmailRequired => 'Veuillez entrer une adresse email valide';
-
-  @override
-  String get passwordTooShort =>
-      'Le mot de passe doit contenir au moins 6 caractères';
-
-  @override
-  String get maxDevicesReached =>
-      'Vous êtes connecté sur le maximum de 3 appareils.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Vous êtes connecté sur $count appareils sur 3.';
-  }
-
-  @override
-  String get noActiveSessions => 'Aucune session active';
-
-  @override
-  String get logoutFromDevice => 'Se déconnecter de cet appareil';
 
   @override
   String get confirmLogoutDevice => 'Déconnecter l\'appareil ?';
@@ -546,6 +380,18 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get appWillRestart => 'L\'application redémarrera automatiquement.';
+
+  @override
+  String get autoUpdateEnableTitle => 'Install future updates automatically';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'The app downloads and installs updates on its own and restarts briefly. No further prompts.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Version $version is being installed in the background. The app will restart shortly.';
+  }
 
   @override
   String get later => 'Plus tard';
@@ -930,9 +776,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get errorConnecting => 'Erreur de connexion';
 
   @override
-  String get errorAcceptingCall => 'Erreur lors de l\'acceptation';
-
-  @override
   String get errorDownloading => 'Erreur de téléchargement';
 
   @override
@@ -964,11 +807,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get file => 'Fichier';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name écrit...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Nouveau message de';
@@ -1037,19 +875,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get logsCopied => 'Journaux copiés !';
-
-  @override
-  String get diagnosticDataTitle => 'Données de diagnostic';
-
-  @override
-  String get diagnosticDescription =>
-      'Souhaitez-vous envoyer des données de diagnostic anonymes pour améliorer l\'application ?';
-
-  @override
-  String get noThanks => 'Non, merci';
-
-  @override
-  String get yesEnable => 'Oui, activer';
 
   @override
   String get passwordMinEightChars =>
@@ -1228,9 +1053,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get emailChangedSuccess => 'E-mail modifié avec succès';
 
   @override
-  String get newPasswordMinChars => 'Nouveau mot de passe (min. 6 car.)';
-
-  @override
   String get reasonLabel2 => 'Raison';
 
   @override
@@ -1238,9 +1060,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Télécharger';
-
-  @override
-  String get connectionErrorGeneric => 'Erreur de connexion';
 
   @override
   String get copyLogs => 'Copier les journaux';
@@ -1256,12 +1075,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get unknownValue => 'Inconnu';
-
-  @override
-  String get bankTransfer => 'Virement';
-
-  @override
-  String get standingOrder => 'Ordre permanent';
 
   @override
   String get payment => 'Paiement';
@@ -1638,17 +1451,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get statusAccepted => 'Accepté';
 
   @override
-  String get memberNumberTooLong =>
-      'Numéro de membre trop long (max 20 caractères)';
-
-  @override
-  String get onlyUppercaseAndNumbers =>
-      'Seules les lettres majuscules et les chiffres sont autorisés';
-
-  @override
-  String get passwordTooLong => 'Mot de passe trop long (max 100 caractères)';
-
-  @override
   String get nameTooLong => 'Nom trop long (max 100 caractères)';
 
   @override
@@ -1779,16 +1581,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get openFile => 'Ouvrir';
 
   @override
-  String get diagnosticErrors => 'Rapports d\'erreurs pour amélioration';
-
-  @override
-  String get diagnosticAnonymousStats => 'Statistiques d\'utilisation anonymes';
-
-  @override
-  String get diagnosticPerformance =>
-      'Données de performance de l\'application';
-
-  @override
   String get noMicrophoneError =>
       'Aucun microphone trouvé. Veuillez connecter un microphone et réessayer.';
 
@@ -1813,9 +1605,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'Les comptes non vérifiés dans les 30 jours seront automatiquement suspendus.';
-
-  @override
-  String get ipClean => 'IP propre - non listé';
 
   @override
   String get documentsProvidedByBoard =>
@@ -1854,14 +1643,6 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp =>
-      'Souhaitez-vous nous aider à améliorer l\'application ?';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Aucune donnée personnelle n\'est collectée. Ce paramètre peut être modifié à tout moment.';
-
-  @override
   String logEntries(int count) {
     return '$count entrées';
   }
@@ -1871,15 +1652,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Nouvelle connexion détectée';
-
-  @override
-  String get waitingForMember => 'En attente du membre';
-
-  @override
-  String get waitingForStaff => 'En attente du personnel';
-
-  @override
-  String get waitingForAuthority => 'En attente de l\'autorité';
 
   @override
   String get errorNoInternet =>
@@ -1909,14 +1681,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'DNS problem detected. Check your connection or try another network.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Please open your browser and sign in to the WiFi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Slow connection.';
-
-  @override
-  String get securityBannerNetworkOffline => 'No network connection.';
 
   @override
   String get securityPermissionDialogTitle =>
@@ -1939,4 +1704,1150 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'No microphone was found. Connect a headset or microphone and try again.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Bonjour';
+
+  @override
+  String get claudiuWelcomeDay => 'Bonjour';
+
+  @override
+  String get claudiuWelcomeEvening => 'Bonsoir';
+
+  @override
+  String get claudiuWelcomeNight => 'Bonsoir';
+
+  @override
+  String get claudiuWelcomeVisitor => 'cher visiteur';
+
+  @override
+  String get claudiuWelcomeAsk => 'Comment puis-je t\'aider ?';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Je veux devenir membre';
+
+  @override
+  String get claudiuWelcomeLogin =>
+      'Je suis déjà membre et je veux me connecter';
+
+  @override
+  String get claudiuWelcomeProblem => 'J\'ai un problème avec l\'application';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Urgence — appelez-nous';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Claudiu';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro =>
+      'Avant d\'appeler — nos heures d\'ouverture :';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'Au bureau';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'Sur le terrain avec nos clients';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'En dehors de ces horaires nous ne traitons que les urgences. Tu peux aussi nous envoyer un SMS au même numéro — nous te rappellerons.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Appeler maintenant';
+
+  @override
+  String get claudiuWelcomeSendSms => 'Envoyer un SMS';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Urgence à ICD360S e.V. — veuillez me contacter dès que possible.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Fermer';
+
+  @override
+  String get claudiuLoginWelcome => 'Bon retour, cher membre !';
+
+  @override
+  String get claudiuLoginAsk =>
+      'Donne-moi ton numéro de membre, s\'il te plaît.';
+
+  @override
+  String get claudiuLoginProgress => 'Presque… continue à taper.';
+
+  @override
+  String get claudiuLoginReady => 'Parfait ! Appuie sur le bouton ci-dessous.';
+
+  @override
+  String get claudiuLoginLoading => 'Je vérifie ton identité… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Trouvé ! Connexion en cours…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Trouvé, $name ! Connexion en cours…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Hum, je ne trouve pas ce numéro. L\'as-tu tapé correctement ?';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Tu as oublié ton numéro de membre ?';
+
+  @override
+  String get claudiuLoginNoSms =>
+      'Nous n\'envoyons pas le numéro par e-mail ou SMS.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Le seul moyen : nous rencontrer en personne au bureau de l\'association, après vérification de l\'identité.';
+
+  @override
+  String get claudiuLoginContactUs => 'Appelle-nous pour prendre rendez-vous :';
+
+  @override
+  String get claudiuDiagnosticGreeting =>
+      'Avant d\'entrer, une question rapide';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Puis-je envoyer des rapports anonymes pour que les développeurs améliorent l\'application ?';
+
+  @override
+  String get claudiuDiagnosticYes => 'Oui, je veux aider';
+
+  @override
+  String get claudiuDiagnosticNo => 'Non, je regarde juste';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Dis-m\'en plus';
+
+  @override
+  String get claudiuDiagnosticSendsHeader =>
+      '📤 Ce que nous ENVOYONS (anonyme) :';
+
+  @override
+  String get claudiuDiagnosticSends1 =>
+      'Un code anonyme de l\'appareil (PAS le numéro de membre)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Ton rôle (membre / conseil)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Système d\'exploitation (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Langue choisie';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Niveau et état de la batterie';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Écran actuel';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Durée de la session (secondes)';
+
+  @override
+  String get claudiuDiagnosticSends8 => 'Erreurs s\'il y en a (10 dernières)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Navigation (20 derniers écrans)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader =>
+      '🛡️ Ce que nous n\'envoyons JAMAIS :';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Ton vrai nom';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'Adresse e-mail';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Numéro de téléphone';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Mot de passe';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Contenu des messages de chat';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Contenu des tickets';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Documents ou pièces jointes';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Détails techniques :';
+
+  @override
+  String get claudiuDiagnosticTech1 => 'Envoyé toutes les 2 minutes';
+
+  @override
+  String get claudiuDiagnosticTech2 =>
+      'Connexion chiffrée TLS avec certificat épinglé';
+
+  @override
+  String get claudiuDiagnosticTech3 =>
+      'Tu peux le désactiver à tout moment dans les Paramètres';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Comment puis-je aider ?';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Que s\'est-il passé ?';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Comment veux-tu me le dire ?';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Écrire un rapport';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'Avec des détails étape par étape. L\'équipe reçoit le texte et le résout plus tard.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Parlons maintenant';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Chat anonyme avec un opérateur. Réponse en temps réel si quelqu\'un est en ligne.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Ou, si c\'est urgent :';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Appelez-nous';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Chat anonyme';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Salut !';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Je t\'écoute. Écris ce que tu veux — pas besoin de nom. Je réponds dès que je suis là.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Écris un message…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator =>
+      'En attente d\'un opérateur…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Salut !';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Merci de nous avoir écrit — tu es maintenant en contact avec un Vorsitzer. Dis-nous comment on peut t\'aider pour ta demande d\'adhésion.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime =>
+      'Combien de temps prend la validation ?';
+
+  @override
+  String get claudiuQuickReplyDocuments => 'Quels documents me faut-il ?';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Je suis bloqué sur une étape';
+
+  @override
+  String get claudiuQuickReplyHuman =>
+      'Je peux parler à quelqu\'un maintenant ?';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Connexion…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Impossible d\'ouvrir le chat. Réessaie ou appelle-nous.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Réessayer';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Connecté';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Reconnexion…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'L\'opérateur écrit…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Signaler un problème';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Que s\'est-il passé ?';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Dis-moi en détail et je transmettrai le rapport à l\'équipe.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Merci d\'inclure :';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Ce que tu faisais quand le problème est apparu';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Tout message d\'erreur que tu as vu';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 => 'Sur quel écran tu étais';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'L\'application plante, se ferme ou affiche un écran blanc ?';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Cela arrive-t-il à chaque fois ou une seule fois ?';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Ta description';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'P. ex. : Quand j\'ouvre l\'écran de chat j\'ai un message « Connection error » et l\'application ne répond plus…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Un peu plus de détails, s\'il te plaît (au moins $count caractères)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Envoyer le rapport';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Envoi…';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Merci !';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'Le rapport a été envoyé. Notre équipe l\'examinera dès que possible.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Compris';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Impossible d\'envoyer le rapport. Appelle-nous pour une aide urgente.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Ou, si c\'est urgent :';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Appelez-nous';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Salut, $name ! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Salut ! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Content que tu sois là !';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'Pour ta sécurité, un Vorsitzer vérifie maintenant ta demande de connexion. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Nous faisons cela tous les 30 jours pour être sûrs que c\'est bien toi. C\'est comme un check-up de sécurité — 5 minutes maximum.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'C\'est bon ! 🎉 Le Vorsitzer t\'a reconnu. Connexion en cours…';
+
+  @override
+  String get claudiuApprovalDenied =>
+      'Hum, le Vorsitzer a refusé ta demande. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Si tu penses que c\'est une erreur, appelle-nous pour qu\'on règle ça.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      'Les 5 minutes sont écoulées et nous n\'avons pas eu de réponse du Vorsitzer.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Appelle-nous et nous pourrons approuver ta demande directement. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Appelez-nous';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Réessayer';
+
+  @override
+  String get claudiuApprovalCancel => 'Annuler';
+
+  @override
+  String get claudiuApprovalClose => 'Fermer';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Salut, visiteur ! 👋 Merci de vouloir rejoindre notre famille.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'Je m\'appelle Claudiu. Au printemps 2025, j\'avais une vision claire : créer une association qui aide les personnes dans le besoin — bénévolement, avec le cœur, sans bureaucratie inutile. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'J\'ai commencé à parler avec les clients que je visitais. Je leur ai raconté mon rêve. Et chacun a dit : « Oui, allons-y ! » En juillet 2025, nous étions six à nous rencontrer — des gens déterminés. Nous avons décidé de fonder **ICD360S e.V.** à Neu-Ulm. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      'Le **1er août 2025**, l\'association a officiellement vu le jour — dans le registre des associations. Le plus beau cadeau pour moi. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Que faisons-nous ? Nous aidons les réfugiés, les personnes handicapées, les personnes économiquement défavorisées, **les enfants et les jeunes** — pour les démarches administratives, l\'allemand, le logement, les courses, les prestations sociales. Notre Vorstand est composé majoritairement de personnes handicapées — ainsi les décisions viennent d\'une expérience vécue réelle. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'C\'est ton tour maintenant. Inscrivons-toi — environ 5 minutes. On y va pas à pas, je ne te laisse pas seul. ✨';
+
+  @override
+  String get wizardIntroStart => 'C\'est parti';
+
+  @override
+  String get wizardBack => 'Retour';
+
+  @override
+  String get wizardNext => 'Suivant';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return 'Étape $step sur $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Ce champ est obligatoire';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'Trop court (au moins $count caractères)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters =>
+      'Uniquement lettres, espaces, traits d\'union et apostrophes';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Impossible d\'enregistrer. Vérifie ta connexion et réessaie.';
+
+  @override
+  String get wizardStufe1aTitle => 'Identité';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Faisons connaissance officiellement. Écris ton nom exactement comme il apparaît sur ton Personalausweis, Reisepass ou Aufenthaltstitel — pour que ça corresponde à tes documents.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (prénoms)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Tous tes prénoms, exactement comme sur le document. Avec espace ou tiret (p. ex. Hans-Peter, Maria Anna).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (nom de famille)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'Ton nom de famille actuel.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (nom de naissance) — facultatif';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Seulement s\'il diffère du Familienname — par exemple avant le mariage.';
+
+  @override
+  String get wizardStufe1bTitle => 'Anniversaire';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'On aimerait fêter ton anniversaire avec toi ! 🎂 Et ça nous aide à vérifier que tu as au moins 16 ans — c\'est ce que dit notre Satzung.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Date de naissance';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper => 'Appuie pour choisir une date';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Lieu de naissance';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper => 'Ville / commune où tu es né.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Je suis désolé… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Notre Satzung dit qu\'il faut au moins 16 ans pour devenir membre. Tu as $age ans — j\'espère te revoir dans $years ans ! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Si tu veux faire du bénévolat ponctuel (à tout âge, avec l\'accord de tes parents), appelle-nous — on adore soutenir les jeunes qui veulent changer le monde.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Retour à l\'accueil';
+
+  @override
+  String get wizardErrInvalidPhone => 'Numéro de téléphone invalide';
+
+  @override
+  String get wizardStufe1b1Title => 'Accord parental';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Tu es mineur (16-17) — selon §106 BGB nous avons besoin du consentement d\'un parent ou d\'un tuteur légal. Donne-moi le nom et le téléphone. Un Vorsitzer appellera et fixera un rendez-vous (en personne ou par appel vidéo). Pas d\'e-mail — nous voulons être sûrs de parler à la bonne personne.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Prénom du parent';
+
+  @override
+  String get wizardStufe1b1VornameHelper =>
+      'Tel qu\'il apparaît sur le Personalausweis du parent.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Nom du parent';
+
+  @override
+  String get wizardStufe1b1NachnameHelper =>
+      'Tel qu\'il apparaît sur le Personalausweis du parent.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Mobile du parent';
+
+  @override
+  String get wizardStufe1b1TelefonHelper => 'Un Vorsitzer appellera ce numéro.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Relation avec l\'enfant :';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Mère';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Père';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Tuteur légal';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Autre tuteur';
+
+  @override
+  String get wizardStufe1cTitle => 'Informations personnelles';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Juste pour mieux te connaître. Ça reste entre nous et n\'est affiché nulle part publiquement.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Genre';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Homme';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Femme';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Divers';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'Préfère ne pas dire';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'État civil';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Célibataire';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Marié(e)';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Divorcé(e)';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Veuf/Veuve';
+
+  @override
+  String get wizardStufe1dTitle => 'Tes origines';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Cela nous aide à te proposer le bon soutien — par exemple un conseil sur l\'Aufenthalt ou trouver ta communauté linguistique.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Nationalité';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'Ex. deutsch, rumänisch, ukrainisch. Plusieurs séparés par une virgule.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Statut de séjour (Aufenthaltsstatus) — facultatif';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Choisis le titre depuis ta Aufenthaltskarte / décision. Le Vorstand vérifie avec tes documents.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Renseigne d\'abord la nationalité ci-dessus — on n\'affiche que les options pertinentes.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Aucun Aufenthaltstitel requis — citoyen allemand.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'Citoyen UE/EEE/CH — libre circulation (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'temporaire';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'séjour permanent';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'procédure d\'asile';
+
+  @override
+  String get wizardStufe1dAufenthaltOther => 'Autre (précise dans le chat)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired => 'Choisis un Aufenthaltstitel.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Langue maternelle';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Pré-rempli avec la langue de l\'app — change si différent.';
+
+  @override
+  String get wizardStufe1eTitle => 'Adresse';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'Ton adresse postale — nous l\'utilisons pour les documents officiels (Satzung, contrats de membre, notifications).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Rue';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Juste le nom de la rue — le numéro va dans la case d\'à côté.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => 'N°';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (CP)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'Ville';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Pays';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Pré-rempli : Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Nom de rue invalide';
+
+  @override
+  String get wizardErrInvalidHausnummer =>
+      'Numéro invalide (p. ex. 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz =>
+      'Code postal invalide (chiffres uniquement)';
+
+  @override
+  String get wizardStufe1fTitle => 'Contact';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Comment te joindre ? Le téléphone, c\'est uniquement pour les urgences — tout le reste passe par notre canal chiffré de bout en bout dans l\'app. Ton e-mail de membre t\'est attribué automatiquement et s\'affiche ci-dessous.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Mobile';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Promis, je n\'appelle que si c\'est important. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Type de membre';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Quel type de membre veux-tu être ? Laisse-moi t\'expliquer chaque option.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Membre ordinaire (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Droits complets. Tu paies la cotisation mensuelle, tu votes à l\'assemblée générale, tu peux être élu au Vorstand. Choix par défaut.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Membre soutien (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Tu soutiens l\'association financièrement mais ne participes pas activement aux décisions. Pas de droit de vote. Bien si tu veux aider à distance.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Membre honoraire (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Décerné par le Vorstand pour services exceptionnels. Tu ne le choisis pas — il est attribué en reconnaissance. Sélectionne uniquement si tu as déjà été honoré.';
+
+  @override
+  String get wizardStufe3Title => 'Situation financière';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Maintenant ta situation financière. Pas pour te juger — juste pour t\'exempter de cotisation si tu reçois des aides sociales.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Je reçois Bürgergeld';
+
+  @override
+  String get wizardStufe3OptionSozialamt => 'Je reçois des aides du Sozialamt';
+
+  @override
+  String get wizardStufe3OptionNein => 'Je ne reçois aucune de ces aides';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Cotisation : 0 € / mois 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'Avec Bürgergeld, Sozialamt, ALG I ou Krankengeld tu es totalement exempté de cotisation selon Satzung §6. Il nous faut juste un justificatif (Leistungsbescheid ou attestation de l\'administration / caisse maladie).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Téléverser Leistungsbescheid';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, 10 Mo max.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Téléverse le Leistungsbescheid avant de continuer.';
+
+  @override
+  String get wizardStufe3FileTooLarge => 'Fichier trop volumineux. 10 Mo max.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Impossible de téléverser le fichier. Réessaye.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Cotisation : 25 € / mois';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'Cotisation standard pour les membres ordinaires selon le Satzung.';
+
+  @override
+  String get wizardStufe4Title => 'Paiement';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Comment veux-tu payer la cotisation ? Et quel jour du mois préfères-tu pour le prélèvement ?';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle => 'Virement (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'Tu déclenches le paiement chaque mois depuis ton compte.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (prélèvement)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Nous prélevons le montant automatiquement sur ton compte. Le plus pratique, mais il nous faut ton IBAN et un mandat signé.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (ordre permanent)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Tu mets en place un ordre permanent à ta banque. Ta banque transfère le montant automatiquement chaque mois.';
+
+  @override
+  String get wizardStufe4DayLabel => 'Jour du paiement';
+
+  @override
+  String get wizardStufe4DayHint => 'Choisis un jour entre 1 et 31';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return 'Le $day';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'La cotisation sera prélevée le $day de chaque mois.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Début';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'À partir de quand veux-tu être officiellement membre d\'ICD360S ? Dès l\'approbation ou rétroactivement.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle =>
+      'À partir de l\'approbation du Vorstand';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'Le choix le plus simple. Pas de cotisation rétroactive.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Rétroactivement depuis le 01.08.2025 (fondation)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Tu comptes comme membre dès le premier jour de l\'association.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'Une autre date';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Tu choisis une date entre le 01.08.2025 et aujourd\'hui.';
+
+  @override
+  String get wizardStufe5PickDate => 'Appuie pour choisir une date';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Choisis d\'abord une date.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Début de l\'adhésion';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return 'Entre le $start et aujourd\'hui';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Cotisation rétroactive';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return 'De $start à $end cela fait $months mois. À 25 €/mois cela représente $amount € à payer rétroactivement, en plus de la cotisation mensuelle courante.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Cotisation rétroactive : 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'Avec Bürgergeld ou Sozialamt tu es totalement exempté — même rétroactivement, tu ne dois rien.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Avant de conclure, lis attentivement le $doc. C\'est important de savoir ce que tu signes.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint =>
+      'Fais défiler jusqu\'en bas pour continuer.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Tu as lu jusqu\'au bout ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return 'Ouvrir $doc dans le navigateur';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'Sur cette plateforme, nous ouvrons le document dans ton navigateur par défaut.';
+
+  @override
+  String get wizardDocumentOpenedOk =>
+      'Le document a été ouvert. Lis-le attentivement.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Je confirme avoir lu et accepter le $doc.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'C\'est fait ! Tu es inscrit 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'Ta demande a été envoyée 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Nous contacterons ton parent et organiserons un rendez-vous (en personne ou par appel vidéo). Sois patient — la procédure peut prendre jusqu\'à 7 jours. Tu recevras une notification dans l\'app dès que ton parent aura donné son accord.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Ton numéro de membre';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Bientôt disponible';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Si tu accumules plus de 6 mois de retard sur la cotisation, on te radie automatiquement (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'Pour partir : envoie-nous ta démission par écrit 3 mois avant le 31 décembre (au plus tard le 30 septembre pour effet en fin d\'année). Pas de durée minimale (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'Ton e-mail de membre';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Attribué automatiquement à partir de ton numéro de membre. Activé dès que le conseil d\'administration (Vorstand) valide ta demande. Nous avons notre propre application e-mail — envoie et reçois des e-mails chiffrés, simple et gratuit.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Adresse e-mail invalide';
+
+  @override
+  String get wizardStufe3OptionAlg1 =>
+      'Je perçois Arbeitslosengeld I (ALG I, allocation chômage)';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Je perçois Krankengeld (indemnités maladie longue durée)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Ajouter un autre document';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Limite atteinte : 20 documents maximum.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Limite totale de 100 Mo atteinte. Supprime un fichier existant.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Supprimer';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max documents';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Impossible d\'ouvrir le navigateur. Le lien est dans le presse-papiers — colle-le dans un navigateur pour continuer.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Vorstand examine · en général 1 jour ouvré, jusqu’à 7';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Compte activé';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Merci d\'avoir rempli le formulaire d\'inscription ! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'Ta demande est entre nos mains. On la valide en général en un jour ouvré.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Parfois ça peut prendre jusqu\'à 7 jours ouvrés. Et si quelque chose ne colle pas, on te renvoie au formulaire pour corriger 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'STATUT DE LA DEMANDE';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total étapes validées par le Vorstand';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Détails de la demande';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      'Les 8 étapes que tu as remplies. Le Vorstand les vérifie une par une — tu vois en temps réel ce qui a été validé.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'En attente de vérification';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Validé';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Rejeté';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count étape à corriger';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'Motif du Vorstand :';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Corriger maintenant';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Approbations du Vorstand ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'En attente du 2e Vorstand';
+
+  @override
+  String get wizardFinalApprovalRejected => 'REJETÉ';
+
+  @override
+  String get wizardFinalStufeNoDataYet => 'Données pas encore disponibles.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Lu le :';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei =>
+      'Exempté de cotisation (sans paiement)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Sans aides sociales';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification => 'Débute à la vérification';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation =>
+      'Date de fondation (rétroactif)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Autre date';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Sauté';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Rempli :';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Vérifié :';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Retirer la demande';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Retirer ta demande ?';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'Ta demande sera marquée comme retirée par toi. Les données restent dans la base pour audit (RGPD), mais le compte ne sera pas activé. Tu peux relancer l\'inscription à tout moment avec un nouveau numéro de membre.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Non, j’attends';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Oui, retirer';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'Ta demande ne peut pas être traitée automatiquement. Appelle-nous ou viens en personne au Vorstand pour continuer ton inscription.';
+
+  @override
+  String get wizardDuplicateLoginTitle => 'On dirait que tu es déjà membre';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'Avec ton nom et ta date de naissance, on trouve déjà un compte actif. Utilise « Je suis déjà membre » sur l\'écran d\'accueil pour te connecter. Si tu n\'as plus accès, appelle-nous.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'Ta demande est déjà chez nous';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'Avec ton nom et ta date de naissance, on a déjà une demande en cours d\'examen. Le Vorstand y travaille — on te notifie dans l\'app dès que ton compte est actif. Appelle-nous si tu veux en discuter.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'On ne peut pas traiter cette demande maintenant';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'Ton nom et ta date de naissance correspondent à une demande retirée récemment. Appelle-nous pour parler avec le Vorstand avant de continuer.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle =>
+      'Tu as déjà déposé une demande';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'Ton nom et ta date de naissance correspondent à une demande plus ancienne que tu avais retirée. Re-bienvenue — appelle-nous avant de continuer pour que le Vorstand décide comment on procède.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Appelle-nous, s’il te plaît';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'Ton nom et ta date de naissance figurent déjà chez nous, mais on ne peut pas te donner les détails via l\'app. Appelle-nous — le Vorstand t\'expliquera la situation directement.';
+
+  @override
+  String get wizardChatHelp => 'Parlons';
+
+  @override
+  String get wizardChatHelpSubtitle =>
+      'Chat en direct avec le Vorstand · réponse rapide';
 }

@@ -9,12 +9,6 @@ class AppLocalizationsFi extends AppLocalizations {
   AppLocalizationsFi([String locale = 'fi']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Jäsenportaali';
-
-  @override
-  String get memberPortal => 'Jäsenportaali';
-
-  @override
   String get welcomeLoading => 'Ladataan...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get memberNumberHint => 'Anna jäsennumero';
 
   @override
-  String get password => 'Salasana';
-
-  @override
-  String get passwordHint => 'Anna salasana';
-
-  @override
   String get confirmPassword => 'Vahvista salasana';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Anna uusi salasana';
-
-  @override
-  String get saveCredentials => 'Tallenna kirjautumistiedot';
-
-  @override
-  String get autoLogin => 'Automaattinen kirjautuminen';
-
-  @override
-  String get forgotPassword => 'Unohditko salasanan?';
 
   @override
   String get firstName => 'Etunimi ja sukunimi';
@@ -90,21 +69,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get passwordsNotMatch => 'Salasanat eivät täsmää';
 
   @override
-  String get recoveryCode => 'Palautuskoodi (6 numeroa)';
-
-  @override
-  String get recoveryCodeHelper => 'Muista tämä koodi salasanan palauttamiseen';
-
-  @override
-  String get recoveryCodeHint => 'Anna palautuskoodi';
-
-  @override
-  String get recoveryCodeInvalid => 'Koodissa on oltava tasan 6 numeroa';
-
-  @override
-  String get loginFailed => 'Kirjautuminen epäonnistui';
-
-  @override
   String get registrationFailed => 'Rekisteröinti epäonnistui';
 
   @override
@@ -118,20 +82,7 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'Liian monta laitetta';
-
-  @override
-  String get maxDevicesMessage =>
-      'Olet jo kirjautunut 3 laitteella.\nValitse laite uloskirjautumista varten:';
-
-  @override
-  String get unknownDevice => 'Tuntematon laite';
-
-  @override
   String get unknown => 'Tuntematon';
-
-  @override
-  String get logoutError => 'Uloskirjautumisvirhe';
 
   @override
   String error(String error) {
@@ -145,40 +96,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get resetPassword => 'Nollaa salasana';
 
   @override
-  String get forgotPasswordTitle => 'Unohtunut salasana';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Anna jäsennumerosi ja rekisteröinnin yhteydessä luomasi palautuskoodi.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Salasana nollattu onnistuneesti!\n\nVoit nyt kirjautua uudella salasanallasi.';
-
-  @override
-  String get passwordResetFailed => 'Salasanan nollaus epäonnistui';
-
-  @override
-  String get needHelp => 'Tarvitsetko apua?';
-
-  @override
-  String get helpQuestion => 'Ongelmia kirjautumisessa tai rekisteröinnissä?';
-
-  @override
-  String get helpDescription =>
-      'Ota yhteyttä WhatsAppissa ja kuvaile, mikä ei toimi. Vastaamme mahdollisimman pian!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Kysely ICD360S-sovelluksen kautta';
-
-  @override
-  String get whatsappMessage =>
-      'Hei, minulla on ongelma ICD360S-sovelluksen kanssa. ';
-
-  @override
   String get imprint => 'Impressum';
 
   @override
@@ -189,15 +106,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get revocation => 'Peruutusoikeus';
-
-  @override
-  String get cancellation => 'Irtisanominen';
-
-  @override
-  String get allRightsReserved => 'Kaikki oikeudet pidätetään.';
-
-  @override
-  String get enterCredentials => 'Anna jäsennumero ja salasana';
 
   @override
   String get appointments => 'Tapaamiset';
@@ -251,13 +159,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get close => 'Sulje';
 
   @override
-  String get membership => 'Jäsenyys';
-
-  @override
   String get myAppointments => 'Omat tapaamiset';
-
-  @override
-  String get appointmentsLoadingReady => 'Ladataan tapaamisia - API valmis!';
 
   @override
   String get priority => 'Prioriteetti';
@@ -266,16 +168,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get messageLabel => 'Viesti';
 
   @override
-  String get createdOn => 'Luotu';
-
-  @override
-  String get handler => 'Käsittelijä';
-
-  @override
   String get reportProblems => 'Ilmoita ongelmista';
-
-  @override
-  String get reportProblem => 'Ilmoita ongelma';
 
   @override
   String get weRespondIn24Hours =>
@@ -308,41 +201,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get myTickets => 'Tikettini';
 
   @override
-  String get newTicket => 'Uusi tiketti';
-
-  @override
-  String get noOpenTickets => 'Ei avoimia tikettejä';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Onko sinulla kysymys tai ongelma?\nLuo uusi tiketti.';
-
-  @override
-  String get whatIsTheProblem => 'Mikä ongelma on?';
-
-  @override
-  String get describeTheProblem => 'Kuvaile ongelma';
-
-  @override
-  String get howUrgentIsIt => 'Kuinka kiireellinen?';
-
-  @override
   String get low => 'Matala';
-
-  @override
-  String get medium => 'Keskitaso';
 
   @override
   String get high => 'Korkea';
 
   @override
   String get submit => 'Lähetä';
-
-  @override
-  String get fillSubjectAndMessage => 'Täytä aihe ja viesti';
-
-  @override
-  String get ticketCreated => 'Tiketti luotu';
 
   @override
   String get errorCreatingTicket => 'Virhe tiketin luomisessa';
@@ -363,12 +228,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get changePassword => 'Vaihda salasana';
 
   @override
-  String get newEmailAddress => 'Uusi sähköpostiosoite';
-
-  @override
-  String get currentPassword => 'Nykyinen salasana';
-
-  @override
   String get saveEmail => 'Tallenna sähköposti';
 
   @override
@@ -376,9 +235,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Laite kirjautunut ulos';
-
-  @override
-  String get passwordChangedSuccessfully => 'Salasana vaihdettu';
 
   @override
   String get emailChangedSuccessfully => 'Sähköposti vaihdettu';
@@ -391,24 +247,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get validEmailRequired => 'Anna kelvollinen sähköpostiosoite';
-
-  @override
-  String get passwordTooShort => 'Salasanan on oltava vähintään 6 merkkiä';
-
-  @override
-  String get maxDevicesReached =>
-      'Olet kirjautuneena maksimimäärään 3 laitetta.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Olet kirjautuneena $count laitteella 3:sta.';
-  }
-
-  @override
-  String get noActiveSessions => 'Ei aktiivisia istuntoja';
-
-  @override
-  String get logoutFromDevice => 'Kirjaudu ulos tältä laitteelta';
 
   @override
   String get confirmLogoutDevice => 'Kirjaudu ulos laitteelta?';
@@ -538,6 +376,18 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get appWillRestart => 'Sovellus käynnistyy automaattisesti uudelleen.';
+
+  @override
+  String get autoUpdateEnableTitle => 'Install future updates automatically';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'The app downloads and installs updates on its own and restarts briefly. No further prompts.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Version $version is being installed in the background. The app will restart shortly.';
+  }
 
   @override
   String get later => 'Myöhemmin';
@@ -921,9 +771,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get errorConnecting => 'Yhteysvirhe';
 
   @override
-  String get errorAcceptingCall => 'Virhe puhelun vastaanottamisessa';
-
-  @override
   String get errorDownloading => 'Latausvirhe';
 
   @override
@@ -955,11 +802,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get file => 'Tiedosto';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name kirjoittaa...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Uusi viesti lähettäjältä';
@@ -1028,19 +870,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get logsCopied => 'Lokit kopioitu!';
-
-  @override
-  String get diagnosticDataTitle => 'Diagnostiikkatiedot';
-
-  @override
-  String get diagnosticDescription =>
-      'Haluatko lähettää nimettömiä diagnostiikkatietoja sovelluksen parantamiseksi?';
-
-  @override
-  String get noThanks => 'Ei kiitos';
-
-  @override
-  String get yesEnable => 'Kyllä, ota käyttöön';
 
   @override
   String get passwordMinEightChars =>
@@ -1219,9 +1048,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get emailChangedSuccess => 'Sähköposti vaihdettu';
 
   @override
-  String get newPasswordMinChars => 'Uusi salasana (väh. 6 merkkiä)';
-
-  @override
   String get reasonLabel2 => 'Syy';
 
   @override
@@ -1229,9 +1055,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Lataa';
-
-  @override
-  String get connectionErrorGeneric => 'Yhteysvirhe';
 
   @override
   String get copyLogs => 'Kopioi lokit';
@@ -1247,12 +1070,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get unknownValue => 'Tuntematon';
-
-  @override
-  String get bankTransfer => 'Pankkisiirto';
-
-  @override
-  String get standingOrder => 'Toistuvaissuoritus';
 
   @override
   String get payment => 'Maksu';
@@ -1621,17 +1438,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get statusAccepted => 'Hyväksytty';
 
   @override
-  String get memberNumberTooLong =>
-      'Jäsennumero liian pitkä (enintään 20 merkkiä)';
-
-  @override
-  String get onlyUppercaseAndNumbers =>
-      'Vain isot kirjaimet ja numerot sallittu';
-
-  @override
-  String get passwordTooLong => 'Salasana liian pitkä (enintään 100 merkkiä)';
-
-  @override
   String get nameTooLong => 'Nimi liian pitkä (enintään 100 merkkiä)';
 
   @override
@@ -1762,15 +1568,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get openFile => 'Avaa';
 
   @override
-  String get diagnosticErrors => 'Virheraportteja parannukseen';
-
-  @override
-  String get diagnosticAnonymousStats => 'Anonyymit käyttötilastot';
-
-  @override
-  String get diagnosticPerformance => 'Sovelluksen suorituskykytiedot';
-
-  @override
   String get noMicrophoneError =>
       'Mikrofonia ei löytynyt. Liitä mikrofoni ja yritä uudelleen.';
 
@@ -1795,9 +1592,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'Tilit, joita ei vahvisteta 30 päivän kuluessa, jäädytetään automaattisesti.';
-
-  @override
-  String get ipClean => 'IP puhdas - ei listalla';
 
   @override
   String get documentsProvidedByBoard => 'Asiakirjat tarjoaa hallitus.';
@@ -1835,13 +1629,6 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp => 'Haluatko auttaa meitä parantamaan sovellusta?';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Henkilötietoja ei kerätä. Tätä asetusta voi muuttaa milloin tahansa.';
-
-  @override
   String logEntries(int count) {
     return '$count merkintää';
   }
@@ -1851,15 +1638,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Uusi kirjautuminen havaittu';
-
-  @override
-  String get waitingForMember => 'Odotetaan jäsentä';
-
-  @override
-  String get waitingForStaff => 'Odotetaan henkilökuntaa';
-
-  @override
-  String get waitingForAuthority => 'Odotetaan viranomaista';
 
   @override
   String get errorNoInternet => 'Ei Internet-yhteyttä. Tarkista verkkosi.';
@@ -1885,14 +1663,7 @@ class AppLocalizationsFi extends AppLocalizations {
       'DNS problem detected. Check your connection or try another network.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Please open your browser and sign in to the WiFi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Slow connection.';
-
-  @override
-  String get securityBannerNetworkOffline => 'No network connection.';
 
   @override
   String get securityPermissionDialogTitle =>
@@ -1915,4 +1686,1142 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'No microphone was found. Connect a headset or microphone and try again.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Hyvää huomenta';
+
+  @override
+  String get claudiuWelcomeDay => 'Hei';
+
+  @override
+  String get claudiuWelcomeEvening => 'Hyvää iltaa';
+
+  @override
+  String get claudiuWelcomeNight => 'Hyvää iltaa';
+
+  @override
+  String get claudiuWelcomeVisitor => 'rakas vieras';
+
+  @override
+  String get claudiuWelcomeAsk => 'Miten voin auttaa?';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Haluan liittyä jäseneksi';
+
+  @override
+  String get claudiuWelcomeLogin => 'Olen jo jäsen ja haluan kirjautua sisään';
+
+  @override
+  String get claudiuWelcomeProblem => 'Minulla on ongelma sovelluksen kanssa';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Hätätilanne — soita';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Claudiu';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro =>
+      'Ennen kuin soitat — aukioloaikamme:';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'Toimistolla';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'Kentällä asiakkaiden kanssa';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'Näiden aikojen ulkopuolella käsittelemme vain hätätapauksia. Voit myös tekstata samaan numeroon — palaamme asiaan.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Soita nyt';
+
+  @override
+  String get claudiuWelcomeSendSms => 'Lähetä viesti';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Hätä ICD360S e.V. — ottakaa minuun yhteyttä mahdollisimman pian.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Sulje';
+
+  @override
+  String get claudiuLoginWelcome => 'Tervetuloa takaisin, hyvä jäsen!';
+
+  @override
+  String get claudiuLoginAsk => 'Kerro jäsennumerosi.';
+
+  @override
+  String get claudiuLoginProgress => 'Kohta… jatka kirjoittamista.';
+
+  @override
+  String get claudiuLoginReady => 'Loistavaa! Paina alla olevaa painiketta.';
+
+  @override
+  String get claudiuLoginLoading => 'Tarkistan henkilöllisyyden… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Löysin sinut! Kirjaudutaan…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Löysin sinut, $name! Kirjaudutaan…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Hmm, en löydä tätä numeroa. Kirjoititko sen oikein?';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Unohditko jäsennumerosi?';
+
+  @override
+  String get claudiuLoginNoSms =>
+      'Emme lähetä numeroa sähköpostilla tai tekstiviestillä.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Ainoa tapa: tapaaminen henkilökohtaisesti yhdistyksen toimistossa, henkilöllisyyden tarkistuksen jälkeen.';
+
+  @override
+  String get claudiuLoginContactUs => 'Soita ja varaa aika:';
+
+  @override
+  String get claudiuDiagnosticGreeting =>
+      'Ennen kuin menet sisään, yksi kysymys';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Saanko lähettää nimettömiä raportteja, jotta kehittäjät voivat parantaa sovellusta?';
+
+  @override
+  String get claudiuDiagnosticYes => 'Kyllä, haluan auttaa';
+
+  @override
+  String get claudiuDiagnosticNo => 'Ei, vain tutkin';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Kerro lisää';
+
+  @override
+  String get claudiuDiagnosticSendsHeader =>
+      '📤 Mitä LÄHETÄMME (nimettömästi):';
+
+  @override
+  String get claudiuDiagnosticSends1 => 'Anonyymi laitekoodi (EI jäsennumeroa)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Roolisi (jäsen / hallitus)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Käyttöjärjestelmä (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Valittu kieli';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Akun taso ja tila';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Nykyinen näyttö';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Istunnon kesto (sekuntia)';
+
+  @override
+  String get claudiuDiagnosticSends8 => 'Virheet jos on (viimeiset 10)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Navigointi (viimeiset 20 näyttöä)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader => '🛡️ Mitä emme KOSKAAN lähetä:';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Oikea nimesi';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'Sähköpostiosoite';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Puhelinnumero';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Salasana';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Chat-viestien sisältö';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Tikettien sisältö';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Asiakirjat tai liitteet';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Tekniset tiedot:';
+
+  @override
+  String get claudiuDiagnosticTech1 => 'Lähetetään 2 minuutin välein';
+
+  @override
+  String get claudiuDiagnosticTech2 =>
+      'TLS-salattu yhteys, kiinnitetty varmenne';
+
+  @override
+  String get claudiuDiagnosticTech3 =>
+      'Voit kytkeä sen pois päältä milloin tahansa Asetuksista';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Miten voin auttaa?';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Mitä tapahtui?';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Miten haluat kertoa siitä?';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Kirjoita raportti';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'Vaihe-vaiheelta yksityiskohdat. Tiimi saa tekstin ja ratkaisee asian myöhemmin.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Puhutaan nyt';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Anonyymi keskustelu operaattorin kanssa. Reaaliaikainen vastaus jos joku on online.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Tai jos asia on kiireellinen:';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Soita meille';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Anonyymi keskustelu';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Hei!';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Kuuntelen. Kirjoita mitä haluat — nimeä ei tarvita. Vastaan heti kun olen täällä.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Kirjoita viesti…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator =>
+      'Odotetaan operaattorin vastausta…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Hei!';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Kiitos kun otit yhteyttä — olet nyt yhteydessä Vorsitzeriin. Kerro miten voimme auttaa jäsenhakemuksessasi.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime => 'Kauanko tarkistus kestää?';
+
+  @override
+  String get claudiuQuickReplyDocuments => 'Mitä dokumentteja tarvitsen?';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Olen jumissa yhdessä vaiheessa';
+
+  @override
+  String get claudiuQuickReplyHuman => 'Voinko puhua jonkun kanssa nyt?';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Yhdistetään…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Keskustelua ei voitu avata. Yritä uudelleen tai soita meille.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Yritä uudelleen';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Yhdistetty';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Yhdistetään uudelleen…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'Operaattori kirjoittaa…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Ilmoita ongelmasta';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Mitä tapahtui?';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Kerro yksityiskohtaisesti, niin välitän raportin tiimille.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Sisällytä:';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Mitä teit, kun ongelma ilmaantui';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Mahdolliset virheilmoitukset';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 => 'Millä näytöllä olit';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'Kaatuuko sovellus, sulkeutuuko se vai näyttääkö tyhjän ruudun?';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Tapahtuuko se joka kerta vai vain kerran?';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Kuvauksesi';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'Esim.: Kun avaan chatin, näkyy \"Connection error\" ja sovellus lakkaa vastaamasta…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Hieman lisää yksityiskohtia (vähintään $count merkkiä)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Lähetä raportti';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Lähetetään…';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Kiitos!';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'Raportti on lähetetty. Tiimimme tutkii sen mahdollisimman pian.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Selvä';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Raporttia ei voitu lähettää. Soita meille kiireellistä apua varten.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Tai jos asia on kiireellinen:';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Soita meille';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Hei, $name! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Hei! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Mukava nähdä sinut!';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'Turvallisuutesi vuoksi Vorsitzer tarkistaa nyt kirjautumispyyntöäsi. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Teemme tämän 30 päivän välein varmistaaksemme, että olet todella sinä. Se on kuin turvallisuustarkastus — kestää enintään 5 minuuttia.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'Valmis! 🎉 Vorsitzer tunnisti sinut. Kirjaudutaan sisään…';
+
+  @override
+  String get claudiuApprovalDenied => 'Hmm, Vorsitzer hylkäsi pyyntösi. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Jos uskot, että tämä on virhe, soita meille, niin selvitetään.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      '5 minuuttia kului, eikä Vorsitzer vastannut.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Soita meille, niin voimme hyväksyä pyyntösi heti. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Soita meille';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Yritä uudelleen';
+
+  @override
+  String get claudiuApprovalCancel => 'Peruuta';
+
+  @override
+  String get claudiuApprovalClose => 'Sulje';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Hei, vieras! 👋 Kiitos, että haluat liittyä perheeseemme.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'Nimeni on Claudiu. Keväällä 2025 minulla oli selkeä visio: perustaa yhdistys, joka auttaa hädässä olevia ihmisiä — vapaaehtoisesti, sydämestä, ilman turhaa byrokratiaa. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'Aloin puhua asiakkaiden kanssa, joita kävin tapaamassa. Kerroin heille unelmani. Ja jokainen sanoi: \"Kyllä, mennään!\" Heinäkuussa 2025 me kuusi tapasimme — päättäväiset ihmiset. Päätimme perustaa **ICD360S e.V.** Neu-Ulmiin. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      '**1. elokuuta 2025** yhdistys heräsi virallisesti eloon — yhdistysrekisterissä. Kaunein lahjani. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Mitä teemme? Autamme pakolaisia, vammaisia, taloudellisesti heikossa asemassa olevia, **lapsia ja nuoria** — virastoasioissa, saksan oppimisessa, asumisessa, ostoksilla, sosiaalietuuksissa. Vorstandimme koostuu pääosin vammaisista — näin päätökset perustuvat aitoon elämänkokemukseen. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'Nyt on sinun vuorosi. Rekisteröidään sinut — kestää noin 5 minuuttia. Etenemme askel kerrallaan, en jätä sinua yksin. ✨';
+
+  @override
+  String get wizardIntroStart => 'Aloitetaan';
+
+  @override
+  String get wizardBack => 'Takaisin';
+
+  @override
+  String get wizardNext => 'Seuraava';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return 'Vaihe $step / $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Tämä kenttä on pakollinen';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'Liian lyhyt (vähintään $count merkkiä)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters =>
+      'Vain kirjaimet, välilyönnit, väliviivat ja heittomerkit';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Tallennus epäonnistui. Tarkista yhteys ja yritä uudelleen.';
+
+  @override
+  String get wizardStufe1aTitle => 'Henkilöllisyys';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Tutustutaan virallisesti. Kirjoita nimesi täsmälleen samoin kuin Personalausweis-, Reisepass- tai Aufenthaltstitel-asiakirjassa — niin se vastaa dokumenttejasi.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (etunimet)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Kaikki etunimesi tarkalleen kuten asiakirjassa. Välilyönnillä tai väliviivalla (esim. Hans-Peter, Maria Anna).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (sukunimi)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'Nykyinen sukunimesi.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (syntymänimi) — valinnainen';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Vain jos eroaa Familiennamen kanssa — esim. ennen avioliittoa.';
+
+  @override
+  String get wizardStufe1bTitle => 'Syntymäpäivä';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'Haluamme juhlia syntymäpäivääsi kanssasi! 🎂 Se auttaa myös vahvistamaan, että olet vähintään 16 — niin sanoo sääntömme.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Syntymäaika';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper => 'Napauta valitaksesi päivän';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Syntymäpaikka';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper =>
+      'Kaupunki / paikkakunta, jossa synnyit.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Olen pahoillani… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Sääntömme sanovat, että jäseneksi liittymiseen täytyy olla vähintään 16. Olet $age — toivottavasti tapaamme $years vuoden päästä! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Jos haluat auttaa silloin tällöin vapaaehtoisena (kaikenikäisille, vanhempien suostumuksella), soita meille — tuemme mielellämme nuoria, jotka haluavat muuttaa maailmaa.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Takaisin alkuun';
+
+  @override
+  String get wizardErrInvalidPhone => 'Virheellinen puhelinnumero';
+
+  @override
+  String get wizardStufe1b1Title => 'Vanhemman suostumus';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Olet alaikäinen (16-17) — §106 BGB:n mukaan tarvitsemme vanhemman tai laillisen huoltajan suostumuksen. Kerro nimi ja puhelinnumero. Vorsitzer soittaa ja sopii tapaamisen (paikan päällä tai videopuhelulla). Ei sähköpostia — haluamme varmistaa, että puhumme oikealle henkilölle.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Vanhemman etunimi';
+
+  @override
+  String get wizardStufe1b1VornameHelper =>
+      'Kuten vanhemman Personalausweisissa.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Vanhemman sukunimi';
+
+  @override
+  String get wizardStufe1b1NachnameHelper =>
+      'Kuten vanhemman Personalausweisissa.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Vanhemman matkapuhelinnumero';
+
+  @override
+  String get wizardStufe1b1TelefonHelper => 'Vorsitzer soittaa tähän numeroon.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Suhde lapseen:';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Äiti';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Isä';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Laillinen huoltaja';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Muu huoltaja';
+
+  @override
+  String get wizardStufe1cTitle => 'Henkilötiedot';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Vain jotta tutustun sinuun vähän paremmin. Tämä jää meidän välillemme eikä näy missään julkisesti.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Sukupuoli';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Mies';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Nainen';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Muunsukupuolinen';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'En halua sanoa';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'Siviilisääty';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Naimaton';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Naimisissa';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Eronnut';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Leski';
+
+  @override
+  String get wizardStufe1dTitle => 'Taustasi';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Tämä auttaa meitä tarjoamaan sinulle oikeaa tukea — esimerkiksi Aufenthalt-neuvontaa tai löytämään kieliyhteisösi.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Kansalaisuus';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'Esim. deutsch, rumänisch, ukrainisch. Useita pilkulla erotettuna.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Oleskelustatus (Aufenthaltsstatus) — valinnainen';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Valitse otsikko Aufenthaltskarte / päätöksestäsi. Vorstand tarkistaa sen dokumenteistasi.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Täytä ensin kansalaisuus yllä — näytämme vain sopivat vaihtoehdot.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Aufenthaltstitel ei tarvita — Saksan kansalainen.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'EU/ETA/CH-kansalainen — vapaa liikkuvuus (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'tilapäinen';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'pysyvä oleskelu';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'turvapaikkamenettely';
+
+  @override
+  String get wizardStufe1dAufenthaltOther => 'Muu (täsmennä chatissa)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired => 'Valitse Aufenthaltstitel.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Äidinkieli';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Esitäytetty sovelluksen kielellä — vaihda jos eri.';
+
+  @override
+  String get wizardStufe1eTitle => 'Osoite';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'Postiosoitteesi — käytämme sitä virallisiin asiakirjoihin (säännöt, jäsensopimukset, ilmoitukset).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Katu';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Vain kadunnimi — numero viereiseen kenttään.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => 'Nro';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (postinro)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'Kaupunki';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Maa';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Esitäytetty: Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Virheellinen kadunnimi';
+
+  @override
+  String get wizardErrInvalidHausnummer =>
+      'Virheellinen numero (esim. 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz => 'Virheellinen postinumero (vain numerot)';
+
+  @override
+  String get wizardStufe1fTitle => 'Yhteystiedot';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Miten saamme sinuun yhteyttä? Puhelin on vain hätätapauksia varten — kaikki muu hoituu omalla päästä päähän salatulla kanavallamme sovelluksessa. Jäsensähköpostisi luodaan automaattisesti, ja näet sen alla.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Matkapuhelin';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Lupaan, soitan vain jos asia on tärkeä. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Jäsenyystyyppi';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Millainen jäsen haluat olla? Selitän jokaisen vaihtoehdon.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Varsinainen jäsen (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Täydet oikeudet. Maksat kuukausimaksun, äänestät jäsenkokouksessa, voit tulla valituksi hallitukseen. Oletusvalinta.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Kannattajajäsen (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Tuet yhdistystä taloudellisesti mutta et osallistu aktiivisesti päätöksiin. Ei äänioikeutta. Sopii jos haluat auttaa etäältä.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Kunniajäsen (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Hallitus myöntää erityisistä ansioista. Et valitse sitä itse — se myönnetään tunnustuksena. Valitse vain jos sinut on jo kunnioitettu.';
+
+  @override
+  String get wizardStufe3Title => 'Taloudellinen tilanne';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Nyt taloudellisesta tilanteestasi. En tuomitse — vaan voidaksemme vapauttaa sinut maksusta jos saat sosiaaliturvaa.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Saan Bürgergeldiä';
+
+  @override
+  String get wizardStufe3OptionSozialamt => 'Saan Sozialamt-tukia';
+
+  @override
+  String get wizardStufe3OptionNein => 'En saa kumpaakaan';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Maksu: 0 € / kk 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'Bürgergeldillä, Sozialamtilla, ALG I:llä tai Krankengeldillä olet Satzungin §6 mukaan kokonaan vapaa jäsenmaksusta. Tarvitsemme vain todisteen (Leistungsbescheid tai todistus viranomaiselta / sairauskassalta).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Lataa Leistungsbescheid';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, enintään 10 MB.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Lataa Leistungsbescheid ennen jatkamista.';
+
+  @override
+  String get wizardStufe3FileTooLarge =>
+      'Tiedosto on liian suuri. Enintään 10 MB.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Tiedoston lataus epäonnistui. Yritä uudelleen.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Maksu: 25 € / kk';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'Sääntöjen mukainen vakiojäsenmaksu varsinaisille jäsenille.';
+
+  @override
+  String get wizardStufe4Title => 'Maksu';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Miten haluat maksaa jäsenmaksun? Ja minä päivänä kuukaudessa?';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle => 'Tilisiirto (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'Aloitat maksun itse kuukausittain tililtäsi.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (suoraveloitus)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Veloitamme summan automaattisesti tililtäsi. Helpoin, mutta tarvitsemme IBANin ja allekirjoitetun valtakirjan.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (toistuva toimeksianto)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Asetat pankissasi toistuvan toimeksiannon. Pankki siirtää summan automaattisesti kuukausittain.';
+
+  @override
+  String get wizardStufe4DayLabel => 'Maksupäivä';
+
+  @override
+  String get wizardStufe4DayHint => 'Valitse päivä väliltä 1–31';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return '$day. päivä';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'Maksu veloitetaan $day. päivänä joka kuukausi.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Alkamispäivä';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'Mistä lähtien haluat olla virallisesti ICD360S-jäsen? Hyväksynnästä alkaen vai takautuvasti.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle =>
+      'Vorstandin hyväksynnästä alkaen';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'Yksinkertaisin valinta. Ei takautuvaa maksua.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Takautuvasti 01.08.2025 (perustaminen)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Sinut lasketaan jäseneksi yhdistyksen ensimmäisestä päivästä.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'Muu päivä';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Valitset päivän väliltä 01.08.2025–tänään.';
+
+  @override
+  String get wizardStufe5PickDate => 'Napauta valitaksesi päivän';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Valitse ensin päivämäärä.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Jäsenyyden alku';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return '$start ja tämä päivä välillä';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Takautuva maksu';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return '$start ja $end välillä on $months kuukautta. 25 €/kk laskien tämä on $amount € maksettavaksi takautuvasti nykyisen kuukausimaksun lisäksi.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Takautuva maksu: 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'Bürgergeldillä tai Sozialamtilla olet täysin vapautettu — myöskään takautuvasti et ole velkaa.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Ennen kuin lopetamme, lue $doc huolellisesti. On tärkeää tietää, mitä allekirjoitat.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint => 'Vieritä loppuun jatkaaksesi.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Olet lukenut loppuun ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return 'Avaa $doc selaimessa';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'Tällä alustalla avaamme dokumentin oletusselaimessasi.';
+
+  @override
+  String get wizardDocumentOpenedOk =>
+      'Dokumentti avattiin. Lue se huolellisesti.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Vahvistan, että olen lukenut $doc ja hyväksyn sen.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'Valmis! Olet ilmoittautunut 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'Pyyntösi on lähetetty 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Otamme yhteyttä vanhempaasi ja sovimme tapaamisen (paikan päällä tai videopuhelulla). Ole kärsivällinen — prosessi voi kestää jopa 7 päivää. Saat ilmoituksen sovelluksessa heti, kun vanhempasi on hyväksynyt.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Jäsennumerosi';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Tulossa pian';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Jos jäät yli 6 kuukautta jälkeen maksusta, poistamme sinut automaattisesti (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'Eroamiseen: lähetä irtisanominen kirjallisesti 3 kuukautta ennen 31. joulukuuta (viimeistään 30. syyskuuta, jotta tulee voimaan vuoden lopussa). Vähimmäisjäsenyyttä ei ole (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'Jäsensähköpostisi';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Luodaan automaattisesti jäsennumerosi pohjalta. Aktivoituu sillä hetkellä, kun hallitus (Vorstand) hyväksyy hakemuksesi. Meillä on oma sähköpostisovellus — lähetä ja vastaanota salattuja sähköposteja, helposti ja ilmaiseksi.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Virheellinen sähköpostiosoite';
+
+  @override
+  String get wizardStufe3OptionAlg1 =>
+      'Saan Arbeitslosengeld I (ALG I, työttömyyspäiväraha)';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Saan Krankengeld (sairauspäiväraha pitkäaikaisesta sairaudesta)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Lisää uusi asiakirja';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Raja saavutettu: enintään 20 asiakirjaa.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Kokonaisraja 100 MB saavutettu. Poista olemassa oleva tiedosto.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Poista';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max asiakirjaa';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Selainta ei voitu avata. Linkki on leikepöydällä — liitä se selaimeen jatkaaksesi.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Vorstand tarkistaa · yleensä 1 arkipäivä, enintään 7';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Tili aktivoitu';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Kiitos, että täytit rekisteröintilomakkeen! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'Hakemuksesi on meillä. Yleensä tarkistamme sen yhden arkipäivän kuluessa.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Joskus se voi viedä jopa 7 arkipäivää. Ja jos jokin ei täsmää, lähetämme sinut takaisin lomakkeeseen korjaamaan 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'HAKEMUKSEN TILA';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total vaihetta Vorstandin vahvistamaa';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Hakemuksen tiedot';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      'Kahdeksan täyttämääsi vaihetta. Vorstand käy ne läpi yksi kerrallaan — näet reaaliaikaisesti, mitkä on hyväksytty.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'Odottaa tarkistusta';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Hyväksytty';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Hylätty';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count vaihe vaatii korjausta';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'Vorstandin perustelu:';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Korjaa nyt';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Vorstandin hyväksynnät ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'Odotetaan 2. Vorstandia';
+
+  @override
+  String get wizardFinalApprovalRejected => 'HYLÄTTY';
+
+  @override
+  String get wizardFinalStufeNoDataYet => 'Tietoja ei ole vielä saatavilla.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Luettu:';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei => 'Maksuvapaa (ei maksua)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Ei sosiaalietuuksia';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification => 'Alkaa vahvistuksesta';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation =>
+      'Perustamispäivä (takautuvasti)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Muu päivä';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Ohitettu';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Täytetty:';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Tarkistettu:';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Peruuta hakemus';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Perutaanko hakemus?';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'Hakemuksesi merkitään sinun perumaksi. Tiedot säilyvät tietokannassa tarkastusta varten (GDPR), mutta tiliä ei aktivoida. Voit aloittaa rekisteröitymisen uudelleen milloin tahansa uudella jäsennumerolla.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Ei, odotan';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Kyllä, peru';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'Hakemustasi ei voi käsitellä automaattisesti. Soita meille tai tule käymään Vorstandilla henkilökohtaisesti, jotta voit jatkaa rekisteröitymistä.';
+
+  @override
+  String get wizardDuplicateLoginTitle =>
+      'Näyttää siltä, että olet jo jäsenemme';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'Nimellä ja syntymäajalla löydämme jo aktiivisen tilin. Käytä etusivulla \"Olen jo jäsen\" -kohtaa kirjautuaksesi. Jos sinulla ei ole enää pääsyä, soita meille.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'Hakemuksesi on jo meillä';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'Nimellä ja syntymäajalla meillä on jo hakemus käsittelyssä. Vorstand tutkii sitä — ilmoitamme sovelluksessa heti, kun tilisi on aktiivinen. Soita, jos haluat keskustella.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'Emme voi käsitellä tätä hakemusta nyt';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'Nimesi ja syntymäaikasi vastaavat hiljattain peruttua hakemusta. Soita meille, jotta voit puhua Vorstandin kanssa ennen kuin jatkat.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle => 'Olet hakenut aiemmin';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'Nimesi ja syntymäaikasi vastaavat vanhempaa hakemusta, jonka olit perunut. Tervetuloa takaisin — soita meille ennen jatkamista, jotta Vorstand voi päättää, miten etenemme.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Soita meille';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'Nimesi ja syntymäaikasi näkyvät jo tietokannassamme, mutta emme voi kertoa yksityiskohtia sovelluksen kautta. Soita meille — Vorstand selittää tilanteen suoraan.';
+
+  @override
+  String get wizardChatHelp => 'Jutellaan';
+
+  @override
+  String get wizardChatHelpSubtitle =>
+      'Live-chat Vorstandin kanssa · nopea vastaus';
 }

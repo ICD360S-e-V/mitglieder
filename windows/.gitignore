@@ -1,5 +1,10 @@
 flutter/ephemeral/
 
+# Redistributable runtime installers fetched at build time (see the
+# "Fetch Visual C++ redistributable" step in build-extras-platforms.yml).
+# ~25 MB each - downloaded, never committed.
+redist/
+
 # Visual Studio user-specific files.
 *.suo
 *.user

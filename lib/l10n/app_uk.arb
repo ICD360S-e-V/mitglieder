@@ -167,6 +167,16 @@
   "downloadProgress": "Завантаження: {percent}%",
   "installationStarting": "Початок встановлення...",
   "appWillRestart": "Додаток буде перезапущено автоматично.",
+  "autoUpdateEnableTitle": "Автоматично встановлювати майбутні оновлення",
+  "autoUpdateEnableHint": "Застосунок сам завантажить і встановить оновлення та ненадовго перезапуститься. Без додаткових запитань.",
+  "autoUpdateInstalling": "Версія {version} встановлюється у фоновому режимі. Застосунок скоро перезапуститься.",
+  "@autoUpdateInstalling": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "later": "Пізніше",
   "updateNow": "Оновити зараз",
   "downloading": "Завантаження...",

@@ -95,6 +95,34 @@ if(PLUGIN_BUNDLED_LIBRARIES)
     COMPONENT Runtime)
 endif()
 
+# === Visual C++ runtime (app-local) ===
+# Ship the MSVC CRT DLLs (vcruntime140, vcruntime140_1, msvcp140 and friends)
+# next to the executable instead of relying on the machine having the
+# "Visual C++ 2015-2022 Redistributable" installed. Flutter's own
+# flutter_windows.dll plus the WebRTC / pdfium / notification plugins all link
+# the dynamic CRT, so a machine without the redist fails at launch with
+# "VCRUNTIME140_1.dll was not found" — the single most common install failure
+# report we get. App-local copies are found by the loader before any
+# system-wide copy and need no admin rights, so a plain per-user install is
+# self-sufficient on both Windows 10 and 11.
+#
+# SKIP=TRUE only suppresses the module's own install() rule; it still fills
+# CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS, which we install into the bundle dir
+# ourselves. UCRT is deliberately NOT bundled: it ships with Windows 10/11 as
+# an OS component and app-local copies there are unsupported by Microsoft.
+set(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_SKIP TRUE)
+set(CMAKE_INSTALL_UCRT_LIBRARIES FALSE)
+set(CMAKE_INSTALL_OPENMP_LIBRARIES FALSE)
+include(InstallRequiredSystemLibraries)
+if(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS)
+  message(STATUS "Bundling MSVC runtime: ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS}")
+  install(FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS}
+    DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+    COMPONENT Runtime)
+else()
+  message(WARNING "MSVC runtime DLLs not found - installer will depend on the system-wide redistributable")
+endif()
+
 # Copy the native assets provided by the build.dart from all packages.
 set(NATIVE_ASSETS_DIR "${PROJECT_BUILD_DIR}native_assets/windows/")
 install(DIRECTORY "${NATIVE_ASSETS_DIR}"

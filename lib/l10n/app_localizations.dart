@@ -150,18 +150,6 @@ abstract class AppLocalizations {
     Locale('uk')
   ];
 
-  /// No description provided for @appTitle.
-  ///
-  /// In de, this message translates to:
-  /// **'ICD360S e.V - Mitgliederportal'**
-  String get appTitle;
-
-  /// No description provided for @memberPortal.
-  ///
-  /// In de, this message translates to:
-  /// **'Mitgliederportal'**
-  String get memberPortal;
-
   /// No description provided for @welcomeLoading.
   ///
   /// In de, this message translates to:
@@ -204,18 +192,6 @@ abstract class AppLocalizations {
   /// **'Bitte Mitgliedernummer eingeben'**
   String get memberNumberHint;
 
-  /// No description provided for @password.
-  ///
-  /// In de, this message translates to:
-  /// **'Passwort'**
-  String get password;
-
-  /// No description provided for @passwordHint.
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte Passwort eingeben'**
-  String get passwordHint;
-
   /// No description provided for @confirmPassword.
   ///
   /// In de, this message translates to:
@@ -239,24 +215,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Bitte neues Passwort eingeben'**
   String get newPasswordHint;
-
-  /// No description provided for @saveCredentials.
-  ///
-  /// In de, this message translates to:
-  /// **'Anmeldedaten speichern'**
-  String get saveCredentials;
-
-  /// No description provided for @autoLogin.
-  ///
-  /// In de, this message translates to:
-  /// **'Automatisch anmelden'**
-  String get autoLogin;
-
-  /// No description provided for @forgotPassword.
-  ///
-  /// In de, this message translates to:
-  /// **'Passwort vergessen?'**
-  String get forgotPassword;
 
   /// No description provided for @firstName.
   ///
@@ -312,36 +270,6 @@ abstract class AppLocalizations {
   /// **'Passwörter stimmen nicht überein'**
   String get passwordsNotMatch;
 
-  /// No description provided for @recoveryCode.
-  ///
-  /// In de, this message translates to:
-  /// **'Wiederherstellungscode (6 Ziffern)'**
-  String get recoveryCode;
-
-  /// No description provided for @recoveryCodeHelper.
-  ///
-  /// In de, this message translates to:
-  /// **'Merken Sie sich diesen Code für Passwort-Wiederherstellung'**
-  String get recoveryCodeHelper;
-
-  /// No description provided for @recoveryCodeHint.
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte Wiederherstellungscode eingeben'**
-  String get recoveryCodeHint;
-
-  /// No description provided for @recoveryCodeInvalid.
-  ///
-  /// In de, this message translates to:
-  /// **'Code muss genau 6 Ziffern haben'**
-  String get recoveryCodeInvalid;
-
-  /// No description provided for @loginFailed.
-  ///
-  /// In de, this message translates to:
-  /// **'Anmeldung fehlgeschlagen'**
-  String get loginFailed;
-
   /// No description provided for @registrationFailed.
   ///
   /// In de, this message translates to:
@@ -360,35 +288,11 @@ abstract class AppLocalizations {
   /// **'Registrierung erfolgreich!\n\nIhre Mitgliedernummer: {memberNumber}\n\nBitte merken Sie sich diese Nummer für die Anmeldung.'**
   String registrationSuccess(String memberNumber);
 
-  /// No description provided for @tooManyDevices.
-  ///
-  /// In de, this message translates to:
-  /// **'Zu viele Geräte'**
-  String get tooManyDevices;
-
-  /// No description provided for @maxDevicesMessage.
-  ///
-  /// In de, this message translates to:
-  /// **'Sie sind bereits auf 3 Geräten angemeldet.\nWählen Sie ein Gerät zum Abmelden:'**
-  String get maxDevicesMessage;
-
-  /// No description provided for @unknownDevice.
-  ///
-  /// In de, this message translates to:
-  /// **'Unbekanntes Gerät'**
-  String get unknownDevice;
-
   /// No description provided for @unknown.
   ///
   /// In de, this message translates to:
   /// **'Unbekannt'**
   String get unknown;
-
-  /// No description provided for @logoutError.
-  ///
-  /// In de, this message translates to:
-  /// **'Fehler beim Abmelden'**
-  String get logoutError;
 
   /// No description provided for @error.
   ///
@@ -407,66 +311,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Passwort zurücksetzen'**
   String get resetPassword;
-
-  /// No description provided for @forgotPasswordTitle.
-  ///
-  /// In de, this message translates to:
-  /// **'Passwort vergessen'**
-  String get forgotPasswordTitle;
-
-  /// No description provided for @forgotPasswordDescription.
-  ///
-  /// In de, this message translates to:
-  /// **'Geben Sie Ihre Mitgliedernummer und den Wiederherstellungscode ein, den Sie bei der Registrierung erstellt haben.'**
-  String get forgotPasswordDescription;
-
-  /// No description provided for @passwordResetSuccess.
-  ///
-  /// In de, this message translates to:
-  /// **'Passwort erfolgreich zurückgesetzt!\n\nSie können sich jetzt mit Ihrem neuen Passwort anmelden.'**
-  String get passwordResetSuccess;
-
-  /// No description provided for @passwordResetFailed.
-  ///
-  /// In de, this message translates to:
-  /// **'Passwort-Zurücksetzung fehlgeschlagen'**
-  String get passwordResetFailed;
-
-  /// No description provided for @needHelp.
-  ///
-  /// In de, this message translates to:
-  /// **'Hilfe benötigt?'**
-  String get needHelp;
-
-  /// No description provided for @helpQuestion.
-  ///
-  /// In de, this message translates to:
-  /// **'Haben Sie Probleme bei der Anmeldung oder Registrierung?'**
-  String get helpQuestion;
-
-  /// No description provided for @helpDescription.
-  ///
-  /// In de, this message translates to:
-  /// **'Kontaktieren Sie uns über WhatsApp und beschreiben Sie uns genau, was nicht funktioniert. Wir antworten Ihnen schnellstmöglich!'**
-  String get helpDescription;
-
-  /// No description provided for @whatsapp.
-  ///
-  /// In de, this message translates to:
-  /// **'WhatsApp'**
-  String get whatsapp;
-
-  /// No description provided for @emailSubject.
-  ///
-  /// In de, this message translates to:
-  /// **'Anfrage über die ICD360S App'**
-  String get emailSubject;
-
-  /// No description provided for @whatsappMessage.
-  ///
-  /// In de, this message translates to:
-  /// **'Hallo, ich habe ein Problem mit der ICD360S App. '**
-  String get whatsappMessage;
 
   /// No description provided for @imprint.
   ///
@@ -491,24 +335,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Widerrufsrecht'**
   String get revocation;
-
-  /// No description provided for @cancellation.
-  ///
-  /// In de, this message translates to:
-  /// **'Kündigung'**
-  String get cancellation;
-
-  /// No description provided for @allRightsReserved.
-  ///
-  /// In de, this message translates to:
-  /// **'Alle Rechte vorbehalten.'**
-  String get allRightsReserved;
-
-  /// No description provided for @enterCredentials.
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte Mitgliedernummer und Passwort eingeben'**
-  String get enterCredentials;
 
   /// No description provided for @appointments.
   ///
@@ -612,23 +438,11 @@ abstract class AppLocalizations {
   /// **'Schließen'**
   String get close;
 
-  /// No description provided for @membership.
-  ///
-  /// In de, this message translates to:
-  /// **'Mitgliedschaft'**
-  String get membership;
-
   /// No description provided for @myAppointments.
   ///
   /// In de, this message translates to:
   /// **'Meine Termine'**
   String get myAppointments;
-
-  /// No description provided for @appointmentsLoadingReady.
-  ///
-  /// In de, this message translates to:
-  /// **'Termine laden - API ist bereit!'**
-  String get appointmentsLoadingReady;
 
   /// No description provided for @priority.
   ///
@@ -642,29 +456,11 @@ abstract class AppLocalizations {
   /// **'Nachricht'**
   String get messageLabel;
 
-  /// No description provided for @createdOn.
-  ///
-  /// In de, this message translates to:
-  /// **'Erstellt'**
-  String get createdOn;
-
-  /// No description provided for @handler.
-  ///
-  /// In de, this message translates to:
-  /// **'Bearbeiter'**
-  String get handler;
-
   /// No description provided for @reportProblems.
   ///
   /// In de, this message translates to:
   /// **'Probleme melden'**
   String get reportProblems;
-
-  /// No description provided for @reportProblem.
-  ///
-  /// In de, this message translates to:
-  /// **'Problem melden'**
-  String get reportProblem;
 
   /// No description provided for @weRespondIn24Hours.
   ///
@@ -720,53 +516,11 @@ abstract class AppLocalizations {
   /// **'Meine Tickets'**
   String get myTickets;
 
-  /// No description provided for @newTicket.
-  ///
-  /// In de, this message translates to:
-  /// **'Neues Ticket'**
-  String get newTicket;
-
-  /// No description provided for @noOpenTickets.
-  ///
-  /// In de, this message translates to:
-  /// **'Keine offenen Tickets'**
-  String get noOpenTickets;
-
-  /// No description provided for @haveQuestionCreateTicket.
-  ///
-  /// In de, this message translates to:
-  /// **'Haben Sie eine Frage oder ein Problem?\nErstellen Sie ein neues Ticket.'**
-  String get haveQuestionCreateTicket;
-
-  /// No description provided for @whatIsTheProblem.
-  ///
-  /// In de, this message translates to:
-  /// **'Was ist das Problem?'**
-  String get whatIsTheProblem;
-
-  /// No description provided for @describeTheProblem.
-  ///
-  /// In de, this message translates to:
-  /// **'Beschreiben Sie das Problem'**
-  String get describeTheProblem;
-
-  /// No description provided for @howUrgentIsIt.
-  ///
-  /// In de, this message translates to:
-  /// **'Wie dringend ist es?'**
-  String get howUrgentIsIt;
-
   /// No description provided for @low.
   ///
   /// In de, this message translates to:
   /// **'Niedrig'**
   String get low;
-
-  /// No description provided for @medium.
-  ///
-  /// In de, this message translates to:
-  /// **'Mittel'**
-  String get medium;
 
   /// No description provided for @high.
   ///
@@ -779,18 +533,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Absenden'**
   String get submit;
-
-  /// No description provided for @fillSubjectAndMessage.
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte Betreff und Nachricht ausfüllen'**
-  String get fillSubjectAndMessage;
-
-  /// No description provided for @ticketCreated.
-  ///
-  /// In de, this message translates to:
-  /// **'Ticket wurde erstellt'**
-  String get ticketCreated;
 
   /// No description provided for @errorCreatingTicket.
   ///
@@ -828,18 +570,6 @@ abstract class AppLocalizations {
   /// **'Passwort ändern'**
   String get changePassword;
 
-  /// No description provided for @newEmailAddress.
-  ///
-  /// In de, this message translates to:
-  /// **'Neue E-Mail-Adresse'**
-  String get newEmailAddress;
-
-  /// No description provided for @currentPassword.
-  ///
-  /// In de, this message translates to:
-  /// **'Aktuelles Passwort'**
-  String get currentPassword;
-
   /// No description provided for @saveEmail.
   ///
   /// In de, this message translates to:
@@ -857,12 +587,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Gerät abgemeldet'**
   String get deviceLoggedOut;
-
-  /// No description provided for @passwordChangedSuccessfully.
-  ///
-  /// In de, this message translates to:
-  /// **'Passwort erfolgreich geändert'**
-  String get passwordChangedSuccessfully;
 
   /// No description provided for @emailChangedSuccessfully.
   ///
@@ -887,36 +611,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Bitte geben Sie eine gültige E-Mail-Adresse ein'**
   String get validEmailRequired;
-
-  /// No description provided for @passwordTooShort.
-  ///
-  /// In de, this message translates to:
-  /// **'Passwort muss mindestens 6 Zeichen lang sein'**
-  String get passwordTooShort;
-
-  /// No description provided for @maxDevicesReached.
-  ///
-  /// In de, this message translates to:
-  /// **'Sie sind auf dem Maximum von 3 Geräten angemeldet.'**
-  String get maxDevicesReached;
-
-  /// No description provided for @loggedInOnDevices.
-  ///
-  /// In de, this message translates to:
-  /// **'Sie sind auf {count} von 3 Geräten angemeldet.'**
-  String loggedInOnDevices(int count);
-
-  /// No description provided for @noActiveSessions.
-  ///
-  /// In de, this message translates to:
-  /// **'Keine aktiven Sitzungen'**
-  String get noActiveSessions;
-
-  /// No description provided for @logoutFromDevice.
-  ///
-  /// In de, this message translates to:
-  /// **'Von diesem Gerät abmelden'**
-  String get logoutFromDevice;
 
   /// No description provided for @confirmLogoutDevice.
   ///
@@ -1103,6 +797,24 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Die Anwendung wird automatisch neu gestartet.'**
   String get appWillRestart;
+
+  /// No description provided for @autoUpdateEnableTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Zukünftige Updates automatisch installieren'**
+  String get autoUpdateEnableTitle;
+
+  /// No description provided for @autoUpdateEnableHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Die App lädt Updates selbständig herunter, installiert sie und startet kurz neu. Ohne weitere Rückfragen.'**
+  String get autoUpdateEnableHint;
+
+  /// No description provided for @autoUpdateInstalling.
+  ///
+  /// In de, this message translates to:
+  /// **'Version {version} wird im Hintergrund installiert. Die App startet gleich neu.'**
+  String autoUpdateInstalling(String version);
 
   /// No description provided for @later.
   ///
@@ -1764,12 +1476,6 @@ abstract class AppLocalizations {
   /// **'Fehler beim Verbinden'**
   String get errorConnecting;
 
-  /// No description provided for @errorAcceptingCall.
-  ///
-  /// In de, this message translates to:
-  /// **'Fehler beim Annehmen'**
-  String get errorAcceptingCall;
-
   /// No description provided for @errorDownloading.
   ///
   /// In de, this message translates to:
@@ -1835,12 +1541,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Datei'**
   String get file;
-
-  /// No description provided for @typingIndicator.
-  ///
-  /// In de, this message translates to:
-  /// **'{name} tippt...'**
-  String typingIndicator(String name);
 
   /// No description provided for @notifNewMessageFrom.
   ///
@@ -1973,30 +1673,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Logs kopiert!'**
   String get logsCopied;
-
-  /// No description provided for @diagnosticDataTitle.
-  ///
-  /// In de, this message translates to:
-  /// **'Diagnose-Daten'**
-  String get diagnosticDataTitle;
-
-  /// No description provided for @diagnosticDescription.
-  ///
-  /// In de, this message translates to:
-  /// **'Möchten Sie anonyme Diagnosedaten senden, um die App zu verbessern?'**
-  String get diagnosticDescription;
-
-  /// No description provided for @noThanks.
-  ///
-  /// In de, this message translates to:
-  /// **'Nein, danke'**
-  String get noThanks;
-
-  /// No description provided for @yesEnable.
-  ///
-  /// In de, this message translates to:
-  /// **'Ja, aktivieren'**
-  String get yesEnable;
 
   /// No description provided for @passwordMinEightChars.
   ///
@@ -2328,12 +2004,6 @@ abstract class AppLocalizations {
   /// **'E-Mail erfolgreich geändert'**
   String get emailChangedSuccess;
 
-  /// No description provided for @newPasswordMinChars.
-  ///
-  /// In de, this message translates to:
-  /// **'Neues Passwort (min. 6 Zeichen)'**
-  String get newPasswordMinChars;
-
   /// No description provided for @reasonLabel2.
   ///
   /// In de, this message translates to:
@@ -2351,12 +2021,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Herunterladen'**
   String get downloadTooltip;
-
-  /// No description provided for @connectionErrorGeneric.
-  ///
-  /// In de, this message translates to:
-  /// **'Verbindungsfehler'**
-  String get connectionErrorGeneric;
 
   /// No description provided for @copyLogs.
   ///
@@ -2387,18 +2051,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Unbekannt'**
   String get unknownValue;
-
-  /// No description provided for @bankTransfer.
-  ///
-  /// In de, this message translates to:
-  /// **'Überweisung'**
-  String get bankTransfer;
-
-  /// No description provided for @standingOrder.
-  ///
-  /// In de, this message translates to:
-  /// **'Dauerauftrag'**
-  String get standingOrder;
 
   /// No description provided for @payment.
   ///
@@ -3055,24 +2707,6 @@ abstract class AppLocalizations {
   /// **'Akzeptiert'**
   String get statusAccepted;
 
-  /// No description provided for @memberNumberTooLong.
-  ///
-  /// In de, this message translates to:
-  /// **'Mitgliedernummer zu lang (max 20 Zeichen)'**
-  String get memberNumberTooLong;
-
-  /// No description provided for @onlyUppercaseAndNumbers.
-  ///
-  /// In de, this message translates to:
-  /// **'Nur Großbuchstaben und Zahlen erlaubt'**
-  String get onlyUppercaseAndNumbers;
-
-  /// No description provided for @passwordTooLong.
-  ///
-  /// In de, this message translates to:
-  /// **'Passwort zu lang (max 100 Zeichen)'**
-  String get passwordTooLong;
-
   /// No description provided for @nameTooLong.
   ///
   /// In de, this message translates to:
@@ -3331,24 +2965,6 @@ abstract class AppLocalizations {
   /// **'Öffnen'**
   String get openFile;
 
-  /// No description provided for @diagnosticErrors.
-  ///
-  /// In de, this message translates to:
-  /// **'Fehlermeldungen zur Verbesserung'**
-  String get diagnosticErrors;
-
-  /// No description provided for @diagnosticAnonymousStats.
-  ///
-  /// In de, this message translates to:
-  /// **'Anonyme Nutzungsstatistiken'**
-  String get diagnosticAnonymousStats;
-
-  /// No description provided for @diagnosticPerformance.
-  ///
-  /// In de, this message translates to:
-  /// **'App-Performance-Daten'**
-  String get diagnosticPerformance;
-
   /// No description provided for @noMicrophoneError.
   ///
   /// In de, this message translates to:
@@ -3396,12 +3012,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Konten, die nicht innerhalb von 30 Tagen verifiziert werden, werden automatisch gesperrt.'**
   String get accountAutoSuspend;
-
-  /// No description provided for @ipClean.
-  ///
-  /// In de, this message translates to:
-  /// **'IP sauber - nicht gelistet'**
-  String get ipClean;
 
   /// No description provided for @documentsProvidedByBoard.
   ///
@@ -3451,18 +3061,6 @@ abstract class AppLocalizations {
   /// **'{name} öffnen'**
   String openDocument(String name);
 
-  /// No description provided for @helpImproveApp.
-  ///
-  /// In de, this message translates to:
-  /// **'Möchten Sie uns helfen, die App zu verbessern?'**
-  String get helpImproveApp;
-
-  /// No description provided for @noPersonalDataCollected.
-  ///
-  /// In de, this message translates to:
-  /// **'Keine persönlichen Daten werden gesammelt. Diese Einstellung kann jederzeit geändert werden.'**
-  String get noPersonalDataCollected;
-
   /// No description provided for @logEntries.
   ///
   /// In de, this message translates to:
@@ -3480,24 +3078,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Neue Anmeldung erkannt'**
   String get newLoginDetected;
-
-  /// No description provided for @waitingForMember.
-  ///
-  /// In de, this message translates to:
-  /// **'Warten auf Mitglied'**
-  String get waitingForMember;
-
-  /// No description provided for @waitingForStaff.
-  ///
-  /// In de, this message translates to:
-  /// **'Warten auf Mitarbeiter'**
-  String get waitingForStaff;
-
-  /// No description provided for @waitingForAuthority.
-  ///
-  /// In de, this message translates to:
-  /// **'Warten auf Behörde'**
-  String get waitingForAuthority;
 
   /// No description provided for @errorNoInternet.
   ///
@@ -3541,23 +3121,11 @@ abstract class AppLocalizations {
   /// **'DNS-Problem erkannt. Prüfen Sie Ihre Verbindung oder wechseln Sie das Netzwerk.'**
   String get securityBannerDnsFailure;
 
-  /// No description provided for @securityBannerCaptivePortal.
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte öffnen Sie Ihren Browser und melden Sie sich beim WLAN an.'**
-  String get securityBannerCaptivePortal;
-
   /// No description provided for @securityBannerSlowNetwork.
   ///
   /// In de, this message translates to:
   /// **'Langsame Verbindung.'**
   String get securityBannerSlowNetwork;
-
-  /// No description provided for @securityBannerNetworkOffline.
-  ///
-  /// In de, this message translates to:
-  /// **'Keine Netzwerkverbindung.'**
-  String get securityBannerNetworkOffline;
 
   /// No description provided for @securityPermissionDialogTitle.
   ///
@@ -3594,6 +3162,1987 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Kein Mikrofon gefunden. Schließen Sie ein Headset oder Mikrofon an und versuchen Sie es erneut.'**
   String get callErrorMicNotFound;
+
+  /// No description provided for @claudiuWelcomeMorning.
+  ///
+  /// In de, this message translates to:
+  /// **'Guten Morgen'**
+  String get claudiuWelcomeMorning;
+
+  /// No description provided for @claudiuWelcomeDay.
+  ///
+  /// In de, this message translates to:
+  /// **'Hallo'**
+  String get claudiuWelcomeDay;
+
+  /// No description provided for @claudiuWelcomeEvening.
+  ///
+  /// In de, this message translates to:
+  /// **'Guten Abend'**
+  String get claudiuWelcomeEvening;
+
+  /// No description provided for @claudiuWelcomeNight.
+  ///
+  /// In de, this message translates to:
+  /// **'Guten Abend'**
+  String get claudiuWelcomeNight;
+
+  /// No description provided for @claudiuWelcomeVisitor.
+  ///
+  /// In de, this message translates to:
+  /// **'lieber Besucher'**
+  String get claudiuWelcomeVisitor;
+
+  /// No description provided for @claudiuWelcomeAsk.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie kann ich dir helfen?'**
+  String get claudiuWelcomeAsk;
+
+  /// No description provided for @claudiuWelcomeBecomeMember.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich möchte Mitglied werden'**
+  String get claudiuWelcomeBecomeMember;
+
+  /// No description provided for @claudiuWelcomeLogin.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich bin bereits Mitglied und möchte mich anmelden'**
+  String get claudiuWelcomeLogin;
+
+  /// No description provided for @claudiuWelcomeProblem.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich habe ein Problem mit der App'**
+  String get claudiuWelcomeProblem;
+
+  /// No description provided for @claudiuWelcomeEmergency.
+  ///
+  /// In de, this message translates to:
+  /// **'Notfall — ruf uns an'**
+  String get claudiuWelcomeEmergency;
+
+  /// No description provided for @claudiuWelcomeMascotName.
+  ///
+  /// In de, this message translates to:
+  /// **'Claudiu'**
+  String get claudiuWelcomeMascotName;
+
+  /// No description provided for @claudiuWelcomeEmergencyIntro.
+  ///
+  /// In de, this message translates to:
+  /// **'Bevor du anrufst — unsere Geschäftszeiten:'**
+  String get claudiuWelcomeEmergencyIntro;
+
+  /// No description provided for @claudiuWelcomeScheduleOffice.
+  ///
+  /// In de, this message translates to:
+  /// **'Im Büro'**
+  String get claudiuWelcomeScheduleOffice;
+
+  /// No description provided for @claudiuWelcomeScheduleField.
+  ///
+  /// In de, this message translates to:
+  /// **'Beim Klienten vor Ort'**
+  String get claudiuWelcomeScheduleField;
+
+  /// No description provided for @claudiuWelcomeOutsideHoursNote.
+  ///
+  /// In de, this message translates to:
+  /// **'Außerhalb dieser Zeiten nehmen wir nur Notfälle entgegen. Du kannst uns auch eine SMS schicken — wir melden uns zurück.'**
+  String get claudiuWelcomeOutsideHoursNote;
+
+  /// No description provided for @claudiuWelcomeCallNow.
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt anrufen'**
+  String get claudiuWelcomeCallNow;
+
+  /// No description provided for @claudiuWelcomeSendSms.
+  ///
+  /// In de, this message translates to:
+  /// **'SMS senden'**
+  String get claudiuWelcomeSendSms;
+
+  /// No description provided for @claudiuWelcomeSmsBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Notfall ICD360S e.V. — bitte ruft mich so schnell wie möglich zurück.'**
+  String get claudiuWelcomeSmsBody;
+
+  /// No description provided for @claudiuWelcomeCloseButton.
+  ///
+  /// In de, this message translates to:
+  /// **'Schließen'**
+  String get claudiuWelcomeCloseButton;
+
+  /// No description provided for @claudiuLoginWelcome.
+  ///
+  /// In de, this message translates to:
+  /// **'Willkommen zurück, liebes Mitglied!'**
+  String get claudiuLoginWelcome;
+
+  /// No description provided for @claudiuLoginAsk.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib mir deine Mitgliedsnummer.'**
+  String get claudiuLoginAsk;
+
+  /// No description provided for @claudiuLoginProgress.
+  ///
+  /// In de, this message translates to:
+  /// **'Fast geschafft… tippe weiter.'**
+  String get claudiuLoginProgress;
+
+  /// No description provided for @claudiuLoginReady.
+  ///
+  /// In de, this message translates to:
+  /// **'Perfekt! Drück jetzt den Anmelden-Knopf.'**
+  String get claudiuLoginReady;
+
+  /// No description provided for @claudiuLoginLoading.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich prüfe die Identität… 🔍'**
+  String get claudiuLoginLoading;
+
+  /// No description provided for @claudiuLoginFoundPlain.
+  ///
+  /// In de, this message translates to:
+  /// **'Gefunden! Du wirst jetzt eingeloggt…'**
+  String get claudiuLoginFoundPlain;
+
+  /// No description provided for @claudiuLoginFoundNamed.
+  ///
+  /// In de, this message translates to:
+  /// **'Gefunden, {name}! Du wirst jetzt eingeloggt…'**
+  String claudiuLoginFoundNamed(String name);
+
+  /// No description provided for @claudiuLoginError.
+  ///
+  /// In de, this message translates to:
+  /// **'Hm, die Nummer finde ich nicht. Hast du dich vielleicht vertippt?'**
+  String get claudiuLoginError;
+
+  /// No description provided for @claudiuLoginForgotHeader.
+  ///
+  /// In de, this message translates to:
+  /// **'Mitgliedsnummer vergessen?'**
+  String get claudiuLoginForgotHeader;
+
+  /// No description provided for @claudiuLoginNoSms.
+  ///
+  /// In de, this message translates to:
+  /// **'Wir verschicken die Nummer nicht per E-Mail oder SMS.'**
+  String get claudiuLoginNoSms;
+
+  /// No description provided for @claudiuLoginOnlyWay.
+  ///
+  /// In de, this message translates to:
+  /// **'Der einzige Weg: ein persönlicher Termin im Vereinsbüro, mit Personalausweis.'**
+  String get claudiuLoginOnlyWay;
+
+  /// No description provided for @claudiuLoginContactUs.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruf uns an für einen Termin:'**
+  String get claudiuLoginContactUs;
+
+  /// No description provided for @claudiuDiagnosticGreeting.
+  ///
+  /// In de, this message translates to:
+  /// **'Bevor du loslegst, eine Frage'**
+  String get claudiuDiagnosticGreeting;
+
+  /// No description provided for @claudiuDiagnosticAsk.
+  ///
+  /// In de, this message translates to:
+  /// **'Darf ich anonyme Berichte senden, damit die Entwickler die App verbessern können?'**
+  String get claudiuDiagnosticAsk;
+
+  /// No description provided for @claudiuDiagnosticYes.
+  ///
+  /// In de, this message translates to:
+  /// **'Ja, ich helfe gerne'**
+  String get claudiuDiagnosticYes;
+
+  /// No description provided for @claudiuDiagnosticNo.
+  ///
+  /// In de, this message translates to:
+  /// **'Nein, ich schaue mich nur um'**
+  String get claudiuDiagnosticNo;
+
+  /// No description provided for @claudiuDiagnosticTellMore.
+  ///
+  /// In de, this message translates to:
+  /// **'Mehr Details'**
+  String get claudiuDiagnosticTellMore;
+
+  /// No description provided for @claudiuDiagnosticSendsHeader.
+  ///
+  /// In de, this message translates to:
+  /// **'📤 Was wir SENDEN (anonym):'**
+  String get claudiuDiagnosticSendsHeader;
+
+  /// No description provided for @claudiuDiagnosticSends1.
+  ///
+  /// In de, this message translates to:
+  /// **'Ein anonymer Gerätecode (NICHT die Mitgliedsnummer)'**
+  String get claudiuDiagnosticSends1;
+
+  /// No description provided for @claudiuDiagnosticSends2.
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Rolle (Mitglied / Vorstand)'**
+  String get claudiuDiagnosticSends2;
+
+  /// No description provided for @claudiuDiagnosticSends3.
+  ///
+  /// In de, this message translates to:
+  /// **'Betriebssystem (Linux / Android / iOS / Windows)'**
+  String get claudiuDiagnosticSends3;
+
+  /// No description provided for @claudiuDiagnosticSends4.
+  ///
+  /// In de, this message translates to:
+  /// **'Gewählte Sprache'**
+  String get claudiuDiagnosticSends4;
+
+  /// No description provided for @claudiuDiagnosticSends5.
+  ///
+  /// In de, this message translates to:
+  /// **'Akkustand + Status'**
+  String get claudiuDiagnosticSends5;
+
+  /// No description provided for @claudiuDiagnosticSends6.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktueller Bildschirm'**
+  String get claudiuDiagnosticSends6;
+
+  /// No description provided for @claudiuDiagnosticSends7.
+  ///
+  /// In de, this message translates to:
+  /// **'Sitzungsdauer (Sekunden)'**
+  String get claudiuDiagnosticSends7;
+
+  /// No description provided for @claudiuDiagnosticSends8.
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler falls vorhanden (letzte 10)'**
+  String get claudiuDiagnosticSends8;
+
+  /// No description provided for @claudiuDiagnosticSends9.
+  ///
+  /// In de, this message translates to:
+  /// **'Navigation (letzte 20 Bildschirme)'**
+  String get claudiuDiagnosticSends9;
+
+  /// No description provided for @claudiuDiagnosticNeverHeader.
+  ///
+  /// In de, this message translates to:
+  /// **'🛡️ Was wir NIE senden:'**
+  String get claudiuDiagnosticNeverHeader;
+
+  /// No description provided for @claudiuDiagnosticNever1.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein echter Name'**
+  String get claudiuDiagnosticNever1;
+
+  /// No description provided for @claudiuDiagnosticNever2.
+  ///
+  /// In de, this message translates to:
+  /// **'E-Mail-Adresse'**
+  String get claudiuDiagnosticNever2;
+
+  /// No description provided for @claudiuDiagnosticNever3.
+  ///
+  /// In de, this message translates to:
+  /// **'Telefonnummer'**
+  String get claudiuDiagnosticNever3;
+
+  /// No description provided for @claudiuDiagnosticNever4.
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort'**
+  String get claudiuDiagnosticNever4;
+
+  /// No description provided for @claudiuDiagnosticNever5.
+  ///
+  /// In de, this message translates to:
+  /// **'Inhalte deiner Chat-Nachrichten'**
+  String get claudiuDiagnosticNever5;
+
+  /// No description provided for @claudiuDiagnosticNever6.
+  ///
+  /// In de, this message translates to:
+  /// **'Inhalte deiner Tickets'**
+  String get claudiuDiagnosticNever6;
+
+  /// No description provided for @claudiuDiagnosticNever7.
+  ///
+  /// In de, this message translates to:
+  /// **'Dokumente oder Anhänge'**
+  String get claudiuDiagnosticNever7;
+
+  /// No description provided for @claudiuDiagnosticTechHeader.
+  ///
+  /// In de, this message translates to:
+  /// **'📡 Technische Details:'**
+  String get claudiuDiagnosticTechHeader;
+
+  /// No description provided for @claudiuDiagnosticTech1.
+  ///
+  /// In de, this message translates to:
+  /// **'Wird alle 2 Minuten gesendet'**
+  String get claudiuDiagnosticTech1;
+
+  /// No description provided for @claudiuDiagnosticTech2.
+  ///
+  /// In de, this message translates to:
+  /// **'TLS-verschlüsselte Verbindung mit Pinned-Zertifikat'**
+  String get claudiuDiagnosticTech2;
+
+  /// No description provided for @claudiuDiagnosticTech3.
+  ///
+  /// In de, this message translates to:
+  /// **'Du kannst es jederzeit in den Einstellungen abschalten'**
+  String get claudiuDiagnosticTech3;
+
+  /// No description provided for @claudiuProblemHelpTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie kann ich helfen?'**
+  String get claudiuProblemHelpTitle;
+
+  /// No description provided for @claudiuProblemHelpGreeting.
+  ///
+  /// In de, this message translates to:
+  /// **'Was ist passiert?'**
+  String get claudiuProblemHelpGreeting;
+
+  /// No description provided for @claudiuProblemHelpAsk.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie möchtest du es mir mitteilen?'**
+  String get claudiuProblemHelpAsk;
+
+  /// No description provided for @claudiuProblemHelpWriteTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Bericht schreiben'**
+  String get claudiuProblemHelpWriteTitle;
+
+  /// No description provided for @claudiuProblemHelpWriteBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Mit Schritt-für-Schritt-Details. Das Team erhält den Text und kümmert sich später darum.'**
+  String get claudiuProblemHelpWriteBody;
+
+  /// No description provided for @claudiuProblemHelpChatTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt sprechen'**
+  String get claudiuProblemHelpChatTitle;
+
+  /// No description provided for @claudiuProblemHelpChatBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Anonymer Chat mit einem Mitarbeiter. Antwort in Echtzeit, falls jemand online ist.'**
+  String get claudiuProblemHelpChatBody;
+
+  /// No description provided for @claudiuProblemHelpAltCallHeader.
+  ///
+  /// In de, this message translates to:
+  /// **'Oder bei dringenden Anliegen:'**
+  String get claudiuProblemHelpAltCallHeader;
+
+  /// No description provided for @claudiuProblemHelpAltCallLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruf uns an'**
+  String get claudiuProblemHelpAltCallLabel;
+
+  /// No description provided for @claudiuAnonymousChatTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Anonymer Chat'**
+  String get claudiuAnonymousChatTitle;
+
+  /// No description provided for @claudiuAnonymousChatGreeting.
+  ///
+  /// In de, this message translates to:
+  /// **'Hallo!'**
+  String get claudiuAnonymousChatGreeting;
+
+  /// No description provided for @claudiuAnonymousChatWelcome.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich höre dir zu. Schreib alles, was dich bewegt — ich brauche keinen Namen. Ich antworte, sobald ich da bin.'**
+  String get claudiuAnonymousChatWelcome;
+
+  /// No description provided for @claudiuAnonymousChatHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Nachricht schreiben…'**
+  String get claudiuAnonymousChatHint;
+
+  /// No description provided for @claudiuAnonymousChatWaitingOperator.
+  ///
+  /// In de, this message translates to:
+  /// **'Wir warten, bis ein Mitarbeiter antwortet…'**
+  String get claudiuAnonymousChatWaitingOperator;
+
+  /// No description provided for @claudiuVorsitzerConnectedTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Hallo!'**
+  String get claudiuVorsitzerConnectedTitle;
+
+  /// No description provided for @claudiuVorsitzerConnectedBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Danke, dass du dich gemeldet hast — du bist jetzt mit einem Vorsitzer verbunden. Schreib uns, wie wir dir bei deinem Mitgliedsantrag helfen können.'**
+  String get claudiuVorsitzerConnectedBody;
+
+  /// No description provided for @claudiuVorsitzerConnectedSender.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorsitzer'**
+  String get claudiuVorsitzerConnectedSender;
+
+  /// No description provided for @claudiuQuickReplyValidationTime.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie lange dauert die Prüfung?'**
+  String get claudiuQuickReplyValidationTime;
+
+  /// No description provided for @claudiuQuickReplyDocuments.
+  ///
+  /// In de, this message translates to:
+  /// **'Welche Dokumente brauche ich?'**
+  String get claudiuQuickReplyDocuments;
+
+  /// No description provided for @claudiuQuickReplyStepProblem.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich komme bei einem Schritt nicht weiter'**
+  String get claudiuQuickReplyStepProblem;
+
+  /// No description provided for @claudiuQuickReplyHuman.
+  ///
+  /// In de, this message translates to:
+  /// **'Kann ich jetzt mit jemandem sprechen?'**
+  String get claudiuQuickReplyHuman;
+
+  /// No description provided for @claudiuAnonymousChatConnecting.
+  ///
+  /// In de, this message translates to:
+  /// **'Verbinde…'**
+  String get claudiuAnonymousChatConnecting;
+
+  /// No description provided for @claudiuAnonymousChatConnectionFailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Chat konnte nicht geöffnet werden. Versuch erneut oder ruf an.'**
+  String get claudiuAnonymousChatConnectionFailed;
+
+  /// No description provided for @claudiuAnonymousChatRetry.
+  ///
+  /// In de, this message translates to:
+  /// **'Erneut versuchen'**
+  String get claudiuAnonymousChatRetry;
+
+  /// No description provided for @claudiuAnonymousChatOnline.
+  ///
+  /// In de, this message translates to:
+  /// **'Verbunden'**
+  String get claudiuAnonymousChatOnline;
+
+  /// No description provided for @claudiuAnonymousChatOffline.
+  ///
+  /// In de, this message translates to:
+  /// **'Wiederverbindung…'**
+  String get claudiuAnonymousChatOffline;
+
+  /// No description provided for @claudiuAnonymousChatAdminTyping.
+  ///
+  /// In de, this message translates to:
+  /// **'Mitarbeiter schreibt…'**
+  String get claudiuAnonymousChatAdminTyping;
+
+  /// No description provided for @claudiuProblemReportTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Problem melden'**
+  String get claudiuProblemReportTitle;
+
+  /// No description provided for @claudiuProblemReportGreeting.
+  ///
+  /// In de, this message translates to:
+  /// **'Was ist passiert?'**
+  String get claudiuProblemReportGreeting;
+
+  /// No description provided for @claudiuProblemReportAsk.
+  ///
+  /// In de, this message translates to:
+  /// **'Beschreibe es im Detail, und ich leite den Bericht weiter.'**
+  String get claudiuProblemReportAsk;
+
+  /// No description provided for @claudiuProblemReportIncludeHeader.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte mit angeben:'**
+  String get claudiuProblemReportIncludeHeader;
+
+  /// No description provided for @claudiuProblemReportIncludeBullets1.
+  ///
+  /// In de, this message translates to:
+  /// **'Was du gerade gemacht hast'**
+  String get claudiuProblemReportIncludeBullets1;
+
+  /// No description provided for @claudiuProblemReportIncludeBullets2.
+  ///
+  /// In de, this message translates to:
+  /// **'Welche Fehlermeldung erschien'**
+  String get claudiuProblemReportIncludeBullets2;
+
+  /// No description provided for @claudiuProblemReportIncludeBullets3.
+  ///
+  /// In de, this message translates to:
+  /// **'Auf welchem Bildschirm du warst'**
+  String get claudiuProblemReportIncludeBullets3;
+
+  /// No description provided for @claudiuProblemReportIncludeBullets4.
+  ///
+  /// In de, this message translates to:
+  /// **'Stürzt die App ab? Wird sie weiß? Schließt sie sich?'**
+  String get claudiuProblemReportIncludeBullets4;
+
+  /// No description provided for @claudiuProblemReportIncludeBullets5.
+  ///
+  /// In de, this message translates to:
+  /// **'Passiert es einmalig oder wiederholt'**
+  String get claudiuProblemReportIncludeBullets5;
+
+  /// No description provided for @claudiuProblemReportDescriptionLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Beschreibung'**
+  String get claudiuProblemReportDescriptionLabel;
+
+  /// No description provided for @claudiuProblemReportDescriptionHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Z.B.: Beim Öffnen des Chat-Bildschirms erscheint „Connection error\" und die App reagiert nicht mehr…'**
+  String get claudiuProblemReportDescriptionHint;
+
+  /// No description provided for @claudiuProblemReportTooShort.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte etwas ausführlicher (mind. {count} Zeichen)'**
+  String claudiuProblemReportTooShort(int count);
+
+  /// No description provided for @claudiuProblemReportSubmit.
+  ///
+  /// In de, this message translates to:
+  /// **'Bericht senden'**
+  String get claudiuProblemReportSubmit;
+
+  /// No description provided for @claudiuProblemReportSubmitting.
+  ///
+  /// In de, this message translates to:
+  /// **'Wird gesendet…'**
+  String get claudiuProblemReportSubmitting;
+
+  /// No description provided for @claudiuProblemReportSentTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Danke!'**
+  String get claudiuProblemReportSentTitle;
+
+  /// No description provided for @claudiuProblemReportSentBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Bericht wurde gesendet. Unser Team schaut so schnell wie möglich darauf.'**
+  String get claudiuProblemReportSentBody;
+
+  /// No description provided for @claudiuProblemReportSentClose.
+  ///
+  /// In de, this message translates to:
+  /// **'Verstanden'**
+  String get claudiuProblemReportSentClose;
+
+  /// No description provided for @claudiuProblemReportSendFailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Bericht konnte nicht gesendet werden. Ruf uns bei dringenden Anliegen an.'**
+  String get claudiuProblemReportSendFailed;
+
+  /// No description provided for @claudiuProblemReportAlt.
+  ///
+  /// In de, this message translates to:
+  /// **'Oder bei dringenden Anliegen:'**
+  String get claudiuProblemReportAlt;
+
+  /// No description provided for @claudiuProblemReportCallLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruf uns an'**
+  String get claudiuProblemReportCallLabel;
+
+  /// No description provided for @claudiuApprovalGreeting.
+  ///
+  /// In de, this message translates to:
+  /// **'Hallo, {name}! 👋'**
+  String claudiuApprovalGreeting(String name);
+
+  /// No description provided for @claudiuApprovalGreetingNoName.
+  ///
+  /// In de, this message translates to:
+  /// **'Hallo! 👋'**
+  String get claudiuApprovalGreetingNoName;
+
+  /// No description provided for @claudiuApprovalGladToSeeYou.
+  ///
+  /// In de, this message translates to:
+  /// **'Schön, dass du da bist!'**
+  String get claudiuApprovalGladToSeeYou;
+
+  /// No description provided for @claudiuApprovalCheckingForSafety.
+  ///
+  /// In de, this message translates to:
+  /// **'Zu deiner Sicherheit prüft ein Vorsitzer gerade deine Anmeldeanfrage. 🛡️'**
+  String get claudiuApprovalCheckingForSafety;
+
+  /// No description provided for @claudiuApprovalMonthlyExplain.
+  ///
+  /// In de, this message translates to:
+  /// **'💡 Wir machen das alle 30 Tage, um sicher zu sein, dass du es bist. Es ist wie ein Sicherheits-Check-up — dauert maximal 5 Minuten.'**
+  String get claudiuApprovalMonthlyExplain;
+
+  /// No description provided for @claudiuApprovalSuccess.
+  ///
+  /// In de, this message translates to:
+  /// **'Fertig! 🎉 Der Vorsitzer hat dich erkannt. Du wirst jetzt eingeloggt…'**
+  String get claudiuApprovalSuccess;
+
+  /// No description provided for @claudiuApprovalDenied.
+  ///
+  /// In de, this message translates to:
+  /// **'Hm, der Vorsitzer hat deine Anfrage abgelehnt. 😔'**
+  String get claudiuApprovalDenied;
+
+  /// No description provided for @claudiuApprovalDeniedHelp.
+  ///
+  /// In de, this message translates to:
+  /// **'Wenn du denkst, das ist ein Fehler, ruf uns bitte an, damit wir es klären.'**
+  String get claudiuApprovalDeniedHelp;
+
+  /// No description provided for @claudiuApprovalExpired.
+  ///
+  /// In de, this message translates to:
+  /// **'Die 5 Minuten sind vorbei und wir haben keine Antwort vom Vorsitzer erhalten.'**
+  String get claudiuApprovalExpired;
+
+  /// No description provided for @claudiuApprovalExpiredHelp.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruf uns an und wir können deine Anfrage direkt vor Ort genehmigen. 📞'**
+  String get claudiuApprovalExpiredHelp;
+
+  /// No description provided for @claudiuApprovalCallUs.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruf uns an'**
+  String get claudiuApprovalCallUs;
+
+  /// No description provided for @claudiuApprovalTryAgain.
+  ///
+  /// In de, this message translates to:
+  /// **'Erneut versuchen'**
+  String get claudiuApprovalTryAgain;
+
+  /// No description provided for @claudiuApprovalCancel.
+  ///
+  /// In de, this message translates to:
+  /// **'Abbrechen'**
+  String get claudiuApprovalCancel;
+
+  /// No description provided for @claudiuApprovalClose.
+  ///
+  /// In de, this message translates to:
+  /// **'Schließen'**
+  String get claudiuApprovalClose;
+
+  /// No description provided for @wizardIntroBubble1.
+  ///
+  /// In de, this message translates to:
+  /// **'Hallo, Besucher! 👋 Danke, dass du Teil unserer Familie werden möchtest.'**
+  String get wizardIntroBubble1;
+
+  /// No description provided for @wizardIntroBubble2.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich heiße Claudiu. Im Frühjahr 2025 hatte ich eine klare Vision: einen Verein zu gründen, der Menschen in Not hilft — ehrenamtlich, von Herzen, ohne unnötige Bürokratie. ❤️'**
+  String get wizardIntroBubble2;
+
+  /// No description provided for @wizardIntroBubble3.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich fing an, mit den Klienten zu sprechen, die ich besuchte. Ich erzählte ihnen meinen Traum. Und jeder sagte: „Ja, los!\" Im Juli 2025 trafen wir uns — 6 entschlossene Menschen. Wir beschlossen, **ICD360S e.V.** in Neu-Ulm zu gründen. 📍'**
+  String get wizardIntroBubble3;
+
+  /// No description provided for @wizardIntroBubble4.
+  ///
+  /// In de, this message translates to:
+  /// **'Am **1. August 2025** wurde der Verein offiziell ins Vereinsregister eingetragen — mein schönstes Geschenk. 🎂'**
+  String get wizardIntroBubble4;
+
+  /// No description provided for @wizardIntroBubble5.
+  ///
+  /// In de, this message translates to:
+  /// **'Was machen wir? Wir helfen Geflüchteten, Menschen mit Behinderung, wirtschaftlich Benachteiligten, **Kindern und Jugendlichen** — bei Behördengängen, Deutsch lernen, Wohnungssuche, Einkäufen, Sozialleistungen. Unser Vorstand besteht mehrheitlich aus Menschen mit Behinderung — so kommen die Entscheidungen aus echter Lebenserfahrung. 🤝'**
+  String get wizardIntroBubble5;
+
+  /// No description provided for @wizardIntroBubble6.
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt bist du dran. Lass uns dich anmelden — dauert ca. 5 Minuten. Wir gehen Schritt für Schritt, ich lasse dich nicht allein. ✨'**
+  String get wizardIntroBubble6;
+
+  /// No description provided for @wizardIntroStart.
+  ///
+  /// In de, this message translates to:
+  /// **'Lass uns anfangen'**
+  String get wizardIntroStart;
+
+  /// No description provided for @wizardBack.
+  ///
+  /// In de, this message translates to:
+  /// **'Zurück'**
+  String get wizardBack;
+
+  /// No description provided for @wizardNext.
+  ///
+  /// In de, this message translates to:
+  /// **'Weiter'**
+  String get wizardNext;
+
+  /// No description provided for @wizardStepLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Schritt {step} von {total} · {title}'**
+  String wizardStepLabel(int step, int total, String title);
+
+  /// No description provided for @wizardErrRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Dieses Feld ist erforderlich'**
+  String get wizardErrRequired;
+
+  /// No description provided for @wizardErrTooShort.
+  ///
+  /// In de, this message translates to:
+  /// **'Zu kurz (mindestens {count} Zeichen)'**
+  String wizardErrTooShort(int count);
+
+  /// No description provided for @wizardErrOnlyLetters.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur Buchstaben, Leerzeichen, Bindestriche und Apostroph'**
+  String get wizardErrOnlyLetters;
+
+  /// No description provided for @wizardErrSaveFailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Speichern fehlgeschlagen. Verbindung prüfen und erneut versuchen.'**
+  String get wizardErrSaveFailed;
+
+  /// No description provided for @wizardStufe1aTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Identität'**
+  String get wizardStufe1aTitle;
+
+  /// No description provided for @wizardStufe1aPrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Wir lernen dich offiziell kennen. Bitte schreib deinen Namen genau so, wie er auf Personalausweis, Reisepass oder Aufenthaltstitel steht — dann passt es zu deinen Dokumenten.'**
+  String get wizardStufe1aPrompt;
+
+  /// No description provided for @wizardStufe1aVornameLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Vornamen'**
+  String get wizardStufe1aVornameLabel;
+
+  /// No description provided for @wizardStufe1aVornameHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle deine Vornamen, genau wie auf dem Ausweis. Mit Leerzeichen oder Bindestrich (z.B. Hans-Peter, Maria Anna).'**
+  String get wizardStufe1aVornameHelper;
+
+  /// No description provided for @wizardStufe1aNachnameLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Familienname'**
+  String get wizardStufe1aNachnameLabel;
+
+  /// No description provided for @wizardStufe1aNachnameHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein aktueller Familienname.'**
+  String get wizardStufe1aNachnameHelper;
+
+  /// No description provided for @wizardStufe1aGeburtsnameLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Geburtsname (optional)'**
+  String get wizardStufe1aGeburtsnameLabel;
+
+  /// No description provided for @wizardStufe1aGeburtsnameHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur wenn er vom Familiennamen abweicht — z.B. vor der Heirat.'**
+  String get wizardStufe1aGeburtsnameHelper;
+
+  /// No description provided for @wizardStufe1bTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Geburtstag'**
+  String get wizardStufe1bTitle;
+
+  /// No description provided for @wizardStufe1bPrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Wir möchten deinen Geburtstag mit dir feiern! 🎂 Und es hilft uns zu wissen, dass du mindestens 16 bist — so steht es in unserer Satzung.'**
+  String get wizardStufe1bPrompt;
+
+  /// No description provided for @wizardStufe1bGeburtsdatumLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Geburtsdatum'**
+  String get wizardStufe1bGeburtsdatumLabel;
+
+  /// No description provided for @wizardStufe1bGeburtsdatumHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Tippen zum Auswählen'**
+  String get wizardStufe1bGeburtsdatumHelper;
+
+  /// No description provided for @wizardStufe1bGeburtsortLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Geburtsort'**
+  String get wizardStufe1bGeburtsortLabel;
+
+  /// No description provided for @wizardStufe1bGeburtsortHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Stadt / Ort, wo du geboren wurdest.'**
+  String get wizardStufe1bGeburtsortHelper;
+
+  /// No description provided for @wizardAgeGatePrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Es tut mir leid… 😔'**
+  String get wizardAgeGatePrompt;
+
+  /// No description provided for @wizardAgeGateBody1.
+  ///
+  /// In de, this message translates to:
+  /// **'Unsere Satzung sagt, du musst mindestens 16 sein, um Mitglied zu werden. Du bist {age} — ich hoffe, wir sehen uns in {years} Jahren wieder! 🌱'**
+  String wizardAgeGateBody1(int age, int years);
+
+  /// No description provided for @wizardAgeGateBody2.
+  ///
+  /// In de, this message translates to:
+  /// **'Wenn du dich punktuell als Ehrenamtliche*r engagieren möchtest (jedes Alter, mit Erlaubnis der Eltern), ruf uns an — wir freuen uns, junge Menschen zu unterstützen, die die Welt verändern wollen.'**
+  String get wizardAgeGateBody2;
+
+  /// No description provided for @wizardAgeGateBackHome.
+  ///
+  /// In de, this message translates to:
+  /// **'Zurück zum Start'**
+  String get wizardAgeGateBackHome;
+
+  /// No description provided for @wizardErrInvalidPhone.
+  ///
+  /// In de, this message translates to:
+  /// **'Ungültige Telefonnummer'**
+  String get wizardErrInvalidPhone;
+
+  /// No description provided for @wizardStufe1b1Title.
+  ///
+  /// In de, this message translates to:
+  /// **'Einwilligung Eltern'**
+  String get wizardStufe1b1Title;
+
+  /// No description provided for @wizardStufe1b1Prompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Du bist minderjährig (16-17) — gemäß §106 BGB brauchen wir die Zustimmung eines Elternteils oder gesetzlichen Vertreters. Gib mir Namen und Telefonnummer. Ein Vorsitzer ruft an und vereinbart ein Treffen (persönlich oder per Videoanruf). Keine E-Mail — wir wollen sicher sein, dass wir mit der richtigen Person sprechen.'**
+  String get wizardStufe1b1Prompt;
+
+  /// No description provided for @wizardStufe1b1VornameLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorname Erziehungsberechtigter'**
+  String get wizardStufe1b1VornameLabel;
+
+  /// No description provided for @wizardStufe1b1VornameHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie auf dem Personalausweis des Elternteils.'**
+  String get wizardStufe1b1VornameHelper;
+
+  /// No description provided for @wizardStufe1b1NachnameLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Familienname Erziehungsberechtigter'**
+  String get wizardStufe1b1NachnameLabel;
+
+  /// No description provided for @wizardStufe1b1NachnameHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie auf dem Personalausweis des Elternteils.'**
+  String get wizardStufe1b1NachnameHelper;
+
+  /// No description provided for @wizardStufe1b1TelefonLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Mobilnummer Erziehungsberechtigter'**
+  String get wizardStufe1b1TelefonLabel;
+
+  /// No description provided for @wizardStufe1b1TelefonHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'An diese Nummer ruft ein Vorsitzer an.'**
+  String get wizardStufe1b1TelefonHelper;
+
+  /// No description provided for @wizardStufe1b1RelationLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Verhältnis zum Kind:'**
+  String get wizardStufe1b1RelationLabel;
+
+  /// No description provided for @wizardStufe1b1RelationMutter.
+  ///
+  /// In de, this message translates to:
+  /// **'Mutter'**
+  String get wizardStufe1b1RelationMutter;
+
+  /// No description provided for @wizardStufe1b1RelationVater.
+  ///
+  /// In de, this message translates to:
+  /// **'Vater'**
+  String get wizardStufe1b1RelationVater;
+
+  /// No description provided for @wizardStufe1b1RelationSorgeberechtigter.
+  ///
+  /// In de, this message translates to:
+  /// **'Sorgeberechtigter'**
+  String get wizardStufe1b1RelationSorgeberechtigter;
+
+  /// No description provided for @wizardStufe1b1RelationAndere.
+  ///
+  /// In de, this message translates to:
+  /// **'Andere/r Erziehungsberechtigte/r'**
+  String get wizardStufe1b1RelationAndere;
+
+  /// No description provided for @wizardStufe1cTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Persönliche Details'**
+  String get wizardStufe1cTitle;
+
+  /// No description provided for @wizardStufe1cPrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur damit ich dich etwas besser kennenlerne. Diese Angaben bleiben unter uns und erscheinen nirgendwo öffentlich.'**
+  String get wizardStufe1cPrompt;
+
+  /// No description provided for @wizardStufe1cGeschlechtLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Geschlecht'**
+  String get wizardStufe1cGeschlechtLabel;
+
+  /// No description provided for @wizardStufe1cGeschlechtMaennlich.
+  ///
+  /// In de, this message translates to:
+  /// **'Männlich'**
+  String get wizardStufe1cGeschlechtMaennlich;
+
+  /// No description provided for @wizardStufe1cGeschlechtWeiblich.
+  ///
+  /// In de, this message translates to:
+  /// **'Weiblich'**
+  String get wizardStufe1cGeschlechtWeiblich;
+
+  /// No description provided for @wizardStufe1cGeschlechtDivers.
+  ///
+  /// In de, this message translates to:
+  /// **'Divers'**
+  String get wizardStufe1cGeschlechtDivers;
+
+  /// No description provided for @wizardStufe1cGeschlechtKeineAngabe.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Angabe'**
+  String get wizardStufe1cGeschlechtKeineAngabe;
+
+  /// No description provided for @wizardStufe1cFamilienstandLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Familienstand'**
+  String get wizardStufe1cFamilienstandLabel;
+
+  /// No description provided for @wizardStufe1cFamilienstandLedig.
+  ///
+  /// In de, this message translates to:
+  /// **'Ledig'**
+  String get wizardStufe1cFamilienstandLedig;
+
+  /// No description provided for @wizardStufe1cFamilienstandVerheiratet.
+  ///
+  /// In de, this message translates to:
+  /// **'Verheiratet'**
+  String get wizardStufe1cFamilienstandVerheiratet;
+
+  /// No description provided for @wizardStufe1cFamilienstandGeschieden.
+  ///
+  /// In de, this message translates to:
+  /// **'Geschieden'**
+  String get wizardStufe1cFamilienstandGeschieden;
+
+  /// No description provided for @wizardStufe1cFamilienstandVerwitwet.
+  ///
+  /// In de, this message translates to:
+  /// **'Verwitwet'**
+  String get wizardStufe1cFamilienstandVerwitwet;
+
+  /// No description provided for @wizardStufe1dTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Herkunft'**
+  String get wizardStufe1dTitle;
+
+  /// No description provided for @wizardStufe1dPrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Das hilft uns, dir die richtige Unterstützung anzubieten — zum Beispiel Beratung beim Aufenthalt oder das Finden deiner Sprachcommunity.'**
+  String get wizardStufe1dPrompt;
+
+  /// No description provided for @wizardStufe1dStaatLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Staatsangehörigkeit'**
+  String get wizardStufe1dStaatLabel;
+
+  /// No description provided for @wizardStufe1dStaatHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Z.B. deutsch, rumänisch, ukrainisch. Mehrere mit Komma getrennt.'**
+  String get wizardStufe1dStaatHelper;
+
+  /// No description provided for @wizardStufe1dAufenthaltLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Aufenthaltsstatus (optional)'**
+  String get wizardStufe1dAufenthaltLabel;
+
+  /// No description provided for @wizardStufe1dAufenthaltHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Wähle den Titel aus deinem Aufenthaltskarte / Bescheid. Der Vorstand gleicht mit den Dokumenten ab.'**
+  String get wizardStufe1dAufenthaltHelper;
+
+  /// No description provided for @wizardStufe1dAufenthaltAwaitingCitizenship.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte oben zuerst die Staatsangehörigkeit eintragen — wir zeigen nur die passenden Optionen.'**
+  String get wizardStufe1dAufenthaltAwaitingCitizenship;
+
+  /// No description provided for @wizardStufe1dAufenthaltGerman.
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Aufenthaltstitel erforderlich — Deutscher Staatsangehöriger.'**
+  String get wizardStufe1dAufenthaltGerman;
+
+  /// No description provided for @wizardStufe1dAufenthaltEuEea.
+  ///
+  /// In de, this message translates to:
+  /// **'EU-/EWR-/CH-Bürger — Freizügigkeit.'**
+  String get wizardStufe1dAufenthaltEuEea;
+
+  /// No description provided for @wizardStufe1dAufenthaltTempHint.
+  ///
+  /// In de, this message translates to:
+  /// **'befristet'**
+  String get wizardStufe1dAufenthaltTempHint;
+
+  /// No description provided for @wizardStufe1dAufenthaltPermHint.
+  ///
+  /// In de, this message translates to:
+  /// **'unbefristet'**
+  String get wizardStufe1dAufenthaltPermHint;
+
+  /// No description provided for @wizardStufe1dAufenthaltAsylumProcessHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Asylverfahren'**
+  String get wizardStufe1dAufenthaltAsylumProcessHint;
+
+  /// No description provided for @wizardStufe1dAufenthaltOther.
+  ///
+  /// In de, this message translates to:
+  /// **'Sonstige (bitte im Chat angeben)'**
+  String get wizardStufe1dAufenthaltOther;
+
+  /// No description provided for @wizardStufe1dAufenthaltRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte einen Aufenthaltstitel auswählen.'**
+  String get wizardStufe1dAufenthaltRequired;
+
+  /// No description provided for @wizardStufe1dMutterspracheLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Muttersprache'**
+  String get wizardStufe1dMutterspracheLabel;
+
+  /// No description provided for @wizardStufe1dMutterspracheHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorausgefüllt mit der App-Sprache — ändere falls anders.'**
+  String get wizardStufe1dMutterspracheHelper;
+
+  /// No description provided for @wizardStufe1eTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Adresse'**
+  String get wizardStufe1eTitle;
+
+  /// No description provided for @wizardStufe1ePrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Postanschrift — wir nutzen sie für offizielle Unterlagen (Satzung, Mitgliedsverträge, Mitteilungen).'**
+  String get wizardStufe1ePrompt;
+
+  /// No description provided for @wizardStufe1eStrasseLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Straße'**
+  String get wizardStufe1eStrasseLabel;
+
+  /// No description provided for @wizardStufe1eStrasseHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur der Straßenname — Hausnummer ins Feld daneben.'**
+  String get wizardStufe1eStrasseHelper;
+
+  /// No description provided for @wizardStufe1eHausnummerLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Hausnummer'**
+  String get wizardStufe1eHausnummerLabel;
+
+  /// No description provided for @wizardStufe1ePlzLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'PLZ'**
+  String get wizardStufe1ePlzLabel;
+
+  /// No description provided for @wizardStufe1eOrtLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Ort'**
+  String get wizardStufe1eOrtLabel;
+
+  /// No description provided for @wizardStufe1eLandLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Land'**
+  String get wizardStufe1eLandLabel;
+
+  /// No description provided for @wizardStufe1eLandHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorausgefüllt mit Deutschland.'**
+  String get wizardStufe1eLandHelper;
+
+  /// No description provided for @wizardErrInvalidStreet.
+  ///
+  /// In de, this message translates to:
+  /// **'Ungültiger Straßenname'**
+  String get wizardErrInvalidStreet;
+
+  /// No description provided for @wizardErrInvalidHausnummer.
+  ///
+  /// In de, this message translates to:
+  /// **'Ungültige Hausnummer (z.B. 12, 12a, 12/3)'**
+  String get wizardErrInvalidHausnummer;
+
+  /// No description provided for @wizardErrInvalidPlz.
+  ///
+  /// In de, this message translates to:
+  /// **'Ungültige PLZ (nur Ziffern)'**
+  String get wizardErrInvalidPlz;
+
+  /// No description provided for @wizardStufe1fTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Kontakt'**
+  String get wizardStufe1fTitle;
+
+  /// No description provided for @wizardStufe1fPrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie erreichen wir dich? Das Telefon nur für Notfälle — alles andere läuft über unseren Ende-zu-Ende-verschlüsselten In-App-Kanal. Deine Mitglieder-E-Mail wird automatisch zugewiesen und unten angezeigt.'**
+  String get wizardStufe1fPrompt;
+
+  /// No description provided for @wizardStufe1fTelefonLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Mobilnummer'**
+  String get wizardStufe1fTelefonLabel;
+
+  /// No description provided for @wizardStufe1fTelefonHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Versprochen — wir rufen nur an, wenn es wirklich wichtig ist. 📱'**
+  String get wizardStufe1fTelefonHelper;
+
+  /// No description provided for @wizardStufe2Title.
+  ///
+  /// In de, this message translates to:
+  /// **'Mitgliedsart'**
+  String get wizardStufe2Title;
+
+  /// No description provided for @wizardStufe2Prompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Welche Art von Mitglied möchtest du sein? Lass mich dir jede Option erklären.'**
+  String get wizardStufe2Prompt;
+
+  /// No description provided for @wizardStufe2OrdentlichTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Ordentliches Mitglied'**
+  String get wizardStufe2OrdentlichTitle;
+
+  /// No description provided for @wizardStufe2OrdentlichBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Volle Rechte. Du zahlst monatlich Beitrag, stimmst in der Mitgliederversammlung ab und kannst in den Vorstand gewählt werden. Standardwahl.'**
+  String get wizardStufe2OrdentlichBody;
+
+  /// No description provided for @wizardStufe2FoerderTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Fördermitglied'**
+  String get wizardStufe2FoerderTitle;
+
+  /// No description provided for @wizardStufe2FoerderBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Du unterstützt den Verein finanziell, nimmst aber nicht aktiv an Entscheidungen teil. Kein Stimmrecht. Gut, wenn du aus der Ferne helfen willst.'**
+  String get wizardStufe2FoerderBody;
+
+  /// No description provided for @wizardStufe2EhrenTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Ehrenmitglied'**
+  String get wizardStufe2EhrenTitle;
+
+  /// No description provided for @wizardStufe2EhrenBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Wird vom Vorstand für besondere Verdienste verliehen. Du wählst es nicht selbst — es wird als Anerkennung gewährt. Wähle nur, wenn dir bereits diese Ehre zuteilwurde.'**
+  String get wizardStufe2EhrenBody;
+
+  /// No description provided for @wizardStufe3Title.
+  ///
+  /// In de, this message translates to:
+  /// **'Finanzielle Situation'**
+  String get wizardStufe3Title;
+
+  /// No description provided for @wizardStufe3Prompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt zu deiner finanziellen Situation. Nicht um zu urteilen — sondern um dich vom Beitrag zu befreien, falls du Sozialleistungen beziehst.'**
+  String get wizardStufe3Prompt;
+
+  /// No description provided for @wizardStufe3OptionBuergergeld.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich beziehe Bürgergeld'**
+  String get wizardStufe3OptionBuergergeld;
+
+  /// No description provided for @wizardStufe3OptionSozialamt.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich beziehe Sozialamt-Leistungen'**
+  String get wizardStufe3OptionSozialamt;
+
+  /// No description provided for @wizardStufe3OptionNein.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich beziehe keine dieser Leistungen'**
+  String get wizardStufe3OptionNein;
+
+  /// No description provided for @wizardStufe3FeeExemptTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Beitrag: 0 € / Monat 🎉'**
+  String get wizardStufe3FeeExemptTitle;
+
+  /// No description provided for @wizardStufe3FeeExemptBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Wir brauchen nur einen Nachweis (Leistungsbescheid oder Bescheinigung der Behörde / Krankenkasse).'**
+  String get wizardStufe3FeeExemptBody;
+
+  /// No description provided for @wizardStufe3UploadTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Leistungsbescheid hochladen'**
+  String get wizardStufe3UploadTitle;
+
+  /// No description provided for @wizardStufe3UploadHint.
+  ///
+  /// In de, this message translates to:
+  /// **'PDF / JPG / PNG, maximal 10 MB.'**
+  String get wizardStufe3UploadHint;
+
+  /// No description provided for @wizardStufe3UploadRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte lade den Leistungsbescheid hoch, bevor es weitergeht.'**
+  String get wizardStufe3UploadRequired;
+
+  /// No description provided for @wizardStufe3FileTooLarge.
+  ///
+  /// In de, this message translates to:
+  /// **'Datei zu groß. Maximal 10 MB.'**
+  String get wizardStufe3FileTooLarge;
+
+  /// No description provided for @wizardStufe3UploadFailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Datei konnte nicht hochgeladen werden. Bitte erneut versuchen.'**
+  String get wizardStufe3UploadFailed;
+
+  /// No description provided for @wizardStufe3RegularFeeTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Beitrag: 25 € / Monat'**
+  String get wizardStufe3RegularFeeTitle;
+
+  /// No description provided for @wizardStufe3RegularFeeBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Regulärer Beitrag für ordentliche Mitglieder laut Satzung.'**
+  String get wizardStufe3RegularFeeBody;
+
+  /// No description provided for @wizardStufe4Title.
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlung'**
+  String get wizardStufe4Title;
+
+  /// No description provided for @wizardStufe4Prompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie möchtest du den Beitrag zahlen? Und an welchem Tag im Monat soll abgebucht werden?'**
+  String get wizardStufe4Prompt;
+
+  /// No description provided for @wizardStufe4MethodUeberweisungTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Überweisung'**
+  String get wizardStufe4MethodUeberweisungTitle;
+
+  /// No description provided for @wizardStufe4MethodUeberweisungBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Du löst die Zahlung jeden Monat manuell von deinem Konto aus.'**
+  String get wizardStufe4MethodUeberweisungBody;
+
+  /// No description provided for @wizardStufe4MethodSepaTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'SEPA-Lastschrift'**
+  String get wizardStufe4MethodSepaTitle;
+
+  /// No description provided for @wizardStufe4MethodSepaBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Wir ziehen den Betrag automatisch von deinem Konto ein. Am bequemsten, aber wir brauchen IBAN und ein Mandat.'**
+  String get wizardStufe4MethodSepaBody;
+
+  /// No description provided for @wizardStufe4MethodDauerauftragTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Dauerauftrag'**
+  String get wizardStufe4MethodDauerauftragTitle;
+
+  /// No description provided for @wizardStufe4MethodDauerauftragBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Du richtest einen Dauerauftrag bei deiner Bank ein. Deine Bank überweist den Betrag jeden Monat automatisch.'**
+  String get wizardStufe4MethodDauerauftragBody;
+
+  /// No description provided for @wizardStufe4DayLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlungstag'**
+  String get wizardStufe4DayLabel;
+
+  /// No description provided for @wizardStufe4DayHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Wähle einen Tag zwischen 1 und 31'**
+  String get wizardStufe4DayHint;
+
+  /// No description provided for @wizardStufe4DayItem.
+  ///
+  /// In de, this message translates to:
+  /// **'Tag {day}'**
+  String wizardStufe4DayItem(int day);
+
+  /// No description provided for @wizardStufe4DayReminder.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Beitrag wird am {day}. jedes Monats abgebucht.'**
+  String wizardStufe4DayReminder(int day);
+
+  /// No description provided for @wizardStufe5Title.
+  ///
+  /// In de, this message translates to:
+  /// **'Beginn'**
+  String get wizardStufe5Title;
+
+  /// No description provided for @wizardStufe5Prompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Ab wann möchtest du offiziell ICD360S-Mitglied sein? Ab der Freigabe oder rückwirkend.'**
+  String get wizardStufe5Prompt;
+
+  /// No description provided for @wizardStufe5OptionAbVerifizierungTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Ab Freigabe durch den Vorstand'**
+  String get wizardStufe5OptionAbVerifizierungTitle;
+
+  /// No description provided for @wizardStufe5OptionAbVerifizierungBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Die einfachste Wahl. Kein rückwirkender Beitrag.'**
+  String get wizardStufe5OptionAbVerifizierungBody;
+
+  /// No description provided for @wizardStufe5OptionGruendungsdatumTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Rückwirkend ab 01.08.2025 (Gründungsdatum)'**
+  String get wizardStufe5OptionGruendungsdatumTitle;
+
+  /// No description provided for @wizardStufe5OptionGruendungsdatumBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Du zählst als Mitglied seit dem ersten Tag des Vereins.'**
+  String get wizardStufe5OptionGruendungsdatumBody;
+
+  /// No description provided for @wizardStufe5OptionAnderesDatumTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Anderes Datum'**
+  String get wizardStufe5OptionAnderesDatumTitle;
+
+  /// No description provided for @wizardStufe5OptionAnderesDatumBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Du wählst ein Datum zwischen 01.08.2025 und heute.'**
+  String get wizardStufe5OptionAnderesDatumBody;
+
+  /// No description provided for @wizardStufe5PickDate.
+  ///
+  /// In de, this message translates to:
+  /// **'Tippen, um Datum zu wählen'**
+  String get wizardStufe5PickDate;
+
+  /// No description provided for @wizardStufe5PickDateFirst.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte wähle zuerst ein Datum.'**
+  String get wizardStufe5PickDateFirst;
+
+  /// No description provided for @wizardStufe5DatePickerHelp.
+  ///
+  /// In de, this message translates to:
+  /// **'Mitgliedschaftsbeginn'**
+  String get wizardStufe5DatePickerHelp;
+
+  /// No description provided for @wizardStufe5DateRange.
+  ///
+  /// In de, this message translates to:
+  /// **'Zwischen {start} und heute'**
+  String wizardStufe5DateRange(String start);
+
+  /// No description provided for @wizardStufe5RetroactiveTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Rückwirkender Beitrag'**
+  String get wizardStufe5RetroactiveTitle;
+
+  /// No description provided for @wizardStufe5RetroactiveBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Vom {start} bis {end} sind das {months} Monate. Bei 25 €/Monat ergibt das eine rückwirkende Zahlung von {amount} €, zusätzlich zum laufenden Monatsbeitrag.'**
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount);
+
+  /// No description provided for @wizardStufe5FeeExemptTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Rückwirkender Beitrag: 0 € 🎉'**
+  String get wizardStufe5FeeExemptTitle;
+
+  /// No description provided for @wizardStufe5FeeExemptBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Mit Bürgergeld oder Sozialamt bist du komplett befreit — auch rückwirkend nichts zu zahlen.'**
+  String get wizardStufe5FeeExemptBody;
+
+  /// No description provided for @wizardDocumentPrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Bevor wir abschließen, lies bitte sorgfältig die {doc}. Es ist wichtig zu wissen, was du unterschreibst.'**
+  String wizardDocumentPrompt(String doc);
+
+  /// No description provided for @wizardDocumentScrollHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Scroll bis zum Ende, um fortzufahren.'**
+  String get wizardDocumentScrollHint;
+
+  /// No description provided for @wizardDocumentScrolledOk.
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast bis zum Ende gelesen ✓'**
+  String get wizardDocumentScrolledOk;
+
+  /// No description provided for @wizardDocumentOpenButton.
+  ///
+  /// In de, this message translates to:
+  /// **'{doc} im Browser öffnen'**
+  String wizardDocumentOpenButton(String doc);
+
+  /// No description provided for @wizardDocumentExternalHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Auf dieser Plattform öffnen wir das Dokument in deinem Standard-Browser.'**
+  String get wizardDocumentExternalHint;
+
+  /// No description provided for @wizardDocumentOpenedOk.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Dokument wurde geöffnet. Bitte lies es sorgfältig.'**
+  String get wizardDocumentOpenedOk;
+
+  /// No description provided for @wizardDocumentConfirm.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich bestätige, dass ich {doc} gelesen habe und damit einverstanden bin.'**
+  String wizardDocumentConfirm(String doc);
+
+  /// No description provided for @wizardFinalAdultTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Geschafft! Du bist angemeldet 🎉'**
+  String get wizardFinalAdultTitle;
+
+  /// No description provided for @wizardFinalMinorTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Anfrage wurde verschickt 📨'**
+  String get wizardFinalMinorTitle;
+
+  /// No description provided for @wizardFinalMinorBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Wir kontaktieren deinen Elternteil und vereinbaren ein Treffen (persönlich oder per Videoanruf). Bitte hab Geduld — der Vorgang kann bis zu 7 Tage dauern. Du bekommst eine In-App-Benachrichtigung, sobald dein Elternteil zugestimmt hat.'**
+  String get wizardFinalMinorBody;
+
+  /// No description provided for @wizardFinalMitgliedernummerLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Mitgliedsnummer'**
+  String get wizardFinalMitgliedernummerLabel;
+
+  /// No description provided for @wizardStufe4MethodComingSoon.
+  ///
+  /// In de, this message translates to:
+  /// **'Bald verfügbar'**
+  String get wizardStufe4MethodComingSoon;
+
+  /// No description provided for @wizardStufe4StreichungWarning.
+  ///
+  /// In de, this message translates to:
+  /// **'Wenn du mit dem Beitrag mehr als 6 Monate im Rückstand bist, werden wir dich automatisch streichen (Satzung §6 Abs. 3).'**
+  String get wizardStufe4StreichungWarning;
+
+  /// No description provided for @wizardStufe5KuendigungInfo.
+  ///
+  /// In de, this message translates to:
+  /// **'Zum Austritt: schicke uns deine Kündigung schriftlich 3 Monate vor dem 31. Dezember (also bis 30. September für Wirksamkeit zum Jahresende). Keine Mindestlaufzeit (Satzung §6 Abs. 3).'**
+  String get wizardStufe5KuendigungInfo;
+
+  /// No description provided for @wizardStufe1fEmailLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Mitglieder-E-Mail'**
+  String get wizardStufe1fEmailLabel;
+
+  /// No description provided for @wizardStufe1fEmailHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Wird automatisch aus deiner Mitgliedsnummer abgeleitet. Wird aktiviert, sobald der Vorstand deinen Antrag bestätigt. Wir haben eine eigene E-Mail-App — verschlüsselte E-Mails senden und empfangen, einfach und kostenlos.'**
+  String get wizardStufe1fEmailHelper;
+
+  /// No description provided for @wizardErrInvalidEmail.
+  ///
+  /// In de, this message translates to:
+  /// **'Ungültige E-Mail-Adresse'**
+  String get wizardErrInvalidEmail;
+
+  /// No description provided for @wizardStufe3OptionAlg1.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich beziehe Arbeitslosengeld I (ALG I)'**
+  String get wizardStufe3OptionAlg1;
+
+  /// No description provided for @wizardStufe3OptionKrankengeld.
+  ///
+  /// In de, this message translates to:
+  /// **'Ich beziehe Krankengeld'**
+  String get wizardStufe3OptionKrankengeld;
+
+  /// No description provided for @wizardStufe3UploadAddMore.
+  ///
+  /// In de, this message translates to:
+  /// **'Weiteres Dokument hinzufügen'**
+  String get wizardStufe3UploadAddMore;
+
+  /// No description provided for @wizardStufe3UploadLimitCount.
+  ///
+  /// In de, this message translates to:
+  /// **'Limit erreicht: maximal 20 Dokumente.'**
+  String get wizardStufe3UploadLimitCount;
+
+  /// No description provided for @wizardStufe3UploadLimitTotal.
+  ///
+  /// In de, this message translates to:
+  /// **'Gesamtlimit 100 MB erreicht. Lösche eine bestehende Datei.'**
+  String get wizardStufe3UploadLimitTotal;
+
+  /// No description provided for @wizardStufe3UploadDeleteTooltip.
+  ///
+  /// In de, this message translates to:
+  /// **'Löschen'**
+  String get wizardStufe3UploadDeleteTooltip;
+
+  /// No description provided for @wizardStufe3UploadCounter.
+  ///
+  /// In de, this message translates to:
+  /// **'{count} / {max} Dokumente'**
+  String wizardStufe3UploadCounter(int count, int max);
+
+  /// No description provided for @wizardDocumentExternalOpenFailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Konnte den Browser nicht öffnen. Der Link wurde in die Zwischenablage kopiert — füge ihn in einen Browser ein, um fortzufahren.'**
+  String get wizardDocumentExternalOpenFailed;
+
+  /// No description provided for @wizardFinalTimelineProcessing.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorstand prüft · meist 1 Werktag, max. 7'**
+  String get wizardFinalTimelineProcessing;
+
+  /// No description provided for @wizardFinalTimelineActivated.
+  ///
+  /// In de, this message translates to:
+  /// **'Konto aktiviert'**
+  String get wizardFinalTimelineActivated;
+
+  /// No description provided for @wizardFinalAdultThank.
+  ///
+  /// In de, this message translates to:
+  /// **'Vielen Dank, dass du das Anmeldeformular ausgefüllt hast! 🎉'**
+  String get wizardFinalAdultThank;
+
+  /// No description provided for @wizardFinalAdultUsual.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Antrag ist bei uns angekommen. Normalerweise prüfen wir ihn innerhalb von einem Werktag.'**
+  String get wizardFinalAdultUsual;
+
+  /// No description provided for @wizardFinalAdultExceptional.
+  ///
+  /// In de, this message translates to:
+  /// **'Manchmal kann es bis zu 7 Werktage dauern. Falls etwas nicht passt, schicken wir dich zurück ins Formular, damit du es korrigieren kannst 🙂'**
+  String get wizardFinalAdultExceptional;
+
+  /// No description provided for @wizardFinalStatusTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'ANTRAGSSTATUS'**
+  String get wizardFinalStatusTitle;
+
+  /// No description provided for @wizardFinalStatusStepsValidated.
+  ///
+  /// In de, this message translates to:
+  /// **'{reviewed}/{total} Schritte vom Vorstand geprüft'**
+  String wizardFinalStatusStepsValidated(int reviewed, int total);
+
+  /// No description provided for @wizardFinalStufeSheetTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Antragsdetails'**
+  String get wizardFinalStufeSheetTitle;
+
+  /// No description provided for @wizardFinalStufeSheetHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Die 8 Stufen, die du ausgefüllt hast. Der Vorstand prüft sie nacheinander — du siehst in Echtzeit, was schon geprüft wurde.'**
+  String get wizardFinalStufeSheetHint;
+
+  /// No description provided for @wizardFinalStufeStatusPending.
+  ///
+  /// In de, this message translates to:
+  /// **'Wartet auf Prüfung'**
+  String get wizardFinalStufeStatusPending;
+
+  /// No description provided for @wizardFinalStufeStatusApproved.
+  ///
+  /// In de, this message translates to:
+  /// **'Geprüft'**
+  String get wizardFinalStufeStatusApproved;
+
+  /// No description provided for @wizardFinalStufeStatusRejected.
+  ///
+  /// In de, this message translates to:
+  /// **'Abgelehnt'**
+  String get wizardFinalStufeStatusRejected;
+
+  /// No description provided for @wizardFinalStatusRejectionCount.
+  ///
+  /// In de, this message translates to:
+  /// **'{count} Schritt braucht eine Korrektur'**
+  String wizardFinalStatusRejectionCount(int count);
+
+  /// No description provided for @wizardFinalStufeRejectionReason.
+  ///
+  /// In de, this message translates to:
+  /// **'Begründung vom Vorstand:'**
+  String get wizardFinalStufeRejectionReason;
+
+  /// No description provided for @wizardFinalStufeCorrectNow.
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt korrigieren'**
+  String get wizardFinalStufeCorrectNow;
+
+  /// No description provided for @wizardFinalApprovalsHeader.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorstand-Bestätigungen ({current}/{total})'**
+  String wizardFinalApprovalsHeader(int current, int total);
+
+  /// No description provided for @wizardFinalApprovalAwaiting.
+  ///
+  /// In de, this message translates to:
+  /// **'Warten auf 2. Vorstand'**
+  String get wizardFinalApprovalAwaiting;
+
+  /// No description provided for @wizardFinalApprovalRejected.
+  ///
+  /// In de, this message translates to:
+  /// **'ABGELEHNT'**
+  String get wizardFinalApprovalRejected;
+
+  /// No description provided for @wizardFinalStufeNoDataYet.
+  ///
+  /// In de, this message translates to:
+  /// **'Daten sind noch nicht verfügbar.'**
+  String get wizardFinalStufeNoDataYet;
+
+  /// No description provided for @wizardFinalStufeReadAt.
+  ///
+  /// In de, this message translates to:
+  /// **'Gelesen am:'**
+  String get wizardFinalStufeReadAt;
+
+  /// No description provided for @wizardFinalStufeBeitragsfrei.
+  ///
+  /// In de, this message translates to:
+  /// **'Beitragsfrei (kein Beitrag erforderlich)'**
+  String get wizardFinalStufeBeitragsfrei;
+
+  /// No description provided for @wizardFinalStufeNotExempt.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Sozialleistungen'**
+  String get wizardFinalStufeNotExempt;
+
+  /// No description provided for @wizardFinalStufeBeginAtVerification.
+  ///
+  /// In de, this message translates to:
+  /// **'Beginn ab Verifizierung'**
+  String get wizardFinalStufeBeginAtVerification;
+
+  /// No description provided for @wizardFinalStufeBeginAtFoundation.
+  ///
+  /// In de, this message translates to:
+  /// **'Gründungsdatum (rückwirkend)'**
+  String get wizardFinalStufeBeginAtFoundation;
+
+  /// No description provided for @wizardFinalStufeBeginAtCustom.
+  ///
+  /// In de, this message translates to:
+  /// **'Anderes Datum'**
+  String get wizardFinalStufeBeginAtCustom;
+
+  /// No description provided for @wizardFinalStufeStatusSkipped.
+  ///
+  /// In de, this message translates to:
+  /// **'Übersprungen'**
+  String get wizardFinalStufeStatusSkipped;
+
+  /// No description provided for @wizardFinalStufeFilledAt.
+  ///
+  /// In de, this message translates to:
+  /// **'Ausgefüllt am:'**
+  String get wizardFinalStufeFilledAt;
+
+  /// No description provided for @wizardFinalStufeReviewedAt.
+  ///
+  /// In de, this message translates to:
+  /// **'Geprüft am:'**
+  String get wizardFinalStufeReviewedAt;
+
+  /// No description provided for @wizardFinalWithdrawLink.
+  ///
+  /// In de, this message translates to:
+  /// **'Antrag zurückziehen'**
+  String get wizardFinalWithdrawLink;
+
+  /// No description provided for @wizardFinalWithdrawDialogTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Antrag zurückziehen?'**
+  String get wizardFinalWithdrawDialogTitle;
+
+  /// No description provided for @wizardFinalWithdrawDialogBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) in der Datenbank, dein Konto wird jedoch nicht aktiviert. Du kannst die Anmeldung jederzeit mit einer neuen Mitgliedernummer neu starten.'**
+  String get wizardFinalWithdrawDialogBody;
+
+  /// No description provided for @wizardFinalWithdrawKeep.
+  ///
+  /// In de, this message translates to:
+  /// **'Nein, ich warte'**
+  String get wizardFinalWithdrawKeep;
+
+  /// No description provided for @wizardFinalWithdrawConfirm.
+  ///
+  /// In de, this message translates to:
+  /// **'Ja, zurückziehen'**
+  String get wizardFinalWithdrawConfirm;
+
+  /// No description provided for @wizardErrTooManyWithdrawals.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Antrag kann nicht automatisch bearbeitet werden. Bitte ruf uns an oder komm persönlich beim Vorstand vorbei, um die Anmeldung fortzusetzen.'**
+  String get wizardErrTooManyWithdrawals;
+
+  /// No description provided for @wizardDuplicateLoginTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Du scheinst bereits Mitglied zu sein'**
+  String get wizardDuplicateLoginTitle;
+
+  /// No description provided for @wizardDuplicateLoginBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Mit deinem Namen und Geburtsdatum finden wir bereits ein aktives Konto. Bitte nutze „Ich bin bereits Mitglied\" auf dem Startbildschirm, um dich anzumelden. Wenn du keinen Zugang mehr hast, ruf uns an.'**
+  String get wizardDuplicateLoginBody;
+
+  /// No description provided for @wizardDuplicatePendingTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Antrag ist bereits bei uns'**
+  String get wizardDuplicatePendingTitle;
+
+  /// No description provided for @wizardDuplicatePendingBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Mit deinem Namen und Geburtsdatum finden wir bereits einen laufenden Antrag. Der Vorstand prüft ihn gerade — wir benachrichtigen dich in der App, sobald dein Konto aktiv ist. Wenn du sprechen möchtest, ruf uns an.'**
+  String get wizardDuplicatePendingBody;
+
+  /// No description provided for @wizardDuplicateRecentlyWithdrawnTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Wir können den Antrag jetzt nicht bearbeiten'**
+  String get wizardDuplicateRecentlyWithdrawnTitle;
+
+  /// No description provided for @wizardDuplicateRecentlyWithdrawnBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Name und dein Geburtsdatum stimmen mit einem kürzlich zurückgezogenen Antrag überein. Bitte ruf uns an, um vor dem Weitermachen mit dem Vorstand zu sprechen.'**
+  String get wizardDuplicateRecentlyWithdrawnBody;
+
+  /// No description provided for @wizardDuplicatePreviouslyWithdrawnTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Du hattest schon einmal einen Antrag'**
+  String get wizardDuplicatePreviouslyWithdrawnTitle;
+
+  /// No description provided for @wizardDuplicatePreviouslyWithdrawnBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Name und dein Geburtsdatum stimmen mit einem älteren Antrag überein, den du zurückgezogen hattest. Willkommen zurück — bitte ruf uns vor dem Fortfahren an, damit der Vorstand entscheiden kann, wie wir weitermachen.'**
+  String get wizardDuplicatePreviouslyWithdrawnBody;
+
+  /// No description provided for @wizardDuplicateCallUsTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte ruf uns an'**
+  String get wizardDuplicateCallUsTitle;
+
+  /// No description provided for @wizardDuplicateCallUsBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Name und Geburtsdatum sind bei uns bereits vorhanden, aber wir können dir die Details nicht über die App mitteilen. Bitte ruf uns an — der Vorstand erklärt dir die Situation direkt.'**
+  String get wizardDuplicateCallUsBody;
+
+  /// No description provided for @wizardChatHelp.
+  ///
+  /// In de, this message translates to:
+  /// **'Lass uns reden'**
+  String get wizardChatHelp;
+
+  /// No description provided for @wizardChatHelpSubtitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Live-Chat mit dem Vorstand · schnelle Antwort'**
+  String get wizardChatHelpSubtitle;
 }
 
 class _AppLocalizationsDelegate

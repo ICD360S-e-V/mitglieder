@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'dart:io';
+import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:open_filex/open_filex.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'http_client_factory.dart';
 
@@ -104,6 +106,70 @@ class UpdateService {
   /// Check if platform supports self-update (iOS doesn't)
   bool get supportsSelfUpdate => !Platform.isIOS;
 
+  // ---------------------------------------------------------------------------
+  // Unattended updates
+  // ---------------------------------------------------------------------------
+
+  /// SharedPreferences keys. `_prefAutoUpdateAsked` is tracked separately from
+  /// `_prefAutoUpdate` so "never asked" stays distinguishable from "asked and
+  /// declined" — the consent prompt must appear exactly once, not on every
+  /// release, and a missing bool would make those two states identical.
+  static const String _prefAutoUpdate = 'auto_update_enabled';
+  static const String _prefAutoUpdateAsked = 'auto_update_asked';
+
+  /// Platforms where an update can be applied end-to-end with no clicks.
+  ///
+  /// Windows only, and only because the Inno Setup installer is a per-user
+  /// install: `{autopf}` under `PrivilegesRequired=lowest` resolves to
+  /// %LocalAppData%\Programs, so `/VERYSILENT` completes without a UAC prompt.
+  /// macOS (DMG drag-install), Linux (AppImage) and Android (PackageInstaller)
+  /// all require user interaction and stay on the prompt-every-time path.
+  bool get supportsSilentUpdate => Platform.isWindows;
+
+  /// Whether the user has been asked about unattended updates yet.
+  static Future<bool> autoUpdateAsked() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_prefAutoUpdateAsked) ?? false;
+  }
+
+  /// Whether unattended updates are switched on. Defaults to false — updates
+  /// replace the running binary, so it stays opt-in.
+  static Future<bool> isAutoUpdateEnabled() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_prefAutoUpdate) ?? false;
+  }
+
+  /// Record the user's answer to the consent prompt.
+  static Future<void> setAutoUpdateEnabled(bool enabled) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_prefAutoUpdateAsked, true);
+    await prefs.setBool(_prefAutoUpdate, enabled);
+  }
+
+  /// Apply [updateInfo] with no user interaction: download, silent install,
+  /// relaunch.
+  ///
+  /// Returns true when the installer was handed off, in which case this process
+  /// is seconds away from being terminated by it — callers must not assume any
+  /// code after this runs. Returns false on every failure so the caller can
+  /// fall back to the interactive dialog.
+  Future<bool> installUnattended(UpdateInfo updateInfo) async {
+    if (!supportsSilentUpdate) return false;
+
+    debugPrint('[Update] Unattended update to ${updateInfo.version} starting');
+    final installerPath = await downloadUpdate(
+      updateInfo.downloadUrl,
+      (_) {},
+      expectedSha256: updateInfo.sha256,
+    );
+    if (installerPath == null) {
+      debugPrint('[Update] Unattended download failed or failed verification '
+          '- staying on current version');
+      return false;
+    }
+    return launchInstaller(installerPath, silent: true);
+  }
+
   /// Check if an update is available
   Future<UpdateInfo?> checkForUpdate() async {
     try {
@@ -127,6 +193,7 @@ class UpdateService {
         final changelog = json['changelog'] as String? ?? '';
         final minVersion = json['min_version'] as String?;
         final forceUpdate = json['force_update'] as bool? ?? false;
+        final sha256Hex = json['sha256'] as String?;
 
         // Compare versions
         if (_isNewerVersion(serverVersion, serverBuildNumber)) {
@@ -137,6 +204,7 @@ class UpdateService {
             changelog: changelog,
             minVersion: minVersion,
             forceUpdate: forceUpdate,
+            sha256: sha256Hex,
           );
         }
       }
@@ -169,8 +237,15 @@ class UpdateService {
   }
 
   /// Download the update installer for current platform
-  /// Returns the file path of the downloaded installer
-  Future<String?> downloadUpdate(String downloadUrl, Function(double) onProgress) async {
+  ///
+  /// Returns the file path of the downloaded installer, or null if the download
+  /// failed or did not match [expectedSha256] (the `sha256` field of the
+  /// release manifest). A rejected file is deleted rather than left behind.
+  Future<String?> downloadUpdate(
+    String downloadUrl,
+    Function(double) onProgress, {
+    String? expectedSha256,
+  }) async {
     // iOS doesn't support self-update - redirect to App Store
     if (Platform.isIOS) {
       debugPrint('[Update] iOS detected - self-update not supported');
@@ -208,6 +283,21 @@ class UpdateService {
         }
         await sink.close();
 
+        // Integrity check before anything executes the file. This matters most
+        // on the unattended path, where nobody is watching the installer run
+        // and a truncated or substituted download would otherwise be launched
+        // silently. Streamed off disk so a 40 MB installer is not held in RAM.
+        if (expectedSha256 != null && expectedSha256.isNotEmpty) {
+          final digest = await sha256.bind(file.openRead()).first;
+          final actual = digest.toString().toLowerCase();
+          if (actual != expectedSha256.toLowerCase()) {
+            debugPrint('[Update] SHA-256 mismatch: expected $expectedSha256, got $actual');
+            await file.delete();
+            return null;
+          }
+          debugPrint('[Update] SHA-256 verified');
+        }
+
         // Make AppImage executable on Linux
         if (Platform.isLinux) {
           await Process.run('chmod', ['+x', filePath]);
@@ -240,17 +330,26 @@ class UpdateService {
   /// Launch the installer for current platform
   /// - Android: Opens APK with system installer
   /// - iOS: Opens App Store URL
-  /// - Windows: Runs EXE installer
+  /// - Windows: Runs the Inno Setup EXE (silently when [silent])
   /// - macOS: Mounts DMG and opens it
   /// - Linux: Runs AppImage
-  Future<void> launchInstaller(String installerPath, {bool silent = true}) async {
+  ///
+  /// [silent] is honoured on Windows only; every other platform ignores it
+  /// because their installers cannot run unattended.
+  ///
+  /// Returns false when the installer could not be started, so the caller can
+  /// drop its progress indicator and surface an error instead of waiting for a
+  /// restart that will never come.
+  Future<bool> launchInstaller(String installerPath, {bool silent = false}) async {
     try {
       if (Platform.isAndroid) {
         // Android: Open APK with system installer
         final result = await OpenFilex.open(installerPath);
         if (result.type != ResultType.done) {
           debugPrint('[Update] Failed to open APK installer: ${result.message}');
+          return false;
         }
+        return true;
       } else if (Platform.isIOS) {
         // iOS: Open App Store page (self-update not supported)
         // This should ideally be called with the App Store URL instead
@@ -258,25 +357,72 @@ class UpdateService {
         final appStoreUrl = Uri.parse('https://apps.apple.com/app/icd360s-mitglieder/id$_iosAppStoreId');
         if (await canLaunchUrl(appStoreUrl)) {
           await launchUrl(appStoreUrl, mode: LaunchMode.externalApplication);
+          return true;
         }
+        return false;
       } else if (Platform.isWindows) {
-        // Windows: Run EXE installer
-        debugPrint('[Update] Windows: Launching EXE installer');
-        await Process.start(installerPath, [], runInShell: true);
+        return await _launchWindowsInstaller(installerPath, silent: silent);
       } else if (Platform.isMacOS) {
         // macOS: Mount DMG and open it
         debugPrint('[Update] macOS: Mounting DMG');
         await Process.run('hdiutil', ['attach', installerPath]);
         // Try to open the mounted volume
         await Process.run('open', ['/Volumes/ICD360S Mitglieder']);
+        return true;
       } else if (Platform.isLinux) {
         // Linux: Run AppImage directly
         debugPrint('[Update] Linux: Running AppImage');
         await Process.start(installerPath, [], runInShell: true);
+        return true;
       }
+      return false;
     } catch (e) {
       debugPrint('[Update] Error launching installer: $e');
+      return false;
     }
+  }
+
+  /// Hand the running app over to the Inno Setup installer and exit.
+  ///
+  /// The installer cannot replace `icd360sev_mitglied.exe` while we hold it
+  /// open, so this function never returns on success: it spawns the installer
+  /// and calls `exit(0)`. windows/installer.iss relaunches the app afterwards
+  /// (the `skipifnotsilent` entry in its `[Run]` section) so a silent update
+  /// looks like a quick self-restart to the user.
+  Future<bool> _launchWindowsInstaller(String installerPath, {required bool silent}) async {
+    final logPath = '${Directory.systemTemp.path}\\icd360sev_update.log';
+    final args = <String>[
+      if (silent) ...[
+        // VERYSILENT suppresses the wizard AND the progress window;
+        // CLOSEAPPLICATIONS lets Restart Manager shut down anything still
+        // holding a file in the install directory; NOCANCEL stops a stray
+        // keystroke from aborting a half-applied upgrade.
+        '/VERYSILENT',
+        '/SUPPRESSMSGBOXES',
+        '/NORESTART',
+        '/CLOSEAPPLICATIONS',
+        '/NOCANCEL',
+      ],
+      '/LOG=$logPath',
+    ];
+
+    debugPrint('[Update] Windows: launching installer (silent=$silent) $args');
+
+    // `cmd /c start` rather than a plain detached spawn: ProcessStartMode
+    // .detached still leaves the child inside this process's Windows job
+    // object, so the exit(0) below would kill the installer along with us
+    // before it finished copying files. `start` creates the child with
+    // CREATE_BREAKAWAY_FROM_JOB, which survives.
+    // See https://github.com/dart-lang/sdk/issues/49234
+    await Process.start(
+      'cmd',
+      ['/c', 'start', '/B', '"icd360sev-updater"', installerPath, ...args],
+      mode: ProcessStartMode.detached,
+    );
+
+    // Let the cmd → start → setup.exe chain get far enough to break away.
+    await Future.delayed(const Duration(milliseconds: 800));
+    exit(0);
   }
 
   /// Open the App Store page for iOS updates
@@ -302,6 +448,11 @@ class UpdateInfo {
   final String? minVersion;
   final bool forceUpdate;
 
+  /// Expected SHA-256 of the installer, lower-case hex, from the release
+  /// manifest. Null for manifests published before the field existed, in
+  /// which case the download is accepted unverified.
+  final String? sha256;
+
   UpdateInfo({
     required this.version,
     required this.buildNumber,
@@ -309,5 +460,6 @@ class UpdateInfo {
     required this.changelog,
     this.minVersion,
     this.forceUpdate = false,
+    this.sha256,
   });
 }

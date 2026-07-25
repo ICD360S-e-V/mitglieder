@@ -9,12 +9,6 @@ class AppLocalizationsSr extends AppLocalizations {
   AppLocalizationsSr([String locale = 'sr']) : super(locale);
 
   @override
-  String get appTitle => 'ICD360S e.V - Портал чланова';
-
-  @override
-  String get memberPortal => 'Портал чланова';
-
-  @override
   String get welcomeLoading => 'Учитавање...';
 
   @override
@@ -36,12 +30,6 @@ class AppLocalizationsSr extends AppLocalizations {
   String get memberNumberHint => 'Унесите број члана';
 
   @override
-  String get password => 'Лозинка';
-
-  @override
-  String get passwordHint => 'Унесите лозинку';
-
-  @override
   String get confirmPassword => 'Потврдите лозинку';
 
   @override
@@ -52,15 +40,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get newPasswordHint => 'Унесите нову лозинку';
-
-  @override
-  String get saveCredentials => 'Сачувај податке за пријаву';
-
-  @override
-  String get autoLogin => 'Аутоматска пријава';
-
-  @override
-  String get forgotPassword => 'Заборавили сте лозинку?';
 
   @override
   String get firstName => 'Име и презиме';
@@ -90,21 +69,6 @@ class AppLocalizationsSr extends AppLocalizations {
   String get passwordsNotMatch => 'Лозинке се не подударају';
 
   @override
-  String get recoveryCode => 'Код за опоравак (6 цифара)';
-
-  @override
-  String get recoveryCodeHelper => 'Запамтите овај код за опоравак лозинке';
-
-  @override
-  String get recoveryCodeHint => 'Унесите код за опоравак';
-
-  @override
-  String get recoveryCodeInvalid => 'Код мора имати тачно 6 цифара';
-
-  @override
-  String get loginFailed => 'Пријава није успела';
-
-  @override
   String get registrationFailed => 'Регистрација није успела';
 
   @override
@@ -118,20 +82,7 @@ class AppLocalizationsSr extends AppLocalizations {
   }
 
   @override
-  String get tooManyDevices => 'Превише уређаја';
-
-  @override
-  String get maxDevicesMessage =>
-      'Већ сте пријављени на 3 уређаја.\nИзаберите уређај за одјаву:';
-
-  @override
-  String get unknownDevice => 'Непознат уређај';
-
-  @override
   String get unknown => 'Непознато';
-
-  @override
-  String get logoutError => 'Грешка при одјави';
 
   @override
   String error(String error) {
@@ -145,39 +96,6 @@ class AppLocalizationsSr extends AppLocalizations {
   String get resetPassword => 'Поништи лозинку';
 
   @override
-  String get forgotPasswordTitle => 'Заборављена лозинка';
-
-  @override
-  String get forgotPasswordDescription =>
-      'Унесите број члана и код за опоравак створен приликом регистрације.';
-
-  @override
-  String get passwordResetSuccess =>
-      'Лозинка успешно поништена!\n\nСада се можете пријавити новом лозинком.';
-
-  @override
-  String get passwordResetFailed => 'Поништавање лозинке није успело';
-
-  @override
-  String get needHelp => 'Требате помоћ?';
-
-  @override
-  String get helpQuestion => 'Проблеми са пријавом или регистрацијом?';
-
-  @override
-  String get helpDescription =>
-      'Контактирајте нас путем WhatsApp-а и опишите шта не ради. Одговорићемо што пре!';
-
-  @override
-  String get whatsapp => 'WhatsApp';
-
-  @override
-  String get emailSubject => 'Упит путем апликације ICD360S';
-
-  @override
-  String get whatsappMessage => 'Здраво, имам проблем са апликацијом ICD360S. ';
-
-  @override
   String get imprint => 'Импресум';
 
   @override
@@ -188,15 +106,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get revocation => 'Право повлачења';
-
-  @override
-  String get cancellation => 'Отказивање';
-
-  @override
-  String get allRightsReserved => 'Сва права задржана.';
-
-  @override
-  String get enterCredentials => 'Унесите број члана и лозинку';
 
   @override
   String get appointments => 'Састанци';
@@ -250,13 +159,7 @@ class AppLocalizationsSr extends AppLocalizations {
   String get close => 'Затвори';
 
   @override
-  String get membership => 'Чланство';
-
-  @override
   String get myAppointments => 'Моји састанци';
-
-  @override
-  String get appointmentsLoadingReady => 'Учитавање састанака - API спреман!';
 
   @override
   String get priority => 'Приоритет';
@@ -265,16 +168,7 @@ class AppLocalizationsSr extends AppLocalizations {
   String get messageLabel => 'Порука';
 
   @override
-  String get createdOn => 'Креирано';
-
-  @override
-  String get handler => 'Руковалац';
-
-  @override
   String get reportProblems => 'Пријавите проблеме';
-
-  @override
-  String get reportProblem => 'Пријавите проблем';
 
   @override
   String get weRespondIn24Hours =>
@@ -307,41 +201,13 @@ class AppLocalizationsSr extends AppLocalizations {
   String get myTickets => 'Моји тикети';
 
   @override
-  String get newTicket => 'Нови тикет';
-
-  @override
-  String get noOpenTickets => 'Нема отворених тикета';
-
-  @override
-  String get haveQuestionCreateTicket =>
-      'Имате питање или проблем?\nКреирајте нови тикет.';
-
-  @override
-  String get whatIsTheProblem => 'У чему је проблем?';
-
-  @override
-  String get describeTheProblem => 'Опишите проблем';
-
-  @override
-  String get howUrgentIsIt => 'Колико је хитно?';
-
-  @override
   String get low => 'Ниско';
-
-  @override
-  String get medium => 'Средње';
 
   @override
   String get high => 'Високо';
 
   @override
   String get submit => 'Пошаљи';
-
-  @override
-  String get fillSubjectAndMessage => 'Молимо попуните тему и поруку';
-
-  @override
-  String get ticketCreated => 'Тикет је креиран';
 
   @override
   String get errorCreatingTicket => 'Грешка при креирању тикета';
@@ -362,12 +228,6 @@ class AppLocalizationsSr extends AppLocalizations {
   String get changePassword => 'Промени лозинку';
 
   @override
-  String get newEmailAddress => 'Нова адреса е-поште';
-
-  @override
-  String get currentPassword => 'Тренутна лозинка';
-
-  @override
   String get saveEmail => 'Сачувај е-пошту';
 
   @override
@@ -375,9 +235,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get deviceLoggedOut => 'Уређај одјављен';
-
-  @override
-  String get passwordChangedSuccessfully => 'Лозинка успешно промењена';
 
   @override
   String get emailChangedSuccessfully => 'Е-пошта успешно промењена';
@@ -390,23 +247,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get validEmailRequired => 'Молимо унесите важећу адресу е-поште';
-
-  @override
-  String get passwordTooShort => 'Лозинка мора имати најмање 6 карактера';
-
-  @override
-  String get maxDevicesReached => 'Пријављени сте на максимум од 3 уређаја.';
-
-  @override
-  String loggedInOnDevices(int count) {
-    return 'Пријављени сте на $count од 3 уређаја.';
-  }
-
-  @override
-  String get noActiveSessions => 'Нема активних сесија';
-
-  @override
-  String get logoutFromDevice => 'Одјавите се са овог уређаја';
 
   @override
   String get confirmLogoutDevice => 'Одјавити уређај?';
@@ -538,6 +378,18 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get appWillRestart => 'Апликација ће се аутоматски поново покренути.';
+
+  @override
+  String get autoUpdateEnableTitle => 'Install future updates automatically';
+
+  @override
+  String get autoUpdateEnableHint =>
+      'The app downloads and installs updates on its own and restarts briefly. No further prompts.';
+
+  @override
+  String autoUpdateInstalling(String version) {
+    return 'Version $version is being installed in the background. The app will restart shortly.';
+  }
 
   @override
   String get later => 'Касније';
@@ -921,9 +773,6 @@ class AppLocalizationsSr extends AppLocalizations {
   String get errorConnecting => 'Грешка при повезивању';
 
   @override
-  String get errorAcceptingCall => 'Грешка при прихватању позива';
-
-  @override
   String get errorDownloading => 'Грешка при преузимању';
 
   @override
@@ -955,11 +804,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get file => 'Датотека';
-
-  @override
-  String typingIndicator(String name) {
-    return '$name пише...';
-  }
 
   @override
   String get notifNewMessageFrom => 'Нова порука од';
@@ -1028,19 +872,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get logsCopied => 'Логови копирани!';
-
-  @override
-  String get diagnosticDataTitle => 'Дијагностички подаци';
-
-  @override
-  String get diagnosticDescription =>
-      'Желите ли да шаљете анонимне дијагностичке податке за побољшање апликације?';
-
-  @override
-  String get noThanks => 'Не, хвала';
-
-  @override
-  String get yesEnable => 'Да, омогући';
 
   @override
   String get passwordMinEightChars => 'Лозинка мора имати најмање 8 знакова';
@@ -1218,9 +1049,6 @@ class AppLocalizationsSr extends AppLocalizations {
   String get emailChangedSuccess => 'Е-маил успешно промењен';
 
   @override
-  String get newPasswordMinChars => 'Нова лозинка (мин. 6 знакова)';
-
-  @override
   String get reasonLabel2 => 'Разлог';
 
   @override
@@ -1228,9 +1056,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get downloadTooltip => 'Преузми';
-
-  @override
-  String get connectionErrorGeneric => 'Грешка повезивања';
 
   @override
   String get copyLogs => 'Копирај логове';
@@ -1246,12 +1071,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get unknownValue => 'Непознато';
-
-  @override
-  String get bankTransfer => 'Банковни пренос';
-
-  @override
-  String get standingOrder => 'Трајни налог';
 
   @override
   String get payment => 'Плаћање';
@@ -1620,16 +1439,6 @@ class AppLocalizationsSr extends AppLocalizations {
   String get statusAccepted => 'Прихваћено';
 
   @override
-  String get memberNumberTooLong => 'Члански број предуг (макс. 20 знакова)';
-
-  @override
-  String get onlyUppercaseAndNumbers =>
-      'Дозвољена су само велика слова и бројеви';
-
-  @override
-  String get passwordTooLong => 'Лозинка предуга (макс. 100 знакова)';
-
-  @override
   String get nameTooLong => 'Име предуго (макс. 100 знакова)';
 
   @override
@@ -1760,15 +1569,6 @@ class AppLocalizationsSr extends AppLocalizations {
   String get openFile => 'Отвори';
 
   @override
-  String get diagnosticErrors => 'Извештаји о грешкама за побољшање';
-
-  @override
-  String get diagnosticAnonymousStats => 'Анонимне статистике коришћења';
-
-  @override
-  String get diagnosticPerformance => 'Подаци о перформансама апликације';
-
-  @override
   String get noMicrophoneError =>
       'Микрофон није пронађен. Повежите микрофон и покушајте поново.';
 
@@ -1793,9 +1593,6 @@ class AppLocalizationsSr extends AppLocalizations {
   @override
   String get accountAutoSuspend =>
       'Налози који нису верификовани у року од 30 дана биће аутоматски суспендовани.';
-
-  @override
-  String get ipClean => 'IP чист - није на листи';
 
   @override
   String get documentsProvidedByBoard => 'Документе обезбеђује управа.';
@@ -1832,14 +1629,6 @@ class AppLocalizationsSr extends AppLocalizations {
   }
 
   @override
-  String get helpImproveApp =>
-      'Желите ли да нам помогнете да побољшамо апликацију?';
-
-  @override
-  String get noPersonalDataCollected =>
-      'Лични подаци се не прикупљају. Ово подешавање се може променити у било ком тренутку.';
-
-  @override
   String logEntries(int count) {
     return '$count записа';
   }
@@ -1849,15 +1638,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get newLoginDetected => 'Откривена нова пријава';
-
-  @override
-  String get waitingForMember => 'Чекање на члана';
-
-  @override
-  String get waitingForStaff => 'Чекање на запосленог';
-
-  @override
-  String get waitingForAuthority => 'Чекање на орган';
 
   @override
   String get errorNoInternet => 'Нема интернет везе. Проверите мрежу.';
@@ -1884,14 +1664,7 @@ class AppLocalizationsSr extends AppLocalizations {
       'DNS problem detected. Check your connection or try another network.';
 
   @override
-  String get securityBannerCaptivePortal =>
-      'Please open your browser and sign in to the WiFi.';
-
-  @override
   String get securityBannerSlowNetwork => 'Slow connection.';
-
-  @override
-  String get securityBannerNetworkOffline => 'No network connection.';
 
   @override
   String get securityPermissionDialogTitle =>
@@ -1914,4 +1687,1141 @@ class AppLocalizationsSr extends AppLocalizations {
   @override
   String get callErrorMicNotFound =>
       'No microphone was found. Connect a headset or microphone and try again.';
+
+  @override
+  String get claudiuWelcomeMorning => 'Добро јутро';
+
+  @override
+  String get claudiuWelcomeDay => 'Здраво';
+
+  @override
+  String get claudiuWelcomeEvening => 'Добро вече';
+
+  @override
+  String get claudiuWelcomeNight => 'Добро вече';
+
+  @override
+  String get claudiuWelcomeVisitor => 'драги посетиоче';
+
+  @override
+  String get claudiuWelcomeAsk => 'Како могу да помогнем?';
+
+  @override
+  String get claudiuWelcomeBecomeMember => 'Желим да постанем члан';
+
+  @override
+  String get claudiuWelcomeLogin => 'Већ сам члан и желим да се пријавим';
+
+  @override
+  String get claudiuWelcomeProblem => 'Имам проблем са апликацијом';
+
+  @override
+  String get claudiuWelcomeEmergency => 'Хитно — позовите нас';
+
+  @override
+  String get claudiuWelcomeMascotName => 'Claudiu';
+
+  @override
+  String get claudiuWelcomeEmergencyIntro =>
+      'Пре него што позовеш — наше радно време:';
+
+  @override
+  String get claudiuWelcomeScheduleOffice => 'У канцеларији';
+
+  @override
+  String get claudiuWelcomeScheduleField => 'На терену са клијентима';
+
+  @override
+  String get claudiuWelcomeOutsideHoursNote =>
+      'Ван овог времена решавамо само хитне случајеве. Можеш да нам пошаљеш и SMS на исти број — јавићемо се.';
+
+  @override
+  String get claudiuWelcomeCallNow => 'Позови сада';
+
+  @override
+  String get claudiuWelcomeSendSms => 'Пошаљи SMS';
+
+  @override
+  String get claudiuWelcomeSmsBody =>
+      'Хитно ICD360S e.V. — молим вас да ме контактирате што пре.';
+
+  @override
+  String get claudiuWelcomeCloseButton => 'Затвори';
+
+  @override
+  String get claudiuLoginWelcome => 'Добро дошао назад, драги члане!';
+
+  @override
+  String get claudiuLoginAsk => 'Молим те, реци ми свој члански број.';
+
+  @override
+  String get claudiuLoginProgress => 'Скоро… настави да куцаш.';
+
+  @override
+  String get claudiuLoginReady => 'Савршено! Притисни дугме испод.';
+
+  @override
+  String get claudiuLoginLoading => 'Проверавам идентитет… 🔍';
+
+  @override
+  String get claudiuLoginFoundPlain => 'Нашао сам те! Пријављујем те…';
+
+  @override
+  String claudiuLoginFoundNamed(String name) {
+    return 'Нашао сам те, $name! Пријављујем те…';
+  }
+
+  @override
+  String get claudiuLoginError =>
+      'Хм, не могу да нађем тај број. Да ли си га исправно унео?';
+
+  @override
+  String get claudiuLoginForgotHeader => 'Заборавио си члански број?';
+
+  @override
+  String get claudiuLoginNoSms => 'Број не шаљемо мејлом ни SMS-ом.';
+
+  @override
+  String get claudiuLoginOnlyWay =>
+      'Једини начин: лични састанак у канцеларији удружења, након провере личне карте.';
+
+  @override
+  String get claudiuLoginContactUs => 'Позови да закажеш термин:';
+
+  @override
+  String get claudiuDiagnosticGreeting =>
+      'Пре него што уђеш, једно брзо питање';
+
+  @override
+  String get claudiuDiagnosticAsk =>
+      'Могу ли да шаљем анонимне извештаје како би програмери побољшали апликацију?';
+
+  @override
+  String get claudiuDiagnosticYes => 'Да, желим да помогнем';
+
+  @override
+  String get claudiuDiagnosticNo => 'Не, само разгледам';
+
+  @override
+  String get claudiuDiagnosticTellMore => 'Реци ми више';
+
+  @override
+  String get claudiuDiagnosticSendsHeader => '📤 Шта ШАЉЕМО (анонимно):';
+
+  @override
+  String get claudiuDiagnosticSends1 =>
+      'Анонимни код уређаја (НЕ члански број)';
+
+  @override
+  String get claudiuDiagnosticSends2 => 'Твоја улога (члан / управа)';
+
+  @override
+  String get claudiuDiagnosticSends3 =>
+      'Оперативни систем (Linux / Android / iOS / Windows)';
+
+  @override
+  String get claudiuDiagnosticSends4 => 'Изабрани језик';
+
+  @override
+  String get claudiuDiagnosticSends5 => 'Ниво и стање батерије';
+
+  @override
+  String get claudiuDiagnosticSends6 => 'Тренутни екран';
+
+  @override
+  String get claudiuDiagnosticSends7 => 'Трајање сесије (секунде)';
+
+  @override
+  String get claudiuDiagnosticSends8 => 'Грешке ако постоје (последњих 10)';
+
+  @override
+  String get claudiuDiagnosticSends9 => 'Навигација (последњих 20 екрана)';
+
+  @override
+  String get claudiuDiagnosticNeverHeader => '🛡️ Шта НИКАДА не шаљемо:';
+
+  @override
+  String get claudiuDiagnosticNever1 => 'Твоје право име';
+
+  @override
+  String get claudiuDiagnosticNever2 => 'Имејл адреса';
+
+  @override
+  String get claudiuDiagnosticNever3 => 'Број телефона';
+
+  @override
+  String get claudiuDiagnosticNever4 => 'Лозинка';
+
+  @override
+  String get claudiuDiagnosticNever5 => 'Садржај поруке ћаскања';
+
+  @override
+  String get claudiuDiagnosticNever6 => 'Садржај тикета';
+
+  @override
+  String get claudiuDiagnosticNever7 => 'Документи или прилози';
+
+  @override
+  String get claudiuDiagnosticTechHeader => '📡 Технички детаљи:';
+
+  @override
+  String get claudiuDiagnosticTech1 => 'Шаље се на свака 2 минута';
+
+  @override
+  String get claudiuDiagnosticTech2 =>
+      'TLS-шифрована веза са причвршћеним сертификатом';
+
+  @override
+  String get claudiuDiagnosticTech3 =>
+      'Можеш искључити у било ком тренутку у Подешавањима';
+
+  @override
+  String get claudiuProblemHelpTitle => 'Како могу да помогнем?';
+
+  @override
+  String get claudiuProblemHelpGreeting => 'Шта се десило?';
+
+  @override
+  String get claudiuProblemHelpAsk => 'Како желиш да ми кажеш?';
+
+  @override
+  String get claudiuProblemHelpWriteTitle => 'Напиши извештај';
+
+  @override
+  String get claudiuProblemHelpWriteBody =>
+      'Са детаљима корак по корак. Тим добија текст и решава га касније.';
+
+  @override
+  String get claudiuProblemHelpChatTitle => 'Разговарајмо одмах';
+
+  @override
+  String get claudiuProblemHelpChatBody =>
+      'Анонимни ћаскање са оператером. Одговор у реалном времену ако је неко онлајн.';
+
+  @override
+  String get claudiuProblemHelpAltCallHeader => 'Или, ако је хитно:';
+
+  @override
+  String get claudiuProblemHelpAltCallLabel => 'Позови нас';
+
+  @override
+  String get claudiuAnonymousChatTitle => 'Анонимно ћаскање';
+
+  @override
+  String get claudiuAnonymousChatGreeting => 'Здраво!';
+
+  @override
+  String get claudiuAnonymousChatWelcome =>
+      'Слушам те. Пиши шта год — име не треба. Одговорићу чим будем овде.';
+
+  @override
+  String get claudiuAnonymousChatHint => 'Напиши поруку…';
+
+  @override
+  String get claudiuAnonymousChatWaitingOperator =>
+      'Чекамо да оператер одговори…';
+
+  @override
+  String get claudiuVorsitzerConnectedTitle => 'Здраво!';
+
+  @override
+  String get claudiuVorsitzerConnectedBody =>
+      'Хвала што си нам се јавио — сада си у контакту са Vorsitzer-ом. Реци како ти можемо помоћи око пријаве за чланство.';
+
+  @override
+  String get claudiuVorsitzerConnectedSender => 'Vorsitzer';
+
+  @override
+  String get claudiuQuickReplyValidationTime => 'Колико траје провера?';
+
+  @override
+  String get claudiuQuickReplyDocuments => 'Који документи су ми потребни?';
+
+  @override
+  String get claudiuQuickReplyStepProblem => 'Заглавио сам се на једном кораку';
+
+  @override
+  String get claudiuQuickReplyHuman => 'Могу ли сада да причам са неким?';
+
+  @override
+  String get claudiuAnonymousChatConnecting => 'Повезивање…';
+
+  @override
+  String get claudiuAnonymousChatConnectionFailed =>
+      'Није могуће отворити ћаскање. Покушај поново или позови.';
+
+  @override
+  String get claudiuAnonymousChatRetry => 'Покушај поново';
+
+  @override
+  String get claudiuAnonymousChatOnline => 'Повезано';
+
+  @override
+  String get claudiuAnonymousChatOffline => 'Поновно повезивање…';
+
+  @override
+  String get claudiuAnonymousChatAdminTyping => 'Оператер куца…';
+
+  @override
+  String get claudiuProblemReportTitle => 'Пријави проблем';
+
+  @override
+  String get claudiuProblemReportGreeting => 'Шта се десило?';
+
+  @override
+  String get claudiuProblemReportAsk =>
+      'Реци ми детаљно и проследићу извештај тиму.';
+
+  @override
+  String get claudiuProblemReportIncludeHeader => 'Молим уврсти:';
+
+  @override
+  String get claudiuProblemReportIncludeBullets1 =>
+      'Шта си радио када се проблем појавио';
+
+  @override
+  String get claudiuProblemReportIncludeBullets2 =>
+      'Било која порука грешке коју си видео';
+
+  @override
+  String get claudiuProblemReportIncludeBullets3 => 'На ком екрану си био';
+
+  @override
+  String get claudiuProblemReportIncludeBullets4 =>
+      'Да ли се апликација руши, затвара или приказује бели екран?';
+
+  @override
+  String get claudiuProblemReportIncludeBullets5 =>
+      'Дешава ли се сваки пут или само једном?';
+
+  @override
+  String get claudiuProblemReportDescriptionLabel => 'Твој опис';
+
+  @override
+  String get claudiuProblemReportDescriptionHint =>
+      'Нпр.: Када отворим ћаскање појављује се „Connection error\" и апликација престаје да реагује…';
+
+  @override
+  String claudiuProblemReportTooShort(int count) {
+    return 'Мало више детаља, молим (најмање $count знакова)';
+  }
+
+  @override
+  String get claudiuProblemReportSubmit => 'Пошаљи извештај';
+
+  @override
+  String get claudiuProblemReportSubmitting => 'Слање…';
+
+  @override
+  String get claudiuProblemReportSentTitle => 'Хвала!';
+
+  @override
+  String get claudiuProblemReportSentBody =>
+      'Извештај је послат. Наш тим ће га погледати у најкраћем року.';
+
+  @override
+  String get claudiuProblemReportSentClose => 'Разумем';
+
+  @override
+  String get claudiuProblemReportSendFailed =>
+      'Извештај није могуће послати. Позови нас за хитну помоћ.';
+
+  @override
+  String get claudiuProblemReportAlt => 'Или, ако је хитно:';
+
+  @override
+  String get claudiuProblemReportCallLabel => 'Позови нас';
+
+  @override
+  String claudiuApprovalGreeting(String name) {
+    return 'Здраво, $name! 👋';
+  }
+
+  @override
+  String get claudiuApprovalGreetingNoName => 'Здраво! 👋';
+
+  @override
+  String get claudiuApprovalGladToSeeYou => 'Драго ми је што си дошао!';
+
+  @override
+  String get claudiuApprovalCheckingForSafety =>
+      'За твоју безбедност, Vorsitzer тренутно проверава твој захтев за пријаву. 🛡️';
+
+  @override
+  String get claudiuApprovalMonthlyExplain =>
+      '💡 Ово радимо сваких 30 дана да бисмо били сигурни да си заиста ти. То је као безбедносна провера — највише 5 минута.';
+
+  @override
+  String get claudiuApprovalSuccess =>
+      'Готово! 🎉 Vorsitzer те препознао. Пријављујем те…';
+
+  @override
+  String get claudiuApprovalDenied => 'Хм, Vorsitzer је одбио твој захтев. 😔';
+
+  @override
+  String get claudiuApprovalDeniedHelp =>
+      'Ако мислиш да је ово грешка, молим те позови нас да разјаснимо.';
+
+  @override
+  String get claudiuApprovalExpired =>
+      'Прошло је 5 минута и Vorsitzer није одговорио.';
+
+  @override
+  String get claudiuApprovalExpiredHelp =>
+      'Позови нас и можемо одмах одобрити твој захтев. 📞';
+
+  @override
+  String get claudiuApprovalCallUs => 'Позови нас';
+
+  @override
+  String get claudiuApprovalTryAgain => 'Покушај поново';
+
+  @override
+  String get claudiuApprovalCancel => 'Откажи';
+
+  @override
+  String get claudiuApprovalClose => 'Затвори';
+
+  @override
+  String get wizardIntroBubble1 =>
+      'Здраво, посетиоче! 👋 Хвала ти што желиш да постанеш део наше породице.';
+
+  @override
+  String get wizardIntroBubble2 =>
+      'Зовем се Клаудио. У пролеће 2025. имао сам јасну визију: створити удружење које помаже људима у невољи — добровољно, од срца, без непотребне бирократије. ❤️';
+
+  @override
+  String get wizardIntroBubble3 =>
+      'Почео сам да разговарам са клијентима које сам посећивао. Испричао сам им свој сан. И сваки је рекао: „Да, идемо!\" У јулу 2025. састали смо се — 6 одлучних људи. Одлучили смо да оснујемо **ICD360S e.V.** у Ноj-Улму. 📍';
+
+  @override
+  String get wizardIntroBubble4 =>
+      '**1. августа 2025.** удружење је званично оживело — у Регистру удружења. Мој најлепши поклон. 🎂';
+
+  @override
+  String get wizardIntroBubble5 =>
+      'Шта радимо? Помажемо избеглицама, особама са инвалидитетом, економски угроженим, **деци и младима** — у административним питањима, немачком језику, становању, куповини, социјалним накнадама. Наш Vorstand чине углавном особе са инвалидитетом — тако одлуке долазе из стварног животног искуства. 🤝';
+
+  @override
+  String get wizardIntroBubble6 =>
+      'Сада си ти на реду. Хајде да те упишемо — траје око 5 минута. Идемо корак по корак, не остављам те самог. ✨';
+
+  @override
+  String get wizardIntroStart => 'Кренимо';
+
+  @override
+  String get wizardBack => 'Назад';
+
+  @override
+  String get wizardNext => 'Даље';
+
+  @override
+  String wizardStepLabel(int step, int total, String title) {
+    return 'Корак $step од $total · $title';
+  }
+
+  @override
+  String get wizardErrRequired => 'Ово поље је обавезно';
+
+  @override
+  String wizardErrTooShort(int count) {
+    return 'Прекратко (најмање $count знакова)';
+  }
+
+  @override
+  String get wizardErrOnlyLetters => 'Само слова, размаци, цртице и апострофи';
+
+  @override
+  String get wizardErrSaveFailed =>
+      'Чување није успело. Провери везу и покушај поново.';
+
+  @override
+  String get wizardStufe1aTitle => 'Идентитет';
+
+  @override
+  String get wizardStufe1aPrompt =>
+      'Хајде да се званично упознамо. Молим те, упиши име тачно онако како пише на Personalausweis-у, Reisepass-у или Aufenthaltstitel-у — да буде у складу са документима.';
+
+  @override
+  String get wizardStufe1aVornameLabel => 'Vornamen (имена)';
+
+  @override
+  String get wizardStufe1aVornameHelper =>
+      'Сва твоја имена тачно као на документу. Са размаком или цртицом (нпр. Hans-Peter, Maria Anna).';
+
+  @override
+  String get wizardStufe1aNachnameLabel => 'Familienname (презиме)';
+
+  @override
+  String get wizardStufe1aNachnameHelper => 'Твоје тренутно презиме.';
+
+  @override
+  String get wizardStufe1aGeburtsnameLabel =>
+      'Geburtsname (девојачко презиме) — опционо';
+
+  @override
+  String get wizardStufe1aGeburtsnameHelper =>
+      'Само ако се разликује од Familienname — нпр. пре брака.';
+
+  @override
+  String get wizardStufe1bTitle => 'Рођендан';
+
+  @override
+  String get wizardStufe1bPrompt =>
+      'Желимо да прославимо твој рођендан заједно! 🎂 И помаже нам да потврдимо да имаш бар 16 — тако каже наш статут.';
+
+  @override
+  String get wizardStufe1bGeburtsdatumLabel => 'Датум рођења';
+
+  @override
+  String get wizardStufe1bGeburtsdatumHelper => 'Додирни да изабереш датум';
+
+  @override
+  String get wizardStufe1bGeburtsortLabel => 'Место рођења';
+
+  @override
+  String get wizardStufe1bGeburtsortHelper => 'Град / место где си рођен.';
+
+  @override
+  String get wizardAgeGatePrompt => 'Жао ми је… 😔';
+
+  @override
+  String wizardAgeGateBody1(int age, int years) {
+    return 'Наш статут каже да мораш имати бар 16 година да би био члан. Имаш $age — надам се да ћемо се видети за $years година! 🌱';
+  }
+
+  @override
+  String get wizardAgeGateBody2 =>
+      'Ако желиш да повремено волонтираш (било који узраст, са пристанком родитеља), позови — радо подржавамо младе који желе да промене свет.';
+
+  @override
+  String get wizardAgeGateBackHome => 'Назад на почетну';
+
+  @override
+  String get wizardErrInvalidPhone => 'Неважећи број телефона';
+
+  @override
+  String get wizardStufe1b1Title => 'Сагласност родитеља';
+
+  @override
+  String get wizardStufe1b1Prompt =>
+      'Малолетан си (16-17) — према §106 BGB треба нам сагласност родитеља или законског старатеља. Реци ми име и број телефона. Vorsitzer ће позвати и заказати састанак (лично или видео позивом). Без мејла — желимо да будемо сигурни да разговарамо са правом особом.';
+
+  @override
+  String get wizardStufe1b1VornameLabel => 'Име родитеља';
+
+  @override
+  String get wizardStufe1b1VornameHelper =>
+      'Како је на Personalausweis-у родитеља.';
+
+  @override
+  String get wizardStufe1b1NachnameLabel => 'Презиме родитеља';
+
+  @override
+  String get wizardStufe1b1NachnameHelper =>
+      'Како је на Personalausweis-у родитеља.';
+
+  @override
+  String get wizardStufe1b1TelefonLabel => 'Мобилни родитеља';
+
+  @override
+  String get wizardStufe1b1TelefonHelper =>
+      'На овај број ће позвати Vorsitzer.';
+
+  @override
+  String get wizardStufe1b1RelationLabel => 'Однос према детету:';
+
+  @override
+  String get wizardStufe1b1RelationMutter => 'Мајка';
+
+  @override
+  String get wizardStufe1b1RelationVater => 'Отац';
+
+  @override
+  String get wizardStufe1b1RelationSorgeberechtigter => 'Законски старатељ';
+
+  @override
+  String get wizardStufe1b1RelationAndere => 'Други старатељ';
+
+  @override
+  String get wizardStufe1cTitle => 'Лични подаци';
+
+  @override
+  String get wizardStufe1cPrompt =>
+      'Само да те мало боље упознам. Ово остаје између нас и не приказује се нигде јавно.';
+
+  @override
+  String get wizardStufe1cGeschlechtLabel => 'Пол';
+
+  @override
+  String get wizardStufe1cGeschlechtMaennlich => 'Мушки';
+
+  @override
+  String get wizardStufe1cGeschlechtWeiblich => 'Женски';
+
+  @override
+  String get wizardStufe1cGeschlechtDivers => 'Друго';
+
+  @override
+  String get wizardStufe1cGeschlechtKeineAngabe => 'Не желим да кажем';
+
+  @override
+  String get wizardStufe1cFamilienstandLabel => 'Брачно стање';
+
+  @override
+  String get wizardStufe1cFamilienstandLedig => 'Неожењен / Неудата';
+
+  @override
+  String get wizardStufe1cFamilienstandVerheiratet => 'Ожењен / Удата';
+
+  @override
+  String get wizardStufe1cFamilienstandGeschieden => 'Разведен/а';
+
+  @override
+  String get wizardStufe1cFamilienstandVerwitwet => 'Удовац/Удовица';
+
+  @override
+  String get wizardStufe1dTitle => 'Твоје порекло';
+
+  @override
+  String get wizardStufe1dPrompt =>
+      'Ово нам помаже да ти понудимо праву подршку — на пример савет о Aufenthalt-у или налажење твоје језичке заједнице.';
+
+  @override
+  String get wizardStufe1dStaatLabel => 'Држављанство';
+
+  @override
+  String get wizardStufe1dStaatHelper =>
+      'Нпр. deutsch, rumänisch, ukrainisch. Више одвојених запетом.';
+
+  @override
+  String get wizardStufe1dAufenthaltLabel =>
+      'Статус боравка (Aufenthaltsstatus) — опционо';
+
+  @override
+  String get wizardStufe1dAufenthaltHelper =>
+      'Изабери титулу из своје Aufenthaltskarte / одлуке. Vorstand то упоређује са твојим документима.';
+
+  @override
+  String get wizardStufe1dAufenthaltAwaitingCitizenship =>
+      'Прво горе унеси држављанство — приказаћемо само одговарајуће опције.';
+
+  @override
+  String get wizardStufe1dAufenthaltGerman =>
+      'Aufenthaltstitel није потребан — немачки држављанин.';
+
+  @override
+  String get wizardStufe1dAufenthaltEuEea =>
+      'Држављанин ЕУ/ЕЕП/ЦХ — слободно кретање (Freizügigkeit).';
+
+  @override
+  String get wizardStufe1dAufenthaltTempHint => 'привремени';
+
+  @override
+  String get wizardStufe1dAufenthaltPermHint => 'стално настањење';
+
+  @override
+  String get wizardStufe1dAufenthaltAsylumProcessHint => 'поступак азила';
+
+  @override
+  String get wizardStufe1dAufenthaltOther => 'Друго (наведи у ћаскању)';
+
+  @override
+  String get wizardStufe1dAufenthaltRequired =>
+      'Молим изабери Aufenthaltstitel.';
+
+  @override
+  String get wizardStufe1dMutterspracheLabel => 'Матерњи језик';
+
+  @override
+  String get wizardStufe1dMutterspracheHelper =>
+      'Унапред попуњено језиком апликације — промени ако је друкчије.';
+
+  @override
+  String get wizardStufe1eTitle => 'Адреса';
+
+  @override
+  String get wizardStufe1ePrompt =>
+      'Твоја поштанска адреса — користимо је за службене документе (статут, чланске уговоре, обавештења).';
+
+  @override
+  String get wizardStufe1eStrasseLabel => 'Улица';
+
+  @override
+  String get wizardStufe1eStrasseHelper =>
+      'Само назив улице — број у суседном пољу.';
+
+  @override
+  String get wizardStufe1eHausnummerLabel => 'Бр.';
+
+  @override
+  String get wizardStufe1ePlzLabel => 'PLZ (поштански бр.)';
+
+  @override
+  String get wizardStufe1eOrtLabel => 'Град';
+
+  @override
+  String get wizardStufe1eLandLabel => 'Држава';
+
+  @override
+  String get wizardStufe1eLandHelper => 'Унапред попуњено: Deutschland.';
+
+  @override
+  String get wizardErrInvalidStreet => 'Неважећи назив улице';
+
+  @override
+  String get wizardErrInvalidHausnummer => 'Неважећи број (нпр. 12, 12a, 12/3)';
+
+  @override
+  String get wizardErrInvalidPlz => 'Неважећи поштански број (само цифре)';
+
+  @override
+  String get wizardStufe1fTitle => 'Контакт';
+
+  @override
+  String get wizardStufe1fPrompt =>
+      'Како да те контактирамо? Телефон је само за хитне случајеве — све остало иде преко нашег сопственог end-to-end енкриптованог канала у апликацији. Твој члански мејл се додељује аутоматски и приказан је испод.';
+
+  @override
+  String get wizardStufe1fTelefonLabel => 'Мобилни';
+
+  @override
+  String get wizardStufe1fTelefonHelper =>
+      'Обећавам, позваћу само ако је важно. 📱';
+
+  @override
+  String get wizardStufe2Title => 'Тип чланства';
+
+  @override
+  String get wizardStufe2Prompt =>
+      'Какав члан желиш да будеш? Хајде да ти објасним сваку опцију.';
+
+  @override
+  String get wizardStufe2OrdentlichTitle => 'Редовни члан (ordentlich)';
+
+  @override
+  String get wizardStufe2OrdentlichBody =>
+      'Сва права. Плаћаш месечну чланарину, гласаш на скупштини, можеш бити изабран у управу. Стандардни избор.';
+
+  @override
+  String get wizardStufe2FoerderTitle => 'Подупирући члан (Fördermitglied)';
+
+  @override
+  String get wizardStufe2FoerderBody =>
+      'Подржаваш удружење финансијски, али не учествујеш активно у одлукама. Без права гласа. Добро ако желиш да помажеш са даљине.';
+
+  @override
+  String get wizardStufe2EhrenTitle => 'Почасни члан (Ehrenmitglied)';
+
+  @override
+  String get wizardStufe2EhrenBody =>
+      'Додељује управа за посебне заслуге. Не бираш сам — додељује се као признање. Бирај само ако си већ почаствован.';
+
+  @override
+  String get wizardStufe3Title => 'Финансијска ситуација';
+
+  @override
+  String get wizardStufe3Prompt =>
+      'Сада о твојој финансијској ситуацији. Не да те осуђујем — већ да те ослободимо чланарине ако примаш социјалне накнаде.';
+
+  @override
+  String get wizardStufe3OptionBuergergeld => 'Примам Bürgergeld';
+
+  @override
+  String get wizardStufe3OptionSozialamt => 'Примам помоћ од Sozialamta';
+
+  @override
+  String get wizardStufe3OptionNein => 'Не примам ниједно од овога';
+
+  @override
+  String get wizardStufe3FeeExemptTitle => 'Чланарина: 0 € / месечно 🎉';
+
+  @override
+  String get wizardStufe3FeeExemptBody =>
+      'Са Bürgergeldom, Sozialamtom, ALG I или Krankengeldom потпуно си ослобођен чланарине према Сатзунг-у §6. Треба нам само доказ (Leistungsbescheid или потврда од органа / здравствене касе).';
+
+  @override
+  String get wizardStufe3UploadTitle => 'Отпреми Leistungsbescheid';
+
+  @override
+  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, највише 10 MB.';
+
+  @override
+  String get wizardStufe3UploadRequired =>
+      'Молим те отпреми Leistungsbescheid пре него што наставиш.';
+
+  @override
+  String get wizardStufe3FileTooLarge =>
+      'Датотека је превелика. Највише 10 MB.';
+
+  @override
+  String get wizardStufe3UploadFailed =>
+      'Није било могуће отпремити датотеку. Покушај поново.';
+
+  @override
+  String get wizardStufe3RegularFeeTitle => 'Чланарина: 25 € / месечно';
+
+  @override
+  String get wizardStufe3RegularFeeBody =>
+      'Стандардна чланарина за редовне чланове према статуту.';
+
+  @override
+  String get wizardStufe4Title => 'Плаћање';
+
+  @override
+  String get wizardStufe4Prompt =>
+      'Како желиш да плаћаш чланарину? И ког дана у месецу ти одговара?';
+
+  @override
+  String get wizardStufe4MethodUeberweisungTitle =>
+      'Банковни пренос (Überweisung)';
+
+  @override
+  String get wizardStufe4MethodUeberweisungBody =>
+      'Сам започињеш плаћање сваког месеца са свог рачуна.';
+
+  @override
+  String get wizardStufe4MethodSepaTitle =>
+      'SEPA-Lastschrift (директно задужење)';
+
+  @override
+  String get wizardStufe4MethodSepaBody =>
+      'Износ аутоматски скидамо са твог рачуна. Најпрактичније, али нам треба IBAN и потписано овлашћење.';
+
+  @override
+  String get wizardStufe4MethodDauerauftragTitle =>
+      'Dauerauftrag (трајни налог)';
+
+  @override
+  String get wizardStufe4MethodDauerauftragBody =>
+      'Поставиш трајни налог у својој банци. Банка аутоматски преноси износ сваког месеца.';
+
+  @override
+  String get wizardStufe4DayLabel => 'Дан плаћања';
+
+  @override
+  String get wizardStufe4DayHint => 'Изабери дан између 1 и 31';
+
+  @override
+  String wizardStufe4DayItem(int day) {
+    return '$day. дан';
+  }
+
+  @override
+  String wizardStufe4DayReminder(int day) {
+    return 'Чланарина ће се скидати $day. сваког месеца.';
+  }
+
+  @override
+  String get wizardStufe5Title => 'Почетак';
+
+  @override
+  String get wizardStufe5Prompt =>
+      'Од када желиш да будеш званично члан ICD360S? Од одобрења или ретроактивно.';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungTitle => 'Од одобрења управе';
+
+  @override
+  String get wizardStufe5OptionAbVerifizierungBody =>
+      'Најједноставнији избор. Без ретроактивне чланарине.';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumTitle =>
+      'Ретроактивно од 01.08.2025. (оснивање)';
+
+  @override
+  String get wizardStufe5OptionGruendungsdatumBody =>
+      'Биће се рачунати као члан од првог дана удружења.';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumTitle => 'Други датум';
+
+  @override
+  String get wizardStufe5OptionAnderesDatumBody =>
+      'Сам бираш датум између 01.08.2025. и данас.';
+
+  @override
+  String get wizardStufe5PickDate => 'Додирни да изабереш датум';
+
+  @override
+  String get wizardStufe5PickDateFirst => 'Молим те, прво изабери датум.';
+
+  @override
+  String get wizardStufe5DatePickerHelp => 'Почетак чланства';
+
+  @override
+  String wizardStufe5DateRange(String start) {
+    return 'Између $start и данас';
+  }
+
+  @override
+  String get wizardStufe5RetroactiveTitle => 'Ретроактивна чланарина';
+
+  @override
+  String wizardStufe5RetroactiveBody(
+      String start, String end, int months, String amount) {
+    return 'Од $start до $end то је $months месеци. По 25 €/месечно то износи $amount € за плаћање ретроактивно, поред тренутне месечне чланарине.';
+  }
+
+  @override
+  String get wizardStufe5FeeExemptTitle => 'Ретроактивна чланарина: 0 € 🎉';
+
+  @override
+  String get wizardStufe5FeeExemptBody =>
+      'Са Bürgergeld или Sozialamt-ом потпуно си ослобођен — чак ни ретроактивно не дугујеш ништа.';
+
+  @override
+  String wizardDocumentPrompt(String doc) {
+    return 'Пре него што завршимо, молим те пажљиво прочитај $doc. Важно је знати шта потписујеш.';
+  }
+
+  @override
+  String get wizardDocumentScrollHint => 'Помери до дна да би наставио.';
+
+  @override
+  String get wizardDocumentScrolledOk => 'Прочитао си до краја ✓';
+
+  @override
+  String wizardDocumentOpenButton(String doc) {
+    return 'Отвори $doc у прегледачу';
+  }
+
+  @override
+  String get wizardDocumentExternalHint =>
+      'На овој платформи отварамо документ у твом подразумеваном прегледачу.';
+
+  @override
+  String get wizardDocumentOpenedOk =>
+      'Документ је отворен. Молим те пажљиво га прочитај.';
+
+  @override
+  String wizardDocumentConfirm(String doc) {
+    return 'Потврђујем да сам прочитао(ла) $doc и слажем се са њим.';
+  }
+
+  @override
+  String get wizardFinalAdultTitle => 'Готово! Уписан си 🎉';
+
+  @override
+  String get wizardFinalMinorTitle => 'Твој захтев је послат 📨';
+
+  @override
+  String get wizardFinalMinorBody =>
+      'Контактираћемо твог родитеља и заказати састанак (лично или видео позивом). Молимо те за стрпљење — поступак може трајати до 7 дана. Добићеш обавештење у апликацији чим родитељ одобри.';
+
+  @override
+  String get wizardFinalMitgliedernummerLabel => 'Твој члански број';
+
+  @override
+  String get wizardStufe4MethodComingSoon => 'Ускоро';
+
+  @override
+  String get wizardStufe4StreichungWarning =>
+      'Ако касниш са чланарином више од 6 месеци, аутоматски ћемо те брисати (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe5KuendigungInfo =>
+      'За иступ: пошаљи нам отказ писмено 3 месеца пре 31. децембра (најкасније до 30. септембра да би ступило на снагу крајем године). Нема минималног трајања (Satzung §6 Abs. 3).';
+
+  @override
+  String get wizardStufe1fEmailLabel => 'Твој члански мејл';
+
+  @override
+  String get wizardStufe1fEmailHelper =>
+      'Додељује се аутоматски на основу твог чланског броја. Активира се у тренутку када управни одбор (Vorstand) одобри твоју пријаву. Имамо сопствену апликацију за е-пошту — шаљи и примај шифроване е-поруке, једноставно и бесплатно.';
+
+  @override
+  String get wizardErrInvalidEmail => 'Неважећа имејл адреса';
+
+  @override
+  String get wizardStufe3OptionAlg1 =>
+      'Примам Arbeitslosengeld I (ALG I, накнаду за незапослене)';
+
+  @override
+  String get wizardStufe3OptionKrankengeld =>
+      'Примам Krankengeld (накнаду за дуготрајну болест)';
+
+  @override
+  String get wizardStufe3UploadAddMore => 'Додај још један документ';
+
+  @override
+  String get wizardStufe3UploadLimitCount =>
+      'Достигао си границу: највише 20 докумената.';
+
+  @override
+  String get wizardStufe3UploadLimitTotal =>
+      'Достигао си укупно ограничење од 100 MB. Обриши постојећи фајл.';
+
+  @override
+  String get wizardStufe3UploadDeleteTooltip => 'Обриши';
+
+  @override
+  String wizardStufe3UploadCounter(int count, int max) {
+    return '$count / $max докумената';
+  }
+
+  @override
+  String get wizardDocumentExternalOpenFailed =>
+      'Нисам могао да отворим прегледач. Линк је копиран у клипборд — налепи га у прегледач за наставак.';
+
+  @override
+  String get wizardFinalTimelineProcessing =>
+      'Vorstand проверава · обично 1 радни дан, до 7';
+
+  @override
+  String get wizardFinalTimelineActivated => 'Налог активиран';
+
+  @override
+  String get wizardFinalAdultThank =>
+      'Хвала што си попунио регистрациони формулар! 🎉';
+
+  @override
+  String get wizardFinalAdultUsual =>
+      'Твој захтев је код нас. Обично га потврђујемо у року од једног радног дана.';
+
+  @override
+  String get wizardFinalAdultExceptional =>
+      'Понекад може потрајати до 7 радних дана. А ако нешто не одговара, вратићемо те у формулар да исправиш 🙂';
+
+  @override
+  String get wizardFinalStatusTitle => 'СТАТУС ЗАХТЕВА';
+
+  @override
+  String wizardFinalStatusStepsValidated(int reviewed, int total) {
+    return '$reviewed/$total корака потврдио је Vorstand';
+  }
+
+  @override
+  String get wizardFinalStufeSheetTitle => 'Детаљи захтева';
+
+  @override
+  String get wizardFinalStufeSheetHint =>
+      '8 фаза које си попунио. Vorstand их прегледа једну по једну — у реалном времену видиш шта је потврђено.';
+
+  @override
+  String get wizardFinalStufeStatusPending => 'Чека преглед';
+
+  @override
+  String get wizardFinalStufeStatusApproved => 'Одобрено';
+
+  @override
+  String get wizardFinalStufeStatusRejected => 'Одбијено';
+
+  @override
+  String wizardFinalStatusRejectionCount(int count) {
+    return '$count корак захтева исправку';
+  }
+
+  @override
+  String get wizardFinalStufeRejectionReason => 'Разлог Vorstand-а:';
+
+  @override
+  String get wizardFinalStufeCorrectNow => 'Исправи сада';
+
+  @override
+  String wizardFinalApprovalsHeader(int current, int total) {
+    return 'Одобрења Vorstand-а ($current/$total)';
+  }
+
+  @override
+  String get wizardFinalApprovalAwaiting => 'Чека се 2. Vorstand';
+
+  @override
+  String get wizardFinalApprovalRejected => 'ОДБИЈЕНО';
+
+  @override
+  String get wizardFinalStufeNoDataYet => 'Подаци још нису доступни.';
+
+  @override
+  String get wizardFinalStufeReadAt => 'Прочитано:';
+
+  @override
+  String get wizardFinalStufeBeitragsfrei =>
+      'Ослобођено чланарине (без плаћања)';
+
+  @override
+  String get wizardFinalStufeNotExempt => 'Без социјалне помоћи';
+
+  @override
+  String get wizardFinalStufeBeginAtVerification => 'Почиње при верификацији';
+
+  @override
+  String get wizardFinalStufeBeginAtFoundation =>
+      'Датум оснивања (ретроактивно)';
+
+  @override
+  String get wizardFinalStufeBeginAtCustom => 'Други датум';
+
+  @override
+  String get wizardFinalStufeStatusSkipped => 'Прескочено';
+
+  @override
+  String get wizardFinalStufeFilledAt => 'Попуњено:';
+
+  @override
+  String get wizardFinalStufeReviewedAt => 'Прегледано:';
+
+  @override
+  String get wizardFinalWithdrawLink => 'Повуци захтев';
+
+  @override
+  String get wizardFinalWithdrawDialogTitle => 'Повлачиш захтев?';
+
+  @override
+  String get wizardFinalWithdrawDialogBody =>
+      'Твој захтев ће бити означен као повучен од тебе. Подаци остају у бази ради ревизије (GDPR), али налог неће бити активиран. Регистрацију можеш почети поново у било ком тренутку са новим бројем чланства.';
+
+  @override
+  String get wizardFinalWithdrawKeep => 'Не, сачекаћу';
+
+  @override
+  String get wizardFinalWithdrawConfirm => 'Да, повуци';
+
+  @override
+  String get wizardErrTooManyWithdrawals =>
+      'Твој захтев не може бити аутоматски обрађен. Позови нас или дођи лично код Vorstand-а да наставиш регистрацију.';
+
+  @override
+  String get wizardDuplicateLoginTitle => 'Изгледа да си већ наш члан';
+
+  @override
+  String get wizardDuplicateLoginBody =>
+      'Са твојим именом и датумом рођења већ налазимо активан налог. Молимо, користи \"Већ сам члан\" на почетном екрану да се пријавиш. Ако више немаш приступ, позови нас.';
+
+  @override
+  String get wizardDuplicatePendingTitle => 'Твој захтев је већ код нас';
+
+  @override
+  String get wizardDuplicatePendingBody =>
+      'Са твојим именом и датумом рођења већ имамо захтев у разматрању. Vorstand ради на њему — обавестићемо те у апликацији чим налог буде активан. Позови ако желиш да разговарамо.';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnTitle =>
+      'Тренутно не можемо обрадити овај захтев';
+
+  @override
+  String get wizardDuplicateRecentlyWithdrawnBody =>
+      'Твоје име и датум рођења поклапају се са недавно повученим захтевом. Молимо позови нас да пре наставка разговараш са Vorstand-ом.';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnTitle =>
+      'Већ си раније поднео захтев';
+
+  @override
+  String get wizardDuplicatePreviouslyWithdrawnBody =>
+      'Твоје име и датум рођења поклапају се са старијим захтевом који си повукао. Добродошао назад — позови нас пре наставка да Vorstand одлучи како даље.';
+
+  @override
+  String get wizardDuplicateCallUsTitle => 'Молимо, позови нас';
+
+  @override
+  String get wizardDuplicateCallUsBody =>
+      'Твоје име и датум рођења већ су код нас, али детаље не можемо делити кроз апликацију. Позови нас — Vorstand ће ти ситуацију објаснити директно.';
+
+  @override
+  String get wizardChatHelp => 'Хајде да разговарамо';
+
+  @override
+  String get wizardChatHelpSubtitle => 'Чет уживо са Vorstand-ом · брз одговор';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../services/update_service.dart';
 import 'verifizierung_tab.dart';
 import 'verwarnungen_tab.dart';
 import 'dokumente_tab.dart';
@@ -52,6 +53,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
   String _displayName = '';
   String _displayEmail = '';
   bool _loadingAccountInfo = true;
+  bool _autoUpdateEnabled = false;
 
   @override
   void initState() {
@@ -59,6 +61,12 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
     _tabController = TabController(length: 6, vsync: this);
     _loadMySessions();
     _loadAccountInfo();
+    _loadAutoUpdatePreference();
+  }
+
+  Future<void> _loadAutoUpdatePreference() async {
+    final enabled = await UpdateService.isAutoUpdateEnabled();
+    if (mounted) setState(() => _autoUpdateEnabled = enabled);
   }
 
   @override
@@ -665,6 +673,42 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                       ),
                     ),
                   ],
+                ),
+              ),
+            ),
+          ],
+
+          // ===== UPDATES (desktop only) =====
+          // The consent checkbox in UpdateDialog can only ever turn this on,
+          // and once it is on the dialog stops appearing entirely - so without
+          // a switch here the choice would be one-way in both directions.
+          if (UpdateService().supportsSilentUpdate) ...[
+            const SizedBox(height: 20),
+            _buildSectionHeader(
+              Icons.system_update,
+              AppLocalizations.of(context)!.updateAvailable,
+              Colors.blue.shade700,
+            ),
+            const SizedBox(height: 8),
+            Card(
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: BorderSide(color: Colors.grey.shade300),
+              ),
+              child: SwitchListTile(
+                value: _autoUpdateEnabled,
+                onChanged: (v) async {
+                  await UpdateService.setAutoUpdateEnabled(v);
+                  if (mounted) setState(() => _autoUpdateEnabled = v);
+                },
+                title: Text(
+                  AppLocalizations.of(context)!.autoUpdateEnableTitle,
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ),
+                subtitle: Text(
+                  AppLocalizations.of(context)!.autoUpdateEnableHint,
+                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                 ),
               ),
             ),

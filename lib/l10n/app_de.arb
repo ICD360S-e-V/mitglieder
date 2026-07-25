@@ -209,6 +209,16 @@
   },
   "installationStarting": "Installation wird gestartet...",
   "appWillRestart": "Die Anwendung wird automatisch neu gestartet.",
+  "autoUpdateEnableTitle": "Zukünftige Updates automatisch installieren",
+  "autoUpdateEnableHint": "Die App lädt Updates selbständig herunter, installiert sie und startet kurz neu. Ohne weitere Rückfragen.",
+  "autoUpdateInstalling": "Version {version} wird im Hintergrund installiert. Die App startet gleich neu.",
+  "@autoUpdateInstalling": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "later": "Später",
   "updateNow": "Jetzt aktualisieren",
   "downloading": "Wird heruntergeladen...",

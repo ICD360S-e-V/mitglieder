@@ -326,6 +326,55 @@ jobs:
           VERSION=$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
+      # Bundled into the installer so a machine without the "Visual C++
+      # 2015-2022 Redistributable" can still be repaired system-wide. The app
+      # itself no longer depends on it — windows/CMakeLists.txt ships the CRT
+      # DLLs app-local — but shipping the redist too means the installer is
+      # self-contained and never sends the user off to download anything.
+      # vs/18 is the current channel: "Microsoft Visual C++ v14 Redistributable"
+      # 14.51, matching the MSVC 14.51 toolset VS 2026 builds with. Microsoft
+      # dropped the year-based naming after "2015-2022" (vs/17, 14.44) - there
+      # is no 2024/2025/2026 redistributable, just one continuously versioned
+      # v14 line, binary compatible across 14.x with newer superseding older.
+      # Pinning vs/17 here would ship a runtime older than the DLLs the app is
+      # actually compiled against.
+      #
+      # Deliberately fatal: installer.iss compiles happily without the file
+      # (FileExists guard), so a silent download failure would ship an
+      # installer that looks fine and is missing the runtime repair - exactly
+      # the regression this change exists to prevent. Three retries cover
+      # transient network faults; anything worse should stop the release.
+      - name: Fetch Visual C++ redistributable
+        run: |
+          $ErrorActionPreference = "Stop"
+          New-Item -ItemType Directory -Force -Path windows\redist | Out-Null
+          Invoke-WebRequest -Uri "https://aka.ms/vs/18/release/vc_redist.x64.exe" `
+            -OutFile windows\redist\vc_redist.x64.exe -UseBasicParsing -MaximumRetryCount 3 -RetryIntervalSec 5
+          $size = (Get-Item windows\redist\vc_redist.x64.exe).Length
+          if ($size -lt 10MB) { throw "vc_redist.x64.exe is only $size bytes - truncated download" }
+          Write-Host "Fetched vc_redist.x64.exe ($([math]::Round($size/1MB,1)) MB)"
+
+      - name: Verify bundled MSVC runtime
+        shell: bash
+        run: |
+          # The app-local CRT is the actual fix for "VCRUNTIME140_1.dll was not
+          # found"; if CMake failed to locate the DLLs the build still succeeds
+          # but the installer silently regresses, so fail loudly here instead.
+          cd build/windows/x64/runner/Release
+          # NTFS is case-insensitive but bash globbing is not, and the redist
+          # DLLs ship lowercase in some toolsets and mixed-case in others.
+          present=$(ls -1 | tr 'A-Z' 'a-z')
+          missing=0
+          for dll in vcruntime140.dll vcruntime140_1.dll msvcp140.dll; do
+            if ! grep -qx "$dll" <<< "$present"; then
+              echo "::error::$dll missing from the Windows bundle"
+              missing=1
+            fi
+          done
+          echo "Bundled runtime DLLs:"
+          ls -1 *.dll
+          exit $missing
+
       - name: Create installer
         run: |
           & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DAppVersion="${{ steps.version.outputs.version }}" windows\installer.iss
