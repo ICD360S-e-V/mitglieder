@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.71.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.70.0...v1.71.0) (2026-07-25)
+
+
+### Features
+
+* **fernwartung:** RustDesk-style remote screen share + control (member agent) ([#214](https://github.com/ICD360S-e-V/mitglieder/issues/214)) ([444cff0](https://github.com/ICD360S-e-V/mitglieder/commit/444cff0c32a59ad2bf5d0a642de0c0ca9018c3d1))
+
 ## [1.70.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.69.1...v1.70.0) (2026-07-25)
 
 
