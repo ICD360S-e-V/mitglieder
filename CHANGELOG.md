@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.73.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.72.1...v1.73.0) (2026-07-26)
+
+
+### Features
+
+* **update:** install Windows updates automatically without asking ([#221](https://github.com/ICD360S-e-V/mitglieder/issues/221)) ([9c05895](https://github.com/ICD360S-e-V/mitglieder/commit/9c05895a5dce4df4c4d537e0af1e131f4cd5c7ca))
+
 ## [1.72.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.72.0...v1.72.1) (2026-07-26)
 
 
