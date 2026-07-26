@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.73.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.73.0...v1.73.1) (2026-07-26)
+
+
+### Bug Fixes
+
+* **deps:** pin pdfrx below 2.3.0 to match the CI Flutter SDK ([#223](https://github.com/ICD360S-e-V/mitglieder/issues/223)) ([73075b4](https://github.com/ICD360S-e-V/mitglieder/commit/73075b474f773815ab2208eac01accbbbbb747a1))
+
 ## [1.73.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.72.1...v1.73.0) (2026-07-26)
 
 
