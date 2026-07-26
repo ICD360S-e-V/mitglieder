@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.74.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.74.1...v1.74.2) (2026-07-26)
+
+
+### Bug Fixes
+
+* **fernwartung:** move iOS extension embed phase before Thin Binary (build cycle) ([#237](https://github.com/ICD360S-e-V/mitglieder/issues/237)) ([b309f7c](https://github.com/ICD360S-e-V/mitglieder/commit/b309f7cf69a19c0e5ba1eb33af18c52c72f3899d))
+
 ## [1.74.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.74.0...v1.74.1) (2026-07-26)
 
 
