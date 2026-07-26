@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.72.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.72.0...v1.72.1) (2026-07-26)
+
+
+### Bug Fixes
+
+* **fernwartung:** add mediaProjection foreground service for Android screen capture ([#218](https://github.com/ICD360S-e-V/mitglieder/issues/218)) ([0f7a66a](https://github.com/ICD360S-e-V/mitglieder/commit/0f7a66a70b66bf265d299f8cbf2292f2fd5fc498))
+
 ## [1.72.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.71.0...v1.72.0) (2026-07-25)
 
 
