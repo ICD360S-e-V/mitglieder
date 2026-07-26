@@ -16,8 +16,23 @@ here = File.dirname(__FILE__)
 proj_path = File.expand_path(File.join(here, '..', 'Runner.xcodeproj'))
 project = Xcodeproj::Project.open(proj_path)
 
-if project.targets.any? { |t| t.name == EXT }
-  puts "[add_broadcast_extension] '#{EXT}' target already present — nothing to do."
+existing = project.targets.find { |t| t.name == EXT }
+if existing
+  # Self-heal: an earlier run created the target without PRODUCT_NAME, which made
+  # Xcode emit a nameless '.appex' ("Multiple commands produce"). Ensure it is set.
+  changed = false
+  existing.build_configurations.each do |c|
+    if c.build_settings['PRODUCT_NAME'].to_s.empty?
+      c.build_settings['PRODUCT_NAME'] = '$(TARGET_NAME)'
+      changed = true
+    end
+  end
+  if changed
+    project.save
+    puts "[add_broadcast_extension] Patched PRODUCT_NAME on existing '#{EXT}'."
+  else
+    puts "[add_broadcast_extension] '#{EXT}' already present + configured — nothing to do."
+  end
   exit 0
 end
 
@@ -35,6 +50,7 @@ end
 
 ext.build_configurations.each do |c|
   bs = c.build_settings
+  bs['PRODUCT_NAME']             = '$(TARGET_NAME)'
   bs['PRODUCT_BUNDLE_IDENTIFIER'] = EXT_BUNDLE
   bs['INFOPLIST_FILE']           = "#{EXT}/Info.plist"
   bs['CODE_SIGN_ENTITLEMENTS']   = "#{EXT}/BroadcastExtension.entitlements"
