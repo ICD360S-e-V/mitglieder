@@ -105,7 +105,7 @@ dependencies:
   cryptography: ^2.7.0
 
   # UUID generation for device ID
-  uuid: ^3.0.7
+  uuid: ^4.6.0
 
   # Date formatting and week number calculation
   intl: ^0.20.2
