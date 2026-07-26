@@ -110,12 +110,7 @@ class UpdateService {
   // Unattended updates
   // ---------------------------------------------------------------------------
 
-  /// SharedPreferences keys. `_prefAutoUpdateAsked` is tracked separately from
-  /// `_prefAutoUpdate` so "never asked" stays distinguishable from "asked and
-  /// declined" — the consent prompt must appear exactly once, not on every
-  /// release, and a missing bool would make those two states identical.
   static const String _prefAutoUpdate = 'auto_update_enabled';
-  static const String _prefAutoUpdateAsked = 'auto_update_asked';
 
   /// Platforms where an update can be applied end-to-end with no clicks.
   ///
@@ -126,23 +121,21 @@ class UpdateService {
   /// all require user interaction and stay on the prompt-every-time path.
   bool get supportsSilentUpdate => Platform.isWindows;
 
-  /// Whether the user has been asked about unattended updates yet.
-  static Future<bool> autoUpdateAsked() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(_prefAutoUpdateAsked) ?? false;
-  }
-
-  /// Whether unattended updates are switched on. Defaults to false — updates
-  /// replace the running binary, so it stays opt-in.
+  /// Whether unattended updates are switched on. **Defaults to true**: staying
+  /// current is the desired behaviour, so the update applies itself without
+  /// ever asking.
+  ///
+  /// The stored value is still honoured when present, which is what keeps the
+  /// profile-dialog switch meaningful and preserves the decision of anyone who
+  /// explicitly turned this off under the earlier consent-prompt build.
   static Future<bool> isAutoUpdateEnabled() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(_prefAutoUpdate) ?? false;
+    return prefs.getBool(_prefAutoUpdate) ?? true;
   }
 
-  /// Record the user's answer to the consent prompt.
+  /// Persist the switch state from the profile dialog.
   static Future<void> setAutoUpdateEnabled(bool enabled) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_prefAutoUpdateAsked, true);
     await prefs.setBool(_prefAutoUpdate, enabled);
   }
 
