@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- Fernwartung (remote support) iOS screen capture via ReplayKit broadcast
+	     upload extension. flutter_webrtc's FlutterBroadcastScreenCapturer reads
+	     these to find the shared app-group container + the extension to launch. -->
+	<key>RTCAppGroupIdentifier</key>
+	<string>group.de.icd360s.icd360sevMitglied</string>
+	<key>RTCScreenSharingExtension</key>
+	<string>de.icd360s.icd360sevMitglied.Broadcast</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

@@ -237,6 +237,17 @@ class RemoteAgentService {
   /// Capture the primary screen. Picks the first Screen source explicitly so the
   /// OS does not pop its own picker; falls back to a plain constraint.
   Future<MediaStream> _captureScreen() async {
+    // iOS: only the ReplayKit broadcast upload extension can capture the WHOLE
+    // screen. flutter_webrtc routes to it when video.deviceId starts with
+    // 'broadcast' (and auto-presents the system broadcast picker). Without the
+    // extension configured (see ios/BROADCAST_SETUP.md) this captures nothing
+    // useful, so it is iOS-only and gated on the extension being wired.
+    if (Platform.isIOS) {
+      return navigator.mediaDevices.getDisplayMedia(<String, dynamic>{
+        'video': {'deviceId': 'broadcast'},
+        'audio': false,
+      });
+    }
     try {
       final sources = await desktopCapturer.getSources(types: [SourceType.Screen]);
       if (sources.isNotEmpty) {
