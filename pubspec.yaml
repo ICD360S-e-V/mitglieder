@@ -114,7 +114,7 @@ dependencies:
   file_picker: ^10.3.10
 
   # Image picker for camera and gallery
-  image_picker: ^1.0.7
+  image_picker: ^1.2.2
 
   # Image cropping for document photos in chat
   crop_your_image: ^2.0.0
