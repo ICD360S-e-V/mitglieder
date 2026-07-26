@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.74.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.73.1...v1.74.0) (2026-07-26)
+
+
+### Features
+
+* **fernwartung:** iOS whole-screen capture via ReplayKit broadcast extension ([#220](https://github.com/ICD360S-e-V/mitglieder/issues/220)) ([953488d](https://github.com/ICD360S-e-V/mitglieder/commit/953488d1ca35e94c4d2e045ec077ed760c1d0d83))
+
 ## [1.73.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.73.0...v1.73.1) (2026-07-26)
 
 
