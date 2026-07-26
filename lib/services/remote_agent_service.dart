@@ -131,6 +131,11 @@ class RemoteAgentService {
       _injector = createInputInjector();
       await _createPeerConnection();
 
+      // Android 14+: the mediaProjection foreground service MUST be running
+      // before getDisplayMedia, or MediaProjection throws (crash) and the capture
+      // dies when the app backgrounds.
+      await ScreenCaptureFgService.start();
+
       // Capture the whole screen and add its track(s) to the connection.
       _screenStream = await _captureScreen();
       for (final track in _screenStream!.getTracks()) {
@@ -298,8 +303,9 @@ class RemoteAgentService {
   }
 
   void _cleanup() {
-    // Restore the screenshot/recording block the instant the session ends.
+    // Restore the screenshot/recording block + stop the capture FG service.
     SecureScreen.setSecure(true);
+    ScreenCaptureFgService.stop();
     _iceSub?.cancel();
     _endedSub?.cancel();
     _iceSub = null;
