@@ -160,7 +160,7 @@ dependencies:
   # ============================================
 
   # Window management (size, position, minimize to tray)
-  window_manager: ^0.5.1
+  window_manager: ^0.5.2
 
   # Multi-monitor support
   screen_retriever: ^0.2.0
