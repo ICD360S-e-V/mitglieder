@@ -18,6 +18,7 @@ class MainActivity : FlutterActivity() {
     companion object {
         const val TAG = "MainActivity"
         const val SECURE_CHANNEL = "de.icd360sev.mitglied/secure_screen"
+        const val CAPTURE_CHANNEL = "de.icd360sev.mitglied/screen_capture"
     }
 
     // Fernwartung: FLAG_SECURE blocks the app from being screen-recorded — which
@@ -39,6 +40,31 @@ class MainActivity : FlutterActivity() {
                             }
                             Log.d(TAG, "FLAG_SECURE set to $secure")
                         }
+                        result.success(null)
+                    }
+                    else -> result.notImplemented()
+                }
+            }
+
+        // Fernwartung: start/stop the mediaProjection foreground service around a
+        // screen-capture session (RemoteAgentService calls start before
+        // getDisplayMedia and stop on cleanup).
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CAPTURE_CHANNEL)
+            .setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "start" -> {
+                        val i = Intent(this, ScreenCaptureService::class.java)
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            startForegroundService(i)
+                        } else {
+                            startService(i)
+                        }
+                        Log.d(TAG, "ScreenCaptureService started")
+                        result.success(null)
+                    }
+                    "stop" -> {
+                        stopService(Intent(this, ScreenCaptureService::class.java))
+                        Log.d(TAG, "ScreenCaptureService stopped")
                         result.success(null)
                     }
                     else -> result.notImplemented()

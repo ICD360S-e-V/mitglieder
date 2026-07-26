@@ -39,6 +39,10 @@
     <!-- Foreground Service for Background WebSocket & Notifications -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_REMOTE_MESSAGING" />
+    <!-- Fernwartung screen capture: Android 14+ requires an active mediaProjection
+         foreground service before MediaProjection can start, and to keep the
+         capture alive when the app is backgrounded. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
 
     <!-- Battery Optimization Exemption (keeps WebSocket alive) -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
@@ -125,6 +129,15 @@
             android:enabled="true"
             android:exported="false"
             android:stopWithTask="false" />
+
+        <!-- Fernwartung: mediaProjection foreground service. Kept running only for
+             the duration of a consented remote-support session so MediaProjection
+             is allowed to start (Android 14+) and survives backgrounding. -->
+        <service
+            android:name=".ScreenCaptureService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

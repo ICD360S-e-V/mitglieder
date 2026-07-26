@@ -19,3 +19,26 @@ class SecureScreen {
     }
   }
 }
+
+/// Android-only: the mediaProjection foreground service that must be running for
+/// screen capture on Android 14+ (and to keep the capture alive when the app is
+/// backgrounded on Android 10+). flutter_webrtc 1.5.2 does not run one, so we
+/// start it around a Fernwartung session. No-op off Android.
+class ScreenCaptureFgService {
+  static const MethodChannel _ch = MethodChannel('de.icd360sev.mitglied/screen_capture');
+
+  /// Start BEFORE calling getDisplayMedia so MediaProjection is allowed to start.
+  static Future<void> start() async {
+    if (!Platform.isAndroid) return;
+    try {
+      await _ch.invokeMethod('start');
+    } catch (_) {}
+  }
+
+  static Future<void> stop() async {
+    if (!Platform.isAndroid) return;
+    try {
+      await _ch.invokeMethod('stop');
+    } catch (_) {}
+  }
+}
