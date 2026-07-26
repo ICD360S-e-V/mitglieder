@@ -126,7 +126,7 @@ dependencies:
   open_filex: ^4.5.0
 
   # PDF viewer (internal - no external app needed)
-  pdfrx: ^2.2.0
+  pdfrx: ^2.4.1
 
   # Root/Jailbreak/Emulator detection
   safe_device: ^1.3.10
