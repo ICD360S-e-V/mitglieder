@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.74.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.74.0...v1.74.1) (2026-07-26)
+
+
+### Bug Fixes
+
+* **fernwartung:** set PRODUCT_NAME on the iOS broadcast extension target ([#235](https://github.com/ICD360S-e-V/mitglieder/issues/235)) ([9995cd0](https://github.com/ICD360S-e-V/mitglieder/commit/9995cd098da81481e1d5a5c8387d764bf1cd7efb))
+
 ## [1.74.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.73.1...v1.74.0) (2026-07-26)
 
 
