@@ -17,38 +17,6 @@ class _UpdateDialogState extends State<UpdateDialog> {
   double _downloadProgress = 0.0;
   String? _errorMessage;
 
-  /// Consent for unattended updates, offered inline instead of as a separate
-  /// dialog so the user answers it in the one moment it is actually relevant:
-  /// the checkbox sits directly above the button that acts on it.
-  bool _autoUpdateChecked = true;
-  bool _askAutoUpdate = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _resolveAutoUpdatePrompt();
-  }
-
-  Future<void> _resolveAutoUpdatePrompt() async {
-    if (!UpdateService().supportsSilentUpdate) return;
-
-    // Already on: this dialog is not even part of the unattended path, so
-    // there is nothing to offer. Turning it back off is done from the profile
-    // dialog's Updates switch.
-    if (await UpdateService.isAutoUpdateEnabled()) return;
-
-    // Otherwise keep offering it on every update — a "no" last time should not
-    // lock the user out forever — but pre-check it only on the first ask, so
-    // re-offering reads as available rather than as nagging.
-    final asked = await UpdateService.autoUpdateAsked();
-    if (mounted) {
-      setState(() {
-        _askAutoUpdate = true;
-        _autoUpdateChecked = !asked;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
@@ -94,48 +62,6 @@ class _UpdateDialogState extends State<UpdateDialog> {
                     widget.updateInfo.changelog,
                     style: const TextStyle(fontSize: 13),
                   ),
-                ),
-              ),
-            ],
-            if (_askAutoUpdate && !_isDownloading) ...[
-              const SizedBox(height: 16),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.blue.shade100),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CheckboxListTile(
-                      value: _autoUpdateChecked,
-                      onChanged: (v) =>
-                          setState(() => _autoUpdateChecked = v ?? false),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      dense: true,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 8),
-                      title: Text(
-                        l.autoUpdateEnableTitle,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      subtitle: Padding(
-                        padding: const EdgeInsets.only(top: 2, bottom: 6),
-                        child: Text(
-                          l.autoUpdateEnableHint,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey.shade700,
-                            height: 1.3,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ],
@@ -225,14 +151,6 @@ class _UpdateDialogState extends State<UpdateDialog> {
   }
 
   Future<void> _downloadAndInstall() async {
-    // Persist the consent answer before the download starts: this install
-    // ends with the process being replaced, so anything deferred to "after"
-    // would never run.
-    if (_askAutoUpdate) {
-      await UpdateService.setAutoUpdateEnabled(_autoUpdateChecked);
-    }
-
-    if (!mounted) return;
     setState(() {
       _isDownloading = true;
       _downloadProgress = 0.0;
@@ -250,9 +168,9 @@ class _UpdateDialogState extends State<UpdateDialog> {
 
     bool started = false;
     if (installerPath != null) {
-      // Runs the wizard visibly here — the user is watching this dialog and
-      // opted into this specific update. Unattended installs (the consent
-      // above) take the silent path from checkAndShowUpdateDialog instead.
+      // Wizard runs visibly here: this dialog is only reached on platforms
+      // that cannot install unattended, or after the silent path failed. In
+      // both cases the user is watching and pressed the button themselves.
       started = await updateService.launchInstaller(installerPath);
     }
 
@@ -268,12 +186,16 @@ class _UpdateDialogState extends State<UpdateDialog> {
   }
 }
 
-/// Checks for an update and either applies it unattended or prompts.
+/// Checks GitHub for a newer release and applies it.
 ///
-/// Once the user has consented to automatic updates the whole thing runs
-/// without UI: download, silent install, relaunch. If any step of that fails
-/// (offline mid-download, installer refused to start) it degrades to the
-/// normal dialog rather than leaving the user silently stuck on an old build.
+/// On Windows this asks nothing and shows no dialog: it downloads the
+/// installer, verifies its hash, installs it silently and relaunches the app.
+/// A short snackbar is the only UI, so the restart is not a surprise. Users who
+/// would rather approve each update turn the switch off in the profile dialog.
+///
+/// Everywhere else — and on Windows if the silent path fails, e.g. the download
+/// died halfway or the installer refused to start — it falls back to the
+/// [UpdateDialog] prompt rather than leaving the user stuck on an old build.
 Future<void> checkAndShowUpdateDialog(BuildContext context) async {
   final updateService = UpdateService();
   final updateInfo = await updateService.checkForUpdate();
