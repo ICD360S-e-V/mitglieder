@@ -82,7 +82,7 @@ dependencies:
   just_audio: ^0.10.5
 
   # Battery level monitoring
-  battery_plus: ^7.0.0
+  battery_plus: ^7.1.1
 
   # Path provider for temp directory (updates)
   path_provider: ^2.1.0
