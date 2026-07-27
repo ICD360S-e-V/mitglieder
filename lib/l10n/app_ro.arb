@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} pași validați de Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Detalii cerere",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} pas necesită corectare",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Motivul Vorstand-ului:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Aprobări Vorstand ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Așteptăm al 2-lea Vorstand",
@@ -1318,5 +1328,19 @@
   "wizardDuplicateCallUsTitle": "Te rugăm să ne suni",
   "wizardDuplicateCallUsBody": "Numele și data ta de naștere apar deja la noi, dar nu îți putem da detalii prin aplicație. Te rugăm să ne suni — Vorstand-ul îți va explica situația direct.",
   "wizardChatHelp": "Vorbim acum",
-  "wizardChatHelpSubtitle": "Chat live cu Vorstand-ul · răspuns rapid"
+  "wizardChatHelpSubtitle": "Chat live cu Vorstand-ul · răspuns rapid",
+  "benachrichtigungTitel": "Reamintiri prin SMS",
+  "benachrichtigungIntro": "Ca să nu pierdeți nicio programare, asociația vă poate trimite un SMS. Dumneavoastră decideți dacă și pentru ce — și puteți schimba oricând.",
+  "benachrichtigungTermineFrage": "Doriți să primiți prin SMS reamintiri pentru programările dumneavoastră?",
+  "benachrichtigungTermineDetail": "Mesajul conține data, ora, locul și subiectul programării.",
+  "benachrichtigungMedikamenteFrage": "Doriți să vă reamintim și de medicamente?",
+  "benachrichtigungMedikamenteDetail": "În mesaj apare numele medicamentului. Este o informație de sănătate, de aceea întrebăm separat.",
+  "benachrichtigungHinweis": "Reamintirea este un ajutor, nu o garanție — vă rugăm să nu vă bazați doar pe ea. Puteți schimba oricând din profil.",
+  "benachrichtigungJa": "Da",
+  "benachrichtigungNein": "Nu",
+  "benachrichtigungSpaeter": "Decid mai târziu",
+  "benachrichtigungSpeichern": "Salvează",
+  "benachrichtigungGespeichert": "Mulțumim, am salvat.",
+  "benachrichtigungenLeer": "Nicio notificare",
+  "benachrichtigungenAlleGelesen": "Marchează toate ca citite"
 }

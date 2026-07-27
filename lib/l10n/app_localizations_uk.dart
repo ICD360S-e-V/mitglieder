@@ -2830,4 +2830,51 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get wizardChatHelpSubtitle =>
       'Живий чат із Vorstand · швидка відповідь';
+
+  @override
+  String get benachrichtigungTitel => 'Нагадування через SMS';
+
+  @override
+  String get benachrichtigungIntro =>
+      'Щоб ви не пропустили зустріч, товариство може надсилати вам SMS. Ви вирішуєте, чи потрібно це і для чого, і можете змінити рішення будь-коли.';
+
+  @override
+  String get benachrichtigungTermineFrage =>
+      'Бажаєте отримувати нагадування про зустрічі через SMS?';
+
+  @override
+  String get benachrichtigungTermineDetail =>
+      'У повідомленні будуть дата, час, місце і тема зустрічі.';
+
+  @override
+  String get benachrichtigungMedikamenteFrage => 'Нагадувати також про ліки?';
+
+  @override
+  String get benachrichtigungMedikamenteDetail =>
+      'У повідомленні буде назва ліків. Це дані про здоров\'я, тому запитуємо окремо.';
+
+  @override
+  String get benachrichtigungHinweis =>
+      'Нагадування — це допомога, а не гарантія: будь ласка, не покладайтеся лише на нього. Змінити можна будь-коли у профілі.';
+
+  @override
+  String get benachrichtigungJa => 'Так';
+
+  @override
+  String get benachrichtigungNein => 'Ні';
+
+  @override
+  String get benachrichtigungSpaeter => 'Вирішити пізніше';
+
+  @override
+  String get benachrichtigungSpeichern => 'Зберегти';
+
+  @override
+  String get benachrichtigungGespeichert => 'Дякуємо, збережено.';
+
+  @override
+  String get benachrichtigungenLeer => 'Немає сповіщень';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Позначити всі як прочитані';
 }

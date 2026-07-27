@@ -2831,4 +2831,52 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get wizardChatHelpSubtitle =>
       'Chat live cu Vorstand-ul · răspuns rapid';
+
+  @override
+  String get benachrichtigungTitel => 'Reamintiri prin SMS';
+
+  @override
+  String get benachrichtigungIntro =>
+      'Ca să nu pierdeți nicio programare, asociația vă poate trimite un SMS. Dumneavoastră decideți dacă și pentru ce — și puteți schimba oricând.';
+
+  @override
+  String get benachrichtigungTermineFrage =>
+      'Doriți să primiți prin SMS reamintiri pentru programările dumneavoastră?';
+
+  @override
+  String get benachrichtigungTermineDetail =>
+      'Mesajul conține data, ora, locul și subiectul programării.';
+
+  @override
+  String get benachrichtigungMedikamenteFrage =>
+      'Doriți să vă reamintim și de medicamente?';
+
+  @override
+  String get benachrichtigungMedikamenteDetail =>
+      'În mesaj apare numele medicamentului. Este o informație de sănătate, de aceea întrebăm separat.';
+
+  @override
+  String get benachrichtigungHinweis =>
+      'Reamintirea este un ajutor, nu o garanție — vă rugăm să nu vă bazați doar pe ea. Puteți schimba oricând din profil.';
+
+  @override
+  String get benachrichtigungJa => 'Da';
+
+  @override
+  String get benachrichtigungNein => 'Nu';
+
+  @override
+  String get benachrichtigungSpaeter => 'Decid mai târziu';
+
+  @override
+  String get benachrichtigungSpeichern => 'Salvează';
+
+  @override
+  String get benachrichtigungGespeichert => 'Mulțumim, am salvat.';
+
+  @override
+  String get benachrichtigungenLeer => 'Nicio notificare';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Marchează toate ca citite';
 }

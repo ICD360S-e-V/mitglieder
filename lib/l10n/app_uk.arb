@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} кроків перевірено правлінням Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Деталі заявки",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} крок потребує виправлення",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Причина Vorstand:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Схвалення Vorstand ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Очікуємо 2-го Vorstand",
@@ -1318,5 +1328,19 @@
   "wizardDuplicateCallUsTitle": "Будь ласка, зателефонуй",
   "wizardDuplicateCallUsBody": "Твоє імʼя та дата народження вже в наших записах, але не можемо повідомити деталі через застосунок. Зателефонуй — Vorstand пояснить ситуацію напряму.",
   "wizardChatHelp": "Поговоримо",
-  "wizardChatHelpSubtitle": "Живий чат із Vorstand · швидка відповідь"
+  "wizardChatHelpSubtitle": "Живий чат із Vorstand · швидка відповідь",
+  "benachrichtigungTitel": "Нагадування через SMS",
+  "benachrichtigungIntro": "Щоб ви не пропустили зустріч, товариство може надсилати вам SMS. Ви вирішуєте, чи потрібно це і для чого, і можете змінити рішення будь-коли.",
+  "benachrichtigungTermineFrage": "Бажаєте отримувати нагадування про зустрічі через SMS?",
+  "benachrichtigungTermineDetail": "У повідомленні будуть дата, час, місце і тема зустрічі.",
+  "benachrichtigungMedikamenteFrage": "Нагадувати також про ліки?",
+  "benachrichtigungMedikamenteDetail": "У повідомленні буде назва ліків. Це дані про здоров'я, тому запитуємо окремо.",
+  "benachrichtigungHinweis": "Нагадування — це допомога, а не гарантія: будь ласка, не покладайтеся лише на нього. Змінити можна будь-коли у профілі.",
+  "benachrichtigungJa": "Так",
+  "benachrichtigungNein": "Ні",
+  "benachrichtigungSpaeter": "Вирішити пізніше",
+  "benachrichtigungSpeichern": "Зберегти",
+  "benachrichtigungGespeichert": "Дякуємо, збережено.",
+  "benachrichtigungenLeer": "Немає сповіщень",
+  "benachrichtigungenAlleGelesen": "Позначити всі як прочитані"
 }

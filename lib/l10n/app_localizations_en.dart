@@ -2828,4 +2828,52 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get wizardChatHelpSubtitle =>
       'Live chat with the Vorstand · quick reply';
+
+  @override
+  String get benachrichtigungTitel => 'SMS reminders';
+
+  @override
+  String get benachrichtigungIntro =>
+      'So you don\'t miss an appointment, the association can send you a text message. You decide whether and for what — and you can change it at any time.';
+
+  @override
+  String get benachrichtigungTermineFrage =>
+      'Would you like reminders about your appointments by SMS?';
+
+  @override
+  String get benachrichtigungTermineDetail =>
+      'The message contains the date, time, place and subject of the appointment.';
+
+  @override
+  String get benachrichtigungMedikamenteFrage =>
+      'Would you also like to be reminded about your medication?';
+
+  @override
+  String get benachrichtigungMedikamenteDetail =>
+      'The name of the medication appears in the message. That is health information, which is why we ask separately.';
+
+  @override
+  String get benachrichtigungHinweis =>
+      'The reminder is a help, not a guarantee — please do not rely on it alone. You can change this at any time in your profile.';
+
+  @override
+  String get benachrichtigungJa => 'Yes';
+
+  @override
+  String get benachrichtigungNein => 'No';
+
+  @override
+  String get benachrichtigungSpaeter => 'Decide later';
+
+  @override
+  String get benachrichtigungSpeichern => 'Save';
+
+  @override
+  String get benachrichtigungGespeichert => 'Thank you, saved.';
+
+  @override
+  String get benachrichtigungenLeer => 'No notifications';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Mark all as read';
 }

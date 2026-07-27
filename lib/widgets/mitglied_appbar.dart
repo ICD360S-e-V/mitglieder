@@ -14,6 +14,10 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onTickets;
   final VoidCallback onLiveChat;
   final VoidCallback onNotifications;
+
+  /// Ungelesene Benachrichtigungen. 0 heißt: kein Punkt — der war vorher fest
+  /// gemalt und leuchtete auch dann, wenn nichts anlag.
+  final int ungeleseneBenachrichtigungen;
   final VoidCallback onProfile;
   final VoidCallback onLogout;
 
@@ -29,6 +33,7 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onTickets,
     required this.onLiveChat,
     required this.onNotifications,
+    this.ungeleseneBenachrichtigungen = 0,
     required this.onProfile,
     required this.onLogout,
   });
@@ -122,6 +127,7 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: onNotifications,
           tooltip: l10n.notifications,
           iconSize: iconSize,
+          anzahl: ungeleseneBenachrichtigungen,
         ),
         SizedBox(width: spacing),
         // Profile
@@ -321,10 +327,13 @@ class _NotificationIcon extends StatelessWidget {
   final String tooltip;
   final double iconSize;
 
+  final int anzahl;
+
   const _NotificationIcon({
     required this.onPressed,
     required this.tooltip,
     required this.iconSize,
+    this.anzahl = 0,
   });
 
   @override
@@ -336,22 +345,29 @@ class _NotificationIcon extends StatelessWidget {
           onPressed: onPressed,
           tooltip: tooltip,
         ),
-        // Red badge for unread notifications
-        Positioned(
-          right: 6,
-          top: 6,
-          child: Container(
-            padding: const EdgeInsets.all(5),
-            decoration: const BoxDecoration(
-              color: Colors.red,
-              shape: BoxShape.circle,
-            ),
-            constraints: const BoxConstraints(
-              minWidth: 10,
-              minHeight: 10,
+        // Punkt nur, wenn wirklich etwas ungelesen ist.
+        if (anzahl > 0)
+          Positioned(
+            right: 4,
+            top: 4,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              constraints: const BoxConstraints(minWidth: 16),
+              child: Text(
+                anzahl > 99 ? '99+' : '\$anzahl',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
-        ),
       ],
     );
   }

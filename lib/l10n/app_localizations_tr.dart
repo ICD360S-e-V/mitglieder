@@ -2826,4 +2826,52 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get wizardChatHelpSubtitle =>
       'Vorstand ile canlı sohbet · hızlı yanıt';
+
+  @override
+  String get benachrichtigungTitel => 'SMS hatırlatmaları';
+
+  @override
+  String get benachrichtigungIntro =>
+      'Randevunuzu kaçırmamanız için dernek size SMS gönderebilir. Bunu isteyip istemediğinize siz karar verirsiniz ve istediğiniz zaman değiştirebilirsiniz.';
+
+  @override
+  String get benachrichtigungTermineFrage =>
+      'Randevularınız için SMS ile hatırlatma almak ister misiniz?';
+
+  @override
+  String get benachrichtigungTermineDetail =>
+      'Mesajda randevunun tarihi, saati, yeri ve konusu yer alır.';
+
+  @override
+  String get benachrichtigungMedikamenteFrage =>
+      'İlaçlarınız için de hatırlatma ister misiniz?';
+
+  @override
+  String get benachrichtigungMedikamenteDetail =>
+      'Mesajda ilacın adı yazar. Bu bir sağlık bilgisidir, bu yüzden ayrıca soruyoruz.';
+
+  @override
+  String get benachrichtigungHinweis =>
+      'Hatırlatma bir yardımdır, garanti değildir; lütfen yalnızca buna güvenmeyin. Profilinizden istediğiniz zaman değiştirebilirsiniz.';
+
+  @override
+  String get benachrichtigungJa => 'Evet';
+
+  @override
+  String get benachrichtigungNein => 'Hayır';
+
+  @override
+  String get benachrichtigungSpaeter => 'Daha sonra karar ver';
+
+  @override
+  String get benachrichtigungSpeichern => 'Kaydet';
+
+  @override
+  String get benachrichtigungGespeichert => 'Teşekkürler, kaydedildi.';
+
+  @override
+  String get benachrichtigungenLeer => 'Bildirim yok';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Tümünü okundu olarak işaretle';
 }
