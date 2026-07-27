@@ -1361,5 +1361,7 @@
   "benachrichtigungNein": "Hayır",
   "benachrichtigungSpaeter": "Daha sonra karar ver",
   "benachrichtigungSpeichern": "Kaydet",
-  "benachrichtigungGespeichert": "Teşekkürler, kaydedildi."
+  "benachrichtigungGespeichert": "Teşekkürler, kaydedildi.",
+  "benachrichtigungenLeer": "Bildirim yok",
+  "benachrichtigungenAlleGelesen": "Tümünü okundu olarak işaretle"
 }

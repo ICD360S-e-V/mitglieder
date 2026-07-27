@@ -2870,4 +2870,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get benachrichtigungGespeichert => 'Thank you, saved.';
+
+  @override
+  String get benachrichtigungenLeer => 'No notifications';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Mark all as read';
 }

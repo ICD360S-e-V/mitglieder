@@ -1340,5 +1340,7 @@
   "benachrichtigungNein": "Ні",
   "benachrichtigungSpaeter": "Вирішити пізніше",
   "benachrichtigungSpeichern": "Зберегти",
-  "benachrichtigungGespeichert": "Дякуємо, збережено."
+  "benachrichtigungGespeichert": "Дякуємо, збережено.",
+  "benachrichtigungenLeer": "Немає сповіщень",
+  "benachrichtigungenAlleGelesen": "Позначити всі як прочитані"
 }

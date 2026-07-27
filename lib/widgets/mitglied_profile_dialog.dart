@@ -8,6 +8,10 @@ import 'dokumente_tab.dart';
 import 'mitglieder_device.dart';
 import 'mitgliedschaft_tab.dart';
 
+/// Die Einwilligung zu den SMS-Erinnerungen lässt sich hier jederzeit
+/// ändern. Art. 7 Abs. 3 DSGVO verlangt das ausdrücklich: der Widerruf muss
+/// so einfach sein wie die Erteilung — die im Startdialog erteilte
+/// Zustimmung wäre sonst angreifbar.
 class MitgliedProfileDialog extends StatefulWidget {
   final String userName;
   final String mitgliedernummer;
@@ -62,6 +66,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
     _loadMySessions();
     _loadAccountInfo();
     _loadAutoUpdatePreference();
+    _ladeBenachrichtigung();
   }
 
   Future<void> _loadAutoUpdatePreference() async {
@@ -220,6 +225,37 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
         ),
       );
     }
+  }
+
+  bool _smsTermine = false;
+  bool _smsMedikamente = false;
+  bool _smsGeladen = false;
+  bool _smsSpeichert = false;
+
+  Future<void> _ladeBenachrichtigung() async {
+    final res = await widget.apiService.getBenachrichtigung();
+    if (!mounted || res['success'] != true) return;
+    setState(() {
+      _smsTermine = res['sms_termine'] == 'ja';
+      _smsMedikamente = res['sms_medikamente'] == 'ja';
+      _smsGeladen = true;
+    });
+  }
+
+  Future<void> _speichereBenachrichtigung({bool? termine, bool? medikamente}) async {
+    setState(() => _smsSpeichert = true);
+    final res = await widget.apiService.saveBenachrichtigung(
+      termine: termine,
+      medikamente: medikamente,
+    );
+    if (!mounted) return;
+    setState(() {
+      if (res['success'] == true) {
+        if (termine != null) _smsTermine = termine;
+        if (medikamente != null) _smsMedikamente = medikamente;
+      }
+      _smsSpeichert = false;
+    });
   }
 
   @override
@@ -682,6 +718,55 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
           // The consent checkbox in UpdateDialog can only ever turn this on,
           // and once it is on the dialog stops appearing entirely - so without
           // a switch here the choice would be one-way in both directions.
+          if (_smsGeladen) ...[
+            const SizedBox(height: 20),
+            _buildSectionHeader(
+              Icons.sms_outlined,
+              AppLocalizations.of(context)!.benachrichtigungTitel,
+              Colors.teal.shade700,
+            ),
+            const SizedBox(height: 8),
+            Card(
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: BorderSide(color: Colors.grey.shade300),
+              ),
+              child: Column(
+                children: [
+                  SwitchListTile(
+                    value: _smsTermine,
+                    onChanged: _smsSpeichert
+                        ? null
+                        : (v) => _speichereBenachrichtigung(termine: v),
+                    title: Text(
+                      AppLocalizations.of(context)!.benachrichtigungTermineFrage,
+                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
+                    subtitle: Text(
+                      AppLocalizations.of(context)!.benachrichtigungTermineDetail,
+                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                    ),
+                  ),
+                  const Divider(height: 1),
+                  SwitchListTile(
+                    value: _smsMedikamente,
+                    onChanged: _smsSpeichert
+                        ? null
+                        : (v) => _speichereBenachrichtigung(medikamente: v),
+                    title: Text(
+                      AppLocalizations.of(context)!.benachrichtigungMedikamenteFrage,
+                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
+                    subtitle: Text(
+                      AppLocalizations.of(context)!.benachrichtigungMedikamenteDetail,
+                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
           if (UpdateService().supportsSilentUpdate) ...[
             const SizedBox(height: 20),
             _buildSectionHeader(

@@ -2861,4 +2861,10 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get benachrichtigungGespeichert => 'Danke, gespeichert.';
+
+  @override
+  String get benachrichtigungenLeer => 'Keine Benachrichtigungen';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Alle als gelesen markieren';
 }

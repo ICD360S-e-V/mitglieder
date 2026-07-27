@@ -1361,5 +1361,7 @@
   "benachrichtigungNein": "لا",
   "benachrichtigungSpaeter": "أقرر لاحقاً",
   "benachrichtigungSpeichern": "حفظ",
-  "benachrichtigungGespeichert": "شكراً، تم الحفظ."
+  "benachrichtigungGespeichert": "شكراً، تم الحفظ.",
+  "benachrichtigungenLeer": "لا توجد إشعارات",
+  "benachrichtigungenAlleGelesen": "تعليم الكل كمقروء"
 }

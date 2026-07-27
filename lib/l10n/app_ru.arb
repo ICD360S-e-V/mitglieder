@@ -1340,5 +1340,7 @@
   "benachrichtigungNein": "Нет",
   "benachrichtigungSpaeter": "Решить позже",
   "benachrichtigungSpeichern": "Сохранить",
-  "benachrichtigungGespeichert": "Спасибо, сохранено."
+  "benachrichtigungGespeichert": "Спасибо, сохранено.",
+  "benachrichtigungenLeer": "Нет уведомлений",
+  "benachrichtigungenAlleGelesen": "Отметить все как прочитанные"
 }

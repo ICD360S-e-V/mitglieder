@@ -2869,4 +2869,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get benachrichtigungGespeichert => 'Спасибо, сохранено.';
+
+  @override
+  String get benachrichtigungenLeer => 'Нет уведомлений';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Отметить все как прочитанные';
 }

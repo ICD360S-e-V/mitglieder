@@ -2868,4 +2868,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get benachrichtigungGespeichert => 'Teşekkürler, kaydedildi.';
+
+  @override
+  String get benachrichtigungenLeer => 'Bildirim yok';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Tümünü okundu olarak işaretle';
 }

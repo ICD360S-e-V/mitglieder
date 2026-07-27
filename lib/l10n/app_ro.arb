@@ -1340,5 +1340,7 @@
   "benachrichtigungNein": "Nu",
   "benachrichtigungSpaeter": "Decid mai târziu",
   "benachrichtigungSpeichern": "Salvează",
-  "benachrichtigungGespeichert": "Mulțumim, am salvat."
+  "benachrichtigungGespeichert": "Mulțumim, am salvat.",
+  "benachrichtigungenLeer": "Nicio notificare",
+  "benachrichtigungenAlleGelesen": "Marchează toate ca citite"
 }

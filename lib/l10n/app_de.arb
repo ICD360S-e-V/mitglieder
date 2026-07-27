@@ -1361,5 +1361,7 @@
   "benachrichtigungNein": "Nein",
   "benachrichtigungSpaeter": "Später entscheiden",
   "benachrichtigungSpeichern": "Speichern",
-  "benachrichtigungGespeichert": "Danke, gespeichert."
+  "benachrichtigungGespeichert": "Danke, gespeichert.",
+  "benachrichtigungenLeer": "Keine Benachrichtigungen",
+  "benachrichtigungenAlleGelesen": "Alle als gelesen markieren"
 }

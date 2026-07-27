@@ -1340,5 +1340,7 @@
   "benachrichtigungNein": "No",
   "benachrichtigungSpaeter": "Decide later",
   "benachrichtigungSpeichern": "Save",
-  "benachrichtigungGespeichert": "Thank you, saved."
+  "benachrichtigungGespeichert": "Thank you, saved.",
+  "benachrichtigungenLeer": "No notifications",
+  "benachrichtigungenAlleGelesen": "Mark all as read"
 }

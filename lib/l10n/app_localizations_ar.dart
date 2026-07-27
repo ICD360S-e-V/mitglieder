@@ -2841,4 +2841,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get benachrichtigungGespeichert => 'شكراً، تم الحفظ.';
+
+  @override
+  String get benachrichtigungenLeer => 'لا توجد إشعارات';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'تعليم الكل كمقروء';
 }

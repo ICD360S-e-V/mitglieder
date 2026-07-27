@@ -2873,4 +2873,10 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get benachrichtigungGespeichert => 'Mulțumim, am salvat.';
+
+  @override
+  String get benachrichtigungenLeer => 'Nicio notificare';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Marchează toate ca citite';
 }

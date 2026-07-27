@@ -15,6 +15,7 @@ import '../widgets/video_call_screen.dart';
 import '../widgets/legal_footer.dart';
 import '../widgets/live_chat_dialog.dart';
 import '../widgets/benachrichtigung_consent_dialog.dart';
+import '../widgets/benachrichtigungen_dialog.dart';
 import '../widgets/update_dialog.dart';
 import '../widgets/ticket_dialogs.dart';
 import '../services/ticket_service.dart';
@@ -114,6 +115,9 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   List<Ticket> _tickets = [];
   bool _isLoadingTickets = true;
   bool _ticketsLoadStarted = false;
+
+  /// Ungelesene Benachrichtigungen — steuert den Punkt auf der Glocke.
+  int _ungeleseneBenachrichtigungen = 0;
   String _ticketFilter = 'all'; // all, open, in_progress, done
   Timer? _ticketRefreshTimer;
 
@@ -187,6 +191,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       BenachrichtigungConsentDialog.zeigenFallsNoetig(context, _apiService);
+      _ladeUngelesene();
     });
 
     // Start log upload to server (every 30s) with app version
@@ -811,62 +816,21 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     );
   }
 
+  Future<void> _ladeUngelesene() async {
+    final res = await _apiService.getBenachrichtigungen();
+    if (!mounted || res['success'] != true) return;
+    setState(() => _ungeleseneBenachrichtigungen =
+        res['ungelesen'] is int ? res['ungelesen'] : 0);
+  }
+
   void _showNotificationsDialog() {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: Row(
-          children: [
-            const Icon(Icons.notifications, color: Color(0xFF4a90d9)),
-            const SizedBox(width: 12),
-            Text(l10n.notifications),
-          ],
-        ),
-        content: SizedBox(
-          width: 400,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.blue.shade100,
-                  child: Icon(Icons.info, color: Colors.blue.shade700),
-                ),
-                title: Text(l10n.welcomeToICD),
-                subtitle: Text(l10n.accountCreatedSuccessfully),
-                trailing: Text(
-                  l10n.today,
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
-                ),
-              ),
-              const Divider(),
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.orange.shade100,
-                  child: Icon(Icons.euro, color: Colors.orange.shade700),
-                ),
-                title: Text(l10n.membershipFeeDue),
-                subtitle: Text(l10n.pleaseTransferAnnualFee),
-                trailing: Text(
-                  l10n.newBadge,
-                  style: TextStyle(
-                    color: Colors.red.shade600,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(l10n.close),
-          ),
-        ],
+      builder: (context) => BenachrichtigungenDialog(
+        apiService: _apiService,
+        onUngelesen: (n) {
+          if (mounted) setState(() => _ungeleseneBenachrichtigungen = n);
+        },
       ),
     );
   }
@@ -933,6 +897,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         },
         onLiveChat: _showLiveChatDialog,
         onNotifications: _showNotificationsDialog,
+        ungeleseneBenachrichtigungen: _ungeleseneBenachrichtigungen,
         onProfile: _showProfileDialog,
         onLogout: _logout,
       ),

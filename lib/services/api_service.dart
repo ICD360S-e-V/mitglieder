@@ -1285,6 +1285,33 @@ class ApiService {
     }
   }
 
+  // ========== POSTEINGANG (GLOCKE) ==========
+
+  /// Die letzten Erinnerungen plus die Zahl der ungelesenen — dieselbe Zahl,
+  /// die als Punkt auf der Glocke steht.
+  Future<Map<String, dynamic>> getBenachrichtigungen() =>
+      _postPosteingang({'action': 'list'});
+
+  Future<Map<String, dynamic>> markiereGelesen(int id) =>
+      _postPosteingang({'action': 'read', 'id': id});
+
+  Future<Map<String, dynamic>> markiereAlleGelesen() =>
+      _postPosteingang({'action': 'read_all'});
+
+  Future<Map<String, dynamic>> _postPosteingang(Map<String, dynamic> body) async {
+    try {
+      final response = await _client.post(
+        Uri.parse('$baseUrl/member/benachrichtigungen.php'),
+        headers: _headers,
+        body: jsonEncode(body),
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Posteingang failed'};
+    }
+  }
+
   // ========== BENACHRICHTIGUNGEN (EIGENE EINWILLIGUNG) ==========
   // Ob der Verein Erinnerungen per SMS schicken darf, entscheidet das Mitglied
   // hier selbst. Der Server leitet die Identität aus dem Token ab — die

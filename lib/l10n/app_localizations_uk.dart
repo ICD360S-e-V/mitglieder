@@ -2871,4 +2871,10 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get benachrichtigungGespeichert => 'Дякуємо, збережено.';
+
+  @override
+  String get benachrichtigungenLeer => 'Немає сповіщень';
+
+  @override
+  String get benachrichtigungenAlleGelesen => 'Позначити всі як прочитані';
 }

@@ -5215,6 +5215,18 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Danke, gespeichert.'**
   String get benachrichtigungGespeichert;
+
+  /// No description provided for @benachrichtigungenLeer.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Benachrichtigungen'**
+  String get benachrichtigungenLeer;
+
+  /// No description provided for @benachrichtigungenAlleGelesen.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle als gelesen markieren'**
+  String get benachrichtigungenAlleGelesen;
 }
 
 class _AppLocalizationsDelegate
