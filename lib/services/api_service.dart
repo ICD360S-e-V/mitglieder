@@ -1284,4 +1284,46 @@ class ApiService {
       return {'success': false, 'message': 'Approval login failed'};
     }
   }
+
+  // ========== BENACHRICHTIGUNGEN (EIGENE EINWILLIGUNG) ==========
+  // Ob der Verein Erinnerungen per SMS schicken darf, entscheidet das Mitglied
+  // hier selbst. Der Server leitet die Identität aus dem Token ab — die
+  // user_id wird bewusst NICHT mitgeschickt, sonst könnte man die Einwilligung
+  // eines anderen setzen.
+
+  /// Eigener Stand plus die Auskunft, ob jetzt gefragt werden soll.
+  Future<Map<String, dynamic>> getBenachrichtigung() =>
+      _postBenachrichtigung({'action': 'get'});
+
+  /// Antwort des Mitglieds. Beide Einwilligungen sind getrennt, weil die
+  /// Medikamenten-Erinnerung Gesundheitsdaten verschickt (Art. 9 DSGVO) und
+  /// dafür eine eigene, ausdrückliche Zustimmung nötig ist.
+  Future<Map<String, dynamic>> saveBenachrichtigung({
+    bool? termine,
+    bool? medikamente,
+  }) =>
+      _postBenachrichtigung({
+        'action': 'save',
+        if (termine != null) 'sms_termine': termine ? 'ja' : 'nein',
+        if (medikamente != null) 'sms_medikamente': medikamente ? 'ja' : 'nein',
+      });
+
+  /// „Später entscheiden" — kein Ja und kein Nein, nur der Vermerk, dass
+  /// gefragt wurde.
+  Future<Map<String, dynamic>> benachrichtigungSpaeter() =>
+      _postBenachrichtigung({'action': 'spaeter'});
+
+  Future<Map<String, dynamic>> _postBenachrichtigung(Map<String, dynamic> body) async {
+    try {
+      final response = await _client.post(
+        Uri.parse('$baseUrl/member/benachrichtigung.php'),
+        headers: _headers,
+        body: jsonEncode(body),
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Benachrichtigung failed'};
+    }
+  }
 }

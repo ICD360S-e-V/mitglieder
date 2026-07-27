@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} шагов проверено правлением Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Детали заявки",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} шаг требует исправления",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Причина от Vorstand:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Одобрения Vorstand ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Ожидаем 2-го Vorstand",
@@ -1318,5 +1328,17 @@
   "wizardDuplicateCallUsTitle": "Пожалуйста, позвони нам",
   "wizardDuplicateCallUsBody": "Твоё имя и дата рождения уже есть у нас, но мы не можем сообщить детали через приложение. Пожалуйста, позвони — Vorstand объяснит ситуацию напрямую.",
   "wizardChatHelp": "Поговорим",
-  "wizardChatHelpSubtitle": "Живой чат с Vorstand · быстрый ответ"
+  "wizardChatHelpSubtitle": "Живой чат с Vorstand · быстрый ответ",
+  "benachrichtigungTitel": "Напоминания по SMS",
+  "benachrichtigungIntro": "Чтобы вы не пропустили встречу, объединение может присылать вам SMS. Вы решаете, нужно ли это и для чего, и можете изменить решение в любой момент.",
+  "benachrichtigungTermineFrage": "Хотите получать напоминания о встречах по SMS?",
+  "benachrichtigungTermineDetail": "В сообщении будут дата, время, место и тема встречи.",
+  "benachrichtigungMedikamenteFrage": "Напоминать также о лекарствах?",
+  "benachrichtigungMedikamenteDetail": "В сообщении будет указано название лекарства. Это сведения о здоровье, поэтому мы спрашиваем отдельно.",
+  "benachrichtigungHinweis": "Напоминание — это помощь, а не гарантия: пожалуйста, не полагайтесь только на него. Изменить можно в любой момент в профиле.",
+  "benachrichtigungJa": "Да",
+  "benachrichtigungNein": "Нет",
+  "benachrichtigungSpaeter": "Решить позже",
+  "benachrichtigungSpeichern": "Сохранить",
+  "benachrichtigungGespeichert": "Спасибо, сохранено."
 }

@@ -14,6 +14,7 @@ import 'package:flutter_webrtc/flutter_webrtc.dart' show RTCIceConnectionState;
 import '../widgets/video_call_screen.dart';
 import '../widgets/legal_footer.dart';
 import '../widgets/live_chat_dialog.dart';
+import '../widgets/benachrichtigung_consent_dialog.dart';
 import '../widgets/update_dialog.dart';
 import '../widgets/ticket_dialogs.dart';
 import '../services/ticket_service.dart';
@@ -178,6 +179,15 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
 
     // Start ntfy push notifications (server-sent via NDJSON stream)
     NtfyService().start(widget.mitgliedernummer);
+
+    // Einmal fragen, ob SMS-Erinnerungen erwünscht sind. Ob überhaupt gefragt
+    // wird, entscheidet der Server (nur bei hinterlegter Mobilnummer, nur wenn
+    // noch offen, frühestens 14 Tage nach dem letzten Mal, höchstens dreimal)
+    // — der Client soll das nicht selbst festlegen können.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      BenachrichtigungConsentDialog.zeigenFallsNoetig(context, _apiService);
+    });
 
     // Start log upload to server (every 30s) with app version
     // Get version dynamically from pubspec.yaml

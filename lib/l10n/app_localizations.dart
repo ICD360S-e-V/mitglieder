@@ -5143,6 +5143,78 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Live-Chat mit dem Vorstand · schnelle Antwort'**
   String get wizardChatHelpSubtitle;
+
+  /// No description provided for @benachrichtigungTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'SMS-Erinnerungen'**
+  String get benachrichtigungTitel;
+
+  /// No description provided for @benachrichtigungIntro.
+  ///
+  /// In de, this message translates to:
+  /// **'Damit Sie keinen Termin verpassen, kann der Verein Ihnen eine SMS schicken. Sie entscheiden, ob und wofür — und können es jederzeit ändern.'**
+  String get benachrichtigungIntro;
+
+  /// No description provided for @benachrichtigungTermineFrage.
+  ///
+  /// In de, this message translates to:
+  /// **'Möchten Sie Erinnerungen an Ihre Termine per SMS erhalten?'**
+  String get benachrichtigungTermineFrage;
+
+  /// No description provided for @benachrichtigungTermineDetail.
+  ///
+  /// In de, this message translates to:
+  /// **'Die SMS enthält Datum, Uhrzeit, Ort und Betreff des Termins.'**
+  String get benachrichtigungTermineDetail;
+
+  /// No description provided for @benachrichtigungMedikamenteFrage.
+  ///
+  /// In de, this message translates to:
+  /// **'Möchten Sie auch an Ihre Medikamente erinnert werden?'**
+  String get benachrichtigungMedikamenteFrage;
+
+  /// No description provided for @benachrichtigungMedikamenteDetail.
+  ///
+  /// In de, this message translates to:
+  /// **'Dabei steht der Name des Medikaments in der SMS. Das ist eine Gesundheitsangabe — deshalb fragen wir getrennt.'**
+  String get benachrichtigungMedikamenteDetail;
+
+  /// No description provided for @benachrichtigungHinweis.
+  ///
+  /// In de, this message translates to:
+  /// **'Die Erinnerung ist eine Hilfe und keine Garantie: bitte verlassen Sie sich nicht allein darauf. Ändern können Sie das jederzeit in Ihrem Profil.'**
+  String get benachrichtigungHinweis;
+
+  /// No description provided for @benachrichtigungJa.
+  ///
+  /// In de, this message translates to:
+  /// **'Ja'**
+  String get benachrichtigungJa;
+
+  /// No description provided for @benachrichtigungNein.
+  ///
+  /// In de, this message translates to:
+  /// **'Nein'**
+  String get benachrichtigungNein;
+
+  /// No description provided for @benachrichtigungSpaeter.
+  ///
+  /// In de, this message translates to:
+  /// **'Später entscheiden'**
+  String get benachrichtigungSpaeter;
+
+  /// No description provided for @benachrichtigungSpeichern.
+  ///
+  /// In de, this message translates to:
+  /// **'Speichern'**
+  String get benachrichtigungSpeichern;
+
+  /// No description provided for @benachrichtigungGespeichert.
+  ///
+  /// In de, this message translates to:
+  /// **'Danke, gespeichert.'**
+  String get benachrichtigungGespeichert;
 }
 
 class _AppLocalizationsDelegate

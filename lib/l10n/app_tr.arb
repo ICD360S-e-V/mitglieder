@@ -1286,8 +1286,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} adım Vorstand tarafından doğrulandı",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Başvuru detayları",
@@ -1298,7 +1302,9 @@
   "wizardFinalStatusRejectionCount": "{count} adım düzeltilmeli",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Vorstand'ın gerekçesi:",
@@ -1306,8 +1312,12 @@
   "wizardFinalApprovalsHeader": "Vorstand onayları ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "2. Vorstand bekleniyor",
@@ -1339,5 +1349,17 @@
   "wizardDuplicateCallUsTitle": "Lütfen bizi ara",
   "wizardDuplicateCallUsBody": "İsmin ve doğum tarihin kayıtlarımızda zaten var, ama detayları uygulama üzerinden paylaşamayız. Lütfen ara — Vorstand sana durumu doğrudan açıklayacak.",
   "wizardChatHelp": "Konuşalım",
-  "wizardChatHelpSubtitle": "Vorstand ile canlı sohbet · hızlı yanıt"
+  "wizardChatHelpSubtitle": "Vorstand ile canlı sohbet · hızlı yanıt",
+  "benachrichtigungTitel": "SMS hatırlatmaları",
+  "benachrichtigungIntro": "Randevunuzu kaçırmamanız için dernek size SMS gönderebilir. Bunu isteyip istemediğinize siz karar verirsiniz ve istediğiniz zaman değiştirebilirsiniz.",
+  "benachrichtigungTermineFrage": "Randevularınız için SMS ile hatırlatma almak ister misiniz?",
+  "benachrichtigungTermineDetail": "Mesajda randevunun tarihi, saati, yeri ve konusu yer alır.",
+  "benachrichtigungMedikamenteFrage": "İlaçlarınız için de hatırlatma ister misiniz?",
+  "benachrichtigungMedikamenteDetail": "Mesajda ilacın adı yazar. Bu bir sağlık bilgisidir, bu yüzden ayrıca soruyoruz.",
+  "benachrichtigungHinweis": "Hatırlatma bir yardımdır, garanti değildir; lütfen yalnızca buna güvenmeyin. Profilinizden istediğiniz zaman değiştirebilirsiniz.",
+  "benachrichtigungJa": "Evet",
+  "benachrichtigungNein": "Hayır",
+  "benachrichtigungSpaeter": "Daha sonra karar ver",
+  "benachrichtigungSpeichern": "Kaydet",
+  "benachrichtigungGespeichert": "Teşekkürler, kaydedildi."
 }

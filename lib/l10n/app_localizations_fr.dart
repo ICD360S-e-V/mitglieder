@@ -2850,4 +2850,46 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get wizardChatHelpSubtitle =>
       'Chat en direct avec le Vorstand · réponse rapide';
+
+  @override
+  String get benachrichtigungTitel => 'SMS-Erinnerungen';
+
+  @override
+  String get benachrichtigungIntro =>
+      'Damit Sie keinen Termin verpassen, kann der Verein Ihnen eine SMS schicken. Sie entscheiden, ob und wofür — und können es jederzeit ändern.';
+
+  @override
+  String get benachrichtigungTermineFrage =>
+      'Möchten Sie Erinnerungen an Ihre Termine per SMS erhalten?';
+
+  @override
+  String get benachrichtigungTermineDetail =>
+      'Die SMS enthält Datum, Uhrzeit, Ort und Betreff des Termins.';
+
+  @override
+  String get benachrichtigungMedikamenteFrage =>
+      'Möchten Sie auch an Ihre Medikamente erinnert werden?';
+
+  @override
+  String get benachrichtigungMedikamenteDetail =>
+      'Dabei steht der Name des Medikaments in der SMS. Das ist eine Gesundheitsangabe — deshalb fragen wir getrennt.';
+
+  @override
+  String get benachrichtigungHinweis =>
+      'Die Erinnerung ist eine Hilfe und keine Garantie: bitte verlassen Sie sich nicht allein darauf. Ändern können Sie das jederzeit in Ihrem Profil.';
+
+  @override
+  String get benachrichtigungJa => 'Ja';
+
+  @override
+  String get benachrichtigungNein => 'Nein';
+
+  @override
+  String get benachrichtigungSpaeter => 'Später entscheiden';
+
+  @override
+  String get benachrichtigungSpeichern => 'Speichern';
+
+  @override
+  String get benachrichtigungGespeichert => 'Danke, gespeichert.';
 }

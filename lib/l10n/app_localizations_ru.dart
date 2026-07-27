@@ -2827,4 +2827,46 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get wizardChatHelpSubtitle => 'Живой чат с Vorstand · быстрый ответ';
+
+  @override
+  String get benachrichtigungTitel => 'Напоминания по SMS';
+
+  @override
+  String get benachrichtigungIntro =>
+      'Чтобы вы не пропустили встречу, объединение может присылать вам SMS. Вы решаете, нужно ли это и для чего, и можете изменить решение в любой момент.';
+
+  @override
+  String get benachrichtigungTermineFrage =>
+      'Хотите получать напоминания о встречах по SMS?';
+
+  @override
+  String get benachrichtigungTermineDetail =>
+      'В сообщении будут дата, время, место и тема встречи.';
+
+  @override
+  String get benachrichtigungMedikamenteFrage =>
+      'Напоминать также о лекарствах?';
+
+  @override
+  String get benachrichtigungMedikamenteDetail =>
+      'В сообщении будет указано название лекарства. Это сведения о здоровье, поэтому мы спрашиваем отдельно.';
+
+  @override
+  String get benachrichtigungHinweis =>
+      'Напоминание — это помощь, а не гарантия: пожалуйста, не полагайтесь только на него. Изменить можно в любой момент в профиле.';
+
+  @override
+  String get benachrichtigungJa => 'Да';
+
+  @override
+  String get benachrichtigungNein => 'Нет';
+
+  @override
+  String get benachrichtigungSpaeter => 'Решить позже';
+
+  @override
+  String get benachrichtigungSpeichern => 'Сохранить';
+
+  @override
+  String get benachrichtigungGespeichert => 'Спасибо, сохранено.';
 }

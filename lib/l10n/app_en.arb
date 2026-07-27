@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} steps validated by the Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Application details",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} step needs correction",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Vorstand's reason:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Vorstand approvals ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Awaiting 2nd Vorstand",
@@ -1318,5 +1328,17 @@
   "wizardDuplicateCallUsTitle": "Please give us a call",
   "wizardDuplicateCallUsBody": "Your name and date of birth already appear in our records, but we can't share the details through the app. Please give us a call — the Vorstand will explain the situation directly.",
   "wizardChatHelp": "Let's talk",
-  "wizardChatHelpSubtitle": "Live chat with the Vorstand · quick reply"
+  "wizardChatHelpSubtitle": "Live chat with the Vorstand · quick reply",
+  "benachrichtigungTitel": "SMS reminders",
+  "benachrichtigungIntro": "So you don't miss an appointment, the association can send you a text message. You decide whether and for what — and you can change it at any time.",
+  "benachrichtigungTermineFrage": "Would you like reminders about your appointments by SMS?",
+  "benachrichtigungTermineDetail": "The message contains the date, time, place and subject of the appointment.",
+  "benachrichtigungMedikamenteFrage": "Would you also like to be reminded about your medication?",
+  "benachrichtigungMedikamenteDetail": "The name of the medication appears in the message. That is health information, which is why we ask separately.",
+  "benachrichtigungHinweis": "The reminder is a help, not a guarantee — please do not rely on it alone. You can change this at any time in your profile.",
+  "benachrichtigungJa": "Yes",
+  "benachrichtigungNein": "No",
+  "benachrichtigungSpaeter": "Decide later",
+  "benachrichtigungSpeichern": "Save",
+  "benachrichtigungGespeichert": "Thank you, saved."
 }

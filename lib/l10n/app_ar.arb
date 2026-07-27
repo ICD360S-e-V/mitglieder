@@ -1286,8 +1286,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} خطوات تم التحقق منها من قبل المجلس التنفيذي",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "تفاصيل الطلب",
@@ -1298,7 +1302,9 @@
   "wizardFinalStatusRejectionCount": "{count} خطوة تحتاج إلى تصحيح",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "سبب المجلس:",
@@ -1306,8 +1312,12 @@
   "wizardFinalApprovalsHeader": "اعتمادات Vorstand ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "بانتظار عضو Vorstand الثاني",
@@ -1339,5 +1349,17 @@
   "wizardDuplicateCallUsTitle": "يرجى الاتصال بنا",
   "wizardDuplicateCallUsBody": "اسمك وتاريخ ميلادك موجودان لدينا بالفعل، لكن لا يمكننا مشاركة التفاصيل عبر التطبيق. يرجى الاتصال بنا — مجلس الإدارة سيشرح لك الأمر مباشرة.",
   "wizardChatHelp": "لنتحدث",
-  "wizardChatHelpSubtitle": "دردشة مباشرة مع مجلس الإدارة · رد سريع"
+  "wizardChatHelpSubtitle": "دردشة مباشرة مع مجلس الإدارة · رد سريع",
+  "benachrichtigungTitel": "تذكيرات عبر الرسائل القصيرة",
+  "benachrichtigungIntro": "حتى لا يفوتك أي موعد، يمكن للجمعية أن ترسل لك رسالة قصيرة. أنت من يقرر ما إذا كنت ترغب في ذلك ولأي غرض، ويمكنك تغيير ذلك في أي وقت.",
+  "benachrichtigungTermineFrage": "هل ترغب في تلقي تذكيرات بمواعيدك عبر الرسائل القصيرة؟",
+  "benachrichtigungTermineDetail": "تتضمن الرسالة تاريخ الموعد ووقته ومكانه وموضوعه.",
+  "benachrichtigungMedikamenteFrage": "هل ترغب أيضاً في تذكيرك بأدويتك؟",
+  "benachrichtigungMedikamenteDetail": "سيظهر اسم الدواء في الرسالة. هذه معلومة صحية، لذلك نسأل عنها بشكل منفصل.",
+  "benachrichtigungHinweis": "التذكير مساعدة وليس ضماناً، فالرجاء عدم الاعتماد عليه وحده. يمكنك تغيير ذلك في أي وقت من ملفك الشخصي.",
+  "benachrichtigungJa": "نعم",
+  "benachrichtigungNein": "لا",
+  "benachrichtigungSpaeter": "أقرر لاحقاً",
+  "benachrichtigungSpeichern": "حفظ",
+  "benachrichtigungGespeichert": "شكراً، تم الحفظ."
 }

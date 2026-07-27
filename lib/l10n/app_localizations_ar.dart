@@ -2799,4 +2799,46 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get wizardChatHelpSubtitle => 'دردشة مباشرة مع مجلس الإدارة · رد سريع';
+
+  @override
+  String get benachrichtigungTitel => 'تذكيرات عبر الرسائل القصيرة';
+
+  @override
+  String get benachrichtigungIntro =>
+      'حتى لا يفوتك أي موعد، يمكن للجمعية أن ترسل لك رسالة قصيرة. أنت من يقرر ما إذا كنت ترغب في ذلك ولأي غرض، ويمكنك تغيير ذلك في أي وقت.';
+
+  @override
+  String get benachrichtigungTermineFrage =>
+      'هل ترغب في تلقي تذكيرات بمواعيدك عبر الرسائل القصيرة؟';
+
+  @override
+  String get benachrichtigungTermineDetail =>
+      'تتضمن الرسالة تاريخ الموعد ووقته ومكانه وموضوعه.';
+
+  @override
+  String get benachrichtigungMedikamenteFrage =>
+      'هل ترغب أيضاً في تذكيرك بأدويتك؟';
+
+  @override
+  String get benachrichtigungMedikamenteDetail =>
+      'سيظهر اسم الدواء في الرسالة. هذه معلومة صحية، لذلك نسأل عنها بشكل منفصل.';
+
+  @override
+  String get benachrichtigungHinweis =>
+      'التذكير مساعدة وليس ضماناً، فالرجاء عدم الاعتماد عليه وحده. يمكنك تغيير ذلك في أي وقت من ملفك الشخصي.';
+
+  @override
+  String get benachrichtigungJa => 'نعم';
+
+  @override
+  String get benachrichtigungNein => 'لا';
+
+  @override
+  String get benachrichtigungSpaeter => 'أقرر لاحقاً';
+
+  @override
+  String get benachrichtigungSpeichern => 'حفظ';
+
+  @override
+  String get benachrichtigungGespeichert => 'شكراً، تم الحفظ.';
 }
