@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.75.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.74.2...v1.75.0) (2026-07-27)
+
+
+### Chores
+
+* Release 1.75.0 nachziehen (Benachrichtigungen) ([#240](https://github.com/ICD360S-e-V/mitglieder/issues/240)) ([538bd58](https://github.com/ICD360S-e-V/mitglieder/commit/538bd582ff9c044aa6ccf62ae883af6653259fe8))
+
 ## [1.74.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.74.1...v1.74.2) (2026-07-26)
 
 
