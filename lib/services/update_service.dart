@@ -112,6 +112,10 @@ class UpdateService {
 
   static const String _prefAutoUpdate = 'auto_update_enabled';
 
+  /// Guards against two unattended installs running at once. Instance state,
+  /// which is safe because UpdateService is a singleton.
+  bool _unattendedInProgress = false;
+
   /// Platforms where an update can be applied end-to-end with no clicks.
   ///
   /// Windows only, and only because the Inno Setup installer is a per-user
@@ -139,6 +143,35 @@ class UpdateService {
     await prefs.setBool(_prefAutoUpdate, enabled);
   }
 
+  /// Startup update path, deliberately free of any [BuildContext].
+  ///
+  /// The dashboard check this supplements only runs once a member is signed in
+  /// and has reached the member screen. A desktop install left sitting on the
+  /// login screen — which is the normal state of a test machine, and of any
+  /// machine whose session expired — therefore never checked for updates at
+  /// all, and silently stayed on an old build forever.
+  ///
+  /// Needing no context is what lets this run from main(), before any widget
+  /// tree exists. Only the unattended path is taken here: prompting requires a
+  /// UI, and there is no screen yet to prompt on. If unattended updates are
+  /// switched off, this does nothing and the dashboard path prompts later.
+  ///
+  /// Never throws — a failure here must not take down app startup.
+  Future<void> checkAndInstallAtStartup() async {
+    try {
+      if (!supportsSilentUpdate) return;
+      if (!await isAutoUpdateEnabled()) return;
+
+      final updateInfo = await checkForUpdate();
+      if (updateInfo == null) return;
+
+      debugPrint('[Update] Startup check found ${updateInfo.version}');
+      await installUnattended(updateInfo); // terminates this process on success
+    } catch (e) {
+      debugPrint('[Update] Startup check failed: $e');
+    }
+  }
+
   /// Apply [updateInfo] with no user interaction: download, silent install,
   /// relaunch.
   ///
@@ -149,6 +182,17 @@ class UpdateService {
   Future<bool> installUnattended(UpdateInfo updateInfo) async {
     if (!supportsSilentUpdate) return false;
 
+    // Two callers can reach this for the same release: the startup check in
+    // main() and the dashboard check that fires shortly after a member signs
+    // in. Without this guard a quick login downloads 40 MB twice and races two
+    // installers against the same files. The flag is never cleared on the
+    // success path because that path does not return - the process is gone.
+    if (_unattendedInProgress) {
+      debugPrint('[Update] Unattended update already running - skipping');
+      return false;
+    }
+    _unattendedInProgress = true;
+
     debugPrint('[Update] Unattended update to ${updateInfo.version} starting');
     final installerPath = await downloadUpdate(
       updateInfo.downloadUrl,
@@ -158,9 +202,16 @@ class UpdateService {
     if (installerPath == null) {
       debugPrint('[Update] Unattended download failed or failed verification '
           '- staying on current version');
+      _unattendedInProgress = false;
       return false;
     }
-    return launchInstaller(installerPath, silent: true);
+
+    final started = await launchInstaller(installerPath, silent: true);
+    // Only reached when the hand-off failed; a success never returns. Clearing
+    // the flag matters because the 6h dashboard timer is the retry, and a
+    // latched flag would silently disable it for the rest of the session.
+    if (!started) _unattendedInProgress = false;
+    return started;
   }
 
   /// Check if an update is available
