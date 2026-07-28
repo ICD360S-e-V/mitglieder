@@ -126,6 +126,20 @@ void main() async {
       deviceId: LoggerService().deviceId,
     );
   });
+
+  // Update check that does not require anyone to be signed in.
+  //
+  // The other check lives in the member dashboard, so an install parked on the
+  // login screen never updated — it just kept running an old build. This one
+  // runs from main(), so it covers that case; on success the installer
+  // replaces this process and the app comes back on the new version.
+  //
+  // Delayed past the first frame: the download and install would otherwise
+  // compete with startup for I/O, and a member who opened the app to do
+  // something should see a usable window first.
+  Future<void>.delayed(const Duration(seconds: 10), () {
+    UpdateService().checkAndInstallAtStartup();
+  });
 }
 
 class MitgliedApp extends StatefulWidget {
