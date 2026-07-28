@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.75.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.75.0...v1.75.1) (2026-07-28)
+
+
+### Bug Fixes
+
+* **update:** check for updates at startup, not only once signed in ([#242](https://github.com/ICD360S-e-V/mitglieder/issues/242)) ([4bb8f0f](https://github.com/ICD360S-e-V/mitglieder/commit/4bb8f0fb81ed07341daa9abe4d2ebd6edf4e4893))
+
 ## [1.75.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.74.2...v1.75.0) (2026-07-27)
 
 
