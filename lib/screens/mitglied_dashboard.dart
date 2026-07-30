@@ -80,6 +80,8 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
 
   // Account trial status (for 'neu' accounts)
   int _daysRemaining = 30;
+  // Exact end of the trial (users.trial_ends_at); null on older servers.
+  DateTime? _trialEndsAt;
 
   // Unread chat messages counter
   int _unreadChatCount = 0;
@@ -654,7 +656,10 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     try {
       final result = await _apiService.getAccountStatus(widget.mitgliedernummer);
       if (result['success'] == true && mounted) {
-        setState(() => _daysRemaining = result['days_remaining'] ?? 0);
+        setState(() {
+          _daysRemaining = result['days_remaining'] ?? 0;
+          _trialEndsAt = DateTime.tryParse(result['trial_ends_at']?.toString() ?? '');
+        });
       }
     } catch (e) {
       _log.error('Failed to load account status: $e', tag: 'DASH');
@@ -908,7 +913,10 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
             // with a one-tap Stop. Renders nothing otherwise.
             const RemoteSharingBanner(),
             if (widget.status == 'neu')
-              TrialWarningBanner(daysRemaining: _daysRemaining),
+              TrialWarningBanner(
+                daysRemaining: _daysRemaining,
+                trialEndsAt: _trialEndsAt,
+              ),
             Expanded(child: _buildMainContent()),
           ],
         ),
