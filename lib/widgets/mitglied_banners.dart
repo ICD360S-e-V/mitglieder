@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 
 /// Banner shown for accounts with 'neu' status (trial period warning)
 class TrialWarningBanner extends StatelessWidget {
   final int daysRemaining;
 
+  /// Exact end of the trial, from `trial_ends_at`. Null for older servers that
+  /// only return a day count. Rendered as a plain numeric date, which needs no
+  /// translation and no per-locale date initialisation.
+  final DateTime? trialEndsAt;
+
   const TrialWarningBanner({
     super.key,
     required this.daysRemaining,
+    this.trialEndsAt,
   });
 
   // Responsive helpers
@@ -75,6 +82,17 @@ class TrialWarningBanner extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
+                if (trialEndsAt != null) ...[
+                  SizedBox(height: _getResponsiveSpacing(context, 2)),
+                  Text(
+                    DateFormat('dd.MM.yyyy').format(trialEndsAt!),
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.9),
+                      fontWeight: FontWeight.w600,
+                      fontSize: _getResponsiveFontSize(context, 12),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),
