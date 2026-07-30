@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.76.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.75.1...v1.76.0) (2026-07-30)
+
+
+### Features
+
+* **trial:** genaues Ablaufdatum im Testphasen-Banner, keine null-Felder beim Profil ([#244](https://github.com/ICD360S-e-V/mitglieder/issues/244)) ([a1be450](https://github.com/ICD360S-e-V/mitglieder/commit/a1be450d4af6e2c7a8b7ed1efe0ef2d202c67c61))
+
 ## [1.75.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.75.0...v1.75.1) (2026-07-28)
 
 
