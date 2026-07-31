@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.77.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.77.0...v1.77.1) (2026-07-31)
+
+
+### Bug Fixes
+
+* **update:** make the update path report where it stops ([#246](https://github.com/ICD360S-e-V/mitglieder/issues/246)) ([9caf7dc](https://github.com/ICD360S-e-V/mitglieder/commit/9caf7dc0942c0c44d07e118a4d2bb373ac76771b))
+
 ## [1.77.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.76.0...v1.77.0) (2026-07-31)
 
 
