@@ -106,8 +106,13 @@ function aktionTanAnfordern(PDO $pdo, int $userId, array $body): void
         jsonResponse(false, [], 'Missing signatur_id');
     }
 
+    // Name, Geschlecht und Sprache kommen aus Verifizierung Stufe 1 und gehen
+    // in den SMS-Text. preferred_language ist bei allen 52 Mitgliedern gefüllt
+    // (ENUM, Vorgabe 'de'); muttersprache wäre die naheliegendere Spalte, ist
+    // aber nur bei vier Leuten ausgefüllt und damit unbrauchbar.
     $stmt = $pdo->prepare(
-        "SELECT s.id, s.status, u.telefon_mobil
+        "SELECT s.id, s.status, u.telefon_mobil,
+                u.nachname, u.geschlecht, u.preferred_language
            FROM dokument_signaturen s
            JOIN users u ON u.id = s.user_id
           WHERE s.id = ? AND s.user_id = ?"
@@ -162,7 +167,7 @@ function aktionTanAnfordern(PDO $pdo, int $userId, array $body): void
         $pdo->prepare(
             "INSERT INTO signatur_sms_queue (tan_id, signatur_id, telefon, body)
              VALUES (?, ?, ?, ?)"
-        )->execute([$tanId, $signaturId, $telefon, SignaturHelper::smsText($tan)]);
+        )->execute([$tanId, $signaturId, $telefon, SignaturHelper::smsText($tan, $zeile)]);
 
         $pdo->commit();
     } catch (Throwable $e) {
