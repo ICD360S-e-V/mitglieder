@@ -1363,5 +1363,7 @@
   "benachrichtigungSpeichern": "حفظ",
   "benachrichtigungGespeichert": "شكراً، تم الحفظ.",
   "benachrichtigungenLeer": "لا توجد إشعارات",
-  "benachrichtigungenAlleGelesen": "تعليم الكل كمقروء"
+  "benachrichtigungenAlleGelesen": "تعليم الكل كمقروء",
+  "benachrichtigungWetterFrage": "هل ترغب في تلقي تحذيرات عند سوء الأحوال الجوية في منطقتك؟",
+  "benachrichtigungWetterDetail": "فقط التحذيرات الرسمية من هيئة الأرصاد الألمانية من مستوى «شديد» فما فوق — وليس عند كل مطر."
 }

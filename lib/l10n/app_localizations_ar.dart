@@ -2847,4 +2847,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get benachrichtigungenAlleGelesen => 'تعليم الكل كمقروء';
+
+  @override
+  String get benachrichtigungWetterFrage =>
+      'هل ترغب في تلقي تحذيرات عند سوء الأحوال الجوية في منطقتك؟';
+
+  @override
+  String get benachrichtigungWetterDetail =>
+      'فقط التحذيرات الرسمية من هيئة الأرصاد الألمانية من مستوى «شديد» فما فوق — وليس عند كل مطر.';
 }

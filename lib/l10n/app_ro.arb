@@ -1342,5 +1342,7 @@
   "benachrichtigungSpeichern": "Salvează",
   "benachrichtigungGespeichert": "Mulțumim, am salvat.",
   "benachrichtigungenLeer": "Nicio notificare",
-  "benachrichtigungenAlleGelesen": "Marchează toate ca citite"
+  "benachrichtigungenAlleGelesen": "Marchează toate ca citite",
+  "benachrichtigungWetterFrage": "Doriți să fiți avertizat în caz de vreme severă în localitatea dumneavoastră?",
+  "benachrichtigungWetterDetail": "Doar avertizări oficiale ale serviciului meteo german, de la nivelul „sever” în sus — nu la fiecare ploaie."
 }

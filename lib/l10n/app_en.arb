@@ -1342,5 +1342,7 @@
   "benachrichtigungSpeichern": "Save",
   "benachrichtigungGespeichert": "Thank you, saved.",
   "benachrichtigungenLeer": "No notifications",
-  "benachrichtigungenAlleGelesen": "Mark all as read"
+  "benachrichtigungenAlleGelesen": "Mark all as read",
+  "benachrichtigungWetterFrage": "Would you like to be warned about severe weather where you live?",
+  "benachrichtigungWetterDetail": "Only official German Weather Service warnings from level “severe” upwards — not for every shower."
 }

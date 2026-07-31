@@ -1342,5 +1342,7 @@
   "benachrichtigungSpeichern": "Сохранить",
   "benachrichtigungGespeichert": "Спасибо, сохранено.",
   "benachrichtigungenLeer": "Нет уведомлений",
-  "benachrichtigungenAlleGelesen": "Отметить все как прочитанные"
+  "benachrichtigungenAlleGelesen": "Отметить все как прочитанные",
+  "benachrichtigungWetterFrage": "Хотите получать предупреждения о непогоде по месту жительства?",
+  "benachrichtigungWetterDetail": "Только официальные предупреждения немецкой метеослужбы уровня «сильное» и выше — не при каждом дожде."
 }

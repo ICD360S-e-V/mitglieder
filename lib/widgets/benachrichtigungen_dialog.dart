@@ -141,6 +141,7 @@ class _BenachrichtigungenDialogState extends State<BenachrichtigungenDialog> {
     final (IconData icon, MaterialColor farbe) = switch (typ) {
       'termin' => (Icons.event, Colors.blue),
       'medikament' => (Icons.medication, Colors.teal),
+      'wetter' => (Icons.thunderstorm, Colors.orange),
       _ => (Icons.info, Colors.grey),
     };
 

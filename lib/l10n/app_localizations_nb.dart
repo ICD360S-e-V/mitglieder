@@ -2870,4 +2870,12 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get benachrichtigungenAlleGelesen => 'Alle als gelesen markieren';
+
+  @override
+  String get benachrichtigungWetterFrage =>
+      'Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?';
+
+  @override
+  String get benachrichtigungWetterDetail =>
+      'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
 }
