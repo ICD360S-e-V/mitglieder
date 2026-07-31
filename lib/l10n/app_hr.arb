@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} koraka potvrdio Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Detalji zahtjeva",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} korak treba ispravak",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Razlog Vorstanda:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Odobrenja Vorstanda ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Čeka se 2. Vorstand",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Molimo, nazovi nas",
   "wizardDuplicateCallUsBody": "Tvoje ime i datum rođenja već se nalaze kod nas, ali pojedinosti ne možemo dijeliti kroz aplikaciju. Nazovi nas — Vorstand će ti objasniti situaciju izravno.",
   "wizardChatHelp": "Razgovarajmo",
-  "wizardChatHelpSubtitle": "Chat uživo s Vorstandom · brz odgovor"
+  "wizardChatHelpSubtitle": "Chat uživo s Vorstandom · brz odgovor",
+  "signaturStatusWiderrufen": "Udruga je povukla dokument",
+  "signaturStatusAbgelaufen": "Rok je istekao",
+  "signaturZurueckZumDokument": "Natrag na dokument",
+  "signaturCodeGesendetAn": "Poslali smo Vam kod na broj {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Potpisi",
+  "signaturZuVieleVersuche": "Previše neuspjelih pokušaja. Molimo zatražite novi kod.",
+  "signaturAblehnenHinweis": "Udruga će o tome biti obaviještena. Možete navesti svoje razloge.",
+  "signaturStatusAbgelehnt": "Odbili ste dokument",
+  "signaturAblehnen": "Odbijte",
+  "signaturWeiterZurUnterschrift": "Dalje na potpis",
+  "signaturCodeUnterwegs": "Kod je na putu.",
+  "signaturCodeErneutSenden": "Ponovno pošaljite kod",
+  "signaturJetztUnterschreiben": "Potpišite sada",
+  "signaturNochmal": "Ispočetka",
+  "signaturLeer": "Molimo, najprije se potpišite.",
+  "signaturNichtsOffen": "Trenutačno nema ništa za potpisivanje.",
+  "signaturKeineRufnummer": "Za Vaš korisnički račun nije upisan broj mobitela. Bez njega Vam ne možemo poslati kod — molimo obratite se predsjedniku udruge.",
+  "signaturCodeFehlgeschlagen": "Slanje koda nije uspjelo.",
+  "signaturFehlgeschlagen": "To nije uspjelo. Molimo pokušajte ponovno.",
+  "signaturStatusOffen": "Čeka Vaš potpis",
+  "signaturCodeAbgelaufen": "Kod je istekao. Molimo zatražite novi.",
+  "signaturCodeAnfordern": "Zatražite kod SMS-om",
+  "signaturBitteGanzLesen": "Molimo pročitajte dokument do kraja (stranica {gelesen} od {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Potpišite se prstom u bijelom polju.",
+  "signaturErfolg": "Hvala — primili smo Vaš potpis.",
+  "signaturAblehnenGrund": "Razlog (nije obvezno)",
+  "signaturCodeFalsch": "Kod nije točan.",
+  "signaturStatusSigniert": "Potpisali ste dokument",
+  "signaturSiegelInArbeit": "Pečat se još izrađuje. Molimo pokušajte ponovno za jednu minutu."
 }

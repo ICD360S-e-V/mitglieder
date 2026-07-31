@@ -2883,102 +2883,100 @@ class AppLocalizationsLt extends AppLocalizations {
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
 
   @override
-  String get signaturTitel => 'Unterschriften';
+  String get signaturTitel => 'Parašai';
 
   @override
   String get signaturNichtsOffen =>
-      'Zurzeit liegt nichts zur Unterschrift vor.';
+      'Šiuo metu nėra nieko, ką reikėtų pasirašyti.';
 
   @override
-  String get signaturStatusOffen => 'Wartet auf Ihre Unterschrift';
+  String get signaturStatusOffen => 'Laukiama Jūsų parašo';
 
   @override
-  String get signaturStatusSigniert => 'Von Ihnen unterschrieben';
+  String get signaturStatusSigniert => 'Jūsų pasirašyta';
 
   @override
-  String get signaturStatusAbgelehnt => 'Von Ihnen abgelehnt';
+  String get signaturStatusAbgelehnt => 'Jūsų atmesta';
 
   @override
-  String get signaturStatusWiderrufen => 'Vom Verein zurückgezogen';
+  String get signaturStatusWiderrufen => 'Asociacijos atšaukta';
 
   @override
-  String get signaturStatusAbgelaufen => 'Frist abgelaufen';
+  String get signaturStatusAbgelaufen => 'Terminas pasibaigė';
 
   @override
   String signaturBitteGanzLesen(int gelesen, int gesamt) {
-    return 'Bitte lesen Sie das Dokument bis zum Ende (Seite $gelesen von $gesamt).';
+    return 'Prašome perskaityti dokumentą iki galo (puslapis $gelesen iš $gesamt).';
   }
 
   @override
-  String get signaturWeiterZurUnterschrift => 'Weiter zur Unterschrift';
+  String get signaturWeiterZurUnterschrift => 'Pereiti prie pasirašymo';
 
   @override
-  String get signaturAblehnen => 'Ablehnen';
+  String get signaturAblehnen => 'Atmesti';
 
   @override
   String get signaturAblehnenHinweis =>
-      'Der Verein wird darüber benachrichtigt. Sie können Ihre Gründe angeben.';
+      'Apie tai bus pranešta asociacijai. Galite nurodyti savo priežastis.';
 
   @override
-  String get signaturAblehnenGrund => 'Grund (freiwillig)';
+  String get signaturAblehnenGrund => 'Priežastis (neprivaloma)';
 
   @override
   String get signaturMitFingerHinweis =>
-      'Unterschreiben Sie mit dem Finger im weißen Feld.';
+      'Pasirašykite pirštu baltame laukelyje.';
 
   @override
-  String get signaturNochmal => 'Noch einmal';
+  String get signaturNochmal => 'Dar kartą';
 
   @override
-  String get signaturZurueckZumDokument => 'Zurück zum Dokument';
+  String get signaturZurueckZumDokument => 'Atgal į dokumentą';
 
   @override
-  String get signaturCodeAnfordern => 'Code per SMS anfordern';
+  String get signaturCodeAnfordern => 'Gauti kodą SMS žinute';
 
   @override
-  String get signaturCodeUnterwegs => 'Der Code ist unterwegs.';
+  String get signaturCodeUnterwegs => 'Kodas jau siunčiamas.';
 
   @override
   String signaturCodeGesendetAn(String nummer) {
-    return 'Wir haben Ihnen einen Code an $nummer geschickt.';
+    return 'Išsiuntėme Jums kodą telefono numeriu $nummer.';
   }
 
   @override
-  String get signaturCodeErneutSenden => 'Code erneut senden';
+  String get signaturCodeErneutSenden => 'Siųsti kodą dar kartą';
 
   @override
-  String get signaturJetztUnterschreiben => 'Jetzt unterschreiben';
+  String get signaturJetztUnterschreiben => 'Pasirašyti dabar';
 
   @override
-  String get signaturCodeFalsch => 'Der Code stimmt nicht.';
+  String get signaturCodeFalsch => 'Kodas neteisingas.';
 
   @override
   String get signaturCodeAbgelaufen =>
-      'Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.';
+      'Kodas nebegalioja. Prašome gauti naują kodą.';
 
   @override
   String get signaturZuVieleVersuche =>
-      'Zu viele Fehlversuche. Bitte fordern Sie einen neuen Code an.';
+      'Per daug nesėkmingų bandymų. Prašome gauti naują kodą.';
 
   @override
   String get signaturKeineRufnummer =>
-      'Für Ihr Konto ist keine Mobilnummer hinterlegt. Ohne sie können wir Ihnen keinen Code schicken — bitte wenden Sie sich an den Vorsitzenden.';
+      'Jūsų paskyroje nenurodytas mobiliojo telefono numeris. Be jo negalime Jums išsiųsti kodo — prašome kreiptis į asociacijos pirmininką.';
 
   @override
-  String get signaturCodeFehlgeschlagen =>
-      'Der Code konnte nicht verschickt werden.';
+  String get signaturCodeFehlgeschlagen => 'Kodo išsiųsti nepavyko.';
 
   @override
-  String get signaturLeer => 'Bitte unterschreiben Sie zuerst.';
+  String get signaturLeer => 'Pirmiausia prašome pasirašyti.';
 
   @override
-  String get signaturErfolg => 'Danke — Ihre Unterschrift ist eingegangen.';
+  String get signaturErfolg => 'Ačiū — Jūsų parašas gautas.';
 
   @override
-  String get signaturFehlgeschlagen =>
-      'Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.';
+  String get signaturFehlgeschlagen => 'Nepavyko. Prašome pabandyti dar kartą.';
 
   @override
   String get signaturSiegelInArbeit =>
-      'Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.';
+      'Antspaudas dar ruošiamas. Prašome pabandyti dar kartą po minutės.';
 }

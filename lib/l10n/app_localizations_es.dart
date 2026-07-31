@@ -2889,102 +2889,101 @@ class AppLocalizationsEs extends AppLocalizations {
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
 
   @override
-  String get signaturTitel => 'Unterschriften';
+  String get signaturTitel => 'Firmas';
 
   @override
   String get signaturNichtsOffen =>
-      'Zurzeit liegt nichts zur Unterschrift vor.';
+      'Por el momento no hay nada pendiente de firma.';
 
   @override
-  String get signaturStatusOffen => 'Wartet auf Ihre Unterschrift';
+  String get signaturStatusOffen => 'Pendiente de su firma';
 
   @override
-  String get signaturStatusSigniert => 'Von Ihnen unterschrieben';
+  String get signaturStatusSigniert => 'Firmado por usted';
 
   @override
-  String get signaturStatusAbgelehnt => 'Von Ihnen abgelehnt';
+  String get signaturStatusAbgelehnt => 'Rechazado por usted';
 
   @override
-  String get signaturStatusWiderrufen => 'Vom Verein zurückgezogen';
+  String get signaturStatusWiderrufen => 'Retirado por la asociación';
 
   @override
-  String get signaturStatusAbgelaufen => 'Frist abgelaufen';
+  String get signaturStatusAbgelaufen => 'Plazo vencido';
 
   @override
   String signaturBitteGanzLesen(int gelesen, int gesamt) {
-    return 'Bitte lesen Sie das Dokument bis zum Ende (Seite $gelesen von $gesamt).';
+    return 'Por favor, lea el documento hasta el final (página $gelesen de $gesamt).';
   }
 
   @override
-  String get signaturWeiterZurUnterschrift => 'Weiter zur Unterschrift';
+  String get signaturWeiterZurUnterschrift => 'Ir a la firma';
 
   @override
-  String get signaturAblehnen => 'Ablehnen';
+  String get signaturAblehnen => 'Rechazar';
 
   @override
   String get signaturAblehnenHinweis =>
-      'Der Verein wird darüber benachrichtigt. Sie können Ihre Gründe angeben.';
+      'Se informará a la asociación. Puede indicar sus motivos.';
 
   @override
-  String get signaturAblehnenGrund => 'Grund (freiwillig)';
+  String get signaturAblehnenGrund => 'Motivo (opcional)';
 
   @override
   String get signaturMitFingerHinweis =>
-      'Unterschreiben Sie mit dem Finger im weißen Feld.';
+      'Firme con el dedo en el recuadro blanco.';
 
   @override
-  String get signaturNochmal => 'Noch einmal';
+  String get signaturNochmal => 'Repetir';
 
   @override
-  String get signaturZurueckZumDokument => 'Zurück zum Dokument';
+  String get signaturZurueckZumDokument => 'Volver al documento';
 
   @override
-  String get signaturCodeAnfordern => 'Code per SMS anfordern';
+  String get signaturCodeAnfordern => 'Solicitar código por SMS';
 
   @override
-  String get signaturCodeUnterwegs => 'Der Code ist unterwegs.';
+  String get signaturCodeUnterwegs => 'El código está en camino.';
 
   @override
   String signaturCodeGesendetAn(String nummer) {
-    return 'Wir haben Ihnen einen Code an $nummer geschickt.';
+    return 'Le hemos enviado un código al $nummer.';
   }
 
   @override
-  String get signaturCodeErneutSenden => 'Code erneut senden';
+  String get signaturCodeErneutSenden => 'Reenviar código';
 
   @override
-  String get signaturJetztUnterschreiben => 'Jetzt unterschreiben';
+  String get signaturJetztUnterschreiben => 'Firmar ahora';
 
   @override
-  String get signaturCodeFalsch => 'Der Code stimmt nicht.';
+  String get signaturCodeFalsch => 'El código no es correcto.';
 
   @override
   String get signaturCodeAbgelaufen =>
-      'Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.';
+      'El código ha caducado. Por favor, solicite uno nuevo.';
 
   @override
   String get signaturZuVieleVersuche =>
-      'Zu viele Fehlversuche. Bitte fordern Sie einen neuen Code an.';
+      'Demasiados intentos fallidos. Por favor, solicite un código nuevo.';
 
   @override
   String get signaturKeineRufnummer =>
-      'Für Ihr Konto ist keine Mobilnummer hinterlegt. Ohne sie können wir Ihnen keinen Code schicken — bitte wenden Sie sich an den Vorsitzenden.';
+      'En su cuenta no hay ningún número de móvil registrado. Sin ese número no podemos enviarle el código — por favor, póngase en contacto con el presidente de la asociación.';
 
   @override
-  String get signaturCodeFehlgeschlagen =>
-      'Der Code konnte nicht verschickt werden.';
+  String get signaturCodeFehlgeschlagen => 'No se ha podido enviar el código.';
 
   @override
-  String get signaturLeer => 'Bitte unterschreiben Sie zuerst.';
+  String get signaturLeer => 'Por favor, firme primero.';
 
   @override
-  String get signaturErfolg => 'Danke — Ihre Unterschrift ist eingegangen.';
+  String get signaturErfolg => 'Gracias — hemos recibido su firma.';
 
   @override
   String get signaturFehlgeschlagen =>
-      'Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.';
+      'No ha funcionado. Por favor, inténtelo de nuevo.';
 
   @override
   String get signaturSiegelInArbeit =>
-      'Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.';
+      'El documento sellado todavía se está preparando. Vuelva a intentarlo dentro de un minuto.';
 }

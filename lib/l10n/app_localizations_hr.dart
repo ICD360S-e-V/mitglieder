@@ -2882,102 +2882,98 @@ class AppLocalizationsHr extends AppLocalizations {
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
 
   @override
-  String get signaturTitel => 'Unterschriften';
+  String get signaturTitel => 'Potpisi';
 
   @override
-  String get signaturNichtsOffen =>
-      'Zurzeit liegt nichts zur Unterschrift vor.';
+  String get signaturNichtsOffen => 'Trenutačno nema ništa za potpisivanje.';
 
   @override
-  String get signaturStatusOffen => 'Wartet auf Ihre Unterschrift';
+  String get signaturStatusOffen => 'Čeka Vaš potpis';
 
   @override
-  String get signaturStatusSigniert => 'Von Ihnen unterschrieben';
+  String get signaturStatusSigniert => 'Potpisali ste dokument';
 
   @override
-  String get signaturStatusAbgelehnt => 'Von Ihnen abgelehnt';
+  String get signaturStatusAbgelehnt => 'Odbili ste dokument';
 
   @override
-  String get signaturStatusWiderrufen => 'Vom Verein zurückgezogen';
+  String get signaturStatusWiderrufen => 'Udruga je povukla dokument';
 
   @override
-  String get signaturStatusAbgelaufen => 'Frist abgelaufen';
+  String get signaturStatusAbgelaufen => 'Rok je istekao';
 
   @override
   String signaturBitteGanzLesen(int gelesen, int gesamt) {
-    return 'Bitte lesen Sie das Dokument bis zum Ende (Seite $gelesen von $gesamt).';
+    return 'Molimo pročitajte dokument do kraja (stranica $gelesen od $gesamt).';
   }
 
   @override
-  String get signaturWeiterZurUnterschrift => 'Weiter zur Unterschrift';
+  String get signaturWeiterZurUnterschrift => 'Dalje na potpis';
 
   @override
-  String get signaturAblehnen => 'Ablehnen';
+  String get signaturAblehnen => 'Odbijte';
 
   @override
   String get signaturAblehnenHinweis =>
-      'Der Verein wird darüber benachrichtigt. Sie können Ihre Gründe angeben.';
+      'Udruga će o tome biti obaviještena. Možete navesti svoje razloge.';
 
   @override
-  String get signaturAblehnenGrund => 'Grund (freiwillig)';
+  String get signaturAblehnenGrund => 'Razlog (nije obvezno)';
 
   @override
-  String get signaturMitFingerHinweis =>
-      'Unterschreiben Sie mit dem Finger im weißen Feld.';
+  String get signaturMitFingerHinweis => 'Potpišite se prstom u bijelom polju.';
 
   @override
-  String get signaturNochmal => 'Noch einmal';
+  String get signaturNochmal => 'Ispočetka';
 
   @override
-  String get signaturZurueckZumDokument => 'Zurück zum Dokument';
+  String get signaturZurueckZumDokument => 'Natrag na dokument';
 
   @override
-  String get signaturCodeAnfordern => 'Code per SMS anfordern';
+  String get signaturCodeAnfordern => 'Zatražite kod SMS-om';
 
   @override
-  String get signaturCodeUnterwegs => 'Der Code ist unterwegs.';
+  String get signaturCodeUnterwegs => 'Kod je na putu.';
 
   @override
   String signaturCodeGesendetAn(String nummer) {
-    return 'Wir haben Ihnen einen Code an $nummer geschickt.';
+    return 'Poslali smo Vam kod na broj $nummer.';
   }
 
   @override
-  String get signaturCodeErneutSenden => 'Code erneut senden';
+  String get signaturCodeErneutSenden => 'Ponovno pošaljite kod';
 
   @override
-  String get signaturJetztUnterschreiben => 'Jetzt unterschreiben';
+  String get signaturJetztUnterschreiben => 'Potpišite sada';
 
   @override
-  String get signaturCodeFalsch => 'Der Code stimmt nicht.';
+  String get signaturCodeFalsch => 'Kod nije točan.';
 
   @override
-  String get signaturCodeAbgelaufen =>
-      'Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.';
+  String get signaturCodeAbgelaufen => 'Kod je istekao. Molimo zatražite novi.';
 
   @override
   String get signaturZuVieleVersuche =>
-      'Zu viele Fehlversuche. Bitte fordern Sie einen neuen Code an.';
+      'Previše neuspjelih pokušaja. Molimo zatražite novi kod.';
 
   @override
   String get signaturKeineRufnummer =>
-      'Für Ihr Konto ist keine Mobilnummer hinterlegt. Ohne sie können wir Ihnen keinen Code schicken — bitte wenden Sie sich an den Vorsitzenden.';
+      'Za Vaš korisnički račun nije upisan broj mobitela. Bez njega Vam ne možemo poslati kod — molimo obratite se predsjedniku udruge.';
 
   @override
-  String get signaturCodeFehlgeschlagen =>
-      'Der Code konnte nicht verschickt werden.';
+  String get signaturCodeFehlgeschlagen => 'Slanje koda nije uspjelo.';
 
   @override
-  String get signaturLeer => 'Bitte unterschreiben Sie zuerst.';
+  String get signaturLeer => 'Molimo, najprije se potpišite.';
 
   @override
-  String get signaturErfolg => 'Danke — Ihre Unterschrift ist eingegangen.';
+  String get signaturErfolg => 'Hvala — primili smo Vaš potpis.';
 
   @override
   String get signaturFehlgeschlagen =>
-      'Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.';
+      'To nije uspjelo. Molimo pokušajte ponovno.';
 
   @override
   String get signaturSiegelInArbeit =>
-      'Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.';
+      'Pečat se još izrađuje. Molimo pokušajte ponovno za jednu minutu.';
 }

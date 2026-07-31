@@ -2894,102 +2894,101 @@ class AppLocalizationsNl extends AppLocalizations {
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
 
   @override
-  String get signaturTitel => 'Unterschriften';
+  String get signaturTitel => 'Handtekeningen';
 
   @override
   String get signaturNichtsOffen =>
-      'Zurzeit liegt nichts zur Unterschrift vor.';
+      'Er ligt op dit moment niets klaar om te ondertekenen.';
 
   @override
-  String get signaturStatusOffen => 'Wartet auf Ihre Unterschrift';
+  String get signaturStatusOffen => 'Wacht op uw handtekening';
 
   @override
-  String get signaturStatusSigniert => 'Von Ihnen unterschrieben';
+  String get signaturStatusSigniert => 'Door u ondertekend';
 
   @override
-  String get signaturStatusAbgelehnt => 'Von Ihnen abgelehnt';
+  String get signaturStatusAbgelehnt => 'Door u geweigerd';
 
   @override
-  String get signaturStatusWiderrufen => 'Vom Verein zurückgezogen';
+  String get signaturStatusWiderrufen => 'Door de vereniging ingetrokken';
 
   @override
-  String get signaturStatusAbgelaufen => 'Frist abgelaufen';
+  String get signaturStatusAbgelaufen => 'Termijn verstreken';
 
   @override
   String signaturBitteGanzLesen(int gelesen, int gesamt) {
-    return 'Bitte lesen Sie das Dokument bis zum Ende (Seite $gelesen von $gesamt).';
+    return 'Lees het document alstublieft helemaal door (pagina $gelesen van $gesamt).';
   }
 
   @override
-  String get signaturWeiterZurUnterschrift => 'Weiter zur Unterschrift';
+  String get signaturWeiterZurUnterschrift => 'Verder naar de handtekening';
 
   @override
-  String get signaturAblehnen => 'Ablehnen';
+  String get signaturAblehnen => 'Weigeren';
 
   @override
   String get signaturAblehnenHinweis =>
-      'Der Verein wird darüber benachrichtigt. Sie können Ihre Gründe angeben.';
+      'De vereniging krijgt hiervan bericht. U kunt uw reden opgeven.';
 
   @override
-  String get signaturAblehnenGrund => 'Grund (freiwillig)';
+  String get signaturAblehnenGrund => 'Reden (niet verplicht)';
 
   @override
   String get signaturMitFingerHinweis =>
-      'Unterschreiben Sie mit dem Finger im weißen Feld.';
+      'Zet uw handtekening met uw vinger in het witte vak.';
 
   @override
-  String get signaturNochmal => 'Noch einmal';
+  String get signaturNochmal => 'Opnieuw';
 
   @override
-  String get signaturZurueckZumDokument => 'Zurück zum Dokument';
+  String get signaturZurueckZumDokument => 'Terug naar het document';
 
   @override
-  String get signaturCodeAnfordern => 'Code per SMS anfordern';
+  String get signaturCodeAnfordern => 'Code per sms aanvragen';
 
   @override
-  String get signaturCodeUnterwegs => 'Der Code ist unterwegs.';
+  String get signaturCodeUnterwegs => 'De code is onderweg.';
 
   @override
   String signaturCodeGesendetAn(String nummer) {
-    return 'Wir haben Ihnen einen Code an $nummer geschickt.';
+    return 'We hebben een code naar $nummer gestuurd.';
   }
 
   @override
-  String get signaturCodeErneutSenden => 'Code erneut senden';
+  String get signaturCodeErneutSenden => 'Code opnieuw versturen';
 
   @override
-  String get signaturJetztUnterschreiben => 'Jetzt unterschreiben';
+  String get signaturJetztUnterschreiben => 'Nu ondertekenen';
 
   @override
-  String get signaturCodeFalsch => 'Der Code stimmt nicht.';
+  String get signaturCodeFalsch => 'De code klopt niet.';
 
   @override
   String get signaturCodeAbgelaufen =>
-      'Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.';
+      'De code is verlopen. Vraag een nieuwe code aan.';
 
   @override
   String get signaturZuVieleVersuche =>
-      'Zu viele Fehlversuche. Bitte fordern Sie einen neuen Code an.';
+      'Te veel mislukte pogingen. Vraag een nieuwe code aan.';
 
   @override
   String get signaturKeineRufnummer =>
-      'Für Ihr Konto ist keine Mobilnummer hinterlegt. Ohne sie können wir Ihnen keinen Code schicken — bitte wenden Sie sich an den Vorsitzenden.';
+      'Bij uw account is geen mobiel nummer bekend. Zonder dat nummer kunnen wij u geen code sturen — neem alstublieft contact op met de voorzitter.';
 
   @override
-  String get signaturCodeFehlgeschlagen =>
-      'Der Code konnte nicht verschickt werden.';
+  String get signaturCodeFehlgeschlagen => 'De code kon niet worden verstuurd.';
 
   @override
-  String get signaturLeer => 'Bitte unterschreiben Sie zuerst.';
+  String get signaturLeer => 'Zet eerst uw handtekening.';
 
   @override
-  String get signaturErfolg => 'Danke — Ihre Unterschrift ist eingegangen.';
+  String get signaturErfolg => 'Bedankt — uw handtekening is ontvangen.';
 
   @override
   String get signaturFehlgeschlagen =>
-      'Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.';
+      'Dat is niet gelukt. Probeer het opnieuw.';
 
   @override
   String get signaturSiegelInArbeit =>
-      'Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.';
+      'Het zegel wordt nog aangemaakt. Probeer het over een minuut opnieuw.';
 }

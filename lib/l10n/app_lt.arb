@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} žingsnių patvirtino Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Prašymo informacija",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} žingsnis reikalauja pataisymo",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Vorstando priežastis:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Vorstando patvirtinimai ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Laukiama 2-ojo Vorstando",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Prašome, paskambink",
   "wizardDuplicateCallUsBody": "Tavo vardas ir gimimo data jau yra mūsų įrašuose, bet detalių per programėlę pateikti negalime. Paskambink — Vorstand paaiškins situaciją tiesiogiai.",
   "wizardChatHelp": "Pasikalbėkim",
-  "wizardChatHelpSubtitle": "Tiesioginis pokalbis su Vorstand · greitas atsakymas"
+  "wizardChatHelpSubtitle": "Tiesioginis pokalbis su Vorstand · greitas atsakymas",
+  "signaturStatusWiderrufen": "Asociacijos atšaukta",
+  "signaturStatusAbgelaufen": "Terminas pasibaigė",
+  "signaturZurueckZumDokument": "Atgal į dokumentą",
+  "signaturCodeGesendetAn": "Išsiuntėme Jums kodą telefono numeriu {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Parašai",
+  "signaturZuVieleVersuche": "Per daug nesėkmingų bandymų. Prašome gauti naują kodą.",
+  "signaturAblehnenHinweis": "Apie tai bus pranešta asociacijai. Galite nurodyti savo priežastis.",
+  "signaturStatusAbgelehnt": "Jūsų atmesta",
+  "signaturAblehnen": "Atmesti",
+  "signaturWeiterZurUnterschrift": "Pereiti prie pasirašymo",
+  "signaturCodeUnterwegs": "Kodas jau siunčiamas.",
+  "signaturCodeErneutSenden": "Siųsti kodą dar kartą",
+  "signaturJetztUnterschreiben": "Pasirašyti dabar",
+  "signaturNochmal": "Dar kartą",
+  "signaturLeer": "Pirmiausia prašome pasirašyti.",
+  "signaturNichtsOffen": "Šiuo metu nėra nieko, ką reikėtų pasirašyti.",
+  "signaturKeineRufnummer": "Jūsų paskyroje nenurodytas mobiliojo telefono numeris. Be jo negalime Jums išsiųsti kodo — prašome kreiptis į asociacijos pirmininką.",
+  "signaturCodeFehlgeschlagen": "Kodo išsiųsti nepavyko.",
+  "signaturFehlgeschlagen": "Nepavyko. Prašome pabandyti dar kartą.",
+  "signaturStatusOffen": "Laukiama Jūsų parašo",
+  "signaturCodeAbgelaufen": "Kodas nebegalioja. Prašome gauti naują kodą.",
+  "signaturCodeAnfordern": "Gauti kodą SMS žinute",
+  "signaturBitteGanzLesen": "Prašome perskaityti dokumentą iki galo (puslapis {gelesen} iš {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Pasirašykite pirštu baltame laukelyje.",
+  "signaturErfolg": "Ačiū — Jūsų parašas gautas.",
+  "signaturAblehnenGrund": "Priežastis (neprivaloma)",
+  "signaturCodeFalsch": "Kodas neteisingas.",
+  "signaturStatusSigniert": "Jūsų pasirašyta",
+  "signaturSiegelInArbeit": "Antspaudas dar ruošiamas. Prašome pabandyti dar kartą po minutės."
 }

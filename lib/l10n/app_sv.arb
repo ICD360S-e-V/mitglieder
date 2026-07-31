@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} steg validerade av Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Detaljer för ansökan",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} steg behöver korrigeras",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Skäl från Vorstand:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Vorstand-godkännanden ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Väntar på 2:a Vorstand",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Vänligen ring oss",
   "wizardDuplicateCallUsBody": "Ditt namn och födelsedatum finns redan hos oss, men vi kan inte dela detaljerna via appen. Ring oss — Vorstand förklarar situationen direkt.",
   "wizardChatHelp": "Vi pratar",
-  "wizardChatHelpSubtitle": "Livechatt med Vorstand · snabbt svar"
+  "wizardChatHelpSubtitle": "Livechatt med Vorstand · snabbt svar",
+  "signaturStatusWiderrufen": "Återkallat av föreningen",
+  "signaturStatusAbgelaufen": "Tidsfristen har gått ut",
+  "signaturZurueckZumDokument": "Tillbaka till dokumentet",
+  "signaturCodeGesendetAn": "Vi har skickat en kod till {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Underskrifter",
+  "signaturZuVieleVersuche": "För många misslyckade försök. Begär en ny kod.",
+  "signaturAblehnenHinweis": "Föreningen informeras om detta. Du kan ange en anledning.",
+  "signaturStatusAbgelehnt": "Avböjt av dig",
+  "signaturAblehnen": "Avböj",
+  "signaturWeiterZurUnterschrift": "Gå vidare till underskriften",
+  "signaturCodeUnterwegs": "Koden är på väg.",
+  "signaturCodeErneutSenden": "Skicka ny kod",
+  "signaturJetztUnterschreiben": "Skriv under nu",
+  "signaturNochmal": "Börja om",
+  "signaturLeer": "Skriv under först.",
+  "signaturNichtsOffen": "Just nu finns det inget som väntar på din underskrift.",
+  "signaturKeineRufnummer": "Det finns inget mobilnummer registrerat på ditt konto. Utan ett mobilnummer kan vi inte skicka någon kod till dig — kontakta föreningens ordförande.",
+  "signaturCodeFehlgeschlagen": "Koden kunde inte skickas.",
+  "signaturFehlgeschlagen": "Det gick inte. Försök igen.",
+  "signaturStatusOffen": "Väntar på din underskrift",
+  "signaturCodeAbgelaufen": "Koden har gått ut. Begär en ny kod.",
+  "signaturCodeAnfordern": "Begär kod via SMS",
+  "signaturBitteGanzLesen": "Läs dokumentet ända till slutet (sida {gelesen} av {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Skriv under med fingret i det vita fältet.",
+  "signaturErfolg": "Tack — vi har tagit emot din underskrift.",
+  "signaturAblehnenGrund": "Anledning (frivilligt)",
+  "signaturCodeFalsch": "Koden stämmer inte.",
+  "signaturStatusSigniert": "Underskrivet av dig",
+  "signaturSiegelInArbeit": "Det signerade dokumentet håller på att skapas. Försök gärna igen om en minut."
 }

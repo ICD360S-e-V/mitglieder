@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} βήματα επικυρώθηκαν από το Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Λεπτομέρειες αίτησης",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} βήμα χρειάζεται διόρθωση",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Αιτιολογία του Vorstand:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Εγκρίσεις Vorstand ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Αναμονή 2ου Vorstand",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Κάλεσέ μας, σε παρακαλώ",
   "wizardDuplicateCallUsBody": "Το όνομα και η ημερομηνία γέννησής σου εμφανίζονται ήδη στα αρχεία μας, αλλά δεν μπορούμε να σου τα κοινοποιήσουμε μέσω της εφαρμογής. Κάλεσέ μας — το Vorstand θα σου εξηγήσει απευθείας.",
   "wizardChatHelp": "Ας μιλήσουμε",
-  "wizardChatHelpSubtitle": "Live chat με το Vorstand · γρήγορη απάντηση"
+  "wizardChatHelpSubtitle": "Live chat με το Vorstand · γρήγορη απάντηση",
+  "signaturStatusWiderrufen": "Αποσύρθηκε από τον σύλλογο",
+  "signaturStatusAbgelaufen": "Η προθεσμία έληξε",
+  "signaturZurueckZumDokument": "Πίσω στο έγγραφο",
+  "signaturCodeGesendetAn": "Σας στείλαμε έναν κωδικό στο {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Υπογραφές",
+  "signaturZuVieleVersuche": "Πάρα πολλές λανθασμένες προσπάθειες. Παρακαλούμε ζητήστε νέο κωδικό.",
+  "signaturAblehnenHinweis": "Ο σύλλογος θα ενημερωθεί σχετικά. Μπορείτε να αναφέρετε τους λόγους σας.",
+  "signaturStatusAbgelehnt": "Απορρίφθηκε από εσάς",
+  "signaturAblehnen": "Απόρριψη",
+  "signaturWeiterZurUnterschrift": "Συνέχεια στην υπογραφή",
+  "signaturCodeUnterwegs": "Ο κωδικός στάλθηκε και θα φτάσει σε λίγο.",
+  "signaturCodeErneutSenden": "Νέα αποστολή κωδικού",
+  "signaturJetztUnterschreiben": "Υπογραφή τώρα",
+  "signaturNochmal": "Ξανά",
+  "signaturLeer": "Παρακαλούμε υπογράψτε πρώτα.",
+  "signaturNichtsOffen": "Αυτή τη στιγμή δεν υπάρχει τίποτα προς υπογραφή.",
+  "signaturKeineRufnummer": "Στον λογαριασμό σας δεν έχει καταχωρηθεί αριθμός κινητού τηλεφώνου. Χωρίς αυτόν δεν μπορούμε να σας στείλουμε κωδικό — παρακαλούμε απευθυνθείτε στον πρόεδρο του συλλόγου.",
+  "signaturCodeFehlgeschlagen": "Δεν ήταν δυνατή η αποστολή του κωδικού.",
+  "signaturFehlgeschlagen": "Κάτι δεν πήγε καλά. Παρακαλούμε προσπαθήστε ξανά.",
+  "signaturStatusOffen": "Αναμένεται η υπογραφή σας",
+  "signaturCodeAbgelaufen": "Ο κωδικός έληξε. Παρακαλούμε ζητήστε νέο κωδικό.",
+  "signaturCodeAnfordern": "Αποστολή κωδικού με SMS",
+  "signaturBitteGanzLesen": "Παρακαλούμε διαβάστε το έγγραφο μέχρι το τέλος (σελίδα {gelesen} από {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Υπογράψτε με το δάχτυλό σας μέσα στο λευκό πλαίσιο.",
+  "signaturErfolg": "Ευχαριστούμε — λάβαμε την υπογραφή σας.",
+  "signaturAblehnenGrund": "Λόγος (προαιρετικό)",
+  "signaturCodeFalsch": "Ο κωδικός δεν είναι σωστός.",
+  "signaturStatusSigniert": "Υπογράφηκε από εσάς",
+  "signaturSiegelInArbeit": "Η σφραγίδα δημιουργείται ακόμη. Παρακαλώ δοκιμάστε ξανά σε ένα λεπτό."
 }

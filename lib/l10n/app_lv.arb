@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} soļus apstiprinājis Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Pieteikuma informācija",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} solis prasa labojumu",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Vorstanda iemesls:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Vorstanda apstiprinājumi ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Gaida 2. Vorstandu",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Lūdzu, zvani mums",
   "wizardDuplicateCallUsBody": "Tavs vārds un dzimšanas datums jau ir mūsu uzskaitē, bet detaļas caur lietotni nevaram dalīt. Lūdzu, zvani — Vorstand izskaidros situāciju tieši.",
   "wizardChatHelp": "Parunāsim",
-  "wizardChatHelpSubtitle": "Tiešsaistes čats ar Vorstand · ātra atbilde"
+  "wizardChatHelpSubtitle": "Tiešsaistes čats ar Vorstand · ātra atbilde",
+  "signaturStatusWiderrufen": "Biedrība to atsauca",
+  "signaturStatusAbgelaufen": "Termiņš beidzies",
+  "signaturZurueckZumDokument": "Atpakaļ pie dokumenta",
+  "signaturCodeGesendetAn": "Mēs nosūtījām Jums kodu uz numuru {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Paraksti",
+  "signaturZuVieleVersuche": "Pārāk daudz kļūdainu mēģinājumu. Lūdzu, pieprasiet jaunu kodu.",
+  "signaturAblehnenHinweis": "Biedrība par to saņems paziņojumu. Jūs varat norādīt savus iemeslus.",
+  "signaturStatusAbgelehnt": "Jūs to noraidījāt",
+  "signaturAblehnen": "Noraidīt",
+  "signaturWeiterZurUnterschrift": "Pāriet pie paraksta",
+  "signaturCodeUnterwegs": "Kods ir ceļā.",
+  "signaturCodeErneutSenden": "Nosūtīt kodu vēlreiz",
+  "signaturJetztUnterschreiben": "Parakstīt tagad",
+  "signaturNochmal": "Vēlreiz",
+  "signaturLeer": "Lūdzu, vispirms parakstieties.",
+  "signaturNichtsOffen": "Šobrīd nav neviena dokumenta, ko parakstīt.",
+  "signaturKeineRufnummer": "Jūsu kontā nav norādīts mobilā tālruņa numurs. Bez tā mēs nevaram Jums nosūtīt kodu — lūdzu, sazinieties ar biedrības priekšsēdētāju.",
+  "signaturCodeFehlgeschlagen": "Kodu neizdevās nosūtīt.",
+  "signaturFehlgeschlagen": "Tas neizdevās. Lūdzu, mēģiniet vēlreiz.",
+  "signaturStatusOffen": "Gaida Jūsu parakstu",
+  "signaturCodeAbgelaufen": "Koda derīguma termiņš ir beidzies. Lūdzu, pieprasiet jaunu kodu.",
+  "signaturCodeAnfordern": "Pieprasīt kodu ar SMS",
+  "signaturBitteGanzLesen": "Lūdzu, izlasiet dokumentu līdz beigām (lappuse {gelesen} no {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Parakstieties ar pirkstu baltajā laukā.",
+  "signaturErfolg": "Paldies — Jūsu paraksts ir saņemts.",
+  "signaturAblehnenGrund": "Iemesls (nav obligāts)",
+  "signaturCodeFalsch": "Kods nav pareizs.",
+  "signaturStatusSigniert": "Jūs to parakstījāt",
+  "signaturSiegelInArbeit": "Zīmogs vēl tiek izveidots. Lūdzu, mēģiniet vēlreiz pēc minūtes."
 }

@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} vaihetta Vorstandin vahvistamaa",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Hakemuksen tiedot",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} vaihe vaatii korjausta",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Vorstandin perustelu:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Vorstandin hyväksynnät ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Odotetaan 2. Vorstandia",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Soita meille",
   "wizardDuplicateCallUsBody": "Nimesi ja syntymäaikasi näkyvät jo tietokannassamme, mutta emme voi kertoa yksityiskohtia sovelluksen kautta. Soita meille — Vorstand selittää tilanteen suoraan.",
   "wizardChatHelp": "Jutellaan",
-  "wizardChatHelpSubtitle": "Live-chat Vorstandin kanssa · nopea vastaus"
+  "wizardChatHelpSubtitle": "Live-chat Vorstandin kanssa · nopea vastaus",
+  "signaturStatusWiderrufen": "Yhdistys on peruuttanut pyynnön",
+  "signaturStatusAbgelaufen": "Määräaika on umpeutunut",
+  "signaturZurueckZumDokument": "Takaisin asiakirjaan",
+  "signaturCodeGesendetAn": "Lähetimme koodin numeroon {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Allekirjoitukset",
+  "signaturZuVieleVersuche": "Liian monta virheellistä yritystä. Pyydä uusi koodi.",
+  "signaturAblehnenHinweis": "Yhdistys saa tästä ilmoituksen. Voit halutessasi kertoa syyn.",
+  "signaturStatusAbgelehnt": "Olet kieltäytynyt",
+  "signaturAblehnen": "Kieltäydy",
+  "signaturWeiterZurUnterschrift": "Siirry allekirjoitukseen",
+  "signaturCodeUnterwegs": "Koodi on matkalla.",
+  "signaturCodeErneutSenden": "Lähetä koodi uudelleen",
+  "signaturJetztUnterschreiben": "Allekirjoita nyt",
+  "signaturNochmal": "Piirrä uudelleen",
+  "signaturLeer": "Piirrä ensin allekirjoituksesi.",
+  "signaturNichtsOffen": "Tällä hetkellä ei ole mitään allekirjoitettavaa.",
+  "signaturKeineRufnummer": "Tilillesi ei ole tallennettu matkapuhelinnumeroa. Ilman sitä emme voi lähettää sinulle koodia — ota yhteyttä yhdistyksen puheenjohtajaan.",
+  "signaturCodeFehlgeschlagen": "Koodin lähettäminen ei onnistunut.",
+  "signaturFehlgeschlagen": "Jokin meni pieleen. Yritä uudelleen.",
+  "signaturStatusOffen": "Odottaa allekirjoitustasi",
+  "signaturCodeAbgelaufen": "Koodi on vanhentunut. Pyydä uusi koodi.",
+  "signaturCodeAnfordern": "Pyydä koodi tekstiviestillä",
+  "signaturBitteGanzLesen": "Lue asiakirja loppuun asti (sivu {gelesen}/{gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Piirrä allekirjoituksesi sormella valkoiseen kenttään.",
+  "signaturErfolg": "Kiitos — allekirjoituksesi on vastaanotettu.",
+  "signaturAblehnenGrund": "Syy (valinnainen)",
+  "signaturCodeFalsch": "Koodi ei ole oikein.",
+  "signaturStatusSigniert": "Olet allekirjoittanut",
+  "signaturSiegelInArbeit": "Allekirjoitettua asiakirjaa valmistellaan vielä. Yritäthän uudelleen minuutin kuluttua."
 }

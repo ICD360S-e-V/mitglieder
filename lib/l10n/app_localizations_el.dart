@@ -2899,102 +2899,103 @@ class AppLocalizationsEl extends AppLocalizations {
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
 
   @override
-  String get signaturTitel => 'Unterschriften';
+  String get signaturTitel => 'Υπογραφές';
 
   @override
   String get signaturNichtsOffen =>
-      'Zurzeit liegt nichts zur Unterschrift vor.';
+      'Αυτή τη στιγμή δεν υπάρχει τίποτα προς υπογραφή.';
 
   @override
-  String get signaturStatusOffen => 'Wartet auf Ihre Unterschrift';
+  String get signaturStatusOffen => 'Αναμένεται η υπογραφή σας';
 
   @override
-  String get signaturStatusSigniert => 'Von Ihnen unterschrieben';
+  String get signaturStatusSigniert => 'Υπογράφηκε από εσάς';
 
   @override
-  String get signaturStatusAbgelehnt => 'Von Ihnen abgelehnt';
+  String get signaturStatusAbgelehnt => 'Απορρίφθηκε από εσάς';
 
   @override
-  String get signaturStatusWiderrufen => 'Vom Verein zurückgezogen';
+  String get signaturStatusWiderrufen => 'Αποσύρθηκε από τον σύλλογο';
 
   @override
-  String get signaturStatusAbgelaufen => 'Frist abgelaufen';
+  String get signaturStatusAbgelaufen => 'Η προθεσμία έληξε';
 
   @override
   String signaturBitteGanzLesen(int gelesen, int gesamt) {
-    return 'Bitte lesen Sie das Dokument bis zum Ende (Seite $gelesen von $gesamt).';
+    return 'Παρακαλούμε διαβάστε το έγγραφο μέχρι το τέλος (σελίδα $gelesen από $gesamt).';
   }
 
   @override
-  String get signaturWeiterZurUnterschrift => 'Weiter zur Unterschrift';
+  String get signaturWeiterZurUnterschrift => 'Συνέχεια στην υπογραφή';
 
   @override
-  String get signaturAblehnen => 'Ablehnen';
+  String get signaturAblehnen => 'Απόρριψη';
 
   @override
   String get signaturAblehnenHinweis =>
-      'Der Verein wird darüber benachrichtigt. Sie können Ihre Gründe angeben.';
+      'Ο σύλλογος θα ενημερωθεί σχετικά. Μπορείτε να αναφέρετε τους λόγους σας.';
 
   @override
-  String get signaturAblehnenGrund => 'Grund (freiwillig)';
+  String get signaturAblehnenGrund => 'Λόγος (προαιρετικό)';
 
   @override
   String get signaturMitFingerHinweis =>
-      'Unterschreiben Sie mit dem Finger im weißen Feld.';
+      'Υπογράψτε με το δάχτυλό σας μέσα στο λευκό πλαίσιο.';
 
   @override
-  String get signaturNochmal => 'Noch einmal';
+  String get signaturNochmal => 'Ξανά';
 
   @override
-  String get signaturZurueckZumDokument => 'Zurück zum Dokument';
+  String get signaturZurueckZumDokument => 'Πίσω στο έγγραφο';
 
   @override
-  String get signaturCodeAnfordern => 'Code per SMS anfordern';
+  String get signaturCodeAnfordern => 'Αποστολή κωδικού με SMS';
 
   @override
-  String get signaturCodeUnterwegs => 'Der Code ist unterwegs.';
+  String get signaturCodeUnterwegs =>
+      'Ο κωδικός στάλθηκε και θα φτάσει σε λίγο.';
 
   @override
   String signaturCodeGesendetAn(String nummer) {
-    return 'Wir haben Ihnen einen Code an $nummer geschickt.';
+    return 'Σας στείλαμε έναν κωδικό στο $nummer.';
   }
 
   @override
-  String get signaturCodeErneutSenden => 'Code erneut senden';
+  String get signaturCodeErneutSenden => 'Νέα αποστολή κωδικού';
 
   @override
-  String get signaturJetztUnterschreiben => 'Jetzt unterschreiben';
+  String get signaturJetztUnterschreiben => 'Υπογραφή τώρα';
 
   @override
-  String get signaturCodeFalsch => 'Der Code stimmt nicht.';
+  String get signaturCodeFalsch => 'Ο κωδικός δεν είναι σωστός.';
 
   @override
   String get signaturCodeAbgelaufen =>
-      'Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.';
+      'Ο κωδικός έληξε. Παρακαλούμε ζητήστε νέο κωδικό.';
 
   @override
   String get signaturZuVieleVersuche =>
-      'Zu viele Fehlversuche. Bitte fordern Sie einen neuen Code an.';
+      'Πάρα πολλές λανθασμένες προσπάθειες. Παρακαλούμε ζητήστε νέο κωδικό.';
 
   @override
   String get signaturKeineRufnummer =>
-      'Für Ihr Konto ist keine Mobilnummer hinterlegt. Ohne sie können wir Ihnen keinen Code schicken — bitte wenden Sie sich an den Vorsitzenden.';
+      'Στον λογαριασμό σας δεν έχει καταχωρηθεί αριθμός κινητού τηλεφώνου. Χωρίς αυτόν δεν μπορούμε να σας στείλουμε κωδικό — παρακαλούμε απευθυνθείτε στον πρόεδρο του συλλόγου.';
 
   @override
   String get signaturCodeFehlgeschlagen =>
-      'Der Code konnte nicht verschickt werden.';
+      'Δεν ήταν δυνατή η αποστολή του κωδικού.';
 
   @override
-  String get signaturLeer => 'Bitte unterschreiben Sie zuerst.';
+  String get signaturLeer => 'Παρακαλούμε υπογράψτε πρώτα.';
 
   @override
-  String get signaturErfolg => 'Danke — Ihre Unterschrift ist eingegangen.';
+  String get signaturErfolg => 'Ευχαριστούμε — λάβαμε την υπογραφή σας.';
 
   @override
   String get signaturFehlgeschlagen =>
-      'Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.';
+      'Κάτι δεν πήγε καλά. Παρακαλούμε προσπαθήστε ξανά.';
 
   @override
   String get signaturSiegelInArbeit =>
-      'Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.';
+      'Η σφραγίδα δημιουργείται ακόμη. Παρακαλώ δοκιμάστε ξανά σε ένα λεπτό.';
 }

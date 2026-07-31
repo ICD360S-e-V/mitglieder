@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} etapas validadas pelo Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Detalhes do pedido",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} etapa precisa de correção",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Motivo do Vorstand:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Aprovações do Vorstand ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "À espera do 2.º Vorstand",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Por favor, liga-nos",
   "wizardDuplicateCallUsBody": "O teu nome e data de nascimento já constam dos nossos registos, mas não podemos partilhar os detalhes através da app. Liga-nos — o Vorstand explicará a situação diretamente.",
   "wizardChatHelp": "Vamos falar",
-  "wizardChatHelpSubtitle": "Chat ao vivo com o Vorstand · resposta rápida"
+  "wizardChatHelpSubtitle": "Chat ao vivo com o Vorstand · resposta rápida",
+  "signaturStatusWiderrufen": "Retirado pela associação",
+  "signaturStatusAbgelaufen": "Prazo expirado",
+  "signaturZurueckZumDokument": "Voltar ao documento",
+  "signaturCodeGesendetAn": "Enviámos-lhe um código para {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Assinaturas",
+  "signaturZuVieleVersuche": "Demasiadas tentativas falhadas. Por favor, peça um novo código.",
+  "signaturAblehnenHinweis": "A associação será informada. Pode indicar os seus motivos.",
+  "signaturStatusAbgelehnt": "Recusado por si",
+  "signaturAblehnen": "Recusar",
+  "signaturWeiterZurUnterschrift": "Continuar para assinar",
+  "signaturCodeUnterwegs": "O código está a caminho.",
+  "signaturCodeErneutSenden": "Reenviar código",
+  "signaturJetztUnterschreiben": "Assinar agora",
+  "signaturNochmal": "Repetir",
+  "signaturLeer": "Por favor, assine primeiro.",
+  "signaturNichtsOffen": "De momento, não há nada para assinar.",
+  "signaturKeineRufnummer": "Não temos nenhum número de telemóvel registado na sua conta. Sem ele não lhe podemos enviar um código — por favor, contacte o presidente da associação.",
+  "signaturCodeFehlgeschlagen": "Não foi possível enviar o código.",
+  "signaturFehlgeschlagen": "Algo correu mal. Por favor, tente novamente.",
+  "signaturStatusOffen": "À espera da sua assinatura",
+  "signaturCodeAbgelaufen": "O código expirou. Por favor, peça um novo.",
+  "signaturCodeAnfordern": "Pedir código por SMS",
+  "signaturBitteGanzLesen": "Por favor, leia o documento até ao fim (página {gelesen} de {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Assine com o dedo no campo branco.",
+  "signaturErfolg": "Obrigado — recebemos a sua assinatura.",
+  "signaturAblehnenGrund": "Motivo (opcional)",
+  "signaturCodeFalsch": "O código não está correto.",
+  "signaturStatusSigniert": "Assinado por si",
+  "signaturSiegelInArbeit": "O documento selado ainda está a ser preparado. Por favor, tente novamente dentro de um minuto."
 }

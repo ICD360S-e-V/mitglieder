@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} stappen gevalideerd door het Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Details aanvraag",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} stap vereist correctie",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Reden van het Vorstand:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Vorstand-goedkeuringen ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Wachten op 2e Vorstand",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Bel ons",
   "wizardDuplicateCallUsBody": "Je naam en geboortedatum staan al bij ons, maar de details kunnen we niet via de app delen. Bel ons — de Vorstand legt de situatie persoonlijk uit.",
   "wizardChatHelp": "Even praten",
-  "wizardChatHelpSubtitle": "Live chat met de Vorstand · snel antwoord"
+  "wizardChatHelpSubtitle": "Live chat met de Vorstand · snel antwoord",
+  "signaturStatusWiderrufen": "Door de vereniging ingetrokken",
+  "signaturStatusAbgelaufen": "Termijn verstreken",
+  "signaturZurueckZumDokument": "Terug naar het document",
+  "signaturCodeGesendetAn": "We hebben een code naar {nummer} gestuurd.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Handtekeningen",
+  "signaturZuVieleVersuche": "Te veel mislukte pogingen. Vraag een nieuwe code aan.",
+  "signaturAblehnenHinweis": "De vereniging krijgt hiervan bericht. U kunt uw reden opgeven.",
+  "signaturStatusAbgelehnt": "Door u geweigerd",
+  "signaturAblehnen": "Weigeren",
+  "signaturWeiterZurUnterschrift": "Verder naar de handtekening",
+  "signaturCodeUnterwegs": "De code is onderweg.",
+  "signaturCodeErneutSenden": "Code opnieuw versturen",
+  "signaturJetztUnterschreiben": "Nu ondertekenen",
+  "signaturNochmal": "Opnieuw",
+  "signaturLeer": "Zet eerst uw handtekening.",
+  "signaturNichtsOffen": "Er ligt op dit moment niets klaar om te ondertekenen.",
+  "signaturKeineRufnummer": "Bij uw account is geen mobiel nummer bekend. Zonder dat nummer kunnen wij u geen code sturen — neem alstublieft contact op met de voorzitter.",
+  "signaturCodeFehlgeschlagen": "De code kon niet worden verstuurd.",
+  "signaturFehlgeschlagen": "Dat is niet gelukt. Probeer het opnieuw.",
+  "signaturStatusOffen": "Wacht op uw handtekening",
+  "signaturCodeAbgelaufen": "De code is verlopen. Vraag een nieuwe code aan.",
+  "signaturCodeAnfordern": "Code per sms aanvragen",
+  "signaturBitteGanzLesen": "Lees het document alstublieft helemaal door (pagina {gelesen} van {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Zet uw handtekening met uw vinger in het witte vak.",
+  "signaturErfolg": "Bedankt — uw handtekening is ontvangen.",
+  "signaturAblehnenGrund": "Reden (niet verplicht)",
+  "signaturCodeFalsch": "De code klopt niet.",
+  "signaturStatusSigniert": "Door u ondertekend",
+  "signaturSiegelInArbeit": "Het zegel wordt nog aangemaakt. Probeer het over een minuut opnieuw."
 }

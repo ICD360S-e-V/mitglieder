@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} стъпки, проверени от Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Детайли на заявката",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} стъпка изисква корекция",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Причина от Vorstand:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Одобрения от Vorstand ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Чакаме 2-ри Vorstand",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Моля, обади ни се",
   "wizardDuplicateCallUsBody": "Името и датата ти на раждане вече фигурират при нас, но не можем да споделим подробности през приложението. Обади ни се — Vorstand ще ти обясни директно.",
   "wizardChatHelp": "Да поговорим",
-  "wizardChatHelpSubtitle": "Чат на живо с Vorstand · бърз отговор"
+  "wizardChatHelpSubtitle": "Чат на живо с Vorstand · бърз отговор",
+  "signaturStatusWiderrufen": "Оттеглено от сдружението",
+  "signaturStatusAbgelaufen": "Срокът изтече",
+  "signaturZurueckZumDokument": "Обратно към документа",
+  "signaturCodeGesendetAn": "Изпратихме Ви код на {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Подписи",
+  "signaturZuVieleVersuche": "Твърде много неуспешни опити. Моля, заявете нов код.",
+  "signaturAblehnenHinweis": "Сдружението ще бъде уведомено за това. Можете да посочите причините си.",
+  "signaturStatusAbgelehnt": "Отхвърлено от Вас",
+  "signaturAblehnen": "Отхвърляне",
+  "signaturWeiterZurUnterschrift": "Продължете към подписа",
+  "signaturCodeUnterwegs": "Кодът е на път.",
+  "signaturCodeErneutSenden": "Заявете нов код",
+  "signaturJetztUnterschreiben": "Подпишете сега",
+  "signaturNochmal": "Още веднъж",
+  "signaturLeer": "Моля, първо се подпишете.",
+  "signaturNichtsOffen": "В момента няма документи, които чакат Вашия подпис.",
+  "signaturKeineRufnummer": "Във Вашия профил не е записан мобилен номер. Без него не можем да Ви изпратим код — моля, обърнете се към председателя на сдружението.",
+  "signaturCodeFehlgeschlagen": "Не успяхме да изпратим кода.",
+  "signaturFehlgeschlagen": "Нещо не се получи. Моля, опитайте отново.",
+  "signaturStatusOffen": "Чака Вашия подпис",
+  "signaturCodeAbgelaufen": "Кодът е изтекъл. Моля, заявете нов.",
+  "signaturCodeAnfordern": "Заявете код по SMS",
+  "signaturBitteGanzLesen": "Моля, прочетете документа докрай (страница {gelesen} от {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Подпишете се с пръст в бялото поле.",
+  "signaturErfolg": "Благодарим Ви — получихме Вашия подпис.",
+  "signaturAblehnenGrund": "Причина (по желание)",
+  "signaturCodeFalsch": "Кодът не е верен.",
+  "signaturStatusSigniert": "Подписано от Вас",
+  "signaturSiegelInArbeit": "Подписаният документ още се подготвя. Моля, опитайте отново след една минута."
 }

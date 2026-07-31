@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} sammu kinnitanud Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Avalduse üksikasjad",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} samm vajab parandust",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Vorstandi põhjus:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Vorstandi heakskiidud ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Ootame 2. Vorstandi",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Palun helista meile",
   "wizardDuplicateCallUsBody": "Sinu nimi ja sünnikuupäev on meil juba olemas, kuid me ei saa üksikasju rakenduse kaudu jagada. Palun helista meile — Vorstand selgitab olukorra otse.",
   "wizardChatHelp": "Räägime",
-  "wizardChatHelpSubtitle": "Otsesuhtlus Vorstandiga · kiire vastus"
+  "wizardChatHelpSubtitle": "Otsesuhtlus Vorstandiga · kiire vastus",
+  "signaturStatusWiderrufen": "Ühing võttis tagasi",
+  "signaturStatusAbgelaufen": "Tähtaeg on möödunud",
+  "signaturZurueckZumDokument": "Tagasi dokumendi juurde",
+  "signaturCodeGesendetAn": "Saatsime Teile koodi numbrile {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Allkirjad",
+  "signaturZuVieleVersuche": "Liiga palju ebaõnnestunud katseid. Palun küsige uus kood.",
+  "signaturAblehnenHinweis": "Ühingut teavitatakse sellest. Soovi korral võite oma põhjused kirja panna.",
+  "signaturStatusAbgelehnt": "Olete tagasi lükanud",
+  "signaturAblehnen": "Lükake tagasi",
+  "signaturWeiterZurUnterschrift": "Edasi allkirjastamise juurde",
+  "signaturCodeUnterwegs": "Kood on teel.",
+  "signaturCodeErneutSenden": "Saatke kood uuesti",
+  "signaturJetztUnterschreiben": "Allkirjastage nüüd",
+  "signaturNochmal": "Uuesti",
+  "signaturLeer": "Palun andke kõigepealt oma allkiri.",
+  "signaturNichtsOffen": "Praegu ei ole ühtegi dokumenti, mis ootaks Teie allkirja.",
+  "signaturKeineRufnummer": "Teie kontole ei ole mobiilinumbrit lisatud. Ilma selleta ei saa me Teile koodi saata — palun pöörduge ühingu esimehe poole.",
+  "signaturCodeFehlgeschlagen": "Koodi ei õnnestunud saata.",
+  "signaturFehlgeschlagen": "See ei õnnestunud. Palun proovige veel kord.",
+  "signaturStatusOffen": "Ootab Teie allkirja",
+  "signaturCodeAbgelaufen": "Kood on aegunud. Palun küsige uus kood.",
+  "signaturCodeAnfordern": "Saatke kood SMS-iga",
+  "signaturBitteGanzLesen": "Palun lugege dokument lõpuni (lehekülg {gelesen} {gesamt}-st).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Kirjutage oma allkiri sõrmega valgele väljale.",
+  "signaturErfolg": "Aitäh — Teie allkiri on meieni jõudnud.",
+  "signaturAblehnenGrund": "Põhjus (valikuline)",
+  "signaturCodeFalsch": "Kood ei ole õige.",
+  "signaturStatusSigniert": "Olete allkirjastanud",
+  "signaturSiegelInArbeit": "Allkirjastatud dokument on veel valmimisel. Palun proovige minuti pärast uuesti."
 }
