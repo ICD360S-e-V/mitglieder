@@ -74,6 +74,18 @@ void main() async {
       () => LoggerService().init());
   await StartupDiagnostics.stepWithTimeout('UpdateService.initVersion', const Duration(seconds: 5),
       () => UpdateService.initVersion());
+
+  // Start uploading logs now rather than waiting for someone to sign in.
+  //
+  // The dashboard also calls this, which is where it used to be called from
+  // exclusively - so a machine sitting on the login screen uploaded nothing at
+  // all. That is precisely the machine whose behaviour you end up needing to
+  // explain, and the server had no record of it ever running. Uploads are
+  // keyed by device id until the dashboard re-keys them to the member number.
+  //
+  // Placed after LoggerService.init() because that is what resolves the device
+  // id; starting earlier would key the first uploads to nothing.
+  LoggerService().startUpload(null, UpdateService.currentVersion);
   await StartupDiagnostics.stepWithTimeout('ApiService.initialize', const Duration(seconds: 15),
       () => ApiService().initialize());
 

@@ -58,13 +58,37 @@ class LoggerService {
     info('Logger initialized: deviceId=$_deviceId, machine=$_machineName', tag: 'SYS');
   }
 
-  /// Start periodic log upload to server
-  void startUpload(String mitgliedernummer, String appVersion) {
+  /// Start periodic log upload to server.
+  ///
+  /// [mitgliedernummer] is null before anyone signs in. Uploads are then keyed
+  /// by device id instead, which is what lets a machine parked on the login
+  /// screen still report: previously this was only ever called from the member
+  /// dashboard, so such a machine uploaded nothing at all and its behaviour
+  /// could not be diagnosed from the server side.
+  ///
+  /// Safe to call again after sign-in to re-key to the real member number; the
+  /// timer is replaced rather than duplicated.
+  void startUpload(String? mitgliedernummer, String appVersion) {
     _mitgliedernummer = mitgliedernummer;
     _appVersion = appVersion;
     _uploadTimer?.cancel();
     _uploadTimer = Timer.periodic(_uploadInterval, (_) => _uploadLogsToServer());
-    info('Log upload started for $mitgliedernummer v$appVersion (every ${_uploadInterval.inSeconds}s)', tag: 'LOG');
+    info('Log upload started for ${_uploadKey ?? "unidentified device"} '
+        'v$appVersion (every ${_uploadInterval.inSeconds}s)', tag: 'LOG');
+  }
+
+  /// Identifier the server files uploads under: the member number once known,
+  /// otherwise the device id.
+  ///
+  /// Restricted to characters that are safe in a filename. The server
+  /// interpolates this straight into a path, so a stray separator would let it
+  /// write outside its log directory - the client has no business sending one
+  /// regardless of what the server does about it.
+  String? get _uploadKey {
+    final raw = _mitgliedernummer ?? _deviceId;
+    if (raw == null || raw.isEmpty) return null;
+    final safe = raw.replaceAll(RegExp(r'[^A-Za-z0-9_-]'), '');
+    return safe.isEmpty ? null : safe;
   }
 
   /// Stop log upload
@@ -97,14 +121,14 @@ class LoggerService {
     _uploadQueue.add(entry);
 
     // Upload immediately for errors
-    if (level == LogLevel.error && _mitgliedernummer != null) {
+    if (level == LogLevel.error && _uploadTimer != null) {
       _uploadLogsToServer();
     }
   }
 
   /// Upload logs to server
   Future<void> _uploadLogsToServer() async {
-    if (_uploadQueue.isEmpty || _mitgliedernummer == null) return;
+    if (_uploadQueue.isEmpty || _uploadKey == null) return;
 
     final logsToUpload = List<LogEntry>.from(_uploadQueue);
     _uploadQueue.clear();
@@ -121,7 +145,11 @@ class LoggerService {
         Uri.parse(_uploadUrl),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
-          'mitgliedernummer': _mitgliedernummer,
+          // The server files uploads under this and rejects the request when
+          // it is missing, so pre-login uploads send the device id here. The
+          // real member number takes over once startUpload is called again
+          // from the dashboard.
+          'mitgliedernummer': _uploadKey,
           'device_id': _deviceId,
           'platform': Platform.operatingSystem,
           'app_version': _appVersion,
