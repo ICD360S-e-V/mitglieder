@@ -65,13 +65,20 @@ try {
                   WHERE q.status = 'offen' AND t.gueltig_bis <= UTC_TIMESTAMP()"
             );
 
-            // claimed-Zeilen, die seit über zehn Minuten hängen, gelten als
-            // verloren (Tablet abgestürzt, App beendet) und werden wieder frei.
+            // claimed-Zeilen, die hängen geblieben sind (Tablet abgestürzt,
+            // App beendet), werden wieder frei.
+            //
+            // Zwei Minuten, nicht zehn: die TAN gilt nur fünf. Gäbe man eine
+            // Zeile erst nach zehn Minuten frei, wäre ihr Code beim zweiten
+            // Versuch längst abgelaufen und die SMS ginge nur noch los, um
+            // sofort als ungültig abgewiesen zu werden. So bleibt nach dem
+            // Freigeben noch Zeit, dass der Code beim Mitglied ankommt und
+            // benutzbar ist.
             $pdo->exec(
                 "UPDATE signatur_sms_queue
                     SET status = 'offen', claimed_by = NULL, claimed_at = NULL
                   WHERE status = 'claimed'
-                    AND claimed_at < DATE_SUB(UTC_TIMESTAMP(), INTERVAL 10 MINUTE)"
+                    AND claimed_at < DATE_SUB(UTC_TIMESTAMP(), INTERVAL 2 MINUTE)"
             );
 
             $stmt = $pdo->query(

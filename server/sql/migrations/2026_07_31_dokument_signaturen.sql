@@ -146,8 +146,8 @@ CREATE TABLE IF NOT EXISTS signatur_tan (
 -- das bestehende Gateway sie mit abarbeiten kann.
 --
 -- Der Unterschied zu den anderen Warteschlangen: hier zählt jede Sekunde.
--- Das Tablet pollt alle 30 Minuten; eine TAN, die so lange braucht, ist
--- wertlos. Deshalb weckt der Server nach dem Einreihen per ntfy.
+-- Das Tablet pollt alle 30 Minuten; eine TAN gilt fünf und wäre bis dahin
+-- längst tot. Deshalb weckt der Server nach dem Einreihen per ntfy.
 CREATE TABLE IF NOT EXISTS signatur_sms_queue (
   id INT AUTO_INCREMENT PRIMARY KEY,
   tan_id INT NOT NULL,

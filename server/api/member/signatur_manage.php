@@ -396,11 +396,16 @@ function aktionAblehnen(PDO $pdo, int $userId, array $body): void
  * Wer nicht Gateway ist, verwirft den Auftrag ohnehin (der Schalter steht
  * dort auf aus).
  *
- * Priorität 5 statt 3 wie bei den übrigen SMS-Aufträgen: eine TAN gilt zehn
+ * Priorität 5 statt 3 wie bei den übrigen SMS-Aufträgen: eine TAN gilt fünf
  * Minuten, und das Mitglied sitzt in diesem Moment vor dem Unterschriftsfeld.
  *
- * Schlägt der Weckruf fehl, bleibt die TAN gültig — sie geht dann beim
- * regulären Durchlauf raus, verspätet statt gar nicht.
+ * Seit die TAN nur noch fünf Minuten gilt, ist dieser Weckruf kein Komfort
+ * mehr, sondern der einzige realistische Zustellweg: der reguläre Takt des
+ * Gateways liegt bei 30 Minuten, der Code wäre bis dahin sechsmal abgelaufen.
+ * Schlägt der Weckruf fehl, geht die SMS deshalb NICHT verspätet raus —
+ * signatur_queue.php sortiert abgelaufene TANs vor dem Versand aus, statt
+ * einen toten Code zu verschicken, den das Mitglied vergeblich eintippt. Für
+ * das Mitglied heißt das: der Code kommt nicht, und es fordert einen neuen an.
  */
 function tabletWecken(PDO $pdo): void
 {

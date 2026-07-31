@@ -16,9 +16,18 @@ if (!defined('API_ACCESS')) {
 
 class SignaturHelper
 {
-    /** Wie lange eine TAN gilt. Kurz genug, dass ein abgefangener Code nichts
-     *  mehr nützt; lang genug, dass eine SMS auch mal zwei Minuten braucht. */
-    public const TAN_GUELTIG_MINUTEN = 10;
+    /** Wie lange eine TAN gilt.
+     *
+     *  Fünf Minuten: kurz genug, dass ein abgefangener oder mitgelesener Code
+     *  schnell wertlos wird, und lang genug für den Weg Server → Weckruf →
+     *  Tablet → Mobilfunknetz, der im Normalfall in Sekunden durch ist.
+     *
+     *  Diese Zahl steht auch in der SMS (siehe [smsText]) und begrenzt, wie
+     *  lange eine hängende Warteschlangenzeile überhaupt noch Sinn hat — wer
+     *  sie ändert, muss das Zeitfenster in signatur_queue.php mitziehen,
+     *  sonst werden Zeilen erst wieder freigegeben, wenn ihr Code längst
+     *  tot ist. */
+    public const TAN_GUELTIG_MINUTEN = 5;
 
     /** Nach so vielen Fehleingaben ist die TAN verbrannt und muss neu
      *  angefordert werden. Verhindert das Durchprobieren von 10^6 Codes. */
