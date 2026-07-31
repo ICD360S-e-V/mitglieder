@@ -48,6 +48,8 @@ require_once WEBROOT . '/pdflib/vendor/autoload.php';
 
 $pdo = getDBConnection();
 
+fristenPruefen($pdo);
+
 $offen = $pdo->prepare(
     "SELECT s.*, u.vorname, u.nachname, u.mitgliedernummer
        FROM dokument_signaturen s
@@ -80,6 +82,40 @@ foreach ($zeilen as $zeile) {
 }
 
 // ---------------------------------------------------------------------------
+
+/**
+ * Setzt abgelaufene Anforderungen auf `abgelaufen`.
+ *
+ * Ohne diesen Schritt wäre die Frist reine Zierde: der Status bliebe für immer
+ * `offen`, das Mitglied könnte Monate später noch unterschreiben, und in der
+ * Liste des Vorsitzenden stünde nicht, was tatsächlich noch aussteht und was
+ * längst durchgefallen ist.
+ *
+ * Läuft im selben Minutentakt wie das Siegeln — eine eigene Cron-Zeile für
+ * zwei Zeilen SQL wäre eine Stelle mehr, an der jemand vergisst, sie
+ * einzurichten.
+ */
+function fristenPruefen(PDO $pdo): void
+{
+    try {
+        $stmt = $pdo->prepare(
+            "UPDATE dokument_signaturen
+                SET status = 'abgelaufen'
+              WHERE status = 'offen'
+                AND frist_bis IS NOT NULL
+                AND frist_bis < UTC_TIMESTAMP()"
+        );
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            echo date('c') . ' — ' . $stmt->rowCount() . " Anforderung(en) abgelaufen\n";
+        }
+    } catch (Throwable $e) {
+        // Darf das Siegeln nicht aufhalten: eine nicht als abgelaufen markierte
+        // Anforderung ist ein Schönheitsfehler, ein ungesiegeltes Dokument nicht.
+        error_log('seal_signaturen fristenPruefen: ' . $e->getMessage());
+    }
+}
 
 function siegeln(PDO $pdo, array $z): void
 {

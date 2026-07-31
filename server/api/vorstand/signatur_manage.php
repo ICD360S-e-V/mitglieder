@@ -264,7 +264,45 @@ function aktionAnfordern(PDO $pdo, int $callerId, array $body): void
         jsonResponse(false, [], 'Anforderung konnte nicht angelegt werden');
     }
 
+    mitgliedBenachrichtigen($pdo, $userId, $titel, $frist);
+
     jsonResponse(true, ['signatur_id' => $signaturId, 'pdf_hash' => $hash]);
+}
+
+/**
+ * Sagt dem Mitglied Bescheid, dass etwas zur Unterschrift bereitliegt.
+ *
+ * Ohne diesen Schritt läge die Anforderung in der App und niemand wüsste
+ * davon — das Mitglied müsste von sich aus nachsehen, und die Frist liefe
+ * unterdessen. Eine Unterschrift, die nur deshalb ausbleibt, weil niemand
+ * gefragt hat, ist kein Versäumnis des Mitglieds.
+ *
+ * Der Weckruf ist Komfort, kein Teil der Zusage: schlägt er fehl, steht die
+ * Anforderung trotzdem in der Liste, und die Karte auf der Übersichtsseite
+ * zeigt sie beim nächsten Start.
+ */
+function mitgliedBenachrichtigen(PDO $pdo, int $userId, string $titel, string $frist): void
+{
+    try {
+        $stmt = $pdo->prepare('SELECT mitgliedernummer FROM users WHERE id = ?');
+        $stmt->execute([$userId]);
+        $nummer = (string)$stmt->fetchColumn();
+        if ($nummer === '') {
+            return;
+        }
+
+        require_once __DIR__ . '/../helpers/NtfyService.php';
+        (new NtfyService())->sendToUser(
+            $nummer,
+            'Dokument zur Unterschrift',
+            $frist !== ''
+                ? "$titel — bitte bis zum " . date('d.m.Y', strtotime($frist)) . ' unterschreiben'
+                : $titel,
+            ['priority' => 4, 'tags' => ['pencil']]
+        );
+    } catch (Throwable $e) {
+        error_log('signatur mitgliedBenachrichtigen: ' . $e->getMessage());
+    }
 }
 
 /**
