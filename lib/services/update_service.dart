@@ -1,8 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'dart:io';
 import 'package:crypto/crypto.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'package:path_provider/path_provider.dart';
@@ -10,6 +10,10 @@ import 'package:open_filex/open_filex.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'http_client_factory.dart';
+import 'logger_service.dart';
+import 'startup_diagnostics.dart';
+
+final _log = LoggerService();
 
 /// Update Service - checks for app updates and handles download.
 ///
@@ -157,18 +161,53 @@ class UpdateService {
   /// switched off, this does nothing and the dashboard path prompts later.
   ///
   /// Never throws — a failure here must not take down app startup.
+  ///
+  /// Every branch is recorded through [StartupDiagnostics] as well as the
+  /// logger. LoggerService only starts uploading once a member signs in, so on
+  /// a machine parked at the login screen its output never leaves the device —
+  /// which is exactly the machine whose update behaviour needs explaining.
+  /// StartupDiagnostics uploads independently of any session, so the outcome
+  /// reaches the server either way. Anything that ends without installing
+  /// triggers an upload, because a silent no-op is the failure mode that cost
+  /// the most time here: an update that does not happen looks identical to an
+  /// update that was never checked for.
   Future<void> checkAndInstallAtStartup() async {
+    var outcome = 'unknown';
     try {
-      if (!supportsSilentUpdate) return;
-      if (!await isAutoUpdateEnabled()) return;
+      StartupDiagnostics.log('→ update: startup check (current $_currentVersion)');
+
+      if (!supportsSilentUpdate) {
+        outcome = 'platform cannot install unattended';
+        return;
+      }
+      if (!await isAutoUpdateEnabled()) {
+        outcome = 'automatic updates switched off in preferences';
+        return;
+      }
 
       final updateInfo = await checkForUpdate();
-      if (updateInfo == null) return;
+      if (updateInfo == null) {
+        outcome = 'no newer version offered (or the check failed)';
+        return;
+      }
 
-      debugPrint('[Update] Startup check found ${updateInfo.version}');
-      await installUnattended(updateInfo); // terminates this process on success
+      _log.info('Startup check found ${updateInfo.version}', tag: 'UPDATE');
+      StartupDiagnostics.log('→ update: ${updateInfo.version} available, installing');
+
+      // Returns only on failure; success replaces this process.
+      await installUnattended(updateInfo);
+      outcome = 'installer hand-off failed for ${updateInfo.version}';
     } catch (e) {
-      debugPrint('[Update] Startup check failed: $e');
+      outcome = 'threw: $e';
+      _log.error('Startup check failed: $e', tag: 'UPDATE');
+    } finally {
+      StartupDiagnostics.log('→ update: $outcome');
+      // Fire-and-forget; the transcript is small and this only runs when the
+      // app is still alive, i.e. when no update was applied.
+      unawaited(StartupDiagnostics.uploadToServer(
+        appVersion: _currentVersion,
+        deviceId: _log.deviceId,
+      ));
     }
   }
 
@@ -188,20 +227,20 @@ class UpdateService {
     // installers against the same files. The flag is never cleared on the
     // success path because that path does not return - the process is gone.
     if (_unattendedInProgress) {
-      debugPrint('[Update] Unattended update already running - skipping');
+      _log.info('Unattended update already running - skipping', tag: 'UPDATE');
       return false;
     }
     _unattendedInProgress = true;
 
-    debugPrint('[Update] Unattended update to ${updateInfo.version} starting');
+    _log.info('Unattended update to ${updateInfo.version} starting', tag: 'UPDATE');
     final installerPath = await downloadUpdate(
       updateInfo.downloadUrl,
       (_) {},
       expectedSha256: updateInfo.sha256,
     );
     if (installerPath == null) {
-      debugPrint('[Update] Unattended download failed or failed verification '
-          '- staying on current version');
+      _log.error('Unattended download failed or failed verification '
+          '- staying on current version', tag: 'UPDATE');
       _unattendedInProgress = false;
       return false;
     }
@@ -292,7 +331,7 @@ class UpdateService {
   }) async {
     // iOS doesn't support self-update - redirect to App Store
     if (Platform.isIOS) {
-      debugPrint('[Update] iOS detected - self-update not supported');
+      _log.info('iOS detected - self-update not supported', tag: 'UPDATE');
       return null;
     }
 
@@ -308,7 +347,7 @@ class UpdateService {
         await file.delete();
       }
 
-      debugPrint('[Update] Downloading to: $filePath');
+      _log.info('Downloading to: $filePath', tag: 'UPDATE');
 
       final request = http.Request('GET', Uri.parse(downloadUrl));
       final response = await _client.send(request);
@@ -335,11 +374,11 @@ class UpdateService {
           final digest = await sha256.bind(file.openRead()).first;
           final actual = digest.toString().toLowerCase();
           if (actual != expectedSha256.toLowerCase()) {
-            debugPrint('[Update] SHA-256 mismatch: expected $expectedSha256, got $actual');
+            _log.error('SHA-256 mismatch: expected $expectedSha256, got $actual', tag: 'UPDATE');
             await file.delete();
             return null;
           }
-          debugPrint('[Update] SHA-256 verified');
+          _log.info('SHA-256 verified', tag: 'UPDATE');
         }
 
         // Make AppImage executable on Linux
@@ -347,11 +386,11 @@ class UpdateService {
           await Process.run('chmod', ['+x', filePath]);
         }
 
-        debugPrint('[Update] Download complete: $filePath');
+        _log.info('Download complete: $filePath', tag: 'UPDATE');
         return filePath;
       }
     } catch (e) {
-      debugPrint('[Update] Download failed: $e');
+      _log.error('Download failed: $e', tag: 'UPDATE');
     }
     return null;
   }
@@ -390,14 +429,14 @@ class UpdateService {
         // Android: Open APK with system installer
         final result = await OpenFilex.open(installerPath);
         if (result.type != ResultType.done) {
-          debugPrint('[Update] Failed to open APK installer: ${result.message}');
+          _log.info('Failed to open APK installer: ${result.message}', tag: 'UPDATE');
           return false;
         }
         return true;
       } else if (Platform.isIOS) {
         // iOS: Open App Store page (self-update not supported)
         // This should ideally be called with the App Store URL instead
-        debugPrint('[Update] iOS: Redirecting to App Store');
+        _log.info('iOS: Redirecting to App Store', tag: 'UPDATE');
         final appStoreUrl = Uri.parse('https://apps.apple.com/app/icd360s-mitglieder/id$_iosAppStoreId');
         if (await canLaunchUrl(appStoreUrl)) {
           await launchUrl(appStoreUrl, mode: LaunchMode.externalApplication);
@@ -408,20 +447,20 @@ class UpdateService {
         return await _launchWindowsInstaller(installerPath, silent: silent);
       } else if (Platform.isMacOS) {
         // macOS: Mount DMG and open it
-        debugPrint('[Update] macOS: Mounting DMG');
+        _log.info('macOS: Mounting DMG', tag: 'UPDATE');
         await Process.run('hdiutil', ['attach', installerPath]);
         // Try to open the mounted volume
         await Process.run('open', ['/Volumes/ICD360S Mitglieder']);
         return true;
       } else if (Platform.isLinux) {
         // Linux: Run AppImage directly
-        debugPrint('[Update] Linux: Running AppImage');
+        _log.info('Linux: Running AppImage', tag: 'UPDATE');
         await Process.start(installerPath, [], runInShell: true);
         return true;
       }
       return false;
     } catch (e) {
-      debugPrint('[Update] Error launching installer: $e');
+      _log.error('Error launching installer: $e', tag: 'UPDATE');
       return false;
     }
   }
@@ -450,7 +489,7 @@ class UpdateService {
       '/LOG=$logPath',
     ];
 
-    debugPrint('[Update] Windows: launching installer (silent=$silent) $args');
+    _log.info('Windows: launching installer (silent=$silent) $args', tag: 'UPDATE');
 
     // `cmd /c start` rather than a plain detached spawn: ProcessStartMode
     // .detached still leaves the child inside this process's Windows job
@@ -478,7 +517,7 @@ class UpdateService {
         await launchUrl(appStoreUrl, mode: LaunchMode.externalApplication);
       }
     } catch (e) {
-      debugPrint('[Update] Error opening App Store: $e');
+      _log.info('Error opening App Store: $e', tag: 'UPDATE');
     }
   }
 }
