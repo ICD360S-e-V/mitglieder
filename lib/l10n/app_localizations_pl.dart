@@ -2892,4 +2892,102 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Podpisy';
+
+  @override
+  String get signaturNichtsOffen => 'Obecnie nie ma nic do podpisania.';
+
+  @override
+  String get signaturStatusOffen => 'Czeka na Pana/Pani podpis';
+
+  @override
+  String get signaturStatusSigniert => 'Podpisane przez Pana/Panią';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Odrzucone przez Pana/Panią';
+
+  @override
+  String get signaturStatusWiderrufen => 'Wycofane przez stowarzyszenie';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Termin minął';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Prosimy przeczytać dokument do końca (strona $gelesen z $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Przejdź do podpisu';
+
+  @override
+  String get signaturAblehnen => 'Odrzuć';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Stowarzyszenie zostanie o tym powiadomione. Może Pan/Pani podać powód.';
+
+  @override
+  String get signaturAblehnenGrund => 'Powód (nieobowiązkowy)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Prosimy podpisać się palcem w białym polu.';
+
+  @override
+  String get signaturNochmal => 'Jeszcze raz';
+
+  @override
+  String get signaturZurueckZumDokument => 'Powrót do dokumentu';
+
+  @override
+  String get signaturCodeAnfordern => 'Zamów kod SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Kod jest w drodze.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Wysłaliśmy kod na numer $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Wyślij kod ponownie';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Podpisz teraz';
+
+  @override
+  String get signaturCodeFalsch => 'Kod się nie zgadza.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Kod stracił ważność. Prosimy zamówić nowy kod.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Zbyt wiele nieudanych prób. Prosimy zamówić nowy kod.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Na Pana/Pani koncie nie ma zapisanego numeru telefonu komórkowego. Bez niego nie możemy wysłać Panu/Pani kodu — prosimy skontaktować się z przewodniczącym stowarzyszenia.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Nie udało się wysłać kodu.';
+
+  @override
+  String get signaturLeer => 'Prosimy najpierw złożyć podpis.';
+
+  @override
+  String get signaturErfolg => 'Dziękujemy — otrzymaliśmy Pana/Pani podpis.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Nie udało się. Prosimy spróbować jeszcze raz.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Podpisany dokument jest jeszcze przygotowywany. Proszę spróbować ponownie za minutę.';
 }

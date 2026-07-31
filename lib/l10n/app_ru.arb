@@ -1344,5 +1344,51 @@
   "benachrichtigungenLeer": "Нет уведомлений",
   "benachrichtigungenAlleGelesen": "Отметить все как прочитанные",
   "benachrichtigungWetterFrage": "Хотите получать предупреждения о непогоде по месту жительства?",
-  "benachrichtigungWetterDetail": "Только официальные предупреждения немецкой метеослужбы уровня «сильное» и выше — не при каждом дожде."
+  "benachrichtigungWetterDetail": "Только официальные предупреждения немецкой метеослужбы уровня «сильное» и выше — не при каждом дожде.",
+  "signaturTitel": "Подписи",
+  "signaturNichtsOffen": "Сейчас нет документов на подпись.",
+  "signaturStatusOffen": "Ожидает вашей подписи",
+  "signaturStatusSigniert": "Подписано вами",
+  "signaturStatusAbgelehnt": "Отклонено вами",
+  "signaturStatusWiderrufen": "Отозвано объединением",
+  "signaturStatusAbgelaufen": "Срок истёк",
+  "signaturBitteGanzLesen": "Пожалуйста, прочитайте документ до конца (страница {gelesen} из {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturWeiterZurUnterschrift": "Перейти к подписи",
+  "signaturAblehnen": "Отклонить",
+  "signaturAblehnenHinweis": "Объединение будет уведомлено. Вы можете указать причины.",
+  "signaturAblehnenGrund": "Причина (необязательно)",
+  "signaturMitFingerHinweis": "Распишитесь пальцем в белом поле.",
+  "signaturNochmal": "Заново",
+  "signaturZurueckZumDokument": "Назад к документу",
+  "signaturCodeAnfordern": "Запросить код по SMS",
+  "signaturCodeUnterwegs": "Код отправляется.",
+  "signaturCodeGesendetAn": "Мы отправили код на {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturCodeErneutSenden": "Отправить код ещё раз",
+  "signaturJetztUnterschreiben": "Подписать",
+  "signaturCodeFalsch": "Код неверный.",
+  "signaturCodeAbgelaufen": "Срок действия кода истёк. Запросите новый.",
+  "signaturZuVieleVersuche": "Слишком много неудачных попыток. Запросите новый код.",
+  "signaturKeineRufnummer": "Для вашей учётной записи не указан мобильный номер. Без него мы не можем отправить код — обратитесь к председателю.",
+  "signaturCodeFehlgeschlagen": "Код не удалось отправить.",
+  "signaturLeer": "Сначала поставьте подпись.",
+  "signaturErfolg": "Спасибо — ваша подпись получена.",
+  "signaturFehlgeschlagen": "Не получилось. Пожалуйста, попробуйте ещё раз.",
+  "signaturSiegelInArbeit": "Печать ещё создаётся. Пожалуйста, попробуйте снова через минуту."
 }

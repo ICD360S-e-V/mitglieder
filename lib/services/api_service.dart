@@ -1359,4 +1359,74 @@ class ApiService {
       return {'success': false, 'message': 'Benachrichtigung failed'};
     }
   }
+
+  // ========== DIGITALE UNTERSCHRIFT ==========
+  // Der Vorsitzende stellt ein PDF zur Unterschrift, das Mitglied unterschreibt
+  // hier mit dem Finger und bestätigt mit einer TAN per SMS.
+  //
+  // Die user_id wird nirgends mitgeschickt — der Server leitet sie aus dem
+  // Token ab. Sonst könnte man die Unterschrift eines anderen leisten, und
+  // genau das ist der Punkt, an dem der ganze Beweis stünde oder fiele.
+
+  /// Offene und bereits erledigte Unterschriftsvorgänge.
+  Future<Map<String, dynamic>> getSignaturen() =>
+      _postSignatur({'action': 'list'});
+
+  /// Fordert die TAN an. Der Server schickt sie an die in Verifizierung
+  /// Stufe 1 hinterlegte Mobilnummer — nicht an eine, die wir mitschicken.
+  ///
+  /// Fehlt die Nummer, kommt `grund: 'keine_rufnummer'` zurück. Der Bildschirm
+  /// muss das ausdrücklich sagen: 19 von 42 Mitgliedern haben keine hinterlegt,
+  /// und ein Knopf, der einfach nichts tut, sieht aus wie ein Fehler in der App.
+  Future<Map<String, dynamic>> signaturTanAnfordern(int signaturId) =>
+      _postSignatur({'action': 'tan_anfordern', 'signatur_id': signaturId});
+
+  /// Die Unterschrift selbst: gemalter Pfad und TAN gehen zusammen raus.
+  ///
+  /// [signedAtLocal] ist die Uhr des Geräts. Sie ist informativ und kann falsch
+  /// gestellt sein — verbindlich ist die UTC-Zeit, die der Server setzt. Genau
+  /// deshalb wird sie mitgeschickt statt heimlich ersetzt: eine Abweichung
+  /// zwischen beiden ist im Zweifel selbst ein Befund.
+  Future<Map<String, dynamic>> signaturSignieren({
+    required int signaturId,
+    required String signatureSvg,
+    required String tan,
+    required String signedAtLocal,
+    String? deviceHostname,
+  }) =>
+      _postSignatur({
+        'action': 'signieren',
+        'signatur_id': signaturId,
+        'signature_svg': signatureSvg,
+        'tan': tan,
+        'signed_at_local': signedAtLocal,
+        if (deviceHostname != null) 'device_hostname': deviceHostname,
+      });
+
+  /// Ablehnen ist ein gleichwertiger Ausgang, kein Fehler. Ohne diesen Weg
+  /// bliebe ein Vorgang ewig „offen" stehen und niemand wüsste, ob das
+  /// Mitglied ihn abgelehnt oder nur nie geöffnet hat.
+  Future<Map<String, dynamic>> signaturAblehnen(int signaturId, String grund) =>
+      _postSignatur({
+        'action': 'ablehnen',
+        'signatur_id': signaturId,
+        'grund': grund,
+      });
+
+  Future<Map<String, dynamic>> _postSignatur(Map<String, dynamic> body) async {
+    try {
+      final response = await _client.post(
+        Uri.parse('$baseUrl/member/signatur_manage.php'),
+        headers: _headers,
+        body: jsonEncode(body),
+      );
+      final data = jsonDecode(response.body);
+      return data is Map<String, dynamic>
+          ? data
+          : {'success': false, 'message': 'Unerwartete Antwort'};
+    } catch (e) {
+      LoggerService().error('$e', tag: 'API');
+      return {'success': false, 'message': 'Signatur failed'};
+    }
+  }
 }

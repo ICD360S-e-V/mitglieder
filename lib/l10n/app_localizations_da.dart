@@ -2881,4 +2881,102 @@ class AppLocalizationsDa extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Underskrifter';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Der er i øjeblikket intet til underskrift.';
+
+  @override
+  String get signaturStatusOffen => 'Venter på din underskrift';
+
+  @override
+  String get signaturStatusSigniert => 'Underskrevet af dig';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Afvist af dig';
+
+  @override
+  String get signaturStatusWiderrufen => 'Trukket tilbage af foreningen';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Fristen er udløbet';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Læs venligst dokumentet helt til ende (side $gelesen af $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Videre til underskrift';
+
+  @override
+  String get signaturAblehnen => 'Afvis';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Foreningen får besked. Du kan angive en begrundelse.';
+
+  @override
+  String get signaturAblehnenGrund => 'Begrundelse (valgfri)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Skriv under med fingeren i det hvide felt.';
+
+  @override
+  String get signaturNochmal => 'Skriv igen';
+
+  @override
+  String get signaturZurueckZumDokument => 'Tilbage til dokumentet';
+
+  @override
+  String get signaturCodeAnfordern => 'Send kode via SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Koden er på vej.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Vi har sendt dig en kode til $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Send koden igen';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Skriv under nu';
+
+  @override
+  String get signaturCodeFalsch => 'Koden er forkert.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Koden er udløbet. Bed venligst om en ny.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'For mange forkerte forsøg. Bed venligst om en ny kode.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Der er ikke registreret noget mobilnummer på din konto. Uden et mobilnummer kan vi ikke sende dig en kode — kontakt venligst formanden.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Koden kunne ikke sendes.';
+
+  @override
+  String get signaturLeer => 'Skriv venligst under først.';
+
+  @override
+  String get signaturErfolg => 'Tak — vi har modtaget din underskrift.';
+
+  @override
+  String get signaturFehlgeschlagen => 'Det lykkedes ikke. Prøv venligst igen.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Det signerede dokument er ved at blive oprettet. Prøv venligst igen om et minut.';
 }

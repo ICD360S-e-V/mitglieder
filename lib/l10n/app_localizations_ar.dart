@@ -2855,4 +2855,98 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'فقط التحذيرات الرسمية من هيئة الأرصاد الألمانية من مستوى «شديد» فما فوق — وليس عند كل مطر.';
+
+  @override
+  String get signaturTitel => 'التوقيعات';
+
+  @override
+  String get signaturNichtsOffen => 'لا يوجد حالياً ما ينتظر توقيعك.';
+
+  @override
+  String get signaturStatusOffen => 'بانتظار توقيعك';
+
+  @override
+  String get signaturStatusSigniert => 'وقّعت عليه';
+
+  @override
+  String get signaturStatusAbgelehnt => 'رفضته';
+
+  @override
+  String get signaturStatusWiderrufen => 'سحبته الجمعية';
+
+  @override
+  String get signaturStatusAbgelaufen => 'انتهت المهلة';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'يرجى قراءة المستند حتى نهايته (الصفحة $gelesen من $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'المتابعة إلى التوقيع';
+
+  @override
+  String get signaturAblehnen => 'رفض';
+
+  @override
+  String get signaturAblehnenHinweis => 'سيتم إبلاغ الجمعية. يمكنك ذكر أسبابك.';
+
+  @override
+  String get signaturAblehnenGrund => 'السبب (اختياري)';
+
+  @override
+  String get signaturMitFingerHinweis => 'وقّع بإصبعك داخل الحقل الأبيض.';
+
+  @override
+  String get signaturNochmal => 'من جديد';
+
+  @override
+  String get signaturZurueckZumDokument => 'العودة إلى المستند';
+
+  @override
+  String get signaturCodeAnfordern => 'طلب رمز عبر رسالة نصية';
+
+  @override
+  String get signaturCodeUnterwegs => 'الرمز في طريقه إليك.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'أرسلنا رمزاً إلى $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'إرسال الرمز مرة أخرى';
+
+  @override
+  String get signaturJetztUnterschreiben => 'وقّع الآن';
+
+  @override
+  String get signaturCodeFalsch => 'الرمز غير صحيح.';
+
+  @override
+  String get signaturCodeAbgelaufen => 'انتهت صلاحية الرمز. يرجى طلب رمز جديد.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'محاولات خاطئة كثيرة. يرجى طلب رمز جديد.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'لا يوجد رقم هاتف محمول مسجّل في حسابك. من دونه لا يمكننا إرسال رمز إليك — يرجى التواصل مع رئيس الجمعية.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'تعذّر إرسال الرمز.';
+
+  @override
+  String get signaturLeer => 'يرجى التوقيع أولاً.';
+
+  @override
+  String get signaturErfolg => 'شكراً لك — تم استلام توقيعك.';
+
+  @override
+  String get signaturFehlgeschlagen => 'لم ينجح ذلك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'يجري إنشاء الختم الآن. يرجى المحاولة مرة أخرى بعد دقيقة.';
 }

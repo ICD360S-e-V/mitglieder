@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} lépést hagyott jóvá a Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Kérelem részletei",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} lépés javításra szorul",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "A Vorstand indoklása:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Vorstand jóváhagyások ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Várjuk a 2. Vorstandot",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Kérjük, hívj minket",
   "wizardDuplicateCallUsBody": "A neved és születési időd már szerepel a nyilvántartásunkban, de a részleteket nem oszthatjuk meg az appon keresztül. Hívj minket — a Vorstand közvetlenül elmagyarázza a helyzetet.",
   "wizardChatHelp": "Beszéljünk",
-  "wizardChatHelpSubtitle": "Élő chat a Vorstanddal · gyors válasz"
+  "wizardChatHelpSubtitle": "Élő chat a Vorstanddal · gyors válasz",
+  "signaturStatusWiderrufen": "Az egyesület visszavonta",
+  "signaturStatusAbgelaufen": "A határidő lejárt",
+  "signaturZurueckZumDokument": "Vissza a dokumentumhoz",
+  "signaturCodeGesendetAn": "Kódot küldtünk Önnek erre a számra: {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Aláírások",
+  "signaturZuVieleVersuche": "Túl sok sikertelen próbálkozás. Kérjük, igényeljen új kódot.",
+  "signaturAblehnenHinweis": "Az egyesület értesítést kap róla. Megadhatja az indokait.",
+  "signaturStatusAbgelehnt": "Ön elutasította",
+  "signaturAblehnen": "Elutasítás",
+  "signaturWeiterZurUnterschrift": "Tovább az aláíráshoz",
+  "signaturCodeUnterwegs": "A kód úton van.",
+  "signaturCodeErneutSenden": "Kód újraküldése",
+  "signaturJetztUnterschreiben": "Most aláírom",
+  "signaturNochmal": "Újra",
+  "signaturLeer": "Kérjük, először írja alá.",
+  "signaturNichtsOffen": "Jelenleg nincs aláírásra váró dokumentum.",
+  "signaturKeineRufnummer": "Az Ön fiókjához nincs mobilszám megadva. Enélkül nem tudunk kódot küldeni Önnek – kérjük, forduljon az egyesület elnökéhez.",
+  "signaturCodeFehlgeschlagen": "A kódot nem sikerült elküldeni.",
+  "signaturFehlgeschlagen": "Sajnos nem sikerült. Kérjük, próbálja meg újra.",
+  "signaturStatusOffen": "Az Ön aláírására vár",
+  "signaturCodeAbgelaufen": "A kód lejárt. Kérjük, igényeljen újat.",
+  "signaturCodeAnfordern": "Kód kérése SMS-ben",
+  "signaturBitteGanzLesen": "Kérjük, olvassa el a dokumentumot a végéig ({gelesen}. oldal, összesen {gesamt} oldal).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Írja alá az ujjával a fehér mezőben.",
+  "signaturErfolg": "Köszönjük – az aláírását megkaptuk.",
+  "signaturAblehnenGrund": "Indok (nem kötelező)",
+  "signaturCodeFalsch": "A kód nem helyes.",
+  "signaturStatusSigniert": "Ön aláírta",
+  "signaturSiegelInArbeit": "A pecsét még készül. Kérjük, próbálja meg egy perc múlva újra."
 }

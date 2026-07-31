@@ -2892,4 +2892,103 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Handtekeningen';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Er ligt op dit moment niets klaar om te ondertekenen.';
+
+  @override
+  String get signaturStatusOffen => 'Wacht op uw handtekening';
+
+  @override
+  String get signaturStatusSigniert => 'Door u ondertekend';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Door u geweigerd';
+
+  @override
+  String get signaturStatusWiderrufen => 'Door de vereniging ingetrokken';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Termijn verstreken';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Lees het document alstublieft helemaal door (pagina $gelesen van $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Verder naar de handtekening';
+
+  @override
+  String get signaturAblehnen => 'Weigeren';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'De vereniging krijgt hiervan bericht. U kunt uw reden opgeven.';
+
+  @override
+  String get signaturAblehnenGrund => 'Reden (niet verplicht)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Zet uw handtekening met uw vinger in het witte vak.';
+
+  @override
+  String get signaturNochmal => 'Opnieuw';
+
+  @override
+  String get signaturZurueckZumDokument => 'Terug naar het document';
+
+  @override
+  String get signaturCodeAnfordern => 'Code per sms aanvragen';
+
+  @override
+  String get signaturCodeUnterwegs => 'De code is onderweg.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'We hebben een code naar $nummer gestuurd.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Code opnieuw versturen';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Nu ondertekenen';
+
+  @override
+  String get signaturCodeFalsch => 'De code klopt niet.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'De code is verlopen. Vraag een nieuwe code aan.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Te veel mislukte pogingen. Vraag een nieuwe code aan.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Bij uw account is geen mobiel nummer bekend. Zonder dat nummer kunnen wij u geen code sturen — neem alstublieft contact op met de voorzitter.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'De code kon niet worden verstuurd.';
+
+  @override
+  String get signaturLeer => 'Zet eerst uw handtekening.';
+
+  @override
+  String get signaturErfolg => 'Bedankt — uw handtekening is ontvangen.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Dat is niet gelukt. Probeer het opnieuw.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Het zegel wordt nog aangemaakt. Probeer het over een minuut opnieuw.';
 }

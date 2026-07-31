@@ -2884,4 +2884,102 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Only official German Weather Service warnings from level “severe” upwards — not for every shower.';
+
+  @override
+  String get signaturTitel => 'Signatures';
+
+  @override
+  String get signaturNichtsOffen =>
+      'There is nothing waiting for your signature.';
+
+  @override
+  String get signaturStatusOffen => 'Waiting for your signature';
+
+  @override
+  String get signaturStatusSigniert => 'Signed by you';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Declined by you';
+
+  @override
+  String get signaturStatusWiderrufen => 'Withdrawn by the association';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Deadline passed';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Please read the document to the end (page $gelesen of $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Continue to signature';
+
+  @override
+  String get signaturAblehnen => 'Decline';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'The association will be notified. You may state your reasons.';
+
+  @override
+  String get signaturAblehnenGrund => 'Reason (optional)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Sign with your finger in the white area.';
+
+  @override
+  String get signaturNochmal => 'Start over';
+
+  @override
+  String get signaturZurueckZumDokument => 'Back to the document';
+
+  @override
+  String get signaturCodeAnfordern => 'Request code by SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'The code is on its way.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'We sent a code to $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Send code again';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Sign now';
+
+  @override
+  String get signaturCodeFalsch => 'That code is not correct.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'The code has expired. Please request a new one.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Too many failed attempts. Please request a new code.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'No mobile number is on file for your account. Without one we cannot send you a code — please contact the chairperson.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'The code could not be sent.';
+
+  @override
+  String get signaturLeer => 'Please sign first.';
+
+  @override
+  String get signaturErfolg => 'Thank you — your signature has been received.';
+
+  @override
+  String get signaturFehlgeschlagen => 'That did not work. Please try again.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'The seal is still being created. Please try again in a minute.';
 }

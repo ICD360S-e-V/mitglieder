@@ -1365,5 +1365,51 @@
   "benachrichtigungenLeer": "لا توجد إشعارات",
   "benachrichtigungenAlleGelesen": "تعليم الكل كمقروء",
   "benachrichtigungWetterFrage": "هل ترغب في تلقي تحذيرات عند سوء الأحوال الجوية في منطقتك؟",
-  "benachrichtigungWetterDetail": "فقط التحذيرات الرسمية من هيئة الأرصاد الألمانية من مستوى «شديد» فما فوق — وليس عند كل مطر."
+  "benachrichtigungWetterDetail": "فقط التحذيرات الرسمية من هيئة الأرصاد الألمانية من مستوى «شديد» فما فوق — وليس عند كل مطر.",
+  "signaturTitel": "التوقيعات",
+  "signaturNichtsOffen": "لا يوجد حالياً ما ينتظر توقيعك.",
+  "signaturStatusOffen": "بانتظار توقيعك",
+  "signaturStatusSigniert": "وقّعت عليه",
+  "signaturStatusAbgelehnt": "رفضته",
+  "signaturStatusWiderrufen": "سحبته الجمعية",
+  "signaturStatusAbgelaufen": "انتهت المهلة",
+  "signaturBitteGanzLesen": "يرجى قراءة المستند حتى نهايته (الصفحة {gelesen} من {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturWeiterZurUnterschrift": "المتابعة إلى التوقيع",
+  "signaturAblehnen": "رفض",
+  "signaturAblehnenHinweis": "سيتم إبلاغ الجمعية. يمكنك ذكر أسبابك.",
+  "signaturAblehnenGrund": "السبب (اختياري)",
+  "signaturMitFingerHinweis": "وقّع بإصبعك داخل الحقل الأبيض.",
+  "signaturNochmal": "من جديد",
+  "signaturZurueckZumDokument": "العودة إلى المستند",
+  "signaturCodeAnfordern": "طلب رمز عبر رسالة نصية",
+  "signaturCodeUnterwegs": "الرمز في طريقه إليك.",
+  "signaturCodeGesendetAn": "أرسلنا رمزاً إلى {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturCodeErneutSenden": "إرسال الرمز مرة أخرى",
+  "signaturJetztUnterschreiben": "وقّع الآن",
+  "signaturCodeFalsch": "الرمز غير صحيح.",
+  "signaturCodeAbgelaufen": "انتهت صلاحية الرمز. يرجى طلب رمز جديد.",
+  "signaturZuVieleVersuche": "محاولات خاطئة كثيرة. يرجى طلب رمز جديد.",
+  "signaturKeineRufnummer": "لا يوجد رقم هاتف محمول مسجّل في حسابك. من دونه لا يمكننا إرسال رمز إليك — يرجى التواصل مع رئيس الجمعية.",
+  "signaturCodeFehlgeschlagen": "تعذّر إرسال الرمز.",
+  "signaturLeer": "يرجى التوقيع أولاً.",
+  "signaturErfolg": "شكراً لك — تم استلام توقيعك.",
+  "signaturFehlgeschlagen": "لم ينجح ذلك. يرجى المحاولة مرة أخرى.",
+  "signaturSiegelInArbeit": "يجري إنشاء الختم الآن. يرجى المحاولة مرة أخرى بعد دقيقة."
 }

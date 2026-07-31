@@ -38,6 +38,8 @@ import '../services/remote_agent_service.dart';
 import '../widgets/remote_consent_dialog.dart';
 import '../widgets/remote_sharing_banner.dart';
 import '../services/termin_service.dart';
+import '../widgets/signatur_card.dart';
+import 'signatur_screen.dart';
 import 'welcome.dart';
 
 final _log = LoggerService();
@@ -63,6 +65,9 @@ class MitgliedDashboard extends StatefulWidget {
 class _MitgliedDashboardState extends State<MitgliedDashboard>
     with WidgetsBindingObserver {
   final _apiService = ApiService();
+
+  /// Anzahl der Dokumente, die auf die Unterschrift dieses Mitglieds warten.
+  int _offeneSignaturen = 0;
   final _chatService = ChatService();
   final _voiceCallService = VoiceCallService();
   late final _heartbeatService = HeartbeatService(_apiService);
@@ -170,6 +175,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     _currentEmail = widget.email;
     _loadBeitragStatus();
     _loadAccountStatus();
+    _loadOffeneSignaturen();
     _checkForUpdates();
     _connectWebSocket();
     _setupMessageListener();
@@ -1299,9 +1305,47 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
             userName: widget.userName,
             greeting: _getGreeting(context),
           ),
+          const SizedBox(height: 16),
+          SignaturCard(
+            offen: _offeneSignaturen,
+            onOeffnen: _openSignaturen,
+          ),
         ],
       ),
     );
+  }
+
+  /// Wie viele Dokumente auf die Unterschrift dieses Mitglieds warten.
+  ///
+  /// Fehler bleiben hier still: die Zahl ist ein Hinweis auf der Übersicht,
+  /// und ein Netzproblem beim Start soll dem Mitglied keine Fehlermeldung auf
+  /// den Startbildschirm legen. Beim Öffnen des Bildschirms wird ohnehin neu
+  /// geladen, und dort ist ein Fehler sichtbar.
+  Future<void> _loadOffeneSignaturen() async {
+    try {
+      final antwort = await _apiService.getSignaturen();
+      if (!mounted || antwort['success'] != true) return;
+
+      final liste = (antwort['signaturen'] as List?) ?? const [];
+      final offen = liste
+          .whereType<Map>()
+          .where((e) => (e['status'] ?? '').toString() == 'offen')
+          .length;
+
+      setState(() => _offeneSignaturen = offen);
+    } catch (e) {
+      _log.error('Offene Signaturen: $e', tag: 'DASH');
+    }
+  }
+
+  Future<void> _openSignaturen() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => SignaturScreen(apiService: _apiService),
+      ),
+    );
+    await _loadOffeneSignaturen();
   }
 
   Widget _buildMitgliederVerwaltung() {

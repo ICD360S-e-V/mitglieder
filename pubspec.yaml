@@ -55,6 +55,14 @@ dependencies:
   # language selector (assets/flags/<lang>.svg).
   flutter_svg: ^2.0.10
 
+  # Unterschreiben mit dem Finger. Exportiert direkt SVG, und genau das wird
+  # gespeichert: der Pfad skaliert verlustfrei in jedes PDF und ist ein
+  # Bruchteil so groß wie ein Bild. Druck- und Geschwindigkeitsdaten des
+  # Striches werden bewusst NICHT ausgelesen — die wären biometrisch
+  # (Art. 9 DSGVO) und würden die Beweistabelle in eine andere Rechtsklasse
+  # heben.
+  signature: ^6.3.0
+
   # Declarative animation DSL — replaces hand-rolled AnimationController +
   # Timer in the Claudiu welcome flow. Staggered cascades, fades, slides
   # and delays all express as a single chained expression.

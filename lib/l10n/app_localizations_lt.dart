@@ -2881,4 +2881,102 @@ class AppLocalizationsLt extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Parašai';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Šiuo metu nėra nieko, ką reikėtų pasirašyti.';
+
+  @override
+  String get signaturStatusOffen => 'Laukiama Jūsų parašo';
+
+  @override
+  String get signaturStatusSigniert => 'Jūsų pasirašyta';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Jūsų atmesta';
+
+  @override
+  String get signaturStatusWiderrufen => 'Asociacijos atšaukta';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Terminas pasibaigė';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Prašome perskaityti dokumentą iki galo (puslapis $gelesen iš $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Pereiti prie pasirašymo';
+
+  @override
+  String get signaturAblehnen => 'Atmesti';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Apie tai bus pranešta asociacijai. Galite nurodyti savo priežastis.';
+
+  @override
+  String get signaturAblehnenGrund => 'Priežastis (neprivaloma)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Pasirašykite pirštu baltame laukelyje.';
+
+  @override
+  String get signaturNochmal => 'Dar kartą';
+
+  @override
+  String get signaturZurueckZumDokument => 'Atgal į dokumentą';
+
+  @override
+  String get signaturCodeAnfordern => 'Gauti kodą SMS žinute';
+
+  @override
+  String get signaturCodeUnterwegs => 'Kodas jau siunčiamas.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Išsiuntėme Jums kodą telefono numeriu $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Siųsti kodą dar kartą';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Pasirašyti dabar';
+
+  @override
+  String get signaturCodeFalsch => 'Kodas neteisingas.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Kodas nebegalioja. Prašome gauti naują kodą.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Per daug nesėkmingų bandymų. Prašome gauti naują kodą.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Jūsų paskyroje nenurodytas mobiliojo telefono numeris. Be jo negalime Jums išsiųsti kodo — prašome kreiptis į asociacijos pirmininką.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Kodo išsiųsti nepavyko.';
+
+  @override
+  String get signaturLeer => 'Pirmiausia prašome pasirašyti.';
+
+  @override
+  String get signaturErfolg => 'Ačiū — Jūsų parašas gautas.';
+
+  @override
+  String get signaturFehlgeschlagen => 'Nepavyko. Prašome pabandyti dar kartą.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Antspaudas dar ruošiamas. Prašome pabandyti dar kartą po minutės.';
 }

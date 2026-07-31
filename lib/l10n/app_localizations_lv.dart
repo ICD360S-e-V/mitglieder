@@ -2877,4 +2877,103 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Paraksti';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Šobrīd nav neviena dokumenta, ko parakstīt.';
+
+  @override
+  String get signaturStatusOffen => 'Gaida Jūsu parakstu';
+
+  @override
+  String get signaturStatusSigniert => 'Jūs to parakstījāt';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Jūs to noraidījāt';
+
+  @override
+  String get signaturStatusWiderrufen => 'Biedrība to atsauca';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Termiņš beidzies';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Lūdzu, izlasiet dokumentu līdz beigām (lappuse $gelesen no $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Pāriet pie paraksta';
+
+  @override
+  String get signaturAblehnen => 'Noraidīt';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Biedrība par to saņems paziņojumu. Jūs varat norādīt savus iemeslus.';
+
+  @override
+  String get signaturAblehnenGrund => 'Iemesls (nav obligāts)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Parakstieties ar pirkstu baltajā laukā.';
+
+  @override
+  String get signaturNochmal => 'Vēlreiz';
+
+  @override
+  String get signaturZurueckZumDokument => 'Atpakaļ pie dokumenta';
+
+  @override
+  String get signaturCodeAnfordern => 'Pieprasīt kodu ar SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Kods ir ceļā.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Mēs nosūtījām Jums kodu uz numuru $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Nosūtīt kodu vēlreiz';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Parakstīt tagad';
+
+  @override
+  String get signaturCodeFalsch => 'Kods nav pareizs.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Koda derīguma termiņš ir beidzies. Lūdzu, pieprasiet jaunu kodu.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Pārāk daudz kļūdainu mēģinājumu. Lūdzu, pieprasiet jaunu kodu.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Jūsu kontā nav norādīts mobilā tālruņa numurs. Bez tā mēs nevaram Jums nosūtīt kodu — lūdzu, sazinieties ar biedrības priekšsēdētāju.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Kodu neizdevās nosūtīt.';
+
+  @override
+  String get signaturLeer => 'Lūdzu, vispirms parakstieties.';
+
+  @override
+  String get signaturErfolg => 'Paldies — Jūsu paraksts ir saņemts.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Tas neizdevās. Lūdzu, mēģiniet vēlreiz.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Zīmogs vēl tiek izveidots. Lūdzu, mēģiniet vēlreiz pēc minūtes.';
 }

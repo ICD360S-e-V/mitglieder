@@ -2880,4 +2880,102 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Allekirjoitukset';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Tällä hetkellä ei ole mitään allekirjoitettavaa.';
+
+  @override
+  String get signaturStatusOffen => 'Odottaa allekirjoitustasi';
+
+  @override
+  String get signaturStatusSigniert => 'Olet allekirjoittanut';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Olet kieltäytynyt';
+
+  @override
+  String get signaturStatusWiderrufen => 'Yhdistys on peruuttanut pyynnön';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Määräaika on umpeutunut';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Lue asiakirja loppuun asti (sivu $gelesen/$gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Siirry allekirjoitukseen';
+
+  @override
+  String get signaturAblehnen => 'Kieltäydy';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Yhdistys saa tästä ilmoituksen. Voit halutessasi kertoa syyn.';
+
+  @override
+  String get signaturAblehnenGrund => 'Syy (valinnainen)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Piirrä allekirjoituksesi sormella valkoiseen kenttään.';
+
+  @override
+  String get signaturNochmal => 'Piirrä uudelleen';
+
+  @override
+  String get signaturZurueckZumDokument => 'Takaisin asiakirjaan';
+
+  @override
+  String get signaturCodeAnfordern => 'Pyydä koodi tekstiviestillä';
+
+  @override
+  String get signaturCodeUnterwegs => 'Koodi on matkalla.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Lähetimme koodin numeroon $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Lähetä koodi uudelleen';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Allekirjoita nyt';
+
+  @override
+  String get signaturCodeFalsch => 'Koodi ei ole oikein.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Koodi on vanhentunut. Pyydä uusi koodi.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Liian monta virheellistä yritystä. Pyydä uusi koodi.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Tilillesi ei ole tallennettu matkapuhelinnumeroa. Ilman sitä emme voi lähettää sinulle koodia — ota yhteyttä yhdistyksen puheenjohtajaan.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Koodin lähettäminen ei onnistunut.';
+
+  @override
+  String get signaturLeer => 'Piirrä ensin allekirjoituksesi.';
+
+  @override
+  String get signaturErfolg => 'Kiitos — allekirjoituksesi on vastaanotettu.';
+
+  @override
+  String get signaturFehlgeschlagen => 'Jokin meni pieleen. Yritä uudelleen.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Allekirjoitettua asiakirjaa valmistellaan vielä. Yritäthän uudelleen minuutin kuluttua.';
 }

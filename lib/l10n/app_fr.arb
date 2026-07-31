@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} étapes validées par le Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Détails de la demande",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} étape à corriger",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Motif du Vorstand :",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Approbations du Vorstand ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "En attente du 2e Vorstand",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Appelle-nous, s’il te plaît",
   "wizardDuplicateCallUsBody": "Ton nom et ta date de naissance figurent déjà chez nous, mais on ne peut pas te donner les détails via l'app. Appelle-nous — le Vorstand t'expliquera la situation directement.",
   "wizardChatHelp": "Parlons",
-  "wizardChatHelpSubtitle": "Chat en direct avec le Vorstand · réponse rapide"
+  "wizardChatHelpSubtitle": "Chat en direct avec le Vorstand · réponse rapide",
+  "signaturStatusWiderrufen": "Retiré par l'association",
+  "signaturStatusAbgelaufen": "Délai expiré",
+  "signaturZurueckZumDokument": "Retour au document",
+  "signaturCodeGesendetAn": "Nous vous avons envoyé un code au numéro {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Signatures",
+  "signaturZuVieleVersuche": "Trop de tentatives échouées. Veuillez demander un nouveau code.",
+  "signaturAblehnenHinweis": "L'association en sera informée. Vous pouvez indiquer vos motifs.",
+  "signaturStatusAbgelehnt": "Vous avez refusé",
+  "signaturAblehnen": "Refuser",
+  "signaturWeiterZurUnterschrift": "Passer à la signature",
+  "signaturCodeUnterwegs": "Le code est en cours d'envoi.",
+  "signaturCodeErneutSenden": "Renvoyer le code",
+  "signaturJetztUnterschreiben": "Signer maintenant",
+  "signaturNochmal": "Recommencer",
+  "signaturLeer": "Veuillez d'abord signer.",
+  "signaturNichtsOffen": "Aucun document n'attend votre signature pour le moment.",
+  "signaturKeineRufnummer": "Aucun numéro de téléphone mobile n'est enregistré pour votre compte. Sans ce numéro, nous ne pouvons pas vous envoyer de code — veuillez vous adresser au président de l'association.",
+  "signaturCodeFehlgeschlagen": "Le code n'a pas pu être envoyé.",
+  "signaturFehlgeschlagen": "Cela n'a pas fonctionné. Veuillez réessayer.",
+  "signaturStatusOffen": "En attente de votre signature",
+  "signaturCodeAbgelaufen": "Le code a expiré. Veuillez en demander un nouveau.",
+  "signaturCodeAnfordern": "Demander un code par SMS",
+  "signaturBitteGanzLesen": "Veuillez lire le document jusqu'à la fin (page {gelesen} sur {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Signez avec votre doigt dans la zone blanche.",
+  "signaturErfolg": "Merci — nous avons bien reçu votre signature.",
+  "signaturAblehnenGrund": "Motif (facultatif)",
+  "signaturCodeFalsch": "Le code n'est pas correct.",
+  "signaturStatusSigniert": "Vous avez signé",
+  "signaturSiegelInArbeit": "Le document scellé est encore en cours de préparation. Veuillez réessayer dans une minute."
 }

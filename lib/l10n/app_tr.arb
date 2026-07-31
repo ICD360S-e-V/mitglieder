@@ -1365,5 +1365,51 @@
   "benachrichtigungenLeer": "Bildirim yok",
   "benachrichtigungenAlleGelesen": "Tümünü okundu olarak işaretle",
   "benachrichtigungWetterFrage": "Yaşadığınız yerde şiddetli hava durumunda uyarılmak ister misiniz?",
-  "benachrichtigungWetterDetail": "Yalnızca Alman Meteoroloji Servisi'nin „şiddetli“ ve üzeri resmî uyarıları — her yağmurda değil."
+  "benachrichtigungWetterDetail": "Yalnızca Alman Meteoroloji Servisi'nin „şiddetli“ ve üzeri resmî uyarıları — her yağmurda değil.",
+  "signaturTitel": "İmzalar",
+  "signaturNichtsOffen": "Şu anda imzanızı bekleyen bir belge yok.",
+  "signaturStatusOffen": "İmzanızı bekliyor",
+  "signaturStatusSigniert": "Tarafınızdan imzalandı",
+  "signaturStatusAbgelehnt": "Tarafınızdan reddedildi",
+  "signaturStatusWiderrufen": "Dernek tarafından geri çekildi",
+  "signaturStatusAbgelaufen": "Süre doldu",
+  "signaturBitteGanzLesen": "Lütfen belgeyi sonuna kadar okuyun (sayfa {gelesen} / {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturWeiterZurUnterschrift": "İmzaya geç",
+  "signaturAblehnen": "Reddet",
+  "signaturAblehnenHinweis": "Dernek bilgilendirilecektir. Gerekçenizi yazabilirsiniz.",
+  "signaturAblehnenGrund": "Gerekçe (isteğe bağlı)",
+  "signaturMitFingerHinweis": "Beyaz alana parmağınızla imzalayın.",
+  "signaturNochmal": "Yeniden",
+  "signaturZurueckZumDokument": "Belgeye dön",
+  "signaturCodeAnfordern": "SMS ile kod iste",
+  "signaturCodeUnterwegs": "Kod yolda.",
+  "signaturCodeGesendetAn": "{nummer} numarasına bir kod gönderdik.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturCodeErneutSenden": "Kodu tekrar gönder",
+  "signaturJetztUnterschreiben": "Şimdi imzala",
+  "signaturCodeFalsch": "Kod doğru değil.",
+  "signaturCodeAbgelaufen": "Kodun süresi doldu. Lütfen yeni bir kod isteyin.",
+  "signaturZuVieleVersuche": "Çok fazla hatalı deneme. Lütfen yeni bir kod isteyin.",
+  "signaturKeineRufnummer": "Hesabınızda kayıtlı bir cep telefonu numarası yok. Numara olmadan size kod gönderemeyiz — lütfen dernek başkanına başvurun.",
+  "signaturCodeFehlgeschlagen": "Kod gönderilemedi.",
+  "signaturLeer": "Lütfen önce imzalayın.",
+  "signaturErfolg": "Teşekkürler — imzanız alındı.",
+  "signaturFehlgeschlagen": "Bu işe yaramadı. Lütfen tekrar deneyin.",
+  "signaturSiegelInArbeit": "Mühür henüz oluşturuluyor. Lütfen bir dakika sonra tekrar deneyin."
 }

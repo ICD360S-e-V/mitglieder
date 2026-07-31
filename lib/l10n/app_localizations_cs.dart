@@ -2877,4 +2877,101 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Podpisy';
+
+  @override
+  String get signaturNichtsOffen => 'Momentálně nemáte nic k podpisu.';
+
+  @override
+  String get signaturStatusOffen => 'Čeká na váš podpis';
+
+  @override
+  String get signaturStatusSigniert => 'Podepsáno vámi';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Odmítnuto vámi';
+
+  @override
+  String get signaturStatusWiderrufen => 'Odvoláno spolkem';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Lhůta vypršela';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Přečtěte si prosím dokument až do konce (strana $gelesen z $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Pokračovat k podpisu';
+
+  @override
+  String get signaturAblehnen => 'Odmítnout';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Spolek o tom bude informován. Můžete uvést své důvody.';
+
+  @override
+  String get signaturAblehnenGrund => 'Důvod (nepovinné)';
+
+  @override
+  String get signaturMitFingerHinweis => 'Podepište se prstem do bílého pole.';
+
+  @override
+  String get signaturNochmal => 'Znovu';
+
+  @override
+  String get signaturZurueckZumDokument => 'Zpět k dokumentu';
+
+  @override
+  String get signaturCodeAnfordern => 'Poslat kód přes SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Kód je na cestě.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Poslali jsme vám kód na číslo $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Poslat kód znovu';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Podepsat nyní';
+
+  @override
+  String get signaturCodeFalsch => 'Kód není správný.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Platnost kódu vypršela. Vyžádejte si prosím nový kód.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Příliš mnoho chybných pokusů. Vyžádejte si prosím nový kód.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'U vašeho účtu není uvedeno žádné číslo mobilního telefonu. Bez něj vám nemůžeme poslat kód — obraťte se prosím na předsedu spolku.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Kód se nepodařilo odeslat.';
+
+  @override
+  String get signaturLeer => 'Nejprve se prosím podepište.';
+
+  @override
+  String get signaturErfolg => 'Děkujeme — váš podpis jsme obdrželi.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Nepodařilo se to. Zkuste to prosím znovu.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Podepsaný dokument se ještě připravuje. Zkuste to prosím za minutu znovu.';
 }

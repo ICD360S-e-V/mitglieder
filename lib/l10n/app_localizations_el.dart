@@ -2897,4 +2897,105 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Υπογραφές';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Αυτή τη στιγμή δεν υπάρχει τίποτα προς υπογραφή.';
+
+  @override
+  String get signaturStatusOffen => 'Αναμένεται η υπογραφή σας';
+
+  @override
+  String get signaturStatusSigniert => 'Υπογράφηκε από εσάς';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Απορρίφθηκε από εσάς';
+
+  @override
+  String get signaturStatusWiderrufen => 'Αποσύρθηκε από τον σύλλογο';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Η προθεσμία έληξε';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Παρακαλούμε διαβάστε το έγγραφο μέχρι το τέλος (σελίδα $gelesen από $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Συνέχεια στην υπογραφή';
+
+  @override
+  String get signaturAblehnen => 'Απόρριψη';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Ο σύλλογος θα ενημερωθεί σχετικά. Μπορείτε να αναφέρετε τους λόγους σας.';
+
+  @override
+  String get signaturAblehnenGrund => 'Λόγος (προαιρετικό)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Υπογράψτε με το δάχτυλό σας μέσα στο λευκό πλαίσιο.';
+
+  @override
+  String get signaturNochmal => 'Ξανά';
+
+  @override
+  String get signaturZurueckZumDokument => 'Πίσω στο έγγραφο';
+
+  @override
+  String get signaturCodeAnfordern => 'Αποστολή κωδικού με SMS';
+
+  @override
+  String get signaturCodeUnterwegs =>
+      'Ο κωδικός στάλθηκε και θα φτάσει σε λίγο.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Σας στείλαμε έναν κωδικό στο $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Νέα αποστολή κωδικού';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Υπογραφή τώρα';
+
+  @override
+  String get signaturCodeFalsch => 'Ο κωδικός δεν είναι σωστός.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Ο κωδικός έληξε. Παρακαλούμε ζητήστε νέο κωδικό.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Πάρα πολλές λανθασμένες προσπάθειες. Παρακαλούμε ζητήστε νέο κωδικό.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Στον λογαριασμό σας δεν έχει καταχωρηθεί αριθμός κινητού τηλεφώνου. Χωρίς αυτόν δεν μπορούμε να σας στείλουμε κωδικό — παρακαλούμε απευθυνθείτε στον πρόεδρο του συλλόγου.';
+
+  @override
+  String get signaturCodeFehlgeschlagen =>
+      'Δεν ήταν δυνατή η αποστολή του κωδικού.';
+
+  @override
+  String get signaturLeer => 'Παρακαλούμε υπογράψτε πρώτα.';
+
+  @override
+  String get signaturErfolg => 'Ευχαριστούμε — λάβαμε την υπογραφή σας.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Κάτι δεν πήγε καλά. Παρακαλούμε προσπαθήστε ξανά.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Η σφραγίδα δημιουργείται ακόμη. Παρακαλώ δοκιμάστε ξανά σε ένα λεπτό.';
 }

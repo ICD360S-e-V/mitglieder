@@ -1365,5 +1365,51 @@
   "benachrichtigungenLeer": "Keine Benachrichtigungen",
   "benachrichtigungenAlleGelesen": "Alle als gelesen markieren",
   "benachrichtigungWetterFrage": "Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?",
-  "benachrichtigungWetterDetail": "Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen."
+  "benachrichtigungWetterDetail": "Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.",
+  "signaturTitel": "Unterschriften",
+  "signaturNichtsOffen": "Zurzeit liegt nichts zur Unterschrift vor.",
+  "signaturStatusOffen": "Wartet auf Ihre Unterschrift",
+  "signaturStatusSigniert": "Von Ihnen unterschrieben",
+  "signaturStatusAbgelehnt": "Von Ihnen abgelehnt",
+  "signaturStatusWiderrufen": "Vom Verein zurückgezogen",
+  "signaturStatusAbgelaufen": "Frist abgelaufen",
+  "signaturBitteGanzLesen": "Bitte lesen Sie das Dokument bis zum Ende (Seite {gelesen} von {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturWeiterZurUnterschrift": "Weiter zur Unterschrift",
+  "signaturAblehnen": "Ablehnen",
+  "signaturAblehnenHinweis": "Der Verein wird darüber benachrichtigt. Sie können Ihre Gründe angeben.",
+  "signaturAblehnenGrund": "Grund (freiwillig)",
+  "signaturMitFingerHinweis": "Unterschreiben Sie mit dem Finger im weißen Feld.",
+  "signaturNochmal": "Noch einmal",
+  "signaturZurueckZumDokument": "Zurück zum Dokument",
+  "signaturCodeAnfordern": "Code per SMS anfordern",
+  "signaturCodeUnterwegs": "Der Code ist unterwegs.",
+  "signaturCodeGesendetAn": "Wir haben Ihnen einen Code an {nummer} geschickt.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturCodeErneutSenden": "Code erneut senden",
+  "signaturJetztUnterschreiben": "Jetzt unterschreiben",
+  "signaturCodeFalsch": "Der Code stimmt nicht.",
+  "signaturCodeAbgelaufen": "Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.",
+  "signaturZuVieleVersuche": "Zu viele Fehlversuche. Bitte fordern Sie einen neuen Code an.",
+  "signaturKeineRufnummer": "Für Ihr Konto ist keine Mobilnummer hinterlegt. Ohne sie können wir Ihnen keinen Code schicken — bitte wenden Sie sich an den Vorsitzenden.",
+  "signaturCodeFehlgeschlagen": "Der Code konnte nicht verschickt werden.",
+  "signaturLeer": "Bitte unterschreiben Sie zuerst.",
+  "signaturErfolg": "Danke — Ihre Unterschrift ist eingegangen.",
+  "signaturFehlgeschlagen": "Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.",
+  "signaturSiegelInArbeit": "Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal."
 }

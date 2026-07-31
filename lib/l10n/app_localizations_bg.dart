@@ -2886,4 +2886,101 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Подписи';
+
+  @override
+  String get signaturNichtsOffen =>
+      'В момента няма документи, които чакат Вашия подпис.';
+
+  @override
+  String get signaturStatusOffen => 'Чака Вашия подпис';
+
+  @override
+  String get signaturStatusSigniert => 'Подписано от Вас';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Отхвърлено от Вас';
+
+  @override
+  String get signaturStatusWiderrufen => 'Оттеглено от сдружението';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Срокът изтече';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Моля, прочетете документа докрай (страница $gelesen от $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Продължете към подписа';
+
+  @override
+  String get signaturAblehnen => 'Отхвърляне';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Сдружението ще бъде уведомено за това. Можете да посочите причините си.';
+
+  @override
+  String get signaturAblehnenGrund => 'Причина (по желание)';
+
+  @override
+  String get signaturMitFingerHinweis => 'Подпишете се с пръст в бялото поле.';
+
+  @override
+  String get signaturNochmal => 'Още веднъж';
+
+  @override
+  String get signaturZurueckZumDokument => 'Обратно към документа';
+
+  @override
+  String get signaturCodeAnfordern => 'Заявете код по SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Кодът е на път.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Изпратихме Ви код на $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Заявете нов код';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Подпишете сега';
+
+  @override
+  String get signaturCodeFalsch => 'Кодът не е верен.';
+
+  @override
+  String get signaturCodeAbgelaufen => 'Кодът е изтекъл. Моля, заявете нов.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Твърде много неуспешни опити. Моля, заявете нов код.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Във Вашия профил не е записан мобилен номер. Без него не можем да Ви изпратим код — моля, обърнете се към председателя на сдружението.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Не успяхме да изпратим кода.';
+
+  @override
+  String get signaturLeer => 'Моля, първо се подпишете.';
+
+  @override
+  String get signaturErfolg => 'Благодарим Ви — получихме Вашия подпис.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Нещо не се получи. Моля, опитайте отново.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Подписаният документ още се подготвя. Моля, опитайте отново след една минута.';
 }

@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} kroků ověřeno představenstvem Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Detaily žádosti",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} krok vyžaduje opravu",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Důvod od Vorstandu:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Schválení Vorstandu ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Čeká se na 2. Vorstand",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Prosím, zavolej nám",
   "wizardDuplicateCallUsBody": "Tvoje jméno a datum narození u nás už figurují, ale podrobnosti přes aplikaci sdělit nemůžeme. Zavolej nám — Vorstand ti situaci vysvětlí osobně.",
   "wizardChatHelp": "Promluvíme si",
-  "wizardChatHelpSubtitle": "Živý chat s Vorstandem · rychlá odpověď"
+  "wizardChatHelpSubtitle": "Živý chat s Vorstandem · rychlá odpověď",
+  "signaturStatusWiderrufen": "Odvoláno spolkem",
+  "signaturStatusAbgelaufen": "Lhůta vypršela",
+  "signaturZurueckZumDokument": "Zpět k dokumentu",
+  "signaturCodeGesendetAn": "Poslali jsme vám kód na číslo {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Podpisy",
+  "signaturZuVieleVersuche": "Příliš mnoho chybných pokusů. Vyžádejte si prosím nový kód.",
+  "signaturAblehnenHinweis": "Spolek o tom bude informován. Můžete uvést své důvody.",
+  "signaturStatusAbgelehnt": "Odmítnuto vámi",
+  "signaturAblehnen": "Odmítnout",
+  "signaturWeiterZurUnterschrift": "Pokračovat k podpisu",
+  "signaturCodeUnterwegs": "Kód je na cestě.",
+  "signaturCodeErneutSenden": "Poslat kód znovu",
+  "signaturJetztUnterschreiben": "Podepsat nyní",
+  "signaturNochmal": "Znovu",
+  "signaturLeer": "Nejprve se prosím podepište.",
+  "signaturNichtsOffen": "Momentálně nemáte nic k podpisu.",
+  "signaturKeineRufnummer": "U vašeho účtu není uvedeno žádné číslo mobilního telefonu. Bez něj vám nemůžeme poslat kód — obraťte se prosím na předsedu spolku.",
+  "signaturCodeFehlgeschlagen": "Kód se nepodařilo odeslat.",
+  "signaturFehlgeschlagen": "Nepodařilo se to. Zkuste to prosím znovu.",
+  "signaturStatusOffen": "Čeká na váš podpis",
+  "signaturCodeAbgelaufen": "Platnost kódu vypršela. Vyžádejte si prosím nový kód.",
+  "signaturCodeAnfordern": "Poslat kód přes SMS",
+  "signaturBitteGanzLesen": "Přečtěte si prosím dokument až do konce (strana {gelesen} z {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Podepište se prstem do bílého pole.",
+  "signaturErfolg": "Děkujeme — váš podpis jsme obdrželi.",
+  "signaturAblehnenGrund": "Důvod (nepovinné)",
+  "signaturCodeFalsch": "Kód není správný.",
+  "signaturStatusSigniert": "Podepsáno vámi",
+  "signaturSiegelInArbeit": "Podepsaný dokument se ještě připravuje. Zkuste to prosím za minutu znovu."
 }

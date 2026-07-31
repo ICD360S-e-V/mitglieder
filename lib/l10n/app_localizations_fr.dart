@@ -2906,4 +2906,103 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Signatures';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Aucun document n\'attend votre signature pour le moment.';
+
+  @override
+  String get signaturStatusOffen => 'En attente de votre signature';
+
+  @override
+  String get signaturStatusSigniert => 'Vous avez signé';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Vous avez refusé';
+
+  @override
+  String get signaturStatusWiderrufen => 'Retiré par l\'association';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Délai expiré';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Veuillez lire le document jusqu\'à la fin (page $gelesen sur $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Passer à la signature';
+
+  @override
+  String get signaturAblehnen => 'Refuser';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'L\'association en sera informée. Vous pouvez indiquer vos motifs.';
+
+  @override
+  String get signaturAblehnenGrund => 'Motif (facultatif)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Signez avec votre doigt dans la zone blanche.';
+
+  @override
+  String get signaturNochmal => 'Recommencer';
+
+  @override
+  String get signaturZurueckZumDokument => 'Retour au document';
+
+  @override
+  String get signaturCodeAnfordern => 'Demander un code par SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Le code est en cours d\'envoi.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Nous vous avons envoyé un code au numéro $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Renvoyer le code';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Signer maintenant';
+
+  @override
+  String get signaturCodeFalsch => 'Le code n\'est pas correct.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Le code a expiré. Veuillez en demander un nouveau.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Trop de tentatives échouées. Veuillez demander un nouveau code.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Aucun numéro de téléphone mobile n\'est enregistré pour votre compte. Sans ce numéro, nous ne pouvons pas vous envoyer de code — veuillez vous adresser au président de l\'association.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Le code n\'a pas pu être envoyé.';
+
+  @override
+  String get signaturLeer => 'Veuillez d\'abord signer.';
+
+  @override
+  String get signaturErfolg => 'Merci — nous avons bien reçu votre signature.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Cela n\'a pas fonctionné. Veuillez réessayer.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Le document scellé est encore en cours de préparation. Veuillez réessayer dans une minute.';
 }

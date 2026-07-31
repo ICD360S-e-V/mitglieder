@@ -2888,4 +2888,100 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Aláírások';
+
+  @override
+  String get signaturNichtsOffen => 'Jelenleg nincs aláírásra váró dokumentum.';
+
+  @override
+  String get signaturStatusOffen => 'Az Ön aláírására vár';
+
+  @override
+  String get signaturStatusSigniert => 'Ön aláírta';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Ön elutasította';
+
+  @override
+  String get signaturStatusWiderrufen => 'Az egyesület visszavonta';
+
+  @override
+  String get signaturStatusAbgelaufen => 'A határidő lejárt';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Kérjük, olvassa el a dokumentumot a végéig ($gelesen. oldal, összesen $gesamt oldal).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Tovább az aláíráshoz';
+
+  @override
+  String get signaturAblehnen => 'Elutasítás';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Az egyesület értesítést kap róla. Megadhatja az indokait.';
+
+  @override
+  String get signaturAblehnenGrund => 'Indok (nem kötelező)';
+
+  @override
+  String get signaturMitFingerHinweis => 'Írja alá az ujjával a fehér mezőben.';
+
+  @override
+  String get signaturNochmal => 'Újra';
+
+  @override
+  String get signaturZurueckZumDokument => 'Vissza a dokumentumhoz';
+
+  @override
+  String get signaturCodeAnfordern => 'Kód kérése SMS-ben';
+
+  @override
+  String get signaturCodeUnterwegs => 'A kód úton van.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Kódot küldtünk Önnek erre a számra: $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Kód újraküldése';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Most aláírom';
+
+  @override
+  String get signaturCodeFalsch => 'A kód nem helyes.';
+
+  @override
+  String get signaturCodeAbgelaufen => 'A kód lejárt. Kérjük, igényeljen újat.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Túl sok sikertelen próbálkozás. Kérjük, igényeljen új kódot.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Az Ön fiókjához nincs mobilszám megadva. Enélkül nem tudunk kódot küldeni Önnek – kérjük, forduljon az egyesület elnökéhez.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'A kódot nem sikerült elküldeni.';
+
+  @override
+  String get signaturLeer => 'Kérjük, először írja alá.';
+
+  @override
+  String get signaturErfolg => 'Köszönjük – az aláírását megkaptuk.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Sajnos nem sikerült. Kérjük, próbálja meg újra.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'A pecsét még készül. Kérjük, próbálja meg egy perc múlva újra.';
 }

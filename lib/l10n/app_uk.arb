@@ -1344,5 +1344,51 @@
   "benachrichtigungenLeer": "Немає сповіщень",
   "benachrichtigungenAlleGelesen": "Позначити всі як прочитані",
   "benachrichtigungWetterFrage": "Бажаєте отримувати попередження про негоду за місцем проживання?",
-  "benachrichtigungWetterDetail": "Лише офіційні попередження німецької метеослужби рівня «сильне» і вище — не за кожного дощу."
+  "benachrichtigungWetterDetail": "Лише офіційні попередження німецької метеослужби рівня «сильне» і вище — не за кожного дощу.",
+  "signaturTitel": "Підписи",
+  "signaturNichtsOffen": "Наразі немає документів на підпис.",
+  "signaturStatusOffen": "Очікує на ваш підпис",
+  "signaturStatusSigniert": "Підписано вами",
+  "signaturStatusAbgelehnt": "Відхилено вами",
+  "signaturStatusWiderrufen": "Відкликано об'єднанням",
+  "signaturStatusAbgelaufen": "Термін минув",
+  "signaturBitteGanzLesen": "Будь ласка, прочитайте документ до кінця (сторінка {gelesen} з {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturWeiterZurUnterschrift": "Перейти до підпису",
+  "signaturAblehnen": "Відхилити",
+  "signaturAblehnenHinweis": "Об'єднання буде повідомлено. Ви можете вказати причини.",
+  "signaturAblehnenGrund": "Причина (необов'язково)",
+  "signaturMitFingerHinweis": "Підпишіться пальцем у білому полі.",
+  "signaturNochmal": "Заново",
+  "signaturZurueckZumDokument": "Назад до документа",
+  "signaturCodeAnfordern": "Запросити код через SMS",
+  "signaturCodeUnterwegs": "Код надсилається.",
+  "signaturCodeGesendetAn": "Ми надіслали код на {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturCodeErneutSenden": "Надіслати код ще раз",
+  "signaturJetztUnterschreiben": "Підписати",
+  "signaturCodeFalsch": "Код неправильний.",
+  "signaturCodeAbgelaufen": "Термін дії коду минув. Будь ласка, запросіть новий.",
+  "signaturZuVieleVersuche": "Забагато невдалих спроб. Будь ласка, запросіть новий код.",
+  "signaturKeineRufnummer": "Для вашого облікового запису не вказано номер мобільного. Без нього ми не можемо надіслати код — зверніться до голови.",
+  "signaturCodeFehlgeschlagen": "Не вдалося надіслати код.",
+  "signaturLeer": "Спочатку поставте підпис.",
+  "signaturErfolg": "Дякуємо — ваш підпис отримано.",
+  "signaturFehlgeschlagen": "Не вийшло. Будь ласка, спробуйте ще раз.",
+  "signaturSiegelInArbeit": "Печатка ще створюється. Будь ласка, спробуйте ще раз за хвилину."
 }

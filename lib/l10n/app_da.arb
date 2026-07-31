@@ -1265,8 +1265,12 @@
   "wizardFinalStatusStepsValidated": "{reviewed}/{total} trin valideret af Vorstand",
   "@wizardFinalStatusStepsValidated": {
     "placeholders": {
-      "reviewed": { "type": "int" },
-      "total": { "type": "int" }
+      "reviewed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeSheetTitle": "Ansøgningsdetaljer",
@@ -1277,7 +1281,9 @@
   "wizardFinalStatusRejectionCount": "{count} trin kræver rettelse",
   "@wizardFinalStatusRejectionCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalStufeRejectionReason": "Begrundelse fra Vorstand:",
@@ -1285,8 +1291,12 @@
   "wizardFinalApprovalsHeader": "Vorstand-godkendelser ({current}/{total})",
   "@wizardFinalApprovalsHeader": {
     "placeholders": {
-      "current": { "type": "int" },
-      "total": { "type": "int" }
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "wizardFinalApprovalAwaiting": "Afventer 2. Vorstand",
@@ -1318,5 +1328,51 @@
   "wizardDuplicateCallUsTitle": "Ring venligst til os",
   "wizardDuplicateCallUsBody": "Dit navn og fødselsdato findes allerede hos os, men vi kan ikke dele detaljerne via appen. Ring til os — Vorstand forklarer situationen direkte.",
   "wizardChatHelp": "Lad os snakke",
-  "wizardChatHelpSubtitle": "Livechat med Vorstand · hurtigt svar"
+  "wizardChatHelpSubtitle": "Livechat med Vorstand · hurtigt svar",
+  "signaturStatusWiderrufen": "Trukket tilbage af foreningen",
+  "signaturStatusAbgelaufen": "Fristen er udløbet",
+  "signaturZurueckZumDokument": "Tilbage til dokumentet",
+  "signaturCodeGesendetAn": "Vi har sendt dig en kode til {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturTitel": "Underskrifter",
+  "signaturZuVieleVersuche": "For mange forkerte forsøg. Bed venligst om en ny kode.",
+  "signaturAblehnenHinweis": "Foreningen får besked. Du kan angive en begrundelse.",
+  "signaturStatusAbgelehnt": "Afvist af dig",
+  "signaturAblehnen": "Afvis",
+  "signaturWeiterZurUnterschrift": "Videre til underskrift",
+  "signaturCodeUnterwegs": "Koden er på vej.",
+  "signaturCodeErneutSenden": "Send koden igen",
+  "signaturJetztUnterschreiben": "Skriv under nu",
+  "signaturNochmal": "Skriv igen",
+  "signaturLeer": "Skriv venligst under først.",
+  "signaturNichtsOffen": "Der er i øjeblikket intet til underskrift.",
+  "signaturKeineRufnummer": "Der er ikke registreret noget mobilnummer på din konto. Uden et mobilnummer kan vi ikke sende dig en kode — kontakt venligst formanden.",
+  "signaturCodeFehlgeschlagen": "Koden kunne ikke sendes.",
+  "signaturFehlgeschlagen": "Det lykkedes ikke. Prøv venligst igen.",
+  "signaturStatusOffen": "Venter på din underskrift",
+  "signaturCodeAbgelaufen": "Koden er udløbet. Bed venligst om en ny.",
+  "signaturCodeAnfordern": "Send kode via SMS",
+  "signaturBitteGanzLesen": "Læs venligst dokumentet helt til ende (side {gelesen} af {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturMitFingerHinweis": "Skriv under med fingeren i det hvide felt.",
+  "signaturErfolg": "Tak — vi har modtaget din underskrift.",
+  "signaturAblehnenGrund": "Begrundelse (valgfri)",
+  "signaturCodeFalsch": "Koden er forkert.",
+  "signaturStatusSigniert": "Underskrevet af dig",
+  "signaturSiegelInArbeit": "Det signerede dokument er ved at blive oprettet. Prøv venligst igen om et minut."
 }

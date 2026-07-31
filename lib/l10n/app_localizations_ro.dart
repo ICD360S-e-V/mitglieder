@@ -2887,4 +2887,102 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Doar avertizări oficiale ale serviciului meteo german, de la nivelul „sever” în sus — nu la fiecare ploaie.';
+
+  @override
+  String get signaturTitel => 'Semnături';
+
+  @override
+  String get signaturNichtsOffen => 'Momentan nu aveți nimic de semnat.';
+
+  @override
+  String get signaturStatusOffen => 'Așteaptă semnătura dumneavoastră';
+
+  @override
+  String get signaturStatusSigniert => 'Semnat de dumneavoastră';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Refuzat de dumneavoastră';
+
+  @override
+  String get signaturStatusWiderrufen => 'Retras de asociație';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Termen expirat';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Vă rugăm să citiți documentul până la final (pagina $gelesen din $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Continuați spre semnătură';
+
+  @override
+  String get signaturAblehnen => 'Refuz';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Asociația va fi înștiințată. Puteți menționa motivele.';
+
+  @override
+  String get signaturAblehnenGrund => 'Motiv (opțional)';
+
+  @override
+  String get signaturMitFingerHinweis => 'Semnați cu degetul în câmpul alb.';
+
+  @override
+  String get signaturNochmal => 'Din nou';
+
+  @override
+  String get signaturZurueckZumDokument => 'Înapoi la document';
+
+  @override
+  String get signaturCodeAnfordern => 'Cere codul prin SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Codul este pe drum.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'V-am trimis un cod la $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Trimite codul din nou';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Semnează acum';
+
+  @override
+  String get signaturCodeFalsch => 'Codul nu este corect.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Codul a expirat. Vă rugăm să cereți unul nou.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Prea multe încercări greșite. Vă rugăm să cereți un cod nou.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Contul dumneavoastră nu are un număr de mobil înregistrat. Fără el nu vă putem trimite un cod — vă rugăm să vă adresați președintelui.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Codul nu a putut fi trimis.';
+
+  @override
+  String get signaturLeer => 'Vă rugăm să semnați mai întâi.';
+
+  @override
+  String get signaturErfolg =>
+      'Vă mulțumim — semnătura dumneavoastră a fost înregistrată.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Nu a funcționat. Vă rugăm să încercați din nou.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Sigiliul este încă în curs de creare. Vă rugăm să încercați din nou peste un minut.';
 }

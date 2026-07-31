@@ -2877,4 +2877,101 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Underskrifter';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Just nu finns det inget som väntar på din underskrift.';
+
+  @override
+  String get signaturStatusOffen => 'Väntar på din underskrift';
+
+  @override
+  String get signaturStatusSigniert => 'Underskrivet av dig';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Avböjt av dig';
+
+  @override
+  String get signaturStatusWiderrufen => 'Återkallat av föreningen';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Tidsfristen har gått ut';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Läs dokumentet ända till slutet (sida $gelesen av $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Gå vidare till underskriften';
+
+  @override
+  String get signaturAblehnen => 'Avböj';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Föreningen informeras om detta. Du kan ange en anledning.';
+
+  @override
+  String get signaturAblehnenGrund => 'Anledning (frivilligt)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Skriv under med fingret i det vita fältet.';
+
+  @override
+  String get signaturNochmal => 'Börja om';
+
+  @override
+  String get signaturZurueckZumDokument => 'Tillbaka till dokumentet';
+
+  @override
+  String get signaturCodeAnfordern => 'Begär kod via SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Koden är på väg.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Vi har skickat en kod till $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Skicka ny kod';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Skriv under nu';
+
+  @override
+  String get signaturCodeFalsch => 'Koden stämmer inte.';
+
+  @override
+  String get signaturCodeAbgelaufen => 'Koden har gått ut. Begär en ny kod.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'För många misslyckade försök. Begär en ny kod.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Det finns inget mobilnummer registrerat på ditt konto. Utan ett mobilnummer kan vi inte skicka någon kod till dig — kontakta föreningens ordförande.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Koden kunde inte skickas.';
+
+  @override
+  String get signaturLeer => 'Skriv under först.';
+
+  @override
+  String get signaturErfolg => 'Tack — vi har tagit emot din underskrift.';
+
+  @override
+  String get signaturFehlgeschlagen => 'Det gick inte. Försök igen.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Det signerade dokumentet håller på att skapas. Försök gärna igen om en minut.';
 }

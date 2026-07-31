@@ -2879,4 +2879,102 @@ class AppLocalizationsSk extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Podpisy';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Momentálne nie je nič pripravené na podpis.';
+
+  @override
+  String get signaturStatusOffen => 'Čaká na váš podpis';
+
+  @override
+  String get signaturStatusSigniert => 'Podpísané vami';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Odmietnuté vami';
+
+  @override
+  String get signaturStatusWiderrufen => 'Stiahnuté spolkom';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Lehota uplynula';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Prečítajte si prosím dokument až do konca (strana $gelesen z $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Prejsť na podpis';
+
+  @override
+  String get signaturAblehnen => 'Odmietnuť';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Spolok o tom bude informovaný. Môžete uviesť svoje dôvody.';
+
+  @override
+  String get signaturAblehnenGrund => 'Dôvod (nepovinné)';
+
+  @override
+  String get signaturMitFingerHinweis => 'Podpíšte sa prstom do bieleho poľa.';
+
+  @override
+  String get signaturNochmal => 'Ešte raz';
+
+  @override
+  String get signaturZurueckZumDokument => 'Späť na dokument';
+
+  @override
+  String get signaturCodeAnfordern => 'Vyžiadať kód cez SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Kód je na ceste.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Poslali sme vám kód na číslo $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Poslať kód znova';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Podpísať teraz';
+
+  @override
+  String get signaturCodeFalsch => 'Kód nie je správny.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Platnosť kódu uplynula. Vyžiadajte si prosím nový kód.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Príliš veľa neúspešných pokusov. Vyžiadajte si prosím nový kód.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Vo vašom účte nie je uložené žiadne mobilné číslo. Bez neho vám nemôžeme poslať kód — obráťte sa prosím na predsedu spolku.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Kód sa nepodarilo odoslať.';
+
+  @override
+  String get signaturLeer => 'Najprv sa prosím podpíšte.';
+
+  @override
+  String get signaturErfolg => 'Ďakujeme — váš podpis sme prijali.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Nepodarilo sa to. Skúste to prosím ešte raz.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Podpísaný dokument sa ešte pripravuje. Skúste to prosím o minútu znova.';
 }
