@@ -2971,4 +2971,8 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get signaturFehlgeschlagen =>
       'Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.';
 }

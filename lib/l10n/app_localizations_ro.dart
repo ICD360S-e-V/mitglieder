@@ -2981,4 +2981,8 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get signaturFehlgeschlagen =>
       'Nu a funcționat. Vă rugăm să încercați din nou.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Sigiliul este încă în curs de creare. Vă rugăm să încercați din nou peste un minut.';
 }

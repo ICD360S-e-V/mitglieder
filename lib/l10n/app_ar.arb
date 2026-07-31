@@ -1410,5 +1410,6 @@
   "signaturCodeFehlgeschlagen": "تعذّر إرسال الرمز.",
   "signaturLeer": "يرجى التوقيع أولاً.",
   "signaturErfolg": "شكراً لك — تم استلام توقيعك.",
-  "signaturFehlgeschlagen": "لم ينجح ذلك. يرجى المحاولة مرة أخرى."
+  "signaturFehlgeschlagen": "لم ينجح ذلك. يرجى المحاولة مرة أخرى.",
+  "signaturSiegelInArbeit": "يجري إنشاء الختم الآن. يرجى المحاولة مرة أخرى بعد دقيقة."
 }

@@ -105,8 +105,31 @@ class _SignaturScreenState extends State<SignaturScreen> {
         title: Text((v['dokument_titel'] ?? '').toString(),
             style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: Text(text, style: TextStyle(color: farbe, fontSize: 12)),
-        trailing: offen ? const Icon(Icons.chevron_right) : null,
-        onTap: offen ? () => _oeffnen(v) : null,
+        // Auch das Unterschriebene bleibt anklickbar. Wer etwas unterschreibt,
+        // muss nachlesen können, was er unterschrieben hat — sonst hat der
+        // Verein eine Kopie und das Mitglied keine.
+        trailing: (offen || status == 'signiert')
+            ? const Icon(Icons.chevron_right)
+            : null,
+        onTap: offen
+            ? () => _oeffnen(v)
+            : status == 'signiert'
+                ? () => _ansehen(v)
+                : null,
+      ),
+    );
+  }
+
+  /// Zeigt dem Mitglied die gesiegelte Fassung seines eigenen Dokuments.
+  void _ansehen(Map<String, dynamic> v) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => _SigniertesDokumentScreen(
+          apiService: widget.apiService,
+          signaturId: (v['id'] as num).toInt(),
+          titel: (v['dokument_titel'] ?? '').toString(),
+        ),
       ),
     );
   }
@@ -574,5 +597,67 @@ class _SignaturUnterschreibenScreenState
               ? Colors.green.shade700
               : null,
     ));
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+
+/// Die gesiegelte Fassung, wie das Mitglied sie nach dem Unterschreiben sieht.
+///
+/// Eigener Bildschirm statt eines Dialogs: das ist ein mehrseitiges Dokument
+/// mit angehängtem Unterschriftenblatt, und darin will man blättern können.
+///
+/// Das Siegel entsteht erst im Minutentakt nach der Unterschrift. Wer sofort
+/// nachsieht, bekommt deshalb nicht die Datei, sondern eine Erklärung — ein
+/// leerer Betrachter sähe aus, als wäre etwas verloren gegangen.
+class _SigniertesDokumentScreen extends StatelessWidget {
+  final ApiService apiService;
+  final int signaturId;
+  final String titel;
+
+  const _SigniertesDokumentScreen({
+    required this.apiService,
+    required this.signaturId,
+    required this.titel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final url = '${ApiService.baseUrl}/member/signatur_pdf.php'
+        '?id=$signaturId&which=signiert';
+
+    return Scaffold(
+      appBar: AppBar(title: Text(titel, style: const TextStyle(fontSize: 16))),
+      body: PdfViewer.uri(
+        Uri.parse(url),
+        headers: {
+          if (apiService.token != null)
+            'Authorization': 'Bearer ${apiService.token}',
+          if (DeviceKeyService().deviceKey != null)
+            'X-Device-Key': DeviceKeyService().deviceKey!,
+          'User-Agent': 'ICD360S-Mitglied/1.0',
+        },
+        params: PdfViewerParams(
+          errorBannerBuilder: (context, error, stackTrace, documentRef) => Center(
+            child: Padding(
+              padding: const EdgeInsets.all(32),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.hourglass_empty,
+                      size: 48, color: Colors.grey.shade400),
+                  const SizedBox(height: 16),
+                  Text(
+                    AppLocalizations.of(context)!.signaturSiegelInArbeit,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey.shade700),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

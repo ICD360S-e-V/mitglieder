@@ -2945,4 +2945,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get signaturFehlgeschlagen => 'لم ينجح ذلك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'يجري إنشاء الختم الآن. يرجى المحاولة مرة أخرى بعد دقيقة.';
 }

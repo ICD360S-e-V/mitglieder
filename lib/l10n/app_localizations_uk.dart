@@ -2978,4 +2978,8 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get signaturFehlgeschlagen =>
       'Не вийшло. Будь ласка, спробуйте ще раз.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Печатка ще створюється. Будь ласка, спробуйте ще раз за хвилину.';
 }

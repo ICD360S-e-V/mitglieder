@@ -5407,6 +5407,12 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.'**
   String get signaturFehlgeschlagen;
+
+  /// No description provided for @signaturSiegelInArbeit.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.'**
+  String get signaturSiegelInArbeit;
 }
 
 class _AppLocalizationsDelegate

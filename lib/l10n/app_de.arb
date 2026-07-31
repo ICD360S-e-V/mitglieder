@@ -1410,5 +1410,6 @@
   "signaturCodeFehlgeschlagen": "Der Code konnte nicht verschickt werden.",
   "signaturLeer": "Bitte unterschreiben Sie zuerst.",
   "signaturErfolg": "Danke — Ihre Unterschrift ist eingegangen.",
-  "signaturFehlgeschlagen": "Das hat nicht geklappt. Bitte versuchen Sie es noch einmal."
+  "signaturFehlgeschlagen": "Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.",
+  "signaturSiegelInArbeit": "Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal."
 }

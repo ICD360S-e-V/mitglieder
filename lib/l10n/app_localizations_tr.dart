@@ -2975,4 +2975,8 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get signaturFehlgeschlagen =>
       'Bu işe yaramadı. Lütfen tekrar deneyin.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Mühür henüz oluşturuluyor. Lütfen bir dakika sonra tekrar deneyin.';
 }

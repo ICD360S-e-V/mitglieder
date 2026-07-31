@@ -1389,5 +1389,6 @@
   "signaturCodeFehlgeschlagen": "Не вдалося надіслати код.",
   "signaturLeer": "Спочатку поставте підпис.",
   "signaturErfolg": "Дякуємо — ваш підпис отримано.",
-  "signaturFehlgeschlagen": "Не вийшло. Будь ласка, спробуйте ще раз."
+  "signaturFehlgeschlagen": "Не вийшло. Будь ласка, спробуйте ще раз.",
+  "signaturSiegelInArbeit": "Печатка ще створюється. Будь ласка, спробуйте ще раз за хвилину."
 }

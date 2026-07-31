@@ -1389,5 +1389,6 @@
   "signaturCodeFehlgeschlagen": "The code could not be sent.",
   "signaturLeer": "Please sign first.",
   "signaturErfolg": "Thank you — your signature has been received.",
-  "signaturFehlgeschlagen": "That did not work. Please try again."
+  "signaturFehlgeschlagen": "That did not work. Please try again.",
+  "signaturSiegelInArbeit": "The seal is still being created. Please try again in a minute."
 }

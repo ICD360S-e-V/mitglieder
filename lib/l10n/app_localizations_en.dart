@@ -2978,4 +2978,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signaturFehlgeschlagen => 'That did not work. Please try again.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'The seal is still being created. Please try again in a minute.';
 }

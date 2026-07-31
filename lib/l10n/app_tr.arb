@@ -1410,5 +1410,6 @@
   "signaturCodeFehlgeschlagen": "Kod gönderilemedi.",
   "signaturLeer": "Lütfen önce imzalayın.",
   "signaturErfolg": "Teşekkürler — imzanız alındı.",
-  "signaturFehlgeschlagen": "Bu işe yaramadı. Lütfen tekrar deneyin."
+  "signaturFehlgeschlagen": "Bu işe yaramadı. Lütfen tekrar deneyin.",
+  "signaturSiegelInArbeit": "Mühür henüz oluşturuluyor. Lütfen bir dakika sonra tekrar deneyin."
 }

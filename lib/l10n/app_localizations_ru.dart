@@ -2976,4 +2976,8 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get signaturFehlgeschlagen =>
       'Не получилось. Пожалуйста, попробуйте ещё раз.';
+
+  @override
+  String get signaturSiegelInArbeit =>
+      'Печать ещё создаётся. Пожалуйста, попробуйте снова через минуту.';
 }

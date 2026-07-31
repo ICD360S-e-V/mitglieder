@@ -1389,5 +1389,6 @@
   "signaturCodeFehlgeschlagen": "Codul nu a putut fi trimis.",
   "signaturLeer": "Vă rugăm să semnați mai întâi.",
   "signaturErfolg": "Vă mulțumim — semnătura dumneavoastră a fost înregistrată.",
-  "signaturFehlgeschlagen": "Nu a funcționat. Vă rugăm să încercați din nou."
+  "signaturFehlgeschlagen": "Nu a funcționat. Vă rugăm să încercați din nou.",
+  "signaturSiegelInArbeit": "Sigiliul este încă în curs de creare. Vă rugăm să încercați din nou peste un minut."
 }
