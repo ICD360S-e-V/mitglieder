@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.78.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.77.3...v1.78.0) (2026-07-31)
+
+
+### Features
+
+* **signatur:** digitale Unterschrift — Mitglied unterschreibt mit dem Finger ([#255](https://github.com/ICD360S-e-V/mitglieder/issues/255)) ([692133f](https://github.com/ICD360S-e-V/mitglieder/commit/692133f1ef256cff2317afbec9dc0198aa4296b0))
+
 ## [1.77.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.77.2...v1.77.3) (2026-07-31)
 
 
