@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.77.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.77.2...v1.77.3) (2026-07-31)
+
+
+### Bug Fixes
+
+* **logs:** commit the log ingest endpoints and their traversal fix ([#250](https://github.com/ICD360S-e-V/mitglieder/issues/250)) ([0a5c775](https://github.com/ICD360S-e-V/mitglieder/commit/0a5c77515cb3fac42ccb6b9da90205b08284646b))
+
 ## [1.77.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.77.1...v1.77.2) (2026-07-31)
 
 
