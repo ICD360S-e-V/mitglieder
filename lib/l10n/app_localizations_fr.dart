@@ -2906,4 +2906,100 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+
+  @override
+  String get signaturTitel => 'Unterschriften';
+
+  @override
+  String get signaturNichtsOffen =>
+      'Zurzeit liegt nichts zur Unterschrift vor.';
+
+  @override
+  String get signaturStatusOffen => 'Wartet auf Ihre Unterschrift';
+
+  @override
+  String get signaturStatusSigniert => 'Von Ihnen unterschrieben';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Von Ihnen abgelehnt';
+
+  @override
+  String get signaturStatusWiderrufen => 'Vom Verein zurückgezogen';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Frist abgelaufen';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Bitte lesen Sie das Dokument bis zum Ende (Seite $gelesen von $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Weiter zur Unterschrift';
+
+  @override
+  String get signaturAblehnen => 'Ablehnen';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Der Verein wird darüber benachrichtigt. Sie können Ihre Gründe angeben.';
+
+  @override
+  String get signaturAblehnenGrund => 'Grund (freiwillig)';
+
+  @override
+  String get signaturMitFingerHinweis =>
+      'Unterschreiben Sie mit dem Finger im weißen Feld.';
+
+  @override
+  String get signaturNochmal => 'Noch einmal';
+
+  @override
+  String get signaturZurueckZumDokument => 'Zurück zum Dokument';
+
+  @override
+  String get signaturCodeAnfordern => 'Code per SMS anfordern';
+
+  @override
+  String get signaturCodeUnterwegs => 'Der Code ist unterwegs.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Wir haben Ihnen einen Code an $nummer geschickt.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Code erneut senden';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Jetzt unterschreiben';
+
+  @override
+  String get signaturCodeFalsch => 'Der Code stimmt nicht.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Zu viele Fehlversuche. Bitte fordern Sie einen neuen Code an.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Für Ihr Konto ist keine Mobilnummer hinterlegt. Ohne sie können wir Ihnen keinen Code schicken — bitte wenden Sie sich an den Vorsitzenden.';
+
+  @override
+  String get signaturCodeFehlgeschlagen =>
+      'Der Code konnte nicht verschickt werden.';
+
+  @override
+  String get signaturLeer => 'Bitte unterschreiben Sie zuerst.';
+
+  @override
+  String get signaturErfolg => 'Danke — Ihre Unterschrift ist eingegangen.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.';
 }

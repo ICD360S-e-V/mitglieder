@@ -5239,6 +5239,174 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.'**
   String get benachrichtigungWetterDetail;
+
+  /// No description provided for @signaturTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Unterschriften'**
+  String get signaturTitel;
+
+  /// No description provided for @signaturNichtsOffen.
+  ///
+  /// In de, this message translates to:
+  /// **'Zurzeit liegt nichts zur Unterschrift vor.'**
+  String get signaturNichtsOffen;
+
+  /// No description provided for @signaturStatusOffen.
+  ///
+  /// In de, this message translates to:
+  /// **'Wartet auf Ihre Unterschrift'**
+  String get signaturStatusOffen;
+
+  /// No description provided for @signaturStatusSigniert.
+  ///
+  /// In de, this message translates to:
+  /// **'Von Ihnen unterschrieben'**
+  String get signaturStatusSigniert;
+
+  /// No description provided for @signaturStatusAbgelehnt.
+  ///
+  /// In de, this message translates to:
+  /// **'Von Ihnen abgelehnt'**
+  String get signaturStatusAbgelehnt;
+
+  /// No description provided for @signaturStatusWiderrufen.
+  ///
+  /// In de, this message translates to:
+  /// **'Vom Verein zurückgezogen'**
+  String get signaturStatusWiderrufen;
+
+  /// No description provided for @signaturStatusAbgelaufen.
+  ///
+  /// In de, this message translates to:
+  /// **'Frist abgelaufen'**
+  String get signaturStatusAbgelaufen;
+
+  /// No description provided for @signaturBitteGanzLesen.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte lesen Sie das Dokument bis zum Ende (Seite {gelesen} von {gesamt}).'**
+  String signaturBitteGanzLesen(int gelesen, int gesamt);
+
+  /// No description provided for @signaturWeiterZurUnterschrift.
+  ///
+  /// In de, this message translates to:
+  /// **'Weiter zur Unterschrift'**
+  String get signaturWeiterZurUnterschrift;
+
+  /// No description provided for @signaturAblehnen.
+  ///
+  /// In de, this message translates to:
+  /// **'Ablehnen'**
+  String get signaturAblehnen;
+
+  /// No description provided for @signaturAblehnenHinweis.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Verein wird darüber benachrichtigt. Sie können Ihre Gründe angeben.'**
+  String get signaturAblehnenHinweis;
+
+  /// No description provided for @signaturAblehnenGrund.
+  ///
+  /// In de, this message translates to:
+  /// **'Grund (freiwillig)'**
+  String get signaturAblehnenGrund;
+
+  /// No description provided for @signaturMitFingerHinweis.
+  ///
+  /// In de, this message translates to:
+  /// **'Unterschreiben Sie mit dem Finger im weißen Feld.'**
+  String get signaturMitFingerHinweis;
+
+  /// No description provided for @signaturNochmal.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch einmal'**
+  String get signaturNochmal;
+
+  /// No description provided for @signaturZurueckZumDokument.
+  ///
+  /// In de, this message translates to:
+  /// **'Zurück zum Dokument'**
+  String get signaturZurueckZumDokument;
+
+  /// No description provided for @signaturCodeAnfordern.
+  ///
+  /// In de, this message translates to:
+  /// **'Code per SMS anfordern'**
+  String get signaturCodeAnfordern;
+
+  /// No description provided for @signaturCodeUnterwegs.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Code ist unterwegs.'**
+  String get signaturCodeUnterwegs;
+
+  /// No description provided for @signaturCodeGesendetAn.
+  ///
+  /// In de, this message translates to:
+  /// **'Wir haben Ihnen einen Code an {nummer} geschickt.'**
+  String signaturCodeGesendetAn(String nummer);
+
+  /// No description provided for @signaturCodeErneutSenden.
+  ///
+  /// In de, this message translates to:
+  /// **'Code erneut senden'**
+  String get signaturCodeErneutSenden;
+
+  /// No description provided for @signaturJetztUnterschreiben.
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt unterschreiben'**
+  String get signaturJetztUnterschreiben;
+
+  /// No description provided for @signaturCodeFalsch.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Code stimmt nicht.'**
+  String get signaturCodeFalsch;
+
+  /// No description provided for @signaturCodeAbgelaufen.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.'**
+  String get signaturCodeAbgelaufen;
+
+  /// No description provided for @signaturZuVieleVersuche.
+  ///
+  /// In de, this message translates to:
+  /// **'Zu viele Fehlversuche. Bitte fordern Sie einen neuen Code an.'**
+  String get signaturZuVieleVersuche;
+
+  /// No description provided for @signaturKeineRufnummer.
+  ///
+  /// In de, this message translates to:
+  /// **'Für Ihr Konto ist keine Mobilnummer hinterlegt. Ohne sie können wir Ihnen keinen Code schicken — bitte wenden Sie sich an den Vorsitzenden.'**
+  String get signaturKeineRufnummer;
+
+  /// No description provided for @signaturCodeFehlgeschlagen.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Code konnte nicht verschickt werden.'**
+  String get signaturCodeFehlgeschlagen;
+
+  /// No description provided for @signaturLeer.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte unterschreiben Sie zuerst.'**
+  String get signaturLeer;
+
+  /// No description provided for @signaturErfolg.
+  ///
+  /// In de, this message translates to:
+  /// **'Danke — Ihre Unterschrift ist eingegangen.'**
+  String get signaturErfolg;
+
+  /// No description provided for @signaturFehlgeschlagen.
+  ///
+  /// In de, this message translates to:
+  /// **'Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.'**
+  String get signaturFehlgeschlagen;
 }
 
 class _AppLocalizationsDelegate

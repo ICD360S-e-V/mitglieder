@@ -1344,5 +1344,50 @@
   "benachrichtigungenLeer": "No notifications",
   "benachrichtigungenAlleGelesen": "Mark all as read",
   "benachrichtigungWetterFrage": "Would you like to be warned about severe weather where you live?",
-  "benachrichtigungWetterDetail": "Only official German Weather Service warnings from level “severe” upwards — not for every shower."
+  "benachrichtigungWetterDetail": "Only official German Weather Service warnings from level “severe” upwards — not for every shower.",
+  "signaturTitel": "Signatures",
+  "signaturNichtsOffen": "There is nothing waiting for your signature.",
+  "signaturStatusOffen": "Waiting for your signature",
+  "signaturStatusSigniert": "Signed by you",
+  "signaturStatusAbgelehnt": "Declined by you",
+  "signaturStatusWiderrufen": "Withdrawn by the association",
+  "signaturStatusAbgelaufen": "Deadline passed",
+  "signaturBitteGanzLesen": "Please read the document to the end (page {gelesen} of {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturWeiterZurUnterschrift": "Continue to signature",
+  "signaturAblehnen": "Decline",
+  "signaturAblehnenHinweis": "The association will be notified. You may state your reasons.",
+  "signaturAblehnenGrund": "Reason (optional)",
+  "signaturMitFingerHinweis": "Sign with your finger in the white area.",
+  "signaturNochmal": "Start over",
+  "signaturZurueckZumDokument": "Back to the document",
+  "signaturCodeAnfordern": "Request code by SMS",
+  "signaturCodeUnterwegs": "The code is on its way.",
+  "signaturCodeGesendetAn": "We sent a code to {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturCodeErneutSenden": "Send code again",
+  "signaturJetztUnterschreiben": "Sign now",
+  "signaturCodeFalsch": "That code is not correct.",
+  "signaturCodeAbgelaufen": "The code has expired. Please request a new one.",
+  "signaturZuVieleVersuche": "Too many failed attempts. Please request a new code.",
+  "signaturKeineRufnummer": "No mobile number is on file for your account. Without one we cannot send you a code — please contact the chairperson.",
+  "signaturCodeFehlgeschlagen": "The code could not be sent.",
+  "signaturLeer": "Please sign first.",
+  "signaturErfolg": "Thank you — your signature has been received.",
+  "signaturFehlgeschlagen": "That did not work. Please try again."
 }

@@ -2882,4 +2882,97 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Yalnızca Alman Meteoroloji Servisi\'nin „şiddetli“ ve üzeri resmî uyarıları — her yağmurda değil.';
+
+  @override
+  String get signaturTitel => 'İmzalar';
+
+  @override
+  String get signaturNichtsOffen => 'Şu anda imzanızı bekleyen bir belge yok.';
+
+  @override
+  String get signaturStatusOffen => 'İmzanızı bekliyor';
+
+  @override
+  String get signaturStatusSigniert => 'Tarafınızdan imzalandı';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Tarafınızdan reddedildi';
+
+  @override
+  String get signaturStatusWiderrufen => 'Dernek tarafından geri çekildi';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Süre doldu';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Lütfen belgeyi sonuna kadar okuyun (sayfa $gelesen / $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'İmzaya geç';
+
+  @override
+  String get signaturAblehnen => 'Reddet';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Dernek bilgilendirilecektir. Gerekçenizi yazabilirsiniz.';
+
+  @override
+  String get signaturAblehnenGrund => 'Gerekçe (isteğe bağlı)';
+
+  @override
+  String get signaturMitFingerHinweis => 'Beyaz alana parmağınızla imzalayın.';
+
+  @override
+  String get signaturNochmal => 'Yeniden';
+
+  @override
+  String get signaturZurueckZumDokument => 'Belgeye dön';
+
+  @override
+  String get signaturCodeAnfordern => 'SMS ile kod iste';
+
+  @override
+  String get signaturCodeUnterwegs => 'Kod yolda.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return '$nummer numarasına bir kod gönderdik.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Kodu tekrar gönder';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Şimdi imzala';
+
+  @override
+  String get signaturCodeFalsch => 'Kod doğru değil.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Kodun süresi doldu. Lütfen yeni bir kod isteyin.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Çok fazla hatalı deneme. Lütfen yeni bir kod isteyin.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Hesabınızda kayıtlı bir cep telefonu numarası yok. Numara olmadan size kod gönderemeyiz — lütfen dernek başkanına başvurun.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Kod gönderilemedi.';
+
+  @override
+  String get signaturLeer => 'Lütfen önce imzalayın.';
+
+  @override
+  String get signaturErfolg => 'Teşekkürler — imzanız alındı.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Bu işe yaramadı. Lütfen tekrar deneyin.';
 }

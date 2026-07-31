@@ -175,10 +175,7 @@ function aktionTanAnfordern(PDO $pdo, int $userId, array $body): void
     }
 
     // Das Tablet pollt sonst alle 30 Minuten — für eine TAN ist das wertlos.
-    // Der Weckruf ist deshalb Teil des Ablaufs, nicht Beiwerk. Schlägt er fehl,
-    // ist die TAN trotzdem gültig: sie geht dann beim nächsten regulären
-    // Durchlauf raus, verspätet statt gar nicht.
-    tabletWecken();
+    tabletWecken($pdo);
 
     jsonResponse(true, [
         'gesendet_an'      => SignaturHelper::telefonMaskieren($telefon),
@@ -391,27 +388,39 @@ function aktionAblehnen(PDO $pdo, int $userId, array $body): void
 }
 
 /**
- * Weckruf an das Vereins-Tablet über ntfy, damit es die TAN-Warteschlange
- * sofort abarbeitet statt beim nächsten 30-Minuten-Durchlauf.
+ * Weckt die Vorsitzer-Geräte, damit das Gateway die TAN sofort abholt statt
+ * beim nächsten 30-Minuten-Takt. Gleicher Weg wie in api/chat/sms_outbox.php:
+ * das Topic ist `vorsitzer_<mitgliedernummer>`, denn genau darauf hört die
+ * App — ein eigenes Topic würde ins Leere senden.
  *
- * Kurzer Timeout und geschluckte Fehler: der Weckruf ist eine Beschleunigung,
- * kein Teil der Zusage. Hängt ntfy, wartet das Mitglied ein paar Minuten —
- * es darf aber nicht der Request sein, der deshalb in einen 504 läuft.
+ * Wer nicht Gateway ist, verwirft den Auftrag ohnehin (der Schalter steht
+ * dort auf aus).
+ *
+ * Priorität 5 statt 3 wie bei den übrigen SMS-Aufträgen: eine TAN gilt zehn
+ * Minuten, und das Mitglied sitzt in diesem Moment vor dem Unterschriftsfeld.
+ *
+ * Schlägt der Weckruf fehl, bleibt die TAN gültig — sie geht dann beim
+ * regulären Durchlauf raus, verspätet statt gar nicht.
  */
-function tabletWecken(): void
+function tabletWecken(PDO $pdo): void
 {
-    $url = 'http://127.0.0.1:2586/signatur-tan';
-    $ch = curl_init($url);
-    curl_setopt_array($ch, [
-        CURLOPT_POST           => true,
-        CURLOPT_POSTFIELDS     => 'TAN',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT        => 3,
-        CURLOPT_CONNECTTIMEOUT => 2,
-        CURLOPT_HTTPHEADER     => ['Title: Signatur-TAN', 'Priority: high', 'Tags: pen'],
-    ]);
-    if (curl_exec($ch) === false) {
-        error_log('signatur tablet wecken: ' . curl_error($ch));
+    try {
+        require_once __DIR__ . '/../helpers/NtfyService.php';
+        $ntfy = new NtfyService();
+        $stmt = $pdo->query(
+            "SELECT mitgliedernummer FROM users
+              WHERE role IN ('vorsitzer','stellvertreter')
+                AND deactivated_at IS NULL"
+        );
+        foreach ($stmt->fetchAll(PDO::FETCH_COLUMN) as $nummer) {
+            $ntfy->send(
+                'vorsitzer_' . strtolower((string)$nummer),
+                'Signatur-TAN',
+                'Warteschlange prüfen',
+                ['priority' => 5, 'tags' => ['sms_gateway']]
+            );
+        }
+    } catch (Throwable $e) {
+        error_log('signatur tabletWecken: ' . $e->getMessage());
     }
-    curl_close($ch);
 }

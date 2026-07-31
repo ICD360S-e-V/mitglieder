@@ -1344,5 +1344,50 @@
   "benachrichtigungenLeer": "Nicio notificare",
   "benachrichtigungenAlleGelesen": "Marchează toate ca citite",
   "benachrichtigungWetterFrage": "Doriți să fiți avertizat în caz de vreme severă în localitatea dumneavoastră?",
-  "benachrichtigungWetterDetail": "Doar avertizări oficiale ale serviciului meteo german, de la nivelul „sever” în sus — nu la fiecare ploaie."
+  "benachrichtigungWetterDetail": "Doar avertizări oficiale ale serviciului meteo german, de la nivelul „sever” în sus — nu la fiecare ploaie.",
+  "signaturTitel": "Semnături",
+  "signaturNichtsOffen": "Momentan nu aveți nimic de semnat.",
+  "signaturStatusOffen": "Așteaptă semnătura dumneavoastră",
+  "signaturStatusSigniert": "Semnat de dumneavoastră",
+  "signaturStatusAbgelehnt": "Refuzat de dumneavoastră",
+  "signaturStatusWiderrufen": "Retras de asociație",
+  "signaturStatusAbgelaufen": "Termen expirat",
+  "signaturBitteGanzLesen": "Vă rugăm să citiți documentul până la final (pagina {gelesen} din {gesamt}).",
+  "@signaturBitteGanzLesen": {
+    "placeholders": {
+      "gelesen": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  },
+  "signaturWeiterZurUnterschrift": "Continuați spre semnătură",
+  "signaturAblehnen": "Refuz",
+  "signaturAblehnenHinweis": "Asociația va fi înștiințată. Puteți menționa motivele.",
+  "signaturAblehnenGrund": "Motiv (opțional)",
+  "signaturMitFingerHinweis": "Semnați cu degetul în câmpul alb.",
+  "signaturNochmal": "Din nou",
+  "signaturZurueckZumDokument": "Înapoi la document",
+  "signaturCodeAnfordern": "Cere codul prin SMS",
+  "signaturCodeUnterwegs": "Codul este pe drum.",
+  "signaturCodeGesendetAn": "V-am trimis un cod la {nummer}.",
+  "@signaturCodeGesendetAn": {
+    "placeholders": {
+      "nummer": {
+        "type": "String"
+      }
+    }
+  },
+  "signaturCodeErneutSenden": "Trimite codul din nou",
+  "signaturJetztUnterschreiben": "Semnează acum",
+  "signaturCodeFalsch": "Codul nu este corect.",
+  "signaturCodeAbgelaufen": "Codul a expirat. Vă rugăm să cereți unul nou.",
+  "signaturZuVieleVersuche": "Prea multe încercări greșite. Vă rugăm să cereți un cod nou.",
+  "signaturKeineRufnummer": "Contul dumneavoastră nu are un număr de mobil înregistrat. Fără el nu vă putem trimite un cod — vă rugăm să vă adresați președintelui.",
+  "signaturCodeFehlgeschlagen": "Codul nu a putut fi trimis.",
+  "signaturLeer": "Vă rugăm să semnați mai întâi.",
+  "signaturErfolg": "Vă mulțumim — semnătura dumneavoastră a fost înregistrată.",
+  "signaturFehlgeschlagen": "Nu a funcționat. Vă rugăm să încercați din nou."
 }

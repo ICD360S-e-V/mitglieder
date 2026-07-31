@@ -2883,4 +2883,97 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get benachrichtigungWetterDetail =>
       'Только официальные предупреждения немецкой метеослужбы уровня «сильное» и выше — не при каждом дожде.';
+
+  @override
+  String get signaturTitel => 'Подписи';
+
+  @override
+  String get signaturNichtsOffen => 'Сейчас нет документов на подпись.';
+
+  @override
+  String get signaturStatusOffen => 'Ожидает вашей подписи';
+
+  @override
+  String get signaturStatusSigniert => 'Подписано вами';
+
+  @override
+  String get signaturStatusAbgelehnt => 'Отклонено вами';
+
+  @override
+  String get signaturStatusWiderrufen => 'Отозвано объединением';
+
+  @override
+  String get signaturStatusAbgelaufen => 'Срок истёк';
+
+  @override
+  String signaturBitteGanzLesen(int gelesen, int gesamt) {
+    return 'Пожалуйста, прочитайте документ до конца (страница $gelesen из $gesamt).';
+  }
+
+  @override
+  String get signaturWeiterZurUnterschrift => 'Перейти к подписи';
+
+  @override
+  String get signaturAblehnen => 'Отклонить';
+
+  @override
+  String get signaturAblehnenHinweis =>
+      'Объединение будет уведомлено. Вы можете указать причины.';
+
+  @override
+  String get signaturAblehnenGrund => 'Причина (необязательно)';
+
+  @override
+  String get signaturMitFingerHinweis => 'Распишитесь пальцем в белом поле.';
+
+  @override
+  String get signaturNochmal => 'Заново';
+
+  @override
+  String get signaturZurueckZumDokument => 'Назад к документу';
+
+  @override
+  String get signaturCodeAnfordern => 'Запросить код по SMS';
+
+  @override
+  String get signaturCodeUnterwegs => 'Код отправляется.';
+
+  @override
+  String signaturCodeGesendetAn(String nummer) {
+    return 'Мы отправили код на $nummer.';
+  }
+
+  @override
+  String get signaturCodeErneutSenden => 'Отправить код ещё раз';
+
+  @override
+  String get signaturJetztUnterschreiben => 'Подписать';
+
+  @override
+  String get signaturCodeFalsch => 'Код неверный.';
+
+  @override
+  String get signaturCodeAbgelaufen =>
+      'Срок действия кода истёк. Запросите новый.';
+
+  @override
+  String get signaturZuVieleVersuche =>
+      'Слишком много неудачных попыток. Запросите новый код.';
+
+  @override
+  String get signaturKeineRufnummer =>
+      'Для вашей учётной записи не указан мобильный номер. Без него мы не можем отправить код — обратитесь к председателю.';
+
+  @override
+  String get signaturCodeFehlgeschlagen => 'Код не удалось отправить.';
+
+  @override
+  String get signaturLeer => 'Сначала поставьте подпись.';
+
+  @override
+  String get signaturErfolg => 'Спасибо — ваша подпись получена.';
+
+  @override
+  String get signaturFehlgeschlagen =>
+      'Не получилось. Пожалуйста, попробуйте ещё раз.';
 }
