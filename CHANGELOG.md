@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.78.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.78.0...v1.78.1) (2026-07-31)
+
+
+### Bug Fixes
+
+* **windows:** route log uploads through the pinned client ([#254](https://github.com/ICD360S-e-V/mitglieder/issues/254)) ([d46c4bf](https://github.com/ICD360S-e-V/mitglieder/commit/d46c4bfb13e96842f10865c08cdd4dc3c54996fc))
+
 ## [1.78.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.77.3...v1.78.0) (2026-07-31)
 
 
