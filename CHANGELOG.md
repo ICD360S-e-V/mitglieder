@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.77.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.76.0...v1.77.0) (2026-07-31)
+
+
+### Features
+
+* **benachrichtigung:** dritter Schalter für Wetterwarnungen ([#247](https://github.com/ICD360S-e-V/mitglieder/issues/247)) ([965facf](https://github.com/ICD360S-e-V/mitglieder/commit/965facfa2afc3419b072b28747d27fa910c08403))
+
 ## [1.76.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.75.1...v1.76.0) (2026-07-30)
 
 
