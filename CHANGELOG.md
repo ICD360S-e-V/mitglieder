@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.77.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.77.1...v1.77.2) (2026-07-31)
+
+
+### Bug Fixes
+
+* **logger:** upload logs from startup, not only after sign-in ([#249](https://github.com/ICD360S-e-V/mitglieder/issues/249)) ([15e67f0](https://github.com/ICD360S-e-V/mitglieder/commit/15e67f0bedca6c646071176e3277d30f8da3ee0d))
+
 ## [1.77.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.77.0...v1.77.1) (2026-07-31)
 
 
