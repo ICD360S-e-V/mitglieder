@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.79.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.78.1...v1.79.0) (2026-07-31)
+
+
+### Features
+
+* **signatur:** TAN-SMS in der Sprache des Mitglieds, mit Anrede ([#259](https://github.com/ICD360S-e-V/mitglieder/issues/259)) ([a3a8f7a](https://github.com/ICD360S-e-V/mitglieder/commit/a3a8f7a530307355a4b036badb15349df0e9d675))
+
 ## [1.78.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.78.0...v1.78.1) (2026-07-31)
 
 
