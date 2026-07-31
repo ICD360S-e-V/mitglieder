@@ -4,7 +4,8 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'package:cryptography/cryptography.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
+import 'http_client_factory.dart';
 
 /// Records every step of `main()` to a plain-text log file from the very
 /// first call, so that a startup that never reaches `runApp()` is still
@@ -15,7 +16,10 @@ import 'package:http/http.dart' as http;
 ///   $XDG_CACHE_HOME/icd360sev/mitglieder/startup.log
 ///   $HOME/.cache/icd360sev/mitglieder/startup.log
 ///   $TMPDIR/icd360sev-mitglieder-startup.log
-///   /tmp/icd360sev-mitglieder-startup.log
+///   `<system temp>`/icd360sev-mitglieder-startup.log
+///
+/// On Windows none of the variables above exist, so the order there is
+/// %LOCALAPPDATA%\ICD360S\Mitglieder\startup.log, then %TEMP%.
 ///
 /// Usage in main():
 ///   void main() async {
@@ -60,7 +64,10 @@ class StartupDiagnostics {
       } catch (e) {
         // Fallback to /tmp if XDG / HOME aren't usable.
         try {
-          _logFile = File('/tmp/icd360sev-mitglieder-startup.log');
+          // systemTemp resolves per platform; the old '/tmp' literal became
+          // C:\tmp on Windows.
+          _logFile = File(
+              '${Directory.systemTemp.path}${Platform.pathSeparator}icd360sev-mitglieder-startup.log');
         } catch (_) {
           _logFile = null;
         }
@@ -307,14 +314,25 @@ class StartupDiagnostics {
         'data': base64.encode(packed),
       });
 
-      final response = await http
-          .post(
-            Uri.parse(_reportUrl),
-            headers: {'Content-Type': 'application/json'},
-            body: envelope,
-          )
-          .timeout(const Duration(seconds: 10));
-      log('  ← uploadToServer status=${response.statusCode}');
+      // Pinned client, not the bare http.post default: this is our own host,
+      // covered by the bundled Let's Encrypt roots. The default client trusts
+      // whatever the OS trusts, and on Windows that did not include the chain,
+      // so every transcript upload died in the TLS handshake and landed in the
+      // catch below - which is why no Windows startup transcript ever reached
+      // the server while Android's arrived daily.
+      final client = IOClient(HttpClientFactory.createPinnedHttpClient());
+      try {
+        final response = await client
+            .post(
+              Uri.parse(_reportUrl),
+              headers: {'Content-Type': 'application/json'},
+              body: envelope,
+            )
+            .timeout(const Duration(seconds: 10));
+        log('  ← uploadToServer status=${response.statusCode}');
+      } finally {
+        client.close();
+      }
     } catch (e) {
       log('  ✗ uploadToServer failed: $e');
     }
@@ -329,6 +347,21 @@ class StartupDiagnostics {
   }
 
   static String _resolveDir() {
+    // Windows first: none of the XDG/HOME/TMPDIR variables below exist there,
+    // so every Windows install fell through to the '/tmp' literal and wrote
+    // its transcript to C:\tmp\startup.log - a path nobody thinks to look in,
+    // on a machine whose startup behaviour is exactly what you end up needing
+    // to read.
+    if (Platform.isWindows) {
+      final localAppData = Platform.environment['LOCALAPPDATA'];
+      if (localAppData != null && localAppData.isNotEmpty) {
+        return '$localAppData\\ICD360S\\Mitglieder';
+      }
+      final temp = Platform.environment['TEMP'] ?? Platform.environment['TMP'];
+      if (temp != null && temp.isNotEmpty) return temp;
+      return Directory.systemTemp.path;
+    }
+
     final xdg = Platform.environment['XDG_CACHE_HOME'];
     if (xdg != null && xdg.isNotEmpty) {
       return '$xdg/icd360sev/mitglieder';

@@ -5,6 +5,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'secure_storage_helper.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
+import 'http_client_factory.dart';
 import 'api_service.dart';
 
 /// Logger Service - captures app logs for debugging
@@ -15,6 +17,19 @@ class LoggerService {
 
   final List<LogEntry> _logs = [];
   final List<LogEntry> _uploadQueue = [];
+
+  /// The same pinned client ApiService uses, rather than the bare `http.post`
+  /// default.
+  ///
+  /// This endpoint is our own host, so it is covered by the bundled Let's
+  /// Encrypt roots. The default client instead trusts whatever the OS trusts —
+  /// and on Windows that turned out not to include the chain, so every upload
+  /// failed the TLS handshake and was swallowed by the catch below. The result
+  /// was a Windows client that logged diligently to a queue nothing ever
+  /// drained, while API calls on the very same host worked because those went
+  /// through the pinned client all along.
+  static final http.Client _httpClient =
+      IOClient(HttpClientFactory.createPinnedHttpClient());
   final _controller = StreamController<List<LogEntry>>.broadcast();
   final _secureStorage = createSecureStorage();
   Timer? _uploadTimer;
@@ -141,7 +156,7 @@ class LoggerService {
         'tag': log.tag,
       }).toList();
 
-      final response = await http.post(
+      final response = await _httpClient.post(
         Uri.parse(_uploadUrl),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
