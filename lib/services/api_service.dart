@@ -1332,11 +1332,13 @@ class ApiService {
   Future<Map<String, dynamic>> saveBenachrichtigung({
     bool? termine,
     bool? medikamente,
+    bool? wetter,
   }) =>
       _postBenachrichtigung({
         'action': 'save',
         if (termine != null) 'sms_termine': termine ? 'ja' : 'nein',
         if (medikamente != null) 'sms_medikamente': medikamente ? 'ja' : 'nein',
+        if (wetter != null) 'sms_wetter': wetter ? 'ja' : 'nein',
       });
 
   /// „Später entscheiden" — kein Ja und kein Nein, nur der Vermerk, dass

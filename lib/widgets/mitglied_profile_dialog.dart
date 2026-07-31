@@ -229,6 +229,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
 
   bool _smsTermine = false;
   bool _smsMedikamente = false;
+  bool _smsWetter = false;
   bool _smsGeladen = false;
   bool _smsSpeichert = false;
 
@@ -238,21 +239,25 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
     setState(() {
       _smsTermine = res['sms_termine'] == 'ja';
       _smsMedikamente = res['sms_medikamente'] == 'ja';
+      _smsWetter = res['sms_wetter'] == 'ja';
       _smsGeladen = true;
     });
   }
 
-  Future<void> _speichereBenachrichtigung({bool? termine, bool? medikamente}) async {
+  Future<void> _speichereBenachrichtigung(
+      {bool? termine, bool? medikamente, bool? wetter}) async {
     setState(() => _smsSpeichert = true);
     final res = await widget.apiService.saveBenachrichtigung(
       termine: termine,
       medikamente: medikamente,
+      wetter: wetter,
     );
     if (!mounted) return;
     setState(() {
       if (res['success'] == true) {
         if (termine != null) _smsTermine = termine;
         if (medikamente != null) _smsMedikamente = medikamente;
+        if (wetter != null) _smsWetter = wetter;
       }
       _smsSpeichert = false;
     });
@@ -745,6 +750,21 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                     ),
                     subtitle: Text(
                       AppLocalizations.of(context)!.benachrichtigungTermineDetail,
+                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                    ),
+                  ),
+                  const Divider(height: 1),
+                  SwitchListTile(
+                    value: _smsWetter,
+                    onChanged: _smsSpeichert
+                        ? null
+                        : (v) => _speichereBenachrichtigung(wetter: v),
+                    title: Text(
+                      AppLocalizations.of(context)!.benachrichtigungWetterFrage,
+                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
+                    subtitle: Text(
+                      AppLocalizations.of(context)!.benachrichtigungWetterDetail,
                       style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                     ),
                   ),

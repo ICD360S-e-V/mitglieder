@@ -2876,4 +2876,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get benachrichtigungenAlleGelesen => 'Mark all as read';
+
+  @override
+  String get benachrichtigungWetterFrage =>
+      'Would you like to be warned about severe weather where you live?';
+
+  @override
+  String get benachrichtigungWetterDetail =>
+      'Only official German Weather Service warnings from level “severe” upwards — not for every shower.';
 }

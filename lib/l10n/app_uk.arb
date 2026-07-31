@@ -1342,5 +1342,7 @@
   "benachrichtigungSpeichern": "Зберегти",
   "benachrichtigungGespeichert": "Дякуємо, збережено.",
   "benachrichtigungenLeer": "Немає сповіщень",
-  "benachrichtigungenAlleGelesen": "Позначити всі як прочитані"
+  "benachrichtigungenAlleGelesen": "Позначити всі як прочитані",
+  "benachrichtigungWetterFrage": "Бажаєте отримувати попередження про негоду за місцем проживання?",
+  "benachrichtigungWetterDetail": "Лише офіційні попередження німецької метеослужби рівня «сильне» і вище — не за кожного дощу."
 }

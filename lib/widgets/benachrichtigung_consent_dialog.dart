@@ -52,15 +52,18 @@ class _BenachrichtigungConsentDialogState
     extends State<BenachrichtigungConsentDialog> {
   bool? _termine;
   bool? _medikamente;
+  bool? _wetter;
   bool _speichert = false;
 
-  bool get _vollstaendig => _termine != null && _medikamente != null;
+  bool get _vollstaendig =>
+      _termine != null && _medikamente != null && _wetter != null;
 
   Future<void> _speichern() async {
     setState(() => _speichert = true);
     final res = await widget.apiService.saveBenachrichtigung(
       termine: _termine,
       medikamente: _medikamente,
+      wetter: _wetter,
     );
     if (!mounted) return;
     setState(() => _speichert = false);
@@ -127,6 +130,15 @@ class _BenachrichtigungConsentDialogState
                 detail: l10n.benachrichtigungMedikamenteDetail,
                 wert: _medikamente,
                 onAntwort: (v) => setState(() => _medikamente = v),
+                l10n: l10n,
+              ),
+
+              const SizedBox(height: 16),
+              _frage(
+                frage: l10n.benachrichtigungWetterFrage,
+                detail: l10n.benachrichtigungWetterDetail,
+                wert: _wetter,
+                onAntwort: (v) => setState(() => _wetter = v),
                 l10n: l10n,
               ),
 

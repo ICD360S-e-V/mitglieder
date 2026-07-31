@@ -5227,6 +5227,18 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Alle als gelesen markieren'**
   String get benachrichtigungenAlleGelesen;
+
+  /// No description provided for @benachrichtigungWetterFrage.
+  ///
+  /// In de, this message translates to:
+  /// **'Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?'**
+  String get benachrichtigungWetterFrage;
+
+  /// No description provided for @benachrichtigungWetterDetail.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.'**
+  String get benachrichtigungWetterDetail;
 }
 
 class _AppLocalizationsDelegate

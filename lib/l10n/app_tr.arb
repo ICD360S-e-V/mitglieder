@@ -1363,5 +1363,7 @@
   "benachrichtigungSpeichern": "Kaydet",
   "benachrichtigungGespeichert": "Teşekkürler, kaydedildi.",
   "benachrichtigungenLeer": "Bildirim yok",
-  "benachrichtigungenAlleGelesen": "Tümünü okundu olarak işaretle"
+  "benachrichtigungenAlleGelesen": "Tümünü okundu olarak işaretle",
+  "benachrichtigungWetterFrage": "Yaşadığınız yerde şiddetli hava durumunda uyarılmak ister misiniz?",
+  "benachrichtigungWetterDetail": "Yalnızca Alman Meteoroloji Servisi'nin „şiddetli“ ve üzeri resmî uyarıları — her yağmurda değil."
 }

@@ -2874,4 +2874,12 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get benachrichtigungenAlleGelesen => 'Tümünü okundu olarak işaretle';
+
+  @override
+  String get benachrichtigungWetterFrage =>
+      'Yaşadığınız yerde şiddetli hava durumunda uyarılmak ister misiniz?';
+
+  @override
+  String get benachrichtigungWetterDetail =>
+      'Yalnızca Alman Meteoroloji Servisi\'nin „şiddetli“ ve üzeri resmî uyarıları — her yağmurda değil.';
 }

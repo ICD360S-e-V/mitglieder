@@ -2875,4 +2875,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get benachrichtigungenAlleGelesen => 'Отметить все как прочитанные';
+
+  @override
+  String get benachrichtigungWetterFrage =>
+      'Хотите получать предупреждения о непогоде по месту жительства?';
+
+  @override
+  String get benachrichtigungWetterDetail =>
+      'Только официальные предупреждения немецкой метеослужбы уровня «сильное» и выше — не при каждом дожде.';
 }

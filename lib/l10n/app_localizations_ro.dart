@@ -2879,4 +2879,12 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get benachrichtigungenAlleGelesen => 'Marchează toate ca citite';
+
+  @override
+  String get benachrichtigungWetterFrage =>
+      'Doriți să fiți avertizat în caz de vreme severă în localitatea dumneavoastră?';
+
+  @override
+  String get benachrichtigungWetterDetail =>
+      'Doar avertizări oficiale ale serviciului meteo german, de la nivelul „sever” în sus — nu la fiecare ploaie.';
 }

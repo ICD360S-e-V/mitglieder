@@ -2877,4 +2877,12 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get benachrichtigungenAlleGelesen => 'Позначити всі як прочитані';
+
+  @override
+  String get benachrichtigungWetterFrage =>
+      'Бажаєте отримувати попередження про негоду за місцем проживання?';
+
+  @override
+  String get benachrichtigungWetterDetail =>
+      'Лише офіційні попередження німецької метеослужби рівня «сильне» і вище — не за кожного дощу.';
 }
