@@ -227,6 +227,26 @@ jobs:
           pod update WebRTC-SDK --repo-update
           cd ..
 
+      - name: Free disk space (macOS runner)
+        # macOS-Runner starten mit ~14 GB frei, schleppen aber 20-80 GB
+        # iOS-Simulator-Laufzeiten mit, die dieser Build nie anfasst. Bei
+        # v1.78.0 ging der Platz mitten in der Shader-Übersetzung aus:
+        # `impellerc` konnte ink_sparkle.frag nicht mehr schreiben und der
+        # Build brach mit einer ShaderCompilerException ab — die aussieht wie
+        # ein Grafikfehler und keiner war.
+        #
+        # Derselbe Schritt steht seit v6.67.0 im vorsitzer-Repo, wo es zuerst
+        # aufgetreten ist. Hier hat er bisher nur gefehlt, weil der Build
+        # gerade noch hineinpasste; mit jeder neuen Abhängigkeit wurde das
+        # knapper. Der Fehler ist NICHT vom Anwendungscode abhängig: iOS und
+        # Windows sind im selben Lauf aus derselben Quelle sauber gebaut.
+        run: |
+          echo "--- vorher ---"; df -h /
+          sudo rm -rf /Library/Developer/CoreSimulator/Profiles/Runtimes/* || true
+          xcrun simctl delete unavailable || true
+          rm -rf ~/Library/Developer/CoreSimulator/Caches/* || true
+          echo "--- nachher ---"; df -h /
+
       - name: Build macOS
         run: flutter build macos --release --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.MITGLIEDER_STARTUP_DIAG_KEY }}
 
