@@ -7,6 +7,7 @@ import '../l10n/app_localizations.dart';
 import '../services/anonymous_chat_service.dart';
 import '../services/chat_service.dart';
 import '../widgets/icd360s_header.dart';
+import '../widgets/linkified_text.dart';
 
 /// Live anonymous chat surface — visitor side. Hits
 /// /api/public/anonymous_chat/init.php for a ghost user + JWT, then
@@ -677,7 +678,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                 ),
                 border: Border.all(color: borderColor),
               ),
-              child: Text(
+              child: LinkifiedText(
                 m.message,
                 style: TextStyle(color: fg, fontSize: 14, height: 1.35),
               ),
