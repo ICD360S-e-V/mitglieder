@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.80.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.79.1...v1.80.0) (2026-08-02)
+
+
+### Features
+
+* **chat:** Bild aus der Zwischenablage einfuegen und als Bild anzeigen ([#264](https://github.com/ICD360S-e-V/mitglieder/issues/264)) ([7f079a7](https://github.com/ICD360S-e-V/mitglieder/commit/7f079a76e40d0a2034fbb1fbb7aa78fefac6d509))
+
 ## [1.79.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.79.0...v1.79.1) (2026-08-02)
 
 
