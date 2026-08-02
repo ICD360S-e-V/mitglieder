@@ -11,6 +11,10 @@ import 'package:permission_handler/permission_handler.dart';
 import '../l10n/app_localizations.dart';
 import 'eastern.dart';
 import 'linkified_text.dart';
+import '../utils/clipboard_import.dart';
+import 'chat_image_attachment.dart';
+import 'chat_pending_attachments.dart';
+import 'paste_image_detector.dart';
 import '../services/api_service.dart';
 import '../services/chat_service.dart';
 import '../services/network_info_service.dart';
@@ -956,7 +960,15 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
 
   Future<void> _sendMessage() async {
     final message = _messageController.text.trim();
-    if (message.isEmpty || _conversationId == null || _isSending) return;
+    if (_conversationId == null || _isSending) return;
+
+    // Vorgemerkte Anhaenge gehen zusammen mit dem Text in einem Rutsch raus.
+    if (_selectedFiles.isNotEmpty) {
+      await _uploadFiles();
+      return;
+    }
+
+    if (message.isEmpty) return;
     _log.info('LiveChat: _sendMessage() - sending to conversation $_conversationId', tag: 'CHAT');
 
     final errorSendingText = AppLocalizations.of(context)!.errorSending;
@@ -1086,7 +1098,6 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           final croppedFile = File('${dir.path}/crop_${DateTime.now().millisecondsSinceEpoch}.jpg');
           await croppedFile.writeAsBytes(croppedBytes);
           setState(() => _selectedFiles = [croppedFile]);
-          await _uploadFiles();
         }
       }
     } catch (e) {
@@ -1186,8 +1197,8 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           return;
         }
 
+        // Nur vormerken; abgeschickt wird mit dem Senden-Knopf.
         setState(() => _selectedFiles = files);
-        await _uploadFiles();
       }
     } catch (e) {
       _log.error('LiveChat: Gallery picker error: $e', tag: 'CHAT');
@@ -1222,13 +1233,45 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           return;
         }
 
+        // Nur vormerken; abgeschickt wird mit dem Senden-Knopf.
         setState(() => _selectedFiles = files);
-        await _uploadFiles();
       }
     } catch (e) {
       _log.error('LiveChat: File picker error: $e', tag: 'CHAT');
       _showError(errorText);
     }
+  }
+
+  /// Strg+V / Cmd+V im Eingabefeld.
+  Future<void> _pasteFromClipboard() async {
+    if (_isUploading || _isLoading) return;
+    final pasted = await ClipboardImport.read();
+    if (pasted.isEmpty || !mounted) return;
+    await _stageAttachments(pasted);
+  }
+
+  /// Bild, das Gboard direkt aus der Tastatur einfuegt.
+  Future<void> _onKeyboardContentInserted(KeyboardInsertedContent content) async {
+    final data = content.data;
+    if (data == null || data.isEmpty) return;
+    final file = await ClipboardImport.writeTemp(data, content.mimeType);
+    if (file == null || !mounted) return;
+    await _stageAttachments([file]);
+  }
+
+  Future<void> _stageAttachments(List<File> files) async {
+    final combined = [..._selectedFiles, ...files];
+    if (combined.length > ClipboardImport.maxFiles) {
+      _showError('Max: ${ClipboardImport.maxFiles}');
+      return;
+    }
+    final problem = await ClipboardImport.validate(combined);
+    if (problem != null) {
+      _showError(problem);
+      return;
+    }
+    if (!mounted) return;
+    setState(() => _selectedFiles = combined);
   }
 
   Future<void> _uploadFiles() async {
@@ -1928,6 +1971,24 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   Widget _buildGhostBubble(Map<String, dynamic> msg, bool isOwn) => const SizedBox.shrink();
 
   Widget _buildModernAttachment(Map<String, dynamic> attachment, bool isOwn) {
+    // Ein Bild zeigt man, statt seinen Dateinamen vorzulesen. Die Dateizeile
+    // bleibt darunter — sie traegt den Speichern-Knopf.
+    if (ChatImageAttachment.isImage(attachment)) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ChatImageAttachment(
+            attachment: attachment,
+            mitgliedernummer: widget.mitgliedernummer,
+          ),
+          _buildModernAttachmentRow(attachment, isOwn),
+        ],
+      );
+    }
+    return _buildModernAttachmentRow(attachment, isOwn);
+  }
+
+  Widget _buildModernAttachmentRow(Map<String, dynamic> attachment, bool isOwn) {
     final filename = attachment['filename'] ?? AppLocalizations.of(context)!.file;
     final size = attachment['size'] ?? 0;
     final extension = (attachment['extension'] ?? '').toString().toLowerCase();
@@ -2014,43 +2075,13 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Selected files preview
-          if (_selectedFiles.isNotEmpty)
-            Container(
-              margin: const EdgeInsets.only(bottom: 12),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: _selectedFiles.map((file) {
-                    final name = file.path.split(Platform.pathSeparator).last;
-                    return Container(
-                      margin: const EdgeInsets.only(right: 8),
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF667eea).withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.attach_file, size: 16, color: Color(0xFF667eea)),
-                          const SizedBox(width: 6),
-                          Text(
-                            name.length > 15 ? '${name.substring(0, 15)}...' : name,
-                            style: const TextStyle(fontSize: 13, color: Color(0xFF667eea)),
-                          ),
-                          const SizedBox(width: 6),
-                          InkWell(
-                            onTap: () => setState(() { _selectedFiles = List.from(_selectedFiles)..remove(file); }),
-                            child: const Icon(Icons.close, size: 16, color: Color(0xFF667eea)),
-                          ),
-                        ],
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
+          // Was gleich mitgeschickt wird — Bilder als Vorschau, nicht als Name.
+          ChatPendingAttachments(
+            files: _selectedFiles,
+            isUploading: _isUploading,
+            onRemove: (file) => setState(
+                () => _selectedFiles = List.from(_selectedFiles)..remove(file)),
+          ),
           // Network status bar
           _buildNetworkStatusBar(),
           // Input row
@@ -2081,13 +2112,20 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                     color: Colors.grey.shade100,
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  child: TextField(
+                  child: PasteImageDetector(
+                    onPaste: _pasteFromClipboard,
+                    child: TextField(
                     controller: _messageController,
                     onChanged: (text) {
                       _onTyping();
                       _onInputChanged(text);
                     },
                     onSubmitted: (_) => _sendMessage(),
+                    // Gboard schickt Bilder direkt aus der Tastatur.
+                    contentInsertionConfiguration: ContentInsertionConfiguration(
+                      allowedMimeTypes: ClipboardImport.keyboardMimeTypes,
+                      onContentInserted: _onKeyboardContentInserted,
+                    ),
                     decoration: InputDecoration(
                       hintText: AppLocalizations.of(context)!.typeMessage,
                       hintStyle: TextStyle(color: Colors.grey),
@@ -2096,6 +2134,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                     ),
                     enabled: !_isLoading,
                     style: const TextStyle(fontSize: 15),
+                  ),
                   ),
                 ),
               ),
