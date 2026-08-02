@@ -95,6 +95,11 @@ dependencies:
   # Path provider for temp directory (updates)
   path_provider: ^2.1.0
 
+  # Bilder aus der Systemzwischenablage (Strg+V im Chat). Flutters eigenes
+  # Clipboard kann nur Text — flutter#46418. Reines Plattform-C/ObjC/Kotlin,
+  # keine zusaetzliche Toolchain (super_clipboard braeuchte Rust + NDK).
+  pasteboard: ^0.5.0
+
   # Android local notifications
   flutter_local_notifications: ^21.0.0
 
@@ -113,7 +118,10 @@ dependencies:
   cryptography: ^2.7.0
 
   # UUID generation for device ID
-  uuid: ^3.0.7
+  # Auf 4.x gehoben, weil pasteboard uuid ^4 verlangt. Alle vier Aufrufe hier
+  # sind const Uuid().v4() ohne Optionen — in 4.x unveraendert. vorsitzer
+  # laeuft ohnehin schon auf 4.5.x.
+  uuid: ^4.6.0
 
   # Date formatting and week number calculation
   intl: ^0.20.2
