@@ -455,6 +455,29 @@ class ApiService {
 
   // ============= VERIFIZIERUNG API =============
 
+  /// Auswahlliste der Staatsangehörigkeiten (Destatis, Staats- und
+  /// Gebietssystematik). Eigener Endpunkt für Mitglieder — der unter
+  /// `admin/` verlangt eine Vorstandsrolle.
+  ///
+  /// Schlägt der Abruf fehl, liefert die Methode eine leere Liste statt zu
+  /// werfen: das Feld fällt dann auf Freitext zurück, damit die Verifizierung
+  /// nicht an einer Auswahlliste scheitert.
+  Future<List<Map<String, dynamic>>> getStaatsangehoerigkeiten() async {
+    try {
+      final response = await _client.get(
+        Uri.parse('$baseUrl/member/staatsangehoerigkeiten_list.php'),
+        headers: _headers,
+      );
+      final body = jsonDecode(response.body);
+      if (body is Map && body['success'] == true && body['data'] is List) {
+        return List<Map<String, dynamic>>.from(body['data']);
+      }
+    } catch (_) {
+      // bewusst still — siehe oben
+    }
+    return const [];
+  }
+
   // Get my verification status (all 6 steps + personal data)
   Future<Map<String, dynamic>> getMyVerifizierung() async {
     final response = await _client.get(

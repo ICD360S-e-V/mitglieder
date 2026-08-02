@@ -6,6 +6,7 @@ import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../screens/webview_screen.dart';
 import '../utils/error_helpers.dart';
+import '../utils/staatsangehoerigkeit_options.dart';
 
 class VerifizierungTab extends StatefulWidget {
   final String mitgliedernummer;
@@ -44,6 +45,11 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   final _emailController = TextEditingController();
   final _staatsangehoerigkeitController = TextEditingController();
   final _mutterspracheController = TextEditingController();
+
+  /// Auswahlliste vom Server. Bleibt sie leer (kein Netz, alter Server), fällt
+  /// das Feld auf Freitext zurück — die Verifizierung darf nicht daran
+  /// scheitern, dass eine Liste nicht geladen werden konnte.
+  List<Map<String, dynamic>> _staatsangehoerigkeitenListe = [];
   DateTime? _selectedGeburtsdatum;
   String? _selectedGeschlecht;
   String? _selectedFamilienstand;
@@ -131,6 +137,23 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     super.initState();
     _staatsangehoerigkeitController.addListener(_onCitizenshipChanged);
     _loadVerifizierung();
+    _loadStaatsangehoerigkeiten();
+  }
+
+  Future<void> _loadStaatsangehoerigkeiten() async {
+    final liste = await _apiService.getStaatsangehoerigkeiten();
+    if (!mounted || liste.isEmpty) return;
+    setState(() {
+      _staatsangehoerigkeitenListe = liste;
+      // Früher war das Feld Freitext. „Rumanisch" ohne Umlaut ist dieselbe
+      // Staatsangehörigkeit wie „rumänisch" — ohne diesen Abgleich fände das
+      // Dropdown den gespeicherten Wert nicht wieder.
+      final angepasst = staatsangehoerigkeitNormalisieren(
+          _staatsangehoerigkeitController.text, liste);
+      if (angepasst != _staatsangehoerigkeitController.text) {
+        _staatsangehoerigkeitController.text = angepasst;
+      }
+    });
   }
 
   @override
@@ -1148,13 +1171,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         // Staatsangehörigkeit + Muttersprache + conditional Aufenthaltsstatus
         Row(
           children: [
-            Expanded(
-              child: _buildTextField(
-                controller: _staatsangehoerigkeitController,
-                label: AppLocalizations.of(context)!.wizardStufe1dStaatLabel,
-                enabled: canEdit,
-              ),
-            ),
+            Expanded(child: _buildStaatsangehoerigkeitFeld(canEdit)),
             const SizedBox(width: 12),
             Expanded(
               child: _buildTextField(
@@ -2330,6 +2347,64 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           padding: const EdgeInsets.symmetric(vertical: 14),
         ),
       ),
+    );
+  }
+
+  /// Staatsangehörigkeit zum Auswählen statt zum Tippen.
+  ///
+  /// Der Wert bleibt im `_staatsangehoerigkeitController` — daran hängt
+  /// [_onCitizenshipChanged], das aus der Staatsangehörigkeit den
+  /// Aufenthaltsstatus ableitet (deutsch / EU-EWR-Freizügigkeit / Drittstaat).
+  /// Würde das Dropdown den Wert an einer eigenen Variablen halten, liefe
+  /// diese Ableitung stillschweigend ins Leere.
+  ///
+  /// Ohne geladene Liste bleibt es beim Freitextfeld: lieber tippen als gar
+  /// nichts eintragen können.
+  Widget _buildStaatsangehoerigkeitFeld(bool canEdit) {
+    final label = AppLocalizations.of(context)!.wizardStufe1dStaatLabel;
+    if (_staatsangehoerigkeitenListe.isEmpty) {
+      return _buildTextField(
+        controller: _staatsangehoerigkeitController,
+        label: label,
+        enabled: canEdit,
+      );
+    }
+
+    final aktuell = _staatsangehoerigkeitController.text.trim();
+    final gruppen = gruppiereStaatsangehoerigkeiten(_staatsangehoerigkeitenListe);
+    final eintraege = <DropdownMenuItem<String>>[];
+    for (final g in gruppen) {
+      eintraege.add(DropdownMenuItem<String>(
+        enabled: false,
+        child: Text(
+          g.kontinent.toUpperCase(),
+          style: TextStyle(
+              fontSize: 11, fontWeight: FontWeight.bold, color: Colors.grey.shade500),
+        ),
+      ));
+      for (final b in g.bezeichnungen) {
+        eintraege.add(DropdownMenuItem<String>(value: b, child: Text(b)));
+      }
+    }
+    // Ein gespeicherter Wert, der nicht in der Liste steht, muss trotzdem
+    // auswählbar bleiben — sonst wirft das Dropdown und die bereits erfasste
+    // Angabe wäre beim nächsten Speichern weg.
+    final bekannt = gruppen.expand((g) => g.bezeichnungen).toSet();
+    if (aktuell.isNotEmpty && !bekannt.contains(aktuell)) {
+      eintraege.add(DropdownMenuItem<String>(value: aktuell, child: Text(aktuell)));
+    }
+
+    return DropdownButtonFormField<String>(
+      isExpanded: true,
+      initialValue: aktuell.isNotEmpty ? aktuell : null,
+      decoration: InputDecoration(
+        labelText: label,
+        border: const OutlineInputBorder(),
+      ),
+      items: eintraege,
+      onChanged: canEdit
+          ? (v) => setState(() => _staatsangehoerigkeitController.text = v ?? '')
+          : null,
     );
   }
 
