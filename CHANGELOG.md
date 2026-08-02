@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.79.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.79.0...v1.79.1) (2026-08-02)
+
+
+### Bug Fixes
+
+* **chat:** Links im anonymen Chat wieder anklickbar ([#261](https://github.com/ICD360S-e-V/mitglieder/issues/261)) ([f8d0d24](https://github.com/ICD360S-e-V/mitglieder/commit/f8d0d2463a474a8c6d44d32b545b9c3923905bb2))
+
 ## [1.79.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.78.1...v1.79.0) (2026-07-31)
 
 
