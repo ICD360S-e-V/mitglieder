@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.81.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.80.0...v1.81.0) (2026-08-02)
+
+
+### Features
+
+* **verifizierung:** Staatsangehörigkeit auswählen statt tippen ([#266](https://github.com/ICD360S-e-V/mitglieder/issues/266)) ([af49cae](https://github.com/ICD360S-e-V/mitglieder/commit/af49cae729f5b9178a9bdfb0e3243099b4dd5172))
+
 ## [1.80.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.79.1...v1.80.0) (2026-08-02)
 
 
