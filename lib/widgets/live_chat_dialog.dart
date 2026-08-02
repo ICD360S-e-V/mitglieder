@@ -5,13 +5,12 @@ import 'dart:typed_data';
 import 'package:crop_your_image/crop_your_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../l10n/app_localizations.dart';
 import 'eastern.dart';
+import 'linkified_text.dart';
 import '../services/api_service.dart';
 import '../services/chat_service.dart';
 import '../services/network_info_service.dart';
@@ -1730,53 +1729,15 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     );
   }
 
-  static final _urlPattern = RegExp(r"""https?://[^\s<>"')\]]+""", caseSensitive: false);
-
   Widget _buildLinkedText(String text, bool isOwn) {
-    final matches = _urlPattern.allMatches(text).toList();
-    if (matches.isEmpty) {
-      return Text(
-        text,
-        style: TextStyle(
-          color: isOwn ? Colors.white : const Color(0xFF1a1a2e),
-          fontSize: 15,
-          height: 1.4,
-        ),
-      );
-    }
-
-    final spans = <TextSpan>[];
-    var lastEnd = 0;
-    for (final m in matches) {
-      if (m.start > lastEnd) {
-        spans.add(TextSpan(text: text.substring(lastEnd, m.start)));
-      }
-      final url = m.group(0)!;
-      spans.add(TextSpan(
-        text: url,
-        style: TextStyle(
-          decoration: TextDecoration.underline,
-          color: isOwn ? Colors.white : const Color(0xFF667eea),
-          fontWeight: FontWeight.w500,
-        ),
-        recognizer: TapGestureRecognizer()
-          ..onTap = () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
-      ));
-      lastEnd = m.end;
-    }
-    if (lastEnd < text.length) {
-      spans.add(TextSpan(text: text.substring(lastEnd)));
-    }
-
-    return Text.rich(
-      TextSpan(
-        style: TextStyle(
-          color: isOwn ? Colors.white : const Color(0xFF1a1a2e),
-          fontSize: 15,
-          height: 1.4,
-        ),
-        children: spans,
+    return LinkifiedText(
+      text,
+      style: TextStyle(
+        color: isOwn ? Colors.white : const Color(0xFF1a1a2e),
+        fontSize: 15,
+        height: 1.4,
       ),
+      linkColor: isOwn ? Colors.white : const Color(0xFF667eea),
     );
   }
 
