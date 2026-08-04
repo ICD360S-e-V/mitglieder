@@ -4,6 +4,7 @@ import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/language_service.dart';
 import '../services/wizard_service.dart';
+import '../utils/eu_eea_citizenship.dart';
 import '../utils/staatsangehoerigkeit_options.dart';
 import '../widgets/wizard_step_shell.dart';
 
@@ -33,9 +34,6 @@ class WizardStufe1dScreen extends StatefulWidget {
   State<WizardStufe1dScreen> createState() => _WizardStufe1dScreenState();
 }
 
-/// Citizenship buckets used to drive the Aufenthaltsstatus UI.
-enum _CitizenshipBucket { none, german, euEea, thirdCountry }
-
 class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
   final _formKey = GlobalKey<FormState>();
   late final TextEditingController _staatsangehoerigkeit;
@@ -50,44 +48,6 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
 
   static final _wordRegex = RegExp(r"^[\p{L}\s\-'.,/()]+$", unicode: true);
 
-  /// Nationality adjectives (lowercased, German + English) that map to
-  /// the EU/EEA/CH bucket. Anything not in here and not "deutsch" falls
-  /// into the third-country bucket once non-empty.
-  static const _euEeaAdjectives = <String>{
-    // EU 27 (German + English adjective forms)
-    'österreichisch', 'osterreichisch', 'austrian',
-    'belgisch', 'belgian',
-    'bulgarisch', 'bulgarian',
-    'kroatisch', 'croatian',
-    'zyprisch', 'cypriot',
-    'tschechisch', 'czech',
-    'dänisch', 'danisch', 'danish',
-    'estnisch', 'estonian',
-    'finnisch', 'finnish',
-    'französisch', 'franzosisch', 'french',
-    'griechisch', 'greek',
-    'ungarisch', 'hungarian',
-    'irisch', 'irish',
-    'italienisch', 'italian',
-    'lettisch', 'latvian',
-    'litauisch', 'lithuanian',
-    'luxemburgisch', 'luxembourgish',
-    'maltesisch', 'maltese',
-    'niederländisch', 'niederlandisch', 'dutch',
-    'polnisch', 'polish',
-    'portugiesisch', 'portuguese',
-    'rumänisch', 'rumanisch', 'romanian',
-    'slowakisch', 'slovak',
-    'slowenisch', 'slovenian',
-    'spanisch', 'spanish',
-    'schwedisch', 'swedish',
-    // EEA
-    'isländisch', 'islandisch', 'icelandic',
-    'liechtensteinisch',
-    'norwegisch', 'norwegian',
-    // CH bilateral
-    'schweizerisch', 'swiss',
-  };
 
   /// Stored as the `aufenthaltsstatus` string in the DB — keep these
   /// snake_case values stable so the Vorstand panel can switch on them.
@@ -162,11 +122,11 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
     setState(() {
       // Clear stale dropdown selection when bucket changes.
       final bucket = _bucket;
-      if (bucket == _CitizenshipBucket.german) {
+      if (bucket == CitizenshipBucket.german) {
         _aufenthaltsstatus = 'deutsch';
-      } else if (bucket == _CitizenshipBucket.euEea) {
+      } else if (bucket == CitizenshipBucket.euEea) {
         _aufenthaltsstatus = 'eu_eea_freizuegigkeit';
-      } else if (bucket == _CitizenshipBucket.thirdCountry &&
+      } else if (bucket == CitizenshipBucket.thirdCountry &&
           (_aufenthaltsstatus == 'deutsch' ||
               _aufenthaltsstatus == 'eu_eea_freizuegigkeit')) {
         // Was auto-filled for previous bucket; reset so the visitor
@@ -177,21 +137,13 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
     });
   }
 
-  _CitizenshipBucket get _bucket {
-    final lower = _staatsangehoerigkeit.text.trim().toLowerCase();
-    if (lower.isEmpty) return _CitizenshipBucket.none;
-    if (lower == 'deutsch' || lower == 'german') {
-      return _CitizenshipBucket.german;
-    }
-    if (_euEeaAdjectives.contains(lower)) return _CitizenshipBucket.euEea;
-    return _CitizenshipBucket.thirdCountry;
-  }
+  CitizenshipBucket get _bucket => citizenshipBucket(_staatsangehoerigkeit.text);
 
   Future<void> _submit() async {
     if (_saving) return;
     if (!_formKey.currentState!.validate()) return;
     // Third-country citizens must pick a residence title.
-    if (_bucket == _CitizenshipBucket.thirdCountry &&
+    if (_bucket == CitizenshipBucket.thirdCountry &&
         (_aufenthaltsstatus == null || _aufenthaltsstatus!.isEmpty)) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -274,16 +226,16 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
   Widget _aufenthaltsstatusField(AppLocalizations l10n) {
     final bucket = _bucket;
     return switch (bucket) {
-      _CitizenshipBucket.none =>
+      CitizenshipBucket.none =>
         _statusBadge(l10n.wizardStufe1dAufenthaltAwaitingCitizenship,
             icon: Icons.info_outline, dim: true),
-      _CitizenshipBucket.german =>
+      CitizenshipBucket.german =>
         _statusBadge(l10n.wizardStufe1dAufenthaltGerman,
             icon: Icons.verified_user_outlined),
-      _CitizenshipBucket.euEea =>
+      CitizenshipBucket.euEea =>
         _statusBadge(l10n.wizardStufe1dAufenthaltEuEea,
             icon: Icons.public_outlined),
-      _CitizenshipBucket.thirdCountry => _residenceDropdown(l10n),
+      CitizenshipBucket.thirdCountry => _residenceDropdown(l10n),
     };
   }
 
