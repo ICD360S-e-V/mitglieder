@@ -6,6 +6,7 @@ import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../screens/webview_screen.dart';
 import '../utils/error_helpers.dart';
+import '../utils/eu_eea_citizenship.dart';
 import '../utils/staatsangehoerigkeit_options.dart';
 
 class VerifizierungTab extends StatefulWidget {
@@ -183,38 +184,6 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   // titles (Aufenthaltserlaubnis, Niederlassung, GFK refugee, etc.).
   // --------------------------------------------------------------------------
 
-  static const _euEeaAdjectives = <String>{
-    'österreichisch', 'osterreichisch', 'austrian',
-    'belgisch', 'belgian',
-    'bulgarisch', 'bulgarian',
-    'kroatisch', 'croatian',
-    'zyprisch', 'cypriot',
-    'tschechisch', 'czech',
-    'dänisch', 'danisch', 'danish',
-    'estnisch', 'estonian',
-    'finnisch', 'finnish',
-    'französisch', 'franzosisch', 'french',
-    'griechisch', 'greek',
-    'ungarisch', 'hungarian',
-    'irisch', 'irish',
-    'italienisch', 'italian',
-    'lettisch', 'latvian',
-    'litauisch', 'lithuanian',
-    'luxemburgisch', 'luxembourgish',
-    'maltesisch', 'maltese',
-    'niederländisch', 'niederlandisch', 'dutch',
-    'polnisch', 'polish',
-    'portugiesisch', 'portuguese',
-    'rumänisch', 'rumanisch', 'romanian',
-    'slowakisch', 'slovak',
-    'slowenisch', 'slovenian',
-    'spanisch', 'spanish',
-    'schwedisch', 'swedish',
-    'isländisch', 'islandisch', 'icelandic',
-    'liechtensteinisch',
-    'norwegisch', 'norwegian',
-    'schweizerisch', 'swiss',
-  };
 
   static const _residenceTitles = <String>[
     'aufenthaltserlaubnis',
@@ -230,13 +199,16 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     'sonstige',
   ];
 
-  String get _citizenshipBucket {
-    final lower = _staatsangehoerigkeitController.text.trim().toLowerCase();
-    if (lower.isEmpty) return 'none';
-    if (lower == 'deutsch' || lower == 'german') return 'german';
-    if (_euEeaAdjectives.contains(lower)) return 'eu_eea';
-    return 'third';
-  }
+  /// Beibehaltene String-Werte, damit die Aufrufstellen unverändert bleiben;
+  /// die Einstufung selbst kommt aus dem gemeinsamen Util.
+  String get _citizenshipBucket => switch (citizenshipBucket(
+        _staatsangehoerigkeitController.text,
+      )) {
+        CitizenshipBucket.none => 'none',
+        CitizenshipBucket.german => 'german',
+        CitizenshipBucket.euEea => 'eu_eea',
+        CitizenshipBucket.thirdCountry => 'third',
+      };
 
   void _onCitizenshipChanged() {
     if (!mounted) return;
