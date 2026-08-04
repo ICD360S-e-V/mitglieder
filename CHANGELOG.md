@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.81.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.0...v1.81.1) (2026-08-04)
+
+
+### Refactor
+
+* **verifizierung:** EU/EWR-Liste an eine Stelle, Smoke-Test reparieren ([#269](https://github.com/ICD360S-e-V/mitglieder/issues/269)) ([92d067d](https://github.com/ICD360S-e-V/mitglieder/commit/92d067d0ede30425a3b6d8820f7dd9c8931a9d53))
+
 ## [1.81.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.80.0...v1.81.0) (2026-08-02)
 
 
