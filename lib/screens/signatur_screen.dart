@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:signature/signature.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
-import '../services/device_key_service.dart';
 import '../services/logger_service.dart';
 
 /// Was der Verein von diesem Mitglied unterschrieben haben möchte.
@@ -233,23 +233,34 @@ class _SignaturUnterschreibenScreenState
   // ── Schritt 1: lesen ──
 
   Widget _lesen(AppLocalizations l10n) {
-    final url = '${ApiService.baseUrl}/member/signatur_pdf.php'
-        '?id=${widget.signaturId}&which=original';
-
     return Column(
       children: [
         Expanded(
-          child: PdfViewer.uri(
-            Uri.parse(url),
-            // Das PDF liegt hinter requireAuth() — ohne diese Kopfzeilen kommt
-            // vom Server kein Dokument, sondern eine 401.
-            headers: {
-              if (widget.apiService.token != null)
-                'Authorization': 'Bearer ${widget.apiService.token}',
-              if (DeviceKeyService().deviceKey != null)
-                'X-Device-Key': DeviceKeyService().deviceKey!,
-              'User-Agent': 'ICD360S-Mitglied/1.0',
-            },
+          // Geladen wird über den eigenen Client — siehe _SignaturPdfAnsicht.
+          // Vorher lud der Betrachter selbst und scheiterte unter Windows an
+          // der Zertifikatskette, sichtbar nur als „Failed to open PDF".
+          child: _SignaturPdfAnsicht(
+            apiService: widget.apiService,
+            signaturId: widget.signaturId,
+            welche: 'original',
+            quellName: 'original_${widget.signaturId}.pdf',
+            fehlerAufbau: (context) => Center(
+              child: Padding(
+                padding: const EdgeInsets.all(32),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.cloud_off, size: 48, color: Colors.grey.shade400),
+                    const SizedBox(height: 16),
+                    Text(
+                      l10n.errorDownloading,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.grey.shade700),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             params: PdfViewerParams(
               onPageChanged: (seite) {
                 if (seite != null && seite > _letzteGeseheneSeite) {
@@ -623,41 +634,97 @@ class _SigniertesDokumentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = '${ApiService.baseUrl}/member/signatur_pdf.php'
-        '?id=$signaturId&which=signiert';
-
     return Scaffold(
       appBar: AppBar(title: Text(titel, style: const TextStyle(fontSize: 16))),
-      body: PdfViewer.uri(
-        Uri.parse(url),
-        headers: {
-          if (apiService.token != null)
-            'Authorization': 'Bearer ${apiService.token}',
-          if (DeviceKeyService().deviceKey != null)
-            'X-Device-Key': DeviceKeyService().deviceKey!,
-          'User-Agent': 'ICD360S-Mitglied/1.0',
-        },
-        params: PdfViewerParams(
-          errorBannerBuilder: (context, error, stackTrace, documentRef) => Center(
-            child: Padding(
-              padding: const EdgeInsets.all(32),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.hourglass_empty,
-                      size: 48, color: Colors.grey.shade400),
-                  const SizedBox(height: 16),
-                  Text(
-                    AppLocalizations.of(context)!.signaturSiegelInArbeit,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey.shade700),
-                  ),
-                ],
-              ),
+      // Fehlt die gesiegelte Fassung noch, liefert der Server kein PDF —
+      // dann steht hier die Erklärung statt eines leeren Betrachters.
+      body: _SignaturPdfAnsicht(
+        apiService: apiService,
+        signaturId: signaturId,
+        welche: 'signiert',
+        quellName: 'signiert_$signaturId.pdf',
+        fehlerAufbau: (context) => Center(
+          child: Padding(
+            padding: const EdgeInsets.all(32),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.hourglass_empty,
+                    size: 48, color: Colors.grey.shade400),
+                const SizedBox(height: 16),
+                Text(
+                  AppLocalizations.of(context)!.signaturSiegelInArbeit,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.grey.shade700),
+                ),
+              ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+
+/// Lädt ein Signatur-PDF über den eigenen Client und zeigt es dann an.
+///
+/// Der Umweg über die Bytes ist der Punkt. Ließe man den Betrachter die URL
+/// selbst laden, nähme er seinen eigenen HTTP-Client und damit den
+/// Zertifikatsspeicher der Plattform. Unter Windows scheitert das: die Kette
+/// des Servers endet an der neuen ISRG Root YE, die dort nicht bekannt ist,
+/// und der Nutzer sieht nur „Failed to open PDF" — ohne dass je eine Anfrage
+/// beim Server ankäme. Unser Client bringt die Wurzeln selbst mit.
+///
+/// Zugleich wird damit jeder Fehlschlag zu einer Aussage, die wir formulieren
+/// können, statt zu der des Betrachters.
+class _SignaturPdfAnsicht extends StatefulWidget {
+  final ApiService apiService;
+  final int signaturId;
+  final String welche;
+  final String quellName;
+  final WidgetBuilder fehlerAufbau;
+  final PdfViewerParams? params;
+
+  const _SignaturPdfAnsicht({
+    required this.apiService,
+    required this.signaturId,
+    required this.welche,
+    required this.quellName,
+    required this.fehlerAufbau,
+    this.params,
+  });
+
+  @override
+  State<_SignaturPdfAnsicht> createState() => _SignaturPdfAnsichtState();
+}
+
+class _SignaturPdfAnsichtState extends State<_SignaturPdfAnsicht> {
+  // Im initState angestoßen, nicht im build: der FutureBuilder würde sonst
+  // bei jedem Neuaufbau — und den löst schon das Umblättern aus — erneut
+  // laden.
+  late final Future<Uint8List?> _bytes = widget.apiService
+      .signaturPdfLaden(widget.signaturId, welche: widget.welche);
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<Uint8List?>(
+      future: _bytes,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        final daten = snapshot.data;
+        if (daten == null || daten.isEmpty) {
+          return widget.fehlerAufbau(context);
+        }
+        return PdfViewer.data(
+          daten,
+          sourceName: widget.quellName,
+          params: widget.params ?? const PdfViewerParams(),
+        );
+      },
     );
   }
 }

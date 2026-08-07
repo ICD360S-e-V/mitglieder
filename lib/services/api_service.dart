@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'background_service.dart';
@@ -1394,6 +1395,47 @@ class ApiService {
   /// Offene und bereits erledigte Unterschriftsvorgänge.
   Future<Map<String, dynamic>> getSignaturen() =>
       _postSignatur({'action': 'list'});
+
+  /// Holt das zu unterschreibende PDF — über unseren eigenen Client.
+  ///
+  /// Der Betrachter kann eine URL auch selbst laden, tut das dann aber mit
+  /// seinem eigenen HTTP-Client und damit über den Zertifikatsspeicher der
+  /// Plattform. Unter Windows scheitert das: die Kette des Servers endet an
+  /// der neuen ISRG Root YE, die dort noch nicht bekannt ist, und BoringSSL
+  /// bricht mit „unable to get local issuer certificate" ab — im Betrachter
+  /// sichtbar nur als „Failed to open PDF". Auf Android trägt derselbe
+  /// Aufruf, weil dessen Speicher die Kette schließen kann.
+  ///
+  /// Der Client hier hängt an [HttpClientFactory.createPinnedHttpClient] und
+  /// bringt die Wurzeln selbst mit, ist also von der Plattform unabhängig.
+  /// Deshalb gehen die Bytes durch ihn und erst danach in den Betrachter —
+  /// derselbe Weg, den die Dateivorschau ohnehin schon nimmt.
+  ///
+  /// [welche] ist `original` oder `signiert`. Gibt null zurück, wenn der
+  /// Server kein PDF liefert — die gesiegelte Fassung entsteht erst im
+  /// Minutentakt und fehlt unmittelbar nach dem Unterschreiben regulär noch.
+  Future<Uint8List?> signaturPdfLaden(int signaturId,
+      {String welche = 'original'}) async {
+    try {
+      final r = await _client.get(
+        Uri.parse('$baseUrl/member/signatur_pdf.php'
+            '?id=$signaturId&which=$welche'),
+        headers: _headers,
+      ).timeout(const Duration(seconds: 60));
+      // JSON statt PDF heißt: die Fassung gibt es (noch) nicht.
+      if (r.statusCode != 200 ||
+          (r.headers['content-type'] ?? '').contains('json')) {
+          LoggerService().warning(
+            'Signatur-PDF $signaturId ($welche): HTTP ${r.statusCode}',
+            tag: 'SIGNATUR');
+        return null;
+      }
+      return r.bodyBytes;
+    } catch (e) {
+      LoggerService().error('Signatur-PDF $signaturId ($welche): $e', tag: 'SIGNATUR');
+      return null;
+    }
+  }
 
   /// Fordert die TAN an. Der Server schickt sie an die in Verifizierung
   /// Stufe 1 hinterlegte Mobilnummer — nicht an eine, die wir mitschicken.
