@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.81.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.1...v1.81.2) (2026-08-07)
+
+
+### Bug Fixes
+
+* **signatur:** PDF über den eigenen Client laden, nicht über den Betrachter ([#271](https://github.com/ICD360S-e-V/mitglieder/issues/271)) ([d6fa72d](https://github.com/ICD360S-e-V/mitglieder/commit/d6fa72d585bf43f06a7687194fb2b6bede85dea6))
+
 ## [1.81.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.0...v1.81.1) (2026-08-04)
 
 
