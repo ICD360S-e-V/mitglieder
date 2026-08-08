@@ -357,6 +357,25 @@ function aktionSignieren(PDO $pdo, int $userId, array $body): void
                     isp         = COALESCE(?, isp)
               WHERE id = ?"
         )->execute([$rdns, $herkunft['land'], $herkunft['netz'], $signaturId]);
+
+        // Die App-Fassung EINMAL festhalten.
+        //
+        // device_keys.app_version wird bei jedem Login und bei jedem Start neu
+        // geschrieben — sie beschreibt die Fassung von heute, nicht die vom
+        // Unterschriftszeitpunkt. Wuerde das Buendel sie direkt lesen, behauptete
+        // es nach dem naechsten App-Update, eine alte Unterschrift sei mit der
+        // neuen Fassung geleistet worden. Eine falsche Angabe in einem
+        // Beweisdokument ist schlimmer als keine.
+        //
+        // JETZT ist der Wert richtig: das Mitglied hat gerade mit dieser App
+        // unterschrieben. Danach wird die Spalte nie wieder angefasst.
+        $pdo->prepare(
+            "UPDATE dokument_signaturen s
+                JOIN device_keys d
+                  ON d.device_key COLLATE utf8mb4_unicode_ci = s.device_id
+                 SET s.app_version = d.app_version
+               WHERE s.id = ? AND s.app_version IS NULL"
+        )->execute([$signaturId]);
     } catch (Throwable $e) {
         error_log('signatur Herkunft: ' . $e->getMessage());
     }

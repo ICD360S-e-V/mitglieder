@@ -256,8 +256,26 @@ function geraetText(array $z): ?string
  */
 function anwendungText(array $z): string
 {
-    $version = trim((string)($z['geraet_app'] ?? ''));
-    return $version === '' ? ANWENDUNG : ANWENDUNG . ' ' . $version;
+    // Die festgehaltene Fassung ist die einzige, die eine Aussage ueber den
+    // Unterschriftszeitpunkt zulaesst. Sie wird beim Unterschreiben einmal
+    // gesetzt und danach nie geaendert.
+    $momentaufnahme = trim((string)($z['app_version'] ?? ''));
+    if ($momentaufnahme !== '') {
+        return ANWENDUNG . ' ' . $momentaufnahme;
+    }
+
+    // Ohne Momentaufnahme (Unterschriften von vor dieser Aenderung) bleibt nur
+    // der heutige Stand des Geraets — und der sagt gerade NICHT, womit
+    // unterschrieben wurde. Das muss dastehen. Ihn stillschweigend als
+    // Unterschriftsfassung auszugeben waere die falsche Angabe, die diese
+    // Trennung ueberhaupt notwendig gemacht hat.
+    $heute = trim((string)($z['geraet_app'] ?? ''));
+    if ($heute !== '') {
+        return ANWENDUNG . ' — Fassung beim Unterschreiben nicht erfasst, '
+             . 'Gerät meldet heute ' . $heute;
+    }
+
+    return ANWENDUNG;
 }
 
 /**
