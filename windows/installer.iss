@@ -11,7 +11,7 @@
 ;      with /VERYSILENT; the installer then closes the running app, upgrades
 ;      in place and relaunches it without any user interaction.
 
-#define MyAppName "ICD360S e.V. Mitglieder"
+#define MyAppName "MitgliederPortal - ICD360S e.V"
 #define MyAppExeName "icd360sev_mitglied.exe"
 #define MyAppPublisher "ICD360S e.V."
 #define MyAppURL "https://icd360s.de"
@@ -24,10 +24,12 @@
 #endif
 
 [Setup]
-; AppId is pinned to the literal that Inno previously derived from AppName.
-; Changing it would orphan the uninstall entry of every existing install and
-; break in-place upgrades, so it must stay byte-identical to AppName.
-AppId={#MyAppName}
+; AppId ist auf den Namen festgenagelt, unter dem frueher installiert wurde.
+; Inno leitet daraus den Deinstallations-Eintrag ab: waendert die Id mit dem
+; Anzeigenamen, verliert jede bestehende Installation ihren Eintrag und ein
+; Update installiert daneben statt darueber. Der Wert bleibt deshalb auf dem
+; ALTEN Namen stehen, auch wenn die App jetzt anders heisst.
+AppId=ICD360S e.V. Mitglieder
 AppName={#MyAppName}
 AppVersion={#AppVersion}
 AppVerName={#MyAppName} {#AppVersion}
@@ -35,8 +37,8 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL=https://github.com/ICD360S-e-V/mitglieder/releases/latest
-DefaultDirName={autopf}\ICD360S Mitglieder
-DefaultGroupName=ICD360S Mitglieder
+DefaultDirName={autopf}\MitgliederPortal
+DefaultGroupName=MitgliederPortal - ICD360S e.V
 DisableProgramGroupPage=yes
 OutputDir=..
 OutputBaseFilename=icd360sev_setup
@@ -70,7 +72,7 @@ UninstallDisplayName={#MyAppName}
 
 VersionInfoVersion={#AppVersion}
 VersionInfoCompany={#MyAppPublisher}
-VersionInfoDescription=ICD360S e.V. Mitglieder
+VersionInfoDescription=MitgliederPortal - ICD360S e.V
 VersionInfoProductName={#MyAppName}
 VersionInfoProductVersion={#AppVersion}
 

@@ -27,6 +27,11 @@ require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../helpers.php';
 require_once __DIR__ . '/../lib/SignaturHelper.php';
 
+/** Der Anzeigename der Mitglieder-App, wie er auf jeder Plattform steht.
+ *  Steht hier als Konstante, damit im Beweisbuendel nicht irgendwann ein
+ *  siebter Name auftaucht — es gab schon sechs. */
+const ANWENDUNG = 'MitgliederPortal - ICD360S e.V';
+
 validateApiKey();
 blockBrowserAccess();
 
@@ -141,13 +146,38 @@ function aktionDetail(PDO $pdo, array $body): void
         jsonResponse(false, [], 'Missing signatur_id');
     }
 
+    // Das Gerät kommt aus ZWEI Quellen, in dieser Reihenfolge:
+    //
+    //  1. was die App im Moment der Unterschrift mitgeschickt hat
+    //     (device_hostname) — eine Momentaufnahme, und als Beweis die bessere:
+    //     sie beschreibt das Gerät, wie es damals war.
+    //  2. ersatzweise das, was bei der Geräteregistrierung hinterlegt wurde.
+    //
+    // Nummer 2 gab es die ganze Zeit in `device_keys`, mitsamt Name, Plattform
+    // und Betriebssystem. Bei den ersten vier Unterschriften blieb das Feld
+    // trotzdem leer, weil die App auf dem Desktop keinen Namen ermittelte —
+    // und niemand kam auf die Idee, dass die Angabe längst danebenlag. Die
+    // Ersatzquelle schließt diese Lücke sofort und rückwirkend, auch für
+    // Mitglieder, deren App noch älter ist.
+    //
+    // Das COLLATE im JOIN ist nicht schmückend: `device_keys` steht auf
+    // utf8mb4_general_ci, `dokument_signaturen` auf utf8mb4_unicode_ci. Ohne
+    // die Angabe bricht MySQL die ganze Abfrage mit „Illegal mix of
+    // collations" ab — nicht die Zeile, die ganze Detailansicht.
     $stmt = $pdo->prepare(
         "SELECT s.*,
                 u.vorname, u.nachname, u.mitgliedernummer,
-                a.vorname AS anfordernder_vorname, a.nachname AS anfordernder_nachname
+                a.vorname AS anfordernder_vorname, a.nachname AS anfordernder_nachname,
+                d.device_name  AS geraet_registriert,
+                d.platform     AS geraet_plattform,
+                d.os_version   AS geraet_system,
+                d.device_type  AS geraet_art,
+                d.app_version  AS geraet_app
            FROM dokument_signaturen s
            JOIN users u ON u.id = s.user_id
            LEFT JOIN users a ON a.id = s.angefordert_von
+           LEFT JOIN device_keys d
+                  ON d.device_key COLLATE utf8mb4_unicode_ci = s.device_id
           WHERE s.id = ?"
     );
     $stmt->execute([$signaturId]);
@@ -170,10 +200,82 @@ function aktionDetail(PDO $pdo, array $body): void
             );
     }
 
+    // Aus beiden Quellen EIN lesbarer Satz. Der Client soll nicht raten
+    // müssen, welches der fünf Felder gerade gefüllt ist.
+    $zeile['geraet_anzeige']    = geraetText($zeile);
+    $zeile['anwendung_anzeige'] = anwendungText($zeile);
+
     $zeile['id'] = (int)$zeile['id'];
     unset($zeile['pdf_pfad'], $zeile['signiert_pdf_pfad'], $zeile['tsa_token_pfad']);
 
     jsonResponse(true, ['signatur' => $zeile]);
+}
+
+/**
+ * Ein Satz, der das unterschreibende Gerät beschreibt.
+ *
+ * Bevorzugt wird, was die App im Moment der Unterschrift gemeldet hat: das ist
+ * der Zustand, auf den es ankommt. Fehlt er — alte App-Fassung, oder eine
+ * Plattform, die damals nicht abgedeckt war — tritt die Registrierung ein.
+ *
+ * Dass die Ersatzangabe später gepflegt wurde, wird nicht verschwiegen: sie
+ * steht mit dem Zusatz „laut Registrierung" da. Eine Angabe als
+ * Momentaufnahme auszugeben, die keine ist, wäre genau die Art von Unschärfe,
+ * die ein Beweisbündel wertlos macht.
+ */
+function geraetText(array $z): ?string
+{
+    $momentaufnahme = trim((string)($z['device_hostname'] ?? ''));
+    if ($momentaufnahme !== '') {
+        return $momentaufnahme;
+    }
+
+    $teile = array_values(array_filter([
+        trim((string)($z['geraet_registriert'] ?? '')),
+        trim((string)($z['geraet_system'] ?? '')) ?: trim((string)($z['geraet_plattform'] ?? '')),
+    ], fn($t) => $t !== ''));
+
+    if ($teile === []) {
+        return null;
+    }
+    return implode(' · ', $teile) . ' (laut Registrierung)';
+}
+
+/**
+ * Mit welcher Anwendung unterschrieben wurde.
+ *
+ * Den NAMEN setzt der Server, nicht der Client. Er weiß mit Sicherheit, dass
+ * die Unterschrift über den Mitglieder-Endpunkt kam — kein anderer Weg führt
+ * dorthin. Ihn vom Client zu erfragen hieße, sich die Antwort von der Seite
+ * geben zu lassen, die man gerade nachweist.
+ *
+ * Die VERSION kommt aus der Geräteregistrierung. Sie gehört ins Bündel, weil
+ * sie sagt, welcher Programmstand die Unterschrift erzeugt hat — wird Jahre
+ * später ein Fehler in einer bestimmten Fassung bekannt, lässt sich damit
+ * eingrenzen, welche Unterschriften ihn überhaupt betreffen könnten.
+ */
+function anwendungText(array $z): string
+{
+    // Die festgehaltene Fassung ist die einzige, die eine Aussage ueber den
+    // Unterschriftszeitpunkt zulaesst. Sie wird beim Unterschreiben einmal
+    // gesetzt und danach nie geaendert.
+    $momentaufnahme = trim((string)($z['app_version'] ?? ''));
+    if ($momentaufnahme !== '') {
+        return ANWENDUNG . ' ' . $momentaufnahme;
+    }
+
+    // Ohne Momentaufnahme (Unterschriften von vor dieser Aenderung) bleibt nur
+    // der heutige Stand des Geraets — und der sagt gerade NICHT, womit
+    // unterschrieben wurde. Das muss dastehen. Ihn stillschweigend als
+    // Unterschriftsfassung auszugeben waere die falsche Angabe, die diese
+    // Trennung ueberhaupt notwendig gemacht hat.
+    $heute = trim((string)($z['geraet_app'] ?? ''));
+    if ($heute !== '') {
+        return ANWENDUNG . ' — Fassung beim Unterschreiben nicht erfasst, '
+             . 'Gerät meldet heute ' . $heute;
+    }
+
+    return ANWENDUNG;
 }
 
 /**
