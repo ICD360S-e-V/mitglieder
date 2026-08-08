@@ -380,6 +380,9 @@ class _SignaturUnterschreibenScreenState
                     errorText: _fehler,
                   ),
                   onChanged: (_) {
+                    // Nur noch die Fehlermeldung wegräumen. Ob der Knopf
+                    // freigegeben ist, hängt NICHT mehr an diesem setState —
+                    // siehe unten.
                     if (_fehler != null) setState(() => _fehler = null);
                   },
                 ),
@@ -392,11 +395,29 @@ class _SignaturUnterschreibenScreenState
             ),
           ),
         ),
-        _fussleiste(
-          knopf: l10n.signaturJetztUnterschreiben,
-          aktiv: _tanFeld.text.trim().length >= 4 && !_sendet,
-          laedt: _sendet,
-          onDruck: _signieren,
+        // Der Knopf hört direkt auf das Textfeld, statt auf ein setState zu
+        // hoffen.
+        //
+        // Vorher stand hier `aktiv: _tanFeld.text.trim().length >= 4`, und
+        // neu aufgebaut wurde nur, wenn gerade eine Fehlermeldung wegfiel.
+        // Beim ERSTEN Eintippen gab es keine — also kein Neuaufbau, also blieb
+        // der Knopf grau, und das Mitglied konnte den Code, den es gerade
+        // bekommen hatte, nicht abschicken. Auf dem Server sah man drei
+        // Code-Anforderungen hintereinander und keinen einzigen
+        // Signier-Versuch: jemand tippte den Code ein, kam nicht weiter und
+        // forderte einen neuen an.
+        //
+        // Dieselbe Bauart wie beim Unterschriftsfeld einen Schritt vorher: der
+        // Zustand kommt aus dem Controller, nicht aus einem Aufruf, den man
+        // vergessen kann.
+        ValueListenableBuilder<TextEditingValue>(
+          valueListenable: _tanFeld,
+          builder: (_, wert, __) => _fussleiste(
+            knopf: l10n.signaturJetztUnterschreiben,
+            aktiv: wert.text.trim().length >= 4 && !_sendet,
+            laedt: _sendet,
+            onDruck: _signieren,
+          ),
         ),
       ],
     );
