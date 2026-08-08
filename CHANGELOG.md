@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.82.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.82.0...v1.82.1) (2026-08-08)
+
+
+### Bug Fixes
+
+* **signatur:** Gerät aus device_keys ergänzen, wenn die App keines meldet ([#282](https://github.com/ICD360S-e-V/mitglieder/issues/282)) ([6ddc26e](https://github.com/ICD360S-e-V/mitglieder/commit/6ddc26ebbaab22ecaf812ab0407d1df1e4500345))
+
 ## [1.82.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.4...v1.82.0) (2026-08-08)
 
 
