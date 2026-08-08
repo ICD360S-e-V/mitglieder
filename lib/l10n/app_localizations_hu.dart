@@ -2834,60 +2834,60 @@ class AppLocalizationsHu extends AppLocalizations {
   String get wizardChatHelpSubtitle => 'Élő chat a Vorstanddal · gyors válasz';
 
   @override
-  String get benachrichtigungTitel => 'SMS-Erinnerungen';
+  String get benachrichtigungTitel => 'SMS-emlékeztetők';
 
   @override
   String get benachrichtigungIntro =>
-      'Damit Sie keinen Termin verpassen, kann der Verein Ihnen eine SMS schicken. Sie entscheiden, ob und wofür — und können es jederzeit ändern.';
+      'Hogy ne maradjon le egy időpontról sem, az egyesület küldhet Önnek SMS-t. Ön dönti el, hogy kér-e és mihez — és ezt bármikor módosíthatja.';
 
   @override
   String get benachrichtigungTermineFrage =>
-      'Möchten Sie Erinnerungen an Ihre Termine per SMS erhalten?';
+      'Szeretne SMS-ben emlékeztetőt kapni az időpontjairól?';
 
   @override
   String get benachrichtigungTermineDetail =>
-      'Die SMS enthält Datum, Uhrzeit, Ort und Betreff des Termins.';
+      'Az üzenet tartalmazza az időpont dátumát, idejét, helyét és tárgyát.';
 
   @override
   String get benachrichtigungMedikamenteFrage =>
-      'Möchten Sie auch an Ihre Medikamente erinnert werden?';
+      'Szeretne emlékeztetőt a gyógyszereiről is?';
 
   @override
   String get benachrichtigungMedikamenteDetail =>
-      'Dabei steht der Name des Medikaments in der SMS. Das ist eine Gesundheitsangabe — deshalb fragen wir getrennt.';
+      'Ilyenkor a gyógyszer neve szerepel az üzenetben. Ez egészségügyi adat — ezért kérdezzük külön.';
 
   @override
   String get benachrichtigungHinweis =>
-      'Die Erinnerung ist eine Hilfe und keine Garantie: bitte verlassen Sie sich nicht allein darauf. Ändern können Sie das jederzeit in Ihrem Profil.';
+      'Az emlékeztető segítség és nem garancia: kérjük, ne csak arra hagyatkozzon. Ezt bármikor módosíthatja a profiljában.';
 
   @override
-  String get benachrichtigungJa => 'Ja';
+  String get benachrichtigungJa => 'Igen';
 
   @override
-  String get benachrichtigungNein => 'Nein';
+  String get benachrichtigungNein => 'Nem';
 
   @override
-  String get benachrichtigungSpaeter => 'Später entscheiden';
+  String get benachrichtigungSpaeter => 'Döntés később';
 
   @override
-  String get benachrichtigungSpeichern => 'Speichern';
+  String get benachrichtigungSpeichern => 'Mentés';
 
   @override
-  String get benachrichtigungGespeichert => 'Danke, gespeichert.';
+  String get benachrichtigungGespeichert => 'Köszönjük, elmentve.';
 
   @override
-  String get benachrichtigungenLeer => 'Keine Benachrichtigungen';
+  String get benachrichtigungenLeer => 'Nincsenek értesítések';
 
   @override
-  String get benachrichtigungenAlleGelesen => 'Alle als gelesen markieren';
+  String get benachrichtigungenAlleGelesen => 'Összes megjelölése olvasottként';
 
   @override
   String get benachrichtigungWetterFrage =>
-      'Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?';
+      'Szeretne figyelmeztetést viharos időjárás esetén a lakóhelyén?';
 
   @override
   String get benachrichtigungWetterDetail =>
-      'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+      'Csak a Német Meteorológiai Szolgálat hivatalos figyelmeztetései „súlyos“ fokozattól felfelé — nem minden esőnél.';
 
   @override
   String get signaturTitel => 'Aláírások';

@@ -2843,60 +2843,60 @@ class AppLocalizationsEl extends AppLocalizations {
       'Live chat με το Vorstand · γρήγορη απάντηση';
 
   @override
-  String get benachrichtigungTitel => 'SMS-Erinnerungen';
+  String get benachrichtigungTitel => 'Υπενθυμίσεις SMS';
 
   @override
   String get benachrichtigungIntro =>
-      'Damit Sie keinen Termin verpassen, kann der Verein Ihnen eine SMS schicken. Sie entscheiden, ob und wofür — und können es jederzeit ändern.';
+      'Για να μη χάσετε κάποιο ραντεβού, ο σύλλογος μπορεί να σας στείλει SMS. Εσείς αποφασίζετε αν και για τι — και μπορείτε να το αλλάξετε οποιαδήποτε στιγμή.';
 
   @override
   String get benachrichtigungTermineFrage =>
-      'Möchten Sie Erinnerungen an Ihre Termine per SMS erhalten?';
+      'Θέλετε να λαμβάνετε υπενθυμίσεις για τα ραντεβού σας με SMS;';
 
   @override
   String get benachrichtigungTermineDetail =>
-      'Die SMS enthält Datum, Uhrzeit, Ort und Betreff des Termins.';
+      'Το μήνυμα περιέχει ημερομηνία, ώρα, τόπο και θέμα του ραντεβού.';
 
   @override
   String get benachrichtigungMedikamenteFrage =>
-      'Möchten Sie auch an Ihre Medikamente erinnert werden?';
+      'Θέλετε να σας υπενθυμίζουμε και τα φάρμακά σας;';
 
   @override
   String get benachrichtigungMedikamenteDetail =>
-      'Dabei steht der Name des Medikaments in der SMS. Das ist eine Gesundheitsangabe — deshalb fragen wir getrennt.';
+      'Τότε στο μήνυμα αναγράφεται το όνομα του φαρμάκου. Αυτό είναι στοιχείο υγείας — γι\' αυτό ρωτάμε ξεχωριστά.';
 
   @override
   String get benachrichtigungHinweis =>
-      'Die Erinnerung ist eine Hilfe und keine Garantie: bitte verlassen Sie sich nicht allein darauf. Ändern können Sie das jederzeit in Ihrem Profil.';
+      'Η υπενθύμιση είναι βοήθεια και όχι εγγύηση: παρακαλούμε μη βασίζεστε μόνο σε αυτήν. Μπορείτε να το αλλάξετε οποιαδήποτε στιγμή στο προφίλ σας.';
 
   @override
-  String get benachrichtigungJa => 'Ja';
+  String get benachrichtigungJa => 'Ναι';
 
   @override
-  String get benachrichtigungNein => 'Nein';
+  String get benachrichtigungNein => 'Όχι';
 
   @override
-  String get benachrichtigungSpaeter => 'Später entscheiden';
+  String get benachrichtigungSpaeter => 'Απόφαση αργότερα';
 
   @override
-  String get benachrichtigungSpeichern => 'Speichern';
+  String get benachrichtigungSpeichern => 'Αποθήκευση';
 
   @override
-  String get benachrichtigungGespeichert => 'Danke, gespeichert.';
+  String get benachrichtigungGespeichert => 'Ευχαριστούμε, αποθηκεύτηκε.';
 
   @override
-  String get benachrichtigungenLeer => 'Keine Benachrichtigungen';
+  String get benachrichtigungenLeer => 'Καμία ειδοποίηση';
 
   @override
-  String get benachrichtigungenAlleGelesen => 'Alle als gelesen markieren';
+  String get benachrichtigungenAlleGelesen => 'Σήμανση όλων ως αναγνωσμένων';
 
   @override
   String get benachrichtigungWetterFrage =>
-      'Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?';
+      'Θέλετε να προειδοποιείστε για κακοκαιρία στον τόπο κατοικίας σας;';
 
   @override
   String get benachrichtigungWetterDetail =>
-      'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+      'Μόνο επίσημες προειδοποιήσεις της Γερμανικής Μετεωρολογικής Υπηρεσίας από το επίπεδο «σοβαρό» και άνω — όχι σε κάθε βροχή.';
 
   @override
   String get signaturTitel => 'Υπογραφές';

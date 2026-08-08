@@ -2821,60 +2821,60 @@ class AppLocalizationsEt extends AppLocalizations {
   String get wizardChatHelpSubtitle => 'Otsesuhtlus Vorstandiga · kiire vastus';
 
   @override
-  String get benachrichtigungTitel => 'SMS-Erinnerungen';
+  String get benachrichtigungTitel => 'SMS-meeldetuletused';
 
   @override
   String get benachrichtigungIntro =>
-      'Damit Sie keinen Termin verpassen, kann der Verein Ihnen eine SMS schicken. Sie entscheiden, ob und wofür — und können es jederzeit ändern.';
+      'Et te ei jätaks kohtumist vahele, võib ühing saata teile SMS-i. Teie otsustate, kas ja mille kohta — ja saate seda igal ajal muuta.';
 
   @override
   String get benachrichtigungTermineFrage =>
-      'Möchten Sie Erinnerungen an Ihre Termine per SMS erhalten?';
+      'Kas soovite oma kohtumiste kohta meeldetuletusi SMS-iga?';
 
   @override
   String get benachrichtigungTermineDetail =>
-      'Die SMS enthält Datum, Uhrzeit, Ort und Betreff des Termins.';
+      'Sõnum sisaldab kohtumise kuupäeva, kellaaega, kohta ja teemat.';
 
   @override
   String get benachrichtigungMedikamenteFrage =>
-      'Möchten Sie auch an Ihre Medikamente erinnert werden?';
+      'Kas soovite meeldetuletusi ka oma ravimite kohta?';
 
   @override
   String get benachrichtigungMedikamenteDetail =>
-      'Dabei steht der Name des Medikaments in der SMS. Das ist eine Gesundheitsangabe — deshalb fragen wir getrennt.';
+      'Siis on sõnumis ravimi nimi. See on terviseandmed — seetõttu küsime eraldi.';
 
   @override
   String get benachrichtigungHinweis =>
-      'Die Erinnerung ist eine Hilfe und keine Garantie: bitte verlassen Sie sich nicht allein darauf. Ändern können Sie das jederzeit in Ihrem Profil.';
+      'Meeldetuletus on abi, mitte garantii: palun ärge tuginege ainult sellele. Saate seda igal ajal oma profiilis muuta.';
 
   @override
-  String get benachrichtigungJa => 'Ja';
+  String get benachrichtigungJa => 'Jah';
 
   @override
-  String get benachrichtigungNein => 'Nein';
+  String get benachrichtigungNein => 'Ei';
 
   @override
-  String get benachrichtigungSpaeter => 'Später entscheiden';
+  String get benachrichtigungSpaeter => 'Otsustan hiljem';
 
   @override
-  String get benachrichtigungSpeichern => 'Speichern';
+  String get benachrichtigungSpeichern => 'Salvesta';
 
   @override
-  String get benachrichtigungGespeichert => 'Danke, gespeichert.';
+  String get benachrichtigungGespeichert => 'Aitäh, salvestatud.';
 
   @override
-  String get benachrichtigungenLeer => 'Keine Benachrichtigungen';
+  String get benachrichtigungenLeer => 'Teateid pole';
 
   @override
-  String get benachrichtigungenAlleGelesen => 'Alle als gelesen markieren';
+  String get benachrichtigungenAlleGelesen => 'Märgi kõik loetuks';
 
   @override
   String get benachrichtigungWetterFrage =>
-      'Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?';
+      'Kas soovite hoiatusi ohtliku ilma eest oma elukohas?';
 
   @override
   String get benachrichtigungWetterDetail =>
-      'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+      'Ainult Saksa ilmateenistuse ametlikud hoiatused alates tasemest „raske“ — mitte iga vihma korral.';
 
   @override
   String get signaturTitel => 'Allkirjad';

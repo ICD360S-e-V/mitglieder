@@ -2829,60 +2829,60 @@ class AppLocalizationsSl extends AppLocalizations {
       'Klepet v živo z Vorstandom · hiter odgovor';
 
   @override
-  String get benachrichtigungTitel => 'SMS-Erinnerungen';
+  String get benachrichtigungTitel => 'Opomniki po SMS';
 
   @override
   String get benachrichtigungIntro =>
-      'Damit Sie keinen Termin verpassen, kann der Verein Ihnen eine SMS schicken. Sie entscheiden, ob und wofür — und können es jederzeit ändern.';
+      'Da ne bi zamudili termina, vam lahko društvo pošlje SMS. Vi se odločite, ali in za kaj — in to lahko kadar koli spremenite.';
 
   @override
   String get benachrichtigungTermineFrage =>
-      'Möchten Sie Erinnerungen an Ihre Termine per SMS erhalten?';
+      'Želite prejemati opomnike o svojih terminih po SMS?';
 
   @override
   String get benachrichtigungTermineDetail =>
-      'Die SMS enthält Datum, Uhrzeit, Ort und Betreff des Termins.';
+      'Sporočilo vsebuje datum, uro, kraj in zadevo termina.';
 
   @override
   String get benachrichtigungMedikamenteFrage =>
-      'Möchten Sie auch an Ihre Medikamente erinnert werden?';
+      'Želite opomnike tudi za svoja zdravila?';
 
   @override
   String get benachrichtigungMedikamenteDetail =>
-      'Dabei steht der Name des Medikaments in der SMS. Das ist eine Gesundheitsangabe — deshalb fragen wir getrennt.';
+      'Takrat je v sporočilu ime zdravila. To je zdravstveni podatek — zato vprašamo ločeno.';
 
   @override
   String get benachrichtigungHinweis =>
-      'Die Erinnerung ist eine Hilfe und keine Garantie: bitte verlassen Sie sich nicht allein darauf. Ändern können Sie das jederzeit in Ihrem Profil.';
+      'Opomnik je pomoč in ne jamstvo: prosimo, ne zanašajte se samo nanj. To lahko kadar koli spremenite v svojem profilu.';
 
   @override
-  String get benachrichtigungJa => 'Ja';
+  String get benachrichtigungJa => 'Da';
 
   @override
-  String get benachrichtigungNein => 'Nein';
+  String get benachrichtigungNein => 'Ne';
 
   @override
-  String get benachrichtigungSpaeter => 'Später entscheiden';
+  String get benachrichtigungSpaeter => 'Odločim se pozneje';
 
   @override
-  String get benachrichtigungSpeichern => 'Speichern';
+  String get benachrichtigungSpeichern => 'Shrani';
 
   @override
-  String get benachrichtigungGespeichert => 'Danke, gespeichert.';
+  String get benachrichtigungGespeichert => 'Hvala, shranjeno.';
 
   @override
-  String get benachrichtigungenLeer => 'Keine Benachrichtigungen';
+  String get benachrichtigungenLeer => 'Ni obvestil';
 
   @override
-  String get benachrichtigungenAlleGelesen => 'Alle als gelesen markieren';
+  String get benachrichtigungenAlleGelesen => 'Označi vse kot prebrano';
 
   @override
   String get benachrichtigungWetterFrage =>
-      'Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?';
+      'Želite opozorilo ob neurju v kraju bivanja?';
 
   @override
   String get benachrichtigungWetterDetail =>
-      'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+      'Samo uradna opozorila nemške vremenske službe od stopnje „hudo“ naprej — ne ob vsakem dežju.';
 
   @override
   String get signaturTitel => 'Podpisi';

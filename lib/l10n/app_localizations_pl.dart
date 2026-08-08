@@ -2838,60 +2838,61 @@ class AppLocalizationsPl extends AppLocalizations {
       'Czat na żywo z Vorstandem · szybka odpowiedź';
 
   @override
-  String get benachrichtigungTitel => 'SMS-Erinnerungen';
+  String get benachrichtigungTitel => 'Przypomnienia SMS';
 
   @override
   String get benachrichtigungIntro =>
-      'Damit Sie keinen Termin verpassen, kann der Verein Ihnen eine SMS schicken. Sie entscheiden, ob und wofür — und können es jederzeit ändern.';
+      'Aby nie przegapić wizyty, stowarzyszenie może wysłać Państwu SMS. Decydują Państwo, czy i w jakim zakresie — i mogą to zmienić w każdej chwili.';
 
   @override
   String get benachrichtigungTermineFrage =>
-      'Möchten Sie Erinnerungen an Ihre Termine per SMS erhalten?';
+      'Czy chcą Państwo otrzymywać przypomnienia o wizytach SMS-em?';
 
   @override
   String get benachrichtigungTermineDetail =>
-      'Die SMS enthält Datum, Uhrzeit, Ort und Betreff des Termins.';
+      'Wiadomość zawiera datę, godzinę, miejsce i temat spotkania.';
 
   @override
   String get benachrichtigungMedikamenteFrage =>
-      'Möchten Sie auch an Ihre Medikamente erinnert werden?';
+      'Czy chcą Państwo otrzymywać przypomnienia także o lekach?';
 
   @override
   String get benachrichtigungMedikamenteDetail =>
-      'Dabei steht der Name des Medikaments in der SMS. Das ist eine Gesundheitsangabe — deshalb fragen wir getrennt.';
+      'Wówczas w wiadomości podana jest nazwa leku. To dana dotycząca zdrowia — dlatego pytamy osobno.';
 
   @override
   String get benachrichtigungHinweis =>
-      'Die Erinnerung ist eine Hilfe und keine Garantie: bitte verlassen Sie sich nicht allein darauf. Ändern können Sie das jederzeit in Ihrem Profil.';
+      'Przypomnienie jest pomocą, a nie gwarancją: prosimy nie polegać wyłącznie na nim. Można to zmienić w każdej chwili w swoim profilu.';
 
   @override
-  String get benachrichtigungJa => 'Ja';
+  String get benachrichtigungJa => 'Tak';
 
   @override
-  String get benachrichtigungNein => 'Nein';
+  String get benachrichtigungNein => 'Nie';
 
   @override
-  String get benachrichtigungSpaeter => 'Später entscheiden';
+  String get benachrichtigungSpaeter => 'Zdecyduję później';
 
   @override
-  String get benachrichtigungSpeichern => 'Speichern';
+  String get benachrichtigungSpeichern => 'Zapisz';
 
   @override
-  String get benachrichtigungGespeichert => 'Danke, gespeichert.';
+  String get benachrichtigungGespeichert => 'Dziękujemy, zapisano.';
 
   @override
-  String get benachrichtigungenLeer => 'Keine Benachrichtigungen';
+  String get benachrichtigungenLeer => 'Brak powiadomień';
 
   @override
-  String get benachrichtigungenAlleGelesen => 'Alle als gelesen markieren';
+  String get benachrichtigungenAlleGelesen =>
+      'Oznacz wszystkie jako przeczytane';
 
   @override
   String get benachrichtigungWetterFrage =>
-      'Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?';
+      'Czy chcą Państwo otrzymywać ostrzeżenia o niebezpiecznej pogodzie w miejscu zamieszkania?';
 
   @override
   String get benachrichtigungWetterDetail =>
-      'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+      'Tylko oficjalne ostrzeżenia Niemieckiej Służby Meteorologicznej od stopnia „silne“ wzwyż — nie przy każdym deszczu.';
 
   @override
   String get signaturTitel => 'Podpisy';
