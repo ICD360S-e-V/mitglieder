@@ -557,19 +557,57 @@ class _SignaturUnterschreibenScreenState
   Future<String?> _geraetename() async {
     try {
       final info = DeviceInfoPlugin();
+
       if (Platform.isAndroid) {
         final a = await info.androidInfo;
-        return '${a.manufacturer} ${a.model}'.trim();
+        return _zusammensetzen(
+            '${a.manufacturer} ${a.model}', 'Android ${a.version.release}');
       }
       if (Platform.isIOS) {
         final i = await info.iosInfo;
-        return i.utsname.machine;
+        return _zusammensetzen(
+            i.modelName.isNotEmpty ? i.modelName : i.model,
+            '${i.systemName} ${i.systemVersion}');
+      }
+      if (Platform.isMacOS) {
+        final m = await info.macOsInfo;
+        return _zusammensetzen(
+            m.modelName.isNotEmpty ? m.modelName : m.model,
+            'macOS ${m.osRelease}');
+      }
+      if (Platform.isWindows) {
+        final w = await info.windowsInfo;
+        return _zusammensetzen(
+            w.computerName, '${w.productName} ${w.displayVersion}'.trim());
+      }
+      if (Platform.isLinux) {
+        final l = await info.linuxInfo;
+        // prettyName ist schon „Ubuntu 24.04.1 LTS"; der Rechnername steckt
+        // dort nicht drin, deshalb getrennt geholt.
+        return _zusammensetzen(Platform.localHostname, l.prettyName);
       }
       return null;
     } catch (e) {
-      _log.error('Gerätename: $e', tag: 'SIGNATUR');
+      // Kein stilles null mehr: fehlt der Gerätename im Beweisbündel, soll
+      // nachvollziehbar sein warum. Genau das ist beim ersten echten
+      // Dokument passiert — das Feld blieb leer und niemand wusste weshalb.
+      _log.error('Gerätename nicht ermittelbar: $e', tag: 'SIGNATUR');
       return null;
     }
+  }
+
+  /// „Galaxy Tab A11 · Android 14" — Gerät und System, getrennt lesbar.
+  ///
+  /// Die Spalte fasst 120 Zeichen; Windows-Rechnernamen und lange
+  /// Distributionsnamen kommen zusammen durchaus in die Nähe, deshalb wird
+  /// hier gekürzt statt es der Datenbank zu überlassen.
+  static String? _zusammensetzen(String geraet, String system) {
+    final teile = [geraet.trim(), system.trim()]
+        .where((t) => t.isNotEmpty)
+        .toList();
+    if (teile.isEmpty) return null;
+    final text = teile.join(' · ');
+    return text.length <= 120 ? text : text.substring(0, 120);
   }
 
   // ── Bausteine ──
