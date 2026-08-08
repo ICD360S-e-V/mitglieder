@@ -145,7 +145,7 @@ dependencies:
   pdfrx: ^2.4.7
 
   # Root/Jailbreak/Emulator detection
-  safe_device: ^1.3.10
+  safe_device: ^1.4.1
 
 
   # Permission handler for Android
