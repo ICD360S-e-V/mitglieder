@@ -93,7 +93,7 @@ dependencies:
   battery_plus: ^7.1.1
 
   # Path provider for temp directory (updates)
-  path_provider: ^2.1.0
+  path_provider: ^2.1.6
 
   # Bilder aus der Systemzwischenablage (Strg+V im Chat). Flutters eigenes
   # Clipboard kann nur Text — flutter#46418. Reines Plattform-C/ObjC/Kotlin,
