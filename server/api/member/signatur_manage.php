@@ -342,14 +342,23 @@ function aktionSignieren(PDO $pdo, int $userId, array $body): void
     // DNS-Zeitüberschreitung laufen, und daran darf eine gültige Unterschrift
     // nicht scheitern. Fehlt der PTR, bleibt das Feld leer — das ist ein
     // Nebenbefund im Audit, kein Mangel am Beweis.
+    // Aus demselben Grund steht auch die Herkunft der IP hier unten: Land und
+    // Netzbetreiber sind eine Einordnung des Beweises, nicht der Beweis selbst.
     try {
-        $rdns = SignaturHelper::reverseDns($neu['ip_address'] ?? null);
-        if ($rdns !== null) {
-            $pdo->prepare("UPDATE dokument_signaturen SET reverse_dns = ? WHERE id = ?")
-                ->execute([$rdns, $signaturId]);
-        }
+        $ip = $neu['ip_address'] ?? null;
+
+        $rdns = SignaturHelper::reverseDns($ip);
+        $herkunft = SignaturHelper::ipHerkunft($pdo, $ip);
+
+        $pdo->prepare(
+            "UPDATE dokument_signaturen
+                SET reverse_dns = COALESCE(?, reverse_dns),
+                    country_iso = COALESCE(?, country_iso),
+                    isp         = COALESCE(?, isp)
+              WHERE id = ?"
+        )->execute([$rdns, $herkunft['land'], $herkunft['netz'], $signaturId]);
     } catch (Throwable $e) {
-        error_log('signatur reverse_dns: ' . $e->getMessage());
+        error_log('signatur Herkunft: ' . $e->getMessage());
     }
 
     jsonResponse(true, [
