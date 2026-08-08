@@ -85,8 +85,11 @@ class _PdfViewerBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return PdfViewer.file(
       file.path,
-      params: PdfViewerParams(
-        maxScale: 5.0,
+      params: const PdfViewerParams(
+        // pdfrx 2.4 moved zoom bounds behind a size delegate; the Legacy
+        // provider is the drop-in that keeps the previous behaviour, and the
+        // bare `maxScale` argument is deprecated rather than gone.
+        sizeDelegateProvider: PdfViewerSizeDelegateProviderLegacy(maxScale: 5.0),
       ),
     );
   }

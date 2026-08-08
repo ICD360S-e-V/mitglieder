@@ -21,10 +21,3 @@ updates:
     labels:
       - "dependencies"
       - "dart"
-    ignore:
-      # pdfrx >=2.3.0 requires Flutter >=3.41.0; CI runs 3.38.4, so the bump
-      # breaks `flutter pub get` for every platform. Dependabot cannot see the
-      # SDK pin, so it reopened this as #49 and took the whole build matrix
-      # down with it. Remove this entry when FLUTTER_VERSION is raised.
-      - dependency-name: "pdfrx"
-        versions: [">=2.3.0"]

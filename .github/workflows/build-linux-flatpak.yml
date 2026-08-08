@@ -29,10 +29,13 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Matches Vorsitzer's known-working desktop build. Pinning to 3.38.4 brings
-  # Mitglieder's renderer in line with Vorsitzer, which is the only iteration
-  # that reliably ends with the welcome screen visible on the test VM.
-  FLUTTER_VERSION: '3.38.4'
+  # Still matching Vorsitzer's known-working desktop build, which is what the
+  # old 3.38.4 pin was for - Vorsitzer has since moved to 3.44.8 (its #163,
+  # "auf Flutter 3.44.8 gehen und Windows und iOS wieder mitbauen"), so staying
+  # on 3.38.4 was what had drifted away from it. The renderer concern behind
+  # the original pin - welcome screen not appearing on the test VM - is worth
+  # re-checking there after this lands.
+  FLUTTER_VERSION: '3.44.9'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:

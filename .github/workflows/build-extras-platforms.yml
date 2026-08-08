@@ -30,7 +30,7 @@ env:
   # Windows junction → robocopy step below survives the downgrade because
   # the CMake refusal-to-extract-through-symlinks policy is enforced by
   # the runner's CMake, not by Flutter.
-  FLUTTER_VERSION: '3.38.4'
+  FLUTTER_VERSION: '3.44.9'
   JAVA_VERSION: '17'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
