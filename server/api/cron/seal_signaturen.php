@@ -43,6 +43,25 @@ const TSA_HOST  = 'https://freetsa.org/tsr';
  *  nächsten Durchlauf dran. */
 const MAX_PRO_LAUF = 10;
 
+/** Nach so vielen vergeblichen Anläufen wird nicht mehr versucht.
+ *
+ *  Ohne diese Grenze hat der Cron dasselbe Dokument im Minutentakt endlos
+ *  wiederholt — beim ersten echten Fall (Jobcenter-WBA) über eine Viertelstunde
+ *  lang, mit identischem Fehler. Für das Mitglied stand dabei durchgehend „das
+ *  Siegel wird noch erstellt", also eine Zusage, die nie eingelöst werden
+ *  konnte. Fünf Versuche fangen Aussetzer ab (TSA nicht erreichbar, Platte
+ *  kurz voll); was danach noch scheitert, scheitert aus einem Grund, den ein
+ *  weiterer Versuch nicht behebt. */
+const MAX_VERSUCHE = 5;
+
+/** Entfernt Objekt-Streams, damit der freie FPDI-Parser das PDF öffnen kann.
+ *  Siehe [lesbarMachen].
+ *
+ *  Mehrere Pfade, weil `pdftk` hier die Java-Portierung ist und unter
+ *  /usr/local/bin liegt, nicht unter /usr/bin wie das alte C++-Original. Ein
+ *  fest verdrahteter Pfad hat genau deshalb schon einmal ins Leere gezeigt. */
+const PDFTK_PFADE = ['/usr/local/bin/pdftk', '/usr/bin/pdftk', '/bin/pdftk'];
+
 require_once WEBROOT . '/api/config.php';
 require_once WEBROOT . '/pdflib/vendor/autoload.php';
 
@@ -56,6 +75,7 @@ $offen = $pdo->prepare(
        JOIN users u ON u.id = s.user_id
       WHERE s.status = 'signiert'
         AND s.signiert_pdf_pfad IS NULL
+        AND s.siegel_versuche < " . MAX_VERSUCHE . "
       ORDER BY s.signed_at_utc ASC
       LIMIT " . MAX_PRO_LAUF
 );
@@ -74,10 +94,18 @@ foreach ($zeilen as $zeile) {
         echo "  #{$zeile['id']} gesiegelt\n";
     } catch (Throwable $e) {
         // Nicht abbrechen: ein kaputtes Dokument darf die übrigen nicht
-        // aufhalten. Der nächste Lauf versucht es erneut — bleibt es dabei,
-        // steht es im Log und der Vorgang bleibt ungesiegelt sichtbar.
-        echo "  #{$zeile['id']} FEHLER: {$e->getMessage()}\n";
-        error_log("seal_signaturen #{$zeile['id']}: " . $e->getMessage());
+        // aufhalten. Aber mitzählen — sonst wiederholt sich derselbe Fehler
+        // im Minutentakt bis in alle Ewigkeit.
+        $pdo->prepare(
+            "UPDATE dokument_signaturen
+                SET siegel_versuche = siegel_versuche + 1, siegel_fehler = ?
+              WHERE id = ?"
+        )->execute([substr($e->getMessage(), 0, 255), $zeile['id']]);
+
+        $versuche = (int)$zeile['siegel_versuche'] + 1;
+        $endgueltig = $versuche >= MAX_VERSUCHE ? ' — AUFGEGEBEN' : '';
+        echo "  #{$zeile['id']} FEHLER ($versuche/" . MAX_VERSUCHE . ")$endgueltig: {$e->getMessage()}\n";
+        error_log("seal_signaturen #{$zeile['id']} ($versuche/" . MAX_VERSUCHE . "): " . $e->getMessage());
     }
 }
 
@@ -140,13 +168,27 @@ function siegeln(PDO $pdo, array $z): void
     $pdf->setPrintFooter(false);
 
     // --- Originalseiten übernehmen ---
-    $seiten = $pdf->setSourceFile($quelle);
-    for ($i = 1; $i <= $seiten; $i++) {
-        $vorlage = $pdf->importPage($i);
-        $masse   = $pdf->getTemplateSize($vorlage);
-        $pdf->AddPage($masse['width'] > $masse['height'] ? 'L' : 'P',
-                      [$masse['width'], $masse['height']]);
-        $pdf->useTemplate($vorlage);
+    //
+    // Nicht direkt aus $quelle: moderne PDFs (ab 1.5) packen ihre Objekte in
+    // Objekt-Streams, und die kann der freie FPDI-Parser nicht öffnen. Das ist
+    // kein Randfall — das erste echte Dokument (Jobcenter-WBA) war so gebaut.
+    $lesbar = lesbarMachen($quelle);
+    try {
+        $seiten = $pdf->setSourceFile($lesbar);
+        for ($i = 1; $i <= $seiten; $i++) {
+            $vorlage = $pdf->importPage($i);
+            $masse   = $pdf->getTemplateSize($vorlage);
+            $pdf->AddPage($masse['width'] > $masse['height'] ? 'L' : 'P',
+                          [$masse['width'], $masse['height']]);
+            $pdf->useTemplate($vorlage);
+        }
+    } finally {
+        // Die entpackte Kopie ist ein Zwischenschritt und hat auf der Platte
+        // nichts verloren — sie traegt denselben Inhalt wie das Original,
+        // dessen Zugriff sonst geschuetzt ist.
+        if ($lesbar !== $quelle) {
+            @unlink($lesbar);
+        }
     }
 
     // --- Unterschriftenblatt anhängen ---
@@ -281,6 +323,73 @@ function zeitstempelHolen(string $pdfPfad): ?string
     } finally {
         @unlink($tsq);
     }
+}
+
+/**
+ * Liefert einen Pfad, den der freie FPDI-Parser öffnen kann.
+ *
+ * PDFs ab Version 1.5 dürfen ihre Objekte in Objekt-Streams packen und die
+ * Querverweistabelle als Stream ablegen. Der freie Parser von FPDI kann das
+ * nicht lesen und wirft „probably uses a compression technique which is not
+ * supported"; dafür gibt es ein kostenpflichtiges Zusatzmodul. Das erste
+ * echte Dokument im Betrieb (Jobcenter-WBA, PDF 1.7 mit 13 Objekt-Streams)
+ * war genau so gebaut — es ist der Normalfall, nicht die Ausnahme.
+ *
+ * `pdftk … uncompress` löst die Streams auf. Das ist eine STRUKTURELLE
+ * Umformung: dieselben Objekte, nur nicht mehr verpackt. Der Inhalt wird
+ * nicht neu gerendert, anders als bei einem Umweg über Ghostscript — Schriften
+ * und Layout bleiben also Bit für Bit dieselben Anweisungen.
+ *
+ * Das Original wird nicht angefasst. Es bleibt die Datei, auf die `pdf_hash`
+ * passt und die dem Mitglied gezeigt wurde; gesiegelt wird eine Kopie, deren
+ * eigener Hash in `signiert_pdf_hash` steht.
+ *
+ * Geht pdftk nicht, wird der Originalpfad zurückgegeben — dann scheitert FPDI
+ * mit seiner eigenen, aussagekräftigen Meldung, statt dass hier eine zweite
+ * Fehlerquelle die erste verdeckt.
+ */
+function lesbarMachen(string $quelle): string
+{
+    // Nicht raten, ob FPDI die Datei mag, sondern es versuchen.
+    //
+    // Der erste Anlauf hat es geraten: „steht am Ende kein xref, ist die
+    // Tabelle ein Stream". Das trifft nie zu — in JEDEM PDF steht dort
+    // `startxref`, und das enthält die Zeichenfolge. Die Erkennung war damit
+    // immer negativ, und der Umweg wurde nie gegangen. Ein Versuch mit
+    // anschließendem Rückfall kann sich nicht auf diese Weise irren.
+    try {
+        $probe = new \setasign\Fpdi\Tcpdf\Fpdi();
+        $probe->setSourceFile($quelle);
+        return $quelle;
+    } catch (Throwable $e) {
+        // Weiter unten: entpacken und erneut versuchen.
+    }
+
+    $pdftk = null;
+    foreach (PDFTK_PFADE as $kandidat) {
+        if (is_executable($kandidat)) {
+            $pdftk = $kandidat;
+            break;
+        }
+    }
+    if ($pdftk === null) {
+        error_log('seal_signaturen: pdftk nicht gefunden in ' . implode(', ', PDFTK_PFADE));
+        return $quelle;
+    }
+
+    $ziel = tempnam(sys_get_temp_dir(), 'siegel_') . '.pdf';
+    exec(sprintf('%s %s output %s uncompress 2>&1',
+        escapeshellcmd($pdftk), escapeshellarg($quelle), escapeshellarg($ziel)
+    ), $aus, $code);
+
+    if ($code !== 0 || !is_file($ziel) || filesize($ziel) === 0) {
+        @unlink($ziel);
+        error_log('seal_signaturen: pdftk fehlgeschlagen: ' . implode(' ', $aus));
+        return $quelle;
+    }
+
+    chmod($ziel, 0600);
+    return $ziel;
 }
 
 /**
