@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.81.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.2...v1.81.3) (2026-08-08)
+
+
+### Bug Fixes
+
+* **signatur:** Code eintippen gab den Knopf nicht frei — niemand konnte unterschreiben ([#273](https://github.com/ICD360S-e-V/mitglieder/issues/273)) ([cf00bc8](https://github.com/ICD360S-e-V/mitglieder/commit/cf00bc8c14ccf1b540520c7569af19870834c97e))
+
 ## [1.81.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.1...v1.81.2) (2026-08-07)
 
 
