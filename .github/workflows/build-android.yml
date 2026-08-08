@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FLUTTER_VERSION: '3.38.4'
+  FLUTTER_VERSION: '3.44.9'
   JAVA_VERSION: '17'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
