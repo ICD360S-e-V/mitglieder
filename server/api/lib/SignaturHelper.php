@@ -110,6 +110,64 @@ class SignaturHelper
     }
 
     /**
+     * Land und Netzbetreiber zu einer IP.
+     *
+     * Die IP allein ist eine Zahl, die im Streitfall niemand einordnen kann.
+     * Land und Betreiber machen daraus eine Aussage, die jemand nachvollziehen
+     * kann — und der Betreiber ist dabei der wertvollere der beiden: er
+     * unterscheidet eine gewöhnliche Anschlussleitung („1&1 Versatel GmbH",
+     * „Vodafone") von einem Rechenzentrum („OVH SAS"). Zweiteres heißt VPN
+     * oder Server, also genau der Fall, in dem die IP über den Aufenthaltsort
+     * NICHTS aussagt. Das gehört sichtbar ins Bündel, statt dass es die
+     * Gegenseite später herausfindet.
+     *
+     * BEWUSST KEINE STADT. IP-Ortung auf Stadtebene zeigt bei Mobilfunk
+     * regelmäßig den Standort des Betreiber-Gateways, nicht den des Menschen —
+     * oft hunderte Kilometer daneben. Eine Angabe, die sich widerlegen lässt,
+     * schwächt das ganze Bündel: wer einen Eintrag als falsch nachweist, stellt
+     * alle übrigen in Frage.
+     *
+     * Die Tabellen füllt api/cron/ip_datenbank_aktualisieren.php monatlich.
+     * Fehlen sie oder ist die IP unbekannt, bleibt es bei null — lieber keine
+     * Angabe als eine erfundene.
+     *
+     * @return array{land: ?string, netz: ?string}
+     */
+    public static function ipHerkunft(PDO $pdo, ?string $ip): array
+    {
+        $leer = ['land' => null, 'netz' => null];
+        if ($ip === null || !filter_var($ip, FILTER_VALIDATE_IP)) {
+            return $leer;
+        }
+
+        try {
+            // ORDER BY start_ip DESC LIMIT 1 nutzt den Primärschlüssel: der
+            // letzte Bereich, der nicht hinter der Adresse beginnt.
+            $stmt = $pdo->prepare(
+                "SELECT
+                   (SELECT land FROM ip_land
+                     WHERE start_ip <= INET6_ATON(:ip) AND end_ip >= INET6_ATON(:ip)
+                     ORDER BY start_ip DESC LIMIT 1) AS land,
+                   (SELECT netz FROM ip_netz
+                     WHERE start_ip <= INET6_ATON(:ip) AND end_ip >= INET6_ATON(:ip)
+                     ORDER BY start_ip DESC LIMIT 1) AS netz"
+            );
+            $stmt->execute([':ip' => $ip]);
+            $z = $stmt->fetch(PDO::FETCH_ASSOC) ?: $leer;
+
+            // „ZZ" ist der Platzhalter der Datenbank für unbekannt.
+            if (($z['land'] ?? '') === 'ZZ') {
+                $z['land'] = null;
+            }
+            return ['land' => $z['land'] ?: null, 'netz' => $z['netz'] ?: null];
+        } catch (Throwable $e) {
+            // Fehlende Tabellen dürfen eine Unterschrift nicht berühren.
+            error_log('SignaturHelper::ipHerkunft: ' . $e->getMessage());
+            return $leer;
+        }
+    }
+
+    /**
      * Die echte Client-IP hinter nginx.
      *
      * REMOTE_ADDR ist hier immer der Proxy selbst. X-Forwarded-For darf ein
