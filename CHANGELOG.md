@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.82.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.4...v1.82.0) (2026-08-08)
+
+
+### Features
+
+* **l10n:** translate the SMS reminder consent into the remaining 21 locales ([#280](https://github.com/ICD360S-e-V/mitglieder/issues/280)) ([b542370](https://github.com/ICD360S-e-V/mitglieder/commit/b542370ed865893b8e9ffa8f5be64f92fc859b57))
+
 ## [1.81.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.3...v1.81.4) (2026-08-08)
 
 
