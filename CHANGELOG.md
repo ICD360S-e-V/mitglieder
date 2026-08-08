@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.81.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.3...v1.81.4) (2026-08-08)
+
+
+### Bug Fixes
+
+* **signatur:** Siegel scheiterte an modernen PDFs und versuchte es endlos ([#276](https://github.com/ICD360S-e-V/mitglieder/issues/276)) ([42d7ca7](https://github.com/ICD360S-e-V/mitglieder/commit/42d7ca7a571b5147fe9fe43068abcd133b062d64))
+
 ## [1.81.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.81.2...v1.81.3) (2026-08-08)
 
 
