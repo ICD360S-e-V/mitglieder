@@ -270,7 +270,7 @@ jobs:
 
       - name: Save cache marker
         run: echo "ok" > /tmp/apple-ok.txt
-      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+      - uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v5
         with:
           path: /tmp/apple-ok.txt
           key: v3-build-ok-apple-${{ needs.detect-changes.outputs.apple_hash }}
@@ -409,7 +409,7 @@ jobs:
       - name: Save cache marker
         shell: bash
         run: echo "ok" > "$RUNNER_TEMP/win-ok.txt"
-      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+      - uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v5
         with:
           path: ${{ runner.temp }}/win-ok.txt
           key: v3-build-ok-windows-${{ needs.detect-changes.outputs.win_hash }}

@@ -227,7 +227,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "ok" > /tmp/android-ok.txt
-      - uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+      - uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v5
         with:
           path: /tmp/android-ok.txt
           key: v3-build-ok-android-${{ needs.detect-changes.outputs.android_hash }}
