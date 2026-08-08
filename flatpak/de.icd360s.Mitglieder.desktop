@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=ICD360S e.V. Mitglieder
-GenericName=ICD360S Mitgliederportal
+Name=MitgliederPortal - ICD360S e.V
+GenericName=MitgliederPortal - ICD360S e.V
 Comment=Mitglieder-App für ICD360S e.V.
 Exec=icd360sev_mitglied
 Icon=de.icd360s.Mitglieder

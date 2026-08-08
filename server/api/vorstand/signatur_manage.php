@@ -27,6 +27,11 @@ require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../helpers.php';
 require_once __DIR__ . '/../lib/SignaturHelper.php';
 
+/** Der Anzeigename der Mitglieder-App, wie er auf jeder Plattform steht.
+ *  Steht hier als Konstante, damit im Beweisbuendel nicht irgendwann ein
+ *  siebter Name auftaucht — es gab schon sechs. */
+const ANWENDUNG = 'MitgliederPortal - ICD360S e.V';
+
 validateApiKey();
 blockBrowserAccess();
 
@@ -197,7 +202,8 @@ function aktionDetail(PDO $pdo, array $body): void
 
     // Aus beiden Quellen EIN lesbarer Satz. Der Client soll nicht raten
     // müssen, welches der fünf Felder gerade gefüllt ist.
-    $zeile['geraet_anzeige'] = geraetText($zeile);
+    $zeile['geraet_anzeige']    = geraetText($zeile);
+    $zeile['anwendung_anzeige'] = anwendungText($zeile);
 
     $zeile['id'] = (int)$zeile['id'];
     unset($zeile['pdf_pfad'], $zeile['signiert_pdf_pfad'], $zeile['tsa_token_pfad']);
@@ -233,6 +239,25 @@ function geraetText(array $z): ?string
         return null;
     }
     return implode(' · ', $teile) . ' (laut Registrierung)';
+}
+
+/**
+ * Mit welcher Anwendung unterschrieben wurde.
+ *
+ * Den NAMEN setzt der Server, nicht der Client. Er weiß mit Sicherheit, dass
+ * die Unterschrift über den Mitglieder-Endpunkt kam — kein anderer Weg führt
+ * dorthin. Ihn vom Client zu erfragen hieße, sich die Antwort von der Seite
+ * geben zu lassen, die man gerade nachweist.
+ *
+ * Die VERSION kommt aus der Geräteregistrierung. Sie gehört ins Bündel, weil
+ * sie sagt, welcher Programmstand die Unterschrift erzeugt hat — wird Jahre
+ * später ein Fehler in einer bestimmten Fassung bekannt, lässt sich damit
+ * eingrenzen, welche Unterschriften ihn überhaupt betreffen könnten.
+ */
+function anwendungText(array $z): string
+{
+    $version = trim((string)($z['geraet_app'] ?? ''));
+    return $version === '' ? ANWENDUNG : ANWENDUNG . ' ' . $version;
 }
 
 /**

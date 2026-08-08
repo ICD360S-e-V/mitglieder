@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "de.icd360s" "\0"
-            VALUE "FileDescription", "icd360sev_mitglied" "\0"
+            VALUE "FileDescription", "MitgliederPortal - ICD360S e.V" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "icd360sev_mitglied" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 de.icd360s. All rights reserved." "\0"
             VALUE "OriginalFilename", "icd360sev_mitglied.exe" "\0"
-            VALUE "ProductName", "icd360sev_mitglied" "\0"
+            VALUE "ProductName", "MitgliederPortal - ICD360S e.V" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
