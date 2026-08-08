@@ -2827,60 +2827,60 @@ class AppLocalizationsLt extends AppLocalizations {
       'Tiesioginis pokalbis su Vorstand · greitas atsakymas';
 
   @override
-  String get benachrichtigungTitel => 'SMS-Erinnerungen';
+  String get benachrichtigungTitel => 'SMS priminimai';
 
   @override
   String get benachrichtigungIntro =>
-      'Damit Sie keinen Termin verpassen, kann der Verein Ihnen eine SMS schicken. Sie entscheiden, ob und wofür — und können es jederzeit ändern.';
+      'Kad nepraleistumėte susitikimo, asociacija gali atsiųsti jums SMS žinutę. Jūs nusprendžiate, ar ir dėl ko — ir galite tai bet kada pakeisti.';
 
   @override
   String get benachrichtigungTermineFrage =>
-      'Möchten Sie Erinnerungen an Ihre Termine per SMS erhalten?';
+      'Ar norite gauti priminimus apie savo susitikimus SMS žinute?';
 
   @override
   String get benachrichtigungTermineDetail =>
-      'Die SMS enthält Datum, Uhrzeit, Ort und Betreff des Termins.';
+      'Žinutėje nurodoma susitikimo data, laikas, vieta ir tema.';
 
   @override
   String get benachrichtigungMedikamenteFrage =>
-      'Möchten Sie auch an Ihre Medikamente erinnert werden?';
+      'Ar norite priminimų ir apie savo vaistus?';
 
   @override
   String get benachrichtigungMedikamenteDetail =>
-      'Dabei steht der Name des Medikaments in der SMS. Das ist eine Gesundheitsangabe — deshalb fragen wir getrennt.';
+      'Tada žinutėje nurodomas vaisto pavadinimas. Tai sveikatos duomenys — todėl klausiame atskirai.';
 
   @override
   String get benachrichtigungHinweis =>
-      'Die Erinnerung ist eine Hilfe und keine Garantie: bitte verlassen Sie sich nicht allein darauf. Ändern können Sie das jederzeit in Ihrem Profil.';
+      'Priminimas yra pagalba, o ne garantija: prašome nesiremti vien juo. Tai galite bet kada pakeisti savo profilyje.';
 
   @override
-  String get benachrichtigungJa => 'Ja';
+  String get benachrichtigungJa => 'Taip';
 
   @override
-  String get benachrichtigungNein => 'Nein';
+  String get benachrichtigungNein => 'Ne';
 
   @override
-  String get benachrichtigungSpaeter => 'Später entscheiden';
+  String get benachrichtigungSpaeter => 'Nuspręsti vėliau';
 
   @override
-  String get benachrichtigungSpeichern => 'Speichern';
+  String get benachrichtigungSpeichern => 'Išsaugoti';
 
   @override
-  String get benachrichtigungGespeichert => 'Danke, gespeichert.';
+  String get benachrichtigungGespeichert => 'Ačiū, išsaugota.';
 
   @override
-  String get benachrichtigungenLeer => 'Keine Benachrichtigungen';
+  String get benachrichtigungenLeer => 'Pranešimų nėra';
 
   @override
-  String get benachrichtigungenAlleGelesen => 'Alle als gelesen markieren';
+  String get benachrichtigungenAlleGelesen => 'Žymėti visus kaip perskaitytus';
 
   @override
   String get benachrichtigungWetterFrage =>
-      'Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?';
+      'Ar norite įspėjimų apie audrą jūsų gyvenamojoje vietoje?';
 
   @override
   String get benachrichtigungWetterDetail =>
-      'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+      'Tik oficialūs Vokietijos meteorologijos tarnybos įspėjimai nuo „stipraus“ lygio — ne per kiekvieną lietų.';
 
   @override
   String get signaturTitel => 'Parašai';

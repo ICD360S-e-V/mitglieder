@@ -2838,60 +2838,60 @@ class AppLocalizationsNl extends AppLocalizations {
       'Live chat met de Vorstand · snel antwoord';
 
   @override
-  String get benachrichtigungTitel => 'SMS-Erinnerungen';
+  String get benachrichtigungTitel => 'Sms-herinneringen';
 
   @override
   String get benachrichtigungIntro =>
-      'Damit Sie keinen Termin verpassen, kann der Verein Ihnen eine SMS schicken. Sie entscheiden, ob und wofür — und können es jederzeit ändern.';
+      'Zodat u geen afspraak mist, kan de vereniging u een sms sturen. U bepaalt of en waarvoor — en u kunt dit altijd wijzigen.';
 
   @override
   String get benachrichtigungTermineFrage =>
-      'Möchten Sie Erinnerungen an Ihre Termine per SMS erhalten?';
+      'Wilt u herinneringen aan uw afspraken per sms ontvangen?';
 
   @override
   String get benachrichtigungTermineDetail =>
-      'Die SMS enthält Datum, Uhrzeit, Ort und Betreff des Termins.';
+      'Het bericht bevat datum, tijd, plaats en onderwerp van de afspraak.';
 
   @override
   String get benachrichtigungMedikamenteFrage =>
-      'Möchten Sie auch an Ihre Medikamente erinnert werden?';
+      'Wilt u ook aan uw medicijnen herinnerd worden?';
 
   @override
   String get benachrichtigungMedikamenteDetail =>
-      'Dabei steht der Name des Medikaments in der SMS. Das ist eine Gesundheitsangabe — deshalb fragen wir getrennt.';
+      'Dan staat de naam van het medicijn in het bericht. Dat is een gezondheidsgegeven — daarom vragen we het apart.';
 
   @override
   String get benachrichtigungHinweis =>
-      'Die Erinnerung ist eine Hilfe und keine Garantie: bitte verlassen Sie sich nicht allein darauf. Ändern können Sie das jederzeit in Ihrem Profil.';
+      'De herinnering is een hulp en geen garantie: vertrouw er alstublieft niet alleen op. U kunt dit altijd wijzigen in uw profiel.';
 
   @override
   String get benachrichtigungJa => 'Ja';
 
   @override
-  String get benachrichtigungNein => 'Nein';
+  String get benachrichtigungNein => 'Nee';
 
   @override
-  String get benachrichtigungSpaeter => 'Später entscheiden';
+  String get benachrichtigungSpaeter => 'Later beslissen';
 
   @override
-  String get benachrichtigungSpeichern => 'Speichern';
+  String get benachrichtigungSpeichern => 'Opslaan';
 
   @override
-  String get benachrichtigungGespeichert => 'Danke, gespeichert.';
+  String get benachrichtigungGespeichert => 'Bedankt, opgeslagen.';
 
   @override
-  String get benachrichtigungenLeer => 'Keine Benachrichtigungen';
+  String get benachrichtigungenLeer => 'Geen meldingen';
 
   @override
-  String get benachrichtigungenAlleGelesen => 'Alle als gelesen markieren';
+  String get benachrichtigungenAlleGelesen => 'Alles als gelezen markeren';
 
   @override
   String get benachrichtigungWetterFrage =>
-      'Möchten Sie bei Unwetter an Ihrem Wohnort gewarnt werden?';
+      'Wilt u gewaarschuwd worden bij noodweer op uw woonplaats?';
 
   @override
   String get benachrichtigungWetterDetail =>
-      'Nur amtliche Warnungen des Deutschen Wetterdienstes ab Stufe „schwer“ — nicht bei jedem Regen.';
+      'Alleen officiële waarschuwingen van de Duitse weerdienst vanaf niveau „zwaar“ — niet bij elke regenbui.';
 
   @override
   String get signaturTitel => 'Handtekeningen';
