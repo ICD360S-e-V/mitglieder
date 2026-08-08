@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'dart:typed_data';
 import 'package:cryptography/cryptography.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/io_client.dart';
@@ -233,7 +232,7 @@ class StartupDiagnostics {
   /// logs (nginx, CDN) from leaking the diagnostic text.
   ///
   /// Wire format (JSON):
-  ///   { "v": 1, "iv": "<base64 12 bytes>", "data": "<base64 ciphertext+tag>" }
+  ///   `{ "v": 1, "iv": "<base64 12 bytes>", "data": "<base64 ciphertext+tag>" }`
   ///
   /// The `cryptography` package returns the GCM auth tag separately;
   /// "data" here is `ciphertext || tag` concatenated, matching what PHP's

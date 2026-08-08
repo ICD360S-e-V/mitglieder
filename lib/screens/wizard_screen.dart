@@ -511,9 +511,9 @@ class _WizardScreenState extends State<WizardScreen> {
           dataKey: spec.dataKey,
           documentName: spec.documentName,
           url: spec.url,
-          initialAccepted: _data['${spec.dataKey}'] == 1 ||
-              _data['${spec.dataKey}'] == true ||
-              _data['${spec.dataKey}'] == '1',
+          initialAccepted: _data[spec.dataKey] == 1 ||
+              _data[spec.dataKey] == true ||
+              _data[spec.dataKey] == '1',
           onNext: _goNext,
           onBack: _goBack,
         );

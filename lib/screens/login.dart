@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
 
   /// First name returned by the server after a successful login. When set
   /// (and just before the dashboard push), the coach swaps in the
-  /// "Te-am găsit, <name>!" message for ~1 second.
+  /// `"Te-am găsit, <name>!"` message for ~1 second.
   String? _foundName;
 
   @override

@@ -971,7 +971,10 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     if (message.isEmpty) return;
     _log.info('LiveChat: _sendMessage() - sending to conversation $_conversationId', tag: 'CHAT');
 
-    final errorSendingText = AppLocalizations.of(context)!.errorSending;
+    // Captured before the await below: the catch runs after it, by which
+    // point the dialog may be gone and the context unusable.
+    final l = AppLocalizations.of(context)!;
+    final errorSendingText = l.errorSending;
     setState(() => _isSending = true);
     _messageController.clear();
 
@@ -1006,7 +1009,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       }
     } catch (e) {
       _log.error('LiveChat: _sendMessage exception: $e', tag: 'CHAT');
-      _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
+      _showError(getUserFriendlyError(l, e, tag: 'CHAT'));
       _messageController.text = message;
     } finally {
       if (mounted) {
@@ -1277,7 +1280,10 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   Future<void> _uploadFiles() async {
     if (_selectedFiles.isEmpty || _conversationId == null || _isUploading) return;
 
-    final errorUploadText = AppLocalizations.of(context)!.errorUploading;
+    // Captured before the await below: the catch runs after it, by which
+    // point the dialog may be gone and the context unusable.
+    final l = AppLocalizations.of(context)!;
+    final errorUploadText = l.errorUploading;
     setState(() => _isUploading = true);
 
     try {
@@ -1320,7 +1326,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       }
     } catch (e) {
       _log.error('LiveChat: Upload error: $e', tag: 'CHAT');
-      _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
+      _showError(getUserFriendlyError(l, e, tag: 'CHAT'));
     } finally {
       if (mounted) {
         setState(() => _isUploading = false);
@@ -1373,7 +1379,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       }
     } catch (e) {
       _log.error('LiveChat: Download error: $e', tag: 'CHAT');
-      _showError(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'CHAT'));
+      _showError(getUserFriendlyError(l, e, tag: 'CHAT'));
     }
   }
 

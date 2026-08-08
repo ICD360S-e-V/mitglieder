@@ -14,7 +14,7 @@ import '../l10n/app_localizations.dart';
 ///   • [isLoading]    — true while the auth request is in flight.
 ///   • [errorMessage] — non-null when the request failed.
 ///   • [foundName]    — set after success so the bubble can say
-///                       "Te-am găsit, <name>!" before the redirect.
+///                       `"Te-am găsit, <name>!"` before the redirect.
 ///
 /// After 8 s of inactivity with an empty digit box, the "forgot your
 /// number?" panel slides in. It deliberately does NOT offer
