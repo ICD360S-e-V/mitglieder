@@ -83,7 +83,7 @@ dependencies:
   # happy when the plugin is loaded through the .plugin_symlinks
   # junction — so we no longer need the runner-side junction→copy
   # workaround in build-extras-platforms.yml.
-  flutter_webrtc: ^1.5.2
+  flutter_webrtc: ^1.6.0
   # System ringtone (callee) while a call is ringing (no bundled audio asset).
   flutter_ringtone_player: ^4.0.0
   # Ringback (caller) + busy/rejected tones — generated WAVs in assets/sounds/.
