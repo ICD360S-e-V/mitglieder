@@ -183,7 +183,7 @@ dependencies:
   ffi: ^2.1.0
 
   # System tray icon and menu
-  tray_manager: ^0.5.2
+  tray_manager: ^0.5.3
 
 
   # Auto-start on boot
