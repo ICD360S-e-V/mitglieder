@@ -73,7 +73,7 @@ dependencies:
   animated_text_kit: ^4.3.0
 
   # WebView for Android
-  webview_flutter: ^4.4.0
+  webview_flutter: ^4.14.1
 
   # WebSocket for real-time chat
   web_socket_channel: ^3.0.1
