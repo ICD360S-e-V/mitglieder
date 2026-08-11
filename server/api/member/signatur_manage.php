@@ -64,13 +64,20 @@ switch ($action) {
  */
 function aktionListe(PDO $pdo, int $userId): void
 {
+    // `wartet_auf` zaehlt die Mitunterzeichner, die noch nicht unterschrieben
+    // haben. Beim einzelnen Unterzeichner ist der Wert immer 0, die
+    // Unterabfrage laeuft dort ins Leere und kostet nichts.
     $stmt = $pdo->prepare(
         "SELECT s.id, s.dokument_typ, s.dokument_titel, s.status,
                 s.pdf_seiten, s.frist_bis, s.angefordert_at,
                 s.signed_at_utc, s.tan_verified_at, s.verify_code,
-                s.abgelehnt_grund,
+                s.abgelehnt_grund, s.gruppe_id, s.rolle,
                 u.vorname AS angefordert_von_vorname,
-                u.nachname AS angefordert_von_nachname
+                u.nachname AS angefordert_von_nachname,
+                (SELECT COUNT(*) FROM dokument_signaturen g
+                  WHERE g.gruppe_id = s.gruppe_id
+                    AND g.id <> s.id
+                    AND g.status = 'offen') AS wartet_auf
            FROM dokument_signaturen s
            LEFT JOIN users u ON u.id = s.angefordert_von
           WHERE s.user_id = ?
@@ -82,9 +89,20 @@ function aktionListe(PDO $pdo, int $userId): void
     foreach ($zeilen as &$z) {
         $z['id']         = (int)$z['id'];
         $z['pdf_seiten'] = $z['pdf_seiten'] === null ? null : (int)$z['pdf_seiten'];
+        $z['wartet_auf'] = (int)$z['wartet_auf'];
+
+        // Unterschrieben, aber noch nicht fertig: bei der Vollmacht fehlt dann
+        // die zweite Unterschrift. Das ist ein eigener Zustand und nicht
+        // dasselbe wie „fertig" — es gibt in diesem Moment kein gesiegeltes
+        // Dokument, und der Bildschirm darf keines versprechen.
+        $z['wartet_auf_mitunterzeichner'] =
+            $z['status'] === 'signiert' && $z['wartet_auf'] > 0;
+
         // Das signierte PDF gibt es nur über den authentifizierten Download,
-        // nie als Pfad — sonst wäre die Datei über die URL erreichbar.
-        $z['download_verfuegbar'] = $z['status'] === 'signiert';
+        // nie als Pfad — sonst wäre die Datei über die URL erreichbar. Und es
+        // gibt es erst, wenn alle unterschrieben haben.
+        $z['download_verfuegbar'] =
+            $z['status'] === 'signiert' && $z['wartet_auf'] === 0;
     }
     unset($z);
 
@@ -403,21 +421,70 @@ function aktionAblehnen(PDO $pdo, int $userId, array $body): void
         jsonResponse(false, [], 'Missing signatur_id');
     }
 
-    $stmt = $pdo->prepare(
-        "UPDATE dokument_signaturen
-            SET status = 'abgelehnt',
-                abgelehnt_at = UTC_TIMESTAMP(),
-                abgelehnt_grund = ?
-          WHERE id = ? AND user_id = ? AND status = 'offen'"
-    );
-    $stmt->execute([$grund !== '' ? $grund : null, $signaturId, $userId]);
+    $pdo->beginTransaction();
+    try {
+        $stmt = $pdo->prepare(
+            "UPDATE dokument_signaturen
+                SET status = 'abgelehnt',
+                    abgelehnt_at = UTC_TIMESTAMP(),
+                    abgelehnt_grund = ?
+              WHERE id = ? AND user_id = ? AND status = 'offen'"
+        );
+        $stmt->execute([$grund !== '' ? $grund : null, $signaturId, $userId]);
 
-    if ($stmt->rowCount() === 0) {
-        http_response_code(409);
-        jsonResponse(false, [], 'Dieser Vorgang ist nicht mehr offen');
+        if ($stmt->rowCount() === 0) {
+            $pdo->rollBack();
+            http_response_code(409);
+            jsonResponse(false, [], 'Dieser Vorgang ist nicht mehr offen');
+        }
+
+        // Lehnt EINER ab, ist das Dokument als Ganzes gescheitert — auch wenn
+        // der andere längst unterschrieben hat. Danach kann niemand mehr
+        // unterschreiben.
+        //
+        // Die bereits geleistete Unterschrift wird dabei NICHT angetastet. Sie
+        // ist eine Tatsache: jemand hat zu einem Zeitpunkt mit seinem Gerät und
+        // seiner TAN unterschrieben, und sie steht mit ihrem eigenen Hash in
+        // der Kette. Sie nachträglich auf „abgelehnt" zu setzen hiesse, ein
+        // Geschehen umzuschreiben, weil es folgenlos blieb. Gesiegelt wird das
+        // Dokument nie — und genau das ist die richtige Folge, nicht eine
+        // gelöschte Unterschrift.
+        $gruppe = $pdo->prepare("SELECT gruppe_id FROM dokument_signaturen WHERE id = ?");
+        $gruppe->execute([$signaturId]);
+        $gruppeId = $gruppe->fetchColumn();
+
+        $mitAbgelehnt = 0;
+        if ($gruppeId !== false && $gruppeId !== null) {
+            $rest = $pdo->prepare(
+                "UPDATE dokument_signaturen
+                    SET status = 'abgelehnt',
+                        abgelehnt_at = UTC_TIMESTAMP(),
+                        abgelehnt_grund = ?
+                  WHERE gruppe_id = ? AND status = 'offen'"
+            );
+            $rest->execute([
+                'Von einem anderen Unterzeichner abgelehnt',
+                (int)$gruppeId,
+            ]);
+            $mitAbgelehnt = $rest->rowCount();
+        }
+
+        $pdo->commit();
+    } catch (Throwable $e) {
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        error_log('signatur ablehnen: ' . $e->getMessage());
+        http_response_code(500);
+        jsonResponse(false, [], 'Ablehnung konnte nicht gespeichert werden');
     }
 
-    jsonResponse(true, ['signatur_id' => $signaturId]);
+    jsonResponse(true, [
+        'signatur_id' => $signaturId,
+        // Wie viele offene Unterschriften dadurch hinfällig wurden. Beim
+        // einzelnen Unterzeichner immer 0.
+        'weitere_beendet' => $mitAbgelehnt,
+    ]);
 }
 
 /**

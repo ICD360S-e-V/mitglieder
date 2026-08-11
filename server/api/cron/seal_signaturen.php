@@ -76,6 +76,18 @@ $offen = $pdo->prepare(
       WHERE s.status = 'signiert'
         AND s.signiert_pdf_pfad IS NULL
         AND s.siegel_versuche < " . MAX_VERSUCHE . "
+        -- Bei mehreren Unterzeichnern (nur Vollmacht) wird erst gesiegelt,
+        -- wenn ALLE unterschrieben haben. Vorher gibt es kein fertiges
+        -- Dokument, und ein Siegel ueber einen halb unterschriebenen Stand
+        -- wuerde etwas beglaubigen, das so nie gegolten hat.
+        AND (s.gruppe_id IS NULL OR NOT EXISTS (
+              SELECT 1 FROM dokument_signaturen g
+               WHERE g.gruppe_id = s.gruppe_id
+                 AND g.status <> 'signiert'))
+        -- Je Gruppe nur EINE Zeile aufgreifen, sonst siegeln zwei Durchlaeufe
+        -- dasselbe Dokument gleichzeitig. Die kleinste id fuehrt.
+        AND s.id = (SELECT MIN(g2.id) FROM dokument_signaturen g2
+                     WHERE COALESCE(g2.gruppe_id, g2.id) = COALESCE(s.gruppe_id, s.id))
       ORDER BY s.signed_at_utc ASC
       LIMIT " . MAX_PRO_LAUF
 );
@@ -196,8 +208,17 @@ function siegeln(PDO $pdo, array $z): void
     // Angehängt statt über den Text gelegt: wo auf einem fremden PDF Platz
     // ist, weiß niemand, und eine Unterschrift quer über einer Textzeile
     // sieht nach Fälschung aus, selbst wenn sie echt ist.
-    $pdf->AddPage('P', 'A4');
-    unterschriftenblatt($pdf, $z);
+    // Je Unterzeichner ein EIGENES Blatt, nicht ein gemeinsames.
+    //
+    // Beide Unterschriften haben ihren eigenen Beweis: eigene TAN, eigene IP,
+    // eigenes Gerät, eigene Uhrzeit, eigene Stelle in der Hash-Kette. Auf ein
+    // Blatt gequetscht wäre im Zweifel nicht mehr auseinanderzuhalten, welche
+    // Angabe zu wem gehört — und genau das müsste ein Gericht auseinanderhalten
+    // können.
+    foreach (unterzeichnerDerGruppe($pdo, $z) as $unterzeichner) {
+        $pdf->AddPage('P', 'A4');
+        unterschriftenblatt($pdf, $unterzeichner);
+    }
 
     // --- Siegel ---
     $pdf->setSignature(
@@ -226,11 +247,15 @@ function siegeln(PDO $pdo, array $z): void
     $ziel = ablegen($z, $pdf);
     $pdfHash = hash_file('sha256', $ziel['absolut']);
 
+    // Das gesiegelte Dokument gehoert der ganzen Gruppe. Truege nur die
+    // fuehrende Zeile den Pfad, koennte der zweite Unterzeichner sein eigenes
+    // unterschriebenes Dokument nicht herunterladen — und beim
+    // Ein-Unterzeichner-Fall trifft die Bedingung genau die eine Zeile.
     $pdo->prepare(
         "UPDATE dokument_signaturen
             SET signiert_pdf_pfad = ?, signiert_pdf_hash = ?
-          WHERE id = ?"
-    )->execute([$ziel['relativ'], $pdfHash, $z['id']]);
+          WHERE COALESCE(gruppe_id, id) = ?"
+    )->execute([$ziel['relativ'], $pdfHash, (int)($z['gruppe_id'] ?? $z['id'])]);
 
     // Zeitstempel einer fremden Uhr. Ohne ihn stünde für den Zeitpunkt nur
     // unsere eigene Aussage — und die ist im Streitfall genau die Seite, der
@@ -323,6 +348,38 @@ function zeitstempelHolen(string $pdfPfad): ?string
     } finally {
         @unlink($tsq);
     }
+}
+
+/**
+ * Alle Unterzeichner dieses Dokuments, in der Reihenfolge, in der sie
+ * angefordert wurden.
+ *
+ * Beim einzelnen Unterzeichner — dem Normalfall, und dem einzigen, den es
+ * ausserhalb der Vollmacht gibt — ist das genau die uebergebene Zeile. Sie
+ * wird trotzdem aus der Datenbank geholt statt durchgereicht, damit beide
+ * Faelle denselben Weg nehmen; ein Sonderpfad fuer den haeufigen Fall waere
+ * eine zweite Stelle, an der dasselbe anders passieren kann.
+ */
+function unterzeichnerDerGruppe(PDO $pdo, array $z): array
+{
+    $gruppe = (int)($z['gruppe_id'] ?? 0);
+    if ($gruppe === 0) {
+        return [$z];
+    }
+
+    $stmt = $pdo->prepare(
+        "SELECT s.*, u.vorname, u.nachname, u.mitgliedernummer
+           FROM dokument_signaturen s
+           JOIN users u ON u.id = s.user_id
+          WHERE s.gruppe_id = ?
+          ORDER BY s.id ASC"
+    );
+    $stmt->execute([$gruppe]);
+    $zeilen = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Sollte nie leer sein; wenn doch, lieber ein Blatt mit den Daten, die
+    // vorliegen, als ein Dokument ganz ohne Unterschriftenblatt.
+    return $zeilen ?: [$z];
 }
 
 /**
