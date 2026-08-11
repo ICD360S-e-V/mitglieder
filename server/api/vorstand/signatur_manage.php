@@ -319,6 +319,12 @@ function aktionDetail(PDO $pdo, array $body): void
     $zeile['geraet_anzeige']    = geraetText($zeile);
     $zeile['anwendung_anzeige'] = anwendungText($zeile);
 
+    // Ob ein Zeitstempel vorliegt, ist eine Tatsache ueber den Beweis; wo die
+    // Datei liegt, geht niemanden etwas an. Bisher stand beides nicht in der
+    // Antwort — ein fehlender Zeitstempel war damit unsichtbar, obwohl das
+    // gesiegelte Blatt einen zusagt und der Download dauerhaft 404 liefert.
+    $zeile['zeitstempel_vorhanden'] = $zeile['tsa_token_pfad'] !== null;
+
     $zeile['id'] = (int)$zeile['id'];
     unset($zeile['pdf_pfad'], $zeile['signiert_pdf_pfad'], $zeile['tsa_token_pfad']);
 

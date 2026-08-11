@@ -108,6 +108,13 @@ $offen = $pdo->prepare(
 $offen->execute();
 $zeilen = $offen->fetchAll(PDO::FETCH_ASSOC);
 
+// VOR dem Ausstieg, nicht danach: der Normalfall ist, dass es nichts zu
+// siegeln gibt. Stuende das Nachholen hinter der Schleife, liefe es nur an den
+// Minuten, in denen ohnehin gerade gesiegelt wird — also fast nie, und
+// ausgerechnet nicht in den ruhigen Stunden, in denen eine ausgefallene
+// Zeitstempelstelle wieder erreichbar waere.
+zeitstempelNachholen($pdo);
+
 if ($zeilen === []) {
     exit(0);
 }
@@ -265,9 +272,15 @@ function siegeln(PDO $pdo, array $z): void
     // fuehrende Zeile den Pfad, koennte der zweite Unterzeichner sein eigenes
     // unterschriebenes Dokument nicht herunterladen — und beim
     // Ein-Unterzeichner-Fall trifft die Bedingung genau die eine Zeile.
+    // siegel_fehler wird beim Erfolg GELOESCHT. Ohne das bleibt die Meldung
+    // eines frueheren Fehlversuchs fuer immer in der Zeile stehen, und die
+    // Beweisansicht zeigt dazu dauerhaft „Das Siegel wird noch erstellt.
+    // Letzter Fehlversuch: …" — fuer ein Dokument, das laengst fertig
+    // gesiegelt ist. Ein ueberholter Fehler, der wie ein laufender aussieht,
+    // ist schlimmer als gar keine Anzeige.
     $pdo->prepare(
         "UPDATE dokument_signaturen
-            SET signiert_pdf_pfad = ?, signiert_pdf_hash = ?
+            SET signiert_pdf_pfad = ?, signiert_pdf_hash = ?, siegel_fehler = NULL
           WHERE COALESCE(gruppe_id, id) = ?"
     )->execute([$ziel['relativ'], $pdfHash, (int)($z['gruppe_id'] ?? $z['id'])]);
 
@@ -281,8 +294,68 @@ function siegeln(PDO $pdo, array $z): void
     // weil eine fremde Webseite gerade nicht erreichbar war.
     $token = zeitstempelHolen($ziel['absolut']);
     if ($token !== null) {
-        $pdo->prepare("UPDATE dokument_signaturen SET tsa_token_pfad = ? WHERE id = ?")
-            ->execute([$token, $z['id']]);
+        // Auf die GANZE Gruppe, genau wie der Pfad eine Anweisung weiter oben.
+        // Mit `WHERE id = ?` bekam nur die fuehrende Zeile den Token, und das
+        // Beweisbuendel des Mitunterzeichners behauptete dann, es gebe keinen —
+        // fuer dasselbe Dokument, an dem er haengt.
+        $pdo->prepare(
+            "UPDATE dokument_signaturen SET tsa_token_pfad = ?
+              WHERE COALESCE(gruppe_id, id) = ?"
+        )->execute([$token, (int)($z['gruppe_id'] ?? $z['id'])]);
+    }
+}
+
+/**
+ * Holt Zeitstempel nach, die beim Siegeln nicht zu bekommen waren.
+ *
+ * Der Kommentar oben sagte „der naechste Lauf holt den Token nach" — und das
+ * war schlicht nicht wahr: die Hauptschleife sucht nur Zeilen mit
+ * `signiert_pdf_pfad IS NULL`, ein gesiegeltes Dokument sieht sie nie wieder an.
+ * Faellt freetsa.org waehrend des Siegelns fuer 25 Sekunden aus — ein
+ * Aussetzer eines kostenlosen Fremddienstes —, blieb `tsa_token_pfad` fuer
+ * immer leer, waehrend das ausgelieferte Blatt weiterhin einen Zeitstempel
+ * zusagte.
+ *
+ * Neu gesiegelt wird dabei NICHT: die Datei auf der Platte ist unveraendert,
+ * der Token passt also weiterhin genau auf sie. Ein zweites Siegeln wuerde nur
+ * ein zweites, anderes PDF erzeugen und den ersten Hash entwerten.
+ */
+function zeitstempelNachholen(PDO $pdo): void
+{
+    $offen = $pdo->prepare(
+        "SELECT id, gruppe_id, signiert_pdf_pfad, siegel_versuche
+           FROM dokument_signaturen
+          WHERE signiert_pdf_pfad IS NOT NULL
+            AND tsa_token_pfad IS NULL
+            AND siegel_versuche < " . MAX_VERSUCHE . "
+          ORDER BY signed_at_utc ASC
+          LIMIT " . MAX_PRO_LAUF
+    );
+    $offen->execute();
+
+    foreach ($offen->fetchAll(PDO::FETCH_ASSOC) as $n) {
+        $datei = WEBROOT . '/uploads/' . $n['signiert_pdf_pfad'];
+        $token = is_file($datei) ? zeitstempelHolen($datei) : null;
+
+        if ($token !== null) {
+            $pdo->prepare(
+                "UPDATE dokument_signaturen
+                    SET tsa_token_pfad = ?, siegel_fehler = NULL
+                  WHERE COALESCE(gruppe_id, id) = ?"
+            )->execute([$token, (int)($n['gruppe_id'] ?? $n['id'])]);
+            echo '  #' . $n['id'] . " Zeitstempel nachgeholt\n";
+            continue;
+        }
+
+        // Mitzaehlen, sonst versucht es der Cron im Minutentakt bis in alle
+        // Ewigkeit und der Fehlschlag bleibt unsichtbar. Dieselbe Begruendung
+        // wie bei MAX_VERSUCHE fuers Siegeln selbst.
+        $pdo->prepare(
+            "UPDATE dokument_signaturen
+                SET siegel_versuche = siegel_versuche + 1,
+                    siegel_fehler = 'Zeitstempel nicht erhalten'
+              WHERE id = ?"
+        )->execute([(int)$n['id']]);
     }
 }
 
@@ -589,11 +662,20 @@ function unterschriftenblatt($pdf, array $z): void
     $pdf->Ln(4);
     $pdf->SetX(15);
     $pdf->SetFont('helvetica', 'I', 7);
+    // Der Satz stand hier als unbedingte Zusage („wird … aufbewahrt, der
+    // beweist …"). Zum Zeitpunkt des Drucks kann er das nicht sein: der
+    // Zeitstempel wird erst geholt, wenn dieses PDF fertig auf der Platte
+    // liegt — er gilt ja fuer die fertige Datei. Faellt die Zeitstempelstelle
+    // aus, behauptete das Blatt dauerhaft etwas, das es nicht gibt. In einem
+    // Beweisdokument ist eine widerlegbare Angabe schlimmer als eine fehlende:
+    // wer sie kippt, stellt jede andere Zeile mit in Frage.
     $pdf->MultiCell(180, 4,
         'Das Dokument tragt ein kryptografisches Siegel des Vereins. Eine '
       . 'nachtragliche Anderung des Dokuments oder dieses Blattes macht das '
-      . 'Siegel ungultig. Zusatzlich wird zu diesem Dokument ein Zeitstempel '
+      . 'Siegel ungultig. Zu diesem Dokument wird zusatzlich ein Zeitstempel '
       . 'einer unabhangigen Zeitstempelstelle (freetsa.org, RFC 3161) '
-      . 'aufbewahrt, der beweist, dass es zum genannten Zeitpunkt bereits in '
-      . 'genau dieser Fassung vorlag.', 0, 'L');
+      . 'angefordert; liegt er vor, wird er zusammen mit dem Dokument '
+      . 'aufbewahrt und ist beim Verein abrufbar. Er belegt dann, dass das '
+      . 'Dokument zum bestatigten Zeitpunkt bereits in genau dieser Fassung '
+      . 'vorlag.', 0, 'L');
 }

@@ -35,13 +35,45 @@ if (!in_array($welche, ['original', 'signiert', 'tsr'], true)) {
 
 $pdo = getDBConnection();
 
-$rolle = $pdo->prepare('SELECT role FROM users WHERE mitgliedernummer = ?');
+$rolle = $pdo->prepare('SELECT id, role FROM users WHERE mitgliedernummer = ?');
 $rolle->execute([$caller]);
-$role = (string)$rolle->fetchColumn();
+$anrufer = $rolle->fetch(PDO::FETCH_ASSOC);
 
-if ($caller === '' || $role !== 'vorsitzer') {
+if ($caller === '' || !$anrufer || $anrufer['role'] !== 'vorsitzer') {
     http_response_code(403);
     header('Content-Type: application/json; charset=utf-8');
+    jsonResponse(false, [], 'Forbidden');
+}
+
+// Bis hierher ist nur geprüft, dass die GENANNTE Nummer einem Vorsitzenden
+// gehört — nicht, dass der Anrufer dieser Mensch ist. Und die Nummer steht in
+// der URL.
+//
+// validateApiKey() lässt jeden gültigen Geräteschlüssel durch, also auch den
+// eines beliebigen Mitglieds; ein Geräteschlüssel weist ein GERÄT aus, keine
+// Person. Damit genügte
+//   GET …/vorstand/signatur_pdf.php?mitgliedernummer=V27655&id=13&which=signiert
+// samt eigenem Geräteschlüssel, um das unterschriebene Dokument eines fremden
+// Mitglieds herunterzuladen. Bei signatur_manage.php war dasselbe Loch; hier
+// wiegt es schwerer, weil der ganze Zugriff in eine Adresszeile passt.
+//
+// Erst beide Angaben zusammen sind eine Identität. Kein Client muss dafür
+// geändert werden: die Vorsitzer-App sendet X-Device-Key bei jedem Aufruf.
+$kopf   = array_change_key_case(getallheaders(), CASE_LOWER);
+$geraet = trim((string)($kopf['x-device-key'] ?? ''));
+
+$bindung = $pdo->prepare(
+    'SELECT 1 FROM device_keys
+      WHERE device_key = ? AND user_id = ? AND is_active = 1 AND revoked_at IS NULL'
+);
+$bindung->execute([$geraet, (int)$anrufer['id']]);
+
+if ($geraet === '' || !$bindung->fetchColumn()) {
+    error_log('signatur_pdf: Geraeteschluessel gehoert nicht zu ' . $caller);
+    http_response_code(403);
+    header('Content-Type: application/json; charset=utf-8');
+    // Dieselbe Antwort wie oben: wer probiert, soll nicht erfahren, ob die
+    // Nummer existiert oder nur das Gerät nicht passt.
     jsonResponse(false, [], 'Forbidden');
 }
 
