@@ -76,6 +76,20 @@ $offen = $pdo->prepare(
       WHERE s.status = 'signiert'
         AND s.signiert_pdf_pfad IS NULL
         AND s.siegel_versuche < " . MAX_VERSUCHE . "
+        -- Reverse-DNS, Land, Netzbetreiber und App-Fassung werden erst NACH
+        -- dem Commit nachgetragen (der DNS-Lookup darf keine Unterschrift
+        -- aufhalten). Dieser Cron laeuft jede Minute und griff bisher mitten
+        -- in dieses Fenster: dann stand auf dem gesiegelten Blatt
+        -- 'Hostname: —', waehrend die Datenbank kurz darauf einen Wert bekam.
+        -- Urkunde und Buendel widersprechen sich — und die Urkunde ist die
+        -- zeitgestempelte von beiden.
+        --
+        -- Die Ausnahme nach 15 Minuten ist Absicht: bleibt die Marke wegen
+        -- eines Fehlers aus, wird trotzdem gesiegelt. Ein Buendel ohne
+        -- Hostname ist unvollstaendig; eine Unterschrift, die nie ein Siegel
+        -- bekommt, waere verloren.
+        AND (s.beweis_vollstaendig = 1
+             OR s.signed_at_utc <= UTC_TIMESTAMP() - INTERVAL 15 MINUTE)
         -- Bei mehreren Unterzeichnern (nur Vollmacht) wird erst gesiegelt,
         -- wenn ALLE unterschrieben haben. Vorher gibt es kein fertiges
         -- Dokument, und ein Siegel ueber einen halb unterschriebenen Stand
@@ -550,6 +564,15 @@ function unterschriftenblatt($pdf, array $z): void
         'Geräteschlüssel'         => (string)($z['device_id'] ?? '—'),
         'Code gesendet an'        => (string)($z['tan_an'] ?? '—'),
         'Code bestätigt (UTC)'    => (string)($z['tan_verified_at'] ?? '—'),
+        // Diese drei standen bisher NUR in der Datenbank und in der Ansicht des
+        // Vorsitzenden, nicht auf dem Blatt. Damit waren sie die einzigen
+        // angezeigten Beweisangaben ohne jede Verankerung: der Kettenhash deckt
+        // sie nicht ab, und ohne Abdruck im zeitgestempelten PDF haette sich
+        // 'Land: DE' spaeter unbemerkt in etwas anderes aendern lassen.
+        // Auf dem Blatt sind sie durch den Zeitstempel mitgesichert.
+        'Land (aus IP)'           => (string)($z['country_iso'] ?? '—'),
+        'Netzbetreiber (aus IP)'  => (string)($z['isp'] ?? '—'),
+        'App-Fassung'             => (string)($z['app_version'] ?? '—'),
         'Kettenhash'              => (string)($z['full_hash'] ?? '—'),
         'Prüfcode'                => (string)($z['verify_code'] ?? '—'),
     ];

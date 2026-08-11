@@ -430,6 +430,29 @@ function aktionSignieren(PDO $pdo, int $userId, array $body): void
         )->execute([$signaturId]);
     } catch (Throwable $e) {
         error_log('signatur Herkunft: ' . $e->getMessage());
+    } finally {
+        // Ab hier ist das Bündel vollständig — und erst ab hier darf gesiegelt
+        // werden.
+        //
+        // Der Siegel-Cron läuft jede Minute und nahm bisher jede Zeile mit
+        // status='signiert', also auch eine, die noch mitten in diesem Nachtrag
+        // steckt. Der DNS-Lookup darüber kann Sekunden dauern. Dann stünde auf
+        // dem gesiegelten Blatt „Hostname: —", während die Datenbank kurz
+        // darauf einen Wert bekommt: Urkunde und Bündel widersprechen sich, und
+        // die Urkunde ist die zeitgestempelte von beiden. Genau daran würde
+        // jemand die ganze Sammlung aufhängen.
+        //
+        // Im finally, nicht im try: scheitert der Nachtrag, bleibt das Bündel
+        // eben ohne Hostname — aber die Unterschrift muss trotzdem gesiegelt
+        // werden. Eine Zeile, die wegen eines DNS-Fehlers nie ein Siegel
+        // bekommt, wäre der schlimmere Ausgang.
+        try {
+            $pdo->prepare(
+                "UPDATE dokument_signaturen SET beweis_vollstaendig = 1 WHERE id = ?"
+            )->execute([$signaturId]);
+        } catch (Throwable $e) {
+            error_log('signatur beweis_vollstaendig: ' . $e->getMessage());
+        }
     }
 
     jsonResponse(true, [
