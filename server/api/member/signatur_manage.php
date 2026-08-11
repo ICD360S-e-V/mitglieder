@@ -232,6 +232,18 @@ function aktionSignieren(PDO $pdo, int $userId, array $body): void
         jsonResponse(false, [], 'Ungültige Unterschrift');
     }
 
+    // Der Kettenkopf wird mit FOR UPDATE gesperrt, damit sich zwei gleichzeitige
+    // Unterschriften nicht dasselbe Vorgängerglied greifen. Das ist richtig und
+    // bleibt so — aber es heisst, dass der Zweite wartet. Läuft er dabei in die
+    // Sperr-Zeitgrenze (auf diesem Server 50 s), war das bisher ein HTTP 500,
+    // vom Mitglied nicht von einem endgültigen Fehler zu unterscheiden. Es
+    // hätte nur noch einmal drücken müssen.
+    //
+    // Ein neuer Anlauf ist ungefährlich: die Transaktion umfasst ALLES, auch
+    // das Entwerten der TAN. Wird sie zurückgerollt, ist die TAN wieder gültig
+    // und die Zeile unberührt. Es kann also weder eine halbe Unterschrift noch
+    // ein doppelter Eintrag in der Kette entstehen.
+    for ($versuch = 1; $versuch <= 3; $versuch++) {
     try {
         $pdo->beginTransaction();
 
@@ -356,13 +368,26 @@ function aktionSignieren(PDO $pdo, int $userId, array $body): void
             ->execute([$fullHash, $signaturId]);
 
         $pdo->commit();
+        break;                       // geschafft — die Schleife hat ihren Zweck erfüllt
     } catch (Throwable $e) {
         if ($pdo->inTransaction()) {
             $pdo->rollBack();
         }
+
+        if ($versuch < 3 && SignaturHelper::istWiederholbar($e)) {
+            // Kurz warten, damit nicht beide im Gleichtakt wieder auflaufen.
+            // 120 ms, dann 240 ms: lang genug, dass die andere Unterschrift
+            // fertig wird, kurz genug, dass niemand es merkt.
+            error_log("signatur signieren: Anlauf $versuch vorübergehend gescheitert ("
+                . $e->getMessage() . '), neuer Versuch');
+            usleep(120000 * $versuch);
+            continue;
+        }
+
         error_log('signatur signieren: ' . $e->getMessage());
         http_response_code(500);
         jsonResponse(false, [], 'Unterschrift konnte nicht gespeichert werden');
+    }
     }
 
     // Reverse-DNS bewusst NACH dem Commit: der Lookup kann in eine

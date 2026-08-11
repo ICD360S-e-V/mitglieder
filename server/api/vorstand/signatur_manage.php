@@ -106,13 +106,25 @@ function aktionListe(PDO $pdo, array $body): void
         jsonResponse(false, [], 'Missing user_id');
     }
 
+    // Die Liste steht unter EINEM Mitglied, zeigt also dessen Zeilen. Bei einer
+    // Vollmacht gehört dazu aber eine zweite Zeile mit einer ANDEREN user_id —
+    // der des Vorsitzenden. Sie hier mit aufzuführen wäre falsch (sie gehört
+    // nicht diesem Mitglied), sie zu verschweigen aber auch: dann stünde eine
+    // Unterschrift ewig auf „unterschrieben", ohne dass erkennbar wäre, dass
+    // noch jemand fehlt. Deshalb bleibt die Zeilenauswahl wie sie war, und
+    // jede Zeile bekommt die Zahlen ihrer Gruppe dazu.
     $stmt = $pdo->prepare(
-        "SELECT id, dokument_typ, dokument_titel, status, pdf_seiten,
-                angefordert_at, frist_bis, signed_at_utc, abgelehnt_at,
-                abgelehnt_grund, widerrufen_at, verify_code
-           FROM dokument_signaturen
-          WHERE user_id = ?
-          ORDER BY angefordert_at DESC"
+        "SELECT s.id, s.dokument_typ, s.dokument_titel, s.status, s.pdf_seiten,
+                s.angefordert_at, s.frist_bis, s.signed_at_utc, s.abgelehnt_at,
+                s.abgelehnt_grund, s.widerrufen_at, s.verify_code,
+                s.gruppe_id, s.rolle,
+                (SELECT COUNT(*) FROM dokument_signaturen g
+                  WHERE g.gruppe_id = s.gruppe_id)                        AS gruppe_gesamt,
+                (SELECT COUNT(*) FROM dokument_signaturen g
+                  WHERE g.gruppe_id = s.gruppe_id AND g.status = 'signiert') AS gruppe_signiert
+           FROM dokument_signaturen s
+          WHERE s.user_id = ?
+          ORDER BY s.angefordert_at DESC"
     );
     $stmt->execute([$userId]);
     $zeilen = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -121,6 +133,19 @@ function aktionListe(PDO $pdo, array $body): void
     foreach ($zeilen as &$z) {
         $z['id'] = (int)$z['id'];
         $z['pdf_seiten'] = $z['pdf_seiten'] === null ? null : (int)$z['pdf_seiten'];
+        $z['gruppe_id']  = $z['gruppe_id'] === null ? null : (int)$z['gruppe_id'];
+
+        // Ohne Gruppe ist die Zeile für sich allein vollständig: 1 von 1.
+        // So muss die Oberfläche nicht zwei Fälle unterscheiden.
+        $z['gruppe_gesamt']   = $z['gruppe_id'] === null ? 1 : (int)$z['gruppe_gesamt'];
+        $z['gruppe_signiert'] = $z['gruppe_id'] === null
+            ? ($z['status'] === 'signiert' ? 1 : 0)
+            : (int)$z['gruppe_signiert'];
+
+        $z['wartet_auf_mitunterzeichner'] =
+            $z['status'] === 'signiert'
+            && $z['gruppe_signiert'] < $z['gruppe_gesamt'];
+
         if ($z['status'] === 'offen') {
             $offen++;
         }
@@ -212,6 +237,40 @@ function aktionDetail(PDO $pdo, array $body): void
     // Positionsangabe geleistet, also nicht prüfbar — und das steht dann auch
     // so in der Anzeige, statt eine Bestätigung vorzutäuschen.
     $zeile['verkettung_intakt'] = SignaturHelper::verkettungPruefen($pdo, $zeile);
+
+    // Die Mitunterzeichner desselben Dokuments — nur wer, in welcher Rolle und
+    // wie weit. BEWUSST ohne deren Beweisfelder: jede Unterschrift hat ihre
+    // eigene IP, ihr eigenes Gerät, ihre eigene TAN und ihren eigenen Platz in
+    // der Kette. Zwei Beweisbündel in einer Ansicht zu mischen wäre der Anfang
+    // davon, dass später jemand das Gerät des einen der Unterschrift des
+    // anderen zuordnet. Hier steht nur die id, über die sich das zweite Bündel
+    // eigenständig öffnen lässt.
+    $zeile['mitunterzeichner'] = [];
+    if ($zeile['gruppe_id'] !== null) {
+        $mit = $pdo->prepare(
+            "SELECT s.id, s.rolle, s.status, s.signed_at_utc, s.abgelehnt_at,
+                    u.vorname, u.nachname, u.mitgliedernummer
+               FROM dokument_signaturen s
+               JOIN users u ON u.id = s.user_id
+              WHERE s.gruppe_id = ? AND s.id <> ?
+              ORDER BY s.id"
+        );
+        $mit->execute([(int)$zeile['gruppe_id'], $signaturId]);
+        foreach ($mit->fetchAll(PDO::FETCH_ASSOC) as $m) {
+            $m['id'] = (int)$m['id'];
+            $zeile['mitunterzeichner'][] = $m;
+        }
+    }
+
+    // Wie weit ist das Dokument insgesamt? Eine einzelne Zeile kann
+    // „unterschrieben" sein, während das Dokument noch auf jemanden wartet.
+    $gesamt   = 1 + count($zeile['mitunterzeichner']);
+    $signiert = ($zeile['status'] === 'signiert' ? 1 : 0)
+        + count(array_filter($zeile['mitunterzeichner'], fn($m) => $m['status'] === 'signiert'));
+    $zeile['gruppe_gesamt']   = $gesamt;
+    $zeile['gruppe_signiert'] = $signiert;
+    $zeile['wartet_auf_mitunterzeichner'] =
+        $zeile['status'] === 'signiert' && $signiert < $gesamt;
 
     // Aus beiden Quellen EIN lesbarer Satz. Der Client soll nicht raten
     // müssen, welches der fünf Felder gerade gefüllt ist.

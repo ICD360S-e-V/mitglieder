@@ -251,6 +251,36 @@ class SignaturHelper
     }
 
     /**
+     * War das ein vorübergehender Datenbankfehler, der beim nächsten Anlauf
+     * einfach verschwindet?
+     *
+     * Genau zwei Fälle, und beide entstehen erst durch das FOR UPDATE auf dem
+     * Kettenkopf: zwei Leute unterschreiben im selben Moment, einer bekommt die
+     * Sperre, der andere wartet. Gemessen (icd360sev_test_db, zwei echte
+     * Verbindungen): keine Verklemmung, sondern der Zweite läuft in die
+     * Sperr-Zeitgrenze — mit dem Vorgabewert 50 s auf diesem Server.
+     *
+     * Beides ist per Definition wiederholbar. Bisher wurde daraus HTTP 500
+     * „Unterschrift konnte nicht gespeichert werden" — für das Mitglied nicht
+     * von einem endgültigen Fehler zu unterscheiden, obwohl es nur hätte
+     * warten müssen. Die Serialisierung selbst ist richtig und bleibt: eine
+     * Kette verträgt keine zwei gleichzeitigen Anhänger.
+     *
+     * 1213 / 40001 Verklemmung · 1205 Sperr-Zeitgrenze überschritten.
+     */
+    public static function istWiederholbar(Throwable $e): bool
+    {
+        if (!$e instanceof PDOException) {
+            return false;
+        }
+        // errorInfo[1] ist der Treibercode; getCode() liefert bei PDO den
+        // SQLSTATE als Zeichenkette, nicht die Nummer — beide prüfen.
+        $treiber = $e->errorInfo[1] ?? null;
+        return $treiber === 1213 || $treiber === 1205
+            || (string)$e->getCode() === '40001';
+    }
+
+    /**
      * @deprecated Nur noch für die Umstellung da. Bitte vorherigesGlied()
      *             benutzen — diese Fassung liefert den Hash, aber nicht die
      *             Position, und ohne Position ist die Verkettung später nicht
