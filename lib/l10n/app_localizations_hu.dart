@@ -2983,12 +2983,12 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get signaturSiegelInArbeit =>
-      'A pecsét még készül. Kérjük, próbálja meg egy perc múlva újra.';
+      'Az elektronikus bélyegző még készül. Kérjük, próbálja meg egy perc múlva újra.';
 
   @override
   String get signaturWartetZweiteUnterschrift => 'A második aláírásra vár';
 
   @override
   String get signaturWartenHinweis =>
-      'Ön aláírta. A dokumentum pecsétet kap, amint a második személy is aláírta.';
+      'Ön aláírta. A dokumentum elektronikus bélyegzőt kap, amint a második személy is aláírta.';
 }

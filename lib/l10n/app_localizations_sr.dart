@@ -2976,12 +2976,12 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get signaturSiegelInArbeit =>
-      'Pečat se još izrađuje. Molimo pokušajte ponovo za jedan minut.';
+      'Електронски печат се још израђује. Молимо Вас да покушате поново за један минут.';
 
   @override
   String get signaturWartetZweiteUnterschrift => 'Чека се други потпис';
 
   @override
   String get signaturWartenHinweis =>
-      'Потписали сте. Документ ће бити оверен печатом чим га потпише и друга особа.';
+      'Потписали сте. Документ ће добити електронски печат чим га потпише и друга особа.';
 }

@@ -1390,7 +1390,7 @@
   "signaturAblehnenGrund": "Grunn (valgfritt)",
   "signaturCodeFalsch": "Koden stemmer ikke.",
   "signaturStatusSigniert": "Underskrevet av deg",
-  "signaturSiegelInArbeit": "Det signerte dokumentet blir fortsatt klargjort. Prøv gjerne igjen om ett minutt.",
+  "signaturSiegelInArbeit": "Seglet blir fortsatt laget. Prøv gjerne igjen om ett minutt.",
   "signaturWartetZweiteUnterschrift": "Venter på den andre underskriften",
-  "signaturWartenHinweis": "Du har skrevet under. Det signerte dokumentet blir klargjort så snart den andre personen også har skrevet under."
+  "signaturWartenHinweis": "Du har skrevet under. Dokumentet blir forseglet så snart den andre personen også har skrevet under."
 }
