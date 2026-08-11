@@ -295,8 +295,15 @@ function aktionSignieren(PDO $pdo, int $userId, array $body): void
         }
 
         // --- Beweiszeile schließen ---
-        $ip       = SignaturHelper::clientIp();
-        $prevHash = SignaturHelper::letzterKettenHash($pdo);
+        $ip = SignaturHelper::clientIp();
+
+        // Vorgänger und eigene Position in einem Zug: die Position wird
+        // vergeben, nicht aus der id abgeleitet. Warum das nötig ist, steht in
+        // vorherigesGlied() — kurz: die id sagt, wann jemand GEFRAGT wurde,
+        // nicht, wann er unterschrieben hat.
+        $glied    = SignaturHelper::vorherigesGlied($pdo);
+        $prevHash = $glied['hash'];
+        $kettenNr = $glied['nr'] + 1;
 
         $upd = $pdo->prepare(
             "UPDATE dokument_signaturen
@@ -311,6 +318,7 @@ function aktionSignieren(PDO $pdo, int $userId, array $body): void
                     tan_an = ?,
                     tan_verified_at = UTC_TIMESTAMP(),
                     prev_hash = ?,
+                    ketten_nr = ?,
                     verify_code = ?
               WHERE id = ?"
         );
@@ -323,6 +331,7 @@ function aktionSignieren(PDO $pdo, int $userId, array $body): void
             substr((string)($body['device_hostname'] ?? ''), 0, 120),
             SignaturHelper::telefonMaskieren((string)$tanZeile['telefon']),
             $prevHash,
+            $kettenNr,
             SignaturHelper::verifyCode(),
             $signaturId,
         ]);

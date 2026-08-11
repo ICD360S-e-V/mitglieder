@@ -200,6 +200,19 @@ function aktionDetail(PDO $pdo, array $body): void
             );
     }
 
+    // Zwei verschiedene Aussagen, und beide werden gebraucht:
+    //
+    //   kette_intakt      — diese Zeile ist seit dem Unterschreiben unverändert
+    //   verkettung_intakt — sie hängt nachweislich an ihrem Vorgänger
+    //
+    // Die erste allein ist schwächer, als sie klingt: sie bleibt „in Ordnung",
+    // wenn jemand eine ANDERE Unterschrift aus der Kette entfernt. Erst die
+    // zweite macht aus einzelnen geprüften Zeilen eine geprüfte Reihenfolge.
+    // null heißt bei Unterschriften vor dieser Fassung schlicht: noch ohne
+    // Positionsangabe geleistet, also nicht prüfbar — und das steht dann auch
+    // so in der Anzeige, statt eine Bestätigung vorzutäuschen.
+    $zeile['verkettung_intakt'] = SignaturHelper::verkettungPruefen($pdo, $zeile);
+
     // Aus beiden Quellen EIN lesbarer Satz. Der Client soll nicht raten
     // müssen, welches der fünf Felder gerade gefüllt ist.
     $zeile['geraet_anzeige']    = geraetText($zeile);

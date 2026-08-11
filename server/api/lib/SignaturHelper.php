@@ -218,19 +218,80 @@ class SignaturHelper
     }
 
     /**
-     * Der full_hash der zuletzt unterschriebenen Zeile — das vorherige Glied
-     * der Kette. `FOR UPDATE`, damit zwei gleichzeitige Unterschriften nicht
-     * beide auf dasselbe Glied zeigen und die Kette sich gabelt.
+     * Das letzte Glied der Kette: seine Position und sein full_hash.
+     *
+     * Sortiert wird über ketten_nr, NICHT über die id. Die id ist die
+     * Reihenfolge der Anforderung; wann jemand unterschreibt, entscheidet er
+     * selbst. Bei zwei offenen Anfragen konnten deshalb zwei Zeilen denselben
+     * Vorgänger bekommen — eine Gabel, die niemandem auffällt, weil jede Zeile
+     * beim Prüfen nur ihren eigenen Hash nachrechnet. Siehe die Migration
+     * 2026_08_11_kettenposition.sql für den vollständigen Ablauf.
+     *
+     * Über signed_at_utc zu sortieren würde nicht reichen: die Spalte ist
+     * DATETIME, zwei Unterschriften in derselben Sekunde wären gleichrangig.
+     *
+     * `FOR UPDATE` hält die Position fest, bis die laufende Unterschrift
+     * geschrieben ist — sonst holen sich zwei gleichzeitige Unterzeichner
+     * dieselbe Nummer. Der UNIQUE-Index auf ketten_nr fängt das zusätzlich ab.
+     *
+     * @return array{nr:int, hash:?string} nr 0 = die Kette ist noch leer
      */
-    public static function letzterKettenHash(PDO $pdo): ?string
+    public static function vorherigesGlied(PDO $pdo): array
     {
         $stmt = $pdo->query(
-            "SELECT full_hash FROM dokument_signaturen
+            "SELECT ketten_nr, full_hash FROM dokument_signaturen
              WHERE status = 'signiert' AND full_hash IS NOT NULL
-             ORDER BY id DESC LIMIT 1 FOR UPDATE"
+               AND ketten_nr IS NOT NULL
+             ORDER BY ketten_nr DESC LIMIT 1 FOR UPDATE"
         );
-        $hash = $stmt->fetchColumn();
-        return $hash === false ? null : (string)$hash;
+        $zeile = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $zeile === false
+            ? ['nr' => 0, 'hash' => null]
+            : ['nr' => (int)$zeile['ketten_nr'], 'hash' => (string)$zeile['full_hash']];
+    }
+
+    /**
+     * Hängt die Zeile wirklich an ihrem Vorgänger, oder steht ihr Hash nur für
+     * sich allein?
+     *
+     * Das ist die Prüfung, die bisher fehlte. `kettenHash()` beweist, dass EINE
+     * Zeile seit dem Unterschreiben unverändert ist. Erst der Vergleich mit dem
+     * full_hash des Vorgängers beweist, dass die Kette keine Lücke hat — dass
+     * also niemand ein Glied entfernt hat. Ohne sie meldet auch eine zerlegte
+     * Kette Zeile für Zeile „in Ordnung".
+     *
+     * @return bool|null null = nicht prüfbar (nicht unterschrieben, oder vor
+     *                   der Einführung von ketten_nr geleistet)
+     */
+    public static function verkettungPruefen(PDO $pdo, array $zeile): ?bool
+    {
+        if (($zeile['status'] ?? '') !== 'signiert'
+            || ($zeile['full_hash'] ?? null) === null
+            || ($zeile['ketten_nr'] ?? null) === null) {
+            return null;
+        }
+
+        $nr   = (int)$zeile['ketten_nr'];
+        $prev = (string)($zeile['prev_hash'] ?? '');
+
+        // Das erste Glied hat keinen Vorgänger — dann MUSS prev_hash leer sein.
+        if ($nr <= 1) {
+            return $prev === '';
+        }
+
+        $stmt = $pdo->prepare(
+            "SELECT full_hash FROM dokument_signaturen WHERE ketten_nr = ?"
+        );
+        $stmt->execute([$nr - 1]);
+        $vorgaenger = $stmt->fetchColumn();
+
+        // Kein Vorgänger auf der Position: das Glied wurde entfernt. Genau der
+        // Fall, den diese Prüfung sichtbar machen soll.
+        if ($vorgaenger === false) {
+            return false;
+        }
+
+        return hash_equals((string)$vorgaenger, $prev);
     }
 
     /**
