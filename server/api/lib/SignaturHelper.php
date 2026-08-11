@@ -251,6 +251,31 @@ class SignaturHelper
     }
 
     /**
+     * @deprecated Nur noch für die Umstellung da. Bitte vorherigesGlied()
+     *             benutzen — diese Fassung liefert den Hash, aber nicht die
+     *             Position, und ohne Position ist die Verkettung später nicht
+     *             mehr nachprüfbar.
+     *
+     * Warum sie überhaupt stehen bleibt: OPcache übernimmt geänderte Dateien
+     * erst nach `opcache.revalidate_freq`, und die drei Dateien dieser Änderung
+     * werden nicht in derselben Sekunde übernommen. In diesem Fenster läuft der
+     * neue Helfer neben dem alten member-Endpunkt. Ohne diesen Wrapper wäre das
+     * ein Fatal Error mitten in einer Unterschrift — ausgerechnet an der Stelle,
+     * an der ein Mitglied gerade seine TAN eingegeben hat.
+     *
+     * Sie ist dabei nicht bloß Attrappe: sie sortiert bereits über ketten_nr,
+     * gibt also den RICHTIGEN Vorgänger zurück. Eine in diesem Fenster
+     * geleistete Unterschrift bekommt lediglich keine Positionsnummer und gilt
+     * damit als „nicht prüfbar" statt als bestätigt — die ehrliche Auskunft.
+     *
+     * Entfernen, sobald member/signatur_manage.php sicher live ist.
+     */
+    public static function letzterKettenHash(PDO $pdo): ?string
+    {
+        return self::vorherigesGlied($pdo)['hash'];
+    }
+
+    /**
      * Hängt die Zeile wirklich an ihrem Vorgänger, oder steht ihr Hash nur für
      * sich allein?
      *
