@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Motif (facultatif)",
   "signaturCodeFalsch": "Le code n'est pas correct.",
   "signaturStatusSigniert": "Vous avez signé",
-  "signaturSiegelInArbeit": "Le document scellé est encore en cours de préparation. Veuillez réessayer dans une minute."
+  "signaturSiegelInArbeit": "Le document scellé est encore en cours de préparation. Veuillez réessayer dans une minute.",
+  "signaturWartetZweiteUnterschrift": "En attente de la seconde signature",
+  "signaturWartenHinweis": "Vous avez signé. Le document sera scellé dès que la seconde personne aura signé à son tour."
 }

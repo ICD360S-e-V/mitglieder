@@ -1411,5 +1411,7 @@
   "signaturLeer": "يرجى التوقيع أولاً.",
   "signaturErfolg": "شكراً لك — تم استلام توقيعك.",
   "signaturFehlgeschlagen": "لم ينجح ذلك. يرجى المحاولة مرة أخرى.",
-  "signaturSiegelInArbeit": "يجري إنشاء الختم الآن. يرجى المحاولة مرة أخرى بعد دقيقة."
+  "signaturSiegelInArbeit": "يجري إنشاء الختم الآن. يرجى المحاولة مرة أخرى بعد دقيقة.",
+  "signaturWartetZweiteUnterschrift": "بانتظار التوقيع الثاني",
+  "signaturWartenHinweis": "لقد وقّعت. سيتم ختم المستند بمجرد أن يوقّع عليه الشخص الثاني أيضاً."
 }

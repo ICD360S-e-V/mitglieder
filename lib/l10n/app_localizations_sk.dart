@@ -2977,4 +2977,11 @@ class AppLocalizationsSk extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Podpísaný dokument sa ešte pripravuje. Skúste to prosím o minútu znova.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Čaká sa na druhý podpis';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Podpísali ste. Dokument sa pripraví, hneď ako ho podpíše aj druhá osoba.';
 }

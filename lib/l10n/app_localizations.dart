@@ -5413,6 +5413,18 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.'**
   String get signaturSiegelInArbeit;
+
+  /// Kurzer Status hinter "Von Ihnen unterschrieben ·": eine Vollmacht braucht zwei Unterschriften
+  ///
+  /// In de, this message translates to:
+  /// **'Warten auf die zweite Unterschrift'**
+  String get signaturWartetZweiteUnterschrift;
+
+  /// Hinweisfenster, wenn das Mitglied das noch nicht gesiegelte Dokument antippt
+  ///
+  /// In de, this message translates to:
+  /// **'Sie haben unterschrieben. Das Dokument wird gesiegelt, sobald auch die zweite Person unterschrieben hat.'**
+  String get signaturWartenHinweis;
 }
 
 class _AppLocalizationsDelegate

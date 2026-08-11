@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Motivo (opcional)",
   "signaturCodeFalsch": "El código no es correcto.",
   "signaturStatusSigniert": "Firmado por usted",
-  "signaturSiegelInArbeit": "El documento sellado todavía se está preparando. Vuelva a intentarlo dentro de un minuto."
+  "signaturSiegelInArbeit": "El documento sellado todavía se está preparando. Vuelva a intentarlo dentro de un minuto.",
+  "signaturWartetZweiteUnterschrift": "Pendiente de la segunda firma",
+  "signaturWartenHinweis": "Usted ha firmado. El documento se sellará en cuanto también haya firmado la segunda persona."
 }

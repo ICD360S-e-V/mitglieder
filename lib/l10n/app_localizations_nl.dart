@@ -2991,4 +2991,12 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Het zegel wordt nog aangemaakt. Probeer het over een minuut opnieuw.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'Wacht op de tweede handtekening';
+
+  @override
+  String get signaturWartenHinweis =>
+      'U heeft ondertekend. Het document wordt van een zegel voorzien zodra ook de tweede persoon heeft ondertekend.';
 }

@@ -2982,4 +2982,12 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'The seal is still being created. Please try again in a minute.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'Waiting for the second signature';
+
+  @override
+  String get signaturWartenHinweis =>
+      'You have signed. The document will be sealed as soon as the second person has signed as well.';
 }

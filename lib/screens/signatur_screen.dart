@@ -86,7 +86,19 @@ class _SignaturScreenState extends State<SignaturScreen> {
     final status = (v['status'] ?? 'offen').toString();
     final offen = status == 'offen';
 
+    // Unterschrieben, aber das Dokument liegt noch nicht vor: bei einer
+    // Vollmacht unterschreiben zwei Personen, und gesiegelt wird erst, wenn
+    // beide fertig sind. Ohne eigenen Zustand sähe das Mitglied denselben
+    // grünen Haken wie sonst und würde beim Antippen die Siegelmeldung lesen —
+    // die hier falsch wäre: es wird nicht gerechnet, es fehlt ein Mensch.
+    final wartetAufAndere = v['wartet_auf_mitunterzeichner'] == true;
+
     final (farbe, symbol, text) = switch (status) {
+      'signiert' when wartetAufAndere => (
+          Colors.blue.shade700,
+          Icons.hourglass_top,
+          '${l10n.signaturStatusSigniert} · ${l10n.signaturWartetZweiteUnterschrift}',
+        ),
       'signiert' => (Colors.green.shade700, Icons.verified, l10n.signaturStatusSigniert),
       'abgelehnt' => (Colors.red.shade700, Icons.cancel, l10n.signaturStatusAbgelehnt),
       'widerrufen' => (Colors.grey.shade600, Icons.undo, l10n.signaturStatusWiderrufen),
@@ -108,14 +120,44 @@ class _SignaturScreenState extends State<SignaturScreen> {
         // Auch das Unterschriebene bleibt anklickbar. Wer etwas unterschreibt,
         // muss nachlesen können, was er unterschrieben hat — sonst hat der
         // Verein eine Kopie und das Mitglied keine.
-        trailing: (offen || status == 'signiert')
-            ? const Icon(Icons.chevron_right)
-            : null,
-        onTap: offen
-            ? () => _oeffnen(v)
-            : status == 'signiert'
-                ? () => _ansehen(v)
-                : null,
+        trailing: switch (status) {
+          // Beim Warten kein Pfeil: er verspricht eine Seite, die es noch nicht
+          // gibt. Antippbar bleibt die Zeile trotzdem — sie erklärt dann, worauf
+          // gewartet wird.
+          'signiert' when wartetAufAndere => Icon(Icons.info_outline,
+              size: 20, color: Colors.blue.shade700),
+          _ when offen || status == 'signiert' => const Icon(Icons.chevron_right),
+          _ => null,
+        },
+        onTap: switch (status) {
+          'signiert' when wartetAufAndere => () => _wartenErklaeren(l10n),
+          _ when offen => () => _oeffnen(v),
+          _ when status == 'signiert' => () => _ansehen(v),
+          _ => null,
+        },
+      ),
+    );
+  }
+
+  /// Erklärt, warum das unterschriebene Dokument noch nicht abrufbar ist.
+  ///
+  /// Bewusst getrennt von der Siegelmeldung: dort rechnet der Server noch und
+  /// eine Minute später ist es da. Hier fehlt eine zweite Unterschrift, und die
+  /// kann Tage dauern. Beides in einen Satz zu packen hiesse, das Mitglied
+  /// vergeblich nachsehen zu lassen.
+  void _wartenErklaeren(AppLocalizations l10n) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        icon: Icon(Icons.hourglass_top, color: Colors.blue.shade700),
+        title: Text(l10n.signaturWartetZweiteUnterschrift),
+        content: Text(l10n.signaturWartenHinweis),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(MaterialLocalizations.of(ctx).okButtonLabel),
+          ),
+        ],
       ),
     );
   }

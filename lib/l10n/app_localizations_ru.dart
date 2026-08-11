@@ -2980,4 +2980,11 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Печать ещё создаётся. Пожалуйста, попробуйте снова через минуту.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Ожидает второй подписи';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Вы поставили подпись. Документ будет скреплён печатью, как только его подпишет и второй человек.';
 }

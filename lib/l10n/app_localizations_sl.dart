@@ -2980,4 +2980,11 @@ class AppLocalizationsSl extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Žig se še pripravlja. Prosimo, poskusite znova čez eno minuto.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Čaka se na drugi podpis';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Podpisali ste. Dokument bo opremljen z žigom, ko ga bo podpisala tudi druga oseba.';
 }

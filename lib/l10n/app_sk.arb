@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Dôvod (nepovinné)",
   "signaturCodeFalsch": "Kód nie je správny.",
   "signaturStatusSigniert": "Podpísané vami",
-  "signaturSiegelInArbeit": "Podpísaný dokument sa ešte pripravuje. Skúste to prosím o minútu znova."
+  "signaturSiegelInArbeit": "Podpísaný dokument sa ešte pripravuje. Skúste to prosím o minútu znova.",
+  "signaturWartetZweiteUnterschrift": "Čaká sa na druhý podpis",
+  "signaturWartenHinweis": "Podpísali ste. Dokument sa pripraví, hneď ako ho podpíše aj druhá osoba."
 }

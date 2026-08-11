@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Reden (niet verplicht)",
   "signaturCodeFalsch": "De code klopt niet.",
   "signaturStatusSigniert": "Door u ondertekend",
-  "signaturSiegelInArbeit": "Het zegel wordt nog aangemaakt. Probeer het over een minuut opnieuw."
+  "signaturSiegelInArbeit": "Het zegel wordt nog aangemaakt. Probeer het over een minuut opnieuw.",
+  "signaturWartetZweiteUnterschrift": "Wacht op de tweede handtekening",
+  "signaturWartenHinweis": "U heeft ondertekend. Het document wordt van een zegel voorzien zodra ook de tweede persoon heeft ondertekend."
 }

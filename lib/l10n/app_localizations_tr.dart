@@ -2979,4 +2979,11 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Mühür henüz oluşturuluyor. Lütfen bir dakika sonra tekrar deneyin.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'İkinci imzayı bekliyor';
+
+  @override
+  String get signaturWartenHinweis =>
+      'İmzaladınız. Belge, ikinci kişi de imzaladığında mühürlenecek.';
 }

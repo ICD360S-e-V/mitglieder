@@ -2979,4 +2979,12 @@ class AppLocalizationsDa extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Det signerede dokument er ved at blive oprettet. Prøv venligst igen om et minut.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'Venter på den anden underskrift';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Du har skrevet under. Det signerede dokument bliver oprettet, så snart den anden person også har skrevet under.';
 }

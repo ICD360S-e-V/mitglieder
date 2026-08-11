@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Причина (по желание)",
   "signaturCodeFalsch": "Кодът не е верен.",
   "signaturStatusSigniert": "Подписано от Вас",
-  "signaturSiegelInArbeit": "Подписаният документ още се подготвя. Моля, опитайте отново след една минута."
+  "signaturSiegelInArbeit": "Подписаният документ още се подготвя. Моля, опитайте отново след една минута.",
+  "signaturWartetZweiteUnterschrift": "Чака втория подпис",
+  "signaturWartenHinweis": "Вие се подписахте. Документът ще бъде подготвен, след като го подпише и второто лице."
 }

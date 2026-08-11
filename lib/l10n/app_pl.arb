@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Powód (nieobowiązkowy)",
   "signaturCodeFalsch": "Kod się nie zgadza.",
   "signaturStatusSigniert": "Podpisane przez Pana/Panią",
-  "signaturSiegelInArbeit": "Podpisany dokument jest jeszcze przygotowywany. Proszę spróbować ponownie za minutę."
+  "signaturSiegelInArbeit": "Podpisany dokument jest jeszcze przygotowywany. Proszę spróbować ponownie za minutę.",
+  "signaturWartetZweiteUnterschrift": "Oczekiwanie na drugi podpis",
+  "signaturWartenHinweis": "Pana/Pani podpis został złożony. Dokument zostanie przygotowany, gdy tylko podpisze go również druga osoba."
 }

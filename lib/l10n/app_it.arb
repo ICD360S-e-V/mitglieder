@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Motivo (facoltativo)",
   "signaturCodeFalsch": "Il codice non è corretto.",
   "signaturStatusSigniert": "Firmato da Lei",
-  "signaturSiegelInArbeit": "Il documento sigillato è ancora in preparazione. La preghiamo di riprovare tra un minuto."
+  "signaturSiegelInArbeit": "Il documento sigillato è ancora in preparazione. La preghiamo di riprovare tra un minuto.",
+  "signaturWartetZweiteUnterschrift": "In attesa della seconda firma",
+  "signaturWartenHinweis": "Lei ha firmato. Il documento verrà sigillato non appena avrà firmato anche la seconda persona."
 }

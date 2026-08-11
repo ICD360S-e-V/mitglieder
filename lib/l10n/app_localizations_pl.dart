@@ -2991,4 +2991,11 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Podpisany dokument jest jeszcze przygotowywany. Proszę spróbować ponownie za minutę.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Oczekiwanie na drugi podpis';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Pana/Pani podpis został złożony. Dokument zostanie przygotowany, gdy tylko podpisze go również druga osoba.';
 }

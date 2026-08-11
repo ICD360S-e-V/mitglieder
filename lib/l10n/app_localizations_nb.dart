@@ -2975,4 +2975,12 @@ class AppLocalizationsNb extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Det signerte dokumentet blir fortsatt klargjort. Prøv gjerne igjen om ett minutt.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'Venter på den andre underskriften';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Du har skrevet under. Det signerte dokumentet blir klargjort så snart den andre personen også har skrevet under.';
 }

@@ -2983,4 +2983,11 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Подписаният документ още се подготвя. Моля, опитайте отново след една минута.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Чака втория подпис';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Вие се подписахте. Документът ще бъде подготвен, след като го подпише и второто лице.';
 }

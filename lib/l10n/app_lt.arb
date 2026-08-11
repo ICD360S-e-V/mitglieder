@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Priežastis (neprivaloma)",
   "signaturCodeFalsch": "Kodas neteisingas.",
   "signaturStatusSigniert": "Jūsų pasirašyta",
-  "signaturSiegelInArbeit": "Antspaudas dar ruošiamas. Prašome pabandyti dar kartą po minutės."
+  "signaturSiegelInArbeit": "Antspaudas dar ruošiamas. Prašome pabandyti dar kartą po minutės.",
+  "signaturWartetZweiteUnterschrift": "Laukiama antrojo parašo",
+  "signaturWartenHinweis": "Jūs pasirašėte. Dokumentui bus uždėtas antspaudas, kai tik jį pasirašys ir antrasis asmuo."
 }

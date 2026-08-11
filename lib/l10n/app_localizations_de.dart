@@ -2999,4 +2999,12 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'Warten auf die zweite Unterschrift';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Sie haben unterschrieben. Das Dokument wird gesiegelt, sobald auch die zweite Person unterschrieben hat.';
 }
