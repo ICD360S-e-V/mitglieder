@@ -2998,4 +2998,12 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Η σφραγίδα δημιουργείται ακόμη. Παρακαλώ δοκιμάστε ξανά σε ένα λεπτό.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'Αναμένεται η δεύτερη υπογραφή';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Έχετε υπογράψει. Το έγγραφο θα σφραγιστεί μόλις υπογράψει και το δεύτερο άτομο.';
 }

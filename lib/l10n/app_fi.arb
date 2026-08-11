@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Syy (valinnainen)",
   "signaturCodeFalsch": "Koodi ei ole oikein.",
   "signaturStatusSigniert": "Olet allekirjoittanut",
-  "signaturSiegelInArbeit": "Allekirjoitettua asiakirjaa valmistellaan vielä. Yritäthän uudelleen minuutin kuluttua."
+  "signaturSiegelInArbeit": "Allekirjoitettua asiakirjaa valmistellaan vielä. Yritäthän uudelleen minuutin kuluttua.",
+  "signaturWartetZweiteUnterschrift": "Odottaa toista allekirjoitusta",
+  "signaturWartenHinweis": "Olet allekirjoittanut. Asiakirja valmistellaan, heti kun myös toinen henkilö on allekirjoittanut sen."
 }

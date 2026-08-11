@@ -2992,4 +2992,12 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Il documento sigillato è ancora in preparazione. La preghiamo di riprovare tra un minuto.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'In attesa della seconda firma';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Lei ha firmato. Il documento verrà sigillato non appena avrà firmato anche la seconda persona.';
 }

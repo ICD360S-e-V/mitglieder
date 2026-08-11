@@ -2976,4 +2976,11 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Zīmogs vēl tiek izveidots. Lūdzu, mēģiniet vēlreiz pēc minūtes.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Gaida otro parakstu';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Jūs to parakstījāt. Dokumentam tiks uzlikts zīmogs, tiklīdz to parakstīs arī otra persona.';
 }

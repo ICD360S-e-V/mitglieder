@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Razlog (nije obvezno)",
   "signaturCodeFalsch": "Kod nije točan.",
   "signaturStatusSigniert": "Potpisali ste dokument",
-  "signaturSiegelInArbeit": "Pečat se još izrađuje. Molimo pokušajte ponovno za jednu minutu."
+  "signaturSiegelInArbeit": "Pečat se još izrađuje. Molimo pokušajte ponovno za jednu minutu.",
+  "signaturWartetZweiteUnterschrift": "Čeka se drugi potpis",
+  "signaturWartenHinweis": "Potpisali ste. Dokument će biti ovjeren pečatom čim ga potpiše i druga osoba."
 }

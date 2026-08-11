@@ -91,7 +91,87 @@ function vorsitzerPruefen(PDO $pdo, string $mitgliedernummer): int
         http_response_code(403);
         jsonResponse(false, [], 'Forbidden');
     }
+
+    // Bis hierher ist nur geprüft, dass die GENANNTE Nummer einem Vorsitzenden
+    // gehört — nicht, dass der Anrufer dieser Mensch ist.
+    //
+    // validateApiKey() lässt jeden gültigen Geräteschlüssel durch, also auch den
+    // eines beliebigen Mitglieds: ein Geräteschlüssel weist ein GERÄT aus, keine
+    // Person. Wer eine laufende App hat, konnte damit `V27655` in den Rumpf
+    // schreiben und bekam die Beweisbündel aller Mitglieder — Unterschriftsbild,
+    // IP, Gerät, TAN-Ziel. Für ein Verzeichnis wäre das schlimm, für eine
+    // Beweissammlung ist es der Kern der Sache.
+    //
+    // Erst beide Angaben zusammen sind eine Identität. Der Schlüssel muss diesem
+    // Konto gehören und darf nicht zurückgezogen sein.
+    //
+    // Kein Client muss dafür geändert werden: die Vorsitzer-App sendet
+    // X-Device-Key längst bei jedem Aufruf. Und ohne Geräteschlüssel käme man
+    // ohnehin nur mit dem statischen Altschlüssel herein — der hier nichts mehr
+    // ausrichtet, weil sich damit kein Mensch belegen lässt.
+    if (!anruferIstDieserMensch($pdo, (int)$caller['id'])) {
+        // Absichtlich dieselbe Antwort wie oben: wer probiert, soll nicht
+        // erfahren, ob die Nummer existiert oder nur der Nachweis nicht passt.
+        error_log('signatur vorstand: Anrufer ist nicht ' . $mitgliedernummer);
+        http_response_code(403);
+        jsonResponse(false, [], 'Forbidden');
+    }
+
     return (int)$caller['id'];
+}
+
+/**
+ * Kann der Anrufer belegen, dass er dieser Mensch IST?
+ *
+ * Zwei Wege, und einer genügt:
+ *
+ *   1. Ein gültiges Zugangstoken, dessen userId dieses Konto ist. Der stärkere
+ *      Weg — das Token wird bei der Anmeldung ausgestellt und ist nicht
+ *      übertragbar.
+ *   2. Ein Geräteschlüssel, der diesem Konto gehört.
+ *
+ * WARUM BEIDE. Der Geräteschlüssel allein reicht nicht: 27 der 61 aktiven
+ * Schlüssel tragen gar keine user_id, sechs davon wurden in den letzten 30
+ * Tagen benutzt — darunter „ICD360S's MacBook Pro" mit der Vorsitzer-App. Ein
+ * reiner Bindungszwang hätte genau dieses Gerät ausgesperrt. Das Token allein
+ * reicht auch nicht: signatur_service.dart sendet heute keines.
+ *
+ * Was NICHT mehr genügt, ist die Nummer im Rumpf der Anfrage. Vorher genügte
+ * sie: validateApiKey() lässt jeden gültigen Geräteschlüssel durch, und ein
+ * Geräteschlüssel weist ein GERÄT aus, keine Person. Damit kam jede laufende
+ * Mitglieder-App an die Beweisbündel aller Mitglieder.
+ *
+ * Sobald der Client das Token mitschickt und die Altgeräte eine user_id haben,
+ * sollte Weg 2 wegfallen.
+ */
+function anruferIstDieserMensch(PDO $pdo, int $userId): bool
+{
+    $kopf = array_change_key_case(getallheaders(), CASE_LOWER);
+
+    // Weg 1: Zugangstoken. Bewusst NICHT requireAuth() — das bricht mit 401 ab,
+    // wenn kein Token da ist, und dann käme Weg 2 nie zum Zug.
+    $auth = (string)($kopf['authorization'] ?? '');
+    if (preg_match('/Bearer\s+(.+)$/i', $auth, $m)) {
+        $nutzlast = validateJWT(trim($m[1]));
+        if (is_array($nutzlast) && (int)($nutzlast['userId'] ?? 0) === $userId) {
+            return true;
+        }
+    }
+
+    // Weg 2: Geräteschlüssel, der diesem Konto gehört.
+    $geraet = trim((string)($kopf['x-device-key'] ?? ''));
+    if ($geraet === '') {
+        return false;
+    }
+
+    $bindung = $pdo->prepare(
+        'SELECT 1 FROM device_keys
+          WHERE device_key = ? AND user_id = ? AND is_active = 1
+            AND revoked_at IS NULL'
+    );
+    $bindung->execute([$geraet, $userId]);
+
+    return (bool)$bindung->fetchColumn();
 }
 
 /**
@@ -106,13 +186,25 @@ function aktionListe(PDO $pdo, array $body): void
         jsonResponse(false, [], 'Missing user_id');
     }
 
+    // Die Liste steht unter EINEM Mitglied, zeigt also dessen Zeilen. Bei einer
+    // Vollmacht gehört dazu aber eine zweite Zeile mit einer ANDEREN user_id —
+    // der des Vorsitzenden. Sie hier mit aufzuführen wäre falsch (sie gehört
+    // nicht diesem Mitglied), sie zu verschweigen aber auch: dann stünde eine
+    // Unterschrift ewig auf „unterschrieben", ohne dass erkennbar wäre, dass
+    // noch jemand fehlt. Deshalb bleibt die Zeilenauswahl wie sie war, und
+    // jede Zeile bekommt die Zahlen ihrer Gruppe dazu.
     $stmt = $pdo->prepare(
-        "SELECT id, dokument_typ, dokument_titel, status, pdf_seiten,
-                angefordert_at, frist_bis, signed_at_utc, abgelehnt_at,
-                abgelehnt_grund, widerrufen_at, verify_code
-           FROM dokument_signaturen
-          WHERE user_id = ?
-          ORDER BY angefordert_at DESC"
+        "SELECT s.id, s.dokument_typ, s.dokument_titel, s.status, s.pdf_seiten,
+                s.angefordert_at, s.frist_bis, s.signed_at_utc, s.abgelehnt_at,
+                s.abgelehnt_grund, s.widerrufen_at, s.verify_code,
+                s.gruppe_id, s.rolle,
+                (SELECT COUNT(*) FROM dokument_signaturen g
+                  WHERE g.gruppe_id = s.gruppe_id)                        AS gruppe_gesamt,
+                (SELECT COUNT(*) FROM dokument_signaturen g
+                  WHERE g.gruppe_id = s.gruppe_id AND g.status = 'signiert') AS gruppe_signiert
+           FROM dokument_signaturen s
+          WHERE s.user_id = ?
+          ORDER BY s.angefordert_at DESC"
     );
     $stmt->execute([$userId]);
     $zeilen = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -121,6 +213,19 @@ function aktionListe(PDO $pdo, array $body): void
     foreach ($zeilen as &$z) {
         $z['id'] = (int)$z['id'];
         $z['pdf_seiten'] = $z['pdf_seiten'] === null ? null : (int)$z['pdf_seiten'];
+        $z['gruppe_id']  = $z['gruppe_id'] === null ? null : (int)$z['gruppe_id'];
+
+        // Ohne Gruppe ist die Zeile für sich allein vollständig: 1 von 1.
+        // So muss die Oberfläche nicht zwei Fälle unterscheiden.
+        $z['gruppe_gesamt']   = $z['gruppe_id'] === null ? 1 : (int)$z['gruppe_gesamt'];
+        $z['gruppe_signiert'] = $z['gruppe_id'] === null
+            ? ($z['status'] === 'signiert' ? 1 : 0)
+            : (int)$z['gruppe_signiert'];
+
+        $z['wartet_auf_mitunterzeichner'] =
+            $z['status'] === 'signiert'
+            && $z['gruppe_signiert'] < $z['gruppe_gesamt'];
+
         if ($z['status'] === 'offen') {
             $offen++;
         }
@@ -200,10 +305,63 @@ function aktionDetail(PDO $pdo, array $body): void
             );
     }
 
+    // Zwei verschiedene Aussagen, und beide werden gebraucht:
+    //
+    //   kette_intakt      — diese Zeile ist seit dem Unterschreiben unverändert
+    //   verkettung_intakt — sie hängt nachweislich an ihrem Vorgänger
+    //
+    // Die erste allein ist schwächer, als sie klingt: sie bleibt „in Ordnung",
+    // wenn jemand eine ANDERE Unterschrift aus der Kette entfernt. Erst die
+    // zweite macht aus einzelnen geprüften Zeilen eine geprüfte Reihenfolge.
+    // null heißt bei Unterschriften vor dieser Fassung schlicht: noch ohne
+    // Positionsangabe geleistet, also nicht prüfbar — und das steht dann auch
+    // so in der Anzeige, statt eine Bestätigung vorzutäuschen.
+    $zeile['verkettung_intakt'] = SignaturHelper::verkettungPruefen($pdo, $zeile);
+
+    // Die Mitunterzeichner desselben Dokuments — nur wer, in welcher Rolle und
+    // wie weit. BEWUSST ohne deren Beweisfelder: jede Unterschrift hat ihre
+    // eigene IP, ihr eigenes Gerät, ihre eigene TAN und ihren eigenen Platz in
+    // der Kette. Zwei Beweisbündel in einer Ansicht zu mischen wäre der Anfang
+    // davon, dass später jemand das Gerät des einen der Unterschrift des
+    // anderen zuordnet. Hier steht nur die id, über die sich das zweite Bündel
+    // eigenständig öffnen lässt.
+    $zeile['mitunterzeichner'] = [];
+    if ($zeile['gruppe_id'] !== null) {
+        $mit = $pdo->prepare(
+            "SELECT s.id, s.rolle, s.status, s.signed_at_utc, s.abgelehnt_at,
+                    u.vorname, u.nachname, u.mitgliedernummer
+               FROM dokument_signaturen s
+               JOIN users u ON u.id = s.user_id
+              WHERE s.gruppe_id = ? AND s.id <> ?
+              ORDER BY s.id"
+        );
+        $mit->execute([(int)$zeile['gruppe_id'], $signaturId]);
+        foreach ($mit->fetchAll(PDO::FETCH_ASSOC) as $m) {
+            $m['id'] = (int)$m['id'];
+            $zeile['mitunterzeichner'][] = $m;
+        }
+    }
+
+    // Wie weit ist das Dokument insgesamt? Eine einzelne Zeile kann
+    // „unterschrieben" sein, während das Dokument noch auf jemanden wartet.
+    $gesamt   = 1 + count($zeile['mitunterzeichner']);
+    $signiert = ($zeile['status'] === 'signiert' ? 1 : 0)
+        + count(array_filter($zeile['mitunterzeichner'], fn($m) => $m['status'] === 'signiert'));
+    $zeile['gruppe_gesamt']   = $gesamt;
+    $zeile['gruppe_signiert'] = $signiert;
+    $zeile['wartet_auf_mitunterzeichner'] =
+        $zeile['status'] === 'signiert' && $signiert < $gesamt;
+
     // Aus beiden Quellen EIN lesbarer Satz. Der Client soll nicht raten
     // müssen, welches der fünf Felder gerade gefüllt ist.
     $zeile['geraet_anzeige']    = geraetText($zeile);
     $zeile['anwendung_anzeige'] = anwendungText($zeile);
+
+    // Ob ein Zeitstempel vorliegt, ist eine Tatsache ueber den Beweis; wo die
+    // Datei liegt, geht niemanden etwas an. Bisher stand beides nicht in der
+    // Antwort — ein fehlender Zeitstempel war damit unsichtbar, obwohl das
+    // gesiegelte Blatt einen zusagt und der Download dauerhaft 404 liefert.
+    $zeile['zeitstempel_vorhanden'] = $zeile['tsa_token_pfad'] !== null;
 
     $zeile['id'] = (int)$zeile['id'];
     unset($zeile['pdf_pfad'], $zeile['signiert_pdf_pfad'], $zeile['tsa_token_pfad']);

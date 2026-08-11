@@ -2983,4 +2983,12 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'O documento selado ainda está a ser preparado. Por favor, tente novamente dentro de um minuto.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'À espera da segunda assinatura';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Já assinou. O documento será selado assim que a segunda pessoa também tiver assinado.';
 }

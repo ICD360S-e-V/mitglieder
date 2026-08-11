@@ -2985,4 +2985,11 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Sigiliul este încă în curs de creare. Vă rugăm să încercați din nou peste un minut.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Așteaptă a doua semnătură';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Ați semnat. Documentul va fi sigilat de îndată ce va semna și a doua persoană.';
 }

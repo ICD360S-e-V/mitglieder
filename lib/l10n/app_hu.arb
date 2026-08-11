@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Indok (nem kötelező)",
   "signaturCodeFalsch": "A kód nem helyes.",
   "signaturStatusSigniert": "Ön aláírta",
-  "signaturSiegelInArbeit": "A pecsét még készül. Kérjük, próbálja meg egy perc múlva újra."
+  "signaturSiegelInArbeit": "Az elektronikus bélyegző még készül. Kérjük, próbálja meg egy perc múlva újra.",
+  "signaturWartetZweiteUnterschrift": "A második aláírásra vár",
+  "signaturWartenHinweis": "Ön aláírta. A dokumentum elektronikus bélyegzőt kap, amint a második személy is aláírta."
 }

@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Iemesls (nav obligāts)",
   "signaturCodeFalsch": "Kods nav pareizs.",
   "signaturStatusSigniert": "Jūs to parakstījāt",
-  "signaturSiegelInArbeit": "Zīmogs vēl tiek izveidots. Lūdzu, mēģiniet vēlreiz pēc minūtes."
+  "signaturSiegelInArbeit": "Zīmogs vēl tiek izveidots. Lūdzu, mēģiniet vēlreiz pēc minūtes.",
+  "signaturWartetZweiteUnterschrift": "Gaida otro parakstu",
+  "signaturWartenHinweis": "Jūs to parakstījāt. Dokumentam tiks uzlikts zīmogs, tiklīdz to parakstīs arī otra persona."
 }

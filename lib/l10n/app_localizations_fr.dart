@@ -3004,5 +3004,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get signaturSiegelInArbeit =>
-      'Le document scellé est encore en cours de préparation. Veuillez réessayer dans une minute.';
+      'Le cachet électronique n\'est pas encore apposé. Veuillez réessayer dans une minute.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'En attente de la seconde signature';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Vous avez signé. Le cachet électronique sera apposé dès que la seconde personne aura signé à son tour.';
 }

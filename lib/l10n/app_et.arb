@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Põhjus (valikuline)",
   "signaturCodeFalsch": "Kood ei ole õige.",
   "signaturStatusSigniert": "Olete allkirjastanud",
-  "signaturSiegelInArbeit": "Allkirjastatud dokument on veel valmimisel. Palun proovige minuti pärast uuesti."
+  "signaturSiegelInArbeit": "Allkirjastatud dokument on veel valmimisel. Palun proovige minuti pärast uuesti.",
+  "signaturWartetZweiteUnterschrift": "Ootab teist allkirja",
+  "signaturWartenHinweis": "Olete allkirjastanud. Dokument valmib, niipea kui ka teine isik on selle allkirjastanud."
 }

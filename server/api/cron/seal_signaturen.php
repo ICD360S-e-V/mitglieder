@@ -76,11 +76,44 @@ $offen = $pdo->prepare(
       WHERE s.status = 'signiert'
         AND s.signiert_pdf_pfad IS NULL
         AND s.siegel_versuche < " . MAX_VERSUCHE . "
+        -- Reverse-DNS, Land, Netzbetreiber und App-Fassung werden erst NACH
+        -- dem Commit nachgetragen (der DNS-Lookup darf keine Unterschrift
+        -- aufhalten). Dieser Cron laeuft jede Minute und griff bisher mitten
+        -- in dieses Fenster: dann stand auf dem gesiegelten Blatt
+        -- 'Hostname: —', waehrend die Datenbank kurz darauf einen Wert bekam.
+        -- Urkunde und Buendel widersprechen sich — und die Urkunde ist die
+        -- zeitgestempelte von beiden.
+        --
+        -- Die Ausnahme nach 15 Minuten ist Absicht: bleibt die Marke wegen
+        -- eines Fehlers aus, wird trotzdem gesiegelt. Ein Buendel ohne
+        -- Hostname ist unvollstaendig; eine Unterschrift, die nie ein Siegel
+        -- bekommt, waere verloren.
+        AND (s.beweis_vollstaendig = 1
+             OR s.signed_at_utc <= UTC_TIMESTAMP() - INTERVAL 15 MINUTE)
+        -- Bei mehreren Unterzeichnern (nur Vollmacht) wird erst gesiegelt,
+        -- wenn ALLE unterschrieben haben. Vorher gibt es kein fertiges
+        -- Dokument, und ein Siegel ueber einen halb unterschriebenen Stand
+        -- wuerde etwas beglaubigen, das so nie gegolten hat.
+        AND (s.gruppe_id IS NULL OR NOT EXISTS (
+              SELECT 1 FROM dokument_signaturen g
+               WHERE g.gruppe_id = s.gruppe_id
+                 AND g.status <> 'signiert'))
+        -- Je Gruppe nur EINE Zeile aufgreifen, sonst siegeln zwei Durchlaeufe
+        -- dasselbe Dokument gleichzeitig. Die kleinste id fuehrt.
+        AND s.id = (SELECT MIN(g2.id) FROM dokument_signaturen g2
+                     WHERE COALESCE(g2.gruppe_id, g2.id) = COALESCE(s.gruppe_id, s.id))
       ORDER BY s.signed_at_utc ASC
       LIMIT " . MAX_PRO_LAUF
 );
 $offen->execute();
 $zeilen = $offen->fetchAll(PDO::FETCH_ASSOC);
+
+// VOR dem Ausstieg, nicht danach: der Normalfall ist, dass es nichts zu
+// siegeln gibt. Stuende das Nachholen hinter der Schleife, liefe es nur an den
+// Minuten, in denen ohnehin gerade gesiegelt wird — also fast nie, und
+// ausgerechnet nicht in den ruhigen Stunden, in denen eine ausgefallene
+// Zeitstempelstelle wieder erreichbar waere.
+zeitstempelNachholen($pdo);
 
 if ($zeilen === []) {
     exit(0);
@@ -196,8 +229,17 @@ function siegeln(PDO $pdo, array $z): void
     // Angehängt statt über den Text gelegt: wo auf einem fremden PDF Platz
     // ist, weiß niemand, und eine Unterschrift quer über einer Textzeile
     // sieht nach Fälschung aus, selbst wenn sie echt ist.
-    $pdf->AddPage('P', 'A4');
-    unterschriftenblatt($pdf, $z);
+    // Je Unterzeichner ein EIGENES Blatt, nicht ein gemeinsames.
+    //
+    // Beide Unterschriften haben ihren eigenen Beweis: eigene TAN, eigene IP,
+    // eigenes Gerät, eigene Uhrzeit, eigene Stelle in der Hash-Kette. Auf ein
+    // Blatt gequetscht wäre im Zweifel nicht mehr auseinanderzuhalten, welche
+    // Angabe zu wem gehört — und genau das müsste ein Gericht auseinanderhalten
+    // können.
+    foreach (unterzeichnerDerGruppe($pdo, $z) as $unterzeichner) {
+        $pdf->AddPage('P', 'A4');
+        unterschriftenblatt($pdf, $unterzeichner);
+    }
 
     // --- Siegel ---
     $pdf->setSignature(
@@ -226,11 +268,21 @@ function siegeln(PDO $pdo, array $z): void
     $ziel = ablegen($z, $pdf);
     $pdfHash = hash_file('sha256', $ziel['absolut']);
 
+    // Das gesiegelte Dokument gehoert der ganzen Gruppe. Truege nur die
+    // fuehrende Zeile den Pfad, koennte der zweite Unterzeichner sein eigenes
+    // unterschriebenes Dokument nicht herunterladen — und beim
+    // Ein-Unterzeichner-Fall trifft die Bedingung genau die eine Zeile.
+    // siegel_fehler wird beim Erfolg GELOESCHT. Ohne das bleibt die Meldung
+    // eines frueheren Fehlversuchs fuer immer in der Zeile stehen, und die
+    // Beweisansicht zeigt dazu dauerhaft „Das Siegel wird noch erstellt.
+    // Letzter Fehlversuch: …" — fuer ein Dokument, das laengst fertig
+    // gesiegelt ist. Ein ueberholter Fehler, der wie ein laufender aussieht,
+    // ist schlimmer als gar keine Anzeige.
     $pdo->prepare(
         "UPDATE dokument_signaturen
-            SET signiert_pdf_pfad = ?, signiert_pdf_hash = ?
-          WHERE id = ?"
-    )->execute([$ziel['relativ'], $pdfHash, $z['id']]);
+            SET signiert_pdf_pfad = ?, signiert_pdf_hash = ?, siegel_fehler = NULL
+          WHERE COALESCE(gruppe_id, id) = ?"
+    )->execute([$ziel['relativ'], $pdfHash, (int)($z['gruppe_id'] ?? $z['id'])]);
 
     // Zeitstempel einer fremden Uhr. Ohne ihn stünde für den Zeitpunkt nur
     // unsere eigene Aussage — und die ist im Streitfall genau die Seite, der
@@ -242,8 +294,68 @@ function siegeln(PDO $pdo, array $z): void
     // weil eine fremde Webseite gerade nicht erreichbar war.
     $token = zeitstempelHolen($ziel['absolut']);
     if ($token !== null) {
-        $pdo->prepare("UPDATE dokument_signaturen SET tsa_token_pfad = ? WHERE id = ?")
-            ->execute([$token, $z['id']]);
+        // Auf die GANZE Gruppe, genau wie der Pfad eine Anweisung weiter oben.
+        // Mit `WHERE id = ?` bekam nur die fuehrende Zeile den Token, und das
+        // Beweisbuendel des Mitunterzeichners behauptete dann, es gebe keinen —
+        // fuer dasselbe Dokument, an dem er haengt.
+        $pdo->prepare(
+            "UPDATE dokument_signaturen SET tsa_token_pfad = ?
+              WHERE COALESCE(gruppe_id, id) = ?"
+        )->execute([$token, (int)($z['gruppe_id'] ?? $z['id'])]);
+    }
+}
+
+/**
+ * Holt Zeitstempel nach, die beim Siegeln nicht zu bekommen waren.
+ *
+ * Der Kommentar oben sagte „der naechste Lauf holt den Token nach" — und das
+ * war schlicht nicht wahr: die Hauptschleife sucht nur Zeilen mit
+ * `signiert_pdf_pfad IS NULL`, ein gesiegeltes Dokument sieht sie nie wieder an.
+ * Faellt freetsa.org waehrend des Siegelns fuer 25 Sekunden aus — ein
+ * Aussetzer eines kostenlosen Fremddienstes —, blieb `tsa_token_pfad` fuer
+ * immer leer, waehrend das ausgelieferte Blatt weiterhin einen Zeitstempel
+ * zusagte.
+ *
+ * Neu gesiegelt wird dabei NICHT: die Datei auf der Platte ist unveraendert,
+ * der Token passt also weiterhin genau auf sie. Ein zweites Siegeln wuerde nur
+ * ein zweites, anderes PDF erzeugen und den ersten Hash entwerten.
+ */
+function zeitstempelNachholen(PDO $pdo): void
+{
+    $offen = $pdo->prepare(
+        "SELECT id, gruppe_id, signiert_pdf_pfad, siegel_versuche
+           FROM dokument_signaturen
+          WHERE signiert_pdf_pfad IS NOT NULL
+            AND tsa_token_pfad IS NULL
+            AND siegel_versuche < " . MAX_VERSUCHE . "
+          ORDER BY signed_at_utc ASC
+          LIMIT " . MAX_PRO_LAUF
+    );
+    $offen->execute();
+
+    foreach ($offen->fetchAll(PDO::FETCH_ASSOC) as $n) {
+        $datei = WEBROOT . '/uploads/' . $n['signiert_pdf_pfad'];
+        $token = is_file($datei) ? zeitstempelHolen($datei) : null;
+
+        if ($token !== null) {
+            $pdo->prepare(
+                "UPDATE dokument_signaturen
+                    SET tsa_token_pfad = ?, siegel_fehler = NULL
+                  WHERE COALESCE(gruppe_id, id) = ?"
+            )->execute([$token, (int)($n['gruppe_id'] ?? $n['id'])]);
+            echo '  #' . $n['id'] . " Zeitstempel nachgeholt\n";
+            continue;
+        }
+
+        // Mitzaehlen, sonst versucht es der Cron im Minutentakt bis in alle
+        // Ewigkeit und der Fehlschlag bleibt unsichtbar. Dieselbe Begruendung
+        // wie bei MAX_VERSUCHE fuers Siegeln selbst.
+        $pdo->prepare(
+            "UPDATE dokument_signaturen
+                SET siegel_versuche = siegel_versuche + 1,
+                    siegel_fehler = 'Zeitstempel nicht erhalten'
+              WHERE id = ?"
+        )->execute([(int)$n['id']]);
     }
 }
 
@@ -323,6 +435,38 @@ function zeitstempelHolen(string $pdfPfad): ?string
     } finally {
         @unlink($tsq);
     }
+}
+
+/**
+ * Alle Unterzeichner dieses Dokuments, in der Reihenfolge, in der sie
+ * angefordert wurden.
+ *
+ * Beim einzelnen Unterzeichner — dem Normalfall, und dem einzigen, den es
+ * ausserhalb der Vollmacht gibt — ist das genau die uebergebene Zeile. Sie
+ * wird trotzdem aus der Datenbank geholt statt durchgereicht, damit beide
+ * Faelle denselben Weg nehmen; ein Sonderpfad fuer den haeufigen Fall waere
+ * eine zweite Stelle, an der dasselbe anders passieren kann.
+ */
+function unterzeichnerDerGruppe(PDO $pdo, array $z): array
+{
+    $gruppe = (int)($z['gruppe_id'] ?? 0);
+    if ($gruppe === 0) {
+        return [$z];
+    }
+
+    $stmt = $pdo->prepare(
+        "SELECT s.*, u.vorname, u.nachname, u.mitgliedernummer
+           FROM dokument_signaturen s
+           JOIN users u ON u.id = s.user_id
+          WHERE s.gruppe_id = ?
+          ORDER BY s.id ASC"
+    );
+    $stmt->execute([$gruppe]);
+    $zeilen = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Sollte nie leer sein; wenn doch, lieber ein Blatt mit den Daten, die
+    // vorliegen, als ein Dokument ganz ohne Unterschriftenblatt.
+    return $zeilen ?: [$z];
 }
 
 /**
@@ -493,6 +637,15 @@ function unterschriftenblatt($pdf, array $z): void
         'Geräteschlüssel'         => (string)($z['device_id'] ?? '—'),
         'Code gesendet an'        => (string)($z['tan_an'] ?? '—'),
         'Code bestätigt (UTC)'    => (string)($z['tan_verified_at'] ?? '—'),
+        // Diese drei standen bisher NUR in der Datenbank und in der Ansicht des
+        // Vorsitzenden, nicht auf dem Blatt. Damit waren sie die einzigen
+        // angezeigten Beweisangaben ohne jede Verankerung: der Kettenhash deckt
+        // sie nicht ab, und ohne Abdruck im zeitgestempelten PDF haette sich
+        // 'Land: DE' spaeter unbemerkt in etwas anderes aendern lassen.
+        // Auf dem Blatt sind sie durch den Zeitstempel mitgesichert.
+        'Land (aus IP)'           => (string)($z['country_iso'] ?? '—'),
+        'Netzbetreiber (aus IP)'  => (string)($z['isp'] ?? '—'),
+        'App-Fassung'             => (string)($z['app_version'] ?? '—'),
         'Kettenhash'              => (string)($z['full_hash'] ?? '—'),
         'Prüfcode'                => (string)($z['verify_code'] ?? '—'),
     ];
@@ -509,11 +662,20 @@ function unterschriftenblatt($pdf, array $z): void
     $pdf->Ln(4);
     $pdf->SetX(15);
     $pdf->SetFont('helvetica', 'I', 7);
+    // Der Satz stand hier als unbedingte Zusage („wird … aufbewahrt, der
+    // beweist …"). Zum Zeitpunkt des Drucks kann er das nicht sein: der
+    // Zeitstempel wird erst geholt, wenn dieses PDF fertig auf der Platte
+    // liegt — er gilt ja fuer die fertige Datei. Faellt die Zeitstempelstelle
+    // aus, behauptete das Blatt dauerhaft etwas, das es nicht gibt. In einem
+    // Beweisdokument ist eine widerlegbare Angabe schlimmer als eine fehlende:
+    // wer sie kippt, stellt jede andere Zeile mit in Frage.
     $pdf->MultiCell(180, 4,
         'Das Dokument tragt ein kryptografisches Siegel des Vereins. Eine '
       . 'nachtragliche Anderung des Dokuments oder dieses Blattes macht das '
-      . 'Siegel ungultig. Zusatzlich wird zu diesem Dokument ein Zeitstempel '
+      . 'Siegel ungultig. Zu diesem Dokument wird zusatzlich ein Zeitstempel '
       . 'einer unabhangigen Zeitstempelstelle (freetsa.org, RFC 3161) '
-      . 'aufbewahrt, der beweist, dass es zum genannten Zeitpunkt bereits in '
-      . 'genau dieser Fassung vorlag.', 0, 'L');
+      . 'angefordert; liegt er vor, wird er zusammen mit dem Dokument '
+      . 'aufbewahrt und ist beim Verein abrufbar. Er belegt dann, dass das '
+      . 'Dokument zum bestatigten Zeitpunkt bereits in genau dieser Fassung '
+      . 'vorlag.', 0, 'L');
 }

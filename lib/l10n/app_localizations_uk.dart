@@ -2982,4 +2982,11 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Печатка ще створюється. Будь ласка, спробуйте ще раз за хвилину.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Очікує на другий підпис';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Ви поставили підпис. Документ буде скріплено печаткою, щойно його підпише й друга особа.';
 }

@@ -2976,4 +2976,11 @@ class AppLocalizationsHr extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Pečat se još izrađuje. Molimo pokušajte ponovno za jednu minutu.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Čeka se drugi potpis';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Potpisali ste. Dokument će biti ovjeren pečatom čim ga potpiše i druga osoba.';
 }

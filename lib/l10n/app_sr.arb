@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Разлог (необавезно)",
   "signaturCodeFalsch": "Код није тачан.",
   "signaturStatusSigniert": "Потписали сте документ",
-  "signaturSiegelInArbeit": "Pečat se još izrađuje. Molimo pokušajte ponovo za jedan minut."
+  "signaturSiegelInArbeit": "Електронски печат се још израђује. Молимо Вас да покушате поново за један минут.",
+  "signaturWartetZweiteUnterschrift": "Чека се други потпис",
+  "signaturWartenHinweis": "Потписали сте. Документ ће добити електронски печат чим га потпише и друга особа."
 }

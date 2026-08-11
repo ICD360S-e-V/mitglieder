@@ -2974,4 +2974,12 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Det signerade dokumentet håller på att skapas. Försök gärna igen om en minut.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'Väntar på den andra underskriften';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Du har skrivit under. Det signerade dokumentet skapas så snart även den andra personen har skrivit under.';
 }

@@ -2949,4 +2949,11 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'يجري إنشاء الختم الآن. يرجى المحاولة مرة أخرى بعد دقيقة.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'بانتظار التوقيع الثاني';
+
+  @override
+  String get signaturWartenHinweis =>
+      'لقد وقّعت. سيتم ختم المستند بمجرد أن يوقّع عليه الشخص الثاني أيضاً.';
 }

@@ -2974,4 +2974,11 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Allkirjastatud dokument on veel valmimisel. Palun proovige minuti pärast uuesti.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Ootab teist allkirja';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Olete allkirjastanud. Dokument valmib, niipea kui ka teine isik on selle allkirjastanud.';
 }

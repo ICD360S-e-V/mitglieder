@@ -2974,4 +2974,11 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Podepsaný dokument se ještě připravuje. Zkuste to prosím za minutu znovu.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Čeká se na druhý podpis';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Podepsal(a) jste. Dokument se připraví, jakmile jej podepíše i druhá osoba.';
 }

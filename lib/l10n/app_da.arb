@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Begrundelse (valgfri)",
   "signaturCodeFalsch": "Koden er forkert.",
   "signaturStatusSigniert": "Underskrevet af dig",
-  "signaturSiegelInArbeit": "Det signerede dokument er ved at blive oprettet. Prøv venligst igen om et minut."
+  "signaturSiegelInArbeit": "Det signerede dokument er ved at blive oprettet. Prøv venligst igen om et minut.",
+  "signaturWartetZweiteUnterschrift": "Venter på den anden underskrift",
+  "signaturWartenHinweis": "Du har skrevet under. Det signerede dokument bliver oprettet, så snart den anden person også har skrevet under."
 }

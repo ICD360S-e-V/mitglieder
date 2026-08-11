@@ -1411,5 +1411,13 @@
   "signaturLeer": "Bitte unterschreiben Sie zuerst.",
   "signaturErfolg": "Danke — Ihre Unterschrift ist eingegangen.",
   "signaturFehlgeschlagen": "Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.",
-  "signaturSiegelInArbeit": "Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal."
+  "signaturSiegelInArbeit": "Das Siegel wird noch erstellt. Bitte versuchen Sie es in einer Minute noch einmal.",
+  "signaturWartetZweiteUnterschrift": "Warten auf die zweite Unterschrift",
+  "@signaturWartetZweiteUnterschrift": {
+    "description": "Kurzer Status hinter \"Von Ihnen unterschrieben ·\": eine Vollmacht braucht zwei Unterschriften"
+  },
+  "signaturWartenHinweis": "Sie haben unterschrieben. Das Dokument wird gesiegelt, sobald auch die zweite Person unterschrieben hat.",
+  "@signaturWartenHinweis": {
+    "description": "Hinweisfenster, wenn das Mitglied das noch nicht gesiegelte Dokument antippt"
+  }
 }

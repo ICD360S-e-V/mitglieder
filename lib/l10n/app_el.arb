@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Λόγος (προαιρετικό)",
   "signaturCodeFalsch": "Ο κωδικός δεν είναι σωστός.",
   "signaturStatusSigniert": "Υπογράφηκε από εσάς",
-  "signaturSiegelInArbeit": "Η σφραγίδα δημιουργείται ακόμη. Παρακαλώ δοκιμάστε ξανά σε ένα λεπτό."
+  "signaturSiegelInArbeit": "Η σφραγίδα δημιουργείται ακόμη. Παρακαλώ δοκιμάστε ξανά σε ένα λεπτό.",
+  "signaturWartetZweiteUnterschrift": "Αναμένεται η δεύτερη υπογραφή",
+  "signaturWartenHinweis": "Έχετε υπογράψει. Το έγγραφο θα σφραγιστεί μόλις υπογράψει και το δεύτερο άτομο."
 }

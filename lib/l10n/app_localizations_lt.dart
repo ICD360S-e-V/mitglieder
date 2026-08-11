@@ -2978,5 +2978,12 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get signaturSiegelInArbeit =>
-      'Antspaudas dar ruošiamas. Prašome pabandyti dar kartą po minutės.';
+      'Elektroninis spaudas dar ruošiamas. Prašome pabandyti dar kartą po minutės.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift => 'Laukiama antrojo parašo';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Jūs pasirašėte. Dokumentas bus patvirtintas elektroniniu spaudu, kai tik jį pasirašys ir antrasis asmuo.';
 }

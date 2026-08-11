@@ -1390,5 +1390,7 @@
   "signaturAblehnenGrund": "Motivo (opcional)",
   "signaturCodeFalsch": "O código não está correto.",
   "signaturStatusSigniert": "Assinado por si",
-  "signaturSiegelInArbeit": "O documento selado ainda está a ser preparado. Por favor, tente novamente dentro de um minuto."
+  "signaturSiegelInArbeit": "O documento selado ainda está a ser preparado. Por favor, tente novamente dentro de um minuto.",
+  "signaturWartetZweiteUnterschrift": "À espera da segunda assinatura",
+  "signaturWartenHinweis": "Já assinou. O documento será selado assim que a segunda pessoa também tiver assinado."
 }

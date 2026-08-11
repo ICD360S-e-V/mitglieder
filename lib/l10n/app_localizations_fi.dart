@@ -2978,4 +2978,12 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get signaturSiegelInArbeit =>
       'Allekirjoitettua asiakirjaa valmistellaan vielä. Yritäthän uudelleen minuutin kuluttua.';
+
+  @override
+  String get signaturWartetZweiteUnterschrift =>
+      'Odottaa toista allekirjoitusta';
+
+  @override
+  String get signaturWartenHinweis =>
+      'Olet allekirjoittanut. Asiakirja valmistellaan, heti kun myös toinen henkilö on allekirjoittanut sen.';
 }
