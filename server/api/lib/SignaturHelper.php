@@ -238,16 +238,99 @@ class SignaturHelper
      */
     public static function vorherigesGlied(PDO $pdo): array
     {
-        $stmt = $pdo->query(
-            "SELECT ketten_nr, full_hash FROM dokument_signaturen
-             WHERE status = 'signiert' AND full_hash IS NOT NULL
-               AND ketten_nr IS NOT NULL
-             ORDER BY ketten_nr DESC LIMIT 1 FOR UPDATE"
-        );
-        $zeile = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $zeile === false
-            ? ['nr' => 0, 'hash' => null]
-            : ['nr' => (int)$zeile['ketten_nr'], 'hash' => (string)$zeile['full_hash']];
+        // Die Nummer kommt aus dem ANKER, nicht mehr aus MAX(ketten_nr).
+        //
+        // Aus dem Bestand abgeleitet erkennt man eine Lücke IN der Kette, aber
+        // nicht das Abschneiden am ENDE: löscht jemand das letzte Glied, melden
+        // alle übrigen weiterhin „unversehrt" und „lückenlos verkettet" — sie
+        // sind es ja —, und die nächste Unterschrift bekommt dieselbe Nummer
+        // noch einmal. Was fehlt, hinterlässt keinen Zeiger auf sich.
+        //
+        // Der Anker wächst nur. Damit wird eine Nummer nie wieder vergeben, und
+        // `MAX(ketten_nr) < letzte_nr` heisst: am Ende fehlt etwas.
+        //
+        // Nebenwirkung, willkommen: gesperrt wird jetzt EINE Zeile über den
+        // Primärschlüssel statt eines Bereichsscans über die Beweistabelle. Die
+        // Serialisierung bleibt — zwei gleichzeitige Unterschriften dürfen sich
+        // nicht dieselbe Nummer greifen —, aber sie fasst nichts mehr an, was
+        // sie nichts angeht.
+        $stand = $pdo->query(
+            'SELECT letzte_nr FROM signatur_kette_stand WHERE id = 1 FOR UPDATE'
+        )->fetchColumn();
+
+        if ($stand === false) {
+            // Sollte die Migration gelaufen sein, gibt es die Zeile. Fehlt sie,
+            // wird sie hier angelegt statt die Unterschrift scheitern zu lassen.
+            $pdo->prepare(
+                'INSERT IGNORE INTO signatur_kette_stand (id, letzte_nr, aktualisiert_at)
+                 VALUES (1, COALESCE((SELECT MAX(k.ketten_nr) FROM dokument_signaturen k), 0),
+                         UTC_TIMESTAMP())'
+            )->execute();
+            $stand = $pdo->query(
+                'SELECT letzte_nr FROM signatur_kette_stand WHERE id = 1 FOR UPDATE'
+            )->fetchColumn();
+        }
+
+        $vorher = (int)$stand;
+
+        $pdo->prepare(
+            'UPDATE signatur_kette_stand
+                SET letzte_nr = ?, aktualisiert_at = UTC_TIMESTAMP()
+              WHERE id = 1'
+        )->execute([$vorher + 1]);
+
+        // Der Hash des Vorgängers, als Punktzugriff über den UNIQUE-Index.
+        // Ist er nicht da, obwohl eine Nummer vergeben war, wurde das Glied
+        // entfernt: prev_hash bleibt dann leer, und verkettungPruefen() meldet
+        // für die neue Zeile einen Bruch. Unterschreiben lassen wir trotzdem —
+        // das Mitglied kann nichts dafür, und eine verweigerte Unterschrift
+        // würde den Schaden nur vergrössern.
+        $hash = null;
+        if ($vorher > 0) {
+            $q = $pdo->prepare(
+                'SELECT full_hash FROM dokument_signaturen WHERE ketten_nr = ?'
+            );
+            $q->execute([$vorher]);
+            $gefunden = $q->fetchColumn();
+            $hash = $gefunden === false ? null : (string)$gefunden;
+        }
+
+        return ['nr' => $vorher, 'hash' => $hash];
+    }
+
+    /**
+     * Stimmt der Bestand noch mit dem Anker überein?
+     *
+     * Beantwortet die eine Frage, die keine einzelne Zeile beantworten kann:
+     * ist am ENDE der Kette etwas verschwunden? Jede Zeile für sich kann
+     * unversehrt und ordentlich verkettet sein, während die letzten drei
+     * Glieder fehlen.
+     *
+     * @return array{vergeben:int, vorhanden:int, hoechste:int, vollstaendig:bool}
+     */
+    public static function kettenStand(PDO $pdo): array
+    {
+        $anker = $pdo->query(
+            'SELECT letzte_nr FROM signatur_kette_stand WHERE id = 1'
+        )->fetchColumn();
+
+        $z = $pdo->query(
+            'SELECT COUNT(ketten_nr) AS anzahl, COALESCE(MAX(ketten_nr), 0) AS hoechste
+               FROM dokument_signaturen'
+        )->fetch(PDO::FETCH_ASSOC);
+
+        $vergeben  = $anker === false ? 0 : (int)$anker;
+        $vorhanden = (int)($z['anzahl'] ?? 0);
+        $hoechste  = (int)($z['hoechste'] ?? 0);
+
+        return [
+            'vergeben'     => $vergeben,
+            'vorhanden'    => $vorhanden,
+            'hoechste'     => $hoechste,
+            // Lückenlos heisst: so viele Glieder wie vergeben, und das höchste
+            // ist auch das zuletzt vergebene.
+            'vollstaendig' => $vergeben === $vorhanden && $vergeben === $hoechste,
+        ];
     }
 
     /**
@@ -280,30 +363,6 @@ class SignaturHelper
             || (string)$e->getCode() === '40001';
     }
 
-    /**
-     * @deprecated Nur noch für die Umstellung da. Bitte vorherigesGlied()
-     *             benutzen — diese Fassung liefert den Hash, aber nicht die
-     *             Position, und ohne Position ist die Verkettung später nicht
-     *             mehr nachprüfbar.
-     *
-     * Warum sie überhaupt stehen bleibt: OPcache übernimmt geänderte Dateien
-     * erst nach `opcache.revalidate_freq`, und die drei Dateien dieser Änderung
-     * werden nicht in derselben Sekunde übernommen. In diesem Fenster läuft der
-     * neue Helfer neben dem alten member-Endpunkt. Ohne diesen Wrapper wäre das
-     * ein Fatal Error mitten in einer Unterschrift — ausgerechnet an der Stelle,
-     * an der ein Mitglied gerade seine TAN eingegeben hat.
-     *
-     * Sie ist dabei nicht bloß Attrappe: sie sortiert bereits über ketten_nr,
-     * gibt also den RICHTIGEN Vorgänger zurück. Eine in diesem Fenster
-     * geleistete Unterschrift bekommt lediglich keine Positionsnummer und gilt
-     * damit als „nicht prüfbar" statt als bestätigt — die ehrliche Auskunft.
-     *
-     * Entfernen, sobald member/signatur_manage.php sicher live ist.
-     */
-    public static function letzterKettenHash(PDO $pdo): ?string
-    {
-        return self::vorherigesGlied($pdo)['hash'];
-    }
 
     /**
      * Hängt die Zeile wirklich an ihrem Vorgänger, oder steht ihr Hash nur für

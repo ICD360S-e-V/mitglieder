@@ -69,7 +69,9 @@ function unterschreiben(PDO $pdo, int $id): void
 {
     $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">'
          . '<polyline fill="none" stroke="#000" stroke-width="3" points="10,45 60,15 120,45 180,20"/></svg>';
-    $prev = SignaturHelper::letzterKettenHash($pdo);
+    // vorherigesGlied() nimmt die Nummer beim Anker und erhoeht ihn dabei —
+    // deshalb hier dieselbe Funktion wie im Endpunkt, nicht ein Nachbau.
+    $prev = SignaturHelper::vorherigesGlied($pdo)['hash'];
     $pdo->prepare(
         "UPDATE dokument_signaturen
             SET status='signiert', signature_svg=?, signed_at_utc=UTC_TIMESTAMP(),
