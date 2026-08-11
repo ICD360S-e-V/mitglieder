@@ -59,21 +59,43 @@ if ($caller === '' || !$anrufer || $anrufer['role'] !== 'vorsitzer') {
 //
 // Erst beide Angaben zusammen sind eine Identität. Kein Client muss dafür
 // geändert werden: die Vorsitzer-App sendet X-Device-Key bei jedem Aufruf.
-$kopf   = array_change_key_case(getallheaders(), CASE_LOWER);
-$geraet = trim((string)($kopf['x-device-key'] ?? ''));
+// Zwei Wege, einer genügt — ausführlich begründet in
+// vorstand/signatur_manage.php::anruferIstDieserMensch().
+//
+// Kurz: der Geräteschlüssel allein reicht nicht, weil 27 der 61 aktiven
+// Schlüssel gar keine user_id tragen und sechs davon in Benutzung sind
+// (darunter das MacBook mit der Vorsitzer-App). Das Token allein reicht auch
+// nicht, weil signatur_service.dart heute keines mitschickt.
+$kopf    = array_change_key_case(getallheaders(), CASE_LOWER);
+$belegt  = false;
 
-$bindung = $pdo->prepare(
-    'SELECT 1 FROM device_keys
-      WHERE device_key = ? AND user_id = ? AND is_active = 1 AND revoked_at IS NULL'
-);
-$bindung->execute([$geraet, (int)$anrufer['id']]);
+$auth = (string)($kopf['authorization'] ?? '');
+if (preg_match('/Bearer\s+(.+)$/i', $auth, $m)) {
+    $nutzlast = validateJWT(trim($m[1]));
+    if (is_array($nutzlast) && (int)($nutzlast['userId'] ?? 0) === (int)$anrufer['id']) {
+        $belegt = true;
+    }
+}
 
-if ($geraet === '' || !$bindung->fetchColumn()) {
-    error_log('signatur_pdf: Geraeteschluessel gehoert nicht zu ' . $caller);
+if (!$belegt) {
+    $geraet = trim((string)($kopf['x-device-key'] ?? ''));
+    if ($geraet !== '') {
+        $bindung = $pdo->prepare(
+            'SELECT 1 FROM device_keys
+              WHERE device_key = ? AND user_id = ? AND is_active = 1
+                AND revoked_at IS NULL'
+        );
+        $bindung->execute([$geraet, (int)$anrufer['id']]);
+        $belegt = (bool)$bindung->fetchColumn();
+    }
+}
+
+if (!$belegt) {
+    error_log('signatur_pdf: Anrufer ist nicht ' . $caller);
     http_response_code(403);
     header('Content-Type: application/json; charset=utf-8');
     // Dieselbe Antwort wie oben: wer probiert, soll nicht erfahren, ob die
-    // Nummer existiert oder nur das Gerät nicht passt.
+    // Nummer existiert oder nur der Nachweis nicht passt.
     jsonResponse(false, [], 'Forbidden');
 }
 

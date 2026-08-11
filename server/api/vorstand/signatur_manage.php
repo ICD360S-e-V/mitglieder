@@ -109,12 +109,59 @@ function vorsitzerPruefen(PDO $pdo, string $mitgliedernummer): int
     // X-Device-Key längst bei jedem Aufruf. Und ohne Geräteschlüssel käme man
     // ohnehin nur mit dem statischen Altschlüssel herein — der hier nichts mehr
     // ausrichtet, weil sich damit kein Mensch belegen lässt.
-    $kopf   = array_change_key_case(getallheaders(), CASE_LOWER);
-    $geraet = trim((string)($kopf['x-device-key'] ?? ''));
-
-    if ($geraet === '') {
+    if (!anruferIstDieserMensch($pdo, (int)$caller['id'])) {
+        // Absichtlich dieselbe Antwort wie oben: wer probiert, soll nicht
+        // erfahren, ob die Nummer existiert oder nur der Nachweis nicht passt.
+        error_log('signatur vorstand: Anrufer ist nicht ' . $mitgliedernummer);
         http_response_code(403);
         jsonResponse(false, [], 'Forbidden');
+    }
+
+    return (int)$caller['id'];
+}
+
+/**
+ * Kann der Anrufer belegen, dass er dieser Mensch IST?
+ *
+ * Zwei Wege, und einer genügt:
+ *
+ *   1. Ein gültiges Zugangstoken, dessen userId dieses Konto ist. Der stärkere
+ *      Weg — das Token wird bei der Anmeldung ausgestellt und ist nicht
+ *      übertragbar.
+ *   2. Ein Geräteschlüssel, der diesem Konto gehört.
+ *
+ * WARUM BEIDE. Der Geräteschlüssel allein reicht nicht: 27 der 61 aktiven
+ * Schlüssel tragen gar keine user_id, sechs davon wurden in den letzten 30
+ * Tagen benutzt — darunter „ICD360S's MacBook Pro" mit der Vorsitzer-App. Ein
+ * reiner Bindungszwang hätte genau dieses Gerät ausgesperrt. Das Token allein
+ * reicht auch nicht: signatur_service.dart sendet heute keines.
+ *
+ * Was NICHT mehr genügt, ist die Nummer im Rumpf der Anfrage. Vorher genügte
+ * sie: validateApiKey() lässt jeden gültigen Geräteschlüssel durch, und ein
+ * Geräteschlüssel weist ein GERÄT aus, keine Person. Damit kam jede laufende
+ * Mitglieder-App an die Beweisbündel aller Mitglieder.
+ *
+ * Sobald der Client das Token mitschickt und die Altgeräte eine user_id haben,
+ * sollte Weg 2 wegfallen.
+ */
+function anruferIstDieserMensch(PDO $pdo, int $userId): bool
+{
+    $kopf = array_change_key_case(getallheaders(), CASE_LOWER);
+
+    // Weg 1: Zugangstoken. Bewusst NICHT requireAuth() — das bricht mit 401 ab,
+    // wenn kein Token da ist, und dann käme Weg 2 nie zum Zug.
+    $auth = (string)($kopf['authorization'] ?? '');
+    if (preg_match('/Bearer\s+(.+)$/i', $auth, $m)) {
+        $nutzlast = validateJWT(trim($m[1]));
+        if (is_array($nutzlast) && (int)($nutzlast['userId'] ?? 0) === $userId) {
+            return true;
+        }
+    }
+
+    // Weg 2: Geräteschlüssel, der diesem Konto gehört.
+    $geraet = trim((string)($kopf['x-device-key'] ?? ''));
+    if ($geraet === '') {
+        return false;
     }
 
     $bindung = $pdo->prepare(
@@ -122,18 +169,9 @@ function vorsitzerPruefen(PDO $pdo, string $mitgliedernummer): int
           WHERE device_key = ? AND user_id = ? AND is_active = 1
             AND revoked_at IS NULL'
     );
-    $bindung->execute([$geraet, (int)$caller['id']]);
+    $bindung->execute([$geraet, $userId]);
 
-    if (!$bindung->fetchColumn()) {
-        // Absichtlich dieselbe Antwort wie oben: wer probiert, soll nicht
-        // erfahren, ob die Nummer existiert oder nur das Gerät nicht passt.
-        error_log('signatur vorstand: Geraeteschluessel gehoert nicht zu '
-            . $mitgliedernummer);
-        http_response_code(403);
-        jsonResponse(false, [], 'Forbidden');
-    }
-
-    return (int)$caller['id'];
+    return (bool)$bindung->fetchColumn();
 }
 
 /**
