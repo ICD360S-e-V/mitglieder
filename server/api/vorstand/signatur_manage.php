@@ -91,6 +91,48 @@ function vorsitzerPruefen(PDO $pdo, string $mitgliedernummer): int
         http_response_code(403);
         jsonResponse(false, [], 'Forbidden');
     }
+
+    // Bis hierher ist nur geprüft, dass die GENANNTE Nummer einem Vorsitzenden
+    // gehört — nicht, dass der Anrufer dieser Mensch ist.
+    //
+    // validateApiKey() lässt jeden gültigen Geräteschlüssel durch, also auch den
+    // eines beliebigen Mitglieds: ein Geräteschlüssel weist ein GERÄT aus, keine
+    // Person. Wer eine laufende App hat, konnte damit `V27655` in den Rumpf
+    // schreiben und bekam die Beweisbündel aller Mitglieder — Unterschriftsbild,
+    // IP, Gerät, TAN-Ziel. Für ein Verzeichnis wäre das schlimm, für eine
+    // Beweissammlung ist es der Kern der Sache.
+    //
+    // Erst beide Angaben zusammen sind eine Identität. Der Schlüssel muss diesem
+    // Konto gehören und darf nicht zurückgezogen sein.
+    //
+    // Kein Client muss dafür geändert werden: die Vorsitzer-App sendet
+    // X-Device-Key längst bei jedem Aufruf. Und ohne Geräteschlüssel käme man
+    // ohnehin nur mit dem statischen Altschlüssel herein — der hier nichts mehr
+    // ausrichtet, weil sich damit kein Mensch belegen lässt.
+    $kopf   = array_change_key_case(getallheaders(), CASE_LOWER);
+    $geraet = trim((string)($kopf['x-device-key'] ?? ''));
+
+    if ($geraet === '') {
+        http_response_code(403);
+        jsonResponse(false, [], 'Forbidden');
+    }
+
+    $bindung = $pdo->prepare(
+        'SELECT 1 FROM device_keys
+          WHERE device_key = ? AND user_id = ? AND is_active = 1
+            AND revoked_at IS NULL'
+    );
+    $bindung->execute([$geraet, (int)$caller['id']]);
+
+    if (!$bindung->fetchColumn()) {
+        // Absichtlich dieselbe Antwort wie oben: wer probiert, soll nicht
+        // erfahren, ob die Nummer existiert oder nur das Gerät nicht passt.
+        error_log('signatur vorstand: Geraeteschluessel gehoert nicht zu '
+            . $mitgliedernummer);
+        http_response_code(403);
+        jsonResponse(false, [], 'Forbidden');
+    }
+
     return (int)$caller['id'];
 }
 
