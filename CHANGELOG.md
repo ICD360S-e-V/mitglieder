@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.82.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.82.1...v1.82.2) (2026-08-12)
+
+
+### Bug Fixes
+
+* **anruf:** der Anruf stand auf "verbunden" und übertrug kein einziges Byte ([#293](https://github.com/ICD360S-e-V/mitglieder/issues/293)) ([b026adf](https://github.com/ICD360S-e-V/mitglieder/commit/b026adfb2cd016215f893e9ae301004a5ccc4fa7))
+
 ## [1.82.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.82.0...v1.82.1) (2026-08-08)
 
 
