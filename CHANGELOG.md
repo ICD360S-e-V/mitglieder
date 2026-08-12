@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.82.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.82.2...v1.82.3) (2026-08-12)
+
+
+### Bug Fixes
+
+* **chat:** Reaktionen kamen nie an, und man sah sie auch nicht ([#295](https://github.com/ICD360S-e-V/mitglieder/issues/295)) ([5a50b49](https://github.com/ICD360S-e-V/mitglieder/commit/5a50b490cdf4866fa90d9b39f063af8eec23d628))
+
 ## [1.82.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.82.1...v1.82.2) (2026-08-12)
 
 
