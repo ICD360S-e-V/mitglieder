@@ -11,6 +11,42 @@ import 'logger_service.dart';
 
 final _log = LoggerService();
 
+/// kMaxIceServerSize from third_party/libwebrtc/include/rtc_types.h. The C++
+/// bridge writes `ice_servers[i]` without a bounds check, so the cap lives
+/// here rather than in the trust we place in the server's URI count.
+const int kMaxIceServer = 8;
+
+/// Build the `iceServers` list for [createPeerConnection] — **one entry per
+/// URI, `urls` always a plain String, never a List**.
+///
+/// flutter_webrtc's desktop bridge (Windows and Linux share
+/// `common/cpp/src/flutter_webrtc_base.cc`) reads `urls` into `IceServer.uri`
+/// — a single String — and overwrites it on every loop iteration, so from a
+/// list of N URIs only the LAST survives. Android has its own Java path
+/// (`IceServer.builder(urlsList)`) and keeps them all, which is why the
+/// grouped form looked fine on the phone for months.
+///
+/// Kept identical to the vorsitzer app's helper of the same name; both ends
+/// must gather the same way or only one of them can reach the relay.
+List<Map<String, dynamic>> iceServerEintraege(
+  List<String> uris,
+  String username,
+  String password,
+) {
+  final servers = <Map<String, dynamic>>[];
+  for (final u in uris) {
+    if (u.startsWith('stun:')) {
+      servers.add({'urls': u});
+    } else if (u.startsWith('turn:') || u.startsWith('turns:')) {
+      servers.add({'urls': u, 'username': username, 'credential': password});
+    }
+  }
+  if (servers.length > kMaxIceServer) {
+    servers.removeRange(kMaxIceServer, servers.length);
+  }
+  return servers;
+}
+
 /// Why a call failed to start. Lets the UI surface an actionable error
 /// instead of a generic "unexpected" toast.
 enum CallStartFailure {
@@ -22,9 +58,14 @@ enum CallStartFailure {
   /// device is exclusively held by another app.
   micNotFound,
 
-  /// TURN credentials could not be fetched (offline / 401 / backend down). Our
-  /// coturn is the only relay, so no call can be established without them.
+  /// TURN credentials could not be fetched (offline / 401 / backend down), or
+  /// no relay candidate could be allocated. Our coturn is the only relay, so
+  /// no call can be established without one.
   turnUnavailable,
+
+  /// Negotiation succeeded but ICE never produced a working path, so not one
+  /// byte of audio or video can move. Reported mid-call, not at start.
+  noMediaPath,
 
   /// Something else — signaling or internal WebRTC error.
   unknown,
@@ -84,17 +125,29 @@ class VoiceCallService {
             final stunUris = uris.where((u) => u.startsWith('stun:')).toList();
             final turnUris = uris.where((u) => u.startsWith('turn:') || u.startsWith('turns:')).toList();
 
-            final servers = <Map<String, dynamic>>[];
-            if (stunUris.isNotEmpty) {
-              servers.add({'urls': stunUris});
-            }
-            if (turnUris.isNotEmpty) {
-              servers.add({
-                'urls': turnUris,
-                'username': username,
-                'credential': password,
-              });
-            }
+            // ⚠️ ONE ENTRY PER URI — never a `urls` LIST.
+            //
+            // flutter_webrtc's desktop bridge (Windows + Linux share
+            // common/cpp/src/flutter_webrtc_base.cc) parses `urls` into
+            // IceServer.uri — a SINGLE string — overwriting it on every loop
+            // iteration, so only the LAST URI of a list survives. Android has
+            // its own Java path (IceServer.builder(urlsList)) and keeps them
+            // all, which is why this only ever broke on desktop.
+            //
+            // With the old grouped form Windows kept only `turns:…:5349`, the
+            // one transport whose TLS handshake libwebrtc cannot complete (its
+            // trust store is the compiled-in ssl_roots.h, which does not know
+            // the Let's Encrypt Root YE hierarchy). Zero relay candidates, and
+            // under iceTransportPolicy:'relay' that means zero candidates —
+            // the call rings, shows "connected" and carries no media at all.
+            //
+            // Assembled by the pure helper below so a test can hold the shape
+            // still — the grouped form looks perfectly reasonable in review.
+            final servers = iceServerEintraege(
+              [...stunUris, ...turnUris],
+              username,
+              password,
+            );
 
             if (servers.isNotEmpty) {
               _cachedIceServers = {'iceServers': servers};
@@ -136,6 +189,23 @@ class VoiceCallService {
   bool _isVideoCall = false; // this call negotiated video (camera)
   bool _isCameraOff = false; // user toggled the local camera off
   Timer? _statsTimer; // periodic getStats logging for ICE diagnostics
+
+  /// Fails the call if no media path exists within this window after the
+  /// remote description is in place.
+  static const Duration _medienFrist = Duration(seconds: 20);
+
+  /// Armed once the remote description is set, disarmed the moment a real
+  /// media path exists. On expiry the call is torn down WITH a reason.
+  Timer? _medienWache;
+
+  /// Local ICE candidates we actually produced. Zero after gathering completes
+  /// means no TURN allocation succeeded → no pair can ever form.
+  int _iceSent = 0;
+
+  /// True once ICE really connected (or bytes were seen on a nominated pair).
+  /// The ONLY thing allowed to promote the call to [CallState.inCall];
+  /// `onTrack` must never do it — see the comment there.
+  bool _medienPfadDa = false;
   AudioPlayer? _ringbackPlayer; // looping "ring-ring" for the caller
   AudioPlayer? _sfxPlayer; // one-shot busy/rejected tone
 
@@ -158,6 +228,84 @@ class VoiceCallService {
   Stream<MediaStream?> get remoteStreamStream => _remoteStreamController.stream;
   Stream<IncomingCall> get incomingCallStream => _incomingCallController.stream;
   Stream<RTCIceConnectionState?> get iceConnectionStateStream => _iceConnectionStateController.stream;
+
+  /// Why a call that was already ringing/connecting died. Emitted right before
+  /// teardown so the UI can name the cause instead of just closing.
+  ///
+  /// A **reason**, not a message: this app ships in 28 languages, so the
+  /// wording has to come from `AppLocalizations` at the call site, never from
+  /// here. (The vorsitzer app, German-only, emits text directly.)
+  Stream<CallStartFailure> get callFailureStream => _callFailureController.stream;
+  final _callFailureController = StreamController<CallStartFailure>.broadcast();
+
+  /// Arm the media watchdog — from the moment the remote description is in
+  /// place ICE has everything it needs, so a call still without a media path
+  /// after [_medienFrist] never will get one.
+  void _medienWacheStellen() {
+    _medienWache?.cancel();
+    if (_medienPfadDa) return;
+    _medienWache = Timer(_medienFrist, () async {
+      if (_medienPfadDa || _callState == CallState.idle) return;
+      // Last word before hanging up on the user: the byte counters, not the
+      // callbacks. Killing a call that IS carrying media would be a far worse
+      // bug than the one this watchdog exists for.
+      if (await _bytesGeflossen()) {
+        _medienPfadBestaetigen('watchdog re-check found flowing bytes');
+        return;
+      }
+      _log.error('VoiceCallService: ❌ no media path after ${_medienFrist.inSeconds}s '
+          '(local candidates sent=$_iceSent) — ending call', tag: 'CALL');
+      _anrufScheitern(_iceSent == 0
+          ? CallStartFailure.turnUnavailable
+          : CallStartFailure.noMediaPath);
+    });
+  }
+
+  /// Did any candidate pair actually carry inbound bytes? The one question
+  /// that cannot be answered wrongly by a missing or early callback.
+  Future<bool> _bytesGeflossen() async {
+    final pc = _peerConnection;
+    if (pc == null) return false;
+    try {
+      for (final r in await pc.getStats()) {
+        if (r.type != 'candidate-pair') continue;
+        if (((r.values['bytesReceived'] as num?)?.toInt() ?? 0) > 0) return true;
+      }
+    } catch (e) {
+      // Unreadable stats are not evidence of a working call, but they are not
+      // evidence of a broken one either — do not hang up on a getStats error.
+      _log.warning('VoiceCallService: watchdog getStats failed: $e', tag: 'CALL');
+      return true;
+    }
+    return false;
+  }
+
+  /// A real media path exists — the single place allowed to reach inCall.
+  void _medienPfadBestaetigen(String woher) {
+    if (_medienPfadDa) return;
+    _medienPfadDa = true;
+    _medienWache?.cancel();
+    _medienWache = null;
+    _log.info('VoiceCallService: ★★★ media path confirmed via $woher', tag: 'CALL');
+    if (_callState == CallState.connecting || _callState == CallState.calling) {
+      _setCallState(CallState.inCall);
+      _applyAudioRoute();
+    }
+  }
+
+  /// Tear the call down and SAY WHY, and tell the peer so it does not keep a
+  /// dead call open on its screen.
+  void _anrufScheitern(CallStartFailure grund) {
+    if (_callState == CallState.idle) return;
+    _callFailureController.add(grund);
+    if (_currentConversationId != null) {
+      onSignalingMessage?.call({
+        'type': 'call_end',
+        'conversation_id': _currentConversationId,
+      });
+    }
+    _cleanup();
+  }
 
   // Getters
   CallState get callState => _callState;
@@ -511,7 +659,15 @@ class VoiceCallService {
   }
 
   /// Process queued ICE candidates after remote description is set (Fix 1)
+  /// Called on both paths right after setRemoteDescription (offer on accept,
+  /// answer on the caller side) — the point from which ICE has everything it
+  /// needs, so it is also the point from which the media watchdog is fair.
   Future<void> _processQueuedIceCandidates() async {
+    _medienWacheStellen();
+    return _processQueuedIceCandidatesIntern();
+  }
+
+  Future<void> _processQueuedIceCandidatesIntern() async {
     if (_queuedIceCandidates.isEmpty) {
       _log.debug('VoiceCallService: No queued ICE candidates to process', tag: 'CALL');
       return;
@@ -786,7 +942,8 @@ class VoiceCallService {
     // Handle ICE candidates (our local candidates to send to remote peer)
     _peerConnection!.onIceCandidate = (candidate) {
       if (candidate.candidate != null) {
-        _log.info('VoiceCallService: ➤ Generated local ICE candidate (mid: ${candidate.sdpMid}, index: ${candidate.sdpMLineIndex})', tag: 'CALL');
+        _iceSent++;
+        _log.info('VoiceCallService: ➤ Generated local ICE candidate #$_iceSent (mid: ${candidate.sdpMid}, index: ${candidate.sdpMLineIndex})', tag: 'CALL');
         _log.debug('VoiceCallService: ➤ Candidate: ${candidate.candidate}', tag: 'CALL');
         _log.info('VoiceCallService: ➤ Sending ICE candidate to remote peer via signaling', tag: 'CALL');
         onSignalingMessage?.call({
@@ -804,6 +961,16 @@ class VoiceCallService {
     // Handle ICE gathering state
     _peerConnection!.onIceGatheringState = (state) {
       _log.info('VoiceCallService: ✓ ICE Gathering State: $state', tag: 'CALL');
+      // Relay-only: no local candidate means no TURN allocation succeeded and
+      // therefore no candidate pair can ever form. Say so now instead of
+      // letting the user sit through a mute call — that is exactly what this
+      // client did on 2026-08-11: gathering "complete" in ~110 ms with zero
+      // candidates, and the screen said "connected" for the whole call.
+      if (state == RTCIceGatheringState.RTCIceGatheringStateComplete && _iceSent == 0) {
+        _log.error('VoiceCallService: ❌ ICE gathering finished with ZERO local '
+            'candidates — no relay reachable', tag: 'CALL');
+        _anrufScheitern(CallStartFailure.turnUnavailable);
+      }
     };
 
     // Handle ICE connection state
@@ -811,6 +978,15 @@ class VoiceCallService {
       _log.info('VoiceCallService: ✓ ICE Connection State: $state', tag: 'CALL');
       // Feed the network-quality indicator (#6a).
       _iceConnectionStateController.add(state);
+      // This — not onTrack — is what "the call is up" means. It also covers
+      // Windows, where onConnectionState is the callback that stays silent
+      // (flutter_webrtc #1668); onIceConnectionState does fire there.
+      if (state == RTCIceConnectionState.RTCIceConnectionStateConnected ||
+          state == RTCIceConnectionState.RTCIceConnectionStateCompleted) {
+        _medienPfadBestaetigen('iceConnectionState=$state');
+      } else if (state == RTCIceConnectionState.RTCIceConnectionStateFailed) {
+        _anrufScheitern(CallStartFailure.noMediaPath);
+      }
     };
 
     // Handle signaling state
@@ -828,8 +1004,7 @@ class VoiceCallService {
         _log.info('VoiceCallService: Connection state: CONNECTING (ICE negotiation in progress)', tag: 'CALL');
       } else if (state == RTCPeerConnectionState.RTCPeerConnectionStateConnected) {
         _log.info('VoiceCallService: ★★★ WebRTC connection ESTABLISHED! Changing to inCall state ★★★', tag: 'CALL');
-        _setCallState(CallState.inCall);
-        _applyAudioRoute(); // re-assert speaker route once media is flowing
+        _medienPfadBestaetigen('peerConnectionState=connected');
       } else if (state == RTCPeerConnectionState.RTCPeerConnectionStateDisconnected) {
         _log.warning('🚨🚨🚨 Connection state: DISCONNECTED - AUTO-ENDING CALL!', tag: 'CALL');
         _log.warning('🚨 Previous state was: $_callState', tag: 'CALL');
@@ -889,15 +1064,20 @@ class VoiceCallService {
         _remoteStreamController.add(_remoteStream);
         _log.info('VoiceCallService: ✅✅✅ Remote stream added to controller - UI should receive it!', tag: 'CALL');
 
-        // WORKAROUND for flutter_webrtc bug #1668 on Windows:
-        // onConnectionState callback doesn't fire, so we use onTrack as indicator
-        // If we receive remote stream, connection IS established!
-        if (_callState == CallState.connecting || _callState == CallState.calling) {
-          _log.info('VoiceCallService: ★★★ WORKAROUND: Remote stream received → assuming connection established!', tag: 'CALL');
-          _log.info('VoiceCallService: ★★★ Changing to inCall state (onConnectionState bug workaround)', tag: 'CALL');
-          _setCallState(CallState.inCall);
-          _applyAudioRoute(); // re-assert speaker route once media is flowing
-        }
+        // ⚠️ DELIBERATELY NO STATE CHANGE HERE.
+        //
+        // This used to flip the call to inCall ("workaround for flutter_webrtc
+        // #1668 on Windows, where onConnectionState does not fire"). But
+        // onTrack fires while setRemoteDescription creates the receivers —
+        // before ICE has even started checking. A call whose peer never
+        // produced one ICE candidate therefore showed "connected" with a
+        // running timer on BOTH ends while zero bytes moved. Silent, and
+        // indistinguishable from success.
+        //
+        // Windows stays covered: onIceConnectionState does fire there, and the
+        // getStats candidate-pair check is a third, callback-free path.
+        _log.debug('VoiceCallService: remote stream published (state stays $_callState '
+            'until ICE confirms a media path)', tag: 'CALL');
       } else {
         _log.warning('VoiceCallService: ⚠️⚠️⚠️ onTrack event but NO STREAMS! This is abnormal!', tag: 'CALL');
       }
@@ -1111,6 +1291,13 @@ class VoiceCallService {
           final v = r.values;
           if (r.type == 'candidate-pair') {
             _log.info('[PAIR] state=${v['state']} nominated=${v['nominated']} sent=${v['bytesSent']} recv=${v['bytesReceived']} L=${v['localCandidateId']} R=${v['remoteCandidateId']}', tag: 'ICESTAT');
+            // Ground truth, independent of every callback: a succeeded pair
+            // that has actually carried bytes. Callbacks can be missed or fire
+            // early; a byte count cannot lie.
+            final recv = (v['bytesReceived'] as num?)?.toInt() ?? 0;
+            if (v['state'] == 'succeeded' && recv > 0) {
+              _medienPfadBestaetigen('candidate-pair succeeded ($recv B received)');
+            }
           } else if (r.type == 'local-candidate' || r.type == 'remote-candidate') {
             _log.info('[CAND] ${r.type} ${v['candidateType']} ${v['protocol']} ${v['ip'] ?? v['address']}:${v['port']}', tag: 'ICESTAT');
           } else if (r.type == 'outbound-rtp') {
@@ -1136,6 +1323,10 @@ class VoiceCallService {
   void _cleanup() {
     _log.info('VoiceCallService: _cleanup() - releasing WebRTC resources', tag: 'CALL');
     _stopStatsLogging();
+    _medienWache?.cancel();
+    _medienWache = null;
+    _medienPfadDa = false;
+    _iceSent = 0;
     if (Platform.isAndroid || Platform.isIOS) {
       navigator.mediaDevices.ondevicechange = null;
     }
@@ -1173,6 +1364,7 @@ class VoiceCallService {
     _remoteStreamController.close();
     _incomingCallController.close();
     _iceConnectionStateController.close();
+    _callFailureController.close();
   }
 }
 

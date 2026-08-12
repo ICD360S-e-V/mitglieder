@@ -105,6 +105,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   StreamSubscription? _reactionUpdateSubscription;
   StreamSubscription? _callOfferSubscription;
   StreamSubscription? _callStateSubscription;
+  StreamSubscription? _callFailureSubscription;
 
   /// Format name to show initials + last name
   /// Example: "Ionut-Claudiu Duinea" → "I.C. Duinea"
@@ -154,6 +155,20 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       if (mounted) {
         setState(() {}); // Trigger UI rebuild
       }
+    });
+
+    // A call that dies for a media reason must SAY so. Without this the call
+    // window just closes and both ends blame the other's microphone.
+    // The wording comes from AppLocalizations — the service only names the
+    // reason, because this app ships in 28 languages.
+    _callFailureSubscription = _voiceCallService.callFailureStream.listen((grund) {
+      if (!mounted) return;
+      final l = AppLocalizations.of(context)!;
+      _showError(switch (grund) {
+        CallStartFailure.micNotFound => l.callErrorMicNotFound,
+        CallStartFailure.micPermissionDenied => l.callErrorMicPermissionDenied,
+        _ => l.callFailed,
+      });
     });
 
     _initChat();
@@ -239,6 +254,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     _reactionUpdateSubscription?.cancel();
     _callOfferSubscription?.cancel();
     _callStateSubscription?.cancel();
+    _callFailureSubscription?.cancel();
     _ringTimeoutTimer?.cancel();
     // Don't call _endCallCleanup() in dispose - widget is already defunct
     // Just cancel the timer and clear pending data without setState

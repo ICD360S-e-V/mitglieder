@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:just_audio_media_kit/just_audio_media_kit.dart';
 import 'l10n/app_localizations.dart';
 import 'screens/language_selection.dart';
 import 'screens/welcome.dart';
@@ -56,6 +57,22 @@ void main() async {
     );
   }
   // Desktop: Window management is handled in DesktopPlatformService.initialize()
+
+  // Route just_audio through media_kit (libmpv) on Windows/Linux — it has no
+  // native backend there, so the call tones (ringback, busy/rejected) throw
+  // MissingPluginException and the member hears nothing while a call rings.
+  // Must run before any AudioPlayer is constructed.
+  if (Platform.isWindows || Platform.isLinux) {
+    await StartupDiagnostics.stepWithTimeout(
+      'JustAudioMediaKit.ensureInitialized',
+      const Duration(seconds: 5),
+      () async {
+        JustAudioMediaKit.title = 'ICD360S Mitglieder';
+        JustAudioMediaKit.ensureInitialized(windows: true, linux: true);
+        return null;
+      },
+    );
+  }
 
   // Security: Screenshots blocked via FLAG_SECURE in Android MainActivity.kt
   // Windows: anti-debug + DLL injection protection in main.cpp
