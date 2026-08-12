@@ -21,6 +21,7 @@ import '../services/network_info_service.dart';
 import '../services/voice_call_service.dart';
 import '../services/logger_service.dart';
 import '../utils/message_emotion.dart';
+import '../utils/chat_message_merge.dart';
 import 'file_viewer.dart';
 import 'incoming_call_dialog.dart';
 import 'video_call_screen.dart';
@@ -443,20 +444,10 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
         _log.info('LiveChat: Loaded $msgCount messages', tag: 'CHAT');
 
         setState(() {
-          // Get existing message IDs to prevent duplicates
-          final existingIds = _messages.map((m) => m['id']).toSet();
-
-          // Only add messages that don't already exist
-          for (var msg in newMessages) {
-            if (!existingIds.contains(msg['id'])) {
-              _messages.add(msg);
-            }
-          }
-
-          // If no existing messages, just use the new list
-          if (existingIds.isEmpty) {
-            _messages = newMessages;
-          }
+          // ⚠️ Nicht mehr „bekannte IDs überspringen": eine Reaktion ist eine
+          // Änderung an einer bestehenden Nachricht, und die kam so nie an.
+          // Siehe chatNachrichtenZusammenfuehren.
+          _messages = chatNachrichtenZusammenfuehren(_messages, newMessages);
         });
         _scrollToBottom();
         _ensureCountdownTimer();
@@ -942,7 +933,12 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     final conversationId = _conversationId;
     if (messageId == null || conversationId == null) return;
 
-    void revert() {
+    // ⚠️ Eine abgelehnte Reaktion darf NICHT stillschweigend zurückgenommen
+    // werden. Genau so versagt der häufigste Kopplungsfehler: der Server kennt
+    // den Schlüssel nicht (HTTP 400), der Client nimmt zurück, und für den
+    // Nutzer passiert schlicht nichts — nicht unterscheidbar von „ich habe
+    // danebengetippt". Der Grund gehört auf den Schirm.
+    void revert(String grund) {
       if (!mounted) return;
       setState(() {
         if (previous == null) {
@@ -951,6 +947,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           msg['reaction'] = previous;
         }
       });
+      _showError('Reaktion nicht gespeichert: $grund');
     }
 
     try {
@@ -965,10 +962,10 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           _chatService.sendReactionUpdate(conversationId, messageId, newKey ?? '');
         }
       } else {
-        revert();
+        revert(res['message']?.toString() ?? 'Der Server hat sie abgelehnt.');
       }
     } catch (_) {
-      revert();
+      revert('Keine Verbindung zum Server.');
     }
   }
 
@@ -1825,6 +1822,9 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     // messages (support / Vorsitzer). On the member's own messages a reaction
     // set by the Vorsitzer is shown read-only (no smiley trigger).
     final reaction = emotionFromKey(msg['reaction']);
+    // ⚠️ Ein Schlüssel, den diese App nicht kennt (die andere App ist neuer),
+    // ließe die Blase leer aussehen — zurück bei „kommt nicht an".
+    final reaktionDa = hatReaktion(msg['reaction']);
     final canReact = !isOwn;
 
     // Countdown bar: status=read + expires_at in future
@@ -1874,6 +1874,15 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                 Container(
                   constraints: BoxConstraints(
                     maxWidth: MediaQuery.of(context).size.width * 0.65,
+                  ),
+                  // ⚠️ Der Rand gehört an dieses Kind: der Stack misst sich an
+                  // seinem nicht-positionierten Kind. Nur so wächst er um
+                  // `kReaktionUeberhang` und die unten hängende Plakette
+                  // bleibt innerhalb der Trefferfläche.
+                  margin: EdgeInsets.only(
+                    bottom: reaktionDa ? kReaktionUeberhang : 0,
+                    // Platz für den Auslöser NEBEN der Blase statt über dem Text.
+                    right: (!reaktionDa && canReact) ? kAusloeserRand : 0,
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   decoration: BoxDecoration(
@@ -1960,25 +1969,45 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                     ],
                   ),
                 ),
-                // WhatsApp-style reaction control in the top-right corner.
-                // IMPORTANT: positive offset — a child that overflows its parent
-                // does NOT receive taps in Flutter, so keep it inside the bubble.
-                if (reaction != null || canReact)
+                // Gesetzte Reaktion: große Plakette am unteren Rand der Blase,
+                // leicht überlappend — dort zeigt WhatsApp sie, und dort sucht
+                // das Auge sie. Auf der eigenen (violetten) Blase links, auf
+                // der fremden rechts: jeweils zur Mitte hin und damit weg von
+                // Uhrzeit und Lesebestätigung.
+                //
+                // ⚠️ WICHTIG bleibt der positive Offset: ein Kind, das über
+                // seinen Elternteil hinausragt, bekommt in Flutter KEINE Tipps.
+                // Der Überhang entsteht deshalb über den unteren Rand der
+                // Blase (siehe oben), nicht über ein negatives `bottom`.
+                if (reaktionDa)
                   Positioned(
-                    top: 2,
-                    right: 2,
+                    bottom: 0,
+                    left: isOwn ? 10 : null,
+                    right: isOwn ? null : 10,
                     child: canReact
                         ? GestureDetector(
                             behavior: HitTestBehavior.opaque,
                             onTapDown: (d) => _reactTapPos = d.globalPosition,
                             onTap: () => _openReactionPicker(msg, reaction),
-                            child: reaction != null
-                                ? EmotionBadge(emotion: reaction)
-                                : const AddReactionButton(),
+                            child: ReaktionsPlakette(schluessel: msg['reaction']),
                           )
-                        : (reaction != null
-                            ? EmotionBadge(emotion: reaction)
-                            : const SizedBox.shrink()),
+                        : ReaktionsPlakette(schluessel: msg['reaction']),
+                  )
+                // Noch keine Reaktion: Auslöser NEBEN der Blase, damit er nicht
+                // auf jeder Nachricht Platz belegt und keinen Text verdeckt.
+                else if (canReact)
+                  Positioned(
+                    top: 0,
+                    bottom: 0,
+                    right: 0,
+                    child: Center(
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTapDown: (d) => _reactTapPos = d.globalPosition,
+                        onTap: () => _openReactionPicker(msg, null),
+                        child: const AddReactionButton(),
+                      ),
+                    ),
                   ),
               ],
             ),
