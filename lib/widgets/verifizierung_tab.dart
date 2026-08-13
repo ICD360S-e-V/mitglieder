@@ -2401,7 +2401,15 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   Widget _buildVereinsMailZeile() {
     final nummer = widget.mitgliedernummer.trim();
     if (nummer.isEmpty) return const SizedBox.shrink();
-    final adresse = '$nummer@icd360s.de'.toLowerCase();
+    // ⚠️ Die Mitgliedsnummer behält ihre Großschreibung: M90566@icd360s.de,
+    // nicht m90566@. Sie steht so auf dem Mitgliedsausweis, und eine Adresse,
+    // die anders aussieht als die Nummer daneben, wirkt wie eine andere
+    // Angabe. Nur die Domäne ist klein — die ist ohnehin unveränderlich.
+    //
+    // Zustellung ist davon unberührt: die Spalten in `mailserver` haben die
+    // Kollation utf8mb4_unicode_ci, und am 13.08.2026 mit einer SMTP-Sonde
+    // gegenprobiert — Groß- und Kleinschreibung werden gleich angenommen.
+    final adresse = '$nummer@icd360s.de';
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
