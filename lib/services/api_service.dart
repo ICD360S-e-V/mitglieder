@@ -180,6 +180,15 @@ class ApiService {
 
     if (response.statusCode == 200 && data['success'] == true) {
       await saveTokens(data['token'], data['refresh_token'], mitgliedernummer: mitgliedernummer);
+      // Steht auf dem Server eine andere Sprache, gewinnt die Wahl des
+      // Mitglieds. `device_locale` oben reicht dafür nicht: der Server
+      // übernimmt sie nur beim allerersten Login. Genau deshalb sitzen
+      // Mitglieder, die ihre Sprache nach der Anmeldung gewechselt haben,
+      // mit rumänischer Oberfläche und deutschem Chat da.
+      final serverSprache = (data['user']?['preferred_language'] ?? '').toString();
+      if (serverSprache != deviceLocale) {
+        await updateSprache(deviceLocale);
+      }
     }
 
     return data;
@@ -544,6 +553,92 @@ class ApiService {
       body: jsonEncode(body),
     );
     return jsonDecode(response.body);
+  }
+
+  // ── Kontaktdaten bestätigen ───────────────────────────────────────────
+  //
+  // Alle 90 Tage bestätigt das Mitglied selbst, dass E-Mail-Adresse und
+  // Mobilnummer noch stimmen. Ein sechsstelliger Code geht an genau diesen
+  // Kanal — eine Adresse, an der ein Code ankommt, ist eine Adresse, die es
+  // gibt.
+  //
+  // ⚠️ Die Mobilnummer lässt sich seit dem 13.08.2026 NICHT mehr über
+  // updatePersonalData() ändern; der Server antwortet dort mit 422. Sie ist
+  // der Kanal für Terminerinnerung, Medikamentenerinnerung und den
+  // Zugangscode für ein neues Gerät — eine Nummer, die im Profil frei
+  // überschrieben werden kann, ist kein Nachweis über irgendetwas. Der Weg
+  // führt über [kontaktCodeAnfordern] mit der neuen Nummer.
+
+  /// Was ist fällig, was ist bestätigt, läuft gerade ein Code?
+  Future<Map<String, dynamic>> kontaktStatus() async {
+    final response = await _client.post(
+      Uri.parse('$baseUrl/member/kontakt_bestaetigen.php'),
+      headers: _headers,
+      body: jsonEncode({'aktion': 'status'}),
+    );
+    return jsonDecode(response.body);
+  }
+
+  /// Fordert einen Code an.
+  ///
+  /// [neu] gesetzt = die Angabe soll geändert werden; der Code geht dann an
+  /// das NEUE Ziel. ⚠️ Das ist der Kern: ein Code an die alte Nummer würde
+  /// beweisen, dass die alte noch erreichbar ist — und genau die will das
+  /// Mitglied ja loswerden.
+  Future<Map<String, dynamic>> kontaktCodeAnfordern({
+    required String kanal,
+    String? neu,
+  }) async {
+    final response = await _client.post(
+      Uri.parse('$baseUrl/member/kontakt_bestaetigen.php'),
+      headers: _headers,
+      body: jsonEncode({
+        'aktion': 'code_anfordern',
+        'kanal': kanal,
+        if (neu != null && neu.trim().isNotEmpty) 'neu': neu.trim(),
+      }),
+    );
+    return jsonDecode(response.body);
+  }
+
+  /// Löst den Code ein. Bei Erfolg ist die Angabe bestätigt — und, falls eine
+  /// neue mitgeschickt wurde, auch übernommen.
+  Future<Map<String, dynamic>> kontaktCodePruefen({
+    required String kanal,
+    required String code,
+  }) async {
+    final response = await _client.post(
+      Uri.parse('$baseUrl/member/kontakt_bestaetigen.php'),
+      headers: _headers,
+      body: jsonEncode({'aktion': 'code_pruefen', 'kanal': kanal, 'code': code}),
+    );
+    return jsonDecode(response.body);
+  }
+
+  /// Meldet die gewählte App-Sprache an den Server (`users.preferred_language`).
+  ///
+  /// Ohne diesen Aufruf bleibt die Sprachwahl rein lokal: die Oberfläche wäre
+  /// rumänisch, Live-Chat, SMS und die Schreiben kämen weiter auf Deutsch —
+  /// `preferred_language` ist die einzige Spalte, aus der die Übersetzung ihre
+  /// Zielsprache nimmt. Bis 2026-08-03 gab es dafür überhaupt keinen Weg.
+  ///
+  /// Wirft nicht: die Oberfläche darf nie an einer fehlgeschlagenen
+  /// Netzwerkanfrage hängen. `false` heißt nur „Server weiß es noch nicht" —
+  /// der nächste Login schickt die Sprache erneut.
+  Future<bool> updateSprache(String code) async {
+    if (_token == null) return false;
+    try {
+      final response = await _client.post(
+        Uri.parse('$baseUrl/member/update_sprache.php'),
+        headers: _headers,
+        body: jsonEncode({'sprache': code}),
+      ).timeout(const Duration(seconds: 10));
+      final data = jsonDecode(response.body);
+      return response.statusCode == 200 && data['success'] == true;
+    } catch (e) {
+      LoggerService().error('updateSprache: $e', tag: 'API');
+      return false;
+    }
   }
 
   // Update Finanzielle Situation (Stufe 3 - member verification)

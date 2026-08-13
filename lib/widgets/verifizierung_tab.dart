@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
+import 'kontakt_bestaetigung.dart';
 import '../services/api_service.dart';
 import '../screens/webview_screen.dart';
 import '../utils/error_helpers.dart';
@@ -44,6 +45,14 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   final _ortController = TextEditingController();
   final _landController = TextEditingController();
   final _telefonMobilController = TextEditingController();
+
+  /// Festnetznummer.
+  ///
+  /// ⚠️ Getrennt von der Mobilnummer, weil nur an eine Mobilnummer eine SMS
+  /// geht: Terminerinnerung, Medikamentenerinnerung und der
+  /// Bestätigungscode laufen alle über SMS. Steht dort ein
+  /// Festnetzanschluss, kommt nichts an und niemand erfährt warum.
+  final _telefonFixController = TextEditingController();
   final _emailController = TextEditingController();
   final _staatsangehoerigkeitController = TextEditingController();
   final _mutterspracheController = TextEditingController();
@@ -171,6 +180,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     _ortController.dispose();
     _landController.dispose();
     _telefonMobilController.dispose();
+    _telefonFixController.dispose();
     _emailController.dispose();
     _staatsangehoerigkeitController.dispose();
     _mutterspracheController.dispose();
@@ -273,6 +283,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     _ortController.text = _personalData['ort'] ?? '';
     _landController.text = _personalData['land'] ?? '';
     _telefonMobilController.text = _personalData['telefon_mobil'] ?? '';
+    _telefonFixController.text = _personalData['telefon_fix'] ?? '';
     _emailController.text = _personalData['email'] ?? '';
     // Setting the citizenship controller below triggers _onCitizenshipChanged
     // which would clobber the loaded aufenthaltsstatus. Suppress by
@@ -484,6 +495,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         ort: _ortController.text.trim(),
         land: _landController.text.trim(),
         telefonMobil: _telefonMobilController.text.trim(),
+        telefonFix: _telefonFixController.text.trim(),
         email: _emailController.text.trim(),
         geburtsdatum: DateFormat('yyyy-MM-dd').format(_selectedGeburtsdatum!),
         geburtsort: _geburtsortController.text.trim(),
@@ -991,6 +1003,17 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // ⚠️ Ganz oben, vor allen Feldern: wenn eine Bestätigung fällig ist,
+        // ist sie das Wichtigste auf diesem Bildschirm. Weiter unten würde sie
+        // niemand sehen — Stufe 1 ist lang, und wer hier ist, will meist etwas
+        // anderes erledigen.
+        //
+        // Zeigt sich selbst nur, wenn wirklich etwas fällig ist
+        // (nurWennFaellig), und verschwindet nach der Bestätigung von allein.
+        KontaktBestaetigung(
+          apiService: _apiService,
+          onBestaetigt: _loadVerifizierung,
+        ),
         // Vorname + Nachname
         Row(
           children: [
@@ -1089,9 +1112,12 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         ),
         const SizedBox(height: 12),
         // Telefonnummer + Email
+        // ⚠️ „Mobilfunknummer", nicht mehr „Telefonnummer": darunter steht
+        // jetzt ein zweites Feld, und zwei Zeilen, von denen eine „Telefon"
+        // heißt, sagen nicht, welche gemeint ist.
         _buildTextField(
           controller: _telefonMobilController,
-          label: AppLocalizations.of(context)!.phoneRequired,
+          label: '${AppLocalizations.of(context)!.phoneMobileLabel} *',
           enabled: canEdit,
           keyboardType: TextInputType.phone,
         ),
@@ -1102,6 +1128,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             AppLocalizations.of(context)!.phonePurpose,
             style: TextStyle(fontSize: 11, color: Colors.grey.shade500, fontStyle: FontStyle.italic),
           ),
+        ),
+        const SizedBox(height: 12),
+        _buildTextField(
+          controller: _telefonFixController,
+          label: AppLocalizations.of(context)!.phoneLandlineLabel,
+          enabled: canEdit,
+          keyboardType: TextInputType.phone,
         ),
         const SizedBox(height: 12),
         _buildTextField(
