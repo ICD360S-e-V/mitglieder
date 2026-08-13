@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.84.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.0...v1.84.1) (2026-08-13)
+
+
+### Bug Fixes
+
+* **i18n:** die Kontakt-Karte war auf Deutsch statt in 28 Sprachen ([#302](https://github.com/ICD360S-e-V/mitglieder/issues/302)) ([f696ad6](https://github.com/ICD360S-e-V/mitglieder/commit/f696ad612814091042992998a3fb246eb1d1e135))
+
 ## [1.84.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.83.0...v1.84.0) (2026-08-13)
 
 
