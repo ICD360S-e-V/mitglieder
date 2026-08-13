@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.84.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.83.0...v1.84.0) (2026-08-13)
+
+
+### Features
+
+* **verifizierung:** Kontaktdaten alle drei Monate selbst bestätigen ([#299](https://github.com/ICD360S-e-V/mitglieder/issues/299)) ([61aa056](https://github.com/ICD360S-e-V/mitglieder/commit/61aa0562a8474cd0f36f7c4a952f35258389381b))
+
 ## [1.83.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.82.3...v1.83.0) (2026-08-13)
 
 
