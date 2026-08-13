@@ -2986,4 +2986,23 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Olet allekirjoittanut. Asiakirja valmistellaan, heti kun myös toinen henkilö on allekirjoittanut sen.';
+
+  @override
+  String get kontaktNochAktuell => 'Ovatko nämä tiedot yhä ajan tasalla?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Jotta et menetä mitään, kysymme lyhyesti kolmen kuukauden välein. Saat kuusinumeroisen koodin.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'vahvistettu $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Tämä on lankapuhelinnumero — tekstiviesti ei mene perille.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'On muuttunut';
 }

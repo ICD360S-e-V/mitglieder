@@ -2998,4 +2998,23 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Pana/Pani podpis został złożony. Dokument zostanie przygotowany, gdy tylko podpisze go również druga osoba.';
+
+  @override
+  String get kontaktNochAktuell => 'Czy te dane są nadal aktualne?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Abyś niczego nie przegapił, pytamy krótko co trzy miesiące. Otrzymasz sześciocyfrowy kod.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'potwierdzono $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'To numer stacjonarny — SMS tam nie dotrze.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Zmieniło się';
 }

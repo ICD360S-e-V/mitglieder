@@ -5425,6 +5425,36 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Sie haben unterschrieben. Das Dokument wird gesiegelt, sobald auch die zweite Person unterschrieben hat.'**
   String get signaturWartenHinweis;
+
+  /// Titel der Karte, die alle 90 Tage nach E-Mail und Mobilnummer fragt
+  ///
+  /// In de, this message translates to:
+  /// **'Stimmen diese Angaben noch?'**
+  String get kontaktNochAktuell;
+
+  /// Erklaerung unter dem Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Damit Sie nichts verpassen, fragen wir alle drei Monate kurz nach. Sie bekommen einen sechsstelligen Code.'**
+  String get kontaktWarumFragen;
+
+  /// Datum der letzten Bestaetigung
+  ///
+  /// In de, this message translates to:
+  /// **'bestätigt am {datum}'**
+  String kontaktBestaetigtAm(Object datum);
+
+  /// Warnung, wenn im Mobilfeld ein Festnetzanschluss steht
+  ///
+  /// In de, this message translates to:
+  /// **'Das ist eine Festnetznummer — dorthin kommt keine SMS an.'**
+  String get kontaktFestnetzKeinSms;
+
+  /// Knopf: Adresse oder Nummer hat sich geaendert
+  ///
+  /// In de, this message translates to:
+  /// **'Ist anders geworden'**
+  String get kontaktIstAndersGeworden;
 }
 
 class _AppLocalizationsDelegate

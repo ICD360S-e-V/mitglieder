@@ -2956,4 +2956,23 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'لقد وقّعت. سيتم ختم المستند بمجرد أن يوقّع عليه الشخص الثاني أيضاً.';
+
+  @override
+  String get kontaktNochAktuell => 'هل ما زالت هذه البيانات صحيحة؟';
+
+  @override
+  String get kontaktWarumFragen =>
+      'حتى لا يفوتك شيء، نسأل باختصار كل ثلاثة أشهر. ستتلقى رمزاً من ستة أرقام.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'تم التأكيد في $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'هذا رقم هاتف أرضي — لا تصل إليه الرسائل القصيرة.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'لقد تغيّر';
 }

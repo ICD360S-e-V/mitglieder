@@ -2989,4 +2989,23 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Ви поставили підпис. Документ буде скріплено печаткою, щойно його підпише й друга особа.';
+
+  @override
+  String get kontaktNochAktuell => 'Ці дані ще актуальні?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Щоб ви нічого не пропустили, ми коротко запитуємо раз на три місяці. Ви отримаєте код із шести цифр.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'підтверджено $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Це стаціонарний номер — SMS туди не надійде.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Змінилося';
 }

@@ -1413,5 +1413,10 @@
   "signaturFehlgeschlagen": "لم ينجح ذلك. يرجى المحاولة مرة أخرى.",
   "signaturSiegelInArbeit": "يجري إنشاء الختم الآن. يرجى المحاولة مرة أخرى بعد دقيقة.",
   "signaturWartetZweiteUnterschrift": "بانتظار التوقيع الثاني",
-  "signaturWartenHinweis": "لقد وقّعت. سيتم ختم المستند بمجرد أن يوقّع عليه الشخص الثاني أيضاً."
+  "signaturWartenHinweis": "لقد وقّعت. سيتم ختم المستند بمجرد أن يوقّع عليه الشخص الثاني أيضاً.",
+  "kontaktNochAktuell": "هل ما زالت هذه البيانات صحيحة؟",
+  "kontaktWarumFragen": "حتى لا يفوتك شيء، نسأل باختصار كل ثلاثة أشهر. ستتلقى رمزاً من ستة أرقام.",
+  "kontaktBestaetigtAm": "تم التأكيد في {datum}",
+  "kontaktFestnetzKeinSms": "هذا رقم هاتف أرضي — لا تصل إليه الرسائل القصيرة.",
+  "kontaktIstAndersGeworden": "لقد تغيّر"
 }

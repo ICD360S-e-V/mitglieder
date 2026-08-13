@@ -2986,4 +2986,23 @@ class AppLocalizationsLt extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Jūs pasirašėte. Dokumentas bus patvirtintas elektroniniu spaudu, kai tik jį pasirašys ir antrasis asmuo.';
+
+  @override
+  String get kontaktNochAktuell => 'Ar šie duomenys vis dar teisingi?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Kad nieko nepraleistumėte, trumpai pasiteiraujame kas tris mėnesius. Gausite šešių skaitmenų kodą.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'patvirtinta $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Tai fiksuotojo ryšio numeris — SMS ten nepasieks.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Pasikeitė';
 }

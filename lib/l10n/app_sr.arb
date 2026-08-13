@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Потписали сте документ",
   "signaturSiegelInArbeit": "Електронски печат се још израђује. Молимо Вас да покушате поново за један минут.",
   "signaturWartetZweiteUnterschrift": "Чека се други потпис",
-  "signaturWartenHinweis": "Потписали сте. Документ ће добити електронски печат чим га потпише и друга особа."
+  "signaturWartenHinweis": "Потписали сте. Документ ће добити електронски печат чим га потпише и друга особа.",
+  "kontaktNochAktuell": "Да ли су ови подаци још увек тачни?",
+  "kontaktWarumFragen": "Да ништа не пропустите, кратко питамо свака три месеца. Добићете шестоцифрени код.",
+  "kontaktBestaetigtAm": "потврђено {datum}",
+  "kontaktFestnetzKeinSms": "Ово је број фиксне линије — SMS тамо не стиже.",
+  "kontaktIstAndersGeworden": "Променило се"
 }

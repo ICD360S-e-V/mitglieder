@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/api_service.dart';
+import '../l10n/app_localizations.dart';
 
 /// Bestätigung von E-Mail-Adresse und Mobilnummer.
 ///
@@ -83,6 +84,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
   }
 
   Future<void> _codeAnfordern(String kanal) async {
+    final t = AppLocalizations.of(context)!;
     setState(() {
       _sendet = true;
       _fehler = null;
@@ -105,20 +107,21 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
           // Nummer gehört einem anderen Konto, es ist ein Festnetzanschluss,
           // die Landesvorwahl fehlt — und bei der fehlenden Vorwahl enthält
           // sie sogar den korrigierten Vorschlag.
-          _fehler = r['message']?.toString() ?? 'Das hat nicht geklappt.';
+          _fehler = r['message']?.toString() ?? t.signaturFehlgeschlagen;
         }
       });
     } catch (e) {
       if (mounted) {
         setState(() {
           _sendet = false;
-          _fehler = 'Keine Verbindung. Bitte später noch einmal versuchen.';
+          _fehler = t.signaturFehlgeschlagen;
         });
       }
     }
   }
 
   Future<void> _codePruefen() async {
+    final t = AppLocalizations.of(context)!;
     final kanal = _offenerKanal;
     if (kanal == null) return;
     setState(() {
@@ -141,9 +144,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(kanal == 'email'
-                ? 'E-Mail-Adresse bestätigt. Danke!'
-                : 'Mobilnummer bestätigt. Danke!'),
+            content: Text(t.dataSavedSuccess),
             backgroundColor: Colors.green,
           ),
         );
@@ -152,14 +153,14 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
       } else {
         setState(() {
           _sendet = false;
-          _fehler = r['message']?.toString() ?? 'Der Code stimmt nicht.';
+          _fehler = r['message']?.toString() ?? t.signaturCodeFalsch;
         });
       }
     } catch (_) {
       if (mounted) {
         setState(() {
           _sendet = false;
-          _fehler = 'Keine Verbindung. Bitte später noch einmal versuchen.';
+          _fehler = t.signaturFehlgeschlagen;
         });
       }
     }
@@ -167,6 +168,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     if (_laedt) return const SizedBox.shrink();
     final s = _stand;
     if (s == null) return const SizedBox.shrink();
@@ -187,22 +189,20 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
             Row(children: [
               Icon(Icons.contact_mail_outlined, color: Colors.orange.shade800),
               const SizedBox(width: 10),
-              const Expanded(
-                child: Text('Stimmen diese Angaben noch?',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+              Expanded(
+                child: Text(t.kontaktNochAktuell,
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               ),
             ]),
             const SizedBox(height: 6),
             Text(
-              'Damit Sie nichts verpassen, fragen wir alle drei Monate kurz nach. '
-              'Sie bekommen einen sechsstelligen Code — und bestätigen damit, '
-              'dass wir Sie noch erreichen.',
+              t.kontaktWarumFragen,
               style: TextStyle(fontSize: 13, color: Colors.grey.shade800),
             ),
             const SizedBox(height: 14),
             if (_offenerKanal == null) ...[
-              _zeile(s, 'email', 'E-Mail-Adresse', Icons.alternate_email),
-              _zeile(s, 'telefon', 'Mobilnummer', Icons.smartphone),
+              _zeile(s, 'email', t.email, Icons.alternate_email),
+              _zeile(s, 'telefon', t.phoneMobileLabel, Icons.smartphone),
             ] else
               _codeEingabe(),
             if (_fehler != null) ...[
@@ -217,6 +217,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
   }
 
   Widget _zeile(Map<String, dynamic> s, String kanal, String titel, IconData icon) {
+    final t = AppLocalizations.of(context)!;
     final k = Map<String, dynamic>.from(s[kanal] ?? {});
     final faellig = k['faellig'] == true;
     final wert = (k['wert'] ?? '').toString();
@@ -241,10 +242,10 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
                     color: vorhanden ? Colors.black87 : Colors.grey.shade600,
                     fontStyle: vorhanden ? FontStyle.normal : FontStyle.italic)),
             if (smsUnmoeglich)
-              Text('Das ist eine Festnetznummer — dorthin kommt keine SMS an.',
+              Text(t.kontaktFestnetzKeinSms,
                   style: TextStyle(fontSize: 11, color: Colors.red.shade800)),
             if (!faellig && k['bestaetigt_am'] != null)
-              Text('bestätigt am ${_datum(k['bestaetigt_am'])}',
+              Text(t.kontaktBestaetigtAm(_datum(k['bestaetigt_am'])),
                   style: TextStyle(fontSize: 11, color: Colors.green.shade700)),
           ]),
         ),
@@ -259,11 +260,11 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
                     });
                     _codeAnfordern(kanal);
                   },
-            child: const Text('Bestätigen'),
+            child: Text(t.confirm),
           ),
         if (faellig)
           IconButton(
-            tooltip: kanal == 'email' ? 'Andere Adresse' : 'Andere Nummer',
+            tooltip: t.kontaktIstAndersGeworden,
             onPressed: _sendet
                 ? null
                 : () => setState(() {
@@ -280,6 +281,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
 
   /// Dialog für eine neue Adresse oder Nummer.
   Future<void> _neuEingeben(String kanal, String titel) async {
+    final t = AppLocalizations.of(context)!;
     final ok = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -291,11 +293,14 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
                 // nur im Inland „Deutschland"; eine rumänische 0755… wäre
                 // sonst still zu einer deutschen Nummer geworden, an der ein
                 // Fremder abhebt.
-                ? 'Bitte mit Ländervorwahl, zum Beispiel +49 176 1234567.\n\n'
-                  'Wir schicken den Code an die NEUE Nummer — erst wenn Sie ihn '
-                  'eingeben, wird sie übernommen.'
-                : 'Wir schicken den Code an die NEUE Adresse — erst wenn Sie ihn '
-                  'eingeben, wird sie übernommen.',
+                // ⚠️ Der Hinweis zur Ländervorwahl steht nur bei der Nummer.
+                // Er ist kein Schmuck: eine führende Null heißt nur im Inland
+                // „Deutschland" — eine rumänische 0755… würde sonst still zu
+                // einer deutschen Nummer, an der ein Fremder abhebt. Der
+                // Server weist sie zurück und schlägt die richtige Form vor;
+                // dieser Satz erspart den Fehlversuch.
+                ? '${t.kontaktWarumFragen}\n\n+49 176 1234567'
+                : t.kontaktWarumFragen,
             style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
           ),
           const SizedBox(height: 14),
@@ -312,8 +317,8 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
           ),
         ]),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Abbrechen')),
-          ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Code anfordern')),
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(t.cancel)),
+          ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: Text(t.signaturCodeAnfordern)),
         ],
       ),
     );
@@ -321,6 +326,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
   }
 
   Widget _codeEingabe() {
+    final t = AppLocalizations.of(context)!;
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
         _offenerKanal == 'email'
@@ -364,7 +370,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
             _offenerKanal = null;
             _fehler = null;
           }),
-          child: const Text('Abbrechen'),
+          child: Text(t.cancel),
         ),
         const Spacer(),
         if (_sendet)
@@ -372,7 +378,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
         else
           ElevatedButton(
             onPressed: _codeCtrl.text.trim().length == 6 ? _codePruefen : null,
-            child: const Text('Bestätigen'),
+            child: Text(t.confirm),
           ),
       ]),
     ]);

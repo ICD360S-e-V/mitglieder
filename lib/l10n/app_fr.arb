@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Vous avez signé",
   "signaturSiegelInArbeit": "Le cachet électronique n'est pas encore apposé. Veuillez réessayer dans une minute.",
   "signaturWartetZweiteUnterschrift": "En attente de la seconde signature",
-  "signaturWartenHinweis": "Vous avez signé. Le cachet électronique sera apposé dès que la seconde personne aura signé à son tour."
+  "signaturWartenHinweis": "Vous avez signé. Le cachet électronique sera apposé dès que la seconde personne aura signé à son tour.",
+  "kontaktNochAktuell": "Ces informations sont-elles toujours exactes ?",
+  "kontaktWarumFragen": "Pour que vous ne manquiez rien, nous demandons brièvement tous les trois mois. Vous recevrez un code à six chiffres.",
+  "kontaktBestaetigtAm": "confirmé le {datum}",
+  "kontaktFestnetzKeinSms": "Ceci est un numéro fixe — aucun SMS n’y parvient.",
+  "kontaktIstAndersGeworden": "Cela a changé"
 }

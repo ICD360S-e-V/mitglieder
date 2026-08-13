@@ -1392,5 +1392,10 @@
   "signaturFehlgeschlagen": "Nu a funcționat. Vă rugăm să încercați din nou.",
   "signaturSiegelInArbeit": "Sigiliul este încă în curs de creare. Vă rugăm să încercați din nou peste un minut.",
   "signaturWartetZweiteUnterschrift": "Așteaptă a doua semnătură",
-  "signaturWartenHinweis": "Ați semnat. Documentul va fi sigilat de îndată ce va semna și a doua persoană."
+  "signaturWartenHinweis": "Ați semnat. Documentul va fi sigilat de îndată ce va semna și a doua persoană.",
+  "kontaktNochAktuell": "Aceste date mai sunt valabile?",
+  "kontaktWarumFragen": "Ca să nu pierdeți nimic, întrebăm scurt o dată la trei luni. Veți primi un cod din șase cifre.",
+  "kontaktBestaetigtAm": "confirmat la {datum}",
+  "kontaktFestnetzKeinSms": "Acesta este un număr fix — acolo nu ajunge niciun SMS.",
+  "kontaktIstAndersGeworden": "S-a schimbat"
 }

@@ -2999,4 +2999,23 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'U heeft ondertekend. Het document wordt van een zegel voorzien zodra ook de tweede persoon heeft ondertekend.';
+
+  @override
+  String get kontaktNochAktuell => 'Kloppen deze gegevens nog?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Zodat u niets mist, vragen wij elke drie maanden kort na. U ontvangt een code van zes cijfers.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'bevestigd op $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Dit is een vast nummer — daar komt geen sms aan.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Het is gewijzigd';
 }

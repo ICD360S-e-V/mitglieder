@@ -2982,4 +2982,23 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Du har skrivit under. Det signerade dokumentet skapas så snart även den andra personen har skrivit under.';
+
+  @override
+  String get kontaktNochAktuell => 'Stämmer dessa uppgifter fortfarande?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'För att du inte ska missa något frågar vi kort var tredje månad. Du får en sexsiffrig kod.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'bekräftad $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Detta är ett fast nummer — inget sms kommer fram.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Det har ändrats';
 }

@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Podpisali ste dokument",
   "signaturSiegelInArbeit": "Žig se še pripravlja. Prosimo, poskusite znova čez eno minuto.",
   "signaturWartetZweiteUnterschrift": "Čaka se na drugi podpis",
-  "signaturWartenHinweis": "Podpisali ste. Dokument bo opremljen z žigom, ko ga bo podpisala tudi druga oseba."
+  "signaturWartenHinweis": "Podpisali ste. Dokument bo opremljen z žigom, ko ga bo podpisala tudi druga oseba.",
+  "kontaktNochAktuell": "Ali so ti podatki še vedno pravilni?",
+  "kontaktWarumFragen": "Da ne bi česa zamudili, na kratko vprašamo vsake tri mesece. Prejeli boste šestmestno kodo.",
+  "kontaktBestaetigtAm": "potrjeno {datum}",
+  "kontaktFestnetzKeinSms": "To je številka stacionarnega telefona — SMS tja ne pride.",
+  "kontaktIstAndersGeworden": "Se je spremenilo"
 }

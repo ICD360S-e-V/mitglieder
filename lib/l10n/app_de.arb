@@ -1419,5 +1419,15 @@
   "signaturWartenHinweis": "Sie haben unterschrieben. Das Dokument wird gesiegelt, sobald auch die zweite Person unterschrieben hat.",
   "@signaturWartenHinweis": {
     "description": "Hinweisfenster, wenn das Mitglied das noch nicht gesiegelte Dokument antippt"
-  }
+  },
+  "kontaktNochAktuell": "Stimmen diese Angaben noch?",
+  "@kontaktNochAktuell": {"description": "Titel der Karte, die alle 90 Tage nach E-Mail und Mobilnummer fragt"},
+  "kontaktWarumFragen": "Damit Sie nichts verpassen, fragen wir alle drei Monate kurz nach. Sie bekommen einen sechsstelligen Code.",
+  "@kontaktWarumFragen": {"description": "Erklaerung unter dem Titel"},
+  "kontaktBestaetigtAm": "bestätigt am {datum}",
+  "@kontaktBestaetigtAm": {"description": "Datum der letzten Bestaetigung"},
+  "kontaktFestnetzKeinSms": "Das ist eine Festnetznummer — dorthin kommt keine SMS an.",
+  "@kontaktFestnetzKeinSms": {"description": "Warnung, wenn im Mobilfeld ein Festnetzanschluss steht"},
+  "kontaktIstAndersGeworden": "Ist anders geworden",
+  "@kontaktIstAndersGeworden": {"description": "Knopf: Adresse oder Nummer hat sich geaendert"}
 }

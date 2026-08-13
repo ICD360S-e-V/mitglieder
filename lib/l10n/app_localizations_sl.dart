@@ -2987,4 +2987,23 @@ class AppLocalizationsSl extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Podpisali ste. Dokument bo opremljen z žigom, ko ga bo podpisala tudi druga oseba.';
+
+  @override
+  String get kontaktNochAktuell => 'Ali so ti podatki še vedno pravilni?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Da ne bi česa zamudili, na kratko vprašamo vsake tri mesece. Prejeli boste šestmestno kodo.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'potrjeno $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'To je številka stacionarnega telefona — SMS tja ne pride.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Se je spremenilo';
 }

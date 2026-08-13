@@ -2981,4 +2981,23 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Podepsal(a) jste. Dokument se připraví, jakmile jej podepíše i druhá osoba.';
+
+  @override
+  String get kontaktNochAktuell => 'Jsou tyto údaje stále aktuální?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Abyste o nic nepřišli, ptáme se krátce každé tři měsíce. Obdržíte šestimístný kód.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'potvrzeno $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Toto je pevná linka — SMS tam nedorazí.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Změnilo se';
 }
