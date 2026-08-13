@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
@@ -1109,6 +1110,8 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           enabled: canEdit,
           keyboardType: TextInputType.emailAddress,
         ),
+        const SizedBox(height: 12),
+        _buildVereinsMailZeile(),
         const SizedBox(height: 20),
         // Geburt section: Geburtsname + Geburtsort
         Row(
@@ -2377,6 +2380,79 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       onChanged: canEdit
           ? (v) => setState(() => _staatsangehoerigkeitController.text = v ?? '')
           : null,
+    );
+  }
+
+  /// Die Vereinsadresse: `<Mitgliedsnummer>@icd360s.de`.
+  ///
+  /// ⚠️ Berechnet, nicht gespeichert. Es gibt genau eine Spalte `users.email`,
+  /// und dort steht die private Adresse — an die geht die Post. Die
+  /// Vereinsadresse folgt zwingend aus der Mitgliedsnummer; sie zusätzlich
+  /// abzulegen hieße, zwei Werte gleichzuhalten, die sich nie unterscheiden
+  /// dürfen.
+  ///
+  /// ⚠️ Zeichengleich mit `_stufe1VereinsMailRow()` im Vorsitzer-Panel. Wer
+  /// eines von beiden ändert, ändert das andere mit — sonst sieht dasselbe
+  /// Mitglied in den zwei Anwendungen zwei verschiedene Adressen, und dann
+  /// gibt es keine Möglichkeit mehr zu sagen, welche stimmt.
+  ///
+  /// ⚠️ Nicht änderbar, und das steht auch dabei. Die Mitgliedsnummer ist der
+  /// Schlüssel des Kontos.
+  Widget _buildVereinsMailZeile() {
+    final nummer = widget.mitgliedernummer.trim();
+    if (nummer.isEmpty) return const SizedBox.shrink();
+    // ⚠️ Die Mitgliedsnummer behält ihre Großschreibung: M90566@icd360s.de,
+    // nicht m90566@. Sie steht so auf dem Mitgliedsausweis, und eine Adresse,
+    // die anders aussieht als die Nummer daneben, wirkt wie eine andere
+    // Angabe. Nur die Domäne ist klein — die ist ohnehin unveränderlich.
+    //
+    // Zustellung ist davon unberührt: die Spalten in `mailserver` haben die
+    // Kollation utf8mb4_unicode_ci, und am 13.08.2026 mit einer SMTP-Sonde
+    // gegenprobiert — Groß- und Kleinschreibung werden gleich angenommen.
+    final adresse = '$nummer@icd360s.de';
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade100,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.badge_outlined, size: 18, color: Colors.grey.shade600),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.email,
+                  style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
+                ),
+                const SizedBox(height: 2),
+                SelectableText(
+                  adresse,
+                  style: const TextStyle(fontSize: 14, fontFamily: 'monospace'),
+                ),
+              ],
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Clipboard.setData(ClipboardData(text: adresse));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(adresse),
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            },
+            icon: const Icon(Icons.copy, size: 18),
+            color: Colors.grey.shade600,
+            visualDensity: VisualDensity.compact,
+          ),
+        ],
+      ),
     );
   }
 
