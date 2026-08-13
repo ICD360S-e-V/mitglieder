@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.83.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.82.3...v1.83.0) (2026-08-13)
+
+
+### Features
+
+* **verifizierung:** Vereinsadresse neben der privaten in Stufe 1 ([#297](https://github.com/ICD360S-e-V/mitglieder/issues/297)) ([6afe2b4](https://github.com/ICD360S-e-V/mitglieder/commit/6afe2b4df68ba81d25b8e02d414bb514aa0d3ed7))
+
 ## [1.82.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.82.2...v1.82.3) (2026-08-12)
 
 
