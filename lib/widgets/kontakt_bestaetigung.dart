@@ -5,6 +5,12 @@ import '../l10n/app_localizations.dart';
 
 /// Bestätigung von E-Mail-Adresse und Mobilnummer.
 ///
+/// ⚠️ Diese Karte war bei ihrer ersten Auslieferung komplett auf Deutsch —
+/// zweiundzwanzig fest eingetippte Zeichenketten, kein einziger Aufruf von
+/// AppLocalizations, in einer App mit achtundzwanzig Sprachdateien. Wer hier
+/// etwas ergänzt, ergänzt es in `lib/l10n/app_de.arb` und in den siebenundzwanzig
+/// anderen; ein Text im Code ist an dieser Stelle immer ein Fehler.
+///
 /// Alle 90 Tage fragt der Verein nach, ob beides noch stimmt. Bestätigt wird
 /// mit einem sechsstelligen Code, der an genau diesen Kanal geht — eine
 /// Adresse, an der ein Code ankommt, ist eine Adresse, die es gibt.
