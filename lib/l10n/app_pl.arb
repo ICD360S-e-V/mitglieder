@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Podpisane przez Pana/Panią",
   "signaturSiegelInArbeit": "Podpisany dokument jest jeszcze przygotowywany. Proszę spróbować ponownie za minutę.",
   "signaturWartetZweiteUnterschrift": "Oczekiwanie na drugi podpis",
-  "signaturWartenHinweis": "Pana/Pani podpis został złożony. Dokument zostanie przygotowany, gdy tylko podpisze go również druga osoba."
+  "signaturWartenHinweis": "Pana/Pani podpis został złożony. Dokument zostanie przygotowany, gdy tylko podpisze go również druga osoba.",
+  "kontaktNochAktuell": "Czy te dane są nadal aktualne?",
+  "kontaktWarumFragen": "Abyś niczego nie przegapił, pytamy krótko co trzy miesiące. Otrzymasz sześciocyfrowy kod.",
+  "kontaktBestaetigtAm": "potwierdzono {datum}",
+  "kontaktFestnetzKeinSms": "To numer stacjonarny — SMS tam nie dotrze.",
+  "kontaktIstAndersGeworden": "Zmieniło się"
 }

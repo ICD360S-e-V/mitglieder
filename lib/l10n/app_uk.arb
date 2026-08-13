@@ -1392,5 +1392,10 @@
   "signaturFehlgeschlagen": "Не вийшло. Будь ласка, спробуйте ще раз.",
   "signaturSiegelInArbeit": "Печатка ще створюється. Будь ласка, спробуйте ще раз за хвилину.",
   "signaturWartetZweiteUnterschrift": "Очікує на другий підпис",
-  "signaturWartenHinweis": "Ви поставили підпис. Документ буде скріплено печаткою, щойно його підпише й друга особа."
+  "signaturWartenHinweis": "Ви поставили підпис. Документ буде скріплено печаткою, щойно його підпише й друга особа.",
+  "kontaktNochAktuell": "Ці дані ще актуальні?",
+  "kontaktWarumFragen": "Щоб ви нічого не пропустили, ми коротко запитуємо раз на три місяці. Ви отримаєте код із шести цифр.",
+  "kontaktBestaetigtAm": "підтверджено {datum}",
+  "kontaktFestnetzKeinSms": "Це стаціонарний номер — SMS туди не надійде.",
+  "kontaktIstAndersGeworden": "Змінилося"
 }

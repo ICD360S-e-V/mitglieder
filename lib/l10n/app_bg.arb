@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Подписано от Вас",
   "signaturSiegelInArbeit": "Електронният печат още се подготвя. Моля, опитайте отново след една минута.",
   "signaturWartetZweiteUnterschrift": "Чака втория подпис",
-  "signaturWartenHinweis": "Вие се подписахте. Документът ще получи електронен печат, след като го подпише и второто лице."
+  "signaturWartenHinweis": "Вие се подписахте. Документът ще получи електронен печат, след като го подпише и второто лице.",
+  "kontaktNochAktuell": "Тези данни още ли са актуални?",
+  "kontaktWarumFragen": "За да не пропуснете нищо, питаме накратко на всеки три месеца. Ще получите шестцифрен код.",
+  "kontaktBestaetigtAm": "потвърдено на {datum}",
+  "kontaktFestnetzKeinSms": "Това е стационарен номер — SMS не достига дотам.",
+  "kontaktIstAndersGeworden": "Промени се"
 }

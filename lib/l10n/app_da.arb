@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Underskrevet af dig",
   "signaturSiegelInArbeit": "Det signerede dokument er ved at blive oprettet. Prøv venligst igen om et minut.",
   "signaturWartetZweiteUnterschrift": "Venter på den anden underskrift",
-  "signaturWartenHinweis": "Du har skrevet under. Det signerede dokument bliver oprettet, så snart den anden person også har skrevet under."
+  "signaturWartenHinweis": "Du har skrevet under. Det signerede dokument bliver oprettet, så snart den anden person også har skrevet under.",
+  "kontaktNochAktuell": "Er disse oplysninger stadig korrekte?",
+  "kontaktWarumFragen": "For at du ikke går glip af noget, spørger vi kort hver tredje måned. Du får en sekscifret kode.",
+  "kontaktBestaetigtAm": "bekræftet den {datum}",
+  "kontaktFestnetzKeinSms": "Dette er et fastnetnummer — der kan ikke leveres sms.",
+  "kontaktIstAndersGeworden": "Det er ændret"
 }

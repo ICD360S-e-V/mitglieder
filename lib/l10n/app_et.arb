@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Olete allkirjastanud",
   "signaturSiegelInArbeit": "Allkirjastatud dokument on veel valmimisel. Palun proovige minuti pärast uuesti.",
   "signaturWartetZweiteUnterschrift": "Ootab teist allkirja",
-  "signaturWartenHinweis": "Olete allkirjastanud. Dokument valmib, niipea kui ka teine isik on selle allkirjastanud."
+  "signaturWartenHinweis": "Olete allkirjastanud. Dokument valmib, niipea kui ka teine isik on selle allkirjastanud.",
+  "kontaktNochAktuell": "Kas need andmed on veel õiged?",
+  "kontaktWarumFragen": "Et te midagi ei jääks ilma, küsime lühidalt iga kolme kuu tagant. Saate kuuekohalise koodi.",
+  "kontaktBestaetigtAm": "kinnitatud {datum}",
+  "kontaktFestnetzKeinSms": "See on lauatelefoni number — SMS sinna ei jõua.",
+  "kontaktIstAndersGeworden": "On muutunud"
 }

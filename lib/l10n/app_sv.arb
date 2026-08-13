@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Underskrivet av dig",
   "signaturSiegelInArbeit": "Det signerade dokumentet håller på att skapas. Försök gärna igen om en minut.",
   "signaturWartetZweiteUnterschrift": "Väntar på den andra underskriften",
-  "signaturWartenHinweis": "Du har skrivit under. Det signerade dokumentet skapas så snart även den andra personen har skrivit under."
+  "signaturWartenHinweis": "Du har skrivit under. Det signerade dokumentet skapas så snart även den andra personen har skrivit under.",
+  "kontaktNochAktuell": "Stämmer dessa uppgifter fortfarande?",
+  "kontaktWarumFragen": "För att du inte ska missa något frågar vi kort var tredje månad. Du får en sexsiffrig kod.",
+  "kontaktBestaetigtAm": "bekräftad {datum}",
+  "kontaktFestnetzKeinSms": "Detta är ett fast nummer — inget sms kommer fram.",
+  "kontaktIstAndersGeworden": "Det har ändrats"
 }

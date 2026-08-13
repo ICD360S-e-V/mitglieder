@@ -2990,4 +2990,23 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'You have signed. The document will be sealed as soon as the second person has signed as well.';
+
+  @override
+  String get kontaktNochAktuell => 'Are these details still correct?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'So that you do not miss anything, we ask briefly every three months. You will receive a six-digit code.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'confirmed on $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'This is a landline number — no SMS can be delivered there.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'It has changed';
 }

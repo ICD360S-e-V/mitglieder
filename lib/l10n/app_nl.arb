@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Door u ondertekend",
   "signaturSiegelInArbeit": "Het zegel wordt nog aangemaakt. Probeer het over een minuut opnieuw.",
   "signaturWartetZweiteUnterschrift": "Wacht op de tweede handtekening",
-  "signaturWartenHinweis": "U heeft ondertekend. Het document wordt van een zegel voorzien zodra ook de tweede persoon heeft ondertekend."
+  "signaturWartenHinweis": "U heeft ondertekend. Het document wordt van een zegel voorzien zodra ook de tweede persoon heeft ondertekend.",
+  "kontaktNochAktuell": "Kloppen deze gegevens nog?",
+  "kontaktWarumFragen": "Zodat u niets mist, vragen wij elke drie maanden kort na. U ontvangt een code van zes cijfers.",
+  "kontaktBestaetigtAm": "bevestigd op {datum}",
+  "kontaktFestnetzKeinSms": "Dit is een vast nummer — daar komt geen sms aan.",
+  "kontaktIstAndersGeworden": "Het is gewijzigd"
 }

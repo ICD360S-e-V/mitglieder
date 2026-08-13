@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Jūsų pasirašyta",
   "signaturSiegelInArbeit": "Elektroninis spaudas dar ruošiamas. Prašome pabandyti dar kartą po minutės.",
   "signaturWartetZweiteUnterschrift": "Laukiama antrojo parašo",
-  "signaturWartenHinweis": "Jūs pasirašėte. Dokumentas bus patvirtintas elektroniniu spaudu, kai tik jį pasirašys ir antrasis asmuo."
+  "signaturWartenHinweis": "Jūs pasirašėte. Dokumentas bus patvirtintas elektroniniu spaudu, kai tik jį pasirašys ir antrasis asmuo.",
+  "kontaktNochAktuell": "Ar šie duomenys vis dar teisingi?",
+  "kontaktWarumFragen": "Kad nieko nepraleistumėte, trumpai pasiteiraujame kas tris mėnesius. Gausite šešių skaitmenų kodą.",
+  "kontaktBestaetigtAm": "patvirtinta {datum}",
+  "kontaktFestnetzKeinSms": "Tai fiksuotojo ryšio numeris — SMS ten nepasieks.",
+  "kontaktIstAndersGeworden": "Pasikeitė"
 }

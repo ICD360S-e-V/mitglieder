@@ -2983,4 +2983,23 @@ class AppLocalizationsNb extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Du har skrevet under. Dokumentet blir forseglet så snart den andre personen også har skrevet under.';
+
+  @override
+  String get kontaktNochAktuell => 'Stemmer disse opplysningene fortsatt?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'For at du ikke skal gå glipp av noe, spør vi kort hver tredje måned. Du får en sekssifret kode.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'bekreftet $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Dette er et fasttelefonnummer — SMS kommer ikke fram.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Det er endret';
 }

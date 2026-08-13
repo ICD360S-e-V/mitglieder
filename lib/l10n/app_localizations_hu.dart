@@ -2991,4 +2991,23 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Ön aláírta. A dokumentum elektronikus bélyegzőt kap, amint a második személy is aláírta.';
+
+  @override
+  String get kontaktNochAktuell => 'Ezek az adatok még érvényesek?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Hogy semmiről ne maradjon le, háromhavonta röviden rákérdezünk. Hatjegyű kódot fog kapni.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'megerősítve: $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Ez vezetékes szám — oda nem érkezik SMS.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Megváltozott';
 }

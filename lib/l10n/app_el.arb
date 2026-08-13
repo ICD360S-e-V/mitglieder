@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Υπογράφηκε από εσάς",
   "signaturSiegelInArbeit": "Η σφραγίδα δημιουργείται ακόμη. Παρακαλώ δοκιμάστε ξανά σε ένα λεπτό.",
   "signaturWartetZweiteUnterschrift": "Αναμένεται η δεύτερη υπογραφή",
-  "signaturWartenHinweis": "Έχετε υπογράψει. Το έγγραφο θα σφραγιστεί μόλις υπογράψει και το δεύτερο άτομο."
+  "signaturWartenHinweis": "Έχετε υπογράψει. Το έγγραφο θα σφραγιστεί μόλις υπογράψει και το δεύτερο άτομο.",
+  "kontaktNochAktuell": "Αυτά τα στοιχεία ισχύουν ακόμη;",
+  "kontaktWarumFragen": "Για να μη χάσετε τίποτα, ρωτάμε σύντομα κάθε τρεις μήνες. Θα λάβετε έναν εξαψήφιο κωδικό.",
+  "kontaktBestaetigtAm": "επιβεβαιώθηκε στις {datum}",
+  "kontaktFestnetzKeinSms": "Αυτός είναι αριθμός σταθερού — δεν φτάνει SMS εκεί.",
+  "kontaktIstAndersGeworden": "Έχει αλλάξει"
 }

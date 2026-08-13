@@ -2983,4 +2983,23 @@ class AppLocalizationsHr extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Potpisali ste. Dokument će biti ovjeren pečatom čim ga potpiše i druga osoba.';
+
+  @override
+  String get kontaktNochAktuell => 'Jesu li ovi podaci još uvijek točni?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Kako ne biste ništa propustili, kratko pitamo svaka tri mjeseca. Dobit ćete šesteroznamenkasti kod.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'potvrđeno $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Ovo je broj fiksne linije — SMS onamo ne stiže.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Promijenilo se';
 }

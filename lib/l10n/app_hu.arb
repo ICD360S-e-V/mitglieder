@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Ön aláírta",
   "signaturSiegelInArbeit": "Az elektronikus bélyegző még készül. Kérjük, próbálja meg egy perc múlva újra.",
   "signaturWartetZweiteUnterschrift": "A második aláírásra vár",
-  "signaturWartenHinweis": "Ön aláírta. A dokumentum elektronikus bélyegzőt kap, amint a második személy is aláírta."
+  "signaturWartenHinweis": "Ön aláírta. A dokumentum elektronikus bélyegzőt kap, amint a második személy is aláírta.",
+  "kontaktNochAktuell": "Ezek az adatok még érvényesek?",
+  "kontaktWarumFragen": "Hogy semmiről ne maradjon le, háromhavonta röviden rákérdezünk. Hatjegyű kódot fog kapni.",
+  "kontaktBestaetigtAm": "megerősítve: {datum}",
+  "kontaktFestnetzKeinSms": "Ez vezetékes szám — oda nem érkezik SMS.",
+  "kontaktIstAndersGeworden": "Megváltozott"
 }

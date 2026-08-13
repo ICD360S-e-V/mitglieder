@@ -2981,4 +2981,23 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Olete allkirjastanud. Dokument valmib, niipea kui ka teine isik on selle allkirjastanud.';
+
+  @override
+  String get kontaktNochAktuell => 'Kas need andmed on veel õiged?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Et te midagi ei jääks ilma, küsime lühidalt iga kolme kuu tagant. Saate kuuekohalise koodi.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'kinnitatud $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'See on lauatelefoni number — SMS sinna ei jõua.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'On muutunud';
 }
