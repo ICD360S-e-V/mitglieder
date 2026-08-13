@@ -3000,4 +3000,23 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Lei ha firmato. Il documento verrà sigillato non appena avrà firmato anche la seconda persona.';
+
+  @override
+  String get kontaktNochAktuell => 'Questi dati sono ancora corretti?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Affinché non perda nulla, chiediamo brevemente ogni tre mesi. Riceverà un codice di sei cifre.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'confermato il $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Questo è un numero fisso: non arriva alcun SMS.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'È cambiato';
 }

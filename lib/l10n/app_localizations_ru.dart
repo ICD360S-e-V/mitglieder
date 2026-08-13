@@ -2987,4 +2987,23 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Вы поставили подпись. Документ будет скреплён печатью, как только его подпишет и второй человек.';
+
+  @override
+  String get kontaktNochAktuell => 'Эти данные ещё актуальны?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Чтобы вы ничего не пропустили, мы коротко спрашиваем раз в три месяца. Вы получите код из шести цифр.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'подтверждено $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Это стационарный номер — SMS туда не дойдёт.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Изменилось';
 }

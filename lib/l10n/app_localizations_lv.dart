@@ -2983,4 +2983,23 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Jūs to parakstījāt. Dokumentam tiks uzlikts zīmogs, tiklīdz to parakstīs arī otra persona.';
+
+  @override
+  String get kontaktNochAktuell => 'Vai šie dati joprojām ir pareizi?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Lai jūs neko nepalaistu garām, mēs īsi jautājam ik pēc trim mēnešiem. Jūs saņemsiet sešciparu kodu.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'apstiprināts $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Šis ir fiksētā tālruņa numurs — SMS tur nenonāks.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Ir mainījies';
 }

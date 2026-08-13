@@ -3006,4 +3006,23 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Έχετε υπογράψει. Το έγγραφο θα σφραγιστεί μόλις υπογράψει και το δεύτερο άτομο.';
+
+  @override
+  String get kontaktNochAktuell => 'Αυτά τα στοιχεία ισχύουν ακόμη;';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Για να μη χάσετε τίποτα, ρωτάμε σύντομα κάθε τρεις μήνες. Θα λάβετε έναν εξαψήφιο κωδικό.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'επιβεβαιώθηκε στις $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Αυτός είναι αριθμός σταθερού — δεν φτάνει SMS εκεί.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Έχει αλλάξει';
 }

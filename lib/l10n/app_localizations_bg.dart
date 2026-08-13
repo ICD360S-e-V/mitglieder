@@ -2990,4 +2990,23 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Вие се подписахте. Документът ще получи електронен печат, след като го подпише и второто лице.';
+
+  @override
+  String get kontaktNochAktuell => 'Тези данни още ли са актуални?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'За да не пропуснете нищо, питаме накратко на всеки три месеца. Ще получите шестцифрен код.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'потвърдено на $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Това е стационарен номер — SMS не достига дотам.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Промени се';
 }

@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Potpisali ste dokument",
   "signaturSiegelInArbeit": "Pečat se još izrađuje. Molimo pokušajte ponovno za jednu minutu.",
   "signaturWartetZweiteUnterschrift": "Čeka se drugi potpis",
-  "signaturWartenHinweis": "Potpisali ste. Dokument će biti ovjeren pečatom čim ga potpiše i druga osoba."
+  "signaturWartenHinweis": "Potpisali ste. Dokument će biti ovjeren pečatom čim ga potpiše i druga osoba.",
+  "kontaktNochAktuell": "Jesu li ovi podaci još uvijek točni?",
+  "kontaktWarumFragen": "Kako ne biste ništa propustili, kratko pitamo svaka tri mjeseca. Dobit ćete šesteroznamenkasti kod.",
+  "kontaktBestaetigtAm": "potvrđeno {datum}",
+  "kontaktFestnetzKeinSms": "Ovo je broj fiksne linije — SMS onamo ne stiže.",
+  "kontaktIstAndersGeworden": "Promijenilo se"
 }

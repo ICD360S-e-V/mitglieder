@@ -3013,4 +3013,24 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Vous avez signé. Le cachet électronique sera apposé dès que la seconde personne aura signé à son tour.';
+
+  @override
+  String get kontaktNochAktuell =>
+      'Ces informations sont-elles toujours exactes ?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Pour que vous ne manquiez rien, nous demandons brièvement tous les trois mois. Vous recevrez un code à six chiffres.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'confirmé le $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Ceci est un numéro fixe — aucun SMS n’y parvient.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Cela a changé';
 }

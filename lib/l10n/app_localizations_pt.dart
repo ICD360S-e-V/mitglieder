@@ -2991,4 +2991,23 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Já assinou. O documento será selado assim que a segunda pessoa também tiver assinado.';
+
+  @override
+  String get kontaktNochAktuell => 'Estes dados ainda estão corretos?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Para que não perca nada, perguntamos brevemente a cada três meses. Receberá um código de seis dígitos.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'confirmado em $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Este é um número fixo — não chega nenhum SMS.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Foi alterado';
 }

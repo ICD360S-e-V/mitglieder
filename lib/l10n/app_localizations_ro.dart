@@ -2992,4 +2992,23 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Ați semnat. Documentul va fi sigilat de îndată ce va semna și a doua persoană.';
+
+  @override
+  String get kontaktNochAktuell => 'Aceste date mai sunt valabile?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Ca să nu pierdeți nimic, întrebăm scurt o dată la trei luni. Veți primi un cod din șase cifre.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'confirmat la $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Acesta este un număr fix — acolo nu ajunge niciun SMS.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'S-a schimbat';
 }

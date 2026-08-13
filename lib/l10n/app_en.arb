@@ -1392,5 +1392,10 @@
   "signaturFehlgeschlagen": "That did not work. Please try again.",
   "signaturSiegelInArbeit": "The seal is still being created. Please try again in a minute.",
   "signaturWartetZweiteUnterschrift": "Waiting for the second signature",
-  "signaturWartenHinweis": "You have signed. The document will be sealed as soon as the second person has signed as well."
+  "signaturWartenHinweis": "You have signed. The document will be sealed as soon as the second person has signed as well.",
+  "kontaktNochAktuell": "Are these details still correct?",
+  "kontaktWarumFragen": "So that you do not miss anything, we ask briefly every three months. You will receive a six-digit code.",
+  "kontaktBestaetigtAm": "confirmed on {datum}",
+  "kontaktFestnetzKeinSms": "This is a landline number — no SMS can be delivered there.",
+  "kontaktIstAndersGeworden": "It has changed"
 }

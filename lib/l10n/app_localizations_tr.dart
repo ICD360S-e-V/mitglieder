@@ -2986,4 +2986,23 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'İmzaladınız. Belge, ikinci kişi de imzaladığında mühürlenecek.';
+
+  @override
+  String get kontaktNochAktuell => 'Bu bilgiler hâlâ doğru mu?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Hiçbir şeyi kaçırmamanız için üç ayda bir kısaca soruyoruz. Altı haneli bir kod alacaksınız.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return '$datum tarihinde onaylandı';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Bu bir sabit hat numarası — oraya SMS ulaşmaz.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Değişti';
 }

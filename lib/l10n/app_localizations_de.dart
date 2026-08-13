@@ -3007,4 +3007,23 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get signaturWartenHinweis =>
       'Sie haben unterschrieben. Das Dokument wird gesiegelt, sobald auch die zweite Person unterschrieben hat.';
+
+  @override
+  String get kontaktNochAktuell => 'Stimmen diese Angaben noch?';
+
+  @override
+  String get kontaktWarumFragen =>
+      'Damit Sie nichts verpassen, fragen wir alle drei Monate kurz nach. Sie bekommen einen sechsstelligen Code.';
+
+  @override
+  String kontaktBestaetigtAm(Object datum) {
+    return 'bestätigt am $datum';
+  }
+
+  @override
+  String get kontaktFestnetzKeinSms =>
+      'Das ist eine Festnetznummer — dorthin kommt keine SMS an.';
+
+  @override
+  String get kontaktIstAndersGeworden => 'Ist anders geworden';
 }

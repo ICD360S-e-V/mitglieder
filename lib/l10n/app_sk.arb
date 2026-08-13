@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Podpísané vami",
   "signaturSiegelInArbeit": "Podpísaný dokument sa ešte pripravuje. Skúste to prosím o minútu znova.",
   "signaturWartetZweiteUnterschrift": "Čaká sa na druhý podpis",
-  "signaturWartenHinweis": "Podpísali ste. Dokument sa pripraví, hneď ako ho podpíše aj druhá osoba."
+  "signaturWartenHinweis": "Podpísali ste. Dokument sa pripraví, hneď ako ho podpíše aj druhá osoba.",
+  "kontaktNochAktuell": "Sú tieto údaje stále aktuálne?",
+  "kontaktWarumFragen": "Aby ste o nič neprišli, krátko sa pýtame každé tri mesiace. Dostanete šesťmiestny kód.",
+  "kontaktBestaetigtAm": "potvrdené {datum}",
+  "kontaktFestnetzKeinSms": "Toto je pevná linka — SMS tam nedorazí.",
+  "kontaktIstAndersGeworden": "Zmenilo sa"
 }

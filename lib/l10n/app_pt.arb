@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Assinado por si",
   "signaturSiegelInArbeit": "O documento selado ainda está a ser preparado. Por favor, tente novamente dentro de um minuto.",
   "signaturWartetZweiteUnterschrift": "À espera da segunda assinatura",
-  "signaturWartenHinweis": "Já assinou. O documento será selado assim que a segunda pessoa também tiver assinado."
+  "signaturWartenHinweis": "Já assinou. O documento será selado assim que a segunda pessoa também tiver assinado.",
+  "kontaktNochAktuell": "Estes dados ainda estão corretos?",
+  "kontaktWarumFragen": "Para que não perca nada, perguntamos brevemente a cada três meses. Receberá um código de seis dígitos.",
+  "kontaktBestaetigtAm": "confirmado em {datum}",
+  "kontaktFestnetzKeinSms": "Este é um número fixo — não chega nenhum SMS.",
+  "kontaktIstAndersGeworden": "Foi alterado"
 }

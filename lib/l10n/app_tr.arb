@@ -1413,5 +1413,10 @@
   "signaturFehlgeschlagen": "Bu işe yaramadı. Lütfen tekrar deneyin.",
   "signaturSiegelInArbeit": "Mühür henüz oluşturuluyor. Lütfen bir dakika sonra tekrar deneyin.",
   "signaturWartetZweiteUnterschrift": "İkinci imzayı bekliyor",
-  "signaturWartenHinweis": "İmzaladınız. Belge, ikinci kişi de imzaladığında mühürlenecek."
+  "signaturWartenHinweis": "İmzaladınız. Belge, ikinci kişi de imzaladığında mühürlenecek.",
+  "kontaktNochAktuell": "Bu bilgiler hâlâ doğru mu?",
+  "kontaktWarumFragen": "Hiçbir şeyi kaçırmamanız için üç ayda bir kısaca soruyoruz. Altı haneli bir kod alacaksınız.",
+  "kontaktBestaetigtAm": "{datum} tarihinde onaylandı",
+  "kontaktFestnetzKeinSms": "Bu bir sabit hat numarası — oraya SMS ulaşmaz.",
+  "kontaktIstAndersGeworden": "Değişti"
 }

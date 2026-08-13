@@ -1392,5 +1392,10 @@
   "signaturStatusSigniert": "Olet allekirjoittanut",
   "signaturSiegelInArbeit": "Allekirjoitettua asiakirjaa valmistellaan vielä. Yritäthän uudelleen minuutin kuluttua.",
   "signaturWartetZweiteUnterschrift": "Odottaa toista allekirjoitusta",
-  "signaturWartenHinweis": "Olet allekirjoittanut. Asiakirja valmistellaan, heti kun myös toinen henkilö on allekirjoittanut sen."
+  "signaturWartenHinweis": "Olet allekirjoittanut. Asiakirja valmistellaan, heti kun myös toinen henkilö on allekirjoittanut sen.",
+  "kontaktNochAktuell": "Ovatko nämä tiedot yhä ajan tasalla?",
+  "kontaktWarumFragen": "Jotta et menetä mitään, kysymme lyhyesti kolmen kuukauden välein. Saat kuusinumeroisen koodin.",
+  "kontaktBestaetigtAm": "vahvistettu {datum}",
+  "kontaktFestnetzKeinSms": "Tämä on lankapuhelinnumero — tekstiviesti ei mene perille.",
+  "kontaktIstAndersGeworden": "On muuttunut"
 }
