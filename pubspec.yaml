@@ -169,7 +169,7 @@ dependencies:
   flutter_background_service_android: ^6.2.4
 
   # WorkManager for background tasks (NO Google!)
-  workmanager: ^0.9.0
+  workmanager: ^0.10.7
 
   # ============================================
   # DESKTOP SUPPORT (Windows, macOS, Linux)
