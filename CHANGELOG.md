@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.84.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.1...v1.84.2) (2026-08-16)
+
+
+### Bug Fixes
+
+* **ios:** stop sending update traffic to a non-existent App Store page ([#284](https://github.com/ICD360S-e-V/mitglieder/issues/284)) ([3875ae9](https://github.com/ICD360S-e-V/mitglieder/commit/3875ae9d4e6197a8cb95c99efd47366d8407566b))
+
 ## [1.84.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.0...v1.84.1) (2026-08-13)
 
 
