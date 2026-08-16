@@ -38,11 +38,29 @@ class UpdateService {
     return '${_releaseAssetBase}version_mitglieder_android.json';
   }
 
-  /// TODO(ios-release): replace with the real numeric App Store ID once the
-  /// iOS build is published in App Store Connect (e.g. '6451234567').
-  /// While left at the placeholder, [openAppStore] launches a non-resolving
-  /// URL — acceptable only because the iOS flavor is not shipped yet.
-  static const String _iosAppStoreId = '000000000';
+  /// Numeric App Store ID, or null while the iOS build has no listing.
+  ///
+  /// Null rather than a placeholder, because a placeholder reads as a working
+  /// value everywhere it is used. The previous '000000000' produced a
+  /// well-formed apps.apple.com URL, and `canLaunchUrl` answers true for any
+  /// well-formed https URL, so the guards around it passed and the App Store
+  /// opened on a "not found" page. Null cannot be mistaken for an ID and
+  /// forces every call site to decide what to do without one.
+  ///
+  /// Set this to the numeric ID from App Store Connect (e.g. '6451234567')
+  /// when the iOS build is published; [hasAppStoreListing] then turns true and
+  /// the paths below start working with no other change. The analyzer will
+  /// then suggest dropping the `?` from the type, which is safe to accept.
+  static const String? _iosAppStoreId = null;
+
+  /// Whether an App Store page exists to send iOS users to.
+  // `?? ''` rather than a null check: Dart does not promote static fields, so
+  // `_iosAppStoreId != null && _iosAppStoreId.isNotEmpty` does not compile.
+  static bool get hasAppStoreListing => (_iosAppStoreId ?? '').isNotEmpty;
+
+  static Uri? get _appStoreUri => hasAppStoreListing
+      ? Uri.parse('https://apps.apple.com/app/icd360s-mitglieder/id$_iosAppStoreId')
+      : null;
   static String _currentVersion = 'unknown';
 
   /// Initialize version from pubspec.yaml via package_info_plus
@@ -434,15 +452,12 @@ class UpdateService {
         }
         return true;
       } else if (Platform.isIOS) {
-        // iOS: Open App Store page (self-update not supported)
-        // This should ideally be called with the App Store URL instead
-        _log.info('iOS: Redirecting to App Store', tag: 'UPDATE');
-        final appStoreUrl = Uri.parse('https://apps.apple.com/app/icd360s-mitglieder/id$_iosAppStoreId');
-        if (await canLaunchUrl(appStoreUrl)) {
-          await launchUrl(appStoreUrl, mode: LaunchMode.externalApplication);
-          return true;
-        }
-        return false;
+        // iOS cannot install anything itself; the App Store is the only route,
+        // and without a listing there is nowhere to send the user. Reporting
+        // failure is better than opening a "not found" page and letting them
+        // conclude the update is broken.
+        _log.info('iOS: handing off to the App Store', tag: 'UPDATE');
+        return openAppStore();
       } else if (Platform.isWindows) {
         return await _launchWindowsInstaller(installerPath, silent: silent);
       } else if (Platform.isMacOS) {
@@ -508,16 +523,29 @@ class UpdateService {
     exit(0);
   }
 
-  /// Open the App Store page for iOS updates
-  /// Call this instead of downloadUpdate on iOS
-  Future<void> openAppStore() async {
+  /// Open the App Store listing, which is how iOS updates are delivered.
+  ///
+  /// Returns false when there is no listing to open, so a caller can say so
+  /// rather than assume the App Store came up.
+  Future<bool> openAppStore() async {
+    final uri = _appStoreUri;
+    if (uri == null) {
+      _log.error(
+        'No App Store listing configured - the iOS build is not published, '
+        'so there is no update route on this platform',
+        tag: 'UPDATE',
+      );
+      return false;
+    }
     try {
-      final appStoreUrl = Uri.parse('https://apps.apple.com/app/icd360s-mitglieder/id$_iosAppStoreId');
-      if (await canLaunchUrl(appStoreUrl)) {
-        await launchUrl(appStoreUrl, mode: LaunchMode.externalApplication);
+      if (await canLaunchUrl(uri)) {
+        return launchUrl(uri, mode: LaunchMode.externalApplication);
       }
+      _log.error('App Store URL could not be launched: $uri', tag: 'UPDATE');
+      return false;
     } catch (e) {
-      _log.info('Error opening App Store: $e', tag: 'UPDATE');
+      _log.error('Error opening App Store: $e', tag: 'UPDATE');
+      return false;
     }
   }
 }
