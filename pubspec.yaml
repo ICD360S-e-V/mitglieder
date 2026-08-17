@@ -107,7 +107,7 @@ dependencies:
   pasteboard: ^0.5.0
 
   # Android local notifications
-  flutter_local_notifications: ^21.0.0
+  flutter_local_notifications: ^22.3.0
 
   # Device info for unique device identification
   # Pinned: 12.4.0 uses NSProcessInfo.isiOSAppOnVision unavailable in Xcode 16.x SDK
