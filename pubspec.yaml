@@ -130,7 +130,7 @@ dependencies:
   uuid: ^4.6.0
 
   # Date formatting and week number calculation
-  intl: ^0.20.2
+  intl: ^0.20.3
 
   # File picker for chat attachments
   file_picker: ^10.3.10
