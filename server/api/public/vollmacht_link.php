@@ -83,6 +83,9 @@ function vlText(string $sprache): array
             'fehler' => 'Etwas ist schiefgegangen. Bitte versuchen Sie es noch einmal.',
             'leer' => 'Bitte unterschreiben Sie zuerst.',
             'code_leer' => 'Bitte geben Sie den Code ein.',
+            'neu_nur_vorstand' => 'Einen neuen Link zum Unterschreiben schickt nur der Verein. Er wurde benachrichtigt.',
+            'einmal_t' => 'Dieser Link wurde bereits geöffnet.',
+            'einmal_x' => 'Jeder Link gilt nur auf einem Gerät und nur einmal. Wenn Sie ihn nicht selbst geöffnet haben, sagen Sie dem Verein Bescheid.',
         ],
         'ro' => [
             'titel_lesen' => 'Împuternicire spre citire', 'titel_sig' => 'Semnați împuternicirea',
@@ -109,6 +112,9 @@ function vlText(string $sprache): array
             'fehler' => 'Ceva nu a mers. Vă rugăm încercați din nou.',
             'leer' => 'Vă rugăm semnați mai întâi.',
             'code_leer' => 'Vă rugăm introduceți codul.',
+            'neu_nur_vorstand' => 'Un link nou pentru semnare îl trimite doar asociația. A fost înștiințată.',
+            'einmal_t' => 'Acest link a fost deja deschis.',
+            'einmal_x' => 'Fiecare link este valabil pe un singur dispozitiv și o singură dată. Dacă nu l-ați deschis dumneavoastră, anunțați asociația.',
         ],
         'en' => [
             'titel_lesen' => 'Power of attorney to read', 'titel_sig' => 'Sign the power of attorney',
@@ -135,6 +141,9 @@ function vlText(string $sprache): array
             'fehler' => 'Something went wrong. Please try again.',
             'leer' => 'Please sign first.',
             'code_leer' => 'Please enter the code.',
+            'neu_nur_vorstand' => 'Only the association can send a new link for signing. It has been notified.',
+            'einmal_t' => 'This link has already been opened.',
+            'einmal_x' => 'Each link works on one device and only once. If you did not open it yourself, please tell the association.',
         ],
         'ru' => [
             'titel_lesen' => 'Доверенность для чтения', 'titel_sig' => 'Подписать доверенность',
@@ -161,6 +170,9 @@ function vlText(string $sprache): array
             'fehler' => 'Что-то пошло не так. Попробуйте ещё раз.',
             'leer' => 'Сначала распишитесь.',
             'code_leer' => 'Введите код.',
+            'neu_nur_vorstand' => 'Новую ссылку для подписи отправляет только объединение. Оно уведомлено.',
+            'einmal_t' => 'Эта ссылка уже была открыта.',
+            'einmal_x' => 'Каждая ссылка работает на одном устройстве и только один раз. Если вы её не открывали, сообщите объединению.',
         ],
         'uk' => [
             'titel_lesen' => 'Довіреність для читання', 'titel_sig' => 'Підписати довіреність',
@@ -187,6 +199,9 @@ function vlText(string $sprache): array
             'fehler' => 'Щось пішло не так. Спробуйте ще раз.',
             'leer' => 'Спочатку підпишіться.',
             'code_leer' => 'Введіть код.',
+            'neu_nur_vorstand' => 'Нове посилання для підпису надсилає лише об’єднання. Його повідомлено.',
+            'einmal_t' => 'Це посилання вже було відкрито.',
+            'einmal_x' => 'Кожне посилання працює на одному пристрої і лише один раз. Якщо ви його не відкривали, повідомте об’єднання.',
         ],
         'tr' => [
             'titel_lesen' => 'Okumak için vekaletname', 'titel_sig' => 'Vekaletnameyi imzalayın',
@@ -213,6 +228,9 @@ function vlText(string $sprache): array
             'fehler' => 'Bir şeyler ters gitti. Lütfen tekrar deneyin.',
             'leer' => 'Lütfen önce imzalayın.',
             'code_leer' => 'Lütfen kodu girin.',
+            'neu_nur_vorstand' => 'İmza için yeni bağlantıyı yalnızca dernek gönderir. Bilgilendirildi.',
+            'einmal_t' => 'Bu bağlantı zaten açılmış.',
+            'einmal_x' => 'Her bağlantı tek bir cihazda ve yalnızca bir kez geçerlidir. Siz açmadıysanız derneğe haber verin.',
         ],
         'ar' => [
             'titel_lesen' => 'توكيل للقراءة', 'titel_sig' => 'توقيع التوكيل',
@@ -239,6 +257,9 @@ function vlText(string $sprache): array
             'fehler' => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.',
             'leer' => 'يرجى التوقيع أولاً.',
             'code_leer' => 'يرجى إدخال الرمز.',
+            'neu_nur_vorstand' => 'الرابط الجديد للتوقيع ترسله الجمعية فقط. وقد تم إبلاغها.',
+            'einmal_t' => 'تم فتح هذا الرابط بالفعل.',
+            'einmal_x' => 'كل رابط يعمل على جهاز واحد ومرة واحدة فقط. إذا لم تفتحه بنفسك، فأبلغ الجمعية.',
         ],
         'fr' => [
             'titel_lesen' => 'Procuration à lire',
@@ -275,6 +296,9 @@ function vlText(string $sprache): array
             'fehler' => 'Quelque chose s\'est mal passé. Veuillez réessayer.',
             'leer' => 'Veuillez d\'abord signer.',
             'code_leer' => 'Veuillez saisir le code.',
+            'neu_nur_vorstand' => 'Seule l\'association peut envoyer un nouveau lien de signature. Elle a été informée.',
+            'einmal_t' => 'Ce lien a déjà été ouvert.',
+            'einmal_x' => 'Chaque lien ne fonctionne que sur un appareil et une seule fois. Si vous ne l\'avez pas ouvert vous-même, prévenez l\'association.',
         ],
         'es' => [
             'titel_lesen' => 'Poder para leer',
@@ -311,6 +335,9 @@ function vlText(string $sprache): array
             'fehler' => 'Algo ha salido mal. Inténtelo de nuevo.',
             'leer' => 'Firme primero, por favor.',
             'code_leer' => 'Introduzca el código, por favor.',
+            'neu_nur_vorstand' => 'Un nuevo enlace para firmar solo lo envía la asociación. Ha sido informada.',
+            'einmal_t' => 'Este enlace ya se ha abierto.',
+            'einmal_x' => 'Cada enlace funciona en un solo dispositivo y una sola vez. Si no lo ha abierto usted, avise a la asociación.',
         ],
         'it' => [
             'titel_lesen' => 'Procura da leggere',
@@ -347,6 +374,9 @@ function vlText(string $sprache): array
             'fehler' => 'Qualcosa è andato storto. Riprovi.',
             'leer' => 'Firmi prima, per favore.',
             'code_leer' => 'Inserisca il codice, per favore.',
+            'neu_nur_vorstand' => 'Un nuovo link per firmare lo invia solo l\'associazione. È stata informata.',
+            'einmal_t' => 'Questo link è già stato aperto.',
+            'einmal_x' => 'Ogni link funziona su un solo dispositivo e una sola volta. Se non l\'ha aperto Lei, avvisi l\'associazione.',
         ],
         'pt' => [
             'titel_lesen' => 'Procuração para ler',
@@ -383,6 +413,9 @@ function vlText(string $sprache): array
             'fehler' => 'Algo correu mal. Tente novamente.',
             'leer' => 'Assine primeiro, por favor.',
             'code_leer' => 'Introduza o código, por favor.',
+            'neu_nur_vorstand' => 'Uma nova ligação para assinar só a associação a envia. Foi informada.',
+            'einmal_t' => 'Esta ligação já foi aberta.',
+            'einmal_x' => 'Cada ligação funciona num só aparelho e uma só vez. Se não foi você a abri-la, avise a associação.',
         ],
         'pl' => [
             'titel_lesen' => 'Pełnomocnictwo do przeczytania',
@@ -419,6 +452,9 @@ function vlText(string $sprache): array
             'fehler' => 'Coś poszło nie tak. Proszę spróbować ponownie.',
             'leer' => 'Proszę najpierw podpisać.',
             'code_leer' => 'Proszę wpisać kod.',
+            'neu_nur_vorstand' => 'Nowy link do podpisu wysyła tylko stowarzyszenie. Zostało powiadomione.',
+            'einmal_t' => 'Ten link został już otwarty.',
+            'einmal_x' => 'Każdy link działa na jednym urządzeniu i tylko raz. Jeśli to nie Państwo go otworzyli, proszę powiadomić stowarzyszenie.',
         ],
         'cs' => [
             'titel_lesen' => 'Plná moc ke čtení',
@@ -455,6 +491,9 @@ function vlText(string $sprache): array
             'fehler' => 'Něco se pokazilo. Zkuste to prosím znovu.',
             'leer' => 'Nejprve se prosím podepište.',
             'code_leer' => 'Zadejte prosím kód.',
+            'neu_nur_vorstand' => 'Nový odkaz k podpisu posílá jen sdružení. Bylo informováno.',
+            'einmal_t' => 'Tento odkaz už byl otevřen.',
+            'einmal_x' => 'Každý odkaz funguje na jednom zařízení a jen jednou. Pokud jste ho neotevřeli vy, dejte sdružení vědět.',
         ],
         'sk' => [
             'titel_lesen' => 'Plná moc na prečítanie',
@@ -491,6 +530,9 @@ function vlText(string $sprache): array
             'fehler' => 'Niečo sa pokazilo. Skúste to prosím znova.',
             'leer' => 'Najprv sa prosím podpíšte.',
             'code_leer' => 'Zadajte prosím kód.',
+            'neu_nur_vorstand' => 'Nový odkaz na podpis posiela len združenie. Bolo informované.',
+            'einmal_t' => 'Tento odkaz už bol otvorený.',
+            'einmal_x' => 'Každý odkaz funguje na jednom zariadení a len raz. Ak ste ho neotvorili vy, dajte združeniu vedieť.',
         ],
         'sl' => [
             'titel_lesen' => 'Pooblastilo za branje',
@@ -527,6 +569,9 @@ function vlText(string $sprache): array
             'fehler' => 'Nekaj je šlo narobe. Poskusite znova.',
             'leer' => 'Najprej se prosim podpišite.',
             'code_leer' => 'Vnesite prosim kodo.',
+            'neu_nur_vorstand' => 'Novo povezavo za podpis pošlje le društvo. Obveščeno je bilo.',
+            'einmal_t' => 'Ta povezava je bila že odprta.',
+            'einmal_x' => 'Vsaka povezava deluje na eni napravi in samo enkrat. Če je niste odprli vi, sporočite društvu.',
         ],
         'hr' => [
             'titel_lesen' => 'Punomoć za čitanje',
@@ -563,6 +608,9 @@ function vlText(string $sprache): array
             'fehler' => 'Nešto je pošlo po zlu. Pokušajte ponovno.',
             'leer' => 'Molimo najprije se potpišite.',
             'code_leer' => 'Molimo unesite kod.',
+            'neu_nur_vorstand' => 'Novu poveznicu za potpis šalje samo udruga. Obaviještena je.',
+            'einmal_t' => 'Ova poveznica je već otvorena.',
+            'einmal_x' => 'Svaka poveznica radi na jednom uređaju i samo jednom. Ako je niste otvorili vi, javite udruzi.',
         ],
         'sr' => [
             'titel_lesen' => 'Punomoćje za čitanje',
@@ -599,6 +647,9 @@ function vlText(string $sprache): array
             'fehler' => 'Nešto je pošlo naopako. Pokušajte ponovo.',
             'leer' => 'Molimo najpre se potpišite.',
             'code_leer' => 'Molimo unesite kod.',
+            'neu_nur_vorstand' => 'Novi link za potpis šalje samo udruženje. Obavešteno je.',
+            'einmal_t' => 'Ovaj link je već otvoren.',
+            'einmal_x' => 'Svaki link radi na jednom uređaju i samo jednom. Ako ga niste otvorili vi, javite udruženju.',
         ],
         'bg' => [
             'titel_lesen' => 'Пълномощно за четене',
@@ -635,6 +686,9 @@ function vlText(string $sprache): array
             'fehler' => 'Нещо се обърка. Моля, опитайте отново.',
             'leer' => 'Моля, първо се подпишете.',
             'code_leer' => 'Моля, въведете кода.',
+            'neu_nur_vorstand' => 'Нова връзка за подпис изпраща само сдружението. То беше уведомено.',
+            'einmal_t' => 'Тази връзка вече е била отваряна.',
+            'einmal_x' => 'Всяка връзка работи на едно устройство и само веднъж. Ако не сте я отваряли вие, съобщете на сдружението.',
         ],
         'hu' => [
             'titel_lesen' => 'Meghatalmazás olvasásra',
@@ -671,6 +725,9 @@ function vlText(string $sprache): array
             'fehler' => 'Valami hiba történt. Kérjük, próbálja újra.',
             'leer' => 'Kérjük, először írja alá.',
             'code_leer' => 'Kérjük, adja meg a kódot.',
+            'neu_nur_vorstand' => 'Új aláírási linket csak az egyesület küld. Értesítettük.',
+            'einmal_t' => 'Ezt a linket már megnyitották.',
+            'einmal_x' => 'Minden link egy készüléken és csak egyszer működik. Ha nem Ön nyitotta meg, szóljon az egyesületnek.',
         ],
         'fi' => [
             'titel_lesen' => 'Valtakirja luettavaksi',
@@ -707,6 +764,9 @@ function vlText(string $sprache): array
             'fehler' => 'Jokin meni pieleen. Yritä uudelleen.',
             'leer' => 'Allekirjoita ensin.',
             'code_leer' => 'Syötä koodi.',
+            'neu_nur_vorstand' => 'Uuden allekirjoituslinkin lähettää vain yhdistys. Sille on ilmoitettu.',
+            'einmal_t' => 'Tämä linkki on jo avattu.',
+            'einmal_x' => 'Jokainen linkki toimii yhdellä laitteella ja vain kerran. Jos et avannut sitä itse, kerro yhdistykselle.',
         ],
         'et' => [
             'titel_lesen' => 'Volikiri lugemiseks',
@@ -743,6 +803,9 @@ function vlText(string $sprache): array
             'fehler' => 'Midagi läks valesti. Palun proovige uuesti.',
             'leer' => 'Palun kirjutage kõigepealt alla.',
             'code_leer' => 'Palun sisestage kood.',
+            'neu_nur_vorstand' => 'Uue allkirjastamislingi saadab ainult ühing. Teda on teavitatud.',
+            'einmal_t' => 'See link on juba avatud.',
+            'einmal_x' => 'Iga link toimib ühes seadmes ja ainult üks kord. Kui te ei avanud seda ise, andke ühingule teada.',
         ],
         'lt' => [
             'titel_lesen' => 'Įgaliojimas perskaityti',
@@ -779,6 +842,9 @@ function vlText(string $sprache): array
             'fehler' => 'Kažkas nepavyko. Bandykite dar kartą.',
             'leer' => 'Pirmiausia pasirašykite.',
             'code_leer' => 'Įveskite kodą.',
+            'neu_nur_vorstand' => 'Naują pasirašymo nuorodą siunčia tik asociacija. Ji informuota.',
+            'einmal_t' => 'Ši nuoroda jau buvo atidaryta.',
+            'einmal_x' => 'Kiekviena nuoroda veikia viename įrenginyje ir tik kartą. Jei jos neatidarėte jūs, praneškite asociacijai.',
         ],
         'lv' => [
             'titel_lesen' => 'Pilnvara lasīšanai',
@@ -815,6 +881,9 @@ function vlText(string $sprache): array
             'fehler' => 'Kaut kas nogāja greizi. Lūdzu, mēģiniet vēlreiz.',
             'leer' => 'Lūdzu, vispirms parakstieties.',
             'code_leer' => 'Lūdzu, ievadiet kodu.',
+            'neu_nur_vorstand' => 'Jaunu parakstīšanas saiti sūta tikai biedrība. Tā ir informēta.',
+            'einmal_t' => 'Šī saite jau ir atvērta.',
+            'einmal_x' => 'Katra saite darbojas vienā ierīcē un tikai vienu reizi. Ja to atvērāt nevis jūs, paziņojiet biedrībai.',
         ],
         'nl' => [
             'titel_lesen' => 'Volmacht om te lezen',
@@ -851,6 +920,9 @@ function vlText(string $sprache): array
             'fehler' => 'Er is iets misgegaan. Probeer het opnieuw.',
             'leer' => 'Onderteken eerst, alstublieft.',
             'code_leer' => 'Voer de code in, alstublieft.',
+            'neu_nur_vorstand' => 'Een nieuwe link om te ondertekenen stuurt alleen de vereniging. Die is op de hoogte gebracht.',
+            'einmal_t' => 'Deze link is al geopend.',
+            'einmal_x' => 'Elke link werkt op één apparaat en maar één keer. Hebt u hem niet zelf geopend, laat het de vereniging weten.',
         ],
         'da' => [
             'titel_lesen' => 'Fuldmagt til gennemlæsning',
@@ -887,6 +959,9 @@ function vlText(string $sprache): array
             'fehler' => 'Noget gik galt. Prøv venligst igen.',
             'leer' => 'Skriv venligst under først.',
             'code_leer' => 'Indtast venligst koden.',
+            'neu_nur_vorstand' => 'Kun foreningen kan sende et nyt link til underskrift. Den er blevet underrettet.',
+            'einmal_t' => 'Dette link er allerede blevet åbnet.',
+            'einmal_x' => 'Hvert link virker på én enhed og kun én gang. Hvis du ikke selv har åbnet det, så sig det til foreningen.',
         ],
         'sv' => [
             'titel_lesen' => 'Fullmakt att läsa',
@@ -923,6 +998,9 @@ function vlText(string $sprache): array
             'fehler' => 'Något gick fel. Försök igen.',
             'leer' => 'Skriv under först, tack.',
             'code_leer' => 'Ange koden, tack.',
+            'neu_nur_vorstand' => 'Bara föreningen kan skicka en ny länk för underskrift. Den har underrättats.',
+            'einmal_t' => 'Den här länken har redan öppnats.',
+            'einmal_x' => 'Varje länk fungerar på en enhet och bara en gång. Om du inte öppnade den själv, säg till föreningen.',
         ],
         'nb' => [
             'titel_lesen' => 'Fullmakt til gjennomlesing',
@@ -959,6 +1037,9 @@ function vlText(string $sprache): array
             'fehler' => 'Noe gikk galt. Prøv igjen.',
             'leer' => 'Signer først.',
             'code_leer' => 'Skriv inn koden.',
+            'neu_nur_vorstand' => 'Bare foreningen kan sende en ny lenke til signering. Den er varslet.',
+            'einmal_t' => 'Denne lenken er allerede åpnet.',
+            'einmal_x' => 'Hver lenke virker på én enhet og bare én gang. Har du ikke åpnet den selv, si fra til foreningen.',
         ],
         'el' => [
             'titel_lesen' => 'Πληρεξούσιο για ανάγνωση',
@@ -995,6 +1076,9 @@ function vlText(string $sprache): array
             'fehler' => 'Κάτι πήγε στραβά. Δοκιμάστε ξανά.',
             'leer' => 'Παρακαλούμε υπογράψτε πρώτα.',
             'code_leer' => 'Παρακαλούμε εισαγάγετε τον κωδικό.',
+            'neu_nur_vorstand' => 'Νέο σύνδεσμο για υπογραφή στέλνει μόνο ο σύλλογος. Έχει ενημερωθεί.',
+            'einmal_t' => 'Αυτός ο σύνδεσμος έχει ήδη ανοιχτεί.',
+            'einmal_x' => 'Κάθε σύνδεσμος λειτουργεί σε μία συσκευή και μόνο μία φορά. Αν δεν τον ανοίξατε εσείς, ενημερώστε τον σύλλογο.',
         ],
     ];
     if (isset($t[$sprache])) {
@@ -1035,6 +1119,21 @@ $istPost = ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST';
 $eingang = $istPost ? (json_decode((string)file_get_contents('php://input'), true) ?: []) : [];
 $aktion  = $istPost ? (string)($eingang['action'] ?? '') : (string)($_GET['a'] ?? '');
 
+// ⚠️ Ein Link gilt EINMAL — an dem Geraet, das ihn zuerst oeffnet. Wer die
+// SMS weiterleitet, gibt sonst die Vollmacht mit weiter; beim Signier-Link
+// sogar die Moeglichkeit, im Namen des Mitglieds zu unterschreiben.
+//
+// Gebunden wird nur bei einer Anfrage, die eine SEITE will. Nachrichten-Apps
+// und Sicherheitsfilter rufen Adressen von sich aus ab, um eine Vorschau zu
+// bauen — wuerde das binden, waere der Link verbraucht, bevor der Mensch ihn
+// antippt.
+$willSeite = $aktion === '' && !$istPost
+    && stripos((string)($_SERVER['HTTP_ACCEPT'] ?? ''), 'text/html') !== false;
+$sitzung = 'ok';
+if ($link !== null && $auf['status'] === 'ok') {
+    $sitzung = vlSitzung($pdo, $link, $willSeite);
+}
+
 // Sprache und Anrede, sobald der Link bekannt ist.
 $sprache = 'de'; $nachname = ''; $mitgliedId = 0;
 if ($link !== null) {
@@ -1053,15 +1152,25 @@ $rtl = $sprache === 'ar';
 if ($istPost) {
     // Einen neuen Link darf auch ein abgelaufener anfordern — das ist sein
     // einziger Sinn. Alles andere braucht einen gueltigen.
+    // 🔴 EINEN NEUEN LINK SCHICKT NUR DER VORSTAND — auch zum Lesen.
+    //
+    // Entscheidung des Vorsitzenden, 19.08.2026. Die erste Fassung liess das
+    // Mitglied sich selbst einen neuen holen; das machte aus einem Link, der
+    // einmal gilt, einen, der beliebig oft nachwaechst. Wer eine Vollmacht
+    // noch einmal braucht, bekommt sie vom Verein — der weiss dann auch,
+    // dass sie gebraucht wurde.
     if ($aktion === 'neuer_link') {
         if ($link === null) vlAntwort(false, [], $T['unbekannt_t'], 404);
-        $r = vlNeuSenden($pdo, $link);
-        vlAntwort($r['ok'], ['gesendet_an' => $r['gesendet_an'] ?? ''],
-                  $r['meldung'] ?? '', $r['ok'] ? 200 : 409);
+        vlVorstandWecken($pdo, $link, 'Ein Link ist abgelaufen oder verbraucht — '
+            . 'das Mitglied wartet auf einen neuen.');
+        vlAntwort(false, ['grund' => 'nur_vorstand'], $T['neu_nur_vorstand'], 403);
     }
 
     if ($auf['status'] !== 'ok') {
         vlAntwort(false, ['grund' => $auf['status']], $T['abgelaufen_t'], 410);
+    }
+    if ($sitzung !== 'ok') {
+        vlAntwort(false, ['grund' => 'fremde_sitzung'], $T['einmal_t'], 403);
     }
 
     switch ($aktion) {
@@ -1102,6 +1211,13 @@ if ($istPost) {
 
 // ── GET mit Aktion: Dokument ausliefern ────────────────────────────
 if ($aktion !== '' && $auf['status'] === 'ok') {
+    // ⚠️ Auch die Bilder und der Download haengen an der Sitzung. Ohne das
+    // waere die Bindung ein Vorhang: die Seite bliebe zu, das Dokument aber
+    // ueber seine eigene Adresse weiter abrufbar.
+    if ($sitzung !== 'ok') {
+        http_response_code(403);
+        exit('Dieser Link wurde bereits auf einem anderen Geraet geoeffnet.');
+    }
     $dok = vlDokument($pdo, $link);
     if ($dok === null) {
         http_response_code(404);
@@ -1195,6 +1311,14 @@ function vlSeitenzahl(string $pdf): int
 
 // ── GET: die Seite ─────────────────────────────────────────────────
 $zustand = $auf['status'];              // ok | abgelaufen | unbekannt | erledigt
+// Eine fremde Sitzung ist ein eigener Zustand, nicht „abgelaufen": der Link
+// lebt noch, er gehoert nur jemand anderem. Wer beides gleich benennt, laesst
+// den Menschen glauben, er sei zu spaet gewesen.
+if ($zustand === 'ok' && $sitzung !== 'ok') {
+    $zustand = 'fremd';
+    vlVorstandWecken($pdo, $link, 'Ein Link wurde auf einem ZWEITEN Geraet '
+        . 'aufgerufen — moeglicherweise weitergeleitet.');
+}
 $seiten  = 0;
 $restSek = 0;
 
@@ -1231,7 +1355,14 @@ header('Content-Type: text/html; charset=utf-8');
 </header>
 
 <main class="huelle">
-<?php if ($zustand === 'unbekannt'): ?>
+<?php if ($zustand === 'fremd'): ?>
+  <section class="karte mitte">
+    <p class="gross"><?= h($T['einmal_t']) ?></p>
+    <p class="leise"><?= h($T['einmal_x']) ?></p>
+    <p class="leise"><?= h($T['neu_nur_vorstand']) ?></p>
+  </section>
+
+<?php elseif ($zustand === 'unbekannt'): ?>
   <section class="karte mitte">
     <p class="gross"><?= h($T['unbekannt_t']) ?></p>
     <p class="leise"><?= h($T['unbekannt_x']) ?></p>
@@ -1248,9 +1379,10 @@ header('Content-Type: text/html; charset=utf-8');
   <section class="karte mitte">
     <p class="gross"><?= h($T['abgelaufen_t']) ?></p>
     <p class="leise"><?= h($T['abgelaufen_x']) ?></p>
-    <button class="knopf" id="neuerLink"><?= h($T['neuer_link']) ?></button>
-    <p class="leise"><?= h($T['neuer_hinweis']) ?></p>
-    <p class="meldung" id="meldung" role="status"></p>
+    <?php /* 🔴 Kein Knopf mehr. Einen neuen Link schickt der Verein — sonst
+             waere ein Link, der einmal gilt, einer, der beliebig oft
+             nachwaechst. Der Vorstand ist benachrichtigt. */ ?>
+    <p class="leise"><?= h($T['neu_nur_vorstand']) ?></p>
   </section>
 
 <?php else: ?>
