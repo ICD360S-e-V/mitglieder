@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.84.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.2...v1.84.3) (2026-08-19)
+
+
+### Refactor
+
+* **signatur:** den Unterschrifts-Ablauf aus dem Endpunkt in den Helper ([#310](https://github.com/ICD360S-e-V/mitglieder/issues/310)) ([133c3c7](https://github.com/ICD360S-e-V/mitglieder/commit/133c3c7aaca30574b031d9fb808948e1b6391b13))
+
 ## [1.84.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.1...v1.84.2) (2026-08-16)
 
 
