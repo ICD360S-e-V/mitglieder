@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.85.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.4...v1.85.0) (2026-08-19)
+
+
+### Features
+
+* **vollmacht:** ein Link gilt EINMAL, auf EINEM Geraet — und nur der Vorstand schickt einen neuen ([#313](https://github.com/ICD360S-e-V/mitglieder/issues/313)) ([1baf89c](https://github.com/ICD360S-e-V/mitglieder/commit/1baf89c4794ca7b0bd80837b7233818ebaaa5cce))
+
 ## [1.84.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.3...v1.84.4) (2026-08-19)
 
 
