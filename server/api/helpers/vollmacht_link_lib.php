@@ -198,6 +198,33 @@ function vlErzeugen(PDO $pdo, array $a): array
         $sprache = 'de';
     }
 
+    // ── Woran haengt die Unterschrift? ──────────────────────────────
+    //
+    // ⚠️ Der Link unterschreibt nicht selbst — er fuehrt zu einer bereits
+    // OFFENEN Zeile in dokument_signaturen. Legte er sie an, gaebe es zwei
+    // Wege, eine Unterschrift anzufordern, und der zweite umginge alles, was
+    // am ersten haengt: Frist, Gruppe, Titel, die Zeile des Vorstands.
+    //
+    // Fehlt sie, ist der Vorgang schlicht noch nicht gestellt — und das ist
+    // eine Aussage, die der Bildschirm treffen kann, statt eine Zeile zu
+    // erfinden.
+    $signaturId = null;
+    if ($zweck === 'signieren') {
+        $sg = $pdo->prepare(
+            "SELECT id FROM dokument_signaturen
+              WHERE quelle_tabelle = ? AND quelle_id = ? AND user_id = ?
+                AND status = 'offen'
+           ORDER BY id DESC LIMIT 1");
+        $sg->execute([$tabelle, $quelleId, (int)$mitglied['id']]);
+        $signaturId = (int)($sg->fetchColumn() ?: 0);
+        if ($signaturId <= 0) {
+            return ['ok' => false, 'grund' => 'nicht_gestellt',
+                    'meldung' => 'Diese Vollmacht steht fuer das Mitglied nicht zur '
+                               . 'Unterschrift. Erst „Zur Unterschrift stellen", dann '
+                               . 'laesst sich der Link schicken.'];
+        }
+    }
+
     $token = vlTokenErzeugen();
 
     try {
@@ -217,12 +244,13 @@ function vlErzeugen(PDO $pdo, array $a): array
         $ins = $pdo->prepare(
             'INSERT INTO vollmacht_link
                (quelle_tabelle, quelle_id, user_id, zweck, fassung, sprache,
-                token_hash, gueltig_bis, gesendet_an, gesendet_von)
-             VALUES (?, ?, ?, ?, ?, ?, ?, DATE_ADD(UTC_TIMESTAMP(), INTERVAL ? MINUTE), ?, ?)');
+                token_hash, gueltig_bis, gesendet_an, gesendet_von, signatur_id)
+             VALUES (?, ?, ?, ?, ?, ?, ?, DATE_ADD(UTC_TIMESTAMP(), INTERVAL ? MINUTE), ?, ?, ?)');
         $ins->execute([
             $tabelle, $quelleId, (int)$mitglied['id'], $zweck, $fassung,
             $sprache !== '' ? $sprache : null,
             vlTokenHash($token), VL_GUELTIG_MINUTEN, $telefon, $absender,
+            $signaturId ?: null,
         ]);
         $linkId = (int)$pdo->lastInsertId();
 
@@ -521,4 +549,124 @@ function vlTabletWecken(PDO $pdo): void
     } catch (Throwable $e) {
         error_log('vlTabletWecken: ' . $e->getMessage());
     }
+}
+
+/**
+ * Fordert ueber einen Signier-Link einen Code an.
+ *
+ * ⚠️ Die Rufnummer kommt aus der LINK-Zeile, nicht aus dem Aufruf und auch
+ * nicht aus der Seite. Dort steht die Nummer, an die der Link ging — dieselbe,
+ * die in Verifizierung Stufe 1 hinterlegt ist. Liesse man sie sich uebergeben,
+ * koennte jeder, der einen Link hat, den Code auf sein eigenes Telefon holen.
+ *
+ * ⚠️ Hoechstens VL_MAX_CODES pro Link. Jeder, der die Adresse hat, kann eine
+ * SMS ausloesen; ohne Deckel waere das ein Knopf, mit dem sich ein fremdes
+ * Telefon beliebig oft anklingeln laesst.
+ */
+function vlCodeAnfordern(PDO $pdo, array $link): array
+{
+    $signaturId = (int)($link['signatur_id'] ?? 0);
+    if ($signaturId <= 0) {
+        return ['ok' => false, 'meldung' => 'Zu diesem Link gehoert kein Unterschriftsvorgang.'];
+    }
+    if ((int)$link['codes_gesendet'] >= VL_MAX_CODES) {
+        return ['ok' => false, 'grund' => 'zu_oft',
+                'meldung' => 'Es wurden bereits ' . VL_MAX_CODES . ' Codes angefordert. '
+                           . 'Bitte wenden Sie sich an den Verein.'];
+    }
+
+    $st = $pdo->prepare("SELECT s.status, u.nachname, u.geschlecht, u.preferred_language
+                           FROM dokument_signaturen s
+                           JOIN users u ON u.id = s.user_id
+                          WHERE s.id = ?");
+    $st->execute([$signaturId]);
+    $z = $st->fetch(PDO::FETCH_ASSOC);
+    if (!$z) {
+        return ['ok' => false, 'meldung' => 'Der Vorgang wurde nicht gefunden.'];
+    }
+    if ($z['status'] !== 'offen') {
+        return ['ok' => false, 'grund' => 'erledigt',
+                'meldung' => 'Dieser Vorgang ist nicht mehr offen.'];
+    }
+
+    $telefon = (string)$link['gesendet_an'];
+
+    try {
+        $pdo->beginTransaction();
+
+        // Frueher ausgegebene Codes verfallen — sonst waeren nach dreimaligem
+        // „nochmal senden" drei gueltig, und keiner wuesste welcher.
+        $pdo->prepare("UPDATE signatur_tan SET verbraucht_at = UTC_TIMESTAMP()
+                        WHERE signatur_id = ? AND verbraucht_at IS NULL")
+            ->execute([$signaturId]);
+
+        $tan = SignaturHelper::tanErzeugen();
+        $pdo->prepare(
+            "INSERT INTO signatur_tan (signatur_id, tan_hash, telefon, gueltig_bis)
+             VALUES (?, ?, ?, DATE_ADD(UTC_TIMESTAMP(), INTERVAL ? MINUTE))"
+        )->execute([$signaturId, SignaturHelper::tanHash($tan, $signaturId), $telefon,
+                    SignaturHelper::TAN_GUELTIG_MINUTEN]);
+        $tanId = (int)$pdo->lastInsertId();
+
+        // Derselbe Text wie in der App — er kommt aus SignaturHelper, damit
+        // nicht zwei Fassungen desselben Satzes entstehen.
+        $pdo->prepare('INSERT INTO signatur_sms_queue (tan_id, link_id, signatur_id, telefon, body)
+                       VALUES (?, NULL, ?, ?, ?)')
+            ->execute([$tanId, $signaturId, $telefon, SignaturHelper::smsText($tan, $z)]);
+
+        $pdo->prepare('UPDATE vollmacht_link SET codes_gesendet = codes_gesendet + 1
+                        WHERE id = ?')->execute([(int)$link['id']]);
+
+        $pdo->commit();
+    } catch (Throwable $e) {
+        if ($pdo->inTransaction()) $pdo->rollBack();
+        error_log('vlCodeAnfordern: ' . $e->getMessage());
+        return ['ok' => false, 'meldung' => 'Der Code konnte nicht erzeugt werden.'];
+    }
+
+    vlTabletWecken($pdo);
+
+    return [
+        'ok' => true,
+        'gesendet_an' => vlNummerMaskieren($telefon),
+        'gueltig_minuten' => SignaturHelper::TAN_GUELTIG_MINUTEN,
+        'offen' => VL_MAX_CODES - ((int)$link['codes_gesendet'] + 1),
+    ];
+}
+
+/**
+ * Haelt fest, dass ueber diesen Link unterschrieben wurde.
+ *
+ * ⚠️ Das eigentliche Eintragen macht `SignaturHelper::unterschriftEintragen()`
+ * — dieselbe Methode wie in der App. Hier wird nur der Link geschlossen.
+ */
+function vlErledigt(PDO $pdo, int $linkId): void
+{
+    try {
+        $pdo->prepare("UPDATE vollmacht_link SET erledigt_am = UTC_TIMESTAMP()
+                        WHERE id = ? AND erledigt_am IS NULL")->execute([$linkId]);
+    } catch (Throwable $e) {
+        error_log('vlErledigt: ' . $e->getMessage());
+    }
+}
+
+/**
+ * Schickt zu einem abgelaufenen Link einen neuen — an DIESELBE Nummer.
+ *
+ * ⚠️ Die Nummer wird aus der alten Zeile uebernommen und nicht neu erfragt.
+ * Sonst waere der abgelaufene Link ein Formular, mit dem sich eine Vollmacht
+ * an ein beliebiges Telefon schicken laesst.
+ *
+ * ⚠️ Als Absender steht der urspruengliche Vorstand in der neuen Zeile: die
+ * Sendung geht auf seine Veranlassung zurueck, auch wenn das Mitglied den
+ * Knopf gedrueckt hat. Der Vermerk sagt es dazu.
+ */
+function vlNeuSenden(PDO $pdo, array $alt): array
+{
+    return vlErzeugen($pdo, [
+        'quelle_tabelle' => (string)$alt['quelle_tabelle'],
+        'quelle_id'      => (int)$alt['quelle_id'],
+        'zweck'          => (string)$alt['zweck'],
+        'gesendet_von'   => (int)$alt['gesendet_von'],
+    ]);
 }
