@@ -804,3 +804,39 @@ function vlNeuSenden(PDO $pdo, array $alt): array
         'gesendet_von'   => (int)$alt['gesendet_von'],
     ]);
 }
+
+/**
+ * Sagt dem Vorstand Bescheid, dass jemand vor einem toten Signier-Link steht.
+ *
+ * ⚠️ Ohne diese Nachricht waere die Regel „einen neuen Link schickt nur der
+ * Vorstand" eine Sackgasse: das Mitglied liest, dass sich jemand meldet, und
+ * niemand weiss davon. Wer eine Selbstbedienung wegnimmt, muss den Weg
+ * daneben oeffnen.
+ */
+function vlVorstandWecken(PDO $pdo, array $link, string $text): void
+{
+    try {
+        require_once __DIR__ . '/NtfyService.php';
+        $u = $pdo->prepare('SELECT mitgliedernummer, nachname FROM users WHERE id = ?');
+        $u->execute([(int)$link['user_id']]);
+        $m = $u->fetch(PDO::FETCH_ASSOC) ?: [];
+        $wer = trim((string)($m['nachname'] ?? '')) !== ''
+            ? trim((string)$m['nachname']) . ' (' . (string)($m['mitgliedernummer'] ?? '') . ')'
+            : (string)($m['mitgliedernummer'] ?? 'Mitglied');
+
+        $ntfy = new NtfyService();
+        $st = $pdo->query("SELECT mitgliedernummer FROM users
+                            WHERE role IN ('vorsitzer','stellvertreter')
+                              AND deactivated_at IS NULL");
+        foreach ($st->fetchAll(PDO::FETCH_COLUMN) as $nummer) {
+            $ntfy->send(
+                'vorsitzer_' . strtolower((string)$nummer),
+                'Vollmacht: Link abgelaufen',
+                $wer . ' — ' . $text,
+                ['priority' => 4, 'tags' => ['vollmacht']]
+            );
+        }
+    } catch (Throwable $e) {
+        error_log('vlVorstandWecken: ' . $e->getMessage());
+    }
+}
