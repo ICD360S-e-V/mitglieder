@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.84.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.3...v1.84.4) (2026-08-19)
+
+
+### Bug Fixes
+
+* **ios:** das Mindestziel stand an drei Stellen noch auf 13.0 ([#312](https://github.com/ICD360S-e-V/mitglieder/issues/312)) ([37c9ba2](https://github.com/ICD360S-e-V/mitglieder/commit/37c9ba29f946740a17a72b52035dda2237a0238a))
+
 ## [1.84.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.2...v1.84.3) (2026-08-19)
 
 
