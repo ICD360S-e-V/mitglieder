@@ -125,6 +125,14 @@ function vlSmsText(string $sprache, string $zweck, string $url, string $nachname
     ];
 
     $tabelle = $zweck === 'signieren' ? $signieren : $lesen;
+    if (!isset($tabelle[$sprache])) {
+        // ⚠️ Nicht still. Dieselbe Ueberlegung wie bei der Seite: der
+        // Rueckfall auf Deutsch ist richtig, aber ein Mitglied, das seine
+        // SMS auf Deutsch bekommt, obwohl eine andere Sprache hinterlegt
+        // ist, faellt sonst niemandem auf.
+        error_log('vollmacht_link: keine SMS-Vorlage fuer Sprache "' . $sprache
+                . '" — es wurde Deutsch verschickt');
+    }
     $vorlage = $tabelle[$sprache] ?? $tabelle['de'];
     return sprintf($vorlage, $nachname, $url);
 }

@@ -241,7 +241,22 @@ function vlText(string $sprache): array
             'code_leer' => 'يرجى إدخال الرمز.',
         ],
     ];
-    return $t[$sprache] ?? $t['de'];
+    if (isset($t[$sprache])) {
+        return $t[$sprache];
+    }
+
+    // ⚠️ Der Rueckfall auf Deutsch ist RICHTIG — eine halb uebersetzte Seite
+    // waere schlimmer als eine ganz deutsche —, aber er darf nicht STILL
+    // geschehen.
+    //
+    // `users.preferred_language` ist ein ENUM mit 28 Werten; diese Seite
+    // kennt die sieben, die die Mitglieder am 19.08.2026 tatsaechlich
+    // benutzen (de ro ru en uk tr ar). Setzt jemand ein Mitglied auf
+    // Polnisch, bekommt es ab sofort eine deutsche Seite — und niemand
+    // erfaehrt es. Diese Zeile ist die einzige Spur, an der das auffaellt.
+    error_log('vollmacht_link: keine Oberflaeche fuer Sprache "' . $sprache
+            . '" — es wurde Deutsch ausgeliefert');
+    return $t['de'];
 }
 
 function vlAntwort(bool $ok, array $daten = [], string $meldung = '', int $code = 200): void
