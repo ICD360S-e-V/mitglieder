@@ -1,0 +1,192 @@
+/* Die Seite hinter dem SMS-Link.
+ *
+ * ⚠️ Eigene Datei, kein <style> im Dokument: der Vhost setzt
+ * Content-Security-Policy: default-src 'self' OHNE unsafe-inline. Ein
+ * eingebetteter Stil waere stumm wirkungslos — die Seite saehe roh aus, und
+ * niemand bekaeme eine Fehlermeldung.
+ *
+ * ⚠️ Gebaut fuer die Telefone der Zielgruppe: Mitglieder OHNE App, oft
+ * aeltere Geraete. Grosse Schrift, grosse Flaechen, ein Handgriff je Schritt.
+ * Keine Schriftart von aussen (die CSP verboete sie ohnehin) — die des
+ * Geraets ist die, die der Mensch lesen kann.
+ */
+
+:root {
+  --grund: #f4f6f8;
+  --blatt: #ffffff;
+  --text: #16202a;
+  --leise: #5a6b7a;
+  --rand: #d5dde4;
+  --ton: #0b6b5e;
+  --ton-hell: #e6f2f0;
+  --warn: #9a3412;
+  --gut: #15803d;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--grund);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* 17px statt 16: eine Vollmacht wird nicht ueberflogen. */
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .9rem 1rem;
+  background: var(--blatt);
+  border-bottom: 1px solid var(--rand);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.marke {
+  font-weight: 700;
+  letter-spacing: .01em;
+  /* ⚠️ Der Vereinsname bricht NICHT um. Auf 412 px hat ihn die griechische
+   * Fassung zweizeilig gemacht — „Αυτός ο σύνδεσμος ισχύει ακόμη" ist
+   * doppelt so lang wie „Dieser Link gilt noch", und die Uhr daneben stand
+   * auf nowrap. Gesehen beim Rendern, nicht im Quelltext. */
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+/* Die Uhr steht auf JEDEM Schritt, nicht nur am Anfang.
+ * Wer sie nur einmal sieht, vergisst sie — und faellt mitten in der
+ * Unterschrift aus der Frist. */
+.uhr {
+  font-variant-numeric: tabular-nums;
+  font-size: .85rem;
+  line-height: 1.25;
+  color: var(--leise);
+  /* Sie darf umbrechen, der Name nicht: in mehreren Sprachen ist die
+   * Beschriftung deutlich laenger als im Deutschen. */
+  text-align: right;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.uhr.knapp { color: var(--warn); font-weight: 600; }
+
+.huelle { max-width: 44rem; margin: 0 auto; padding: 1rem; }
+
+.karte {
+  background: var(--blatt);
+  border: 1px solid var(--rand);
+  border-radius: 14px;
+  padding: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.karte.aus { display: none; }
+.mitte { text-align: center; }
+
+h1 { font-size: 1.3rem; margin: 0 0 .6rem; }
+p { margin: 0 0 .7rem; }
+.leise { color: var(--leise); font-size: .9rem; }
+.gross { font-size: 1.15rem; font-weight: 600; }
+.haken { font-size: 3rem; color: var(--gut); margin: .2rem 0 .4rem; line-height: 1; }
+
+/* ⚠️ 48px Mindesthoehe. Der Verein vertritt Menschen mit Behinderungen;
+ * WCAG 2.5.5 ist hier keine Feinheit, sondern der Punkt. */
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: .75rem 1.2rem;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ton);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.knopf:disabled { background: #b6c2cc; cursor: default; }
+.knopf.zweit { background: var(--ton-hell); color: var(--ton); }
+
+.reihe { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .8rem; }
+.reihe > * { flex: 1 1 12rem; }
+
+/* Das Dokument als Bilder — nicht als eingebettetes PDF.
+ * Ein PDF im Rahmen oeffnet je nach Telefon gar nicht, laedt herunter oder
+ * springt in eine fremde Anwendung. Ein Bild zeigt jeder. */
+.blatt {
+  max-height: 60vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #e9edf1;
+  border: 1px solid var(--rand);
+  border-radius: 10px;
+  padding: .5rem;
+}
+
+.blatt img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto .5rem;
+  background: #fff;
+  border: 1px solid var(--rand);
+  border-radius: 4px;
+}
+
+.hinweis { margin-top: .6rem; }
+
+/* Die Unterschriftenflaeche. touch-action: none ist Pflicht — sonst
+ * scrollt das Telefon die Seite, waehrend jemand zu zeichnen versucht. */
+.pad {
+  width: 100%;
+  height: 210px;
+  background: #fff;
+  border: 2px dashed var(--rand);
+  border-radius: 10px;
+  touch-action: none;
+  display: block;
+}
+
+.code {
+  width: 100%;
+  padding: .8rem;
+  font-size: 1.6rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .35em;
+  text-align: center;
+  border: 2px solid var(--rand);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+}
+.code:focus { outline: 3px solid var(--ton); outline-offset: 1px; }
+
+.meldung { min-height: 1.4rem; margin-top: .7rem; font-size: .92rem; }
+.meldung.fehler { color: var(--warn); font-weight: 600; }
+.meldung.gut { color: var(--gut); font-weight: 600; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --grund: #10161c;
+    --blatt: #182028;
+    --text: #e7edf3;
+    --leise: #9fb0be;
+    --rand: #2c3944;
+    --ton: #2f9e8c;
+    --ton-hell: #1d3a36;
+  }
+  .blatt { background: #0c1116; }
+  /* Die Seiten des Dokuments bleiben weiss — es ist Papier, kein Bildschirm. */
+  .pad { background: #fff; }
+  .code { background: #fff; color: #16202a; }
+}

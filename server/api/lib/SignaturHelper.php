@@ -143,16 +143,31 @@ class SignaturHelper
         try {
             // ORDER BY start_ip DESC LIMIT 1 nutzt den Primärschlüssel: der
             // letzte Bereich, der nicht hinter der Adresse beginnt.
+            // ⚠️ VIER verschiedene Namen fuer dieselbe Adresse, nicht viermal
+            // `:ip`.
+            //
+            // Ein wiederverwendeter benannter Platzhalter geht nur mit
+            // emulierten Prepares durch. Diese Verbindung bereitet nativ vor,
+            // und dort ist jedes Fragezeichen ein eigener Parameter: vier
+            // Marken, ein Wert — `SQLSTATE[HY093] Invalid parameter number`.
+            //
+            // ⚠️ Der Fehler war seit jeher da und ist NIE aufgefallen, weil
+            // der `catch` unten ihn schluckt: die Unterschrift kam zustande,
+            // nur Land und Netzbetreiber blieben leer. Am 19.08.2026 gemessen:
+            // von 17 unterschriebenen Zeilen hatten 16 einen Reverse-DNS-Namen,
+            // aber KEINE EINZIGE ein Land. Ein Beweisbuendel, dem still ein
+            // Feld fehlt, ist genau die Sorte Mangel, die erst auffaellt, wenn
+            // sich jemand darauf berufen will.
             $stmt = $pdo->prepare(
                 "SELECT
                    (SELECT land FROM ip_land
-                     WHERE start_ip <= INET6_ATON(:ip) AND end_ip >= INET6_ATON(:ip)
+                     WHERE start_ip <= INET6_ATON(:ip1) AND end_ip >= INET6_ATON(:ip2)
                      ORDER BY start_ip DESC LIMIT 1) AS land,
                    (SELECT netz FROM ip_netz
-                     WHERE start_ip <= INET6_ATON(:ip) AND end_ip >= INET6_ATON(:ip)
+                     WHERE start_ip <= INET6_ATON(:ip3) AND end_ip >= INET6_ATON(:ip4)
                      ORDER BY start_ip DESC LIMIT 1) AS netz"
             );
-            $stmt->execute([':ip' => $ip]);
+            $stmt->execute([':ip1' => $ip, ':ip2' => $ip, ':ip3' => $ip, ':ip4' => $ip]);
             $z = $stmt->fetch(PDO::FETCH_ASSOC) ?: $leer;
 
             // „ZZ" ist der Platzhalter der Datenbank für unbekannt.
@@ -233,6 +248,17 @@ class SignaturHelper
      * `FOR UPDATE` hält die Position fest, bis die laufende Unterschrift
      * geschrieben ist — sonst holen sich zwei gleichzeitige Unterzeichner
      * dieselbe Nummer. Der UNIQUE-Index auf ketten_nr fängt das zusätzlich ab.
+     *
+     * ⚠️ DIESE METHODE SCHREIBT. Der Name klingt nach einem Blick auf das
+     * letzte Glied, aber sie RESERVIERT dabei die naechste Position: der
+     * Anker wird um eins hochgezaehlt, bevor sie zurueckkehrt.
+     *
+     * Sie darf deshalb nur aufgerufen werden, wenn wirklich gleich
+     * unterschrieben wird. Wer sie zum Nachsehen benutzt, verbraucht eine
+     * Nummer, die nie eine Zeile bekommt — der Anker steht danach ueber
+     * `MAX(ketten_nr)`, und die Anlage meldet fuer immer, am Ende der Kette
+     * fehle etwas. (Genau so ist es beim Schreiben des Extraktionstests am
+     * 19.08.2026 passiert.) Zum blossen Nachsehen: `kettenStand()`.
      *
      * @return array{nr:int, hash:?string} nr 0 = die Kette ist noch leer
      */
@@ -548,5 +574,288 @@ class SignaturHelper
         // die nach wenigen Zeilen abschneidet, ist der Absender nicht mehr
         // zu sehen. Wer die SMS ganz oeffnet, sieht ihn.
         return $text . "\n" . self::ABSENDER;
+    }
+
+    /**
+     * Traegt eine Unterschrift ein: TAN pruefen, Beweiszeile schliessen,
+     * Kette fortschreiben, Herkunft nachtragen, zum Siegeln freigeben.
+     *
+     * ⚠️ WARUM DAS HIER STEHT UND NICHT IM ENDPUNKT.
+     *
+     * Bis zum 19.08.2026 lag dieser Ablauf mitten in
+     * `api/member/signatur_manage.php`, hinter `requireAuth()`. Als die
+     * Unterschrift per SMS-Link dazukam — fuer die zwoelf Mitglieder mit
+     * Rufnummer, aber ohne App — gab es nur zwei Moeglichkeiten: den Ablauf
+     * ein zweites Mal schreiben, oder ihn hierher holen.
+     *
+     * Ein zweites Exemplar waere der schlechtere Weg gewesen. Beide muessten
+     * fuer immer gleich bleiben; sobald sie auseinanderlaufen, erzeugt einer
+     * der Wege eine schwaechere Beweiszeile, und es faellt niemandem auf,
+     * weil beide „erfolgreich" melden. Genau das ist bei uns schon
+     * vorgekommen (zwei Uebersetzungspfade, zwei Kopien einer Pruefliste).
+     *
+     * ⚠️ Diese Methode ruft NIEMALS `jsonResponse()`. Die Vorlaeufer-Fassung
+     * tat das an sieben Stellen, und `jsonResponse` beendet das Programm —
+     * aus einer oeffentlichen Seite heraus haette das mitten im HTML
+     * abgebrochen. Sie gibt zurueck, der Aufrufer antwortet.
+     *
+     * $kontext:
+     *   signed_at_local   was die Uhr des Geraets behauptet (informativ)
+     *   device_hostname   menschenlesbarer Geraetename
+     *   device_id         Geraeteschluessel — bei 'sms_link' leer, dort gibt
+     *                     es keinen; die Zuordnung traegt dann der Token
+     *   ip / user_agent   sonst aus den Superglobals
+     *   zugang_weg        'app' (Vorgabe) oder 'sms_link'
+     *
+     * ⚠️ `zugang_weg` ist keine Statistik. In der App wird auf dem einen
+     * Geraet unterschrieben und auf dem Telefon bestaetigt — zwei Kanaele.
+     * Ueber den SMS-Link kommen Link UND Code auf demselben Telefon an. Das
+     * ist so entschieden (18.08.2026) und in Ordnung; es darf nur niemand
+     * spaeter aus der Zeile herauslesen, es seien zwei Kanaele gewesen.
+     * Deshalb steht der Weg in der Beweiszeile und nicht in einem Kommentar.
+     *
+     * @return array{ok:bool,http:int,daten:array,meldung:string}
+     */
+    public static function unterschriftEintragen(
+        PDO $pdo,
+        int $signaturId,
+        int $userId,
+        string $tan,
+        string $svg,
+        array $kontext = []
+    ): array {
+        if ($signaturId <= 0 || $tan === '' || $svg === '') {
+            return ['ok' => false, 'http' => 400, 'daten' => [],
+                    'meldung' => 'Missing required fields'];
+        }
+
+        // Ein leerer oder absurd grosser Pfad ist keine Unterschrift. Die
+        // Grenze nach oben schuetzt die Spalte vor einem Aufrufer, der
+        // versehentlich ein eingebettetes Bild statt eines Pfades schickt.
+        if (stripos($svg, '<svg') === false || strlen($svg) > 400000) {
+            return ['ok' => false, 'http' => 400, 'daten' => [],
+                    'meldung' => 'Ungültige Unterschrift'];
+        }
+
+        $zugangWeg = ($kontext['zugang_weg'] ?? 'app') === 'sms_link' ? 'sms_link' : 'app';
+        $neu = null;
+        $fullHash = null;
+
+        // Der Kettenkopf wird mit FOR UPDATE gesperrt, damit sich zwei
+        // gleichzeitige Unterschriften nicht dasselbe Vorgaengerglied
+        // greifen. Das heisst aber, dass der Zweite wartet; laeuft er in die
+        // Sperr-Zeitgrenze (hier 50 s), ist ein neuer Anlauf ungefaehrlich:
+        // die Transaktion umfasst ALLES, auch das Entwerten der TAN. Wird sie
+        // zurueckgerollt, ist die TAN wieder gueltig und die Zeile unberuehrt.
+        for ($versuch = 1; $versuch <= 3; $versuch++) {
+            try {
+                $pdo->beginTransaction();
+
+                $stmt = $pdo->prepare(
+                    "SELECT id, user_id, dokument_typ, pdf_hash, status
+                       FROM dokument_signaturen
+                      WHERE id = ? AND user_id = ? FOR UPDATE"
+                );
+                $stmt->execute([$signaturId, $userId]);
+                $zeile = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if (!$zeile) {
+                    $pdo->rollBack();
+                    return ['ok' => false, 'http' => 404, 'daten' => [],
+                            'meldung' => 'Signatur nicht gefunden'];
+                }
+                if ($zeile['status'] !== 'offen') {
+                    $pdo->rollBack();
+                    return ['ok' => false, 'http' => 409, 'daten' => [],
+                            'meldung' => 'Dieser Vorgang ist nicht mehr offen'];
+                }
+
+                // --- TAN pruefen ---
+                $tanStmt = $pdo->prepare(
+                    "SELECT id, tan_hash, versuche, telefon
+                       FROM signatur_tan
+                      WHERE signatur_id = ? AND verbraucht_at IS NULL
+                        AND gueltig_bis > UTC_TIMESTAMP()
+                      ORDER BY id DESC LIMIT 1 FOR UPDATE"
+                );
+                $tanStmt->execute([$signaturId]);
+                $tanZeile = $tanStmt->fetch(PDO::FETCH_ASSOC);
+
+                if (!$tanZeile) {
+                    $pdo->rollBack();
+                    return ['ok' => false, 'http' => 409,
+                            'daten' => ['grund' => 'tan_abgelaufen'],
+                            'meldung' => 'Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.'];
+                }
+
+                if ((int)$tanZeile['versuche'] >= self::TAN_MAX_VERSUCHE) {
+                    $pdo->prepare("UPDATE signatur_tan SET verbraucht_at = UTC_TIMESTAMP() WHERE id = ?")
+                        ->execute([$tanZeile['id']]);
+                    $pdo->commit();
+                    return ['ok' => false, 'http' => 429,
+                            'daten' => ['grund' => 'zu_viele_versuche'],
+                            'meldung' => 'Zu viele Fehlversuche. Bitte fordern Sie einen neuen Code an.'];
+                }
+
+                // hash_equals statt ===: der Vergleich darf nicht verraten, an
+                // welcher Stelle der Code abweicht.
+                $erwartet = self::tanHash($tan, $signaturId);
+                if (!hash_equals($erwartet, (string)$tanZeile['tan_hash'])) {
+                    $pdo->prepare("UPDATE signatur_tan SET versuche = versuche + 1 WHERE id = ?")
+                        ->execute([$tanZeile['id']]);
+                    $pdo->commit();
+                    $offen = self::TAN_MAX_VERSUCHE - ((int)$tanZeile['versuche'] + 1);
+                    return ['ok' => false, 'http' => 401,
+                            'daten' => ['grund' => 'tan_falsch',
+                                        'versuche_offen' => max(0, $offen)],
+                            'meldung' => 'Der Code stimmt nicht.'];
+                }
+
+                // --- Beweiszeile schliessen ---
+                $ip = $kontext['ip'] ?? self::clientIp();
+
+                // Vorgaenger und eigene Position in einem Zug: die Position
+                // wird vergeben, nicht aus der id abgeleitet — die id sagt,
+                // wann jemand GEFRAGT wurde, nicht, wann er unterschrieben hat.
+                $glied    = self::vorherigesGlied($pdo);
+                $prevHash = $glied['hash'];
+                $kettenNr = $glied['nr'] + 1;
+
+                $upd = $pdo->prepare(
+                    "UPDATE dokument_signaturen
+                        SET status = 'signiert',
+                            signature_svg = ?,
+                            signed_at_utc = UTC_TIMESTAMP(),
+                            signed_at_local = ?,
+                            ip_address = ?,
+                            user_agent = ?,
+                            device_id = ?,
+                            device_hostname = ?,
+                            zugang_weg = ?,
+                            tan_an = ?,
+                            tan_verified_at = UTC_TIMESTAMP(),
+                            prev_hash = ?,
+                            ketten_nr = ?,
+                            verify_code = ?
+                      WHERE id = ?"
+                );
+                $upd->execute([
+                    $svg,
+                    substr((string)($kontext['signed_at_local'] ?? ''), 0, 50),
+                    $ip,
+                    substr((string)($kontext['user_agent'] ?? ($_SERVER['HTTP_USER_AGENT'] ?? '')), 0, 500),
+                    substr((string)($kontext['device_id'] ?? ($_SERVER['HTTP_X_DEVICE_KEY'] ?? '')), 0, 64),
+                    substr((string)($kontext['device_hostname'] ?? ''), 0, 120),
+                    $zugangWeg,
+                    self::telefonMaskieren((string)$tanZeile['telefon']),
+                    $prevHash,
+                    $kettenNr,
+                    self::verifyCode(),
+                    $signaturId,
+                ]);
+
+                $pdo->prepare("UPDATE signatur_tan SET verbraucht_at = UTC_TIMESTAMP() WHERE id = ?")
+                    ->execute([$tanZeile['id']]);
+
+                // Den Kettenhash erst jetzt rechnen — er muss ueber die Werte
+                // laufen, die tatsaechlich in der Zeile stehen
+                // (UTC_TIMESTAMP() kennt nur die Datenbank), nicht ueber das,
+                // was wir vorher zu schreiben glaubten.
+                $frisch = $pdo->prepare(
+                    "SELECT id, user_id, dokument_typ, pdf_hash, signature_svg,
+                            signed_at_utc, ip_address, device_id, tan_verified_at,
+                            verify_code
+                       FROM dokument_signaturen WHERE id = ?"
+                );
+                $frisch->execute([$signaturId]);
+                $neu = $frisch->fetch(PDO::FETCH_ASSOC);
+
+                $fullHash = self::kettenHash($neu, $prevHash);
+                $pdo->prepare("UPDATE dokument_signaturen SET full_hash = ? WHERE id = ?")
+                    ->execute([$fullHash, $signaturId]);
+
+                $pdo->commit();
+                break;                   // geschafft
+            } catch (Throwable $e) {
+                if ($pdo->inTransaction()) {
+                    $pdo->rollBack();
+                }
+                if ($versuch < 3 && self::istWiederholbar($e)) {
+                    // Kurz warten, damit nicht beide im Gleichtakt wieder
+                    // auflaufen. 120 ms, dann 240 ms.
+                    error_log("signatur signieren: Anlauf $versuch voruebergehend gescheitert ("
+                        . $e->getMessage() . '), neuer Versuch');
+                    usleep(120000 * $versuch);
+                    continue;
+                }
+                error_log('signatur signieren: ' . $e->getMessage());
+                return ['ok' => false, 'http' => 500, 'daten' => [],
+                        'meldung' => 'Unterschrift konnte nicht gespeichert werden'];
+            }
+        }
+
+        // Reverse-DNS bewusst NACH dem Commit: der Lookup kann in eine
+        // DNS-Zeitueberschreitung laufen, und daran darf eine gueltige
+        // Unterschrift nicht scheitern. Aus demselben Grund steht auch die
+        // Herkunft der IP hier unten — Land und Netzbetreiber sind eine
+        // Einordnung des Beweises, nicht der Beweis selbst.
+        try {
+            $ipNach   = $neu['ip_address'] ?? null;
+            $rdns     = self::reverseDns($ipNach);
+            $herkunft = self::ipHerkunft($pdo, $ipNach);
+
+            $pdo->prepare(
+                "UPDATE dokument_signaturen
+                    SET reverse_dns = COALESCE(?, reverse_dns),
+                        country_iso = COALESCE(?, country_iso),
+                        isp         = COALESCE(?, isp)
+                  WHERE id = ?"
+            )->execute([$rdns, $herkunft['land'], $herkunft['netz'], $signaturId]);
+
+            // Die App-Fassung EINMAL festhalten. device_keys.app_version wird
+            // bei jedem Login neu geschrieben; wuerde das Buendel sie direkt
+            // lesen, behauptete es nach dem naechsten Update, eine alte
+            // Unterschrift sei mit der neuen Fassung geleistet worden.
+            //
+            // ⚠️ Beim SMS-Link gibt es kein Geraet und damit keine Fassung.
+            // Die Spalte bleibt leer — richtig so: dort hat keine App
+            // unterschrieben, sondern ein Browser. Was ihn beschreibt, steht
+            // im user_agent.
+            $pdo->prepare(
+                "UPDATE dokument_signaturen s
+                    JOIN device_keys d
+                      ON d.device_key COLLATE utf8mb4_unicode_ci = s.device_id
+                     SET s.app_version = d.app_version
+                   WHERE s.id = ? AND s.app_version IS NULL"
+            )->execute([$signaturId]);
+        } catch (Throwable $e) {
+            error_log('signatur Herkunft: ' . $e->getMessage());
+        } finally {
+            // Ab hier ist das Buendel vollstaendig — und erst ab hier darf
+            // gesiegelt werden. Der Siegel-Cron laeuft jede Minute und nahm
+            // sonst eine Zeile mit, die noch mitten in diesem Nachtrag steckt:
+            // auf dem gesiegelten Blatt stuende „Hostname: —", waehrend die
+            // Datenbank kurz darauf einen Wert bekommt.
+            //
+            // Im finally, nicht im try: scheitert der Nachtrag, bleibt das
+            // Buendel ohne Hostname — aber die Unterschrift muss trotzdem
+            // gesiegelt werden.
+            try {
+                $pdo->prepare(
+                    "UPDATE dokument_signaturen SET beweis_vollstaendig = 1 WHERE id = ?"
+                )->execute([$signaturId]);
+            } catch (Throwable $e) {
+                error_log('signatur beweis_vollstaendig: ' . $e->getMessage());
+            }
+        }
+
+        return [
+            'ok' => true, 'http' => 200, 'meldung' => '',
+            'daten' => [
+                'signatur_id' => $signaturId,
+                'verify_code' => $neu['verify_code'] ?? null,
+                'full_hash'   => $fullHash,
+            ],
+        ];
     }
 }
