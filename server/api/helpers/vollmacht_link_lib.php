@@ -840,3 +840,91 @@ function vlVorstandWecken(PDO $pdo, array $link, string $text): void
         error_log('vlVorstandWecken: ' . $e->getMessage());
     }
 }
+
+/** Der Name des Sitzungskrümels. Auf /u/ beschränkt — er gehört nirgends sonst hin. */
+const VL_KEKS = 'vlsig';
+
+/**
+ * Bindet einen Link an das ERSTE Gerät, das ihn öffnet — oder prüft, ob es
+ * noch dasselbe ist.
+ *
+ * ⚠️ „Einmal gültig" kann NICHT heissen „nach dem ersten Aufruf tot". Eine
+ * Seite besteht aus vielen Anfragen: das HTML, ein Bild je Seite, der
+ * Download, die Handgriffe. Wer nach dem ersten Aufruf schliesst, hat nichts
+ * als eine halbe Seite. „Einmal" heisst deshalb: EIN Geraet.
+ *
+ * ⚠️ Wer zuerst klickt, gewinnt. Leitet jemand die SMS weiter und der andere
+ * ist schneller, hat der andere den Link. Das laesst sich nicht aufloesen —
+ * die SMS IST der Zugang. Aber der Zweite kommt nicht hinein, und der
+ * Vorstand erfaehrt davon.
+ *
+ * ⚠️ Gebunden wird nur bei einer Anfrage, die eine SEITE will (Accept:
+ * text/html). Manche Nachrichten-Apps und Sicherheitsfilter rufen Adressen
+ * von sich aus ab, um eine Vorschau zu bauen; wuerde das binden, waere der
+ * Link verbraucht, bevor der Mensch ihn antippt. Solche Abrufe fragen nach
+ * einer Seite selten und speichern nie einen Krümel — sie laufen hier
+ * einfach durch, ohne etwas festzuhalten.
+ *
+ * @return 'ok'|'fremd'  fremd = jemand anderes hat ihn schon geöffnet
+ */
+function vlSitzung(PDO $pdo, array $link, bool $istSeitenaufruf): string
+{
+    $vorhanden = trim((string)($link['sitzung_hash'] ?? ''));
+    $mitgebracht = (string)($_COOKIE[VL_KEKS] ?? '');
+
+    if ($vorhanden !== '') {
+        if ($mitgebracht !== '' && hash_equals($vorhanden, hash('sha256', $mitgebracht))) {
+            return 'ok';
+        }
+        // ⚠️ Nur zaehlen, wenn wirklich jemand die Seite wollte. Ein Bild
+        // ohne Krümel ist meist derselbe Mensch in einem Rahmen, der keine
+        // schickt — kein Fremdzugriff, nur eine Anfrage ohne Ausweis.
+        if ($istSeitenaufruf) {
+            try {
+                $pdo->prepare('UPDATE vollmacht_link SET fremdzugriffe = fremdzugriffe + 1
+                                WHERE id = ?')->execute([(int)$link['id']]);
+            } catch (Throwable $e) {
+                error_log('vlSitzung zaehlen: ' . $e->getMessage());
+            }
+        }
+        return 'fremd';
+    }
+
+    // Noch nicht gebunden. Nur ein echter Seitenaufruf bindet.
+    if (!$istSeitenaufruf) {
+        return 'ok';
+    }
+
+    $roh = bin2hex(random_bytes(32));
+    try {
+        // ⚠️ Nur binden, wenn immer noch niemand gebunden hat. Zwei Aufrufe
+        // in derselben Sekunde duerfen nicht beide gewinnen.
+        $st = $pdo->prepare('UPDATE vollmacht_link
+                                SET sitzung_hash = ?, gebunden_am = UTC_TIMESTAMP(),
+                                    gebunden_ip = ?, gebunden_ua = ?
+                              WHERE id = ? AND sitzung_hash IS NULL');
+        $st->execute([
+            hash('sha256', $roh),
+            vlClientIp(),
+            mb_substr((string)($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 500),
+            (int)$link['id'],
+        ]);
+        if ($st->rowCount() === 0) {
+            return 'fremd';        // jemand war eine Wimper schneller
+        }
+    } catch (Throwable $e) {
+        error_log('vlSitzung binden: ' . $e->getMessage());
+        return 'ok';               // ⚠️ Fail open: ein Datenbankfehler darf
+                                   // niemanden aus seiner eigenen Vollmacht
+                                   // aussperren.
+    }
+
+    setcookie(VL_KEKS, $roh, [
+        'expires'  => time() + VL_GUELTIG_MINUTEN * 60,
+        'path'     => '/u/',
+        'secure'   => true,
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ]);
+    return 'ok';
+}
