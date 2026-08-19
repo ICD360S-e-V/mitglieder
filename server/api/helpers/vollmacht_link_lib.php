@@ -113,6 +113,69 @@ function vlSmsText(string $sprache, string $zweck, string $url, string $nachname
         'uk' => "Dobryy den %s,\nobyednannya pidhotuvalo dlya vas dovirenist. Tut vy mozhete prochytaty i zavantazhyty yiyi vashoyu movoyu. Posylannya diysne 30 khvylyn.\n%s",
         'tr' => "Iyi gunler %s,\ndernek sizin icin bir vekaletname hazirladi. Burada kendi dilinizde okuyup indirebilirsiniz. Baglanti 30 dakika gecerlidir.\n%s",
         'ar' => "Marhaban %s,\nal-jamiyya aadat lak tawkilan. Huna yumkinuka qiraatuhu wa tahmiluhu bilughatik. Ar-rabt salih li 30 daqiqa.\n%s",
+        'fr' => 'Bonjour %s,
+l\'association a prepare une procuration pour vous. Ici vous pouvez la lire et la telecharger dans votre langue. Le lien est valable 30 minutes.
+%s',
+        'es' => 'Buenos dias %s,
+la asociacion ha preparado un poder para usted. Aqui puede leerlo y descargarlo en su idioma. El enlace es valido 30 minutos.
+%s',
+        'it' => 'Buongiorno %s,
+l\'associazione ha preparato una procura per Lei. Qui puo leggerla e scaricarla nella Sua lingua. Il link e valido 30 minuti.
+%s',
+        'pt' => 'Bom dia %s,
+a associacao preparou uma procuracao para si. Aqui pode le-la e transferi-la na sua lingua. A ligacao e valida 30 minutos.
+%s',
+        'pl' => 'Dzien dobry %s,
+stowarzyszenie przygotowalo dla Panstwa pelnomocnictwo. Tutaj mozna je przeczytac i pobrac w swoim jezyku. Link jest wazny 30 minut.
+%s',
+        'cs' => 'Dobry den %s,
+sdruzeni pro vas pripravilo plnou moc. Zde si ji muzete precist a stahnout ve svem jazyce. Odkaz plati 30 minut.
+%s',
+        'sk' => 'Dobry den %s,
+zdruzenie pre vas pripravilo plnu moc. Tu si ju mozete precitat a stiahnut vo svojom jazyku. Odkaz plati 30 minut.
+%s',
+        'sl' => 'Dober dan %s,
+drustvo je za vas pripravilo pooblastilo. Tukaj ga lahko preberete in prenesete v svojem jeziku. Povezava velja 30 minut.
+%s',
+        'hr' => 'Dobar dan %s,
+udruga je za vas pripremila punomoc. Ovdje je mozete procitati i preuzeti na svom jeziku. Poveznica vrijedi 30 minuta.
+%s',
+        'sr' => 'Dobar dan %s,
+udruzenje je za vas pripremilo punomocje. Ovde ga mozete procitati i preuzeti na svom jeziku. Link vazi 30 minuta.
+%s',
+        'bg' => 'Dobar den %s,
+sdruzhenieto podgotvi za vas palnomoshtno. Tuk mozhete da go prochetete i izteglite na vashiya ezik. Vrazkata e validna 30 minuti.
+%s',
+        'hu' => 'Jo napot %s,
+az egyesulet meghatalmazast keszitett Onnek. Itt elolvashatja es letoltheti a sajat nyelven. A link 30 percig ervenyes.
+%s',
+        'fi' => 'Hyvaa paivaa %s,
+yhdistys on valmistellut sinulle valtakirjan. Taalla voit lukea ja ladata sen omalla kielellasi. Linkki on voimassa 30 minuuttia.
+%s',
+        'et' => 'Tere paevast %s,
+uhing on teile volikirja ette valmistanud. Siin saate seda lugeda ja alla laadida oma keeles. Link kehtib 30 minutit.
+%s',
+        'lt' => 'Laba diena %s,
+asociacija paruose jums igaliojima. Cia galite ji perskaityti ir atsisiusti savo kalba. Nuoroda galioja 30 minuciu.
+%s',
+        'lv' => 'Labdien %s,
+biedriba ir sagatavojusi jums pilnvaru. Seit varat to izlasit un lejupieladet sava valoda. Saite ir deriga 30 minutes.
+%s',
+        'nl' => 'Goedendag %s,
+de vereniging heeft een volmacht voor u voorbereid. Hier kunt u die in uw taal lezen en downloaden. De link is 30 minuten geldig.
+%s',
+        'da' => 'Goddag %s,
+foreningen har forberedt en fuldmagt til dig. Her kan du laese og hente den paa dit sprog. Linket er gyldigt i 30 minutter.
+%s',
+        'sv' => 'God dag %s,
+foreningen har forberett en fullmakt at dig. Har kan du lasa och ladda ner den pa ditt sprak. Lanken galler i 30 minuter.
+%s',
+        'nb' => 'God dag %s,
+foreningen har forberedt en fullmakt til deg. Her kan du lese og laste den ned pa ditt sprak. Lenken er gyldig i 30 minutter.
+%s',
+        'el' => 'Kalimera %s,
+o syllogos etoimase gia esas ena plirexousio. Edo borite na to diavasete kai na to katevasete sti glossa sas. O syndesmos ischyei 30 lepta.
+%s',
     ];
     $signieren = [
         'de' => "Guten Tag %s,\nhier koennen Sie die Vollmacht unterschreiben. Sie unterschreiben mit dem Finger; den Bestaetigungscode bekommen Sie danach per SMS. Der Link gilt 30 Minuten.\n%s",
@@ -122,6 +185,69 @@ function vlSmsText(string $sprache, string $zweck, string $url, string $nachname
         'uk' => "Dobryy den %s,\ntut vy mozhete pidpysaty dovirenist. Pidpys palcem; kod pidtverdzhennya pryyde potim po SMS. Posylannya diysne 30 khvylyn.\n%s",
         'tr' => "Iyi gunler %s,\nvekaletnameyi burada imzalayabilirsiniz. Parmaginizla imzalarsiniz; onay kodu ardindan SMS ile gelir. Baglanti 30 dakika gecerlidir.\n%s",
         'ar' => "Marhaban %s,\nhuna yumkinuka tawqi at-tawkil. Tuwaqqi biisbaik; ramz at-taakid yasiluka baada dhalik bi risala. Ar-rabt salih li 30 daqiqa.\n%s",
+        'fr' => 'Bonjour %s,
+ici vous pouvez signer la procuration. Vous signez avec le doigt; le code de confirmation suit par SMS. Le lien est valable 30 minutes.
+%s',
+        'es' => 'Buenos dias %s,
+aqui puede firmar el poder. Firma con el dedo; el codigo de confirmacion llega despues por SMS. El enlace es valido 30 minutos.
+%s',
+        'it' => 'Buongiorno %s,
+qui puo firmare la procura. Firma con il dito; il codice di conferma arriva poi per SMS. Il link e valido 30 minuti.
+%s',
+        'pt' => 'Bom dia %s,
+aqui pode assinar a procuracao. Assina com o dedo; o codigo de confirmacao chega depois por SMS. A ligacao e valida 30 minutos.
+%s',
+        'pl' => 'Dzien dobry %s,
+tutaj mozna podpisac pelnomocnictwo. Podpis palcem; kod potwierdzenia przyjdzie potem SMS-em. Link jest wazny 30 minut.
+%s',
+        'cs' => 'Dobry den %s,
+zde muzete plnou moc podepsat. Podepisujete prstem; overovaci kod prijde potom SMS zpravou. Odkaz plati 30 minut.
+%s',
+        'sk' => 'Dobry den %s,
+tu mozete plnu moc podpisat. Podpisujete prstom; overovaci kod pride potom SMS spravou. Odkaz plati 30 minut.
+%s',
+        'sl' => 'Dober dan %s,
+tukaj lahko pooblastilo podpisete. Podpisete se s prstom; kodo za potrditev prejmete nato po SMS. Povezava velja 30 minut.
+%s',
+        'hr' => 'Dobar dan %s,
+ovdje mozete potpisati punomoc. Potpisujete prstom; kod za potvrdu stize zatim SMS-om. Poveznica vrijedi 30 minuta.
+%s',
+        'sr' => 'Dobar dan %s,
+ovde mozete potpisati punomocje. Potpisujete prstom; kod za potvrdu stize zatim SMS-om. Link vazi 30 minuta.
+%s',
+        'bg' => 'Dobar den %s,
+tuk mozhete da podpishete palnomoshtnoto. Podpisvate s prast; kodat za potvarzhdenie shte pristigne sled tova s SMS. Vrazkata e validna 30 minuti.
+%s',
+        'hu' => 'Jo napot %s,
+itt irhatja ala a meghatalmazast. Az ujjaval ir ala; a megerosito kodot utana SMS-ben kapja meg. A link 30 percig ervenyes.
+%s',
+        'fi' => 'Hyvaa paivaa %s,
+taalla voit allekirjoittaa valtakirjan. Allekirjoitat sormella; vahvistuskoodi tulee sen jalkeen tekstiviestilla. Linkki on voimassa 30 minuuttia.
+%s',
+        'et' => 'Tere paevast %s,
+siin saate volikirja allkirjastada. Allkirjastate sormega; kinnituskood tuleb seejarel SMS-iga. Link kehtib 30 minutit.
+%s',
+        'lt' => 'Laba diena %s,
+cia galite pasirasyti igaliojima. Pasirasote pirstu; patvirtinimo koda gausite paskui SMS zinute. Nuoroda galioja 30 minuciu.
+%s',
+        'lv' => 'Labdien %s,
+seit varat parakstit pilnvaru. Parakstaties ar pirkstu; apstiprinajuma kodu sanemsiet pec tam ar SMS. Saite ir deriga 30 minutes.
+%s',
+        'nl' => 'Goedendag %s,
+hier kunt u de volmacht ondertekenen. U ondertekent met uw vinger; de bevestigingscode volgt daarna per sms. De link is 30 minuten geldig.
+%s',
+        'da' => 'Goddag %s,
+her kan du underskrive fuldmagten. Du skriver under med fingeren; bekraeftelseskoden kommer derefter med sms. Linket er gyldigt i 30 minutter.
+%s',
+        'sv' => 'God dag %s,
+har kan du skriva under fullmakten. Du skriver under med fingret; bekraftelsekoden kommer sedan via sms. Lanken galler i 30 minuter.
+%s',
+        'nb' => 'God dag %s,
+her kan du signere fullmakten. Du signerer med fingeren; bekreftelseskoden kommer deretter pa SMS. Lenken er gyldig i 30 minutter.
+%s',
+        'el' => 'Kalimera %s,
+edo borite na ypograpsete to plirexousio. Ypografete me to dachtylo; o kodikos epivevaiosis tha erthei meta me SMS. O syndesmos ischyei 30 lepta.
+%s',
     ];
 
     $tabelle = $zweck === 'signieren' ? $signieren : $lesen;

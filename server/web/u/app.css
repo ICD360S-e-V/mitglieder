@@ -49,16 +49,30 @@ html, body {
   z-index: 10;
 }
 
-.marke { font-weight: 700; letter-spacing: .01em; }
+.marke {
+  font-weight: 700;
+  letter-spacing: .01em;
+  /* ⚠️ Der Vereinsname bricht NICHT um. Auf 412 px hat ihn die griechische
+   * Fassung zweizeilig gemacht — „Αυτός ο σύνδεσμος ισχύει ακόμη" ist
+   * doppelt so lang wie „Dieser Link gilt noch", und die Uhr daneben stand
+   * auf nowrap. Gesehen beim Rendern, nicht im Quelltext. */
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
 
 /* Die Uhr steht auf JEDEM Schritt, nicht nur am Anfang.
  * Wer sie nur einmal sieht, vergisst sie — und faellt mitten in der
  * Unterschrift aus der Frist. */
 .uhr {
   font-variant-numeric: tabular-nums;
-  font-size: .9rem;
+  font-size: .85rem;
+  line-height: 1.25;
   color: var(--leise);
-  white-space: nowrap;
+  /* Sie darf umbrechen, der Name nicht: in mehreren Sprachen ist die
+   * Beschriftung deutlich laenger als im Deutschen. */
+  text-align: right;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 .uhr.knapp { color: var(--warn); font-weight: 600; }
 
