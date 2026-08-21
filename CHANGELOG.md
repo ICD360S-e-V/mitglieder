@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.86.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.85.0...v1.86.0) (2026-08-21)
+
+
+### Features
+
+* **darstellung:** heller und dunkler Modus, nach Gerät oder nach Uhrzeit ([#316](https://github.com/ICD360S-e-V/mitglieder/issues/316)) ([1705073](https://github.com/ICD360S-e-V/mitglieder/commit/1705073f7ef9e7d743a80e675d8b22a2df88eb71))
+
 ## [1.85.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.84.4...v1.85.0) (2026-08-19)
 
 
