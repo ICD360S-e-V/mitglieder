@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// Login form with the member-number split into two side-by-side fields:
 ///
@@ -254,13 +255,13 @@ class _LoginTabState extends State<LoginTab> {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.red.shade300),
+        borderSide: BorderSide(color: context.colors.dangerBorder),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.red.shade300, width: 2),
+        borderSide: BorderSide(color: context.colors.dangerBorder, width: 2),
       ),
-      errorStyle: TextStyle(color: Colors.red.shade200),
+      errorStyle: TextStyle(color: context.colors.onDarkDanger),
     );
   }
 
@@ -274,7 +275,7 @@ class _LoginTabState extends State<LoginTab> {
             : Colors.green.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isError ? Colors.red.shade300 : Colors.green.shade300,
+          color: isError ? context.colors.dangerBorder : context.colors.successBorder,
           width: 1.5,
         ),
       ),
@@ -283,14 +284,14 @@ class _LoginTabState extends State<LoginTab> {
         children: [
           Icon(
             isError ? Icons.error_outline : Icons.check_circle_outline,
-            color: isError ? Colors.red.shade200 : Colors.green.shade200,
+            color: isError ? context.colors.onDarkDanger : context.colors.onDarkSuccess,
           ),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
               message,
               style: TextStyle(
-                color: isError ? Colors.red.shade100 : Colors.green.shade100,
+                color: isError ? context.colors.onDarkDanger : context.colors.onDarkSuccess,
               ),
             ),
           ),

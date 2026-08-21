@@ -3010,4 +3010,23 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Megváltozott';
+
+  @override
+  String get themeTitle => 'Megjelenés';
+
+  @override
+  String get themeLight => 'Világos';
+
+  @override
+  String get themeDark => 'Sötét';
+
+  @override
+  String get themeSystem => 'Eszköz szerint';
+
+  @override
+  String get themeSchedule => 'Automatikus (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Sötét 20:00-tól 6:00-ig, a nap többi részében világos.';
 }

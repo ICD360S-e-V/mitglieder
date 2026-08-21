@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../utils/app_theme.dart';
 
 /// Changelog Dialog - displays version history with detailed changes
 class ChangelogDialog extends StatefulWidget {
@@ -70,9 +71,9 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
             // Header
             Row(
               children: [
-                const Icon(
+                Icon(
                   Icons.history,
-                  color: Colors.blue,
+                  color: context.colors.infoFg,
                   size: 28,
                 ),
                 const SizedBox(width: 12),
@@ -108,9 +109,9 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
             // Content
             Expanded(
               child: _isLoading
-                  ? const Center(
+                  ? Center(
                       child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                        valueColor: AlwaysStoppedAnimation<Color>(context.colors.infoFg),
                       ),
                     )
                   : _error != null
@@ -128,9 +129,9 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
+          Icon(
             Icons.error_outline,
-            color: Colors.red,
+            color: context.colors.dangerFg,
             size: 48,
           ),
           const SizedBox(height: 16),
@@ -148,7 +149,7 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
             icon: const Icon(Icons.refresh),
             label: Text(AppLocalizations.of(context)!.retry),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
+              backgroundColor: context.colors.infoSolid,
               foregroundColor: Colors.white,
             ),
           ),
@@ -192,7 +193,7 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
         color: const Color(0xFF2A2A2A),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isLatest ? Colors.blue : Colors.white12,
+          color: isLatest ? context.colors.infoFg : Colors.white12,
           width: isLatest ? 2 : 1,
         ),
       ),
@@ -202,7 +203,7 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: isLatest ? Colors.blue : Colors.white12,
+            color: isLatest ? context.colors.infoFg : Colors.white12,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(
@@ -234,7 +235,7 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: context.colors.infoSolid,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Text(
@@ -291,23 +292,23 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
 
     switch (categoryName) {
       case 'Security':
-        categoryColor = Colors.red;
+        categoryColor = context.colors.dangerFg;
         categoryIcon = Icons.security;
         break;
       case 'Features':
-        categoryColor = Colors.green;
+        categoryColor = context.colors.successFg;
         categoryIcon = Icons.new_releases;
         break;
       case 'Improvements':
-        categoryColor = Colors.blue;
+        categoryColor = context.colors.infoFg;
         categoryIcon = Icons.trending_up;
         break;
       case 'Bug Fixes':
-        categoryColor = Colors.orange;
+        categoryColor = context.colors.warningFg;
         categoryIcon = Icons.bug_report;
         break;
       default:
-        categoryColor = Colors.grey;
+        categoryColor = context.colors.textSecondary;
         categoryIcon = Icons.info;
     }
 

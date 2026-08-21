@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Aby ste o nič neprišli, krátko sa pýtame každé tri mesiace. Dostanete šesťmiestny kód.",
   "kontaktBestaetigtAm": "potvrdené {datum}",
   "kontaktFestnetzKeinSms": "Toto je pevná linka — SMS tam nedorazí.",
-  "kontaktIstAndersGeworden": "Zmenilo sa"
+  "kontaktIstAndersGeworden": "Zmenilo sa",
+  "themeTitle": "Vzhľad",
+  "themeLight": "Svetlý",
+  "themeDark": "Tmavý",
+  "themeSystem": "Podľa zariadenia",
+  "themeSchedule": "Automaticky (20:00–06:00)",
+  "themeScheduleHint": "Tmavý od 20:00 do 6:00, po zvyšok dňa svetlý."
 }

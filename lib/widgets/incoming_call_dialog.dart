@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:noise_meter/noise_meter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// In-Call Overlay - shown during an active call with voice activity indicator
 class InCallOverlay extends StatefulWidget {
@@ -171,7 +172,7 @@ class _InCallOverlayState extends State<InCallOverlay> with SingleTickerProvider
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.green.shade700,
+        color: context.colors.successSolid,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -221,7 +222,7 @@ class _InCallOverlayState extends State<InCallOverlay> with SingleTickerProvider
           IconButton(
             icon: Icon(
               widget.isMuted ? Icons.mic_off : Icons.mic,
-              color: widget.isMuted ? Colors.red.shade300 : Colors.white,
+              color: widget.isMuted ? context.colors.onDarkDanger : Colors.white,
             ),
             onPressed: widget.onToggleMute,
             tooltip: widget.isMuted ? AppLocalizations.of(context)!.unmute : AppLocalizations.of(context)!.mute,
@@ -232,7 +233,7 @@ class _InCallOverlayState extends State<InCallOverlay> with SingleTickerProvider
             icon: const Icon(Icons.call_end, color: Colors.white),
             onPressed: widget.onEndCall,
             style: IconButton.styleFrom(
-              backgroundColor: Colors.red,
+              backgroundColor: context.colors.dangerSolid,
             ),
             tooltip: AppLocalizations.of(context)!.hangUp,
           ),
@@ -247,7 +248,7 @@ class _InCallOverlayState extends State<InCallOverlay> with SingleTickerProvider
       crossAxisAlignment: CrossAxisAlignment.end,
       children: List.generate(5, (index) {
         final height = widget.isMuted ? 4.0 : (_barHeights[index] * 20);
-        final color = widget.isMuted ? Colors.red.shade300 : Colors.white;
+        final color = widget.isMuted ? context.colors.dangerBorder : Colors.white;
 
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 1.5),
@@ -279,7 +280,7 @@ class CallingOverlay extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.blue.shade700,
+        color: context.colors.infoSolid,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -325,7 +326,7 @@ class CallingOverlay extends StatelessWidget {
             icon: const Icon(Icons.call_end, color: Colors.white),
             onPressed: onCancel,
             style: IconButton.styleFrom(
-              backgroundColor: Colors.red,
+              backgroundColor: context.colors.dangerSolid,
             ),
             tooltip: AppLocalizations.of(context)!.cancel,
           ),

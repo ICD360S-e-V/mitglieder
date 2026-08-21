@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Kad nieko nepraleistumėte, trumpai pasiteiraujame kas tris mėnesius. Gausite šešių skaitmenų kodą.",
   "kontaktBestaetigtAm": "patvirtinta {datum}",
   "kontaktFestnetzKeinSms": "Tai fiksuotojo ryšio numeris — SMS ten nepasieks.",
-  "kontaktIstAndersGeworden": "Pasikeitė"
+  "kontaktIstAndersGeworden": "Pasikeitė",
+  "themeTitle": "Išvaizda",
+  "themeLight": "Šviesi",
+  "themeDark": "Tamsi",
+  "themeSystem": "Pagal įrenginį",
+  "themeSchedule": "Automatiškai (20:00–06:00)",
+  "themeScheduleHint": "Tamsi nuo 20:00 iki 6:00, likusią dienos dalį šviesi."
 }

@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Щоб ви нічого не пропустили, ми коротко запитуємо раз на три місяці. Ви отримаєте код із шести цифр.",
   "kontaktBestaetigtAm": "підтверджено {datum}",
   "kontaktFestnetzKeinSms": "Це стаціонарний номер — SMS туди не надійде.",
-  "kontaktIstAndersGeworden": "Змінилося"
+  "kontaktIstAndersGeworden": "Змінилося",
+  "themeTitle": "Оформлення",
+  "themeLight": "Світла",
+  "themeDark": "Темна",
+  "themeSystem": "Як на пристрої",
+  "themeSchedule": "Автоматично (20:00–06:00)",
+  "themeScheduleHint": "Темна з 20:00 до 6:00, світла решту дня."
 }

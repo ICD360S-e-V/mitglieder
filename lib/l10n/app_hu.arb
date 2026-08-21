@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Hogy semmiről ne maradjon le, háromhavonta röviden rákérdezünk. Hatjegyű kódot fog kapni.",
   "kontaktBestaetigtAm": "megerősítve: {datum}",
   "kontaktFestnetzKeinSms": "Ez vezetékes szám — oda nem érkezik SMS.",
-  "kontaktIstAndersGeworden": "Megváltozott"
+  "kontaktIstAndersGeworden": "Megváltozott",
+  "themeTitle": "Megjelenés",
+  "themeLight": "Világos",
+  "themeDark": "Sötét",
+  "themeSystem": "Eszköz szerint",
+  "themeSchedule": "Automatikus (20:00–06:00)",
+  "themeScheduleHint": "Sötét 20:00-tól 6:00-ig, a nap többi részében világos."
 }

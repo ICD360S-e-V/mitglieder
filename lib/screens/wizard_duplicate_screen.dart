@@ -5,6 +5,7 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/icd360s_header.dart';
 import 'anonymous_chat.dart';
+import '../utils/app_theme.dart';
 
 /// Polite "you already have an account" screen routed from Stufe 1b
 /// when check_age.php finds a users row with the same lowercased
@@ -66,8 +67,8 @@ class WizardDuplicateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final accent = _isHardBlock
-        ? Colors.red.shade700
-        : const Color(0xFF1565c0);
+        ? context.colors.dangerFg
+        : context.colors.brandStrong;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -131,7 +132,7 @@ class WizardDuplicateScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                _closeButton(l10n, accent),
+                _closeButton(context, l10n, accent),
               ],
             ),
           ),
@@ -221,7 +222,7 @@ class WizardDuplicateScreen extends StatelessWidget {
     ).animate().fadeIn(delay: 700.ms, duration: 500.ms);
   }
 
-  Widget _closeButton(AppLocalizations l10n, Color accent) {
+  Widget _closeButton(BuildContext context, AppLocalizations l10n, Color accent) {
     return SizedBox(
       width: double.infinity,
       height: 54,
@@ -236,7 +237,7 @@ class WizardDuplicateScreen extends StatelessWidget {
           ),
         ),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: context.colors.card,
           foregroundColor: accent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),

@@ -5,6 +5,7 @@ import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/logger_service.dart';
 import '../screens/webview_screen.dart';
+import '../utils/app_theme.dart';
 
 final _log = LoggerService();
 
@@ -138,13 +139,13 @@ class _RegisterTabState extends State<RegisterTab> {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.red.shade300),
+        borderSide: BorderSide(color: context.colors.dangerBorder),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.red.shade300, width: 2),
+        borderSide: BorderSide(color: context.colors.dangerBorder, width: 2),
       ),
-      errorStyle: TextStyle(color: Colors.red.shade200),
+      errorStyle: TextStyle(color: context.colors.onDarkDanger),
       counterStyle: TextStyle(color: Colors.white.withValues(alpha: 0.6)),
     );
   }
@@ -328,7 +329,7 @@ class _RegisterTabState extends State<RegisterTab> {
                   : Colors.white.withValues(alpha: 0.2),
             ),
             checkColor: Colors.white,
-            activeColor: Colors.green.shade600,
+            activeColor: context.colors.successFg,
           ),
         ),
         const SizedBox(width: 8),
@@ -379,7 +380,7 @@ class _RegisterTabState extends State<RegisterTab> {
                     TextSpan(
                       text: ' ${AppLocalizations.of(context)!.legalPleaseReadFirst}',
                       style: TextStyle(
-                        color: Colors.amber.shade200,
+                        color: context.colors.onDarkWarning,
                         fontSize: 11,
                         fontStyle: FontStyle.italic,
                       ),
@@ -404,8 +405,8 @@ class _RegisterTabState extends State<RegisterTab> {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: isError
-              ? Colors.red.shade300
-              : Colors.green.shade300,
+              ? context.colors.dangerBorder
+              : context.colors.successBorder,
           width: 1.5,
         ),
       ),
@@ -414,14 +415,14 @@ class _RegisterTabState extends State<RegisterTab> {
         children: [
           Icon(
             isError ? Icons.error_outline : Icons.check_circle_outline,
-            color: isError ? Colors.red.shade200 : Colors.green.shade200,
+            color: isError ? context.colors.onDarkDanger : context.colors.onDarkSuccess,
           ),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
               message,
               style: TextStyle(
-                color: isError ? Colors.red.shade100 : Colors.green.shade100,
+                color: isError ? context.colors.onDarkDanger : context.colors.onDarkSuccess,
               ),
             ),
           ),

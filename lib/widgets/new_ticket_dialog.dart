@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/ticket_service.dart';
+import '../utils/app_theme.dart';
 
 /// Mobile-optimized New Ticket Dialog
 class NewTicketDialog extends StatefulWidget {
@@ -60,7 +61,7 @@ class _NewTicketDialogState extends State<NewTicketDialog> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.fillAllFields),
-          backgroundColor: Colors.orange,
+          backgroundColor: context.colors.warningSolid,
         ),
       );
       return;
@@ -84,14 +85,14 @@ class _NewTicketDialogState extends State<NewTicketDialog> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppLocalizations.of(context)!.ticketCreatedId(ticket.id)),
-            backgroundColor: Colors.green,
+            backgroundColor: context.colors.successSolid,
           ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppLocalizations.of(context)!.errorCreatingTicket),
-            backgroundColor: Colors.red,
+            backgroundColor: context.colors.dangerSolid,
           ),
         );
       }
@@ -117,7 +118,7 @@ class _NewTicketDialogState extends State<NewTicketDialog> {
                 // Header
                 Row(
                   children: [
-                    const Icon(Icons.add_circle, color: Color(0xFF4a90d9)),
+                    Icon(Icons.add_circle, color: context.colors.brand),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
@@ -217,19 +218,19 @@ class _NewTicketDialogState extends State<NewTicketDialog> {
                       label: Text(AppLocalizations.of(context)!.ticketPriorityLow),
                       selected: _priority == 'low',
                       onSelected: (_) => setState(() => _priority = 'low'),
-                      selectedColor: Colors.green.shade100,
+                      selectedColor: context.colors.successBg,
                     ),
                     ChoiceChip(
                       label: Text(AppLocalizations.of(context)!.ticketPriorityMedium),
                       selected: _priority == 'medium',
                       onSelected: (_) => setState(() => _priority = 'medium'),
-                      selectedColor: Colors.orange.shade100,
+                      selectedColor: context.colors.warningBg,
                     ),
                     ChoiceChip(
                       label: Text(AppLocalizations.of(context)!.ticketPriorityHigh),
                       selected: _priority == 'high',
                       onSelected: (_) => setState(() => _priority = 'high'),
-                      selectedColor: Colors.red.shade100,
+                      selectedColor: context.colors.dangerBg,
                     ),
                   ],
                 ),
@@ -248,7 +249,7 @@ class _NewTicketDialogState extends State<NewTicketDialog> {
                     ElevatedButton(
                       onPressed: _isSubmitting ? null : _submitTicket,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF4a90d9),
+                        backgroundColor: context.colors.brandFill,
                         foregroundColor: Colors.white,
                       ),
                       child: _isSubmitting
@@ -296,7 +297,7 @@ class _NewTicketDialogState extends State<NewTicketDialog> {
     try {
       return Color(int.parse(hexColor.replaceFirst('#', '0xFF')));
     } catch (e) {
-      return Colors.blue;
+      return context.colors.infoFg;
     }
   }
 }

@@ -1418,5 +1418,11 @@
   "kontaktWarumFragen": "Hiçbir şeyi kaçırmamanız için üç ayda bir kısaca soruyoruz. Altı haneli bir kod alacaksınız.",
   "kontaktBestaetigtAm": "{datum} tarihinde onaylandı",
   "kontaktFestnetzKeinSms": "Bu bir sabit hat numarası — oraya SMS ulaşmaz.",
-  "kontaktIstAndersGeworden": "Değişti"
+  "kontaktIstAndersGeworden": "Değişti",
+  "themeTitle": "Görünüm",
+  "themeLight": "Açık",
+  "themeDark": "Koyu",
+  "themeSystem": "Cihazı takip et",
+  "themeSchedule": "Otomatik (20.00–06.00)",
+  "themeScheduleHint": "20.00 ile 06.00 arası koyu, günün geri kalanında açık."
 }

@@ -3006,4 +3006,23 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Изменилось';
+
+  @override
+  String get themeTitle => 'Оформление';
+
+  @override
+  String get themeLight => 'Светлая';
+
+  @override
+  String get themeDark => 'Тёмная';
+
+  @override
+  String get themeSystem => 'Как на устройстве';
+
+  @override
+  String get themeSchedule => 'Автоматически (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Тёмная с 20:00 до 6:00, светлая в остальное время.';
 }

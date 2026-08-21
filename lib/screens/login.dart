@@ -10,6 +10,7 @@ import '../widgets/approval_waiting_dialog.dart';
 import '../utils/error_helpers.dart';
 import 'mitglied_dashboard.dart';
 import 'webview_screen.dart';
+import '../utils/app_theme.dart';
 
 class LoginPage extends StatefulWidget {
   final String? prefillMitgliedernummer;
@@ -236,15 +237,11 @@ class _LoginPageState extends State<LoginPage> {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(

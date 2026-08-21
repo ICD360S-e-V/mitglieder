@@ -1418,5 +1418,11 @@
   "kontaktWarumFragen": "حتى لا يفوتك شيء، نسأل باختصار كل ثلاثة أشهر. ستتلقى رمزاً من ستة أرقام.",
   "kontaktBestaetigtAm": "تم التأكيد في {datum}",
   "kontaktFestnetzKeinSms": "هذا رقم هاتف أرضي — لا تصل إليه الرسائل القصيرة.",
-  "kontaktIstAndersGeworden": "لقد تغيّر"
+  "kontaktIstAndersGeworden": "لقد تغيّر",
+  "themeTitle": "المظهر",
+  "themeLight": "فاتح",
+  "themeDark": "داكن",
+  "themeSystem": "حسب الجهاز",
+  "themeSchedule": "تلقائي (20:00–06:00)",
+  "themeScheduleHint": "داكن من الساعة 20:00 حتى 6:00، وفاتح بقية اليوم."
 }

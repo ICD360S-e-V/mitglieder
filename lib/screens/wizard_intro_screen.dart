@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/icd360s_header.dart';
+import '../utils/app_theme.dart';
 
 /// First screen of the onboarding wizard — Claudiu narrates the
 /// association's founding story across six bubbles that fade in on a
@@ -72,15 +73,11 @@ class _WizardIntroScreenState extends State<WizardIntroScreen> {
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(
@@ -147,7 +144,7 @@ class _WizardIntroScreenState extends State<WizardIntroScreen> {
             padding:
                 const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.colors.card,
               borderRadius: const BorderRadiusDirectional.only(
                 topStart: Radius.circular(4),
                 topEnd: Radius.circular(14),
@@ -167,9 +164,9 @@ class _WizardIntroScreenState extends State<WizardIntroScreen> {
               children: [
                 Text(
                   text,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13.5,
-                    color: Color(0xFF0d47a1),
+                    color: context.colors.brandStrong,
                     height: 1.5,
                   ),
                 ),
@@ -178,7 +175,7 @@ class _WizardIntroScreenState extends State<WizardIntroScreen> {
                   '— Claudiu',
                   style: TextStyle(
                     fontSize: 11,
-                    color: Colors.grey[500],
+                    color: context.colors.textTertiary,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -217,11 +214,11 @@ class _WizardIntroScreenState extends State<WizardIntroScreen> {
       child: ElevatedButton.icon(
         onPressed: _saving ? null : _start,
         icon: _saving
-            ? const SizedBox(
+            ? SizedBox(
                 width: 20,
                 height: 20,
                 child: CircularProgressIndicator(
-                  color: Color(0xFF0d47a1),
+                  color: context.colors.brandStrong,
                   strokeWidth: 2.5,
                 ),
               )
@@ -234,8 +231,8 @@ class _WizardIntroScreenState extends State<WizardIntroScreen> {
           ),
         ),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
-          foregroundColor: const Color(0xFF0d47a1),
+          backgroundColor: context.colors.card,
+          foregroundColor: context.colors.brandStrong,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
           ),

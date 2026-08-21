@@ -10,6 +10,7 @@ import '../screens/webview_screen.dart';
 import '../utils/error_helpers.dart';
 import '../utils/eu_eea_citizenship.dart';
 import '../utils/staatsangehoerigkeit_options.dart';
+import '../utils/app_theme.dart';
 
 class VerifizierungTab extends StatefulWidget {
   final String mitgliedernummer;
@@ -396,13 +397,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   Color _statusColor(String status) {
     switch (status) {
       case 'geprueft':
-        return Colors.green;
+        return context.colors.successFg;
       case 'ausgefuellt':
-        return Colors.blue;
+        return context.colors.infoFg;
       case 'abgelehnt':
-        return Colors.red;
+        return context.colors.dangerFg;
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 
@@ -671,7 +672,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: isError ? Colors.red : Colors.green,
+        backgroundColor: isError ? context.colors.dangerFg : context.colors.successFg,
       ),
     );
   }
@@ -689,7 +690,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 48, color: Colors.red),
+            Icon(Icons.error_outline, size: 48, color: context.colors.dangerFg),
             const SizedBox(height: 16),
             Text(_error!, textAlign: TextAlign.center),
             const SizedBox(height: 16),
@@ -735,7 +736,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     }
 
     return Card(
-      color: Colors.blue.shade50,
+      color: context.colors.infoBg,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -751,7 +752,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                   AppLocalizations.of(context)!.stepsCompleted(totalCompleted, totalStages),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: totalCompleted == totalStages ? Colors.green : Colors.blue.shade700,
+                    color: totalCompleted == totalStages ? context.colors.successFg : context.colors.infoFg,
                   ),
                 ),
               ],
@@ -762,9 +763,9 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               child: LinearProgressIndicator(
                 value: totalCompleted / totalStages,
                 minHeight: 10,
-                backgroundColor: Colors.grey.shade300,
+                backgroundColor: context.colors.divider,
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  totalCompleted == totalStages ? Colors.green : Colors.blue,
+                  totalCompleted == totalStages ? context.colors.successFg : context.colors.infoFg,
                 ),
               ),
             ),
@@ -785,17 +786,17 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     if (isSkipped) {
       return Card(
         clipBehavior: Clip.antiAlias,
-        color: Colors.grey.shade100,
+        color: context.colors.cardSubtle,
         child: ListTile(
-          leading: Icon(Icons.block, color: Colors.grey.shade400),
+          leading: Icon(Icons.block, color: context.colors.textDisabled),
           title: Row(
             children: [
-              Icon(_stufenIcons[stufe] ?? Icons.circle, size: 18, color: Colors.grey.shade400),
+              Icon(_stufenIcons[stufe] ?? Icons.circle, size: 18, color: context.colors.textDisabled),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
                   '${_stufenCircle(stufe)} ${_getStufenNames()[stufe]}',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.grey.shade500),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: context.colors.textTertiary),
                 ),
               ),
             ],
@@ -808,14 +809,14 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             ),
             child: Text(
               AppLocalizations.of(context)!.notApplicable,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.amber.shade800),
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: context.colors.warningFg),
             ),
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 4),
             child: Text(
               AppLocalizations.of(context)!.socialBenefitsExempt,
-              style: TextStyle(fontSize: 11, color: Colors.grey.shade500, fontStyle: FontStyle.italic),
+              style: TextStyle(fontSize: 11, color: context.colors.textTertiary, fontStyle: FontStyle.italic),
             ),
           ),
         ),
@@ -826,17 +827,17 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     if (!isUnlocked) {
       return Card(
         clipBehavior: Clip.antiAlias,
-        color: Colors.grey.shade100,
+        color: context.colors.cardSubtle,
         child: ListTile(
-          leading: Icon(Icons.lock, color: Colors.grey.shade400),
+          leading: Icon(Icons.lock, color: context.colors.textDisabled),
           title: Row(
             children: [
-              Icon(_stufenIcons[stufe] ?? Icons.circle, size: 18, color: Colors.grey.shade400),
+              Icon(_stufenIcons[stufe] ?? Icons.circle, size: 18, color: context.colors.textDisabled),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
                   '${_stufenCircle(stufe)} ${_getStufenNames()[stufe]}',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.grey.shade500),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: context.colors.textTertiary),
                 ),
               ),
             ],
@@ -849,7 +850,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             ),
             child: Text(
               AppLocalizations.of(context)!.locked,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey.shade500),
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: context.colors.textTertiary),
             ),
           ),
           subtitle: Padding(
@@ -858,7 +859,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               AppLocalizations.of(context)!.completePreviousStep(
                 stufe == 5 && _isStufe4Skipped() ? 3 : stufe - 1,
               ),
-              style: TextStyle(fontSize: 11, color: Colors.grey.shade500, fontStyle: FontStyle.italic),
+              style: TextStyle(fontSize: 11, color: context.colors.textTertiary, fontStyle: FontStyle.italic),
             ),
           ),
         ),
@@ -875,7 +876,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         ),
         title: Row(
           children: [
-            Icon(_stufenIcons[stufe] ?? Icons.circle, size: 18, color: Colors.grey.shade600),
+            Icon(_stufenIcons[stufe] ?? Icons.circle, size: 18, color: context.colors.textSecondary),
             const SizedBox(width: 8),
             Expanded(
               child: Text(
@@ -913,25 +914,25 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             _buildStatusBanner(
               icon: Icons.warning_amber,
               text: AppLocalizations.of(context)!.rejectedNote(notiz),
-              color: Colors.red,
+              color: context.colors.dangerFg,
             ),
           if (status == 'ausgefuellt')
             _buildStatusBanner(
               icon: Icons.hourglass_top,
               text: AppLocalizations.of(context)!.waitingForReview,
-              color: Colors.blue,
+              color: context.colors.infoFg,
             ),
           if (status == 'geprueft')
             _buildStatusBanner(
               icon: Icons.check_circle,
               text: AppLocalizations.of(context)!.stepApproved,
-              color: Colors.green,
+              color: context.colors.successFg,
             ),
           if (status == 'geprueft')
             _buildStatusBanner(
               icon: Icons.chat,
               text: AppLocalizations.of(context)!.changesViaChat,
-              color: Colors.orange,
+              color: context.colors.warningFg,
             ),
           Padding(
             padding: const EdgeInsets.all(16),
@@ -1052,7 +1053,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                 suffixIcon: canEdit ? const Icon(Icons.calendar_today) : null,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                 filled: true,
-                fillColor: canEdit ? Colors.white : Colors.grey.shade100,
+                fillColor: canEdit ? context.colors.inputFill : context.colors.cardSubtle,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
               ),
             ),
@@ -1126,7 +1127,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           padding: const EdgeInsets.symmetric(horizontal: 4),
           child: Text(
             AppLocalizations.of(context)!.phonePurpose,
-            style: TextStyle(fontSize: 11, color: Colors.grey.shade500, fontStyle: FontStyle.italic),
+            style: TextStyle(fontSize: 11, color: context.colors.textTertiary, fontStyle: FontStyle.italic),
           ),
         ),
         const SizedBox(height: 12),
@@ -1215,7 +1216,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         prefixIcon: const Icon(Icons.person_outline),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         filled: true,
-        fillColor: canEdit ? Colors.white : Colors.grey.shade100,
+        fillColor: canEdit ? context.colors.inputFill : context.colors.cardSubtle,
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       ),
       items: labels.entries
@@ -1241,7 +1242,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         prefixIcon: const Icon(Icons.favorite_outline),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         filled: true,
-        fillColor: canEdit ? Colors.white : Colors.grey.shade100,
+        fillColor: canEdit ? context.colors.inputFill : context.colors.cardSubtle,
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       ),
       items: labels.entries
@@ -1287,7 +1288,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         helperMaxLines: 3,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         filled: true,
-        fillColor: canEdit ? Colors.white : Colors.grey.shade100,
+        fillColor: canEdit ? context.colors.inputFill : context.colors.cardSubtle,
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       ),
       items: [
@@ -1311,23 +1312,23 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
       decoration: BoxDecoration(
-        color: dim ? Colors.grey.shade100 : Colors.blue.shade50,
+        color: dim ? context.colors.cardSubtle : context.colors.infoBg,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: dim ? Colors.grey.shade300 : Colors.blue.shade200,
+          color: dim ? context.colors.divider : context.colors.infoBorder,
         ),
       ),
       child: Row(
         children: [
           Icon(icon,
-              color: dim ? Colors.grey.shade600 : Colors.blue.shade700,
+              color: dim ? context.colors.textSecondary : context.colors.infoFg,
               size: 20),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
               text,
               style: TextStyle(
-                color: dim ? Colors.grey.shade700 : Colors.blue.shade900,
+                color: dim ? context.colors.textPrimary : context.colors.infoFg,
                 fontSize: 13.5,
                 fontWeight: FontWeight.w600,
                 height: 1.4,
@@ -1378,7 +1379,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       children: [
         Text(
           AppLocalizations.of(context)!.selectMemberTypePrompt,
-          style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+          style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
         ),
         const SizedBox(height: 12),
         for (final entry in _getMitgliedsartLabels().entries)
@@ -1389,10 +1390,10 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               child: Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: _selectedMitgliedsart == entry.key ? Colors.blue.shade50 : Colors.grey.shade50,
+                  color: _selectedMitgliedsart == entry.key ? context.colors.infoBg : context.colors.cardSubtle,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: _selectedMitgliedsart == entry.key ? Colors.blue.shade300 : Colors.grey.shade200,
+                    color: _selectedMitgliedsart == entry.key ? context.colors.infoBorder : context.colors.dividerSubtle,
                     width: _selectedMitgliedsart == entry.key ? 2 : 1,
                   ),
                 ),
@@ -1404,7 +1405,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                         Icon(
                           _selectedMitgliedsart == entry.key ? Icons.radio_button_checked : Icons.radio_button_off,
                           size: 20,
-                          color: _selectedMitgliedsart == entry.key ? Colors.blue.shade700 : Colors.grey.shade400,
+                          color: _selectedMitgliedsart == entry.key ? context.colors.infoFg : context.colors.textDisabled,
                         ),
                         const SizedBox(width: 8),
                         Expanded(
@@ -1413,7 +1414,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: _selectedMitgliedsart == entry.key ? Colors.blue.shade900 : Colors.grey.shade800,
+                              color: _selectedMitgliedsart == entry.key ? context.colors.infoFg : context.colors.textPrimary,
                             ),
                           ),
                         ),
@@ -1427,7 +1428,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                           _getMitgliedsartDescriptions()[entry.key]!,
                           style: TextStyle(
                             fontSize: 12,
-                            color: _selectedMitgliedsart == entry.key ? Colors.blue.shade800 : Colors.grey.shade600,
+                            color: _selectedMitgliedsart == entry.key ? context.colors.infoFg : context.colors.textSecondary,
                           ),
                         ),
                       ),
@@ -1460,19 +1461,19 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.blue.shade50,
+                color: context.colors.infoBg,
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.blue.shade200),
+                border: Border.all(color: context.colors.infoBorder),
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.info_outline, size: 20, color: Colors.blue.shade700),
+                  Icon(Icons.info_outline, size: 20, color: context.colors.infoFg),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
                       AppLocalizations.of(context)!.financialExplanation,
-                      style: TextStyle(fontSize: 12, color: Colors.blue.shade900),
+                      style: TextStyle(fontSize: 12, color: context.colors.infoFg),
                     ),
                   ),
                 ],
@@ -1484,7 +1485,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                color: Colors.grey.shade800,
+                color: context.colors.textPrimary,
               ),
             ),
             const SizedBox(height: 12),
@@ -1521,13 +1522,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.green.shade50,
+                  color: context.colors.successBg,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.green.shade300),
+                  border: Border.all(color: context.colors.successBorder),
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.check_circle, size: 20, color: Colors.green.shade700),
+                    Icon(Icons.check_circle, size: 20, color: context.colors.successFg),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
@@ -1535,7 +1536,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: Colors.green.shade800,
+                          color: context.colors.successFg,
                         ),
                       ),
                     ),
@@ -1547,16 +1548,16 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.orange.shade50,
+                  color: context.colors.warningBg,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.orange.shade300),
+                  border: Border.all(color: context.colors.warningBorder),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.upload_file, size: 20, color: Colors.orange.shade700),
+                        Icon(Icons.upload_file, size: 20, color: context.colors.warningFg),
                         const SizedBox(width: 10),
                         Expanded(
                           child: Text(
@@ -1564,7 +1565,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.bold,
-                              color: Colors.orange.shade900,
+                              color: context.colors.warningFg,
                             ),
                           ),
                         ),
@@ -1573,12 +1574,12 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                     const SizedBox(height: 8),
                     Text(
                       AppLocalizations.of(context)!.uploadLeistungsbescheidHint,
-                      style: TextStyle(fontSize: 12, color: Colors.orange.shade800),
+                      style: TextStyle(fontSize: 12, color: context.colors.warningFg),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       AppLocalizations.of(context)!.allowedFormatsUpload,
-                      style: TextStyle(fontSize: 11, color: Colors.orange.shade700, fontStyle: FontStyle.italic),
+                      style: TextStyle(fontSize: 11, color: context.colors.warningFg, fontStyle: FontStyle.italic),
                     ),
                   ],
                 ),
@@ -1602,13 +1603,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
+                  color: context.colors.infoBg,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.blue.shade300),
+                  border: Border.all(color: context.colors.infoBorder),
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.euro, size: 20, color: Colors.blue.shade700),
+                    Icon(Icons.euro, size: 20, color: context.colors.infoFg),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
@@ -1616,7 +1617,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: Colors.blue.shade800,
+                          color: context.colors.infoFg,
                         ),
                       ),
                     ),
@@ -1652,10 +1653,10 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blue.shade50 : Colors.grey.shade50,
+          color: isSelected ? context.colors.infoBg : context.colors.cardSubtle,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: isSelected ? Colors.blue.shade300 : Colors.grey.shade200,
+            color: isSelected ? context.colors.infoBorder : context.colors.dividerSubtle,
             width: isSelected ? 2 : 1,
           ),
         ),
@@ -1664,10 +1665,10 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             Icon(
               isSelected ? Icons.radio_button_checked : Icons.radio_button_off,
               size: 20,
-              color: isSelected ? Colors.blue.shade700 : Colors.grey.shade400,
+              color: isSelected ? context.colors.infoFg : context.colors.textDisabled,
             ),
             const SizedBox(width: 10),
-            Icon(icon, size: 18, color: isSelected ? Colors.blue.shade700 : Colors.grey.shade500),
+            Icon(icon, size: 18, color: isSelected ? context.colors.infoFg : context.colors.textTertiary),
             const SizedBox(width: 8),
             Expanded(
               child: Text(
@@ -1675,7 +1676,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: isSelected ? Colors.blue.shade900 : Colors.grey.shade800,
+                  color: isSelected ? context.colors.infoFg : context.colors.textPrimary,
                 ),
               ),
             ),
@@ -1761,11 +1762,11 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               for (final entry in _getZahlungsmethodeLabels().entries)
                 Card(
                   margin: const EdgeInsets.only(bottom: 8),
-                  color: _selectedZahlungsmethode == entry.key ? Colors.blue.shade50 : null,
+                  color: _selectedZahlungsmethode == entry.key ? context.colors.infoBg : null,
                   child: RadioListTile<String>(
                     title: Text(entry.value),
                     value: entry.key,
-                    activeColor: const Color(0xFF4a90d9),
+                    activeColor: context.colors.brandFill,
                   ),
                 ),
             ],
@@ -1781,7 +1782,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             prefixIcon: const Icon(Icons.calendar_today),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
             filled: true,
-            fillColor: canEdit ? Colors.white : Colors.grey.shade100,
+            fillColor: canEdit ? context.colors.inputFill : context.colors.cardSubtle,
             contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           ),
           items: List.generate(31, (i) => i + 1)
@@ -1798,12 +1799,12 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: Row(
               children: [
-                Icon(Icons.info_outline, size: 16, color: Colors.blue.shade700),
+                Icon(Icons.info_outline, size: 16, color: context.colors.infoFg),
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(
                     AppLocalizations.of(context)!.paymentDayReminder(_selectedZahlungstag!),
-                    style: TextStyle(fontSize: 12, color: Colors.blue.shade700),
+                    style: TextStyle(fontSize: 12, color: context.colors.infoFg),
                   ),
                 ),
               ],
@@ -1832,7 +1833,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           children: [
             Text(
               AppLocalizations.of(context)!.membershipStartPrompt,
-              style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+              style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
             ),
             const SizedBox(height: 16),
 
@@ -1892,7 +1893,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                     labelText: AppLocalizations.of(context)!.selectDateLabel,
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                     filled: true,
-                    fillColor: canEdit ? Colors.white : Colors.grey.shade100,
+                    fillColor: canEdit ? context.colors.inputFill : context.colors.cardSubtle,
                     prefixIcon: const Icon(Icons.calendar_today),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                   ),
@@ -1902,8 +1903,8 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                         : AppLocalizations.of(context)!.selectDateHint,
                     style: TextStyle(
                       color: _selectedMitgliedschaftsbeginnDatum != null
-                          ? Colors.black87
-                          : Colors.grey.shade500,
+                          ? context.colors.textPrimary
+                          : context.colors.textTertiary,
                     ),
                   ),
                 ),
@@ -1912,7 +1913,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                 padding: const EdgeInsets.only(top: 6, left: 4),
                 child: Text(
                   AppLocalizations.of(context)!.dateNotBefore,
-                  style: TextStyle(fontSize: 11, color: Colors.grey.shade600, fontStyle: FontStyle.italic),
+                  style: TextStyle(fontSize: 11, color: context.colors.textSecondary, fontStyle: FontStyle.italic),
                 ),
               ),
             ],
@@ -1935,18 +1936,18 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                   return Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.green.shade50,
+                      color: context.colors.successBg,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.green.shade300),
+                      border: Border.all(color: context.colors.successBorder),
                     ),
                     child: Row(
                       children: [
-                        Icon(Icons.check_circle, size: 20, color: Colors.green.shade700),
+                        Icon(Icons.check_circle, size: 20, color: context.colors.successFg),
                         const SizedBox(width: 10),
                         Expanded(
                           child: Text(
                             AppLocalizations.of(context)!.feeExemptRetro,
-                            style: TextStyle(fontSize: 13, color: Colors.green.shade800),
+                            style: TextStyle(fontSize: 13, color: context.colors.successFg),
                           ),
                         ),
                       ],
@@ -1957,16 +1958,16 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                   return Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.orange.shade50,
+                      color: context.colors.warningBg,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.orange.shade300),
+                      border: Border.all(color: context.colors.warningBorder),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.info_outline, size: 20, color: Colors.orange.shade700),
+                            Icon(Icons.info_outline, size: 20, color: context.colors.warningFg),
                             const SizedBox(width: 10),
                             Expanded(
                               child: Text(
@@ -1974,7 +1975,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.orange.shade900,
+                                  color: context.colors.warningFg,
                                 ),
                               ),
                             ),
@@ -1988,7 +1989,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                             months.toString(),
                             retroBeitrag.toStringAsFixed(2),
                           ),
-                          style: TextStyle(fontSize: 13, color: Colors.orange.shade800),
+                          style: TextStyle(fontSize: 13, color: context.colors.warningFg),
                         ),
                       ],
                     ),
@@ -2026,10 +2027,10 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFF4a90d9).withValues(alpha: 0.08) : Colors.grey.shade50,
+          color: isSelected ? context.colors.brand.withValues(alpha: 0.08) : context.colors.cardSubtle,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: isSelected ? const Color(0xFF4a90d9) : Colors.grey.shade300,
+            color: isSelected ? context.colors.brand : context.colors.divider,
             width: isSelected ? 2 : 1,
           ),
         ),
@@ -2037,7 +2038,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           children: [
             Icon(
               isSelected ? Icons.radio_button_checked : Icons.radio_button_unchecked,
-              color: isSelected ? const Color(0xFF4a90d9) : Colors.grey.shade400,
+              color: isSelected ? context.colors.brand : context.colors.textDisabled,
               size: 22,
             ),
             const SizedBox(width: 12),
@@ -2047,7 +2048,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                 children: [
                   Row(
                     children: [
-                      Icon(icon, size: 18, color: isSelected ? const Color(0xFF4a90d9) : Colors.grey.shade600),
+                      Icon(icon, size: 18, color: isSelected ? context.colors.brand : context.colors.textSecondary),
                       const SizedBox(width: 6),
                       Expanded(
                         child: Text(
@@ -2055,7 +2056,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 13,
-                            color: isSelected ? const Color(0xFF4a90d9) : Colors.black87,
+                            color: isSelected ? context.colors.brand : context.colors.textPrimary,
                           ),
                         ),
                       ),
@@ -2064,7 +2065,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                   const SizedBox(height: 4),
                   Text(
                     subtitle,
-                    style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
+                    style: TextStyle(fontSize: 11, color: context.colors.textSecondary),
                   ),
                 ],
               ),
@@ -2094,7 +2095,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               : stufe == 7
                   ? AppLocalizations.of(context)!.pleaseReadDatenschutz
                   : AppLocalizations.of(context)!.pleaseReadWiderruf,
-          style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+          style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
         ),
         const SizedBox(height: 12),
         SizedBox(
@@ -2117,7 +2118,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             onChanged: (value) => setState(() => _documentChecked[stufe] = value ?? false),
             title: Text(AppLocalizations.of(context)!.acceptDocumentCheckbox),
             controlAffinity: ListTileControlAffinity.leading,
-            activeColor: const Color(0xFF4a90d9),
+            activeColor: context.colors.brandFill,
             contentPadding: EdgeInsets.zero,
           ),
           const SizedBox(height: 8),
@@ -2132,7 +2133,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                   : const Icon(Icons.check),
               label: Text(AppLocalizations.of(context)!.accept),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF4a90d9),
+                backgroundColor: context.colors.brandFill,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 14),
               ),
@@ -2147,13 +2148,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               return Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.green.shade50,
+                  color: context.colors.successBg,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.green.shade200),
+                  border: Border.all(color: context.colors.successBorder),
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.check_circle, size: 18, color: Colors.green.shade700),
+                    Icon(Icons.check_circle, size: 18, color: context.colors.successFg),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Column(
@@ -2164,13 +2165,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
-                              color: Colors.green.shade800,
+                              color: context.colors.successFg,
                             ),
                           ),
                           const SizedBox(height: 2),
                           Text(
                             _formatTimestamp(timestamp),
-                            style: TextStyle(fontSize: 11, color: Colors.green.shade700),
+                            style: TextStyle(fontSize: 11, color: context.colors.successFg),
                           ),
                         ],
                       ),
@@ -2182,17 +2183,17 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             return Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.grey.shade50,
+                color: context.colors.cardSubtle,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
                 children: [
-                  Icon(Icons.info_outline, size: 16, color: Colors.grey.shade600),
+                  Icon(Icons.info_outline, size: 16, color: context.colors.textSecondary),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       AppLocalizations.of(context)!.confirmedByBoard,
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                      style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                     ),
                   ),
                 ],
@@ -2230,12 +2231,12 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       children: [
         // Section header
         Card(
-          color: Colors.green.shade50,
+          color: context.colors.successBg,
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Row(
               children: [
-                Icon(Icons.verified_user, color: Colors.green.shade700, size: 20),
+                Icon(Icons.verified_user, color: context.colors.successFg, size: 20),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
@@ -2243,7 +2244,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 14,
-                      color: Colors.green.shade800,
+                      color: context.colors.successFg,
                     ),
                   ),
                 ),
@@ -2275,12 +2276,12 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             // Status icon
             Icon(
               accepted ? Icons.check_circle : Icons.radio_button_unchecked,
-              color: accepted ? Colors.green : Colors.grey,
+              color: accepted ? context.colors.successFg : context.colors.textSecondary,
               size: 24,
             ),
             const SizedBox(width: 12),
             // Document icon + name
-            Icon(icon, size: 18, color: Colors.grey.shade600),
+            Icon(icon, size: 18, color: context.colors.textSecondary),
             const SizedBox(width: 8),
             Expanded(
               child: Column(
@@ -2294,12 +2295,12 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                   if (accepted)
                     Text(
                       AppLocalizations.of(context)!.acceptedOn(_formatTimestamp(timestamp)),
-                      style: TextStyle(fontSize: 12, color: Colors.green.shade700),
+                      style: TextStyle(fontSize: 12, color: context.colors.successFg),
                     )
                   else
                     Text(
                       AppLocalizations.of(context)!.notAccepted,
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade500),
+                      style: TextStyle(fontSize: 12, color: context.colors.textTertiary),
                     ),
                 ],
               ),
@@ -2318,7 +2319,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
-                  color: accepted ? Colors.green : Colors.grey,
+                  color: accepted ? context.colors.successFg : context.colors.textSecondary,
                 ),
               ),
             ),
@@ -2350,7 +2351,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             : const Icon(Icons.save),
         label: Text(AppLocalizations.of(context)!.save),
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF4a90d9),
+          backgroundColor: context.colors.brandFill,
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 14),
         ),
@@ -2387,7 +2388,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         child: Text(
           g.kontinent.toUpperCase(),
           style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.bold, color: Colors.grey.shade500),
+              fontSize: 11, fontWeight: FontWeight.bold, color: context.colors.textTertiary),
         ),
       ));
       for (final b in g.bezeichnungen) {
@@ -2446,13 +2447,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.grey.shade100,
+        color: context.colors.cardSubtle,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: context.colors.divider),
       ),
       child: Row(
         children: [
-          Icon(Icons.badge_outlined, size: 18, color: Colors.grey.shade600),
+          Icon(Icons.badge_outlined, size: 18, color: context.colors.textSecondary),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -2460,7 +2461,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               children: [
                 Text(
                   AppLocalizations.of(context)!.email,
-                  style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
+                  style: TextStyle(fontSize: 11, color: context.colors.textSecondary),
                 ),
                 const SizedBox(height: 2),
                 SelectableText(
@@ -2481,7 +2482,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               );
             },
             icon: const Icon(Icons.copy, size: 18),
-            color: Colors.grey.shade600,
+            color: context.colors.textSecondary,
             visualDensity: VisualDensity.compact,
           ),
         ],
@@ -2503,7 +2504,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         labelText: label,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         filled: true,
-        fillColor: enabled ? Colors.white : Colors.grey.shade100,
+        fillColor: enabled ? context.colors.inputFill : context.colors.cardSubtle,
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
       ),
     );

@@ -5,6 +5,7 @@ import '../l10n/app_localizations.dart';
 import '../screens/anonymous_chat.dart';
 import '../services/wizard_service.dart';
 import 'icd360s_header.dart';
+import '../utils/app_theme.dart';
 
 /// Reusable chrome for every step screen in the onboarding wizard.
 /// Provides the consistent ICD360S blue gradient background, the
@@ -59,15 +60,11 @@ class WizardStepShell extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(
@@ -84,14 +81,14 @@ class WizardStepShell extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      _bubble().animate().fadeIn(duration: 400.ms),
+                      _bubble(context).animate().fadeIn(duration: 400.ms),
                       const SizedBox(height: 20),
                       child,
                     ],
                   ),
                 ),
               ),
-              _bottomBar(l10n),
+              _bottomBar(context, l10n),
             ],
           ),
         ),
@@ -179,7 +176,7 @@ class WizardStepShell extends StatelessWidget {
     );
   }
 
-  Widget _bubble() {
+  Widget _bubble(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -189,7 +186,7 @@ class WizardStepShell extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.colors.card,
               borderRadius: const BorderRadiusDirectional.only(
                 topStart: Radius.circular(4),
                 topEnd: Radius.circular(14),
@@ -209,9 +206,9 @@ class WizardStepShell extends StatelessWidget {
               children: [
                 Text(
                   prompt,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13.5,
-                    color: Color(0xFF0d47a1),
+                    color: context.colors.brandStrong,
                     height: 1.45,
                   ),
                 ),
@@ -220,7 +217,7 @@ class WizardStepShell extends StatelessWidget {
                   '— Claudiu',
                   style: TextStyle(
                     fontSize: 11,
-                    color: Colors.grey[500],
+                    color: context.colors.textTertiary,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -252,7 +249,7 @@ class WizardStepShell extends StatelessWidget {
     );
   }
 
-  Widget _bottomBar(AppLocalizations l10n) {
+  Widget _bottomBar(BuildContext context, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
       decoration: BoxDecoration(
@@ -286,11 +283,11 @@ class WizardStepShell extends StatelessWidget {
           ElevatedButton.icon(
             onPressed: (onNext == null || saving) ? null : onNext,
             icon: saving
-                ? const SizedBox(
+                ? SizedBox(
                     width: 18,
                     height: 18,
                     child: CircularProgressIndicator(
-                      color: Color(0xFF0d47a1),
+                      color: context.colors.brandStrong,
                       strokeWidth: 2.4,
                     ),
                   )
@@ -303,12 +300,12 @@ class WizardStepShell extends StatelessWidget {
               ),
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: const Color(0xFF0d47a1),
+              backgroundColor: context.colors.card,
+              foregroundColor: context.colors.brandStrong,
               disabledBackgroundColor:
                   Colors.white.withValues(alpha: 0.4),
               disabledForegroundColor:
-                  const Color(0xFF0d47a1).withValues(alpha: 0.7),
+                  context.colors.brandStrong.withValues(alpha: 0.7),
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 14,

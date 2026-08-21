@@ -3003,4 +3003,23 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Zmenilo sa';
+
+  @override
+  String get themeTitle => 'Vzhľad';
+
+  @override
+  String get themeLight => 'Svetlý';
+
+  @override
+  String get themeDark => 'Tmavý';
+
+  @override
+  String get themeSystem => 'Podľa zariadenia';
+
+  @override
+  String get themeSchedule => 'Automaticky (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Tmavý od 20:00 do 6:00, po zvyšok dňa svetlý.';
 }

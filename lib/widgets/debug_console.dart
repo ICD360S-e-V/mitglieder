@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../l10n/app_localizations.dart';
 import '../services/logger_service.dart';
+import '../utils/app_theme.dart';
 
 /// Debug Console Dialog - shows app logs
 class DebugConsole extends StatefulWidget {
@@ -58,7 +59,7 @@ class _DebugConsoleState extends State<DebugConsole> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(AppLocalizations.of(context)!.logsCopied),
-        backgroundColor: Colors.green,
+        backgroundColor: context.colors.successSolid,
         duration: const Duration(seconds: 2),
       ),
     );
@@ -77,7 +78,7 @@ class _DebugConsoleState extends State<DebugConsole> {
             // Header
             Row(
               children: [
-                const Icon(Icons.terminal, color: Colors.green),
+                Icon(Icons.terminal, color: context.colors.successFg),
                 const SizedBox(width: 8),
                 const Text(
                   'Debug Console',
@@ -86,24 +87,24 @@ class _DebugConsoleState extends State<DebugConsole> {
                 const Spacer(),
                 Text(
                   AppLocalizations.of(context)!.logEntries(_logs.length),
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
+                  style: TextStyle(color: context.colors.textSecondary, fontSize: 12),
                 ),
                 const SizedBox(width: 16),
                 IconButton(
                   icon: Icon(
                     _autoScroll ? Icons.vertical_align_bottom : Icons.vertical_align_center,
-                    color: _autoScroll ? Colors.green : Colors.grey,
+                    color: _autoScroll ? context.colors.successFg : context.colors.textSecondary,
                   ),
                   onPressed: () => setState(() => _autoScroll = !_autoScroll),
                   tooltip: _autoScroll ? AppLocalizations.of(context)!.autoScrollOn : AppLocalizations.of(context)!.autoScrollOff,
                 ),
                 IconButton(
-                  icon: const Icon(Icons.copy, color: Colors.blue),
+                  icon: Icon(Icons.copy, color: context.colors.infoFg),
                   onPressed: _copyLogs,
                   tooltip: AppLocalizations.of(context)!.copyLogs,
                 ),
                 IconButton(
-                  icon: const Icon(Icons.delete_outline, color: Colors.red),
+                  icon: Icon(Icons.delete_outline, color: context.colors.dangerFg),
                   onPressed: () {
                     _logger.clear();
                     setState(() => _logs = []);
@@ -129,7 +130,7 @@ class _DebugConsoleState extends State<DebugConsole> {
                     ? Center(
                         child: Text(
                           AppLocalizations.of(context)!.noLogs,
-                          style: const TextStyle(color: Colors.grey),
+                          style: TextStyle(color: context.colors.textSecondary),
                         ),
                       )
                     : ListView.builder(
@@ -162,13 +163,13 @@ class _DebugConsoleState extends State<DebugConsole> {
   Color _getLogColor(LogLevel level) {
     switch (level) {
       case LogLevel.debug:
-        return Colors.grey;
+        return context.colors.textSecondary;
       case LogLevel.info:
         return Colors.white;
       case LogLevel.warning:
-        return Colors.orange;
+        return context.colors.warningFg;
       case LogLevel.error:
-        return Colors.red;
+        return context.colors.dangerFg;
     }
   }
 }

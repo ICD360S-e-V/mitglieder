@@ -3002,4 +3002,23 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Promijenilo se';
+
+  @override
+  String get themeTitle => 'Izgled';
+
+  @override
+  String get themeLight => 'Svijetlo';
+
+  @override
+  String get themeDark => 'Tamno';
+
+  @override
+  String get themeSystem => 'Prati uređaj';
+
+  @override
+  String get themeSchedule => 'Automatski (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Tamno od 20:00 do 6:00, ostatak dana svijetlo.';
 }

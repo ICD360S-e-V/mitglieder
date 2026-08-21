@@ -3026,4 +3026,23 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Ist anders geworden';
+
+  @override
+  String get themeTitle => 'Darstellung';
+
+  @override
+  String get themeLight => 'Hell';
+
+  @override
+  String get themeDark => 'Dunkel';
+
+  @override
+  String get themeSystem => 'Gerät folgen';
+
+  @override
+  String get themeSchedule => 'Automatisch (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Von 20 Uhr bis 6 Uhr dunkel, den Rest des Tages hell.';
 }

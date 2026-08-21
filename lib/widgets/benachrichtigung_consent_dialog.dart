@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../utils/app_theme.dart';
 
 /// Fragt das Mitglied, ob der Verein Erinnerungen per SMS schicken darf.
 ///
@@ -206,7 +207,9 @@ class _BenachrichtigungConsentDialogState
               child: _antwortKnopf(
                 text: l10n.benachrichtigungJa,
                 gewaehlt: wert == true,
-                farbe: Colors.green,
+                farbe: context.colors.successFg,
+                fuellung: context.colors.successBg,
+                rand: context.colors.successBorder,
                 onTap: () => onAntwort(true),
               ),
             ),
@@ -215,7 +218,9 @@ class _BenachrichtigungConsentDialogState
               child: _antwortKnopf(
                 text: l10n.benachrichtigungNein,
                 gewaehlt: wert == false,
-                farbe: Colors.red,
+                farbe: context.colors.dangerFg,
+                fuellung: context.colors.dangerBg,
+                rand: context.colors.dangerBorder,
                 onTap: () => onAntwort(false),
               ),
             ),
@@ -228,15 +233,21 @@ class _BenachrichtigungConsentDialogState
   Widget _antwortKnopf({
     required String text,
     required bool gewaehlt,
-    required MaterialColor farbe,
+    required Color farbe,
+    required Color fuellung,
+    required Color rand,
     required VoidCallback onTap,
   }) {
+    // Der gewählte Knopf war vorher eine satte Fläche mit weißer Schrift. Im
+    // dunklen Modus ist das Grün/Rot der Statusfarben hell, damit es auf einer
+    // dunklen Karte lesbar bleibt — weiß darauf wäre es nicht mehr. Gewählt
+    // heißt jetzt: weiche Füllung, kräftiger Rand, Schrift in der Statusfarbe.
     return OutlinedButton(
       onPressed: _speichert ? null : onTap,
       style: OutlinedButton.styleFrom(
-        backgroundColor: gewaehlt ? farbe.shade600 : null,
-        foregroundColor: gewaehlt ? Colors.white : farbe.shade700,
-        side: BorderSide(color: farbe.shade300),
+        backgroundColor: gewaehlt ? fuellung : null,
+        foregroundColor: farbe,
+        side: BorderSide(color: gewaehlt ? farbe : rand, width: gewaehlt ? 2 : 1),
       ),
       child: Text(text),
     );

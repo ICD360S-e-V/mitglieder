@@ -17,6 +17,7 @@ import 'wizard_stufe_2_screen.dart';
 import 'wizard_stufe_3_screen.dart';
 import 'wizard_stufe_4_screen.dart';
 import 'wizard_stufe_5_screen.dart';
+import '../utils/app_theme.dart';
 
 /// Terminal screen of the onboarding wizard. Two variants drive off
 /// the [WizardFinalizeResult]:
@@ -163,11 +164,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: isMinor
-                ? const [
-                    Color(0xFF0d47a1),
-                    Color(0xFF1565c0),
-                    Color(0xFF1976d2),
-                  ]
+                ? context.colors.heroGradient
                 : const [
                     Color(0xFF1B5E20),
                     Color(0xFF2E7D32),
@@ -251,7 +248,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           ),
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(true),
-            style: TextButton.styleFrom(foregroundColor: Colors.red.shade700),
+            style: TextButton.styleFrom(foregroundColor: context.colors.dangerFg),
             child: Text(l10n.wizardFinalWithdrawConfirm),
           ),
         ],
@@ -271,7 +268,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.wizardErrSaveFailed),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -294,7 +291,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   Widget _mascot(bool isMinor) {
     final icon = isMinor ? Icons.hourglass_top : Icons.celebration;
     final tint =
-        isMinor ? Colors.amber.shade100 : Colors.lightGreenAccent.shade100;
+        isMinor ? context.colors.warningBg : Colors.lightGreenAccent.shade100;
     return Center(
       child: Container(
         width: 110,
@@ -340,7 +337,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
           BoxShadow(
@@ -352,7 +349,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       ),
       child: Row(
         children: [
-          const Icon(Icons.badge, color: Color(0xFF0d47a1), size: 32),
+          Icon(Icons.badge, color: context.colors.brandStrong, size: 32),
           const SizedBox(width: 14),
           Expanded(
             child: Column(
@@ -361,7 +358,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                 Text(
                   l10n.wizardFinalMitgliedernummerLabel,
                   style: TextStyle(
-                    color: Colors.grey[600],
+                    color: context.colors.textSecondary,
                     fontSize: 11.5,
                     letterSpacing: 0.4,
                   ),
@@ -369,8 +366,8 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                 const SizedBox(height: 2),
                 Text(
                   result.mitgliedernummer,
-                  style: const TextStyle(
-                    color: Color(0xFF0d47a1),
+                  style: TextStyle(
+                    color: context.colors.brandStrong,
                     fontSize: 22,
                     fontWeight: FontWeight.w800,
                     fontFamily: 'monospace',
@@ -416,10 +413,10 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
         ? Icons.error_outline
         : (_isActive ? Icons.check_circle : Icons.hourglass_top);
     final activeTint = hasRejection
-        ? Colors.red.shade100
+        ? context.colors.dangerBg
         : (_isActive
             ? Colors.lightGreenAccent.shade100
-            : Colors.amber.shade100);
+            : context.colors.warningBg);
     final mainLabel = hasRejection
         ? l10n.wizardFinalStatusRejectionCount(_rejectedStufen.length)
         : (_isActive
@@ -500,10 +497,10 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                   backgroundColor: Colors.white.withValues(alpha: 0.15),
                   valueColor: AlwaysStoppedAnimation<Color>(
                     hasRejection
-                        ? Colors.red.shade200
+                        ? context.colors.dangerBorder
                         : (_isActive
                             ? Colors.lightGreenAccent.shade200
-                            : Colors.amber.shade200),
+                            : context.colors.warningBorder),
                   ),
                 ),
               ),
@@ -530,7 +527,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     final done = reviewed >= 8;
     final tint = done
         ? Colors.lightGreenAccent.shade100
-        : Colors.amber.shade100;
+        : context.colors.warningBg;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
@@ -704,7 +701,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   Future<void> _showStufenSheet(AppLocalizations l10n) async {
     await showModalBottomSheet<void>(
       context: context,
-      backgroundColor: Colors.white,
+      backgroundColor: context.colors.card,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -730,15 +727,15 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                       height: 4,
                       margin: const EdgeInsets.only(bottom: 12),
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
+                        color: context.colors.divider,
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
                   ),
                   Text(
                     l10n.wizardFinalStufeSheetTitle,
-                    style: const TextStyle(
-                      color: Color(0xFF0d47a1),
+                    style: TextStyle(
+                      color: context.colors.brandStrong,
                       fontSize: 17,
                       fontWeight: FontWeight.w800,
                     ),
@@ -747,7 +744,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                   Text(
                     l10n.wizardFinalStufeSheetHint,
                     style: TextStyle(
-                      color: Colors.grey.shade700,
+                      color: context.colors.textPrimary,
                       fontSize: 12.5,
                       height: 1.4,
                     ),
@@ -818,7 +815,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
         ? l10n.wizardFinalStufeReviewedAt
         : l10n.wizardFinalStufeFilledAt;
     return Material(
-      color: isRejected ? Colors.red.shade50 : Colors.grey.shade50,
+      color: isRejected ? context.colors.dangerBg : context.colors.cardSubtle,
       borderRadius: BorderRadius.circular(10),
       child: InkWell(
         onTap: onToggle,
@@ -828,7 +825,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: isRejected ? Colors.red.shade200 : Colors.grey.shade300,
+          color: isRejected ? context.colors.dangerBorder : context.colors.divider,
           width: isRejected ? 1.5 : 1,
         ),
       ),
@@ -839,8 +836,8 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
             width: 28,
             height: 28,
             margin: const EdgeInsets.only(top: 2),
-            decoration: const BoxDecoration(
-              color: Color(0xFF0d47a1),
+            decoration: BoxDecoration(
+              color: context.colors.brandFill,
               shape: BoxShape.circle,
             ),
             child: Center(
@@ -864,8 +861,8 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                     Expanded(
                       child: Text(
                         title,
-                        style: const TextStyle(
-                          color: Color(0xFF0d47a1),
+                        style: TextStyle(
+                          color: context.colors.brandStrong,
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
                         ),
@@ -876,7 +873,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                       duration: const Duration(milliseconds: 200),
                       child: Icon(
                         Icons.expand_more,
-                        color: Colors.grey.shade600,
+                        color: context.colors.textSecondary,
                         size: 22,
                       ),
                     ),
@@ -888,7 +885,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                     '$timestampPrefix '
                     '${_fmtDateTime(timestamp)}',
                     style: TextStyle(
-                      color: Colors.grey.shade700,
+                      color: context.colors.textPrimary,
                       fontSize: 11.5,
                     ),
                   ),
@@ -913,7 +910,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                           Text(
                             badgeText,
                             style: TextStyle(
-                              color: badgeColor.shade900,
+                              color: badgeColor,
                               fontSize: 11.5,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 0.3,
@@ -949,12 +946,12 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                         icon: const Icon(Icons.edit, size: 16),
                         label: Text(l10n.wizardFinalStufeCorrectNow),
                         style: TextButton.styleFrom(
-                          foregroundColor: Colors.red.shade700,
+                          foregroundColor: context.colors.dangerFg,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 12, vertical: 6),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
-                            side: BorderSide(color: Colors.red.shade400),
+                            side: BorderSide(color: context.colors.dangerBorder),
                           ),
                         ),
                       ),
@@ -994,15 +991,15 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     Widget dot(int slot) {
       if (slot >= approvals.length) {
         return Icon(Icons.radio_button_unchecked,
-            color: Colors.grey.shade400, size: 14);
+            color: context.colors.textDisabled, size: 14);
       }
       final a = approvals[slot];
       if (a.isRejection) {
         return Icon(Icons.cancel,
-            color: Colors.red.shade600, size: 14);
+            color: context.colors.dangerFg, size: 14);
       }
       return Icon(Icons.check_circle,
-          color: Colors.green.shade600, size: 14);
+          color: context.colors.successFg, size: 14);
     }
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -1024,9 +1021,9 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       width: double.infinity,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: context.colors.divider),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1034,7 +1031,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           Text(
             l10n.wizardFinalApprovalsHeader(approved.length, 2),
             style: TextStyle(
-              color: Colors.grey.shade700,
+              color: context.colors.textPrimary,
               fontSize: 11,
               fontWeight: FontWeight.w800,
               letterSpacing: 0.4,
@@ -1044,7 +1041,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           for (final a in approved) ...[
             _approvalLine(
               icon: Icons.check_circle,
-              tint: Colors.green.shade700,
+              tint: context.colors.successFg,
               name: a.approverName,
               timestamp: a.approvedAt,
             ),
@@ -1053,7 +1050,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           if (approved.length < 2 && rejected.isEmpty)
             _approvalLine(
               icon: Icons.schedule,
-              tint: Colors.grey.shade500,
+              tint: context.colors.textTertiary,
               name: l10n.wizardFinalApprovalAwaiting,
               timestamp: null,
             ),
@@ -1061,7 +1058,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
             const SizedBox(height: 4),
             _approvalLine(
               icon: Icons.cancel,
-              tint: Colors.red.shade700,
+              tint: context.colors.dangerFg,
               name: r.approverName,
               timestamp: r.approvedAt,
               suffix: l10n.wizardFinalApprovalRejected,
@@ -1094,7 +1091,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                     child: Text(
                       name,
                       style: TextStyle(
-                        color: const Color(0xFF0d47a1),
+                        color: context.colors.brandStrong,
                         fontSize: 12.5,
                         fontWeight: FontWeight.w700,
                       ),
@@ -1124,7 +1121,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                 Text(
                   _fmtDateTime(timestamp),
                   style: TextStyle(
-                    color: Colors.grey.shade600,
+                    color: context.colors.textSecondary,
                     fontSize: 11,
                   ),
                 ),
@@ -1142,14 +1139,14 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
         width: double.infinity,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colors.card,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.grey.shade300),
+          border: Border.all(color: context.colors.divider),
         ),
         child: Text(
           l10n.wizardFinalStufeNoDataYet,
           style: TextStyle(
-            color: Colors.grey.shade600,
+            color: context.colors.textSecondary,
             fontSize: 12.5,
             fontStyle: FontStyle.italic,
           ),
@@ -1160,9 +1157,9 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       width: double.infinity,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: context.colors.divider),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1185,7 +1182,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           child: Text(
             label,
             style: TextStyle(
-              color: Colors.grey.shade700,
+              color: context.colors.textPrimary,
               fontSize: 12,
               fontWeight: FontWeight.w600,
             ),
@@ -1196,8 +1193,8 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
             value.isEmpty ? '—' : value,
             style: TextStyle(
               color: value.isEmpty
-                  ? Colors.grey.shade400
-                  : const Color(0xFF0d47a1),
+                  ? context.colors.textDisabled
+                  : context.colors.brandStrong,
               fontSize: 12.5,
               fontWeight: FontWeight.w600,
             ),
@@ -1460,9 +1457,9 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.red.shade100.withValues(alpha: 0.6),
+        color: context.colors.dangerBg.withValues(alpha: 0.6),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.red.shade300),
+        border: Border.all(color: context.colors.dangerBorder),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1470,7 +1467,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           Text(
             l10n.wizardFinalStufeRejectionReason,
             style: TextStyle(
-              color: Colors.red.shade900,
+              color: context.colors.dangerFg,
               fontSize: 10.5,
               fontWeight: FontWeight.w800,
               letterSpacing: 0.5,
@@ -1481,7 +1478,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
             Text(
               notiz,
               style: TextStyle(
-                color: Colors.red.shade900,
+                color: context.colors.dangerFg,
                 fontSize: 12.5,
                 height: 1.4,
               ),
@@ -1496,7 +1493,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                   children: [
                     Icon(
                       Icons.close,
-                      color: Colors.red.shade700,
+                      color: context.colors.dangerFg,
                       size: 14,
                     ),
                     const SizedBox(width: 6),
@@ -1504,7 +1501,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                       child: RichText(
                         text: TextSpan(
                           style: TextStyle(
-                            color: Colors.red.shade900,
+                            color: context.colors.dangerFg,
                             fontSize: 12.5,
                             height: 1.4,
                           ),
@@ -1544,29 +1541,29 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
         _ => 'Stufe $stufe',
       };
 
-  (IconData, MaterialColor, String) _statusBadge(
+  (IconData, Color, String) _statusBadge(
     String status,
     AppLocalizations l10n,
   ) {
     return switch (status) {
       'geprueft' => (
           Icons.check_circle,
-          Colors.green,
+          context.colors.successFg,
           l10n.wizardFinalStufeStatusApproved,
         ),
       'ausgefuellt' => (
           Icons.hourglass_top,
-          Colors.amber,
+          context.colors.warningFg,
           l10n.wizardFinalStufeStatusPending,
         ),
       'abgelehnt' => (
           Icons.cancel,
-          Colors.red,
+          context.colors.dangerFg,
           l10n.wizardFinalStufeStatusRejected,
         ),
       _ => (
           Icons.remove_circle_outline,
-          Colors.grey,
+          context.colors.textSecondary,
           l10n.wizardFinalStufeStatusSkipped,
         ),
     };

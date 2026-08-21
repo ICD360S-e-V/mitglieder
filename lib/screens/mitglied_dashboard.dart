@@ -41,6 +41,7 @@ import '../services/termin_service.dart';
 import '../widgets/signatur_card.dart';
 import 'signatur_screen.dart';
 import 'welcome.dart';
+import '../utils/app_theme.dart';
 
 final _log = LoggerService();
 
@@ -877,7 +878,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: context.colors.scaffoldBg,
       appBar: MitgliedAppBar(
         mitgliedernummer: widget.mitgliedernummer,
         status: widget.status,
@@ -973,19 +974,19 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   Color _getStatusColor(String status) {
     switch (status) {
       case 'open':
-        return Colors.orange;
+        return context.colors.warningFg;
       case 'in_progress':
         return Colors.purple;
       case 'waiting_member':
-        return Colors.blue;
+        return context.colors.infoFg;
       case 'waiting_staff':
         return Colors.teal;
       case 'waiting_authority':
         return Colors.indigo;
       case 'done':
-        return Colors.green;
+        return context.colors.successFg;
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 
@@ -1005,13 +1006,13 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   Color _getPriorityColor(String priority) {
     switch (priority) {
       case 'high':
-        return Colors.red;
+        return context.colors.dangerFg;
       case 'medium':
-        return Colors.orange;
+        return context.colors.warningFg;
       case 'low':
-        return Colors.green;
+        return context.colors.successFg;
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 
@@ -1059,7 +1060,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         children: [
           Row(
             children: [
-              Icon(Icons.local_activity_outlined, size: 32, color: Colors.blue.shade700),
+              Icon(Icons.local_activity_outlined, size: 32, color: context.colors.infoFg),
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
@@ -1072,7 +1073,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
           const SizedBox(height: 8),
           Text(
             l10n.weRespondIn24Hours,
-            style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 14),
           ),
           const SizedBox(height: 12),
 
@@ -1083,13 +1084,13 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
               children: [
                 _buildFilterChip('all', 'Alle', Icons.list, Colors.blueGrey),
                 const SizedBox(width: 8),
-                _buildFilterChip('open', 'Offen', Icons.fiber_new, Colors.orange),
+                _buildFilterChip('open', 'Offen', Icons.fiber_new, context.colors.warningFg),
                 const SizedBox(width: 8),
                 _buildFilterChip('in_progress', 'In Bearbeitung', Icons.autorenew, Colors.purple),
                 const SizedBox(width: 8),
-                _buildFilterChip('waiting_member', 'Warten auf mich', Icons.person, Colors.blue),
+                _buildFilterChip('waiting_member', 'Warten auf mich', Icons.person, context.colors.infoFg),
                 const SizedBox(width: 8),
-                _buildFilterChip('done', 'Erledigt', Icons.check_circle, Colors.green),
+                _buildFilterChip('done', 'Erledigt', Icons.check_circle, context.colors.successFg),
               ],
             ),
           ),
@@ -1159,12 +1160,12 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.check_circle_outline, size: 64, color: Colors.green.shade400),
+          Icon(Icons.check_circle_outline, size: 64, color: context.colors.successFg),
           const SizedBox(height: 16),
           Text(
             l10n.everythingOk,
             style: TextStyle(
-              color: Colors.grey.shade600,
+              color: context.colors.textSecondary,
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),
@@ -1174,7 +1175,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
             l10n.haveProblemWeHelp,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.grey.shade500,
+              color: context.colors.textTertiary,
               fontSize: 14,
             ),
           ),
@@ -1240,19 +1241,19 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: Colors.grey.shade600,
+                      color: context.colors.textSecondary,
                       fontSize: 14,
                     ),
                   ),
                   const SizedBox(height: 12),
                   Row(
                     children: [
-                      Icon(Icons.calendar_today, size: 14, color: Colors.grey.shade500),
+                      Icon(Icons.calendar_today, size: 14, color: context.colors.textTertiary),
                       const SizedBox(width: 4),
                       Text(
                         _formatTicketDate(ticket.createdAt),
                         style: TextStyle(
-                          color: Colors.grey.shade500,
+                          color: context.colors.textTertiary,
                           fontSize: 12,
                         ),
                       ),
@@ -1273,12 +1274,12 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
                       ),
                       if (ticket.adminName != null) ...[
                         const SizedBox(width: 16),
-                        Icon(Icons.person, size: 14, color: Colors.grey.shade500),
+                        Icon(Icons.person, size: 14, color: context.colors.textTertiary),
                         const SizedBox(width: 4),
                         Text(
                           ticket.adminName!,
                           style: TextStyle(
-                            color: Colors.grey.shade500,
+                            color: context.colors.textTertiary,
                             fontSize: 12,
                           ),
                         ),
@@ -1362,7 +1363,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
           const SizedBox(height: 8),
           Text(
             l10n.managePersonalDataAndFee,
-            style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 14),
           ),
           const SizedBox(height: 24),
           PersonalDataCard(onUpdate: _showPersonalDataDialog),

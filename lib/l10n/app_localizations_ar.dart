@@ -2975,4 +2975,23 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'لقد تغيّر';
+
+  @override
+  String get themeTitle => 'المظهر';
+
+  @override
+  String get themeLight => 'فاتح';
+
+  @override
+  String get themeDark => 'داكن';
+
+  @override
+  String get themeSystem => 'حسب الجهاز';
+
+  @override
+  String get themeSchedule => 'تلقائي (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'داكن من الساعة 20:00 حتى 6:00، وفاتح بقية اليوم.';
 }

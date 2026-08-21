@@ -1429,5 +1429,11 @@
   "kontaktFestnetzKeinSms": "Das ist eine Festnetznummer — dorthin kommt keine SMS an.",
   "@kontaktFestnetzKeinSms": {"description": "Warnung, wenn im Mobilfeld ein Festnetzanschluss steht"},
   "kontaktIstAndersGeworden": "Ist anders geworden",
-  "@kontaktIstAndersGeworden": {"description": "Knopf: Adresse oder Nummer hat sich geaendert"}
+  "@kontaktIstAndersGeworden": {"description": "Knopf: Adresse oder Nummer hat sich geaendert"},
+  "themeTitle": "Darstellung",
+  "themeLight": "Hell",
+  "themeDark": "Dunkel",
+  "themeSystem": "Gerät folgen",
+  "themeSchedule": "Automatisch (20:00–06:00)",
+  "themeScheduleHint": "Von 20 Uhr bis 6 Uhr dunkel, den Rest des Tages hell."
 }

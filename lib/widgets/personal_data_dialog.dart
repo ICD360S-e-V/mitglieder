@@ -3,6 +3,7 @@ import 'package:flutter/services.dart' show FilteringTextInputFormatter, LengthL
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../utils/error_helpers.dart';
+import '../utils/app_theme.dart';
 
 class PersonalDataDialog extends StatefulWidget {
   final String userName;
@@ -114,7 +115,7 @@ class _PersonalDataDialogState extends State<PersonalDataDialog> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppLocalizations.of(context)!.dataSavedSuccess),
-            backgroundColor: Colors.green,
+            backgroundColor: context.colors.successSolid,
           ),
         );
         Navigator.pop(context);
@@ -122,7 +123,7 @@ class _PersonalDataDialogState extends State<PersonalDataDialog> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(result['message'] ?? AppLocalizations.of(context)!.errorSaving),
-            backgroundColor: Colors.red,
+            backgroundColor: context.colors.dangerSolid,
           ),
         );
       }
@@ -131,7 +132,7 @@ class _PersonalDataDialogState extends State<PersonalDataDialog> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'PERSONAL')),
-          backgroundColor: Colors.red,
+          backgroundColor: context.colors.dangerSolid,
         ),
       );
     } finally {
@@ -159,12 +160,12 @@ class _PersonalDataDialogState extends State<PersonalDataDialog> {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF4a90d9).withValues(alpha: 0.1),
+                        color: context.colors.brand.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.person_outline,
-                        color: Color(0xFF4a90d9),
+                        color: context.colors.brand,
                         size: 28,
                       ),
                     ),
@@ -182,7 +183,7 @@ class _PersonalDataDialogState extends State<PersonalDataDialog> {
                           ),
                           Text(
                             AppLocalizations.of(context)!.personalDataSubtitle,
-                            style: const TextStyle(color: Colors.grey, fontSize: 13),
+                            style: TextStyle(color: context.colors.textSecondary, fontSize: 13),
                           ),
                         ],
                       ),
@@ -381,7 +382,7 @@ class _PersonalDataDialogState extends State<PersonalDataDialog> {
                   child: ElevatedButton(
                     onPressed: _isLoading ? null : _saveData,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF4a90d9),
+                      backgroundColor: context.colors.brandFill,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),

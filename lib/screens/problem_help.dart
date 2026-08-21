@@ -6,6 +6,7 @@ import '../l10n/app_localizations.dart';
 import '../widgets/icd360s_header.dart';
 import 'anonymous_chat.dart';
 import 'problem_report.dart';
+import '../utils/app_theme.dart';
 
 /// Landing screen reached from Claudiu's "Am o problemă cu aplicația"
 /// option. Asks the user whether they'd rather write a detailed report
@@ -34,15 +35,11 @@ class ProblemHelpScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(
@@ -57,7 +54,7 @@ class ProblemHelpScreen extends StatelessWidget {
                     children: [
                       const Icd360sHeader(compact: true),
                       const SizedBox(height: 20),
-                      _mascotAndBubble(l10n),
+                      _mascotAndBubble(context, l10n),
                       const SizedBox(height: 24),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,7 +137,7 @@ class ProblemHelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _mascotAndBubble(AppLocalizations l10n) {
+  Widget _mascotAndBubble(BuildContext context, AppLocalizations l10n) {
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,7 +174,7 @@ class ProblemHelpScreen extends StatelessWidget {
                 vertical: 10,
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: context.colors.card,
                 borderRadius: const BorderRadiusDirectional.only(
                   topStart: Radius.circular(4),
                   topEnd: Radius.circular(14),
@@ -197,10 +194,10 @@ class ProblemHelpScreen extends StatelessWidget {
                 children: [
                   Text(
                     l10n.claudiuProblemHelpGreeting,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF0d47a1),
+                      color: context.colors.brandStrong,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -208,7 +205,7 @@ class ProblemHelpScreen extends StatelessWidget {
                     l10n.claudiuProblemHelpAsk,
                     style: TextStyle(
                       fontSize: 13.5,
-                      color: Colors.grey[800],
+                      color: context.colors.textPrimary,
                       height: 1.3,
                     ),
                   ),
@@ -217,7 +214,7 @@ class ProblemHelpScreen extends StatelessWidget {
                     '— Claudiu',
                     style: TextStyle(
                       fontSize: 11,
-                      color: Colors.grey[500],
+                      color: context.colors.textTertiary,
                       fontStyle: FontStyle.italic,
                     ),
                   ),

@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Да ништа не пропустите, кратко питамо свака три месеца. Добићете шестоцифрени код.",
   "kontaktBestaetigtAm": "потврђено {datum}",
   "kontaktFestnetzKeinSms": "Ово је број фиксне линије — SMS тамо не стиже.",
-  "kontaktIstAndersGeworden": "Променило се"
+  "kontaktIstAndersGeworden": "Променило се",
+  "themeTitle": "Izgled",
+  "themeLight": "Svetlo",
+  "themeDark": "Tamno",
+  "themeSystem": "Prati uređaj",
+  "themeSchedule": "Automatski (20:00–06:00)",
+  "themeScheduleHint": "Tamno od 20:00 do 6:00, ostatak dana svetlo."
 }

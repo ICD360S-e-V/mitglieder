@@ -8,6 +8,7 @@ import '../services/anonymous_chat_service.dart';
 import '../services/chat_service.dart';
 import '../widgets/icd360s_header.dart';
 import '../widgets/linkified_text.dart';
+import '../utils/app_theme.dart';
 
 /// Live anonymous chat surface — visitor side. Hits
 /// /api/public/anonymous_chat/init.php for a ghost user + JWT, then
@@ -228,15 +229,11 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(
@@ -354,7 +351,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
         children: [
           const Icd360sHeader(compact: true),
           const SizedBox(height: 20),
-          Icon(Icons.cloud_off, color: Colors.amber.shade200, size: 56),
+          Icon(Icons.cloud_off, color: context.colors.onDarkWarning, size: 56),
           const SizedBox(height: 16),
           Text(
             l10n.claudiuAnonymousChatConnectionFailed,
@@ -447,7 +444,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.colors.card,
               borderRadius: const BorderRadiusDirectional.only(
                 topStart: Radius.circular(4),
                 topEnd: Radius.circular(12),
@@ -460,10 +457,10 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
               children: [
                 Text(
                   l10n.claudiuAnonymousChatGreeting,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13.5,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFF0d47a1),
+                    color: context.colors.brandStrong,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -471,7 +468,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                   l10n.claudiuAnonymousChatWelcome,
                   style: TextStyle(
                     fontSize: 13,
-                    color: Colors.grey[800],
+                    color: context.colors.textPrimary,
                     height: 1.4,
                   ),
                 ),
@@ -480,7 +477,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                   '— Claudiu',
                   style: TextStyle(
                     fontSize: 10.5,
-                    color: Colors.grey[500],
+                    color: context.colors.textTertiary,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -525,7 +522,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.colors.card,
               borderRadius: const BorderRadiusDirectional.only(
                 topStart: Radius.circular(4),
                 topEnd: Radius.circular(12),
@@ -538,10 +535,10 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
               children: [
                 Text(
                   l10n.claudiuVorsitzerConnectedTitle,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13.5,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFF0d47a1),
+                    color: context.colors.brandStrong,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -549,7 +546,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                   l10n.claudiuVorsitzerConnectedBody,
                   style: TextStyle(
                     fontSize: 13,
-                    color: Colors.grey[800],
+                    color: context.colors.textPrimary,
                     height: 1.45,
                   ),
                 ),
@@ -558,7 +555,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                   '— ${l10n.claudiuVorsitzerConnectedSender}',
                   style: TextStyle(
                     fontSize: 10.5,
-                    color: Colors.grey[500],
+                    color: context.colors.textTertiary,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -636,8 +633,8 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
   Widget _messageBubble(ChatMessage m) {
     final mine = !m.isAdmin;
     final align = mine ? CrossAxisAlignment.end : CrossAxisAlignment.start;
-    final bg = mine ? const Color(0xFF1565c0) : Colors.white;
-    final fg = mine ? Colors.white : const Color(0xFF0d47a1);
+    final bg = mine ? context.colors.brandStrong : Colors.white;
+    final fg = mine ? Colors.white : context.colors.brandStrong;
     final borderColor = mine
         ? Colors.white.withValues(alpha: 0.35)
         : Colors.transparent;
@@ -707,7 +704,7 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.colors.card,
               borderRadius: BorderRadius.circular(14),
             ),
             child: Row(
@@ -719,8 +716,8 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                     child: Container(
                       width: 6,
                       height: 6,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF1565c0),
+                      decoration: BoxDecoration(
+                        color: context.colors.brandStrong,
                         shape: BoxShape.circle,
                       ),
                     ).animate(

@@ -7,6 +7,7 @@ import '../services/update_service.dart';
 import '../services/logger_service.dart';
 import 'changelog_dialog.dart';
 import 'update_dialog.dart';
+import '../utils/app_theme.dart';
 
 class LegalFooter extends StatefulWidget {
   final bool darkMode;
@@ -81,7 +82,7 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
             ],
           ),
           duration: const Duration(seconds: 2),
-          backgroundColor: Colors.blue.shade700,
+          backgroundColor: context.colors.infoSolid,
         ),
       );
     }
@@ -121,7 +122,7 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
               ],
             ),
             duration: const Duration(seconds: 3),
-            backgroundColor: Colors.green.shade600,
+            backgroundColor: context.colors.successSolid,
           ),
         );
       }
@@ -144,7 +145,7 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
               ],
             ),
             duration: const Duration(seconds: 3),
-            backgroundColor: Colors.red.shade600,
+            backgroundColor: context.colors.dangerSolid,
           ),
         );
       }
@@ -160,16 +161,16 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    final textColor = widget.darkMode ? Colors.grey.shade400 : Colors.grey.shade600;
-    final dividerColor = widget.darkMode ? Colors.grey.shade600 : Colors.grey.shade400;
+    final textColor = widget.darkMode ? context.colors.textDisabled : context.colors.textSecondary;
+    final dividerColor = widget.darkMode ? context.colors.textSecondary : context.colors.textDisabled;
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       decoration: BoxDecoration(
-        color: widget.darkMode ? const Color(0xFF1a1a2e) : Colors.grey.shade100,
+        color: widget.darkMode ? const Color(0xFF1a1a2e) : context.colors.cardSubtle,
         border: Border(
           top: BorderSide(
-            color: widget.darkMode ? Colors.grey.shade800 : Colors.grey.shade300,
+            color: widget.darkMode ? context.colors.textPrimary : context.colors.divider,
           ),
         ),
       ),
@@ -222,7 +223,7 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
                       : Icon(
                           _updateAvailable ? Icons.system_update : Icons.refresh,
                           size: 14,
-                          color: _updateAvailable ? Colors.green : textColor,
+                          color: _updateAvailable ? context.colors.successFg : textColor,
                         ),
                 ),
               ),

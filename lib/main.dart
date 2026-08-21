@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui' show PlatformDispatcher;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,10 +17,12 @@ import 'services/background_service.dart';
 import 'services/network_resilience.dart';
 import 'services/security_event_reporter.dart';
 import 'services/startup_diagnostics.dart';
+import 'services/theme_service.dart';
 import 'services/update_service.dart';
 import 'services/platform/platform_factory.dart';
 import 'widgets/network_security_banner.dart';
 import 'widgets/remote_touch_overlay.dart';
+import 'utils/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,15 +49,8 @@ void main() async {
       DeviceOrientation.portraitDown,
     ]);
 
-    // Mobile: Set system UI overlay style (status bar & navigation bar)
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white,
-        systemNavigationBarIconBrightness: Brightness.dark,
-      ),
-    );
+    // The status and navigation bars are set further down, once
+    // ThemeService.load() has told us whether we are starting dark or light.
   }
   // Desktop: Window management is handled in DesktopPlatformService.initialize()
 
@@ -87,6 +83,18 @@ void main() async {
   // selector below, returning users get their saved pick.
   await StartupDiagnostics.stepWithTimeout('LanguageService.load', const Duration(seconds: 3),
       () => LanguageService.instance.load());
+  // Before the first frame, so the app never opens light and snaps to dark a
+  // moment later. Same 3s budget as the language: a SharedPreferences read that
+  // hangs must not hold up the UI, and the default (follow the phone) is a
+  // perfectly reasonable thing to start with if it does.
+  await StartupDiagnostics.stepWithTimeout('ThemeService.load', const Duration(seconds: 3),
+      () => ThemeService.instance.load());
+  if (PlatformFactory.isMobile) {
+    SystemChrome.setSystemUIOverlayStyle(
+      AppTheme.overlayStyleFor(_startupBrightness()),
+    );
+  }
+
   await StartupDiagnostics.stepWithTimeout('LoggerService.init', const Duration(seconds: 5),
       () => LoggerService().init());
   await StartupDiagnostics.stepWithTimeout('UpdateService.initVersion', const Duration(seconds: 5),
@@ -171,6 +179,20 @@ void main() async {
   });
 }
 
+/// Resolves the theme for the very first frame, before any widget exists to
+/// read `Theme.of(context)` from. [ThemeMode.system] has to be asked of the
+/// engine directly — there is no build context yet to route it through.
+Brightness _startupBrightness() {
+  switch (ThemeService.instance.themeMode.value) {
+    case ThemeMode.light:
+      return Brightness.light;
+    case ThemeMode.dark:
+      return Brightness.dark;
+    case ThemeMode.system:
+      return PlatformDispatcher.instance.platformBrightness;
+  }
+}
+
 class MitgliedApp extends StatefulWidget {
   const MitgliedApp({super.key});
 
@@ -186,46 +208,50 @@ class _MitgliedAppState extends State<MitgliedApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<Locale>(
-      valueListenable: LanguageService.instance.localeNotifier,
-      builder: (context, locale, _) {
-        return MaterialApp(
-          title: 'ICD360S e.V - Mitgliederportal',
-          debugShowCheckedModeBanner: false,
-          locale: locale,
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: AppLocalizations.supportedLocales,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xFF4a90d9),
-              brightness: Brightness.light,
-            ),
-            useMaterial3: true,
-            fontFamily: 'Roboto',
-            appBarTheme: const AppBarTheme(
-              centerTitle: true,
-              elevation: 0,
-            ),
-          ),
-          builder: (context, child) => RemoteTouchOverlay(
-            // During a Fernwartung session, marks where the member taps so the
-            // Vorsitzer sees it in the shared screen.
-            child: NetworkSecurityBanner(
-              child: child ?? const SizedBox.shrink(),
-            ),
-          ),
-          home: _languagePicked
-              ? const WelcomeScreen()
-              : LanguageSelectionScreen(
-                  onSelected: () => setState(() => _languagePicked = true),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: ThemeService.instance.themeMode,
+      builder: (context, themeMode, _) => ValueListenableBuilder<Locale>(
+        valueListenable: LanguageService.instance.localeNotifier,
+        builder: (context, locale, _) {
+          return MaterialApp(
+            title: 'ICD360S e.V - Mitgliederportal',
+            debugShowCheckedModeBanner: false,
+            locale: locale,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.supportedLocales,
+            // Both palettes live in AppTheme; which one is live is decided by
+            // themeMode, and for ThemeMode.system Flutter re-resolves it on its
+            // own whenever the phone's own light/dark setting flips.
+            theme: AppTheme.light,
+            darkTheme: AppTheme.dark,
+            themeMode: themeMode,
+            // The AnnotatedRegion sits here rather than in main() because this
+            // is the first place with a context that knows the *resolved*
+            // brightness: under ThemeMode.system the answer changes when the
+            // phone changes, and nothing in main() would hear about it.
+            builder: (context, child) => AnnotatedRegion<SystemUiOverlayStyle>(
+              value: AppTheme.overlayStyleFor(Theme.of(context).brightness),
+              child: RemoteTouchOverlay(
+                // During a Fernwartung session, marks where the member taps so
+                // the Vorsitzer sees it in the shared screen.
+                child: NetworkSecurityBanner(
+                  child: child ?? const SizedBox.shrink(),
                 ),
-        );
-      },
+              ),
+            ),
+            home: _languagePicked
+                ? const WelcomeScreen()
+                : LanguageSelectionScreen(
+                    onSelected: () => setState(() => _languagePicked = true),
+                  ),
+          );
+        },
+      ),
     );
   }
 }

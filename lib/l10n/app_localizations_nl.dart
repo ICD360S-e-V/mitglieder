@@ -3018,4 +3018,23 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Het is gewijzigd';
+
+  @override
+  String get themeTitle => 'Weergave';
+
+  @override
+  String get themeLight => 'Licht';
+
+  @override
+  String get themeDark => 'Donker';
+
+  @override
+  String get themeSystem => 'Apparaat volgen';
+
+  @override
+  String get themeSchedule => 'Automatisch (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Donker van 20:00 tot 6:00 uur, licht de rest van de dag.';
 }

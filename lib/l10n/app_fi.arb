@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Jotta et menetä mitään, kysymme lyhyesti kolmen kuukauden välein. Saat kuusinumeroisen koodin.",
   "kontaktBestaetigtAm": "vahvistettu {datum}",
   "kontaktFestnetzKeinSms": "Tämä on lankapuhelinnumero — tekstiviesti ei mene perille.",
-  "kontaktIstAndersGeworden": "On muuttunut"
+  "kontaktIstAndersGeworden": "On muuttunut",
+  "themeTitle": "Ulkoasu",
+  "themeLight": "Vaalea",
+  "themeDark": "Tumma",
+  "themeSystem": "Laitteen mukaan",
+  "themeSchedule": "Automaattinen (klo 20–06)",
+  "themeScheduleHint": "Tumma klo 20–6, muun ajan vaalea."
 }

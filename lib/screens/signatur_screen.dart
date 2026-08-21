@@ -9,6 +9,7 @@ import 'package:signature/signature.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/logger_service.dart';
+import '../utils/app_theme.dart';
 
 /// Was der Verein von diesem Mitglied unterschrieben haben möchte.
 ///
@@ -72,12 +73,12 @@ class _SignaturScreenState extends State<SignaturScreen> {
         padding: const EdgeInsets.all(32),
         children: [
           const SizedBox(height: 80),
-          Icon(Icons.draw_outlined, size: 56, color: Colors.grey.shade400),
+          Icon(Icons.draw_outlined, size: 56, color: context.colors.textDisabled),
           const SizedBox(height: 16),
           Text(
             l10n.signaturNichtsOffen,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.grey.shade600),
+            style: TextStyle(color: context.colors.textSecondary),
           ),
         ],
       );
@@ -95,15 +96,15 @@ class _SignaturScreenState extends State<SignaturScreen> {
 
     final (farbe, symbol, text) = switch (status) {
       'signiert' when wartetAufAndere => (
-          Colors.blue.shade700,
+          context.colors.infoFg,
           Icons.hourglass_top,
           '${l10n.signaturStatusSigniert} · ${l10n.signaturWartetZweiteUnterschrift}',
         ),
-      'signiert' => (Colors.green.shade700, Icons.verified, l10n.signaturStatusSigniert),
-      'abgelehnt' => (Colors.red.shade700, Icons.cancel, l10n.signaturStatusAbgelehnt),
-      'widerrufen' => (Colors.grey.shade600, Icons.undo, l10n.signaturStatusWiderrufen),
-      'abgelaufen' => (Colors.grey.shade600, Icons.schedule, l10n.signaturStatusAbgelaufen),
-      _ => (Colors.orange.shade800, Icons.edit_document, l10n.signaturStatusOffen),
+      'signiert' => (context.colors.successFg, Icons.verified, l10n.signaturStatusSigniert),
+      'abgelehnt' => (context.colors.dangerFg, Icons.cancel, l10n.signaturStatusAbgelehnt),
+      'widerrufen' => (context.colors.textSecondary, Icons.undo, l10n.signaturStatusWiderrufen),
+      'abgelaufen' => (context.colors.textSecondary, Icons.schedule, l10n.signaturStatusAbgelaufen),
+      _ => (context.colors.warningFg, Icons.edit_document, l10n.signaturStatusOffen),
     };
 
     return Card(
@@ -125,7 +126,7 @@ class _SignaturScreenState extends State<SignaturScreen> {
           // gibt. Antippbar bleibt die Zeile trotzdem — sie erklärt dann, worauf
           // gewartet wird.
           'signiert' when wartetAufAndere => Icon(Icons.info_outline,
-              size: 20, color: Colors.blue.shade700),
+              size: 20, color: context.colors.infoFg),
           _ when offen || status == 'signiert' => const Icon(Icons.chevron_right),
           _ => null,
         },
@@ -149,7 +150,7 @@ class _SignaturScreenState extends State<SignaturScreen> {
     showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
-        icon: Icon(Icons.hourglass_top, color: Colors.blue.shade700),
+        icon: Icon(Icons.hourglass_top, color: context.colors.infoFg),
         title: Text(l10n.signaturWartetZweiteUnterschrift),
         content: Text(l10n.signaturWartenHinweis),
         actions: [
@@ -225,6 +226,11 @@ class _SignaturUnterschreibenScreenState
 
   final _unterschrift = SignatureController(
     penStrokeWidth: 3,
+    // Bleibt schwarz, auch im dunklen Modus: dieser Pfad wird als SVG
+    // exportiert und landet im PDF auf weißem Papier. Eine helle Unterschrift
+    // wäre dort unsichtbar. Der Strich auf dem Bildschirm ist nur die Vorschau
+    // dessen, was gedruckt wird — die Zeichenfläche darunter ist deshalb auch
+    // im dunklen Modus hell.
     penColor: Colors.black,
     // Kein exportBackgroundColor: der Pfad soll transparent bleiben, damit er
     // später im PDF auf dem Papier sitzt und nicht auf einem weißen Kasten.
@@ -292,12 +298,12 @@ class _SignaturUnterschreibenScreenState
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.cloud_off, size: 48, color: Colors.grey.shade400),
+                    Icon(Icons.cloud_off, size: 48, color: context.colors.textDisabled),
                     const SizedBox(height: 16),
                     Text(
                       l10n.errorDownloading,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey.shade700),
+                      style: TextStyle(color: context.colors.textPrimary),
                     ),
                   ],
                 ),
@@ -339,13 +345,13 @@ class _SignaturUnterschreibenScreenState
               children: [
                 Text(l10n.signaturMitFingerHinweis,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey.shade700)),
+                    style: TextStyle(color: context.colors.textPrimary)),
                 const SizedBox(height: 12),
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey.shade400),
+                      color: context.colors.card,
+                      border: Border.all(color: context.colors.textDisabled),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Signature(
@@ -399,7 +405,7 @@ class _SignaturUnterschreibenScreenState
             padding: const EdgeInsets.all(24),
             child: Column(
               children: [
-                Icon(Icons.sms, size: 48, color: Colors.blue.shade700),
+                Icon(Icons.sms, size: 48, color: context.colors.infoFg),
                 const SizedBox(height: 16),
                 Text(
                   _tanZiel == null
@@ -630,14 +636,14 @@ class _SignaturUnterschreibenScreenState
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          border: Border(top: BorderSide(color: Colors.grey.shade300)),
+          border: Border(top: BorderSide(color: context.colors.divider)),
         ),
         child: Column(
           children: [
             if (hinweis != null) ...[
               Text(hinweis,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12, color: Colors.orange.shade900)),
+                  style: TextStyle(fontSize: 12, color: context.colors.warningFg)),
               const SizedBox(height: 8),
             ],
             SizedBox(
@@ -666,9 +672,9 @@ class _SignaturUnterschreibenScreenState
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(text),
       backgroundColor: fehler
-          ? Colors.red.shade700
+          ? context.colors.dangerFg
           : erfolg
-              ? Colors.green.shade700
+              ? context.colors.successFg
               : null,
     ));
   }
@@ -713,12 +719,12 @@ class _SigniertesDokumentScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.hourglass_empty,
-                    size: 48, color: Colors.grey.shade400),
+                    size: 48, color: context.colors.textDisabled),
                 const SizedBox(height: 16),
                 Text(
                   AppLocalizations.of(context)!.signaturSiegelInArbeit,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.grey.shade700),
+                  style: TextStyle(color: context.colors.textPrimary),
                 ),
               ],
             ),

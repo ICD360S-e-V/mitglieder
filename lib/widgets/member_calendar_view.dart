@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/termin_service.dart';
+import '../utils/app_theme.dart';
 
 /// Member Termine View - List of member's appointments with response actions
 class MemberCalendarView extends StatefulWidget {
@@ -109,7 +110,7 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
                       ? l.terminDeclined
                       : l.terminRescheduleRequested,
             ),
-            backgroundColor: response == 'confirmed' ? Colors.green : Colors.orange,
+            backgroundColor: response == 'confirmed' ? context.colors.successFg : context.colors.warningFg,
           ),
         );
         _loadTermine(); // Reload to get updated response
@@ -117,7 +118,7 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l.error(e.toString())), backgroundColor: Colors.red),
+          SnackBar(content: Text(l.error(e.toString())), backgroundColor: context.colors.dangerSolid),
         );
       }
     }
@@ -136,21 +137,21 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
       case 'sonstiges':
         return const Color(0xFFFFA726);
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 
   Color _getResponseColor(String? response) {
     switch (response) {
       case 'confirmed':
-        return Colors.green;
+        return context.colors.successFg;
       case 'declined':
-        return Colors.red;
+        return context.colors.dangerFg;
       case 'rescheduling':
-        return Colors.blue;
+        return context.colors.infoFg;
       case 'pending':
       default:
-        return Colors.orange;
+        return context.colors.warningFg;
     }
   }
 
@@ -222,7 +223,7 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
     final l = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 12),
-      color: const Color(0xFF4a90d9),
+      color: context.colors.brand,
       child: Row(
         children: [
           const Icon(Icons.event_note, color: Colors.white, size: 28),
@@ -241,7 +242,7 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: Colors.orange,
+                color: context.colors.warningSolid,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Text(
@@ -269,8 +270,8 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.grey.shade50,
-        border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+        color: context.colors.cardSubtle,
+        border: Border(bottom: BorderSide(color: context.colors.dividerSubtle)),
       ),
       child: Row(
         children: [
@@ -289,9 +290,9 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
     return ChoiceChip(
       label: Text(label),
       selected: isSelected,
-      selectedColor: const Color(0xFF4a90d9),
+      selectedColor: context.colors.brandFill,
       labelStyle: TextStyle(
-        color: isSelected ? Colors.white : Colors.black87,
+        color: isSelected ? Colors.white : context.colors.textPrimary,
         fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
       ),
       onSelected: (selected) {
@@ -309,7 +310,7 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.event_available, size: 80, color: Colors.grey.shade300),
+          Icon(Icons.event_available, size: 80, color: context.colors.textDisabled),
           const SizedBox(height: 16),
           Text(
             _filter == 'upcoming'
@@ -317,12 +318,12 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
                 : _filter == 'past'
                     ? l.noPastAppointments
                     : l.noAppointmentsAvailable,
-            style: TextStyle(fontSize: 18, color: Colors.grey.shade500),
+            style: TextStyle(fontSize: 18, color: context.colors.textTertiary),
           ),
           const SizedBox(height: 8),
           Text(
             l.appointmentsShownHere,
-            style: TextStyle(fontSize: 14, color: Colors.grey.shade400),
+            style: TextStyle(fontSize: 14, color: context.colors.textDisabled),
           ),
         ],
       ),
@@ -404,14 +405,14 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
-                            color: Colors.pink.shade50,
+                            color: context.colors.kindBg,
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.pink.shade200),
+                            border: Border.all(color: context.colors.kindBorder),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(Icons.child_care, size: 12, color: Colors.pink.shade700),
+                              Icon(Icons.child_care, size: 12, color: context.colors.kindFg),
                               const SizedBox(width: 4),
                               Flexible(
                                 child: Text(
@@ -419,7 +420,7 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
                                   style: TextStyle(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w600,
-                                    color: Colors.pink.shade700,
+                                    color: context.colors.kindFg,
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -443,20 +444,20 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
                       // Time + Location
                       Row(
                         children: [
-                          Icon(Icons.access_time, size: 14, color: Colors.grey.shade600),
+                          Icon(Icons.access_time, size: 14, color: context.colors.textSecondary),
                           const SizedBox(width: 4),
                           Text(
                             '${dateFormat.format(termin.terminDate)} - ${dateFormat.format(endTime)}',
-                            style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+                            style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
                           ),
                           if (termin.location.isNotEmpty) ...[
                             const SizedBox(width: 12),
-                            Icon(Icons.place, size: 14, color: Colors.grey.shade600),
+                            Icon(Icons.place, size: 14, color: context.colors.textSecondary),
                             const SizedBox(width: 2),
                             Flexible(
                               child: Text(
                                 termin.location,
-                                style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+                                style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -516,9 +517,9 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
               // Right: Arrow
               Container(
                 width: 32,
-                color: Colors.grey.shade50,
-                child: const Center(
-                  child: Icon(Icons.chevron_right, color: Colors.grey),
+                color: context.colors.cardSubtle,
+                child: Center(
+                  child: Icon(Icons.chevron_right, color: context.colors.textSecondary),
                 ),
               ),
             ],
@@ -617,7 +618,7 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
                 _buildDetailRow(Icons.description, l.descriptionLabel, ''),
                 Padding(
                   padding: const EdgeInsets.only(left: 32),
-                  child: Text(termin.description, style: TextStyle(color: Colors.grey.shade700)),
+                  child: Text(termin.description, style: TextStyle(color: context.colors.textPrimary)),
                 ),
                 const SizedBox(height: 10),
               ],
@@ -657,7 +658,7 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
                 const SizedBox(height: 8),
                 Text(
                   l.reasonLabel(termin.myReschedulingReason!),
-                  style: TextStyle(fontSize: 13, color: Colors.grey.shade600, fontStyle: FontStyle.italic),
+                  style: TextStyle(fontSize: 13, color: context.colors.textSecondary, fontStyle: FontStyle.italic),
                 ),
               ],
             ],
@@ -668,8 +669,8 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
           if (termin.status == 'scheduled' && termin.isUpcoming) ...[
             if (termin.myResponse != 'confirmed')
               TextButton.icon(
-                icon: const Icon(Icons.check_circle, color: Colors.green, size: 18),
-                label: Text(l.confirm, style: const TextStyle(color: Colors.green)),
+                icon: Icon(Icons.check_circle, color: context.colors.successFg, size: 18),
+                label: Text(l.confirm, style: TextStyle(color: context.colors.successFg)),
                 onPressed: () {
                   Navigator.pop(dialogContext);
                   _respondToTermin(termin, 'confirmed');
@@ -677,8 +678,8 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
               ),
             if (termin.myResponse != 'declined')
               TextButton.icon(
-                icon: const Icon(Icons.cancel, color: Colors.red, size: 18),
-                label: Text(l.decline, style: const TextStyle(color: Colors.red)),
+                icon: Icon(Icons.cancel, color: context.colors.dangerFg, size: 18),
+                label: Text(l.decline, style: TextStyle(color: context.colors.dangerFg)),
                 onPressed: () {
                   Navigator.pop(dialogContext);
                   _respondToTermin(termin, 'declined');
@@ -686,8 +687,8 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
               ),
             if (termin.myResponse != 'rescheduling')
               TextButton.icon(
-                icon: const Icon(Icons.schedule, color: Colors.blue, size: 18),
-                label: Text(l.reschedule, style: const TextStyle(color: Colors.blue)),
+                icon: Icon(Icons.schedule, color: context.colors.infoFg, size: 18),
+                label: Text(l.reschedule, style: TextStyle(color: context.colors.infoFg)),
                 onPressed: () {
                   Navigator.pop(dialogContext);
                   _showRescheduleDialog(termin);
@@ -707,14 +708,14 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: 18, color: Colors.grey.shade600),
+        Icon(icon, size: 18, color: context.colors.textSecondary),
         const SizedBox(width: 8),
         Expanded(
           child: value.isEmpty
               ? Text(label, style: const TextStyle(fontWeight: FontWeight.w500))
               : RichText(
                   text: TextSpan(
-                    style: const TextStyle(color: Colors.black87),
+                    style: TextStyle(color: context.colors.textPrimary),
                     children: [
                       TextSpan(text: '$label: ', style: const TextStyle(fontWeight: FontWeight.w500)),
                       TextSpan(text: value),
@@ -760,7 +761,7 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
               final reason = reasonController.text.trim();
               if (reason.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(l.pleaseProvideReason), backgroundColor: Colors.orange),
+                  SnackBar(content: Text(l.pleaseProvideReason), backgroundColor: context.colors.warningSolid),
                 );
                 return;
               }

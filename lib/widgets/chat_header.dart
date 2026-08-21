@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// Header for the selected conversation showing member info
 class ConversationHeader extends StatelessWidget {
@@ -33,7 +34,7 @@ class ConversationHeader extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 18,
-            backgroundColor: Colors.blue,
+            backgroundColor: context.colors.infoSolid,
             child: Text(
               memberName[0].toUpperCase(),
               style: const TextStyle(color: Colors.white),
@@ -54,7 +55,7 @@ class ConversationHeader extends StatelessWidget {
                 Text(
                   memberNr,
                   style: TextStyle(
-                    color: Colors.grey.shade400,
+                    color: context.colors.textDisabled,
                     fontSize: 11,
                   ),
                 ),
@@ -64,7 +65,7 @@ class ConversationHeader extends StatelessWidget {
           // Call button (only when idle and connected)
           if (isOpen && canCall)
             IconButton(
-              icon: const Icon(Icons.call, color: Colors.green),
+              icon: Icon(Icons.call, color: context.colors.successFg),
               onPressed: onCall,
               tooltip: AppLocalizations.of(context)!.callMember,
             ),
@@ -139,7 +140,7 @@ class ConnectionStatus extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: isConnected ? Colors.green.shade100 : Colors.orange.shade100,
+        color: isConnected ? context.colors.successBg : context.colors.warningBg,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -149,7 +150,7 @@ class ConnectionStatus extends StatelessWidget {
             width: 8,
             height: 8,
             decoration: BoxDecoration(
-              color: isConnected ? Colors.green : Colors.orange,
+              color: isConnected ? context.colors.successFg : context.colors.warningFg,
               shape: BoxShape.circle,
             ),
           ),
@@ -157,7 +158,7 @@ class ConnectionStatus extends StatelessWidget {
           Text(
             isConnected ? AppLocalizations.of(context)!.online : AppLocalizations.of(context)!.chatOffline,
             style: TextStyle(
-              color: isConnected ? Colors.green.shade700 : Colors.orange.shade700,
+              color: isConnected ? context.colors.successFg : context.colors.warningFg,
               fontSize: 12,
             ),
           ),
@@ -183,7 +184,7 @@ class TypingIndicator extends StatelessWidget {
       child: Text(
         '$userName schreibt...',
         style: TextStyle(
-          color: Colors.grey.shade600,
+          color: context.colors.textSecondary,
           fontSize: 12,
           fontStyle: FontStyle.italic,
         ),

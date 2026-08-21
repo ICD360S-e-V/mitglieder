@@ -5,6 +5,7 @@ import 'package:http/io_client.dart';
 import 'api_service.dart';
 import 'device_key_service.dart';
 import 'http_client_factory.dart';
+import '../utils/app_theme.dart';
 
 /// Termin Model
 class Termin {
@@ -226,18 +227,21 @@ class Termin {
     }
   }
 
-  Color get categoryColor {
+  /// Takes the context rather than being a getter: the status palette differs
+  /// between the light and dark themes, so the answer depends on which one is
+  /// live at the moment the chip is painted.
+  Color categoryColor(BuildContext context) {
     switch (category) {
       case 'vorstandssitzung':
         return Colors.purple;
       case 'mitgliederversammlung':
-        return Colors.blue;
+        return context.colors.infoFg;
       case 'schulung':
-        return Colors.green;
+        return context.colors.successFg;
       case 'sonstiges':
-        return Colors.amber;
+        return context.colors.warningFg;
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 
@@ -297,18 +301,19 @@ class TerminParticipant {
     }
   }
 
-  Color get responseColor {
+  /// See [Termin.categoryColor] for why this takes a context.
+  Color responseColor(BuildContext context) {
     switch (response) {
       case 'confirmed':
-        return Colors.green;
+        return context.colors.successFg;
       case 'declined':
-        return Colors.red;
+        return context.colors.dangerFg;
       case 'pending':
-        return Colors.orange;
+        return context.colors.warningFg;
       case 'rescheduling':
-        return Colors.amber;
+        return context.colors.warningFg;
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 }

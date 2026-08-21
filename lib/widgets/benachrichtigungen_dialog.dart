@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../utils/app_theme.dart';
 
 /// Der Posteingang hinter der Glocke.
 ///
@@ -72,14 +73,14 @@ class _BenachrichtigungenDialogState extends State<BenachrichtigungenDialog> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       title: Row(
         children: [
-          const Icon(Icons.notifications, color: Color(0xFF4a90d9)),
+          Icon(Icons.notifications, color: context.colors.brand),
           const SizedBox(width: 12),
           Expanded(child: Text(l10n.notifications)),
           if (_ungelesen > 0)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               decoration: BoxDecoration(
-                color: Colors.red.shade600,
+                color: context.colors.dangerSolid,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text('$_ungelesen',
@@ -101,10 +102,10 @@ class _BenachrichtigungenDialogState extends State<BenachrichtigungenDialog> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(Icons.notifications_none,
-                            size: 40, color: Colors.grey.shade400),
+                            size: 40, color: context.colors.textDisabled),
                         const SizedBox(height: 10),
                         Text(l10n.benachrichtigungenLeer,
-                            style: TextStyle(color: Colors.grey.shade600)),
+                            style: TextStyle(color: context.colors.textSecondary)),
                       ],
                     ),
                   )
@@ -138,17 +139,19 @@ class _BenachrichtigungenDialogState extends State<BenachrichtigungenDialog> {
   Widget _zeile(Map<String, dynamic> b) {
     final ungelesen = b['gelesen_am'] == null;
     final typ = b['typ']?.toString() ?? 'info';
-    final (IconData icon, MaterialColor farbe) = switch (typ) {
-      'termin' => (Icons.event, Colors.blue),
-      'medikament' => (Icons.medication, Colors.teal),
-      'wetter' => (Icons.thunderstorm, Colors.orange),
-      _ => (Icons.info, Colors.grey),
+    // Vordergrund und Füllung reisen zusammen: ein Theme-Token ist eine
+    // einzelne Farbe, aus der sich keine passende Tönung ableiten lässt.
+    final (IconData icon, Color farbe, Color fuellung) = switch (typ) {
+      'termin' => (Icons.event, context.colors.infoFg, context.colors.infoBg),
+      'medikament' => (Icons.medication, Colors.teal, Colors.teal.shade100),
+      'wetter' => (Icons.thunderstorm, context.colors.warningFg, context.colors.warningBg),
+      _ => (Icons.info, context.colors.textSecondary, context.colors.cardSubtle),
     };
 
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: farbe.shade100,
-        child: Icon(icon, color: farbe.shade700, size: 20),
+        backgroundColor: fuellung,
+        child: Icon(icon, color: farbe, size: 20),
       ),
       title: Text(
         b['titel']?.toString() ?? '',
@@ -161,7 +164,7 @@ class _BenachrichtigungenDialogState extends State<BenachrichtigungenDialog> {
           style: const TextStyle(fontSize: 12)),
       trailing: Text(
         _wann(b['created_at']?.toString()),
-        style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
+        style: TextStyle(fontSize: 11, color: context.colors.textSecondary),
       ),
       onTap: ungelesen
           ? () async {

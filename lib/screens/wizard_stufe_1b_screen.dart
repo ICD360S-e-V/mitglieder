@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
+import '../utils/app_theme.dart';
 
 /// Stufe 1b — Birthdate + birth place, plus the age gate. The date
 /// picker is the gate: as soon as the visitor picks a date and taps
@@ -91,7 +92,7 @@ class _WizardStufe1bScreenState extends State<WizardStufe1bScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.wizardErrRequired),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -109,7 +110,7 @@ class _WizardStufe1bScreenState extends State<WizardStufe1bScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.wizardErrSaveFailed),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -142,7 +143,7 @@ class _WizardStufe1bScreenState extends State<WizardStufe1bScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.wizardErrSaveFailed),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -245,13 +246,13 @@ class _WizardStufe1bScreenState extends State<WizardStufe1bScreen> {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.red.shade300),
+        borderSide: BorderSide(color: context.colors.dangerBorder),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.red.shade300, width: 2),
+        borderSide: BorderSide(color: context.colors.dangerBorder, width: 2),
       ),
-      errorStyle: TextStyle(color: Colors.red.shade200),
+      errorStyle: TextStyle(color: context.colors.onDarkDanger),
     );
   }
 }

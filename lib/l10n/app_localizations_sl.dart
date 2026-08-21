@@ -3006,4 +3006,23 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Se je spremenilo';
+
+  @override
+  String get themeTitle => 'Videz';
+
+  @override
+  String get themeLight => 'Svetlo';
+
+  @override
+  String get themeDark => 'Temno';
+
+  @override
+  String get themeSystem => 'Sledi napravi';
+
+  @override
+  String get themeSchedule => 'Samodejno (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Temno od 20:00 do 6:00, preostanek dneva svetlo.';
 }

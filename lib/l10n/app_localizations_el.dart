@@ -3025,4 +3025,23 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Έχει αλλάξει';
+
+  @override
+  String get themeTitle => 'Εμφάνιση';
+
+  @override
+  String get themeLight => 'Φωτεινό';
+
+  @override
+  String get themeDark => 'Σκοτεινό';
+
+  @override
+  String get themeSystem => 'Σύμφωνα με τη συσκευή';
+
+  @override
+  String get themeSchedule => 'Αυτόματα (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Σκοτεινό από τις 20:00 έως τις 6:00, φωτεινό την υπόλοιπη ημέρα.';
 }

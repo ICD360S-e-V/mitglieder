@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "За да не пропуснете нищо, питаме накратко на всеки три месеца. Ще получите шестцифрен код.",
   "kontaktBestaetigtAm": "потвърдено на {datum}",
   "kontaktFestnetzKeinSms": "Това е стационарен номер — SMS не достига дотам.",
-  "kontaktIstAndersGeworden": "Промени се"
+  "kontaktIstAndersGeworden": "Промени се",
+  "themeTitle": "Външен вид",
+  "themeLight": "Светла",
+  "themeDark": "Тъмна",
+  "themeSystem": "Според устройството",
+  "themeSchedule": "Автоматично (20:00–06:00)",
+  "themeScheduleHint": "Тъмна от 20:00 до 6:00 ч., светла през останалата част от деня."
 }

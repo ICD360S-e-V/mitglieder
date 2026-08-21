@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
+import '../utils/app_theme.dart';
 
 /// Stufe 1a — Identity (Vornamen + Familienname + optional
 /// Geburtsname). The labels match the canonical Personalausweis /
@@ -78,7 +79,7 @@ class _WizardStufe1aScreenState extends State<WizardStufe1aScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.wizardErrSaveFailed),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -172,13 +173,13 @@ class _WizardStufe1aScreenState extends State<WizardStufe1aScreen> {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.red.shade300),
+          borderSide: BorderSide(color: context.colors.dangerBorder),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.red.shade300, width: 2),
+          borderSide: BorderSide(color: context.colors.dangerBorder, width: 2),
         ),
-        errorStyle: TextStyle(color: Colors.red.shade200),
+        errorStyle: TextStyle(color: context.colors.onDarkDanger),
       ),
       validator: (value) {
         final v = (value ?? '').trim();

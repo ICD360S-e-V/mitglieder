@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "So that you do not miss anything, we ask briefly every three months. You will receive a six-digit code.",
   "kontaktBestaetigtAm": "confirmed on {datum}",
   "kontaktFestnetzKeinSms": "This is a landline number — no SMS can be delivered there.",
-  "kontaktIstAndersGeworden": "It has changed"
+  "kontaktIstAndersGeworden": "It has changed",
+  "themeTitle": "Appearance",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "themeSystem": "Follow device",
+  "themeSchedule": "Automatic (20:00–06:00)",
+  "themeScheduleHint": "Dark from 8 pm until 6 am, light for the rest of the day."
 }

@@ -3000,4 +3000,23 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Změnilo se';
+
+  @override
+  String get themeTitle => 'Vzhled';
+
+  @override
+  String get themeLight => 'Světlý';
+
+  @override
+  String get themeDark => 'Tmavý';
+
+  @override
+  String get themeSystem => 'Podle zařízení';
+
+  @override
+  String get themeSchedule => 'Automaticky (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Tmavý od 20:00 do 6:00, po zbytek dne světlý.';
 }

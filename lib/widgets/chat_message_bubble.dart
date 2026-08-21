@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import 'chat_attachment_item.dart';
 import 'linkified_text.dart';
+import '../utils/app_theme.dart';
 
 /// A chat message bubble with optional attachments
 class ChatMessageBubble extends StatelessWidget {
@@ -42,7 +43,7 @@ class ChatMessageBubble extends StatelessWidget {
         ),
         padding: EdgeInsets.all(_getResponsiveSpacing(context, 10)),
         decoration: BoxDecoration(
-          color: isOwn ? const Color(0xFF1a1a2e) : Colors.white,
+          color: isOwn ? const Color(0xFF1a1a2e) : context.colors.card,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -57,13 +58,13 @@ class ChatMessageBubble extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 11,
-                    color: Colors.blue.shade700,
+                    color: context.colors.infoFg,
                   ),
                 ),
               ),
             // Message text (with clickable links)
             if (hasTextMessage)
-              _buildLinkifiedText(messageText, isOwn),
+              _buildLinkifiedText(context, messageText, isOwn),
             // Attachments
             if (attachments.isNotEmpty) ...[
               if (hasTextMessage) const SizedBox(height: 8),
@@ -83,7 +84,7 @@ class ChatMessageBubble extends StatelessWidget {
                     _formatTime(message['created_at']),
                     style: TextStyle(
                       fontSize: 10,
-                      color: isOwn ? Colors.white70 : Colors.grey.shade500,
+                      color: isOwn ? Colors.white70 : context.colors.textTertiary,
                     ),
                   ),
                   // Read receipt checkmarks (only for own messages)
@@ -100,14 +101,14 @@ class ChatMessageBubble extends StatelessWidget {
     );
   }
 
-  Widget _buildLinkifiedText(String text, bool isOwn) {
+  Widget _buildLinkifiedText(BuildContext context, String text, bool isOwn) {
     return LinkifiedText(
       text,
       style: TextStyle(
-        color: isOwn ? Colors.white : Colors.black87,
+        color: isOwn ? Colors.white : context.colors.textPrimary,
         fontSize: 14,
       ),
-      linkColor: isOwn ? Colors.lightBlueAccent : Colors.blue.shade700,
+      linkColor: isOwn ? Colors.lightBlueAccent : context.colors.infoFg,
     );
   }
 

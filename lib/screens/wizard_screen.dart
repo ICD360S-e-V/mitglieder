@@ -18,6 +18,7 @@ import 'wizard_stufe_2_screen.dart';
 import 'wizard_stufe_3_screen.dart';
 import 'wizard_stufe_4_screen.dart';
 import 'wizard_stufe_5_screen.dart';
+import '../utils/app_theme.dart';
 
 /// Top-level orchestrator for the onboarding wizard. Wires the 14
 /// stage screens together, drives the navigation graph, hides Stufe 4
@@ -534,15 +535,11 @@ class _LoadingScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: const Center(
@@ -571,15 +568,11 @@ class _ErrorScaffold extends StatelessWidget {
         : l10n.wizardErrSaveFailed;
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(
@@ -605,8 +598,8 @@ class _ErrorScaffold extends StatelessWidget {
                   icon: const Icon(Icons.refresh),
                   label: Text(l10n.claudiuAnonymousChatRetry),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF0d47a1),
+                    backgroundColor: context.colors.card,
+                    foregroundColor: context.colors.brandStrong,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 24, vertical: 14),
                     shape: RoundedRectangleBorder(

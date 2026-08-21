@@ -7,6 +7,7 @@ import '../l10n/app_localizations.dart';
 import 'file_viewer.dart';
 import '../services/api_service.dart';
 import '../utils/error_helpers.dart';
+import '../utils/app_theme.dart';
 
 class DokumenteTab extends StatefulWidget {
   const DokumenteTab({super.key});
@@ -71,21 +72,21 @@ class _DokumenteTabState extends State<DokumenteTab> {
   Color _extensionColor(String ext) {
     switch (ext) {
       case 'pdf':
-        return Colors.red.shade700;
+        return context.colors.dangerFg;
       case 'doc':
       case 'docx':
       case 'odt':
-        return Colors.blue.shade700;
+        return context.colors.infoFg;
       case 'xls':
       case 'xlsx':
       case 'ods':
-        return Colors.green.shade700;
+        return context.colors.successFg;
       case 'jpg':
       case 'jpeg':
       case 'png':
         return Colors.purple.shade700;
       case 'txt':
-        return Colors.grey.shade700;
+        return context.colors.textPrimary;
       default:
         return Colors.blueGrey.shade700;
     }
@@ -173,7 +174,7 @@ class _DokumenteTabState extends State<DokumenteTab> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppLocalizations.of(context)!.savedFilename(filename)),
-            backgroundColor: Colors.green,
+            backgroundColor: context.colors.successSolid,
             action: SnackBarAction(
               label: AppLocalizations.of(context)!.openFile,
               textColor: Colors.white,
@@ -202,7 +203,7 @@ class _DokumenteTabState extends State<DokumenteTab> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: isError ? Colors.red : Colors.green,
+        backgroundColor: isError ? context.colors.dangerFg : context.colors.successFg,
       ),
     );
   }
@@ -218,7 +219,7 @@ class _DokumenteTabState extends State<DokumenteTab> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 48, color: Colors.red),
+            Icon(Icons.error_outline, size: 48, color: context.colors.dangerFg),
             const SizedBox(height: 16),
             Text(_error!, textAlign: TextAlign.center),
             const SizedBox(height: 16),
@@ -244,7 +245,7 @@ class _DokumenteTabState extends State<DokumenteTab> {
             // Header
             Row(
               children: [
-                Icon(Icons.folder, color: Colors.blue.shade700, size: 24),
+                Icon(Icons.folder, color: context.colors.infoFg, size: 24),
                 const SizedBox(width: 8),
                 Text(
                   AppLocalizations.of(context)!.documentsCount(total),
@@ -257,17 +258,17 @@ class _DokumenteTabState extends State<DokumenteTab> {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.blue.shade50,
+                color: context.colors.infoBg,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
                 children: [
-                  Icon(Icons.info_outline, size: 18, color: Colors.blue.shade700),
+                  Icon(Icons.info_outline, size: 18, color: context.colors.infoFg),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       AppLocalizations.of(context)!.documentsProvidedByBoard,
-                      style: TextStyle(fontSize: 12, color: Colors.blue.shade900),
+                      style: TextStyle(fontSize: 12, color: context.colors.infoFg),
                     ),
                   ),
                 ],
@@ -291,20 +292,20 @@ class _DokumenteTabState extends State<DokumenteTab> {
         padding: const EdgeInsets.symmetric(vertical: 40),
         child: Column(
           children: [
-            Icon(Icons.folder_off, size: 64, color: Colors.grey.shade400),
+            Icon(Icons.folder_off, size: 64, color: context.colors.textDisabled),
             const SizedBox(height: 16),
             Text(
               AppLocalizations.of(context)!.noDocumentsAvailable,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Colors.grey.shade600,
+                color: context.colors.textSecondary,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               AppLocalizations.of(context)!.noDocumentsDescription,
-              style: TextStyle(color: Colors.grey.shade500),
+              style: TextStyle(color: context.colors.textTertiary),
               textAlign: TextAlign.center,
             ),
           ],
@@ -376,12 +377,12 @@ class _DokumenteTabState extends State<DokumenteTab> {
                       if (ext.isNotEmpty) const SizedBox(width: 8),
                       Text(
                         filesize,
-                        style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                        style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                       ),
                       const SizedBox(width: 8),
                       Text(
                         datum,
-                        style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                        style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                       ),
                     ],
                   ),
@@ -390,7 +391,7 @@ class _DokumenteTabState extends State<DokumenteTab> {
                     const SizedBox(height: 4),
                     Text(
                       beschreibung.toString(),
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                      style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                     ),
                   ],
                   // Uploaded by
@@ -398,7 +399,7 @@ class _DokumenteTabState extends State<DokumenteTab> {
                     const SizedBox(height: 4),
                     Text(
                       AppLocalizations.of(context)!.uploadedBy(uploadedByName),
-                      style: TextStyle(fontSize: 11, color: Colors.grey.shade500),
+                      style: TextStyle(fontSize: 11, color: context.colors.textTertiary),
                     ),
                   ],
                 ],
@@ -413,7 +414,7 @@ class _DokumenteTabState extends State<DokumenteTab> {
                       height: 20,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : Icon(Icons.download, color: Colors.blue.shade700),
+                  : Icon(Icons.download, color: context.colors.infoFg),
               tooltip: AppLocalizations.of(context)!.downloadTooltip,
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/update_service.dart';
+import '../utils/app_theme.dart';
 
 /// Update Available Dialog - prompts user to download and install update
 class UpdateDialog extends StatefulWidget {
@@ -23,7 +24,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
     return AlertDialog(
       title: Row(
         children: [
-          Icon(Icons.system_update, color: Colors.blue.shade700),
+          Icon(Icons.system_update, color: context.colors.infoFg),
           const SizedBox(width: 12),
           Text(l.updateAvailable),
         ],
@@ -41,7 +42,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
             const SizedBox(height: 8),
             Text(
               l.currentVersionLabel(UpdateService.currentVersion),
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+              style: TextStyle(color: context.colors.textSecondary, fontSize: 14),
             ),
             if (widget.updateInfo.changelog.isNotEmpty) ...[
               const SizedBox(height: 16),
@@ -53,7 +54,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
+                  color: context.colors.cardSubtle,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 constraints: const BoxConstraints(maxHeight: 150),
@@ -73,13 +74,13 @@ class _UpdateDialogState extends State<UpdateDialog> {
                 _downloadProgress < 1.0
                     ? l.downloadProgress((_downloadProgress * 100).toStringAsFixed(0))
                     : l.installationStarting,
-                style: TextStyle(color: Colors.grey.shade600),
+                style: TextStyle(color: context.colors.textSecondary),
               ),
               const SizedBox(height: 8),
               Text(
                 l.appWillRestart,
                 style: TextStyle(
-                  color: Colors.blue.shade700,
+                  color: context.colors.infoFg,
                   fontSize: 12,
                   fontStyle: FontStyle.italic,
                 ),
@@ -90,18 +91,18 @@ class _UpdateDialogState extends State<UpdateDialog> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.red.shade50,
+                  color: context.colors.dangerBg,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.red.shade200),
+                  border: Border.all(color: context.colors.dangerBorder),
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.error_outline, color: Colors.red.shade700),
+                    Icon(Icons.error_outline, color: context.colors.dangerFg),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
                         _errorMessage!,
-                        style: TextStyle(color: Colors.red.shade700),
+                        style: TextStyle(color: context.colors.dangerFg),
                       ),
                     ),
                   ],
@@ -123,7 +124,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
             icon: const Icon(Icons.download),
             label: Text(l.updateNow),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue.shade700,
+              backgroundColor: context.colors.infoSolid,
               foregroundColor: Colors.white,
             ),
           ),
@@ -138,7 +139,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
                   height: 16,
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
-                    color: Colors.blue.shade700,
+                    color: context.colors.infoFg,
                   ),
                 ),
                 const SizedBox(width: 8),

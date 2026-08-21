@@ -3006,4 +3006,23 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Det er ændret';
+
+  @override
+  String get themeTitle => 'Udseende';
+
+  @override
+  String get themeLight => 'Lys';
+
+  @override
+  String get themeDark => 'Mørk';
+
+  @override
+  String get themeSystem => 'Følg enheden';
+
+  @override
+  String get themeSchedule => 'Automatisk (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Mørk fra 20:00 til 6:00, lys resten af dagen.';
 }

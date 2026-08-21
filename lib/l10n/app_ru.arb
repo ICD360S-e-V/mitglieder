@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Чтобы вы ничего не пропустили, мы коротко спрашиваем раз в три месяца. Вы получите код из шести цифр.",
   "kontaktBestaetigtAm": "подтверждено {datum}",
   "kontaktFestnetzKeinSms": "Это стационарный номер — SMS туда не дойдёт.",
-  "kontaktIstAndersGeworden": "Изменилось"
+  "kontaktIstAndersGeworden": "Изменилось",
+  "themeTitle": "Оформление",
+  "themeLight": "Светлая",
+  "themeDark": "Тёмная",
+  "themeSystem": "Как на устройстве",
+  "themeSchedule": "Автоматически (20:00–06:00)",
+  "themeScheduleHint": "Тёмная с 20:00 до 6:00, светлая в остальное время."
 }

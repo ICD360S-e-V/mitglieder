@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 
 import '../services/api_service.dart';
 import '../services/logger_service.dart';
+import '../utils/app_theme.dart';
 
 /// Bild-Anhänge als Vorschau statt als Dateizeile.
 ///
@@ -137,7 +138,7 @@ class _ChatImageAttachmentState extends State<ChatImageAttachment> {
             ? Container(
                 width: widget.maxWidth,
                 height: 120,
-                color: Colors.black12,
+                color: context.colors.dividerSubtle,
                 alignment: Alignment.center,
                 child: const SizedBox(
                   width: 20,
@@ -173,9 +174,9 @@ class _FullscreenImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: context.colors.textPrimary,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: context.colors.textPrimary,
         foregroundColor: Colors.white,
         title: Text(title, style: const TextStyle(fontSize: 15)),
       ),

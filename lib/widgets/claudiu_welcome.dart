@@ -7,6 +7,7 @@ import '../l10n/app_localizations.dart';
 import '../screens/login.dart';
 import '../screens/problem_help.dart';
 import '../screens/wizard_screen.dart';
+import '../utils/app_theme.dart';
 
 /// Conversational welcome surface — replaces the static button stack on
 /// WelcomeScreen with a chat-style flow centred on the Claudiu mascot.
@@ -97,7 +98,7 @@ class ClaudiuWelcome extends StatelessWidget {
               SizedBox(width: 12 * scale),
               // Bubble holds until 2s after page open, then fades in.
               Expanded(
-                child: _bubble(l10n, greeting, scale)
+                child: _bubble(context, l10n, greeting, scale)
                     .animate()
                     .fadeIn(delay: _bubbleDelay, duration: 400.ms),
               ),
@@ -112,7 +113,7 @@ class ClaudiuWelcome extends StatelessWidget {
         // contract is expressed declaratively rather than in
         // AnimationController/Timer state.
         for (var i = 0; i < options.length; i++) ...[
-          _option(options[i], scale).animate().fadeIn(
+          _option(context, options[i], scale).animate().fadeIn(
                 delay: _optionsDelay + _optionStagger * i,
                 duration: 300.ms,
               ).slideY(
@@ -162,14 +163,14 @@ class ClaudiuWelcome extends StatelessWidget {
   // properly which my AnimatedBuilder + substring hack did not.
   // ---------------------------------------------------------------------------
 
-  Widget _bubble(AppLocalizations l10n, String greeting, double scale) {
+  Widget _bubble(BuildContext context, AppLocalizations l10n, String greeting, double scale) {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 16 * scale,
         vertical: 12 * scale,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: BorderRadiusDirectional.only(
           topStart: const Radius.circular(4),
           topEnd: Radius.circular(16 * scale),
@@ -203,7 +204,7 @@ class ClaudiuWelcome extends StatelessWidget {
                 textStyle: TextStyle(
                   fontSize: 15 * scale,
                   fontWeight: FontWeight.w600,
-                  color: const Color(0xFF0d47a1),
+                  color: context.colors.brandStrong,
                   height: 1.3,
                 ),
               ),
@@ -214,7 +215,7 @@ class ClaudiuWelcome extends StatelessWidget {
             l10n.claudiuWelcomeAsk,
             style: TextStyle(
               fontSize: 14 * scale,
-              color: Colors.grey[800],
+              color: context.colors.textPrimary,
               height: 1.3,
             ),
           ),
@@ -223,7 +224,7 @@ class ClaudiuWelcome extends StatelessWidget {
             '— ${l10n.claudiuWelcomeMascotName}',
             style: TextStyle(
               fontSize: 11 * scale,
-              color: Colors.grey[500],
+              color: context.colors.textTertiary,
               fontStyle: FontStyle.italic,
             ),
           ),
@@ -236,7 +237,7 @@ class ClaudiuWelcome extends StatelessWidget {
   // Option pill.
   // ---------------------------------------------------------------------------
 
-  Widget _option(_OptionData data, double scale) {
+  Widget _option(BuildContext context, _OptionData data, double scale) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -338,14 +339,11 @@ class ClaudiuWelcome extends StatelessWidget {
       isScrollControlled: true,
       builder: (sheetCtx) {
         return Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF0d47a1),
-                Color(0xFF1565c0),
-              ],
+              colors: context.colors.heroGradientShort,
             ),
             borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
           ),
@@ -393,7 +391,7 @@ class ClaudiuWelcome extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 14, vertical: 10),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: context.colors.card,
                             borderRadius: const BorderRadiusDirectional.only(
                               topStart: Radius.circular(4),
                               topEnd: Radius.circular(14),
@@ -403,10 +401,10 @@ class ClaudiuWelcome extends StatelessWidget {
                           ),
                           child: Text(
                             l10n.claudiuWelcomeEmergencyIntro,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 13.5,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF0d47a1),
+                              color: context.colors.brandStrong,
                               height: 1.3,
                             ),
                           ),
@@ -444,7 +442,7 @@ class ClaudiuWelcome extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Icon(Icons.info_outline,
-                            color: Colors.amber.shade200, size: 18),
+                            color: context.colors.onDarkWarning, size: 18),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(

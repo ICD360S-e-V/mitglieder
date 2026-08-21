@@ -3,6 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../services/ticket_service.dart';
+import '../utils/app_theme.dart';
 
 /// Mobile-optimized Ticket Details Dialog for Members
 class MemberTicketDetailsDialog extends StatefulWidget {
@@ -119,7 +120,7 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppLocalizations.of(context)!.sendError),
-            backgroundColor: Colors.red,
+            backgroundColor: context.colors.dangerSolid,
           ),
         );
       }
@@ -176,7 +177,7 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(AppLocalizations.of(context)!.uploadFailed),
-              backgroundColor: Colors.red,
+              backgroundColor: context.colors.dangerSolid,
             ),
           );
         }
@@ -188,32 +189,32 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
   Color _getStatusColor(String status) {
     switch (status) {
       case 'open':
-        return Colors.orange;
+        return context.colors.warningFg;
       case 'in_progress':
         return Colors.purple;
       case 'waiting_member':
-        return Colors.blue;
+        return context.colors.infoFg;
       case 'waiting_staff':
         return Colors.teal;
       case 'waiting_authority':
         return Colors.indigo;
       case 'done':
-        return Colors.green;
+        return context.colors.successFg;
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 
   Color _getPriorityColor(String priority) {
     switch (priority) {
       case 'high':
-        return Colors.red;
+        return context.colors.dangerFg;
       case 'medium':
-        return Colors.orange;
+        return context.colors.warningFg;
       case 'low':
-        return Colors.green;
+        return context.colors.successFg;
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 
@@ -276,9 +277,9 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
         ),
         bottom: TabBar(
           controller: _tabController,
-          labelColor: Colors.blue.shade700,
-          unselectedLabelColor: Colors.grey,
-          indicatorColor: Colors.blue.shade700,
+          labelColor: context.colors.infoFg,
+          unselectedLabelColor: context.colors.textSecondary,
+          indicatorColor: context.colors.infoFg,
           tabs: [
             Tab(
                 icon: const Icon(Icons.chat_bubble_outline, size: 20),
@@ -350,19 +351,19 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
+                    color: context.colors.infoBg,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.category,
-                          size: 14, color: Colors.blue.shade700),
+                          size: 14, color: context.colors.infoFg),
                       const SizedBox(width: 4),
                       Text(
                         widget.ticket.categoryName!,
                         style: TextStyle(
-                          color: Colors.blue.shade700,
+                          color: context.colors.infoFg,
                           fontWeight: FontWeight.w600,
                           fontSize: 12,
                         ),
@@ -405,7 +406,7 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
             width: double.infinity,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.grey.shade100,
+              color: context.colors.cardSubtle,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Column(
@@ -459,19 +460,19 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Icons.chat_bubble_outline,
-                              size: 64, color: Colors.grey.shade400),
+                              size: 64, color: context.colors.textDisabled),
                           const SizedBox(height: 16),
                           Text(
                             AppLocalizations.of(context)!.noRepliesYet,
                             style: TextStyle(
-                                color: Colors.grey.shade600, fontSize: 16),
+                                color: context.colors.textSecondary, fontSize: 16),
                           ),
                           const SizedBox(height: 8),
                           Text(
                             AppLocalizations.of(context)!.waitingForSupport,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Colors.grey.shade500, fontSize: 13),
+                                color: context.colors.textTertiary, fontSize: 13),
                           ),
                         ],
                       ),
@@ -491,8 +492,8 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
           child: Container(
             padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
             decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border(top: BorderSide(color: Colors.grey.shade300)),
+              color: context.colors.card,
+              border: Border(top: BorderSide(color: context.colors.divider)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withAlpha(10),
@@ -528,7 +529,7 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
                 const SizedBox(width: 8),
                 FloatingActionButton.small(
                   onPressed: _isSubmittingComment ? null : _submitComment,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: context.colors.infoSolid,
                   child: _isSubmittingComment
                       ? const SizedBox(
                           width: 20,
@@ -569,16 +570,16 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
     final ext = filename.toLowerCase().split('.').last;
     switch (ext) {
       case 'pdf':
-        return Colors.red;
+        return context.colors.dangerFg;
       case 'jpg':
       case 'jpeg':
-        return Colors.blue;
+        return context.colors.infoFg;
       case 'txt':
-        return Colors.grey;
+        return context.colors.textSecondary;
       case 'zip':
-        return Colors.amber.shade700;
+        return context.colors.warningFg;
       default:
-        return Colors.grey.shade600;
+        return context.colors.textSecondary;
     }
   }
 
@@ -589,7 +590,7 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+            border: Border(bottom: BorderSide(color: context.colors.dividerSubtle)),
           ),
           child: Row(
             children: [
@@ -606,7 +607,7 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
                 icon: const Icon(Icons.upload_file, size: 18),
                 label: Text(AppLocalizations.of(context)!.upload),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: context.colors.infoSolid,
                   foregroundColor: Colors.white,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -625,18 +626,18 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Icons.folder_open,
-                              size: 64, color: Colors.grey.shade400),
+                              size: 64, color: context.colors.textDisabled),
                           const SizedBox(height: 16),
                           Text(
                             AppLocalizations.of(context)!.noDocuments,
                             style: TextStyle(
-                                color: Colors.grey.shade600, fontSize: 16),
+                                color: context.colors.textSecondary, fontSize: 16),
                           ),
                           const SizedBox(height: 8),
                           Text(
                             AppLocalizations.of(context)!.allowedFormats,
                             style: TextStyle(
-                                color: Colors.grey.shade500, fontSize: 13),
+                                color: context.colors.textTertiary, fontSize: 13),
                           ),
                         ],
                       ),
@@ -674,10 +675,10 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
                           subtitle: Text(
                             '$ext · ${attachment.filesizeDisplay} · $dateStr',
                             style: TextStyle(
-                                fontSize: 12, color: Colors.grey.shade600),
+                                fontSize: 12, color: context.colors.textSecondary),
                           ),
                           trailing: Icon(Icons.download,
-                              color: Colors.blue.shade700),
+                              color: context.colors.infoFg),
                           onTap: () async {
                             final messenger =
                                 ScaffoldMessenger.of(context);
@@ -716,7 +717,7 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
       'mitgliedergrunder'
     ].contains(comment.userRole);
     final alignment = isAdmin ? CrossAxisAlignment.start : CrossAxisAlignment.end;
-    final bubbleColor = isAdmin ? Colors.blue.shade50 : Colors.green.shade50;
+    final bubbleColor = isAdmin ? context.colors.infoBg : context.colors.successBg;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -730,12 +731,12 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
               if (!isAdmin) const Spacer(flex: 2),
               CircleAvatar(
                 backgroundColor:
-                    isAdmin ? Colors.blue.shade100 : Colors.green.shade100,
+                    isAdmin ? context.colors.infoBg : context.colors.successBg,
                 radius: 14,
                 child: Icon(
                   isAdmin ? Icons.support_agent : Icons.person,
                   size: 16,
-                  color: isAdmin ? Colors.blue.shade700 : Colors.green.shade700,
+                  color: isAdmin ? context.colors.infoFg : context.colors.successFg,
                 ),
               ),
               const SizedBox(width: 8),
@@ -747,7 +748,7 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
               const SizedBox(width: 8),
               Text(
                 _formatDate(comment.createdAt),
-                style: TextStyle(color: Colors.grey.shade500, fontSize: 10),
+                style: TextStyle(color: context.colors.textTertiary, fontSize: 10),
               ),
               if (isAdmin) const Spacer(flex: 2),
             ],
@@ -815,11 +816,11 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         children: [
-          Icon(icon, size: 14, color: Colors.grey.shade600),
+          Icon(icon, size: 14, color: context.colors.textSecondary),
           const SizedBox(width: 6),
           Text(
             '$label: ',
-            style: TextStyle(color: Colors.grey.shade700, fontSize: 12),
+            style: TextStyle(color: context.colors.textPrimary, fontSize: 12),
           ),
           Expanded(
             child: Text(

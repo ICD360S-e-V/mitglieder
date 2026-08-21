@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// Chat input area with attachment button and send button
 class ChatInputArea extends StatelessWidget {
@@ -89,12 +90,12 @@ class ClosedConversationIndicator extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
+        color: context.colors.dividerSubtle,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
         AppLocalizations.of(context)!.conversationClosed,
-        style: const TextStyle(color: Colors.grey),
+        style: TextStyle(color: context.colors.textSecondary),
       ),
     );
   }

@@ -3005,4 +3005,22 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'On muuttunut';
+
+  @override
+  String get themeTitle => 'Ulkoasu';
+
+  @override
+  String get themeLight => 'Vaalea';
+
+  @override
+  String get themeDark => 'Tumma';
+
+  @override
+  String get themeSystem => 'Laitteen mukaan';
+
+  @override
+  String get themeSchedule => 'Automaattinen (klo 20–06)';
+
+  @override
+  String get themeScheduleHint => 'Tumma klo 20–6, muun ajan vaalea.';
 }

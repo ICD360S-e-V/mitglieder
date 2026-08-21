@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pdfrx/pdfrx.dart';
 import 'package:open_filex/open_filex.dart';
+import '../utils/app_theme.dart';
 
 /// Internal file viewer for PDF and images
 /// Opens files inside the app instead of requiring external apps
@@ -44,9 +45,9 @@ class FileViewer extends StatelessWidget {
     final isImage = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].contains(ext);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: context.colors.textPrimary,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: context.colors.textPrimary,
         foregroundColor: Colors.white,
         title: Text(
           filename,
