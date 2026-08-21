@@ -12,6 +12,7 @@ import 'mitglied_dashboard.dart';
 import 'webview_screen.dart';
 import 'wizard_final_screen.dart';
 import 'wizard_screen.dart';
+import '../utils/app_theme.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -197,15 +198,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     if (_isLoading || _isAutoLogging) {
       return Scaffold(
         body: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF0d47a1),
-                Color(0xFF1565c0),
-                Color(0xFF1976d2),
-              ],
+              colors: context.colors.heroGradient,
             ),
           ),
           child: Center(
@@ -218,7 +215,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     color: Colors.white.withValues(alpha: 0.1),
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(Icons.groups, size: 56, color: Color(0xFF4a90d9)),
+                  child: Icon(Icons.groups, size: 56, color: context.colors.brand),
                 ),
                 SizedBox(height: _getResponsiveSpacing(context, 24)),
                 Text(
@@ -243,7 +240,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   },
                 ),
                 SizedBox(height: _getResponsiveSpacing(context, 24)),
-                const CircularProgressIndicator(color: Color(0xFF4a90d9)),
+                CircularProgressIndicator(color: context.colors.brand),
               ],
             ),
           ),
@@ -254,15 +251,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       body: SeasonalBackground(
         child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
+import '../utils/app_theme.dart';
 
 /// Stufe 2 — Mitgliedsart. Three option cards mirroring the existing
 /// `verifizierung_tab.dart` enum (ordentlich / foerdermitglied /
@@ -53,7 +54,7 @@ class _WizardStufe2ScreenState extends State<WizardStufe2Screen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.wizardErrRequired),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -69,7 +70,7 @@ class _WizardStufe2ScreenState extends State<WizardStufe2Screen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.wizardErrSaveFailed),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );

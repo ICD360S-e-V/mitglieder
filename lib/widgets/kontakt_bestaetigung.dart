@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/api_service.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// Bestätigung von E-Mail-Adresse und Mobilnummer.
 ///
@@ -151,7 +152,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(t.dataSavedSuccess),
-            backgroundColor: Colors.green,
+            backgroundColor: context.colors.successSolid,
           ),
         );
         widget.onBestaetigt?.call();
@@ -184,16 +185,16 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
       margin: const EdgeInsets.symmetric(vertical: 12),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: Colors.orange.shade200),
+        side: BorderSide(color: context.colors.warningBorder),
       ),
-      color: Colors.orange.shade50,
+      color: context.colors.warningBg,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(children: [
-              Icon(Icons.contact_mail_outlined, color: Colors.orange.shade800),
+              Icon(Icons.contact_mail_outlined, color: context.colors.warningFg),
               const SizedBox(width: 10),
               Expanded(
                 child: Text(t.kontaktNochAktuell,
@@ -203,7 +204,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
             const SizedBox(height: 6),
             Text(
               t.kontaktWarumFragen,
-              style: TextStyle(fontSize: 13, color: Colors.grey.shade800),
+              style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
             ),
             const SizedBox(height: 14),
             if (_offenerKanal == null) ...[
@@ -214,7 +215,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
             if (_fehler != null) ...[
               const SizedBox(height: 10),
               Text(_fehler!,
-                  style: TextStyle(fontSize: 12.5, color: Colors.red.shade800)),
+                  style: TextStyle(fontSize: 12.5, color: context.colors.dangerFg)),
             ],
           ],
         ),
@@ -237,7 +238,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
       padding: const EdgeInsets.only(bottom: 10),
       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Icon(faellig ? icon : Icons.verified,
-            size: 18, color: faellig ? Colors.orange.shade700 : Colors.green.shade700),
+            size: 18, color: faellig ? context.colors.warningFg : context.colors.successFg),
         const SizedBox(width: 10),
         Expanded(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -245,14 +246,14 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
             Text(vorhanden ? wert : 'nicht hinterlegt',
                 style: TextStyle(
                     fontSize: 13,
-                    color: vorhanden ? Colors.black87 : Colors.grey.shade600,
+                    color: vorhanden ? context.colors.textPrimary : context.colors.textSecondary,
                     fontStyle: vorhanden ? FontStyle.normal : FontStyle.italic)),
             if (smsUnmoeglich)
               Text(t.kontaktFestnetzKeinSms,
-                  style: TextStyle(fontSize: 11, color: Colors.red.shade800)),
+                  style: TextStyle(fontSize: 11, color: context.colors.dangerFg)),
             if (!faellig && k['bestaetigt_am'] != null)
               Text(t.kontaktBestaetigtAm(_datum(k['bestaetigt_am'])),
-                  style: TextStyle(fontSize: 11, color: Colors.green.shade700)),
+                  style: TextStyle(fontSize: 11, color: context.colors.successFg)),
           ]),
         ),
         if (faellig)
@@ -307,7 +308,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
                 // dieser Satz erspart den Fehlversuch.
                 ? '${t.kontaktWarumFragen}\n\n+49 176 1234567'
                 : t.kontaktWarumFragen,
-            style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+            style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
           ),
           const SizedBox(height: 14),
           TextField(

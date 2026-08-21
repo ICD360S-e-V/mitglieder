@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/diagnostic_service.dart';
+import '../utils/app_theme.dart';
 
 /// Conversational diagnostic-consent surface — Claudiu asks for permission
 /// to send anonymous app diagnostics. Replaces the corporate AlertDialog
@@ -59,7 +60,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
               _option(
                 icon: Icons.cancel_outlined,
                 label: l10n.claudiuDiagnosticNo,
-                color: Colors.grey.shade700,
+                color: context.colors.textPrimary,
                 onTap: () => _handleResponse(false),
               )
                   .animate()
@@ -104,17 +105,17 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
           width: 64,
           height: 64,
           decoration: BoxDecoration(
-            color: const Color(0xFF1565c0).withValues(alpha: 0.1),
+            color: context.colors.brandStrong.withValues(alpha: 0.1),
             shape: BoxShape.circle,
             border: Border.all(
-              color: const Color(0xFF1565c0).withValues(alpha: 0.3),
+              color: context.colors.brandStrong.withValues(alpha: 0.3),
               width: 2,
             ),
           ),
-          child: const Icon(
+          child: Icon(
             Icons.accessible_forward,
             size: 38,
-            color: Color(0xFF1565c0),
+            color: context.colors.brandStrong,
           ),
         )
             .animate()
@@ -125,7 +126,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
-              color: const Color(0xFFE3F2FD),
+              color: context.colors.infoBg,
               borderRadius: const BorderRadiusDirectional.only(
                 topStart: Radius.circular(4),
                 topEnd: Radius.circular(14),
@@ -138,10 +139,10 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
               children: [
                 Text(
                   l10n.claudiuDiagnosticGreeting,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF0d47a1),
+                    color: context.colors.brandStrong,
                     height: 1.3,
                   ),
                 ),
@@ -150,7 +151,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
                   l10n.claudiuDiagnosticAsk,
                   style: TextStyle(
                     fontSize: 13.5,
-                    color: Colors.grey[800],
+                    color: context.colors.textPrimary,
                     height: 1.4,
                   ),
                 ),
@@ -159,7 +160,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
                   '— Claudiu',
                   style: TextStyle(
                     fontSize: 11,
-                    color: Colors.grey[500],
+                    color: context.colors.textTertiary,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -198,11 +199,11 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
               l10n.claudiuDiagnosticSends8,
               l10n.claudiuDiagnosticSends9,
             ],
-            color: Colors.blue.shade700,
+            color: context.colors.infoFg,
             iconBuilder: () => Icon(
               Icons.check,
               size: 16,
-              color: Colors.blue.shade700,
+              color: context.colors.infoFg,
             ),
           ),
           const SizedBox(height: 12),
@@ -217,11 +218,11 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
               l10n.claudiuDiagnosticNever6,
               l10n.claudiuDiagnosticNever7,
             ],
-            color: Colors.green.shade700,
+            color: context.colors.successFg,
             iconBuilder: () => Icon(
               Icons.close,
               size: 16,
-              color: Colors.green.shade700,
+              color: context.colors.successFg,
             ),
           ),
           const SizedBox(height: 12),
@@ -232,9 +233,9 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
               l10n.claudiuDiagnosticTech2,
               l10n.claudiuDiagnosticTech3,
             ],
-            color: Colors.grey.shade700,
+            color: context.colors.textPrimary,
             iconBuilder: () =>
-                Icon(Icons.info_outline, size: 16, color: Colors.grey.shade700),
+                Icon(Icons.info_outline, size: 16, color: context.colors.textPrimary),
           ),
         ],
       ),

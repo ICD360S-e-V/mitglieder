@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../utils/app_theme.dart';
 
 /// Conversational replacement for the original German static "warten auf
 /// Genehmigung" alert. While the visitor's login request is pending
@@ -175,10 +176,10 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
         constraints: const BoxConstraints(maxWidth: 460),
         child: Container(
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
+            gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Color(0xFF0d47a1), Color(0xFF1565c0)],
+              colors: context.colors.heroGradientShort,
             ),
             borderRadius: BorderRadius.circular(20),
           ),
@@ -255,8 +256,8 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
     final icon = _mascotIcon();
     final tint = switch (_status) {
       _Status.approved => Colors.greenAccent.shade100,
-      _Status.denied => Colors.amber.shade200,
-      _Status.expired => Colors.amber.shade200,
+      _Status.denied => context.colors.warningBorder,
+      _Status.expired => context.colors.warningBorder,
       _Status.waiting => Colors.white,
     };
     return Container(
@@ -290,10 +291,10 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
     if (greeting != null) {
       lines.add(Text(
         greeting,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w700,
-          color: Color(0xFF0d47a1),
+          color: context.colors.brandStrong,
           height: 1.3,
         ),
       ));
@@ -307,7 +308,7 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
         line,
         style: TextStyle(
           fontSize: 13.5,
-          color: Colors.grey[800],
+          color: context.colors.textPrimary,
           height: 1.4,
         ),
       ));
@@ -318,7 +319,7 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
       '— Claudiu',
       style: TextStyle(
         fontSize: 11,
-        color: Colors.grey[500],
+        color: context.colors.textTertiary,
         fontStyle: FontStyle.italic,
       ),
     ));
@@ -326,7 +327,7 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: const BorderRadiusDirectional.only(
           topStart: Radius.circular(4),
           topEnd: Radius.circular(14),
@@ -391,7 +392,7 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
       margin: const EdgeInsetsDirectional.only(start: 84),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.amber.shade100.withValues(alpha: 0.92),
+        color: context.colors.warningBg.withValues(alpha: 0.92),
         borderRadius: const BorderRadiusDirectional.only(
           topStart: Radius.circular(4),
           topEnd: Radius.circular(12),
@@ -421,14 +422,14 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
           children: [
             Icon(
               Icons.timer_outlined,
-              color: urgent ? Colors.amber.shade200 : Colors.white70,
+              color: urgent ? context.colors.onDarkWarning : Colors.white70,
               size: 20,
             ),
             const SizedBox(width: 8),
             Text(
               _formatTime(_remaining),
               style: TextStyle(
-                color: urgent ? Colors.amber.shade200 : Colors.white,
+                color: urgent ? context.colors.onDarkWarning : Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'monospace',
@@ -445,7 +446,7 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
             minHeight: 6,
             backgroundColor: Colors.white.withValues(alpha: 0.12),
             valueColor: AlwaysStoppedAnimation(
-              urgent ? Colors.amber.shade200 : Colors.white,
+              urgent ? context.colors.warningBorder : Colors.white,
             ),
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// A single attachment item in a chat message
 class ChatAttachmentItem extends StatelessWidget {
@@ -20,7 +21,7 @@ class ChatAttachmentItem extends StatelessWidget {
     final extension = attachment['extension'] ?? '';
     final size = attachment['size'] ?? 0;
 
-    final (icon, iconColor) = _getIconForExtension(extension);
+    final (icon, iconColor) = _getIconForExtension(context, extension);
 
     return InkWell(
       onTap: () => onDownload(attachment),
@@ -29,7 +30,7 @@ class ChatAttachmentItem extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 4),
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
         decoration: BoxDecoration(
-          color: isOwn ? Colors.white.withValues(alpha: 0.1) : Colors.grey.shade100,
+          color: isOwn ? Colors.white.withValues(alpha: 0.1) : context.colors.cardSubtle,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -46,7 +47,7 @@ class ChatAttachmentItem extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: isOwn ? Colors.white : Colors.black87,
+                      color: isOwn ? Colors.white : context.colors.textPrimary,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -54,7 +55,7 @@ class ChatAttachmentItem extends StatelessWidget {
                     _formatFileSize(size),
                     style: TextStyle(
                       fontSize: 10,
-                      color: isOwn ? Colors.white70 : Colors.grey.shade600,
+                      color: isOwn ? Colors.white70 : context.colors.textSecondary,
                     ),
                   ),
                 ],
@@ -64,7 +65,7 @@ class ChatAttachmentItem extends StatelessWidget {
             Icon(
               Icons.download,
               size: 16,
-              color: isOwn ? Colors.white70 : Colors.grey.shade600,
+              color: isOwn ? Colors.white70 : context.colors.textSecondary,
             ),
           ],
         ),
@@ -72,18 +73,18 @@ class ChatAttachmentItem extends StatelessWidget {
     );
   }
 
-  (IconData, Color) _getIconForExtension(String extension) {
+  (IconData, Color) _getIconForExtension(BuildContext context, String extension) {
     switch (extension.toLowerCase()) {
       case 'pdf':
-        return (Icons.picture_as_pdf, Colors.red);
+        return (Icons.picture_as_pdf, context.colors.dangerFg);
       case 'png':
       case 'jpg':
       case 'jpeg':
-        return (Icons.image, Colors.blue);
+        return (Icons.image, context.colors.infoFg);
       case 'txt':
-        return (Icons.description, Colors.grey);
+        return (Icons.description, context.colors.textSecondary);
       default:
-        return (Icons.insert_drive_file, Colors.grey);
+        return (Icons.insert_drive_file, context.colors.textSecondary);
     }
   }
 

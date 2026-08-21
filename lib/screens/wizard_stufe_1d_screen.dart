@@ -7,6 +7,7 @@ import '../services/wizard_service.dart';
 import '../utils/eu_eea_citizenship.dart';
 import '../utils/staatsangehoerigkeit_options.dart';
 import '../widgets/wizard_step_shell.dart';
+import '../utils/app_theme.dart';
 
 /// Stufe 1d — Staatsangehörigkeit + Aufenthaltsstatus + Muttersprache.
 ///
@@ -148,7 +149,7 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.wizardStufe1dAufenthaltRequired),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -166,7 +167,7 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.wizardErrSaveFailed),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -338,7 +339,7 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
     return DropdownButtonFormField<String>(
       initialValue: aktuell.isNotEmpty ? aktuell : null,
       isExpanded: true,
-      dropdownColor: const Color(0xFF1565c0),
+      dropdownColor: context.colors.brandFill,
       iconEnabledColor: Colors.white,
       style: const TextStyle(color: Colors.white, fontSize: 14),
       decoration: _input(
@@ -356,7 +357,7 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
     return DropdownButtonFormField<String>(
       initialValue: _aufenthaltsstatus,
       isExpanded: true,
-      dropdownColor: const Color(0xFF1565c0),
+      dropdownColor: context.colors.brandFill,
       iconEnabledColor: Colors.white,
       style: const TextStyle(color: Colors.white, fontSize: 14),
       decoration: _input(
@@ -441,13 +442,13 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.red.shade300),
+        borderSide: BorderSide(color: context.colors.dangerBorder),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.red.shade300, width: 2),
+        borderSide: BorderSide(color: context.colors.dangerBorder, width: 2),
       ),
-      errorStyle: TextStyle(color: Colors.red.shade200),
+      errorStyle: TextStyle(color: context.colors.onDarkDanger),
     );
   }
 }

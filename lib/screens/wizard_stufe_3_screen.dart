@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
+import '../utils/app_theme.dart';
 
 /// Stufe 3 — Finanzielle Situation. Five radio options covering every
 /// fee-exempt social benefit the Vorstand accepts under Satzung §6
@@ -95,7 +96,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
     final isMobile = Platform.isAndroid || Platform.isIOS;
     await showModalBottomSheet<void>(
       context: context,
-      backgroundColor: Colors.white,
+      backgroundColor: context.colors.card,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -108,14 +109,14 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
               height: 4,
               margin: const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
-                color: Colors.grey.shade300,
+                color: context.colors.divider,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
             if (isMobile) ...[
               ListTile(
-                leading: const Icon(Icons.camera_alt,
-                    color: Color(0xFF0d47a1)),
+                leading: Icon(Icons.camera_alt,
+                    color: context.colors.brandStrong),
                 title: Text(l10n.camera),
                 onTap: () {
                   Navigator.pop(sheetCtx);
@@ -123,8 +124,8 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.photo_library,
-                    color: Color(0xFF0d47a1)),
+                leading: Icon(Icons.photo_library,
+                    color: context.colors.brandStrong),
                 title: Text(l10n.gallery),
                 onTap: () {
                   Navigator.pop(sheetCtx);
@@ -133,8 +134,8 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
               ),
             ],
             ListTile(
-              leading: const Icon(Icons.attach_file,
-                  color: Color(0xFF0d47a1)),
+              leading: Icon(Icons.attach_file,
+                  color: context.colors.brandStrong),
               title: Text(l10n.documents),
               subtitle: Text(
                 l10n.wizardStufe3UploadHint,
@@ -211,16 +212,20 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   Future<void> _uploadFiles(List<File> files) async {
     if (_uploading) return;
     final l10n = AppLocalizations.of(context)!;
+    // Read once up front, like l10n: the loop awaits between toasts, and
+    // reaching back into the context after an await is what
+    // use_build_context_synchronously warns about.
+    final colors = context.colors;
     setState(() => _uploading = true);
     try {
       for (final file in files) {
         if (_files.length >= _kMaxCount) {
-          _toast(l10n.wizardStufe3UploadLimitCount, Colors.amber.shade800);
+          _toast(l10n.wizardStufe3UploadLimitCount, colors.warningFg);
           break;
         }
         final size = await file.length();
         if (size > _kMaxPerFile) {
-          _toast(l10n.wizardStufe3FileTooLarge, Colors.red.shade700);
+          _toast(l10n.wizardStufe3FileTooLarge, colors.dangerFg);
           continue;
         }
         // The radio is non-null here because _showAttachmentSheet is
@@ -239,7 +244,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
             409 => l10n.wizardStufe3UploadLimitCount,
             _   => res.errorMessage ?? l10n.wizardStufe3UploadFailed,
           };
-          _toast(msg, Colors.amber.shade800);
+          _toast(msg, colors.warningFg);
           break;
         }
         setState(() {
@@ -261,7 +266,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
     if (!mounted) return;
     setState(() => _uploading = false);
     if (updated == null) {
-      _toast(l10n.wizardStufe3UploadFailed, Colors.red.shade700);
+      _toast(l10n.wizardStufe3UploadFailed, context.colors.dangerFg);
       return;
     }
     // Sync to the server's authoritative list.
@@ -287,7 +292,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
     if (!mounted) return;
     _toast(
       AppLocalizations.of(context)!.wizardStufe3UploadFailed,
-      Colors.red.shade700,
+      context.colors.dangerFg,
     );
   }
 
@@ -298,7 +303,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.wizardErrRequired),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -308,7 +313,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.wizardStufe3UploadRequired),
-          backgroundColor: Colors.amber.shade800,
+          backgroundColor: context.colors.warningSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -324,7 +329,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.wizardErrSaveFailed),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -341,7 +346,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
         'buergergeld' => (
           title: l10n.wizardStufe3OptionBuergergeld,
           icon: Icons.account_balance,
-          color: Colors.amber,
+          color: context.colors.warningFg,
         ),
         'sozialamt' => (
           title: l10n.wizardStufe3OptionSozialamt,
@@ -454,7 +459,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _hintBox(
-              color: Colors.green.shade600,
+              color: context.colors.successFg,
               icon: Icons.check_circle,
               title: l10n.wizardStufe3FeeExemptTitle,
               body: l10n.wizardStufe3FeeExemptBody,
@@ -569,7 +574,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
             border: Border.all(
               color: atCap
                   ? Colors.white.withValues(alpha: 0.15)
-                  : Colors.orange.shade300,
+                  : context.colors.warningBorder,
               width: 1.5,
             ),
           ),
@@ -589,7 +594,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
                   hasFiles ? Icons.add_circle_outline : Icons.upload_file,
                   color: atCap
                       ? Colors.white.withValues(alpha: 0.45)
-                      : Colors.orange.shade200,
+                      : context.colors.onDarkWarning,
                   size: 24,
                 ),
               const SizedBox(width: 12),
@@ -669,11 +674,11 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
       decoration: BoxDecoration(
         color: Colors.green.withValues(alpha: 0.14),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.green.shade300),
+        border: Border.all(color: context.colors.onDarkSuccess),
       ),
       child: Row(
         children: [
-          Icon(icon, color: Colors.green.shade200, size: 20),
+          Icon(icon, color: context.colors.onDarkSuccess, size: 20),
           const SizedBox(width: 10),
           Expanded(
             child: Text(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
+import '../utils/app_theme.dart';
 
 /// Stufe 4 — Payment method + payment day.
 ///
@@ -64,7 +65,7 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.wizardErrRequired),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -81,7 +82,7 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.wizardErrSaveFailed),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -181,17 +182,17 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.amber.shade300.withValues(alpha: 0.15),
+        color: context.colors.warningBorder.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: Colors.amber.shade300.withValues(alpha: 0.55),
+          color: context.colors.warningBorder.withValues(alpha: 0.55),
         ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(Icons.warning_amber,
-              color: Colors.amber.shade200, size: 20),
+              color: context.colors.onDarkWarning, size: 20),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
@@ -278,18 +279,18 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 3),
                             decoration: BoxDecoration(
-                              color: Colors.amber.shade300
+                              color: context.colors.warningBorder
                                   .withValues(alpha: 0.22),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: Colors.amber.shade200
+                                color: context.colors.warningBorder
                                     .withValues(alpha: 0.55),
                               ),
                             ),
                             child: Text(
                               l10n.wizardStufe4MethodComingSoon,
                               style: TextStyle(
-                                color: Colors.amber.shade100,
+                                color: context.colors.onDarkWarning,
                                 fontSize: 10.5,
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: 0.4,
@@ -331,7 +332,7 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
         child: DropdownButton<int>(
           value: _day,
           isExpanded: true,
-          dropdownColor: const Color(0xFF1565c0),
+          dropdownColor: context.colors.brandFill,
           iconEnabledColor: Colors.white,
           hint: Text(
             l10n.wizardStufe4DayHint,

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../services/theme_service.dart';
 import '../services/update_service.dart';
 import 'verifizierung_tab.dart';
 import 'verwarnungen_tab.dart';
 import 'dokumente_tab.dart';
 import 'mitglieder_device.dart';
 import 'mitgliedschaft_tab.dart';
+import '../utils/app_theme.dart';
 
 /// Die Einwilligung zu den SMS-Erinnerungen lässt sich hier jederzeit
 /// ändern. Art. 7 Abs. 3 DSGVO verlangt das ausdrücklich: der Widerruf muss
@@ -151,7 +153,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.deviceLoggedOut),
-            backgroundColor: Colors.green,
+            backgroundColor: context.colors.successSolid,
           ),
         );
         _loadMySessions(); // Reload sessions
@@ -159,7 +161,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.error(result['message'] ?? l10n.unknownValue)),
-            backgroundColor: Colors.red,
+            backgroundColor: context.colors.dangerSolid,
           ),
         );
       }
@@ -168,7 +170,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.connectionError(e.toString())),
-          backgroundColor: Colors.red,
+          backgroundColor: context.colors.dangerSolid,
         ),
       );
     }
@@ -180,7 +182,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.validEmailRequired),
-          backgroundColor: Colors.red,
+          backgroundColor: context.colors.dangerSolid,
         ),
       );
       return;
@@ -203,7 +205,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.emailChangedSuccessfully),
-            backgroundColor: Colors.green,
+            backgroundColor: context.colors.successSolid,
           ),
         );
         _newEmailController.clear();
@@ -212,7 +214,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(result['message'] ?? l10n.errorChangingEmail),
-            backgroundColor: Colors.red,
+            backgroundColor: context.colors.dangerSolid,
           ),
         );
       }
@@ -221,7 +223,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.error(e.toString())),
-          backgroundColor: Colors.red,
+          backgroundColor: context.colors.dangerSolid,
         ),
       );
     }
@@ -275,8 +277,8 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
             // Header
             Container(
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(
-                color: Color(0xFF4a90d9),
+              decoration: BoxDecoration(
+                color: context.colors.brand,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(16),
                   topRight: Radius.circular(16),
@@ -286,13 +288,13 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                 children: [
                   CircleAvatar(
                     radius: 24,
-                    backgroundColor: Colors.white,
+                    backgroundColor: context.colors.card,
                     child: Text(
                       widget.userName.isNotEmpty ? widget.userName[0].toUpperCase() : 'M',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF4a90d9),
+                        color: context.colors.brand,
                       ),
                     ),
                   ),
@@ -324,8 +326,8 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                               decoration: BoxDecoration(
                                 color: widget.status == 'neu'
-                                    ? Colors.orange
-                                    : Colors.green,
+                                    ? context.colors.warningFg
+                                    : context.colors.successFg,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Builder(
@@ -359,12 +361,12 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
               builder: (context) {
                 final l10n = AppLocalizations.of(context)!;
                 return Container(
-                  color: Colors.grey.shade200,
+                  color: context.colors.dividerSubtle,
                   child: TabBar(
                     controller: _tabController,
-                    labelColor: const Color(0xFF4a90d9),
-                    unselectedLabelColor: Colors.grey.shade600,
-                    indicatorColor: const Color(0xFF4a90d9),
+                    labelColor: context.colors.brand,
+                    unselectedLabelColor: context.colors.textSecondary,
+                    indicatorColor: context.colors.brandFill,
                     tabs: [
                       Tab(icon: Tooltip(message: l10n.account, child: const Icon(Icons.settings))),
                       Tab(icon: Tooltip(message: '${l10n.myDevices} ($_totalSessions/3)', child: const Icon(Icons.devices))),
@@ -444,8 +446,8 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
       case 'schatzmeister': return Colors.teal;
       case 'kassierer': return Colors.indigo;
       case 'mitgliedergrunder': return Colors.deepOrange;
-      case 'ehrenmitglied': return Colors.amber.shade800;
-      default: return Colors.blue;
+      case 'ehrenmitglied': return context.colors.warningFg;
+      default: return context.colors.infoFg;
     }
   }
 
@@ -460,7 +462,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
         builder: (ctx, setDialogState) => AlertDialog(
           title: Row(
             children: [
-              const Icon(Icons.email, color: Color(0xFF4a90d9)),
+              Icon(Icons.email, color: context.colors.brand),
               const SizedBox(width: 8),
               Text(AppLocalizations.of(context)!.changeEmail),
             ],
@@ -501,7 +503,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
             ElevatedButton(
               onPressed: () => Navigator.pop(ctx, true),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF4a90d9),
+                backgroundColor: context.colors.brandFill,
                 foregroundColor: Colors.white,
               ),
               child: Text(AppLocalizations.of(context)!.save),
@@ -517,18 +519,108 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
   }
 
 
+  /// Label of the currently selected theme mode, for the settings row.
+  String _themeAnzeige(AppLocalizations l10n) =>
+      _themeLabel(l10n, ThemeService.instance.mode);
+
+  IconData _themeIcon(AppThemeMode mode) {
+    switch (mode) {
+      case AppThemeMode.light:
+        return Icons.light_mode;
+      case AppThemeMode.dark:
+        return Icons.dark_mode;
+      case AppThemeMode.system:
+        return Icons.phone_android;
+      case AppThemeMode.schedule:
+        return Icons.schedule;
+    }
+  }
+
+  String _themeLabel(AppLocalizations l10n, AppThemeMode mode) {
+    switch (mode) {
+      case AppThemeMode.light:
+        return l10n.themeLight;
+      case AppThemeMode.dark:
+        return l10n.themeDark;
+      case AppThemeMode.system:
+        return l10n.themeSystem;
+      case AppThemeMode.schedule:
+        return l10n.themeSchedule;
+    }
+  }
+
+  /// Vier Modi, die sich gegenseitig ausschließen — und nicht ein Hell/Dunkel-
+  /// Schalter plus ein Nachtplan darüber. Übereinandergelegt widerspricht die
+  /// App um 20 Uhr dem Telefon und stimmt ihm um 6 Uhr wieder zu; wer sie in
+  /// der Hand hält, liest das als Fehler und nicht als Funktion.
+  ///
+  /// Die Auswahl greift sofort, ohne Speichern-Knopf: der Dialog zeichnet sich
+  /// selbst im neuen Theme und IST damit die Vorschau.
+  Future<void> _showThemeAuswahl() async {
+    final l10n = AppLocalizations.of(context)!;
+    await showDialog<void>(
+      context: context,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setDialogState) => AlertDialog(
+          title: Text(l10n.themeTitle),
+          contentPadding: const EdgeInsets.symmetric(vertical: 12),
+          content: SizedBox(
+            width: 320,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (final mode in AppThemeMode.values)
+                  ListTile(
+                    leading: Icon(
+                      _themeIcon(mode),
+                      color: ThemeService.instance.mode == mode
+                          ? ctx.colors.brand
+                          : ctx.colors.textSecondary,
+                    ),
+                    title: Text(_themeLabel(l10n, mode)),
+                    subtitle: mode == AppThemeMode.schedule
+                        ? Text(
+                            l10n.themeScheduleHint,
+                            style: TextStyle(
+                                fontSize: 12, color: ctx.colors.textSecondary),
+                          )
+                        : null,
+                    trailing: ThemeService.instance.mode == mode
+                        ? Icon(Icons.check, color: ctx.colors.brand)
+                        : null,
+                    onTap: () async {
+                      await ThemeService.instance.setMode(mode);
+                      setDialogState(() {});
+                      if (mounted) setState(() {});
+                    },
+                  ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: Text(l10n.close),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildKontoDataRow(IconData icon, String label, String value, {VoidCallback? onEdit, Widget? trailing}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
         children: [
-          Icon(icon, color: Colors.grey.shade600, size: 20),
+          Icon(icon, color: context.colors.textSecondary, size: 20),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(label, style: TextStyle(fontSize: 11, color: Colors.grey.shade500)),
+                Text(label, style: TextStyle(fontSize: 11, color: context.colors.textTertiary)),
                 const SizedBox(height: 2),
                 if (trailing != null)
                   trailing
@@ -539,7 +631,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
           ),
           if (onEdit != null)
             IconButton(
-              icon: Icon(Icons.edit, size: 18, color: Colors.grey.shade500),
+              icon: Icon(Icons.edit, size: 18, color: context.colors.textTertiary),
               onPressed: onEdit,
               tooltip: AppLocalizations.of(context)!.changeField(label),
               padding: EdgeInsets.zero,
@@ -563,13 +655,13 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // ===== KONTODATEN =====
-          _buildSectionHeader(Icons.person, 'Kontodaten', Colors.blue.shade700),
+          _buildSectionHeader(Icons.person, 'Kontodaten', context.colors.infoFg),
           const SizedBox(height: 8),
           Card(
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
-              side: BorderSide(color: Colors.grey.shade300),
+              side: BorderSide(color: context.colors.divider),
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -577,13 +669,23 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                 children: [
                   // Mitgliedernummer (read-only)
                   _buildKontoDataRow(Icons.badge, 'Mitgliedernummer', widget.mitgliedernummer),
-                  Divider(height: 1, color: Colors.grey.shade200),
+                  Divider(height: 1, color: context.colors.dividerSubtle),
                   // Name (read-only)
                   _buildKontoDataRow(Icons.person_outline, 'Name', _displayName),
-                  Divider(height: 1, color: Colors.grey.shade200),
+                  Divider(height: 1, color: context.colors.dividerSubtle),
                   // Email (editable)
                   _buildKontoDataRow(Icons.email, AppLocalizations.of(context)!.email, _displayEmail, onEdit: _showEditEmailDialog),
-                  Divider(height: 1, color: Colors.grey.shade200),
+                  Divider(height: 1, color: context.colors.dividerSubtle),
+                  // Darstellung (editable) — eine Einstellung der Oberfläche,
+                  // die mit der Mitgliedschaft nichts zu tun hat, aber hier
+                  // steht, weil dies der einzige Ort ist, an den ein Mitglied
+                  // seine eigenen Einstellungen zu suchen kommt.
+                  _buildKontoDataRow(
+                      Icons.brightness_6,
+                      AppLocalizations.of(context)!.themeTitle,
+                      _themeAnzeige(AppLocalizations.of(context)!),
+                      onEdit: _showThemeAuswahl),
+                  Divider(height: 1, color: context.colors.dividerSubtle),
                   // Rolle (read-only with color)
                   _buildKontoDataRow(
                     Icons.shield,
@@ -601,7 +703,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                       ),
                     ),
                   ),
-                  Divider(height: 1, color: Colors.grey.shade200),
+                  Divider(height: 1, color: context.colors.dividerSubtle),
                   // Passwordless login info
                   _buildKontoDataRow(
                     Icons.verified_user,
@@ -616,13 +718,13 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
           const SizedBox(height: 20),
 
           // ===== REGISTRIERUNG =====
-          _buildSectionHeader(Icons.calendar_today, AppLocalizations.of(context)!.registration, Colors.green.shade700),
+          _buildSectionHeader(Icons.calendar_today, AppLocalizations.of(context)!.registration, context.colors.successFg),
           const SizedBox(height: 8),
           Card(
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
-              side: BorderSide(color: Colors.grey.shade300),
+              side: BorderSide(color: context.colors.divider),
             ),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -632,14 +734,14 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                     Icons.person_add,
                     AppLocalizations.of(context)!.labelRegisteredOn,
                     _formatDateTime(_createdAt),
-                    Colors.green,
+                    context.colors.successFg,
                   ),
                   const SizedBox(height: 12),
                   _buildAccountDateRow(
                     Icons.login,
                     AppLocalizations.of(context)!.labelLastLogin,
                     _formatDateTime(_lastLogin),
-                    Colors.blue,
+                    context.colors.infoFg,
                   ),
                 ],
               ),
@@ -649,14 +751,14 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
           // ===== DEAKTIVIERUNG (conditional) =====
           if (_deactivatedAt != null && _deactivatedAt!.isNotEmpty && _deactivatedAt != 'null') ...[
             const SizedBox(height: 20),
-            _buildSectionHeader(Icons.block, AppLocalizations.of(context)!.deactivation, Colors.red.shade700),
+            _buildSectionHeader(Icons.block, AppLocalizations.of(context)!.deactivation, context.colors.dangerFg),
             const SizedBox(height: 8),
             Card(
               elevation: 0,
-              color: Colors.red.shade50,
+              color: context.colors.dangerBg,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Colors.red.shade200),
+                side: BorderSide(color: context.colors.dangerBorder),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(16),
@@ -667,23 +769,23 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                       Icons.event_busy,
                       AppLocalizations.of(context)!.deactivatedOn,
                       _formatDateTime(_deactivatedAt),
-                      Colors.red,
+                      context.colors.dangerFg,
                     ),
                     if (_deactivationReason != null && _deactivationReason!.isNotEmpty && _deactivationReason != 'null') ...[
                       const SizedBox(height: 12),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(Icons.info_outline, color: Colors.red.shade700, size: 18),
+                          Icon(Icons.info_outline, color: context.colors.dangerFg, size: 18),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(AppLocalizations.of(context)!.reasonLabel2, style: TextStyle(fontSize: 12, color: Colors.grey.shade600)),
+                                Text(AppLocalizations.of(context)!.reasonLabel2, style: TextStyle(fontSize: 12, color: context.colors.textSecondary)),
                                 Text(
                                   _deactivationReason!,
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.red.shade800),
+                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: context.colors.dangerFg),
                                 ),
                               ],
                             ),
@@ -696,18 +798,18 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Colors.orange.shade50,
+                        color: context.colors.warningBg,
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.orange.shade200),
+                        border: Border.all(color: context.colors.warningBorder),
                       ),
                       child: Row(
                         children: [
-                          Icon(Icons.warning_amber, color: Colors.orange.shade700, size: 20),
+                          Icon(Icons.warning_amber, color: context.colors.warningFg, size: 20),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
                               AppLocalizations.of(context)!.accountAutoSuspend,
-                              style: TextStyle(fontSize: 12, color: Colors.orange.shade900),
+                              style: TextStyle(fontSize: 12, color: context.colors.warningFg),
                             ),
                           ),
                         ],
@@ -735,7 +837,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Colors.grey.shade300),
+                side: BorderSide(color: context.colors.divider),
               ),
               child: Column(
                 children: [
@@ -750,7 +852,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                     ),
                     subtitle: Text(
                       AppLocalizations.of(context)!.benachrichtigungTermineDetail,
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                      style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                     ),
                   ),
                   const Divider(height: 1),
@@ -765,7 +867,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                     ),
                     subtitle: Text(
                       AppLocalizations.of(context)!.benachrichtigungWetterDetail,
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                      style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                     ),
                   ),
                   const Divider(height: 1),
@@ -780,7 +882,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                     ),
                     subtitle: Text(
                       AppLocalizations.of(context)!.benachrichtigungMedikamenteDetail,
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                      style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                     ),
                   ),
                 ],
@@ -792,14 +894,14 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
             _buildSectionHeader(
               Icons.system_update,
               AppLocalizations.of(context)!.updateAvailable,
-              Colors.blue.shade700,
+              context.colors.infoFg,
             ),
             const SizedBox(height: 8),
             Card(
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Colors.grey.shade300),
+                side: BorderSide(color: context.colors.divider),
               ),
               child: SwitchListTile(
                 value: _autoUpdateEnabled,
@@ -813,7 +915,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                 ),
                 subtitle: Text(
                   AppLocalizations.of(context)!.autoUpdateEnableHint,
-                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                  style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                 ),
               ),
             ),
@@ -843,7 +945,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
       builder: (ctx) => AlertDialog(
         title: Row(
           children: [
-            const Icon(Icons.warning, color: Colors.orange),
+            Icon(Icons.warning, color: context.colors.warningFg),
             const SizedBox(width: 8),
             Text(l10n.confirmLogoutDevice),
           ],
@@ -856,7 +958,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            style: TextButton.styleFrom(foregroundColor: context.colors.dangerFg),
             child: Text(l10n.logout),
           ),
         ],
@@ -879,7 +981,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
             children: [
               Text(
                 label,
-                style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
               ),
               Text(
                 value,

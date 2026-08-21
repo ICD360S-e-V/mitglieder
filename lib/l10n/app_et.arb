@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Et te midagi ei jääks ilma, küsime lühidalt iga kolme kuu tagant. Saate kuuekohalise koodi.",
   "kontaktBestaetigtAm": "kinnitatud {datum}",
   "kontaktFestnetzKeinSms": "See on lauatelefoni number — SMS sinna ei jõua.",
-  "kontaktIstAndersGeworden": "On muutunud"
+  "kontaktIstAndersGeworden": "On muutunud",
+  "themeTitle": "Välimus",
+  "themeLight": "Hele",
+  "themeDark": "Tume",
+  "themeSystem": "Vastavalt seadmele",
+  "themeSchedule": "Automaatne (20:00–06:00)",
+  "themeScheduleHint": "Tume kella 20:00–6:00, ülejäänud päeva hele."
 }

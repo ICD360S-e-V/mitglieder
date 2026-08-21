@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../services/language_service.dart';
+import '../utils/app_theme.dart';
 
 /// Consent prompt shown to the MEMBER before any screen is shared for
 /// Fernwartung (remote support). Nothing starts until the member taps "Erlauben".
@@ -139,12 +140,12 @@ class _RemoteConsentDialogState extends State<RemoteConsentDialog> {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.info_outline, size: 16, color: Colors.grey),
+                  Icon(Icons.info_outline, size: 16, color: context.colors.textSecondary),
                   const SizedBox(width: 6),
                   Flexible(
                     child: Text(
                       t['note']!,
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
+                      style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -158,7 +159,7 @@ class _RemoteConsentDialogState extends State<RemoteConsentDialog> {
                       onPressed: () => _finish(accept: false),
                       style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 14),
-                        foregroundColor: Colors.red,
+                        foregroundColor: context.colors.dangerFg,
                       ),
                       child: Text('${t['deny']!} ($_remaining)'),
                     ),

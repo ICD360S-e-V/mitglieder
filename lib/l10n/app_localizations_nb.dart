@@ -3002,4 +3002,23 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Det er endret';
+
+  @override
+  String get themeTitle => 'Utseende';
+
+  @override
+  String get themeLight => 'Lys';
+
+  @override
+  String get themeDark => 'Mørk';
+
+  @override
+  String get themeSystem => 'Følg enheten';
+
+  @override
+  String get themeSchedule => 'Automatisk (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Mørk fra 20:00 til 06:00, lys resten av døgnet.';
 }

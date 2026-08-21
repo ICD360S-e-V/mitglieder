@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../utils/error_helpers.dart';
+import '../utils/app_theme.dart';
 
 class ProfileDialog extends StatefulWidget {
   final String userName;
@@ -64,7 +65,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.passwordsNotMatch),
-          backgroundColor: Colors.red,
+          backgroundColor: context.colors.dangerSolid,
         ),
       );
       return;
@@ -74,7 +75,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.passwordMinEightChars),
-          backgroundColor: Colors.red,
+          backgroundColor: context.colors.dangerSolid,
         ),
       );
       return;
@@ -95,7 +96,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppLocalizations.of(context)!.passwordChangeSuccess),
-            backgroundColor: Colors.green,
+            backgroundColor: context.colors.successSolid,
           ),
         );
         setState(() {
@@ -108,7 +109,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(result['message'] ?? AppLocalizations.of(context)!.errorChangingPassword),
-            backgroundColor: Colors.red,
+            backgroundColor: context.colors.dangerSolid,
           ),
         );
       }
@@ -117,7 +118,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'PROFILE')),
-          backgroundColor: Colors.red,
+          backgroundColor: context.colors.dangerSolid,
         ),
       );
     } finally {
@@ -130,7 +131,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.validEmailRequired),
-          backgroundColor: Colors.red,
+          backgroundColor: context.colors.dangerSolid,
         ),
       );
       return;
@@ -152,7 +153,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppLocalizations.of(context)!.emailChangedSuccess),
-            backgroundColor: Colors.green,
+            backgroundColor: context.colors.successSolid,
           ),
         );
         setState(() {
@@ -164,7 +165,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(result['message'] ?? AppLocalizations.of(context)!.emailChangeError),
-            backgroundColor: Colors.red,
+            backgroundColor: context.colors.dangerSolid,
           ),
         );
       }
@@ -173,7 +174,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'PROFILE')),
-          backgroundColor: Colors.red,
+          backgroundColor: context.colors.dangerSolid,
         ),
       );
     } finally {
@@ -196,9 +197,9 @@ class _ProfileDialogState extends State<ProfileDialog> {
               // Header
               Row(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 30,
-                    backgroundColor: Color(0xFF4a90d9),
+                    backgroundColor: context.colors.brandFill,
                     child: Icon(Icons.person, size: 36, color: Colors.white),
                   ),
                   const SizedBox(width: 16),
@@ -275,14 +276,14 @@ class _ProfileDialogState extends State<ProfileDialog> {
   Widget _buildInfoRow(IconData icon, String label, String value) {
     return Row(
       children: [
-        Icon(icon, color: Colors.grey.shade600, size: 20),
+        Icon(icon, color: context.colors.textSecondary, size: 20),
         const SizedBox(width: 12),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               label,
-              style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+              style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
             ),
             Text(
               value,
@@ -298,7 +299,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey.shade100,
+        color: context.colors.cardSubtle,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -331,7 +332,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
                 borderRadius: BorderRadius.circular(8),
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: context.colors.inputFill,
             ),
             keyboardType: TextInputType.emailAddress,
           ),
@@ -350,14 +351,14 @@ class _ProfileDialogState extends State<ProfileDialog> {
                 borderRadius: BorderRadius.circular(8),
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: context.colors.inputFill,
             ),
           ),
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: _isLoading ? null : _changeEmail,
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF4a90d9),
+              backgroundColor: context.colors.brandFill,
               foregroundColor: Colors.white,
               minimumSize: const Size(double.infinity, 44),
             ),
@@ -378,7 +379,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey.shade100,
+        color: context.colors.cardSubtle,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -417,7 +418,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
                 borderRadius: BorderRadius.circular(8),
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: context.colors.inputFill,
             ),
           ),
           const SizedBox(height: 12),
@@ -435,7 +436,7 @@ class _ProfileDialogState extends State<ProfileDialog> {
                 borderRadius: BorderRadius.circular(8),
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: context.colors.inputFill,
             ),
           ),
           const SizedBox(height: 12),
@@ -453,14 +454,14 @@ class _ProfileDialogState extends State<ProfileDialog> {
                 borderRadius: BorderRadius.circular(8),
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: context.colors.inputFill,
             ),
           ),
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: _isLoading ? null : _changePassword,
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF4a90d9),
+              backgroundColor: context.colors.brandFill,
               foregroundColor: Colors.white,
               minimumSize: const Size(double.infinity, 44),
             ),

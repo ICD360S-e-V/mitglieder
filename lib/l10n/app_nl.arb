@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Zodat u niets mist, vragen wij elke drie maanden kort na. U ontvangt een code van zes cijfers.",
   "kontaktBestaetigtAm": "bevestigd op {datum}",
   "kontaktFestnetzKeinSms": "Dit is een vast nummer — daar komt geen sms aan.",
-  "kontaktIstAndersGeworden": "Het is gewijzigd"
+  "kontaktIstAndersGeworden": "Het is gewijzigd",
+  "themeTitle": "Weergave",
+  "themeLight": "Licht",
+  "themeDark": "Donker",
+  "themeSystem": "Apparaat volgen",
+  "themeSchedule": "Automatisch (20:00–06:00)",
+  "themeScheduleHint": "Donker van 20:00 tot 6:00 uur, licht de rest van de dag."
 }

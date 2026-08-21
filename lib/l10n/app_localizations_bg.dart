@@ -3009,4 +3009,23 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Промени се';
+
+  @override
+  String get themeTitle => 'Външен вид';
+
+  @override
+  String get themeLight => 'Светла';
+
+  @override
+  String get themeDark => 'Тъмна';
+
+  @override
+  String get themeSystem => 'Според устройството';
+
+  @override
+  String get themeSchedule => 'Автоматично (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Тъмна от 20:00 до 6:00 ч., светла през останалата част от деня.';
 }

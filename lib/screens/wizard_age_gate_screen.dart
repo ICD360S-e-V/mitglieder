@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/icd360s_header.dart';
 import 'anonymous_chat.dart';
+import '../utils/app_theme.dart';
 
 /// Terminal screen the wizard pivots to when `check_age.php` returns
 /// `tooYoung`. Satzung §6 sets the floor at 16; visitors below that
@@ -34,15 +35,11 @@ class WizardAgeGateScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(
@@ -57,7 +54,7 @@ class WizardAgeGateScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        _mascot()
+                        _mascot(context)
                             .animate()
                             .scale(
                               begin: const Offset(0.7, 0.7),
@@ -67,12 +64,12 @@ class WizardAgeGateScreen extends StatelessWidget {
                             )
                             .fadeIn(duration: 400.ms),
                         const SizedBox(height: 18),
-                        _bubble(
+                        _bubble(context, 
                           title: l10n.wizardAgeGatePrompt,
                           body: l10n.wizardAgeGateBody1(age, yearsLeft),
                         ).animate().fadeIn(delay: 200.ms, duration: 400.ms),
                         const SizedBox(height: 12),
-                        _bubble(
+                        _bubble(context, 
                           body: l10n.wizardAgeGateBody2,
                         ).animate().fadeIn(delay: 600.ms, duration: 400.ms),
                       ],
@@ -97,33 +94,33 @@ class WizardAgeGateScreen extends StatelessWidget {
     );
   }
 
-  Widget _mascot() {
+  Widget _mascot(BuildContext context) {
     return Center(
       child: Container(
         width: 88,
         height: 88,
         decoration: BoxDecoration(
-          color: Colors.amber.shade200.withValues(alpha: 0.18),
+          color: context.colors.warningBorder.withValues(alpha: 0.18),
           shape: BoxShape.circle,
           border: Border.all(
-            color: Colors.amber.shade200.withValues(alpha: 0.5),
+            color: context.colors.warningBorder.withValues(alpha: 0.5),
             width: 2,
           ),
         ),
         child: Icon(
           Icons.sentiment_dissatisfied,
           size: 52,
-          color: Colors.amber.shade100,
+          color: context.colors.onDarkWarning,
         ),
       ),
     );
   }
 
-  Widget _bubble({String? title, required String body}) {
+  Widget _bubble(BuildContext context, {String? title, required String body}) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: const BorderRadiusDirectional.only(
           topStart: Radius.circular(14),
           topEnd: Radius.circular(14),
@@ -144,10 +141,10 @@ class WizardAgeGateScreen extends StatelessWidget {
           if (title != null) ...[
             Text(
               title,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: Color(0xFF0d47a1),
+                color: context.colors.brandStrong,
               ),
             ),
             const SizedBox(height: 6),
@@ -156,7 +153,7 @@ class WizardAgeGateScreen extends StatelessWidget {
             body,
             style: TextStyle(
               fontSize: 13.5,
-              color: Colors.grey[800],
+              color: context.colors.textPrimary,
               height: 1.45,
             ),
           ),
@@ -165,7 +162,7 @@ class WizardAgeGateScreen extends StatelessWidget {
             '— Claudiu',
             style: TextStyle(
               fontSize: 11,
-              color: Colors.grey[500],
+              color: context.colors.textTertiary,
               fontStyle: FontStyle.italic,
             ),
           ),

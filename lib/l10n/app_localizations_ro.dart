@@ -3011,4 +3011,23 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'S-a schimbat';
+
+  @override
+  String get themeTitle => 'Aspect';
+
+  @override
+  String get themeLight => 'Luminos';
+
+  @override
+  String get themeDark => 'Întunecat';
+
+  @override
+  String get themeSystem => 'După dispozitiv';
+
+  @override
+  String get themeSchedule => 'Automat (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Întunecat de la 20:00 până la 06:00, luminos în restul zilei.';
 }

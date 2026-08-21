@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../utils/error_helpers.dart';
+import '../utils/app_theme.dart';
 
 class VerwarnungenTab extends StatefulWidget {
   const VerwarnungenTab({super.key});
@@ -61,13 +62,13 @@ class _VerwarnungenTabState extends State<VerwarnungenTab> {
   Color _typColor(String typ) {
     switch (typ) {
       case 'ermahnung':
-        return Colors.amber;
+        return context.colors.warningFg;
       case 'abmahnung':
-        return Colors.orange;
+        return context.colors.warningFg;
       case 'letzte_abmahnung':
-        return Colors.red;
+        return context.colors.dangerFg;
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 
@@ -119,7 +120,7 @@ class _VerwarnungenTabState extends State<VerwarnungenTab> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 48, color: Colors.red),
+            Icon(Icons.error_outline, size: 48, color: context.colors.dangerFg),
             const SizedBox(height: 16),
             Text(_error!, textAlign: TextAlign.center),
             const SizedBox(height: 16),
@@ -164,10 +165,10 @@ class _VerwarnungenTabState extends State<VerwarnungenTab> {
       spacing: 8,
       runSpacing: 8,
       children: [
-        _buildStatChip(AppLocalizations.of(context)!.warningsTotal(total), Colors.grey),
-        if (ermahnung > 0) _buildStatChip(AppLocalizations.of(context)!.warningsErmahnung(ermahnung), Colors.amber),
-        if (abmahnung > 0) _buildStatChip(AppLocalizations.of(context)!.warningsAbmahnung(abmahnung), Colors.orange),
-        if (letzteAbmahnung > 0) _buildStatChip(AppLocalizations.of(context)!.warningsLetzte(letzteAbmahnung), Colors.red),
+        _buildStatChip(AppLocalizations.of(context)!.warningsTotal(total), context.colors.textSecondary),
+        if (ermahnung > 0) _buildStatChip(AppLocalizations.of(context)!.warningsErmahnung(ermahnung), context.colors.warningFg),
+        if (abmahnung > 0) _buildStatChip(AppLocalizations.of(context)!.warningsAbmahnung(abmahnung), context.colors.warningFg),
+        if (letzteAbmahnung > 0) _buildStatChip(AppLocalizations.of(context)!.warningsLetzte(letzteAbmahnung), context.colors.dangerFg),
       ],
     );
   }
@@ -177,7 +178,7 @@ class _VerwarnungenTabState extends State<VerwarnungenTab> {
       label: Text(
         label,
         style: TextStyle(
-          color: color == Colors.grey ? Colors.grey.shade800 : color.shade900,
+          color: color == context.colors.textSecondary ? context.colors.textPrimary : color.shade900,
           fontWeight: FontWeight.bold,
           fontSize: 12,
         ),
@@ -194,20 +195,20 @@ class _VerwarnungenTabState extends State<VerwarnungenTab> {
         padding: const EdgeInsets.symmetric(vertical: 40),
         child: Column(
           children: [
-            Icon(Icons.check_circle_outline, size: 64, color: Colors.green.shade400),
+            Icon(Icons.check_circle_outline, size: 64, color: context.colors.successFg),
             const SizedBox(height: 16),
             Text(
               AppLocalizations.of(context)!.noWarnings,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Colors.green.shade700,
+                color: context.colors.successFg,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               AppLocalizations.of(context)!.noWarningsDescription,
-              style: TextStyle(color: Colors.grey.shade600),
+              style: TextStyle(color: context.colors.textSecondary),
             ),
           ],
         ),
@@ -271,7 +272,7 @@ class _VerwarnungenTabState extends State<VerwarnungenTab> {
                       const SizedBox(width: 8),
                       Text(
                         datum,
-                        style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                        style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                       ),
                     ],
                   ),
@@ -286,7 +287,7 @@ class _VerwarnungenTabState extends State<VerwarnungenTab> {
                     const SizedBox(height: 4),
                     Text(
                       beschreibung.toString(),
-                      style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+                      style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
                     ),
                   ],
                   // Created by
@@ -294,7 +295,7 @@ class _VerwarnungenTabState extends State<VerwarnungenTab> {
                     const SizedBox(height: 8),
                     Text(
                       AppLocalizations.of(context)!.createdBy(createdByName),
-                      style: TextStyle(fontSize: 11, color: Colors.grey.shade500),
+                      style: TextStyle(fontSize: 11, color: context.colors.textTertiary),
                     ),
                   ],
                 ],

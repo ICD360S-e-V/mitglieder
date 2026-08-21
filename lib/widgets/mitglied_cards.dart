@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// Card for personal data section in member dashboard - Mobile optimized
 class PersonalDataCard extends StatelessWidget {
@@ -27,12 +28,12 @@ class PersonalDataCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF4a90d9).withValues(alpha: 0.1),
+                    color: context.colors.brand.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.person_outline,
-                    color: Color(0xFF4a90d9),
+                    color: context.colors.brand,
                     size: 24,
                   ),
                 ),
@@ -50,8 +51,8 @@ class PersonalDataCard extends StatelessWidget {
                       ),
                       Text(
                         AppLocalizations.of(context)!.personalDataSubtitle,
-                        style: const TextStyle(
-                          color: Colors.grey,
+                        style: TextStyle(
+                          color: context.colors.textSecondary,
                           fontSize: 12,
                         ),
                       ),
@@ -68,7 +69,7 @@ class PersonalDataCard extends StatelessWidget {
                 icon: const Icon(Icons.edit, size: 18),
                 label: Text(AppLocalizations.of(context)!.refresh),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4a90d9),
+                  backgroundColor: context.colors.brandFill,
                   foregroundColor: Colors.white,
                 ),
               ),
@@ -117,7 +118,7 @@ class BeitragCard extends StatelessWidget {
                   ),
                   child: Icon(
                     Icons.euro,
-                    color: beitragBezahlt ? Colors.green : Colors.orange,
+                    color: beitragBezahlt ? context.colors.successFg : context.colors.warningFg,
                     size: 28,
                   ),
                 ),
@@ -135,8 +136,8 @@ class BeitragCard extends StatelessWidget {
                       ),
                       Text(
                         AppLocalizations.of(context)!.annualFeeYear(beitragJahr.toString()),
-                        style: const TextStyle(
-                          color: Colors.grey,
+                        style: TextStyle(
+                          color: context.colors.textSecondary,
                           fontSize: 13,
                         ),
                       ),
@@ -162,7 +163,7 @@ class BeitragCard extends StatelessWidget {
               children: [
                 Text(
                   AppLocalizations.of(context)!.amount,
-                  style: TextStyle(color: Colors.grey.shade600),
+                  style: TextStyle(color: context.colors.textSecondary),
                 ),
                 const Text(
                   '50,00 €',
@@ -179,7 +180,7 @@ class BeitragCard extends StatelessWidget {
               children: [
                 Text(
                   AppLocalizations.of(context)!.dueBy,
-                  style: TextStyle(color: Colors.grey.shade600),
+                  style: TextStyle(color: context.colors.textSecondary),
                 ),
                 Text(
                   '31.03.$beitragJahr',
@@ -205,13 +206,13 @@ class _BeitragStatusBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: beitragBezahlt
-            ? Colors.green.shade100
-            : Colors.orange.shade100,
+            ? context.colors.successBg
+            : context.colors.warningBg,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: beitragBezahlt
-              ? Colors.green.shade300
-              : Colors.orange.shade300,
+              ? context.colors.successBorder
+              : context.colors.warningBorder,
         ),
       ),
       child: Row(
@@ -221,16 +222,16 @@ class _BeitragStatusBadge extends StatelessWidget {
             beitragBezahlt ? Icons.check_circle : Icons.schedule,
             size: 18,
             color: beitragBezahlt
-                ? Colors.green.shade700
-                : Colors.orange.shade700,
+                ? context.colors.successFg
+                : context.colors.warningFg,
           ),
           const SizedBox(width: 6),
           Text(
             beitragBezahlt ? AppLocalizations.of(context)!.paid : AppLocalizations.of(context)!.statusPending,
             style: TextStyle(
               color: beitragBezahlt
-                  ? Colors.green.shade700
-                  : Colors.orange.shade700,
+                  ? context.colors.successFg
+                  : context.colors.warningFg,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -264,7 +265,7 @@ class WelcomeCard extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 36,
-              backgroundColor: const Color(0xFF4a90d9),
+              backgroundColor: context.colors.brandFill,
               child: Text(
                 userName.isNotEmpty ? userName[0].toUpperCase() : 'M',
                 style: const TextStyle(
@@ -279,7 +280,7 @@ class WelcomeCard extends StatelessWidget {
               '$greeting,',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.grey.shade600,
+                color: context.colors.textSecondary,
               ),
             ),
             const SizedBox(height: 4),
@@ -314,13 +315,13 @@ class MeineTerminePlaceholder extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.calendar_today, size: 64, color: Colors.grey.shade400),
+          Icon(Icons.calendar_today, size: 64, color: context.colors.textDisabled),
           const SizedBox(height: 16),
           Text(
             l10n.myAppointmentsTitle,
             style: TextStyle(
               fontSize: 20,
-              color: Colors.grey.shade600,
+              color: context.colors.textSecondary,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -328,7 +329,7 @@ class MeineTerminePlaceholder extends StatelessWidget {
           Text(
             l10n.appointmentsDescription,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.grey.shade500),
+            style: TextStyle(color: context.colors.textTertiary),
           ),
           const SizedBox(height: 24),
           ElevatedButton.icon(
@@ -336,7 +337,7 @@ class MeineTerminePlaceholder extends StatelessWidget {
             icon: const Icon(Icons.refresh),
             label: Text(l10n.loadAppointments),
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF4a90d9),
+              backgroundColor: context.colors.brandFill,
               foregroundColor: Colors.white,
             ),
           ),

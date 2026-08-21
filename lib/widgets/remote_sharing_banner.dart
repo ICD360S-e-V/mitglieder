@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../services/language_service.dart';
 import '../services/remote_agent_service.dart';
+import '../utils/app_theme.dart';
 
 /// Always-visible banner shown on the MEMBER side while a Fernwartung session is
 /// being set up or is live. Two jobs: make it unmistakable that the screen is
@@ -54,7 +55,7 @@ class _RemoteSharingBannerState extends State<RemoteSharingBanner> {
     final connecting = _state == RemoteAgentState.connecting;
     final label = connecting ? t['connecting']! : t['active']!;
     return Material(
-      color: connecting ? Colors.orange.shade800 : Colors.red.shade700,
+      color: connecting ? context.colors.warningFg : context.colors.dangerFg,
       child: SafeArea(
         bottom: false,
         child: Padding(
@@ -72,8 +73,8 @@ class _RemoteSharingBannerState extends State<RemoteSharingBanner> {
               TextButton(
                 onPressed: () => _agent.stop(reason: 'member_stop'),
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.red.shade800,
+                  backgroundColor: context.colors.card,
+                  foregroundColor: context.colors.dangerFg,
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                 ),
                 child: Text(t['stop']!, style: const TextStyle(fontWeight: FontWeight.bold)),

@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../utils/error_helpers.dart';
+import '../utils/app_theme.dart';
 
 class MitgliedschaftTab extends StatefulWidget {
   final String mitgliedernummer;
@@ -98,17 +99,17 @@ class _MitgliedschaftTabState extends State<MitgliedschaftTab> {
   Color _statusColor(String? status) {
     switch (status) {
       case 'active':
-        return Colors.green;
+        return context.colors.successFg;
       case 'suspended':
-        return Colors.red;
+        return context.colors.dangerFg;
       case 'neu':
-        return Colors.orange;
+        return context.colors.warningFg;
       case 'gekuendigt':
-        return Colors.grey;
+        return context.colors.textSecondary;
       case 'deleted':
-        return Colors.red.shade900;
+        return context.colors.dangerFg;
       default:
-        return Colors.grey;
+        return context.colors.textSecondary;
     }
   }
 
@@ -169,7 +170,7 @@ class _MitgliedschaftTabState extends State<MitgliedschaftTab> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 48, color: Colors.red),
+            Icon(Icons.error_outline, size: 48, color: context.colors.dangerFg),
             const SizedBox(height: 16),
             Text(_error!, textAlign: TextAlign.center),
             const SizedBox(height: 16),
@@ -225,7 +226,7 @@ class _MitgliedschaftTabState extends State<MitgliedschaftTab> {
               // Mitgliedernummer
               _buildTextRow(
                 icon: Icons.badge,
-                iconColor: Colors.blue.shade700,
+                iconColor: context.colors.infoFg,
                 label: l10n.labelMemberNumber,
                 value: mitgliedernummer,
               ),
@@ -244,16 +245,16 @@ class _MitgliedschaftTabState extends State<MitgliedschaftTab> {
                 iconColor: Colors.teal,
                 label: l10n.labelMemberType,
                 value: _mitgliedsartLabel(mitgliedsart),
-                valueColor: (mitgliedsart == null || mitgliedsart.isEmpty) ? Colors.grey : null,
+                valueColor: (mitgliedsart == null || mitgliedsart.isEmpty) ? context.colors.textSecondary : null,
               ),
               const Divider(height: 1, indent: 56),
               // Zahlungsmethode
               _buildTextRow(
                 icon: Icons.payment,
-                iconColor: Colors.amber.shade800,
+                iconColor: context.colors.warningFg,
                 label: l10n.labelPaymentMethod,
                 value: _zahlungsmethodeLabel(zahlungsmethode),
-                valueColor: (zahlungsmethode == null || zahlungsmethode.isEmpty) ? Colors.grey : null,
+                valueColor: (zahlungsmethode == null || zahlungsmethode.isEmpty) ? context.colors.textSecondary : null,
               ),
               const Divider(height: 1, indent: 56),
               // Registriert am
@@ -269,12 +270,12 @@ class _MitgliedschaftTabState extends State<MitgliedschaftTab> {
               // Letzter Login
               _buildTextRow(
                 icon: Icons.login,
-                iconColor: Colors.green.shade700,
+                iconColor: context.colors.successFg,
                 label: l10n.labelLastLogin,
                 value: lastLogin != null && lastLogin.isNotEmpty
                     ? _formatDateTime(lastLogin)
                     : l10n.neverLoggedIn,
-                valueColor: (lastLogin == null || lastLogin.isEmpty) ? Colors.grey : null,
+                valueColor: (lastLogin == null || lastLogin.isEmpty) ? context.colors.textSecondary : null,
               ),
               const Divider(height: 1, indent: 56),
               // Mitglied seit
@@ -285,7 +286,7 @@ class _MitgliedschaftTabState extends State<MitgliedschaftTab> {
                 value: mitgliedschaftDatum != null && mitgliedschaftDatum.isNotEmpty
                     ? _formatDate(mitgliedschaftDatum)
                     : l10n.notActivatedYet,
-                valueColor: (mitgliedschaftDatum == null || mitgliedschaftDatum.isEmpty) ? Colors.grey : null,
+                valueColor: (mitgliedschaftDatum == null || mitgliedschaftDatum.isEmpty) ? context.colors.textSecondary : null,
               ),
             ],
           ),
@@ -334,7 +335,7 @@ class _MitgliedschaftTabState extends State<MitgliedschaftTab> {
           const SizedBox(width: 12),
           Text(
             label,
-            style: TextStyle(fontSize: 13, color: Colors.grey.shade600),
+            style: TextStyle(fontSize: 13, color: context.colors.textSecondary),
           ),
           const Spacer(),
           child,

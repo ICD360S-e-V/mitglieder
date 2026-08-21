@@ -3000,4 +3000,23 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'On muutunud';
+
+  @override
+  String get themeTitle => 'Välimus';
+
+  @override
+  String get themeLight => 'Hele';
+
+  @override
+  String get themeDark => 'Tume';
+
+  @override
+  String get themeSystem => 'Vastavalt seadmele';
+
+  @override
+  String get themeSchedule => 'Automaatne (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Tume kella 20:00–6:00, ülejäänud päeva hele.';
 }

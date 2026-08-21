@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Ca să nu pierdeți nimic, întrebăm scurt o dată la trei luni. Veți primi un cod din șase cifre.",
   "kontaktBestaetigtAm": "confirmat la {datum}",
   "kontaktFestnetzKeinSms": "Acesta este un număr fix — acolo nu ajunge niciun SMS.",
-  "kontaktIstAndersGeworden": "S-a schimbat"
+  "kontaktIstAndersGeworden": "S-a schimbat",
+  "themeTitle": "Aspect",
+  "themeLight": "Luminos",
+  "themeDark": "Întunecat",
+  "themeSystem": "După dispozitiv",
+  "themeSchedule": "Automat (20:00–06:00)",
+  "themeScheduleHint": "Întunecat de la 20:00 până la 06:00, luminos în restul zilei."
 }

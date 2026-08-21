@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Για να μη χάσετε τίποτα, ρωτάμε σύντομα κάθε τρεις μήνες. Θα λάβετε έναν εξαψήφιο κωδικό.",
   "kontaktBestaetigtAm": "επιβεβαιώθηκε στις {datum}",
   "kontaktFestnetzKeinSms": "Αυτός είναι αριθμός σταθερού — δεν φτάνει SMS εκεί.",
-  "kontaktIstAndersGeworden": "Έχει αλλάξει"
+  "kontaktIstAndersGeworden": "Έχει αλλάξει",
+  "themeTitle": "Εμφάνιση",
+  "themeLight": "Φωτεινό",
+  "themeDark": "Σκοτεινό",
+  "themeSystem": "Σύμφωνα με τη συσκευή",
+  "themeSchedule": "Αυτόματα (20:00–06:00)",
+  "themeScheduleHint": "Σκοτεινό από τις 20:00 έως τις 6:00, φωτεινό την υπόλοιπη ημέρα."
 }

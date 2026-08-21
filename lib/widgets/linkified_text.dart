@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../utils/app_theme.dart';
 
 /// Nachrichtentext, in dem enthaltene Links anklickbar sind.
 ///
@@ -83,11 +84,11 @@ class _LinkifiedTextState extends State<LinkifiedText> {
       return Text(widget.text, style: widget.style);
     }
 
-    final baseColor = widget.style.color ?? Colors.black87;
+    final baseColor = widget.style.color ?? context.colors.textPrimary;
     final linkColor = widget.linkColor ??
         (baseColor.computeLuminance() > 0.5
             ? Colors.lightBlueAccent
-            : Colors.blue.shade700);
+            : context.colors.infoFg);
 
     final spans = <TextSpan>[];
     var lastEnd = 0;

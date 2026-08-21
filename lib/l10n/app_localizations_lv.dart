@@ -3002,4 +3002,23 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Ir mainījies';
+
+  @override
+  String get themeTitle => 'Izskats';
+
+  @override
+  String get themeLight => 'Gaišs';
+
+  @override
+  String get themeDark => 'Tumšs';
+
+  @override
+  String get themeSystem => 'Atbilstoši ierīcei';
+
+  @override
+  String get themeSchedule => 'Automātiski (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Tumšs no plkst. 20:00 līdz 6:00, pārējā dienas laikā gaišs.';
 }

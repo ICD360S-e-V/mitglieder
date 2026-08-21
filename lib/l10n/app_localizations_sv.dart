@@ -3001,4 +3001,23 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Det har ändrats';
+
+  @override
+  String get themeTitle => 'Utseende';
+
+  @override
+  String get themeLight => 'Ljust';
+
+  @override
+  String get themeDark => 'Mörkt';
+
+  @override
+  String get themeSystem => 'Följ enheten';
+
+  @override
+  String get themeSchedule => 'Automatiskt (20:00–06:00)';
+
+  @override
+  String get themeScheduleHint =>
+      'Mörkt från 20:00 till 06:00, ljust resten av dygnet.';
 }

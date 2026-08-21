@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// Sidebar widget for member dashboard
 class MitgliedSidebar extends StatelessWidget {
@@ -32,7 +33,7 @@ class MitgliedSidebar extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 24,
-                  backgroundColor: const Color(0xFF4a90d9),
+                  backgroundColor: context.colors.brandFill,
                   child: Text(
                     userName.isNotEmpty ? userName[0].toUpperCase() : 'M',
                     style: const TextStyle(
@@ -59,7 +60,7 @@ class MitgliedSidebar extends StatelessWidget {
                       Text(
                         l10n.member,
                         style: TextStyle(
-                          color: Colors.grey.shade400,
+                          color: context.colors.textDisabled,
                           fontSize: 12,
                         ),
                       ),
@@ -133,10 +134,10 @@ class _SidebarItem extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFF4a90d9).withValues(alpha: 0.2) : Colors.transparent,
+            color: isSelected ? context.colors.brand.withValues(alpha: 0.2) : Colors.transparent,
             border: Border(
               left: BorderSide(
-                color: isSelected ? const Color(0xFF4a90d9) : Colors.transparent,
+                color: isSelected ? context.colors.brand : Colors.transparent,
                 width: 3,
               ),
             ),
@@ -145,14 +146,14 @@ class _SidebarItem extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: isSelected ? const Color(0xFF4a90d9) : Colors.grey.shade400,
+                color: isSelected ? context.colors.brand : context.colors.textDisabled,
                 size: 22,
               ),
               const SizedBox(width: 14),
               Text(
                 title,
                 style: TextStyle(
-                  color: isSelected ? Colors.white : Colors.grey.shade400,
+                  color: isSelected ? Colors.white : context.colors.textDisabled,
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                   fontSize: 14,
                 ),

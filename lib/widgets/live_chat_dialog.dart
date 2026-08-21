@@ -26,6 +26,7 @@ import 'file_viewer.dart';
 import 'incoming_call_dialog.dart';
 import 'video_call_screen.dart';
 import '../utils/error_helpers.dart';
+import '../utils/app_theme.dart';
 
 final _log = LoggerService();
 
@@ -383,19 +384,19 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
 
     switch (_networkQuality) {
       case 'good':
-        color = Colors.green;
+        color = context.colors.successFg;
         qualityText = '✅';
         break;
       case 'medium':
-        color = Colors.orange;
+        color = context.colors.warningFg;
         qualityText = '⚠️';
         break;
       case 'poor':
-        color = Colors.red;
+        color = context.colors.dangerFg;
         qualityText = '❌';
         break;
       default:
-        color = Colors.grey;
+        color = context.colors.textSecondary;
         qualityText = '❌';
     }
 
@@ -403,7 +404,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.1),
-        border: Border(top: BorderSide(color: Colors.grey.shade200)),
+        border: Border(top: BorderSide(color: context.colors.dividerSubtle)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -418,7 +419,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
             const SizedBox(width: 8),
             Text(
               '${_latencyMs}ms',
-              style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
+              style: TextStyle(fontSize: 11, color: context.colors.textSecondary),
             ),
           ],
           const SizedBox(width: 6),
@@ -796,7 +797,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.callEnded),
-          backgroundColor: Colors.blue,
+          backgroundColor: context.colors.infoSolid,
         ),
       );
     }
@@ -1156,8 +1157,8 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                   }
                 },
                 interactive: true,
-                baseColor: Colors.black87,
-                maskColor: Colors.black54,
+                baseColor: context.colors.textPrimary,
+                maskColor: context.colors.textSecondary,
                 cornerDotBuilder: (size, edgeAlignment) => DotControl(
                   color: const Color(0xFF667eea),
                 ),
@@ -1510,7 +1511,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
             ),
           ],
         ),
-        backgroundColor: Colors.red.shade700,
+        backgroundColor: context.colors.dangerSolid,
         duration: duration,
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.all(16),
@@ -1536,7 +1537,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.85,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colors.card,
           borderRadius: BorderRadius.circular(24),
         ),
         child: Column(
@@ -1547,7 +1548,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
             // Messages area
             Expanded(
               child: Container(
-                color: const Color(0xFFF5F5F5),
+                color: context.colors.scaffoldBg,
                 child: _isLoading
                     ? const Center(child: CircularProgressIndicator())
                     : _buildModernMessagesList(),
@@ -1557,7 +1558,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
             // Typing indicator
             if (_typingUser != null)
               Container(
-                color: const Color(0xFFF5F5F5),
+                color: context.colors.scaffoldBg,
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Row(
                   children: [
@@ -1566,7 +1567,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                     Text(
                       '$_typingUser tippt...',
                       style: TextStyle(
-                        color: Colors.grey.shade600,
+                        color: context.colors.textSecondary,
                         fontSize: 13,
                       ),
                     ),
@@ -1598,7 +1599,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
               width: 8,
               height: 8,
               decoration: BoxDecoration(
-                color: Colors.grey.shade400,
+                color: context.colors.textDisabled,
                 shape: BoxShape.circle,
               ),
             );
@@ -1612,7 +1613,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         boxShadow: [
           BoxShadow(
@@ -1649,7 +1650,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                   width: 14,
                   height: 14,
                   decoration: BoxDecoration(
-                    color: _supportOnline ? Colors.green : Colors.grey,
+                    color: _supportOnline ? context.colors.successFg : context.colors.textSecondary,
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.white, width: 2),
                   ),
@@ -1676,7 +1677,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                   _supportOnline ? AppLocalizations.of(context)!.online : _formatLastSeen(),
                   style: TextStyle(
                     fontSize: 13,
-                    color: _supportOnline ? Colors.green : Colors.grey.shade600,
+                    color: _supportOnline ? context.colors.successFg : context.colors.textSecondary,
                   ),
                 ),
               ],
@@ -1686,11 +1687,11 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           if (_voiceCallService.callState == CallState.idle) ...[
             Container(
               decoration: BoxDecoration(
-                color: Colors.green.shade50,
+                color: context.colors.successBg,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: IconButton(
-                icon: const Icon(Icons.call, color: Colors.green),
+                icon: Icon(Icons.call, color: context.colors.successFg),
                 onPressed: _isConnected ? _startCall : null,
                 tooltip: AppLocalizations.of(context)!.callSupport,
               ),
@@ -1698,7 +1699,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
             const SizedBox(width: 6),
             Container(
               decoration: BoxDecoration(
-                color: Colors.blue.shade50,
+                color: context.colors.infoBg,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: IconButton(
@@ -1712,11 +1713,11 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
           // Close button
           Container(
             decoration: BoxDecoration(
-              color: Colors.grey.shade100,
+              color: context.colors.cardSubtle,
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(
-              icon: const Icon(Icons.close, color: Colors.grey),
+              icon: Icon(Icons.close, color: context.colors.textSecondary),
               onPressed: () {
                 if (_voiceCallService.callState != CallState.idle) {
                   _endCall();
@@ -1739,7 +1740,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: context.colors.card,
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
@@ -1748,13 +1749,13 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                   ),
                 ],
               ),
-              child: Icon(Icons.chat_bubble_outline, size: 48, color: Colors.grey.shade400),
+              child: Icon(Icons.chat_bubble_outline, size: 48, color: context.colors.textDisabled),
             ),
             const SizedBox(height: 24),
             Text(
               AppLocalizations.of(context)!.startConversation,
               style: TextStyle(
-                color: Colors.grey.shade700,
+                color: context.colors.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
@@ -1762,7 +1763,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
             const SizedBox(height: 8),
             Text(
               AppLocalizations.of(context)!.staffWillReply,
-              style: TextStyle(color: Colors.grey.shade500, fontSize: 14),
+              style: TextStyle(color: context.colors.textTertiary, fontSize: 14),
             ),
           ],
         ),
@@ -1772,7 +1773,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
       child: Container(
-        color: Colors.grey.shade100,
+        color: context.colors.cardSubtle,
         child: SeasonalBackground(
           paintBehind: true,
           child: ListView.builder(
@@ -1893,7 +1894,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                             end: Alignment.bottomRight,
                           )
                         : null,
-                    color: isOwn ? null : Colors.white,
+                    color: isOwn ? null : context.colors.card,
                     borderRadius: BorderRadius.only(
                       topLeft: const Radius.circular(20),
                       topRight: const Radius.circular(20),
@@ -1941,7 +1942,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                           child: LinearProgressIndicator(
                             value: expireProgress,
                             minHeight: 3,
-                            backgroundColor: (isOwn ? Colors.white : Colors.grey.shade300).withValues(alpha: 0.35),
+                            backgroundColor: (isOwn ? Colors.white : context.colors.divider).withValues(alpha: 0.35),
                             valueColor: AlwaysStoppedAnimation<Color>(
                               isOwn ? Colors.white70 : Colors.lightBlue.shade300,
                             ),
@@ -1957,7 +1958,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                             _formatTime(msg['created_at']),
                             style: TextStyle(
                               fontSize: 11,
-                              color: isOwn ? Colors.white70 : Colors.grey.shade500,
+                              color: isOwn ? Colors.white70 : context.colors.textTertiary,
                             ),
                           ),
                           if (isOwn) ...[
@@ -2065,7 +2066,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
         margin: const EdgeInsets.only(top: 6),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: isOwn ? Colors.white.withValues(alpha: 0.2) : Colors.grey.shade100,
+          color: isOwn ? Colors.white.withValues(alpha: 0.2) : context.colors.cardSubtle,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
@@ -2097,7 +2098,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                     _formatFileSize(size),
                     style: TextStyle(
                       fontSize: 11,
-                      color: isOwn ? Colors.white70 : Colors.grey.shade600,
+                      color: isOwn ? Colors.white70 : context.colors.textSecondary,
                     ),
                   ),
                 ],
@@ -2113,7 +2114,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: const BorderRadius.vertical(bottom: Radius.circular(24)),
         boxShadow: [
           BoxShadow(
@@ -2141,7 +2142,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
               // Attachment button
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
+                  color: context.colors.cardSubtle,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: IconButton(
@@ -2160,7 +2161,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
+                    color: context.colors.cardSubtle,
                     borderRadius: BorderRadius.circular(24),
                   ),
                   child: PasteImageDetector(
@@ -2179,7 +2180,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                     ),
                     decoration: InputDecoration(
                       hintText: AppLocalizations.of(context)!.typeMessage,
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: TextStyle(color: context.colors.textSecondary),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 14),
                     ),

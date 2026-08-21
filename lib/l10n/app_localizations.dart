@@ -5455,6 +5455,42 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Ist anders geworden'**
   String get kontaktIstAndersGeworden;
+
+  /// No description provided for @themeTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Darstellung'**
+  String get themeTitle;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In de, this message translates to:
+  /// **'Hell'**
+  String get themeLight;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In de, this message translates to:
+  /// **'Dunkel'**
+  String get themeDark;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In de, this message translates to:
+  /// **'Gerät folgen'**
+  String get themeSystem;
+
+  /// No description provided for @themeSchedule.
+  ///
+  /// In de, this message translates to:
+  /// **'Automatisch (20:00–06:00)'**
+  String get themeSchedule;
+
+  /// No description provided for @themeScheduleHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Von 20 Uhr bis 6 Uhr dunkel, den Rest des Tages hell.'**
+  String get themeScheduleHint;
 }
 
 class _AppLocalizationsDelegate

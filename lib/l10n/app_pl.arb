@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Abyś niczego nie przegapił, pytamy krótko co trzy miesiące. Otrzymasz sześciocyfrowy kod.",
   "kontaktBestaetigtAm": "potwierdzono {datum}",
   "kontaktFestnetzKeinSms": "To numer stacjonarny — SMS tam nie dotrze.",
-  "kontaktIstAndersGeworden": "Zmieniło się"
+  "kontaktIstAndersGeworden": "Zmieniło się",
+  "themeTitle": "Wygląd",
+  "themeLight": "Jasny",
+  "themeDark": "Ciemny",
+  "themeSystem": "Zgodnie z urządzeniem",
+  "themeSchedule": "Automatycznie (20:00–06:00)",
+  "themeScheduleHint": "Ciemny od 20:00 do 6:00, jasny przez resztę dnia."
 }

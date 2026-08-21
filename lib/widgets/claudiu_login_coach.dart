@@ -5,6 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// Conversational coaching surface for the login screen — Claudiu sits
 /// above the two-box mitgliedernummer form and updates his speech bubble
@@ -188,7 +189,7 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: const BorderRadiusDirectional.only(
           topStart: Radius.circular(4),
           topEnd: Radius.circular(14),
@@ -211,10 +212,10 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
             child: Text(
               l10n.claudiuLoginWelcome,
               key: const ValueKey('welcome'),
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF0d47a1),
+                color: context.colors.brandStrong,
                 height: 1.3,
               ),
             ),
@@ -227,7 +228,7 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
               key: ValueKey(message),
               style: TextStyle(
                 fontSize: 13.5,
-                color: Colors.grey[800],
+                color: context.colors.textPrimary,
                 height: 1.3,
               ),
             ),
@@ -237,7 +238,7 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
             '— Claudiu',
             style: TextStyle(
               fontSize: 10.5,
-              color: Colors.grey[500],
+              color: context.colors.textTertiary,
               fontStyle: FontStyle.italic,
             ),
           ),
@@ -301,7 +302,7 @@ class _ClaudiuLoginCoachState extends State<ClaudiuLoginCoach> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _infoLine(Icons.no_cell, l10n.claudiuLoginNoSms,
-                      color: Colors.amber.shade200),
+                      color: context.colors.warningBorder),
                   const SizedBox(height: 6),
                   _infoLine(Icons.handshake_outlined, l10n.claudiuLoginOnlyWay,
                       color: Colors.greenAccent.shade100),

@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Affinché non perda nulla, chiediamo brevemente ogni tre mesi. Riceverà un codice di sei cifre.",
   "kontaktBestaetigtAm": "confermato il {datum}",
   "kontaktFestnetzKeinSms": "Questo è un numero fisso: non arriva alcun SMS.",
-  "kontaktIstAndersGeworden": "È cambiato"
+  "kontaktIstAndersGeworden": "È cambiato",
+  "themeTitle": "Aspetto",
+  "themeLight": "Chiaro",
+  "themeDark": "Scuro",
+  "themeSystem": "Segui il dispositivo",
+  "themeSchedule": "Automatico (20:00–06:00)",
+  "themeScheduleHint": "Scuro dalle 20:00 alle 6:00, chiaro per il resto della giornata."
 }

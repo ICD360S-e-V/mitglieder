@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
+import 'app_theme.dart';
 
 /// Returns the display text for a user role
 String getRoleText(String role, [BuildContext? context]) {
@@ -9,10 +10,12 @@ String getRoleText(String role, [BuildContext? context]) {
   return 'Mitglied';
 }
 
-/// Returns the color associated with a user role
-Color getRoleColor(String role) {
+/// Returns the color associated with a user role.
+///
+/// See [getStatusColor] for why this needs the context.
+Color getRoleColor(BuildContext context, String role) {
   // All users get blue color
-  return Colors.blue;
+  return context.colors.infoFg;
 }
 
 /// Returns the display text for a user status
@@ -32,19 +35,22 @@ String getStatusText(String status, [BuildContext? context]) {
   }
 }
 
-/// Returns the color associated with a user status
-Color getStatusColor(String status) {
+/// Returns the color associated with a user status.
+///
+/// Takes the context because the status palette is theme-dependent: the light
+/// theme's dark green would sit almost invisibly on a dark card.
+Color getStatusColor(BuildContext context, String status) {
   switch (status) {
     case 'active':
-      return Colors.green;
+      return context.colors.successFg;
     case 'neu':
-      return Colors.amber;
+      return context.colors.warningFg;
     case 'suspended':
-      return Colors.orange;
+      return context.colors.warningFg;
     case 'deleted':
-      return Colors.red;
+      return context.colors.dangerFg;
     default:
-      return Colors.grey;
+      return context.colors.textSecondary;
   }
 }
 

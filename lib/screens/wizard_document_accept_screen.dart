@@ -8,6 +8,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
+import '../utils/app_theme.dart';
 
 /// Stufe 6/7/8 — Document acceptance. One reusable screen instantiated
 /// three times by the orchestrator, once per legal document:
@@ -185,7 +186,7 @@ class _WizardDocumentAcceptScreenState
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(l10n.wizardDocumentExternalOpenFailed),
-        backgroundColor: Colors.red.shade700,
+        backgroundColor: context.colors.dangerSolid,
         behavior: SnackBarBehavior.floating,
         duration: const Duration(seconds: 6),
       ),
@@ -219,7 +220,7 @@ class _WizardDocumentAcceptScreenState
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.wizardErrSaveFailed),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: context.colors.dangerSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -261,7 +262,7 @@ class _WizardDocumentAcceptScreenState
     return Container(
       height: 360,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.card,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
       ),
@@ -322,8 +323,8 @@ class _WizardDocumentAcceptScreenState
             icon: const Icon(Icons.open_in_new),
             label: Text(l10n.wizardDocumentOpenButton(widget.documentName)),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: const Color(0xFF0d47a1),
+              backgroundColor: context.colors.card,
+              foregroundColor: context.colors.brandStrong,
               padding: const EdgeInsets.symmetric(vertical: 14),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -347,7 +348,7 @@ class _WizardDocumentAcceptScreenState
       } else {
         icon = Icons.swap_vert;
         text = l10n.wizardDocumentScrollHint;
-        color = Colors.amber.shade100;
+        color = context.colors.warningBg;
       }
     } else {
       if (_opened) {
@@ -357,7 +358,7 @@ class _WizardDocumentAcceptScreenState
       } else {
         icon = Icons.open_in_new;
         text = l10n.wizardDocumentExternalHint;
-        color = Colors.amber.shade100;
+        color = context.colors.warningBg;
       }
     }
     return Row(

@@ -5,6 +5,7 @@ import '../services/update_service.dart';
 import '../widgets/register_tab.dart';
 import 'login.dart'; // Used for redirect after registration
 import 'webview_screen.dart';
+import '../utils/app_theme.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -61,15 +62,11 @@ class _RegisterPageState extends State<RegisterPage> {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(
@@ -112,7 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Colors.white.withValues(alpha: 0.1),
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.person_add, size: 48, color: Color(0xFF4a90d9)),
+                        child: Icon(Icons.person_add, size: 48, color: context.colors.brand),
                       ),
                       const SizedBox(height: 16),
                       // Form - direct without white container

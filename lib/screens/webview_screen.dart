@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 class WebViewScreen extends StatefulWidget {
   final String title;
@@ -90,7 +91,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(AppLocalizations.of(context)!.loadingErrorGeneric(error.description)),
-                  backgroundColor: Colors.red,
+                  backgroundColor: context.colors.dangerSolid,
                 ),
               );
             }
@@ -105,7 +106,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: const Color(0xFF4a90d9),
+        backgroundColor: context.colors.brandFill,
         foregroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.close),
@@ -170,22 +171,22 @@ class _WebViewScreenState extends State<WebViewScreen> {
         children: [
           // Loading indicator
           if (_isLoading)
-            const LinearProgressIndicator(
-              backgroundColor: Colors.grey,
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4a90d9)),
+            LinearProgressIndicator(
+              backgroundColor: context.colors.textSecondary,
+              valueColor: AlwaysStoppedAnimation<Color>(context.colors.brand),
             ),
           // URL bar
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            color: Colors.grey.shade100,
+            color: context.colors.cardSubtle,
             child: Row(
               children: [
                 Icon(
                   Icons.lock,
                   size: 16,
                   color: _currentUrl.startsWith('https')
-                      ? Colors.green
-                      : Colors.grey,
+                      ? context.colors.successFg
+                      : context.colors.textSecondary,
                 ),
                 const SizedBox(width: 8),
                 Expanded(
@@ -193,7 +194,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
                     _currentUrl.isNotEmpty ? _currentUrl : widget.url,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.grey.shade700,
+                      color: context.colors.textPrimary,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),

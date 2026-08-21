@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../widgets/icd360s_header.dart';
+import '../utils/app_theme.dart';
 
 /// "I have a problem with the app" surface — reached from the Claudiu
 /// welcome flow. A guided form: checklist of what to include, free-text
@@ -104,7 +105,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(l10n.claudiuProblemReportSendFailed),
-        backgroundColor: Colors.red.shade700,
+        backgroundColor: context.colors.dangerSolid,
         duration: const Duration(seconds: 5),
       ),
     );
@@ -124,15 +125,11 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0d47a1),
-              Color(0xFF1565c0),
-              Color(0xFF1976d2),
-            ],
+            colors: context.colors.heroGradient,
           ),
         ),
         child: SafeArea(
@@ -231,7 +228,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                 vertical: 10,
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: context.colors.card,
                 borderRadius: const BorderRadiusDirectional.only(
                   topStart: Radius.circular(4),
                   topEnd: Radius.circular(14),
@@ -251,10 +248,10 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                 children: [
                   Text(
                     l10n.claudiuProblemReportGreeting,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF0d47a1),
+                      color: context.colors.brandStrong,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -262,7 +259,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                     l10n.claudiuProblemReportAsk,
                     style: TextStyle(
                       fontSize: 13.5,
-                      color: Colors.grey[800],
+                      color: context.colors.textPrimary,
                       height: 1.3,
                     ),
                   ),
@@ -271,7 +268,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                     '— Claudiu',
                     style: TextStyle(
                       fontSize: 11,
-                      color: Colors.grey[500],
+                      color: context.colors.textTertiary,
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -395,7 +392,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                     ? l10n.claudiuProblemReportTooShort(_minChars)
                     : '',
                 style: TextStyle(
-                  color: Colors.amber.shade200,
+                  color: context.colors.onDarkWarning,
                   fontSize: 11.5,
                 ),
               ),

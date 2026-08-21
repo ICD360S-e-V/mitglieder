@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import 'eastern.dart';
+import '../utils/app_theme.dart';
 
 /// AppBar widget for member dashboard with badges and actions
 class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -74,7 +75,7 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: null,
       toolbarHeight: 70,
-      backgroundColor: const Color(0xFF4a90d9),
+      backgroundColor: context.colors.brandFill,
       foregroundColor: Colors.white,
       flexibleSpace: SeasonalBackground.isEasterSeason
           ? IgnorePointer(
@@ -178,8 +179,8 @@ class _ChatIconWithBadge extends StatelessWidget {
             top: iconSize < 26 ? 2 : 4,
             child: Container(
               padding: EdgeInsets.all(iconSize < 26 ? 2 : 4),
-              decoration: const BoxDecoration(
-                color: Colors.red,
+              decoration: BoxDecoration(
+                color: context.colors.dangerSolid,
                 shape: BoxShape.circle,
               ),
               constraints: BoxConstraints(
@@ -206,7 +207,7 @@ class _ChatIconWithBadge extends StatelessWidget {
               width: iconSize < 26 ? 10 : 12,
               height: iconSize < 26 ? 10 : 12,
               decoration: BoxDecoration(
-                color: Colors.green,
+                color: context.colors.successFg,
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.white, width: iconSize < 26 ? 1.5 : 2),
               ),
@@ -246,8 +247,8 @@ class _TicketIconWithBadge extends StatelessWidget {
             top: iconSize < 26 ? 2 : 4,
             child: Container(
               padding: EdgeInsets.all(iconSize < 26 ? 2 : 4),
-              decoration: const BoxDecoration(
-                color: Colors.red,
+              decoration: BoxDecoration(
+                color: context.colors.dangerSolid,
                 shape: BoxShape.circle,
               ),
               constraints: BoxConstraints(
@@ -298,8 +299,8 @@ class _CalendarIconWithBadge extends StatelessWidget {
             top: iconSize < 26 ? 2 : 4,
             child: Container(
               padding: EdgeInsets.all(iconSize < 26 ? 2 : 4),
-              decoration: const BoxDecoration(
-                color: Colors.red,
+              decoration: BoxDecoration(
+                color: context.colors.dangerSolid,
                 shape: BoxShape.circle,
               ),
               constraints: BoxConstraints(
@@ -353,7 +354,7 @@ class _NotificationIcon extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: context.colors.dangerSolid,
                 borderRadius: BorderRadius.circular(10),
               ),
               constraints: const BoxConstraints(minWidth: 16),

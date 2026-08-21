@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "Da ne bi česa zamudili, na kratko vprašamo vsake tri mesece. Prejeli boste šestmestno kodo.",
   "kontaktBestaetigtAm": "potrjeno {datum}",
   "kontaktFestnetzKeinSms": "To je številka stacionarnega telefona — SMS tja ne pride.",
-  "kontaktIstAndersGeworden": "Se je spremenilo"
+  "kontaktIstAndersGeworden": "Se je spremenilo",
+  "themeTitle": "Videz",
+  "themeLight": "Svetlo",
+  "themeDark": "Temno",
+  "themeSystem": "Sledi napravi",
+  "themeSchedule": "Samodejno (20:00–06:00)",
+  "themeScheduleHint": "Temno od 20:00 do 6:00, preostanek dneva svetlo."
 }

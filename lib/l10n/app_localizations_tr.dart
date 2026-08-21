@@ -3005,4 +3005,23 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get kontaktIstAndersGeworden => 'Değişti';
+
+  @override
+  String get themeTitle => 'Görünüm';
+
+  @override
+  String get themeLight => 'Açık';
+
+  @override
+  String get themeDark => 'Koyu';
+
+  @override
+  String get themeSystem => 'Cihazı takip et';
+
+  @override
+  String get themeSchedule => 'Otomatik (20.00–06.00)';
+
+  @override
+  String get themeScheduleHint =>
+      '20.00 ile 06.00 arası koyu, günün geri kalanında açık.';
 }

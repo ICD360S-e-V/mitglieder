@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "For at du ikke skal gå glipp av noe, spør vi kort hver tredje måned. Du får en sekssifret kode.",
   "kontaktBestaetigtAm": "bekreftet {datum}",
   "kontaktFestnetzKeinSms": "Dette er et fasttelefonnummer — SMS kommer ikke fram.",
-  "kontaktIstAndersGeworden": "Det er endret"
+  "kontaktIstAndersGeworden": "Det er endret",
+  "themeTitle": "Utseende",
+  "themeLight": "Lys",
+  "themeDark": "Mørk",
+  "themeSystem": "Følg enheten",
+  "themeSchedule": "Automatisk (20:00–06:00)",
+  "themeScheduleHint": "Mørk fra 20:00 til 06:00, lys resten av døgnet."
 }

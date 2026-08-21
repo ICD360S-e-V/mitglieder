@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_theme.dart';
 
 /// A single conversation item in the admin chat list
 class ConversationListItem extends StatelessWidget {
@@ -27,13 +28,13 @@ class ConversationListItem extends StatelessWidget {
       color: isSelected ? const Color(0xFF1a1a2e).withValues(alpha: 0.1) : null,
       child: ListTile(
         dense: true,
-        leading: _buildAvatar(memberName, status),
-        title: _buildTitle(memberName, unreadCount),
+        leading: _buildAvatar(context, memberName, status),
+        title: _buildTitle(context, memberName, unreadCount),
         subtitle: Text(
           hasActiveCall ? AppLocalizations.of(context)!.inCall : lastMessage,
           style: TextStyle(
             fontSize: 11,
-            color: hasActiveCall ? Colors.green.shade700 : null,
+            color: hasActiveCall ? context.colors.successFg : null,
           ),
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
@@ -43,18 +44,18 @@ class ConversationListItem extends StatelessWidget {
     );
   }
 
-  Widget _buildAvatar(String memberName, String status) {
+  Widget _buildAvatar(BuildContext context, String memberName, String status) {
     return Stack(
       children: [
         CircleAvatar(
           radius: 18,
-          backgroundColor: hasActiveCall ? Colors.green.shade100 : Colors.blue.shade100,
+          backgroundColor: hasActiveCall ? context.colors.successBg : context.colors.infoBg,
           child: hasActiveCall
-              ? Icon(Icons.call, color: Colors.green.shade700, size: 20)
+              ? Icon(Icons.call, color: context.colors.successFg, size: 20)
               : Text(
                   memberName[0].toUpperCase(),
                   style: TextStyle(
-                    color: Colors.blue.shade700,
+                    color: context.colors.infoFg,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -67,9 +68,13 @@ class ConversationListItem extends StatelessWidget {
               width: 10,
               height: 10,
               decoration: BoxDecoration(
-                color: Colors.green,
+                color: context.colors.successFg,
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 1.5),
+                // Der Ring soll wie ein Ausschnitt in der Fläche wirken, auf
+                // der der Punkt liegt — hier eine Karte, nicht die blaue
+                // Kopfleiste. Fest weiß säße er im dunklen Modus als heller
+                // Ring auf einer dunklen Karte.
+                border: Border.all(color: context.colors.card, width: 1.5),
               ),
             ),
           ),
@@ -77,7 +82,7 @@ class ConversationListItem extends StatelessWidget {
     );
   }
 
-  Widget _buildTitle(String memberName, int unreadCount) {
+  Widget _buildTitle(BuildContext context, String memberName, int unreadCount) {
     return Row(
       children: [
         Expanded(
@@ -94,7 +99,7 @@ class ConversationListItem extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: context.colors.dangerSolid,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(

@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
+import '../utils/app_theme.dart';
 
 /// Stufe 5 — Mitgliedschaftsbeginn. Three options for when the
 /// membership formally starts:
@@ -86,11 +87,11 @@ class _WizardStufe5ScreenState extends State<WizardStufe5Screen> {
     if (_saving) return;
     final l10n = AppLocalizations.of(context)!;
     if (_option == null) {
-      _toast(l10n.wizardErrRequired, Colors.red.shade700);
+      _toast(l10n.wizardErrRequired, context.colors.dangerFg);
       return;
     }
     if (_option == 'anderes_datum' && _customDate == null) {
-      _toast(l10n.wizardStufe5PickDateFirst, Colors.amber.shade800);
+      _toast(l10n.wizardStufe5PickDateFirst, context.colors.warningFg);
       return;
     }
 
@@ -109,7 +110,7 @@ class _WizardStufe5ScreenState extends State<WizardStufe5Screen> {
     if (!mounted) return;
     setState(() => _saving = false);
     if (!ok) {
-      _toast(l10n.wizardErrSaveFailed, Colors.red.shade700);
+      _toast(l10n.wizardErrSaveFailed, context.colors.dangerFg);
       return;
     }
     widget.onNext();
@@ -371,7 +372,7 @@ class _WizardStufe5ScreenState extends State<WizardStufe5Screen> {
 
     if (widget.isBeitragsfrei) {
       return _hintBox(
-        color: Colors.green.shade400,
+        color: context.colors.successBorder,
         icon: Icons.check_circle,
         title: l10n.wizardStufe5FeeExemptTitle,
         body: l10n.wizardStufe5FeeExemptBody,
@@ -379,7 +380,7 @@ class _WizardStufe5ScreenState extends State<WizardStufe5Screen> {
     }
 
     return _hintBox(
-      color: Colors.amber.shade300,
+      color: context.colors.warningBorder,
       icon: Icons.info_outline,
       title: l10n.wizardStufe5RetroactiveTitle,
       body: l10n.wizardStufe5RetroactiveBody(

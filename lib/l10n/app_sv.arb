@@ -1397,5 +1397,11 @@
   "kontaktWarumFragen": "För att du inte ska missa något frågar vi kort var tredje månad. Du får en sexsiffrig kod.",
   "kontaktBestaetigtAm": "bekräftad {datum}",
   "kontaktFestnetzKeinSms": "Detta är ett fast nummer — inget sms kommer fram.",
-  "kontaktIstAndersGeworden": "Det har ändrats"
+  "kontaktIstAndersGeworden": "Det har ändrats",
+  "themeTitle": "Utseende",
+  "themeLight": "Ljust",
+  "themeDark": "Mörkt",
+  "themeSystem": "Följ enheten",
+  "themeSchedule": "Automatiskt (20:00–06:00)",
+  "themeScheduleHint": "Mörkt från 20:00 till 06:00, ljust resten av dygnet."
 }
