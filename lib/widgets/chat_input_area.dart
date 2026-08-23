@@ -37,7 +37,7 @@ class ChatInputArea extends StatelessWidget {
                     height: 20,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                : const Icon(Icons.attach_file, color: Color(0xFF1a1a2e)),
+                : Icon(Icons.attach_file, color: context.colors.textPrimary),
             onPressed: isUploading ? null : onPickFiles,
             tooltip: AppLocalizations.of(context)!.attachFiles,
           ),

@@ -85,7 +85,7 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Row(
           children: [
-            const Icon(Icons.check_circle, color: Color(0xFF2E7D32)),
+            Icon(Icons.check_circle, color: context.colors.successFg),
             const SizedBox(width: 10),
             Text(l10n.claudiuProblemReportSentTitle),
           ],
