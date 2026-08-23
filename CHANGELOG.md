@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.86.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.86.1...v1.86.2) (2026-08-23)
+
+
+### Bug Fixes
+
+* **darstellung:** im Live-Chat war der empfangene Text im dunklen Modus unsichtbar ([#320](https://github.com/ICD360S-e-V/mitglieder/issues/320)) ([4066fc1](https://github.com/ICD360S-e-V/mitglieder/commit/4066fc1ca41e770ac136079eab485e9675342061))
+
 ## [1.86.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.86.0...v1.86.1) (2026-08-23)
 
 
