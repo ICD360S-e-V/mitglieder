@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.86.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.86.0...v1.86.1) (2026-08-23)
+
+
+### Bug Fixes
+
+* **auth:** Access-Token proaktiv erneuern, damit der Chat nicht am 401 hängt ([#318](https://github.com/ICD360S-e-V/mitglieder/issues/318)) ([89a72e4](https://github.com/ICD360S-e-V/mitglieder/commit/89a72e450b123510acfb5e4efbf41f5fd9692f93))
+
 ## [1.86.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.85.0...v1.86.0) (2026-08-21)
 
 
