@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -44,7 +45,31 @@ class ApiService {
     }
     // Încarcă token-urile
     await loadTokens();
+    // Access-Token setzt sich zur Ruhe, BEVOR etwas anderes läuft. Was gerade
+    // von der Platte kam, kann veraltet sein (App-Neustart nach >1 h) — und der
+    // Chat verlässt sich seit 2026-08-23 auf ein GÜLTIGES Token (WS + REST
+    // leiten die Identität daraus ab, nicht mehr aus der Mitgliedsnummer).
+    // Ohne dieses Auffrischen liefe das erste Chat-Laden nach dem Öffnen in ein
+    // 401. refreshAccessToken() ist no-op ohne Refresh-Token (nicht angemeldet).
+    await refreshAccessToken();
+    if (_token != null || _refreshToken != null) {
+      _startTokenRefreshTimer();
+    }
     return true;
+  }
+
+  Timer? _tokenRefreshTimer;
+
+  // Proaktives Auffrischen: das Access-Token lebt 60 min (ACCESS_TOKEN_EXPIRY
+  // auf dem Server), also 50 min — 10 min Reserve. Ohne diesen Takt fiel das
+  // Token bei einer langen Sitzung nach einer Stunde tot um; der Chat (WS +
+  // REST) merkte es erst am 401 und heilte sich erst beim nächsten 60-s-Poll.
+  // Gleiche Lösung wie in der Vorsitzer-App.
+  void _startTokenRefreshTimer() {
+    _tokenRefreshTimer?.cancel();
+    _tokenRefreshTimer = Timer.periodic(const Duration(minutes: 50), (_) async {
+      await refreshAccessToken();
+    });
   }
 
   Future<void> loadTokens() async {
@@ -66,6 +91,8 @@ class ApiService {
     }
     _token = token;
     _refreshToken = refreshToken;
+    // Nach Login/Refresh den proaktiven Takt (neu) starten.
+    _startTokenRefreshTimer();
   }
 
   // Single-flight lock for refreshAccessToken — without this, the calendar
@@ -131,6 +158,8 @@ class ApiService {
     // Clear credentials from background service
     await BackgroundService.clearCredentials();
 
+    _tokenRefreshTimer?.cancel();
+    _tokenRefreshTimer = null;
     _token = null;
     _refreshToken = null;
   }
