@@ -402,9 +402,9 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
       ),
       child: Text(
         l10n.claudiuApprovalMonthlyExplain,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 12.5,
-          color: Color(0xFF6B4E00),
+          color: context.colors.textPrimary,
           height: 1.4,
         ),
       ),

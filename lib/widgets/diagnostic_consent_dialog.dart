@@ -50,7 +50,7 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
               _option(
                 icon: Icons.check_circle_outline,
                 label: l10n.claudiuDiagnosticYes,
-                color: const Color(0xFF2E7D32),
+                color: context.colors.successFg,
                 onTap: () => _handleResponse(true),
               )
                   .animate()

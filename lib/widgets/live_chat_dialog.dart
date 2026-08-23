@@ -1666,10 +1666,10 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
               children: [
                 Text(
                   _supportOnline ? _supportName : 'Support',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF1a1a2e),
+                    color: context.colors.textPrimary,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -1796,7 +1796,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     return LinkifiedText(
       text,
       style: TextStyle(
-        color: isOwn ? Colors.white : const Color(0xFF1a1a2e),
+        color: isOwn ? Colors.white : context.colors.textPrimary,
         fontSize: 15,
         height: 1.4,
       ),
@@ -2089,7 +2089,7 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
                     filename,
                     style: TextStyle(
                       fontSize: 13,
-                      color: isOwn ? Colors.white : const Color(0xFF1a1a2e),
+                      color: isOwn ? Colors.white : context.colors.textPrimary,
                       fontWeight: FontWeight.w500,
                     ),
                     overflow: TextOverflow.ellipsis,
