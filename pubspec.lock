@@ -45,10 +45,10 @@ packages:
     dependency: transitive
     description:
       name: audio_streamer
-      sha256: aed4bc55f57d65953b16344f5848239e1c9bd058cf5a6c23d7b4173f337d4ea8
+      sha256: "3cd4550110659e788ccc122f23770d43e3b81fda43c3e23d5999d04f08ef0768"
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.0"
+    version: "5.0.0"
   battery_plus:
     dependency: "direct main"
     description:
@@ -769,10 +769,10 @@ packages:
     dependency: "direct main"
     description:
       name: noise_meter
-      sha256: a05ffa13ac533e4fcfb1dd772f43d7262c5130c80bbc1bf2842f7b15794f6264
+      sha256: "4bff04b57a7f9719c6cfbe3ef53d43b18c9bbbbf22c1bd25da4804d359c40109"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.0"
+    version: "6.0.0"
   objective_c:
     dependency: transitive
     description:

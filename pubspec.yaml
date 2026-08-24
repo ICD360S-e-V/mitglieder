@@ -158,7 +158,7 @@ dependencies:
   permission_handler: ^12.0.3
 
   # Audio level detection (microphone noise meter)
-  noise_meter: ^5.0.1
+  noise_meter: ^6.0.0
 
   # Network connectivity detection (WiFi/4G/5G/offline)
   # Pinned: 7.1.0 uses NWPath.isUltraConstrained (macOS 26 API) which fails on Xcode 16.x
