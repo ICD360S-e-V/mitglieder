@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.87.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.87.0...v1.87.1) (2026-08-25)
+
+
+### Bug Fixes
+
+* **chat:** der Chat im Vordergrund hatte gar keine Wiederverbindung ([#327](https://github.com/ICD360S-e-V/mitglieder/issues/327)) ([2a1f65f](https://github.com/ICD360S-e-V/mitglieder/commit/2a1f65fe236c582622ead349460ff30a754b283d))
+
 ## [1.87.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.86.2...v1.87.0) (2026-08-25)
 
 
