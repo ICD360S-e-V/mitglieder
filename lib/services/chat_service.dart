@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
 import 'notification_service.dart';
@@ -17,6 +18,40 @@ class ChatService {
   StreamSubscription? _subscription;
   bool _isConnected = false;
   String? _currentMitgliedernummer;
+
+  // ── Wiederverbindung ────────────────────────────────────────────────────
+  //
+  // Bis heute gab es hier gar keine. Riss die Verbindung — Netzwechsel,
+  // Funkloch, Serverneustart —, blieb der Chat stumm, bis jemand die
+  // Anwendung neu startete. Der Hintergrunddienst bringt seine eigene mit;
+  // der Chat im Vordergrund, der auf demselben Bildschirm „verbunden"
+  // anzeigt, hatte keine.
+  Timer? _reconnectTimer;
+  int _reconnectAttempts = 0;
+  bool _shouldReconnect = false;
+  static const int _maxReconnectAttempts = 10;
+  static const Duration _initialReconnectDelay = Duration(seconds: 2);
+  static const Duration _maxReconnectDelay = Duration(seconds: 60);
+
+  /// Der naechste Anlauf soll sich zuerst ein frisches Token holen.
+  /// Wird allein von `auth_error` gesetzt und beim Verbrauch geloescht.
+  bool _tokenErneuern = false;
+
+  /// Nur fuer Tests: die Adresse, gegen die der Handschlag laeuft.
+  ///
+  /// ⚠️ Ohne diese Naht liesse sich der Weg nach einem misslungenen Versuch
+  /// nur gegen den Produktivserver pruefen — ein Test, der ohne Leitung rot
+  /// wird, sagt am Ende nichts.
+  @visibleForTesting
+  static String? testWsUrl;
+
+  /// Nur fuer Tests: wartet gerade ein Wiederverbindungsversuch?
+  @visibleForTesting
+  bool get wiederverbindungWartet => _reconnectTimer?.isActive ?? false;
+
+  /// Nur fuer Tests: wie viele Versuche der Zaehler verbucht hat.
+  @visibleForTesting
+  int get versucheBisher => _reconnectAttempts;
 
   // Stream controllers for chat events
   final _messageController = StreamController<ChatMessage>.broadcast();
@@ -100,9 +135,16 @@ class ChatService {
   ChatService._internal();
 
   /// Connect to WebSocket server and authenticate
-  Future<bool> connect(String mitgliedernummer) async {
+  ///
+  /// [erneuterVersuch] setzt allein die Wiederverbindung. Ein Aufruf von
+  /// aussen — Anmeldung, geoeffneter Chat — heisst „jemand will JETZT
+  /// verbunden sein" und stellt den Zaehler zurueck.
+  Future<bool> connect(String mitgliedernummer,
+      {bool erneuterVersuch = false}) async {
     _log.info('WebSocket connect($mitgliedernummer) called', tag: 'WS');
     _currentMitgliedernummer = mitgliedernummer;
+    _shouldReconnect = true;
+    if (!erneuterVersuch) _reconnectAttempts = 0;
 
     if (_isConnected) {
       _log.info('Already connected, returning true', tag: 'WS');
@@ -110,11 +152,11 @@ class ChatService {
     }
 
     try {
-      _log.info('Connecting to $wsUrl...', tag: 'WS');
+      _log.info('Connecting to ${testWsUrl ?? wsUrl}...', tag: 'WS');
 
       // Security: Proper SSL certificate validation for WebSocket
       // Let Android/iOS trust store validate the certificate chain
-      final webSocket = await WebSocket.connect(wsUrl);
+      final webSocket = await WebSocket.connect(testWsUrl ?? wsUrl);
       // Keepalive: ping every 20s. The signaling channel goes completely idle
       // once a call's ICE negotiation finishes, and an idle TCP connection gets
       // reaped by mobile-carrier / CGNAT boxes after ~60s. When that happens the
@@ -140,6 +182,7 @@ class ChatService {
           if (!completer.isCompleted) {
             completer.complete(false);
           }
+          _scheduleReconnect();
         },
         onDone: () {
           _log.warning('WS connection closed', tag: 'WS');
@@ -148,6 +191,7 @@ class ChatService {
           if (!completer.isCompleted) {
             completer.complete(false);
           }
+          _scheduleReconnect();
         },
       );
 
@@ -172,17 +216,90 @@ class ChatService {
         },
       );
       _log.info('Connect result: $result', tag: 'WS');
+      // ⚠️ `false` heisst hier: der Draht steht, die Anmeldung darauf nicht —
+      // `auth_error` oder die zehn Sekunden Wartezeit. Weder `onDone` noch
+      // `onError` melden sich dabei, denn niemand hat geschlossen.
+      if (!result) {
+        _verbindungAufraeumen();
+        _scheduleReconnect();
+      }
       return result;
     } catch (e) {
       _log.error('Connect failed: $e', tag: 'WS');
       _errorController.add('Failed to connect: $e');
+      _verbindungAufraeumen();
+      _scheduleReconnect();
       return false;
+    }
+  }
+
+  /// Raeumt einen misslungenen Versuch weg, ohne die Wiederverbindung abzusagen.
+  ///
+  /// ⚠️ Erst abbestellen, dann schliessen — sonst liefe `onDone` noch durch
+  /// und verbrauchte einen zweiten der zehn Versuche fuer dieselbe Stoerung.
+  void _verbindungAufraeumen() {
+    _subscription?.cancel();
+    _subscription = null;
+    _channel?.sink.close();
+    _channel = null;
+    _isConnected = false;
+  }
+
+  /// Plant einen neuen Versuch mit wachsendem Abstand: 2, 4, 8 … 60 Sekunden.
+  void _scheduleReconnect() {
+    // ⚠️ Ein gerissener Socket meldet sich ZWEIMAL: erst `onError`, dann
+    // `onDone`. Wartet schon einer, ist alles Noetige getan.
+    if (_reconnectTimer?.isActive ?? false) return;
+    if (!_shouldReconnect || _currentMitgliedernummer == null) return;
+
+    if (_reconnectAttempts >= _maxReconnectAttempts) {
+      _log.error('Max reconnect attempts reached, giving up', tag: 'WS-RECONNECT');
+      _shouldReconnect = false;
+      return;
+    }
+
+    final sekunden = (_initialReconnectDelay.inSeconds * (1 << _reconnectAttempts))
+        .clamp(0, _maxReconnectDelay.inSeconds);
+    _reconnectAttempts++;
+    _log.info('Scheduling reconnect attempt $_reconnectAttempts in ${sekunden}s',
+        tag: 'WS-RECONNECT');
+    _reconnectTimer = Timer(Duration(seconds: sekunden), _reconnect);
+  }
+
+  Future<void> _reconnect() async {
+    if (!_shouldReconnect || _currentMitgliedernummer == null) return;
+    _log.info('Attempting reconnect (attempt $_reconnectAttempts)...', tag: 'WS-RECONNECT');
+    _verbindungAufraeumen();
+
+    // Nur nach einer abgelehnten Anmeldung, nicht bei jedem Netzhaenger: ein
+    // Abruf ueber dieselbe gestoerte Leitung kostet sonst bloss Zeit.
+    if (_tokenErneuern) {
+      _tokenErneuern = false;
+      try {
+        final frisch = await ApiService().refreshAccessToken();
+        _log.info('Token vor Wiederverbindung erneuert: $frisch', tag: 'WS-RECONNECT');
+      } catch (e) {
+        _log.warning('Token-Erneuerung fehlgeschlagen: $e', tag: 'WS-RECONNECT');
+      }
+    }
+
+    final erfolg = await connect(_currentMitgliedernummer!, erneuterVersuch: true);
+    if (erfolg) {
+      _log.info('Reconnection successful!', tag: 'WS-RECONNECT');
+      _reconnectAttempts = 0;
     }
   }
 
   /// Disconnect from WebSocket server
   void disconnect() {
+    // Hier will der Mensch weg — im Gegensatz zu `_verbindungAufraeumen`,
+    // das nur einen misslungenen Versuch wegraeumt. Ein liegengebliebener
+    // Zeitgeber weckt sonst eine Anwendung, die geschlossen wurde.
+    _shouldReconnect = false;
+    _reconnectTimer?.cancel();
+    _reconnectTimer = null;
     _subscription?.cancel();
+    _subscription = null;
     _channel?.sink.close();
     _channel = null;
     _isConnected = false;
@@ -364,12 +481,17 @@ class ChatService {
       switch (type) {
         case 'auth_success':
           _isConnected = true;
+          _reconnectAttempts = 0;
           _connectionController.add(true);
           authCompleter?.complete(true);
           break;
 
         case 'auth_error':
           _isConnected = false;
+          // Der Server nimmt die Identitaet aus dem Token, und das laeuft nach
+          // einer Stunde ab. Die haeufigste Ablehnung ist ein zu altes Token —
+          // mit demselben noch zehnmal anzuklopfen kann nur wieder scheitern.
+          _tokenErneuern = true;
           _errorController.add(json['error'] ?? 'Authentication failed');
           authCompleter?.complete(false);
           break;
