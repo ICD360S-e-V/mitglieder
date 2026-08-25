@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.87.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.86.2...v1.87.0) (2026-08-25)
+
+
+### Features
+
+* **diagnose:** Schluessel an den Diagnose-Endpunkt mitschicken ([#325](https://github.com/ICD360S-e-V/mitglieder/issues/325)) ([6493561](https://github.com/ICD360S-e-V/mitglieder/commit/64935613cdbf04fd5af7fdd7d4bdc519c082f7e8))
+
 ## [1.86.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.86.1...v1.86.2) (2026-08-23)
 
 
