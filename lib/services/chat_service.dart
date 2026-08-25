@@ -7,12 +7,28 @@ import 'package:web_socket_channel/io.dart';
 import 'notification_service.dart';
 import 'logger_service.dart';
 import 'api_service.dart';
+import 'http_client_factory.dart';
 
 final _log = LoggerService();
 
 /// ChatService handles WebSocket connection for real-time chat and voice calls
 class ChatService {
-  static const String wsUrl = 'wss://icd360sev.icd360s.de/wss/';
+  /// ⚠️ Der Anschluss steht ausgeschrieben da, und das ist kein Schmuck.
+  ///
+  /// `Uri` kennt Standardanschluesse nur fuer `http` und `https`; fuer `wss`
+  /// gibt `Uri.port` **0** zurueck, und `WebSocket.connect` reicht genau diese
+  /// 0 an den `HttpClient` weiter. Der eingebaute Weg faengt sie ab — eine
+  /// eigene `connectionFactory` (etwa fuer Schluesselpinning) liest sie
+  /// woertlich und haengt dann in `SecureSocket.connect(host, 0)`, bis der
+  /// connectionTimeout ablaeuft. Genau daran lag der Live-Chat der
+  /// Vorsitzer-App vom 22.08. bis 25.08.2026 fest (dort PR #453).
+  ///
+  /// Hier gibt es diese Fabrik heute nicht — aber `background_service.dart`
+  /// und `desktop_platform_service.dart` schreiben die 443 seit jeher aus, und
+  /// diese Zeile war die einzige, die es nicht tat. Nachgemessen gegen den
+  /// Produktivserver: beide Schreibweisen verbinden, nur ergibt diese
+  /// `Uri.port == 443` statt 0.
+  static const String wsUrl = 'wss://icd360sev.icd360s.de:443/wss/';
 
   WebSocketChannel? _channel;
   StreamSubscription? _subscription;
@@ -32,6 +48,13 @@ class ChatService {
   static const int _maxReconnectAttempts = 10;
   static const Duration _initialReconnectDelay = Duration(seconds: 2);
   static const Duration _maxReconnectDelay = Duration(seconds: 60);
+
+  /// Der Client des laufenden Handschlags.
+  ///
+  /// ⚠️ Wird NICHT gleich nach dem Verbinden geschlossen: den Aufstieg auf
+  /// WebSocket wickelt er ab, und ein zu frueher `close()` reisst die
+  /// Verbindung mit. Er faellt beim Trennen, zusammen mit allem anderen.
+  HttpClient? _wsClient;
 
   /// Der naechste Anlauf soll sich zuerst ein frisches Token holen.
   /// Wird allein von `auth_error` gesetzt und beim Verbrauch geloescht.
@@ -154,9 +177,31 @@ class ChatService {
     try {
       _log.info('Connecting to ${testWsUrl ?? wsUrl}...', tag: 'WS');
 
-      // Security: Proper SSL certificate validation for WebSocket
-      // Let Android/iOS trust store validate the certificate chain
-      final webSocket = await WebSocket.connect(testWsUrl ?? wsUrl);
+      // 🔴 Dieselben Vertrauensanker wie bei den REST-Aufrufen.
+      //
+      // Hier stand: „Let Android/iOS trust store validate the certificate
+      // chain." Ausgerechnet DIESE Verbindung kommt mit dem Systemspeicher am
+      // wenigsten aus: durch sie geht wenige Zeilen weiter unten das JWT im
+      // Klartext der Nachricht, dazu jeder Chatinhalt und die gesamte
+      // Anrufsignalisierung. Die REST-Aufrufe, wo das Token nur ein
+      // Kopfzeilenfeld ist, waren gepinnt; der Kanal, auf dem es ausdruecklich
+      // mitgeschickt wird, nicht. Ein untergeschobenes CA im Systemspeicher —
+      // ein Firmen-MDM genuegt — haette genau hier das Token abgegriffen.
+      // `background_service.dart` pinnt diesen Weg seit jeher; nur der Chat im
+      // Vordergrund tat es nicht.
+      //
+      // Im Debug-Build gibt die Fabrik einen ungepinnten Client zurueck, damit
+      // ein Zwischenrechner beim Entwickeln weiter funktioniert.
+      //
+      // ⚠️ Erst den Client des VORIGEN Versuchs wegraeumen, nicht den eigenen:
+      // zu diesem Zeitpunkt liegt jener still. Den laufenden mit `force: true`
+      // zuzumachen, waehrend die Anfrage noch geht, wirft einen Fehler in den
+      // Zonenkontext, den niemand mehr faengt. So bleibt hoechstens ein
+      // einziger Client liegen, und der nur bis zum naechsten Versuch.
+      _wsClient?.close(force: true);
+      _wsClient = HttpClientFactory.createPinnedHttpClient();
+      final webSocket =
+          await WebSocket.connect(testWsUrl ?? wsUrl, customClient: _wsClient);
       // Keepalive: ping every 20s. The signaling channel goes completely idle
       // once a call's ICE negotiation finishes, and an idle TCP connection gets
       // reaped by mobile-carrier / CGNAT boxes after ~60s. When that happens the
@@ -302,6 +347,8 @@ class ChatService {
     _subscription = null;
     _channel?.sink.close();
     _channel = null;
+    _wsClient?.close(force: true);
+    _wsClient = null;
     _isConnected = false;
     _connectionController.add(false);
   }

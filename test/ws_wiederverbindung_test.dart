@@ -52,6 +52,26 @@ void main() {
     await server.close(force: true);
   });
 
+  group('Die Adresse des Kanals', () {
+    test('zeigt auf unseren Server', () {
+      expect(ChatService.wsUrl, startsWith('wss://'));
+      expect(ChatService.wsUrl, contains('icd360sev.icd360s.de'),
+          reason: 'nur der eigene Rechner darf auf unsere Anker gepinnt werden');
+    });
+
+    test('nennt den Anschluss ausdruecklich', () {
+      // 🔴 `Uri` kennt Standardanschluesse nur fuer http und https; fuer wss
+      // gibt der Aufrufer 0 zurueck, und `WebSocket.connect` reicht diese 0
+      // weiter. Eine eigene connectionFactory liest sie woertlich und haengt
+      // dann bis zum Zeitablauf — daran lag der Live-Chat der Vorsitzer-App
+      // drei Tage fest. Hier gibt es diese Fabrik nicht; die 443 kostet
+      // trotzdem nichts und nimmt der Falle die Wirkung.
+      expect(Uri.parse(ChatService.wsUrl).port, 443);
+      expect(Uri.parse('wss://icd360sev.icd360s.de/wss/').port, 0,
+          reason: 'so sieht dieselbe Adresse ohne die Angabe aus');
+    });
+  });
+
   test('eine abgelehnte Anmeldung stoesst einen neuen Versuch an', () async {
     nochAblehnen = 99;
     final ergebnis = await ChatService().connect('M68650');
