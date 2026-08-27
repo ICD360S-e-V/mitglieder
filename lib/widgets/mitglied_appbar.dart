@@ -20,7 +20,6 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// gemalt und leuchtete auch dann, wenn nichts anlag.
   final int ungeleseneBenachrichtigungen;
   final VoidCallback onProfile;
-  final VoidCallback onLogout;
 
   const MitgliedAppBar({
     super.key,
@@ -36,7 +35,6 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onNotifications,
     this.ungeleseneBenachrichtigungen = 0,
     required this.onProfile,
-    required this.onLogout,
   });
 
   @override
@@ -136,13 +134,6 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: Icon(Icons.person_outlined, size: iconSize, color: Colors.white),
           onPressed: onProfile,
           tooltip: l10n.myProfile,
-        ),
-        SizedBox(width: spacing),
-        // Logout
-        IconButton(
-          icon: Icon(Icons.logout, size: iconSize, color: Colors.white),
-          onPressed: onLogout,
-          tooltip: l10n.logout,
         ),
         const Spacer(),
       ],

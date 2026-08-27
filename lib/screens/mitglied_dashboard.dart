@@ -2,13 +2,11 @@ import 'dart:async';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../services/secure_storage_helper.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/logger_service.dart';
 import '../services/chat_service.dart';
 import '../services/heartbeat_service.dart';
-import '../services/background_service.dart';
 import '../services/voice_call_service.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' show RTCIceConnectionState;
 import '../widgets/video_call_screen.dart';
@@ -40,7 +38,6 @@ import '../widgets/remote_sharing_banner.dart';
 import '../services/termin_service.dart';
 import '../widgets/signatur_card.dart';
 import 'signatur_screen.dart';
-import 'welcome.dart';
 import '../utils/app_theme.dart';
 
 final _log = LoggerService();
@@ -772,32 +769,6 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     }
   }
 
-  Future<void> _logout() async {
-    _log.info('Dashboard: Logout initiated for ${widget.mitgliedernummer}', tag: 'DASH');
-    await _apiService.logout();
-
-    // Stop background service
-    await BackgroundService.stopService();
-
-    // Clear saved approval data (passwordless login)
-    try {
-      final secureStorage = createSecureStorage();
-      await secureStorage.delete(key: 'approval_token');
-      await secureStorage.delete(key: 'approval_mitgliedernummer');
-    } catch (e) {
-      debugPrint('[Dashboard] SecureStorage delete failed: $e');
-    }
-    _log.info('Dashboard: Approval tokens cleared, redirecting to welcome', tag: 'DASH');
-
-    if (mounted) {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const WelcomeScreen()),
-        (route) => false,
-      );
-    }
-  }
-
   String _getGreeting(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final hour = DateTime.now().hour;
@@ -911,7 +882,6 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         onNotifications: _showNotificationsDialog,
         ungeleseneBenachrichtigungen: _ungeleseneBenachrichtigungen,
         onProfile: _showProfileDialog,
-        onLogout: _logout,
       ),
       body: SeasonalBackground(
         child: Column(
