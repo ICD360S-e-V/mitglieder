@@ -202,6 +202,10 @@ jobs:
           name: icd360sev-ios
           path: build/ios/iphoneos/Runner.app
           if-no-files-found: error
+          # Nur der Zwischenschritt bis zum Release - die ausgelieferte Datei
+          # haengt am Release und zaehlt nicht gegen das Artefakt-Kontingent.
+          # Ohne diese Zeile greift der 90-Tage-Standard: so kamen 15 GB zusammen.
+          retention-days: 1
 
       # --- macOS Build ---
       - name: Disable macOS code signing for CI
@@ -267,6 +271,7 @@ jobs:
           name: icd360sev-macos
           path: build/icd360sev-mitglied.dmg
           if-no-files-found: error
+          retention-days: 1
 
       - name: Save cache marker
         run: echo "ok" > /tmp/apple-ok.txt
@@ -405,6 +410,7 @@ jobs:
           name: icd360sev-windows
           path: icd360sev_setup.exe
           if-no-files-found: error
+          retention-days: 1
 
       - name: Save cache marker
         shell: bash
