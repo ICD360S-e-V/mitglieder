@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.87.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.87.1...v1.87.2) (2026-08-27)
+
+
+### Bug Fixes
+
+* **dashboard:** den Abmelden-Knopf aus der Mitglieder-Leiste nehmen ([#330](https://github.com/ICD360S-e-V/mitglieder/issues/330)) ([bb7b3b3](https://github.com/ICD360S-e-V/mitglieder/commit/bb7b3b39e7b06417ae528b79ab8a3d37f8766045))
+
 ## [1.87.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.87.0...v1.87.1) (2026-08-25)
 
 
