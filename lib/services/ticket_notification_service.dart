@@ -30,7 +30,20 @@ class TicketNotificationService {
   final _notificationController = StreamController<int>.broadcast();
   Stream<int> get notificationStream => _notificationController.stream;
 
-  static const Duration _pollInterval = Duration(seconds: 60);
+  /// Sicherheitsnetz, nicht der Zustellweg.
+  ///
+  /// Waren 60 s. Das war Verdopplung: der WebSocket liefert Ticket-Meldungen
+  /// bereits als `ticket_notification` — ChatService zeigt daraufhin die
+  /// Benachrichtigung an und meldet das Ereignis weiter, und im Hintergrund-
+  /// Isolate tut BackgroundService dasselbe. Die Abfrage holte also
+  /// sechzigmal pro Stunde ab, was in aller Regel schon da war, und weckte
+  /// dafür jedes Mal das Funkmodem.
+  ///
+  /// Bleiben muss sie trotzdem: liegt der WebSocket beim Eintreffen einer
+  /// Meldung gerade unten, wäre sie sonst verloren, bis das Mitglied die
+  /// Ticketliste von Hand öffnet. Eine Viertelstunde deckt diesen Fall ab und
+  /// entspricht dem Takt, den auch der WorkManager-Hintergrundlauf verwendet.
+  static const Duration _pollInterval = Duration(minutes: 15);
   static const String _apiUrl =
       'https://icd360sev.icd360s.de/api/tickets/poll_notifications_member.php';
   static const String _backgroundTaskName = 'ticketNotificationPoll';
