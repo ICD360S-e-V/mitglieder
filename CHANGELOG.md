@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.88.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.4...v1.88.5) (2026-08-30)
+
+
+### Bug Fixes
+
+* **fernwartung:** verlorene ICE-Kandidaten, Ton in der Sitzung, ganzer Bildschirm ([#342](https://github.com/ICD360S-e-V/mitglieder/issues/342)) ([3d9b437](https://github.com/ICD360S-e-V/mitglieder/commit/3d9b43799524ccf621b9cf0fd5d6623c99f0352d))
+
 ## [1.88.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.3...v1.88.4) (2026-08-30)
 
 
