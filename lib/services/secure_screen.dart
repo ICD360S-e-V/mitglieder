@@ -40,7 +40,13 @@ class SecureScreen {
 class ScreenCaptureFgService {
   static const MethodChannel _ch = MethodChannel('de.icd360sev.mitglied/screen_capture');
 
-  /// Start BEFORE calling getDisplayMedia so MediaProjection is allowed to start.
+  /// ⚠️ Startreihenfolge: **erst die Zustimmung, dann dieser Dienst, dann die
+  /// Aufnahme.** Hier stand „Start BEFORE calling getDisplayMedia" — genau
+  /// verkehrt herum. Die Android-Doku zu den Diensttypen sagt: „Call
+  /// createScreenCaptureIntent() before starting the foreground service … the
+  /// user must grant the permission before you can create the service."
+  /// Ein `mediaProjection`-Dienst, der vor der Zustimmung startet, erfüllt
+  /// seine Voraussetzung nicht.
   static Future<void> start() async {
     if (!Platform.isAndroid) return;
     try {
