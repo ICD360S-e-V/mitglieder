@@ -43,9 +43,28 @@ class _RemoteTouchOverlayState extends State<RemoteTouchOverlay>
             _ripples.clear();
           }
         });
+        _taktAnpassen();
       }
     });
-    _ticker = createTicker(_tick)..start();
+    _ticker = createTicker(_tick);
+    if (_sharing) _ticker.start();
+  }
+
+  /// Der Ticker laeuft NUR waehrend einer Sitzung.
+  ///
+  /// ⚠️ Ein aktiver Ticker fordert bei JEDEM vsync einen Frame an — die App
+  /// zeichnet dann dauerhaft mit 60/120 fps, statt in den Leerlauf zu gehen.
+  /// Er stand hier unbedingt in `initState`, also auf jedem Mitgliedsgeraet,
+  /// rund um die Uhr, fuer eine Funktion, die noch nie benutzt wurde. `_tick`
+  /// stieg zwar sofort wieder aus, aber die Frames waren da.
+  /// Dieses Widget haengt ueber dem Navigator, hat also keinen `TickerMode`
+  /// als Vorfahren, der ihn stummschalten koennte.
+  void _taktAnpassen() {
+    if (_sharing && !_ticker.isActive) {
+      _ticker.start();
+    } else if (!_sharing && _ticker.isActive) {
+      _ticker.stop();
+    }
   }
 
   void _tick(Duration _) {
@@ -79,7 +98,9 @@ class _RemoteTouchOverlayState extends State<RemoteTouchOverlay>
   @override
   void dispose() {
     _sub?.cancel();
-    _ticker.dispose();
+    _ticker
+      ..stop()
+      ..dispose();
     super.dispose();
   }
 

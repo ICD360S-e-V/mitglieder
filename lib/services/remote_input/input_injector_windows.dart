@@ -26,7 +26,7 @@ const int _keyUnicode = 0x0004;
 /// the 0..65535 normalized coordinate space so it is resolution-independent.
 /// Keys use Virtual-Key codes (so shortcuts like Ctrl+C compose correctly), with
 /// a Unicode fallback for printable keys that have no VK mapping.
-class WindowsInputInjector implements InputInjector {
+class WindowsInputInjector extends InputInjector {
   @override
   bool get isSupported => true;
 

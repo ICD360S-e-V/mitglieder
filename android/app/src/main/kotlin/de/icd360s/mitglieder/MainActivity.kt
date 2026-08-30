@@ -7,6 +7,7 @@ import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
+import android.provider.Settings
 import android.util.Log
 import android.view.WindowManager
 import io.flutter.embedding.android.FlutterActivity
@@ -24,6 +25,7 @@ class MainActivity : FlutterActivity() {
         const val SECURE_CHANNEL = "de.icd360sev.mitglied/secure_screen"
         const val CAPTURE_CHANNEL = "de.icd360sev.mitglied/screen_capture"
         const val BATTERY_CHANNEL = "de.icd360sev.mitglied/battery_state"
+        const val STEUERUNG_CHANNEL = "de.icd360sev.mitglied/fernsteuerung"
     }
 
     // Fernwartung: FLAG_SECURE blocks the app from being screen-recorded — which
@@ -72,6 +74,72 @@ class MainActivity : FlutterActivity() {
                         Log.d(TAG, "ScreenCaptureService stopped")
                         result.success(null)
                     }
+                    else -> result.notImplemented()
+                }
+            }
+
+        // Fernwartung: Fernsteuerung ueber den AccessibilityService.
+        //
+        // ⚠️ Im App-Modul und nicht in einem Plugin — dieselbe Begruendung wie
+        // beim Untertitel-Kanal des Vorsitzer-Projekts: Plugins braucht, wer im
+        // HINTERGRUND-Isolat arbeitet. Fernwartung laeuft ausschliesslich im
+        // Vordergrund, und der Dienst liegt ohnehin in diesem Modul.
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, STEUERUNG_CHANNEL)
+            .setMethodCallHandler { call, result ->
+                when (call.method) {
+                    // Grundwahrheit statt Settings.Secure-Stringsuche: der Dienst
+                    // setzt seine Instanz, sobald das System ihn verbunden hat.
+                    // Die Einstellungszeile kann veraltet sein, die Instanz nicht.
+                    "verfuegbar" -> result.success(FernwartungService.instanz != null)
+
+                    // Zweites Schloss. Wird nur fuer die Dauer einer vom Mitglied
+                    // zugestimmten Sitzung aufgesperrt.
+                    "freigeben" -> {
+                        FernwartungService.freigegeben = call.argument<Boolean>("frei") ?: false
+                        Log.d(TAG, "Fernsteuerung freigegeben=${FernwartungService.freigegeben}")
+                        result.success(null)
+                    }
+
+                    "zug" -> {
+                        val d = FernwartungService.instanz
+                        if (d == null) {
+                            result.success(false)
+                        } else {
+                            result.success(
+                                d.zug(
+                                    call.argument<Double>("x1") ?: 0.0,
+                                    call.argument<Double>("y1") ?: 0.0,
+                                    call.argument<Double>("x2") ?: 0.0,
+                                    call.argument<Double>("y2") ?: 0.0,
+                                    (call.argument<Number>("ms") ?: 60).toLong()
+                                )
+                            )
+                        }
+                    }
+
+                    "aktion" -> {
+                        val d = FernwartungService.instanz
+                        result.success(
+                            d?.globaleAktion(call.argument<String>("name") ?: "") ?: false
+                        )
+                    }
+
+                    // Das Mitglied schaltet den Dienst selbst ein; eine App kann
+                    // sich diese Berechtigung nicht erteilen. Wir koennen nur die
+                    // Systemseite oeffnen.
+                    "einstellungenOeffnen" -> {
+                        try {
+                            startActivity(
+                                Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            )
+                            result.success(true)
+                        } catch (e: Exception) {
+                            Log.w(TAG, "Bedienungshilfen nicht zu oeffnen: ${e.message}")
+                            result.success(false)
+                        }
+                    }
+
                     else -> result.notImplemented()
                 }
             }

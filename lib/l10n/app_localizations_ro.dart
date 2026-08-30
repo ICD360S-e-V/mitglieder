@@ -3038,4 +3038,17 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get themeScheduleHint =>
       'Întunecat de la 20:00 până la 06:00, luminos în restul zilei.';
+
+  @override
+  String get fernwartungTitel => 'Asistență la distanță';
+
+  @override
+  String get fernwartungSteuerungTitel => 'Permite controlul';
+
+  @override
+  String get fernwartungSteuerungHinweis =>
+      'Conducerea poate folosi dispozitivul în timpul unei sesiuni de asistență. Aprobați fiecare sesiune separat; fără sesiune nu se întâmplă nimic. Serviciul nu poate citi ecranul.';
+
+  @override
+  String get fernwartungSteuerungAktiv => 'Controlul este pornit';
 }

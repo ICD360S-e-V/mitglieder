@@ -1426,5 +1426,9 @@
   "themeDark": "Koyu",
   "themeSystem": "Cihazı takip et",
   "themeSchedule": "Otomatik (20.00–06.00)",
-  "themeScheduleHint": "20.00 ile 06.00 arası koyu, günün geri kalanında açık."
+  "themeScheduleHint": "20.00 ile 06.00 arası koyu, günün geri kalanında açık.",
+  "fernwartungTitel": "Uzaktan destek",
+  "fernwartungSteuerungTitel": "Kontrole izin ver",
+  "fernwartungSteuerungHinweis": "Yönetim, uzaktan destek sırasında cihazınızı kullanabilir. Her oturuma ayrı ayrı izin verirsiniz; oturum yoksa hiçbir şey olmaz. Hizmet ekranınızı okuyamaz.",
+  "fernwartungSteuerungAktiv": "Kontrol açık"
 }

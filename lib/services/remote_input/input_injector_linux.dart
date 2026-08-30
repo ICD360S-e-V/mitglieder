@@ -21,7 +21,7 @@ typedef _FakeButtonKeyD = int Function(Pointer<Void>, int, int, int);
 /// ([isSupported] false) so the agent stays view-only. Keys are mapped
 /// HID → X keysym → runtime keycode (XKeysymToKeycode) so they follow the
 /// member's actual layout, and modifiers compose for shortcuts.
-class LinuxInputInjector implements InputInjector {
+class LinuxInputInjector extends InputInjector {
   Pointer<Void> _display = nullptr;
   bool _ok = false;
   int _screenW = 0;

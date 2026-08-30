@@ -1,5 +1,6 @@
 import 'dart:io';
 import '../logger_service.dart';
+import 'input_injector_android.dart';
 import 'input_injector_windows.dart';
 import 'input_injector_linux.dart';
 import 'input_injector_macos.dart';
@@ -14,7 +15,12 @@ final _log = LoggerService();
 ///  - Linux (X11/XWayland): full control via XTest (input_injector_linux.dart)
 ///  - macOS: full control via CGEvent (input_injector_macos.dart) — needs the
 ///    app OUT of the sandbox + Accessibility permission
-///  - Android/iOS: NOT supported — mobile is view-only. Returns [NoopInputInjector].
+///  - Android: Gesten ueber den FernwartungService (AccessibilityService) —
+///    Tippen, langes Tippen, Wischen, Zurueck/Start. Nur wenn das Mitglied den
+///    Dienst in den Android-Einstellungen eingeschaltet hat, sonst view-only.
+///    ⚠️ Kein Schreiben in Textfelder: der Dienst hat bewusst KEINEN Lesezugriff
+///    auf den Bildschirminhalt.
+///  - iOS: NOT supported — view-only. Returns [NoopInputInjector].
 ///
 /// Coordinates are normalized 0..1 over the shared screen so the protocol is
 /// resolution-independent; each backend denormalizes using [setScreenSize]
@@ -44,6 +50,18 @@ abstract class InputInjector {
   /// null for control keys. [down] false = key release.
   Future<void> keyEvent({required int hid, String? character, required bool down});
 
+  /// Einmalige Vorbereitung, bevor Eingaben kommen. Vorgabe: nichts zu tun.
+  ///
+  /// Android braucht sie, weil dort erst zur Laufzeit feststeht, ob das
+  /// Mitglied den Bedienungshilfen-Dienst eingeschaltet hat — [isSupported] ist
+  /// synchron, die Antwort des Kanals ist es nicht.
+  Future<void> vorbereiten() async {}
+
+  /// Systemweite Aktion ohne Koordinaten: `back`, `home`, `recents`,
+  /// `notifications`. Nur auf Android sinnvoll; die Schreibtisch-Umsetzungen
+  /// lassen sie bewusst liegen, weil es dort kein Gegenstueck gibt.
+  Future<void> systemAktion(String name) async {}
+
   /// Release the injector's native resources (X display, etc.).
   void dispose() {}
 }
@@ -51,7 +69,7 @@ abstract class InputInjector {
 /// View-only fallback: swallows every event. Used on mobile (Android/iOS) and
 /// anywhere native injection is unavailable, so the agent can still SHARE the
 /// screen while ignoring control attempts.
-class NoopInputInjector implements InputInjector {
+class NoopInputInjector extends InputInjector {
   final String reason;
   NoopInputInjector([this.reason = 'view-only']);
 
@@ -83,6 +101,11 @@ class NoopInputInjector implements InputInjector {
 /// is a no-op).
 InputInjector createInputInjector() {
   try {
+    if (Platform.isAndroid) {
+      // isSupported ist hier zunaechst false; RemoteAgentService ruft
+      // vorbereiten() ab, und erst dann steht fest, ob gesteuert werden darf.
+      return AndroidInputInjector();
+    }
     if (Platform.isWindows) {
       return WindowsInputInjector();
     }
@@ -102,5 +125,5 @@ InputInjector createInputInjector() {
   } catch (_) {
     // Platform may throw on unusual embeddings — fall through to Noop.
   }
-  return NoopInputInjector('mobile-view-only');
+  return NoopInputInjector('mobile-view-only'); // iOS
 }

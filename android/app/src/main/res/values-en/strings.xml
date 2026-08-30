@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fernwartung_dienst_kurz">ICD360S Remote support (control)</string>
+    <string name="fernwartung_dienst_beschreibung">Lets the ICD360S e.V. board operate your device during a remote-support session — tap, swipe, back.\n\nOnly when you have explicitly allowed a session. Nothing happens without a running session.\n\nThis service can NOT read your screen: no text, no passwords, no account numbers. It can only tap and swipe.\n\nYou can end the session at any time from the banner at the top of the app.</string>
+</resources>

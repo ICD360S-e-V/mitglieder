@@ -1405,5 +1405,9 @@
   "themeDark": "Sötét",
   "themeSystem": "Eszköz szerint",
   "themeSchedule": "Automatikus (20:00–06:00)",
-  "themeScheduleHint": "Sötét 20:00-tól 6:00-ig, a nap többi részében világos."
+  "themeScheduleHint": "Sötét 20:00-tól 6:00-ig, a nap többi részében világos.",
+  "fernwartungTitel": "Fernwartung",
+  "fernwartungSteuerungTitel": "Steuerung erlauben",
+  "fernwartungSteuerungHinweis": "Der Vorstand darf Ihr Gerät während einer Fernwartung bedienen. Sie stimmen jeder Sitzung einzeln zu; ohne Sitzung geschieht nichts. Der Dienst kann Ihren Bildschirm nicht lesen.",
+  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet"
 }

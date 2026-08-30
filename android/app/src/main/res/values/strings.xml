@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fernwartung_dienst_kurz">ICD360S Fernwartung (Steuerung)</string>
+    <string name="fernwartung_dienst_beschreibung">Erlaubt dem Vorstand des ICD360S e.V., Ihr Gerät während einer Fernwartung zu bedienen — tippen, wischen, zurück.\n\nNur wenn Sie eine Fernwartung ausdrücklich erlaubt haben. Ohne laufende Sitzung geschieht nichts.\n\nDieser Dienst kann Ihren Bildschirm NICHT lesen: keine Texte, keine Passwörter, keine Kontonummern. Er kann nur tippen und wischen.\n\nSie können die Sitzung jederzeit im Banner oben in der App beenden.</string>
+</resources>

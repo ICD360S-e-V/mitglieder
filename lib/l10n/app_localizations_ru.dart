@@ -3033,4 +3033,17 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get themeScheduleHint =>
       'Тёмная с 20:00 до 6:00, светлая в остальное время.';
+
+  @override
+  String get fernwartungTitel => 'Удалённая помощь';
+
+  @override
+  String get fernwartungSteuerungTitel => 'Разрешить управление';
+
+  @override
+  String get fernwartungSteuerungHinweis =>
+      'Правление может управлять устройством во время сеанса помощи. Каждый сеанс вы разрешаете отдельно; без сеанса ничего не происходит. Служба не может читать экран.';
+
+  @override
+  String get fernwartungSteuerungAktiv => 'Управление включено';
 }

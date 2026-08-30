@@ -3036,4 +3036,17 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get themeScheduleHint =>
       'Dark from 8 pm until 6 am, light for the rest of the day.';
+
+  @override
+  String get fernwartungTitel => 'Remote support';
+
+  @override
+  String get fernwartungSteuerungTitel => 'Allow control';
+
+  @override
+  String get fernwartungSteuerungHinweis =>
+      'The board may operate your device during a remote-support session. You approve every session separately; nothing happens without one. The service cannot read your screen.';
+
+  @override
+  String get fernwartungSteuerungAktiv => 'Control is switched on';
 }

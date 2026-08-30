@@ -3034,4 +3034,17 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get themeScheduleHint => 'Темна з 20:00 до 6:00, світла решту дня.';
+
+  @override
+  String get fernwartungTitel => 'Віддалена допомога';
+
+  @override
+  String get fernwartungSteuerungTitel => 'Дозволити керування';
+
+  @override
+  String get fernwartungSteuerungHinweis =>
+      'Правління може керувати пристроєм під час сеансу допомоги. Кожен сеанс ви дозволяєте окремо; без сеансу нічого не відбувається. Служба не може читати екран.';
+
+  @override
+  String get fernwartungSteuerungAktiv => 'Керування увімкнено';
 }

@@ -1405,5 +1405,9 @@
   "themeDark": "Tmavý",
   "themeSystem": "Podle zařízení",
   "themeSchedule": "Automaticky (20:00–06:00)",
-  "themeScheduleHint": "Tmavý od 20:00 do 6:00, po zbytek dne světlý."
+  "themeScheduleHint": "Tmavý od 20:00 do 6:00, po zbytek dne světlý.",
+  "fernwartungTitel": "Fernwartung",
+  "fernwartungSteuerungTitel": "Steuerung erlauben",
+  "fernwartungSteuerungHinweis": "Der Vorstand darf Ihr Gerät während einer Fernwartung bedienen. Sie stimmen jeder Sitzung einzeln zu; ohne Sitzung geschieht nichts. Der Dienst kann Ihren Bildschirm nicht lesen.",
+  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet"
 }

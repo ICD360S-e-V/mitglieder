@@ -1405,5 +1405,9 @@
   "themeDark": "Întunecat",
   "themeSystem": "După dispozitiv",
   "themeSchedule": "Automat (20:00–06:00)",
-  "themeScheduleHint": "Întunecat de la 20:00 până la 06:00, luminos în restul zilei."
+  "themeScheduleHint": "Întunecat de la 20:00 până la 06:00, luminos în restul zilei.",
+  "fernwartungTitel": "Asistență la distanță",
+  "fernwartungSteuerungTitel": "Permite controlul",
+  "fernwartungSteuerungHinweis": "Conducerea poate folosi dispozitivul în timpul unei sesiuni de asistență. Aprobați fiecare sesiune separat; fără sesiune nu se întâmplă nimic. Serviciul nu poate citi ecranul.",
+  "fernwartungSteuerungAktiv": "Controlul este pornit"
 }

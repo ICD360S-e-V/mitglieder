@@ -1405,5 +1405,9 @@
   "themeDark": "Темна",
   "themeSystem": "Як на пристрої",
   "themeSchedule": "Автоматично (20:00–06:00)",
-  "themeScheduleHint": "Темна з 20:00 до 6:00, світла решту дня."
+  "themeScheduleHint": "Темна з 20:00 до 6:00, світла решту дня.",
+  "fernwartungTitel": "Віддалена допомога",
+  "fernwartungSteuerungTitel": "Дозволити керування",
+  "fernwartungSteuerungHinweis": "Правління може керувати пристроєм під час сеансу допомоги. Кожен сеанс ви дозволяєте окремо; без сеансу нічого не відбувається. Служба не може читати екран.",
+  "fernwartungSteuerungAktiv": "Керування увімкнено"
 }
