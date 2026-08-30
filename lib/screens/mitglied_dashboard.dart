@@ -94,6 +94,8 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   StreamSubscription<ChatMessage>? _messageSubscription;
   StreamSubscription<CallOfferEvent>? _callOfferSubscription;
   StreamSubscription<int>? _ticketNotificationSubscription;
+  /// Zustellung derselben Ticket-Meldungen über den WebSocket.
+  StreamSubscription<TicketNotificationEvent>? _ticketWsSubscription;
   // Fernwartung (remote support) — receives remote_offer, shows consent prompt.
   StreamSubscription<RemoteOfferEvent>? _remoteOfferSubscription;
   final RemoteAgentService _remoteAgent = RemoteAgentService();
@@ -348,6 +350,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     _callOfferSubscription?.cancel();
     _remoteOfferSubscription?.cancel();
     _ticketNotificationSubscription?.cancel();
+    _ticketWsSubscription?.cancel();
     _callDurationTimer?.cancel();
     _ticketRefreshTimer?.cancel();
     _paymentReminderTimer?.cancel();
@@ -388,6 +391,19 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         // Auto-reload ticket list when new notifications arrive
         _loadTickets();
       }
+    });
+
+    // Dieselbe Anzeige, aber über den WebSocket. ChatService empfängt
+    // `ticket_notification` und zeigte die native Benachrichtigung schon immer
+    // an — nur das Abzeichen hing allein an der HTTP-Abfrage und lief ihr
+    // deshalb bis zu einem Intervall hinterher. Jetzt aktualisiert es sich in
+    // dem Moment, in dem die Meldung eintrifft; die Abfrage ist nur noch das
+    // Sicherheitsnetz für den Fall, dass der WebSocket gerade unten liegt.
+    _ticketWsSubscription =
+        _chatService.ticketNotificationStream.listen((_) {
+      if (!mounted) return;
+      setState(() => _unreadTicketCount += 1);
+      _loadTickets();
     });
   }
 
