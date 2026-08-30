@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.88.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.2...v1.88.3) (2026-08-30)
+
+
+### Bug Fixes
+
+* **auth:** rotiertes Refresh-Token uebernehmen ([#338](https://github.com/ICD360S-e-V/mitglieder/issues/338)) ([06637ea](https://github.com/ICD360S-e-V/mitglieder/commit/06637ea8f10b1e1528d1a817034aec76b21e6779))
+
 ## [1.88.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.1...v1.88.2) (2026-08-30)
 
 
