@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.88.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.3...v1.88.4) (2026-08-30)
+
+
+### Bug Fixes
+
+* **fernwartung:** Steuerung auf Android, Raumbeitritt nach Abriss, Takt nur bei Sitzung ([#340](https://github.com/ICD360S-e-V/mitglieder/issues/340)) ([4d9bc7c](https://github.com/ICD360S-e-V/mitglieder/commit/4d9bc7c849c9e518c8ab1dc5b81caf7b42ca5240))
+
 ## [1.88.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.2...v1.88.3) (2026-08-30)
 
 
