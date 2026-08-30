@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.88.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.0...v1.88.1) (2026-08-30)
+
+
+### Performance
+
+* **akku:** WebSocket-Ping von 45 s auf 4 min ([#334](https://github.com/ICD360S-e-V/mitglieder/issues/334)) ([847b5e6](https://github.com/ICD360S-e-V/mitglieder/commit/847b5e64c3ed06a1fc232d0f2ee45ad4410eb169))
+
 ## [1.88.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.87.2...v1.88.0) (2026-08-30)
 
 
