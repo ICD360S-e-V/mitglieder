@@ -36,7 +36,16 @@ class ScreenCaptureService : Service() {
             .setOngoing(true)
             .build()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            startForeground(NOTIF_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION)
+            // ⚠️ Beide Typen. Der Typ im Manifest erlaubt es nur; angemeldet
+            // wird er HIER. Ohne `MICROPHONE` schneidet Android 14+ den Ton ab,
+            // sobald das Mitglied die App verlaesst — also genau dann, wenn ihm
+            // geholfen wird und es zuhoert statt zu tippen.
+            startForeground(
+                NOTIF_ID,
+                notification,
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
+                    or ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
+            )
         } else {
             startForeground(NOTIF_ID, notification)
         }

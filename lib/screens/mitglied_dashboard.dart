@@ -415,21 +415,53 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       _chatService.sendRemoteReject(event.conversationId, 'busy');
       return;
     }
+    // 🔴 VOR dem Dialog: ab jetzt die ICE-Kandidaten des Vorsitzes einsammeln.
+    // `remoteIceStream` ist ein Broadcast-Stream — was waehrend des Dialogs
+    // ankommt und niemanden findet, ist verloren, und ohne Gegenkandidaten
+    // beginnt der ICE-Agent hier gar nicht erst mit den Pruefungen.
+    _remoteAgent.angebotVormerken(event);
+
+    // Gibt der Vorsitz auf (60-s-Zeitablauf) oder legt er auf, muss der Dialog
+    // verschwinden. Vorher blieb er stehen, und ein spaeteres „Erlauben"
+    // teilte den Bildschirm mit niemandem.
+    StreamSubscription<RemoteEndedEvent>? endeSub;
+    var offen = true;
+    void schliessen(BuildContext ctx) {
+      if (!offen) return;
+      offen = false;
+      endeSub?.cancel();
+      Navigator.of(ctx).pop();
+    }
+
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (ctx) => RemoteConsentDialog(
-        controllerName: event.controllerName,
-        onAccept: () {
-          Navigator.of(ctx).pop();
-          _remoteAgent.accept(event);
-        },
-        onDecline: () {
-          Navigator.of(ctx).pop();
-          _remoteAgent.decline(event);
-        },
-      ),
-    );
+      builder: (ctx) {
+        // ⚠️ `ctx` ueberlebt hier bewusst den Sprung: der Zuhoerer feuert
+        // spaeter. `offen` faengt den Fall ab, dass der Dialog inzwischen
+        // schon weg ist; ein `mounted` des Bildschirms wuerde etwas anderes
+        // pruefen als die Lebensdauer DIESES Dialogs.
+        endeSub ??= _chatService.remoteEndedStream.listen((e) {
+          if (e.conversationId != event.conversationId || !offen) return;
+          _remoteAgent.vormerkungVerwerfen();
+          if (ctx.mounted) schliessen(ctx);
+        });
+        return RemoteConsentDialog(
+          controllerName: event.controllerName,
+          onAccept: () {
+            schliessen(ctx);
+            _remoteAgent.accept(event);
+          },
+          onDecline: () {
+            schliessen(ctx);
+            _remoteAgent.decline(event);
+          },
+        );
+      },
+    ).then((_) {
+      offen = false;
+      endeSub?.cancel();
+    });
   }
 
   void _handleIncomingCall(CallOfferEvent event) {
