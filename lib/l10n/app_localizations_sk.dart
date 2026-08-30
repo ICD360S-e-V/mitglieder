@@ -3043,4 +3043,37 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Žiadosť o vzdialenú podporu';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '„$name\" chce vidieť a ovládať vašu obrazovku, aby vám pomohol. Bez vášho súhlasu sa nič neprenáša.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Po celý čas uvidíte upozornenie a kedykoľvek môžete ťuknúť na „Stop\".';
+
+  @override
+  String get fernwartungErlauben => 'Povoliť';
+
+  @override
+  String get fernwartungAblehnen => 'Odmietnuť';
+
+  @override
+  String get fernwartungVerbindet => 'Pripája sa …';
+
+  @override
+  String get fernwartungAktiv => 'Vaša obrazovka sa zdieľa';
+
+  @override
+  String get fernwartungStopp => 'Stop';
+
+  @override
+  String get fernwartungMikroAus => 'Vypnúť mikrofón';
+
+  @override
+  String get fernwartungMikroAn => 'Zapnúť mikrofón';
 }

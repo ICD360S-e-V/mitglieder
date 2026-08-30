@@ -3044,4 +3044,37 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Etätukipyyntö';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '”$name” haluaa nähdä ja ohjata näyttöäsi auttaakseen sinua. Mitään ei välitetä ilman suostumustasi.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Näet ilmoituksen koko ajan ja voit painaa ”Lopeta” milloin tahansa.';
+
+  @override
+  String get fernwartungErlauben => 'Salli';
+
+  @override
+  String get fernwartungAblehnen => 'Hylkää';
+
+  @override
+  String get fernwartungVerbindet => 'Yhdistetään …';
+
+  @override
+  String get fernwartungAktiv => 'Näyttöäsi jaetaan';
+
+  @override
+  String get fernwartungStopp => 'Lopeta';
+
+  @override
+  String get fernwartungMikroAus => 'Mykistä mikrofoni';
+
+  @override
+  String get fernwartungMikroAn => 'Poista mikrofonin mykistys';
 }

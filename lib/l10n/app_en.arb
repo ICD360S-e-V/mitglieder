@@ -1409,5 +1409,15 @@
   "fernwartungTitel": "Remote support",
   "fernwartungSteuerungTitel": "Allow control",
   "fernwartungSteuerungHinweis": "The board may operate your device during a remote-support session. You approve every session separately; nothing happens without one. The service cannot read your screen.",
-  "fernwartungSteuerungAktiv": "Control is switched on"
+  "fernwartungSteuerungAktiv": "Control is switched on",
+  "fernwartungAnfrageTitel": "Remote support request",
+  "fernwartungAnfrageText": "\"{name}\" would like to see and control your screen to help you. Nothing is shared without your consent.",
+  "fernwartungAnfrageHinweis": "You will see a banner the whole time and can tap \"Stop\" at any moment.",
+  "fernwartungErlauben": "Allow",
+  "fernwartungAblehnen": "Decline",
+  "fernwartungVerbindet": "Connecting …",
+  "fernwartungAktiv": "Your screen is being shared",
+  "fernwartungStopp": "Stop",
+  "fernwartungMikroAus": "Mute microphone",
+  "fernwartungMikroAn": "Unmute microphone"
 }

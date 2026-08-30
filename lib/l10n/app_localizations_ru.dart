@@ -3046,4 +3046,37 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Управление включено';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Запрос на удалённую помощь';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '«$name» хочет видеть ваш экран и управлять им, чтобы помочь вам. Ничего не передаётся без вашего согласия.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Вы всё время будете видеть уведомление и можете в любой момент нажать «Стоп».';
+
+  @override
+  String get fernwartungErlauben => 'Разрешить';
+
+  @override
+  String get fernwartungAblehnen => 'Отклонить';
+
+  @override
+  String get fernwartungVerbindet => 'Подключение …';
+
+  @override
+  String get fernwartungAktiv => 'Ваш экран демонстрируется';
+
+  @override
+  String get fernwartungStopp => 'Стоп';
+
+  @override
+  String get fernwartungMikroAus => 'Выключить микрофон';
+
+  @override
+  String get fernwartungMikroAn => 'Включить микрофон';
 }

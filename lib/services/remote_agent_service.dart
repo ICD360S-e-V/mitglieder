@@ -194,7 +194,16 @@ class RemoteAgentService {
       _chat.joinConversation(offer.conversationId);
       // Android: drop FLAG_SECURE so MediaProjection can actually capture the
       // app (otherwise the shared screen is black). Restored on cleanup.
-      await SecureScreen.setSecure(false);
+      //
+      // ⚠️ Das Ergebnis wird AUSGEWERTET. Bleibt die Sperre stehen, sieht der
+      // Vorsitz ein schwarzes Bild und haelt es fuer ein Netzproblem — die
+      // Sitzung laeuft weiter, aber der Grund steht im Protokoll und geht mit
+      // der Antwort an die Gegenseite.
+      _sperreOffen = await SecureScreen.setSecure(false);
+      if (!_sperreOffen) {
+        _log.error('RemoteAgent: FLAG_SECURE liess sich NICHT aufheben — '
+            'das geteilte Bild bleibt schwarz', tag: 'REMOTE');
+      }
       _injector = createInputInjector();
       // ⚠️ Muss VOR dem Antworten passieren: auf Android steht erst danach fest,
       // ob gesteuert werden darf, und genau das wird der Gegenseite gemeldet.
@@ -222,6 +231,7 @@ class RemoteAgentService {
         for (final track in _mikroStream!.getTracks()) {
           await _pc!.addTrack(track, _mikroStream!);
         }
+        _tonwegSetzen();
       }
 
       // Answer the Vorsitzer's offer.
@@ -240,6 +250,7 @@ class RemoteAgentService {
         answer.type ?? 'answer',
         plattform: _plattformName(),
         steuerung: _injector?.isSupported ?? false,
+        bildFrei: _sperreOffen,
       );
 
       _subscribeSession();
@@ -418,6 +429,32 @@ class RemoteAgentService {
     }
   }
 
+  /// Ton auf eine angeschlossene Kopfhoerergarnitur legen, sonst Lautsprecher.
+  ///
+  /// ⚠️ `setSpeakerphoneOn(true)` ERZWINGT den Lautsprecher und geht an einer
+  /// verbundenen Bluetooth-Garnitur vorbei — genau der Fehler, den der
+  /// Anrufdienst schon einmal hatte und mit dieser Funktion behoben hat
+  /// (`voice_call_service._applyAudioRoute`). Die Fernwartung benutzte sie gar
+  /// nicht: sie hatte bis jetzt keinen Ton.
+  ///
+  /// ⚠️ Muss NACH `getUserMedia` laufen. Vorher steht der AudioManager noch
+  /// nicht auf MODE_IN_COMMUNICATION und die Umleitung wird verworfen.
+  ///
+  /// Lautsprecher als Rueckfall, nicht Hoermuschel: waehrend einer Fernwartung
+  /// schaut man auf den Bildschirm, man haelt das Telefon nicht ans Ohr.
+  void _tonwegSetzen() {
+    try {
+      if (Platform.isAndroid) {
+        Helper.setSpeakerphoneOnButPreferBluetooth();
+      } else if (Platform.isIOS) {
+        Helper.setSpeakerphoneOn(true);
+      }
+      _log.info('RemoteAgent: Tonweg gesetzt (Kopfhoerer bevorzugt)', tag: 'REMOTE');
+    } catch (e) {
+      _log.warning('RemoteAgent: Tonweg nicht setzbar: $e', tag: 'REMOTE');
+    }
+  }
+
   /// Eigenes Mikrofon stummschalten, ohne die Sitzung zu beenden.
   void mikrofonStumm(bool stumm) {
     for (final t in _mikroStream?.getAudioTracks() ?? const <MediaStreamTrack>[]) {
@@ -427,6 +464,11 @@ class RemoteAgentService {
 
   /// Liegt ueberhaupt ein Mikrofon an? Fuer die Anzeige im Banner.
   bool get hatMikrofon => _mikroStream != null;
+
+  /// Konnte FLAG_SECURE aufgehoben werden? Bei false ist das geteilte Bild
+  /// schwarz, ohne dass die Verbindung etwas dafuer kann.
+  bool get sperreOffen => _sperreOffen;
+  bool _sperreOffen = true;
 
   /// Parse one input frame from the controller and drive the native injector.
   void _handleInput(String text) {

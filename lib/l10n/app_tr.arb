@@ -1430,5 +1430,15 @@
   "fernwartungTitel": "Uzaktan destek",
   "fernwartungSteuerungTitel": "Kontrole izin ver",
   "fernwartungSteuerungHinweis": "Yönetim, uzaktan destek sırasında cihazınızı kullanabilir. Her oturuma ayrı ayrı izin verirsiniz; oturum yoksa hiçbir şey olmaz. Hizmet ekranınızı okuyamaz.",
-  "fernwartungSteuerungAktiv": "Kontrol açık"
+  "fernwartungSteuerungAktiv": "Kontrol açık",
+  "fernwartungAnfrageTitel": "Uzaktan destek isteği",
+  "fernwartungAnfrageText": "\"{name}\" size yardımcı olmak için ekranınızı görmek ve kontrol etmek istiyor. İzniniz olmadan hiçbir şey aktarılmaz.",
+  "fernwartungAnfrageHinweis": "Her zaman bir uyarı görürsünüz ve istediğiniz an \"Durdur\"a dokunabilirsiniz.",
+  "fernwartungErlauben": "İzin ver",
+  "fernwartungAblehnen": "Reddet",
+  "fernwartungVerbindet": "Bağlanıyor …",
+  "fernwartungAktiv": "Ekranınız paylaşılıyor",
+  "fernwartungStopp": "Durdur",
+  "fernwartungMikroAus": "Mikrofonu kapat",
+  "fernwartungMikroAn": "Mikrofonu aç"
 }
