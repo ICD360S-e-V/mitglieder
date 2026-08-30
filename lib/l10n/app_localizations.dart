@@ -3439,6 +3439,18 @@ abstract class AppLocalizations {
   /// **'Navigation (letzte 20 Bildschirme)'**
   String get claudiuDiagnosticSends9;
 
+  /// No description provided for @claudiuDiagnosticSends10.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie oft die App Daten gesendet hat (nur Anzahl, kein Inhalt)'**
+  String get claudiuDiagnosticSends10;
+
+  /// No description provided for @claudiuDiagnosticSends11.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie das System die App einstuft und wie schnell sich der Akku entlädt'**
+  String get claudiuDiagnosticSends11;
+
   /// No description provided for @claudiuDiagnosticNeverHeader.
   ///
   /// In de, this message translates to:
@@ -3496,7 +3508,7 @@ abstract class AppLocalizations {
   /// No description provided for @claudiuDiagnosticTech1.
   ///
   /// In de, this message translates to:
-  /// **'Wird alle 2 Minuten gesendet'**
+  /// **'Wird alle 15 Minuten gesendet'**
   String get claudiuDiagnosticTech1;
 
   /// No description provided for @claudiuDiagnosticTech2.

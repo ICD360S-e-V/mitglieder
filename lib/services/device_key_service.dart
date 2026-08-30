@@ -13,6 +13,7 @@ import 'package:http/io_client.dart';
 import 'package:uuid/uuid.dart';
 import 'http_client_factory.dart';
 import 'logger_service.dart';
+import 'battery_usage_service.dart';
 
 /// Service pentru gestionarea Device Key unic per instalare
 /// Înlocuiește API Key-ul hardcodat cu un key dinamic stocat securizat
@@ -375,6 +376,7 @@ class DeviceKeyService {
       final extendedData = await _collectExtendedDeviceData();
       if (extendedData.isEmpty) return;
 
+      BatteryUsageService.instance.noteNetworkRequest();
       await _client.post(
         Uri.parse('$_baseUrl/device/validate.php'),
         headers: {

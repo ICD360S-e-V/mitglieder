@@ -1835,6 +1835,14 @@ class AppLocalizationsEt extends AppLocalizations {
   String get claudiuDiagnosticSends9 => 'Navigeerimine (viimased 20 ekraani)';
 
   @override
+  String get claudiuDiagnosticSends10 =>
+      'Mitu korda on rakendus andmeid saatnud (ainult arv, mitte sisu)';
+
+  @override
+  String get claudiuDiagnosticSends11 =>
+      'Kuidas süsteem rakendust liigitab ja kui kiiresti aku tühjeneb';
+
+  @override
   String get claudiuDiagnosticNeverHeader =>
       '🛡️ Mida me MITTE KUNAGI ei saada:';
 
@@ -1863,7 +1871,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get claudiuDiagnosticTechHeader => '📡 Tehnilised üksikasjad:';
 
   @override
-  String get claudiuDiagnosticTech1 => 'Saadetakse iga 2 minuti tagant';
+  String get claudiuDiagnosticTech1 => 'Saadetakse iga 15 minuti järel';
 
   @override
   String get claudiuDiagnosticTech2 =>

@@ -21,6 +21,7 @@ import '../services/ticket_notification_service.dart';
 import '../services/ntfy_service.dart';
 import '../services/diagnostic_service.dart';
 import '../services/device_key_service.dart';
+import '../services/battery_usage_service.dart';
 import '../services/security_event_reporter.dart';
 import '../widgets/mitglied_profile_dialog.dart';
 import '../widgets/personal_data_dialog.dart';
@@ -213,11 +214,13 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       );
     });
 
+    // Die Akkumessung läuft seit main() und wird hier bewusst NICHT auf das
+    // Mitglied umgeschlüsselt: sie meldet nur unter der anonymen Gerätekennung
+    // — siehe BatteryUsageService.start.
+
     // Update battery/device data on server every 5 minutes
     DeviceKeyService().updateExtendedData();
-    _deviceDataTimer = Timer.periodic(const Duration(minutes: 5), (_) {
-      DeviceKeyService().updateExtendedData();
-    });
+    _startDeviceDataTimer();
 
     // Poll pending termine count (every 60s - battery optimized)
     _loadPendingTerminCount();
@@ -285,14 +288,42 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     };
   }
 
-  @override
+  /// Startet die 5-Minuten-Uhr für Geräte- und Akkudaten, sofern sie nicht
+  /// schon läuft.
+  ///
+  /// Eine einzige Stelle, weil genau die Verdopplung der Grund für den Fehler
+  /// war, den das hier ablöst: der Timer wurde in `initState` aufgesetzt und
+  /// in `paused` abgeräumt, aber im `resumed`-Zweig stand nur die Kopie für
+  /// `_terminPollTimer`. Nach dem ersten Wechsel in den Hintergrund erreichten
+  /// Geräte- und Akkudaten den Server dauerhaft nicht mehr — bis zum nächsten
+  /// App-Start. Wer den Timer künftig woanders braucht, ruft diese Methode auf
+  /// und kann das Intervall nicht mehr auseinanderlaufen lassen.
+  void _startDeviceDataTimer() {
+    if (_deviceDataTimer != null) return;
+    _deviceDataTimer = Timer.periodic(const Duration(minutes: 5), (_) {
+      DeviceKeyService().updateExtendedData();
+      // Huckepack: der Messdienst hält bewusst keinen eigenen Netz-Timer.
+      // Fertige Messfenster gehen mit, wenn ohnehin gesendet wird, statt das
+      // Funkmodem ein weiteres Mal zu wecken.
+      BatteryUsageService.instance.flush();
+    });
+  }
+
+  /// Gegenstück zu [_startDeviceDataTimer]. Setzt bewusst auf null: ein bloss
+  /// abgebrochener Timer bleibt non-null, und [_startDeviceDataTimer] hielte
+  /// ihn dann für eine noch laufende Uhr.
+  void _stopDeviceDataTimer() {
+    _deviceDataTimer?.cancel();
+    _deviceDataTimer = null;
+  }
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
       // App goes to background: pause UI-only timers (saves battery)
       // WebSocket + ntfy + background service continue running (notifications still work!)
       _terminPollTimer?.cancel();
-    _deviceDataTimer?.cancel();
+      _stopDeviceDataTimer();
       _ticketRefreshTimer?.cancel();
       _paymentReminderTimer?.cancel();
       debugPrint('[Dashboard] App paused - UI timers stopped (notifications still active)');
@@ -302,6 +333,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       _terminPollTimer = Timer.periodic(const Duration(seconds: 60), (_) {
         _loadPendingTerminCount();
       });
+      _startDeviceDataTimer();
       if (_selectedIndex == 3) {
         _loadTickets();
       }
@@ -320,7 +352,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     _ticketRefreshTimer?.cancel();
     _paymentReminderTimer?.cancel();
     _terminPollTimer?.cancel();
-    _deviceDataTimer?.cancel();
+    _stopDeviceDataTimer();
     _updateCheckTimer?.cancel();
     _heartbeatService.stop();
     _ticketNotificationService.stop();

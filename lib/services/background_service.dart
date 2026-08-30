@@ -9,6 +9,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/status.dart' as status;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'battery_usage_service.dart';
 import 'http_client_factory.dart';
 
 /// Background Service für persistent WebSocket connection
@@ -251,6 +252,14 @@ class BackgroundService {
         isConnecting = true;
         reconnectAttempts++;
         debugPrint('[BackgroundService] Connecting to WebSocket (attempt $reconnectAttempts)...');
+
+        // Akkumessung: der WebSocket lebt in diesem Isolate, der Messdienst im
+        // UI-Isolate. Der Zähler geht deshalb über SharedPreferences; ohne das
+        // wären Reconnects — jeder ein vollständiger TLS-Handshake und damit
+        // der teuerste Einzelvorgang der App — in der Messung unsichtbar.
+        // Die Pings selbst werden nicht gezählt: sie folgen fest aus der
+        // Verbindungsdauer geteilt durch das Ping-Intervall.
+        unawaited(BatteryUsageService.noteBackgroundWsReconnect());
 
         // Security: Token NOT in URL (would appear in server logs)
         // Token is sent in auth message instead

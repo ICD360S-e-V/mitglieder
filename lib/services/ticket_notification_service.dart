@@ -8,6 +8,7 @@ import 'package:workmanager/workmanager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'api_service.dart';
 import 'device_key_service.dart';
+import 'battery_usage_service.dart';
 
 /// Ticket Notification Service - Android (NO Google FCM!)
 /// Uses HTTP Polling + WorkManager for background
@@ -131,6 +132,7 @@ class TicketNotificationService {
 
       final deviceKey = _deviceKeyService.deviceKey ?? '';
 
+      BatteryUsageService.instance.noteNetworkRequest();
       final response = await http
           .post(
             Uri.parse(_apiUrl),

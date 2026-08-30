@@ -1838,6 +1838,14 @@ class AppLocalizationsSr extends AppLocalizations {
   String get claudiuDiagnosticSends9 => 'Навигација (последњих 20 екрана)';
 
   @override
+  String get claudiuDiagnosticSends10 =>
+      'Колико пута је апликација послала податке (само број, без садржаја)';
+
+  @override
+  String get claudiuDiagnosticSends11 =>
+      'Како систем разврстава апликацију и колико се брзо празни батерија';
+
+  @override
   String get claudiuDiagnosticNeverHeader => '🛡️ Шта НИКАДА не шаљемо:';
 
   @override
@@ -1865,7 +1873,7 @@ class AppLocalizationsSr extends AppLocalizations {
   String get claudiuDiagnosticTechHeader => '📡 Технички детаљи:';
 
   @override
-  String get claudiuDiagnosticTech1 => 'Шаље се на свака 2 минута';
+  String get claudiuDiagnosticTech1 => 'Шаље се сваких 15 минута';
 
   @override
   String get claudiuDiagnosticTech2 =>

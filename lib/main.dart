@@ -14,6 +14,7 @@ import 'services/notification_service.dart';
 import 'services/ticket_notification_service.dart';
 import 'services/logger_service.dart';
 import 'services/background_service.dart';
+import 'services/battery_usage_service.dart';
 import 'services/network_resilience.dart';
 import 'services/security_event_reporter.dart';
 import 'services/startup_diagnostics.dart';
@@ -125,6 +126,16 @@ void main() async {
             appVersion: UpdateService.currentVersion,
             platform: Platform.operatingSystem,
             osVersion: Platform.operatingSystemVersion,
+          ));
+
+  // Akkumessung: hält fest, wie schnell sich das Gerät entlädt, während die
+  // App läuft, und zählt im selben Fenster mit, wie oft die App das Funkmodem
+  // weckt. Hält keinen eigenen Netz-Timer — gemeldet wird huckepack, wenn
+  // ohnehin gesendet wird. Läuft nur mit erteilter Diagnose-Zustimmung.
+  await StartupDiagnostics.stepWithTimeout('BatteryUsageService.start', const Duration(seconds: 5),
+      () => BatteryUsageService.instance.start(
+            deviceId: LoggerService().deviceId,
+            appVersion: UpdateService.currentVersion,
           ));
 
   if (PlatformFactory.isMobile) {
