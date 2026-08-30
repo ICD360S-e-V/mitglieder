@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.88.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.1...v1.88.2) (2026-08-30)
+
+
+### Performance
+
+* **akku:** Ticket-Abfrage von 60 s auf 15 min, Abzeichen über WebSocket ([#335](https://github.com/ICD360S-e-V/mitglieder/issues/335)) ([fb1668f](https://github.com/ICD360S-e-V/mitglieder/commit/fb1668f8f8a48feecb2bac7b39269d836ff2d66c))
+
 ## [1.88.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.0...v1.88.1) (2026-08-30)
 
 
