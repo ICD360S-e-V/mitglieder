@@ -3042,4 +3042,37 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Attālinātā atbalsta pieprasījums';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '“$name” vēlas redzēt un vadīt jūsu ekrānu, lai jums palīdzētu. Bez jūsu piekrišanas nekas netiek pārraidīts.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Visu laiku redzēsiet paziņojumu un jebkurā brīdī varat pieskarties “Apturēt”.';
+
+  @override
+  String get fernwartungErlauben => 'Atļaut';
+
+  @override
+  String get fernwartungAblehnen => 'Noraidīt';
+
+  @override
+  String get fernwartungVerbindet => 'Notiek savienošana …';
+
+  @override
+  String get fernwartungAktiv => 'Jūsu ekrāns tiek kopīgots';
+
+  @override
+  String get fernwartungStopp => 'Apturēt';
+
+  @override
+  String get fernwartungMikroAus => 'Izslēgt mikrofonu';
+
+  @override
+  String get fernwartungMikroAn => 'Ieslēgt mikrofonu';
 }

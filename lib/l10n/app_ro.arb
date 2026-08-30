@@ -1409,5 +1409,15 @@
   "fernwartungTitel": "Asistență la distanță",
   "fernwartungSteuerungTitel": "Permite controlul",
   "fernwartungSteuerungHinweis": "Conducerea poate folosi dispozitivul în timpul unei sesiuni de asistență. Aprobați fiecare sesiune separat; fără sesiune nu se întâmplă nimic. Serviciul nu poate citi ecranul.",
-  "fernwartungSteuerungAktiv": "Controlul este pornit"
+  "fernwartungSteuerungAktiv": "Controlul este pornit",
+  "fernwartungAnfrageTitel": "Cerere de asistență la distanță",
+  "fernwartungAnfrageText": "„{name}\" dorește să vă vadă și să vă controleze ecranul pentru a vă ajuta. Nu se transmite nimic fără acordul dvs.",
+  "fernwartungAnfrageHinweis": "Veți vedea tot timpul un mesaj și puteți apăsa „Stop\" oricând.",
+  "fernwartungErlauben": "Permite",
+  "fernwartungAblehnen": "Refuză",
+  "fernwartungVerbindet": "Se conectează …",
+  "fernwartungAktiv": "Ecranul dvs. este partajat",
+  "fernwartungStopp": "Stop",
+  "fernwartungMikroAus": "Oprește microfonul",
+  "fernwartungMikroAn": "Pornește microfonul"
 }

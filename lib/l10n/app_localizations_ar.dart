@@ -3015,4 +3015,37 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'طلب الدعم عن بُعد';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return 'يريد «$name» رؤية شاشتك والتحكم بها لمساعدتك. لا يُنقل أي شيء دون موافقتك.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'سترى إشعارًا طوال الوقت ويمكنك الضغط على «إيقاف» في أي لحظة.';
+
+  @override
+  String get fernwartungErlauben => 'السماح';
+
+  @override
+  String get fernwartungAblehnen => 'رفض';
+
+  @override
+  String get fernwartungVerbindet => 'جارٍ الاتصال …';
+
+  @override
+  String get fernwartungAktiv => 'تتم مشاركة شاشتك';
+
+  @override
+  String get fernwartungStopp => 'إيقاف';
+
+  @override
+  String get fernwartungMikroAus => 'كتم الميكروفون';
+
+  @override
+  String get fernwartungMikroAn => 'تشغيل الميكروفون';
 }

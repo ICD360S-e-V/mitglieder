@@ -26,6 +26,18 @@ class MainActivity : FlutterActivity() {
         const val CAPTURE_CHANNEL = "de.icd360sev.mitglied/screen_capture"
         const val BATTERY_CHANNEL = "de.icd360sev.mitglied/battery_state"
         const val STEUERUNG_CHANNEL = "de.icd360sev.mitglied/fernsteuerung"
+
+        /**
+         * Laeuft gerade eine Fernwartung, in der der Bildschirm geteilt wird?
+         *
+         * ⚠️ MUSS die Activity ueberleben. `onCreate` setzt FLAG_SECURE — und
+         * `onCreate` laeuft bei jeder Neuerzeugung der Activity erneut:
+         * Drehen des Geraets, Schriftgroesse, dunkler Modus, Sprache. Mitten in
+         * einer Sitzung setzte das die Sperre wieder und der geteilte Bildschirm
+         * wurde SCHWARZ, ohne dass irgendwo ein Fehler auftauchte.
+         */
+        @Volatile
+        var fernwartungLaeuft: Boolean = false
     }
 
     // Fernwartung: FLAG_SECURE blocks the app from being screen-recorded — which
@@ -39,15 +51,27 @@ class MainActivity : FlutterActivity() {
                 when (call.method) {
                     "setSecure" -> {
                         val secure = call.argument<Boolean>("secure") ?: true
+                        // ⚠️ Die Antwort kommt AUS dem UI-Thread, nicht daneben.
+                        // Vorher meldete der Kanal sofort Erfolg, waehrend die
+                        // Aenderung noch anstand — `await setSecure(false)` hiess
+                        // also nicht „ist aus", und die Aufnahme konnte starten,
+                        // solange die Sperre noch stand.
+                        fernwartungLaeuft = !secure
                         runOnUiThread {
                             if (secure) {
                                 window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
                             } else {
                                 window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
                             }
-                            Log.d(TAG, "FLAG_SECURE set to $secure")
+                            val jetzt = (window.attributes.flags and
+                                WindowManager.LayoutParams.FLAG_SECURE) != 0
+                            Log.d(TAG, "FLAG_SECURE angefordert=$secure, tatsaechlich=$jetzt")
+                            // Zurueckgemeldet wird der GEMESSENE Zustand, nicht
+                            // der gewuenschte. Bleibt die Sperre stehen, sieht
+                            // der Vorsitz nur Schwarz — das muss man erfahren,
+                            // nicht raten.
+                            result.success(jetzt)
                         }
-                        result.success(null)
                     }
                     else -> result.notImplemented()
                 }
@@ -230,12 +254,20 @@ class MainActivity : FlutterActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Security: Prevent screenshots and screen recording
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_SECURE,
-            WindowManager.LayoutParams.FLAG_SECURE
-        )
-        Log.d(TAG, "FLAG_SECURE enabled - screenshots blocked")
+        // Security: Prevent screenshots and screen recording.
+        // ⚠️ NICHT waehrend einer laufenden Fernwartung: `onCreate` laeuft bei
+        // jedem Drehen und jeder Konfigurationsaenderung erneut und wuerde die
+        // Sperre mitten in der Sitzung wieder setzen — der geteilte Bildschirm
+        // wird dann schwarz, lautlos.
+        if (!fernwartungLaeuft) {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE
+            )
+            Log.d(TAG, "FLAG_SECURE enabled - screenshots blocked")
+        } else {
+            Log.d(TAG, "FLAG_SECURE NICHT gesetzt — Fernwartung laeuft")
+        }
 
         // Start the RestartService which will monitor onTaskRemoved
         startRestartService()

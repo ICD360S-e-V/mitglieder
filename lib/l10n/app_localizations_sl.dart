@@ -3046,4 +3046,37 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Zahteva za oddaljeno pomoč';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '„$name\" želi videti in upravljati vaš zaslon, da vam pomaga. Brez vašega soglasja se ne prenaša nič.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Ves čas boste videli obvestilo in lahko kadar koli pritisnete „Ustavi\".';
+
+  @override
+  String get fernwartungErlauben => 'Dovoli';
+
+  @override
+  String get fernwartungAblehnen => 'Zavrni';
+
+  @override
+  String get fernwartungVerbindet => 'Povezovanje …';
+
+  @override
+  String get fernwartungAktiv => 'Vaš zaslon se deli';
+
+  @override
+  String get fernwartungStopp => 'Ustavi';
+
+  @override
+  String get fernwartungMikroAus => 'Izklopi mikrofon';
+
+  @override
+  String get fernwartungMikroAn => 'Vklopi mikrofon';
 }

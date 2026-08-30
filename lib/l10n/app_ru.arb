@@ -1409,5 +1409,15 @@
   "fernwartungTitel": "Удалённая помощь",
   "fernwartungSteuerungTitel": "Разрешить управление",
   "fernwartungSteuerungHinweis": "Правление может управлять устройством во время сеанса помощи. Каждый сеанс вы разрешаете отдельно; без сеанса ничего не происходит. Служба не может читать экран.",
-  "fernwartungSteuerungAktiv": "Управление включено"
+  "fernwartungSteuerungAktiv": "Управление включено",
+  "fernwartungAnfrageTitel": "Запрос на удалённую помощь",
+  "fernwartungAnfrageText": "«{name}» хочет видеть ваш экран и управлять им, чтобы помочь вам. Ничего не передаётся без вашего согласия.",
+  "fernwartungAnfrageHinweis": "Вы всё время будете видеть уведомление и можете в любой момент нажать «Стоп».",
+  "fernwartungErlauben": "Разрешить",
+  "fernwartungAblehnen": "Отклонить",
+  "fernwartungVerbindet": "Подключение …",
+  "fernwartungAktiv": "Ваш экран демонстрируется",
+  "fernwartungStopp": "Стоп",
+  "fernwartungMikroAus": "Выключить микрофон",
+  "fernwartungMikroAn": "Включить микрофон"
 }

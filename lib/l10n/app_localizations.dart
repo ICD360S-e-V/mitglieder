@@ -5527,6 +5527,66 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Steuerung ist eingeschaltet'**
   String get fernwartungSteuerungAktiv;
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'Fernwartung-Anfrage'**
+  String get fernwartungAnfrageTitel;
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'„{name}\" möchte Ihren Bildschirm sehen und steuern, um Ihnen zu helfen. Es wird nichts ohne Ihre Zustimmung übertragen.'**
+  String fernwartungAnfrageText(String name);
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'Sie sehen die ganze Zeit einen Hinweis und können jederzeit auf „Stopp\" tippen.'**
+  String get fernwartungAnfrageHinweis;
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'Erlauben'**
+  String get fernwartungErlauben;
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'Ablehnen'**
+  String get fernwartungAblehnen;
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'Verbindung wird aufgebaut …'**
+  String get fernwartungVerbindet;
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'Ihr Bildschirm wird geteilt'**
+  String get fernwartungAktiv;
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'Stopp'**
+  String get fernwartungStopp;
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'Mikrofon aus'**
+  String get fernwartungMikroAus;
+
+  /// Fernwartung: Einwilligung und Banner beim Mitglied
+  ///
+  /// In de, this message translates to:
+  /// **'Mikrofon an'**
+  String get fernwartungMikroAn;
 }
 
 class _AppLocalizationsDelegate

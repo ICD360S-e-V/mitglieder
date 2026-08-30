@@ -3045,4 +3045,37 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Nuotolinės pagalbos užklausa';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '„$name\" nori matyti ir valdyti jūsų ekraną, kad jums padėtų. Be jūsų sutikimo niekas neperduodama.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Visą laiką matysite pranešimą ir bet kada galite paliesti „Stabdyti\".';
+
+  @override
+  String get fernwartungErlauben => 'Leisti';
+
+  @override
+  String get fernwartungAblehnen => 'Atmesti';
+
+  @override
+  String get fernwartungVerbindet => 'Jungiamasi …';
+
+  @override
+  String get fernwartungAktiv => 'Jūsų ekranas bendrinamas';
+
+  @override
+  String get fernwartungStopp => 'Stabdyti';
+
+  @override
+  String get fernwartungMikroAus => 'Išjungti mikrofoną';
+
+  @override
+  String get fernwartungMikroAn => 'Įjungti mikrofoną';
 }

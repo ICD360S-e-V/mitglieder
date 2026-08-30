@@ -438,6 +438,7 @@ class ChatService {
     String sdpType, {
     String? plattform,
     bool? steuerung,
+    bool? bildFrei,
   }) {
     _send({
       'type': 'remote_answer',
@@ -446,6 +447,9 @@ class ChatService {
       'sdp_type': sdpType,
       if (plattform != null) 'plattform': plattform,
       if (steuerung != null) 'steuerung': steuerung,
+      // false = FLAG_SECURE liess sich nicht aufheben, das Bild bleibt schwarz.
+      // Ohne diese Meldung sucht der Vorsitz den Fehler im Netz.
+      if (bildFrei != null) 'bild_frei': bildFrei,
     });
   }
 
