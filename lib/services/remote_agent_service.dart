@@ -254,7 +254,27 @@ class RemoteAgentService {
       _mikroStream = await _mikrofonHolen();
       if (_mikroStream != null) {
         for (final track in _mikroStream!.getTracks()) {
-          await _pc!.addTrack(track, _mikroStream!);
+          // 🔴 Der Ton geht in DIESELBE Spurgruppe wie der Bildschirm.
+          //
+          // Vorher hing er an `_mikroStream`, also an einem zweiten Stream.
+          // Beim Vorsitz feuert `onTrack` je Spur, und wer dort blind
+          // `event.streams[0]` nimmt, ueberschreibt den Bildschirm mit dem Ton,
+          // sobald der als zweiter eintrifft — der Renderer haengt dann an
+          // einem Stream ohne Videospur und zeigt SCHWARZ
+          // (`FlutterRTCVideoRenderer.setStream` nimmt `videoTracks.get(0)`
+          // und sonst `null`).
+          //
+          // Der eigentliche Fehler lag beim Vorsitz und ist dort behoben
+          // (vorsitzer#523). Das hier ist die zweite Haelfte: mit EINER
+          // Spurgruppe enthaelt `streams[0]` immer auch das Bild, und ein noch
+          // nicht aktualisierter Vorsitzer-Client zeigt trotzdem etwas. Waehrend
+          // der Auslieferung ist genau das der Unterschied zwischen „geht" und
+          // „schwarz".
+          //
+          // ⚠️ `_mikroStream` bleibt als eigenes Objekt bestehen — daran
+          // haengen Stummschalten und das Aufraeumen der Spuren. Geteilt wird
+          // nur die Kennung nach aussen.
+          await _pc!.addTrack(track, _screenStream!);
         }
         _tonwegSetzen();
       }
