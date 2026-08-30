@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.88.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.87.2...v1.88.0) (2026-08-30)
+
+
+### Features
+
+* **akku:** Verbrauch messen und Funkaufwachvorgänge reduzieren ([#332](https://github.com/ICD360S-e-V/mitglieder/issues/332)) ([9bd1bb9](https://github.com/ICD360S-e-V/mitglieder/commit/9bd1bb95cf77c5941c77093ab20c3a7d8c115100))
+
 ## [1.87.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.87.1...v1.87.2) (2026-08-27)
 
 
