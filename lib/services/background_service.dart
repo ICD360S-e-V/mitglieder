@@ -297,9 +297,29 @@ class BackgroundService {
           );
         }
 
-        // Start ping timer (every 30 seconds)
+        // Anwendungs-Ping alle 4 Minuten statt alle 45 Sekunden.
+        //
+        // Die alte Begründung im Code lautete „Nginx timeout is 60s". Das
+        // stimmt nicht: die /wss/-location setzt proxy_read_timeout 86400.
+        // Was die Verbindung tatsächlich offen hält, ist der Server selbst —
+        // websocket/server.php ruft enableKeepAlive($loop, 30) auf und schickt
+        // jedem Client alle 30 s einen protokollseitigen PING, gerade damit
+        // CGNAT-Boxen der Mobilfunknetze die Leerlaufverbindung nicht nach
+        // ~60 s abräumen. Der PONG darauf beantwortet der WebSocket-Stack
+        // ohne unser Zutun.
+        //
+        // Damit war dieser Timer reine Verdopplung: ein zweiter, gegenüber
+        // dem Server-Ping phasenverschobener Funkaufwachvorgang alle 45 s,
+        // rund 80 pro Stunde, der nichts offenhielt, was nicht ohnehin offen
+        // war. 45 s ist ausserdem bekanntermassen knapp zu kurz, als dass das
+        // Modem dazwischen herunterfahren könnte.
+        //
+        // Vier Minuten belässt uns eine clientseitige Lebendprüfung, ohne den
+        // Takt vorzugeben. Ganz entfernen wäre riskanter: dann bemerkt der
+        // Client eine halb offene Verbindung erst, wenn der Server sie
+        // schliesst.
         pingTimer?.cancel();
-        pingTimer = Timer.periodic(const Duration(seconds: 45), (timer) {
+        pingTimer = Timer.periodic(const Duration(minutes: 4), (timer) {
           if (isConnected && channel != null) {
             try {
               channel?.sink.add(jsonEncode({'type': 'ping'}));

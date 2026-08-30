@@ -268,9 +268,14 @@ class DesktopPlatformService implements PlatformService, WindowListener {
         'token': _token,
       }));
 
-      // Start ping timer (45 seconds - battery optimized, Nginx timeout is 60s)
+      // Ping alle 4 Minuten. Die frühere Notiz „Nginx timeout is 60s" war
+      // falsch — /wss/ setzt proxy_read_timeout 86400, und offen hält die
+      // Verbindung ohnehin der Server: websocket/server.php schickt per
+      // enableKeepAlive($loop, 30) alle 30 s einen protokollseitigen PING.
+      // Dieser Timer war damit ein zweiter Aufwachvorgang ohne eigenen
+      // Nutzen; er bleibt nur als clientseitige Lebendprüfung bestehen.
       _pingTimer?.cancel();
-      _pingTimer = Timer.periodic(const Duration(seconds: 45), (_) {
+      _pingTimer = Timer.periodic(const Duration(minutes: 4), (_) {
         if (_isConnected) {
           _channel?.sink.add(jsonEncode({'type': 'ping'}));
         }
