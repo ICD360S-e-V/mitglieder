@@ -1833,6 +1833,14 @@ class AppLocalizationsLv extends AppLocalizations {
   String get claudiuDiagnosticSends9 => 'Navigācija (pēdējie 20 ekrāni)';
 
   @override
+  String get claudiuDiagnosticSends10 =>
+      'Cik reižu lietotne ir nosūtījusi datus (tikai skaits, bez satura)';
+
+  @override
+  String get claudiuDiagnosticSends11 =>
+      'Kā sistēma klasificē lietotni un cik ātri izlādējas akumulators';
+
+  @override
   String get claudiuDiagnosticNeverHeader => '🛡️ Ko mēs NEKAD nesūtām:';
 
   @override
@@ -1860,7 +1868,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get claudiuDiagnosticTechHeader => '📡 Tehniskā informācija:';
 
   @override
-  String get claudiuDiagnosticTech1 => 'Sūta ik pēc 2 minūtēm';
+  String get claudiuDiagnosticTech1 => 'Tiek nosūtīts ik pēc 15 minūtēm';
 
   @override
   String get claudiuDiagnosticTech2 =>

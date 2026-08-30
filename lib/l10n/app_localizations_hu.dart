@@ -1839,6 +1839,14 @@ class AppLocalizationsHu extends AppLocalizations {
   String get claudiuDiagnosticSends9 => 'Navigáció (utolsó 20 képernyő)';
 
   @override
+  String get claudiuDiagnosticSends10 =>
+      'Hányszor küldött adatot az alkalmazás (csak a szám, tartalom nélkül)';
+
+  @override
+  String get claudiuDiagnosticSends11 =>
+      'Hogyan sorolja be a rendszer az alkalmazást, és milyen gyorsan merül az akkumulátor';
+
+  @override
   String get claudiuDiagnosticNeverHeader => '🛡️ Amit SOHA nem küldünk:';
 
   @override
@@ -1866,7 +1874,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get claudiuDiagnosticTechHeader => '📡 Technikai részletek:';
 
   @override
-  String get claudiuDiagnosticTech1 => '2 percenként küldve';
+  String get claudiuDiagnosticTech1 => '15 percenként küldi';
 
   @override
   String get claudiuDiagnosticTech2 =>

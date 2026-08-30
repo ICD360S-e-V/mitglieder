@@ -1842,6 +1842,14 @@ class AppLocalizationsTr extends AppLocalizations {
   String get claudiuDiagnosticSends9 => 'Gezinme (son 20 ekran)';
 
   @override
+  String get claudiuDiagnosticSends10 =>
+      'Uygulamanın kaç kez veri gönderdiği (yalnızca sayı, içerik yok)';
+
+  @override
+  String get claudiuDiagnosticSends11 =>
+      'Sistemin uygulamayı nasıl sınıflandırdığı ve pilin ne kadar hızlı boşaldığı';
+
+  @override
   String get claudiuDiagnosticNeverHeader => '🛡️ ASLA göndermediklerimiz:';
 
   @override
@@ -1869,7 +1877,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get claudiuDiagnosticTechHeader => '📡 Teknik detaylar:';
 
   @override
-  String get claudiuDiagnosticTech1 => 'Her 2 dakikada bir gönderilir';
+  String get claudiuDiagnosticTech1 => '15 dakikada bir gönderilir';
 
   @override
   String get claudiuDiagnosticTech2 =>

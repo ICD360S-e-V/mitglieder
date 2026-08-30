@@ -1,8 +1,12 @@
 package de.icd360s.mitglieder
 
+import android.app.usage.UsageStatsManager
+import android.content.Context
 import android.content.Intent
+import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
+import android.os.PowerManager
 import android.util.Log
 import android.view.WindowManager
 import io.flutter.embedding.android.FlutterActivity
@@ -19,6 +23,7 @@ class MainActivity : FlutterActivity() {
         const val TAG = "MainActivity"
         const val SECURE_CHANNEL = "de.icd360sev.mitglied/secure_screen"
         const val CAPTURE_CHANNEL = "de.icd360sev.mitglied/screen_capture"
+        const val BATTERY_CHANNEL = "de.icd360sev.mitglied/battery_state"
     }
 
     // Fernwartung: FLAG_SECURE blocks the app from being screen-recorded — which
@@ -70,6 +75,88 @@ class MainActivity : FlutterActivity() {
                     else -> result.notImplemented()
                 }
             }
+
+        // Akku-Messung: liefert den Energiezustand, den battery_plus nicht
+        // kennt. Alles rein lokal — nur Binder-Aufrufe, kein Funkmodem.
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, BATTERY_CHANNEL)
+            .setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "read" -> result.success(readBatteryState())
+                    else -> result.notImplemented()
+                }
+            }
+    }
+
+    /**
+     * Energiezustand für die Verbrauchsmessung.
+     *
+     * Bewusst NICHT dabei: der Verbrauch dieser App allein. Android hält die
+     * Zuordnung pro UID in BatteryStatsManager.getUidStats bzw. HealthStats,
+     * beides @SystemApi und nur für Systemanwendungen zugänglich. Was hier
+     * zurückkommt, ist Gerätezustand plus die Einstufung, die Android dieser
+     * App gegeben hat — mehr gibt die Plattform einer normalen App nicht.
+     *
+     * Jeder Block fängt einzeln ab: Hersteller-ROMs liefern für einzelne
+     * Properties gern eine Exception oder Int.MIN_VALUE, und ein fehlendes
+     * Feld ist besser als eine fehlgeschlagene Messung.
+     */
+    private fun readBatteryState(): Map<String, Any?> {
+        val out = HashMap<String, Any?>()
+
+        try {
+            val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
+            out["power_save_mode"] = pm.isPowerSaveMode
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                out["doze_exempt"] = pm.isIgnoringBatteryOptimizations(packageName)
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                out["thermal_status"] = pm.currentThermalStatus
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "PowerManager nicht lesbar: ${e.message}")
+        }
+
+        // Standby-Bucket der eigenen App: 10 active, 20 working_set,
+        // 30 frequent, 40 rare, 45 restricted. Für die eigene App ohne
+        // Berechtigung lesbar. Rutscht der Wert auf 40+, hat Android die App
+        // bereits gedrosselt — das erklärt Messwerte, die sonst unerklärlich
+        // gut aussehen.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            try {
+                val usm = getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+                out["standby_bucket"] = usm.appStandbyBucket
+            } catch (e: Exception) {
+                Log.w(TAG, "Standby-Bucket nicht lesbar: ${e.message}")
+            }
+        }
+
+        try {
+            val bm = getSystemService(Context.BATTERY_SERVICE) as BatteryManager
+
+            // Momentanstrom in µA. Vorzeichen ist herstellerabhängig (manche
+            // melden Entladung negativ, manche positiv), Betrag ist die
+            // brauchbare Grösse. Nicht implementierte Properties kommen als
+            // Int.MIN_VALUE oder 0 zurück.
+            val current = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)
+            if (current != Int.MIN_VALUE && current != 0) {
+                out["current_now_ua"] = current
+            }
+
+            // Verbleibende Ladung in µAh. Das ist der wichtigste Wert hier:
+            // der Akkustand in Prozent ist ganzzahlig, was über ein kurzes
+            // Fenster einen Messfehler von mehreren %/h bedeutet. CHARGE_
+            // COUNTER löst dieselbe Entladung um Grössenordnungen feiner auf
+            // und macht Vorher/Nachher-Vergleiche auf Android überhaupt erst
+            // belastbar.
+            val charge = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)
+            if (charge > 0) {
+                out["charge_counter_uah"] = charge
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "BatteryManager nicht lesbar: ${e.message}")
+        }
+
+        return out
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

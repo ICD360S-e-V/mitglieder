@@ -1,5 +1,6 @@
 import 'package:http/http.dart' as http;
 
+import 'battery_usage_service.dart';
 import 'network_resilience.dart';
 
 /// An [http.Client] decorator that routes every request through the global
@@ -18,6 +19,13 @@ class ResilientHttpClient extends http.BaseClient {
 
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) {
+    // Zählpunkt für die Akkumessung. Jede abgesetzte Anfrage weckt das
+    // Funkmodem, und die Anzahl pro Stunde — nicht die Datenmenge — ist die
+    // Grösse, die den Verbrauch bestimmt. Hier zu zählen erfasst alles, was
+    // über ApiService läuft, an genau einer Stelle. Die Dienste mit eigenem
+    // Client (LoggerService, DiagnosticService, Ticket-Polling, ntfy, Device-
+    // Key) zählen jeweils selbst.
+    BatteryUsageService.instance.noteNetworkRequest();
     return NetworkResilience.instance.breaker.execute(() => _inner.send(request));
   }
 

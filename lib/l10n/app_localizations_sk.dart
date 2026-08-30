@@ -1834,6 +1834,14 @@ class AppLocalizationsSk extends AppLocalizations {
   String get claudiuDiagnosticSends9 => 'Navigácia (posledných 20 obrazoviek)';
 
   @override
+  String get claudiuDiagnosticSends10 =>
+      'Koľkokrát aplikácia odoslala údaje (iba počet, žiadny obsah)';
+
+  @override
+  String get claudiuDiagnosticSends11 =>
+      'Ako systém aplikáciu zaraďuje a ako rýchlo sa vybíja batéria';
+
+  @override
   String get claudiuDiagnosticNeverHeader => '🛡️ Čo NIKDY neposielame:';
 
   @override
@@ -1861,7 +1869,7 @@ class AppLocalizationsSk extends AppLocalizations {
   String get claudiuDiagnosticTechHeader => '📡 Technické detaily:';
 
   @override
-  String get claudiuDiagnosticTech1 => 'Odosielané každé 2 minúty';
+  String get claudiuDiagnosticTech1 => 'Odosiela sa každých 15 minút';
 
   @override
   String get claudiuDiagnosticTech2 =>

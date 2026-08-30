@@ -3,7 +3,10 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../l10n/app_localizations.dart';
+import '../services/battery_usage_service.dart';
 import '../services/diagnostic_service.dart';
+import '../services/logger_service.dart';
+import '../services/update_service.dart';
 import '../utils/app_theme.dart';
 
 /// Conversational diagnostic-consent surface — Claudiu asks for permission
@@ -16,8 +19,9 @@ import '../utils/app_theme.dart';
 ///     actually contains. Decision can still be made after expanding.
 ///
 /// The transparency text is the SOURCE OF TRUTH for what
-/// diagnostic_service.dart sends. If the payload schema there changes,
-/// this list has to change too — they document each other.
+/// diagnostic_service.dart AND battery_usage_service.dart send — both hang off
+/// this one consent, so both are listed here. If either payload schema
+/// changes, this list has to change too — they document each other.
 class DiagnosticConsentDialog extends StatefulWidget {
   const DiagnosticConsentDialog({super.key});
 
@@ -198,6 +202,12 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
               l10n.claudiuDiagnosticSends7,
               l10n.claudiuDiagnosticSends8,
               l10n.claudiuDiagnosticSends9,
+              // Die Akkumessung (BatteryUsageService) hängt an derselben
+              // Zustimmung wie der Diagnosedienst, also gehört sie hierher.
+              // Akkustand und Sitzungsdauer stehen oben bereits; neu sind nur
+              // die Zähler und die Systemeinstufung.
+              l10n.claudiuDiagnosticSends10,
+              l10n.claudiuDiagnosticSends11,
             ],
             color: context.colors.infoFg,
             iconBuilder: () => Icon(
@@ -347,6 +357,17 @@ class _DiagnosticConsentDialogState extends State<DiagnosticConsentDialog> {
     if (enabled) {
       // Fire-and-forget; the service handles the anonymous-id bootstrap.
       DiagnosticService().start();
+      // Dieselbe Zustimmung schaltet die Akkumessung frei. Der Aufruf in
+      // main() lief beim Start noch ins Leere — da war die Frage ja noch
+      // nicht gestellt —, also muss sie hier nachgestartet werden.
+      BatteryUsageService.instance.start(
+        deviceId: LoggerService().deviceId,
+        appVersion: UpdateService.currentVersion,
+      );
+    } else {
+      // Abgelehnt: nichts weitermessen und alles verwerfen, was ein früheres
+      // „Ja" hinterlassen haben könnte.
+      BatteryUsageService.instance.stop(discardPending: true);
     }
 
     if (mounted) {

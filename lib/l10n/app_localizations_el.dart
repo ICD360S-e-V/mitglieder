@@ -1846,6 +1846,14 @@ class AppLocalizationsEl extends AppLocalizations {
   String get claudiuDiagnosticSends9 => 'Πλοήγηση (τελευταίες 20 οθόνες)';
 
   @override
+  String get claudiuDiagnosticSends10 =>
+      'Πόσες φορές έστειλε δεδομένα η εφαρμογή (μόνο το πλήθος, χωρίς περιεχόμενο)';
+
+  @override
+  String get claudiuDiagnosticSends11 =>
+      'Πώς κατατάσσει το σύστημα την εφαρμογή και πόσο γρήγορα αδειάζει η μπαταρία';
+
+  @override
   String get claudiuDiagnosticNeverHeader => '🛡️ Τι ΠΟΤΕ δεν στέλνουμε:';
 
   @override
@@ -1873,7 +1881,7 @@ class AppLocalizationsEl extends AppLocalizations {
   String get claudiuDiagnosticTechHeader => '📡 Τεχνικές λεπτομέρειες:';
 
   @override
-  String get claudiuDiagnosticTech1 => 'Στέλνεται κάθε 2 λεπτά';
+  String get claudiuDiagnosticTech1 => 'Αποστέλλεται κάθε 15 λεπτά';
 
   @override
   String get claudiuDiagnosticTech2 =>

@@ -1842,6 +1842,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get claudiuDiagnosticSends9 => 'Навигация (последние 20 экранов)';
 
   @override
+  String get claudiuDiagnosticSends10 =>
+      'Сколько раз приложение отправляло данные (только количество, без содержимого)';
+
+  @override
+  String get claudiuDiagnosticSends11 =>
+      'Как система классифицирует приложение и как быстро разряжается батарея';
+
+  @override
   String get claudiuDiagnosticNeverHeader =>
       '🛡️ Что мы НИКОГДА не отправляем:';
 
@@ -1870,7 +1878,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get claudiuDiagnosticTechHeader => '📡 Технические детали:';
 
   @override
-  String get claudiuDiagnosticTech1 => 'Отправляется каждые 2 минуты';
+  String get claudiuDiagnosticTech1 => 'Отправляется каждые 15 минут';
 
   @override
   String get claudiuDiagnosticTech2 =>
