@@ -138,6 +138,33 @@
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="mediaProjection" />
+
+        <!-- Fernwartung: Fernsteuerung. Android laesst eine normale App keine
+             Eingaben in andere Apps schicken (INJECT_EVENTS ist signature-only);
+             der einzige offene Weg ist ein AccessibilityService mit
+             canPerformGestures. Genau so machen es TeamViewer QuickSupport und
+             RustDesk.
+             ⚠️ Die Rechte stehen in res/xml/fernwartung_accessibility.xml und
+             sind bewusst minimal: KEIN canRetrieveWindowContent, also kein
+             Auslesen des Bildschirms, und typeNone, also kein Mithoeren von
+             Ereignissen. Dazu kommt ein zweites Schloss in Dart: ohne laufende,
+             zugestimmte Sitzung wird jede Geste verworfen.
+             ⚠️ exported MUSS true sein — das System bindet den Dienst. Geschuetzt
+             ist er ueber die Signaturberechtigung BIND_ACCESSIBILITY_SERVICE,
+             die nur das System selbst besitzt. -->
+        <service
+            android:name=".FernwartungService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/fernwartung_dienst_kurz"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/fernwartung_accessibility" />
+        </service>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

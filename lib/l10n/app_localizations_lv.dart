@@ -3029,4 +3029,17 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get themeScheduleHint =>
       'Tumšs no plkst. 20:00 līdz 6:00, pārējā dienas laikā gaišs.';
+
+  @override
+  String get fernwartungTitel => 'Fernwartung';
+
+  @override
+  String get fernwartungSteuerungTitel => 'Steuerung erlauben';
+
+  @override
+  String get fernwartungSteuerungHinweis =>
+      'Der Vorstand darf Ihr Gerät während einer Fernwartung bedienen. Sie stimmen jeder Sitzung einzeln zu; ohne Sitzung geschieht nichts. Der Dienst kann Ihren Bildschirm nicht lesen.';
+
+  @override
+  String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
 }

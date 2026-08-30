@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Fernsteuerung waehrend einer Fernwartungs-Sitzung.
+
+  ⚠️ Die Rechte hier sind MIT ABSICHT so knapp wie moeglich:
+    canRetrieveWindowContent = false   → der Dienst kann den Bildschirm NICHT
+                                         auslesen. Keine Texte, keine Passwoerter,
+                                         keine Kontonummern — auch nicht ausserhalb
+                                         einer Sitzung.
+    accessibilityEventTypes  (weggelassen) → der Wert bleibt 0, das System
+                                         schickt uns also keine Ereignisse.
+                                         ⚠️ Es gibt KEIN „typeNone": die Liste
+                                         der Flags kennt nur echte Ereignisarten
+                                         (der erste Versuch damit scheiterte an
+                                         AAPT). Weglassen ist der einzige Weg,
+                                         null auszudruecken.
+    canPerformGestures       = true    → das Einzige, was gebraucht wird.
+    packageNames             (weggelassen) → Gesten gehen an den Bildschirm, nicht
+                                         an eine App; eine Einschraenkung hier
+                                         wuerde nur die eigene App steuerbar machen
+                                         und das Mitglied im Stich lassen, sobald
+                                         es in den Einstellungen Hilfe braucht.
+
+  Wer hier je canRetrieveWindowContent einschaltet, macht aus einem Werkzeug ohne
+  Einblick einen dauerhaften Mitleser auf jedem Mitgliedsgeraet. Das waere eine
+  eigene Entscheidung mit eigener Einwilligung, keine Nachbesserung.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/fernwartung_dienst_beschreibung"
+    android:summary="@string/fernwartung_dienst_kurz"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="false"
+    android:notificationTimeout="0" />

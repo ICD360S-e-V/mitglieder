@@ -10,7 +10,7 @@ final _log = LoggerService();
 /// Settings › Privacy & Security › Accessibility) — the constructor prompts for
 /// it. It also flips the app window to capturable for the duration of the
 /// session so the Vorsitzer can see the member's own app while helping.
-class MacosInputInjector implements InputInjector {
+class MacosInputInjector extends InputInjector {
   static const MethodChannel _ch = MethodChannel('de.icd360sev.mitglied/remote_input');
 
   MacosInputInjector() {

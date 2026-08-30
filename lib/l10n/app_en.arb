@@ -1405,5 +1405,9 @@
   "themeDark": "Dark",
   "themeSystem": "Follow device",
   "themeSchedule": "Automatic (20:00–06:00)",
-  "themeScheduleHint": "Dark from 8 pm until 6 am, light for the rest of the day."
+  "themeScheduleHint": "Dark from 8 pm until 6 am, light for the rest of the day.",
+  "fernwartungTitel": "Remote support",
+  "fernwartungSteuerungTitel": "Allow control",
+  "fernwartungSteuerungHinweis": "The board may operate your device during a remote-support session. You approve every session separately; nothing happens without one. The service cannot read your screen.",
+  "fernwartungSteuerungAktiv": "Control is switched on"
 }

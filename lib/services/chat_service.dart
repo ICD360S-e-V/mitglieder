@@ -296,6 +296,9 @@ class ChatService {
     // das nur einen misslungenen Versuch wegraeumt. Ein liegengebliebener
     // Zeitgeber weckt sonst eine Anwendung, die geschlossen wurde.
     _shouldReconnect = false;
+    // Der Mensch geht; die gemerkten Raeume sollen eine spaetere, neue
+    // Anmeldung nicht mehr belasten.
+    _raeume.clear();
     _reconnectTimer?.cancel();
     _reconnectTimer = null;
     _subscription?.cancel();
@@ -306,9 +309,21 @@ class ChatService {
     _connectionController.add(false);
   }
 
+  /// Raeume, in denen diese App sein WILL.
+  ///
+  /// ⚠️ Der Beitritt haengt am SOCKET, nicht am Konto: nach einer
+  /// Wiederverbindung ist die Verbindung auf dem Server eine neue und in
+  /// keinem Raum mehr. Die Wiederverbindung gibt es seit laengerem, den
+  /// erneuten Beitritt gab es nicht — das Mitglied fiel also nach jedem
+  /// Netzwechsel stumm aus seiner eigenen Unterhaltung, bis die App neu
+  /// gestartet oder der Chat von Hand geoeffnet wurde. Sichtbar wurde das
+  /// nie, weil Benachrichtigungen ueber den Hintergrunddienst weiterliefen.
+  final Set<int> _raeume = <int>{};
+
   /// Join a conversation room
   void joinConversation(int conversationId) {
     _log.info('Joining conversation $conversationId', tag: 'WS');
+    _raeume.add(conversationId);
     _send({
       'type': 'join',
       'conversation_id': conversationId,
@@ -317,10 +332,20 @@ class ChatService {
 
   /// Leave a conversation room
   void leaveConversation(int conversationId) {
+    _raeume.remove(conversationId);
     _send({
       'type': 'leave',
       'conversation_id': conversationId,
     });
+  }
+
+  /// Nach erfolgreicher Anmeldung alle gemerkten Raeume erneut betreten.
+  void _raeumeWiederbetreten() {
+    if (_raeume.isEmpty) return;
+    _log.info('Wiederbetrete ${_raeume.length} Raum/Raeume nach Anmeldung', tag: 'WS');
+    for (final id in _raeume) {
+      _send({'type': 'join', 'conversation_id': id});
+    }
   }
 
   /// Send a chat message
@@ -407,12 +432,20 @@ class ChatService {
   }
 
   /// Member → Vorsitzer: accept and answer the session (carries the WebRTC answer).
-  void sendRemoteAnswer(int conversationId, String sdp, String sdpType) {
+  void sendRemoteAnswer(
+    int conversationId,
+    String sdp,
+    String sdpType, {
+    String? plattform,
+    bool? steuerung,
+  }) {
     _send({
       'type': 'remote_answer',
       'conversation_id': conversationId,
       'sdp': sdp,
       'sdp_type': sdpType,
+      if (plattform != null) 'plattform': plattform,
+      if (steuerung != null) 'steuerung': steuerung,
     });
   }
 
@@ -483,6 +516,9 @@ class ChatService {
           _isConnected = true;
           _reconnectAttempts = 0;
           _connectionController.add(true);
+          // ⚠️ Erst hier, nicht schon beim Oeffnen des Sockets: vor der
+          // Anmeldung weist der Server jedes `join` mit „Not authenticated" ab.
+          _raeumeWiederbetreten();
           authCompleter?.complete(true);
           break;
 

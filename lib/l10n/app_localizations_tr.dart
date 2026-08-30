@@ -3032,4 +3032,17 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get themeScheduleHint =>
       '20.00 ile 06.00 arası koyu, günün geri kalanında açık.';
+
+  @override
+  String get fernwartungTitel => 'Uzaktan destek';
+
+  @override
+  String get fernwartungSteuerungTitel => 'Kontrole izin ver';
+
+  @override
+  String get fernwartungSteuerungHinweis =>
+      'Yönetim, uzaktan destek sırasında cihazınızı kullanabilir. Her oturuma ayrı ayrı izin verirsiniz; oturum yoksa hiçbir şey olmaz. Hizmet ekranınızı okuyamaz.';
+
+  @override
+  String get fernwartungSteuerungAktiv => 'Kontrol açık';
 }

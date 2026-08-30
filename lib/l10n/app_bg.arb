@@ -1405,5 +1405,9 @@
   "themeDark": "Тъмна",
   "themeSystem": "Според устройството",
   "themeSchedule": "Автоматично (20:00–06:00)",
-  "themeScheduleHint": "Тъмна от 20:00 до 6:00 ч., светла през останалата част от деня."
+  "themeScheduleHint": "Тъмна от 20:00 до 6:00 ч., светла през останалата част от деня.",
+  "fernwartungTitel": "Fernwartung",
+  "fernwartungSteuerungTitel": "Steuerung erlauben",
+  "fernwartungSteuerungHinweis": "Der Vorstand darf Ihr Gerät während einer Fernwartung bedienen. Sie stimmen jeder Sitzung einzeln zu; ohne Sitzung geschieht nichts. Der Dienst kann Ihren Bildschirm nicht lesen.",
+  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet"
 }

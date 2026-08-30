@@ -1423,19 +1423,45 @@
     "description": "Hinweisfenster, wenn das Mitglied das noch nicht gesiegelte Dokument antippt"
   },
   "kontaktNochAktuell": "Stimmen diese Angaben noch?",
-  "@kontaktNochAktuell": {"description": "Titel der Karte, die alle 90 Tage nach E-Mail und Mobilnummer fragt"},
+  "@kontaktNochAktuell": {
+    "description": "Titel der Karte, die alle 90 Tage nach E-Mail und Mobilnummer fragt"
+  },
   "kontaktWarumFragen": "Damit Sie nichts verpassen, fragen wir alle drei Monate kurz nach. Sie bekommen einen sechsstelligen Code.",
-  "@kontaktWarumFragen": {"description": "Erklaerung unter dem Titel"},
+  "@kontaktWarumFragen": {
+    "description": "Erklaerung unter dem Titel"
+  },
   "kontaktBestaetigtAm": "bestätigt am {datum}",
-  "@kontaktBestaetigtAm": {"description": "Datum der letzten Bestaetigung"},
+  "@kontaktBestaetigtAm": {
+    "description": "Datum der letzten Bestaetigung"
+  },
   "kontaktFestnetzKeinSms": "Das ist eine Festnetznummer — dorthin kommt keine SMS an.",
-  "@kontaktFestnetzKeinSms": {"description": "Warnung, wenn im Mobilfeld ein Festnetzanschluss steht"},
+  "@kontaktFestnetzKeinSms": {
+    "description": "Warnung, wenn im Mobilfeld ein Festnetzanschluss steht"
+  },
   "kontaktIstAndersGeworden": "Ist anders geworden",
-  "@kontaktIstAndersGeworden": {"description": "Knopf: Adresse oder Nummer hat sich geaendert"},
+  "@kontaktIstAndersGeworden": {
+    "description": "Knopf: Adresse oder Nummer hat sich geaendert"
+  },
   "themeTitle": "Darstellung",
   "themeLight": "Hell",
   "themeDark": "Dunkel",
   "themeSystem": "Gerät folgen",
   "themeSchedule": "Automatisch (20:00–06:00)",
-  "themeScheduleHint": "Von 20 Uhr bis 6 Uhr dunkel, den Rest des Tages hell."
+  "themeScheduleHint": "Von 20 Uhr bis 6 Uhr dunkel, den Rest des Tages hell.",
+  "fernwartungTitel": "Fernwartung",
+  "@fernwartungTitel": {
+    "description": "Fernwartung: Einwilligung zur Fernsteuerung (Android)"
+  },
+  "fernwartungSteuerungTitel": "Steuerung erlauben",
+  "@fernwartungSteuerungTitel": {
+    "description": "Fernwartung: Einwilligung zur Fernsteuerung (Android)"
+  },
+  "fernwartungSteuerungHinweis": "Der Vorstand darf Ihr Gerät während einer Fernwartung bedienen. Sie stimmen jeder Sitzung einzeln zu; ohne Sitzung geschieht nichts. Der Dienst kann Ihren Bildschirm nicht lesen.",
+  "@fernwartungSteuerungHinweis": {
+    "description": "Fernwartung: Einwilligung zur Fernsteuerung (Android)"
+  },
+  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet",
+  "@fernwartungSteuerungAktiv": {
+    "description": "Fernwartung: Einwilligung zur Fernsteuerung (Android)"
+  }
 }

@@ -58,6 +58,17 @@ class RemoteAgentService {
   /// being shared" banner on the member UI.
   bool get isSharing => _state != RemoteAgentState.idle;
 
+  /// Kurzname der Plattform fuers Pruefprotokoll. Bewusst grob — es geht um
+  /// „konnte hier ueberhaupt gesteuert werden", nicht um Geraeteerkennung.
+  String _plattformName() {
+    if (Platform.isAndroid) return 'android';
+    if (Platform.isIOS) return 'ios';
+    if (Platform.isWindows) return 'windows';
+    if (Platform.isMacOS) return 'macos';
+    if (Platform.isLinux) return 'linux';
+    return 'unbekannt';
+  }
+
   void _setState(RemoteAgentState s) {
     _state = s;
     if (!_stateController.isClosed) _stateController.add(s);
@@ -129,6 +140,10 @@ class RemoteAgentService {
       // app (otherwise the shared screen is black). Restored on cleanup.
       await SecureScreen.setSecure(false);
       _injector = createInputInjector();
+      // ⚠️ Muss VOR dem Antworten passieren: auf Android steht erst danach fest,
+      // ob gesteuert werden darf, und genau das wird der Gegenseite gemeldet.
+      // Ohne diesen Aufruf bliebe isSupported dort dauerhaft false.
+      await _injector!.vorbereiten();
       await _createPeerConnection();
 
       // Android 14+: the mediaProjection foreground service MUST be running
@@ -148,7 +163,17 @@ class RemoteAgentService {
       await _flushQueuedIce();
       final answer = await _pc!.createAnswer();
       await _pc!.setLocalDescription(answer);
-      _chat.sendRemoteAnswer(offer.conversationId, answer.sdp ?? '', answer.type ?? 'answer');
+      // Plattform und Steuerbarkeit gehen MIT der Antwort zurueck. Der Vorsitz
+      // kann beides nicht wissen, wenn er die Anfrage stellt — er traegt sonst
+      // „Steuerung erlaubt" ins Pruefprotokoll, wo gar keine moeglich war, und
+      // sein Bildschirm verschweigt, dass Klicks ins Leere gehen.
+      _chat.sendRemoteAnswer(
+        offer.conversationId,
+        answer.sdp ?? '',
+        answer.type ?? 'answer',
+        plattform: _plattformName(),
+        steuerung: _injector?.isSupported ?? false,
+      );
 
       _subscribeSession();
       _log.info('RemoteAgent: answered offer, sharing screen (control=${_injector?.isSupported})', tag: 'REMOTE');
@@ -281,6 +306,12 @@ class RemoteAgentService {
           break;
         case 'w':
           injector.mouseWheel((m['dx'] as num?)?.toDouble() ?? 0, (m['dy'] as num?)?.toDouble() ?? 0);
+          break;
+        // Systemtaste ohne Koordinaten (Zurueck/Start/Uebersicht). Aeltere
+        // Mitglieds-Apps kennen den Fall nicht und ignorieren ihn stumm — der
+        // switch hat kein default, das ist hier die gewollte Vertraeglichkeit.
+        case 'g':
+          injector.systemAktion((m['a'] ?? '').toString());
           break;
         case 'k':
           injector.keyEvent(

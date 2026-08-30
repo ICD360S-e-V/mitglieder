@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../services/remote_input/input_injector_android.dart';
 import '../services/theme_service.dart';
 import '../services/update_service.dart';
 import 'verifizierung_tab.dart';
@@ -36,7 +39,8 @@ class MitgliedProfileDialog extends StatefulWidget {
   State<MitgliedProfileDialog> createState() => _MitgliedProfileDialogState();
 }
 
-class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with SingleTickerProviderStateMixin {
+class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   late TabController _tabController;
 
   final _newEmailController = TextEditingController();
@@ -60,6 +64,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
   String _displayEmail = '';
   bool _loadingAccountInfo = true;
   bool _autoUpdateEnabled = false;
+  bool _fernsteuerungAn = false;
 
   @override
   void initState() {
@@ -69,6 +74,35 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
     _loadAccountInfo();
     _loadAutoUpdatePreference();
     _ladeBenachrichtigung();
+    if (Platform.isAndroid) {
+      // ⚠️ Beobachter, weil der Schalter die App VERLAESST: das Mitglied
+      // schaltet den Dienst in den Android-Einstellungen ein und kommt zurueck.
+      // Ohne erneutes Lesen stuende hier weiter „aus", waehrend die Steuerung
+      // laengst laeuft — und niemand wuesste, welche Anzeige stimmt.
+      WidgetsBinding.instance.addObserver(this);
+      _ladeFernsteuerung();
+    }
+  }
+
+  Future<void> _ladeFernsteuerung() async {
+    final an = await AndroidInputInjector.istAktiviert();
+    if (mounted) setState(() => _fernsteuerungAn = an);
+  }
+
+  Future<void> _fernsteuerungEinstellungen() async {
+    final offen = await AndroidInputInjector.einstellungenOeffnen();
+    if (!offen && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context)!.fernwartungSteuerungHinweis)),
+      );
+    }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed && Platform.isAndroid) {
+      _ladeFernsteuerung();
+    }
   }
 
   Future<void> _loadAutoUpdatePreference() async {
@@ -78,6 +112,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
 
   @override
   void dispose() {
+    if (Platform.isAndroid) WidgetsBinding.instance.removeObserver(this);
     _tabController.dispose();
     _newEmailController.dispose();
     _emailPasswordController.dispose();
@@ -886,6 +921,47 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog> with Sing
                     ),
                   ),
                 ],
+              ),
+            ),
+          ],
+          // Fernwartung: Fernsteuerung. Nur Android — auf dem Schreibtisch
+          // steuert der Vorsitz ohnehin (SendInput/XTest/CGEvent), auf iOS
+          // laesst die Plattform es gar nicht zu. Eine Zeile, die auf beiden
+          // nichts bewirkt, waere ein leeres Versprechen.
+          if (Platform.isAndroid) ...[
+            const SizedBox(height: 20),
+            _buildSectionHeader(
+              Icons.screen_share_outlined,
+              AppLocalizations.of(context)!.fernwartungTitel,
+              Colors.lightBlue.shade700,
+            ),
+            const SizedBox(height: 8),
+            Card(
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: BorderSide(color: context.colors.divider),
+              ),
+              child: SwitchListTile(
+                value: _fernsteuerungAn,
+                // ⚠️ Der Schalter kann NICHT selbst einschalten: eine App darf
+                // sich einen Bedienungshilfen-Dienst nicht erteilen. Er oeffnet
+                // die Systemseite; den Zustand liest er beim Zurueckkommen neu.
+                // Deshalb ist er ein Schalter mit Aussenwirkung, kein Regler.
+                onChanged: (_) => _fernsteuerungEinstellungen(),
+                secondary: _fernsteuerungAn
+                    ? Icon(Icons.check_circle, color: context.colors.successFg)
+                    : null,
+                title: Text(
+                  AppLocalizations.of(context)!.fernwartungSteuerungTitel,
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ),
+                subtitle: Text(
+                  _fernsteuerungAn
+                      ? AppLocalizations.of(context)!.fernwartungSteuerungAktiv
+                      : AppLocalizations.of(context)!.fernwartungSteuerungHinweis,
+                  style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
+                ),
               ),
             ),
           ],

@@ -5503,6 +5503,30 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Von 20 Uhr bis 6 Uhr dunkel, den Rest des Tages hell.'**
   String get themeScheduleHint;
+
+  /// Fernwartung: Einwilligung zur Fernsteuerung (Android)
+  ///
+  /// In de, this message translates to:
+  /// **'Fernwartung'**
+  String get fernwartungTitel;
+
+  /// Fernwartung: Einwilligung zur Fernsteuerung (Android)
+  ///
+  /// In de, this message translates to:
+  /// **'Steuerung erlauben'**
+  String get fernwartungSteuerungTitel;
+
+  /// Fernwartung: Einwilligung zur Fernsteuerung (Android)
+  ///
+  /// In de, this message translates to:
+  /// **'Der Vorstand darf Ihr Gerät während einer Fernwartung bedienen. Sie stimmen jeder Sitzung einzeln zu; ohne Sitzung geschieht nichts. Der Dienst kann Ihren Bildschirm nicht lesen.'**
+  String get fernwartungSteuerungHinweis;
+
+  /// Fernwartung: Einwilligung zur Fernsteuerung (Android)
+  ///
+  /// In de, this message translates to:
+  /// **'Steuerung ist eingeschaltet'**
+  String get fernwartungSteuerungAktiv;
 }
 
 class _AppLocalizationsDelegate
