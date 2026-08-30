@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.88.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.5...v1.88.6) (2026-08-30)
+
+
+### Bug Fixes
+
+* **fernwartung:** schwarzes Bild, Ton auf Bluetooth, Zustimmungstext in allen 28 Sprachen ([#344](https://github.com/ICD360S-e-V/mitglieder/issues/344)) ([6ae6515](https://github.com/ICD360S-e-V/mitglieder/commit/6ae6515cbf6770a78ddb0d997f851c6ec4543e26))
+
 ## [1.88.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.4...v1.88.5) (2026-08-30)
 
 
