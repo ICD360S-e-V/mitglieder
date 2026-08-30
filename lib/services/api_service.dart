@@ -144,6 +144,23 @@ class ApiService {
 
       _token = data['token'] as String;
       await _secureStorage.write(key: 'access_token', value: _token);
+
+      // Rotiertes Refresh-Token uebernehmen, falls der Server eines mitschickt.
+      //
+      // ⚠️ Ohne diese Zeilen bricht die Sitzung, sobald der Server auf Rotation
+      // umstellt: refresh.php gibt dann bei jedem Aufruf ein NEUES Refresh-Token
+      // aus und entwertet das alte (OAuth 2.1, Wiederverwendung gilt als
+      // Diebstahl). Wer das neue wegwirft und beim naechsten Mal wieder das alte
+      // schickt, bekommt 401 — und weiter oben fuehrt genau das zu clearTokens().
+      // Das Mitglied stuende ohne erkennbaren Grund vor dem Anmeldebildschirm.
+      //
+      // Solange der Server nicht rotiert, fehlt das Feld einfach und alles
+      // bleibt wie bisher — die Zeilen sind also gefahrlos vor der Umstellung.
+      final neuesRefresh = data['refresh_token'];
+      if (neuesRefresh is String && neuesRefresh.isNotEmpty) {
+        _refreshToken = neuesRefresh;
+        await _secureStorage.write(key: 'refresh_token', value: neuesRefresh);
+      }
       return true;
     } catch (_) {
       return false;
