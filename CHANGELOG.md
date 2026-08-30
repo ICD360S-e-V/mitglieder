@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.88.7](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.6...v1.88.7) (2026-08-30)
+
+
+### Bug Fixes
+
+* **fernwartung:** Zustimmung VOR dem Vordergrunddienst, ganzer Bildschirm erzwungen ([#346](https://github.com/ICD360S-e-V/mitglieder/issues/346)) ([cc480ef](https://github.com/ICD360S-e-V/mitglieder/commit/cc480efeee4db9bab48f0ce5cb63f750ffee719b))
+
 ## [1.88.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.5...v1.88.6) (2026-08-30)
 
 
