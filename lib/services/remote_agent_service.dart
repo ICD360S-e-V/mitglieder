@@ -193,7 +193,14 @@ class RemoteAgentService {
       // chat is open.
       _chat.joinConversation(offer.conversationId);
       // Android: drop FLAG_SECURE so MediaProjection can actually capture the
-      // app (otherwise the shared screen is black). Restored on cleanup.
+      // app. Restored on cleanup.
+      //
+      // ⚠️ PRAEZISIERT (nachgelesen, nicht erinnert): FLAG_SECURE schwaerzt in
+      // der Aufnahme NUR das markierte Fenster, nicht den ganzen Bildschirm.
+      // Ein durchgehend schwarzes Bild — auch in fremden Apps — hat also eine
+      // ANDERE Ursache und ist am `BildBefund` des Vorsitzes abzulesen.
+      // (Auf einzelnen Hersteller-ROMs schwaerzt es doch die ganze Anzeige;
+      // darauf darf man sich aber nicht als Erklaerung stuetzen.)
       //
       // ⚠️ Das Ergebnis wird AUSGEWERTET. Bleibt die Sperre stehen, sieht der
       // Vorsitz ein schwarzes Bild und haelt es fuer ein Netzproblem — die
@@ -363,12 +370,37 @@ class RemoteAgentService {
     // auf Android Kameras statt Bildschirme, geht daneben — das ist ein
     // ANDERER Kanal, den desktopCapturer nicht benutzt.)
     //
-    // ⚠️ Der Systemdialog von Android ist NICHT zu umgehen und auch nicht
-    // vorauszuwaehlen: er IST die Einwilligung, die das Betriebssystem
-    // verlangt. „Ganzen Bildschirm" ohne Rueckfrage ginge nur mit
-    // MediaProjectionConfig.createConfigForDefaultDisplay() (API 34+), und
-    // flutter_webrtc 1.6.0 reicht das nicht durch. Ohne Angabe steht der
-    // Dialog auf dem ganzen Bildschirm — mehr ist von hier aus nicht zu holen.
+    // ⚠️ Der Systemdialog ist nicht zu UMGEHEN — er IST die Einwilligung, die
+    // Android verlangt. Aber er laesst sich auf „ganzer Bildschirm"
+    // FESTLEGEN: `requestCapturePermission(fullScreenOnly: true)` gibt dem
+    // Dialog auf API 34+ `MediaProjectionConfig.createConfigForDefaultDisplay()`
+    // mit, und die Auswahl „einzelne App" verschwindet.
+    //
+    // 🔴 Ich hatte behauptet, flutter_webrtc reiche das nicht durch. Falsch:
+    // seit 1.5.1 gibt es genau dafuer `fullScreenOnly`, und dieses Projekt
+    // laeuft auf 1.6.0. Nachgelesen in
+    // `helper.dart:225` und `GetUserMediaImpl.requestStart()`.
+    //
+    // Wichtig fuer die Fernwartung: eine einzelne freigegebene App waere fuer
+    // die Hilfe nutzlos — das Mitglied braucht Hilfe meist GERADE beim Wechsel
+    // in die Einstellungen oder eine andere App, und dort waere das Bild dann
+    // schwarz.
+    if (Platform.isAndroid) {
+      try {
+        final erlaubt = await Helper.requestCapturePermission(fullScreenOnly: true);
+        if (!erlaubt) {
+          throw StateError('BILDSCHIRM_ABGELEHNT');
+        }
+      } on StateError {
+        rethrow;
+      } catch (e) {
+        // Aeltere Plugin-Fassung oder Hersteller-Eigenheit: dann eben der
+        // gewohnte Dialog ueber getDisplayMedia. Lieber die Auswahl als gar
+        // keine Aufnahme.
+        _log.warning('RemoteAgent: fullScreenOnly nicht moeglich ($e) — '
+            'normaler Auswahldialog', tag: 'REMOTE');
+      }
+    }
     if (!Platform.isAndroid) {
       try {
         final sources = await desktopCapturer.getSources(types: [SourceType.Screen]);
