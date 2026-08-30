@@ -3042,4 +3042,37 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Forespørsel om fjernhjelp';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '«$name» ønsker å se og styre skjermen din for å hjelpe deg. Ingenting overføres uten ditt samtykke.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Du ser en melding hele tiden og kan trykke «Stopp» når som helst.';
+
+  @override
+  String get fernwartungErlauben => 'Tillat';
+
+  @override
+  String get fernwartungAblehnen => 'Avslå';
+
+  @override
+  String get fernwartungVerbindet => 'Kobler til …';
+
+  @override
+  String get fernwartungAktiv => 'Skjermen din deles';
+
+  @override
+  String get fernwartungStopp => 'Stopp';
+
+  @override
+  String get fernwartungMikroAus => 'Slå av mikrofonen';
+
+  @override
+  String get fernwartungMikroAn => 'Slå på mikrofonen';
 }

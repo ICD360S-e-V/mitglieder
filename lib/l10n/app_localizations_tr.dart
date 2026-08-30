@@ -3045,4 +3045,37 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Kontrol açık';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Uzaktan destek isteği';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '\"$name\" size yardımcı olmak için ekranınızı görmek ve kontrol etmek istiyor. İzniniz olmadan hiçbir şey aktarılmaz.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Her zaman bir uyarı görürsünüz ve istediğiniz an \"Durdur\"a dokunabilirsiniz.';
+
+  @override
+  String get fernwartungErlauben => 'İzin ver';
+
+  @override
+  String get fernwartungAblehnen => 'Reddet';
+
+  @override
+  String get fernwartungVerbindet => 'Bağlanıyor …';
+
+  @override
+  String get fernwartungAktiv => 'Ekranınız paylaşılıyor';
+
+  @override
+  String get fernwartungStopp => 'Durdur';
+
+  @override
+  String get fernwartungMikroAus => 'Mikrofonu kapat';
+
+  @override
+  String get fernwartungMikroAn => 'Mikrofonu aç';
 }

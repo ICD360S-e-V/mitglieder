@@ -1409,5 +1409,15 @@
   "fernwartungTitel": "Fernwartung",
   "fernwartungSteuerungTitel": "Steuerung erlauben",
   "fernwartungSteuerungHinweis": "Der Vorstand darf Ihr Gerät während einer Fernwartung bedienen. Sie stimmen jeder Sitzung einzeln zu; ohne Sitzung geschieht nichts. Der Dienst kann Ihren Bildschirm nicht lesen.",
-  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet"
+  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet",
+  "fernwartungAnfrageTitel": "Žiadosť o vzdialenú podporu",
+  "fernwartungAnfrageText": "„{name}\" chce vidieť a ovládať vašu obrazovku, aby vám pomohol. Bez vášho súhlasu sa nič neprenáša.",
+  "fernwartungAnfrageHinweis": "Po celý čas uvidíte upozornenie a kedykoľvek môžete ťuknúť na „Stop\".",
+  "fernwartungErlauben": "Povoliť",
+  "fernwartungAblehnen": "Odmietnuť",
+  "fernwartungVerbindet": "Pripája sa …",
+  "fernwartungAktiv": "Vaša obrazovka sa zdieľa",
+  "fernwartungStopp": "Stop",
+  "fernwartungMikroAus": "Vypnúť mikrofón",
+  "fernwartungMikroAn": "Zapnúť mikrofón"
 }

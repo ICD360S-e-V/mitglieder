@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../services/language_service.dart';
+import '../l10n/app_localizations.dart';
 import '../utils/app_theme.dart';
 
 /// Consent prompt shown to the MEMBER before any screen is shared for
@@ -59,57 +59,15 @@ class _RemoteConsentDialogState extends State<RemoteConsentDialog> {
     super.dispose();
   }
 
-  Map<String, String> get _t {
-    const table = {
-      'de': {
-        'title': 'Fernwartung-Anfrage',
-        'body': '„%s" möchte Ihren Bildschirm sehen und steuern, um Ihnen zu helfen. '
-            'Es wird nichts ohne Ihre Zustimmung übertragen.',
-        'note': 'Sie sehen die ganze Zeit einen Hinweis und können jederzeit auf „Stopp" tippen.',
-        'allow': 'Erlauben',
-        'deny': 'Ablehnen',
-      },
-      'ro': {
-        'title': 'Cerere de asistență la distanță',
-        'body': '„%s" dorește să vă vadă și să vă controleze ecranul pentru a vă ajuta. '
-            'Nu se transmite nimic fără acordul dvs.',
-        'note': 'Veți vedea tot timpul un mesaj și puteți apăsa „Stop" oricând.',
-        'allow': 'Permite',
-        'deny': 'Refuză',
-      },
-      'uk': {
-        'title': 'Запит на віддалену підтримку',
-        'body': '«%s» хоче бачити та керувати вашим екраном, щоб допомогти вам. '
-            'Нічого не передається без вашої згоди.',
-        'note': 'Ви весь час бачитимете повідомлення й можете натиснути «Стоп» будь-коли.',
-        'allow': 'Дозволити',
-        'deny': 'Відхилити',
-      },
-      'tr': {
-        'title': 'Uzaktan destek isteği',
-        'body': '„%s" size yardımcı olmak için ekranınızı görmek ve kontrol etmek istiyor. '
-            'İzniniz olmadan hiçbir şey aktarılmaz.',
-        'note': 'Her zaman bir uyarı görürsünüz ve istediğiniz an „Durdur"a dokunabilirsiniz.',
-        'allow': 'İzin ver',
-        'deny': 'Reddet',
-      },
-      'en': {
-        'title': 'Remote support request',
-        'body': '"%s" would like to see and control your screen to help you. '
-            'Nothing is shared without your consent.',
-        'note': 'You will see a banner the whole time and can tap "Stop" at any moment.',
-        'allow': 'Allow',
-        'deny': 'Decline',
-      },
-    };
-    final code = LanguageService.instance.currentCode;
-    return table[code] ?? table['de']!;
-  }
 
   @override
   Widget build(BuildContext context) {
-    final t = _t;
-    final body = t['body']!.replaceAll('%s', widget.controllerName);
+    // 🔴 Bis 30.08.2026 stand hier eine Tabelle mit FÜNF Sprachen und
+    // deutschem Rückfall. Das ist der Text, den ein Mensch liest, BEVOR er
+    // seinen Bildschirm freigibt — 23 der 28 Sprachen bekamen ihn auf Deutsch.
+    // Jetzt aus den .arb-Dateien, wie jeder andere Text der App auch.
+    final l10n = AppLocalizations.of(context)!;
+    final body = l10n.fernwartungAnfrageText(widget.controllerName);
     return Material(
       color: Colors.black.withValues(alpha: 0.85),
       child: Center(
@@ -130,7 +88,7 @@ class _RemoteConsentDialogState extends State<RemoteConsentDialog> {
               ),
               const SizedBox(height: 16),
               Text(
-                t['title']!,
+                l10n.fernwartungAnfrageTitel,
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -144,7 +102,7 @@ class _RemoteConsentDialogState extends State<RemoteConsentDialog> {
                   const SizedBox(width: 6),
                   Flexible(
                     child: Text(
-                      t['note']!,
+                      l10n.fernwartungAnfrageHinweis,
                       style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
                       textAlign: TextAlign.center,
                     ),
@@ -161,7 +119,7 @@ class _RemoteConsentDialogState extends State<RemoteConsentDialog> {
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         foregroundColor: context.colors.dangerFg,
                       ),
-                      child: Text('${t['deny']!} ($_remaining)'),
+                      child: Text('${l10n.fernwartungAblehnen} ($_remaining)'),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -169,7 +127,7 @@ class _RemoteConsentDialogState extends State<RemoteConsentDialog> {
                     child: FilledButton(
                       onPressed: () => _finish(accept: true),
                       style: FilledButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 14)),
-                      child: Text(t['allow']!),
+                      child: Text(l10n.fernwartungErlauben),
                     ),
                   ),
                 ],

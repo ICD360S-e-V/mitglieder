@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../services/language_service.dart';
+import '../l10n/app_localizations.dart';
 import '../services/remote_agent_service.dart';
 import '../utils/app_theme.dart';
 
@@ -44,27 +44,16 @@ class _RemoteSharingBannerState extends State<RemoteSharingBanner> {
     super.dispose();
   }
 
-  Map<String, String> get _t {
-    // ⚠️ `ru` fehlte, obwohl Mitglieder Russisch eingestellt haben — die sahen
-    // hier bisher Deutsch, ausgerechnet in dem Streifen, der sagt, dass gerade
-    // ihr Bildschirm geteilt wird.
-    const table = {
-      'de': {'connecting': 'Verbindung wird aufgebaut …', 'active': 'Ihr Bildschirm wird geteilt', 'stop': 'Stopp', 'mic_on': 'Mikrofon aus', 'mic_off': 'Mikrofon an'},
-      'ro': {'connecting': 'Se conectează …', 'active': 'Ecranul dvs. este partajat', 'stop': 'Stop', 'mic_on': 'Oprește microfonul', 'mic_off': 'Pornește microfonul'},
-      'ru': {'connecting': 'Подключение …', 'active': 'Ваш экран демонстрируется', 'stop': 'Стоп', 'mic_on': 'Выключить микрофон', 'mic_off': 'Включить микрофон'},
-      'uk': {'connecting': 'З’єднання …', 'active': 'Ваш екран демонструється', 'stop': 'Стоп', 'mic_on': 'Вимкнути мікрофон', 'mic_off': 'Увімкнути мікрофон'},
-      'tr': {'connecting': 'Bağlanıyor …', 'active': 'Ekranınız paylaşılıyor', 'stop': 'Durdur', 'mic_on': 'Mikrofonu kapat', 'mic_off': 'Mikrofonu aç'},
-      'en': {'connecting': 'Connecting …', 'active': 'Your screen is being shared', 'stop': 'Stop', 'mic_on': 'Mute microphone', 'mic_off': 'Unmute microphone'},
-    };
-    return table[LanguageService.instance.currentCode] ?? table['de']!;
-  }
 
   @override
   Widget build(BuildContext context) {
     if (_state == RemoteAgentState.idle) return const SizedBox.shrink();
-    final t = _t;
+    // 🔴 Vorher eine eigene Tabelle mit sechs Sprachen und deutschem Rückfall —
+    // ausgerechnet in der Zeile, die sagt, dass gerade der Bildschirm geteilt
+    // wird. Jetzt aus den .arb-Dateien, also in allen 28.
+    final l10n = AppLocalizations.of(context)!;
     final connecting = _state == RemoteAgentState.connecting;
-    final label = connecting ? t['connecting']! : t['active']!;
+    final label = connecting ? l10n.fernwartungVerbindet : l10n.fernwartungAktiv;
     return Material(
       color: connecting ? context.colors.warningFg : context.colors.dangerFg,
       child: SafeArea(
@@ -86,7 +75,7 @@ class _RemoteSharingBannerState extends State<RemoteSharingBanner> {
               // ohne Deckung.
               if (_agent.hatMikrofon)
                 IconButton(
-                  tooltip: _stumm ? t['mic_off']! : t['mic_on']!,
+                  tooltip: _stumm ? l10n.fernwartungMikroAn : l10n.fernwartungMikroAus,
                   icon: Icon(_stumm ? Icons.mic_off : Icons.mic, color: Colors.white),
                   onPressed: () {
                     _agent.mikrofonStumm(!_stumm);
@@ -100,7 +89,7 @@ class _RemoteSharingBannerState extends State<RemoteSharingBanner> {
                   foregroundColor: context.colors.dangerFg,
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                 ),
-                child: Text(t['stop']!, style: const TextStyle(fontWeight: FontWeight.bold)),
+                child: Text(l10n.fernwartungStopp, style: const TextStyle(fontWeight: FontWeight.bold)),
               ),
             ],
           ),

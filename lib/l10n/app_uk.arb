@@ -1409,5 +1409,15 @@
   "fernwartungTitel": "Віддалена допомога",
   "fernwartungSteuerungTitel": "Дозволити керування",
   "fernwartungSteuerungHinweis": "Правління може керувати пристроєм під час сеансу допомоги. Кожен сеанс ви дозволяєте окремо; без сеансу нічого не відбувається. Служба не може читати екран.",
-  "fernwartungSteuerungAktiv": "Керування увімкнено"
+  "fernwartungSteuerungAktiv": "Керування увімкнено",
+  "fernwartungAnfrageTitel": "Запит на віддалену підтримку",
+  "fernwartungAnfrageText": "«{name}» хоче бачити та керувати вашим екраном, щоб допомогти вам. Нічого не передається без вашої згоди.",
+  "fernwartungAnfrageHinweis": "Ви весь час бачитимете повідомлення й можете натиснути «Стоп» будь-коли.",
+  "fernwartungErlauben": "Дозволити",
+  "fernwartungAblehnen": "Відхилити",
+  "fernwartungVerbindet": "З’єднання …",
+  "fernwartungAktiv": "Ваш екран демонструється",
+  "fernwartungStopp": "Стоп",
+  "fernwartungMikroAus": "Вимкнути мікрофон",
+  "fernwartungMikroAn": "Увімкнути мікрофон"
 }

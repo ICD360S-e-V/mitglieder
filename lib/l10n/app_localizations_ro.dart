@@ -3051,4 +3051,37 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Controlul este pornit';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Cerere de asistență la distanță';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '„$name\" dorește să vă vadă și să vă controleze ecranul pentru a vă ajuta. Nu se transmite nimic fără acordul dvs.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Veți vedea tot timpul un mesaj și puteți apăsa „Stop\" oricând.';
+
+  @override
+  String get fernwartungErlauben => 'Permite';
+
+  @override
+  String get fernwartungAblehnen => 'Refuză';
+
+  @override
+  String get fernwartungVerbindet => 'Se conectează …';
+
+  @override
+  String get fernwartungAktiv => 'Ecranul dvs. este partajat';
+
+  @override
+  String get fernwartungStopp => 'Stop';
+
+  @override
+  String get fernwartungMikroAus => 'Oprește microfonul';
+
+  @override
+  String get fernwartungMikroAn => 'Pornește microfonul';
 }

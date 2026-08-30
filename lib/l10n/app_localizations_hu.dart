@@ -3050,4 +3050,37 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Távsegítség kérése';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '„$name\" szeretné látni és vezérelni a képernyőjét, hogy segítsen Önnek. Az Ön hozzájárulása nélkül semmi sem kerül továbbításra.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Végig látni fog egy értesítést, és bármikor megérintheti a „Leállítás\" gombot.';
+
+  @override
+  String get fernwartungErlauben => 'Engedélyezés';
+
+  @override
+  String get fernwartungAblehnen => 'Elutasítás';
+
+  @override
+  String get fernwartungVerbindet => 'Kapcsolódás …';
+
+  @override
+  String get fernwartungAktiv => 'A képernyőjét megosztják';
+
+  @override
+  String get fernwartungStopp => 'Leállítás';
+
+  @override
+  String get fernwartungMikroAus => 'Mikrofon némítása';
+
+  @override
+  String get fernwartungMikroAn => 'Mikrofon bekapcsolása';
 }

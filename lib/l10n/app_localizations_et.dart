@@ -3040,4 +3040,37 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Kaugtoe taotlus';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '„$name\" soovib teie ekraani näha ja juhtida, et teid aidata. Ilma teie nõusolekuta ei edastata midagi.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Näete kogu aeg teadet ja võite igal hetkel vajutada „Peata\".';
+
+  @override
+  String get fernwartungErlauben => 'Luba';
+
+  @override
+  String get fernwartungAblehnen => 'Keeldu';
+
+  @override
+  String get fernwartungVerbindet => 'Ühendamine …';
+
+  @override
+  String get fernwartungAktiv => 'Teie ekraani jagatakse';
+
+  @override
+  String get fernwartungStopp => 'Peata';
+
+  @override
+  String get fernwartungMikroAus => 'Vaigista mikrofon';
+
+  @override
+  String get fernwartungMikroAn => 'Lülita mikrofon sisse';
 }

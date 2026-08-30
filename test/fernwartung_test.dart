@@ -188,6 +188,85 @@ void main() {
   });
 
   // ─────────────────────────────────────────────────────────────────────────
+  /// 🔴 Zustimmungstext und Banner lagen in eigenen Tabellen mit fünf bzw.
+  /// sechs Sprachen und deutschem Rückfall — ausgerechnet der Text, den jemand
+  /// liest, BEVOR er seinen Bildschirm freigibt.
+  group('Fernwartungstexte gibt es in allen 28 Sprachen', () {
+    final dateien = Directory('lib/l10n')
+        .listSync()
+        .whereType<File>()
+        .where((f) => f.path.endsWith('.arb'))
+        .toList();
+
+    const schluessel = [
+      'fernwartungAnfrageTitel',
+      'fernwartungAnfrageText',
+      'fernwartungAnfrageHinweis',
+      'fernwartungErlauben',
+      'fernwartungAblehnen',
+      'fernwartungVerbindet',
+      'fernwartungAktiv',
+      'fernwartungStopp',
+      'fernwartungMikroAus',
+      'fernwartungMikroAn',
+    ];
+
+    test('alle 28 Sprachdateien sind da', () {
+      expect(dateien.length, 28);
+    });
+
+    test('jede Sprache hat jeden Schlüssel', () {
+      final luecken = <String>[];
+      for (final f in dateien) {
+        final daten = jsonDecode(f.readAsStringSync()) as Map<String, dynamic>;
+        for (final k in schluessel) {
+          if (!daten.containsKey(k) || (daten[k] as String).trim().isEmpty) {
+            luecken.add('${f.path.split('/').last}: $k');
+          }
+        }
+      }
+      expect(luecken, isEmpty, reason: 'sonst fällt die Sprache auf Deutsch zurück');
+    });
+
+    /// ⚠️ Der schärfste Test: ein Schlüssel kann DA sein und trotzdem den
+    /// deutschen Wortlaut tragen — dann sieht die Datei vollständig aus und der
+    /// Mensch liest weiter Deutsch.
+    test('keine Sprache trägt einfach den deutschen Wortlaut', () {
+      final de = jsonDecode(
+        File('lib/l10n/app_de.arb').readAsStringSync(),
+      ) as Map<String, dynamic>;
+
+      // ⚠️ Echte Zufaelle, keine fehlenden Uebersetzungen. Wer hier etwas
+      // eintraegt, muss den Grund danebenschreiben — sonst wird die Liste zur
+      // Muellhalde und der Test bestaetigt nur noch sich selbst.
+      const zufall = {
+        'app_nb.arb: fernwartungStopp', // „Stopp" ist auch auf Norwegisch richtig
+      };
+
+      final verdaechtig = <String>[];
+      for (final f in dateien) {
+        final name = f.path.split('/').last;
+        if (name == 'app_de.arb') continue;
+        final daten = jsonDecode(f.readAsStringSync()) as Map<String, dynamic>;
+        for (final k in schluessel) {
+          if (daten[k] == de[k] && !zufall.contains('$name: $k')) {
+            verdaechtig.add('$name: $k');
+          }
+        }
+      }
+      expect(verdaechtig, isEmpty);
+    });
+
+    test('der Platzhalter {name} überlebt jede Übersetzung', () {
+      for (final f in dateien) {
+        final daten = jsonDecode(f.readAsStringSync()) as Map<String, dynamic>;
+        expect(daten['fernwartungAnfrageText'] as String, contains('{name}'),
+            reason: '${f.path}: ohne Platzhalter steht dort kein Name');
+      }
+    });
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
   group('Android: Maus wird zu Gesten', () {
     const kanal = MethodChannel('de.icd360sev.mitglied/fernsteuerung');
     late List<MethodCall> rufe;

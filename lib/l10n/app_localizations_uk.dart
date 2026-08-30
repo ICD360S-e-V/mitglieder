@@ -3047,4 +3047,37 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Керування увімкнено';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Запит на віддалену підтримку';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '«$name» хоче бачити та керувати вашим екраном, щоб допомогти вам. Нічого не передається без вашої згоди.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Ви весь час бачитимете повідомлення й можете натиснути «Стоп» будь-коли.';
+
+  @override
+  String get fernwartungErlauben => 'Дозволити';
+
+  @override
+  String get fernwartungAblehnen => 'Відхилити';
+
+  @override
+  String get fernwartungVerbindet => 'З’єднання …';
+
+  @override
+  String get fernwartungAktiv => 'Ваш екран демонструється';
+
+  @override
+  String get fernwartungStopp => 'Стоп';
+
+  @override
+  String get fernwartungMikroAus => 'Вимкнути мікрофон';
+
+  @override
+  String get fernwartungMikroAn => 'Увімкнути мікрофон';
 }

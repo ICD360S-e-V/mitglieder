@@ -3059,4 +3059,37 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Richiesta di assistenza remota';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return '«$name» desidera vedere e controllare il suo schermo per aiutarla. Nulla viene trasmesso senza il suo consenso.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Vedrà un avviso per tutto il tempo e può toccare «Interrompi» in qualsiasi momento.';
+
+  @override
+  String get fernwartungErlauben => 'Consenti';
+
+  @override
+  String get fernwartungAblehnen => 'Rifiuta';
+
+  @override
+  String get fernwartungVerbindet => 'Connessione …';
+
+  @override
+  String get fernwartungAktiv => 'Il suo schermo è condiviso';
+
+  @override
+  String get fernwartungStopp => 'Interrompi';
+
+  @override
+  String get fernwartungMikroAus => 'Disattiva microfono';
+
+  @override
+  String get fernwartungMikroAn => 'Attiva microfono';
 }

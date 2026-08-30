@@ -1463,5 +1463,50 @@
   "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet",
   "@fernwartungSteuerungAktiv": {
     "description": "Fernwartung: Einwilligung zur Fernsteuerung (Android)"
+  },
+  "fernwartungAnfrageTitel": "Fernwartung-Anfrage",
+  "@fernwartungAnfrageTitel": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
+  },
+  "fernwartungAnfrageText": "„{name}\" möchte Ihren Bildschirm sehen und steuern, um Ihnen zu helfen. Es wird nichts ohne Ihre Zustimmung übertragen.",
+  "@fernwartungAnfrageText": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "fernwartungAnfrageHinweis": "Sie sehen die ganze Zeit einen Hinweis und können jederzeit auf „Stopp\" tippen.",
+  "@fernwartungAnfrageHinweis": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
+  },
+  "fernwartungErlauben": "Erlauben",
+  "@fernwartungErlauben": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
+  },
+  "fernwartungAblehnen": "Ablehnen",
+  "@fernwartungAblehnen": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
+  },
+  "fernwartungVerbindet": "Verbindung wird aufgebaut …",
+  "@fernwartungVerbindet": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
+  },
+  "fernwartungAktiv": "Ihr Bildschirm wird geteilt",
+  "@fernwartungAktiv": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
+  },
+  "fernwartungStopp": "Stopp",
+  "@fernwartungStopp": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
+  },
+  "fernwartungMikroAus": "Mikrofon aus",
+  "@fernwartungMikroAus": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
+  },
+  "fernwartungMikroAn": "Mikrofon an",
+  "@fernwartungMikroAn": {
+    "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
   }
 }

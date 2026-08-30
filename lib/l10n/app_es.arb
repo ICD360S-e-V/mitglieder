@@ -1409,5 +1409,15 @@
   "fernwartungTitel": "Fernwartung",
   "fernwartungSteuerungTitel": "Steuerung erlauben",
   "fernwartungSteuerungHinweis": "Der Vorstand darf Ihr Gerät während einer Fernwartung bedienen. Sie stimmen jeder Sitzung einzeln zu; ohne Sitzung geschieht nichts. Der Dienst kann Ihren Bildschirm nicht lesen.",
-  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet"
+  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet",
+  "fernwartungAnfrageTitel": "Solicitud de asistencia remota",
+  "fernwartungAnfrageText": "«{name}» desea ver y controlar su pantalla para ayudarle. No se transmite nada sin su consentimiento.",
+  "fernwartungAnfrageHinweis": "Verá un aviso todo el tiempo y puede pulsar «Detener» en cualquier momento.",
+  "fernwartungErlauben": "Permitir",
+  "fernwartungAblehnen": "Rechazar",
+  "fernwartungVerbindet": "Conectando …",
+  "fernwartungAktiv": "Su pantalla se está compartiendo",
+  "fernwartungStopp": "Detener",
+  "fernwartungMikroAus": "Silenciar micrófono",
+  "fernwartungMikroAn": "Activar micrófono"
 }

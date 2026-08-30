@@ -1409,5 +1409,15 @@
   "fernwartungTitel": "Fernwartung",
   "fernwartungSteuerungTitel": "Steuerung erlauben",
   "fernwartungSteuerungHinweis": "Der Vorstand darf Ihr Gerät während einer Fernwartung bedienen. Sie stimmen jeder Sitzung einzeln zu; ohne Sitzung geschieht nichts. Der Dienst kann Ihren Bildschirm nicht lesen.",
-  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet"
+  "fernwartungSteuerungAktiv": "Steuerung ist eingeschaltet",
+  "fernwartungAnfrageTitel": "Anmodning om fjernsupport",
+  "fernwartungAnfrageText": "\"{name}\" vil gerne se og styre din skærm for at hjælpe dig. Intet overføres uden dit samtykke.",
+  "fernwartungAnfrageHinweis": "Du ser en besked hele tiden og kan trykke på \"Stop\" når som helst.",
+  "fernwartungErlauben": "Tillad",
+  "fernwartungAblehnen": "Afvis",
+  "fernwartungVerbindet": "Opretter forbindelse …",
+  "fernwartungAktiv": "Din skærm deles",
+  "fernwartungStopp": "Stop",
+  "fernwartungMikroAus": "Slå mikrofon fra",
+  "fernwartungMikroAn": "Slå mikrofon til"
 }

@@ -3065,4 +3065,37 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get fernwartungSteuerungAktiv => 'Steuerung ist eingeschaltet';
+
+  @override
+  String get fernwartungAnfrageTitel => 'Αίτημα απομακρυσμένης υποστήριξης';
+
+  @override
+  String fernwartungAnfrageText(String name) {
+    return 'Ο/Η «$name» θέλει να βλέπει και να ελέγχει την οθόνη σας για να σας βοηθήσει. Τίποτα δεν μεταδίδεται χωρίς τη συγκατάθεσή σας.';
+  }
+
+  @override
+  String get fernwartungAnfrageHinweis =>
+      'Θα βλέπετε μια ειδοποίηση συνεχώς και μπορείτε να πατήσετε «Διακοπή» οποιαδήποτε στιγμή.';
+
+  @override
+  String get fernwartungErlauben => 'Να επιτραπεί';
+
+  @override
+  String get fernwartungAblehnen => 'Απόρριψη';
+
+  @override
+  String get fernwartungVerbindet => 'Σύνδεση …';
+
+  @override
+  String get fernwartungAktiv => 'Η οθόνη σας μοιράζεται';
+
+  @override
+  String get fernwartungStopp => 'Διακοπή';
+
+  @override
+  String get fernwartungMikroAus => 'Σίγαση μικροφώνου';
+
+  @override
+  String get fernwartungMikroAn => 'Ενεργοποίηση μικροφώνου';
 }
