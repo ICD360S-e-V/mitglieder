@@ -8,11 +8,25 @@ import 'package:http/io_client.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'http_client_factory.dart';
+import 'battery_usage_service.dart';
 
 /// Diagnostic Service - sends app diagnostics to server every 15 seconds
 class DiagnosticService {
   static const String _diagnosticUrl = 'https://icd360sev.icd360s.de/api/diagnostic/log.php';
-  static const Duration _interval = Duration(seconds: 120);
+  /// Waren 120 s — 30 Funkaufwachvorgänge pro Stunde für eine Momentaufnahme,
+  /// die sich zwischen zwei Messungen so gut wie nie ändert. Der Bildschirm,
+  /// auf dem jemand steht, und der Akkustand sind keine Grössen, die eine
+  /// Auflösung von zwei Minuten brauchen; die Fehlerliste geht davon
+  /// unabhängig raus.
+  ///
+  /// 15 Minuten entsprechen dem Minimum, das WorkManager für periodische
+  /// Arbeit erlaubt — der Takt, den Android für Hintergrundarbeit selbst für
+  /// vertretbar hält.
+  ///
+  /// ACHTUNG: Dieser Wert steht Mitgliedern wörtlich im Zustimmungsdialog
+  /// (`claudiuDiagnosticTech1`, alle 28 Sprachen). Wer ihn ändert, ändert
+  /// diese Zeichenkette mit — sonst sagt die App etwas zu, was sie nicht hält.
+  static const Duration _interval = Duration(minutes: 15);
 
   /// Derselbe Schluessel, den startup_diagnostics.dart schon liest: zur
   /// Bauzeit per --dart-define aus dem Secret MITGLIEDER_STARTUP_DIAG_KEY.
@@ -201,6 +215,7 @@ class DiagnosticService {
         'memory_usage': _getMemoryInfo(),
       };
 
+      BatteryUsageService.instance.noteNetworkRequest();
       final response = await _client.post(
         Uri.parse(_diagnosticUrl),
         headers: {

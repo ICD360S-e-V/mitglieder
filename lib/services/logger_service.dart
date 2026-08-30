@@ -7,6 +7,7 @@ import 'secure_storage_helper.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'http_client_factory.dart';
+import 'battery_usage_service.dart';
 import 'api_service.dart';
 
 /// Logger Service - captures app logs for debugging
@@ -43,7 +44,20 @@ class LoggerService {
     if (Platform.isWindows) return 'https://icd360sev.icd360s.de/api/logs/mitglieder_windows.php';
     return 'https://icd360sev.icd360s.de/api/logs/mitglieder_android.php';
   }
-  static const Duration _uploadInterval = Duration(seconds: 30);
+  /// Wie oft die Warteschlange zum Server geht.
+  ///
+  /// Waren 30 s. Das war der teuerste Timer der App: 120 Aufwachvorgänge pro
+  /// Stunde, und zwar auch im Hintergrund, wo niemand zusieht. Den Verbrauch
+  /// bestimmt nicht die Datenmenge, sondern wie oft das Funkmodem geweckt
+  /// wird — bei 30 s kommt es zwischen zwei Uploads gar nicht erst in den
+  /// Ruhezustand.
+  ///
+  /// Fünf Minuten kosten nichts an Diagnosewert: Fehler gehen weiterhin
+  /// sofort raus (siehe [log]), und alles andere ist Kontext, den man ohnehin
+  /// erst im Nachhinein liest. Bei einem Absturz vor dem nächsten Upload gehen
+  /// bis zu fünf Minuten Kontext verloren — dafür gibt es das verschlüsselte
+  /// Startup-Transkript, das genau diesen Fall abdeckt.
+  static const Duration _uploadInterval = Duration(minutes: 5);
 
   Stream<List<LogEntry>> get logStream => _controller.stream;
   List<LogEntry> get logs => List.unmodifiable(_logs);
@@ -156,6 +170,7 @@ class LoggerService {
         'tag': log.tag,
       }).toList();
 
+      BatteryUsageService.instance.noteNetworkRequest();
       final response = await _httpClient.post(
         Uri.parse(_uploadUrl),
         headers: {'Content-Type': 'application/json'},
