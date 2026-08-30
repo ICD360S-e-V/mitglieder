@@ -36,6 +36,7 @@ class RemoteAgentService {
 
   RTCPeerConnection? _pc;
   MediaStream? _screenStream;
+  MediaStream? _mikroStream;
   RTCDataChannel? _inputChannel;
   InputInjector? _injector;
 
@@ -46,6 +47,7 @@ class RemoteAgentService {
 
   StreamSubscription<RemoteIceEvent>? _iceSub;
   StreamSubscription<RemoteEndedEvent>? _endedSub;
+  Timer? _vormerkUhr;
 
   final _stateController = StreamController<RemoteAgentState>.broadcast();
   RemoteAgentState _state = RemoteAgentState.idle;
@@ -53,6 +55,11 @@ class RemoteAgentService {
   Stream<RemoteAgentState> get stateStream => _stateController.stream;
   RemoteAgentState get state => _state;
   String? get controllerName => _controllerName;
+
+  /// Wie viele Kandidaten warten gerade — fuer den Test, der belegt, dass die
+  /// Vormerkung greift. Ohne sie ist der Fehler von aussen unsichtbar: alles
+  /// sieht normal aus, nur die Verbindung kommt nie zustande.
+  int get vorgemerkteKandidaten => _queuedIce.length;
 
   /// True while a session is being set up or is live — drives the "screen is
   /// being shared" banner on the member UI.
@@ -122,10 +129,59 @@ class RemoteAgentService {
 
   // ─── Public API ─────────────────────────────────────────────────────────────
 
+  /// 🔴 AB HIER die ICE-Kandidaten des Vorsitzes einsammeln — nicht erst nach
+  /// dem Antworten.
+  ///
+  /// `remoteIceStream` ist ein **Broadcast**-Stream: was ankommt, waehrend
+  /// niemand zuhoert, ist weg. Abonniert wurde bisher erst in
+  /// [_subscribeSession], also NACH `sendRemoteAnswer` — der Vorsitz sammelt
+  /// seine Kandidaten aber schon Sekundenbruchteile nach dem Angebot, waehrend
+  /// hier noch der Zustimmungsdialog offen steht. Alle drei fielen so ins
+  /// Leere.
+  ///
+  /// Belegt am 30.08.2026 im coturn-Log: der Vorsitz legte 18 Permissions an
+  /// und schickte 69 Pruefpakete, das Mitglied **null** — ein ICE-Agent ohne
+  /// Gegenkandidaten faengt gar nicht erst an. Der Bildschirm des Mitglieds
+  /// stand dabei auf „Verbindung wird aufgebaut", der des Vorsitzes auf
+  /// „Warten auf Zustimmung": beide Meldungen zeigten auf den falschen Schritt.
+  ///
+  /// Wird beim Anzeigen des Zustimmungsdialogs gerufen. Sagt das Mitglied Nein
+  /// oder antwortet es gar nicht, raeumt [_vormerkUhr] wieder auf.
+  void angebotVormerken(RemoteOfferEvent offer) {
+    if (_state != RemoteAgentState.idle) return;
+    _vormerkUhr?.cancel();
+    _iceSub?.cancel();
+    _conversationId = offer.conversationId;
+    _queuedIce.clear();
+    _iceSub = _chat.remoteIceStream.listen((e) {
+      if (e.conversationId == _conversationId) handleIce(e);
+    });
+    // Etwas mehr als die 60 s, nach denen der Vorsitz aufgibt.
+    _vormerkUhr = Timer(const Duration(seconds: 90), () {
+      if (_state == RemoteAgentState.idle) vormerkungVerwerfen();
+    });
+    _log.info('RemoteAgent: sammle ICE ab Angebot (conv ${offer.conversationId})', tag: 'REMOTE');
+  }
+
+  /// Zuruecknehmen, wenn nicht zugestimmt wurde.
+  void vormerkungVerwerfen() {
+    _vormerkUhr?.cancel();
+    _vormerkUhr = null;
+    _iceSub?.cancel();
+    _iceSub = null;
+    _queuedIce.clear();
+    if (_state == RemoteAgentState.idle) _conversationId = null;
+  }
+
   /// Member accepted the consent prompt: capture the screen and answer the offer.
   /// Returns false if setup failed (surface an error to the member).
   Future<bool> accept(RemoteOfferEvent offer) async {
     if (_state != RemoteAgentState.idle) return false;
+    // ⚠️ `_queuedIce` NICHT leeren: darin liegen die Kandidaten, die waehrend
+    // des Zustimmungsdialogs eingetroffen sind. Genau die fehlten bisher.
+    _vormerkUhr?.cancel();
+    _vormerkUhr = null;
+    if (_iceSub == null) angebotVormerken(offer);
     _conversationId = offer.conversationId;
     _controllerName = offer.controllerName;
     _setState(RemoteAgentState.connecting);
@@ -155,6 +211,17 @@ class RemoteAgentService {
       _screenStream = await _captureScreen();
       for (final track in _screenStream!.getTracks()) {
         await _pc!.addTrack(track, _screenStream!);
+      }
+
+      // Sprechen waehrend der Sitzung. ⚠️ Getrennt vom Bildschirm geholt:
+      // `getDisplayMedia` mit `audio: true` liefert auf Android den SYSTEMTON,
+      // nicht das Mikrofon — man wuerde sich selbst hoeren und das Mitglied
+      // trotzdem nicht.
+      _mikroStream = await _mikrofonHolen();
+      if (_mikroStream != null) {
+        for (final track in _mikroStream!.getTracks()) {
+          await _pc!.addTrack(track, _mikroStream!);
+        }
       }
 
       // Answer the Vorsitzer's offer.
@@ -187,6 +254,7 @@ class RemoteAgentService {
 
   /// Member declined the consent prompt.
   void decline(RemoteOfferEvent offer, {String reason = 'declined'}) {
+    vormerkungVerwerfen();
     _chat.sendRemoteReject(offer.conversationId, reason);
     _log.info('RemoteAgent: declined offer from ${offer.controllerName}', tag: 'REMOTE');
   }
@@ -205,6 +273,10 @@ class RemoteAgentService {
 
   /// Feed an ICE candidate from signaling (queued until the offer is applied).
   Future<void> handleIce(RemoteIceEvent e) async {
+    // ⚠️ Die Pruefung gehoert HIERHER, nicht nur in den Zuhoerer: die Methode
+    // ist oeffentlich, und ein Kandidat aus einer fremden Unterhaltung waere
+    // in der Warteschlange nicht mehr von einem echten zu unterscheiden.
+    if (_conversationId == null || e.conversationId != _conversationId) return;
     final cand = RTCIceCandidate(e.candidate, e.sdpMid, e.sdpMLineIndex);
     if (_pc == null || !_remoteDescriptionSet) {
       _queuedIce.add(cand);
@@ -273,23 +345,88 @@ class RemoteAgentService {
         'audio': false,
       });
     }
-    try {
-      final sources = await desktopCapturer.getSources(types: [SourceType.Screen]);
-      if (sources.isNotEmpty) {
-        final src = sources.first;
-        return await navigator.mediaDevices.getDisplayMedia(<String, dynamic>{
-          'video': {
-            'deviceId': {'exact': src.id},
-            'mandatory': {'frameRate': 15.0},
-          },
-          'audio': false,
-        });
+    // ⚠️ Auf Android GAR NICHT erst ueber desktopCapturer: der Kanal heisst
+    // `getDesktopSources` und ist dort nicht umgesetzt, der Aufruf endete also
+    // jedes Mal in einer MissingPluginException und einer irrefuehrenden
+    // Warnzeile im Protokoll. (Der naheliegende Verdacht, `getSources` liefere
+    // auf Android Kameras statt Bildschirme, geht daneben — das ist ein
+    // ANDERER Kanal, den desktopCapturer nicht benutzt.)
+    //
+    // ⚠️ Der Systemdialog von Android ist NICHT zu umgehen und auch nicht
+    // vorauszuwaehlen: er IST die Einwilligung, die das Betriebssystem
+    // verlangt. „Ganzen Bildschirm" ohne Rueckfrage ginge nur mit
+    // MediaProjectionConfig.createConfigForDefaultDisplay() (API 34+), und
+    // flutter_webrtc 1.6.0 reicht das nicht durch. Ohne Angabe steht der
+    // Dialog auf dem ganzen Bildschirm — mehr ist von hier aus nicht zu holen.
+    if (!Platform.isAndroid) {
+      try {
+        final sources = await desktopCapturer.getSources(types: [SourceType.Screen]);
+        if (sources.isNotEmpty) {
+          // Der erste Bildschirm ist der ganze Bildschirm — kein Auswahlfenster
+          // fuer das Mitglied, das gerade Hilfe braucht.
+          final src = sources.first;
+          return await navigator.mediaDevices.getDisplayMedia(<String, dynamic>{
+            'video': {
+              'deviceId': {'exact': src.id},
+              'mandatory': {'frameRate': 15.0},
+            },
+            'audio': false,
+          });
+        }
+      } catch (e) {
+        _log.warning('RemoteAgent: desktopCapturer failed ($e), using default getDisplayMedia', tag: 'REMOTE');
       }
-    } catch (e) {
-      _log.warning('RemoteAgent: desktopCapturer failed ($e), using default getDisplayMedia', tag: 'REMOTE');
     }
-    return navigator.mediaDevices.getDisplayMedia(<String, dynamic>{'video': true, 'audio': false});
+    // Die Bildrate gehoert AUCH hierher: ohne Deckel schickt ein Telefon mit
+    // hoher Bildwiederholrate ein Vielfaches durch das Relais, und die Strecke
+    // ist ohnehin die schmale Stelle.
+    return navigator.mediaDevices.getDisplayMedia(<String, dynamic>{
+      'video': {'mandatory': {'frameRate': 15.0}},
+      'audio': false,
+    });
   }
+
+  /// Mikrofon fuer das Gespraech waehrend der Sitzung.
+  ///
+  /// ⚠️ Gibt bei Ablehnung `null` zurueck und laesst die Sitzung WEITERLAUFEN.
+  /// Wer sein Mikrofon nicht freigibt, will trotzdem Hilfe — die Fernwartung
+  /// daran scheitern zu lassen, waere die falsche Reihenfolge. Der Vorsitz
+  /// sieht dann „ohne Ton" und kann ueber den Chat schreiben.
+  ///
+  /// ⚠️ Die Berechtigung wurde bisher NUR im Anrufdialog erfragt
+  /// (`incoming_call_dialog.dart`). Eine Fernwartung fragte auf keiner
+  /// Android-Fassung nach dem Mikrofon — sie benutzte es ja auch nicht.
+  Future<MediaStream?> _mikrofonHolen() async {
+    try {
+      // ⚠️ Kein permission_handler: `getUserMedia` mit Ton fragt RECORD_AUDIO
+      // auf Android SELBST ab (GetUserMediaImpl.requestPermissions). Ein
+      // zweiter Weg zur selben Berechtigung waere eine zweite Wahrheit —
+      // und im Vorsitzer-Projekt gaebe es die Abhaengigkeit gar nicht.
+      // Lehnt das Mitglied ab, wirft der Aufruf und wir landen im catch.
+      return await navigator.mediaDevices.getUserMedia(<String, dynamic>{
+        'audio': {
+          'echoCancellation': true,
+          'noiseSuppression': true,
+          'autoGainControl': true,
+        },
+        'video': false,
+      });
+    } catch (e) {
+      _log.warning('RemoteAgent: kein Mikrofon ($e) — Sitzung laeuft ohne Ton',
+          tag: 'REMOTE');
+      return null;
+    }
+  }
+
+  /// Eigenes Mikrofon stummschalten, ohne die Sitzung zu beenden.
+  void mikrofonStumm(bool stumm) {
+    for (final t in _mikroStream?.getAudioTracks() ?? const <MediaStreamTrack>[]) {
+      t.enabled = !stumm;
+    }
+  }
+
+  /// Liegt ueberhaupt ein Mikrofon an? Fuer die Anzeige im Banner.
+  bool get hatMikrofon => _mikroStream != null;
 
   /// Parse one input frame from the controller and drive the native injector.
   void _handleInput(String text) {
@@ -327,7 +464,9 @@ class RemoteAgentService {
   }
 
   void _subscribeSession() {
-    _iceSub = _chat.remoteIceStream.listen((e) {
+    // Laeuft schon seit dem Angebot (siehe [angebotVormerken]) — ein zweites
+    // Abo wuerde jeden Kandidaten doppelt einspeisen.
+    _iceSub ??= _chat.remoteIceStream.listen((e) {
       if (e.conversationId == _conversationId) handleIce(e);
     });
     _endedSub = _chat.remoteEndedStream.listen((e) {
@@ -345,6 +484,8 @@ class RemoteAgentService {
   }
 
   void _cleanup() {
+    _vormerkUhr?.cancel();
+    _vormerkUhr = null;
     // Restore the screenshot/recording block + stop the capture FG service.
     SecureScreen.setSecure(true);
     ScreenCaptureFgService.stop();
@@ -361,6 +502,11 @@ class RemoteAgentService {
       _screenStream?.dispose();
     } catch (_) {}
     _screenStream = null;
+    try {
+      _mikroStream?.getTracks().forEach((t) => t.stop());
+      _mikroStream?.dispose();
+    } catch (_) {}
+    _mikroStream = null;
     try {
       _pc?.close();
     } catch (_) {}

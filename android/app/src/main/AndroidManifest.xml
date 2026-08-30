@@ -43,6 +43,12 @@
          foreground service before MediaProjection can start, and to keep the
          capture alive when the app is backgrounded. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+    <!-- Fernwartung: waehrend einer Sitzung kann gesprochen werden. Ab
+         Android 14 braucht ein Vordergrunddienst, der das Mikrofon benutzt,
+         waehrend die App im Hintergrund ist, DIESE Berechtigung und den
+         Diensttyp `microphone` — sonst wird der Ton stumm, sobald das Mitglied
+         die App verlaesst, also genau dann, wenn ihm geholfen wird. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
 
     <!-- Battery Optimization Exemption (keeps WebSocket alive) -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
@@ -137,7 +143,7 @@
             android:name=".ScreenCaptureService"
             android:enabled="true"
             android:exported="false"
-            android:foregroundServiceType="mediaProjection" />
+            android:foregroundServiceType="mediaProjection|microphone" />
 
         <!-- Fernwartung: Fernsteuerung. Android laesst eine normale App keine
              Eingaben in andere Apps schicken (INJECT_EVENTS ist signature-only);

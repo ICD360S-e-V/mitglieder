@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:icd360sev_mitglied/services/chat_service.dart';
+import 'package:icd360sev_mitglied/services/remote_agent_service.dart';
 import 'package:icd360sev_mitglied/services/remote_input/input_injector_android.dart';
 import 'package:icd360sev_mitglied/widgets/remote_touch_overlay.dart';
 
@@ -121,6 +122,69 @@ void main() {
     expect(find.text('inhalt'), findsOneWidget);
     expect(tester.binding.hasScheduledFrame, isFalse,
         reason: 'ein laufender Ticker haelt das Geraet dauerhaft am Zeichnen');
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
+  /// 🔴 Der Befund vom 30.08.2026, gemessen im coturn-Log: der Vorsitz legte
+  /// 18 Permissions an und schickte 69 Pruefpakete, das Mitglied **null**. Ein
+  /// ICE-Agent ohne Gegenkandidaten faengt gar nicht erst an.
+  ///
+  /// Ursache: `remoteIceStream` ist ein BROADCAST-Stream. Abonniert wurde erst
+  /// nach `sendRemoteAnswer` — die Kandidaten des Vorsitzes treffen aber
+  /// waehrend des Zustimmungsdialogs ein und fielen ins Leere.
+  group('ICE waehrend des Zustimmungsdialogs geht nicht verloren', () {
+    final agent = RemoteAgentService();
+
+    tearDown(agent.vormerkungVerwerfen);
+
+    RemoteOfferEvent angebot() => RemoteOfferEvent(
+          conversationId: 42,
+          controllerId: '2',
+          controllerName: 'Vorsitz',
+          sdp: 'v=0',
+          sdpType: 'offer',
+        );
+
+    test('vorgemerkte Kandidaten landen in der Warteschlange', () {
+      agent.angebotVormerken(angebot());
+      expect(agent.vorgemerkteKandidaten, 0);
+
+      for (var n = 0; n < 3; n++) {
+        agent.handleIce(RemoteIceEvent(
+          conversationId: 42,
+          candidate: 'candidate:$n 1 udp 1 1.2.3.4 100$n typ relay',
+          sdpMid: '0',
+          sdpMLineIndex: 0,
+        ));
+      }
+      expect(agent.vorgemerkteKandidaten, 3,
+          reason: 'ohne Vormerkung waeren alle drei weg');
+    });
+
+    test('Kandidaten einer FREMDEN Unterhaltung werden nicht gesammelt', () {
+      agent.angebotVormerken(angebot());
+      agent.handleIce(RemoteIceEvent(
+        conversationId: 99,
+        candidate: 'candidate:0 1 udp 1 1.2.3.4 1000 typ relay',
+        sdpMid: '0',
+        sdpMLineIndex: 0,
+      ));
+      expect(agent.vorgemerkteKandidaten, 0);
+    });
+
+    test('Ablehnen raeumt die Vormerkung ab', () {
+      agent.angebotVormerken(angebot());
+      agent.handleIce(RemoteIceEvent(
+        conversationId: 42,
+        candidate: 'candidate:0 1 udp 1 1.2.3.4 1000 typ relay',
+        sdpMid: '0',
+        sdpMLineIndex: 0,
+      ));
+      expect(agent.vorgemerkteKandidaten, 1);
+      agent.vormerkungVerwerfen();
+      expect(agent.vorgemerkteKandidaten, 0,
+          reason: 'sonst traegt die naechste Sitzung fremde Kandidaten mit');
+    });
   });
 
   // ─────────────────────────────────────────────────────────────────────────
