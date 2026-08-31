@@ -22,10 +22,15 @@ class ResilientHttpClient extends http.BaseClient {
     // Zählpunkt für die Akkumessung. Jede abgesetzte Anfrage weckt das
     // Funkmodem, und die Anzahl pro Stunde — nicht die Datenmenge — ist die
     // Grösse, die den Verbrauch bestimmt. Hier zu zählen erfasst alles, was
-    // über ApiService läuft, an genau einer Stelle. Die Dienste mit eigenem
-    // Client (LoggerService, DiagnosticService, Ticket-Polling, ntfy, Device-
-    // Key) zählen jeweils selbst.
-    BatteryUsageService.instance.noteNetworkRequest();
+    // über ApiService läuft, an genau einer Stelle.
+    //
+    // Welcher Dienst es war, sagt die Zone: periodische Aufrufer umschliessen
+    // sich mit BatteryUsageService.runAs(...). Ohne Markierung ist es eine
+    // gewöhnliche Anfrage des Mitglieds. Die Dienste mit eigenem HTTP-Client
+    // (LoggerService, DiagnosticService, Ticket-Abfrage, ntfy, Device-Key)
+    // zählen jeweils selbst.
+    BatteryUsageService.instance
+        .noteNetworkRequest(BatteryUsageService.currentSource);
     return NetworkResilience.instance.breaker.execute(() => _inner.send(request));
   }
 

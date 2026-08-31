@@ -116,7 +116,7 @@ class NtfyService {
         request.headers['Authorization'] = 'Bearer $_ntfyToken';
       }
 
-      BatteryUsageService.instance.noteNetworkRequest();
+      BatteryUsageService.instance.noteNetworkRequest(NetworkSource.ntfy);
       final response = await _client!.send(request);
 
       if (response.statusCode == 403 || response.statusCode == 401) {

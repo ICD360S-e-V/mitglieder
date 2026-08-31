@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'api_service.dart';
 import 'logger_service.dart';
+import 'battery_usage_service.dart';
 import 'network_info_service.dart';
 
 final _log = LoggerService();
@@ -35,10 +36,20 @@ class HeartbeatService {
     _timer?.cancel();
 
     // Start periodic heartbeat
-    _timer = Timer.periodic(_interval, (_) => _sendHeartbeat());
+    // Zone-Markierung, damit ResilientHttpClient die Anfragen dem Heartbeat
+    // zuschreibt statt der Sammelkategorie für Mitgliederaktionen. Der
+    // Heartbeat ist der Hauptverdächtige unter den verbliebenen periodischen
+    // Weckern; ohne diese Zuordnung bliebe das eine Vermutung.
+    _timer = Timer.periodic(
+      _interval,
+      (_) => BatteryUsageService.runAs(
+        NetworkSource.heartbeat,
+        () => _sendHeartbeat(),
+      ),
+    );
 
     // Send initial heartbeat immediately
-    _sendHeartbeat();
+    BatteryUsageService.runAs(NetworkSource.heartbeat, () => _sendHeartbeat());
   }
 
   /// Stop heartbeat updates
