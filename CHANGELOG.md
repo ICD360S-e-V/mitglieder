@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.90.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.89.1...v1.90.0) (2026-08-31)
+
+
+### Features
+
+* **akku:** Netzanfragen je Verursacher aufschlüsseln ([#354](https://github.com/ICD360S-e-V/mitglieder/issues/354)) ([2430a65](https://github.com/ICD360S-e-V/mitglieder/commit/2430a658dc5dee3da17e0fff1fb6b7f612877fde))
+
 ## [1.89.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.89.0...v1.89.1) (2026-08-31)
 
 
