@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.89.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.8...v1.89.0) (2026-08-31)
+
+
+### Features
+
+* **fernwartung:** Bildrate regelt sich selbst und nutzt die Leitung aus ([#350](https://github.com/ICD360S-e-V/mitglieder/issues/350)) ([56e6b63](https://github.com/ICD360S-e-V/mitglieder/commit/56e6b63f7ea3c095683728da0704c010d90043d2))
+
 ## [1.88.8](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.7...v1.88.8) (2026-08-31)
 
 
