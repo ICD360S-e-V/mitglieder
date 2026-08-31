@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:icd360sev_mitglied/services/chat_service.dart';
 import 'package:icd360sev_mitglied/services/remote_agent_service.dart';
+import 'package:icd360sev_mitglied/services/voice_call_service.dart';
 import 'package:icd360sev_mitglied/services/remote_input/input_injector_android.dart';
 import 'package:icd360sev_mitglied/widgets/remote_touch_overlay.dart';
 
@@ -422,6 +423,95 @@ void main() {
     test('30 Bilder je Sekunde sind moeglich, nicht auf 15 festgenagelt', () {
       expect(Bildguete.automatik.fps, greaterThanOrEqualTo(30));
       expect(Bildguete.fluessig.fps, greaterThanOrEqualTo(30));
+    });
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
+  /// 🔴 Auf einem Schreibtisch mit zwei Monitoren war die Wahl ein Muenzwurf:
+  /// `DesktopCapturerSource` traegt kein Merkmal fuer „der Hauptbildschirm"
+  /// (nur id, name, type, Vorschaubild), also wurde immer der erste genommen —
+  /// womoeglich der leere. Betrifft die Windows-Mitglieder.
+  group('Bildschirmwahl auf dem Schreibtisch', () {
+    final quelle =
+        File('lib/services/remote_agent_service.dart').readAsStringSync();
+
+    test('die Monitornamen gehen mit der Antwort mit', () {
+      expect(quelle, contains('bildschirme: _bildschirme'));
+      expect(File('lib/services/chat_service.dart').readAsStringSync(),
+          contains("'bildschirme': bildschirme"));
+    });
+
+    /// `replaceTrack` statt neu aushandeln: die Verbindung bleibt bestehen,
+    /// es gibt kein Ruckeln durch ein zweites Angebot.
+    test('gewechselt wird per replaceTrack, ohne Neuverhandlung', () {
+      expect(quelle, contains('replaceTrack(neueSpur)'));
+      expect(quelle.contains('createOffer'), isFalse,
+          reason: 'der Agent antwortet, er verhandelt nicht neu');
+    });
+
+    /// ⚠️ Erst tauschen, dann die alte Spur stoppen. Andersherum stuende beim
+    /// Vorsitz kurz gar kein Bild.
+    test('die alte Spur wird erst NACH dem Tausch gestoppt', () {
+      final rumpf = quelle.substring(quelle.indexOf('bildschirmWaehlen(int nr)'));
+      expect(rumpf.indexOf('replaceTrack'), lessThan(rumpf.indexOf('t.stop()')));
+    });
+
+    test('auf dem Telefon gibt es nichts zu waehlen', () {
+      final rumpf = quelle.substring(quelle.indexOf('bildschirmWaehlen(int nr)'));
+      expect(rumpf.substring(0, 200), contains('Platform.isAndroid'));
+    });
+
+    /// Wie die Guete ist die Bildschirmwahl KEINE Eingabe — sie muss auch dort
+    /// greifen, wo gar nicht gesteuert werden kann.
+    test('der s-Rahmen wird VOR der Steuerungspruefung behandelt', () {
+      final rumpf = quelle.substring(quelle.indexOf('void _handleInput('));
+      expect(rumpf.indexOf("m['t'] == 's'"),
+          lessThan(rumpf.indexOf('!injector.isSupported')));
+    });
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
+  /// 🔴 Der Fehler, der die Fernwartung mit einem Mitglied auf WINDOWS
+  /// unbrauchbar machte, waehrend sie mit Telefonen lief.
+  ///
+  /// Die C++-Bruecke von flutter_webrtc (Windows und Linux teilen sie) liest
+  /// `urls` in einen EINZELNEN String und ueberschreibt ihn je Durchlauf — von
+  /// N URIs ueberlebt nur die letzte. Android behaelt alle. Die letzte ist
+  /// `turns:…:5349`, dessen TLS-Handschlag libwebrtc nicht zustande bringt.
+  /// Mit `iceTransportPolicy: relay` bleiben damit null Kandidaten.
+  group('ICE-Server: ein Eintrag je URI', () {
+    const uris = [
+      'stun:turn.icd360s.de:3478',
+      'turn:turn.icd360s.de:3478?transport=udp',
+      'turn:turn.icd360s.de:3478?transport=tcp',
+      'turns:turn.icd360s.de:5349?transport=tcp',
+    ];
+
+    test('jede URI bekommt einen eigenen Eintrag', () {
+      final e = iceServerEintraege(uris, 'u', 'p');
+      expect(e.length, 4);
+      for (final s in e) {
+        expect(s['urls'], isA<String>(),
+            reason: 'eine Liste ueberlebt den Schreibtisch nicht');
+      }
+    });
+
+    test('die Zugangsdaten haengen an den TURN-Eintraegen, nicht am STUN', () {
+      final e = iceServerEintraege(uris, 'u', 'p');
+      expect(e.first.containsKey('username'), isFalse);
+      expect(e.last['username'], 'u');
+      expect(e.last['credential'], 'p');
+    });
+
+    /// Die Fernwartung baute die Liste selbst und gruppiert. Sie MUSS denselben
+    /// Helfer benutzen wie der Anrufdienst, sonst laeuft die Reparatur wieder
+    /// auseinander.
+    test('der Agent benutzt den gemeinsamen Helfer', () {
+      final quelle =
+          File('lib/services/remote_agent_service.dart').readAsStringSync();
+      expect(quelle, contains('iceServerEintraege(uris, username, password)'));
+      expect(quelle.contains("{'urls': turn,"), isFalse,
+          reason: 'die gruppierte Form darf nicht zurueckkommen');
     });
   });
 
