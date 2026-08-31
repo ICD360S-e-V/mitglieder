@@ -6,6 +6,7 @@ import 'package:http/io_client.dart';
 import 'dart:io';
 import 'api_service.dart';
 import 'chat_service.dart';
+import 'voice_call_service.dart' show iceServerEintraege;
 import 'logger_service.dart';
 import 'secure_screen.dart';
 import 'remote_input/input_injector.dart';
@@ -164,12 +165,30 @@ class RemoteAgentService {
         final username = data['username']?.toString();
         final password = data['password']?.toString();
         if (uris.isEmpty || username == null || password == null) return empty;
-        final stun = uris.where((u) => u.startsWith('stun:')).toList();
-        final turn = uris.where((u) => u.startsWith('turn:') || u.startsWith('turns:')).toList();
-        final servers = <Map<String, dynamic>>[
-          if (stun.isNotEmpty) {'urls': stun},
-          if (turn.isNotEmpty) {'urls': turn, 'username': username, 'credential': password},
-        ];
+        // 🔴 EIN EINTRAG JE URI — niemals eine `urls`-LISTE.
+        //
+        // Hier stand die gruppierte Form, und auf dem Schreibtisch ist sie
+        // toedlich: die C++-Bruecke von flutter_webrtc (Windows und Linux
+        // teilen sich `common/cpp/src/flutter_webrtc_base.cc`) liest `urls` in
+        // `IceServer.uri` — einen EINZELNEN String — und ueberschreibt ihn in
+        // jedem Schleifendurchlauf. Von N URIs ueberlebt nur die LETZTE.
+        // Android hat seinen eigenen Java-Pfad und behaelt alle; deshalb fiel
+        // der Fehler mit Mitgliedern auf Telefonen nie auf.
+        //
+        // Die letzte URI ist `turns:…:5349` — genau der Transportweg, dessen
+        // TLS-Handschlag libwebrtc nicht zustande bringt (der eingebaute
+        // Wurzelspeicher `ssl_roots.h` kennt die Let's-Encrypt-Kette nicht).
+        // Ergebnis: null Relay-Kandidaten, und mit `iceTransportPolicy: relay`
+        // heisst das null Kandidaten ueberhaupt — die Sitzung wird angenommen
+        // und traegt nie ein Bild.
+        //
+        // Im coturn-Log sieht das so aus: `tls connected to 95.90.47.170`,
+        // sofort danach `TLS/TCP socket disconnected` und `user <>` — also
+        // keine Anmeldung, keine Allokation.
+        //
+        // Der Anrufdienst hatte denselben Fehler schon einmal und bekam dafuer
+        // `iceServerEintraege()`. Die Fernwartung hat ihn nie benutzt.
+        final servers = iceServerEintraege(uris, username, password);
         if (servers.isEmpty) return empty;
         _cachedIceServers = {'iceServers': servers};
         final ttl = (data['ttl'] as num?)?.toInt() ?? 86400;
@@ -353,6 +372,9 @@ class RemoteAgentService {
         plattform: _plattformName(),
         steuerung: _injector?.isSupported ?? false,
         bildFrei: _sperreOffen,
+        // Bei mehreren Monitoren war die Wahl bisher ein Münzwurf. Der Vorsitz
+        // soll wenigstens WISSEN, dass es mehrere gibt, und umschalten können.
+        bildschirme: _bildschirme,
       );
 
       // Erst NACH setLocalDescription: vorher hat der Sender noch keine
@@ -476,6 +498,83 @@ class RemoteAgentService {
     }
   }
 
+  /// Namen der verfügbaren Bildschirme. Auf Android immer leer (dort gibt es
+  /// nur die eine Anzeige), auf dem Schreibtisch einer je Monitor.
+  List<String> get bildschirme => List.unmodifiable(_bildschirme);
+  final List<String> _bildschirme = [];
+
+  /// Welcher Monitor gerade geteilt wird — für die Anzeige und damit ein
+  /// wiederholter Umschaltbefehl nicht unnötig neu aufnimmt.
+  int get bildschirmNr => _bildschirmNr;
+  int _bildschirmNr = 0;
+
+  /// Auf einen anderen Monitor umschalten — ohne Neuverhandlung.
+  ///
+  /// ⚠️ Nötig geworden durch die Windows-Mitglieder: `getSources` liefert die
+  /// Monitore in einer Reihenfolge, die KEIN Merkmal für „der Hauptbildschirm"
+  /// enthält (nachgesehen: `DesktopCapturerSource` hat nur id, name, type und
+  /// ein Vorschaubild). Bei zwei Monitoren war die Wahl damit ein Münzwurf,
+  /// und der Vorsitz sah womöglich den leeren.
+  ///
+  /// `replaceTrack` tauscht die Spur im laufenden Sender aus; die Verbindung
+  /// bleibt bestehen, es gibt kein Ruckeln durch ein neues Aushandeln.
+  Future<bool> bildschirmWaehlen(int nr) async {
+    if (Platform.isAndroid || Platform.isIOS) return false;
+    if (nr < 0 || nr >= _bildschirme.length) return false;
+    // Schon dort: ein zweiter Klick soll nicht die Aufnahme neu starten und
+    // dabei das Bild kurz stehen lassen.
+    if (nr == _bildschirmNr) return true;
+    final pc = _pc;
+    if (pc == null) return false;
+    try {
+      final quellen = await desktopCapturer.getSources(types: [SourceType.Screen]);
+      if (nr >= quellen.length) return false;
+
+      final neu = await navigator.mediaDevices.getDisplayMedia(<String, dynamic>{
+        'video': {
+          'deviceId': {'exact': quellen[nr].id},
+          'mandatory': {'frameRate': 30.0},
+        },
+        'audio': false,
+      });
+      final neueSpur = neu.getVideoTracks().first;
+
+      RTCRtpSender? bild;
+      for (final sd in await pc.getSenders()) {
+        if (sd.track?.kind == 'video') {
+          bild = sd;
+          break;
+        }
+      }
+      if (bild == null) return false;
+      await bild.replaceTrack(neueSpur);
+
+      // Erst NACH dem Tausch aufräumen — sonst steht kurz gar kein Bild an.
+      final alt = _screenStream;
+      _screenStream = neu;
+      _bildschirmNr = nr;
+      try {
+        for (final t in alt?.getVideoTracks() ?? const <MediaStreamTrack>[]) {
+          await t.stop();
+        }
+      } catch (_) {}
+
+      // Die Encodings hängen am Sender, nicht an der Spur — sie überleben den
+      // Tausch. Trotzdem neu setzen: bei einem Monitor anderer Grösse würde
+      // sonst eine Einstellung von der alten Auflösung weitergelten.
+      await _bitrateSetzen(
+          _guete == Bildguete.automatik ? _kbit : _guete.kbit,
+          _guete.fps,
+          _guete.verkleinern,
+          _guete.nachgeben);
+      _log.info('RemoteAgent: Bildschirm ${quellen[nr].name}', tag: 'REMOTE');
+      return true;
+    } catch (e) {
+      _log.warning('RemoteAgent: Bildschirmwechsel fehlgeschlagen: $e', tag: 'REMOTE');
+      return false;
+    }
+  }
+
   /// Capture the primary screen. Picks the first Screen source explicitly so the
   /// OS does not pop its own picker; falls back to a plain constraint.
   Future<MediaStream> _captureScreen() async {
@@ -500,6 +599,9 @@ class RemoteAgentService {
     if (!Platform.isAndroid) {
       try {
         final sources = await desktopCapturer.getSources(types: [SourceType.Screen]);
+        _bildschirme
+          ..clear()
+          ..addAll(sources.map((q) => q.name));
         if (sources.isNotEmpty) {
           // Der erste Bildschirm ist der ganze Bildschirm — kein Auswahlfenster
           // fuer das Mitglied, das gerade Hilfe braucht.
@@ -818,6 +920,13 @@ class RemoteAgentService {
       bildgueteSetzen(Bildguete.vonName(m['g']?.toString()));
       return;
     }
+    // Bildschirmwahl — wie die Güte keine Eingabe, muss also auch auf reinen
+    // Ansichts-Geräten greifen.
+    if (m['t'] == 's') {
+      final nr = m['i'];
+      if (nr is num) bildschirmWaehlen(nr.toInt());
+      return;
+    }
 
     final injector = _injector;
     if (injector == null || !injector.isSupported) return; // view-only: ignore
@@ -891,6 +1000,8 @@ class RemoteAgentService {
       _screenStream?.dispose();
     } catch (_) {}
     _screenStream = null;
+    _bildschirme.clear();
+    _bildschirmNr = 0;
     try {
       _mikroStream?.getTracks().forEach((t) => t.stop());
       _mikroStream?.dispose();
