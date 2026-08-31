@@ -15,6 +15,63 @@ final _log = LoggerService();
 /// Lifecycle of a Fernwartung session on the AGENT (member) side.
 enum RemoteAgentState { idle, connecting, active }
 
+/// Wie der Bildstrom eingestellt wird.
+///
+/// ⚠️ Die Zahlen sind nicht geraten, sondern folgen den eigenen Messungen des
+/// Vereins (Speedtest-Reihe): der Telekom-Uplink schafft im Median rund
+/// 18 Mbit/s, bricht aber in 34 % der Messungen unter 7,5 Mbit/s ein — und vor
+/// allem zeigt er **schweren Bufferbloat**: Latenz unter Last bis 7402 ms, in
+/// 32 % der Läufe mehr als das Zehnfache des Ruhewerts.
+///
+/// Genau daher kommt die Verzögerung von ein bis zwei Sekunden: WebRTC dreht
+/// die Bitrate hoch, bis der Puffer des Funkmodems voll ist, und ab da läuft
+/// das Bild hinterher. Ein Deckel WEIT unter der Leitung ist deshalb nicht
+/// Sparsamkeit, sondern die eigentliche Reparatur — man muss die Leitung
+/// bewusst nicht ausreizen.
+class Bildguete {
+  final String name;
+  final int kbit;
+  final int fps;
+  final double verkleinern;
+
+  /// Was aufgegeben wird, wenn die Bandbreite knapp wird.
+  ///
+  /// ⚠️ Das ist die eigentliche Entscheidung „flüssig oder scharf", nicht die
+  /// Bitrate. W3C bildet dafür `contentHint` ab — `motion` → maintain-framerate,
+  /// `detail`/`text` → maintain-resolution. flutter_webrtc reicht `contentHint`
+  /// nicht durch (nachgesehen: kein Treffer in Dart noch nativ), also wird
+  /// direkt die Präferenz gesetzt, die intern ohnehin daraus entsteht.
+  final RTCDegradationPreference nachgeben;
+
+  const Bildguete(
+      this.name, this.kbit, this.fps, this.verkleinern, this.nachgeben);
+
+  /// Voreinstellung: regelt sich selbst (siehe [_regelTakt]).
+  ///
+  /// ⚠️ Der Deckel ist bewusst HOCH. Er ist keine Sparmassnahme — die Leitung
+  /// schafft im Median rund 18 Mbit/s, und ein fester Deckel von 2,5 Mbit/s
+  /// hätte sie künstlich gedrosselt. Was die Verzögerung verhindert, ist nicht
+  /// ein niedriger Deckel, sondern die Regelung auf Umlaufzeit: sie merkt, wenn
+  /// sich eine Warteschlange bildet, und geht VORHER zurück.
+  static const automatik = Bildguete(
+      'automatik', 2500, 30, 1.0, RTCDegradationPreference.MAINTAIN_RESOLUTION);
+
+  /// „Flüssig": Bewegung zählt mehr als Schärfe.
+  /// Bei Enge fällt die Auflösung, die Bildrate bleibt.
+  static const fluessig = Bildguete(
+      'fluessig', 2000, 30, 1.0, RTCDegradationPreference.MAINTAIN_FRAMERATE);
+
+  /// „Scharf": Schrift zählt mehr als Bewegung.
+  /// Bei Enge fallen Bilder aus, die Auflösung bleibt.
+  static const scharf = Bildguete(
+      'scharf', 4000, 15, 1.0, RTCDegradationPreference.MAINTAIN_RESOLUTION);
+
+  static const alle = [automatik, fluessig, scharf];
+
+  static Bildguete vonName(String? n) =>
+      alle.firstWhere((g) => g.name == n, orElse: () => automatik);
+}
+
 /// RemoteAgentService — the member side of Fernwartung (RustDesk-style remote
 /// support). It is completely separate from voice calls and from the
 /// RDP/Guacamole office remote desktop.
@@ -296,7 +353,14 @@ class RemoteAgentService {
         plattform: _plattformName(),
         steuerung: _injector?.isSupported ?? false,
         bildFrei: _sperreOffen,
+        // Bei mehreren Monitoren war die Wahl bisher ein Münzwurf. Der Vorsitz
+        // soll wenigstens WISSEN, dass es mehrere gibt, und umschalten können.
+        bildschirme: _bildschirme,
       );
+
+      // Erst NACH setLocalDescription: vorher hat der Sender noch keine
+      // Encodings, und setParameters liefe ins Leere.
+      await bildgueteSetzen(_guete);
 
       _subscribeSession();
       _log.info('RemoteAgent: answered offer, sharing screen (control=${_injector?.isSupported})', tag: 'REMOTE');
@@ -415,6 +479,83 @@ class RemoteAgentService {
     }
   }
 
+  /// Namen der verfügbaren Bildschirme. Auf Android immer leer (dort gibt es
+  /// nur die eine Anzeige), auf dem Schreibtisch einer je Monitor.
+  List<String> get bildschirme => List.unmodifiable(_bildschirme);
+  final List<String> _bildschirme = [];
+
+  /// Welcher Monitor gerade geteilt wird — für die Anzeige und damit ein
+  /// wiederholter Umschaltbefehl nicht unnötig neu aufnimmt.
+  int get bildschirmNr => _bildschirmNr;
+  int _bildschirmNr = 0;
+
+  /// Auf einen anderen Monitor umschalten — ohne Neuverhandlung.
+  ///
+  /// ⚠️ Nötig geworden durch die Windows-Mitglieder: `getSources` liefert die
+  /// Monitore in einer Reihenfolge, die KEIN Merkmal für „der Hauptbildschirm"
+  /// enthält (nachgesehen: `DesktopCapturerSource` hat nur id, name, type und
+  /// ein Vorschaubild). Bei zwei Monitoren war die Wahl damit ein Münzwurf,
+  /// und der Vorsitz sah womöglich den leeren.
+  ///
+  /// `replaceTrack` tauscht die Spur im laufenden Sender aus; die Verbindung
+  /// bleibt bestehen, es gibt kein Ruckeln durch ein neues Aushandeln.
+  Future<bool> bildschirmWaehlen(int nr) async {
+    if (Platform.isAndroid || Platform.isIOS) return false;
+    if (nr < 0 || nr >= _bildschirme.length) return false;
+    // Schon dort: ein zweiter Klick soll nicht die Aufnahme neu starten und
+    // dabei das Bild kurz stehen lassen.
+    if (nr == _bildschirmNr) return true;
+    final pc = _pc;
+    if (pc == null) return false;
+    try {
+      final quellen = await desktopCapturer.getSources(types: [SourceType.Screen]);
+      if (nr >= quellen.length) return false;
+
+      final neu = await navigator.mediaDevices.getDisplayMedia(<String, dynamic>{
+        'video': {
+          'deviceId': {'exact': quellen[nr].id},
+          'mandatory': {'frameRate': 30.0},
+        },
+        'audio': false,
+      });
+      final neueSpur = neu.getVideoTracks().first;
+
+      RTCRtpSender? bild;
+      for (final sd in await pc.getSenders()) {
+        if (sd.track?.kind == 'video') {
+          bild = sd;
+          break;
+        }
+      }
+      if (bild == null) return false;
+      await bild.replaceTrack(neueSpur);
+
+      // Erst NACH dem Tausch aufräumen — sonst steht kurz gar kein Bild an.
+      final alt = _screenStream;
+      _screenStream = neu;
+      _bildschirmNr = nr;
+      try {
+        for (final t in alt?.getVideoTracks() ?? const <MediaStreamTrack>[]) {
+          await t.stop();
+        }
+      } catch (_) {}
+
+      // Die Encodings hängen am Sender, nicht an der Spur — sie überleben den
+      // Tausch. Trotzdem neu setzen: bei einem Monitor anderer Grösse würde
+      // sonst eine Einstellung von der alten Auflösung weitergelten.
+      await _bitrateSetzen(
+          _guete == Bildguete.automatik ? _kbit : _guete.kbit,
+          _guete.fps,
+          _guete.verkleinern,
+          _guete.nachgeben);
+      _log.info('RemoteAgent: Bildschirm ${quellen[nr].name}', tag: 'REMOTE');
+      return true;
+    } catch (e) {
+      _log.warning('RemoteAgent: Bildschirmwechsel fehlgeschlagen: $e', tag: 'REMOTE');
+      return false;
+    }
+  }
+
   /// Capture the primary screen. Picks the first Screen source explicitly so the
   /// OS does not pop its own picker; falls back to a plain constraint.
   Future<MediaStream> _captureScreen() async {
@@ -439,6 +580,9 @@ class RemoteAgentService {
     if (!Platform.isAndroid) {
       try {
         final sources = await desktopCapturer.getSources(types: [SourceType.Screen]);
+        _bildschirme
+          ..clear()
+          ..addAll(sources.map((q) => q.name));
         if (sources.isNotEmpty) {
           // Der erste Bildschirm ist der ganze Bildschirm — kein Auswahlfenster
           // fuer das Mitglied, das gerade Hilfe braucht.
@@ -522,6 +666,207 @@ class RemoteAgentService {
     }
   }
 
+  Bildguete _guete = Bildguete.automatik;
+
+  /// Aktuell eingestellte Bildgüte.
+  Bildguete get guete => _guete;
+
+  /// Bitrate, Bildrate und Auflösung des Bildstroms setzen.
+  ///
+  /// ⚠️ `MAINTAIN_RESOLUTION`, nicht `MAINTAIN_FRAMERATE`: auf einem geteilten
+  /// Telefonbildschirm wird GELESEN. Wird es eng, sollen lieber Bilder
+  /// ausfallen als die Schrift verschwimmen — bei `MAINTAIN_FRAMERATE` würde
+  /// libwebrtc die Auflösung herunterfahren und der Text wäre nicht mehr zu
+  /// entziffern.
+  ///
+  /// ⚠️ Das Plugin ignoriert auf Android die Aufnahme-Constraints und nimmt
+  /// immer die volle Anzeige mit `DEFAULT_FPS = 30` auf
+  /// (`GetUserMediaImpl.getDisplayMedia`). Begrenzt wird also NICHT die
+  /// Aufnahme, sondern der Sender — hier, über die Encodings.
+  ///
+  /// Wirkt sofort und ohne Neuverhandlung.
+  Future<bool> bildgueteSetzen(Bildguete g) async {
+    _guete = g;
+    if (g == Bildguete.automatik) {
+      _reglerStarten();
+    } else {
+      // Eine feste Stufe ist eine Ansage, kein Vorschlag: der Regler darf sie
+      // nicht gleich wieder wegregeln.
+      _reglerStoppen();
+    }
+    return _bitrateSetzen(g.kbit, g.fps, g.verkleinern, g.nachgeben);
+  }
+
+  /// Setzt die Encodings des Bildsenders. Wirkt sofort, ohne Neuverhandlung.
+  Future<bool> _bitrateSetzen(int kbit, int fps, double verkleinern,
+      RTCDegradationPreference nachgeben) async {
+    final pc = _pc;
+    if (pc == null) return false;
+    try {
+      RTCRtpSender? bild;
+      for (final s in await pc.getSenders()) {
+        if (s.track?.kind == 'video') {
+          bild = s;
+          break;
+        }
+      }
+      if (bild == null) return false;
+
+      final p = bild.parameters;
+      final enc = p.encodings;
+      if (enc == null || enc.isEmpty) {
+        p.encodings = [RTCRtpEncoding()];
+      }
+      for (final e in p.encodings!) {
+        e.maxBitrate = kbit * 1000;
+        e.maxFramerate = fps;
+        e.scaleResolutionDownBy = verkleinern;
+        // Der Bildschirm ist das Wichtigste an dieser Sitzung; bei knapper
+        // Bandbreite soll er vor allem anderen bedient werden.
+        e.priority = RTCPriorityType.high;
+        e.networkPriority = RTCPriorityType.high;
+      }
+      p.degradationPreference = nachgeben;
+      await bild.setParameters(p);
+      _log.info('RemoteAgent: $kbit kbit/s, $fps fps, 1/$verkleinern',
+          tag: 'REMOTE');
+      return true;
+    } catch (e) {
+      _log.warning('RemoteAgent: Bitrate nicht setzbar: $e', tag: 'REMOTE');
+      return false;
+    }
+  }
+
+  // ─── Selbstregelung ────────────────────────────────────────────────────
+  //
+  // ⚠️ Warum überhaupt eine eigene Regelung, wo WebRTC doch selbst regelt?
+  //
+  // Die eingebaute Regelung wartet auf Paketverlust. Bei Bufferbloat kommt der
+  // aber ZU SPÄT: das Funkmodem nimmt alles an und stellt es in eine lange
+  // Warteschlange, statt zu verwerfen. Aus Sicht des Senders läuft alles
+  // bestens — der Durchsatz stimmt, nichts geht verloren — während das Bild
+  // beim Vorsitz ein bis zwei Sekunden hinterherhinkt. Die eigene
+  // Speedtest-Reihe des Vereins hat genau das gemessen: Latenz unter Last bis
+  // 7402 ms bei intakter Verbindung.
+  //
+  // Deshalb wird hier nicht auf Verlust, sondern auf **Verzögerung** geregelt:
+  // steigt die Umlaufzeit über ihren eigenen Ruhewert, füllt sich eine
+  // Warteschlange, und die Bitrate geht herunter, BEVOR etwas verloren geht.
+  // Dasselbe Prinzip wie bei LEDBAT oder BBR.
+
+  Timer? _reglerUhr;
+  int _kbit = 0;
+  final List<double> _rttProben = [];
+  int _ruhigeTakte = 0;
+
+  /// Untergrenze. Darunter ist ein Bildschirm nicht mehr zu gebrauchen — dann
+  /// lieber ruckeln als unlesbar werden.
+  static const int _kbitMin = 350;
+
+  /// ⚠️ Hoch angesetzt, mit Absicht. Der Deckel soll die Leitung NICHT
+  /// begrenzen — das macht die Regelung auf Umlaufzeit, und die kennt die
+  /// wirkliche Grenze besser als jede feste Zahl. Ein niedriger Deckel hätte
+  /// nur dafür gesorgt, dass eine gute Leitung ungenutzt bleibt.
+  static const int _kbitMax = 8000;
+
+  /// Ab dieser Überschreitung des Ruhewerts gilt die Leitung als verstopft.
+  static const double _rttAufschlagMs = 120;
+
+  /// So viele ruhige Takte, bevor wieder erhöht wird. Langsam hoch, schnell
+  /// runter — die Verzögerung entsteht beim Hochgehen.
+  static const int _taktzahlBisHoch = 3;
+
+  void _reglerStarten() {
+    _reglerUhr?.cancel();
+    _rttProben.clear();
+    _ruhigeTakte = 0;
+    _kbit = Bildguete.automatik.kbit;
+    _reglerUhr = Timer.periodic(const Duration(seconds: 2), (_) => _regelTakt());
+  }
+
+  void _reglerStoppen() {
+    _reglerUhr?.cancel();
+    _reglerUhr = null;
+  }
+
+  Future<void> _regelTakt() async {
+    final pc = _pc;
+    if (pc == null || _guete != Bildguete.automatik) return;
+    try {
+      double? rttMs;
+      double? verfuegbarBit;
+      String? grenze;
+
+      for (final b in await pc.getStats()) {
+        final w = b.values;
+        if (b.type == 'candidate-pair' && w['nominated'] == true) {
+          final rtt = w['currentRoundTripTime'];
+          if (rtt is num) rttMs = rtt.toDouble() * 1000;
+          final frei = w['availableOutgoingBitrate'];
+          if (frei is num) verfuegbarBit = frei.toDouble();
+        } else if (b.type == 'outbound-rtp' && w['kind'] == 'video') {
+          final g = w['qualityLimitationReason'];
+          if (g is String) grenze = g;
+        }
+      }
+      if (rttMs == null) return;
+
+      // Ruhewert = kleinste Umlaufzeit der letzten Minute. Ein gleitendes
+      // Fenster, damit ein echter Netzwechsel neu geeicht wird, statt dass ein
+      // einmal gemessener Bestwert die Regelung für immer festnagelt.
+      _rttProben.add(rttMs);
+      if (_rttProben.length > 30) _rttProben.removeAt(0);
+      final ruhe = _rttProben.reduce((a, b) => a < b ? a : b);
+
+      final verstopft = rttMs > ruhe + _rttAufschlagMs || grenze == 'bandwidth';
+      var neu = _kbit;
+
+      if (verstopft) {
+        // Multiplikativ herunter: eine Warteschlange baut sich schnell auf,
+        // additives Zurücknehmen käme zu spät.
+        neu = (_kbit * 0.75).round();
+        _ruhigeTakte = 0;
+      } else if (++_ruhigeTakte >= _taktzahlBisHoch) {
+        // ⚠️ Solange wir deutlich unter dem liegen, was WebRTC selbst für
+        // möglich hält, wird MULTIPLIKATIV erhöht. Additiv wären es von
+        // 2,5 auf 8 Mbit/s über zwei Minuten — die Sitzung wäre vorbei, bevor
+        // die Leitung genutzt wird. Erst in der Nähe der Schätzung wird
+        // vorsichtig getastet.
+        final schaetzung = verfuegbarBit != null && verfuegbarBit > 0
+            ? verfuegbarBit / 1000
+            : null;
+        neu = (schaetzung != null && _kbit < schaetzung * 0.7)
+            ? (_kbit * 1.4).round()
+            : _kbit + 250;
+        _ruhigeTakte = 0;
+      }
+
+      // Nie über das, was WebRTC selbst für möglich hält — mit Reserve, damit
+      // wir die Schätzung nicht selbst wieder aufwärts treiben.
+      if (verfuegbarBit != null && verfuegbarBit > 0) {
+        final deckel = (verfuegbarBit * 0.9 / 1000).round();
+        if (neu > deckel) neu = deckel;
+      }
+      neu = neu.clamp(_kbitMin, _kbitMax);
+
+      // Nur bei spürbarer Änderung setzen: jedes setParameters kostet einen
+      // Sprung in der Kodierung, und ein Zappeln um 2 % sieht man als Ruckeln.
+      if ((neu - _kbit).abs() * 100 ~/ _kbit >= 8) {
+        _kbit = neu;
+        await _bitrateSetzen(_kbit, Bildguete.automatik.fps, 1.0,
+            Bildguete.automatik.nachgeben);
+        _log.info('RemoteAgent: Automatik → $_kbit kbit/s '
+            '(RTT ${rttMs.round()} ms, Ruhe ${ruhe.round()} ms'
+            '${grenze != null ? ", Grenze $grenze" : ""})', tag: 'REMOTE');
+      }
+    } catch (e) {
+      _log.warning('RemoteAgent: Regeltakt fehlgeschlagen: $e', tag: 'REMOTE');
+    }
+  }
+
+  /// Aktuelle Bitrate der Automatik in kbit/s (0 = Automatik läuft nicht).
+  int get automatikKbit => _guete == Bildguete.automatik ? _kbit : 0;
+
   /// Eigenes Mikrofon stummschalten, ohne die Sitzung zu beenden.
   void mikrofonStumm(bool stumm) {
     for (final t in _mikroStream?.getAudioTracks() ?? const <MediaStreamTrack>[]) {
@@ -539,10 +884,34 @@ class RemoteAgentService {
 
   /// Parse one input frame from the controller and drive the native injector.
   void _handleInput(String text) {
+    final Map<String, dynamic> m;
+    try {
+      m = jsonDecode(text) as Map<String, dynamic>;
+    } catch (e) {
+      _log.warning('RemoteAgent: bad input frame: $e', tag: 'REMOTE');
+      return;
+    }
+
+    // ⚠️ Die Bildgüte VOR der Steuerungsprüfung. Sie ist keine Eingabe: sie
+    // regelt den Bildstrom und muss auch dann greifen, wenn dieses Gerät gar
+    // nicht steuerbar ist (iOS, oder Android ohne freigegebenen Dienst). Stünde
+    // sie hinter dem frühen Ausstieg, hätte der Vorsitz auf genau den Geräten
+    // keinen Einfluss auf die Güte, auf denen er ohnehin nur zuschauen kann.
+    if (m['t'] == 'q') {
+      bildgueteSetzen(Bildguete.vonName(m['g']?.toString()));
+      return;
+    }
+    // Bildschirmwahl — wie die Güte keine Eingabe, muss also auch auf reinen
+    // Ansichts-Geräten greifen.
+    if (m['t'] == 's') {
+      final nr = m['i'];
+      if (nr is num) bildschirmWaehlen(nr.toInt());
+      return;
+    }
+
     final injector = _injector;
     if (injector == null || !injector.isSupported) return; // view-only: ignore
     try {
-      final m = jsonDecode(text) as Map<String, dynamic>;
       switch (m['t']) {
         case 'm':
           injector.mouseMove((m['x'] as num).toDouble(), (m['y'] as num).toDouble());
@@ -593,6 +962,7 @@ class RemoteAgentService {
   }
 
   void _cleanup() {
+    _reglerStoppen();
     _vormerkUhr?.cancel();
     _vormerkUhr = null;
     // Restore the screenshot/recording block + stop the capture FG service.
@@ -611,6 +981,8 @@ class RemoteAgentService {
       _screenStream?.dispose();
     } catch (_) {}
     _screenStream = null;
+    _bildschirme.clear();
+    _bildschirmNr = 0;
     try {
       _mikroStream?.getTracks().forEach((t) => t.stop());
       _mikroStream?.dispose();

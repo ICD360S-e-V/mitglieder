@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:icd360sev_mitglied/services/chat_service.dart';
 import 'package:icd360sev_mitglied/services/remote_agent_service.dart';
 import 'package:icd360sev_mitglied/services/remote_input/input_injector_android.dart';
@@ -290,6 +291,181 @@ void main() {
     test('_mikroStream bleibt bestehen — Stummschalten haengt daran', () {
       expect(quelle, contains('_mikroStream?.getAudioTracks()'));
       expect(quelle, contains('_mikroStream?.getTracks()'));
+    });
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
+  /// Die Verzögerung von ein bis zwei Sekunden kam nicht von der Entfernung,
+  /// sondern vom Bufferbloat des Mobilfunk-Uplinks (eigene Speedtest-Reihe:
+  /// bis 7402 ms Latenz unter Last). Ein Bitratendeckel WEIT unter der Leitung
+  /// ist deshalb die eigentliche Reparatur.
+  group('Bildgüte', () {
+    test('die Voreinstellung ist die Automatik', () {
+      expect(Bildguete.vonName(null), Bildguete.automatik,
+          reason: 'niemand soll eine Stufe raten muessen');
+      expect(RemoteAgentService().guete, Bildguete.automatik);
+    });
+
+    /// ⚠️ Der Deckel darf die Leitung NICHT begrenzen. Sie schafft im Median
+    /// rund 18 Mbit/s; ein Deckel von 2,5 Mbit/s hätte sie künstlich
+    /// gedrosselt. Gegen die Verzögerung hilft die Regelung auf Umlaufzeit,
+    /// nicht ein niedriger Deckel.
+    test('der Deckel drosselt eine gute Leitung nicht', () {
+      final quelle =
+          File('lib/services/remote_agent_service.dart').readAsStringSync();
+      final m = RegExp(r'_kbitMax = (\d+)').firstMatch(quelle);
+      expect(m, isNotNull);
+      expect(int.parse(m!.group(1)!), greaterThanOrEqualTo(6000));
+    });
+
+    /// Additiv von 2,5 auf 8 Mbit/s waeren ueber zwei Minuten — die Sitzung
+    /// waere vorbei, bevor die Leitung genutzt wird.
+    test('weit unter der Schaetzung wird multiplikativ erhoeht', () {
+      final quelle =
+          File('lib/services/remote_agent_service.dart').readAsStringSync();
+      expect(quelle, contains('_kbit * 1.4'));
+      expect(quelle, contains('schaetzung * 0.7'));
+    });
+
+    /// „Fluessig" und „scharf" unterscheiden sich nicht in der Bitrate,
+    /// sondern darin, WAS bei Enge aufgegeben wird. Das ist die eigentliche
+    /// Entscheidung.
+    test('fluessig gibt Aufloesung auf, scharf gibt Bilder auf', () {
+      expect(Bildguete.fluessig.nachgeben,
+          RTCDegradationPreference.MAINTAIN_FRAMERATE);
+      expect(Bildguete.scharf.nachgeben,
+          RTCDegradationPreference.MAINTAIN_RESOLUTION);
+      expect(Bildguete.automatik.nachgeben,
+          RTCDegradationPreference.MAINTAIN_RESOLUTION);
+    });
+
+    /// ⚠️ Die eingebaute Regelung von WebRTC wartet auf Paketverlust. Bei
+    /// Bufferbloat kommt der zu spaet — das Modem stellt in die Warteschlange,
+    /// statt zu verwerfen. Deshalb wird hier auf VERZOEGERUNG geregelt.
+    test('geregelt wird auf Umlaufzeit, nicht auf Verlust', () {
+      final quelle =
+          File('lib/services/remote_agent_service.dart').readAsStringSync();
+      expect(quelle, contains('currentRoundTripTime'));
+      expect(quelle, contains('availableOutgoingBitrate'),
+          reason: 'die eigene Schaetzung von WebRTC ist die Obergrenze');
+      expect(quelle, contains("grenze == 'bandwidth'"));
+    });
+
+    /// Schnell runter, langsam hoch: eine Warteschlange baut sich in
+    /// Sekundenbruchteilen auf, und das Hochgehen ist genau das, was die
+    /// Verzoegerung erzeugt.
+    /// Schnell runter, gestaffelt hinauf: eine Warteschlange baut sich in
+    /// Sekundenbruchteilen auf. Nach oben wird weit unter der Schaetzung
+    /// multiplikativ getastet und in ihrer Naehe additiv — sonst nutzt man
+    /// entweder die Leitung nicht oder man ueberfaehrt sie.
+    test('runter multiplikativ, hinauf gestaffelt', () {
+      final quelle =
+          File('lib/services/remote_agent_service.dart').readAsStringSync();
+      expect(quelle, contains('_kbit * 0.75'));
+      expect(quelle, contains('_kbit * 1.4'));
+      expect(quelle, contains('_kbit + 250'));
+      expect(quelle, contains('_taktzahlBisHoch'));
+    });
+
+    /// Eine feste Stufe ist eine Ansage. Regelte die Automatik weiter, waere
+    /// die Auswahl im Fenster wirkungslos — und niemand wuesste, warum.
+    test('eine feste Stufe haelt den Regler an', () {
+      final quelle =
+          File('lib/services/remote_agent_service.dart').readAsStringSync();
+      final block = quelle.substring(quelle.indexOf('bildgueteSetzen(Bildguete g)'));
+      expect(block.indexOf('_reglerStoppen()'), greaterThan(-1));
+      expect(block.indexOf('_reglerStarten()'),
+          lessThan(block.indexOf('_reglerStoppen()')));
+    });
+
+    test('es gibt genau drei Stufen, Automatik zuerst', () {
+      expect(Bildguete.alle.first, Bildguete.automatik);
+      expect(Bildguete.alle.length, 3);
+    });
+
+    /// ⚠️ Auf einem geteilten Telefonbildschirm wird GELESEN. „Scharf" darf
+    /// deshalb nicht verkleinern — sonst ist die Schrift weg, und genau dafür
+    /// wählt man die Stufe.
+    test('keine Stufe verkleinert — auf einem Telefon wird gelesen', () {
+      for (final g in Bildguete.alle) {
+        expect(g.verkleinern, 1.0, reason: '${g.name} verkleinert');
+      }
+    });
+
+    /// Ein unbekannter Name kommt von einer neueren Vorsitzer-App. Dann gilt
+    /// die Automatik — nicht die schaerfste Stufe, die die Leitung fluten
+    /// wuerde, und nicht die schwaechste, die grundlos Qualitaet kostet.
+    test('ein unbekannter Name fällt auf die Automatik zurück', () {
+      expect(Bildguete.vonName('gibtsnicht'), Bildguete.automatik);
+      expect(Bildguete.vonName(null), Bildguete.automatik);
+      expect(Bildguete.vonName('ausgewogen'), Bildguete.automatik,
+          reason: 'die Stufe gibt es nicht mehr');
+      expect(Bildguete.vonName('scharf'), Bildguete.scharf);
+      expect(Bildguete.vonName('fluessig'), Bildguete.fluessig);
+    });
+
+    /// 🔴 Die Güte ist KEINE Eingabe. Stünde sie hinter der
+    /// Steuerungsprüfung in `_handleInput`, hätte der Vorsitz auf genau den
+    /// Geräten keinen Einfluss darauf, auf denen er ohnehin nur zuschauen kann
+    /// (iOS, Android ohne freigegebenen Dienst).
+    test('der q-Rahmen wird VOR der Steuerungsprüfung behandelt', () {
+      final quelle =
+          File('lib/services/remote_agent_service.dart').readAsStringSync();
+      final rumpf = quelle.substring(quelle.indexOf('void _handleInput('));
+      final guete = rumpf.indexOf("m['t'] == 'q'");
+      final pruefung = rumpf.indexOf('!injector.isSupported');
+      expect(guete, greaterThan(-1));
+      expect(guete, lessThan(pruefung),
+          reason: 'sonst greift sie auf reinen Ansichts-Geräten nicht');
+    });
+
+    test('30 Bilder je Sekunde sind moeglich, nicht auf 15 festgenagelt', () {
+      expect(Bildguete.automatik.fps, greaterThanOrEqualTo(30));
+      expect(Bildguete.fluessig.fps, greaterThanOrEqualTo(30));
+    });
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
+  /// 🔴 Auf einem Schreibtisch mit zwei Monitoren war die Wahl ein Muenzwurf:
+  /// `DesktopCapturerSource` traegt kein Merkmal fuer „der Hauptbildschirm"
+  /// (nur id, name, type, Vorschaubild), also wurde immer der erste genommen —
+  /// womoeglich der leere. Betrifft die Windows-Mitglieder.
+  group('Bildschirmwahl auf dem Schreibtisch', () {
+    final quelle =
+        File('lib/services/remote_agent_service.dart').readAsStringSync();
+
+    test('die Monitornamen gehen mit der Antwort mit', () {
+      expect(quelle, contains('bildschirme: _bildschirme'));
+      expect(File('lib/services/chat_service.dart').readAsStringSync(),
+          contains("'bildschirme': bildschirme"));
+    });
+
+    /// `replaceTrack` statt neu aushandeln: die Verbindung bleibt bestehen,
+    /// es gibt kein Ruckeln durch ein zweites Angebot.
+    test('gewechselt wird per replaceTrack, ohne Neuverhandlung', () {
+      expect(quelle, contains('replaceTrack(neueSpur)'));
+      expect(quelle.contains('createOffer'), isFalse,
+          reason: 'der Agent antwortet, er verhandelt nicht neu');
+    });
+
+    /// ⚠️ Erst tauschen, dann die alte Spur stoppen. Andersherum stuende beim
+    /// Vorsitz kurz gar kein Bild.
+    test('die alte Spur wird erst NACH dem Tausch gestoppt', () {
+      final rumpf = quelle.substring(quelle.indexOf('bildschirmWaehlen(int nr)'));
+      expect(rumpf.indexOf('replaceTrack'), lessThan(rumpf.indexOf('t.stop()')));
+    });
+
+    test('auf dem Telefon gibt es nichts zu waehlen', () {
+      final rumpf = quelle.substring(quelle.indexOf('bildschirmWaehlen(int nr)'));
+      expect(rumpf.substring(0, 200), contains('Platform.isAndroid'));
+    });
+
+    /// Wie die Guete ist die Bildschirmwahl KEINE Eingabe — sie muss auch dort
+    /// greifen, wo gar nicht gesteuert werden kann.
+    test('der s-Rahmen wird VOR der Steuerungspruefung behandelt', () {
+      final rumpf = quelle.substring(quelle.indexOf('void _handleInput('));
+      expect(rumpf.indexOf("m['t'] == 's'"),
+          lessThan(rumpf.indexOf('!injector.isSupported')));
     });
   });
 

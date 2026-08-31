@@ -439,6 +439,7 @@ class ChatService {
     String? plattform,
     bool? steuerung,
     bool? bildFrei,
+    List<String>? bildschirme,
   }) {
     _send({
       'type': 'remote_answer',
@@ -450,6 +451,10 @@ class ChatService {
       // false = FLAG_SECURE liess sich nicht aufheben, das Bild bleibt schwarz.
       // Ohne diese Meldung sucht der Vorsitz den Fehler im Netz.
       if (bildFrei != null) 'bild_frei': bildFrei,
+      // Namen der Monitore. Leer auf Android — dort gibt es nur die eine
+      // Anzeige. Mehr als einer heisst: der Vorsitz sieht vielleicht den
+      // falschen und kann umschalten.
+      if (bildschirme != null && bildschirme.isNotEmpty) 'bildschirme': bildschirme,
     });
   }
 
