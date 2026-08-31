@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.88.8](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.7...v1.88.8) (2026-08-31)
+
+
+### Bug Fixes
+
+* **fernwartung:** Ton und Bild in dieselbe Spurgruppe ([#348](https://github.com/ICD360S-e-V/mitglieder/issues/348)) ([eea82f6](https://github.com/ICD360S-e-V/mitglieder/commit/eea82f654e17b73dce394f44fc908223c87f9973))
+
 ## [1.88.7](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.6...v1.88.7) (2026-08-30)
 
 
