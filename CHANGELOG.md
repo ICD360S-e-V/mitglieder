@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.89.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.89.0...v1.89.1) (2026-08-31)
+
+
+### Bug Fixes
+
+* **fernwartung:** ICE-Server ein Eintrag je URI — Fernwartung mit Windows-Mitgliedern; Monitorwahl ([#352](https://github.com/ICD360S-e-V/mitglieder/issues/352)) ([5bfba63](https://github.com/ICD360S-e-V/mitglieder/commit/5bfba638483b3422b5245fd074c0aec85489b8ce))
+
 ## [1.89.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.88.8...v1.89.0) (2026-08-31)
 
 
