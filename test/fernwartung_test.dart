@@ -267,6 +267,33 @@ void main() {
   });
 
   // ─────────────────────────────────────────────────────────────────────────
+  /// 🔴 Ton und Bild gehen in DIESELBE Spurgruppe.
+  ///
+  /// Lagen sie in zwei Streams, ueberschrieb beim Vorsitz die Tonspur das Bild
+  /// (`onTrack` feuert je Spur, `event.streams[0]` wechselt dann mit) und der
+  /// Renderer zeigte Schwarz. Behoben ist das dort (vorsitzer#523) — hier steht
+  /// die zweite Haelfte, damit auch ein noch nicht aktualisierter Vorsitzer
+  /// etwas sieht.
+  ///
+  /// ⚠️ Am Quelltext geprueft: der Fehler entsteht erst in einer echten
+  /// WebRTC-Verbindung mit zwei Spuren.
+  group('Ton und Bild teilen sich die Spurgruppe', () {
+    final quelle =
+        File('lib/services/remote_agent_service.dart').readAsStringSync();
+
+    test('die Tonspur wird am Bildschirm-Stream angemeldet', () {
+      expect(quelle, contains('await _pc!.addTrack(track, _screenStream!);'));
+      expect(quelle.contains('addTrack(track, _mikroStream!)'), isFalse,
+          reason: 'ein zweiter Stream laesst den Ton das Bild verdraengen');
+    });
+
+    test('_mikroStream bleibt bestehen — Stummschalten haengt daran', () {
+      expect(quelle, contains('_mikroStream?.getAudioTracks()'));
+      expect(quelle, contains('_mikroStream?.getTracks()'));
+    });
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
   group('Android: Maus wird zu Gesten', () {
     const kanal = MethodChannel('de.icd360sev.mitglied/fernsteuerung');
     late List<MethodCall> rufe;
