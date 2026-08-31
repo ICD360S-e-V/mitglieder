@@ -11,6 +11,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'battery_platform_state.dart';
 import 'battery_usage.dart';
+// NetworkSource gehoert zum oeffentlichen Vertrag dieses Dienstes: wer ihn
+// benutzt, muss den Verursacher benennen koennen.
+export 'battery_usage.dart' show NetworkSource;
 import 'device_key_service.dart';
 import 'http_client_factory.dart';
 import 'logger_service.dart';
@@ -226,11 +229,34 @@ class BatteryUsageService {
 
   // --- Verursacherzähler ----------------------------------------------------
 
-  /// Eine abgesetzte HTTP-Anfrage. Wird an den wenigen Stellen aufgerufen, an
-  /// denen die App von sich aus sendet; die Zahl pro Stunde ist die Grösse,
-  /// gegen die sich die Entladerate sinnvoll auftragen lässt.
-  void noteNetworkRequest([int count = 1]) {
-    _current?.networkRequests += count;
+  /// Schlüssel, unter dem [runAs] den Verursacher in der Zone hinterlegt.
+  static const Object _sourceZoneKey = #icd360sevBatteryNetworkSource;
+
+  /// Eine abgesetzte HTTP-Anfrage, zugeordnet zu ihrem Verursacher.
+  void noteNetworkRequest(NetworkSource source, [int count = 1]) {
+    _current?.addRequest(source, count);
+  }
+
+  /// Führt [body] so aus, dass jede darin abgesetzte Anfrage [source]
+  /// zugeschrieben wird — auch quer über `await`-Grenzen hinweg.
+  ///
+  /// Nötig, weil die periodischen Dienste, die den Akku tatsächlich kosten,
+  /// nicht alle einen eigenen HTTP-Client haben: HeartbeatService etwa ruft
+  /// ApiService auf, und dort zählt ResilientHttpClient zentral mit. Ohne
+  /// diese Markierung landete der Heartbeat in derselben Sammelkategorie wie
+  /// ein Mitglied, das eine Ticketliste öffnet — und genau die beiden
+  /// auseinanderzuhalten ist der Zweck der Aufschlüsselung.
+  ///
+  /// Eine Zone statt eines Feldes, weil zwei Anfragen gleichzeitig laufen
+  /// können; ein gesetztes Feld gehörte dann der falschen.
+  static T runAs<T>(NetworkSource source, T Function() body) =>
+      runZoned(body, zoneValues: {_sourceZoneKey: source});
+
+  /// Der Verursacher, in dessen [runAs] wir gerade stecken. Ausserhalb jeder
+  /// Markierung ist es eine gewöhnliche Anfrage des Mitglieds.
+  static NetworkSource get currentSource {
+    final value = Zone.current[_sourceZoneKey];
+    return value is NetworkSource ? value : NetworkSource.api;
   }
 
   /// Ein WebSocket-Neuaufbau im UI-Isolate.
@@ -433,7 +459,8 @@ class BatteryUsageService {
       'Akku-Fenster abgeschlossen: ${current.drainPercent} % in '
       '${current.duration.inMinutes} min'
       '${rate == null ? '' : ' (${rate.toStringAsFixed(2)} %/h)'}, '
-      '${current.networkRequests} Netzanfragen, '
+      '${current.networkRequests} Netzanfragen '
+      '(${current.requestsBySource.entries.map((e) => '${e.key.name}=${e.value}').join(', ')}), '
       '${current.wsReconnects} WS-Reconnects, '
       'zuverlässig=${current.isReliable}',
       tag: 'BATTERY',

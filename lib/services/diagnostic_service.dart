@@ -215,7 +215,7 @@ class DiagnosticService {
         'memory_usage': _getMemoryInfo(),
       };
 
-      BatteryUsageService.instance.noteNetworkRequest();
+      BatteryUsageService.instance.noteNetworkRequest(NetworkSource.diagnostic);
       final response = await _client.post(
         Uri.parse(_diagnosticUrl),
         headers: {

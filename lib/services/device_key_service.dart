@@ -376,7 +376,7 @@ class DeviceKeyService {
       final extendedData = await _collectExtendedDeviceData();
       if (extendedData.isEmpty) return;
 
-      BatteryUsageService.instance.noteNetworkRequest();
+      BatteryUsageService.instance.noteNetworkRequest(NetworkSource.deviceData);
       await _client.post(
         Uri.parse('$_baseUrl/device/validate.php'),
         headers: {

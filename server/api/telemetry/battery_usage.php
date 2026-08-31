@@ -132,6 +132,38 @@ function bu_bounded_int($v, int $max): int
     return $i > $max ? $max : $i;
 }
 
+/**
+ * Aufschlüsselung der Netzanfragen nach Verursacher.
+ *
+ * Der Client schickt {"heartbeat":60,"ticketPoll":4,...}. Gefiltert wird gegen
+ * eine feste Namensliste: der Wert wandert als JSON in die Datenbank, und ein
+ * Client, der beliebige Schlüssel setzen dürfte, könnte sie beliebig aufblähen.
+ * Unbekannte Namen werden still verworfen — sie stammen entweder aus einer
+ * neueren App-Version, die dieser Server noch nicht kennt, oder sie gehören
+ * nicht hierher; in beiden Fällen ist Weglassen richtig.
+ *
+ * Rückgabe null, wenn nichts Verwertbares übrig bleibt: dann bleibt die Spalte
+ * NULL statt ein leeres Objekt zu speichern, das sich in Auswertungen nicht
+ * von "keine Anfragen" unterscheiden liesse.
+ */
+function bu_requests_by_source_or_null($v): ?string
+{
+    static $erlaubt = [
+        'heartbeat', 'ticketPoll', 'logUpload', 'diagnostic',
+        'deviceData', 'ntfy', 'api',
+    ];
+    if (!is_array($v)) return null;
+    $out = [];
+    foreach ($erlaubt as $name) {
+        if (!isset($v[$name]) || !is_numeric($v[$name])) continue;
+        $n = (int)$v[$name];
+        if ($n <= 0 || $n > BU_MAX_COUNTER) continue;
+        $out[$name] = $n;
+    }
+    if ($out === []) return null;
+    return json_encode($out, JSON_UNESCAPED_SLASHES);
+}
+
 /** Datumsformat des Clients: `YYYY-MM-DD HH:MM:SS` in UTC. */
 function bu_utc_datetime_or_null($v): ?string
 {
@@ -161,7 +193,7 @@ $sql = 'INSERT INTO battery_usage_segments
     (device_id, reported_at, started_at, ended_at, duration_ms,
      start_level, end_level, start_charge_uah, end_charge_uah,
      foreground_ms, background_ms,
-     network_requests, ws_reconnects, push_wakeups,
+     network_requests, requests_by_source, ws_reconnects, push_wakeups,
      is_reliable, closed_reason, connection_type,
      power_save_mode, standby_bucket, doze_exempt, thermal_status,
      app_version, platform, os_version)
@@ -169,7 +201,7 @@ $sql = 'INSERT INTO battery_usage_segments
     (?, NOW(), ?, ?, ?,
      ?, ?, ?, ?,
      ?, ?,
-     ?, ?, ?,
+     ?, ?, ?, ?,
      ?, ?, ?,
      ?, ?, ?, ?,
      ?, ?, ?)
@@ -225,6 +257,7 @@ foreach ($segments as $s) {
             bu_bounded_int($s['foreground_ms'] ?? 0, BU_MAX_DURATION_MS),
             bu_bounded_int($s['background_ms'] ?? 0, BU_MAX_DURATION_MS),
             bu_bounded_int($s['network_requests'] ?? 0, BU_MAX_COUNTER),
+            bu_requests_by_source_or_null($s['requests_by_source'] ?? null),
             bu_bounded_int($s['ws_reconnects'] ?? 0, BU_MAX_COUNTER),
             bu_bounded_int($s['push_wakeups'] ?? 0, BU_MAX_COUNTER),
             !empty($s['is_reliable']) ? 1 : 0,

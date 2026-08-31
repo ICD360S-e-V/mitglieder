@@ -145,7 +145,7 @@ class TicketNotificationService {
 
       final deviceKey = _deviceKeyService.deviceKey ?? '';
 
-      BatteryUsageService.instance.noteNetworkRequest();
+      BatteryUsageService.instance.noteNetworkRequest(NetworkSource.ticketPoll);
       final response = await http
           .post(
             Uri.parse(_apiUrl),

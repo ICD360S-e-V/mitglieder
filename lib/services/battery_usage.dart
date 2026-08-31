@@ -31,6 +31,38 @@
 /// erst lange genug ununterbrochen läuft.
 library;
 
+/// Wer eine Netzanfrage ausgelöst hat.
+///
+/// Der bisherige Gesamtzähler sagte, DASS die App das Funkmodem 83-mal pro
+/// Stunde geweckt hat, aber nicht wer — und ohne das lässt sich nicht
+/// entscheiden, was als Nächstes abzuschalten ist. Die naheliegende
+/// Alternative, Androids `TrafficStats.setThreadStatsTag()`, scheidet aus:
+/// sie taggt Sockets, und der HttpClient von Dart gibt seine nicht heraus.
+enum NetworkSource {
+  /// HeartbeatService — hält `last_seen` frisch.
+  heartbeat,
+
+  /// TicketNotificationService — Sicherheitsnetz-Abfrage.
+  ticketPoll,
+
+  /// LoggerService — Protokoll-Upload.
+  logUpload,
+
+  /// DiagnosticService — periodische Momentaufnahme.
+  diagnostic,
+
+  /// DeviceKeyService — Geräte- und Akkudaten.
+  deviceData,
+
+  /// NtfyService — Aufbau des Push-Streams (je ein TLS-Handshake).
+  ntfy,
+
+  /// Alles Übrige über ApiService: Bildschirme, die Daten nachladen,
+  /// Aktionen des Mitglieds. Nicht periodisch und damit nicht das, was
+  /// im Hintergrund den Akku frisst.
+  api,
+}
+
 /// Warum ein Messfenster geschlossen wurde. Landet als `closed_reason` beim
 /// Server und trennt saubere Messungen von abgebrochenen.
 enum BatterySegmentClose {
@@ -100,10 +132,14 @@ class BatteryUsageSegment {
   int foregroundMs;
   int backgroundMs;
 
-  /// Verursacher-Zähler. [networkRequests] zählt jede abgesetzte HTTP-Anfrage
-  /// — die Grösse, die laut Messungen den Mobilfunk-Modem-Zustand bestimmt und
-  /// damit den Verbrauch dominiert, nicht die übertragene Datenmenge.
-  int networkRequests;
+  /// Netzanfragen je Verursacher. Die Summe ist [networkRequests].
+  ///
+  /// Die entscheidende Grösse ist die Anzahl der Anfragen, nicht die
+  /// übertragene Datenmenge: jede weckt das Funkmodem, und über 60 % der
+  /// Energie einer Funkverbindung entfällt auf die Nachlaufzeit danach.
+  /// Aufgeschlüsselt lässt sich sagen, welcher Dienst diese Kosten
+  /// verursacht — vorher war nur die Summe sichtbar.
+  final Map<NetworkSource, int> requestsBySource;
   int wsReconnects;
   int pushWakeups;
 
@@ -127,7 +163,7 @@ class BatteryUsageSegment {
     int? endChargeUah,
     this.foregroundMs = 0,
     this.backgroundMs = 0,
-    this.networkRequests = 0,
+    Map<NetworkSource, int>? requestsBySource,
     this.wsReconnects = 0,
     this.pushWakeups = 0,
     this.connectionType,
@@ -136,11 +172,21 @@ class BatteryUsageSegment {
     this.dozeExempt,
     this.thermalStatus,
     this.closedReason,
-  })  : endedAt = endedAt ?? startedAt,
+  })  : requestsBySource = requestsBySource ?? <NetworkSource, int>{},
+        endedAt = endedAt ?? startedAt,
         endLevel = endLevel ?? startLevel,
         endChargeUah = endChargeUah ?? startChargeUah;
 
   Duration get duration => endedAt.difference(startedAt);
+
+  /// Summe über alle Verursacher.
+  int get networkRequests =>
+      requestsBySource.values.fold(0, (a, b) => a + b);
+
+  /// Zählt eine Anfrage der angegebenen Quelle.
+  void addRequest(NetworkSource source, [int count = 1]) {
+    requestsBySource[source] = (requestsBySource[source] ?? 0) + count;
+  }
 
   /// Verbrauchte Prozentpunkte. Negativ wäre Laden — kommt vor, wenn der
   /// Zustandswechsel später gemeldet wird als der erste steigende Messwert,
@@ -249,6 +295,9 @@ class BatteryUsageSegment {
         'foreground_ms': foregroundMs,
         'background_ms': backgroundMs,
         'network_requests': networkRequests,
+        'requests_by_source': {
+          for (final e in requestsBySource.entries) e.key.name: e.value,
+        },
         'ws_reconnects': wsReconnects,
         'push_wakeups': pushWakeups,
         'is_reliable': isReliable,
@@ -270,7 +319,7 @@ class BatteryUsageSegment {
         endChargeUah: (json['end_charge_uah'] as num?)?.toInt(),
         foregroundMs: (json['foreground_ms'] as num?)?.toInt() ?? 0,
         backgroundMs: (json['background_ms'] as num?)?.toInt() ?? 0,
-        networkRequests: (json['network_requests'] as num?)?.toInt() ?? 0,
+        requestsBySource: _sourcesFromJson(json['requests_by_source']),
         wsReconnects: (json['ws_reconnects'] as num?)?.toInt() ?? 0,
         pushWakeups: (json['push_wakeups'] as num?)?.toInt() ?? 0,
         connectionType: json['connection_type'] as String?,
@@ -297,6 +346,25 @@ class BatteryUsageSegment {
     return DateTime.parse(
       normalised.endsWith('Z') ? normalised : '${normalised}Z',
     ).toUtc();
+  }
+
+  static Map<NetworkSource, int> _sourcesFromJson(Object? raw) {
+    final out = <NetworkSource, int>{};
+    if (raw is! Map) return out;
+    for (final entry in raw.entries) {
+      final name = entry.key;
+      final value = entry.value;
+      if (name is! String || value is! num) continue;
+      for (final s in NetworkSource.values) {
+        if (s.name == name) {
+          out[s] = value.toInt();
+          break;
+        }
+      }
+      // Unbekannte Namen werden verworfen: sie stammen aus einer neueren
+      // App-Version, deren Quellen diese hier nicht kennt.
+    }
+    return out;
   }
 
   static BatterySegmentClose? _closeFromName(String? name) {

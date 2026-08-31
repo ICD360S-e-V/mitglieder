@@ -35,7 +35,7 @@ void main() {
     test('requestsPerHour normiert die Verursacherzähler auf die Stunde', () {
       final s = _segment();
       s.addSample(BatterySample(at: _t0.add(const Duration(minutes: 15)), level: 79));
-      s.networkRequests = 30;
+      s.addRequest(NetworkSource.heartbeat, 30);
       // 30 Anfragen in einer Viertelstunde sind 120/h.
       expect(s.requestsPerHour, closeTo(120.0, 0.001));
     });
@@ -212,6 +212,49 @@ void main() {
     });
   });
 
+  group('BatteryUsageSegment — Verursacher', () {
+    test('networkRequests ist die Summe über alle Quellen', () {
+      final s = _segment();
+      s.addRequest(NetworkSource.heartbeat, 60);
+      s.addRequest(NetworkSource.ticketPoll, 4);
+      s.addRequest(NetworkSource.logUpload);
+      expect(s.networkRequests, 65);
+    });
+
+    test('mehrfaches Zählen derselben Quelle summiert', () {
+      final s = _segment();
+      s.addRequest(NetworkSource.heartbeat);
+      s.addRequest(NetworkSource.heartbeat, 5);
+      expect(s.requestsBySource[NetworkSource.heartbeat], 6);
+    });
+
+    test('ohne Anfragen ist die Summe null und die Aufschlüsselung leer', () {
+      final s = _segment();
+      expect(s.networkRequests, 0);
+      expect(s.requestsBySource, isEmpty);
+    });
+
+    test('requestsPerHour rechnet die Summe hoch, nicht eine Quelle', () {
+      final s = _segment();
+      s.addSample(BatterySample(at: _t0.add(const Duration(minutes: 30)), level: 79));
+      s.addRequest(NetworkSource.heartbeat, 30);
+      s.addRequest(NetworkSource.diagnostic, 15);
+      expect(s.requestsPerHour, closeTo(90.0, 0.001));
+    });
+
+    test('unbekannte Quelle aus neuerer App-Version wird verworfen', () {
+      // Der Server darf eine ältere App nicht zum Absturz bringen, wenn eine
+      // neuere Version eine Quelle hinzufügt, die diese hier nicht kennt.
+      final s = _segment();
+      s.addRequest(NetworkSource.heartbeat, 7);
+      final json = s.toJson();
+      (json['requests_by_source'] as Map)['zukunftsquelle'] = 3;
+      final restored = BatteryUsageSegment.fromJson(json);
+      expect(restored.requestsBySource[NetworkSource.heartbeat], 7);
+      expect(restored.networkRequests, 7);
+    });
+  });
+
   group('BatteryUsageSegment — Serialisierung', () {
     test('JSON-Roundtrip erhält alle Felder', () {
       final original = _segment(startLevel: 88, startChargeUah: 4100000)
@@ -222,7 +265,8 @@ void main() {
         ))
         ..foregroundMs = 120000
         ..backgroundMs = 10680000
-        ..networkRequests = 690
+        ..addRequest(NetworkSource.heartbeat, 400)
+        ..addRequest(NetworkSource.ticketPoll, 290)
         ..wsReconnects = 4
         ..pushWakeups = 12
         ..powerSaveMode = false

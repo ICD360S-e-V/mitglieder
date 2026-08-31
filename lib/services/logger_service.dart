@@ -170,7 +170,7 @@ class LoggerService {
         'tag': log.tag,
       }).toList();
 
-      BatteryUsageService.instance.noteNetworkRequest();
+      BatteryUsageService.instance.noteNetworkRequest(NetworkSource.logUpload);
       final response = await _httpClient.post(
         Uri.parse(_uploadUrl),
         headers: {'Content-Type': 'application/json'},
