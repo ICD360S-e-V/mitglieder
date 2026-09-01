@@ -21,8 +21,14 @@ class ConversationHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final memberName = conversation['member_name'] ?? AppLocalizations.of(context)!.unknownValue;
-    final memberNr = conversation['member_nr'] ?? '';
+    // Das GEGENUEBER, nicht das Mitglied des Gespraechs: hier ist das
+    // Mitglied der Anmelder, sonst staende der eigene Name da.
+    // Rueckfall fuer aeltere Server, die das Feld nicht kennen.
+    final memberName = conversation['gegenueber_name'] ??
+        conversation['member_name'] ??
+        AppLocalizations.of(context)!.unknownValue;
+    final memberNr =
+        conversation['gegenueber_nr'] ?? conversation['member_nr'] ?? '';
 
     return Container(
       padding: const EdgeInsets.all(12),
@@ -36,7 +42,7 @@ class ConversationHeader extends StatelessWidget {
             radius: 18,
             backgroundColor: context.colors.infoSolid,
             child: Text(
-              memberName[0].toUpperCase(),
+              (memberName.isEmpty ? '?' : memberName[0].toUpperCase()),
               style: const TextStyle(color: Colors.white),
             ),
           ),

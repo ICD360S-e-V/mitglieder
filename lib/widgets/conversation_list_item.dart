@@ -21,7 +21,12 @@ class ConversationListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final unreadCount = conversation['unread_count'] ?? 0;
     final status = conversation['status'] ?? 'open';
-    final memberName = conversation['member_name'] ?? AppLocalizations.of(context)!.unknownValue;
+    // Das GEGENUEBER, nicht das Mitglied des Gespraechs: hier ist das
+    // Mitglied der Anmelder, sonst staende der eigene Name da.
+    // Rueckfall fuer aeltere Server, die das Feld nicht kennen.
+    final memberName = conversation['gegenueber_name'] ??
+        conversation['member_name'] ??
+        AppLocalizations.of(context)!.unknownValue;
     final lastMessage = conversation['last_message'] ?? AppLocalizations.of(context)!.noMessages;
 
     return Container(
@@ -53,7 +58,7 @@ class ConversationListItem extends StatelessWidget {
           child: hasActiveCall
               ? Icon(Icons.call, color: context.colors.successFg, size: 20)
               : Text(
-                  memberName[0].toUpperCase(),
+                  (memberName.isEmpty ? '?' : memberName[0].toUpperCase()),
                   style: TextStyle(
                     color: context.colors.infoFg,
                     fontWeight: FontWeight.bold,
