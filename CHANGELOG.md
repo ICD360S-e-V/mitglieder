@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.90.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.90.0...v1.90.1) (2026-09-01)
+
+
+### Bug Fixes
+
+* **chat:** die Gesprächsliste zeigt den eigenen Namen als Gegenüber ([#358](https://github.com/ICD360S-e-V/mitglieder/issues/358)) ([66ccc74](https://github.com/ICD360S-e-V/mitglieder/commit/66ccc743ac4e8d11ff80f648216bd4f8643d218c))
+
 ## [1.90.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.89.1...v1.90.0) (2026-08-31)
 
 
