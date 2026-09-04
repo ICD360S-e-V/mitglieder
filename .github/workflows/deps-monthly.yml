@@ -1,0 +1,130 @@
+# ───────────────────────────────────────────────────────────────
+# Einmal im Monat nachsehen, was an Abhängigkeiten liegengeblieben ist, und das
+# Ergebnis als Issue hinterlegen — damit die Durchsicht mit einer fertigen Liste
+# beginnt statt bei null.
+#
+# Bewusst nur ein Bericht: nichts wird angehoben, nichts committet. Welche
+# Version man mitnehmen kann, hat sich zu oft erst beim Lesen des Quelltextes
+# entschieden — das Changelog allein hat schon getäuscht.
+#
+# ⚠️ Der Bericht sagt nichts über Umgebungsdrift. Ein Build, der am Runner-Image
+# scheitert, taucht hier nie auf; dagegen hilft nur, dass CI weiterbaut.
+#
+# Übernommen aus `vorsitzer`, dort seit 08/2026 im Einsatz. ⚠️ Dieser Ablauf ist
+# ABSICHTLICH in sich geschlossen: `vorsitzer` ruft eine eigene Action
+# `.github/actions/flutter-setup` auf, die es hier nicht gibt. Statt sie
+# mitzuschleppen steht der zweite Versuch unten direkt drin — eine Datei, nichts
+# weiter, und keine geteilte Sache, die zwischen drei Repos auseinanderläuft.
+# ───────────────────────────────────────────────────────────────
+name: Dependency report (monthly)
+
+on:
+  schedule:
+    # 1. des Monats, 7:00 UTC. ⚠️ Die drei Repos laufen versetzt
+    # (vorsitzer 06:00, mitglieder 07:00, schatzmeister 08:00): drei Berichte in
+    # derselben Minute sind drei Benachrichtigungen auf einmal, und gelesen wird
+    # dann keiner.
+    # ⚠️ 08:00 ist hier schon belegt (taeglicher Ablauf).
+    - cron: '0 7 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  # ⚠️ Die Fassung, mit der DIESES Repo baut — nicht die neueste. Die Spalte
+  # „Resolvable" hängt am SDK: mit einem anderen Flutter meldet der Bericht
+  # Anhebungen, die hier gar nicht auflösbar sind.
+  FLUTTER_VERSION: '3.44.9'
+
+jobs:
+  report:
+    name: "📦 flutter pub outdated"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
+
+      # ⚠️ Zwei Versuche, mit DEMSELBEN Pin. Die Einrichtung stirbt gelegentlich
+      # nach ~40 s ohne Meldung — ein TLS-Fehler beim Abruf des
+      # Release-Manifests. Ein Monatsbericht, der daran lautlos ausfällt, fehlt
+      # niemandem auf, und genau deshalb wäre er wertlos.
+      - id: flutter1
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2  # v2
+        continue-on-error: true
+        with:
+          flutter-version: ${ env.FLUTTER_VERSION }
+          cache: true
+
+      - name: Kurze Pause vor dem zweiten Versuch
+        if: steps.flutter1.outcome == 'failure'
+        run: |
+          echo "::warning::Flutter-Einrichtung gescheitert. Zweiter Versuch in 15 s."
+          sleep 15
+
+      - if: steps.flutter1.outcome == 'failure'
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2  # v2
+        with:
+          flutter-version: ${ env.FLUTTER_VERSION }
+          cache: true
+
+      - name: flutter pub get
+        run: flutter pub get
+
+      # In eine Datei schreiben, nicht in eine Ausgabevariable: der Bericht ist
+      # mehrzeilig, und so landet fremder Text nie in einer Shell-Ersetzung.
+      - name: Bericht erzeugen
+        run: |
+          set -uo pipefail
+          {
+            echo "## \`flutter pub outdated\`"
+            echo
+            echo "Flutter \`${FLUTTER_VERSION}\` · erzeugt am $(date -u +%Y-%m-%d)"
+            echo
+            echo '```'
+            flutter pub outdated || true
+            echo '```'
+            echo
+            echo "### Was beim Durchsehen zu beachten ist"
+            echo
+            echo "- **Upgradable** heisst: passt in die bestehende Grenze, ein"
+            echo "  \`flutter pub upgrade\` genügt. **Resolvable** heisst: braucht"
+            echo "  eine Änderung in \`pubspec.yaml\`."
+            echo "- Steht eine Version in *keiner* der beiden Spalten, hält sie"
+            echo "  jemand anders fest. Wer, sagt \`flutter pub add <paket>:<version>\`"
+            echo "  in seiner Fehlermeldung."
+            echo "- Sicherheitskorrekturen nicht bis zum nächsten Monat liegen"
+            echo "  lassen — die gehören eingespielt, wenn sie erscheinen."
+            echo "- Anrufe (flutter_webrtc), Tonausgabe (just_audio), Dateiauswahl, PDF-Anzeige und Hintergrundjobs (workmanager) haben keine "
+            echo "  Testabdeckung. Wird dort etwas angehoben, gehoert eine Probe auf dem Geraet dazu."
+          } > report.md
+          wc -l report.md
+
+      # Titel und Rumpf kommen aus einer Datei bzw. aus festen Zeichenketten,
+      # nirgends aus Ereignisdaten — es gibt hier also nichts einzuschleusen.
+      # Ein einziges, dauerhaft offenes Issue; jeder Lauf hängt einen Kommentar
+      # an. So sammeln sich nicht zwölf halb gelesene Issues im Jahr an, und der
+      # Verlauf steht an einer Stelle.
+      #
+      # Gesucht wird über die ASCII-Marke `deps-monthly`, nicht über den
+      # deutschen Titel: die Volltextsuche von GitHub ist bei Umlauten nicht
+      # verlässlich, und ein Fehlgriff hiesse ein zweites Issue pro Monat.
+      - name: Issue anlegen oder ergänzen
+        env:
+          GH_TOKEN: ${ secrets.GITHUB_TOKEN }
+          GH_REPO: ${ github.repository }
+        run: |
+          set -euo pipefail
+          MARKER='deps-monthly'
+          EXISTING="$(gh issue list --repo "$GH_REPO" --state open \
+            --search "${MARKER} in:title" \
+            --limit 1 --json number --jq '.[0].number // empty')"
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "$GH_REPO" --body-file report.md
+            echo "Kommentar an #${EXISTING} angehängt"
+          else
+            gh issue create --repo "$GH_REPO" \
+              --title "${MARKER}: Abhängigkeiten regelmässig durchsehen" \
+              --body-file report.md
+          fi
