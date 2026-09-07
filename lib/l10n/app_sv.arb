@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Din skärm delas",
   "fernwartungStopp": "Stoppa",
   "fernwartungMikroAus": "Stäng av mikrofonen",
-  "fernwartungMikroAn": "Slå på mikrofonen"
+  "fernwartungMikroAn": "Slå på mikrofonen",
+  "virengeprueftAm": "Virusskannad {datum}",
+  "nichtVirengeprueft": "Inte virusskannad"
 }

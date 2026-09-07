@@ -3074,4 +3074,12 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Slå på mikrofonen';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Virusskannad $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Inte virusskannad';
 }

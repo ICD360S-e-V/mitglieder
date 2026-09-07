@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Uw scherm wordt gedeeld",
   "fernwartungStopp": "Stoppen",
   "fernwartungMikroAus": "Microfoon dempen",
-  "fernwartungMikroAn": "Microfoon inschakelen"
+  "fernwartungMikroAn": "Microfoon inschakelen",
+  "virengeprueftAm": "Gescand op virussen {datum}",
+  "nichtVirengeprueft": "Niet gescand op virussen"
 }

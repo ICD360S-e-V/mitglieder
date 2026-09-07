@@ -3084,4 +3084,12 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Pornește microfonul';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Verificat antivirus $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Neverificat antivirus';
 }

@@ -3075,4 +3075,12 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Slå på mikrofonen';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Virussjekket $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Ikke virussjekket';
 }

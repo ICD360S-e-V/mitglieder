@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Jūsų ekranas bendrinamas",
   "fernwartungStopp": "Stabdyti",
   "fernwartungMikroAus": "Išjungti mikrofoną",
-  "fernwartungMikroAn": "Įjungti mikrofoną"
+  "fernwartungMikroAn": "Įjungti mikrofoną",
+  "virengeprueftAm": "Patikrinta dėl virusų {datum}",
+  "nichtVirengeprueft": "Nepatikrinta dėl virusų"
 }

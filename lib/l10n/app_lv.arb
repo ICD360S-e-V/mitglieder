@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Jūsu ekrāns tiek kopīgots",
   "fernwartungStopp": "Apturēt",
   "fernwartungMikroAus": "Izslēgt mikrofonu",
-  "fernwartungMikroAn": "Ieslēgt mikrofonu"
+  "fernwartungMikroAn": "Ieslēgt mikrofonu",
+  "virengeprueftAm": "Pārbaudīts pret vīrusiem {datum}",
+  "nichtVirengeprueft": "Nav pārbaudīts pret vīrusiem"
 }

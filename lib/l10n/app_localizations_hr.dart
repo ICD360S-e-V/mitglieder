@@ -3075,4 +3075,12 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Uključi mikrofon';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Provjereno na viruse $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Nije provjereno na viruse';
 }

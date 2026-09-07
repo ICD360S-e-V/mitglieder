@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Teie ekraani jagatakse",
   "fernwartungStopp": "Peata",
   "fernwartungMikroAus": "Vaigista mikrofon",
-  "fernwartungMikroAn": "Lülita mikrofon sisse"
+  "fernwartungMikroAn": "Lülita mikrofon sisse",
+  "virengeprueftAm": "Viirusekontroll tehtud {datum}",
+  "nichtVirengeprueft": "Viirusekontroll tegemata"
 }

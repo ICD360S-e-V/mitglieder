@@ -3091,4 +3091,12 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Microfoon inschakelen';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Gescand op virussen $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Niet gescand op virussen';
 }

@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Vaše obrazovka je sdílena",
   "fernwartungStopp": "Stop",
   "fernwartungMikroAus": "Vypnout mikrofon",
-  "fernwartungMikroAn": "Zapnout mikrofon"
+  "fernwartungMikroAn": "Zapnout mikrofon",
+  "virengeprueftAm": "Zkontrolováno antivirem {datum}",
+  "nichtVirengeprueft": "Nezkontrolováno antivirem"
 }

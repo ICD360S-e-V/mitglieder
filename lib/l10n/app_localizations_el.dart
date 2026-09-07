@@ -3098,4 +3098,12 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Ενεργοποίηση μικροφώνου';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Ελέγχθηκε για ιούς $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Δεν ελέγχθηκε για ιούς';
 }

@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Vaš zaslon se dijeli",
   "fernwartungStopp": "Stop",
   "fernwartungMikroAus": "Isključi mikrofon",
-  "fernwartungMikroAn": "Uključi mikrofon"
+  "fernwartungMikroAn": "Uključi mikrofon",
+  "virengeprueftAm": "Provjereno na viruse {datum}",
+  "nichtVirengeprueft": "Nije provjereno na viruse"
 }

@@ -3082,4 +3082,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Unmute microphone';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Virus-scanned $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Not virus-scanned';
 }

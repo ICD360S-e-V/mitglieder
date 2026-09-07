@@ -3076,4 +3076,12 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Zapnúť mikrofón';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Skontrolované antivírusom $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Neskontrolované antivírusom';
 }

@@ -3083,4 +3083,12 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Mikrofon bekapcsolása';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Vírusellenőrzés elvégezve $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Vírusellenőrzés nem történt';
 }

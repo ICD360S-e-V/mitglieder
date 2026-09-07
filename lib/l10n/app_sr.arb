@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Ваш екран се дели",
   "fernwartungStopp": "Стоп",
   "fernwartungMikroAus": "Искључи микрофон",
-  "fernwartungMikroAn": "Укључи микрофон"
+  "fernwartungMikroAn": "Укључи микрофон",
+  "virengeprueftAm": "Проверено антивирусом {datum}",
+  "nichtVirengeprueft": "Није проверено антивирусом"
 }

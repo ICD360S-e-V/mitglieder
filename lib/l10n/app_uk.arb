@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Ваш екран демонструється",
   "fernwartungStopp": "Стоп",
   "fernwartungMikroAus": "Вимкнути мікрофон",
-  "fernwartungMikroAn": "Увімкнути мікрофон"
+  "fernwartungMikroAn": "Увімкнути мікрофон",
+  "virengeprueftAm": "Перевірено антивірусом {datum}",
+  "nichtVirengeprueft": "Не перевірено антивірусом"
 }

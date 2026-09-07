@@ -1440,5 +1440,7 @@
   "fernwartungAktiv": "Ekranınız paylaşılıyor",
   "fernwartungStopp": "Durdur",
   "fernwartungMikroAus": "Mikrofonu kapat",
-  "fernwartungMikroAn": "Mikrofonu aç"
+  "fernwartungMikroAn": "Mikrofonu aç",
+  "virengeprueftAm": "Virüs taraması yapıldı {datum}",
+  "nichtVirengeprueft": "Virüs taraması yapılmadı"
 }

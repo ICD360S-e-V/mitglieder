@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Votre écran est partagé",
   "fernwartungStopp": "Arrêter",
   "fernwartungMikroAus": "Couper le micro",
-  "fernwartungMikroAn": "Activer le micro"
+  "fernwartungMikroAn": "Activer le micro",
+  "virengeprueftAm": "Analysé par l’antivirus {datum}",
+  "nichtVirengeprueft": "Non analysé par l’antivirus"
 }

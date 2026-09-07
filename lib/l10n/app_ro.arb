@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Ecranul dvs. este partajat",
   "fernwartungStopp": "Stop",
   "fernwartungMikroAus": "Oprește microfonul",
-  "fernwartungMikroAn": "Pornește microfonul"
+  "fernwartungMikroAn": "Pornește microfonul",
+  "virengeprueftAm": "Verificat antivirus {datum}",
+  "nichtVirengeprueft": "Neverificat antivirus"
 }

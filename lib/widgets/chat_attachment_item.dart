@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../utils/app_theme.dart';
+import '../utils/virenpruefung.dart';
 
 /// A single attachment item in a chat message
 class ChatAttachmentItem extends StatelessWidget {
@@ -51,12 +52,35 @@ class ChatAttachmentItem extends StatelessWidget {
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text(
-                    _formatFileSize(size),
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: isOwn ? Colors.white70 : context.colors.textSecondary,
-                    ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        _formatFileSize(size),
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: isOwn ? Colors.white70 : context.colors.textSecondary,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      // Schild: grün = beim Hochladen vom Virenscanner als sauber
+                      // gemeldet; grau = nicht geprüft.
+                      Tooltip(
+                        message: virengeprueft(attachment['virengeprueft_am'])
+                            ? AppLocalizations.of(context)!.virengeprueftAm(
+                                virenpruefungDatum(attachment['virengeprueft_am'])!)
+                            : AppLocalizations.of(context)!.nichtVirengeprueft,
+                        child: Icon(
+                          virengeprueft(attachment['virengeprueft_am'])
+                              ? Icons.verified_user
+                              : Icons.gpp_maybe_outlined,
+                          size: 12,
+                          color: virengeprueft(attachment['virengeprueft_am'])
+                              ? (isOwn ? Colors.greenAccent : Colors.green.shade600)
+                              : (isOwn ? Colors.white54 : context.colors.textSecondary),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
