@@ -31,6 +31,13 @@ import '../utils/app_theme.dart';
 final _log = LoggerService();
 
 /// Live Chat Dialog for members to chat with support
+/// Obergrenze der langen Seite für Fotos aus dem Live-Chat (Kamera und
+/// Galerie) und die JPEG-Qualität. Muss mit `bild_verkleinern.php` auf dem
+/// Server übereinstimmen (BILD_LANGE_SEITE / BILD_QUALITAET) — der Server
+/// verkleinert zusätzlich, für Apps, die noch in voller Auflösung schicken.
+const double kChatFotoLangeSeite = 2500;
+const int kChatFotoQualitaet = 92;
+
 class LiveChatDialog extends StatefulWidget {
   final String mitgliedernummer;
   final String userName;
@@ -1105,7 +1112,17 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     final errorText = AppLocalizations.of(context)!.errorTakingPhoto;
     try {
       final ImagePicker picker = ImagePicker();
-      final XFile? image = await picker.pickImage(source: ImageSource.camera);
+      // Auf 2500 px / Qualität 92 begrenzen — ein A4-Scan mit 300 dpi hat
+      // 2480 px auf der langen Seite, mehr trägt auf einem Dokument nichts
+      // Lesbares bei. Vorher ging die volle Sensorauflösung raus: 4600 px,
+      // 10 MB je Foto, gemessen an 136 Fotos in den Clouds der Mitglieder.
+      // Der Wizard (Stufe 3) macht das seit jeher so.
+      final XFile? image = await picker.pickImage(
+        source: ImageSource.camera,
+        maxWidth: kChatFotoLangeSeite,
+        maxHeight: kChatFotoLangeSeite,
+        imageQuality: kChatFotoQualitaet,
+      );
 
       if (image != null && mounted) {
         final imageBytes = await File(image.path).readAsBytes();
@@ -1198,7 +1215,11 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     final errorText = AppLocalizations.of(context)!.errorPickingPhotos;
     try {
       final ImagePicker picker = ImagePicker();
-      final List<XFile> images = await picker.pickMultiImage();
+      final List<XFile> images = await picker.pickMultiImage(
+        maxWidth: kChatFotoLangeSeite,
+        maxHeight: kChatFotoLangeSeite,
+        imageQuality: kChatFotoQualitaet,
+      );
 
       if (images.isNotEmpty) {
         final files = images.take(10).map((xfile) => File(xfile.path)).toList();
