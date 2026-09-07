@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.91.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.91.0...v1.91.1) (2026-09-07)
+
+
+### Bug Fixes
+
+* **ios:** Mindestversion 14.0 → 16.0 wegen audio_streamer 5.0.0 ([#367](https://github.com/ICD360S-e-V/mitglieder/issues/367)) ([1661a02](https://github.com/ICD360S-e-V/mitglieder/commit/1661a02c0bee39747e483c21676885cbdf5e16c9))
+
 ## [1.91.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.90.2...v1.91.0) (2026-09-07)
 
 
