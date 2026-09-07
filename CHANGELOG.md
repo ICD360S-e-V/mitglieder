@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.90.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.90.1...v1.90.2) (2026-09-07)
+
+
+### Bug Fixes
+
+* **chat:** Fotos aus Kamera und Galerie auf 2500 px / Qualität 92 begrenzen ([#363](https://github.com/ICD360S-e-V/mitglieder/issues/363)) ([2c62575](https://github.com/ICD360S-e-V/mitglieder/commit/2c625758994361a9d7fbd043facf1d78d8e08f2a))
+
 ## [1.90.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.90.0...v1.90.1) (2026-09-01)
 
 
