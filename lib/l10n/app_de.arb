@@ -1508,5 +1508,14 @@
   "fernwartungMikroAn": "Mikrofon an",
   "@fernwartungMikroAn": {
     "description": "Fernwartung: Einwilligung und Banner beim Mitglied"
+  },
+  "virengeprueftAm": "Virengeprüft {datum}",
+  "@virengeprueftAm": {
+    "description": "Chat-Anhang: clamd hat die Datei beim Hochladen als sauber gemeldet; datum = TT.MM.JJJJ",
+    "placeholders": {"datum": {"type": "String"}}
+  },
+  "nichtVirengeprueft": "Nicht virengeprüft",
+  "@nichtVirengeprueft": {
+    "description": "Chat-Anhang: kein Prüfstempel (Scanner nicht erreichbar oder Datei älter als die Prüfung)"
   }
 }

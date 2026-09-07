@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "O seu ecrã está a ser partilhado",
   "fernwartungStopp": "Parar",
   "fernwartungMikroAus": "Desativar microfone",
-  "fernwartungMikroAn": "Ativar microfone"
+  "fernwartungMikroAn": "Ativar microfone",
+  "virengeprueftAm": "Verificado pelo antivírus {datum}",
+  "nichtVirengeprueft": "Não verificado pelo antivírus"
 }

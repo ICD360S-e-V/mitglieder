@@ -3080,4 +3080,12 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Увімкнути мікрофон';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Перевірено антивірусом $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Не перевірено антивірусом';
 }

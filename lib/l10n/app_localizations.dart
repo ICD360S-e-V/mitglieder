@@ -5587,6 +5587,18 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Mikrofon an'**
   String get fernwartungMikroAn;
+
+  /// Chat-Anhang: clamd hat die Datei beim Hochladen als sauber gemeldet; datum = TT.MM.JJJJ
+  ///
+  /// In de, this message translates to:
+  /// **'Virengeprüft {datum}'**
+  String virengeprueftAm(String datum);
+
+  /// Chat-Anhang: kein Prüfstempel (Scanner nicht erreichbar oder Datei älter als die Prüfung)
+  ///
+  /// In de, this message translates to:
+  /// **'Nicht virengeprüft'**
+  String get nichtVirengeprueft;
 }
 
 class _AppLocalizationsDelegate

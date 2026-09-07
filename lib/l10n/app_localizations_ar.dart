@@ -3048,4 +3048,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'تشغيل الميكروفون';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'تم فحصه بمكافح الفيروسات $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'لم يُفحص بمكافح الفيروسات';
 }

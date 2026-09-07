@@ -3106,4 +3106,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Activer le micro';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Analysé par l’antivirus $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Non analysé par l’antivirus';
 }

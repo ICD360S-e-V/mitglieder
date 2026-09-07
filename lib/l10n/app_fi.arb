@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Näyttöäsi jaetaan",
   "fernwartungStopp": "Lopeta",
   "fernwartungMikroAus": "Mykistä mikrofoni",
-  "fernwartungMikroAn": "Poista mikrofonin mykistys"
+  "fernwartungMikroAn": "Poista mikrofonin mykistys",
+  "virengeprueftAm": "Virustarkistettu {datum}",
+  "nichtVirengeprueft": "Ei virustarkistettu"
 }

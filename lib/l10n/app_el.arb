@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Η οθόνη σας μοιράζεται",
   "fernwartungStopp": "Διακοπή",
   "fernwartungMikroAus": "Σίγαση μικροφώνου",
-  "fernwartungMikroAn": "Ενεργοποίηση μικροφώνου"
+  "fernwartungMikroAn": "Ενεργοποίηση μικροφώνου",
+  "virengeprueftAm": "Ελέγχθηκε για ιούς {datum}",
+  "nichtVirengeprueft": "Δεν ελέγχθηκε για ιούς"
 }

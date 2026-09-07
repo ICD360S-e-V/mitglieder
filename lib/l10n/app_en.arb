@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Your screen is being shared",
   "fernwartungStopp": "Stop",
   "fernwartungMikroAus": "Mute microphone",
-  "fernwartungMikroAn": "Unmute microphone"
+  "fernwartungMikroAn": "Unmute microphone",
+  "virengeprueftAm": "Virus-scanned {datum}",
+  "nichtVirengeprueft": "Not virus-scanned"
 }

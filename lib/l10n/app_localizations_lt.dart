@@ -3078,4 +3078,12 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Įjungti mikrofoną';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Patikrinta dėl virusų $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Nepatikrinta dėl virusų';
 }

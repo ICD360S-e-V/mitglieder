@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Il suo schermo è condiviso",
   "fernwartungStopp": "Interrompi",
   "fernwartungMikroAus": "Disattiva microfono",
-  "fernwartungMikroAn": "Attiva microfono"
+  "fernwartungMikroAn": "Attiva microfono",
+  "virengeprueftAm": "Controllato dall’antivirus {datum}",
+  "nichtVirengeprueft": "Non controllato dall’antivirus"
 }

@@ -3079,4 +3079,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Включить микрофон';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Проверено антивирусом $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Не проверено антивирусом';
 }

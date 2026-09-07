@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Twój ekran jest udostępniany",
   "fernwartungStopp": "Stop",
   "fernwartungMikroAus": "Wyłącz mikrofon",
-  "fernwartungMikroAn": "Włącz mikrofon"
+  "fernwartungMikroAn": "Włącz mikrofon",
+  "virengeprueftAm": "Sprawdzono antywirusem {datum}",
+  "nichtVirengeprueft": "Nie sprawdzono antywirusem"
 }

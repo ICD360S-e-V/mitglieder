@@ -3073,4 +3073,12 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Zapnout mikrofon';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Zkontrolováno antivirem $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Nezkontrolováno antivirem';
 }

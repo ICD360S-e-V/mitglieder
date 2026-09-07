@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "A képernyőjét megosztják",
   "fernwartungStopp": "Leállítás",
   "fernwartungMikroAus": "Mikrofon némítása",
-  "fernwartungMikroAn": "Mikrofon bekapcsolása"
+  "fernwartungMikroAn": "Mikrofon bekapcsolása",
+  "virengeprueftAm": "Vírusellenőrzés elvégezve {datum}",
+  "nichtVirengeprueft": "Vírusellenőrzés nem történt"
 }

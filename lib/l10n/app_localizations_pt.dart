@@ -3083,4 +3083,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Ativar microfone';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Verificado pelo antivírus $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Não verificado pelo antivírus';
 }

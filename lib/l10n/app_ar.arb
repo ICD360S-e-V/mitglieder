@@ -1440,5 +1440,7 @@
   "fernwartungAktiv": "تتم مشاركة شاشتك",
   "fernwartungStopp": "إيقاف",
   "fernwartungMikroAus": "كتم الميكروفون",
-  "fernwartungMikroAn": "تشغيل الميكروفون"
+  "fernwartungMikroAn": "تشغيل الميكروفون",
+  "virengeprueftAm": "تم فحصه بمكافح الفيروسات {datum}",
+  "nichtVirengeprueft": "لم يُفحص بمكافح الفيروسات"
 }

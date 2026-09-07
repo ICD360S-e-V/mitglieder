@@ -1419,5 +1419,7 @@
   "fernwartungAktiv": "Vaš zaslon se deli",
   "fernwartungStopp": "Ustavi",
   "fernwartungMikroAus": "Izklopi mikrofon",
-  "fernwartungMikroAn": "Vklopi mikrofon"
+  "fernwartungMikroAn": "Vklopi mikrofon",
+  "virengeprueftAm": "Protivirusno preverjeno {datum}",
+  "nichtVirengeprueft": "Ni protivirusno preverjeno"
 }

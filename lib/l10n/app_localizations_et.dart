@@ -3073,4 +3073,12 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Lülita mikrofon sisse';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Viirusekontroll tehtud $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Viirusekontroll tegemata';
 }

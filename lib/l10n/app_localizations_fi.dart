@@ -3077,4 +3077,12 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get fernwartungMikroAn => 'Poista mikrofonin mykistys';
+
+  @override
+  String virengeprueftAm(String datum) {
+    return 'Virustarkistettu $datum';
+  }
+
+  @override
+  String get nichtVirengeprueft => 'Ei virustarkistettu';
 }
