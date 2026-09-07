@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.91.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.90.2...v1.91.0) (2026-09-07)
+
+
+### Features
+
+* **chat:** Virenprüfung an Anhängen sichtbar machen ([#364](https://github.com/ICD360S-e-V/mitglieder/issues/364)) ([04009f2](https://github.com/ICD360S-e-V/mitglieder/commit/04009f20d31c6a14a21270c3c0e8bb3bcb3dcd4b))
+
 ## [1.90.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.90.1...v1.90.2) (2026-09-07)
 
 
