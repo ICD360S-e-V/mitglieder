@@ -1,5 +1,8 @@
-# Minimum iOS 14.0 required by workmanager_apple
-platform :ios, '14.0'
+# Minimum iOS 16.0: audio_streamer 5.0.0 (über noise_meter 6.0.0, Dependabot #322)
+# hebt sein Deployment-Target von 8.0 auf 16.0; darunter bricht der iOS-Build
+# mit „package product 'audio-streamer' requires minimum platform version 16.0".
+# Vorher: 14.0 wegen workmanager_apple — das ist mit 16.0 weiter erfüllt.
+platform :ios, '16.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
