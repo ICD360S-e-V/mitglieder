@@ -107,7 +107,6 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   StreamSubscription? _callAnswerSubscription;
   StreamSubscription? _callRejectedSubscription;
   StreamSubscription? _callEndedSubscription;
-  StreamSubscription? _iceCandidateSubscription;
   StreamSubscription? _callBusySubscription;
   StreamSubscription? _readReceiptSubscription;
   StreamSubscription? _messageExpiredSubscription;
@@ -256,7 +255,6 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     _callAnswerSubscription?.cancel();
     _callRejectedSubscription?.cancel();
     _callEndedSubscription?.cancel();
-    _iceCandidateSubscription?.cancel();
     _callBusySubscription?.cancel();
     _readReceiptSubscription?.cancel();
     _messageExpiredSubscription?.cancel();
@@ -546,13 +544,9 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
       }
     });
 
-    _iceCandidateSubscription = _chatService.iceCandidateStream.listen((event) {
-      _log.debug('LiveChat: [WS] Received ice_candidate (conv: ${event.conversationId})', tag: 'CALL');
-      if (!mounted) return;
-      if (event.conversationId == _conversationId) {
-        _handleIceCandidate(event.candidate, event.sdpMid, event.sdpMLineIndex);
-      }
-    });
+    // ICE-Kandidaten holt der VoiceCallService selbst ab (10.09.2026).
+    // ⚠️ Hier NICHT wieder abonnieren: der Dialog ist nur manchmal montiert,
+    // und ein zweiter Zuhoerer wuerde jeden Kandidaten doppelt einreichen.
 
     _callBusySubscription = _chatService.callBusyStream.listen((convId) {
       _log.info('LiveChat: [WS] Received call_busy (conv: $convId)', tag: 'CALL');
@@ -808,13 +802,6 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
         ),
       );
     }
-  }
-
-  /// Handle ICE candidate - REFACTORED to use VoiceCallService
-  Future<void> _handleIceCandidate(String candidate, String sdpMid, int sdpMLineIndex) async {
-    if (!mounted) return;
-    _log.debug('LiveChat: Handling ICE candidate via VoiceCallService', tag: 'CALL');
-    await _voiceCallService.handleIceCandidate(candidate, sdpMid, sdpMLineIndex);
   }
 
   /// End call - REFACTORED to use VoiceCallService

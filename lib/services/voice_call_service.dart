@@ -7,6 +7,7 @@ import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:http/io_client.dart';
 import 'api_service.dart';
+import 'chat_service.dart';
 import 'logger_service.dart';
 
 final _log = LoggerService();
@@ -181,6 +182,29 @@ class VoiceCallService {
   final List<RTCIceCandidate> _queuedIceCandidates = [];
   bool _remoteDescriptionSet = false;
 
+  /// Abo auf die ICE-Kandidaten aus der Signalisierung — im DIENST, nicht in
+  /// einem Widget.
+  ///
+  /// ⚠️ Bis zum 10.09.2026 holte sie allein `live_chat_dialog.dart` ab. Das
+  /// Annehmen eines Anrufs war laengst in `mitglied_dashboard.dart` gewandert
+  /// (der Kommentar „Call handling moved to Dashboard" steht dort noch), das
+  /// Abholen der Kandidaten nicht. War der Chat-Dialog nicht offen, fielen die
+  /// Kandidaten des Anrufers in einen `broadcast`-Stream OHNE Zuhoerer und
+  /// waren fuer immer weg: ein broadcast-Stream puffert nichts.
+  ///
+  /// Die Folge sah nicht nach einem Fehler aus. SDP-Austausch, `onTrack` und
+  /// der Anrufschirm liefen normal, nur kannte die angerufene Seite die
+  /// Relay-Adresse des Anrufers nie — sie legte deshalb am TURN-Server keine
+  /// Permission an, ihr Relay verwarf jede Verbindungspruefung, ICE blieb fuer
+  /// immer in `Checking` und es floss kein einziges Byte. Gemessen am
+  /// 10.09.2026: der Anrufer schickte 145 Pruefungen (13.920 B) und bekam 0
+  /// zurueck. Ob ein Anruf glueckte, entschied allein, ob der Chat-Dialog
+  /// zufaellig offen stand — deshalb wirkte es zufaellig.
+  ///
+  /// Das Abo lebt so lange wie die App und wird bei `_cleanup()` NICHT
+  /// abgebaut: es gehoert zum Dienst, nicht zum einzelnen Anruf.
+  StreamSubscription<IceCandidateEvent>? _signalIceAbo;
+
   // Call state
   CallState _callState = CallState.idle;
   int? _currentConversationId;
@@ -327,7 +351,25 @@ class VoiceCallService {
   // Singleton
   static final VoiceCallService _instance = VoiceCallService._internal();
   factory VoiceCallService() => _instance;
-  VoiceCallService._internal();
+  VoiceCallService._internal() {
+    _signalIceAbo = _chatService.iceCandidateStream.listen(_signalIceKandidat);
+  }
+
+  final ChatService _chatService = ChatService();
+
+  /// Ein Kandidat aus der Signalisierung.
+  ///
+  /// ⚠️ Gefiltert wird gegen [_currentConversationId], und das ist zum
+  /// Zeitpunkt des ersten Kandidaten schon gesetzt: `handleIncomingCall()`
+  /// setzt es, bevor es die Oberflaeche ueberhaupt benachrichtigt, und die
+  /// Kandidaten des Anrufers folgen der Einladung erst ~80 ms spaeter.
+  /// Ist kein Anruf im Gang, ist das Feld `null` und ein Kandidat wird
+  /// verworfen — nicht in eine Warteschlange gelegt, die niemand mehr leert.
+  void _signalIceKandidat(IceCandidateEvent event) {
+    if (_currentConversationId == null) return;
+    if (event.conversationId != _currentConversationId) return;
+    handleIceCandidate(event.candidate, event.sdpMid, event.sdpMLineIndex);
+  }
 
   /// Initialize a call (caller side).
   ///
@@ -1358,6 +1400,8 @@ class VoiceCallService {
   /// Dispose service
   void dispose() {
     _cleanup();
+    _signalIceAbo?.cancel();
+    _signalIceAbo = null;
     _ringbackPlayer?.dispose();
     _sfxPlayer?.dispose();
     _callStateController.close();
