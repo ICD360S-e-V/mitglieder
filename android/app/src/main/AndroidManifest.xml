@@ -14,6 +14,11 @@
     <!-- Voice Call Permissions -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Ein laufender Anruf muss Ton UND Kamera behalten, wenn die App aus dem
+         Blick geraet. Android 14+ verlangt dafuer je Dienst-TYP die passende
+         Berechtigung; angemeldet wird der Typ zur Laufzeit in AnrufDienst.kt. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <!-- File & Storage Permissions -->
@@ -171,6 +176,16 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/fernwartung_accessibility" />
         </service>
+        <!-- Laufender Anruf: haelt Mikrofon und Kamera am Leben, waehrend die App
+             im Hintergrund ist. Der Typ hier ERLAUBT nur; welcher Typ wirklich
+             angemeldet wird, entscheidet AnrufDienst.kt je Anruf (Sprachanruf
+             ohne `camera`, sonst wiese Android 14+ den Dienst ab). -->
+        <service
+            android:name=".AnrufDienst"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="microphone|camera" />
+
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

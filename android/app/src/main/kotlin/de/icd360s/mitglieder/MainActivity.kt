@@ -26,6 +26,7 @@ class MainActivity : FlutterActivity() {
         const val CAPTURE_CHANNEL = "de.icd360sev.mitglied/screen_capture"
         const val BATTERY_CHANNEL = "de.icd360sev.mitglied/battery_state"
         const val STEUERUNG_CHANNEL = "de.icd360sev.mitglied/fernsteuerung"
+        const val ANRUF_CHANNEL = "de.icd360sev.mitglied/anruf_dienst"
 
         /**
          * Laeuft gerade eine Fernwartung, in der der Bildschirm geteilt wird?
@@ -72,6 +73,43 @@ class MainActivity : FlutterActivity() {
                             // nicht raten.
                             result.success(jetzt)
                         }
+                    }
+                    else -> result.notImplemented()
+                }
+            }
+
+        // Vordergrunddienst fuer einen laufenden Anruf — siehe [AnrufDienst].
+        //
+        // ⚠️ Im App-Modul und nicht in einem Plugin: Plugins braucht, wer im
+        // HINTERGRUND-Isolat arbeitet. Ein Anruf laeuft ausschliesslich im
+        // Vordergrund-Isolat, und der Dienst liegt ohnehin in diesem Modul.
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, ANRUF_CHANNEL)
+            .setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "start" -> {
+                        val i = Intent(this, AnrufDienst::class.java).apply {
+                            putExtra(AnrufDienst.EXTRA_VIDEO, call.argument<Boolean>("video") ?: false)
+                            putExtra(AnrufDienst.EXTRA_NAME, call.argument<String>("name"))
+                        }
+                        try {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                startForegroundService(i)
+                            } else {
+                                startService(i)
+                            }
+                            result.success(true)
+                        } catch (e: Throwable) {
+                            // Ein verweigerter Dienst darf den Anruf nicht kippen.
+                            result.success(false)
+                        }
+                    }
+                    "stop" -> {
+                        try {
+                            stopService(Intent(this, AnrufDienst::class.java))
+                        } catch (e: Throwable) {
+                            // egal — der Dienst laeuft dann schon nicht mehr
+                        }
+                        result.success(true)
                     }
                     else -> result.notImplemented()
                 }
