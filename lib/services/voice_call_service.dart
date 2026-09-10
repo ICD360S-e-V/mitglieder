@@ -6,6 +6,7 @@ import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:http/io_client.dart';
+import 'anruf_vordergrund.dart';
 import 'api_service.dart';
 import 'chat_service.dart';
 import 'logger_service.dart';
@@ -402,6 +403,10 @@ class VoiceCallService {
         return false;
       }
       _log.info('VoiceCallService: Local stream acquired', tag: 'CALL');
+      // Ton und Kamera muessen weiterlaufen, wenn die App aus dem Blick
+      // geraet — siehe [AnrufVordergrund]. Hier und nicht schon beim Klingeln:
+      // erst ab jetzt sind Mikrofon und Kamera wirklich offen.
+      await AnrufVordergrund.starten(video: _isVideoCall);
       _applyAudioRoute(); // route to speaker now that the audio session is live
 
       // Create peer connection
@@ -556,6 +561,10 @@ class VoiceCallService {
         return false;
       }
       _log.info('VoiceCallService: Local stream acquired for accept', tag: 'CALL');
+      // Ton und Kamera muessen weiterlaufen, wenn die App aus dem Blick
+      // geraet — siehe [AnrufVordergrund]. Hier und nicht schon beim Klingeln:
+      // erst ab jetzt sind Mikrofon und Kamera wirklich offen.
+      await AnrufVordergrund.starten(video: _isVideoCall);
       _applyAudioRoute(); // route to speaker now that the audio session is live
 
       // Create peer connection
@@ -1363,6 +1372,9 @@ class VoiceCallService {
   }
 
   void _cleanup() {
+    // Auf JEDEM Weg, auf dem ein Anruf endet — sonst bliebe die
+    // Benachrichtigung ueber ein Gespraech stehen, das es nicht gibt.
+    AnrufVordergrund.beenden();
     _log.info('VoiceCallService: _cleanup() - releasing WebRTC resources', tag: 'CALL');
     _stopStatsLogging();
     _medienWache?.cancel();
