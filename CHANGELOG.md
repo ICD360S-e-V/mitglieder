@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.91.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.91.1...v1.91.2) (2026-09-10)
+
+
+### Bug Fixes
+
+* **anruf:** ICE-Kandidaten gehen nicht mehr verloren, wenn der Chat-Dialog zu ist ([#369](https://github.com/ICD360S-e-V/mitglieder/issues/369)) ([72ee22b](https://github.com/ICD360S-e-V/mitglieder/commit/72ee22b1790d40a9581440ca78e49586e8b41924))
+
 ## [1.91.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.91.0...v1.91.1) (2026-09-07)
 
 
