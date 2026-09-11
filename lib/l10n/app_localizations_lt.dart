@@ -3086,4 +3086,68 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get nichtVirengeprueft => 'Nepatikrinta dėl virusų';
+
+  @override
+  String get wizardExitLink => 'Pause registration';
+
+  @override
+  String get wizardExitSheetTitle => 'Leave the registration?';
+
+  @override
+  String get wizardExitSheetBody =>
+      'You have two options. Pick the one that fits.';
+
+  @override
+  String get wizardExitLater => 'Continue later';
+
+  @override
+  String get wizardExitLaterHint =>
+      'Your answers stay saved. You can pick up again any time from the start screen.';
+
+  @override
+  String get wizardExitAbandon => 'Cancel registration';
+
+  @override
+  String get wizardExitAbandonHint =>
+      'Your application will be withdrawn. This cannot be undone.';
+
+  @override
+  String get wizardExitCancel => 'Keep going';
+
+  @override
+  String get wizardAbandonDialogTitle => 'Really cancel the registration?';
+
+  @override
+  String get wizardAbandonDialogBody =>
+      'Your application will be marked as withdrawn by you. The data stays stored for audit reasons (GDPR). Important: three withdrawals within 90 days means you can no longer register on your own and will need to talk to the board. If you just need a break, choose “Continue later”.';
+
+  @override
+  String get wizardAbandonKeep => 'No, keep going';
+
+  @override
+  String get wizardAbandonConfirm => 'Yes, cancel';
+
+  @override
+  String get wizardFinalBackToMenu => 'Back to main menu';
+
+  @override
+  String get wizardResumeBannerTitle => 'Your registration is still open';
+
+  @override
+  String get wizardResumeBannerBody =>
+      'You have a registration in progress. Your answers are saved — you can carry on where you left off.';
+
+  @override
+  String get wizardResumeBannerAction => 'Continue';
+
+  @override
+  String get wizardResumeBannerPendingTitle =>
+      'Your application is under review';
+
+  @override
+  String get wizardResumeBannerPendingBody =>
+      'The board is reviewing your application. You will get a message as soon as your account is active.';
+
+  @override
+  String get wizardResumeBannerPendingAction => 'View status';
 }

@@ -324,10 +324,24 @@ class _WizardScreenState extends State<WizardScreen> {
   void _goBack() {
     final prev = _prevStep(_step);
     if (prev == null) {
-      Navigator.of(context).maybePop();
+      _leaveWizard();
       return;
     }
     setState(() => _step = prev);
+  }
+
+  /// Every deliberate way out of the wizard that is NOT a withdrawal:
+  /// the age gate, the duplicate-applicant screen, and the error
+  /// screen's "back home".
+  ///
+  /// The pop alone is not enough. WelcomeScreen probes on launch and
+  /// pushes the wizard straight back for any draft that isn't
+  /// finished, so popping used to last exactly until the next app
+  /// start — an under-16 visitor bounced off the age gate on every
+  /// single launch. The flag downgrades that push to an offer.
+  Future<void> _leaveWizard() async {
+    await WizardService().suppressAutoResume();
+    if (mounted) Navigator.of(context).maybePop();
   }
 
   Future<void> _finalize() async {
@@ -350,9 +364,14 @@ class _WizardScreenState extends State<WizardScreen> {
   }
 
   Future<void> _exitFromFinal() async {
-    // The draft already shipped — wipe the local anonymous_id so a
-    // brand-new visitor on this device starts clean.
-    await WizardService().resetLocal();
+    // No resetLocal here. The draft has shipped, but the
+    // anonymous_id is still what check_status.php keys on — it is how
+    // this device finds the pending application again, both for the
+    // welcome screen's resume banner and for the final screen's own
+    // polling. Wiping it would leave the visitor holding a
+    // Mitgliedernummer the app can no longer look it up by. The
+    // suppression flag that keeps the welcome screen reachable is
+    // already set by WizardFinalScreen before it calls us.
     if (mounted) Navigator.of(context).maybePop();
   }
 
@@ -368,17 +387,18 @@ class _WizardScreenState extends State<WizardScreen> {
       case _Phase.error:
         return _ErrorScaffold(
           onRetry: _bootstrap,
+          onLeave: _leaveWizard,
           errorCode: _errorCode,
         );
       case _Phase.ageGate:
         return WizardAgeGateScreen(
           age: _gateAge,
-          onExit: () => Navigator.of(context).maybePop(),
+          onExit: _leaveWizard,
         );
       case _Phase.duplicateFound:
         return WizardDuplicateScreen(
           action: _duplicateAction!,
-          onClose: () => Navigator.of(context).maybePop(),
+          onClose: _leaveWizard,
         );
       case _Phase.finished:
         return WizardFinalScreen(
@@ -552,8 +572,13 @@ class _LoadingScaffold extends StatelessWidget {
 
 class _ErrorScaffold extends StatelessWidget {
   final VoidCallback onRetry;
+  final VoidCallback onLeave;
   final String? errorCode;
-  const _ErrorScaffold({required this.onRetry, this.errorCode});
+  const _ErrorScaffold({
+    required this.onRetry,
+    required this.onLeave,
+    this.errorCode,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -609,7 +634,7 @@ class _ErrorScaffold extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 TextButton(
-                  onPressed: () => Navigator.of(context).maybePop(),
+                  onPressed: onLeave,
                   child: Text(
                     l10n.wizardAgeGateBackHome,
                     style: const TextStyle(color: Colors.white70),

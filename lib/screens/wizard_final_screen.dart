@@ -65,6 +65,11 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   /// withdraw call works because canPop is briefly true.
   bool _withdrawn = false;
 
+  /// True once the visitor asked to go back to the main menu without
+  /// withdrawing. Same PopScope trick as [_withdrawn]: the gesture
+  /// stays absorbed, the deliberate button press gets through.
+  bool _leaving = false;
+
   /// Guards against double-tap on the withdraw link.
   bool _withdrawing = false;
 
@@ -147,16 +152,16 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isMinor = result.isMinor;
-    // Non-dismissable on purpose. The visitor has just submitted the
-    // application — there is nowhere meaningful for them to "go
-    // back" to. The Vorstand reviews the request and a push
-    // notification will let them know when the account is active;
-    // until then the only useful actions are tapping the Status Card
-    // for details or Sună-ne to talk to us. System back / iOS swipe
-    // / desktop ESC are absorbed silently; backgrounding via the
-    // platform home gesture is the normal way to leave the screen.
+    // The stray back-gesture stays absorbed: the visitor has just
+    // submitted the application and a reflexive swipe should not drop
+    // them out of it. But "absorbed" used to mean "no exit at all" —
+    // combined with the launch-time resume in WelcomeScreen, an
+    // applicant waiting on the Vorstand was pinned to this screen on
+    // every start, with withdrawing as their only way off it. Both
+    // deliberate exits below flip a flag first, so the explicit
+    // button press gets through where the gesture does not.
     return PopScope(
-      canPop: _withdrawn,
+      canPop: _withdrawn || _leaving,
       child: Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -195,6 +200,8 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
                   const SizedBox(height: 16),
                   _bodyBubble(l10n, isMinor),
                   const SizedBox(height: 22),
+                  _backToMenuButton(l10n),
+                  const SizedBox(height: 10),
                   _withdrawLink(l10n),
                   const SizedBox(height: 4),
                 ],
@@ -205,6 +212,47 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       ),
       ),
     );
+  }
+
+  /// Leaves the waiting screen without touching the application. The
+  /// draft, the users row and the anonymous_id all stay exactly as
+  /// they are, so the status polling picks up again the moment the
+  /// visitor comes back — via the welcome screen's resume banner or
+  /// the push notification when the Vorstand activates the account.
+  ///
+  /// This is what [WizardFinalScreen.onClose] was always for; before
+  /// this button it was declared, passed in by both call sites, and
+  /// never invoked.
+  Widget _backToMenuButton(AppLocalizations l10n) {
+    return Center(
+      child: OutlinedButton.icon(
+        onPressed: _withdrawing ? null : _leaveToMenu,
+        icon: const Icon(Icons.home_outlined, size: 18),
+        label: Text(l10n.wizardFinalBackToMenu),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: Colors.white,
+          side: BorderSide(color: Colors.white.withValues(alpha: 0.45)),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Stops the poll, lifts the PopScope guard, then hands over to the
+  /// owner's onClose hook. Crucially it does NOT call resetLocal():
+  /// the anonymous_id is the only handle this device has on the
+  /// pending application, and dropping it would strand the visitor
+  /// with a Mitgliedernummer the app can no longer look up.
+  Future<void> _leaveToMenu() async {
+    _statusTimer?.cancel();
+    await WizardService().suppressAutoResume();
+    if (!mounted) return;
+    setState(() => _leaving = true);
+    await Future<void>.delayed(Duration.zero);
+    if (mounted) onClose();
   }
 
   /// Discreet text-only affordance at the bottom of the screen: the
@@ -261,9 +309,9 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
   Future<void> _withdraw() async {
     if (_withdrawing) return;
     setState(() => _withdrawing = true);
-    final ok = await WizardService().withdrawRequest();
+    final outcome = await WizardService().withdrawRequest();
     if (!mounted) return;
-    if (!ok) {
+    if (outcome == WizardWithdrawOutcome.failed) {
       setState(() => _withdrawing = false);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

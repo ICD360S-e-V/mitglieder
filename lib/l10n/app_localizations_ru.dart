@@ -3087,4 +3087,67 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get nichtVirengeprueft => 'Не проверено антивирусом';
+
+  @override
+  String get wizardExitLink => 'Прервать регистрацию';
+
+  @override
+  String get wizardExitSheetTitle => 'Выйти из регистрации?';
+
+  @override
+  String get wizardExitSheetBody =>
+      'У вас есть два варианта. Выберите подходящий.';
+
+  @override
+  String get wizardExitLater => 'Продолжить позже';
+
+  @override
+  String get wizardExitLaterHint =>
+      'Ваши ответы сохранятся. Вы сможете продолжить в любой момент с главного экрана.';
+
+  @override
+  String get wizardExitAbandon => 'Отменить регистрацию';
+
+  @override
+  String get wizardExitAbandonHint =>
+      'Ваша заявка будет отозвана. Это действие необратимо.';
+
+  @override
+  String get wizardExitCancel => 'Остаться здесь';
+
+  @override
+  String get wizardAbandonDialogTitle => 'Точно отменить регистрацию?';
+
+  @override
+  String get wizardAbandonDialogBody =>
+      'Ваша заявка будет отмечена как отозванная вами. Данные останутся сохранёнными для целей аудита (GDPR). Важно: три отзыва за 90 дней означают, что вы больше не сможете зарегистрироваться самостоятельно и вам нужно будет обратиться к правлению. Если вам просто нужен перерыв, выберите «Продолжить позже».';
+
+  @override
+  String get wizardAbandonKeep => 'Нет, продолжить';
+
+  @override
+  String get wizardAbandonConfirm => 'Да, отменить';
+
+  @override
+  String get wizardFinalBackToMenu => 'В главное меню';
+
+  @override
+  String get wizardResumeBannerTitle => 'Ваша регистрация не завершена';
+
+  @override
+  String get wizardResumeBannerBody =>
+      'У вас есть начатая регистрация. Ответы сохранены — вы можете продолжить с того места, где остановились.';
+
+  @override
+  String get wizardResumeBannerAction => 'Продолжить';
+
+  @override
+  String get wizardResumeBannerPendingTitle => 'Ваша заявка на проверке';
+
+  @override
+  String get wizardResumeBannerPendingBody =>
+      'Правление рассматривает вашу заявку. Вы получите сообщение, как только аккаунт будет активирован.';
+
+  @override
+  String get wizardResumeBannerPendingAction => 'Посмотреть статус';
 }

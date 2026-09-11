@@ -3088,4 +3088,67 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get nichtVirengeprueft => 'Не перевірено антивірусом';
+
+  @override
+  String get wizardExitLink => 'Перервати реєстрацію';
+
+  @override
+  String get wizardExitSheetTitle => 'Вийти з реєстрації?';
+
+  @override
+  String get wizardExitSheetBody =>
+      'У вас є два варіанти. Оберіть той, що підходить.';
+
+  @override
+  String get wizardExitLater => 'Продовжити пізніше';
+
+  @override
+  String get wizardExitLaterHint =>
+      'Ваші відповіді залишаться збереженими. Ви зможете продовжити будь-коли з головного екрана.';
+
+  @override
+  String get wizardExitAbandon => 'Скасувати реєстрацію';
+
+  @override
+  String get wizardExitAbandonHint =>
+      'Вашу заявку буде відкликано. Цю дію не можна скасувати.';
+
+  @override
+  String get wizardExitCancel => 'Залишитися тут';
+
+  @override
+  String get wizardAbandonDialogTitle => 'Справді скасувати реєстрацію?';
+
+  @override
+  String get wizardAbandonDialogBody =>
+      'Вашу заявку буде позначено як відкликану вами. Дані залишаться збереженими для цілей аудиту (GDPR). Важливо: три відкликання за 90 днів означають, що ви більше не зможете зареєструватися самостійно і вам потрібно буде звернутися до правління. Якщо вам просто потрібна перерва, оберіть «Продовжити пізніше».';
+
+  @override
+  String get wizardAbandonKeep => 'Ні, продовжити';
+
+  @override
+  String get wizardAbandonConfirm => 'Так, скасувати';
+
+  @override
+  String get wizardFinalBackToMenu => 'До головного меню';
+
+  @override
+  String get wizardResumeBannerTitle => 'Ваша реєстрація ще не завершена';
+
+  @override
+  String get wizardResumeBannerBody =>
+      'У вас є розпочата реєстрація. Відповіді збережено — ви можете продовжити з того місця, де зупинилися.';
+
+  @override
+  String get wizardResumeBannerAction => 'Продовжити';
+
+  @override
+  String get wizardResumeBannerPendingTitle => 'Вашу заявку розглядають';
+
+  @override
+  String get wizardResumeBannerPendingBody =>
+      'Правління розглядає вашу заявку. Ви отримаєте повідомлення, щойно акаунт стане активним.';
+
+  @override
+  String get wizardResumeBannerPendingAction => 'Переглянути статус';
 }
