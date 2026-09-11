@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.93.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.0...v1.93.1) (2026-09-11)
+
+
+### Bug Fixes
+
+* **anmeldung:** aus der Anmeldung kam niemand mehr heraus ([#374](https://github.com/ICD360S-e-V/mitglieder/issues/374)) ([8a1b037](https://github.com/ICD360S-e-V/mitglieder/commit/8a1b037a7a9cb9aeb9c7d9f91ef42143c85b7674))
+
 ## [1.93.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.92.0...v1.93.0) (2026-09-11)
 
 
