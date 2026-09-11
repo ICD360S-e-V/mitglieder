@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/termin_service.dart';
 import '../utils/app_theme.dart';
+import '../utils/hintergrund_pause.dart';
 
 /// Member Termine View - List of member's appointments with response actions
 class MemberCalendarView extends StatefulWidget {
@@ -18,9 +19,9 @@ class MemberCalendarView extends StatefulWidget {
   State<MemberCalendarView> createState() => _MemberCalendarViewState();
 }
 
-class _MemberCalendarViewState extends State<MemberCalendarView> {
+class _MemberCalendarViewState extends State<MemberCalendarView>
+    with HintergrundPause<MemberCalendarView> {
   final _terminService = TerminService();
-  Timer? _pollTimer;
 
   List<Termin> _termine = [];
   bool _isLoading = true;
@@ -31,14 +32,17 @@ class _MemberCalendarViewState extends State<MemberCalendarView> {
   void initState() {
     super.initState();
     _loadTermine();
-    _pollTimer = Timer.periodic(const Duration(seconds: 60), (_) {
-      _loadTermineSilent();
-    });
+    // Über HintergrundPause statt eines eigenen Timers: dieser Takt lief
+    // bisher weiter, nachdem die App in den Hintergrund gewechselt war, weil
+    // ein Widget dabei nicht entsorgt wird. Wer die App hier liegen liess,
+    // fragte den Server danach jede Minute weiter ab — gemessen rund 60
+    // Netzanfragen pro Stunde, für einen Bildschirm, den niemand ansieht.
+    taktSetzen(#termine, const Duration(seconds: 60), _loadTermineSilent);
   }
 
   @override
   void dispose() {
-    _pollTimer?.cancel();
+    // Die Takte räumt HintergrundPause ab.
     super.dispose();
   }
 

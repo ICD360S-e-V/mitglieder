@@ -19,6 +19,28 @@ class LoggerService {
   final List<LogEntry> _logs = [];
   final List<LogEntry> _uploadQueue = [];
 
+  /// Obergrenze der Warteschlange. `_logs` war seit jeher bei 500 gedeckelt,
+  /// diese Liste nicht — bei tagelang scheiternden Uploads wuchs sie
+  /// unbegrenzt weiter, und jeder Versuch schickte mehr Daten als der davor.
+  static const int _maxWarteschlange = 500;
+
+  /// Frühestens so lange nach dem letzten Upload darf ein Fehler einen
+  /// ausserplanmässigen auslösen.
+  ///
+  /// Ein `error()` löste bisher IMMER sofort einen Upload aus. Das ist genau
+  /// dann am teuersten, wenn es am wenigsten hilft: fällt das Netz aus,
+  /// scheitert der Heartbeat, protokolliert einen Fehler und erzwingt einen
+  /// Upload — über das Netz, das gerade nicht da ist. Je schlechter der
+  /// Empfang, desto mehr funkt die App. Gemessen waren es 41 Uploads pro
+  /// Stunde statt der getakteten 12.
+  ///
+  /// Mit der Drossel geht der erste Fehler einer ruhigen Phase weiterhin
+  /// sofort raus — der Fall, für den die Sofortmeldung gedacht war. Ein
+  /// Sturm fällt auf den normalen Takt zurück.
+  static const Duration _fehlerDrossel = _uploadInterval;
+
+  DateTime? _letzterUpload;
+
   /// The same pinned client ApiService uses, rather than the bare `http.post`
   /// default.
   ///
@@ -148,16 +170,29 @@ class LoggerService {
 
     // Add to upload queue
     _uploadQueue.add(entry);
+    if (_uploadQueue.length > _maxWarteschlange) {
+      // Ältestes zuerst verwerfen: bei einem Dauerfehler ist das Neueste das
+      // Aussagekräftigste, und unbegrenztes Wachstum wäre ein Speicherleck.
+      _uploadQueue.removeRange(0, _uploadQueue.length - _maxWarteschlange);
+    }
 
-    // Upload immediately for errors
+    // Fehler ausserplanmässig melden — aber gedrosselt, siehe _fehlerDrossel.
     if (level == LogLevel.error && _uploadTimer != null) {
-      _uploadLogsToServer();
+      final jetzt = DateTime.now();
+      final letzter = _letzterUpload;
+      if (letzter == null || jetzt.difference(letzter) >= _fehlerDrossel) {
+        _uploadLogsToServer();
+      }
     }
   }
 
   /// Upload logs to server
   Future<void> _uploadLogsToServer() async {
     if (_uploadQueue.isEmpty || _uploadKey == null) return;
+    // Auch bei Fehlschlag gesetzt: die Drossel soll den Funkverkehr begrenzen,
+    // und ein gescheiterter Versuch hat das Modem genauso geweckt wie ein
+    // erfolgreicher.
+    _letzterUpload = DateTime.now();
 
     final logsToUpload = List<LogEntry>.from(_uploadQueue);
     _uploadQueue.clear();
