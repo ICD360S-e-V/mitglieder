@@ -3,6 +3,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
+import '../services/anruf_rueckweg.dart';
 import '../services/api_service.dart';
 import '../services/logger_service.dart';
 import '../services/chat_service.dart';
@@ -551,20 +552,33 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       // Navigate to active call screen (replace incoming screen)
       _log.info('🎯 Navigating to active call screen...', tag: 'CALL');
       if (!mounted) return;
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          fullscreenDialog: true,
-          builder: (ctx) => _voiceCallService.isVideoCall
-              ? VideoCallScreen(remoteName: event.callerName)
-              : _buildActiveCallScreen(event.callerName, event.conversationId),
-        ),
-      );
+      _anrufSchirmZeigen(event.callerName, event.conversationId,
+          ersetzen: true);
       _log.info('🎯 Navigation to active call screen complete', tag: 'CALL');
     } catch (e, stackTrace) {
       _log.error('❌❌❌ _acceptCall() ERROR: $e', tag: 'CALL');
       _log.error('❌ Stack trace: $stackTrace', tag: 'CALL');
       _log.error('❌ Event: ${event.callerName}, Conv: ${event.conversationId}', tag: 'CALL');
     }
+  }
+
+  /// Schiebt den Anrufschirm und meldet der [AnrufLeiste], dass er zu sehen
+  /// ist. Auch der Rueckweg laeuft hier durch — ein zweiter Weg wuerde sich
+  /// beim naechsten Umbau von diesem unterscheiden.
+  void _anrufSchirmZeigen(String name, int conversationId,
+      {bool ersetzen = false}) {
+    if (!mounted) return;
+    AnrufRueckweg.oeffner = () => _anrufSchirmZeigen(name, conversationId);
+    AnrufRueckweg.schirmSichtbar.value = true;
+    final route = MaterialPageRoute<void>(
+      fullscreenDialog: true,
+      builder: (ctx) => _voiceCallService.isVideoCall
+          ? VideoCallScreen(remoteName: name)
+          : _buildActiveCallScreen(name, conversationId),
+    );
+    final nav = Navigator.of(context);
+    final fertig = ersetzen ? nav.pushReplacement(route) : nav.push(route);
+    fertig.then((_) => AnrufRueckweg.schirmSichtbar.value = false);
   }
 
   Widget _buildActiveCallScreen(String remoteName, int conversationId) {
