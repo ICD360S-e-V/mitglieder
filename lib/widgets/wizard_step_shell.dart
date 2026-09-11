@@ -99,49 +99,80 @@ class WizardStepShell extends StatelessWidget {
 
   Widget _topBar(BuildContext context, AppLocalizations l10n) {
     final mnr = WizardService().mitgliedernummer;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-      child: Row(
-        children: [
-          IconButton(
-            onPressed: onBack,
-            icon: Icon(
-              Icons.arrow_back,
-              color: onBack == null
-                  ? Colors.white.withValues(alpha: 0.3)
-                  : Colors.white,
-            ),
-            tooltip: l10n.wizardBack,
-          ),
-          Expanded(
-            child: Text(
-              stepLabel,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 13.5,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 0.4,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          child: Row(
+            children: [
+              IconButton(
+                onPressed: saving ? null : onBack,
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: onBack == null
+                      ? Colors.white.withValues(alpha: 0.3)
+                      : Colors.white,
+                ),
+                tooltip: l10n.wizardBack,
               ),
-            ),
-          ),
-          // Live-chat affordance pinned in the top bar — replaces the
-          // previous endFloat FAB, which overlapped the bottom Next
-          // button. Same anonymous chat the welcome screen's "Am o
-          // problemă → Vorbim acum" path uses, so visitor and Vorstand
-          // share one inbox throughout registration.
-          IconButton(
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => const AnonymousChatScreen(),
+              Expanded(
+                child: Text(
+                  stepLabel,
+                  textAlign: TextAlign.center,
+                  // Ohne Begrenzung brach die Schrittanzeige auf einem
+                  // schmalen Telefon um und schob die Leiste auseinander.
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.4,
+                  ),
+                ),
               ),
-            ),
-            icon: const Icon(Icons.chat_bubble_outline, color: Colors.white),
-            tooltip: l10n.wizardChatHelp,
+              // Live-chat affordance pinned in the top bar — replaces the
+              // previous endFloat FAB, which overlapped the bottom Next
+              // button. Same anonymous chat the welcome screen's "Am o
+              // problemă → Vorbim acum" path uses, so visitor and Vorstand
+              // share one inbox throughout registration.
+              IconButton(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const AnonymousChatScreen(),
+                  ),
+                ),
+                icon: const Icon(
+                  Icons.chat_bubble_outline,
+                  color: Colors.white,
+                ),
+                tooltip: l10n.wizardChatHelp,
+              ),
+              // Der Ausstieg steht bewusst NEBEN dem Chat: beides sind die
+              // Wege aus einer Lage heraus, in der man nicht weiterkommt,
+              // und beide gehoeren dorthin, wo man sie sucht. Als
+              // Verweis unter den Knoepfen war er zu leicht zu uebersehen.
+              IconButton(
+                onPressed: saving ? null : () => showWizardExitSheet(context),
+                icon: const Icon(Icons.close, color: Colors.white),
+                tooltip: l10n.wizardExitLink,
+              ),
+            ],
           ),
-          if (mnr != null) _mnrPill(mnr),
-        ],
-      ),
+        ),
+        // Die Mitgliedsnummer sass frueher in derselben Zeile. Auf 320 px
+        // blieb neben drei Knoepfen und der Pille fuer die Schrittanzeige
+        // fast nichts uebrig — als reine Anzeige ohne Tipp-Ziel weicht sie
+        // den Bedienelementen und bekommt ihre eigene Zeile.
+        if (mnr != null)
+          Padding(
+            padding: const EdgeInsetsDirectional.only(end: 16, bottom: 4),
+            child: Align(
+              alignment: AlignmentDirectional.centerEnd,
+              child: _mnrPill(mnr),
+            ),
+          ),
+      ],
     );
   }
 
@@ -252,132 +283,60 @@ class WizardStepShell extends StatelessWidget {
 
   Widget _bottomBar(BuildContext context, AppLocalizations l10n) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
+      padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
       decoration: BoxDecoration(
         color: Colors.black.withValues(alpha: 0.18),
         border: Border(
           top: BorderSide(color: Colors.white.withValues(alpha: 0.12)),
         ),
       ),
-      // Beide Schaltflächen flexibel: auf einem schmalen Telefon mit
-      // großgestellter Systemschrift passten „Zurück" und „Weiter"
-      // nebeneinander nicht mehr — abgeschnitten wurde ausgerechnet „Weiter",
-      // die einzige Schaltfläche, die im Wizard weiterführt.
-      //
-      // Der Ausstieg steht bewusst UNTER der Zeile und nicht als viertes
-      // Symbol in der Kopfleiste: auf 320 px blieb neben Zurück-Pfeil, Chat
-      // und Mitgliedsnummer-Pille kein Platz mehr für die Schrittanzeige.
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _actionRow(context, l10n),
-          _exitLink(context, l10n),
-        ],
-      ),
-    );
-  }
-
-  Widget _actionRow(BuildContext context, AppLocalizations l10n) {
-    return Row(
-        children: [
-          if (onBack != null)
-            Flexible(
-              child: OutlinedButton.icon(
-              onPressed: saving ? null : onBack,
-              icon: const Icon(Icons.arrow_back, size: 18),
-              label: Text(
-                l10n.wizardBack,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: Colors.white,
-                side: BorderSide(
-                  color: Colors.white.withValues(alpha: 0.4),
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              ),
-            ),
-          const Spacer(),
-          Flexible(
-            child: ElevatedButton.icon(
-            onPressed: (onNext == null || saving) ? null : onNext,
-            icon: saving
-                ? SizedBox(
-                    width: 18,
-                    height: 18,
-                    child: CircularProgressIndicator(
-                      color: context.colors.brandStrong,
-                      strokeWidth: 2.4,
-                    ),
-                  )
-                : const Icon(Icons.arrow_forward, size: 18),
-            label: Text(
-              nextLabel ?? l10n.wizardNext,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w700,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: context.colors.card,
-              foregroundColor: context.colors.brandStrong,
-              disabledBackgroundColor:
-                  Colors.white.withValues(alpha: 0.4),
-              disabledForegroundColor:
-                  context.colors.brandStrong.withValues(alpha: 0.7),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 14,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 0,
-            ),
+      // „Zurueck" stand hier doppelt: derselbe Rueckruf haengt schon am
+      // Pfeil oben links. Unten weg zu sein loest nebenbei einen alten
+      // Fehler auf — auf einem schmalen Telefon mit grossgestellter
+      // Systemschrift passten „Zurueck" und „Weiter" nicht nebeneinander,
+      // und abgeschnitten wurde ausgerechnet „Weiter", die einzige
+      // Schaltflaeche, die im Assistenten weiterfuehrt. Allein kann sie
+      // die ganze Breite nehmen und nichts drueckt sie mehr weg.
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton.icon(
+          onPressed: (onNext == null || saving) ? null : onNext,
+          icon: saving
+              ? SizedBox(
+                  width: 18,
+                  height: 18,
+                  child: CircularProgressIndicator(
+                    color: context.colors.brandStrong,
+                    strokeWidth: 2.4,
+                  ),
+                )
+              : const Icon(Icons.arrow_forward, size: 18),
+          label: Text(
+            nextLabel ?? l10n.wizardNext,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
             ),
           ),
-        ],
-    );
-  }
-
-  /// Low-emphasis way out of the registration, mirroring the withdraw
-  /// link on the final screen. Opens [showWizardExitSheet], which owns
-  /// both the "later" and the "abandon" paths and pops this route.
-  ///
-  /// Deliberately quiet: the visitor should feel free to leave, but
-  /// never be nudged out of a half-finished application by a button
-  /// that competes with „Weiter".
-  Widget _exitLink(BuildContext context, AppLocalizations l10n) {
-    return TextButton(
-      onPressed: saving ? null : () => showWizardExitSheet(context),
-      style: TextButton.styleFrom(
-        foregroundColor: Colors.white.withValues(alpha: 0.7),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        minimumSize: const Size(0, 40),
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      ),
-      child: Text(
-        l10n.wizardExitLink,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.white.withValues(alpha: 0.7),
-          fontSize: 12.5,
-          fontWeight: FontWeight.w500,
-          decoration: TextDecoration.underline,
-          decorationColor: Colors.white.withValues(alpha: 0.35),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: context.colors.card,
+            foregroundColor: context.colors.brandStrong,
+            disabledBackgroundColor: Colors.white.withValues(alpha: 0.4),
+            disabledForegroundColor:
+                context.colors.brandStrong.withValues(alpha: 0.7),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 14,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            elevation: 0,
+          ),
         ),
       ),
     );
   }
 }
-
