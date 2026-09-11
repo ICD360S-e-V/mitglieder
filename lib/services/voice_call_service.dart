@@ -1263,6 +1263,15 @@ class VoiceCallService {
   }
 
   /// Set call state and notify listeners
+  /// Nur für Tests: Zustand und Konversation setzen, ohne WebRTC und ohne
+  /// Klingelton.
+  @visibleForTesting
+  void testZustand(CallState s, {int? conversationId}) {
+    _callState = s;
+    if (conversationId != null) _currentConversationId = conversationId;
+    _callStateController.add(s);
+  }
+
   void _setCallState(CallState state) {
     _log.info('VoiceCallService: STATE CHANGE: $_callState → $state (notifying listeners)', tag: 'CALL');
     _callState = state;

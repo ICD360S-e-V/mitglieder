@@ -21,7 +21,7 @@ import 'services/startup_diagnostics.dart';
 import 'services/theme_service.dart';
 import 'services/update_service.dart';
 import 'services/platform/platform_factory.dart';
-import 'widgets/anruf_leiste.dart';
+import 'widgets/anruf_overlay.dart';
 import 'widgets/network_security_banner.dart';
 import 'widgets/remote_touch_overlay.dart';
 import 'utils/app_theme.dart';
@@ -226,6 +226,11 @@ class _MitgliedAppState extends State<MitgliedApp> {
         valueListenable: LanguageService.instance.localeNotifier,
         builder: (context, locale, _) {
           return MaterialApp(
+            // ⚠️ Erst seit dem 11.09.2026. Ohne ihn gibt es kein
+            // Navigator-Overlay, und [AnrufOverlay] hat keinen Platz zum
+            // Einhaengen — die Karte erschiene nie, ohne dass etwas
+            // fehlschlaegt.
+            navigatorKey: AnrufOverlay.navigatorKey,
             title: 'ICD360S e.V - Mitgliederportal',
             debugShowCheckedModeBanner: false,
             locale: locale,
@@ -252,11 +257,7 @@ class _MitgliedAppState extends State<MitgliedApp> {
                 // During a Fernwartung session, marks where the member taps so
                 // the Vorsitzer sees it in the shared screen.
                 child: NetworkSecurityBanner(
-                  // Die Anruf-Leiste liegt ueber dem Navigator, damit sie auch
-                  // ueber geschobenen Seiten und Dialogen sichtbar ist.
-                  child: AnrufLeiste(
-                    child: child ?? const SizedBox.shrink(),
-                  ),
+                  child: child ?? const SizedBox.shrink(),
                 ),
               ),
             ),
