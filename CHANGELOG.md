@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.93.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.2...v1.93.3) (2026-09-11)
+
+
+### Bug Fixes
+
+* **anruf:** schwebende Karte statt Leiste — gleiches Muster wie beim Vorsitzer ([#379](https://github.com/ICD360S-e-V/mitglieder/issues/379)) ([085cf96](https://github.com/ICD360S-e-V/mitglieder/commit/085cf96a5587548096b78cf2698bdcd48e3d08f0))
+
 ## [1.93.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.1...v1.93.2) (2026-09-11)
 
 
