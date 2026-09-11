@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.93.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.1...v1.93.2) (2026-09-11)
+
+
+### Performance
+
+* **akku:** periodische Takte im Hintergrund anhalten ([#376](https://github.com/ICD360S-e-V/mitglieder/issues/376)) ([d5ea334](https://github.com/ICD360S-e-V/mitglieder/commit/d5ea3346b01f82fbfa62db504d0311abe2438307))
+
 ## [1.93.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.0...v1.93.1) (2026-09-11)
 
 
