@@ -10,6 +10,7 @@ import '../services/chat_service.dart';
 import '../services/heartbeat_service.dart';
 import '../services/voice_call_service.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' show RTCIceConnectionState;
+import '../widgets/anruf_overlay.dart';
 import '../widgets/video_call_screen.dart';
 import '../widgets/legal_footer.dart';
 import '../widgets/live_chat_dialog.dart';
@@ -172,6 +173,8 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   @override
   void initState() {
     super.initState();
+    // Die schwebende Anrufkarte, sichtbar ueber jedem Schirm.
+    AnrufOverlay().aktivieren();
     WidgetsBinding.instance.addObserver(this);
     _log.info('Dashboard: Loaded for ${widget.mitgliedernummer} (${widget.userName})', tag: 'DASH');
     _currentEmail = widget.email;
@@ -569,7 +572,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       {bool ersetzen = false}) {
     if (!mounted) return;
     AnrufRueckweg.oeffner = () => _anrufSchirmZeigen(name, conversationId);
-    AnrufRueckweg.schirmSichtbar.value = true;
+    AnrufOverlay().unterdruecken(true);
     final route = MaterialPageRoute<void>(
       fullscreenDialog: true,
       builder: (ctx) => _voiceCallService.isVideoCall
@@ -578,7 +581,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     );
     final nav = Navigator.of(context);
     final fertig = ersetzen ? nav.pushReplacement(route) : nav.push(route);
-    fertig.then((_) => AnrufRueckweg.schirmSichtbar.value = false);
+    fertig.then((_) => AnrufOverlay().unterdruecken(false));
   }
 
   Widget _buildActiveCallScreen(String remoteName, int conversationId) {
