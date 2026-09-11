@@ -5599,6 +5599,120 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Nicht virengeprüft'**
   String get nichtVirengeprueft;
+
+  /// No description provided for @wizardExitLink.
+  ///
+  /// In de, this message translates to:
+  /// **'Anmeldung unterbrechen'**
+  String get wizardExitLink;
+
+  /// No description provided for @wizardExitSheetTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Anmeldung verlassen?'**
+  String get wizardExitSheetTitle;
+
+  /// No description provided for @wizardExitSheetBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast zwei Möglichkeiten. Wähle die, die zu dir passt.'**
+  String get wizardExitSheetBody;
+
+  /// No description provided for @wizardExitLater.
+  ///
+  /// In de, this message translates to:
+  /// **'Später weitermachen'**
+  String get wizardExitLater;
+
+  /// No description provided for @wizardExitLaterHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Antworten bleiben gespeichert. Du kannst jederzeit vom Startbildschirm aus weitermachen.'**
+  String get wizardExitLaterHint;
+
+  /// No description provided for @wizardExitAbandon.
+  ///
+  /// In de, this message translates to:
+  /// **'Anmeldung abbrechen'**
+  String get wizardExitAbandon;
+
+  /// No description provided for @wizardExitAbandonHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Antrag wird zurückgezogen. Das lässt sich nicht rückgängig machen.'**
+  String get wizardExitAbandonHint;
+
+  /// No description provided for @wizardExitCancel.
+  ///
+  /// In de, this message translates to:
+  /// **'Doch weitermachen'**
+  String get wizardExitCancel;
+
+  /// No description provided for @wizardAbandonDialogTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Anmeldung wirklich abbrechen?'**
+  String get wizardAbandonDialogTitle;
+
+  /// No description provided for @wizardAbandonDialogBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) gespeichert. Wichtig: Wer sich innerhalb von 90 Tagen dreimal zurückzieht, kann sich nicht mehr allein anmelden und muss den Vorstand ansprechen. Wenn du nur eine Pause brauchst, wähle „Später weitermachen“.'**
+  String get wizardAbandonDialogBody;
+
+  /// No description provided for @wizardAbandonKeep.
+  ///
+  /// In de, this message translates to:
+  /// **'Nein, weitermachen'**
+  String get wizardAbandonKeep;
+
+  /// No description provided for @wizardAbandonConfirm.
+  ///
+  /// In de, this message translates to:
+  /// **'Ja, abbrechen'**
+  String get wizardAbandonConfirm;
+
+  /// No description provided for @wizardFinalBackToMenu.
+  ///
+  /// In de, this message translates to:
+  /// **'Zurück zum Hauptmenü'**
+  String get wizardFinalBackToMenu;
+
+  /// No description provided for @wizardResumeBannerTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Anmeldung läuft noch'**
+  String get wizardResumeBannerTitle;
+
+  /// No description provided for @wizardResumeBannerBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast eine begonnene Anmeldung. Deine Antworten sind gespeichert — du kannst dort weitermachen, wo du aufgehört hast.'**
+  String get wizardResumeBannerBody;
+
+  /// No description provided for @wizardResumeBannerAction.
+  ///
+  /// In de, this message translates to:
+  /// **'Weitermachen'**
+  String get wizardResumeBannerAction;
+
+  /// No description provided for @wizardResumeBannerPendingTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Antrag wird geprüft'**
+  String get wizardResumeBannerPendingTitle;
+
+  /// No description provided for @wizardResumeBannerPendingBody.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Vorstand prüft deinen Antrag. Du bekommst eine Nachricht, sobald dein Konto aktiv ist.'**
+  String get wizardResumeBannerPendingBody;
+
+  /// No description provided for @wizardResumeBannerPendingAction.
+  ///
+  /// In de, this message translates to:
+  /// **'Status ansehen'**
+  String get wizardResumeBannerPendingAction;
 }
 
 class _AppLocalizationsDelegate

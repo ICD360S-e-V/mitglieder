@@ -3107,4 +3107,67 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get nichtVirengeprueft => 'Nicht virengeprüft';
+
+  @override
+  String get wizardExitLink => 'Anmeldung unterbrechen';
+
+  @override
+  String get wizardExitSheetTitle => 'Anmeldung verlassen?';
+
+  @override
+  String get wizardExitSheetBody =>
+      'Du hast zwei Möglichkeiten. Wähle die, die zu dir passt.';
+
+  @override
+  String get wizardExitLater => 'Später weitermachen';
+
+  @override
+  String get wizardExitLaterHint =>
+      'Deine Antworten bleiben gespeichert. Du kannst jederzeit vom Startbildschirm aus weitermachen.';
+
+  @override
+  String get wizardExitAbandon => 'Anmeldung abbrechen';
+
+  @override
+  String get wizardExitAbandonHint =>
+      'Dein Antrag wird zurückgezogen. Das lässt sich nicht rückgängig machen.';
+
+  @override
+  String get wizardExitCancel => 'Doch weitermachen';
+
+  @override
+  String get wizardAbandonDialogTitle => 'Anmeldung wirklich abbrechen?';
+
+  @override
+  String get wizardAbandonDialogBody =>
+      'Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) gespeichert. Wichtig: Wer sich innerhalb von 90 Tagen dreimal zurückzieht, kann sich nicht mehr allein anmelden und muss den Vorstand ansprechen. Wenn du nur eine Pause brauchst, wähle „Später weitermachen“.';
+
+  @override
+  String get wizardAbandonKeep => 'Nein, weitermachen';
+
+  @override
+  String get wizardAbandonConfirm => 'Ja, abbrechen';
+
+  @override
+  String get wizardFinalBackToMenu => 'Zurück zum Hauptmenü';
+
+  @override
+  String get wizardResumeBannerTitle => 'Deine Anmeldung läuft noch';
+
+  @override
+  String get wizardResumeBannerBody =>
+      'Du hast eine begonnene Anmeldung. Deine Antworten sind gespeichert — du kannst dort weitermachen, wo du aufgehört hast.';
+
+  @override
+  String get wizardResumeBannerAction => 'Weitermachen';
+
+  @override
+  String get wizardResumeBannerPendingTitle => 'Dein Antrag wird geprüft';
+
+  @override
+  String get wizardResumeBannerPendingBody =>
+      'Der Vorstand prüft deinen Antrag. Du bekommst eine Nachricht, sobald dein Konto aktiv ist.';
+
+  @override
+  String get wizardResumeBannerPendingAction => 'Status ansehen';
 }

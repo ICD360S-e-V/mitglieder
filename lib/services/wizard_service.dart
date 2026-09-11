@@ -375,6 +375,25 @@ class WizardFinalizeResult {
   });
 }
 
+/// Outcome of a withdraw.php call. The endpoint 404s when the draft
+/// has no `user_id` yet — that happens for a visitor who abandons at
+/// the intro or Stufe 1a, before check_age.php inserts the users
+/// stub. There is nothing to withdraw in that case, which is a
+/// success from the visitor's point of view, not a failure; only a
+/// genuine transport/server error should surface an error to them.
+enum WizardWithdrawOutcome {
+  /// users row flipped to `gekuendigt_selbst`.
+  ok,
+
+  /// No users row exists yet — the draft is local-only, so dropping
+  /// the anonymous_id is all the cleanup there is.
+  nothingToWithdraw,
+
+  /// Transport or server error; the caller should keep the visitor
+  /// on the screen and let them retry.
+  failed,
+}
+
 /// Singleton bridge between the wizard UI and the six
 /// /api/public/wizard/*.php endpoints. Keeps a single anonymous_id
 /// per install in SharedPreferences (key `wizard_anonymous_id`) so a
@@ -386,6 +405,14 @@ class WizardService {
       'https://icd360sev.icd360s.de/api/public/wizard';
   static const String _kIdKey         = 'wizard_anonymous_id';
   static const String _kBlockKey      = 'wizard_blocked_under16_until';
+
+  /// Set when the visitor deliberately leaves the wizard ("continue
+  /// later") or the post-finalize waiting screen. WelcomeScreen reads
+  /// it to decide between shoving them straight back into the flow
+  /// and offering a resume banner they can ignore. Without it, the
+  /// launch-time resume push made the wizard impossible to leave:
+  /// pop it, relaunch, and you were right back inside.
+  static const String _kSuppressKey   = 'wizard_resume_suppressed';
 
   String? _cachedId;
 
@@ -462,14 +489,40 @@ class WizardService {
     await prefs.setString(_kBlockKey, reach16.toIso8601String());
   }
 
-  /// Wipe the local anonymous_id (e.g. after a successful finalize).
-  /// The server keeps the draft row for audit but a new wizard run on
-  /// this device starts fresh.
+  /// Wipe the local anonymous_id (e.g. after a withdrawal). The
+  /// server keeps the draft row for audit but a new wizard run on
+  /// this device starts fresh — including a clean resume flag, since
+  /// there is no longer a registration to resume.
   Future<void> resetLocal() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_kIdKey);
+    await prefs.remove(_kSuppressKey);
     _cachedId = null;
     _mitgliedernummer = null;
+  }
+
+  /// Remember that the visitor chose to step out of the registration.
+  /// Keeps the anonymous_id — the draft is still theirs to come back
+  /// to — but stops WelcomeScreen from pushing them back in on the
+  /// next launch.
+  Future<void> suppressAutoResume() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_kSuppressKey, true);
+  }
+
+  /// True while the visitor has an unfinished registration they
+  /// deliberately stepped out of. WelcomeScreen offers a banner in
+  /// this case instead of re-entering the wizard automatically.
+  Future<bool> isAutoResumeSuppressed() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_kSuppressKey) ?? false;
+  }
+
+  /// Cleared when the visitor accepts the resume banner — from then
+  /// on the automatic launch-time resume is welcome again.
+  Future<void> clearAutoResumeSuppression() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_kSuppressKey);
   }
 
   // ---------------------------------------------------------------------------
@@ -774,13 +827,19 @@ class WizardService {
     }
   }
 
-  /// Records a voluntary cancellation from the final screen — the
-  /// visitor changed their mind before the Vorstand approved. The
-  /// user row stays in the database for audit (registration
-  /// timestamps, consent records, Bescheid uploads) but is marked
-  /// `status = 'gekuendigt_selbst'` with `deactivated_at` populated.
-  /// Idempotent server-side; safe to call twice.
-  Future<bool> withdrawRequest() async {
+  /// Records a voluntary cancellation — either from the final screen
+  /// (visitor changed their mind before the Vorstand approved) or
+  /// from the exit sheet mid-wizard. The user row stays in the
+  /// database for audit (registration timestamps, consent records,
+  /// Bescheid uploads) but is marked `status = 'gekuendigt_selbst'`
+  /// with `deactivated_at` populated. Idempotent server-side; safe to
+  /// call twice.
+  ///
+  /// A 404 is not treated as an error: the endpoint returns it when
+  /// the draft has no linked users row yet, which is the normal state
+  /// for someone abandoning before check_age.php ran. See
+  /// [WizardWithdrawOutcome].
+  Future<WizardWithdrawOutcome> withdrawRequest() async {
     try {
       final id = await ensureId();
       final r = await _client
@@ -790,16 +849,23 @@ class WizardService {
             body: jsonEncode({'anonymous_id': id}),
           )
           .timeout(const Duration(seconds: 15));
+      if (r.statusCode == 404) {
+        // 'Wizard draft not found' or 'No user linked to this draft' —
+        // both mean the server holds nothing that needs withdrawing.
+        return WizardWithdrawOutcome.nothingToWithdraw;
+      }
       if (r.statusCode != 200) {
         _log.error('wizard.withdraw HTTP ${r.statusCode}: ${r.body}',
             tag: 'WIZ');
-        return false;
+        return WizardWithdrawOutcome.failed;
       }
       final body = jsonDecode(r.body) as Map<String, dynamic>;
-      return body['success'] == true;
+      return body['success'] == true
+          ? WizardWithdrawOutcome.ok
+          : WizardWithdrawOutcome.failed;
     } catch (e) {
       _log.error('wizard.withdraw: $e', tag: 'WIZ');
-      return false;
+      return WizardWithdrawOutcome.failed;
     }
   }
 

@@ -5,6 +5,7 @@ import '../l10n/app_localizations.dart';
 import '../screens/anonymous_chat.dart';
 import '../services/wizard_service.dart';
 import 'icd360s_header.dart';
+import 'wizard_exit_sheet.dart';
 import '../utils/app_theme.dart';
 
 /// Reusable chrome for every step screen in the onboarding wizard.
@@ -251,20 +252,44 @@ class WizardStepShell extends StatelessWidget {
 
   Widget _bottomBar(BuildContext context, AppLocalizations l10n) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
+      padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
       decoration: BoxDecoration(
         color: Colors.black.withValues(alpha: 0.18),
         border: Border(
           top: BorderSide(color: Colors.white.withValues(alpha: 0.12)),
         ),
       ),
-      child: Row(
+      // Beide Schaltflächen flexibel: auf einem schmalen Telefon mit
+      // großgestellter Systemschrift passten „Zurück" und „Weiter"
+      // nebeneinander nicht mehr — abgeschnitten wurde ausgerechnet „Weiter",
+      // die einzige Schaltfläche, die im Wizard weiterführt.
+      //
+      // Der Ausstieg steht bewusst UNTER der Zeile und nicht als viertes
+      // Symbol in der Kopfleiste: auf 320 px blieb neben Zurück-Pfeil, Chat
+      // und Mitgliedsnummer-Pille kein Platz mehr für die Schrittanzeige.
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _actionRow(context, l10n),
+          _exitLink(context, l10n),
+        ],
+      ),
+    );
+  }
+
+  Widget _actionRow(BuildContext context, AppLocalizations l10n) {
+    return Row(
         children: [
           if (onBack != null)
-            OutlinedButton.icon(
+            Flexible(
+              child: OutlinedButton.icon(
               onPressed: saving ? null : onBack,
               icon: const Icon(Icons.arrow_back, size: 18),
-              label: Text(l10n.wizardBack),
+              label: Text(
+                l10n.wizardBack,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.white,
                 side: BorderSide(
@@ -278,9 +303,11 @@ class WizardStepShell extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
+              ),
             ),
           const Spacer(),
-          ElevatedButton.icon(
+          Flexible(
+            child: ElevatedButton.icon(
             onPressed: (onNext == null || saving) ? null : onNext,
             icon: saving
                 ? SizedBox(
@@ -298,6 +325,8 @@ class WizardStepShell extends StatelessWidget {
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
               ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: context.colors.card,
@@ -315,8 +344,38 @@ class WizardStepShell extends StatelessWidget {
               ),
               elevation: 0,
             ),
+            ),
           ),
         ],
+    );
+  }
+
+  /// Low-emphasis way out of the registration, mirroring the withdraw
+  /// link on the final screen. Opens [showWizardExitSheet], which owns
+  /// both the "later" and the "abandon" paths and pops this route.
+  ///
+  /// Deliberately quiet: the visitor should feel free to leave, but
+  /// never be nudged out of a half-finished application by a button
+  /// that competes with „Weiter".
+  Widget _exitLink(BuildContext context, AppLocalizations l10n) {
+    return TextButton(
+      onPressed: saving ? null : () => showWizardExitSheet(context),
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.white.withValues(alpha: 0.7),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        minimumSize: const Size(0, 40),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      child: Text(
+        l10n.wizardExitLink,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.white.withValues(alpha: 0.7),
+          fontSize: 12.5,
+          fontWeight: FontWeight.w500,
+          decoration: TextDecoration.underline,
+          decorationColor: Colors.white.withValues(alpha: 0.35),
+        ),
       ),
     );
   }

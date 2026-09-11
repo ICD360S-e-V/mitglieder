@@ -3092,4 +3092,67 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get nichtVirengeprueft => 'Neverificat antivirus';
+
+  @override
+  String get wizardExitLink => 'Întrerup înregistrarea';
+
+  @override
+  String get wizardExitSheetTitle => 'Ieși din înregistrare?';
+
+  @override
+  String get wizardExitSheetBody =>
+      'Ai două variante. Alege-o pe cea potrivită pentru tine.';
+
+  @override
+  String get wizardExitLater => 'Continui mai târziu';
+
+  @override
+  String get wizardExitLaterHint =>
+      'Răspunsurile tale rămân salvate. Poți relua oricând din ecranul principal.';
+
+  @override
+  String get wizardExitAbandon => 'Renunț la înregistrare';
+
+  @override
+  String get wizardExitAbandonHint =>
+      'Cererea ta va fi retrasă. Această acțiune nu poate fi anulată.';
+
+  @override
+  String get wizardExitCancel => 'Rămân aici';
+
+  @override
+  String get wizardAbandonDialogTitle => 'Sigur renunți la înregistrare?';
+
+  @override
+  String get wizardAbandonDialogBody =>
+      'Cererea ta va fi marcată ca retrasă de tine. Datele rămân salvate din motive de audit (GDPR). Important: trei retrageri în 90 de zile înseamnă că nu te mai poți înregistra singur și va trebui să vorbești cu conducerea. Dacă ai nevoie doar de o pauză, alege „Continui mai târziu”.';
+
+  @override
+  String get wizardAbandonKeep => 'Nu, continui';
+
+  @override
+  String get wizardAbandonConfirm => 'Da, renunț';
+
+  @override
+  String get wizardFinalBackToMenu => 'Înapoi la meniul principal';
+
+  @override
+  String get wizardResumeBannerTitle => 'Înregistrarea ta e încă deschisă';
+
+  @override
+  String get wizardResumeBannerBody =>
+      'Ai o înregistrare începută. Răspunsurile sunt salvate — poți continua de unde ai rămas.';
+
+  @override
+  String get wizardResumeBannerAction => 'Continuă';
+
+  @override
+  String get wizardResumeBannerPendingTitle => 'Cererea ta este în verificare';
+
+  @override
+  String get wizardResumeBannerPendingBody =>
+      'Conducerea îți verifică cererea. Primești un mesaj de îndată ce contul tău este activ.';
+
+  @override
+  String get wizardResumeBannerPendingAction => 'Vezi statusul';
 }

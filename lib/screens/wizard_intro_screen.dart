@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/icd360s_header.dart';
+import '../widgets/wizard_exit_sheet.dart';
 import '../utils/app_theme.dart';
 
 /// First screen of the onboarding wizard — Claudiu narrates the
@@ -83,8 +84,9 @@ class _WizardIntroScreenState extends State<WizardIntroScreen> {
         child: SafeArea(
           child: Column(
             children: [
+              _exitRow(l10n),
               const Padding(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 12),
+                padding: EdgeInsets.fromLTRB(20, 4, 20, 12),
                 child: Icd360sHeader(compact: true),
               ),
               Expanded(
@@ -129,6 +131,26 @@ class _WizardIntroScreenState extends State<WizardIntroScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  /// The story is reachable in two ways: as the first screen of a
+  /// fresh registration, and by pressing Back from Stufe 1a. Either
+  /// way it used to be a dead end — no back arrow, and the only
+  /// button appears at T+24s. This row is the way out.
+  Widget _exitRow(AppLocalizations l10n) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: () => showWizardExitSheet(context),
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            tooltip: l10n.wizardExitLink,
+          ),
+          const Spacer(),
+        ],
       ),
     );
   }

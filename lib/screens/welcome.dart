@@ -28,6 +28,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   bool _isAutoLogging = false;
   String _appVersion = '...';
 
+  /// Set when this device has an unfinished (or awaiting-approval)
+  /// registration AND the visitor deliberately stepped out of it.
+  /// Renders the resume banner instead of pushing them back into the
+  /// wizard — the launch-time push used to make the flow impossible
+  /// to leave, because popping it only lasted until the next start.
+  WizardStatusProbe? _pendingRegistration;
+
   @override
   void initState() {
     super.initState();
@@ -80,55 +87,112 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     }
   }
 
-  /// Probes the server for any wizard registration this device started.
-  /// Three resumption paths:
-  ///   • status 'neu' / 'waiting_for_parent_consent' → push
-  ///     [WizardFinalScreen] so the visitor sees their Status Card +
-  ///     X/8 progress + chat affordance immediately on app launch.
-  ///   • status 'nicht_verifiziert' → push [WizardScreen] which jumps
-  ///     to whichever step is current_step in wizard_drafts.
-  ///   • anything else (no draft / active member / withdrawn) → no-op;
-  ///     the welcome screen renders normally.
+  /// Decides what to do about a registration this device has already
+  /// started: walk the visitor straight back into it, or just offer.
+  ///
+  /// Straight back in is the default — someone whose app was killed
+  /// mid-form wants to land where they left off. But when they left
+  /// on purpose (the wizard's "continue later", or the waiting
+  /// screen's "back to menu"), forcing them back is what made the
+  /// registration inescapable: popping the route only held until the
+  /// next launch. In that case we render [_resumeBanner] instead and
+  /// let them decide.
   Future<void> _resumePendingRegistration() async {
+    final probe = await _probePendingRegistration();
+    if (probe == null || !mounted) return;
+    if (await WizardService().isAutoResumeSuppressed()) {
+      if (mounted) setState(() => _pendingRegistration = probe);
+      return;
+    }
+    if (!mounted) return;
+    await _openPendingRegistration(probe);
+  }
+
+  /// Returns the probe when this device has a registration worth
+  /// resuming, null when there is nothing to go back to (no draft,
+  /// active member, or already withdrawn).
+  Future<WizardStatusProbe?> _probePendingRegistration() async {
     try {
       final probe = await WizardService().checkUserStatus();
-      if (!mounted || probe == null) return;
+      if (probe == null) return null;
       final status = probe.status;
       if (status == 'neu' || status == 'waiting_for_parent_consent') {
-        if (probe.userId == null) return;
-        await Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => WizardFinalScreen(
-              result: WizardFinalizeResult(
-                mitgliedernummer: probe.mitgliedernummer ?? '',
-                userId:           probe.userId!,
-                status:           status!,
-                isMinor:          probe.isMinor,
-                // message is only displayed on the immediate post-
-                // finalize render; the polling on the screen rewrites
-                // the visible labels from check_status.php so an
-                // empty string here is harmless on resume.
-                message:          '',
-              ),
-              onClose: () async {
-                await WizardService().resetLocal();
-                if (mounted) Navigator.of(context).maybePop();
-              },
-            ),
-          ),
-        );
-      } else if (status == 'nicht_verifiziert' || status == null) {
-        // status==null happens when wizard_drafts exists but the
-        // users stub hasn't been created yet (visitor closed app at
-        // Stufe 1a, before check_age.php ran). WizardScreen will
-        // resume to whichever current_step is recorded.
-        await Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const WizardScreen()),
-        );
+        // Without a user_id there is no application to show.
+        return probe.userId == null ? null : probe;
       }
+      // status==null happens when wizard_drafts exists but the users
+      // stub hasn't been created yet (visitor closed the app at Stufe
+      // 1a, before check_age.php ran).
+      if (status == 'nicht_verifiziert' || status == null) return probe;
+      return null;
     } catch (e) {
       debugPrint('[Welcome] Pending registration probe failed: $e');
+      return null;
     }
+  }
+
+  /// Pushes the right screen for [probe]: the status/waiting screen
+  /// for a submitted application, the wizard itself for a draft that
+  /// still has steps left. Re-syncs the banner once it returns.
+  Future<void> _openPendingRegistration(WizardStatusProbe probe) async {
+    final status = probe.status;
+    if (status == 'neu' || status == 'waiting_for_parent_consent') {
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => WizardFinalScreen(
+            result: WizardFinalizeResult(
+              mitgliedernummer: probe.mitgliedernummer ?? '',
+              userId:           probe.userId!,
+              status:           status!,
+              isMinor:          probe.isMinor,
+              // message is only displayed on the immediate post-
+              // finalize render; the polling on the screen rewrites
+              // the visible labels from check_status.php so an
+              // empty string here is harmless on resume.
+              message:          '',
+            ),
+            // Deliberately no resetLocal: the anonymous_id is this
+            // device's only handle on the pending application, and
+            // dropping it would strand the visitor with a
+            // Mitgliedernummer the app can no longer look up.
+            // WizardFinalScreen has already recorded that the visitor
+            // wants the welcome screen instead of this one next time.
+            onClose: () {
+              if (mounted) Navigator.of(context).maybePop();
+            },
+          ),
+        ),
+      );
+    } else {
+      // WizardScreen resumes to whichever current_step is recorded.
+      await Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => const WizardScreen()),
+      );
+    }
+    if (!mounted) return;
+    await _syncResumeBanner();
+  }
+
+  /// Re-reads the server state after the visitor comes back out of a
+  /// registration screen. Three outcomes: they stepped out again
+  /// (banner returns, with a fresh status), they withdrew (resetLocal
+  /// dropped the anonymous_id, so the probe finds nothing), or they
+  /// finished (login takes over from here).
+  Future<void> _syncResumeBanner() async {
+    final suppressed = await WizardService().isAutoResumeSuppressed();
+    final probe = suppressed ? await _probePendingRegistration() : null;
+    if (!mounted) return;
+    setState(() => _pendingRegistration = probe);
+  }
+
+  Future<void> _resumeFromBanner() async {
+    final probe = _pendingRegistration;
+    if (probe == null) return;
+    // From here on the automatic launch-time resume is welcome again.
+    await WizardService().clearAutoResumeSuppression();
+    if (!mounted) return;
+    setState(() => _pendingRegistration = null);
+    await _openPendingRegistration(probe);
   }
 
   Future<void> _performAutoLogin(String mitgliedernummer) async {
@@ -338,6 +402,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ),
                       ),
                       SizedBox(height: _getResponsiveSpacing(context, 32)),
+                      if (_pendingRegistration != null) ...[
+                        _resumeBanner(_pendingRegistration!),
+                        SizedBox(height: _getResponsiveSpacing(context, 20)),
+                      ],
                       // Claudiu — conversational welcome. Replaces the old
                       // Anmelden / Mitglied werden / email / phone / SOS
                       // button stack; every action a visitor previously
@@ -357,6 +425,103 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
       ),
+      ),
+    );
+  }
+
+  /// The gentle half of the fix for the inescapable wizard: the
+  /// registration is still there and one tap away, but it no longer
+  /// takes the screen hostage on every launch.
+  ///
+  /// Two shapes, because the two states need different words — a
+  /// half-filled form invites "carry on", a submitted application
+  /// only invites "check on it".
+  Widget _resumeBanner(WizardStatusProbe probe) {
+    final l10n = AppLocalizations.of(context)!;
+    final isSubmitted = probe.status == 'neu' ||
+        probe.status == 'waiting_for_parent_consent';
+    final title = isSubmitted
+        ? l10n.wizardResumeBannerPendingTitle
+        : l10n.wizardResumeBannerTitle;
+    final body = isSubmitted
+        ? l10n.wizardResumeBannerPendingBody
+        : l10n.wizardResumeBannerBody;
+    final action = isSubmitted
+        ? l10n.wizardResumeBannerPendingAction
+        : l10n.wizardResumeBannerAction;
+
+    return Container(
+      padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(
+                isSubmitted ? Icons.hourglass_top : Icons.edit_note,
+                color: Colors.white,
+                size: 20,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+            body,
+            style: TextStyle(
+              color: Colors.white.withValues(alpha: 0.85),
+              fontSize: 13,
+              height: 1.4,
+            ),
+          ),
+          if (probe.mitgliedernummer != null &&
+              probe.mitgliedernummer!.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Text(
+              probe.mitgliedernummer!,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+                fontWeight: FontWeight.w800,
+                fontFamily: 'monospace',
+                letterSpacing: 0.9,
+              ),
+            ),
+          ],
+          const SizedBox(height: 10),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: _resumeFromBanner,
+              icon: const Icon(Icons.arrow_forward, size: 18),
+              label: Text(action),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: context.colors.card,
+                foregroundColor: context.colors.brandStrong,
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                elevation: 0,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

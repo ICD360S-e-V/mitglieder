@@ -1512,10 +1512,33 @@
   "virengeprueftAm": "Virengeprüft {datum}",
   "@virengeprueftAm": {
     "description": "Chat-Anhang: clamd hat die Datei beim Hochladen als sauber gemeldet; datum = TT.MM.JJJJ",
-    "placeholders": {"datum": {"type": "String"}}
+    "placeholders": {
+      "datum": {
+        "type": "String"
+      }
+    }
   },
   "nichtVirengeprueft": "Nicht virengeprüft",
   "@nichtVirengeprueft": {
     "description": "Chat-Anhang: kein Prüfstempel (Scanner nicht erreichbar oder Datei älter als die Prüfung)"
-  }
+  },
+  "wizardExitLink": "Anmeldung unterbrechen",
+  "wizardExitSheetTitle": "Anmeldung verlassen?",
+  "wizardExitSheetBody": "Du hast zwei Möglichkeiten. Wähle die, die zu dir passt.",
+  "wizardExitLater": "Später weitermachen",
+  "wizardExitLaterHint": "Deine Antworten bleiben gespeichert. Du kannst jederzeit vom Startbildschirm aus weitermachen.",
+  "wizardExitAbandon": "Anmeldung abbrechen",
+  "wizardExitAbandonHint": "Dein Antrag wird zurückgezogen. Das lässt sich nicht rückgängig machen.",
+  "wizardExitCancel": "Doch weitermachen",
+  "wizardAbandonDialogTitle": "Anmeldung wirklich abbrechen?",
+  "wizardAbandonDialogBody": "Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) gespeichert. Wichtig: Wer sich innerhalb von 90 Tagen dreimal zurückzieht, kann sich nicht mehr allein anmelden und muss den Vorstand ansprechen. Wenn du nur eine Pause brauchst, wähle „Später weitermachen“.",
+  "wizardAbandonKeep": "Nein, weitermachen",
+  "wizardAbandonConfirm": "Ja, abbrechen",
+  "wizardFinalBackToMenu": "Zurück zum Hauptmenü",
+  "wizardResumeBannerTitle": "Deine Anmeldung läuft noch",
+  "wizardResumeBannerBody": "Du hast eine begonnene Anmeldung. Deine Antworten sind gespeichert — du kannst dort weitermachen, wo du aufgehört hast.",
+  "wizardResumeBannerAction": "Weitermachen",
+  "wizardResumeBannerPendingTitle": "Dein Antrag wird geprüft",
+  "wizardResumeBannerPendingBody": "Der Vorstand prüft deinen Antrag. Du bekommst eine Nachricht, sobald dein Konto aktiv ist.",
+  "wizardResumeBannerPendingAction": "Status ansehen"
 }
