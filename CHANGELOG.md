@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.93.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.92.0...v1.93.0) (2026-09-11)
+
+
+### Features
+
+* **anruf:** Rueckweg in einen laufenden Anruf ([#373](https://github.com/ICD360S-e-V/mitglieder/issues/373)) ([ad0f266](https://github.com/ICD360S-e-V/mitglieder/commit/ad0f266fa48986ab44d68ada1d8fd285bb30ebc7))
+
 ## [1.92.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.91.2...v1.92.0) (2026-09-10)
 
 
