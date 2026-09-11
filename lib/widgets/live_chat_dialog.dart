@@ -27,6 +27,7 @@ import 'incoming_call_dialog.dart';
 import 'video_call_screen.dart';
 import '../utils/error_helpers.dart';
 import '../utils/app_theme.dart';
+import '../utils/hintergrund_pause.dart';
 
 final _log = LoggerService();
 
@@ -54,7 +55,8 @@ class LiveChatDialog extends StatefulWidget {
   State<LiveChatDialog> createState() => _LiveChatDialogState();
 }
 
-class _LiveChatDialogState extends State<LiveChatDialog> {
+class _LiveChatDialogState extends State<LiveChatDialog>
+    with HintergrundPause<LiveChatDialog> {
   final _apiService = ApiService();
   final _chatService = ChatService();
   final _voiceCallService = VoiceCallService();
@@ -75,13 +77,11 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
   bool _supportOnline = false;
   int? _supportLastSeenSeconds;
   String _supportName = 'Support';
-  Timer? _supportStatusTimer;
 
   // Network status
   String _connectionType = 'unknown';
   int _latencyMs = -1;
   String _networkQuality = 'offline';
-  Timer? _networkTimer;
 
   // Voice call state - most WebRTC state now managed by VoiceCallService
   Timer? _callDurationTimer;
@@ -181,17 +181,15 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
 
     _initChat();
 
-    // Start support status polling (every 30 seconds - battery optimized)
-    _loadSupportStatus();
-    _supportStatusTimer = Timer.periodic(const Duration(seconds: 30), (_) {
-      if (mounted) _loadSupportStatus();
-    });
-
-    // Start network status polling (every 15 seconds)
-    _updateNetworkStatus();
-    _networkTimer = Timer.periodic(const Duration(seconds: 15), (_) {
-      if (mounted) _updateNetworkStatus();
-    });
+    // Beide Takte über HintergrundPause. Sie liefen bisher weiter, wenn die
+    // App in den Hintergrund wechselte, denn ein offener Dialog wird dabei
+    // nicht entsorgt — zusammen 360 Netzanfragen pro Stunde für zwei Anzeigen,
+    // die in dem Moment niemand sieht. Beim Zurückkehren holt das Mixin beide
+    // sofort nach, die Anzeige ist also nicht älter als vorher.
+    taktSetzen(#supportStatus, const Duration(seconds: 30), _loadSupportStatus,
+        sofort: true);
+    taktSetzen(#netzStatus, const Duration(seconds: 15), _updateNetworkStatus,
+        sofort: true);
 
     // Handle pending call if passed from dashboard
     if (widget.pendingCall != null) {
@@ -246,8 +244,6 @@ class _LiveChatDialogState extends State<LiveChatDialog> {
     _markReadDebounce?.cancel();
     _countdownTimer?.cancel();
     _callDurationTimer?.cancel();
-    _supportStatusTimer?.cancel();
-    _networkTimer?.cancel();
     _messageSubscription?.cancel();
     _typingSubscription?.cancel();
     _connectionSubscription?.cancel();
