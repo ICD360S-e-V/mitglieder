@@ -28,6 +28,7 @@ declare(strict_types=1);
 
 define('API_ACCESS', true);
 require_once __DIR__ . '/../../config.php';
+require_once __DIR__ . '/../../lib/RueckzugFenster.php';
 
 validateApiKey();
 blockBrowserAccess();
@@ -194,14 +195,31 @@ if ($status !== 'too_young') {
                     // tell them an application is already underway.
                     $duplicate['action'] = 'pending';
                 } elseif ($existingStatus === 'gekuendigt_selbst') {
-                    // 90-day window matches the abuse throttle in
-                    // finalize.php — re-register politely outside it,
-                    // hard-block inside it.
-                    $deactivatedAt = strtotime((string)$existing['deactivated_at']);
-                    $duplicate['action'] = ($deactivatedAt !== false
-                            && $deactivatedAt > strtotime('-90 days'))
-                        ? 'recently_withdrawn'
-                        : 'previously_withdrawn';
+                    // Hier wurde bisher bei JEDEM Rueckzug im Fenster
+                    // gesperrt — ein einziger genuegte. finalize.php liess
+                    // dagegen drei zu, und der Dialogtext versprach ebenfalls
+                    // drei. Gezaehlt hat am Ende keine der beiden Zahlen,
+                    // sondern die Anwesenheit einer einzigen Zeile.
+                    //
+                    // Jetzt zaehlen beide Enden dasselbe, mit derselben
+                    // Formel und derselben Grenze (RueckzugFenster). Unter
+                    // der Grenze gibt es keine Handlung: der Besucher macht
+                    // weiter, ohne auf den Doppelantrags-Bildschirm zu
+                    // geraten.
+                    //
+                    // ⚠️ Damit sendet check_age.php 'previously_withdrawn'
+                    // nicht mehr. Die Handlung, ihr Bildschirm und ihre
+                    // Texte bleiben stehen — der Bildschirm traegt auch
+                    // login/pending/call_us —, aber aus diesem Zweig kommt
+                    // sie nicht mehr heraus.
+                    $duplicate['action'] = RueckzugFenster::grenzeErreicht(
+                        $pdo,
+                        RueckzugFenster::hash(
+                            $draftVorname,
+                            $draftNachname,
+                            (string)$geburtsdatum
+                        )
+                    ) ? 'recently_withdrawn' : null;
                 } else {
                     // gekuendigt / gesperrt / suspended / deleted / verstorben /
                     // ausgeschlossen — too sensitive to enumerate; tell the

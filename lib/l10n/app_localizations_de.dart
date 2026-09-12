@@ -3140,7 +3140,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get wizardAbandonDialogBody =>
-      'Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) gespeichert. Wichtig: Wer sich innerhalb von 90 Tagen dreimal zurückzieht, kann sich nicht mehr allein anmelden und muss den Vorstand ansprechen. Wenn du nur eine Pause brauchst, wähle „Später weitermachen“.';
+      'Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) gespeichert. Wichtig: Wer sich innerhalb von 90 Tagen 10-mal zurückzieht, kann sich nicht mehr allein anmelden und muss den Vorstand ansprechen. Wenn du nur eine Pause brauchst, wähle „Später weitermachen“.';
 
   @override
   String get wizardAbandonKeep => 'Nein, weitermachen';

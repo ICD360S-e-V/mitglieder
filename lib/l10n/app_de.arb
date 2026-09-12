@@ -1531,7 +1531,7 @@
   "wizardExitAbandonHint": "Dein Antrag wird zurückgezogen. Das lässt sich nicht rückgängig machen.",
   "wizardExitCancel": "Doch weitermachen",
   "wizardAbandonDialogTitle": "Anmeldung wirklich abbrechen?",
-  "wizardAbandonDialogBody": "Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) gespeichert. Wichtig: Wer sich innerhalb von 90 Tagen dreimal zurückzieht, kann sich nicht mehr allein anmelden und muss den Vorstand ansprechen. Wenn du nur eine Pause brauchst, wähle „Später weitermachen“.",
+  "wizardAbandonDialogBody": "Dein Antrag wird als von dir zurückgezogen markiert. Die Daten bleiben aus Auditgründen (DSGVO) gespeichert. Wichtig: Wer sich innerhalb von 90 Tagen 10-mal zurückzieht, kann sich nicht mehr allein anmelden und muss den Vorstand ansprechen. Wenn du nur eine Pause brauchst, wähle „Später weitermachen“.",
   "wizardAbandonKeep": "Nein, weitermachen",
   "wizardAbandonConfirm": "Ja, abbrechen",
   "wizardFinalBackToMenu": "Zurück zum Hauptmenü",

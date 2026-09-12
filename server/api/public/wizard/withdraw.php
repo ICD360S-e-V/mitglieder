@@ -52,6 +52,7 @@ declare(strict_types=1);
 
 define('API_ACCESS', true);
 require_once __DIR__ . '/../../config.php';
+require_once __DIR__ . '/../../lib/RueckzugFenster.php';
 
 validateApiKey();
 blockBrowserAccess();
@@ -127,10 +128,10 @@ try {
     // Stable, irreversible identifier for abuse throttling. Computed
     // before the UPDATE so we capture the original data — relevant if
     // a future anonymisation job runs concurrently.
-    $abuseHash = compute_abuse_hash(
-        $row['vorname']      ?? '',
-        $row['nachname']     ?? '',
-        $row['geburtsdatum'] ?? ''
+    $abuseHash = RueckzugFenster::hash(
+        (string)($row['vorname']      ?? ''),
+        (string)($row['nachname']     ?? ''),
+        (string)($row['geburtsdatum'] ?? '')
     );
 
     // Datenminimierung: collect Bescheid file paths now (before DELETE)
@@ -223,14 +224,4 @@ try {
     error_log('[wizard/withdraw] ' . $e->getMessage());
     http_response_code(500);
     jsonResponse(false, [], 'Database error');
-}
-
-function compute_abuse_hash(string $vorname, string $nachname, string $geburtsdatum): ?string {
-    $v = trim(mb_strtolower($vorname, 'UTF-8'));
-    $n = trim(mb_strtolower($nachname, 'UTF-8'));
-    $g = trim($geburtsdatum);
-    if ($v === '' || $n === '' || $g === '') {
-        return null;
-    }
-    return hash('sha256', $v . '|' . $n . '|' . $g);
 }

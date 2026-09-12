@@ -31,6 +31,7 @@ declare(strict_types=1);
 
 define('API_ACCESS', true);
 require_once __DIR__ . '/../../config.php';
+require_once __DIR__ . '/../../lib/RueckzugFenster.php';
 
 validateApiKey();
 blockBrowserAccess();
@@ -136,22 +137,13 @@ try {
     // admin_register.php. Mirrors the irreversible hash logic in
     // withdraw.php so the same person can't bounce through registration
     // → withdraw → registration → withdraw in a loop.
-    $applicantHash = hash('sha256',
-        trim(mb_strtolower((string)$draft['data_vorname'], 'UTF-8'))
-        . '|'
-        . trim(mb_strtolower((string)$draft['data_nachname'], 'UTF-8'))
-        . '|'
-        . trim((string)$draft['data_geburtsdatum'])
+    $applicantHash = RueckzugFenster::hash(
+        (string)$draft['data_vorname'],
+        (string)$draft['data_nachname'],
+        (string)$draft['data_geburtsdatum']
     );
-    $abuseStmt = $pdo->prepare(
-        'SELECT COUNT(*) FROM users
-          WHERE abuse_hash = ?
-            AND status = \'gekuendigt_selbst\'
-            AND deactivated_at > DATE_SUB(NOW(), INTERVAL 90 DAY)'
-    );
-    $abuseStmt->execute([$applicantHash]);
-    $recentWithdrawals = (int)$abuseStmt->fetchColumn();
-    if ($recentWithdrawals >= 3) {
+    $recentWithdrawals = RueckzugFenster::zaehleRueckzuege($pdo, $applicantHash);
+    if ($recentWithdrawals >= RueckzugFenster::GRENZE) {
         $pdo->rollBack();
         http_response_code(429);
         jsonResponse(false, [
