@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.95.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.94.0...v1.95.0) (2026-09-12)
+
+
+### Features
+
+* **geräte:** Endpunkte schreiben Anzeigegröße und Schriftgröße mit ([#389](https://github.com/ICD360S-e-V/mitglieder/issues/389)) ([4e3115b](https://github.com/ICD360S-e-V/mitglieder/commit/4e3115ba80e09ada2b7e8945fc189a4062632f73))
+
 ## [1.94.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.6...v1.94.0) (2026-09-12)
 
 
