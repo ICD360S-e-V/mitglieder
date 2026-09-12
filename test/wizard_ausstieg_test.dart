@@ -72,7 +72,7 @@ void main() {
     expect(find.byType(OutlinedButton), findsNothing);
 
     expect(
-      find.byIcon(Icons.close),
+      find.byIcon(Icons.exit_to_app),
       findsOneWidget,
       reason: 'Ohne diesen Weg ist die Anmeldung auf dem Schreibtisch-Rechner '
           'eine Sackgasse — dort gibt es keine System-Zurück-Geste.',
@@ -80,10 +80,10 @@ void main() {
     await abraeumen(tester);
   });
 
-  testWidgets('Auf dem schmalsten Telefon bleibt das X bedienbar',
+  testWidgets('Auf dem schmalsten Telefon bleibt der Ausstieg bedienbar',
       (tester) async {
     // Der Ausstieg sitzt jetzt als drittes Symbol in der Kopfleiste. Genau
-    // dort wurde es eng: Pfeil, Chat und X nebeneinander, daneben die
+    // dort wurde es eng: Pfeil, Chat und Ausgang nebeneinander, daneben die
     // Schrittanzeige — und bei 320 px mit doppelt gestellter Systemschrift
     // ist nichts mehr geschenkt. Ein Ziel, das halb ueber dem Rand haengt,
     // trifft `tester.tap` trotzdem; der Mensch davor nicht.
@@ -95,16 +95,17 @@ void main() {
 
     await pumpUeberStart(tester, schrittBildschirm());
 
-    final x = find.byIcon(Icons.close);
-    expect(x, findsOneWidget);
-    final rect = tester.getRect(x);
+    final ausstieg = find.byIcon(Icons.exit_to_app);
+    expect(ausstieg, findsOneWidget);
+    final rect = tester.getRect(ausstieg);
     expect(rect.width, greaterThan(0));
     expect(rect.left, greaterThanOrEqualTo(0));
     expect(
       rect.right,
       lessThanOrEqualTo(tester.view.physicalSize.width /
           tester.view.devicePixelRatio),
-      reason: 'Das X haengt ueber dem rechten Rand — unerreichbar.',
+      reason: 'Das Ausgangszeichen haengt ueber dem rechten Rand — '
+          'unerreichbar.',
     );
     expect(
       tester.takeException(),
@@ -135,7 +136,7 @@ void main() {
 
     expect(find.text(marke), findsNothing, reason: 'Wizard liegt oben');
 
-    await tester.tap(find.byIcon(Icons.close));
+    await tester.tap(find.byIcon(Icons.exit_to_app));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 
@@ -162,7 +163,7 @@ void main() {
     await pumpUeberStart(tester, schrittBildschirm());
     final l10n = await AppLocalizations.delegate.load(const Locale('de'));
 
-    await tester.tap(find.byIcon(Icons.close));
+    await tester.tap(find.byIcon(Icons.exit_to_app));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 

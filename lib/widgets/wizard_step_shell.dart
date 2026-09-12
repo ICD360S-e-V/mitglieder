@@ -152,9 +152,22 @@ class WizardStepShell extends StatelessWidget {
               // Wege aus einer Lage heraus, in der man nicht weiterkommt,
               // und beide gehoeren dorthin, wo man sie sucht. Als
               // Verweis unter den Knoepfen war er zu leicht zu uebersehen.
+              //
+              // Tuer mit Pfeil statt Kreuz. Ein X ist eine Bildschirm-
+              // Konvention — man muss sie kennen, und „schliessen" klingt
+              // wie „wegwerfen", obwohl der Entwurf erhalten bleibt. Das
+              // Ausgangszeichen ist dagegen weltweit gelernt, und genau
+              // darauf kommt es hier an: die App spricht 28 Sprachen, und
+              // wer die Beschriftung nicht lesen kann, erkennt trotzdem,
+              // wo es hinausgeht. (Das ISO-7010-Zeichen mit der laufenden
+              // Person gibt es in Material Icons nicht — `exit_to_app` ist
+              // das naechstgelegene. `logout` waere als Glyphe klarer,
+              // haengt in dieser App aber schon am echten Abmelden, und
+              // abgemeldet wird hier niemand: der Besucher ist noch gar
+              // nicht angemeldet.)
               IconButton(
                 onPressed: saving ? null : () => showWizardExitSheet(context),
-                icon: const Icon(Icons.close, color: Colors.white),
+                icon: const Icon(Icons.exit_to_app, color: Colors.white),
                 tooltip: l10n.wizardExitLink,
               ),
             ],
