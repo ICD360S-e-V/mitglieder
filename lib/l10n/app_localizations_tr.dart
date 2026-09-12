@@ -3150,4 +3150,40 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel =>
+      'Diğer uygulamaların üzerinde arama penceresi';
+
+  @override
+  String get anruffensterZweck =>
+      'Görüşme sırasında uygulamadan çıkarsanız, örneğin tarayıcı için, küçük bir pencere diğer uygulamanın üzerinde kalır. Dokunmak sizi görüşmeye geri götürür; yanında kapatma düğmesi bulunur.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android bunun için „Diğer uygulamaların üzerinde göster” iznini ister. Bu izin yalnızca sistem ayarlarından verilebilir.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'İzin olmadan görüşme bağlı kalır; yalnızca pencere eksik olur. Geri dönüş bildirim üzerinden olur.';
+
+  @override
+  String get anruffensterErteilt => 'Verildi – pencere görünecek.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Verilmedi – pencere görünmeyecek.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Ayarlar ekranı açılamadı. Elle: Ayarlar ▸ Uygulamalar ▸ ICD360S ▸ Diğer uygulamaların üzerinde göster.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Arama penceresi yalnızca Android’de vardır.';
+
+  @override
+  String get anrufLaeuft => 'Arama sürüyor';
+
+  @override
+  String get videoanrufLaeuft => 'Görüntülü arama sürüyor';
 }

@@ -3164,4 +3164,40 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Finestra di chiamata sopra le altre app';
+
+  @override
+  String get anruffensterZweck =>
+      'Se durante una conversazione esce dall’app, per esempio per il browser, una piccola finestra resta sopra l’altra app. Toccandola si torna alla conversazione; accanto si trova il pulsante per chiudere.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android richiede a questo scopo l’autorizzazione «Mostra sopra le altre app». Può essere concessa solo nelle impostazioni di sistema.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Senza l’autorizzazione la conversazione resta collegata; manca soltanto la finestra. Il ritorno avviene allora tramite la notifica.';
+
+  @override
+  String get anruffensterErteilt => 'Concessa – la finestra comparirà.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Non concessa – la finestra non comparirà.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Non è stato possibile aprire la schermata delle impostazioni. Manualmente: Impostazioni ▸ App ▸ ICD360S ▸ Mostra sopra le altre app.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'La finestra di chiamata esiste solo su Android.';
+
+  @override
+  String get anrufLaeuft => 'Chiamata in corso';
+
+  @override
+  String get videoanrufLaeuft => 'Videochiamata in corso';
 }

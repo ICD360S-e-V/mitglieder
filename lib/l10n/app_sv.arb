@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Samtalsfönster över andra appar",
+  "anruffensterZweck": "Om du lämnar appen under ett samtal, till exempel för webbläsaren, ligger ett litet fönster kvar över den andra appen. En tryckning tar dig tillbaka till samtalet; intill finns knappen för att lägga på.",
+  "anruffensterAndroidHinweis": "Android kräver för detta behörigheten ”Visa över andra appar”. Den kan bara ges i systeminställningarna.",
+  "anruffensterOhneErlaubnis": "Utan behörigheten förblir samtalet uppkopplat; bara fönstret saknas. Tillbaka går det då via aviseringen.",
+  "anruffensterErteilt": "Beviljad – fönstret visas.",
+  "anruffensterNichtErteilt": "Inte beviljad – fönstret visas inte.",
+  "anruffensterVonHand": "Inställningsskärmen kunde inte öppnas. Manuellt: Inställningar ▸ Appar ▸ ICD360S ▸ Visa över andra appar.",
+  "anruffensterNurAndroid": "Samtalsfönstret finns bara på Android.",
+  "anrufLaeuft": "Samtal pågår",
+  "videoanrufLaeuft": "Videosamtal pågår"
 }

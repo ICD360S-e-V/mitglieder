@@ -3154,4 +3154,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Call window over other apps';
+
+  @override
+  String get anruffensterZweck =>
+      'If you leave the app during a call, for example to use the browser, a small window stays on top of the other app. Tap it to return to the call; the hang-up button sits next to it.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android requires the “Display over other apps” permission for this. It can only be granted in the system settings.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Without the permission the call stays connected; only the window is missing. You can then return through the notification.';
+
+  @override
+  String get anruffensterErteilt => 'Granted – the window will appear.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Not granted – the window will not appear.';
+
+  @override
+  String get anruffensterVonHand =>
+      'The settings screen could not be opened. Manually: Settings ▸ Apps ▸ ICD360S ▸ Display over other apps.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'The call window is only available on Android.';
+
+  @override
+  String get anrufLaeuft => 'Call in progress';
+
+  @override
+  String get videoanrufLaeuft => 'Video call in progress';
 }

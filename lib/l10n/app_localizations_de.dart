@@ -3170,4 +3170,40 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'Status ansehen';
+
+  @override
+  String get anruffensterTitel => 'Anruffenster über anderen Apps';
+
+  @override
+  String get anruffensterZweck =>
+      'Wenn Sie während eines Gesprächs die App verlassen, etwa für den Browser, legt sich ein kleines Fenster über die andere App. Antippen holt das Gespräch zurück; daneben liegt der Auflegen-Knopf.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android verlangt dafür die Berechtigung „Über anderen Apps anzeigen“. Sie lässt sich nur in den Systemeinstellungen geben.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Ohne die Berechtigung bleibt das Gespräch trotzdem verbunden; es fehlt nur das Fenster. Zurück geht es dann über die Benachrichtigung.';
+
+  @override
+  String get anruffensterErteilt => 'Erteilt – das Fenster erscheint.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Nicht erteilt – das Fenster erscheint nicht.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Der Einstellungs-Bildschirm ließ sich nicht öffnen. Von Hand: Einstellungen ▸ Apps ▸ ICD360S ▸ Über anderen Apps anzeigen.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Das Anruffenster gibt es nur auf Android.';
+
+  @override
+  String get anrufLaeuft => 'Anruf läuft';
+
+  @override
+  String get videoanrufLaeuft => 'Videoanruf läuft';
 }

@@ -13,6 +13,7 @@ import 'mitglieder_device.dart';
 import 'mitgliedschaft_tab.dart';
 import '../utils/app_theme.dart';
 import '../utils/responsive.dart';
+import 'anruffenster_erlaubnis.dart';
 
 /// Die Einwilligung zu den SMS-Erinnerungen lässt sich hier jederzeit
 /// ändern. Art. 7 Abs. 3 DSGVO verlangt das ausdrücklich: der Widerruf muss
@@ -774,6 +775,17 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
                     'Anmeldung',
                     'Ohne Passwort (Vorstand-Genehmigung)',
                   ),
+                  Divider(height: 1, color: context.colors.dividerSubtle),
+                  // Der DAUERHAFTE Weg zur Berechtigung „Über anderen Apps
+                  // anzeigen". Ohne ihn wäre sie nach einem einmaligen
+                  // „Später" für immer unerreichbar — ein Hinweis, der nur
+                  // beim Gesprächsbeginn kommt, ist kein Weg zurück.
+                  //
+                  // ⚠️ Hier und nicht in einem eigenen Abschnitt: es ist eine
+                  // Einstellung des Kontos, und ein neuer Abschnitt bräuchte
+                  // eine Überschrift, die in 28 Sprachen zu übersetzen wäre,
+                  // ohne dass sie etwas sagt, was die Zeile nicht schon sagt.
+                  const AnruffensterErlaubnis(),
                 ],
               ),
             ),

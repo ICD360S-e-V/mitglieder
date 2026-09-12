@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Kõneaken teiste rakenduste peal",
+  "anruffensterZweck": "Kui lahkute kõne ajal rakendusest, näiteks brauseri jaoks, jääb väike aken teise rakenduse peale. Puudutus viib kõne juurde tagasi; kõrval on kõne lõpetamise nupp.",
+  "anruffensterAndroidHinweis": "Android nõuab selleks luba „Kuva teiste rakenduste peal“. Seda saab anda ainult süsteemi seadetes.",
+  "anruffensterOhneErlaubnis": "Ilma loata jääb kõne ühendatuks; puudub ainult aken. Tagasi saab siis teate kaudu.",
+  "anruffensterErteilt": "Antud – aken ilmub.",
+  "anruffensterNichtErteilt": "Ei ole antud – aken ei ilmu.",
+  "anruffensterVonHand": "Seadete ekraani ei õnnestunud avada. Käsitsi: Seaded ▸ Rakendused ▸ ICD360S ▸ Kuva teiste rakenduste peal.",
+  "anruffensterNurAndroid": "Kõneaken on olemas ainult Androidis.",
+  "anrufLaeuft": "Kõne käib",
+  "videoanrufLaeuft": "Videokõne käib"
 }

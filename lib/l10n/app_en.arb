@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Call window over other apps",
+  "anruffensterZweck": "If you leave the app during a call, for example to use the browser, a small window stays on top of the other app. Tap it to return to the call; the hang-up button sits next to it.",
+  "anruffensterAndroidHinweis": "Android requires the “Display over other apps” permission for this. It can only be granted in the system settings.",
+  "anruffensterOhneErlaubnis": "Without the permission the call stays connected; only the window is missing. You can then return through the notification.",
+  "anruffensterErteilt": "Granted – the window will appear.",
+  "anruffensterNichtErteilt": "Not granted – the window will not appear.",
+  "anruffensterVonHand": "The settings screen could not be opened. Manually: Settings ▸ Apps ▸ ICD360S ▸ Display over other apps.",
+  "anruffensterNurAndroid": "The call window is only available on Android.",
+  "anrufLaeuft": "Call in progress",
+  "videoanrufLaeuft": "Video call in progress"
 }

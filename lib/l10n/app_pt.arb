@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Janela de chamada sobre outras aplicações",
+  "anruffensterZweck": "Se sair da aplicação durante uma chamada, por exemplo para o navegador, uma pequena janela permanece sobre a outra aplicação. Ao tocar, volta à chamada; ao lado está o botão para desligar.",
+  "anruffensterAndroidHinweis": "O Android exige para isso a permissão «Sobrepor a outras aplicações». Só pode ser concedida nas configurações do sistema.",
+  "anruffensterOhneErlaubnis": "Sem a permissão, a chamada permanece ligada; falta apenas a janela. O regresso faz-se então através da notificação.",
+  "anruffensterErteilt": "Concedida – a janela irá aparecer.",
+  "anruffensterNichtErteilt": "Não concedida – a janela não irá aparecer.",
+  "anruffensterVonHand": "Não foi possível abrir o ecrã de configurações. Manualmente: Configurações ▸ Aplicações ▸ ICD360S ▸ Sobrepor a outras aplicações.",
+  "anruffensterNurAndroid": "A janela de chamada existe apenas no Android.",
+  "anrufLaeuft": "Chamada em curso",
+  "videoanrufLaeuft": "Videochamada em curso"
 }

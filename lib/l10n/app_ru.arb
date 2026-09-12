@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Продолжить",
   "wizardResumeBannerPendingTitle": "Ваша заявка на проверке",
   "wizardResumeBannerPendingBody": "Правление рассматривает вашу заявку. Вы получите сообщение, как только аккаунт будет активирован.",
-  "wizardResumeBannerPendingAction": "Посмотреть статус"
+  "wizardResumeBannerPendingAction": "Посмотреть статус",
+  "anruffensterTitel": "Окно вызова поверх других приложений",
+  "anruffensterZweck": "Если во время разговора вы выйдете из приложения, например в браузер, небольшое окно останется поверх другого приложения. Нажатие вернёт вас к разговору; рядом находится кнопка завершения.",
+  "anruffensterAndroidHinweis": "Android требует для этого разрешение «Поверх других приложений». Его можно выдать только в системных настройках.",
+  "anruffensterOhneErlaubnis": "Без разрешения разговор остаётся соединённым; отсутствует только окно. Вернуться можно через уведомление.",
+  "anruffensterErteilt": "Выдано – окно появится.",
+  "anruffensterNichtErteilt": "Не выдано – окно не появится.",
+  "anruffensterVonHand": "Не удалось открыть экран настроек. Вручную: Настройки ▸ Приложения ▸ ICD360S ▸ Поверх других приложений.",
+  "anruffensterNurAndroid": "Окно вызова доступно только на Android.",
+  "anrufLaeuft": "Идёт вызов",
+  "videoanrufLaeuft": "Идёт видеовызов"
 }

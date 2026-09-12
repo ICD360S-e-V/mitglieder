@@ -3149,4 +3149,39 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Puheluikkuna muiden sovellusten päällä';
+
+  @override
+  String get anruffensterZweck =>
+      'Jos poistut sovelluksesta puhelun aikana, esimerkiksi selaimeen, pieni ikkuna jää toisen sovelluksen päälle. Napautus palauttaa puheluun; vieressä on lopetuspainike.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android vaatii tähän luvan ”Näytä muiden sovellusten päällä”. Se voidaan antaa vain järjestelmän asetuksissa.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Ilman lupaa puhelu pysyy yhdistettynä; vain ikkuna puuttuu. Takaisin pääsee silloin ilmoituksen kautta.';
+
+  @override
+  String get anruffensterErteilt => 'Myönnetty – ikkuna ilmestyy.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Ei myönnetty – ikkuna ei ilmesty.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Asetusnäyttöä ei voitu avata. Käsin: Asetukset ▸ Sovellukset ▸ ICD360S ▸ Näytä muiden sovellusten päällä.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Puheluikkuna on olemassa vain Androidissa.';
+
+  @override
+  String get anrufLaeuft => 'Puhelu käynnissä';
+
+  @override
+  String get videoanrufLaeuft => 'Videopuhelu käynnissä';
 }

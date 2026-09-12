@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Opkaldsvindue over andre apps",
+  "anruffensterZweck": "Hvis du forlader appen under et opkald, for eksempel for at bruge browseren, bliver et lille vindue liggende over den anden app. Et tryk fører tilbage til opkaldet; ved siden af er knappen til at lægge på.",
+  "anruffensterAndroidHinweis": "Android kræver til dette tilladelsen „Vis over andre apps“. Den kan kun gives i systemindstillingerne.",
+  "anruffensterOhneErlaubnis": "Uden tilladelsen forbliver opkaldet forbundet; kun vinduet mangler. Tilbage går det så via notifikationen.",
+  "anruffensterErteilt": "Givet – vinduet vises.",
+  "anruffensterNichtErteilt": "Ikke givet – vinduet vises ikke.",
+  "anruffensterVonHand": "Indstillingsskærmen kunne ikke åbnes. Manuelt: Indstillinger ▸ Apps ▸ ICD360S ▸ Vis over andre apps.",
+  "anruffensterNurAndroid": "Opkaldsvinduet findes kun på Android.",
+  "anrufLaeuft": "Opkald i gang",
+  "videoanrufLaeuft": "Videoopkald i gang"
 }

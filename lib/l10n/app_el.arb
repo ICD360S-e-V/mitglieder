@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Παράθυρο κλήσης πάνω από άλλες εφαρμογές",
+  "anruffensterZweck": "Αν κατά τη διάρκεια μιας κλήσης βγείτε από την εφαρμογή, για παράδειγμα για το πρόγραμμα περιήγησης, ένα μικρό παράθυρο παραμένει πάνω από την άλλη εφαρμογή. Το άγγιγμα επιστρέφει στην κλήση· δίπλα βρίσκεται το κουμπί τερματισμού.",
+  "anruffensterAndroidHinweis": "Το Android απαιτεί για αυτό την άδεια «Εμφάνιση πάνω από άλλες εφαρμογές». Μπορεί να δοθεί μόνο από τις ρυθμίσεις συστήματος.",
+  "anruffensterOhneErlaubnis": "Χωρίς την άδεια η κλήση παραμένει συνδεδεμένη· λείπει μόνο το παράθυρο. Η επιστροφή γίνεται τότε μέσω της ειδοποίησης.",
+  "anruffensterErteilt": "Δόθηκε – το παράθυρο θα εμφανίζεται.",
+  "anruffensterNichtErteilt": "Δεν δόθηκε – το παράθυρο δεν θα εμφανίζεται.",
+  "anruffensterVonHand": "Δεν ήταν δυνατό να ανοίξει η οθόνη ρυθμίσεων. Χειροκίνητα: Ρυθμίσεις ▸ Εφαρμογές ▸ ICD360S ▸ Εμφάνιση πάνω από άλλες εφαρμογές.",
+  "anruffensterNurAndroid": "Το παράθυρο κλήσης υπάρχει μόνο στο Android.",
+  "anrufLaeuft": "Κλήση σε εξέλιξη",
+  "videoanrufLaeuft": "Βιντεοκλήση σε εξέλιξη"
 }

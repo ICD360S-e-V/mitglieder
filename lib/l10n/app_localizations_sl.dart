@@ -3151,4 +3151,39 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Okno klica nad drugimi aplikacijami';
+
+  @override
+  String get anruffensterZweck =>
+      'Če med pogovorom zapustite aplikacijo, na primer zaradi brskalnika, majhno okno ostane nad drugo aplikacijo. Dotik vas vrne k pogovoru; ob njem je gumb za prekinitev.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android za to zahteva dovoljenje »Prikaz nad drugimi aplikacijami«. Dodeliti ga je mogoče samo v sistemskih nastavitvah.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Brez dovoljenja pogovor ostane povezan; manjka samo okno. Nazaj se nato vrnete prek obvestila.';
+
+  @override
+  String get anruffensterErteilt => 'Dodeljeno – okno se bo prikazovalo.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Ni dodeljeno – okno se ne bo prikazalo.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Zaslona z nastavitvami ni bilo mogoče odpreti. Ročno: Nastavitve ▸ Aplikacije ▸ ICD360S ▸ Prikaz nad drugimi aplikacijami.';
+
+  @override
+  String get anruffensterNurAndroid => 'Okno klica obstaja samo v Androidu.';
+
+  @override
+  String get anrufLaeuft => 'Pogovor poteka';
+
+  @override
+  String get videoanrufLaeuft => 'Videopogovor poteka';
 }

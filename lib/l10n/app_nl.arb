@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Gespreksvenster boven andere apps",
+  "anruffensterZweck": "Als u tijdens een gesprek de app verlaat, bijvoorbeeld voor de browser, blijft een klein venster boven de andere app staan. Tikken brengt u terug naar het gesprek; ernaast staat de knop om op te hangen.",
+  "anruffensterAndroidHinweis": "Android vereist hiervoor de toestemming „Boven andere apps weergeven”. Deze kan alleen in de systeeminstellingen worden gegeven.",
+  "anruffensterOhneErlaubnis": "Zonder de toestemming blijft het gesprek verbonden; alleen het venster ontbreekt. Terug gaat het dan via de melding.",
+  "anruffensterErteilt": "Gegeven – het venster verschijnt.",
+  "anruffensterNichtErteilt": "Niet gegeven – het venster verschijnt niet.",
+  "anruffensterVonHand": "Het instellingenscherm kon niet worden geopend. Handmatig: Instellingen ▸ Apps ▸ ICD360S ▸ Boven andere apps weergeven.",
+  "anruffensterNurAndroid": "Het gespreksvenster bestaat alleen op Android.",
+  "anrufLaeuft": "Gesprek actief",
+  "videoanrufLaeuft": "Videogesprek actief"
 }

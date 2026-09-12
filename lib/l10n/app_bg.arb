@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Прозорец за разговор върху други приложения",
+  "anruffensterZweck": "Ако по време на разговор излезете от приложението, например за браузъра, малък прозорец остава върху другото приложение. Докосване връща разговора; до него е бутонът за затваряне.",
+  "anruffensterAndroidHinweis": "Android изисква за това разрешението „Показване върху други приложения“. То може да се даде само в системните настройки.",
+  "anruffensterOhneErlaubnis": "Без разрешението разговорът остава свързан; липсва само прозорецът. Връщането става тогава чрез известието.",
+  "anruffensterErteilt": "Дадено – прозорецът ще се появява.",
+  "anruffensterNichtErteilt": "Не е дадено – прозорецът няма да се появява.",
+  "anruffensterVonHand": "Екранът с настройките не можа да се отвори. Ръчно: Настройки ▸ Приложения ▸ ICD360S ▸ Показване върху други приложения.",
+  "anruffensterNurAndroid": "Прозорецът за разговор съществува само на Android.",
+  "anrufLaeuft": "Тече разговор",
+  "videoanrufLaeuft": "Тече видеоразговор"
 }

@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Zvana logs pāri citām lietotnēm",
+  "anruffensterZweck": "Ja sarunas laikā izejat no lietotnes, piemēram, uz pārlūku, mazs logs paliek pāri otrai lietotnei. Pieskāriens atgriež pie sarunas; blakus ir zvana beigšanas poga.",
+  "anruffensterAndroidHinweis": "Android tam pieprasa atļauju „Rādīt pāri citām lietotnēm“. To var piešķirt tikai sistēmas iestatījumos.",
+  "anruffensterOhneErlaubnis": "Bez atļaujas saruna paliek savienota; trūkst tikai loga. Atgriezties tad var, izmantojot paziņojumu.",
+  "anruffensterErteilt": "Piešķirta – logs parādīsies.",
+  "anruffensterNichtErteilt": "Nav piešķirta – logs neparādīsies.",
+  "anruffensterVonHand": "Iestatījumu ekrānu nevarēja atvērt. Manuāli: Iestatījumi ▸ Lietotnes ▸ ICD360S ▸ Rādīt pāri citām lietotnēm.",
+  "anruffensterNurAndroid": "Zvana logs pastāv tikai Android.",
+  "anrufLaeuft": "Notiek zvans",
+  "videoanrufLaeuft": "Notiek video zvans"
 }

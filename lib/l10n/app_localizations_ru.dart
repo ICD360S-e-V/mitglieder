@@ -3150,4 +3150,39 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'Посмотреть статус';
+
+  @override
+  String get anruffensterTitel => 'Окно вызова поверх других приложений';
+
+  @override
+  String get anruffensterZweck =>
+      'Если во время разговора вы выйдете из приложения, например в браузер, небольшое окно останется поверх другого приложения. Нажатие вернёт вас к разговору; рядом находится кнопка завершения.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android требует для этого разрешение «Поверх других приложений». Его можно выдать только в системных настройках.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Без разрешения разговор остаётся соединённым; отсутствует только окно. Вернуться можно через уведомление.';
+
+  @override
+  String get anruffensterErteilt => 'Выдано – окно появится.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Не выдано – окно не появится.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Не удалось открыть экран настроек. Вручную: Настройки ▸ Приложения ▸ ICD360S ▸ Поверх других приложений.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Окно вызова доступно только на Android.';
+
+  @override
+  String get anrufLaeuft => 'Идёт вызов';
+
+  @override
+  String get videoanrufLaeuft => 'Идёт видеовызов';
 }

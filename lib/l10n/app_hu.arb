@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Hívásablak más alkalmazások felett",
+  "anruffensterZweck": "Ha hívás közben elhagyja az alkalmazást, például a böngésző miatt, egy kis ablak a másik alkalmazás felett marad. Megérintése visszatér a híváshoz; mellette található a hívás befejezése gomb.",
+  "anruffensterAndroidHinweis": "Az Android ehhez a „Megjelenítés más alkalmazások felett” engedélyt kéri. Csak a rendszerbeállításokban adható meg.",
+  "anruffensterOhneErlaubnis": "Engedély nélkül a hívás továbbra is kapcsolatban marad; csak az ablak hiányzik. A visszatérés ilyenkor az értesítésen keresztül történik.",
+  "anruffensterErteilt": "Megadva – az ablak meg fog jelenni.",
+  "anruffensterNichtErteilt": "Nincs megadva – az ablak nem fog megjelenni.",
+  "anruffensterVonHand": "A beállítások képernyőjét nem lehetett megnyitni. Kézzel: Beállítások ▸ Alkalmazások ▸ ICD360S ▸ Megjelenítés más alkalmazások felett.",
+  "anruffensterNurAndroid": "A hívásablak csak Androidon létezik.",
+  "anrufLaeuft": "Hívás folyamatban",
+  "videoanrufLaeuft": "Videóhívás folyamatban"
 }

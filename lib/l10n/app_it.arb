@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Finestra di chiamata sopra le altre app",
+  "anruffensterZweck": "Se durante una conversazione esce dall’app, per esempio per il browser, una piccola finestra resta sopra l’altra app. Toccandola si torna alla conversazione; accanto si trova il pulsante per chiudere.",
+  "anruffensterAndroidHinweis": "Android richiede a questo scopo l’autorizzazione «Mostra sopra le altre app». Può essere concessa solo nelle impostazioni di sistema.",
+  "anruffensterOhneErlaubnis": "Senza l’autorizzazione la conversazione resta collegata; manca soltanto la finestra. Il ritorno avviene allora tramite la notifica.",
+  "anruffensterErteilt": "Concessa – la finestra comparirà.",
+  "anruffensterNichtErteilt": "Non concessa – la finestra non comparirà.",
+  "anruffensterVonHand": "Non è stato possibile aprire la schermata delle impostazioni. Manualmente: Impostazioni ▸ App ▸ ICD360S ▸ Mostra sopra le altre app.",
+  "anruffensterNurAndroid": "La finestra di chiamata esiste solo su Android.",
+  "anrufLaeuft": "Chiamata in corso",
+  "videoanrufLaeuft": "Videochiamata in corso"
 }

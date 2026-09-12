@@ -1540,5 +1540,15 @@
   "wizardResumeBannerAction": "Weitermachen",
   "wizardResumeBannerPendingTitle": "Dein Antrag wird geprüft",
   "wizardResumeBannerPendingBody": "Der Vorstand prüft deinen Antrag. Du bekommst eine Nachricht, sobald dein Konto aktiv ist.",
-  "wizardResumeBannerPendingAction": "Status ansehen"
+  "wizardResumeBannerPendingAction": "Status ansehen",
+  "anruffensterTitel": "Anruffenster über anderen Apps",
+  "anruffensterZweck": "Wenn Sie während eines Gesprächs die App verlassen, etwa für den Browser, legt sich ein kleines Fenster über die andere App. Antippen holt das Gespräch zurück; daneben liegt der Auflegen-Knopf.",
+  "anruffensterAndroidHinweis": "Android verlangt dafür die Berechtigung „Über anderen Apps anzeigen“. Sie lässt sich nur in den Systemeinstellungen geben.",
+  "anruffensterOhneErlaubnis": "Ohne die Berechtigung bleibt das Gespräch trotzdem verbunden; es fehlt nur das Fenster. Zurück geht es dann über die Benachrichtigung.",
+  "anruffensterErteilt": "Erteilt – das Fenster erscheint.",
+  "anruffensterNichtErteilt": "Nicht erteilt – das Fenster erscheint nicht.",
+  "anruffensterVonHand": "Der Einstellungs-Bildschirm ließ sich nicht öffnen. Von Hand: Einstellungen ▸ Apps ▸ ICD360S ▸ Über anderen Apps anzeigen.",
+  "anruffensterNurAndroid": "Das Anruffenster gibt es nur auf Android.",
+  "anrufLaeuft": "Anruf läuft",
+  "videoanrufLaeuft": "Videoanruf läuft"
 }

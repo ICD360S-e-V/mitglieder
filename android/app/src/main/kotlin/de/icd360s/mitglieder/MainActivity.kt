@@ -3,6 +3,7 @@ package de.icd360s.mitglieder
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
@@ -111,6 +112,26 @@ class MainActivity : FlutterActivity() {
                         }
                         result.success(true)
                     }
+                    // Das Fenster ueber anderen Apps. Ob es faellig ist,
+                    // entscheidet Dart (AnrufSystemkarte) — nativ waere das
+                    // eine zweite Wahrheit ueber denselben Zustand.
+                    "overlayZeigen" -> {
+                        AnrufSystemfenster.zeigen(
+                            this,
+                            call.argument<Boolean>("video") ?: false,
+                            // ⚠️ Der Titel kommt aus Dart: diese App gibt es in
+                            // 28 Sprachen, und eine String-Ressource hier waere
+                            // eine zweite Uebersetzungsquelle neben den ARB.
+                            call.argument<String>("titel") ?: "",
+                        )
+                        result.success(true)
+                    }
+                    "overlayVerbergen" -> {
+                        AnrufSystemfenster.verbergen()
+                        result.success(true)
+                    }
+                    "overlayErlaubt" -> result.success(AnrufSystemfenster.erlaubt(this))
+                    "overlayEinstellung" -> result.success(overlayEinstellungOeffnen())
                     else -> result.notImplemented()
                 }
             }
@@ -230,6 +251,51 @@ class MainActivity : FlutterActivity() {
      * Properties gern eine Exception oder Int.MIN_VALUE, und ein fehlendes
      * Feld ist besser als eine fehlgeschlagene Messung.
      */
+    /**
+     * Fuehrt in die Systemeinstellung "Ueber anderen Apps anzeigen".
+     *
+     * `ACTION_MANAGE_OVERLAY_PERMISSION` gibt es seit API 23 und es ist bis
+     * API 37 (Android 17) weder veraltet noch entfernt (nachgesehen in
+     * `android.jar` und `data/api-versions.xml`, nicht vermutet). `minSdk`
+     * dieser App deckt die Spanne ab.
+     *
+     * Eine KETTE aus drei Versuchen, denn nicht jedes Geraet hat jeden
+     * Bildschirm: die Seite DIESER App, dieselbe Aktion ohne URI (manche
+     * Hersteller-Oberflaechen kennen nur die Liste), und zuletzt die
+     * App-Info-Seite.
+     *
+     * ⚠️ BEWUSST KEIN `resolveActivity` davor: seit Android 11 filtert die
+     * Paket-Sichtbarkeit diese Abfrage, sie kann also `null` liefern, obwohl
+     * der Start gelingen wuerde — dann haetten wir es gar nicht erst
+     * versucht. Also starten und fangen.
+     *
+     * ⚠️ Der Rueckgabewert wird in Dart AUSGEWERTET. Ein Knopf, der
+     * schweigend nichts tut, ist genau der Zustand, den diese Erweiterung
+     * beseitigt.
+     */
+    private fun overlayEinstellungOeffnen(): Boolean {
+        val wege = listOf(
+            Intent(
+                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                Uri.parse("package:$packageName"),
+            ),
+            Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION),
+            Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                Uri.parse("package:$packageName"),
+            ),
+        )
+        for (weg in wege) {
+            try {
+                startActivity(weg.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                return true
+            } catch (e: Throwable) {
+                Log.w(TAG, "Einstellweg nicht moeglich: ${weg.action}", e)
+            }
+        }
+        return false
+    }
+
     private fun readBatteryState(): Map<String, Any?> {
         val out = HashMap<String, Any?>()
 

@@ -3163,4 +3163,40 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Gespreksvenster boven andere apps';
+
+  @override
+  String get anruffensterZweck =>
+      'Als u tijdens een gesprek de app verlaat, bijvoorbeeld voor de browser, blijft een klein venster boven de andere app staan. Tikken brengt u terug naar het gesprek; ernaast staat de knop om op te hangen.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android vereist hiervoor de toestemming „Boven andere apps weergeven”. Deze kan alleen in de systeeminstellingen worden gegeven.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Zonder de toestemming blijft het gesprek verbonden; alleen het venster ontbreekt. Terug gaat het dan via de melding.';
+
+  @override
+  String get anruffensterErteilt => 'Gegeven – het venster verschijnt.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Niet gegeven – het venster verschijnt niet.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Het instellingenscherm kon niet worden geopend. Handmatig: Instellingen ▸ Apps ▸ ICD360S ▸ Boven andere apps weergeven.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Het gespreksvenster bestaat alleen op Android.';
+
+  @override
+  String get anrufLaeuft => 'Gesprek actief';
+
+  @override
+  String get videoanrufLaeuft => 'Videogesprek actief';
 }

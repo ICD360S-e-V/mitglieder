@@ -3178,4 +3178,41 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel =>
+      'Fenêtre d’appel par-dessus les autres applications';
+
+  @override
+  String get anruffensterZweck =>
+      'Si vous quittez l’application pendant un appel, par exemple pour le navigateur, une petite fenêtre reste par-dessus l’autre application. Un appui ramène à l’appel ; le bouton pour raccrocher se trouve à côté.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android exige pour cela l’autorisation « Superposition à d’autres applications ». Elle ne peut être accordée que dans les paramètres du système.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Sans cette autorisation, l’appel reste connecté ; seule la fenêtre manque. Le retour se fait alors par la notification.';
+
+  @override
+  String get anruffensterErteilt => 'Accordée – la fenêtre apparaîtra.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Non accordée – la fenêtre n’apparaîtra pas.';
+
+  @override
+  String get anruffensterVonHand =>
+      'L’écran des paramètres n’a pas pu être ouvert. Manuellement : Paramètres ▸ Applications ▸ ICD360S ▸ Superposition à d’autres applications.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'La fenêtre d’appel n’existe que sur Android.';
+
+  @override
+  String get anrufLaeuft => 'Appel en cours';
+
+  @override
+  String get videoanrufLaeuft => 'Appel vidéo en cours';
 }

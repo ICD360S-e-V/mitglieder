@@ -3158,4 +3158,40 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Ventana de llamada sobre otras aplicaciones';
+
+  @override
+  String get anruffensterZweck =>
+      'Si sale de la aplicación durante una llamada, por ejemplo para usar el navegador, una pequeña ventana permanece sobre la otra aplicación. Al tocarla vuelve a la llamada; a su lado está el botón para colgar.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android requiere para ello el permiso «Mostrar sobre otras aplicaciones». Solo puede concederse en los ajustes del sistema.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Sin el permiso la llamada sigue conectada; solo falta la ventana. Se puede volver a través de la notificación.';
+
+  @override
+  String get anruffensterErteilt => 'Concedido – la ventana aparecerá.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'No concedido – la ventana no aparecerá.';
+
+  @override
+  String get anruffensterVonHand =>
+      'No se pudo abrir la pantalla de ajustes. Manualmente: Ajustes ▸ Aplicaciones ▸ ICD360S ▸ Mostrar sobre otras aplicaciones.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'La ventana de llamada solo existe en Android.';
+
+  @override
+  String get anrufLaeuft => 'Llamada en curso';
+
+  @override
+  String get videoanrufLaeuft => 'Videollamada en curso';
 }

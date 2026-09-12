@@ -35,6 +35,31 @@
     <!-- Used for emergency-style alerts that must be seen immediately -->
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
+    <!--
+        SYSTEM_ALERT_WINDOW ("Über anderen Apps anzeigen") — für das kleine
+        Fenster, das während eines Gesprächs über der fremden App liegt, wenn
+        das Mitglied etwa in den Browser wechselt. Antippen holt das Gespräch
+        zurück, daneben liegt der Auflegen-Knopf.
+
+        ⚠️ Es ist eine BESONDERE Berechtigung: kein Laufzeit-Dialog, sie wird
+        ausschließlich in den Systemeinstellungen erteilt. Fehlt sie, wirft
+        WindowManager.addView eine BadTokenException, die native Seite fängt
+        sie ab und der Anruf läuft weiter — es fehlt nur dieses Fenster.
+
+        ⚠️ Dieselbe Berechtigung trägt auch den RÜCKWEG: der Tipp auf das
+        Fenster ruft startActivity aus dem Hintergrund, und das ist nur über
+        die dokumentierte Ausnahme für SYSTEM_ALERT_WINDOW erlaubt.
+
+        Google Play: NICHT auf der Liste der Berechtigungen mit
+        Declaration Form. Die Play-Richtlinie nennt sie ausdrücklich als
+        Beispiel für eine special permission, die über die Systemeinstellungen
+        erteilt wird — genau der Weg, den diese App geht:
+        https://support.google.com/googleplay/android-developer/answer/9888170
+        Deshalb steht sie hier und NICHT mit tools:node="remove" im
+        googleplay-Flavor, anders als REQUEST_INSTALL_PACKAGES.
+    -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <!-- APK Installation Permission -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 

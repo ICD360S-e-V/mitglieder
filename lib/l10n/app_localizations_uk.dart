@@ -3151,4 +3151,39 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'Переглянути статус';
+
+  @override
+  String get anruffensterTitel => 'Вікно виклику поверх інших програм';
+
+  @override
+  String get anruffensterZweck =>
+      'Якщо під час розмови ви вийдете з програми, наприклад у браузер, невелике вікно залишиться поверх іншої програми. Натискання поверне вас до розмови; поруч розташована кнопка завершення.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android вимагає для цього дозвіл «Поверх інших програм». Його можна надати лише в системних налаштуваннях.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Без дозволу розмова залишається з’єднаною; бракує лише вікна. Повернутися можна через повідомлення.';
+
+  @override
+  String get anruffensterErteilt => 'Надано – вікно з’явиться.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Не надано – вікно не з’явиться.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Не вдалося відкрити екран налаштувань. Вручну: Налаштування ▸ Програми ▸ ICD360S ▸ Поверх інших програм.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Вікно виклику доступне лише на Android.';
+
+  @override
+  String get anrufLaeuft => 'Триває виклик';
+
+  @override
+  String get videoanrufLaeuft => 'Триває відеовиклик';
 }
