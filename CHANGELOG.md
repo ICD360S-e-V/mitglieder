@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.93.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.4...v1.93.5) (2026-09-12)
+
+
+### Bug Fixes
+
+* **anruf:** Klingelschirm endet, wenn der Anrufer auflegt ([#382](https://github.com/ICD360S-e-V/mitglieder/issues/382)) ([d5d0d0c](https://github.com/ICD360S-e-V/mitglieder/commit/d5d0d0c085da3f69e289bb884de66f296820ed49))
+
 ## [1.93.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.3...v1.93.4) (2026-09-12)
 
 
