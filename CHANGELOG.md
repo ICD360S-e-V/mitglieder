@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.98.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.97.1...v1.98.0) (2026-09-12)
+
+
+### Features
+
+* **anruffenster:** Name der App, Dauer und Güte auf der Karte ([#401](https://github.com/ICD360S-e-V/mitglieder/issues/401)) ([6b4a52f](https://github.com/ICD360S-e-V/mitglieder/commit/6b4a52f3d7d312338a3aaf1d0ecc0d2ecf764c93))
+
 ## [1.97.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.97.0...v1.97.1) (2026-09-12)
 
 
