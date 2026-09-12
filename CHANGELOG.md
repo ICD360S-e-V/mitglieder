@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.97.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.96.2...v1.97.0) (2026-09-12)
+
+
+### Features
+
+* **anruf:** Fenster über anderen Apps auch in der Mitglieder-App ([#395](https://github.com/ICD360S-e-V/mitglieder/issues/395)) ([c3bb71e](https://github.com/ICD360S-e-V/mitglieder/commit/c3bb71e4ce085c28d29b81852b433e4996f65717))
+
 ## [1.96.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.96.1...v1.96.2) (2026-09-12)
 
 
