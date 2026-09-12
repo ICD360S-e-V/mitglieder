@@ -201,6 +201,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  # Nur für den Test: der WebView-Bildschirm lässt sich ohne gesetzte
+  # WebViewPlatform.instance nicht bauen. test/support/fake_webview_platform.dart
+  # setzt eine Attrappe ein, damit die Titelleiste und die Adresszeile drumherum
+  # auf allen Fenstergrößen geprüft werden können.
+  webview_flutter_platform_interface: ^2.15.1
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
