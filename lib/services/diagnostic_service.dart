@@ -9,6 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'http_client_factory.dart';
 import 'battery_usage_service.dart';
+import 'energiepolitik_waechter.dart';
 
 /// Diagnostic Service - sends app diagnostics to server every 15 seconds
 class DiagnosticService {
@@ -85,7 +86,13 @@ class DiagnosticService {
     _timer?.cancel();
 
     // Start periodic reporting
-    _timer = Timer.periodic(_interval, (_) => _sendDiagnostics());
+    // Gestreckt nach Energiepolitik: eine Momentaufnahme, die sich zwischen
+    // zwei Messungen ohnehin kaum ändert, muss bei knappem Akku nicht im
+    // Grundtakt laufen.
+    _timer = Timer.periodic(
+      EnergiepolitikWaechter.instance.politik.value.intervall(_interval),
+      (_) => _sendDiagnostics(),
+    );
 
     // Send initial diagnostic immediately
     _sendDiagnostics();

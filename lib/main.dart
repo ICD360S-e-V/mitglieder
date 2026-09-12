@@ -15,6 +15,7 @@ import 'services/ticket_notification_service.dart';
 import 'services/logger_service.dart';
 import 'services/background_service.dart';
 import 'services/battery_usage_service.dart';
+import 'services/energiepolitik_waechter.dart';
 import 'services/network_resilience.dart';
 import 'services/security_event_reporter.dart';
 import 'services/startup_diagnostics.dart';
@@ -134,6 +135,12 @@ void main() async {
   // App läuft, und zählt im selben Fenster mit, wie oft die App das Funkmodem
   // weckt. Hält keinen eigenen Netz-Timer — gemeldet wird huckepack, wenn
   // ohnehin gesendet wird. Läuft nur mit erteilter Diagnose-Zustimmung.
+  // Energiepolitik vor allem, was Takte setzt: sonst liefe der erste Zyklus
+  // mit dem Grundintervall, obwohl das Gerät vielleicht im Energiesparmodus
+  // steckt. Kein eigener Timer — der Wächter lauscht nur auf Zustandswechsel.
+  await StartupDiagnostics.stepWithTimeout('Energiepolitik.starten', const Duration(seconds: 5),
+      () => EnergiepolitikWaechter.instance.starten());
+
   await StartupDiagnostics.stepWithTimeout('BatteryUsageService.start', const Duration(seconds: 5),
       () => BatteryUsageService.instance.start(
             deviceId: LoggerService().deviceId,

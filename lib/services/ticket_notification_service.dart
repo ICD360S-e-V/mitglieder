@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'api_service.dart';
 import 'device_key_service.dart';
 import 'battery_usage_service.dart';
+import 'energiepolitik_waechter.dart';
 
 /// Ticket Notification Service - Android (NO Google FCM!)
 /// Uses HTTP Polling + WorkManager for background
@@ -89,9 +90,14 @@ class TicketNotificationService {
 
     // Start foreground polling
     await _pollNotifications();
-    _pollTimer = Timer.periodic(_pollInterval, (_) async {
-      await _pollNotifications();
-    });
+    // Gestreckt nach Energiepolitik. Unbedenklich, weil die Abfrage nur noch
+    // Sicherheitsnetz ist: zugestellt wird über den WebSocket.
+    _pollTimer = Timer.periodic(
+      EnergiepolitikWaechter.instance.politik.value.intervall(_pollInterval),
+      (_) async {
+        await _pollNotifications();
+      },
+    );
 
     // Register background task (15 minute intervals) - Android only
     if (Platform.isAndroid) {
