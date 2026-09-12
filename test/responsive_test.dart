@@ -78,6 +78,52 @@ void main() {
   });
 
   group('Responsive.textScaler', () {
+    testWidgets('behält die nichtlineare Kurve von Android 14+', (tester) async {
+      // Ab Android 14 skaliert das System nicht mehr linear: kleine Schrift
+      // wächst stärker als große, damit Überschriften bei 200 % nicht ins
+      // Groteske laufen. Wer aus einem einzelnen Faktor einen linearen
+      // Skalierer baut, macht diese Kurve platt und bläst die Überschriften
+      // wieder auf — genau das darf hier nicht passieren.
+      await tester.pumpWidget(
+        MediaQuery(
+          data: const MediaQueryData(
+            size: Size(390, 844),
+            textScaler: _NichtlineareSkalierung(),
+          ),
+          child: Builder(
+            builder: (context) {
+              final skalierer = Responsive.textScaler(context);
+              // Fließtext: voll verdoppelt, wie vom System vorgesehen.
+              expect(skalierer.scale(14), 28);
+              // Überschrift: die flachere Stelle der Kurve bleibt flach.
+              // Ein linear nachgebauter Skalierer hätte hier 48 geliefert.
+              expect(skalierer.scale(24), 36);
+              return const SizedBox.shrink();
+            },
+          ),
+        ),
+      );
+    });
+
+    testWidgets('deckelt auch eine nichtlineare Kurve bei 200 %',
+        (tester) async {
+      await tester.pumpWidget(
+        MediaQuery(
+          data: const MediaQueryData(
+            size: Size(390, 844),
+            textScaler: _UebertriebeneSkalierung(),
+          ),
+          child: Builder(
+            builder: (context) {
+              final skalierer = Responsive.textScaler(context);
+              expect(skalierer.scale(14), 14 * Responsive.maxTextScale);
+              return const SizedBox.shrink();
+            },
+          ),
+        ),
+      );
+    });
+
     testWidgets('deckelt die System-Schriftgröße', (tester) async {
       tester.platformDispatcher.textScaleFactorTestValue = 2.0;
       addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
@@ -151,4 +197,30 @@ void main() {
       expect(tester.takeException(), isNull);
     });
   });
+}
+
+/// Nachbau der Android-14-Kurve: kleine Schrift verdoppelt, große wächst nur
+/// um die Hälfte. Genau diese Form muss [Responsive.textScaler] durchreichen,
+/// statt sie auf einen einzigen Faktor einzudampfen.
+class _NichtlineareSkalierung extends TextScaler {
+  const _NichtlineareSkalierung();
+
+  @override
+  double scale(double fontSize) =>
+      fontSize <= 14 ? fontSize * 2.0 : fontSize * 1.5;
+
+  @override
+  double get textScaleFactor => 2.0;
+}
+
+/// Eine Kurve jenseits unseres Deckels — iOS reicht mit den größten
+/// Bedienungshilfe-Graden über 200 % hinaus.
+class _UebertriebeneSkalierung extends TextScaler {
+  const _UebertriebeneSkalierung();
+
+  @override
+  double scale(double fontSize) => fontSize * 3.1;
+
+  @override
+  double get textScaleFactor => 3.1;
 }
