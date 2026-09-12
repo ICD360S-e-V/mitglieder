@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.97.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.97.0...v1.97.1) (2026-09-12)
+
+
+### Bug Fixes
+
+* **anruffenster:** eigene Zeichen und ein roter Auflegen-Knopf ([#399](https://github.com/ICD360S-e-V/mitglieder/issues/399)) ([589242b](https://github.com/ICD360S-e-V/mitglieder/commit/589242b0dfe3b6f046253df022960ec3530c7795))
+
 ## [1.97.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.96.2...v1.97.0) (2026-09-12)
 
 
