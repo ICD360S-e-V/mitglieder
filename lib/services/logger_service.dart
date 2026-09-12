@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'http_client_factory.dart';
 import 'battery_usage_service.dart';
+import 'energiepolitik_waechter.dart';
 import 'api_service.dart';
 
 /// Logger Service - captures app logs for debugging
@@ -123,7 +124,12 @@ class LoggerService {
     _mitgliedernummer = mitgliedernummer;
     _appVersion = appVersion;
     _uploadTimer?.cancel();
-    _uploadTimer = Timer.periodic(_uploadInterval, (_) => _uploadLogsToServer());
+    // Gestreckt nach Energiepolitik: Protokolle sind Kontext, den man erst
+    // im Nachhinein liest — bei knappem Akku darf das warten.
+    _uploadTimer = Timer.periodic(
+      EnergiepolitikWaechter.instance.politik.value.intervall(_uploadInterval),
+      (_) => _uploadLogsToServer(),
+    );
     info('Log upload started for ${_uploadKey ?? "unidentified device"} '
         'v$appVersion (every ${_uploadInterval.inSeconds}s)', tag: 'LOG');
   }

@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 
+import '../services/energiepolitik.dart';
+import '../services/energiepolitik_waechter.dart';
+
 /// Hält periodische Arbeit an, solange die App im Hintergrund ist.
 ///
 /// Warum es das gibt: ein Widget wird **nicht** entsorgt, wenn die App in den
@@ -44,6 +47,11 @@ mixin HintergrundPause<T extends StatefulWidget> on State<T> {
   _LebenszyklusBruecke? _bruecke;
   bool _imVordergrund = true;
 
+  /// Zuletzt angewandte Politik. Ändert sie sich, werden alle laufenden Takte
+  /// mit dem neuen Intervall neu aufgesetzt.
+  Energiepolitik _politik = Energiepolitik.standard;
+  VoidCallback? _politikHoerer;
+
   /// Setzt einen Takt unter [schluessel]. Ein bereits vorhandener mit
   /// demselben Schlüssel wird ersetzt, nicht verdoppelt.
   ///
@@ -62,9 +70,16 @@ mixin HintergrundPause<T extends StatefulWidget> on State<T> {
       WidgetsBinding.instance.addObserver(_bruecke!);
     }
 
+    final waechter = EnergiepolitikWaechter.instance;
+    if (_politikHoerer == null) {
+      _politik = waechter.politik.value;
+      _politikHoerer = _politikGewechselt;
+      waechter.politik.addListener(_politikHoerer!);
+    }
+
     final takt = _Takt(intervall, arbeit);
     _takte[schluessel] = takt;
-    if (_imVordergrund) takt.starten();
+    if (_imVordergrund) takt.starten(_politik);
     if (sofort) arbeit();
   }
 
@@ -94,10 +109,28 @@ mixin HintergrundPause<T extends StatefulWidget> on State<T> {
         // Erst nachholen, dann takten: sonst stünden bis zum ersten
         // Tick veraltete Daten auf dem Bildschirm.
         takt.arbeit();
-        takt.starten();
+        takt.starten(_politik);
       } else {
         takt.stoppen();
       }
+    }
+
+    if (vordergrund) {
+      // Kostenloser Anlass: das Gerät ist gerade ohnehin wach. Der Wächter
+      // hält deswegen keinen eigenen Timer.
+      unawaited(EnergiepolitikWaechter.instance.auffrischen());
+    }
+  }
+
+  void _politikGewechselt() {
+    final neu = EnergiepolitikWaechter.instance.politik.value;
+    if (neu.faktor == _politik.faktor) return;
+    _politik = neu;
+    if (!_imVordergrund) return;
+    // Nur die Uhren neu stellen, nicht die Arbeit auslösen: ein Wechsel der
+    // Politik ist kein Grund, Daten nachzuladen.
+    for (final takt in _takte.values) {
+      takt.starten(_politik);
     }
   }
 
@@ -107,6 +140,10 @@ mixin HintergrundPause<T extends StatefulWidget> on State<T> {
       takt.stoppen();
     }
     _takte.clear();
+    if (_politikHoerer != null) {
+      EnergiepolitikWaechter.instance.politik.removeListener(_politikHoerer!);
+      _politikHoerer = null;
+    }
     if (_bruecke != null) {
       WidgetsBinding.instance.removeObserver(_bruecke!);
       _bruecke = null;
@@ -124,9 +161,9 @@ class _Takt {
 
   bool get laeuft => _uhr?.isActive ?? false;
 
-  void starten() {
+  void starten([Energiepolitik politik = Energiepolitik.standard]) {
     _uhr?.cancel();
-    _uhr = Timer.periodic(intervall, (_) => arbeit());
+    _uhr = Timer.periodic(politik.intervall(intervall), (_) => arbeit());
   }
 
   void stoppen() {
