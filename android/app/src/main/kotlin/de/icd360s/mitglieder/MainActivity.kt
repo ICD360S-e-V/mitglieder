@@ -124,6 +124,15 @@ class MainActivity : FlutterActivity() {
                             // eine zweite Uebersetzungsquelle neben den ARB.
                             call.argument<String>("titel") ?: "",
                             call.argument<String>("auflegen") ?: "",
+                            (call.argument<Number>("startzeit"))?.toLong() ?: -1L,
+                            (call.argument<Number>("guete"))?.toInt() ?: 0,
+                        )
+                        result.success(true)
+                    }
+                    "overlayStand" -> {
+                        AnrufSystemfenster.stand(
+                            (call.argument<Number>("startzeit"))?.toLong() ?: -1L,
+                            (call.argument<Number>("guete"))?.toInt() ?: 0,
                         )
                         result.success(true)
                     }

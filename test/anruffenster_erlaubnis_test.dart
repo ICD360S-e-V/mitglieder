@@ -16,6 +16,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:icd360sev_mitglied/utils/anruf_guete.dart';
 
 /// Kommentare weg — sonst bestaetigt der Test die Erklaerung ueber dem Code
 /// statt den Code. Die Laenge bleibt gleich, damit Fundstellen stimmen.
@@ -123,6 +124,32 @@ String nurAuflegenKnopf(String kotlin) {
   final e = b.indexOf('\n        })', a);
   expect(e, greaterThan(a), reason: 'Knopfblock nicht geschlossen');
   return b.substring(a, e);
+}
+
+/// Schneidet einen Kotlin-Block ab seinem Kopf bis zur passenden Klammer.
+String nurBlock(String kotlin, String kopf) {
+  final a = kotlin.indexOf(kopf);
+  expect(a, greaterThan(0), reason: 'Kopf nicht gefunden: $kopf');
+  var i = a;
+  var rund = 0;
+  while (i < kotlin.length) {
+    final c = kotlin[i];
+    if (c == '(') rund++;
+    if (c == ')') rund--;
+    if (c == '{' && rund == 0) break;
+    i++;
+  }
+  var tiefe = 0;
+  final ab = i;
+  while (i < kotlin.length) {
+    if (kotlin[i] == '{') tiefe++;
+    if (kotlin[i] == '}') {
+      tiefe--;
+      if (tiefe == 0) return kotlin.substring(ab, i + 1);
+    }
+    i++;
+  }
+  fail('Block nicht geschlossen: $kopf');
 }
 
 void main() {
@@ -582,6 +609,183 @@ void main() {
       }
       expect(ohneXmlKommentare(laeuftSvg).length, greaterThan(400));
       expect(ohneXmlKommentare(auflegenSvg).length, greaterThan(400));
+    });
+  });
+
+  group('Dauer und Guete auf der Karte', () {
+    late String kt;
+    late String karte;
+    late String vg;
+    late String dienst;
+
+    setUpAll(() {
+      kt = File('android/app/src/main/kotlin/de/icd360s/mitglieder/'
+              'AnrufSystemfenster.kt')
+          .readAsStringSync();
+      karte = File('lib/services/anruf_systemkarte.dart').readAsStringSync();
+      vg = File('lib/services/anruf_vordergrund.dart').readAsStringSync();
+      dienst = File('lib/services/voice_call_service.dart').readAsStringSync();
+    });
+
+    test('die Guete kommt aus dem UNTERSCHIED zweier Abfragen', () {
+      // Kumulativ genommen zoege eine schlechte erste Minute die Anzeige bis
+      // zum Auflegen herunter.
+      final b = rumpf(dienst, 'void _gueteFortschreiben(');
+      expect(b, contains('empfangen - _letztEmpfangen'));
+      expect(b, contains('verloren - _letztVerloren'));
+    });
+
+    test('🔴 die ERSTE Abfrage urteilt nicht — sie ist der Nullpunkt', () {
+      final b = rumpf(dienst, 'void _gueteFortschreiben(');
+      expect(b, contains('if (!_gueteBasisDa)'));
+      expect(b.indexOf('_gueteBasisDa = true'),
+          lessThan(b.indexOf('anrufGueteStufe(')));
+    });
+
+    test('nur die TONSPUR wird bewertet', () {
+      // Ein Videoanruf hat zwei inbound-rtp; die Videospur hat ganz andere
+      // Paketzahlen als das, was ein Mensch als schlechte Leitung erlebt.
+      expect(ohneKommentare(dienst),
+          contains("== 'audio'"));
+      expect(rumpf(dienst, 'void _startStatsLogging()'),
+          contains('_gueteFortschreiben(v)'));
+    });
+
+    test('🔴 beim Aufraeumen wird die Guete zurueckgesetzt', () {
+      // Sonst truege die Karte des NAECHSTEN Anrufs von der ersten Sekunde an
+      // das Urteil des vorigen.
+      final b = rumpf(dienst, 'void _stopStatsLogging()');
+      expect(b, contains('anrufGuete.value = kGueteUnbekannt'));
+      expect(b, contains('_gespraechBeginn = null'));
+      expect(b, contains('_gueteBasisDa = false'));
+    });
+
+    test('die Startzeit haengt an der EINEN Stelle, die inCall erreichen darf',
+        () {
+      final o = ohneKommentare(dienst);
+      expect('_gespraechBeginn = DateTime.now()'.allMatches(o).length, 1);
+      expect(
+          o.indexOf('_gespraechBeginn = DateTime.now()'),
+          lessThan(o.indexOf('_setCallState(CallState.inCall)')));
+    });
+
+    test('🔴 eine schon sichtbare Karte wird nachgefuehrt', () {
+      // Wer die App waehrend des Klingelns verlaesst, saehe sonst nie eine
+      // Dauer: beim Uebergang zu inCall bleibt `soll` true.
+      final b = rumpf(karte, 'void _pruefen()');
+      expect(b, contains('_standSenden()'));
+      expect(karte, contains('systemfensterStand('));
+      expect(vg, contains("invokeMethod('overlayStand'"));
+    });
+
+    test('der Kanal spricht nur bei einer Aenderung', () {
+      final b = rumpf(karte, 'void _standSenden()');
+      expect(b, contains('if (s == _standStartzeit && g == _standGuete) return;'));
+    });
+
+    test('der Melder wird an- und wieder abgemeldet', () {
+      expect(rumpf(karte, 'void aktivieren()'),
+          contains('anrufGuete.addListener(_standSenden)'));
+      expect(rumpf(karte, 'void abbauen()'),
+          contains('anrufGuete.removeListener(_standSenden)'));
+    });
+
+    test('der Sekundentakt laeuft im Kotlin, nicht ueber den Kanal', () {
+      expect(kt, contains('takt.postDelayed(this, 1000L)'));
+      expect(rumpf(karte, 'void _standSenden()'),
+          isNot(contains('Timer')));
+    });
+
+    test('🔴 der Takt wird beim Verbergen gestoppt', () {
+      final b = nurBlock(kt, 'fun verbergen()');
+      expect(b, contains('taktStoppen()'));
+      expect(b, contains('dauerSicht = null'));
+    });
+
+    test('der Name der App kommt vom SYSTEM, nicht aus den ARB', () {
+      expect(nurBauen(kt), contains('applicationInfo.loadLabel'));
+      final de = jsonDecode(File('lib/l10n/app_de.arb').readAsStringSync())
+          as Map<String, dynamic>;
+      expect(de.containsKey('anruffensterAppName'), isFalse,
+          reason: 'kein 29. Uebersetzungsstring fuer etwas, das Android weiss');
+    });
+
+    test('🔴 der Titel hat eine feste Hoechstbreite', () {
+      // WRAP_CONTENT + FLAG_LAYOUT_NO_LIMITS heisst: das Fenster darf ueber den
+      // Schirmrand hinauswachsen. Ohne maxWidth greift die Ellipse nie, und ein
+      // langer Titel schiebt den Auflegen-Knopf aus dem Bild.
+      final b = nurBauen(kt);
+      expect(b, contains('val breite = dp(app, 190)'));
+      expect('maxWidth = breite'.allMatches(b).length, 2);
+      expect(kt, contains('FLAG_LAYOUT_NO_LIMITS'));
+    });
+
+    test('ohne stehendes Gespraech steht dort KEINE Dauer', () {
+      // „00:00", waehrend es noch klingelt, waere eine Aussage ueber ein
+      // Gespraech, das noch nicht laeuft.
+      final b = nurBlock(kt, 'private fun dauerText(');
+      expect(b, contains('if (start <= 0L) return ""'));
+    });
+
+    test('🔴 Stufe 0 blendet die Balken GANZ aus', () {
+      // „noch nichts gemessen" darf nie aussehen wie „schlecht".
+      final b = nurBlock(kt, 'private fun balkenSetzen()');
+      expect(b, contains('if (gueteStufe <= 0) { b.visibility = View.GONE; return }'));
+    });
+
+    test('MainActivity reicht beide Werte durch', () {
+      final ma = File('android/app/src/main/kotlin/de/icd360s/mitglieder/'
+              'MainActivity.kt')
+          .readAsStringSync();
+      expect(ma, contains('"overlayStand"'));
+      expect('call.argument<Number>("startzeit")'.allMatches(ma).length, 2);
+      expect('call.argument<Number>("guete")'.allMatches(ma).length, 2);
+    });
+  });
+
+  group('anrufGueteStufe — die Regel selbst', () {
+    test('saubere Leitung ist gut', () {
+      expect(anrufGueteStufe(dEmpfangen: 150, dVerloren: 0, jitterMs: 5),
+          kGueteGut);
+    });
+
+    test('2 % Verlust ist mittel, 8 % ist schlecht', () {
+      expect(anrufGueteStufe(dEmpfangen: 147, dVerloren: 3, jitterMs: 5),
+          kGueteMittel);
+      expect(anrufGueteStufe(dEmpfangen: 138, dVerloren: 12, jitterMs: 5),
+          kGueteSchlecht);
+    });
+
+    test('hoher Jitter allein reicht fuer schlecht', () {
+      expect(anrufGueteStufe(dEmpfangen: 150, dVerloren: 0, jitterMs: 80),
+          kGueteSchlecht);
+    });
+
+    test('🔴 ein leeres Fenster ist UNBEKANNT, nicht schlecht', () {
+      expect(anrufGueteStufe(dEmpfangen: 0, dVerloren: 0, jitterMs: 0),
+          kGueteUnbekannt);
+      expect(anrufGueteStufe(dEmpfangen: 5, dVerloren: 0, jitterMs: 0),
+          kGueteUnbekannt);
+    });
+
+    test('🔴 eine grosse Nachverrechnung macht ein gutes Fenster nicht blind',
+        () {
+      // RFC 3550 verrechnet verspaetet eingetroffene Pakete nachtraeglich,
+      // `packetsLost` DARF also sinken.
+      //
+      // ⚠️ Die erste Fassung dieser Zusicherung nahm -4 und war damit WERTLOS:
+      // ungeklemmt ergibt das -4/146 = -2,7 %, und das ist ebenfalls „gut".
+      // Der Fall, in dem das Klemmen wirklich etwas traegt, ist eine grosse
+      // Korrektur: ohne sie schrumpft die Summe unter die Mindestzahl, und
+      // ein Fenster mit 100 sauber angekommenen Paketen saehe aus wie
+      // „nichts gemessen" — die Balken verschwaenden mitten im Gespraech.
+      expect(anrufGueteStufe(dEmpfangen: 100, dVerloren: -95, jitterMs: 5),
+          kGueteGut);
+    });
+
+    test('ein Fenster NUR aus Verlusten ist schlecht, nicht unbekannt', () {
+      expect(anrufGueteStufe(dEmpfangen: 0, dVerloren: 60, jitterMs: 0),
+          kGueteSchlecht);
     });
   });
 }
