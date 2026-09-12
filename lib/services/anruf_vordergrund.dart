@@ -55,6 +55,7 @@ class AnrufVordergrund {
   static Future<void> systemfensterZeigen({
     required bool video,
     required String titel,
+    required String auflegen,
   }) async {
     if (!Platform.isAndroid) return;
     _handlerStellen();
@@ -62,6 +63,7 @@ class AnrufVordergrund {
       await _kanal.invokeMethod('overlayZeigen', {
         'video': video,
         'titel': titel,
+        'auflegen': auflegen,
       });
     } catch (e) {
       _log.warning('AnrufVordergrund: Systemfenster nicht moeglich: $e',

@@ -123,6 +123,7 @@ class MainActivity : FlutterActivity() {
                             // 28 Sprachen, und eine String-Ressource hier waere
                             // eine zweite Uebersetzungsquelle neben den ARB.
                             call.argument<String>("titel") ?: "",
+                            call.argument<String>("auflegen") ?: "",
                         )
                         result.success(true)
                     }

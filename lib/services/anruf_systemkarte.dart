@@ -40,6 +40,7 @@ class AnrufSystemkarte with WidgetsBindingObserver {
   bool _schonGefragt = false;
   String _titelAnruf = '';
   String _titelVideoanruf = '';
+  String _titelAuflegen = '';
 
   /// Die beiden Woerter auf dem Fenster, schon UEBERSETZT.
   ///
@@ -49,9 +50,14 @@ class AnrufSystemkarte with WidgetsBindingObserver {
   /// die fertigen Texte herein. Aufgerufen aus `didChangeDependencies` des
   /// Dashboards, damit ein Sprachwechsel mitkommt — `aktivieren()` laeuft nur
   /// einmal und wuerde ihn verpassen.
-  void texte({required String anruf, required String videoanruf}) {
+  void texte({
+    required String anruf,
+    required String videoanruf,
+    required String auflegen,
+  }) {
     _titelAnruf = anruf;
     _titelVideoanruf = videoanruf;
+    _titelAuflegen = auflegen;
   }
 
   /// Springt EINMAL auf `true`, wenn ein Gespräch beginnt und die
@@ -131,6 +137,7 @@ class AnrufSystemkarte with WidgetsBindingObserver {
       AnrufVordergrund.systemfensterZeigen(
         video: _dienst.isVideoCall,
         titel: _dienst.isVideoCall ? _titelVideoanruf : _titelAnruf,
+        auflegen: _titelAuflegen,
       );
     } else {
       AnrufVordergrund.systemfensterVerbergen();

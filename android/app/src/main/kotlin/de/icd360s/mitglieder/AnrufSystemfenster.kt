@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.provider.Settings
@@ -59,7 +60,12 @@ object AnrufSystemfenster {
         }
 
     @SuppressLint("ClickableViewAccessibility")
-    fun zeigen(context: Context, video: Boolean, titel: String) {
+    fun zeigen(
+        context: Context,
+        video: Boolean,
+        titel: String,
+        auflegen: String,
+    ) {
         if (sicht != null) return
         if (!erlaubt(context)) {
             Log.i(TAG, "keine Overlay-Berechtigung — Fenster entfaellt")
@@ -89,7 +95,7 @@ object AnrufSystemfenster {
             y = dp(app, 64)
         }
 
-        val karte = bauen(app, video, titel)
+        val karte = bauen(app, video, titel, auflegen)
         var startX = 0
         var startY = 0
         var fingerX = 0f
@@ -153,20 +159,31 @@ object AnrufSystemfenster {
         try { app.startActivity(i) } catch (e: Throwable) { Log.e(TAG, "Rueckweg: $e") }
     }
 
-    private fun bauen(app: Context, video: Boolean, titel: String): View {
+    private fun bauen(
+        app: Context,
+        video: Boolean,
+        titel: String,
+        auflegen: String,
+    ): View {
         val reihe = LinearLayout(app).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
-            setPadding(dp(app, 14), dp(app, 10), dp(app, 8), dp(app, 10))
+            setPadding(dp(app, 14), dp(app, 8), dp(app, 8), dp(app, 8))
             background = GradientDrawable().apply {
-                cornerRadius = dp(app, 22).toFloat()
-                // Dasselbe Gruen wie die In-App-Karte, gleich stark abgedunkelt.
-                setColor(Color.parseColor("#E6142C17"))
-                setStroke(dp(app, 1), Color.parseColor("#38FFFFFF"))
+                cornerRadius = dp(app, 24).toFloat()
+                // ⚠️ Deutlich deckender als die erste Fassung (#E6 -> #F2).
+                // Die Karte liegt ueber einer FREMDEN App, deren Hintergrund
+                // wir nicht kennen; bei 90 % Deckung stand weisser Text auf
+                // einer hellen Webseite und war nicht zu lesen.
+                setColor(Color.parseColor("#F2142C17"))
+                setStroke(dp(app, 1), Color.parseColor("#40FFFFFF"))
             }
+            // Ein Schatten trennt die Karte von dem, was darunter liegt —
+            // ohne ihn wirkt sie wie ein Teil der fremden App.
+            elevation = dp(app, 6).toFloat()
         }
         reihe.addView(ImageView(app).apply {
-            setImageResource(android.R.drawable.ic_menu_call)
+            setImageResource(R.drawable.ic_anruf_laeuft)
             setColorFilter(Color.WHITE)
             layoutParams = LinearLayout.LayoutParams(dp(app, 20), dp(app, 20))
         })
@@ -174,13 +191,30 @@ object AnrufSystemfenster {
             text = titel
             setTextColor(Color.WHITE)
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
-            setPadding(dp(app, 10), 0, dp(app, 10), 0)
+            // ⚠️ sans-serif-medium, nicht setTypeface(null, BOLD): fett wird
+            // in einer Karte dieser Groesse zur Wand, halbfett bleibt lesbar.
+            typeface = Typeface.create("sans-serif-medium", Typeface.NORMAL)
+            setPadding(dp(app, 10), 0, dp(app, 12), 0)
+            maxLines = 1
+            ellipsize = android.text.TextUtils.TruncateAt.END
         })
         reihe.addView(ImageView(app).apply {
-            setImageResource(android.R.drawable.sym_call_missed)
-            setColorFilter(Color.parseColor("#FFB4AB"))
-            layoutParams = LinearLayout.LayoutParams(dp(app, 26), dp(app, 26))
-            setPadding(dp(app, 3), dp(app, 3), dp(app, 3), dp(app, 3))
+            setImageResource(R.drawable.ic_anruf_auflegen)
+            setColorFilter(Color.WHITE)
+            // 🔴 Ein ROTER runder Knopf, wie ihn jeder Telefonschirm hat.
+            // Vorher war es ein blasser Umriss ohne Flaeche: es sah nach
+            // Zierrat aus, nicht nach einem Knopf, den man druecken kann.
+            background = GradientDrawable().apply {
+                shape = GradientDrawable.OVAL
+                setColor(Color.parseColor("#E53935"))
+            }
+            layoutParams = LinearLayout.LayoutParams(dp(app, 36), dp(app, 36))
+            setPadding(dp(app, 8), dp(app, 8), dp(app, 8), dp(app, 8))
+            // ⚠️ Fuer den Bildschirmleser: der Knopf ist nur ein Bild, ohne
+            // dieses Wort liest er „nicht benannte Schaltflaeche" vor. Der
+            // Text kommt aus Dart (`hangUp`, in allen 28 Sprachen vorhanden),
+            // damit hier keine zweite Uebersetzungsquelle entsteht.
+            contentDescription = auflegen
             // ⚠️ Eigener Zuhoerer, damit der Auflegen-Tipp NICHT beim
             // Zieh-Zuhoerer der Reihe landet. Ohne das legte jeder Tipp auf die
             // Karte auf — oder gar nichts, je nach Reihenfolge.

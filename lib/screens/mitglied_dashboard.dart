@@ -148,6 +148,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       AnrufSystemkarte().texte(
         anruf: lFenster.anrufLaeuft,
         videoanruf: lFenster.videoanrufLaeuft,
+        auflegen: lFenster.hangUp,
       );
     }
     if (!_notifTextsUpdated) {
