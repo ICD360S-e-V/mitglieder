@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.93.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.3...v1.93.4) (2026-09-12)
+
+
+### Bug Fixes
+
+* **anmeldung:** „Weiter" wurde abgeschnitten — Ausstieg als X neben den Chat ([#381](https://github.com/ICD360S-e-V/mitglieder/issues/381)) ([cc775ca](https://github.com/ICD360S-e-V/mitglieder/commit/cc775ca3553519a63d35aa1a69b21ac52a13d5af))
+
 ## [1.93.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.2...v1.93.3) (2026-09-11)
 
 
