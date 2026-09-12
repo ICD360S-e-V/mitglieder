@@ -56,6 +56,8 @@ class AnrufVordergrund {
     required bool video,
     required String titel,
     required String auflegen,
+    required int startzeit,
+    required int guete,
   }) async {
     if (!Platform.isAndroid) return;
     _handlerStellen();
@@ -64,10 +66,33 @@ class AnrufVordergrund {
         'video': video,
         'titel': titel,
         'auflegen': auflegen,
+        'startzeit': startzeit,
+        'guete': guete,
       });
     } catch (e) {
       _log.warning('AnrufVordergrund: Systemfenster nicht moeglich: $e',
           tag: 'CALL');
+    }
+  }
+
+  /// Dauer und Guete an eine BEREITS sichtbare Karte nachreichen.
+  ///
+  /// ⚠️ `overlayZeigen` ist absichtlich idempotent (steht die Karte, tut es
+  /// nichts) — ein zweiter Aufruf koennte sie also nicht auffrischen. Wer die
+  /// App waehrend des Klingelns verlaesst, bekaeme sonst nie eine Dauer zu
+  /// sehen.
+  static Future<void> systemfensterStand({
+    required int startzeit,
+    required int guete,
+  }) async {
+    if (!Platform.isAndroid) return;
+    try {
+      await _kanal.invokeMethod('overlayStand', {
+        'startzeit': startzeit,
+        'guete': guete,
+      });
+    } catch (e) {
+      _log.warning('AnrufVordergrund: Systemfenster-Stand: $e', tag: 'CALL');
     }
   }
 

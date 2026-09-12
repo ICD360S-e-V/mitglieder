@@ -10,6 +10,7 @@ import 'anruf_vordergrund.dart';
 import 'api_service.dart';
 import 'chat_service.dart';
 import 'logger_service.dart';
+import '../utils/anruf_guete.dart';
 
 final _log = LoggerService();
 
@@ -232,6 +233,22 @@ class VoiceCallService {
   /// The ONLY thing allowed to promote the call to [CallState.inCall];
   /// `onTrack` must never do it — see the comment there.
   bool _medienPfadDa = false;
+
+  /// Wann das Gespraech WIRKLICH stand — gesetzt an der EINEN Stelle, die
+  /// [CallState.inCall] erreichen darf.
+  ///
+  /// ⚠️ Vorher bleibt es `null`, und die Karte zeigt dann gar keine Dauer.
+  /// „00:00", waehrend es noch klingelt, waere eine Aussage ueber ein
+  /// Gespraech, das noch nicht laeuft.
+  DateTime? _gespraechBeginn;
+
+  /// Guete der Gegenrichtung (0..3), fortgeschrieben vom Stats-Takt.
+  /// Siehe [anrufGueteStufe] — 0 heisst „noch nichts gemessen", nicht
+  /// „schlecht".
+  final ValueNotifier<int> anrufGuete = ValueNotifier<int>(kGueteUnbekannt);
+  int _letztEmpfangen = 0;
+  int _letztVerloren = 0;
+  bool _gueteBasisDa = false;
   AudioPlayer? _ringbackPlayer; // looping "ring-ring" for the caller
   AudioPlayer? _sfxPlayer; // one-shot busy/rejected tone
 
@@ -314,6 +331,7 @@ class VoiceCallService {
     _medienWache = null;
     _log.info('VoiceCallService: ★★★ media path confirmed via $woher', tag: 'CALL');
     if (_callState == CallState.connecting || _callState == CallState.calling) {
+      _gespraechBeginn = DateTime.now();
       _setCallState(CallState.inCall);
       _applyAudioRoute();
     }
@@ -335,6 +353,7 @@ class VoiceCallService {
 
   // Getters
   CallState get callState => _callState;
+  DateTime? get gespraechBeginn => _gespraechBeginn;
   bool get isMuted => _isMuted;
   bool get isSpeakerOn => _isSpeakerOn;
   bool get isVideoCall => _isVideoCall;
@@ -1398,6 +1417,13 @@ class VoiceCallService {
             _log.info('[OUT-RTP] kind=${v['kind'] ?? v['mediaType']} bytesSent=${v['bytesSent']} framesEncoded=${v['framesEncoded']} ${v['frameWidth']}x${v['frameHeight']}', tag: 'ICESTAT');
           } else if (r.type == 'inbound-rtp') {
             _log.info('[IN-RTP] kind=${v['kind'] ?? v['mediaType']} bytesRecv=${v['bytesReceived']} framesDecoded=${v['framesDecoded']}', tag: 'ICESTAT');
+            // ⚠️ NUR die Tonspur. Bei einem Videoanruf gibt es zwei
+            // inbound-rtp, und die Videospur hat ganz andere Paketzahlen —
+            // was ein Mensch am Telefon als „schlechte Verbindung" erlebt,
+            // ist der Ton.
+            if (((v['kind'] ?? v['mediaType'])?.toString()) == 'audio') {
+              _gueteFortschreiben(v);
+            }
           }
         }
       } catch (e) {
@@ -1409,6 +1435,42 @@ class VoiceCallService {
   void _stopStatsLogging() {
     _statsTimer?.cancel();
     _statsTimer = null;
+    // ⚠️ Auch die Guete zuruecksetzen: bliebe „gut" stehen, truege die Karte
+    // des NAECHSTEN Anrufs von der ersten Sekunde an das Urteil des vorigen.
+    _gespraechBeginn = null;
+    _gueteBasisDa = false;
+    _letztEmpfangen = 0;
+    _letztVerloren = 0;
+    anrufGuete.value = kGueteUnbekannt;
+  }
+
+  /// Ein Messfenster auswerten. Die Zahlen von `getStats()` sind kumulativ,
+  /// gerechnet wird deshalb der Zuwachs seit der letzten Abfrage.
+  // ⚠️ `StatsReport.values` ist `Map<dynamic, dynamic>` — mit
+  // `Map<String, dynamic>` uebersetzt die Datei nicht. Gefunden hat das der
+  // APK-Bau, nicht die Testsuite: kein Test importiert diese Datei.
+  void _gueteFortschreiben(Map<dynamic, dynamic> v) {
+    final empfangen = (v['packetsReceived'] as num?)?.toInt();
+    final verloren = (v['packetsLost'] as num?)?.toInt();
+    if (empfangen == null || verloren == null) return;
+    final jitterMs = ((v['jitter'] as num?)?.toDouble() ?? 0) * 1000;
+
+    if (!_gueteBasisDa) {
+      // ⚠️ Die erste Abfrage liefert bewusst KEIN Urteil — sie ist der
+      // Nullpunkt, gegen den das zweite Fenster gerechnet wird.
+      _gueteBasisDa = true;
+      _letztEmpfangen = empfangen;
+      _letztVerloren = verloren;
+      return;
+    }
+    final stufe = anrufGueteStufe(
+      dEmpfangen: empfangen - _letztEmpfangen,
+      dVerloren: verloren - _letztVerloren,
+      jitterMs: jitterMs,
+    );
+    _letztEmpfangen = empfangen;
+    _letztVerloren = verloren;
+    if (stufe != anrufGuete.value) anrufGuete.value = stufe;
   }
 
   void _cleanup() {

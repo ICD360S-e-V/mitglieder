@@ -41,6 +41,8 @@ class AnrufSystemkarte with WidgetsBindingObserver {
   String _titelAnruf = '';
   String _titelVideoanruf = '';
   String _titelAuflegen = '';
+  int _standStartzeit = -1;
+  int _standGuete = -1;
 
   /// Die beiden Woerter auf dem Fenster, schon UEBERSETZT.
   ///
@@ -75,11 +77,29 @@ class AnrufSystemkarte with WidgetsBindingObserver {
     _aktiv = true;
     WidgetsBinding.instance.addObserver(this);
     _abo = _dienst.callStateStream.listen((_) => _pruefen());
+    _dienst.anrufGuete.addListener(_standSenden);
     _pruefen();
+  }
+
+  /// Startzeit als Millisekunden, oder `-1` solange das Gespraech nicht steht.
+  int _startzeitMs() =>
+      _dienst.gespraechBeginn?.millisecondsSinceEpoch ?? -1;
+
+  /// Dauer und Guete an eine BEREITS sichtbare Karte nachreichen — nur wenn
+  /// sich etwas geaendert hat, damit der Kanal nicht im Sekundentakt spricht.
+  void _standSenden() {
+    if (!_sichtbar) return;
+    final s = _startzeitMs();
+    final g = _dienst.anrufGuete.value;
+    if (s == _standStartzeit && g == _standGuete) return;
+    _standStartzeit = s;
+    _standGuete = g;
+    AnrufVordergrund.systemfensterStand(startzeit: s, guete: g);
   }
 
   @visibleForTesting
   void abbauen() {
+    _dienst.anrufGuete.removeListener(_standSenden);
     if (!_aktiv) return;
     WidgetsBinding.instance.removeObserver(this);
     _abo?.cancel();
@@ -131,16 +151,30 @@ class AnrufSystemkarte with WidgetsBindingObserver {
     final soll = laeuft(_dienst.callState) &&
         !_imVordergrund &&
         _titelAnruf.isNotEmpty;
-    if (soll == _sichtbar) return;
-    _sichtbar = soll;
-    if (soll) {
-      AnrufVordergrund.systemfensterZeigen(
-        video: _dienst.isVideoCall,
-        titel: _dienst.isVideoCall ? _titelVideoanruf : _titelAnruf,
-        auflegen: _titelAuflegen,
-      );
+    if (soll != _sichtbar) {
+      _sichtbar = soll;
+      if (soll) {
+        _standStartzeit = _startzeitMs();
+        _standGuete = _dienst.anrufGuete.value;
+        AnrufVordergrund.systemfensterZeigen(
+          video: _dienst.isVideoCall,
+          titel: _dienst.isVideoCall ? _titelVideoanruf : _titelAnruf,
+          auflegen: _titelAuflegen,
+          startzeit: _standStartzeit,
+          guete: _standGuete,
+        );
+      } else {
+        _standStartzeit = -1;
+        _standGuete = -1;
+        AnrufVordergrund.systemfensterVerbergen();
+      }
     } else {
-      AnrufVordergrund.systemfensterVerbergen();
+      // ⚠️ Ohne diesen Zweig bliebe die Karte auf dem Stand des Augenblicks
+      // stehen, in dem sie erschien. Wer die App waehrend des Klingelns
+      // verlaesst, saehe nie eine Dauer: beim Uebergang zu `inCall` bleibt
+      // `soll` true, es wird also nichts neu gezeigt.
+      _standSenden();
+      return;
     }
     _log.info('AnrufSystemkarte: Fenster ${soll ? "gezeigt" : "verborgen"}',
         tag: 'CALL');
