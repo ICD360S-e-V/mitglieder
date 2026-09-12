@@ -93,6 +93,38 @@ const kSchluessel = [
   'videoanrufLaeuft',
 ];
 
+/// Schneidet den Rumpf von `bauen()` aus — Anfang UND Ende.
+///
+/// ⚠️ Ohne Grenze prueft eine Zusicherung irgendwann etwas anderes, als sie
+/// sagt: `setColorFilter(Color.WHITE)` steht in der Datei mehrfach, und
+/// `GradientDrawable` auch (die Karte selbst hat eines).
+String nurBauen(String kotlin) {
+  const kopf = 'private fun bauen(';
+  final a = kotlin.indexOf(kopf);
+  expect(a, greaterThan(0), reason: 'bauen() fehlt ganz');
+  final rest = kotlin.substring(a + kopf.length);
+  final e = rest.indexOf('\n    private fun ');
+  final block = e < 0 ? rest : rest.substring(0, e);
+  return block
+      .split('\n')
+      .where((z) => !z.trimLeft().startsWith('//'))
+      .join('\n');
+}
+
+/// Nur den Auflegen-Knopf, ab seinem Zeichen bis zum Ende seines Blocks.
+///
+/// ⚠️ Die rote Flaeche und der eigene Zuhoerer muessen an DIESEM Knopf haengen.
+/// Ueber ganz `bauen()` gesucht, waere die Zusicherung auch dann gruen, wenn
+/// das Rot an der Karte klebte und der Knopf blass blieb.
+String nurAuflegenKnopf(String kotlin) {
+  final b = nurBauen(kotlin);
+  final a = b.indexOf('R.drawable.ic_anruf_auflegen');
+  expect(a, greaterThan(0), reason: 'der Auflegen-Knopf fehlt');
+  final e = b.indexOf('\n        })', a);
+  expect(e, greaterThan(a), reason: 'Knopfblock nicht geschlossen');
+  return b.substring(a, e);
+}
+
 void main() {
   late String karte;
   late String dashboard;
@@ -384,6 +416,172 @@ void main() {
               'meisten Mitglieder wirkungslos');
       expect(gp, contains('REQUEST_INSTALL_PACKAGES'),
           reason: 'die vorhandene Ausnahme muss stehen bleiben');
+    });
+  });
+
+  group('Die Optik der Karte — eigene Zeichen statt Framework-Bitmaps', () {
+    late String kt;
+    late String laeuftSvg;
+    late String auflegenSvg;
+
+    setUpAll(() {
+      kt = File('android/app/src/main/kotlin/de/icd360s/mitglieder/'
+              'AnrufSystemfenster.kt')
+          .readAsStringSync();
+      laeuftSvg =
+          File('android/app/src/main/res/drawable/ic_anruf_laeuft.xml')
+              .readAsStringSync();
+      auflegenSvg =
+          File('android/app/src/main/res/drawable/ic_anruf_auflegen.xml')
+              .readAsStringSync();
+    });
+
+    test('🔴 das Zeichen fuer VERPASSTEN Anruf ist weg', () {
+      // `sym_call_missed` ist ein Pfeil und bedeutet „verpasster Anruf" —
+      // auf einem Knopf, der ein LAUFENDES Gespraech beendet, stand also das
+      // Zeichen fuer etwas voellig anderes. Das war nicht haesslich, es war
+      // falsch.
+      expect(kt, isNot(contains('sym_call_missed')));
+    });
+
+    test('die Framework-Bitmap ic_menu_call ist weg', () {
+      // Eine Ressource aus der Gingerbread-Zeit, als Bitmap ausgeliefert und
+      // mit eingebackenem Rand.
+      expect(kt, isNot(contains('android.R.drawable.ic_menu_call')));
+    });
+
+    test('bauen() nimmt die beiden eigenen Vektoren', () {
+      final b = nurBauen(kt);
+      expect(b, contains('R.drawable.ic_anruf_laeuft'));
+      expect(b, contains('R.drawable.ic_anruf_auflegen'));
+      expect(b, isNot(contains('android.R.drawable')),
+          reason: 'kein Framework-Zeichen mehr in der Karte');
+    });
+
+    test('🔴 der Auflegen-Knopf ist eine ROTE gefuellte Flaeche', () {
+      final k = nurAuflegenKnopf(kt);
+      expect(k, contains('GradientDrawable.OVAL'),
+          reason: 'ohne Flaeche ist es Zierrat, kein Knopf');
+      expect(k, contains('#E53935'), reason: 'Material Red 600');
+      expect(k, contains('setColorFilter(Color.WHITE)'),
+          reason: 'weisses Zeichen auf Rot; ein blasses Rosa auf Rot '
+              'verschwindet');
+      expect(k, isNot(contains('#FFB4AB')),
+          reason: 'die blasse Umriss-Fassung ist weg');
+    });
+
+    test('der Knopf hat seinen EIGENEN Zuhoerer', () {
+      // Sonst landet der Tipp beim Zieh-Zuhoerer der Reihe: es legt jeder
+      // Tipp auf die Karte auf, oder gar keiner.
+      expect(nurAuflegenKnopf(kt),
+          contains('setOnClickListener { AnrufDienstBruecke.auflegen(app) }'));
+    });
+
+    test('der Knopf traegt ein Wort fuer den Bildschirmleser', () {
+      expect(nurAuflegenKnopf(kt), contains('contentDescription = auflegen'));
+    });
+
+    test('🔴 das Wort kommt UEBERSETZT aus Dart, nicht aus dem Kotlin', () {
+      // Diese App gibt es in 28 Sprachen. Ein Literal hier waere eine zweite
+      // Uebersetzungsquelle neben den ARB — und deutsch fuer alle.
+      expect(kt, isNot(contains('"Auflegen"')));
+      expect(nurBauen(kt), isNot(contains('"Hang up"')));
+      expect(kt, contains('auflegen: String'),
+          reason: 'als Parameter durchgereicht');
+    });
+
+    test('die Kette reicht `auflegen` von Dart bis in die Karte', () {
+      final karte = File('lib/services/anruf_systemkarte.dart').readAsStringSync();
+      final vg = File('lib/services/anruf_vordergrund.dart').readAsStringSync();
+      final ma = File('android/app/src/main/kotlin/de/icd360s/mitglieder/'
+              'MainActivity.kt')
+          .readAsStringSync();
+      final dash =
+          File('lib/screens/mitglied_dashboard.dart').readAsStringSync();
+
+      expect(dash, contains('auflegen: lFenster.hangUp'),
+          reason: 'das Dashboard nimmt den vorhandenen, in allen 28 Sprachen '
+              'uebersetzten Schluessel');
+      expect(karte, contains('required String auflegen'));
+      expect(karte, contains('auflegen: _titelAuflegen'));
+      expect(vg, contains('required String auflegen'));
+      expect(vg, contains("'auflegen': auflegen"));
+      expect(ma, contains('call.argument<String>("auflegen")'));
+      expect(nurBauen(kt), contains('contentDescription = auflegen'));
+    });
+
+    test('KEINE neue l10n-Schluessel erfunden', () {
+      // `hangUp` gibt es laengst und ist in allen 28 Sprachen uebersetzt —
+      // ein neuer Schluessel waere 28 handgeschriebene Saetze fuer nichts.
+      final de = jsonDecode(File('lib/l10n/app_de.arb').readAsStringSync())
+          as Map<String, dynamic>;
+      expect(de.containsKey('hangUp'), isTrue);
+      expect(de.containsKey('anruffensterAuflegen'), isFalse,
+          reason: 'kein Ersatz fuer einen vorhandenen Schluessel');
+    });
+
+    test('hangUp ist in allen 28 Sprachen da und nirgends englisch geblieben',
+        () {
+      final dateien = Directory('lib/l10n')
+          .listSync()
+          .whereType<File>()
+          .where((f) => f.path.contains('app_') && f.path.endsWith('.arb'))
+          .toList();
+      expect(dateien.length, 28);
+      final en = (jsonDecode(File('lib/l10n/app_en.arb').readAsStringSync())
+          as Map<String, dynamic>)['hangUp'] as String;
+      for (final f in dateien) {
+        final code = f.path.split('app_').last.replaceAll('.arb', '');
+        final wert =
+            (jsonDecode(f.readAsStringSync()) as Map<String, dynamic>)['hangUp'];
+        expect(wert, isNotNull, reason: '$code hat kein hangUp');
+        if (code != 'en') {
+          expect(wert, isNot(en), reason: '$code ist englisch geblieben');
+        }
+      }
+    });
+
+    test('die Karte ist deckend genug fuer eine FREMDE App darunter', () {
+      final b = nurBauen(kt);
+      // Die Karte liegt ueber einer beliebigen App. Bei 90 % Deckung stand
+      // weisser Text auf einer hellen Webseite und war nicht zu lesen.
+      expect(b, contains('#F2142C17'));
+      expect(b, isNot(contains('#E6142C17')));
+      expect(b, contains('elevation'),
+          reason: 'ohne Schatten wirkt sie wie ein Teil der fremden App');
+    });
+
+    test('der Titel bleibt einzeilig', () {
+      // Ein langer Titel (28 Sprachen, teils deutlich laenger als das
+      // Deutsche) darf die Karte nicht zu einem Block wachsen lassen.
+      final b = nurBauen(kt);
+      expect(b, contains('maxLines = 1'));
+      expect(b, contains('TruncateAt.END'));
+    });
+
+    test('die beiden Vektoren sind gueltig und tragen die amtliche Geometrie',
+        () {
+      // ⚠️ Die XML-Kommentare werden weggeraeumt, BEVOR gesucht wird. Der
+      // Kommentar der Datei erklaert, warum dort kein `android:tint` steht —
+      // und liess die Zusicherung darunter fehlschlagen, obwohl die Datei
+      // richtig war. Dieselbe Falle wie bei den Zeilenkommentaren im Kotlin.
+      String ohneXmlKommentare(String q) =>
+          q.replaceAll(RegExp(r'<!--.*?-->', dotAll: true), '');
+      for (final roh in [laeuftSvg, auflegenSvg]) {
+        final svg = ohneXmlKommentare(roh);
+        // Material Symbols zeichnen in 960x960 — eine andere Groesse hiesse,
+        // die Pfaddaten waeren von Hand veraendert worden.
+        expect(svg, contains('android:viewportWidth="960"'));
+        expect(svg, contains('android:viewportHeight="960"'));
+        expect(svg, contains('android:pathData="M'));
+        expect(svg, contains('android:fillColor="#FFFFFFFF"'),
+            reason: 'weiss, damit setColorFilter des Aufrufers greift');
+        // ⚠️ Kein `android:tint`: die Farbe setzt der Aufrufer, damit dieselbe
+        // Datei auch woanders benutzbar bleibt.
+        expect(svg, isNot(contains('android:tint')));
+      }
+      expect(ohneXmlKommentare(laeuftSvg).length, greaterThan(400));
+      expect(ohneXmlKommentare(auflegenSvg).length, greaterThan(400));
     });
   });
 }
