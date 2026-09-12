@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.96.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.96.0...v1.96.1) (2026-09-12)
+
+
+### Bug Fixes
+
+* **bedienungshilfen:** nichtlineare Schriftskalierung ab Android 14 erhalten ([#391](https://github.com/ICD360S-e-V/mitglieder/issues/391)) ([349e8d5](https://github.com/ICD360S-e-V/mitglieder/commit/349e8d5a51912e9a92876ae1baaf9a31173a2859))
+
 ## [1.96.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.95.0...v1.96.0) (2026-09-12)
 
 
