@@ -481,46 +481,107 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     );
     _log.info('MitgliedDash: VoiceCallService.handleIncomingCall() called - state should be RINGING now', tag: 'CALL');
 
-    // Navigate to full-screen native call screen
+    // 🔴 Der Klingelschirm muss von SELBST verschwinden, wenn der Anrufer
+    // auflegt. Bis zum 11.09.2026 tat er das nicht: auf `callEndedStream`
+    // hoerte einzig der Live-Chat-Dialog, und der ist beim Klingeln vom
+    // Dashboard aus gar nicht offen. Ein Broadcast-Strom puffert nichts, das
+    // Ereignis war also verloren. An echten Protokollen des 11.09.2026
+    // gemessen: der Anrufer legt nach ~30 s auf, hier laeutet es weiter, und
+    // wer danach abnimmt, baut eine Verbindung zu einer Gegenstelle auf, die
+    // es nicht mehr gibt — fuenfmal an einem Abend.
+    StreamSubscription<CallEndedEvent>? endeAbo;
+    var offen = true;
+    void schliessen(BuildContext ctx) {
+      if (!offen) return;
+      offen = false;
+      endeAbo?.cancel();
+      endeAbo = null;
+      Navigator.of(ctx).pop();
+    }
+
     Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true,
-        builder: (ctx) => NativeCallScreen(
-          remoteName: event.callerName,
-          isIncoming: true,
-          isVideo: _voiceCallService.offerSendsVideo(event.sdp),
-          isActive: false,
-          isMuted: false,
-          isSpeakerOn: true,
-          onAccept: () {
-            _log.info('🟢🟢🟢 ACCEPT BUTTON PRESSED!', tag: 'CALL');
-            _log.info('🟢 Event: ${event.callerName} from conv ${event.conversationId}', tag: 'CALL');
-            _log.info('🟢 SDP Type: ${event.sdpType}', tag: 'CALL');
-            _log.info('🟢 SDP Length: ${event.sdp.length} chars', tag: 'CALL');
-            _log.info('🟢 Calling _acceptCall()...', tag: 'CALL');
-            _acceptCall(event);
-            _log.info('🟢 _acceptCall() returned', tag: 'CALL');
-          },
-          onReject: () {
-            _log.info('MitgliedDash: Call rejected', tag: 'CALL');
-            Navigator.of(ctx).pop();
-            _chatService.sendCallReject(event.conversationId, 'rejected');
-          },
-          onToggleMute: () {
-            // Will be implemented in active call
-          },
-          onToggleSpeaker: () {
-            // Will be implemented in active call
-          },
-          onEndCall: () {
-            Navigator.of(ctx).pop();
-          },
-        ),
+        builder: (ctx) {
+          // ⚠️ `ctx` ueberlebt hier bewusst den Sprung: der Zuhoerer feuert
+          // erst spaeter. `offen` faengt den Fall ab, dass der Schirm
+          // inzwischen schon weg ist.
+          endeAbo ??= _chatService.callEndedStream.listen((e) {
+            if (e.conversationId != event.conversationId || !offen) return;
+            _log.info(
+              'MitgliedDash: Anrufer hat aufgelegt (conv ${e.conversationId}) — Klingelschirm schliesst sich',
+              tag: 'CALL',
+            );
+            if (!ctx.mounted) return;
+            schliessen(ctx);
+            _anrufWeggemeldet();
+          });
+          return NativeCallScreen(
+            remoteName: event.callerName,
+            isIncoming: true,
+            isVideo: _voiceCallService.offerSendsVideo(event.sdp),
+            isActive: false,
+            isMuted: false,
+            isSpeakerOn: true,
+            onAccept: () {
+              _log.info('🟢🟢🟢 ACCEPT BUTTON PRESSED!', tag: 'CALL');
+              _log.info('🟢 Event: ${event.callerName} from conv ${event.conversationId}', tag: 'CALL');
+              _log.info('🟢 SDP Type: ${event.sdpType}', tag: 'CALL');
+              _log.info('🟢 SDP Length: ${event.sdp.length} chars', tag: 'CALL');
+              _log.info('🟢 Calling _acceptCall()...', tag: 'CALL');
+              // ⚠️ Bei Erfolg ersetzt `_acceptCall` diesen Schirm selbst —
+              // hier darf also NICHT gepoppt werden. Nur der Fehlschlag
+              // braucht einen Ausgang, sonst bliebe der Schirm stumm stehen.
+              _acceptCall(event, beiFehlschlag: () {
+                if (!ctx.mounted) return;
+                schliessen(ctx);
+                _anrufWeggemeldet();
+              });
+              _log.info('🟢 _acceptCall() returned', tag: 'CALL');
+            },
+            onReject: () {
+              _log.info('MitgliedDash: Call rejected', tag: 'CALL');
+              schliessen(ctx);
+              // ⚠️ Ueber den DIENST, nicht an ihm vorbei: `rejectCall()`
+              // sendet die Absage UND raeumt auf. Der direkte Weg ueber
+              // `_chatService` liess den Dienst auf `ringing` stehen — der
+              // naechste eingehende Anruf wurde dann als „besetzt"
+              // abgewiesen, ohne dass jemand telefonierte.
+              _voiceCallService.rejectCall();
+            },
+            onToggleMute: () {
+              // Will be implemented in active call
+            },
+            onToggleSpeaker: () {
+              // Will be implemented in active call
+            },
+            onEndCall: () {
+              schliessen(ctx);
+              _voiceCallService.rejectCall();
+            },
+          );
+        },
+      ),
+    ).then((_) {
+      offen = false;
+      endeAbo?.cancel();
+      endeAbo = null;
+    });
+  }
+
+  /// Sagt, dass der Anruf weg ist. ⚠️ Ohne diese Meldung waere der
+  /// verschwindende Klingelschirm nicht von einem Absturz zu unterscheiden.
+  void _anrufWeggemeldet() {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Der Anrufer hat aufgelegt.'),
+        duration: Duration(seconds: 3),
       ),
     );
   }
 
-  void _acceptCall(CallOfferEvent event) async {
+  void _acceptCall(CallOfferEvent event, {VoidCallback? beiFehlschlag}) async {
     _log.info('🎯🎯🎯 _acceptCall() STARTED for ${event.callerName}', tag: 'CALL');
     _log.info('🎯 Conversation ID: ${event.conversationId}', tag: 'CALL');
 
@@ -531,7 +592,13 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       _log.info('🎯 VoiceCallService.acceptCall() returned: $accepted', tag: 'CALL');
 
       if (!accepted) {
+        // 🔴 Der haeufigste Grund ist kein Fehler, sondern Zeitablauf: der
+        // Anrufer hat aufgelegt, der Dienst steht wieder auf `idle`, und
+        // `acceptCall()` weist einen falschen Zustand ab. Bis zum 11.09.2026
+        // blieb der Klingelschirm danach stehen und tat gar nichts — zu
+        // spaet getippt sah aus wie eine kaputte App.
         _log.error('❌ Call was NOT accepted by VoiceCallService!', tag: 'CALL');
+        beiFehlschlag?.call();
         return;
       }
 

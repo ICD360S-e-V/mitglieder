@@ -205,6 +205,7 @@ class VoiceCallService {
   /// Das Abo lebt so lange wie die App und wird bei `_cleanup()` NICHT
   /// abgebaut: es gehoert zum Dienst, nicht zum einzelnen Anruf.
   StreamSubscription<IceCandidateEvent>? _signalIceAbo;
+  StreamSubscription<CallEndedEvent>? _signalEndeAbo;
 
   // Call state
   CallState _callState = CallState.idle;
@@ -354,6 +355,7 @@ class VoiceCallService {
   factory VoiceCallService() => _instance;
   VoiceCallService._internal() {
     _signalIceAbo = _chatService.iceCandidateStream.listen(_signalIceKandidat);
+    _signalEndeAbo = _chatService.callEndedStream.listen(_signalAnrufBeendet);
   }
 
   final ChatService _chatService = ChatService();
@@ -366,6 +368,35 @@ class VoiceCallService {
   /// Kandidaten des Anrufers folgen der Einladung erst ~80 ms spaeter.
   /// Ist kein Anruf im Gang, ist das Feld `null` und ein Kandidat wird
   /// verworfen — nicht in eine Warteschlange gelegt, die niemand mehr leert.
+  /// Die Gegenstelle hat aufgelegt — gehoert in den DIENST, nicht in einen Dialog.
+  ///
+  /// 🔴 Bis zum 11.09.2026 hoerte auf `callEndedStream` ausschliesslich der
+  /// Chat-Dialog. Klingelt das Telefon aber vom Dashboard aus, ist dieser
+  /// Dialog gar nicht offen — und ein Broadcast-Strom puffert nichts, das
+  /// Ereignis war also verloren. Folge, an echten Protokollen des 11.09.2026
+  /// gemessen: der Anrufer legt nach ~30 s auf, der Klingelschirm der
+  /// Gegenseite laeutet weiter, und wer danach abnimmt, baut eine Verbindung
+  /// zu einer Gegenstelle auf, die es nicht mehr gibt. Der Server antwortete
+  /// darauf sogar mit `{"error":"No active call"}`; die App drehte trotzdem
+  /// 15 Sekunden „verbinde…", bis ICE aufgab. **Fuenfmal an einem Abend** —
+  /// das ist der „erste Anruf geht nie, der zweite schon".
+  ///
+  /// ⚠️ Dieselbe Fehlerklasse wie die verlorenen ICE-Kandidaten direkt
+  /// darueber: ein Ereignis, dessen einziger Zuhoerer ein Widget war.
+  void _signalAnrufBeendet(CallEndedEvent event) {
+    if (_currentConversationId == null) return;
+    if (event.conversationId != _currentConversationId) return;
+    // ⚠️ `idle` heisst: hier ist schon aufgeraeumt (oft durch den Dialog, der
+    // denselben Strom hoert). Ein zweiter Durchlauf wuerde nur einen weiteren
+    // Zustandswechsel `idle → idle` melden und die Protokolle truebe machen.
+    if (_callState == CallState.idle) return;
+    _log.info(
+      'VoiceCallService: Gegenstelle hat aufgelegt (conv ${event.conversationId}) — Zustand war $_callState',
+      tag: 'CALL',
+    );
+    handleCallEnded();
+  }
+
   void _signalIceKandidat(IceCandidateEvent event) {
     if (_currentConversationId == null) return;
     if (event.conversationId != _currentConversationId) return;
@@ -1423,6 +1454,8 @@ class VoiceCallService {
     _cleanup();
     _signalIceAbo?.cancel();
     _signalIceAbo = null;
+    _signalEndeAbo?.cancel();
+    _signalEndeAbo = null;
     _ringbackPlayer?.dispose();
     _sfxPlayer?.dispose();
     _callStateController.close();
