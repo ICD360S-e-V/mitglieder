@@ -55,11 +55,17 @@ class ChatAttachmentItem extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        _formatFileSize(size),
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: isOwn ? Colors.white70 : context.colors.textSecondary,
+                      // Flexible: Dateigröße plus Prüfsiegel passten bei
+                      // vergrößerter Schrift nicht mehr in die Blase.
+                      Flexible(
+                        child: Text(
+                          _formatFileSize(size),
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: isOwn ? Colors.white70 : context.colors.textSecondary,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const SizedBox(width: 4),

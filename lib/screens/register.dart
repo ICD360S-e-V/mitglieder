@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/update_service.dart';
+import '../utils/responsive.dart';
 import '../widgets/register_tab.dart';
 import 'login.dart'; // Used for redirect after registration
 import 'webview_screen.dart';
@@ -35,28 +36,6 @@ class _RegisterPageState extends State<RegisterPage> {
     });
   }
 
-  // Helper function for responsive font size
-  double _getResponsiveFontSize(BuildContext context, double baseSize) {
-    final width = MediaQuery.of(context).size.width;
-    if (width < 360) {
-      return baseSize * 0.85;
-    } else if (width < 400) {
-      return baseSize * 0.95;
-    }
-    return baseSize;
-  }
-
-  // Helper function for responsive spacing
-  double _getResponsiveSpacing(BuildContext context, double baseSize) {
-    final width = MediaQuery.of(context).size.width;
-    if (width < 360) {
-      return baseSize * 0.5; // 50% pentru ecrane foarte mici
-    } else if (width < 400) {
-      return baseSize * 0.75; // 75% pentru ecrane mici
-    }
-    return baseSize;
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -85,7 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Text(
                         l10n.becomeMember,
                         style: TextStyle(
-                          fontSize: _getResponsiveFontSize(context, 20),
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -153,16 +132,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: _getResponsiveSpacing(context, 16),
-        horizontal: _getResponsiveSpacing(context, 20),
+        vertical: Responsive.space(context, 16),
+        horizontal: Responsive.space(context, 20),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Wrap(
             alignment: WrapAlignment.center,
-            spacing: _getResponsiveSpacing(context, 8),
-            runSpacing: _getResponsiveSpacing(context, 4),
+            spacing: Responsive.space(context, 8),
+            runSpacing: Responsive.space(context, 4),
             children: [
               _buildFooterLink(l10n.imprint, 'https://icd360s.de/impressum'),
               _buildFooterDivider(),
@@ -171,20 +150,20 @@ class _RegisterPageState extends State<RegisterPage> {
               _buildFooterLink(l10n.statutes, 'https://icd360s.de/satzung360s/'),
             ],
           ),
-          SizedBox(height: _getResponsiveSpacing(context, 12)),
+          SizedBox(height: Responsive.space(context, 12)),
           Text(
             'v${UpdateService.currentVersion}',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
-              fontSize: _getResponsiveFontSize(context, 11),
+              fontSize: 11,
             ),
           ),
-          SizedBox(height: _getResponsiveSpacing(context, 4)),
+          SizedBox(height: Responsive.space(context, 4)),
           Text(
             '© 2025-${DateTime.now().year} ICD360S e.V.',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
-              fontSize: _getResponsiveFontSize(context, 11),
+              fontSize: 11,
             ),
           ),
         ],
@@ -204,7 +183,7 @@ class _RegisterPageState extends State<RegisterPage> {
           text,
           style: TextStyle(
             color: Colors.white.withValues(alpha: 0.7),
-            fontSize: _getResponsiveFontSize(context, 12),
+            fontSize: 12,
             decoration: TextDecoration.underline,
             decorationColor: Colors.white.withValues(alpha: 0.5),
           ),
@@ -216,7 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget _buildFooterDivider() {
     return Text(
       '|',
-      style: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: _getResponsiveFontSize(context, 12)),
+      style: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 12),
     );
   }
 }

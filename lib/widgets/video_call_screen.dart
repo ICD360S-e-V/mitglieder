@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import '../l10n/app_localizations.dart';
 import '../services/voice_call_service.dart';
+import '../utils/responsive.dart';
 
 /// Full-screen 1:1 video call UI: the remote camera fills the screen, a small
 /// local preview sits in the corner, with mute / camera-toggle / switch-camera /
@@ -76,8 +77,18 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     _remoteSub?.cancel();
     _stateSub?.cancel();
     _durationTimer?.cancel();
-    _localRenderer.srcObject = null;
-    _remoteRenderer.srcObject = null;
+    // Nur abräumen, was auch aufgebaut wurde.
+    //
+    // _initRenderers() ist asynchron. Wer den Bildschirm schließt, bevor
+    // initialize() durch ist — oder auf einem Gerät, auf dem es scheitert —
+    // landete hier auf einem uninitialisierten Renderer: `srcObject = null`
+    // wirft dann „Call initialize before setting the stream". Die Ausnahme
+    // flog aus dispose() heraus, weshalb die beiden dispose()-Aufrufe darunter
+    // nie liefen und die Renderer offen blieben.
+    if (_renderersReady) {
+      _localRenderer.srcObject = null;
+      _remoteRenderer.srcObject = null;
+    }
     _localRenderer.dispose();
     _remoteRenderer.dispose();
     super.dispose();
@@ -251,23 +262,36 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     required VoidCallback onTap,
     Color? color,
   }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: color ?? Colors.white24,
+    // Expanded: die vier Schaltflächen teilen sich die Zeile zu gleichen
+    // Teilen. Vorher bestimmte die Beschriftung die Breite, und auf einem
+    // schmalen Telefon mit großer Schrift lief die Leiste über — mitsamt dem
+    // Auflegen-Knopf ganz rechts.
+    return Expanded(
+      child: GestureDetector(
+        onTap: onTap,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: Responsive.scaled(context, 60),
+              height: Responsive.scaled(context, 60),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: color ?? Colors.white24,
+              ),
+              child: Icon(icon,
+                  color: Colors.white, size: Responsive.scaled(context, 28)),
             ),
-            child: Icon(icon, color: Colors.white, size: 28),
-          ),
-          const SizedBox(height: 6),
-          Text(label, style: const TextStyle(color: Colors.white70, fontSize: 11)),
-        ],
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: const TextStyle(color: Colors.white70, fontSize: 11),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
       ),
     );
   }

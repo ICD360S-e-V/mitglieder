@@ -275,7 +275,10 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
                         ),
                         if (!available) ...[
                           const SizedBox(width: 8),
-                          Container(
+                          // Flexible: „demnächst verfügbar" neben dem Namen der
+                          // Zahlungsart sprengte bei großer Schrift die Zeile.
+                          Flexible(
+                            child: Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 3),
                             decoration: BoxDecoration(
@@ -295,6 +298,9 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: 0.4,
                               ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                             ),
                           ),
                         ],

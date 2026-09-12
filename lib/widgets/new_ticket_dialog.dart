@@ -237,15 +237,20 @@ class _NewTicketDialogState extends State<NewTicketDialog> {
                 const SizedBox(height: 16),
 
                 // Action buttons
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                // Wrap statt Row: „Abbrechen" und „Absenden" nebeneinander
+                // passten auf Telefonbreite nicht in eine Zeile — abgeschnitten
+                // wurde die Schaltfläche zum Absenden. Jetzt rutscht sie
+                // darunter, statt zu verschwinden.
+                Wrap(
+                  alignment: WrapAlignment.end,
+                  spacing: 8,
+                  runSpacing: 8,
                   children: [
                     TextButton(
                       onPressed:
                           _isSubmitting ? null : () => Navigator.pop(context, false),
                       child: Text(AppLocalizations.of(context)!.cancel),
                     ),
-                    const SizedBox(width: 8),
                     ElevatedButton(
                       onPressed: _isSubmitting ? null : _submitTicket,
                       style: ElevatedButton.styleFrom(

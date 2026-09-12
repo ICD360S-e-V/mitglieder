@@ -7,6 +7,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
+import '../utils/responsive.dart';
 import '../widgets/wizard_step_shell.dart';
 import '../utils/app_theme.dart';
 
@@ -260,7 +261,9 @@ class _WizardDocumentAcceptScreenState
 
   Widget _inlineWebView(AppLocalizations l10n) {
     return Container(
-      height: 360,
+      // Auf einem 568 dp hohen Telefon nahm die feste Höhe fast den ganzen
+      // Bildschirm ein; das Dokument scrollt ohnehin in sich selbst.
+      height: Responsive.scaled(context, 360),
       decoration: BoxDecoration(
         color: context.colors.card,
         borderRadius: BorderRadius.circular(12),

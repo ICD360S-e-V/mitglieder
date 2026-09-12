@@ -133,6 +133,8 @@ class BeitragCard extends StatelessWidget {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         AppLocalizations.of(context)!.annualFeeYear(beitragJahr.toString()),
@@ -140,6 +142,8 @@ class BeitragCard extends StatelessWidget {
                           color: context.colors.textSecondary,
                           fontSize: 13,
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
@@ -152,45 +156,76 @@ class BeitragCard extends StatelessWidget {
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
                 else
-                  _BeitragStatusBadge(beitragBezahlt: beitragBezahlt),
+                  // Flexible, damit die Plakette auf einem schmalen Gerät
+                  // nachgibt statt den Titel daneben auf null zu drücken —
+                  // der brach dann Buchstabe für Buchstabe um.
+                  Flexible(
+                    child: _BeitragStatusBadge(beitragBezahlt: beitragBezahlt),
+                  ),
               ],
             ),
             const SizedBox(height: 16),
             const Divider(),
             const SizedBox(height: 12),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.amount,
-                  style: TextStyle(color: context.colors.textSecondary),
-                ),
-                const Text(
-                  '50,00 €',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            // Beschriftung links flexibel, Wert rechts ebenso: beide sind
+            // übersetzt bzw. wachsen mit der Systemschrift, und zusammen waren
+            // sie breiter als die Karte.
+            _BeitragZeile(
+              label: AppLocalizations.of(context)!.amount,
+              value: '50,00 €',
+              valueStyle: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.dueBy,
-                  style: TextStyle(color: context.colors.textSecondary),
-                ),
-                Text(
-                  '31.03.$beitragJahr',
-                  style: const TextStyle(fontWeight: FontWeight.w500),
-                ),
-              ],
+            _BeitragZeile(
+              label: AppLocalizations.of(context)!.dueBy,
+              value: '31.03.$beitragJahr',
+              valueStyle: const TextStyle(fontWeight: FontWeight.w500),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Eine Zeile „Beschriftung … Wert" im Beitragsblock.
+class _BeitragZeile extends StatelessWidget {
+  final String label;
+  final String value;
+  final TextStyle valueStyle;
+
+  const _BeitragZeile({
+    required this.label,
+    required this.value,
+    required this.valueStyle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Text(
+            label,
+            style: TextStyle(color: context.colors.textSecondary),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        const SizedBox(width: 8),
+        Flexible(
+          child: Text(
+            value,
+            style: valueStyle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -226,13 +261,17 @@ class _BeitragStatusBadge extends StatelessWidget {
                 : context.colors.warningFg,
           ),
           const SizedBox(width: 6),
-          Text(
-            beitragBezahlt ? AppLocalizations.of(context)!.paid : AppLocalizations.of(context)!.statusPending,
-            style: TextStyle(
-              color: beitragBezahlt
-                  ? context.colors.successFg
-                  : context.colors.warningFg,
-              fontWeight: FontWeight.w600,
+          Flexible(
+            child: Text(
+              beitragBezahlt ? AppLocalizations.of(context)!.paid : AppLocalizations.of(context)!.statusPending,
+              style: TextStyle(
+                color: beitragBezahlt
+                    ? context.colors.successFg
+                    : context.colors.warningFg,
+                fontWeight: FontWeight.w600,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],
@@ -311,7 +350,11 @@ class MeineTerminePlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    return Center(
+    // Scrollbar: der leere Zustand ist bei vergrößerter Systemschrift höher als
+    // der Bereich, in dem er steckt — sonst verschwindet der Knopf zum Laden.
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(24),
+      child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -342,6 +385,7 @@ class MeineTerminePlaceholder extends StatelessWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }

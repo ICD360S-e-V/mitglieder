@@ -21,7 +21,10 @@ class MitgliedSidebar extends StatelessWidget {
     return Container(
       width: 250,
       color: const Color(0xFF1a1a2e),
-      child: Column(
+      // Scrollbar: bei vergrößerter Systemschrift brauchen Benutzerzeile und
+      // vier zweizeilige Menüpunkte mehr Höhe, als die Leiste hat.
+      child: SingleChildScrollView(
+        child: Column(
         children: [
           // User info in sidebar
           Container(
@@ -102,8 +105,8 @@ class MitgliedSidebar extends StatelessWidget {
             onTap: onIndexChanged,
           ),
 
-          const Spacer(),
         ],
+        ),
       ),
     );
   }
@@ -150,12 +153,19 @@ class _SidebarItem extends StatelessWidget {
                 size: 22,
               ),
               const SizedBox(width: 14),
-              Text(
-                title,
-                style: TextStyle(
-                  color: isSelected ? Colors.white : context.colors.textDisabled,
-                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                  fontSize: 14,
+              // Expanded + Umbruch: „Mitglieder Verwaltung" passte schon auf
+              // Deutsch nicht in die 250 dp breite Leiste, bei vergrößerter
+              // Systemschrift erst recht nicht.
+              Expanded(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: isSelected ? Colors.white : context.colors.textDisabled,
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                    fontSize: 14,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],

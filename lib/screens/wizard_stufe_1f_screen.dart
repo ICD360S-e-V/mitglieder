@@ -157,13 +157,19 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
               Icon(Icons.alternate_email,
                   color: Colors.white.withValues(alpha: 0.85), size: 18),
               const SizedBox(width: 8),
-              Text(
-                l10n.wizardStufe1fEmailLabel,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.85),
-                  fontSize: 12.5,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.3,
+              // Expanded: die Beschriftung ist übersetzt und stand neben dem
+              // Symbol auf schmalen Geräten über dem Rand.
+              Expanded(
+                child: Text(
+                  l10n.wizardStufe1fEmailLabel,
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.85),
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.3,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],

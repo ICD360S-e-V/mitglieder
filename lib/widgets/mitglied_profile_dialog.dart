@@ -12,6 +12,7 @@ import 'dokumente_tab.dart';
 import 'mitglieder_device.dart';
 import 'mitgliedschaft_tab.dart';
 import '../utils/app_theme.dart';
+import '../utils/responsive.dart';
 
 /// Die Einwilligung zu den SMS-Erinnerungen lässt sich hier jederzeit
 /// ändern. Art. 7 Abs. 3 DSGVO verlangt das ausdrücklich: der Widerruf muss
@@ -300,13 +301,18 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
     });
   }
 
+  /// 550×720 ist das Wunschmaß vom Desktop. Auf einem Telefon mit 640 dp
+  /// nutzbarer Höhe war das schlicht ein Überlauf.
+  Size _groesse(BuildContext context) =>
+      Responsive.dialogSize(context, width: 550, height: 720);
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: SizedBox(
-        width: 550,
-        height: 720,
+        width: _groesse(context).width,
+        height: _groesse(context).height,
         child: Column(
           children: [
             // Header
@@ -345,19 +351,33 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
+                          // Zwei Zeilen, dann Auslassung. Ohne Grenze brach ein
+                          // ausgeschriebener Name bei 200 % Systemschrift auf
+                          // ein halbes Dutzend Zeilen um — die Kopfzeile wurde
+                          // höher als der Dialog, und für die Reiter und ihren
+                          // Inhalt blieb nichts übrig.
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 4),
                         Row(
                           children: [
-                            Text(
-                              widget.mitgliedernummer,
-                              style: const TextStyle(
-                                color: Colors.white70,
-                                fontSize: 14,
+                            // Flexible: Nummer und Statusplakette nebeneinander
+                            // passten auf einem Telefon nicht in die Kopfzeile.
+                            Flexible(
+                              child: Text(
+                                widget.mitgliedernummer,
+                                style: const TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 14,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                             const SizedBox(width: 8),
-                            Container(
+                            Flexible(
+                              child: Container(
                               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                               decoration: BoxDecoration(
                                 color: widget.status == 'neu'
@@ -370,6 +390,8 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
                                   final l10n = AppLocalizations.of(context)!;
                                   return Text(
                                     widget.status == 'neu' ? l10n.newBadge : l10n.verified,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 11,
@@ -377,6 +399,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
                                     ),
                                   );
                                 },
+                              ),
                               ),
                             ),
                           ],
@@ -399,6 +422,12 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
                   color: context.colors.dividerSubtle,
                   child: TabBar(
                     controller: _tabController,
+                    // Sechs Reiter, jeder mit Material-Mindestbreite: auf einem
+                    // Telefon lief die Leiste rechts hinaus, und die letzten
+                    // beiden — Dokumente und Mitgliedschaft — waren schlicht
+                    // nicht erreichbar.
+                    isScrollable: true,
+                    tabAlignment: TabAlignment.center,
                     labelColor: context.colors.brand,
                     unselectedLabelColor: context.colors.textSecondary,
                     indicatorColor: context.colors.brandFill,
@@ -1006,9 +1035,15 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
       children: [
         Icon(icon, color: color, size: 20),
         const SizedBox(width: 8),
-        Text(
-          title,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: color),
+        // Die Abschnittsüberschriften sind übersetzt und teils lang; neben dem
+        // Symbol bleibt auf einem schmalen Gerät wenig Platz.
+        Expanded(
+          child: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: color),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );

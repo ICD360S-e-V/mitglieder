@@ -293,23 +293,34 @@ class _AnonymousChatScreenState extends State<AnonymousChatScreen> {
                       ),
                     ),
                     const SizedBox(width: 6),
-                    Text(
-                      _wsConnected
-                          ? l10n.claudiuAnonymousChatOnline
-                          : l10n.claudiuAnonymousChatOffline,
-                      style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.85),
-                        fontSize: 11.5,
+                    // Beide Beschriftungen flexibel: Verbindungszustand und
+                    // Sitzungsname zusammen passten auf einem schmalen Gerät
+                    // nicht neben den Punkt.
+                    Flexible(
+                      child: Text(
+                        _wsConnected
+                            ? l10n.claudiuAnonymousChatOnline
+                            : l10n.claudiuAnonymousChatOffline,
+                        style: TextStyle(
+                          color: Colors.white.withValues(alpha: 0.85),
+                          fontSize: 11.5,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     if (_session != null) ...[
                       const SizedBox(width: 10),
-                      Text(
-                        _session!.name,
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: 0.65),
-                          fontSize: 11.5,
-                          fontStyle: FontStyle.italic,
+                      Flexible(
+                        child: Text(
+                          _session!.name,
+                          style: TextStyle(
+                            color: Colors.white.withValues(alpha: 0.65),
+                            fontSize: 11.5,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],

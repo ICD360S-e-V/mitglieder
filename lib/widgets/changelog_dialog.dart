@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../utils/app_theme.dart';
+import '../utils/responsive.dart';
 
 /// Changelog Dialog - displays version history with detailed changes
 class ChangelogDialog extends StatefulWidget {
@@ -25,7 +26,6 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
   }
 
   Future<void> _loadChangelog() async {
-    final failedText = AppLocalizations.of(context)!.failedLoadChangelog;
     setState(() {
       _isLoading = true;
       _error = null;
@@ -33,6 +33,7 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
 
     try {
       final response = await _apiService.getChangelog();
+      if (!mounted) return;
 
       if (response['versions'] != null) {
         setState(() {
@@ -42,29 +43,39 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
         });
       } else {
         setState(() {
-          _error = response['error'] ?? failedText;
+          _error = response['error'] ?? _fehlertext;
           _isLoading = false;
         });
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
-        _error = '$failedText: $e';
+        _error = '$_fehlertext: $e';
         _isLoading = false;
       });
     }
   }
 
+  /// Erst hier nachgeschlagen, nicht mehr am Anfang von [_loadChangelog].
+  /// Das lief aus initState() heraus, und AppLocalizations.of() darf zu diesem
+  /// Zeitpunkt noch nicht abgefragt werden — Flutter bricht im Debug-Build mit
+  /// einer Zusicherung ab, sobald jemand den Verlauf öffnet.
+  String get _fehlertext => AppLocalizations.of(context)!.failedLoadChangelog;
+
   @override
   Widget build(BuildContext context) {
+    // Wunschmaß für den Desktop, gedeckelt auf das, was das Fenster hergibt —
+    // sonst ragt der Verlauf auf dem Telefon unten heraus.
+    final size = Responsive.dialogSize(context, width: 700, height: 600);
     return Dialog(
       backgroundColor: const Color(0xFF1E1E1E),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
       child: Container(
-        width: 700,
-        height: 600,
-        padding: const EdgeInsets.all(24),
+        width: size.width,
+        height: size.height,
+        padding: EdgeInsets.all(Responsive.space(context, 24)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -77,15 +88,20 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
                   size: 28,
                 ),
                 const SizedBox(width: 12),
-                Text(
-                  AppLocalizations.of(context)!.versionHistory,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+                // Expanded statt Spacer: die Überschrift ist übersetzt und
+                // stand auf Telefonbreite über dem Schließen-Knopf hinaus.
+                Expanded(
+                  child: Text(
+                    AppLocalizations.of(context)!.versionHistory,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                const Spacer(),
                 IconButton(
                   icon: const Icon(Icons.close, color: Colors.white70),
                   onPressed: () => Navigator.of(context).pop(),
@@ -125,7 +141,9 @@ class _ChangelogDialogState extends State<ChangelogDialog> {
   }
 
   Widget _buildErrorState() {
-    return Center(
+    // Scrollbar: bei 200 % Systemschrift ist die Fehlermeldung höher als der
+    // Platz im Dialog — sonst fehlt unten der Knopf zum Wiederholen.
+    return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

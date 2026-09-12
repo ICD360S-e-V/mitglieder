@@ -97,9 +97,25 @@ class _NativeCallScreenState extends State<NativeCallScreen>
     return Scaffold(
       backgroundColor: const Color(0xFF1a1a2e),
       body: SafeArea(
-        child: widget.isIncoming && !widget.isActive
-            ? _buildIncomingCallUI()
-            : _buildActiveCallUI(),
+        // Beide Anrufoberflächen sind Spalten aus festen Abständen, Avatar und
+        // Schaltflächen. Auf einem kurzen Telefon — oder bei großgestellter
+        // Systemschrift — sind sie höher als der Bildschirm, und abgeschnitten
+        // wird unten: dort sitzt der Auflegen-Knopf.
+        //
+        // Die Mindesthöhe hält den Spacer am Leben, solange Platz da ist; erst
+        // wenn es eng wird, beginnt der Inhalt zu scrollen.
+        child: LayoutBuilder(
+          builder: (context, constraints) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: IntrinsicHeight(
+                child: widget.isIncoming && !widget.isActive
+                    ? _buildIncomingCallUI()
+                    : _buildActiveCallUI(),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -452,7 +468,11 @@ class _NativeCallScreenState extends State<NativeCallScreen>
     required bool isActive,
     required VoidCallback onPressed,
   }) {
-    return Column(
+    // Expanded: die beiden Knöpfe teilen sich die Zeile. Vorher bestimmte die
+    // Beschriftung die Breite — „Lautsprecher aus" bei 200 % Systemschrift auf
+    // einem Gerät mit größter Anzeigegröße sprengte die Reihe.
+    return Expanded(
+      child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         GestureDetector(
@@ -484,8 +504,12 @@ class _NativeCallScreenState extends State<NativeCallScreen>
             color: Colors.white70,
             fontSize: 12,
           ),
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
+      ),
     );
   }
 

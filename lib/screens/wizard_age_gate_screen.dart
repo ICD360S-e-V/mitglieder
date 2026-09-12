@@ -47,13 +47,18 @@ class WizardAgeGateScreen extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
             child: Column(
               children: [
-                const Icd360sHeader(compact: true),
-                const SizedBox(height: 24),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
+                        // Markenkopf und Chat-Angebot scrollen mit. Fest
+                        // gesetzt waren sie zusammen mit dem Knopf unten bei
+                        // vergrößerter Systemschrift höher als der Bildschirm,
+                        // und abgeschnitten wurde das Ende — dort steht, wie es
+                        // weitergeht, wenn jemand zu jung ist.
+                        const Icd360sHeader(compact: true),
+                        const SizedBox(height: 24),
                         _mascot(context)
                             .animate()
                             .scale(
@@ -72,11 +77,12 @@ class WizardAgeGateScreen extends StatelessWidget {
                         _bubble(context, 
                           body: l10n.wizardAgeGateBody2,
                         ).animate().fadeIn(delay: 600.ms, duration: 400.ms),
+                        const SizedBox(height: 16),
+                        _chatAction(context, l10n),
                       ],
                     ),
                   ),
                 ),
-                _chatAction(context, l10n),
                 const SizedBox(height: 10),
                 TextButton(
                   onPressed: onExit,
