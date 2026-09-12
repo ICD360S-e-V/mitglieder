@@ -65,12 +65,51 @@ void main() {
       (tester) async {
     await pumpUeberStart(tester, schrittBildschirm());
 
-    final l10n = await AppLocalizations.delegate.load(const Locale('de'));
+    // Unten steht nur noch „Weiter". „Zurueck" haengt am Pfeil oben links,
+    // wo es auch vorher schon hing — doppelt gemoppelt hat dem schmalen
+    // Telefon nur die Breite gekostet.
+    expect(find.byType(ElevatedButton), findsOneWidget);
+    expect(find.byType(OutlinedButton), findsNothing);
+
     expect(
-      find.text(l10n.wizardExitLink),
+      find.byIcon(Icons.close),
       findsOneWidget,
       reason: 'Ohne diesen Weg ist die Anmeldung auf dem Schreibtisch-Rechner '
           'eine Sackgasse — dort gibt es keine System-Zurück-Geste.',
+    );
+    await abraeumen(tester);
+  });
+
+  testWidgets('Auf dem schmalsten Telefon bleibt das X bedienbar',
+      (tester) async {
+    // Der Ausstieg sitzt jetzt als drittes Symbol in der Kopfleiste. Genau
+    // dort wurde es eng: Pfeil, Chat und X nebeneinander, daneben die
+    // Schrittanzeige — und bei 320 px mit doppelt gestellter Systemschrift
+    // ist nichts mehr geschenkt. Ein Ziel, das halb ueber dem Rand haengt,
+    // trifft `tester.tap` trotzdem; der Mensch davor nicht.
+    tester.view.devicePixelRatio = 2.0;
+    tester.view.physicalSize = const Size(320, 568) * 2.0;
+    tester.platformDispatcher.textScaleFactorTestValue = 2.0;
+    addTearDown(tester.view.reset);
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+
+    await pumpUeberStart(tester, schrittBildschirm());
+
+    final x = find.byIcon(Icons.close);
+    expect(x, findsOneWidget);
+    final rect = tester.getRect(x);
+    expect(rect.width, greaterThan(0));
+    expect(rect.left, greaterThanOrEqualTo(0));
+    expect(
+      rect.right,
+      lessThanOrEqualTo(tester.view.physicalSize.width /
+          tester.view.devicePixelRatio),
+      reason: 'Das X haengt ueber dem rechten Rand — unerreichbar.',
+    );
+    expect(
+      tester.takeException(),
+      isNull,
+      reason: 'Die Kopfleiste ist uebergelaufen.',
     );
     await abraeumen(tester);
   });
@@ -96,7 +135,7 @@ void main() {
 
     expect(find.text(marke), findsNothing, reason: 'Wizard liegt oben');
 
-    await tester.tap(find.text(l10n.wizardExitLink));
+    await tester.tap(find.byIcon(Icons.close));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 
@@ -123,7 +162,7 @@ void main() {
     await pumpUeberStart(tester, schrittBildschirm());
     final l10n = await AppLocalizations.delegate.load(const Locale('de'));
 
-    await tester.tap(find.text(l10n.wizardExitLink));
+    await tester.tap(find.byIcon(Icons.close));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 
