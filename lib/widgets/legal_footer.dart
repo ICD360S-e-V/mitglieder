@@ -178,7 +178,12 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
         mainAxisSize: MainAxisSize.min,
         children: [
           // Line 1: Copyright + Version + Update button
-          Row(
+          //
+          // Wie die Linkzeile darunter in einer FittedBox: bei vergrößerter
+          // Systemschrift lief die Zeile sonst über den rechten Rand hinaus.
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
@@ -228,6 +233,7 @@ class _LegalFooterState extends State<LegalFooter> with SingleTickerProviderStat
                 ),
               ),
             ],
+            ),
           ),
           const SizedBox(height: 6),
           // Line 2: Links

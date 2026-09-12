@@ -157,13 +157,18 @@ class _BenachrichtigungConsentDialogState
               ),
               const SizedBox(height: 18),
 
-              Row(
+              // Wrap statt Row: die beiden Schaltflächen nebeneinander passten
+              // auf Telefonbreite nicht in eine Zeile — abgeschnitten wurde die
+              // zum Speichern.
+              Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                spacing: 8,
+                runSpacing: 8,
                 children: [
                   TextButton(
                     onPressed: _speichert ? null : _spaeter,
                     child: Text(l10n.benachrichtigungSpaeter),
                   ),
-                  const Spacer(),
                   FilledButton(
                     onPressed: _speichert || !_vollstaendig ? null : _speichern,
                     child: _speichert

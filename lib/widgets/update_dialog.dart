@@ -22,11 +22,17 @@ class _UpdateDialogState extends State<UpdateDialog> {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     return AlertDialog(
+      // Auf einem kurzen Display — oder sobald Fortschrittsbalken und
+      // Hinweiszeilen während des Downloads dazukommen — ist der Inhalt höher
+      // als der Bildschirm. Ohne das hier wurde er unten abgeschnitten.
+      scrollable: true,
       title: Row(
         children: [
           Icon(Icons.system_update, color: context.colors.infoFg),
           const SizedBox(width: 12),
-          Text(l.updateAvailable),
+          // Der Titel ist übersetzt und in mehreren Sprachen länger als im
+          // Deutschen; ohne Expanded lief er auf schmalen Geräten heraus.
+          Expanded(child: Text(l.updateAvailable)),
         ],
       ),
       content: SizedBox(

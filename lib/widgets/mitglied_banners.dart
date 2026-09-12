@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/responsive.dart';
 
 /// Banner shown for accounts with 'neu' status (trial period warning)
 class TrialWarningBanner extends StatelessWidget {
@@ -17,21 +18,6 @@ class TrialWarningBanner extends StatelessWidget {
     this.trialEndsAt,
   });
 
-  // Responsive helpers
-  double _getResponsiveFontSize(BuildContext context, double baseSize) {
-    final width = MediaQuery.of(context).size.width;
-    if (width < 360) return baseSize * 0.85;
-    if (width < 400) return baseSize * 0.95;
-    return baseSize;
-  }
-
-  double _getResponsiveSpacing(BuildContext context, double baseSize) {
-    final width = MediaQuery.of(context).size.width;
-    if (width < 360) return baseSize * 0.6;
-    if (width < 400) return baseSize * 0.8;
-    return baseSize;
-  }
-
   @override
   Widget build(BuildContext context) {
     final isUrgent = daysRemaining <= 7;
@@ -40,8 +26,8 @@ class TrialWarningBanner extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
-        horizontal: _getResponsiveSpacing(context, 16),
-        vertical: _getResponsiveSpacing(context, 12),
+        horizontal: Responsive.space(context, 16),
+        vertical: Responsive.space(context, 12),
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -55,9 +41,9 @@ class TrialWarningBanner extends StatelessWidget {
           Icon(
             isUrgent ? Icons.warning : Icons.info_outline,
             color: Colors.white,
-            size: _getResponsiveSpacing(context, 24),
+            size: Responsive.space(context, 24),
           ),
-          SizedBox(width: _getResponsiveSpacing(context, 12)),
+          SizedBox(width: Responsive.space(context, 12)),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,38 +55,38 @@ class TrialWarningBanner extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: _getResponsiveFontSize(context, 14),
+                    fontSize: 14,
                   ),
                 ),
-                SizedBox(height: _getResponsiveSpacing(context, 2)),
+                SizedBox(height: Responsive.space(context, 2)),
                 Text(
                   l10n.trialWarningDescription,
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.9),
-                    fontSize: _getResponsiveFontSize(context, 12),
+                    fontSize: 12,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 if (trialEndsAt != null) ...[
-                  SizedBox(height: _getResponsiveSpacing(context, 2)),
+                  SizedBox(height: Responsive.space(context, 2)),
                   Text(
                     DateFormat('dd.MM.yyyy').format(trialEndsAt!),
                     style: TextStyle(
                       color: Colors.white.withValues(alpha: 0.9),
                       fontWeight: FontWeight.w600,
-                      fontSize: _getResponsiveFontSize(context, 12),
+                      fontSize: 12,
                     ),
                   ),
                 ],
               ],
             ),
           ),
-          SizedBox(width: _getResponsiveSpacing(context, 12)),
+          SizedBox(width: Responsive.space(context, 12)),
           Container(
             padding: EdgeInsets.symmetric(
-              horizontal: _getResponsiveSpacing(context, 12),
-              vertical: _getResponsiveSpacing(context, 6),
+              horizontal: Responsive.space(context, 12),
+              vertical: Responsive.space(context, 6),
             ),
             decoration: BoxDecoration(
               color: Colors.white.withValues(alpha: 0.2),
@@ -111,7 +97,7 @@ class TrialWarningBanner extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: _getResponsiveFontSize(context, 13),
+                fontSize: 13,
               ),
             ),
           ),

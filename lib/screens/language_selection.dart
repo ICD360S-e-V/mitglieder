@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../services/language_service.dart';
 import '../utils/app_theme.dart';
+import '../utils/responsive.dart';
 
 /// First-launch language picker. Shown by main.dart when
 /// [LanguageService.hasUserChoice] is false. Replaces the device-locale
@@ -103,11 +104,23 @@ class LanguageSelectionScreen extends StatelessWidget {
 
     return GridView.builder(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        childAspectRatio: 0.85,
+      // Kachelbreite statt fester Spaltenzahl: drei Spalten sind auf einem
+      // 320-dp-Telefon zu eng und auf einem Tablet oder Desktop-Fenster
+      // lächerlich breit. So ergeben sich 3 Spalten auf dem Telefon und
+      // entsprechend mehr, je breiter das Fenster wird.
+      // Kachelhöhe gerechnet statt geraten.
+      //
+      // Vorher stand hier ein festes Seitenverhältnis. Das hält nur, solange
+      // die Schrift so groß ist wie gedacht: bei 200 % Systemschrift brauchen
+      // zwei Zeilen Sprachname mehr Platz als die Kachel hoch ist, und der
+      // Name lief unten heraus — auf dem allerersten Bildschirm der App, den
+      // ausgerechnet niemand überspringen kann. Jetzt wächst die Kachel mit
+      // der eingestellten Schrift mit.
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: Responsive.scaled(context, 132),
+        crossAxisSpacing: Responsive.space(context, 12),
+        mainAxisSpacing: Responsive.space(context, 12),
+        mainAxisExtent: _kachelHoehe(context),
       ),
       itemCount: languages.length,
       itemBuilder: (context, index) {
@@ -119,6 +132,21 @@ class LanguageSelectionScreen extends StatelessWidget {
         return _buildCard(context, lang, isSelected);
       },
     );
+  }
+
+  /// Höhe einer Sprachkachel: Flagge, zwei Zeilen Name, Kürzel, Luft.
+  ///
+  /// Die Textanteile gehen durch denselben TextScaler, mit dem sie auch
+  /// gezeichnet werden — der Faktor 1.3 ist der Zeilenabstand, den Flutter
+  /// für diese Schriftgrößen ansetzt.
+  static double _kachelHoehe(BuildContext context) {
+    final skalierer = MediaQuery.textScalerOf(context);
+    return Responsive.scaled(context, 36) // Flagge
+        + 8 // Abstand
+        + skalierer.scale(13) * 1.3 * 2 // zweizeiliger Sprachname
+        + 4 // Abstand
+        + skalierer.scale(10) * 1.3 // Sprachkürzel
+        + 16; // Innenabstand oben und unten
   }
 
   Widget _buildCard(BuildContext context, AppLanguage lang, bool selected) {
@@ -146,8 +174,8 @@ class LanguageSelectionScreen extends StatelessWidget {
               // SVG flag — replaces the emoji glyph which Linux/Flutter
               // can't render without a colour-emoji font present.
               SizedBox(
-                width: 48,
-                height: 36,
+                width: Responsive.scaled(context, 48),
+                height: Responsive.scaled(context, 36),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
                   child: SvgPicture.asset(

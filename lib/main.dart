@@ -25,6 +25,7 @@ import 'widgets/anruf_overlay.dart';
 import 'widgets/network_security_banner.dart';
 import 'widgets/remote_touch_overlay.dart';
 import 'utils/app_theme.dart';
+import 'utils/responsive.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -251,13 +252,22 @@ class _MitgliedAppState extends State<MitgliedApp> {
             // is the first place with a context that knows the *resolved*
             // brightness: under ThemeMode.system the answer changes when the
             // phone changes, and nothing in main() would hear about it.
+            // ResponsiveScaling liegt unter jedem Screen und jedem Dialog und
+            // ist die einzige Stelle, an der die Oberfläche an das Gerät
+            // angepasst wird: die App setzt ihre Schriftgrößen fest
+            // (fontSize: 16 usw.), gezeichnet für ein rund 390 dp breites
+            // Telefon. Hier bekommen sie die vom Mitglied eingestellte
+            // System-Schriftgröße mit — bis zu 200 %, wie die Bedienungshilfen
+            // sie hergeben.
             builder: (context, child) => AnnotatedRegion<SystemUiOverlayStyle>(
               value: AppTheme.overlayStyleFor(Theme.of(context).brightness),
-              child: RemoteTouchOverlay(
-                // During a Fernwartung session, marks where the member taps so
-                // the Vorsitzer sees it in the shared screen.
-                child: NetworkSecurityBanner(
-                  child: child ?? const SizedBox.shrink(),
+              child: ResponsiveScaling(
+                child: RemoteTouchOverlay(
+                  // During a Fernwartung session, marks where the member taps
+                  // so the Vorsitzer sees it in the shared screen.
+                  child: NetworkSecurityBanner(
+                    child: child ?? const SizedBox.shrink(),
+                  ),
                 ),
               ),
             ),

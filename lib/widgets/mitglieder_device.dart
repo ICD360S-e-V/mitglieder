@@ -64,18 +64,47 @@ class MitgliederDeviceWidget extends StatelessWidget {
       children: [
         Icon(icon, size: 20, color: context.colors.infoFg),
         const SizedBox(width: 8),
-        Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        const Spacer(),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-          decoration: BoxDecoration(
-            color: context.colors.infoBg,
-            borderRadius: BorderRadius.circular(12),
+        // Expanded statt Spacer: die Überschrift stand sonst neben der
+        // Zählplakette über dem rechten Rand.
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
-          child: Text(badge, style: TextStyle(fontSize: 12, color: context.colors.infoFg)),
+        ),
+        const SizedBox(width: 8),
+        // Auch die Plakette gibt nach: bei 200 % Schrift ist sie breit genug,
+        // um die Überschrift aus der Zeile zu drängen.
+        Flexible(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            decoration: BoxDecoration(
+              color: context.colors.infoBg,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              badge,
+              style: TextStyle(fontSize: 12, color: context.colors.infoFg),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ),
       ],
     );
+  }
+
+  /// „200 % (vergrößert)" statt „2.0" — die Zahl allein sagt niemandem, dass
+  /// hier der Grund für eine gemeldete Darstellungsstörung stehen kann.
+  static String _schriftText(dynamic skala) {
+    final wert = skala is num ? skala.toDouble() : double.tryParse('$skala');
+    if (wert == null) return '$skala';
+    final prozent = (wert * 100).round();
+    if (wert > 1.15) return '$prozent % (vergrößert)';
+    if (wert < 0.9) return '$prozent % (verkleinert)';
+    return '$prozent %';
   }
 
   Widget _buildEmptyCard(BuildContext context, String text) {
@@ -105,6 +134,12 @@ class MitgliederDeviceWidget extends StatelessWidget {
     final isRooted = device['is_rooted'] == 1 || device['is_rooted'] == true;
     final osUpToDate = device['os_up_to_date'] == 1 || device['os_up_to_date'] == true;
     final lastSeen = device['last_validated'] ?? device['updated_at'] ?? '';
+    // Anzeige + Bedienungshilfen. Ältere Clients schicken das nicht, deshalb
+    // überall null-tolerant: dann bleibt die Zeile einfach weg.
+    final breiteDp = device['screen_width_dp'];
+    final hoeheDp = device['screen_height_dp'];
+    final pixelVerhaeltnis = device['device_pixel_ratio'];
+    final schriftSkala = device['text_scale'];
 
     final typeIcon = _getDeviceTypeIcon(deviceType);
     final isActive = _isRecentlyActive(lastSeen);
@@ -124,15 +159,41 @@ class MitgliederDeviceWidget extends StatelessWidget {
                 Expanded(
                   child: Text(deviceName, style: const TextStyle(fontWeight: FontWeight.bold)),
                 ),
-                _buildBadge(isActive ? 'Aktiv' : 'Inaktiv', isActive ? context.colors.successFg : context.colors.textSecondary),
-                const SizedBox(width: 4),
-                _buildBadge(_deviceTypeLabel(deviceType), context.colors.infoFg),
+                // Wrap in Flexible: bei vergrößerter Schrift passen Gerätename
+                // und die beiden Plaketten nicht mehr nebeneinander — dann
+                // rutschen die Plaketten untereinander.
+                Flexible(
+                  child: Wrap(
+                    alignment: WrapAlignment.end,
+                    spacing: 4,
+                    runSpacing: 4,
+                    children: [
+                      _buildBadge(isActive ? 'Aktiv' : 'Inaktiv', isActive ? context.colors.successFg : context.colors.textSecondary),
+                      _buildBadge(_deviceTypeLabel(deviceType), context.colors.infoFg),
+                    ],
+                  ),
+                ),
               ],
             ),
             const Divider(height: 16),
 
             // Info rows
             _buildInfoRow(context, '💻', 'Betriebssystem', osVersion),
+            if (breiteDp != null && hoeheDp != null)
+              _buildInfoRow(
+                context,
+                '📐',
+                'Anzeige',
+                '$breiteDp×$hoeheDp dp'
+                    '${pixelVerhaeltnis != null ? ' (×$pixelVerhaeltnis)' : ''}',
+              ),
+            if (schriftSkala != null)
+              _buildInfoRow(
+                context,
+                '🔠',
+                'Schriftgröße',
+                _schriftText(schriftSkala),
+              ),
             if (appVersion.isNotEmpty)
               _buildInfoRow(context, '🔄', 'Client-Version', 'ICD360S v$appVersion'),
             if (connectionType.isNotEmpty)
@@ -220,12 +281,26 @@ class MitgliederDeviceWidget extends StatelessWidget {
         children: [
           Text(emoji, style: const TextStyle(fontSize: 14)),
           const SizedBox(width: 8),
-          SizedBox(
-            width: 120,
-            child: Text(label, style: TextStyle(color: context.colors.textSecondary, fontSize: 13)),
+          // Anteilig statt fester 120 dp: bei vergrößerter Schrift passte keine
+          // Beschriftung mehr in diese Breite, sie wurde schlicht beschnitten.
+          Flexible(
+            flex: 2,
+            child: Text(
+              label,
+              style: TextStyle(color: context.colors.textSecondary, fontSize: 13),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
-          Expanded(
-            child: Text(value, style: const TextStyle(fontSize: 13), overflow: TextOverflow.ellipsis),
+          const SizedBox(width: 8),
+          Flexible(
+            flex: 3,
+            child: Text(
+              value,
+              style: const TextStyle(fontSize: 13),
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),

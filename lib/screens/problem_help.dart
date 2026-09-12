@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
+import '../utils/responsive.dart';
 import '../widgets/icd360s_header.dart';
 import 'anonymous_chat.dart';
 import 'problem_report.dart';
@@ -241,7 +242,9 @@ class ProblemHelpScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: Container(
           padding: const EdgeInsets.all(16),
-          height: 168,
+          // Wächst mit der Schriftgröße mit: der Fließtext sitzt in einem
+          // Expanded und wurde bei fester Höhe einfach abgeschnitten.
+          height: Responsive.textBoxHeight(context, 168),
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.10),
             borderRadius: BorderRadius.circular(16),

@@ -183,7 +183,10 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
             ),
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Padding(
+          // Scrollbar: auf einem kurzen Display oder bei großgestellter
+          // Systemschrift ist der Inhalt höher als der Bildschirm, und unten
+          // stehen die Erklärungen zum Freigabecode.
+          child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -417,7 +420,11 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
+        // FittedBox statt Umbruch: eine Restzeit darf nicht abgekürzt werden,
+        // also wird die Zeile als Ganzes kleiner, wenn sie sonst nicht passt.
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
@@ -437,6 +444,7 @@ class _ApprovalWaitingDialogState extends State<ApprovalWaitingDialog> {
               ),
             ),
           ],
+          ),
         ),
         const SizedBox(height: 8),
         ClipRRect(

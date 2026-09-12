@@ -277,12 +277,14 @@ class _MemberCalendarViewState extends State<MemberCalendarView>
         color: context.colors.cardSubtle,
         border: Border(bottom: BorderSide(color: context.colors.dividerSubtle)),
       ),
-      child: Row(
+      // Wrap statt Row: die drei Filter passten auf einem Telefon nicht in
+      // eine Zeile — der dritte lief rechts hinaus.
+      child: Wrap(
+        spacing: 8,
+        runSpacing: 8,
         children: [
           _buildFilterChip('upcoming', l.filterUpcoming),
-          const SizedBox(width: 8),
           _buildFilterChip('past', l.filterPast),
-          const SizedBox(width: 8),
           _buildFilterChip('all', l.filterAll),
         ],
       ),
@@ -310,7 +312,11 @@ class _MemberCalendarViewState extends State<MemberCalendarView>
 
   Widget _buildEmptyState() {
     final l = AppLocalizations.of(context)!;
-    return Center(
+    // Scrollbar und mit Rand: auf einem kurzen Display mit großer Schrift war
+    // der Hinweistext höher als der freie Bereich.
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(24),
+      child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -328,8 +334,10 @@ class _MemberCalendarViewState extends State<MemberCalendarView>
           Text(
             l.appointmentsShownHere,
             style: TextStyle(fontSize: 14, color: context.colors.textDisabled),
+            textAlign: TextAlign.center,
           ),
         ],
+      ),
       ),
     );
   }

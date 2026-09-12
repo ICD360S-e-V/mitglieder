@@ -432,6 +432,9 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
           elevation: 0,
         ),
+        // Beschriftung flexibel: „Problem senden" und erst recht die längeren
+        // Übersetzungen passten neben dem Symbol nicht mehr auf eine schmale
+        // Schaltfläche, sobald die Systemschrift hochgestellt war.
         child: _isSending
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -445,7 +448,13 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Text(l10n.claudiuProblemReportSubmitting),
+                  Flexible(
+                    child: Text(
+                      l10n.claudiuProblemReportSubmitting,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
               )
             : Row(
@@ -453,11 +462,15 @@ class _ProblemReportScreenState extends State<ProblemReportScreen> {
                 children: [
                   const Icon(Icons.send_outlined, size: 20),
                   const SizedBox(width: 10),
-                  Text(
-                    l10n.claudiuProblemReportSubmit,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
+                  Flexible(
+                    child: Text(
+                      l10n.claudiuProblemReportSubmit,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],

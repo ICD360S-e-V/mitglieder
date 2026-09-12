@@ -8,6 +8,7 @@ import '../widgets/icd360s_header.dart';
 import '../widgets/login_tab.dart';
 import '../widgets/approval_waiting_dialog.dart';
 import '../utils/error_helpers.dart';
+import '../utils/responsive.dart';
 import 'mitglied_dashboard.dart';
 import 'webview_screen.dart';
 import '../utils/app_theme.dart';
@@ -217,21 +218,6 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  // Helper function for responsive font size
-  double _getResponsiveFontSize(BuildContext context, double baseSize) {
-    final width = MediaQuery.of(context).size.width;
-    if (width < 360) return baseSize * 0.85;
-    if (width < 400) return baseSize * 0.95;
-    return baseSize;
-  }
-
-  double _getResponsiveSpacing(BuildContext context, double baseSize) {
-    final width = MediaQuery.of(context).size.width;
-    if (width < 360) return baseSize * 0.5;
-    if (width < 400) return baseSize * 0.75;
-    return baseSize;
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -260,7 +246,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         l10n.login,
                         style: TextStyle(
-                          fontSize: _getResponsiveFontSize(context, 20),
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -321,16 +307,16 @@ class _LoginPageState extends State<LoginPage> {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: _getResponsiveSpacing(context, 16),
-        horizontal: _getResponsiveSpacing(context, 20),
+        vertical: Responsive.space(context, 16),
+        horizontal: Responsive.space(context, 20),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Wrap(
             alignment: WrapAlignment.center,
-            spacing: _getResponsiveSpacing(context, 8),
-            runSpacing: _getResponsiveSpacing(context, 4),
+            spacing: Responsive.space(context, 8),
+            runSpacing: Responsive.space(context, 4),
             children: [
               _buildFooterLink(l10n.imprint, 'https://icd360s.de/impressum'),
               _buildFooterDivider(),
@@ -339,20 +325,20 @@ class _LoginPageState extends State<LoginPage> {
               _buildFooterLink(l10n.statutes, 'https://icd360s.de/satzung360s/'),
             ],
           ),
-          SizedBox(height: _getResponsiveSpacing(context, 12)),
+          SizedBox(height: Responsive.space(context, 12)),
           Text(
             'v${UpdateService.currentVersion}',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
-              fontSize: _getResponsiveFontSize(context, 11),
+              fontSize: 11,
             ),
           ),
-          SizedBox(height: _getResponsiveSpacing(context, 4)),
+          SizedBox(height: Responsive.space(context, 4)),
           Text(
             '© 2025-${DateTime.now().year} ICD360S e.V.',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.5),
-              fontSize: _getResponsiveFontSize(context, 11),
+              fontSize: 11,
             ),
           ),
         ],
@@ -370,7 +356,7 @@ class _LoginPageState extends State<LoginPage> {
           text,
           style: TextStyle(
             color: Colors.white.withValues(alpha: 0.7),
-            fontSize: _getResponsiveFontSize(context, 12),
+            fontSize: 12,
             decoration: TextDecoration.underline,
             decorationColor: Colors.white.withValues(alpha: 0.5),
           ),
@@ -384,7 +370,7 @@ class _LoginPageState extends State<LoginPage> {
       '|',
       style: TextStyle(
         color: Colors.white.withValues(alpha: 0.4),
-        fontSize: _getResponsiveFontSize(context, 12),
+        fontSize: 12,
       ),
     );
   }

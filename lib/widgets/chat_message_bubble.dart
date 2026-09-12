@@ -80,11 +80,17 @@ class ChatMessageBubble extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    _formatTime(message['created_at']),
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: isOwn ? Colors.white70 : context.colors.textTertiary,
+                  // Flexible: bei großer Anzeige und vergrößerter Schrift ist
+                  // die Zeitangabe „09.08. 10:16" breiter als die Blase selbst.
+                  Flexible(
+                    child: Text(
+                      _formatTime(message['created_at']),
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: isOwn ? Colors.white70 : context.colors.textTertiary,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   // Read receipt checkmarks (only for own messages)

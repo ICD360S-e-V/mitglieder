@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import 'eastern.dart';
 import '../utils/app_theme.dart';
+import '../utils/responsive.dart';
 
 /// AppBar widget for member dashboard with badges and actions
 class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -37,42 +38,28 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onProfile,
   });
 
+  /// Basishöhe für ein Telefon der Referenzklasse; skaliert wie alles andere.
+  static const double _baseToolbarHeight = 70;
+
+  /// `preferredSize` fragt Flutter vor dem Build ab, ohne BuildContext — daher
+  /// der View-basierte Faktor. [build] nimmt denselben Wert, damit
+  /// `toolbarHeight` und die gemeldete Höhe nicht auseinanderlaufen.
+  static double get _toolbarHeight =>
+      _baseToolbarHeight * Responsive.uiScaleOfView();
+
   @override
-  Size get preferredSize => const Size.fromHeight(70); // Increased from 56
-
-  // Responsive icon size based on screen width
-  double _getResponsiveIconSize(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth < 360) {
-      return 22.0; // Small screens (320-359px) - reduce by 27%
-    } else if (screenWidth < 400) {
-      return 26.0; // Medium screens (360-399px) - reduce by 13%
-    } else {
-      return 30.0; // Large screens (400px+) - original size
-    }
-  }
-
-  // Responsive spacing based on screen width
-  double _getResponsiveSpacing(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth < 360) {
-      return 4.0; // Small screens - half spacing
-    } else if (screenWidth < 400) {
-      return 6.0; // Medium screens - 75% spacing
-    } else {
-      return 8.0; // Large screens - full spacing
-    }
-  }
+  Size get preferredSize => Size.fromHeight(_toolbarHeight);
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final iconSize = _getResponsiveIconSize(context);
-    final spacing = _getResponsiveSpacing(context);
+    // Sechs Schaltflächen plus Plaketten nebeneinander — auf einem schmalen
+    // Gerät ist das die Zeile, die als Erste bricht.
+    final iconSize = Responsive.scaled(context, 30);
+    final spacing = Responsive.space(context, 8);
 
     return AppBar(
-      title: null,
-      toolbarHeight: 70,
+      toolbarHeight: _toolbarHeight,
       backgroundColor: context.colors.brandFill,
       foregroundColor: Colors.white,
       flexibleSpace: SeasonalBackground.isEasterSeason
@@ -84,12 +71,22 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : null,
       iconTheme: IconThemeData(size: iconSize, color: Colors.white),
-      centerTitle: false,
+      centerTitle: true,
       leadingWidth: 0,
       titleSpacing: 0,
-      actions: [
-        // Spacer to push icons to center
-        const Spacer(),
+      // Die Schaltflächen sitzen im Titel-Slot statt in `actions`, in einer
+      // FittedBox.
+      //
+      // Grund: jeder IconButton hält die von Material geforderten 48 dp
+      // Trefferfläche ein. Sechs davon sind 288 dp — auf einem 320 dp breiten
+      // Telefon lief die Zeile über, ganz gleich wie klein die Icons gezeichnet
+      // wurden. `scaleDown` schrumpft die ganze Zeile gleichmäßig, aber nur
+      // wenn sie sonst nicht passt; auf breiteren Geräten ändert sich nichts.
+      title: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
         // Home (Overview)
         IconButton(
           icon: Icon(Icons.home_outlined, size: iconSize, color: Colors.white),
@@ -135,8 +132,9 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: onProfile,
           tooltip: l10n.myProfile,
         ),
-        const Spacer(),
-      ],
+          ],
+        ),
+      ),
     );
   }
 }
@@ -342,7 +340,11 @@ class _NotificationIcon extends StatelessWidget {
           Positioned(
             right: 4,
             top: 4,
-            child: Container(
+            // IgnorePointer, weil die Plakette über der Schaltfläche liegt und
+            // Tipper sonst in ihr versanden — bei einem breiten Wert deckt sie
+            // die Mitte der Glocke ab, und die Glocke reagiert nicht mehr.
+            child: IgnorePointer(
+              child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
               decoration: BoxDecoration(
                 color: context.colors.dangerSolid,
@@ -350,13 +352,18 @@ class _NotificationIcon extends StatelessWidget {
               ),
               constraints: const BoxConstraints(minWidth: 16),
               child: Text(
-                anzahl > 99 ? '99+' : '\$anzahl',
+                // Vorher stand hier '\$anzahl' mit Fluchtzeichen: in der
+                // Plakette erschien wörtlich „$anzahl" statt der Zahl — und
+                // weil der Text dadurch so breit wurde, deckte die Plakette die
+                // Mitte der Glocke ab und schluckte jeden Tipper.
+                anzahl > 99 ? '99+' : '$anzahl',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 10,
                   fontWeight: FontWeight.bold,
                 ),
+              ),
               ),
             ),
           ),

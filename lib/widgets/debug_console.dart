@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import '../l10n/app_localizations.dart';
 import '../services/logger_service.dart';
 import '../utils/app_theme.dart';
+import '../utils/responsive.dart';
 
 /// Debug Console Dialog - shows app logs
 class DebugConsole extends StatefulWidget {
@@ -70,26 +71,40 @@ class _DebugConsoleState extends State<DebugConsole> {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Container(
-        width: 700,
-        height: 500,
+        width: Responsive.dialogSize(context, width: 700, height: 500).width,
+        height: Responsive.dialogSize(context, width: 700, height: 500).height,
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             // Header
-            Row(
+            //
+            // Wrap statt Row: Titel, Zähler und vier Schaltflächen passten in
+            // einem Dialog auf Telefonbreite nicht in eine Zeile.
+            Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Icon(Icons.terminal, color: context.colors.successFg),
-                const SizedBox(width: 8),
-                const Text(
-                  'Debug Console',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.terminal, color: Colors.green),
+                    SizedBox(width: 8),
+                    Flexible(
+                      child: Text(
+                        'Debug Console',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
-                const Spacer(),
                 Text(
                   AppLocalizations.of(context)!.logEntries(_logs.length),
                   style: TextStyle(color: context.colors.textSecondary, fontSize: 12),
                 ),
-                const SizedBox(width: 16),
+                Wrap(
+                  children: [
                 IconButton(
                   icon: Icon(
                     _autoScroll ? Icons.vertical_align_bottom : Icons.vertical_align_center,
@@ -114,6 +129,8 @@ class _DebugConsoleState extends State<DebugConsole> {
                 IconButton(
                   icon: const Icon(Icons.close),
                   onPressed: () => Navigator.pop(context),
+                ),
+                  ],
                 ),
               ],
             ),

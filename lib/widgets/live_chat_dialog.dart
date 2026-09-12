@@ -28,6 +28,7 @@ import 'video_call_screen.dart';
 import '../utils/error_helpers.dart';
 import '../utils/app_theme.dart';
 import '../utils/hintergrund_pause.dart';
+import '../utils/responsive.dart';
 
 final _log = LoggerService();
 
@@ -407,7 +408,12 @@ class _LiveChatDialogState extends State<LiveChatDialog>
         color: color.withValues(alpha: 0.1),
         border: Border(top: BorderSide(color: context.colors.dividerSubtle)),
       ),
-      child: Row(
+      // FittedBox: die Statuszeile ist eine Zeile aus Symbol, Wort und
+      // Millisekunden — bei größter Anzeige und größter Schrift passt sie
+      // sonst nicht mehr nebeneinander.
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, size: 14, color: color),
@@ -426,6 +432,7 @@ class _LiveChatDialogState extends State<LiveChatDialog>
           const SizedBox(width: 6),
           Text(qualityText, style: const TextStyle(fontSize: 11)),
         ],
+        ),
       ),
     );
   }
@@ -1534,12 +1541,21 @@ class _LiveChatDialogState extends State<LiveChatDialog>
 
   @override
   Widget build(BuildContext context) {
+    // Prozentmaße ohne Deckel: auf dem Telefon richtig, auf einem 1920er
+    // Monitor ein 1700 px breites Chatfenster. Deshalb Wunschmaß mit Deckel.
+    const inset = EdgeInsets.all(16);
+    final size = Responsive.dialogSize(
+      context,
+      width: 900,
+      height: 1000,
+      inset: inset,
+    );
     return Dialog(
-      insetPadding: const EdgeInsets.all(16),
+      insetPadding: inset,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.85,
+        width: size.width,
+        height: size.height,
         decoration: BoxDecoration(
           color: context.colors.card,
           borderRadius: BorderRadius.circular(24),
@@ -1614,8 +1630,16 @@ class _LiveChatDialogState extends State<LiveChatDialog>
   }
 
   Widget _buildModernHeader() {
+    // Kopfzeile und Eingabeleiste sind die beiden festen Blöcke des Dialogs —
+    // dazwischen dehnt sich die Nachrichtenliste. Auf einem kurzen Telefon mit
+    // großgestellter Schrift waren die beiden zusammen höher als der Dialog,
+    // und abgeschnitten wurde unten die Eingabezeile. Deshalb wandern ihre
+    // Maße mit dem Gerätefaktor mit.
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: EdgeInsets.symmetric(
+        horizontal: Responsive.space(context, 16),
+        vertical: Responsive.space(context, 12),
+      ),
       decoration: BoxDecoration(
         color: context.colors.card,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
@@ -1633,8 +1657,8 @@ class _LiveChatDialogState extends State<LiveChatDialog>
           Stack(
             children: [
               Container(
-                width: 48,
-                height: 48,
+                width: Responsive.scaled(context, 48),
+                height: Responsive.scaled(context, 48),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [Color(0xFF667eea), Color(0xFF764ba2)],
@@ -1668,6 +1692,13 @@ class _LiveChatDialogState extends State<LiveChatDialog>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Beide Zeilen hart begrenzt.
+                //
+                // Neben Avatar und den drei Schaltflächen bleiben auf einem
+                // 320 dp breiten Telefon rund 70 dp für diese Spalte. Bei
+                // 200 % Systemschrift brach „zuletzt gesehen …" darin in rund
+                // zehn Zeilen um: die Kopfzeile wurde 671 px hoch in einem
+                // Dialog von 536 px, und für die Nachrichten blieb null.
                 Text(
                   _supportOnline ? _supportName : 'Support',
                   style: TextStyle(
@@ -1675,6 +1706,8 @@ class _LiveChatDialogState extends State<LiveChatDialog>
                     fontWeight: FontWeight.bold,
                     color: context.colors.textPrimary,
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 2),
                 Text(
@@ -1683,6 +1716,8 @@ class _LiveChatDialogState extends State<LiveChatDialog>
                     fontSize: 13,
                     color: _supportOnline ? context.colors.successFg : context.colors.textSecondary,
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
@@ -1737,12 +1772,15 @@ class _LiveChatDialogState extends State<LiveChatDialog>
 
   Widget _buildModernMessagesList() {
     if (_messages.isEmpty) {
-      return Center(
+      // Scrollbar: bleibt zwischen Kopfzeile und Eingabe wenig Höhe übrig
+      // (kurzes Telefon, große Schrift), lief der Hinweis sonst über.
+      return SingleChildScrollView(
+        padding: EdgeInsets.all(Responsive.space(context, 16)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.all(24),
+              padding: EdgeInsets.all(Responsive.space(context, 24)),
               decoration: BoxDecoration(
                 color: context.colors.card,
                 shape: BoxShape.circle,
@@ -2116,7 +2154,7 @@ class _LiveChatDialogState extends State<LiveChatDialog>
 
   Widget _buildModernInputArea() {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(Responsive.space(context, 16)),
       decoration: BoxDecoration(
         color: context.colors.card,
         borderRadius: const BorderRadius.vertical(bottom: Radius.circular(24)),

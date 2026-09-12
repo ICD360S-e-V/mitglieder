@@ -601,9 +601,15 @@ class _ErrorScaffold extends StatelessWidget {
           ),
         ),
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
+          // Scrollbar mit Mindesthöhe: mittig, solange Platz da ist — und
+          // sobald die Systemschrift den Inhalt höher macht als den
+          // Bildschirm, scrollt er, statt den Wiederholen-Knopf abzuschneiden.
+          child: LayoutBuilder(
+            builder: (context, constraints) => SingleChildScrollView(
+              padding: const EdgeInsets.all(24),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight - 48),
+                child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(icon, size: 56, color: Colors.white70),
@@ -641,6 +647,8 @@ class _ErrorScaffold extends StatelessWidget {
                   ),
                 ),
               ],
+                ),
+              ),
             ),
           ),
         ),

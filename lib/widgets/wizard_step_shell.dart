@@ -72,16 +72,20 @@ class WizardStepShell extends StatelessWidget {
           child: Column(
             children: [
               _topBar(context, l10n),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Icd360sHeader(compact: true),
-              ),
               Expanded(
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      // Der Markenkopf scrollt mit, statt fest über dem
+                      // Formular zu kleben. Bei 200 % Systemschrift waren
+                      // Kopfzeile + Markenkopf + Fußleiste zusammen höher als
+                      // der Bildschirm — übrig blieb ein Formular ohne Platz,
+                      // und die Spalte lief unten heraus. Scrollend kostet er
+                      // nichts und ist trotzdem da.
+                      const Icd360sHeader(compact: true),
+                      const SizedBox(height: 12),
                       _bubble(context).animate().fadeIn(duration: 400.ms),
                       const SizedBox(height: 20),
                       child,

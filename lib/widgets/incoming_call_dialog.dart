@@ -183,7 +183,12 @@ class _InCallOverlayState extends State<InCallOverlay> with SingleTickerProvider
           const SizedBox(width: 12),
 
           // Remote name and duration
-          Column(
+          //
+          // Flexible: neben Pegelanzeige und den drei Schaltflächen bleibt für
+          // einen ausgeschriebenen Namen wenig Platz — die Leiste lief sonst
+          // über den rechten Rand hinaus, mitsamt dem Auflegen-Knopf.
+          Flexible(
+            child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -194,6 +199,8 @@ class _InCallOverlayState extends State<InCallOverlay> with SingleTickerProvider
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
                 ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
               Text(
                 _formatDuration(widget.callDuration),
@@ -203,6 +210,7 @@ class _InCallOverlayState extends State<InCallOverlay> with SingleTickerProvider
                 ),
               ),
             ],
+            ),
           ),
           const SizedBox(width: 16),
 
@@ -298,26 +306,35 @@ class CallingOverlay extends StatelessWidget {
           const SizedBox(width: 12),
 
           // Calling text
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                AppLocalizations.of(context)!.calling,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  fontSize: 12,
+          //
+          // Flexible: „Ruft an …" plus Name plus Abbrechen-Knopf passten bei
+          // vergrößerter Systemschrift nicht mehr nebeneinander.
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.calling,
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.8),
+                    fontSize: 12,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              Text(
-                targetName,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                Text(
+                  targetName,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           const SizedBox(width: 16),
 

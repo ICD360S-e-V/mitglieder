@@ -207,11 +207,17 @@ class _LoginTabState extends State<LoginTab> {
                         children: [
                           const Icon(Icons.login, size: 24),
                           const SizedBox(width: 12),
-                          Text(
-                            l10n.login,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
+                          // Flexible: neben dem Symbol bleibt auf einem
+                          // schmalen Gerät zu wenig Platz für die Beschriftung.
+                          Flexible(
+                            child: Text(
+                              l10n.login,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],

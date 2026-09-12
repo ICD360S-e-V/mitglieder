@@ -79,7 +79,12 @@ class _RemoteConsentDialogState extends State<RemoteConsentDialog> {
             color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Column(
+          // Scrollbar, weil der Inhalt auf einem kurzen Display (oder bei
+          // vergrößerter Systemschrift) höher wird als der Bildschirm. Die
+          // Zustimmung ist die letzte Schaltfläche — sie darf nicht unter dem
+          // unteren Rand verschwinden.
+          child: SingleChildScrollView(
+            child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const CircleAvatar(
@@ -133,6 +138,7 @@ class _RemoteConsentDialogState extends State<RemoteConsentDialog> {
                 ],
               ),
             ],
+          ),
           ),
         ),
       ),

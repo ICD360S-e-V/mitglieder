@@ -29,7 +29,10 @@ class ConversationListItem extends StatelessWidget {
         AppLocalizations.of(context)!.unknownValue;
     final lastMessage = conversation['last_message'] ?? AppLocalizations.of(context)!.noMessages;
 
-    return Container(
+    // Material statt Container: das ListTile malt Hintergrund und Tipp-Welle
+    // auf das nächstgelegene Material. Lag darüber eine eingefärbte Box, waren
+    // beide verdeckt — Flutter meldet das zur Laufzeit als Fehler.
+    return Material(
       color: isSelected ? const Color(0xFF1a1a2e).withValues(alpha: 0.1) : null,
       child: ListTile(
         dense: true,

@@ -278,18 +278,26 @@ class _ProfileDialogState extends State<ProfileDialog> {
       children: [
         Icon(icon, color: context.colors.textSecondary, size: 20),
         const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              label,
-              style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
-            ),
-            Text(
-              value,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-          ],
+        // Expanded: Beschriftung und Wert (etwa eine lange E-Mail-Adresse)
+        // brauchen den Rest der Zeile, sonst laufen sie rechts heraus.
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: TextStyle(fontSize: 12, color: context.colors.textSecondary),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              Text(
+                value,
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ],
     );
