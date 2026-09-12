@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.96.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.96.1...v1.96.2) (2026-09-12)
+
+
+### Bug Fixes
+
+* **anmeldung:** drei Zahlen fuer eine Regel — Rueckzugsgrenze auf 10 vereinheitlicht ([#393](https://github.com/ICD360S-e-V/mitglieder/issues/393)) ([d2befb5](https://github.com/ICD360S-e-V/mitglieder/commit/d2befb537636f79f6caa816036204e5796b18115))
+
 ## [1.96.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.96.0...v1.96.1) (2026-09-12)
 
 
