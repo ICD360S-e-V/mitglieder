@@ -109,22 +109,38 @@ class Responsive {
   /// Deshalb gilt in Widgets: Schriftgrößen niemals selbst mit [uiScale]
   /// multiplizieren — das skalierte sonst doppelt.
   static TextScaler textScaler(BuildContext context) {
-    // scale(1) statt des entfernten textScaleFactor: liefert den Faktor, den
-    // der Nutzer im System eingestellt hat.
-    final userScale = MediaQuery.textScalerOf(context).scale(1);
+    final skalierer = MediaQuery.textScalerOf(context);
+
+    // Gemessen an einer typischen Fließtextgröße, nicht an scale(1).
+    //
+    // Ab Android 14 skaliert das System die Schrift NICHT mehr linear: große
+    // Schrift wächst langsamer als kleine, damit Überschriften bei 200 % nicht
+    // ins Groteske laufen. Bei 1 logischen Pixel steht man am äußersten Ende
+    // dieser Kurve, wo der Faktor am größten ist — als Maß für „wie stark hat
+    // der Nutzer vergrößert" ist das der falsche Punkt.
+    const referenzgroesse = 14.0;
+    final skaliert = skalierer.scale(referenzgroesse);
 
     // Wer die Schrift hochgestellt hat, hat das nicht aus Versehen getan.
     // Der Gerätefaktor darf diesen Wunsch nicht wieder einkassieren — auf
     // einem schmalen Telefon hätte er aus 200 % sonst 164 % gemacht, und
     // genau dort sitzt die Person, die es am nötigsten hat.
-    if (userScale > 1.0) {
-      return TextScaler.linear(userScale.clamp(1.0, maxTextScale));
+    //
+    // clamp() statt TextScaler.linear(): die Kurve der Plattform bleibt
+    // erhalten und wird nur gedeckelt. Baute man aus einem einzelnen Faktor
+    // einen linearen Skalierer, wäre die Nichtlinearität weg — Überschriften
+    // würden auf Android 14+ stärker wachsen, als das System vorsieht.
+    if (skaliert > referenzgroesse) {
+      return skalierer.clamp(maxScaleFactor: maxTextScale);
     }
 
     // Darunter bleibt es beim Gerätefaktor: kleine Geräte bekommen die
-    // Oberfläche etwas kompakter, größer als vorgesehen wird sie nie.
+    // Oberfläche etwas kompakter, größer als vorgesehen wird sie nie. Hier ist
+    // linear richtig, denn unterhalb von 100 % ist die Systemkurve selbst
+    // linear.
+    final nutzerfaktor = skaliert / referenzgroesse;
     return TextScaler.linear(
-      (userScale * uiScale(context)).clamp(minTextScale, 1.0),
+      (nutzerfaktor * uiScale(context)).clamp(minTextScale, 1.0),
     );
   }
 
