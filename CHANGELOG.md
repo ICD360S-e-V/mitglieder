@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.96.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.95.0...v1.96.0) (2026-09-12)
+
+
+### Features
+
+* **akku:** Takte an den Gerätezustand anpassen ([#390](https://github.com/ICD360S-e-V/mitglieder/issues/390)) ([627a2b3](https://github.com/ICD360S-e-V/mitglieder/commit/627a2b369f0582f4ae01cb8ee890c9d2beea1bbe))
+
 ## [1.95.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.94.0...v1.95.0) (2026-09-12)
 
 
