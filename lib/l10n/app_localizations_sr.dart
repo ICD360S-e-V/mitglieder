@@ -3148,4 +3148,40 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Прозор позива преко других апликација';
+
+  @override
+  String get anruffensterZweck =>
+      'Ако током разговора изађете из апликације, на пример због прегледача, мали прозор остаје преко друге апликације. Додир враћа разговор; поред њега је дугме за прекид.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android за то захтева дозволу „Приказ преко других апликација“. Може се дати само у системским поставкама.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Без дозволе разговор остаје повезан; недостаје само прозор. Враћање је тада могуће преко обавештења.';
+
+  @override
+  String get anruffensterErteilt => 'Дато – прозор ће се појављивати.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Није дато – прозор се неће појављивати.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Екран поставки није могао да се отвори. Ручно: Поставке ▸ Апликације ▸ ICD360S ▸ Приказ преко других апликација.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Прозор позива постоји само на Android-у.';
+
+  @override
+  String get anrufLaeuft => 'Разговор у току';
+
+  @override
+  String get videoanrufLaeuft => 'Видео разговор у току';
 }

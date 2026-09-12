@@ -3147,4 +3147,38 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Zvana logs pāri citām lietotnēm';
+
+  @override
+  String get anruffensterZweck =>
+      'Ja sarunas laikā izejat no lietotnes, piemēram, uz pārlūku, mazs logs paliek pāri otrai lietotnei. Pieskāriens atgriež pie sarunas; blakus ir zvana beigšanas poga.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android tam pieprasa atļauju „Rādīt pāri citām lietotnēm“. To var piešķirt tikai sistēmas iestatījumos.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Bez atļaujas saruna paliek savienota; trūkst tikai loga. Atgriezties tad var, izmantojot paziņojumu.';
+
+  @override
+  String get anruffensterErteilt => 'Piešķirta – logs parādīsies.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Nav piešķirta – logs neparādīsies.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Iestatījumu ekrānu nevarēja atvērt. Manuāli: Iestatījumi ▸ Lietotnes ▸ ICD360S ▸ Rādīt pāri citām lietotnēm.';
+
+  @override
+  String get anruffensterNurAndroid => 'Zvana logs pastāv tikai Android.';
+
+  @override
+  String get anrufLaeuft => 'Notiek zvans';
+
+  @override
+  String get videoanrufLaeuft => 'Notiek video zvans';
 }

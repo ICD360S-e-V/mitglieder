@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Samtalevindu over andre apper",
+  "anruffensterZweck": "Hvis du forlater appen under en samtale, for eksempel for nettleseren, blir et lite vindu liggende over den andre appen. Et trykk tar deg tilbake til samtalen; ved siden av ligger knappen for å legge på.",
+  "anruffensterAndroidHinweis": "Android krever til dette tillatelsen «Vis over andre apper». Den kan bare gis i systeminnstillingene.",
+  "anruffensterOhneErlaubnis": "Uten tillatelsen forblir samtalen tilkoblet; bare vinduet mangler. Tilbake går det da via varselet.",
+  "anruffensterErteilt": "Gitt – vinduet vises.",
+  "anruffensterNichtErteilt": "Ikke gitt – vinduet vises ikke.",
+  "anruffensterVonHand": "Innstillingsskjermen kunne ikke åpnes. Manuelt: Innstillinger ▸ Apper ▸ ICD360S ▸ Vis over andre apper.",
+  "anruffensterNurAndroid": "Samtalevinduet finnes bare på Android.",
+  "anrufLaeuft": "Samtale pågår",
+  "videoanrufLaeuft": "Videosamtale pågår"
 }

@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Ventana de llamada sobre otras aplicaciones",
+  "anruffensterZweck": "Si sale de la aplicación durante una llamada, por ejemplo para usar el navegador, una pequeña ventana permanece sobre la otra aplicación. Al tocarla vuelve a la llamada; a su lado está el botón para colgar.",
+  "anruffensterAndroidHinweis": "Android requiere para ello el permiso «Mostrar sobre otras aplicaciones». Solo puede concederse en los ajustes del sistema.",
+  "anruffensterOhneErlaubnis": "Sin el permiso la llamada sigue conectada; solo falta la ventana. Se puede volver a través de la notificación.",
+  "anruffensterErteilt": "Concedido – la ventana aparecerá.",
+  "anruffensterNichtErteilt": "No concedido – la ventana no aparecerá.",
+  "anruffensterVonHand": "No se pudo abrir la pantalla de ajustes. Manualmente: Ajustes ▸ Aplicaciones ▸ ICD360S ▸ Mostrar sobre otras aplicaciones.",
+  "anruffensterNurAndroid": "La ventana de llamada solo existe en Android.",
+  "anrufLaeuft": "Llamada en curso",
+  "videoanrufLaeuft": "Videollamada en curso"
 }

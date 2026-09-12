@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Okno hovoru nad ostatnými aplikáciami",
+  "anruffensterZweck": "Ak počas hovoru opustíte aplikáciu, napríklad kvôli prehliadaču, malé okno zostane nad druhou aplikáciou. Dotykom sa vrátite k hovoru; vedľa je tlačidlo na ukončenie.",
+  "anruffensterAndroidHinweis": "Android na to vyžaduje povolenie „Zobrazovanie nad ostatnými aplikáciami“. Dá sa udeliť iba v nastaveniach systému.",
+  "anruffensterOhneErlaubnis": "Bez povolenia hovor zostáva spojený; chýba iba okno. Späť sa potom dostanete cez upozornenie.",
+  "anruffensterErteilt": "Udelené – okno sa bude zobrazovať.",
+  "anruffensterNichtErteilt": "Neudelené – okno sa nezobrazí.",
+  "anruffensterVonHand": "Obrazovku nastavení sa nepodarilo otvoriť. Ručne: Nastavenia ▸ Aplikácie ▸ ICD360S ▸ Zobrazovanie nad ostatnými aplikáciami.",
+  "anruffensterNurAndroid": "Okno hovoru existuje iba v Androide.",
+  "anrufLaeuft": "Prebieha hovor",
+  "videoanrufLaeuft": "Prebieha videohovor"
 }

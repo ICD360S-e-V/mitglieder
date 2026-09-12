@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Прозор позива преко других апликација",
+  "anruffensterZweck": "Ако током разговора изађете из апликације, на пример због прегледача, мали прозор остаје преко друге апликације. Додир враћа разговор; поред њега је дугме за прекид.",
+  "anruffensterAndroidHinweis": "Android за то захтева дозволу „Приказ преко других апликација“. Може се дати само у системским поставкама.",
+  "anruffensterOhneErlaubnis": "Без дозволе разговор остаје повезан; недостаје само прозор. Враћање је тада могуће преко обавештења.",
+  "anruffensterErteilt": "Дато – прозор ће се појављивати.",
+  "anruffensterNichtErteilt": "Није дато – прозор се неће појављивати.",
+  "anruffensterVonHand": "Екран поставки није могао да се отвори. Ручно: Поставке ▸ Апликације ▸ ICD360S ▸ Приказ преко других апликација.",
+  "anruffensterNurAndroid": "Прозор позива постоји само на Android-у.",
+  "anrufLaeuft": "Разговор у току",
+  "videoanrufLaeuft": "Видео разговор у току"
 }

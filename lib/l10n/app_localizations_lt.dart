@@ -3150,4 +3150,38 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Skambučio langas virš kitų programų';
+
+  @override
+  String get anruffensterZweck =>
+      'Jei skambučio metu išeinate iš programos, pavyzdžiui į naršyklę, mažas langas lieka virš kitos programos. Paspaudus grįžtama į skambutį; šalia yra ragelio padėjimo mygtukas.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android tam reikalauja leidimo „Rodyti virš kitų programų“. Jį galima suteikti tik sistemos nustatymuose.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Be leidimo skambutis lieka sujungtas; trūksta tik lango. Tada grįžti galima per pranešimą.';
+
+  @override
+  String get anruffensterErteilt => 'Suteiktas – langas atsiras.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Nesuteiktas – langas neatsiras.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Nepavyko atidaryti nustatymų ekrano. Rankiniu būdu: Nustatymai ▸ Programos ▸ ICD360S ▸ Rodyti virš kitų programų.';
+
+  @override
+  String get anruffensterNurAndroid => 'Skambučio langas yra tik Android.';
+
+  @override
+  String get anrufLaeuft => 'Vyksta skambutis';
+
+  @override
+  String get videoanrufLaeuft => 'Vyksta vaizdo skambutis';
 }

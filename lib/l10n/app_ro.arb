@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continuă",
   "wizardResumeBannerPendingTitle": "Cererea ta este în verificare",
   "wizardResumeBannerPendingBody": "Conducerea îți verifică cererea. Primești un mesaj de îndată ce contul tău este activ.",
-  "wizardResumeBannerPendingAction": "Vezi statusul"
+  "wizardResumeBannerPendingAction": "Vezi statusul",
+  "anruffensterTitel": "Fereastra de apel peste alte aplicații",
+  "anruffensterZweck": "Dacă ieșiți din aplicație în timpul unei convorbiri, de exemplu pentru browser, o fereastră mică rămâne peste cealaltă aplicație. O atingere vă duce înapoi la convorbire; lângă ea este butonul de închidere.",
+  "anruffensterAndroidHinweis": "Android cere pentru asta permisiunea „Afișare peste alte aplicații”. Ea se poate acorda doar din setările sistemului.",
+  "anruffensterOhneErlaubnis": "Fără permisiune convorbirea rămâne conectată; lipsește doar fereastra. Vă întoarceți atunci prin notificare.",
+  "anruffensterErteilt": "Acordată – fereastra va apărea.",
+  "anruffensterNichtErteilt": "Neacordată – fereastra nu va apărea.",
+  "anruffensterVonHand": "Ecranul de setări nu s-a putut deschide. Manual: Setări ▸ Aplicații ▸ ICD360S ▸ Afișare peste alte aplicații.",
+  "anruffensterNurAndroid": "Fereastra de apel există doar pe Android.",
+  "anrufLaeuft": "Apel în curs",
+  "videoanrufLaeuft": "Apel video în curs"
 }

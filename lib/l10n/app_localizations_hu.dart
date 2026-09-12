@@ -3155,4 +3155,39 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Hívásablak más alkalmazások felett';
+
+  @override
+  String get anruffensterZweck =>
+      'Ha hívás közben elhagyja az alkalmazást, például a böngésző miatt, egy kis ablak a másik alkalmazás felett marad. Megérintése visszatér a híváshoz; mellette található a hívás befejezése gomb.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Az Android ehhez a „Megjelenítés más alkalmazások felett” engedélyt kéri. Csak a rendszerbeállításokban adható meg.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Engedély nélkül a hívás továbbra is kapcsolatban marad; csak az ablak hiányzik. A visszatérés ilyenkor az értesítésen keresztül történik.';
+
+  @override
+  String get anruffensterErteilt => 'Megadva – az ablak meg fog jelenni.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Nincs megadva – az ablak nem fog megjelenni.';
+
+  @override
+  String get anruffensterVonHand =>
+      'A beállítások képernyőjét nem lehetett megnyitni. Kézzel: Beállítások ▸ Alkalmazások ▸ ICD360S ▸ Megjelenítés más alkalmazások felett.';
+
+  @override
+  String get anruffensterNurAndroid => 'A hívásablak csak Androidon létezik.';
+
+  @override
+  String get anrufLaeuft => 'Hívás folyamatban';
+
+  @override
+  String get videoanrufLaeuft => 'Videóhívás folyamatban';
 }

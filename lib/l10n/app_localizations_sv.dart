@@ -3146,4 +3146,38 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Samtalsfönster över andra appar';
+
+  @override
+  String get anruffensterZweck =>
+      'Om du lämnar appen under ett samtal, till exempel för webbläsaren, ligger ett litet fönster kvar över den andra appen. En tryckning tar dig tillbaka till samtalet; intill finns knappen för att lägga på.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android kräver för detta behörigheten ”Visa över andra appar”. Den kan bara ges i systeminställningarna.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Utan behörigheten förblir samtalet uppkopplat; bara fönstret saknas. Tillbaka går det då via aviseringen.';
+
+  @override
+  String get anruffensterErteilt => 'Beviljad – fönstret visas.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Inte beviljad – fönstret visas inte.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Inställningsskärmen kunde inte öppnas. Manuellt: Inställningar ▸ Appar ▸ ICD360S ▸ Visa över andra appar.';
+
+  @override
+  String get anruffensterNurAndroid => 'Samtalsfönstret finns bara på Android.';
+
+  @override
+  String get anrufLaeuft => 'Samtal pågår';
+
+  @override
+  String get videoanrufLaeuft => 'Videosamtal pågår';
 }

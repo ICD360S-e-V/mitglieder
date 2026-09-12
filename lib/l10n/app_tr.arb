@@ -1461,5 +1461,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Diğer uygulamaların üzerinde arama penceresi",
+  "anruffensterZweck": "Görüşme sırasında uygulamadan çıkarsanız, örneğin tarayıcı için, küçük bir pencere diğer uygulamanın üzerinde kalır. Dokunmak sizi görüşmeye geri götürür; yanında kapatma düğmesi bulunur.",
+  "anruffensterAndroidHinweis": "Android bunun için „Diğer uygulamaların üzerinde göster” iznini ister. Bu izin yalnızca sistem ayarlarından verilebilir.",
+  "anruffensterOhneErlaubnis": "İzin olmadan görüşme bağlı kalır; yalnızca pencere eksik olur. Geri dönüş bildirim üzerinden olur.",
+  "anruffensterErteilt": "Verildi – pencere görünecek.",
+  "anruffensterNichtErteilt": "Verilmedi – pencere görünmeyecek.",
+  "anruffensterVonHand": "Ayarlar ekranı açılamadı. Elle: Ayarlar ▸ Uygulamalar ▸ ICD360S ▸ Diğer uygulamaların üzerinde göster.",
+  "anruffensterNurAndroid": "Arama penceresi yalnızca Android’de vardır.",
+  "anrufLaeuft": "Arama sürüyor",
+  "videoanrufLaeuft": "Görüntülü arama sürüyor"
 }

@@ -3147,4 +3147,38 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Samtalevindu over andre apper';
+
+  @override
+  String get anruffensterZweck =>
+      'Hvis du forlater appen under en samtale, for eksempel for nettleseren, blir et lite vindu liggende over den andre appen. Et trykk tar deg tilbake til samtalen; ved siden av ligger knappen for å legge på.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android krever til dette tillatelsen «Vis over andre apper». Den kan bare gis i systeminnstillingene.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Uten tillatelsen forblir samtalen tilkoblet; bare vinduet mangler. Tilbake går det da via varselet.';
+
+  @override
+  String get anruffensterErteilt => 'Gitt – vinduet vises.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Ikke gitt – vinduet vises ikke.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Innstillingsskjermen kunne ikke åpnes. Manuelt: Innstillinger ▸ Apper ▸ ICD360S ▸ Vis over andre apper.';
+
+  @override
+  String get anruffensterNurAndroid => 'Samtalevinduet finnes bare på Android.';
+
+  @override
+  String get anrufLaeuft => 'Samtale pågår';
+
+  @override
+  String get videoanrufLaeuft => 'Videosamtale pågår';
 }

@@ -3145,4 +3145,38 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Kõneaken teiste rakenduste peal';
+
+  @override
+  String get anruffensterZweck =>
+      'Kui lahkute kõne ajal rakendusest, näiteks brauseri jaoks, jääb väike aken teise rakenduse peale. Puudutus viib kõne juurde tagasi; kõrval on kõne lõpetamise nupp.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android nõuab selleks luba „Kuva teiste rakenduste peal“. Seda saab anda ainult süsteemi seadetes.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Ilma loata jääb kõne ühendatuks; puudub ainult aken. Tagasi saab siis teate kaudu.';
+
+  @override
+  String get anruffensterErteilt => 'Antud – aken ilmub.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Ei ole antud – aken ei ilmu.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Seadete ekraani ei õnnestunud avada. Käsitsi: Seaded ▸ Rakendused ▸ ICD360S ▸ Kuva teiste rakenduste peal.';
+
+  @override
+  String get anruffensterNurAndroid => 'Kõneaken on olemas ainult Androidis.';
+
+  @override
+  String get anrufLaeuft => 'Kõne käib';
+
+  @override
+  String get videoanrufLaeuft => 'Videokõne käib';
 }

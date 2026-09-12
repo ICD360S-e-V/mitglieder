@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Puheluikkuna muiden sovellusten päällä",
+  "anruffensterZweck": "Jos poistut sovelluksesta puhelun aikana, esimerkiksi selaimeen, pieni ikkuna jää toisen sovelluksen päälle. Napautus palauttaa puheluun; vieressä on lopetuspainike.",
+  "anruffensterAndroidHinweis": "Android vaatii tähän luvan ”Näytä muiden sovellusten päällä”. Se voidaan antaa vain järjestelmän asetuksissa.",
+  "anruffensterOhneErlaubnis": "Ilman lupaa puhelu pysyy yhdistettynä; vain ikkuna puuttuu. Takaisin pääsee silloin ilmoituksen kautta.",
+  "anruffensterErteilt": "Myönnetty – ikkuna ilmestyy.",
+  "anruffensterNichtErteilt": "Ei myönnetty – ikkuna ei ilmesty.",
+  "anruffensterVonHand": "Asetusnäyttöä ei voitu avata. Käsin: Asetukset ▸ Sovellukset ▸ ICD360S ▸ Näytä muiden sovellusten päällä.",
+  "anruffensterNurAndroid": "Puheluikkuna on olemassa vain Androidissa.",
+  "anrufLaeuft": "Puhelu käynnissä",
+  "videoanrufLaeuft": "Videopuhelu käynnissä"
 }

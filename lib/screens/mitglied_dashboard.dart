@@ -11,6 +11,8 @@ import '../services/heartbeat_service.dart';
 import '../services/voice_call_service.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' show RTCIceConnectionState;
 import '../widgets/anruf_overlay.dart';
+import '../services/anruf_systemkarte.dart';
+import '../widgets/anruffenster_erlaubnis.dart';
 import '../widgets/video_call_screen.dart';
 import '../widgets/legal_footer.dart';
 import '../widgets/live_chat_dialog.dart';
@@ -136,6 +138,18 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    // ⚠️ HIER und nicht in initState: das nativ gezeichnete Fenster bekommt
+    // seine Titelzeile uebersetzt von hier. `didChangeDependencies` laeuft
+    // auch nach einem Sprachwechsel wieder, `initState` nur einmal — dort
+    // gesetzt, stuende nach dem Wechsel die alte Sprache im Fenster.
+    // Bewusst OHNE Einmal-Schalter: es sind zwei Zuweisungen.
+    final lFenster = AppLocalizations.of(context);
+    if (lFenster != null) {
+      AnrufSystemkarte().texte(
+        anruf: lFenster.anrufLaeuft,
+        videoanruf: lFenster.videoanrufLaeuft,
+      );
+    }
     if (!_notifTextsUpdated) {
       _notifTextsUpdated = true;
       final l = AppLocalizations.of(context);
@@ -175,6 +189,15 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     super.initState();
     // Die schwebende Anrufkarte, sichtbar ueber jedem Schirm.
     AnrufOverlay().aktivieren();
+    // Und das Fenster ueber anderen Apps, wenn die App aus dem Blick geraet —
+    // siehe [AnrufSystemkarte]. Genau der gemeldete Fall: das Mitglied
+    // wechselt waehrend des Gespraechs in den Browser.
+    AnrufSystemkarte().aktivieren();
+    // ⚠️ Ohne „Ueber anderen Apps anzeigen" erscheint das Fenster SCHWEIGEND
+    // nicht — es ist eine BESONDERE Berechtigung und wird nur in den
+    // Systemeinstellungen erteilt, nie per Laufzeit-Dialog. Der Melder
+    // springt beim Beginn eines Gespraechs an, solange die App im Blick ist.
+    AnrufSystemkarte().erlaubnisFehlt.addListener(_anruffensterErlaubnisFragen);
     WidgetsBinding.instance.addObserver(this);
     _log.info('Dashboard: Loaded for ${widget.mitgliedernummer} (${widget.userName})', tag: 'DASH');
     _currentEmail = widget.email;
@@ -347,9 +370,22 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     }
   }
 
+  /// Fragt nach der Berechtigung fuer das Anruffenster.
+  ///
+  /// ⚠️ `mounted` ist Pflicht: der Melder feuert aus einem `await` heraus, und
+  /// der Bildschirm kann inzwischen weg sein.
+  void _anruffensterErlaubnisFragen() {
+    if (!AnrufSystemkarte().erlaubnisFehlt.value) return;
+    if (!mounted) return;
+    anruffensterHinweisZeigen(context);
+  }
+
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    AnrufSystemkarte()
+        .erlaubnisFehlt
+        .removeListener(_anruffensterErlaubnisFragen);
     _messageSubscription?.cancel();
     _callOfferSubscription?.cancel();
     _remoteOfferSubscription?.cancel();

@@ -3155,4 +3155,40 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Janela de chamada sobre outras aplicações';
+
+  @override
+  String get anruffensterZweck =>
+      'Se sair da aplicação durante uma chamada, por exemplo para o navegador, uma pequena janela permanece sobre a outra aplicação. Ao tocar, volta à chamada; ao lado está o botão para desligar.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'O Android exige para isso a permissão «Sobrepor a outras aplicações». Só pode ser concedida nas configurações do sistema.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Sem a permissão, a chamada permanece ligada; falta apenas a janela. O regresso faz-se então através da notificação.';
+
+  @override
+  String get anruffensterErteilt => 'Concedida – a janela irá aparecer.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Não concedida – a janela não irá aparecer.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Não foi possível abrir o ecrã de configurações. Manualmente: Configurações ▸ Aplicações ▸ ICD360S ▸ Sobrepor a outras aplicações.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'A janela de chamada existe apenas no Android.';
+
+  @override
+  String get anrufLaeuft => 'Chamada em curso';
+
+  @override
+  String get videoanrufLaeuft => 'Videochamada em curso';
 }

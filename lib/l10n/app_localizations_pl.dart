@@ -3162,4 +3162,39 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Okno połączenia nad innymi aplikacjami';
+
+  @override
+  String get anruffensterZweck =>
+      'Po wyjściu z aplikacji w trakcie rozmowy, na przykład do przeglądarki, małe okno pozostaje nad drugą aplikacją. Dotknięcie przywraca rozmowę; obok znajduje się przycisk zakończenia.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android wymaga do tego uprawnienia „Wyświetlanie nad innymi aplikacjami”. Można je nadać tylko w ustawieniach systemu.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Bez uprawnienia rozmowa pozostaje połączona; brakuje tylko okna. Powrót jest wtedy możliwy przez powiadomienie.';
+
+  @override
+  String get anruffensterErteilt => 'Nadane – okno będzie się pojawiać.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Nie nadane – okno się nie pojawi.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Nie udało się otworzyć ekranu ustawień. Ręcznie: Ustawienia ▸ Aplikacje ▸ ICD360S ▸ Wyświetlanie nad innymi aplikacjami.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Okno połączenia istnieje tylko na Androidzie.';
+
+  @override
+  String get anrufLaeuft => 'Trwa połączenie';
+
+  @override
+  String get videoanrufLaeuft => 'Trwa połączenie wideo';
 }

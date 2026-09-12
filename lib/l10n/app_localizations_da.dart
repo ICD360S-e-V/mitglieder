@@ -3151,4 +3151,38 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Opkaldsvindue over andre apps';
+
+  @override
+  String get anruffensterZweck =>
+      'Hvis du forlader appen under et opkald, for eksempel for at bruge browseren, bliver et lille vindue liggende over den anden app. Et tryk fører tilbage til opkaldet; ved siden af er knappen til at lægge på.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android kræver til dette tilladelsen „Vis over andre apps“. Den kan kun gives i systemindstillingerne.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Uden tilladelsen forbliver opkaldet forbundet; kun vinduet mangler. Tilbage går det så via notifikationen.';
+
+  @override
+  String get anruffensterErteilt => 'Givet – vinduet vises.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Ikke givet – vinduet vises ikke.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Indstillingsskærmen kunne ikke åbnes. Manuelt: Indstillinger ▸ Apps ▸ ICD360S ▸ Vis over andre apps.';
+
+  @override
+  String get anruffensterNurAndroid => 'Opkaldsvinduet findes kun på Android.';
+
+  @override
+  String get anrufLaeuft => 'Opkald i gang';
+
+  @override
+  String get videoanrufLaeuft => 'Videoopkald i gang';
 }

@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Продовжити",
   "wizardResumeBannerPendingTitle": "Вашу заявку розглядають",
   "wizardResumeBannerPendingBody": "Правління розглядає вашу заявку. Ви отримаєте повідомлення, щойно акаунт стане активним.",
-  "wizardResumeBannerPendingAction": "Переглянути статус"
+  "wizardResumeBannerPendingAction": "Переглянути статус",
+  "anruffensterTitel": "Вікно виклику поверх інших програм",
+  "anruffensterZweck": "Якщо під час розмови ви вийдете з програми, наприклад у браузер, невелике вікно залишиться поверх іншої програми. Натискання поверне вас до розмови; поруч розташована кнопка завершення.",
+  "anruffensterAndroidHinweis": "Android вимагає для цього дозвіл «Поверх інших програм». Його можна надати лише в системних налаштуваннях.",
+  "anruffensterOhneErlaubnis": "Без дозволу розмова залишається з’єднаною; бракує лише вікна. Повернутися можна через повідомлення.",
+  "anruffensterErteilt": "Надано – вікно з’явиться.",
+  "anruffensterNichtErteilt": "Не надано – вікно не з’явиться.",
+  "anruffensterVonHand": "Не вдалося відкрити екран налаштувань. Вручну: Налаштування ▸ Програми ▸ ICD360S ▸ Поверх інших програм.",
+  "anruffensterNurAndroid": "Вікно виклику доступне лише на Android.",
+  "anrufLaeuft": "Триває виклик",
+  "videoanrufLaeuft": "Триває відеовиклик"
 }

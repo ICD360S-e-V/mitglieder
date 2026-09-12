@@ -5713,6 +5713,66 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Status ansehen'**
   String get wizardResumeBannerPendingAction;
+
+  /// No description provided for @anruffensterTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Anruffenster über anderen Apps'**
+  String get anruffensterTitel;
+
+  /// No description provided for @anruffensterZweck.
+  ///
+  /// In de, this message translates to:
+  /// **'Wenn Sie während eines Gesprächs die App verlassen, etwa für den Browser, legt sich ein kleines Fenster über die andere App. Antippen holt das Gespräch zurück; daneben liegt der Auflegen-Knopf.'**
+  String get anruffensterZweck;
+
+  /// No description provided for @anruffensterAndroidHinweis.
+  ///
+  /// In de, this message translates to:
+  /// **'Android verlangt dafür die Berechtigung „Über anderen Apps anzeigen“. Sie lässt sich nur in den Systemeinstellungen geben.'**
+  String get anruffensterAndroidHinweis;
+
+  /// No description provided for @anruffensterOhneErlaubnis.
+  ///
+  /// In de, this message translates to:
+  /// **'Ohne die Berechtigung bleibt das Gespräch trotzdem verbunden; es fehlt nur das Fenster. Zurück geht es dann über die Benachrichtigung.'**
+  String get anruffensterOhneErlaubnis;
+
+  /// No description provided for @anruffensterErteilt.
+  ///
+  /// In de, this message translates to:
+  /// **'Erteilt – das Fenster erscheint.'**
+  String get anruffensterErteilt;
+
+  /// No description provided for @anruffensterNichtErteilt.
+  ///
+  /// In de, this message translates to:
+  /// **'Nicht erteilt – das Fenster erscheint nicht.'**
+  String get anruffensterNichtErteilt;
+
+  /// No description provided for @anruffensterVonHand.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Einstellungs-Bildschirm ließ sich nicht öffnen. Von Hand: Einstellungen ▸ Apps ▸ ICD360S ▸ Über anderen Apps anzeigen.'**
+  String get anruffensterVonHand;
+
+  /// No description provided for @anruffensterNurAndroid.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Anruffenster gibt es nur auf Android.'**
+  String get anruffensterNurAndroid;
+
+  /// No description provided for @anrufLaeuft.
+  ///
+  /// In de, this message translates to:
+  /// **'Anruf läuft'**
+  String get anrufLaeuft;
+
+  /// No description provided for @videoanrufLaeuft.
+  ///
+  /// In de, this message translates to:
+  /// **'Videoanruf läuft'**
+  String get videoanrufLaeuft;
 }
 
 class _AppLocalizationsDelegate

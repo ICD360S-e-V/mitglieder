@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Skambučio langas virš kitų programų",
+  "anruffensterZweck": "Jei skambučio metu išeinate iš programos, pavyzdžiui į naršyklę, mažas langas lieka virš kitos programos. Paspaudus grįžtama į skambutį; šalia yra ragelio padėjimo mygtukas.",
+  "anruffensterAndroidHinweis": "Android tam reikalauja leidimo „Rodyti virš kitų programų“. Jį galima suteikti tik sistemos nustatymuose.",
+  "anruffensterOhneErlaubnis": "Be leidimo skambutis lieka sujungtas; trūksta tik lango. Tada grįžti galima per pranešimą.",
+  "anruffensterErteilt": "Suteiktas – langas atsiras.",
+  "anruffensterNichtErteilt": "Nesuteiktas – langas neatsiras.",
+  "anruffensterVonHand": "Nepavyko atidaryti nustatymų ekrano. Rankiniu būdu: Nustatymai ▸ Programos ▸ ICD360S ▸ Rodyti virš kitų programų.",
+  "anruffensterNurAndroid": "Skambučio langas yra tik Android.",
+  "anrufLaeuft": "Vyksta skambutis",
+  "videoanrufLaeuft": "Vyksta vaizdo skambutis"
 }

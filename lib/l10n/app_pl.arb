@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Okno połączenia nad innymi aplikacjami",
+  "anruffensterZweck": "Po wyjściu z aplikacji w trakcie rozmowy, na przykład do przeglądarki, małe okno pozostaje nad drugą aplikacją. Dotknięcie przywraca rozmowę; obok znajduje się przycisk zakończenia.",
+  "anruffensterAndroidHinweis": "Android wymaga do tego uprawnienia „Wyświetlanie nad innymi aplikacjami”. Można je nadać tylko w ustawieniach systemu.",
+  "anruffensterOhneErlaubnis": "Bez uprawnienia rozmowa pozostaje połączona; brakuje tylko okna. Powrót jest wtedy możliwy przez powiadomienie.",
+  "anruffensterErteilt": "Nadane – okno będzie się pojawiać.",
+  "anruffensterNichtErteilt": "Nie nadane – okno się nie pojawi.",
+  "anruffensterVonHand": "Nie udało się otworzyć ekranu ustawień. Ręcznie: Ustawienia ▸ Aplikacje ▸ ICD360S ▸ Wyświetlanie nad innymi aplikacjami.",
+  "anruffensterNurAndroid": "Okno połączenia istnieje tylko na Androidzie.",
+  "anrufLaeuft": "Trwa połączenie",
+  "videoanrufLaeuft": "Trwa połączenie wideo"
 }

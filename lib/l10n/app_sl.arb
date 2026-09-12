@@ -1440,5 +1440,15 @@
   "wizardResumeBannerAction": "Continue",
   "wizardResumeBannerPendingTitle": "Your application is under review",
   "wizardResumeBannerPendingBody": "The board is reviewing your application. You will get a message as soon as your account is active.",
-  "wizardResumeBannerPendingAction": "View status"
+  "wizardResumeBannerPendingAction": "View status",
+  "anruffensterTitel": "Okno klica nad drugimi aplikacijami",
+  "anruffensterZweck": "Če med pogovorom zapustite aplikacijo, na primer zaradi brskalnika, majhno okno ostane nad drugo aplikacijo. Dotik vas vrne k pogovoru; ob njem je gumb za prekinitev.",
+  "anruffensterAndroidHinweis": "Android za to zahteva dovoljenje »Prikaz nad drugimi aplikacijami«. Dodeliti ga je mogoče samo v sistemskih nastavitvah.",
+  "anruffensterOhneErlaubnis": "Brez dovoljenja pogovor ostane povezan; manjka samo okno. Nazaj se nato vrnete prek obvestila.",
+  "anruffensterErteilt": "Dodeljeno – okno se bo prikazovalo.",
+  "anruffensterNichtErteilt": "Ni dodeljeno – okno se ne bo prikazalo.",
+  "anruffensterVonHand": "Zaslona z nastavitvami ni bilo mogoče odpreti. Ročno: Nastavitve ▸ Aplikacije ▸ ICD360S ▸ Prikaz nad drugimi aplikacijami.",
+  "anruffensterNurAndroid": "Okno klica obstaja samo v Androidu.",
+  "anrufLaeuft": "Pogovor poteka",
+  "videoanrufLaeuft": "Videopogovor poteka"
 }

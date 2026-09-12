@@ -3148,4 +3148,38 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Okno hovoru nad ostatnými aplikáciami';
+
+  @override
+  String get anruffensterZweck =>
+      'Ak počas hovoru opustíte aplikáciu, napríklad kvôli prehliadaču, malé okno zostane nad druhou aplikáciou. Dotykom sa vrátite k hovoru; vedľa je tlačidlo na ukončenie.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android na to vyžaduje povolenie „Zobrazovanie nad ostatnými aplikáciami“. Dá sa udeliť iba v nastaveniach systému.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Bez povolenia hovor zostáva spojený; chýba iba okno. Späť sa potom dostanete cez upozornenie.';
+
+  @override
+  String get anruffensterErteilt => 'Udelené – okno sa bude zobrazovať.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Neudelené – okno sa nezobrazí.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Obrazovku nastavení sa nepodarilo otvoriť. Ručne: Nastavenia ▸ Aplikácie ▸ ICD360S ▸ Zobrazovanie nad ostatnými aplikáciami.';
+
+  @override
+  String get anruffensterNurAndroid => 'Okno hovoru existuje iba v Androide.';
+
+  @override
+  String get anrufLaeuft => 'Prebieha hovor';
+
+  @override
+  String get videoanrufLaeuft => 'Prebieha videohovor';
 }

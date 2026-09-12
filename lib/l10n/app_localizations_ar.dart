@@ -3120,4 +3120,39 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'نافذة المكالمة فوق التطبيقات الأخرى';
+
+  @override
+  String get anruffensterZweck =>
+      'إذا خرجت من التطبيق أثناء المكالمة، مثلاً لاستخدام المتصفح، تبقى نافذة صغيرة فوق التطبيق الآخر. اللمس يعيدك إلى المكالمة، وبجانبها زر إنهاء المكالمة.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'يطلب Android لذلك إذن «العرض فوق التطبيقات الأخرى». لا يمكن منحه إلا من إعدادات النظام.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'بدون هذا الإذن تبقى المكالمة متصلة، وتغيب النافذة فقط. يمكن العودة عبر الإشعار.';
+
+  @override
+  String get anruffensterErteilt => 'مُمنوح – ستظهر النافذة.';
+
+  @override
+  String get anruffensterNichtErteilt => 'غير مُمنوح – لن تظهر النافذة.';
+
+  @override
+  String get anruffensterVonHand =>
+      'لم يتمكّن النظام من فتح شاشة الإعدادات. يدويًا: الإعدادات ▸ التطبيقات ▸ ICD360S ▸ العرض فوق التطبيقات الأخرى.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'نافذة المكالمة متوفّرة على Android فقط.';
+
+  @override
+  String get anrufLaeuft => 'مكالمة جارية';
+
+  @override
+  String get videoanrufLaeuft => 'مكالمة فيديو جارية';
 }

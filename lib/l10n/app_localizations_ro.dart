@@ -3155,4 +3155,39 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'Vezi statusul';
+
+  @override
+  String get anruffensterTitel => 'Fereastra de apel peste alte aplicații';
+
+  @override
+  String get anruffensterZweck =>
+      'Dacă ieșiți din aplicație în timpul unei convorbiri, de exemplu pentru browser, o fereastră mică rămâne peste cealaltă aplicație. O atingere vă duce înapoi la convorbire; lângă ea este butonul de închidere.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android cere pentru asta permisiunea „Afișare peste alte aplicații”. Ea se poate acorda doar din setările sistemului.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Fără permisiune convorbirea rămâne conectată; lipsește doar fereastra. Vă întoarceți atunci prin notificare.';
+
+  @override
+  String get anruffensterErteilt => 'Acordată – fereastra va apărea.';
+
+  @override
+  String get anruffensterNichtErteilt => 'Neacordată – fereastra nu va apărea.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Ecranul de setări nu s-a putut deschide. Manual: Setări ▸ Aplicații ▸ ICD360S ▸ Afișare peste alte aplicații.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Fereastra de apel există doar pe Android.';
+
+  @override
+  String get anrufLaeuft => 'Apel în curs';
+
+  @override
+  String get videoanrufLaeuft => 'Apel video în curs';
 }

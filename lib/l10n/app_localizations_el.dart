@@ -3170,4 +3170,40 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Παράθυρο κλήσης πάνω από άλλες εφαρμογές';
+
+  @override
+  String get anruffensterZweck =>
+      'Αν κατά τη διάρκεια μιας κλήσης βγείτε από την εφαρμογή, για παράδειγμα για το πρόγραμμα περιήγησης, ένα μικρό παράθυρο παραμένει πάνω από την άλλη εφαρμογή. Το άγγιγμα επιστρέφει στην κλήση· δίπλα βρίσκεται το κουμπί τερματισμού.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Το Android απαιτεί για αυτό την άδεια «Εμφάνιση πάνω από άλλες εφαρμογές». Μπορεί να δοθεί μόνο από τις ρυθμίσεις συστήματος.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Χωρίς την άδεια η κλήση παραμένει συνδεδεμένη· λείπει μόνο το παράθυρο. Η επιστροφή γίνεται τότε μέσω της ειδοποίησης.';
+
+  @override
+  String get anruffensterErteilt => 'Δόθηκε – το παράθυρο θα εμφανίζεται.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Δεν δόθηκε – το παράθυρο δεν θα εμφανίζεται.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Δεν ήταν δυνατό να ανοίξει η οθόνη ρυθμίσεων. Χειροκίνητα: Ρυθμίσεις ▸ Εφαρμογές ▸ ICD360S ▸ Εμφάνιση πάνω από άλλες εφαρμογές.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Το παράθυρο κλήσης υπάρχει μόνο στο Android.';
+
+  @override
+  String get anrufLaeuft => 'Κλήση σε εξέλιξη';
+
+  @override
+  String get videoanrufLaeuft => 'Βιντεοκλήση σε εξέλιξη';
 }

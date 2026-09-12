@@ -3154,4 +3154,40 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get wizardResumeBannerPendingAction => 'View status';
+
+  @override
+  String get anruffensterTitel => 'Прозорец за разговор върху други приложения';
+
+  @override
+  String get anruffensterZweck =>
+      'Ако по време на разговор излезете от приложението, например за браузъра, малък прозорец остава върху другото приложение. Докосване връща разговора; до него е бутонът за затваряне.';
+
+  @override
+  String get anruffensterAndroidHinweis =>
+      'Android изисква за това разрешението „Показване върху други приложения“. То може да се даде само в системните настройки.';
+
+  @override
+  String get anruffensterOhneErlaubnis =>
+      'Без разрешението разговорът остава свързан; липсва само прозорецът. Връщането става тогава чрез известието.';
+
+  @override
+  String get anruffensterErteilt => 'Дадено – прозорецът ще се появява.';
+
+  @override
+  String get anruffensterNichtErteilt =>
+      'Не е дадено – прозорецът няма да се появява.';
+
+  @override
+  String get anruffensterVonHand =>
+      'Екранът с настройките не можа да се отвори. Ръчно: Настройки ▸ Приложения ▸ ICD360S ▸ Показване върху други приложения.';
+
+  @override
+  String get anruffensterNurAndroid =>
+      'Прозорецът за разговор съществува само на Android.';
+
+  @override
+  String get anrufLaeuft => 'Тече разговор';
+
+  @override
+  String get videoanrufLaeuft => 'Тече видеоразговор';
 }
