@@ -273,6 +273,37 @@ class DeviceKeyService {
       }
     }
 
+    // Anzeige und Bedienungshilfen.
+    //
+    // Ohne diese vier Werte ist jede Meldung „bei mir sieht die App kaputt
+    // aus" Rätselraten: aus dem Modellnamen lässt sich die Auflösung ableiten,
+    // aber nicht, wie das Mitglied sein Gerät eingestellt hat. Und genau die
+    // Einstellung ist der Unterschied.
+    //
+    // `text_scale` ist die System-Schriftgröße (1.0 = Standard, 2.0 = größte
+    // Stufe der Android-Bedienungshilfen). `screen_*_dp` ist die logische
+    // Größe, die die App tatsächlich bekommt — darin steckt die separate
+    // Anzeigegröße, die die Dichte verändert: ein 360 dp breites Telefon
+    // meldet auf der höchsten Stufe nur noch rund 277 dp.
+    //
+    // Erhoben wird das bei jeder Registrierung UND bei jeder Validierung, weil
+    // beide Wege durch diese Methode laufen. Der Wert bleibt damit aktuell,
+    // wenn jemand die Einstellung nachträglich ändert.
+    try {
+      final view = PlatformDispatcher.instance.implicitView;
+      if (view != null && !view.physicalSize.isEmpty) {
+        final logisch = view.physicalSize / view.devicePixelRatio;
+        data['screen_width_dp'] = logisch.width.round();
+        data['screen_height_dp'] = logisch.height.round();
+        data['device_pixel_ratio'] =
+            double.parse(view.devicePixelRatio.toStringAsFixed(2));
+      }
+      data['text_scale'] = double.parse(
+          PlatformDispatcher.instance.textScaleFactor.toStringAsFixed(2));
+    } catch (e) {
+      _logger.warning('Display/accessibility data failed: $e', tag: 'DEVICE');
+    }
+
     _logger.info('Extended device data collected: ${data.keys.toList()}', tag: 'DEVICE');
     return data;
   }
