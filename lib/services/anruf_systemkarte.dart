@@ -81,7 +81,6 @@ class AnrufSystemkarte with WidgetsBindingObserver {
     _pruefen();
   }
 
-  @visibleForTesting
   /// Startzeit als Millisekunden, oder `-1` solange das Gespraech nicht steht.
   int _startzeitMs() =>
       _dienst.gespraechBeginn?.millisecondsSinceEpoch ?? -1;
@@ -98,6 +97,7 @@ class AnrufSystemkarte with WidgetsBindingObserver {
     AnrufVordergrund.systemfensterStand(startzeit: s, guete: g);
   }
 
+  @visibleForTesting
   void abbauen() {
     _dienst.anrufGuete.removeListener(_standSenden);
     if (!_aktiv) return;
