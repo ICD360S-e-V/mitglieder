@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.93.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.5...v1.93.6) (2026-09-12)
+
+
+### Bug Fixes
+
+* **anmeldung:** Ausgangszeichen statt Kreuz — 28 Sprachen lesen kein Tooltip ([#384](https://github.com/ICD360S-e-V/mitglieder/issues/384)) ([c02f9d8](https://github.com/ICD360S-e-V/mitglieder/commit/c02f9d855171838b4e8b604dc73c4b05c52226b5))
+
 ## [1.93.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.4...v1.93.5) (2026-09-12)
 
 
