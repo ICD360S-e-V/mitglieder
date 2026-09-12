@@ -3125,7 +3125,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get wizardAbandonDialogBody =>
-      'Cererea ta va fi marcată ca retrasă de tine. Datele rămân salvate din motive de audit (GDPR). Important: trei retrageri în 90 de zile înseamnă că nu te mai poți înregistra singur și va trebui să vorbești cu conducerea. Dacă ai nevoie doar de o pauză, alege „Continui mai târziu”.';
+      'Cererea ta va fi marcată ca retrasă de tine. Datele rămân salvate din motive de audit (GDPR). Important: 10 retrageri în 90 de zile înseamnă că nu te mai poți înregistra singur și va trebui să vorbești cu conducerea. Dacă ai nevoie doar de o pauză, alege „Continui mai târziu”.';
 
   @override
   String get wizardAbandonKeep => 'Nu, continui';

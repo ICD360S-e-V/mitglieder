@@ -171,13 +171,32 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 
-    // finalize.php weist einen Antragsteller mit drei Rückzügen in 90 Tagen
-    // ab. Diese Folge sieht der Besucher nirgends sonst — sie MUSS hier
-    // stehen, sonst tippt jemand aus Versehen seine Anmeldefähigkeit weg.
+    // Der Server verweist einen Antragsteller an den Vorstand, sobald er
+    // RueckzugFenster::GRENZE Rückzüge im Fenster hat. Diese Folge sieht der
+    // Besucher nirgends sonst — sie MUSS hier stehen, sonst tippt jemand aus
+    // Versehen seine Anmeldefähigkeit weg.
+    //
+    // Geprüft werden BEIDE Zahlen, und zwar aus einem konkreten Anlass: der
+    // Text versprach lange drei Versuche, check_age.php sperrte beim ersten
+    // und finalize.php beim dritten. Keine der drei Zahlen stimmte mit einer
+    // anderen.
+    //
+    // Dass es DIESELBEN Zahlen wie im Server sind, kann dieser Test nicht
+    // wissen — er sieht kein PHP. Das hält rueckzug_grenze_test.dart
+    // daneben, das RueckzugFenster::GRENZE aus der Quelle liest. Hier geht es
+    // nur darum, dass die Warnung überhaupt im Dialog steht.
+    final dialog = find.byType(AlertDialog);
+    expect(dialog, findsOneWidget);
     expect(
-      find.textContaining('90'),
+      find.descendant(of: dialog, matching: find.textContaining('90')),
       findsOneWidget,
-      reason: 'Die Warnung vor der Sperre fehlt im Bestätigungsdialog.',
+      reason: 'Das Zeitfenster fehlt im Bestätigungsdialog.',
+    );
+    expect(
+      find.descendant(of: dialog, matching: find.textContaining('10')),
+      findsOneWidget,
+      reason: 'Die Zahl der erlaubten Rückzüge fehlt im Bestätigungsdialog — '
+          'oder sie stimmt nicht mehr mit RueckzugFenster::GRENZE überein.',
     );
 
     // Die Gegenprobe: der Dialog darf nicht von allein durchlaufen.

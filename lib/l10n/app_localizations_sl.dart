@@ -3120,7 +3120,7 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get wizardAbandonDialogBody =>
-      'Your application will be marked as withdrawn by you. The data stays stored for audit reasons (GDPR). Important: three withdrawals within 90 days means you can no longer register on your own and will need to talk to the board. If you just need a break, choose “Continue later”.';
+      'Your application will be marked as withdrawn by you. The data stays stored for audit reasons (GDPR). Important: 10 withdrawals within 90 days means you can no longer register on your own and will need to talk to the board. If you just need a break, choose “Continue later”.';
 
   @override
   String get wizardAbandonKeep => 'No, keep going';
