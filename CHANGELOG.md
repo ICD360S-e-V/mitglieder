@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.94.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.6...v1.94.0) (2026-09-12)
+
+
+### Features
+
+* **bedienungshilfen:** vergrößerte Systemschrift bis 200 % tragen ([#386](https://github.com/ICD360S-e-V/mitglieder/issues/386)) ([f958e99](https://github.com/ICD360S-e-V/mitglieder/commit/f958e99f349887d2871fe6d3ad60c84ee034e8c8))
+
 ## [1.93.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.93.5...v1.93.6) (2026-09-12)
 
 
