@@ -5827,6 +5827,42 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Den Klingelschirm gibt es nur auf Android.'**
   String get klingelNurAndroid;
+
+  /// No description provided for @autostartTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Beim Anmelden starten'**
+  String get autostartTitel;
+
+  /// No description provided for @autostartZweck.
+  ///
+  /// In de, this message translates to:
+  /// **'Auf dem Rechner hält kein Hintergrunddienst die Verbindung. Läuft die App nicht, kommt kein Anruf an — es klingelt nirgends. Das Schließen des Fensters legt sie nur in den Infobereich.'**
+  String get autostartZweck;
+
+  /// No description provided for @autostartAn.
+  ///
+  /// In de, this message translates to:
+  /// **'Ein – die App startet nach dem Anmelden und ist erreichbar.'**
+  String get autostartAn;
+
+  /// No description provided for @autostartAus.
+  ///
+  /// In de, this message translates to:
+  /// **'Aus – Anrufe kommen nur an, solange die App läuft.'**
+  String get autostartAus;
+
+  /// No description provided for @autostartFehlgeschlagen.
+  ///
+  /// In de, this message translates to:
+  /// **'Das ließ sich nicht umstellen. Bitte tragen Sie die App von Hand in den Autostart ein.'**
+  String get autostartFehlgeschlagen;
+
+  /// No description provided for @autostartFlatpak.
+  ///
+  /// In de, this message translates to:
+  /// **'Im Flatpak lässt sich der Autostart nicht setzen. Bitte über die Einstellungen Ihres Systems.'**
+  String get autostartFlatpak;
 }
 
 class _AppLocalizationsDelegate

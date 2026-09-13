@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Megadva – a képernyő megjelenik a lezárási képernyő felett.",
   "klingelNichtErteilt": "Nincs megadva – csak egy értesítés jelenik meg.",
   "klingelVonHand": "A beállítások képernyőt nem sikerült megnyitni. Kézzel: Beállítások ▸ Alkalmazások ▸ Speciális hozzáférés ▸ Teljes képernyős értesítések.",
-  "klingelNurAndroid": "A csengő képernyő csak Androidon létezik."
+  "klingelNurAndroid": "A csengő képernyő csak Androidon létezik.",
+  "autostartTitel": "Indítás bejelentkezéskor",
+  "autostartZweck": "A számítógépen nincs háttérszolgáltatás, amely fenntartja a kapcsolatot. Ha az alkalmazás nem fut, nem érkezik hívás — semmi nem csörög. Az ablak bezárása csak az értesítési területre teszi.",
+  "autostartAn": "Be – az alkalmazás bejelentkezés után indul és elérhető.",
+  "autostartAus": "Ki – hívások csak akkor érkeznek, amíg az alkalmazás fut.",
+  "autostartFehlgeschlagen": "Ezt nem sikerült átállítani. Kérjük, kézzel adja hozzá az indítópulthoz.",
+  "autostartFlatpak": "Flatpakban az automatikus indítás nem állítható be. Használja a rendszerbeállításokat."
 }

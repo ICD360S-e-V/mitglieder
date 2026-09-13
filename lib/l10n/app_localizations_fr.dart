@@ -3249,4 +3249,27 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get klingelNurAndroid =>
       'L’écran de sonnerie n’existe que sur Android.';
+
+  @override
+  String get autostartTitel => 'Démarrer à l’ouverture de session';
+
+  @override
+  String get autostartZweck =>
+      'Sur un ordinateur, aucun service en arrière-plan ne maintient la connexion. Si l’application ne tourne pas, aucun appel n’arrive — rien ne sonne. Fermer la fenêtre la place seulement dans la zone de notification.';
+
+  @override
+  String get autostartAn =>
+      'Activé – l’application démarre après la connexion et est joignable.';
+
+  @override
+  String get autostartAus =>
+      'Désactivé – les appels n’arrivent que si l’application tourne.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Impossible de modifier ce réglage. Ajoutez l’application au démarrage manuellement.';
+
+  @override
+  String get autostartFlatpak =>
+      'Dans Flatpak, le démarrage automatique ne peut pas être réglé. Utilisez les paramètres de votre système.';
 }

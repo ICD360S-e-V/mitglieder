@@ -3211,4 +3211,25 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Ringskärmen finns bara på Android.';
+
+  @override
+  String get autostartTitel => 'Starta vid inloggning';
+
+  @override
+  String get autostartZweck =>
+      'På en dator finns ingen bakgrundstjänst som håller anslutningen. Om appen inte körs kommer inga samtal in — det ringer ingenstans. Att stänga fönstret lägger den bara i meddelandefältet.';
+
+  @override
+  String get autostartAn => 'På – appen startar efter inloggning och är nåbar.';
+
+  @override
+  String get autostartAus => 'Av – samtal kommer bara in så länge appen körs.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Det gick inte att ändra. Lägg till appen i autostart manuellt.';
+
+  @override
+  String get autostartFlatpak =>
+      'I Flatpak kan autostart inte ställas in. Använd dina systeminställningar.';
 }

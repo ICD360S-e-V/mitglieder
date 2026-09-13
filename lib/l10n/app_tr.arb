@@ -1480,5 +1480,11 @@
   "klingelErteilt": "Verildi – ekran kilit ekranının üzerinde görünür.",
   "klingelNichtErteilt": "Verilmedi – yalnızca bir bildirim görünür.",
   "klingelVonHand": "Ayarlar ekranı açılamadı. Elle: Ayarlar ▸ Uygulamalar ▸ Özel uygulama erişimi ▸ Tam ekran bildirimleri.",
-  "klingelNurAndroid": "Zil ekranı yalnızca Android’de vardır."
+  "klingelNurAndroid": "Zil ekranı yalnızca Android’de vardır.",
+  "autostartTitel": "Oturum açıldığında başlat",
+  "autostartZweck": "Bilgisayarda bağlantıyı sürdüren bir arka plan hizmeti yoktur. Uygulama çalışmıyorsa arama gelmez — hiçbir yerde çalmaz. Pencereyi kapatmak onu yalnızca bildirim alanına alır.",
+  "autostartAn": "Açık – uygulama oturum açıldıktan sonra başlar ve ulaşılabilir.",
+  "autostartAus": "Kapalı – aramalar yalnızca uygulama çalışırken gelir.",
+  "autostartFehlgeschlagen": "Bu değiştirilemedi. Lütfen uygulamayı başlangıç öğelerine elle ekleyin.",
+  "autostartFlatpak": "Flatpak içinde otomatik başlatma ayarlanamaz. Lütfen sistem ayarlarını kullanın."
 }

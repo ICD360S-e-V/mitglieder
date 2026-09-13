@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Piešķirta – ekrāns parādās virs bloķēšanas ekrāna.",
   "klingelNichtErteilt": "Nav piešķirta – parādās tikai paziņojums.",
   "klingelVonHand": "Iestatījumu ekrānu nevarēja atvērt. Manuāli: Iestatījumi ▸ Lietotnes ▸ Īpaša piekļuve ▸ Pilnekrāna paziņojumi.",
-  "klingelNurAndroid": "Zvana ekrāns ir tikai Android."
+  "klingelNurAndroid": "Zvana ekrāns ir tikai Android.",
+  "autostartTitel": "Startēt pieteikšanās laikā",
+  "autostartZweck": "Datorā nav fona pakalpojuma, kas uzturētu savienojumu. Ja lietotne nedarbojas, zvans nepienāk — nekur nezvana. Loga aizvēršana to tikai novieto paziņojumu zonā.",
+  "autostartAn": "Ieslēgts – lietotne startē pēc pieteikšanās un ir sasniedzama.",
+  "autostartAus": "Izslēgts – zvani pienāk tikai tad, kad lietotne darbojas.",
+  "autostartFehlgeschlagen": "To nevarēja mainīt. Pievienojiet lietotni startēšanai manuāli.",
+  "autostartFlatpak": "Flatpak vidē automātisko startēšanu nevar iestatīt. Izmantojiet sistēmas iestatījumus."
 }

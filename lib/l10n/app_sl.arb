@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Dano – zaslon se pojavi nad zaklenjenim zaslonom.",
   "klingelNichtErteilt": "Ni dano – pojavi se samo obvestilo.",
   "klingelVonHand": "Zaslona z nastavitvami ni bilo mogoče odpreti. Ročno: Nastavitve ▸ Aplikacije ▸ Poseben dostop ▸ Obvestila na celotnem zaslonu.",
-  "klingelNurAndroid": "Zaslon zvonjenja obstaja samo na Androidu."
+  "klingelNurAndroid": "Zaslon zvonjenja obstaja samo na Androidu.",
+  "autostartTitel": "Zaženi ob prijavi",
+  "autostartZweck": "Na računalniku ni storitve v ozadju, ki bi vzdrževala povezavo. Če aplikacija ne teče, klic ne pride — nikjer ne zvoni. Zapiranje okna jo le pospravi v območje obvestil.",
+  "autostartAn": "Vklopljeno – aplikacija se zažene po prijavi in je dosegljiva.",
+  "autostartAus": "Izklopljeno – klici pridejo le, dokler aplikacija teče.",
+  "autostartFehlgeschlagen": "Tega ni bilo mogoče spremeniti. Aplikacijo dodajte v zagon ročno.",
+  "autostartFlatpak": "V Flatpaku samodejnega zagona ni mogoče nastaviti. Uporabite sistemske nastavitve."
 }

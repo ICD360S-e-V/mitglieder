@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Concedida – o ecrã aparece sobre o ecrã de bloqueio.",
   "klingelNichtErteilt": "Não concedida – aparece apenas uma notificação.",
   "klingelVonHand": "Não foi possível abrir o ecrã de definições. Manualmente: Definições ▸ Aplicações ▸ Acesso especial ▸ Notificações em ecrã inteiro.",
-  "klingelNurAndroid": "O ecrã de chamada existe apenas no Android."
+  "klingelNurAndroid": "O ecrã de chamada existe apenas no Android.",
+  "autostartTitel": "Iniciar ao iniciar sessão",
+  "autostartZweck": "No computador não existe um serviço em segundo plano que mantenha a ligação. Se a aplicação não estiver em execução, nenhuma chamada chega — não toca em lugar algum. Fechar a janela apenas a coloca na área de notificação.",
+  "autostartAn": "Ligado – a aplicação inicia depois de iniciar sessão e está acessível.",
+  "autostartAus": "Desligado – as chamadas só chegam enquanto a aplicação estiver em execução.",
+  "autostartFehlgeschlagen": "Não foi possível alterar. Adicione a aplicação ao arranque manualmente.",
+  "autostartFlatpak": "No Flatpak o arranque automático não pode ser definido. Use as definições do sistema."
 }

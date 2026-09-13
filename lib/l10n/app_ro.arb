@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Acordată – ecranul apare peste ecranul blocat.",
   "klingelNichtErteilt": "Neacordată – apare doar o notificare.",
   "klingelVonHand": "Ecranul de setări nu s-a putut deschide. Manual: Setări ▸ Aplicații ▸ Acces special al aplicațiilor ▸ Notificări pe tot ecranul.",
-  "klingelNurAndroid": "Ecranul de sonerie există doar pe Android."
+  "klingelNurAndroid": "Ecranul de sonerie există doar pe Android.",
+  "autostartTitel": "Pornește la conectare",
+  "autostartZweck": "Pe calculator nu există un serviciu de fundal care să țină legătura. Dacă aplicația nu rulează, nu ajunge niciun apel — nu sună nicăieri. Închiderea ferestrei o pune doar în zona de notificare.",
+  "autostartAn": "Activat – aplicația pornește după conectare și e accesibilă.",
+  "autostartAus": "Dezactivat – apelurile ajung doar cât timp aplicația rulează.",
+  "autostartFehlgeschlagen": "Nu s-a putut modifica. Adăugați aplicația manual la programele de pornire.",
+  "autostartFlatpak": "În Flatpak pornirea automată nu se poate seta. Folosiți setările sistemului."
 }

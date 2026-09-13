@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Givet – skærmen vises over låseskærmen.",
   "klingelNichtErteilt": "Ikke givet – der vises kun en notifikation.",
   "klingelVonHand": "Indstillingsskærmen kunne ikke åbnes. Manuelt: Indstillinger ▸ Apps ▸ Særlig appadgang ▸ Fuldskærmsnotifikationer.",
-  "klingelNurAndroid": "Ringeskærmen findes kun på Android."
+  "klingelNurAndroid": "Ringeskærmen findes kun på Android.",
+  "autostartTitel": "Start ved login",
+  "autostartZweck": "På en computer er der ingen baggrundstjeneste, der holder forbindelsen. Kører appen ikke, kommer der ingen opkald — det ringer intet sted. At lukke vinduet lægger den blot i meddelelsesområdet.",
+  "autostartAn": "Til – appen starter efter login og kan nås.",
+  "autostartAus": "Fra – opkald kommer kun ind, så længe appen kører.",
+  "autostartFehlgeschlagen": "Det kunne ikke ændres. Tilføj appen til opstart manuelt.",
+  "autostartFlatpak": "I Flatpak kan automatisk start ikke sættes. Brug dine systemindstillinger."
 }

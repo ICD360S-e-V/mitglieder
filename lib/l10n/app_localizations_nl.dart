@@ -3232,4 +3232,27 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Het belscherm bestaat alleen op Android.';
+
+  @override
+  String get autostartTitel => 'Starten bij aanmelden';
+
+  @override
+  String get autostartZweck =>
+      'Op een computer houdt geen achtergronddienst de verbinding in stand. Draait de app niet, dan komt er geen gesprek binnen — er gaat nergens iets over. Het venster sluiten zet hem alleen in het systeemvak.';
+
+  @override
+  String get autostartAn =>
+      'Aan – de app start na het aanmelden en is bereikbaar.';
+
+  @override
+  String get autostartAus =>
+      'Uit – gesprekken komen alleen binnen zolang de app draait.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Dit kon niet worden gewijzigd. Voeg de app handmatig toe aan het opstarten.';
+
+  @override
+  String get autostartFlatpak =>
+      'In Flatpak kan automatisch opstarten niet worden ingesteld. Gebruik uw systeeminstellingen.';
 }

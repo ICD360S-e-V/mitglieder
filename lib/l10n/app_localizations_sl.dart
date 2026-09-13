@@ -3218,4 +3218,27 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Zaslon zvonjenja obstaja samo na Androidu.';
+
+  @override
+  String get autostartTitel => 'Zaženi ob prijavi';
+
+  @override
+  String get autostartZweck =>
+      'Na računalniku ni storitve v ozadju, ki bi vzdrževala povezavo. Če aplikacija ne teče, klic ne pride — nikjer ne zvoni. Zapiranje okna jo le pospravi v območje obvestil.';
+
+  @override
+  String get autostartAn =>
+      'Vklopljeno – aplikacija se zažene po prijavi in je dosegljiva.';
+
+  @override
+  String get autostartAus =>
+      'Izklopljeno – klici pridejo le, dokler aplikacija teče.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Tega ni bilo mogoče spremeniti. Aplikacijo dodajte v zagon ročno.';
+
+  @override
+  String get autostartFlatpak =>
+      'V Flatpaku samodejnega zagona ni mogoče nastaviti. Uporabite sistemske nastavitve.';
 }

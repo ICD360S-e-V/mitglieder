@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Accordée – l’écran apparaît par-dessus l’écran de verrouillage.",
   "klingelNichtErteilt": "Non accordée – seule une notification apparaît.",
   "klingelVonHand": "L’écran des paramètres n’a pas pu être ouvert. Manuellement : Paramètres ▸ Applications ▸ Accès spécial ▸ Notifications en plein écran.",
-  "klingelNurAndroid": "L’écran de sonnerie n’existe que sur Android."
+  "klingelNurAndroid": "L’écran de sonnerie n’existe que sur Android.",
+  "autostartTitel": "Démarrer à l’ouverture de session",
+  "autostartZweck": "Sur un ordinateur, aucun service en arrière-plan ne maintient la connexion. Si l’application ne tourne pas, aucun appel n’arrive — rien ne sonne. Fermer la fenêtre la place seulement dans la zone de notification.",
+  "autostartAn": "Activé – l’application démarre après la connexion et est joignable.",
+  "autostartAus": "Désactivé – les appels n’arrivent que si l’application tourne.",
+  "autostartFehlgeschlagen": "Impossible de modifier ce réglage. Ajoutez l’application au démarrage manuellement.",
+  "autostartFlatpak": "Dans Flatpak, le démarrage automatique ne peut pas être réglé. Utilisez les paramètres de votre système."
 }

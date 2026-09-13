@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Annettu – näyttö ilmestyy lukitusnäytön päälle.",
   "klingelNichtErteilt": "Ei annettu – näkyviin tulee vain ilmoitus.",
   "klingelVonHand": "Asetusnäyttöä ei voitu avata. Käsin: Asetukset ▸ Sovellukset ▸ Erityinen sovellusoikeus ▸ Koko näytön ilmoitukset.",
-  "klingelNurAndroid": "Soittonäyttö on vain Androidissa."
+  "klingelNurAndroid": "Soittonäyttö on vain Androidissa.",
+  "autostartTitel": "Käynnistä kirjautumisen yhteydessä",
+  "autostartZweck": "Tietokoneessa ei ole taustapalvelua, joka ylläpitäisi yhteyttä. Jos sovellus ei ole käynnissä, puhelu ei saavu — mikään ei soi. Ikkunan sulkeminen siirtää sen vain ilmoitusalueelle.",
+  "autostartAn": "Päällä – sovellus käynnistyy kirjautumisen jälkeen ja on tavoitettavissa.",
+  "autostartAus": "Pois – puhelut saapuvat vain sovelluksen ollessa käynnissä.",
+  "autostartFehlgeschlagen": "Tätä ei voitu muuttaa. Lisää sovellus käynnistykseen käsin.",
+  "autostartFlatpak": "Flatpakissa automaattista käynnistystä ei voi asettaa. Käytä järjestelmän asetuksia."
 }

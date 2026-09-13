@@ -1559,5 +1559,11 @@
   "klingelErteilt": "Erteilt – der Schirm erscheint über dem Sperrbildschirm.",
   "klingelNichtErteilt": "Nicht erteilt – es erscheint nur eine Benachrichtigung.",
   "klingelVonHand": "Der Einstellungs-Bildschirm ließ sich nicht öffnen. Von Hand: Einstellungen ▸ Apps ▸ Spezieller App-Zugriff ▸ Vollbild-Benachrichtigungen.",
-  "klingelNurAndroid": "Den Klingelschirm gibt es nur auf Android."
+  "klingelNurAndroid": "Den Klingelschirm gibt es nur auf Android.",
+  "autostartTitel": "Beim Anmelden starten",
+  "autostartZweck": "Auf dem Rechner hält kein Hintergrunddienst die Verbindung. Läuft die App nicht, kommt kein Anruf an — es klingelt nirgends. Das Schließen des Fensters legt sie nur in den Infobereich.",
+  "autostartAn": "Ein – die App startet nach dem Anmelden und ist erreichbar.",
+  "autostartAus": "Aus – Anrufe kommen nur an, solange die App läuft.",
+  "autostartFehlgeschlagen": "Das ließ sich nicht umstellen. Bitte tragen Sie die App von Hand in den Autostart ein.",
+  "autostartFlatpak": "Im Flatpak lässt sich der Autostart nicht setzen. Bitte über die Einstellungen Ihres Systems."
 }

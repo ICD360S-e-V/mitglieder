@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Granted – the screen appears over the lock screen.",
   "klingelNichtErteilt": "Not granted – only a notification appears.",
   "klingelVonHand": "The settings screen could not be opened. Manually: Settings ▸ Apps ▸ Special app access ▸ Full-screen notifications.",
-  "klingelNurAndroid": "The ring screen only exists on Android."
+  "klingelNurAndroid": "The ring screen only exists on Android.",
+  "autostartTitel": "Start on sign-in",
+  "autostartZweck": "On a computer no background service keeps the connection. If the app is not running, no call arrives — nothing rings. Closing the window only puts it in the notification area.",
+  "autostartAn": "On – the app starts after sign-in and can be reached.",
+  "autostartAus": "Off – calls only arrive while the app is running.",
+  "autostartFehlgeschlagen": "This could not be changed. Please add the app to your startup items manually.",
+  "autostartFlatpak": "Autostart cannot be set inside Flatpak. Please use your system settings."
 }

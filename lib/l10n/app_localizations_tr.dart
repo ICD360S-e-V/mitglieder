@@ -3219,4 +3219,27 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Zil ekranı yalnızca Android’de vardır.';
+
+  @override
+  String get autostartTitel => 'Oturum açıldığında başlat';
+
+  @override
+  String get autostartZweck =>
+      'Bilgisayarda bağlantıyı sürdüren bir arka plan hizmeti yoktur. Uygulama çalışmıyorsa arama gelmez — hiçbir yerde çalmaz. Pencereyi kapatmak onu yalnızca bildirim alanına alır.';
+
+  @override
+  String get autostartAn =>
+      'Açık – uygulama oturum açıldıktan sonra başlar ve ulaşılabilir.';
+
+  @override
+  String get autostartAus =>
+      'Kapalı – aramalar yalnızca uygulama çalışırken gelir.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Bu değiştirilemedi. Lütfen uygulamayı başlangıç öğelerine elle ekleyin.';
+
+  @override
+  String get autostartFlatpak =>
+      'Flatpak içinde otomatik başlatma ayarlanamaz. Lütfen sistem ayarlarını kullanın.';
 }

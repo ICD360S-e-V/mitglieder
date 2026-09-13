@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Nadane – ekran pojawia się nad ekranem blokady.",
   "klingelNichtErteilt": "Nie nadane – pojawia się tylko powiadomienie.",
   "klingelVonHand": "Nie udało się otworzyć ekranu ustawień. Ręcznie: Ustawienia ▸ Aplikacje ▸ Specjalny dostęp ▸ Powiadomienia pełnoekranowe.",
-  "klingelNurAndroid": "Ekran dzwonienia istnieje tylko w Androidzie."
+  "klingelNurAndroid": "Ekran dzwonienia istnieje tylko w Androidzie.",
+  "autostartTitel": "Uruchom przy logowaniu",
+  "autostartZweck": "Na komputerze nie ma usługi w tle, która utrzymuje połączenie. Jeśli aplikacja nie działa, połączenie nie dochodzi — nigdzie nie dzwoni. Zamknięcie okna tylko odkłada ją do obszaru powiadomień.",
+  "autostartAn": "Włączone – aplikacja uruchamia się po zalogowaniu i jest dostępna.",
+  "autostartAus": "Wyłączone – połączenia dochodzą tylko gdy aplikacja działa.",
+  "autostartFehlgeschlagen": "Nie udało się tego zmienić. Dodaj aplikację do autostartu ręcznie.",
+  "autostartFlatpak": "We Flatpaku nie można ustawić autostartu. Skorzystaj z ustawień systemu."
 }

@@ -3216,4 +3216,27 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Skambėjimo ekranas yra tik Android.';
+
+  @override
+  String get autostartTitel => 'Paleisti prisijungus';
+
+  @override
+  String get autostartZweck =>
+      'Kompiuteryje nėra foninės paslaugos, kuri palaikytų ryšį. Jei programa neveikia, skambutis nepasiekia — niekur neskamba. Uždarius langą ji tik padedama į pranešimų sritį.';
+
+  @override
+  String get autostartAn =>
+      'Įjungta – programa pasileidžia po prisijungimo ir yra pasiekiama.';
+
+  @override
+  String get autostartAus =>
+      'Išjungta – skambučiai pasiekia tik kol programa veikia.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Šio nustatymo pakeisti nepavyko. Pridėkite programą į paleidimą rankiniu būdu.';
+
+  @override
+  String get autostartFlatpak =>
+      'Flatpak aplinkoje automatinio paleidimo nustatyti negalima. Naudokite sistemos nustatymus.';
 }

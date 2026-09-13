@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Gitt – skjermen vises over låseskjermen.",
   "klingelNichtErteilt": "Ikke gitt – det vises bare et varsel.",
   "klingelVonHand": "Innstillingsskjermen kunne ikke åpnes. Manuelt: Innstillinger ▸ Apper ▸ Spesiell apptilgang ▸ Fullskjermvarsler.",
-  "klingelNurAndroid": "Ringeskjermen finnes bare på Android."
+  "klingelNurAndroid": "Ringeskjermen finnes bare på Android.",
+  "autostartTitel": "Start ved pålogging",
+  "autostartZweck": "På en datamaskin finnes ingen bakgrunnstjeneste som holder forbindelsen. Kjører ikke appen, kommer ingen anrop inn — det ringer ingen steder. Å lukke vinduet legger den bare i varslingsområdet.",
+  "autostartAn": "På – appen starter etter pålogging og er tilgjengelig.",
+  "autostartAus": "Av – anrop kommer bare inn så lenge appen kjører.",
+  "autostartFehlgeschlagen": "Dette kunne ikke endres. Legg appen til i oppstart manuelt.",
+  "autostartFlatpak": "I Flatpak kan autostart ikke settes. Bruk systeminnstillingene."
 }
