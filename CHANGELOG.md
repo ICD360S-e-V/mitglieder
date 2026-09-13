@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.101.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.101.0...v1.101.1) (2026-09-13)
+
+
+### Bug Fixes
+
+* **logs:** Log-Endpunkte haerten, Geraeteschluessel in zwei Stufen ([#419](https://github.com/ICD360S-e-V/mitglieder/issues/419)) ([bf5a991](https://github.com/ICD360S-e-V/mitglieder/commit/bf5a9912519d5251474257ea12064c2c113575f3))
+
 ## [1.101.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.100.3...v1.101.0) (2026-09-13)
 
 
