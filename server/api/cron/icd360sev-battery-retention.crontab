@@ -1,0 +1,12 @@
+# ICD360S Akkumessung — tägliche Löschung von battery_usage_segments-Zeilen,
+# die älter als 90 Tage sind. Läuft um 03:35, fünf Minuten nach dem
+# TLS-Retention-Job, damit die beiden nie um dieselben Tabellensperren
+# konkurrieren.
+#
+# Solange der Client auf battery_usage_test.php zeigt, räumt die _test-Variante
+# die Staging-Datenbank auf. Nach dem Cutover (Schritt 3 in
+# server/api/telemetry/PROD_CUTOVER.md) wird die Zeile auf
+# cleanup_battery_usage.php ohne Suffix umgestellt.
+#
+# Repo source: server/api/cron/cleanup_battery_usage.php
+35 3 * * * root /usr/local/bin/php /var/www/icd360sev.icd360s.de/api/cron/cleanup_battery_usage_test.php >> /var/log/icd360sev-battery-retention.log 2>&1
