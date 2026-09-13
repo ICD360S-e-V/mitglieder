@@ -90,6 +90,15 @@ void vorher(String quelle, String erst, String dann, {String? reason}) {
   expect(quelle.indexOf(erst), lessThan(quelle.indexOf(dann)), reason: reason);
 }
 
+/// Schneidet einen DART-Ausdrucksrumpf aus: `... => ...;`
+String ausdruckDart(String quelle, String kopf) {
+  final a = quelle.indexOf(kopf);
+  expect(a, greaterThanOrEqualTo(0), reason: 'Kopf nicht gefunden: $kopf');
+  final ende = quelle.indexOf(';', a);
+  expect(ende, greaterThanOrEqualTo(0), reason: 'kein `;` nach: $kopf');
+  return quelle.substring(a, ende + 1);
+}
+
 const _kKlingelSchluessel = <String>[
   'klingelTitel',
   'klingelZweck',
@@ -391,11 +400,31 @@ void main() {
               'daran scheiterte es am 11.09.2026 stumm');
     });
 
-    test('🔴 ersetzen: false — sonst naehme pushReplacement das Dashboard', () {
+    test('🔴 ersetzen richtet sich nach dem Schirm, nie blind true', () {
+      // `pushReplacement` nimmt die OBERSTE Route. Gibt es keinen
+      // Klingelschirm, ist das das DASHBOARD — und nach dem Auflegen stuende
+      // die App vor einem leeren Stapel.
       final k = rumpf(dashboard, 'Future<void> _kaltAnnehmen(WartendesAngebot a)');
-      expect(k, contains('ersetzen: false'));
+      expect(k, contains('final ersetzen = _klingelschirmOffen;'));
+      expect(k, contains('ersetzen: ersetzen'));
+      expect(k, isNot(contains('ersetzen: true')));
+      expect(dashboard, contains('bool _klingelschirmOffen = false;'),
+          reason: 'ohne Klingelschirm muss der Merker falsch sein');
       expect(dashboard,
           contains('{VoidCallback? beiFehlschlag, bool ersetzen = true}'));
+    });
+
+    test('🔴 handleIncomingCall NICHT zweimal — das waere ein busy-Reject', () {
+      // Liegt die App im Speicher, steht der Dienst schon auf `ringing`. Ein
+      // zweiter Aufruf faellt in die Besetzt-Wache, schickt dem Anrufer
+      // `call_reject` mit „busy" — und danach wuerde derselbe Anruf trotzdem
+      // angenommen.
+      final k = rumpf(dashboard, 'Future<void> _kaltAnnehmen(WartendesAngebot a)');
+      final i = k.indexOf('handleIncomingCall(');
+      expect(i, greaterThanOrEqualTo(0));
+      vorher(k, 'if (_voiceCallService.callState != CallState.ringing) {',
+          'handleIncomingCall(',
+          reason: 'der Aufruf MUSS hinter der Zustandswache liegen');
     });
 
     test('ein verfallenes Angebot wird GESAGT, nicht verschwiegen', () {
@@ -495,24 +524,91 @@ void main() {
 
     test('🔴 der In-App-Schirm stoppt das Klingeln, behaelt aber das Angebot',
         () {
-      final h = rumpf(dashboard, 'void _handleIncomingCall(CallOfferEvent event)');
-      expect(h, contains('IcdKlingel.verbergen();'),
+      final z = rumpf(dashboard, 'void _klingelschirmZeigen(CallOfferEvent event)');
+      expect(z, contains('IcdKlingel.verbergen();'),
           reason: 'sonst laeutet es zweimal — der Hintergrunddienst hat '
               'denselben Anruf ueber seine eigene Verbindung bekommen');
       // ⚠️ NICHT abraeumen: wird die App waehrend des Klingelns weggewischt,
       // ist das gemerkte Angebot der einzige Weg zurueck.
       //
       // ⚠️ Der Bereich endet VOR `schliessen()` — dort darf `abraeumen` sehr
-      // wohl stehen, denn dann ist der Anruf entschieden. Der erste Anlauf
-      // dieses Tests schnitt bis zum `push` und war deshalb rot, obwohl der
-      // Code stimmte.
-      final vorspann = h.substring(
-          0, h.indexOf('StreamSubscription<CallEndedEvent>? endeAbo;'));
-      expect(vorspann, contains('IcdKlingel.verbergen();'));
+      // wohl stehen, denn dann ist der Anruf entschieden.
+      final vorspann = z.substring(
+          0, z.indexOf('StreamSubscription<CallEndedEvent>? endeAbo;'));
       expect(vorspann, isNot(contains('AnrufKlingel.abraeumen()')));
-      // Und beim Entscheiden MUSS abgeraeumt werden.
-      final schliessen = rumpf(h, 'void schliessen(BuildContext ctx)');
+      final schliessen = rumpf(z, 'void schliessen(BuildContext ctx)');
       expect(schliessen, contains('AnrufKlingel.abraeumen()'));
+    });
+  });
+
+  // ------------------------------------------------------------------------
+  group('🔴 Der native Schirm behaelt den Anruf, wenn die App nicht im Blick ist',
+      () {
+    // Gemeldet am 13.09.2026 vom Tablet: „pe android dupa ce e deblocat atunci
+    // apare" — der Schirm erschien erst NACH dem Entsperren. Ursache war eine
+    // Zusicherung im Kommentar statt im Code: `_handleIncomingCall` raeumte das
+    // native Klingeln mit der Begruendung „die App ist im Blick" ab, und
+    // niemand hatte das geprueft.
+    test('🔴 _handleIncomingCall raeumt das Klingeln NICHT ab', () {
+      final h = rumpf(dashboard, 'void _handleIncomingCall(CallOfferEvent event)');
+      expect(h, isNot(contains('IcdKlingel.verbergen()')),
+          reason: 'das haette dem Mitglied genau den Schirm weggenommen, um '
+              'den es geht');
+      expect(h, isNot(contains('AnrufKlingel.abraeumen()')));
+    });
+
+    test('es wird auf den LEBENSZYKLUS geprueft, nicht auf mounted', () {
+      // ⚠️ `mounted` bleibt im Hintergrund wahr, und diese App bleibt dort im
+      // Speicher, weil der Vordergrunddienst laeuft.
+      final b = ausdruckDart(dashboard, 'bool get _imBlick');
+      expect(b, contains('WidgetsBinding.instance.lifecycleState'));
+      expect(b, contains('AppLifecycleState.resumed'));
+      expect(b, isNot(contains('mounted')));
+    });
+
+    test('ohne Blick wird das Angebot gemerkt und zurueckgekehrt', () {
+      final h = rumpf(dashboard, 'void _handleIncomingCall(CallOfferEvent event)');
+      final i = h.indexOf('if (!_imBlick) {');
+      expect(i, greaterThanOrEqualTo(0), reason: 'die Wache fehlt ganz');
+      final zweig = h.substring(i, h.indexOf('}', h.indexOf('return;', i)));
+      expect(zweig, contains('_klingelndesAngebot = event;'));
+      expect(zweig, contains('return;'));
+      // Der Dienst MUSS den Anruf trotzdem kennen, sonst laesst sich spaeter
+      // nichts annehmen.
+      vorher(h, 'handleIncomingCall(', 'if (!_imBlick) {',
+          reason: 'der Zustand muss VOR der Wache gesetzt werden');
+    });
+
+    test('bei der Rueckkehr wird der Schirm nachgeholt', () {
+      expect(dashboard, contains('_wartendenAnrufPruefen().then('),
+          reason: 'erst die Entscheidung, dann der Schirm — sonst ginge ueber '
+              'einem schon angenommenen Anruf noch ein Klingelschirm auf');
+      final i = dashboard.indexOf('_wartendenAnrufPruefen().then(');
+      final block = dashboard.substring(i, dashboard.indexOf('});', i) + 3);
+      expect(block, contains('_klingelndesAngebot'));
+      expect(block, contains('CallState.ringing'),
+          reason: 'ein aufgelegter Anruf darf keinen Schirm mehr oeffnen');
+      expect(block, contains('_klingelschirmZeigen('));
+    });
+
+    test('der Merker wird an JEDEM Ausgang losgelassen', () {
+      // Bliebe er stehen, ersetzte ein spaeterer kalter Weg eine Route, die es
+      // nicht mehr gibt — und das naehme das Dashboard.
+      //
+      // ⚠️ JE STELLE geprueft, nicht global gezaehlt: eine Zaehlung „mindestens
+      // drei" bleibt gruen, wenn man eine der vier Stellen entfernt. Von der
+      // Gegenprobe gefunden.
+      final z = rumpf(dashboard, 'void _klingelschirmZeigen(CallOfferEvent event)');
+      expect(rumpf(z, 'void schliessen(BuildContext ctx)'),
+          contains('_klingelschirmOffen = false;'),
+          reason: 'entschiedener Anruf');
+      final thenBlock = z.substring(z.indexOf(').then((_) {'));
+      expect(thenBlock, contains('_klingelschirmOffen = false;'),
+          reason: 'die Route kann auch anders verschwinden');
+      final k = rumpf(dashboard, 'Future<void> _kaltAnnehmen(WartendesAngebot a)');
+      expect(k, contains('_klingelschirmOffen = false;'),
+          reason: 'nach dem Ersetzen steht kein Klingelschirm mehr');
+      expect(z, contains('_klingelndesAngebot = null;'));
     });
   });
 

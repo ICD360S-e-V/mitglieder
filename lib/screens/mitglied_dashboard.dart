@@ -102,6 +102,21 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   StreamSubscription<ChatMessage>? _messageSubscription;
   StreamSubscription<CallOfferEvent>? _callOfferSubscription;
 
+  /// Ein Anruf, der klingelt, waehrend die App NICHT im Blick ist.
+  ///
+  /// 🔴 Dann besitzt der NATIVE Klingelschirm das Klingeln, und dieser Schirm
+  /// haelt sich heraus. Bis zum 13.09.2026 tat er das nicht: er rief
+  /// `IcdKlingel.verbergen()` mit der Begruendung „die App ist im Blick" — und
+  /// niemand hatte das geprueft. `mounted` ist auch im Hintergrund wahr, und
+  /// die App bleibt dort im Speicher, weil der Vordergrunddienst laeuft. Der
+  /// native Schirm wurde also Millisekunden nach seinem Erscheinen wieder
+  /// abgeraeumt und der Flutter-Schirm HINTER dem Sperrbildschirm aufgebaut —
+  /// zu sehen erst nach dem Entsperren. Genau so gemeldet.
+  CallOfferEvent? _klingelndesAngebot;
+
+  /// Steht gerade ein Klingelschirm INNERHALB der App?
+  bool _klingelschirmOffen = false;
+
   /// Anklopfen des NATIVEN Klingelschirms: „es liegt eine Entscheidung".
   StreamSubscription<void>? _klingelAbo;
 
@@ -404,7 +419,18 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       // nur nach vorne geholt — `initState` laeuft dann nicht, und ohne diese
       // Zeile waere genau der haeufigste Fall der einzige, der nicht
       // funktioniert.
-      _wartendenAnrufPruefen();
+      // ⚠️ Erst die Entscheidung, DANN der Schirm: hat das Mitglied auf dem
+      // Sperrbildschirm „Annehmen" getippt, fuehrt `_wartendenAnrufPruefen`
+      // den Anruf zu Ende — dann darf hier kein Klingelschirm mehr aufgehen.
+      _wartendenAnrufPruefen().then((_) {
+        if (!mounted) return;
+        final e = _klingelndesAngebot;
+        // Klingelt es noch, ohne dass ein Schirm steht? Dann jetzt zeigen.
+        // ⚠️ Die Zustandswache faengt den aufgelegten Anruf ab: der Dienst
+        // setzt sich bei `call_ended` selbst auf `idle` zurueck.
+        if (e == null || _voiceCallService.callState != CallState.ringing) return;
+        _klingelschirmZeigen(e);
+      });
       debugPrint('[Dashboard] App resumed - UI timers restarted');
     }
   }
@@ -454,7 +480,15 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       // Weg geoeffnet. Dann gehoert der Klingelschirm IN die App — sonst stuende
       // das Mitglied vor dem Dashboard, waehrend es klingelt.
       if (angebot != null && _voiceCallService.callState == CallState.idle) {
-        _handleIncomingCall(_alsAnrufEreignis(angebot));
+        // ⚠️ HIER unbedingt zeigen, nicht ueber `_handleIncomingCall`: dessen
+        // Wache auf `_imBlick` kann beim Kaltstart noch `inactive` sehen, und
+        // dann waere das Angebot nur gemerkt und niemals gezeigt. Wer hier
+        // ankommt, hat die App selbst geoeffnet — also ist sie im Blick.
+        final e = _alsAnrufEreignis(angebot);
+        _voiceCallService.handleIncomingCall(
+          e.conversationId, e.callerId, e.callerName, e.sdp, e.sdpType,
+        );
+        _klingelschirmZeigen(e);
       }
       return;
     }
@@ -512,19 +546,33 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     }
     if (!mounted) return;
     // idle → ringing. `acceptCall` weist JEDEN anderen Zustand ab.
-    await _voiceCallService.handleIncomingCall(
-      a.gespraechId,
-      a.anruferId,
-      a.anruferName,
-      a.sdp,
-      a.sdpTyp,
-    );
+    //
+    // 🔴 ABER NUR, WENN DER DIENST DEN ANRUF NOCH NICHT KENNT. Liegt die App
+    // im Speicher, hat das Isolat der Oberflaeche denselben `call_offer` ueber
+    // seine eigene Verbindung bekommen und steht schon auf `ringing`. Ein
+    // zweites `handleIncomingCall` faellt dort in die Besetzt-Wache und
+    // schickt dem Anrufer `call_reject` mit „busy" — und danach wuerde
+    // derselbe Anruf trotzdem angenommen. Absage UND Annahme fuer ein
+    // Gespraech.
+    if (_voiceCallService.callState != CallState.ringing) {
+      await _voiceCallService.handleIncomingCall(
+        a.gespraechId,
+        a.anruferId,
+        a.anruferName,
+        a.sdp,
+        a.sdpTyp,
+      );
+    }
     await AnrufKlingel.vergessen();
     if (!mounted) return;
-    // ⚠️ `ersetzen: false` — es gibt keinen Klingelschirm, den man ersetzen
-    // koennte. `pushReplacement` naehme hier das DASHBOARD.
+    // ⚠️ Auf dem kalten Weg gibt es keinen Klingelschirm, den man ersetzen
+    // koennte, und `pushReplacement` naehme dort das DASHBOARD. Lag die App im
+    // Speicher und hat ihren eigenen Klingelschirm gebaut, ist er die oberste
+    // Route und wird ersetzt — sonst stuende er nach dem Gespraech noch da.
+    final ersetzen = _klingelschirmOffen;
+    _klingelschirmOffen = false;
     _acceptCall(_alsAnrufEreignis(a),
-        beiFehlschlag: _anrufWeggemeldet, ersetzen: false);
+        beiFehlschlag: _anrufWeggemeldet, ersetzen: ersetzen);
   }
 
   /// ⚠️ Ein eigener Satz, nicht derselbe wie „hat aufgelegt": es ist ein
@@ -673,18 +721,16 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     });
   }
 
+  /// Ist die App wirklich IM BLICK?
+  ///
+  /// ⚠️ `mounted` sagt das NICHT: es bleibt im Hintergrund wahr, und diese App
+  /// bleibt dort im Speicher, weil der Vordergrunddienst laeuft. Nur der
+  /// Lebenszyklus sagt es.
+  bool get _imBlick =>
+      WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed;
+
   void _handleIncomingCall(CallOfferEvent event) {
     _log.info('MitgliedDash: Incoming call from ${event.callerName} (conv: ${event.conversationId})', tag: 'CALL');
-
-    // ⚠️ Die App ist im Blick, also uebernimmt DIESER Schirm — das native
-    // Klingeln muss weg. Sonst laeutet es zweimal: das Isolat des
-    // Hintergrunddienstes hat denselben Anruf ueber seine eigene
-    // WebSocket-Verbindung bekommen und schon geklingelt.
-    //
-    // ⚠️ Nur `verbergen`, NICHT `abraeumen`: das wartende Angebot bleibt
-    // liegen, bis der Anruf entschieden ist. Wird die App waehrend des
-    // Klingelns weggewischt, ist es der einzige Weg zurueck.
-    IcdKlingel.verbergen();
 
     // Inform VoiceCallService about incoming call (sets state to RINGING)
     _voiceCallService.handleIncomingCall(
@@ -695,6 +741,34 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       event.sdpType,
     );
     _log.info('MitgliedDash: VoiceCallService.handleIncomingCall() called - state should be RINGING now', tag: 'CALL');
+
+    // 🔴 LIEGT DIE APP NICHT IM BLICK, GEHOERT DAS KLINGELN DEM NATIVEN
+    // SCHIRM. Er liegt UEBER dem Sperrbildschirm; ein Flutter-Schirm liegt
+    // DAHINTER und ist erst nach dem Entsperren zu sehen. Ihn hier abzuraeumen
+    // nahm dem Mitglied genau den Schirm weg, um den es geht.
+    if (!_imBlick) {
+      _log.info(
+        'MitgliedDash: App nicht im Blick — der native Klingelschirm behaelt den Anruf',
+        tag: 'CALL',
+      );
+      _klingelndesAngebot = event;
+      return;
+    }
+    _klingelschirmZeigen(event);
+  }
+
+  /// Der Klingelschirm INNERHALB der App — nur wenn sie im Blick ist.
+  void _klingelschirmZeigen(CallOfferEvent event) {
+    _klingelndesAngebot = null;
+    _klingelschirmOffen = true;
+    // Das native Klingeln muss weg, sonst laeutet es zweimal: das Isolat des
+    // Hintergrunddienstes hat denselben Anruf ueber seine eigene
+    // WebSocket-Verbindung bekommen und schon geklingelt.
+    //
+    // ⚠️ Nur `verbergen`, NICHT `abraeumen`: das wartende Angebot bleibt
+    // liegen, bis der Anruf entschieden ist. Wird die App waehrend des
+    // Klingelns weggewischt, ist es der einzige Weg zurueck.
+    IcdKlingel.verbergen();
 
     // 🔴 Der Klingelschirm muss von SELBST verschwinden, wenn der Anrufer
     // auflegt. Bis zum 11.09.2026 tat er das nicht: auf `callEndedStream`
@@ -715,6 +789,8 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       // gehen mit. ⚠️ Bliebe das Angebot liegen, zeigte der naechste Start der
       // App einen Klingelschirm fuer ein Gespraech, das es nicht mehr gibt.
       AnrufKlingel.abraeumen();
+      _klingelndesAngebot = null;
+      _klingelschirmOffen = false;
       Navigator.of(ctx).pop();
     }
 
@@ -783,6 +859,11 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       ),
     ).then((_) {
       offen = false;
+      // ⚠️ Auch hier, nicht nur in `schliessen`: die Route kann auf anderem Weg
+      // verschwinden (Gespraechsschirm ersetzt sie, Navigator raeumt auf).
+      // Bliebe der Merker stehen, ersetzte ein spaeterer kalter Weg eine Route,
+      // die es nicht mehr gibt — und das naehme das Dashboard.
+      _klingelschirmOffen = false;
       endeAbo?.cancel();
       endeAbo = null;
     });
