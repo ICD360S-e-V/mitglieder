@@ -3184,4 +3184,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Vyksta vaizdo skambutis';
+
+  @override
+  String get anruffensterBildWechseln => 'Perjungti vaizdą';
 }

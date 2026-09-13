@@ -3155,4 +3155,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'مكالمة فيديو جارية';
+
+  @override
+  String get anruffensterBildWechseln => 'تبديل الصورة';
 }

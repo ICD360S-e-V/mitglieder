@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "A beállítások képernyőjét nem lehetett megnyitni. Kézzel: Beállítások ▸ Alkalmazások ▸ ICD360S ▸ Megjelenítés más alkalmazások felett.",
   "anruffensterNurAndroid": "A hívásablak csak Androidon létezik.",
   "anrufLaeuft": "Hívás folyamatban",
-  "videoanrufLaeuft": "Videóhívás folyamatban"
+  "videoanrufLaeuft": "Videóhívás folyamatban",
+  "anruffensterBildWechseln": "Kép váltása"
 }

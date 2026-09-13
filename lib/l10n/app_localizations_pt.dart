@@ -3191,4 +3191,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videochamada em curso';
+
+  @override
+  String get anruffensterBildWechseln => 'Alternar imagem';
 }

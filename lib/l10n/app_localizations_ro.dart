@@ -3190,4 +3190,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Apel video în curs';
+
+  @override
+  String get anruffensterBildWechseln => 'Schimbă imaginea';
 }

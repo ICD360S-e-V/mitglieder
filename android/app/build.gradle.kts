@@ -100,6 +100,19 @@ android {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+
+    // ⚠️ NUR ZUM ÜBERSETZEN. Zur Laufzeit bringt `flutter_webrtc` dieselbe AAR
+    // mit; hier wird sie gebraucht, weil das Systemfenster die Videospur mit
+    // `org.webrtc.SurfaceViewRenderer` zeichnet. Nötig ist die Zeile, weil
+    // `flutter_webrtc` die AAR als `implementation` einbindet — ihre eigenen
+    // Klassen sind für uns sichtbar, deren Abhängigkeiten unter `org.webrtc`
+    // NICHT.
+    //
+    // ⚠️ DIE FASSUNG MUSS DIE VON flutter_webrtc SEIN. Übersetzt man gegen
+    // eine andere, fällt es beim Bauen nicht auf: es erscheint erst auf dem
+    // Gerät als `NoSuchMethodError` mitten im Gespräch. Ein Test vergleicht
+    // beide Zahlen.
+    compileOnly("io.github.webrtc-sdk:android:144.7559.09")
 }
 
 flutter {

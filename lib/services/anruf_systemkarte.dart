@@ -41,8 +41,11 @@ class AnrufSystemkarte with WidgetsBindingObserver {
   String _titelAnruf = '';
   String _titelVideoanruf = '';
   String _titelAuflegen = '';
+  String _titelWechseln = '';
   int _standStartzeit = -1;
   int _standGuete = -1;
+  String _standFern = '';
+  String _standEigen = '';
 
   /// Die beiden Woerter auf dem Fenster, schon UEBERSETZT.
   ///
@@ -56,10 +59,12 @@ class AnrufSystemkarte with WidgetsBindingObserver {
     required String anruf,
     required String videoanruf,
     required String auflegen,
+    required String wechseln,
   }) {
     _titelAnruf = anruf;
     _titelVideoanruf = videoanruf;
     _titelAuflegen = auflegen;
+    _titelWechseln = wechseln;
   }
 
   /// Springt EINMAL auf `true`, wenn ein Gespräch beginnt und die
@@ -91,10 +96,27 @@ class AnrufSystemkarte with WidgetsBindingObserver {
     if (!_sichtbar) return;
     final s = _startzeitMs();
     final g = _dienst.anrufGuete.value;
-    if (s == _standStartzeit && g == _standGuete) return;
+    // ⚠️ Die Spurkennungen gehoeren MIT in den Vergleich: bei einem Videoanruf
+    // trifft die Spur der Gegenstelle oft erst ein, nachdem die Karte schon
+    // steht. Ohne sie bliebe die Kachel fuer immer schwarz.
+    final f = _dienst.fernVideoSpur;
+    final e = _dienst.eigeneVideoSpur;
+    if (s == _standStartzeit &&
+        g == _standGuete &&
+        f == _standFern &&
+        e == _standEigen) {
+      return;
+    }
     _standStartzeit = s;
     _standGuete = g;
-    AnrufVordergrund.systemfensterStand(startzeit: s, guete: g);
+    _standFern = f;
+    _standEigen = e;
+    AnrufVordergrund.systemfensterStand(
+      startzeit: s,
+      guete: g,
+      fernSpur: f,
+      eigeneSpur: e,
+    );
   }
 
   @visibleForTesting
@@ -156,16 +178,23 @@ class AnrufSystemkarte with WidgetsBindingObserver {
       if (soll) {
         _standStartzeit = _startzeitMs();
         _standGuete = _dienst.anrufGuete.value;
+        _standFern = _dienst.fernVideoSpur;
+        _standEigen = _dienst.eigeneVideoSpur;
         AnrufVordergrund.systemfensterZeigen(
           video: _dienst.isVideoCall,
           titel: _dienst.isVideoCall ? _titelVideoanruf : _titelAnruf,
           auflegen: _titelAuflegen,
+          wechseln: _titelWechseln,
           startzeit: _standStartzeit,
           guete: _standGuete,
+          fernSpur: _standFern,
+          eigeneSpur: _standEigen,
         );
       } else {
         _standStartzeit = -1;
         _standGuete = -1;
+        _standFern = '';
+        _standEigen = '';
         AnrufVordergrund.systemfensterVerbergen();
       }
     } else {

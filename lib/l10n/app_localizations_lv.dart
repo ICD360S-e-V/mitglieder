@@ -3181,4 +3181,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Notiek video zvans';
+
+  @override
+  String get anruffensterBildWechseln => 'Pārslēgt attēlu';
 }

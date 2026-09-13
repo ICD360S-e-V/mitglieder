@@ -3206,4 +3206,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videoanruf läuft';
+
+  @override
+  String get anruffensterBildWechseln => 'Bild wechseln';
 }

@@ -3179,4 +3179,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Probíhá videohovor';
+
+  @override
+  String get anruffensterBildWechseln => 'Přepnout obraz';
 }

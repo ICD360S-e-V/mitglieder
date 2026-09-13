@@ -3179,4 +3179,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videokõne käib';
+
+  @override
+  String get anruffensterBildWechseln => 'Vaheta pilti';
 }

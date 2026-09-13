@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Asetusnäyttöä ei voitu avata. Käsin: Asetukset ▸ Sovellukset ▸ ICD360S ▸ Näytä muiden sovellusten päällä.",
   "anruffensterNurAndroid": "Puheluikkuna on olemassa vain Androidissa.",
   "anrufLaeuft": "Puhelu käynnissä",
-  "videoanrufLaeuft": "Videopuhelu käynnissä"
+  "videoanrufLaeuft": "Videopuhelu käynnissä",
+  "anruffensterBildWechseln": "Vaihda kuvaa"
 }

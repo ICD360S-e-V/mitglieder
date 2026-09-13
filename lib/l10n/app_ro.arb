@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Ecranul de setări nu s-a putut deschide. Manual: Setări ▸ Aplicații ▸ ICD360S ▸ Afișare peste alte aplicații.",
   "anruffensterNurAndroid": "Fereastra de apel există doar pe Android.",
   "anrufLaeuft": "Apel în curs",
-  "videoanrufLaeuft": "Apel video în curs"
+  "videoanrufLaeuft": "Apel video în curs",
+  "anruffensterBildWechseln": "Schimbă imaginea"
 }

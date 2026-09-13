@@ -3206,4 +3206,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Βιντεοκλήση σε εξέλιξη';
+
+  @override
+  String get anruffensterBildWechseln => 'Αλλαγή εικόνας';
 }

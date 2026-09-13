@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "The settings screen could not be opened. Manually: Settings ▸ Apps ▸ ICD360S ▸ Display over other apps.",
   "anruffensterNurAndroid": "The call window is only available on Android.",
   "anrufLaeuft": "Call in progress",
-  "videoanrufLaeuft": "Video call in progress"
+  "videoanrufLaeuft": "Video call in progress",
+  "anruffensterBildWechseln": "Switch view"
 }

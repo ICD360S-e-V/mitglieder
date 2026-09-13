@@ -149,6 +149,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         anruf: lFenster.anrufLaeuft,
         videoanruf: lFenster.videoanrufLaeuft,
         auflegen: lFenster.hangUp,
+        wechseln: lFenster.anruffensterBildWechseln,
       );
     }
     if (!_notifTextsUpdated) {

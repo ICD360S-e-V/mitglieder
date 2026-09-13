@@ -16,9 +16,15 @@ import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.cloudwebrtc.webrtc.FlutterWebRTCPlugin
+import com.cloudwebrtc.webrtc.utils.EglUtils
+import org.webrtc.RendererCommon
+import org.webrtc.SurfaceViewRenderer
+import org.webrtc.VideoTrack
 
 /**
  * PORTIERT aus der Vorsitzer-App (PR #702/#707) am 12.09.2026. Zwei bewusste
@@ -61,6 +67,37 @@ object AnrufSystemfenster {
     private var startzeitMs: Long = -1L
     private var gueteStufe: Int = 0
 
+    // Die Videokachel. Sie entsteht nur bei einem Videoanruf und bleibt
+    // unsichtbar, solange keine Spur gebunden ist — siehe [spurAuffrischen].
+    private var kachelSicht: FrameLayout? = null
+    private var renderer: SurfaceViewRenderer? = null
+    private var wechselSicht: ImageView? = null
+    private var fernSpurId: String = ""
+    private var eigeneSpurId: String = ""
+    private var zeigtEigene = false
+    private var gebundeneSpur: VideoTrack? = null
+    private var gebundeneId: String = ""
+
+    /**
+     * Das WebRTC-Plugin DER HAUPT-ENGINE, gesetzt von [MainActivity].
+     *
+     * 🔴 WARUM NICHT einfach `FlutterWebRTCPlugin.sharedSingleton`: dessen
+     * Konstruktor macht `sharedSingleton = this`, JEDE neue Instanz
+     * ueberschreibt ihn also — und diese App hat mehr als eine Flutter-Engine.
+     * Loest sich eine davon, setzt `stopListening()` ihren `methodCallHandler`
+     * auf null, `sharedSingleton` zeigt aber weiter auf sie. In der
+     * Vorsitzer-App sah das am 31.08.2026 so aus:
+     *
+     *   NullPointerException: 'MediaStreamTrack
+     *   MethodCallHandlerImpl.getRemoteTrack(String)' on a null object
+     *   reference at FlutterWebRTCPlugin.getRemoteTrack
+     *
+     * ⚠️ `?.` hilft dagegen NICHT: der Zeiger ist nicht null, sein Innenleben
+     * ist es. Deshalb wird die richtige Instanz gemerkt.
+     */
+    @JvmStatic
+    var webrtcPlugin: FlutterWebRTCPlugin? = null
+
     // ⚠️ Der Sekundentakt laeuft HIER, nicht in Dart. Ein Kanalaufruf je
     // Sekunde waere Funk und Rechenzeit fuer eine Zahl, die sich aus einem
     // einzigen Zeitstempel ergibt — und die Karte bliebe stehen, sobald Dart
@@ -87,8 +124,11 @@ object AnrufSystemfenster {
         video: Boolean,
         titel: String,
         auflegen: String,
+        wechseln: String,
         startzeit: Long,
         guete: Int,
+        fernSpur: String,
+        eigeneSpur: String,
     ) {
         if (sicht != null) return
         if (!erlaubt(context)) {
@@ -121,6 +161,12 @@ object AnrufSystemfenster {
 
         startzeitMs = startzeit
         gueteStufe = guete
+        fernSpurId = fernSpur
+        eigeneSpurId = eigeneSpur
+        wechselText = wechseln
+        // ⚠️ Die Gegenstelle ist die Vorgabe — das ist die ausdrueckliche
+        // Entscheidung des Users: man will sehen, mit WEM man spricht.
+        zeigtEigene = false
         val karte = bauen(app, video, titel, auflegen)
         var startX = 0
         var startY = 0
@@ -165,9 +211,17 @@ object AnrufSystemfenster {
             // Berechtigung zwischenzeitlich entzogen, oder der Fenstertyp wird
             // vom Hersteller verweigert. Kein Grund, den Anruf zu stoeren.
             Log.e(TAG, "addView abgelehnt: $e")
+            // ⚠️ Der Renderer ist in `bauen` schon angelegt und haelt einen
+            // EGL-Kontext. Ohne diese Zeile bliebe er bis zum Prozessende
+            // liegen — ein Leck, das niemandem auffaellt, weil das Fenster
+            // ohnehin nicht da ist.
+            kachelAufraeumen()
             return
         }
         wm = manager; sicht = karte; params = p
+        // Erst jetzt binden: die Oberflaeche der Kachel gibt es erst, wenn das
+        // Fenster steht.
+        spurAuffrischen()
         Log.d(TAG, "gezeigt (video=$video)")
     }
 
@@ -175,17 +229,34 @@ object AnrufSystemfenster {
         taktStoppen()
         dauerSicht = null; balkenSicht = null; untenSicht = null
         startzeitMs = -1L; gueteStufe = 0
-        val v = sicht ?: return
-        try { wm?.removeView(v) } catch (_: Throwable) {}
+        // ⚠️ NICHT hinter `sicht ?: return`: schlug `addView` fehl, gibt es
+        // eine Kachel ohne Fenster, und die muss trotzdem weg.
+        val v = sicht
+        // ⚠️ REIHENFOLGE: erst die Spur abhaengen, dann das Fenster abbauen,
+        // erst danach den Renderer freigeben. `release()` wartet auf den
+        // Zeichen-Thread; stuende die Ansicht dann noch im Fenster, zeichnete
+        // sie in eine Oberflaeche, die es nicht mehr gibt.
+        spurLoesen()
+        if (v != null) {
+            try { wm?.removeView(v) } catch (_: Throwable) {}
+        }
+        kachelAufraeumen()
+        fernSpurId = ""; eigeneSpurId = ""; zeigtEigene = false
         sicht = null; wm = null; params = null
-        Log.d(TAG, "verborgen")
+        if (v != null) Log.d(TAG, "verborgen")
     }
 
     // Dauer und Guete an der stehenden Karte auffrischen.
-    fun stand(startzeit: Long, guete: Int) {
+    fun stand(startzeit: Long, guete: Int, fernSpur: String, eigeneSpur: String) {
         if (sicht == null) return
         startzeitMs = startzeit
         gueteStufe = guete
+        // ⚠️ Die Spur der Gegenstelle trifft oft ERST EIN, nachdem die Karte
+        // schon steht (ICE braucht Sekunden). Ohne diese Zeile blieb die
+        // Kachel fuer immer leer.
+        fernSpurId = fernSpur
+        eigeneSpurId = eigeneSpur
+        spurAuffrischen()
         dauerAnzeigen()
         balkenSetzen()
         untenSicht?.visibility =
@@ -253,11 +324,22 @@ object AnrufSystemfenster {
         titel: String,
         auflegen: String,
     ): View {
+        // Bei einem Videoanruf wird die Kachel IMMER gebaut, auch wenn noch
+        // keine Spur da ist — sie bleibt dann unsichtbar und taucht auf, wenn
+        // das erste Bild kommt. Sie spaeter anzulegen ginge nicht: das Fenster
+        // steht schon, und ein zweites `addView` waere ein zweites Fenster.
+        val kachel = if (video) kachelBauen(app) else null
         val reihe = LinearLayout(app).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
-            setPadding(dp(app, 14), dp(app, 8), dp(app, 8), dp(app, 8))
-            background = GradientDrawable().apply {
+            // Mit Kachel traegt die Wurzel den Hintergrund, die Reihe keinen —
+            // sonst lagen zwei Pillen uebereinander.
+            if (kachel == null) {
+                setPadding(dp(app, 14), dp(app, 8), dp(app, 8), dp(app, 8))
+            } else {
+                setPadding(dp(app, 6), dp(app, 4), dp(app, 4), dp(app, 2))
+            }
+            background = if (kachel != null) null else GradientDrawable().apply {
                 cornerRadius = dp(app, 24).toFloat()
                 // ⚠️ Deutlich deckender als die erste Fassung (#E6 -> #F2).
                 // Die Karte liegt ueber einer FREMDEN App, deren Hintergrund
@@ -375,7 +457,217 @@ object AnrufSystemfenster {
             // Karte auf — oder gar nichts, je nach Reihenfolge.
             setOnClickListener { AnrufDienstBruecke.auflegen(app) }
         })
-        return reihe
+        if (kachel == null) return reihe
+        // ⚠️ Eckenradius 16 statt 24: eine Pille um ein rechteckiges Bild
+        // sieht falsch aus, und der Rundung folgt die Kachel ohnehin nicht
+        // (eine SurfaceView laesst sich vom Elternteil nicht beschneiden).
+        return LinearLayout(app).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(dp(app, 8), dp(app, 8), dp(app, 8), dp(app, 6))
+            background = GradientDrawable().apply {
+                cornerRadius = dp(app, 16).toFloat()
+                setColor(Color.parseColor("#F2142C17"))
+                setStroke(dp(app, 1), Color.parseColor("#40FFFFFF"))
+            }
+            elevation = dp(app, 6).toFloat()
+            addView(kachel)
+            addView(reihe)
+        }
+    }
+
+    /**
+     * Die Videokachel: das Bild plus der Umschaltknopf darueber.
+     *
+     * ⚠️ `org.webrtc.SurfaceViewRenderer`, weil es in der ausgelieferten
+     * WebRTC-AAR die EINZIGE Ansicht ist, die eine Spur zeichnen kann
+     * (geprueft mit `javap`; einen TextureView-Renderer gibt es dort nicht).
+     *
+     * ⚠️ KEIN `setZOrderOnTop(true)`. Damit lege die Oberflaeche UEBER dem
+     * Fenster, und der Umschaltknopf waere unsichtbar. In der Vorgabe liegt
+     * sie darunter und das Fenster stanzt ein Loch — genau so, dass darueber
+     * gezeichnete Ansichten sichtbar bleiben.
+     */
+    private fun kachelBauen(app: Context): FrameLayout? {
+        val egl = try {
+            EglUtils.getRootEglBaseContext()
+        } catch (e: Throwable) {
+            Log.w(TAG, "kein EGL-Kontext: $e"); null
+        } ?: return null
+
+        val r = SurfaceViewRenderer(app)
+        try {
+            // Denselben EGL-Kontext wie flutter_webrtc, sonst gibt es die
+            // Texturen der Spur hier gar nicht.
+            r.init(egl, null)
+            r.setEnableHardwareScaler(true)
+            // ⚠️ FIT, nicht FILL: ein zugeschnittenes Gesicht ist schlimmer
+            // als ein schmaler schwarzer Rand.
+            r.setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FIT)
+        } catch (e: Throwable) {
+            Log.e(TAG, "Renderer init: $e")
+            try { r.release() } catch (_: Throwable) {}
+            return null
+        }
+
+        val kachel = FrameLayout(app).apply {
+            layoutParams = LinearLayout.LayoutParams(dp(app, 176), dp(app, 108))
+                .apply { bottomMargin = dp(app, 6) }
+            // Hinter dem Bild, damit ein noch nicht gefuellter Rahmen nicht
+            // durchsichtig ist und die fremde App durchscheint.
+            setBackgroundColor(Color.parseColor("#FF000000"))
+            visibility = View.GONE
+        }
+        kachel.addView(r, FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.MATCH_PARENT,
+            FrameLayout.LayoutParams.MATCH_PARENT,
+        ))
+
+        val wechsel = ImageView(app).apply {
+            setImageResource(R.drawable.ic_anruf_kamera_wechseln)
+            setColorFilter(Color.WHITE)
+            background = GradientDrawable().apply {
+                shape = GradientDrawable.OVAL
+                setColor(Color.parseColor("#B3000000"))
+            }
+            setPadding(dp(app, 5), dp(app, 5), dp(app, 5), dp(app, 5))
+            layoutParams = FrameLayout.LayoutParams(dp(app, 30), dp(app, 30)).apply {
+                gravity = Gravity.BOTTOM or Gravity.END
+                bottomMargin = dp(app, 4); rightMargin = dp(app, 4)
+            }
+            // ⚠️ Eigener Zuhoerer, sonst landet der Tipp beim Zieh-Zuhoerer
+            // der Karte — dasselbe wie beim Auflegen-Knopf.
+            setOnClickListener { umschalten() }
+            // Ohne das liest der Bildschirmleser „nicht benannte Schaltflaeche".
+            // ⚠️ Der Text kommt aus Dart, damit hier keine zweite
+            // Uebersetzungsquelle neben den 28 ARB-Dateien entsteht.
+            contentDescription = wechselText
+            visibility = View.GONE
+        }
+        kachel.addView(wechsel)
+
+        renderer = r
+        kachelSicht = kachel
+        wechselSicht = wechsel
+        return kachel
+    }
+
+    /**
+     * Beschriftung des Umschaltknopfs, schon uebersetzt aus Dart.
+     *
+     * ⚠️ Wird in [zeigen] gesetzt, also VOR [kachelBauen] — sonst stuende am
+     * Knopf eine leere Beschreibung und der Bildschirmleser saegte „nicht
+     * benannte Schaltflaeche".
+     */
+    private var wechselText: String = ""
+
+    private fun umschalten() {
+        val ziel = !zeigtEigene
+        // Auf eine Seite umzuschalten, die es nicht gibt, hiesse ein schwarzes
+        // Bild zu zeigen — das sieht aus wie ein Fehler.
+        val id = if (ziel) eigeneSpurId else fernSpurId
+        if (id.isEmpty()) return
+        zeigtEigene = ziel
+        spurAuffrischen()
+    }
+
+    /**
+     * Bindet die Kachel an die Spur, die gerade gezeigt werden soll.
+     *
+     * ⚠️ Es gibt DREI Zustaende, nicht zwei: „zeigt die Gegenstelle", „zeigt
+     * die eigene Kamera" und „hat gar kein Bild". Der dritte ist der haeufigste
+     * am Anfang eines Gespraechs und muss unsichtbar bleiben, nicht schwarz.
+     */
+    private fun spurAuffrischen() {
+        val r = renderer ?: return
+        val kachel = kachelSicht ?: return
+
+        // Der Umschaltknopf nur, wenn es wirklich ZWEI Bilder gibt. Bei
+        // abgeschalteter Kamera liefert Dart eine leere eigene Spur — ein
+        // Knopf, der auf Schwarz umschaltet, sieht kaputt aus.
+        wechselSicht?.visibility =
+            if (fernSpurId.isNotEmpty() && eigeneSpurId.isNotEmpty()) View.VISIBLE
+            else View.GONE
+
+        // Faellt die gewaehlte Seite weg (Kamera aus, Gegenstelle stellt Video
+        // ab), wird auf die andere gewechselt statt schwarz zu bleiben.
+        var eigene = zeigtEigene
+        if (eigene && eigeneSpurId.isEmpty()) eigene = false
+        if (!eigene && fernSpurId.isEmpty() && eigeneSpurId.isNotEmpty()) eigene = true
+        val id = if (eigene) eigeneSpurId else fernSpurId
+        if (id.isEmpty()) {
+            spurLoesen()
+            kachel.visibility = View.GONE
+            return
+        }
+        if (gebundeneSpur != null && id == gebundeneId && eigene == zeigtEigene) {
+            kachel.visibility = View.VISIBLE
+            return
+        }
+
+        val spur = spurHolen(id, eigene)
+        if (spur == null) {
+            // Die Kennung ist da, die Spur noch nicht bei uns angekommen.
+            // Beim naechsten Stand wird es erneut versucht; bis dahin bleibt
+            // die Kachel weg, statt ein schwarzes Feld zu behaupten.
+            Log.i(TAG, "Videospur $id noch nicht verfuegbar")
+            spurLoesen()
+            kachel.visibility = View.GONE
+            return
+        }
+        spurLoesen()
+        try {
+            spur.addSink(r)
+        } catch (e: Throwable) {
+            Log.e(TAG, "addSink: $e")
+            kachel.visibility = View.GONE
+            return
+        }
+        gebundeneSpur = spur
+        gebundeneId = id
+        zeigtEigene = eigene
+        // Die eigene Kamera wird gespiegelt, wie auf jedem Selfie-Schirm; das
+        // Bild der Gegenstelle NICHT — es soll so aussehen, wie sie aussieht.
+        try { r.setMirror(eigene) } catch (_: Throwable) {}
+        kachel.visibility = View.VISIBLE
+        Log.d(TAG, "Videospur gebunden (eigene=$eigene)")
+    }
+
+    /** Gibt Renderer und Kachel frei. Mehrfach aufrufbar. */
+    private fun kachelAufraeumen() {
+        spurLoesen()
+        try { renderer?.release() } catch (e: Throwable) { Log.w(TAG, "release: $e") }
+        renderer = null; kachelSicht = null; wechselSicht = null
+    }
+
+    private fun spurLoesen() {
+        val r = renderer
+        val s = gebundeneSpur
+        if (r != null && s != null) {
+            try { s.removeSink(r) } catch (e: Throwable) { Log.w(TAG, "removeSink: $e") }
+            try { r.clearImage() } catch (_: Throwable) {}
+        }
+        gebundeneSpur = null
+        gebundeneId = ""
+    }
+
+    /**
+     * Die Spur zu einer Kennung.
+     *
+     * ⚠️ Zwei verschiedene Wege: die eigene Spur kennt das Plugin als
+     * `LocalTrack` (ein Huellenobjekt mit dem oeffentlichen Feld `track`), die
+     * der Gegenstelle als `MediaStreamTrack`. Wer beide gleich behandelt,
+     * bekommt fuer eine von ihnen immer null.
+     */
+    private fun spurHolen(id: String, eigene: Boolean): VideoTrack? {
+        val p = webrtcPlugin ?: FlutterWebRTCPlugin.sharedSingleton ?: return null
+        val t = try {
+            if (eigene) p.getLocalTrack(id)?.track else p.getRemoteTrack(id)
+        } catch (e: Throwable) {
+            // Kann ein NullPointer AUS dem Plugin sein — siehe [webrtcPlugin].
+            Log.w(TAG, "Spur $id nicht abfragbar: $e")
+            null
+        }
+        return t as? VideoTrack
     }
 
     private fun dp(c: Context, wert: Int): Int =

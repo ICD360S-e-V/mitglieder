@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Nepavyko atidaryti nustatymų ekrano. Rankiniu būdu: Nustatymai ▸ Programos ▸ ICD360S ▸ Rodyti virš kitų programų.",
   "anruffensterNurAndroid": "Skambučio langas yra tik Android.",
   "anrufLaeuft": "Vyksta skambutis",
-  "videoanrufLaeuft": "Vyksta vaizdo skambutis"
+  "videoanrufLaeuft": "Vyksta vaizdo skambutis",
+  "anruffensterBildWechseln": "Perjungti vaizdą"
 }

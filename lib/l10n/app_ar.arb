@@ -1471,5 +1471,6 @@
   "anruffensterVonHand": "لم يتمكّن النظام من فتح شاشة الإعدادات. يدويًا: الإعدادات ▸ التطبيقات ▸ ICD360S ▸ العرض فوق التطبيقات الأخرى.",
   "anruffensterNurAndroid": "نافذة المكالمة متوفّرة على Android فقط.",
   "anrufLaeuft": "مكالمة جارية",
-  "videoanrufLaeuft": "مكالمة فيديو جارية"
+  "videoanrufLaeuft": "مكالمة فيديو جارية",
+  "anruffensterBildWechseln": "تبديل الصورة"
 }

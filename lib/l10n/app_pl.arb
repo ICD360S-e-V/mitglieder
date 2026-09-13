@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Nie udało się otworzyć ekranu ustawień. Ręcznie: Ustawienia ▸ Aplikacje ▸ ICD360S ▸ Wyświetlanie nad innymi aplikacjami.",
   "anruffensterNurAndroid": "Okno połączenia istnieje tylko na Androidzie.",
   "anrufLaeuft": "Trwa połączenie",
-  "videoanrufLaeuft": "Trwa połączenie wideo"
+  "videoanrufLaeuft": "Trwa połączenie wideo",
+  "anruffensterBildWechseln": "Przełącz obraz"
 }

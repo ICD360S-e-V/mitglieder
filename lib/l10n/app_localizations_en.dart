@@ -3190,4 +3190,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Video call in progress';
+
+  @override
+  String get anruffensterBildWechseln => 'Switch view';
 }

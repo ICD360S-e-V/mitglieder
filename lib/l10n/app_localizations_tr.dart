@@ -3186,4 +3186,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Görüntülü arama sürüyor';
+
+  @override
+  String get anruffensterBildWechseln => 'Görüntüyü değiştir';
 }

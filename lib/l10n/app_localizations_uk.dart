@@ -3186,4 +3186,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Триває відеовиклик';
+
+  @override
+  String get anruffensterBildWechseln => 'Змінити зображення';
 }

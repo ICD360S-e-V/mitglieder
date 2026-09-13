@@ -1550,5 +1550,6 @@
   "anruffensterVonHand": "Der Einstellungs-Bildschirm ließ sich nicht öffnen. Von Hand: Einstellungen ▸ Apps ▸ ICD360S ▸ Über anderen Apps anzeigen.",
   "anruffensterNurAndroid": "Das Anruffenster gibt es nur auf Android.",
   "anrufLaeuft": "Anruf läuft",
-  "videoanrufLaeuft": "Videoanruf läuft"
+  "videoanrufLaeuft": "Videoanruf läuft",
+  "anruffensterBildWechseln": "Bild wechseln"
 }

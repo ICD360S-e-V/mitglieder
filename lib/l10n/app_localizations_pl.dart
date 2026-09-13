@@ -3197,4 +3197,7 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Trwa połączenie wideo';
+
+  @override
+  String get anruffensterBildWechseln => 'Przełącz obraz';
 }

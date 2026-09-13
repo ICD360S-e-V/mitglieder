@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Het instellingenscherm kon niet worden geopend. Handmatig: Instellingen ▸ Apps ▸ ICD360S ▸ Boven andere apps weergeven.",
   "anruffensterNurAndroid": "Het gespreksvenster bestaat alleen op Android.",
   "anrufLaeuft": "Gesprek actief",
-  "videoanrufLaeuft": "Videogesprek actief"
+  "videoanrufLaeuft": "Videogesprek actief",
+  "anruffensterBildWechseln": "Beeld wisselen"
 }

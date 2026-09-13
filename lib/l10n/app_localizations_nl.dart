@@ -3199,4 +3199,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videogesprek actief';
+
+  @override
+  String get anruffensterBildWechseln => 'Beeld wisselen';
 }

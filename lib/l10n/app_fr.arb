@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "L’écran des paramètres n’a pas pu être ouvert. Manuellement : Paramètres ▸ Applications ▸ ICD360S ▸ Superposition à d’autres applications.",
   "anruffensterNurAndroid": "La fenêtre d’appel n’existe que sur Android.",
   "anrufLaeuft": "Appel en cours",
-  "videoanrufLaeuft": "Appel vidéo en cours"
+  "videoanrufLaeuft": "Appel vidéo en cours",
+  "anruffensterBildWechseln": "Changer d'image"
 }
