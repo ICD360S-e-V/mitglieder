@@ -3189,4 +3189,33 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Zamenjaj sliko';
+
+  @override
+  String get klingelTitel => 'Klic na zaklenjenem zaslonu';
+
+  @override
+  String get klingelZweck =>
+      'Če vodstvo pokliče, ko je naprava zaklenjena, se nad zaklenjenim zaslonom pojavi zaslon s „Sprejmi” in „Zavrni” — naprave ni treba najprej odkleniti.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android za to zahteva dovoljenje „Obvestila na celotnem zaslonu”. Dati ga je mogoče le v sistemskih nastavitvah.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Brez dovoljenja ostane obvestilo s „Sprejmi” in „Zavrni”. Klic je še vedno mogoče sprejeti, le ne na celotnem zaslonu.';
+
+  @override
+  String get klingelErteilt =>
+      'Dano – zaslon se pojavi nad zaklenjenim zaslonom.';
+
+  @override
+  String get klingelNichtErteilt => 'Ni dano – pojavi se samo obvestilo.';
+
+  @override
+  String get klingelVonHand =>
+      'Zaslona z nastavitvami ni bilo mogoče odpreti. Ročno: Nastavitve ▸ Aplikacije ▸ Poseben dostop ▸ Obvestila na celotnem zaslonu.';
+
+  @override
+  String get klingelNurAndroid => 'Zaslon zvonjenja obstaja samo na Androidu.';
 }

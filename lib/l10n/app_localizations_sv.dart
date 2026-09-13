@@ -3183,4 +3183,32 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Växla bild';
+
+  @override
+  String get klingelTitel => 'Samtal på låsskärmen';
+
+  @override
+  String get klingelZweck =>
+      'Om styrelsen ringer medan enheten är låst visas en skärm över låsskärmen — med Svara och Avvisa, utan att du först måste låsa upp enheten.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android kräver för detta behörigheten „Helskärmsaviseringar”. Den kan bara ges i systeminställningarna.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Utan behörigheten återstår en avisering med Svara och Avvisa. Samtalet kan fortfarande besvaras, bara inte över hela skärmen.';
+
+  @override
+  String get klingelErteilt => 'Given – skärmen visas över låsskärmen.';
+
+  @override
+  String get klingelNichtErteilt => 'Inte given – endast en avisering visas.';
+
+  @override
+  String get klingelVonHand =>
+      'Inställningsskärmen kunde inte öppnas. Manuellt: Inställningar ▸ Appar ▸ Särskild appåtkomst ▸ Helskärmsaviseringar.';
+
+  @override
+  String get klingelNurAndroid => 'Ringskärmen finns bara på Android.';
 }

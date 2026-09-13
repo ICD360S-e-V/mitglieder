@@ -3218,4 +3218,35 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Changer d\'image';
+
+  @override
+  String get klingelTitel => 'Appel sur l’écran de verrouillage';
+
+  @override
+  String get klingelZweck =>
+      'Si le conseil appelle alors que l’appareil est verrouillé, un écran apparaît par-dessus l’écran de verrouillage — avec Répondre et Refuser, sans devoir d’abord déverrouiller l’appareil.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android exige pour cela l’autorisation « Notifications en plein écran ». Elle ne peut être accordée que dans les paramètres du système.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Sans l’autorisation, il reste une notification avec Répondre et Refuser. L’appel reste acceptable, simplement pas en plein écran.';
+
+  @override
+  String get klingelErteilt =>
+      'Accordée – l’écran apparaît par-dessus l’écran de verrouillage.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Non accordée – seule une notification apparaît.';
+
+  @override
+  String get klingelVonHand =>
+      'L’écran des paramètres n’a pas pu être ouvert. Manuellement : Paramètres ▸ Applications ▸ Accès spécial ▸ Notifications en plein écran.';
+
+  @override
+  String get klingelNurAndroid =>
+      'L’écran de sonnerie n’existe que sur Android.';
 }

@@ -1551,5 +1551,13 @@
   "anruffensterNurAndroid": "Das Anruffenster gibt es nur auf Android.",
   "anrufLaeuft": "Anruf läuft",
   "videoanrufLaeuft": "Videoanruf läuft",
-  "anruffensterBildWechseln": "Bild wechseln"
+  "anruffensterBildWechseln": "Bild wechseln",
+  "klingelTitel": "Anruf auf dem Sperrbildschirm",
+  "klingelZweck": "Ruft der Vorstand an, während das Gerät gesperrt ist, erscheint ein Schirm über dem Sperrbildschirm — mit Annehmen und Ablehnen, ohne das Gerät erst entsperren zu müssen.",
+  "klingelAndroidHinweis": "Android verlangt dafür die Berechtigung „Vollbild-Benachrichtigungen”. Sie lässt sich nur in den Systemeinstellungen geben.",
+  "klingelOhneErlaubnis": "Ohne die Berechtigung bleibt eine Benachrichtigung mit Annehmen und Ablehnen. Der Anruf ist weiter annehmbar, nur nicht über den ganzen Bildschirm.",
+  "klingelErteilt": "Erteilt – der Schirm erscheint über dem Sperrbildschirm.",
+  "klingelNichtErteilt": "Nicht erteilt – es erscheint nur eine Benachrichtigung.",
+  "klingelVonHand": "Der Einstellungs-Bildschirm ließ sich nicht öffnen. Von Hand: Einstellungen ▸ Apps ▸ Spezieller App-Zugriff ▸ Vollbild-Benachrichtigungen.",
+  "klingelNurAndroid": "Den Klingelschirm gibt es nur auf Android."
 }

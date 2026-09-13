@@ -3184,4 +3184,32 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Bytt bilde';
+
+  @override
+  String get klingelTitel => 'Anrop på låseskjermen';
+
+  @override
+  String get klingelZweck =>
+      'Ringer styret mens enheten er låst, vises en skjerm over låseskjermen — med Svar og Avvis, uten at du må låse opp enheten først.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android krever til dette tillatelsen „Fullskjermvarsler”. Den kan bare gis i systeminnstillingene.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Uten tillatelsen blir det et varsel med Svar og Avvis. Anropet kan fortsatt besvares, bare ikke over hele skjermen.';
+
+  @override
+  String get klingelErteilt => 'Gitt – skjermen vises over låseskjermen.';
+
+  @override
+  String get klingelNichtErteilt => 'Ikke gitt – det vises bare et varsel.';
+
+  @override
+  String get klingelVonHand =>
+      'Innstillingsskjermen kunne ikke åpnes. Manuelt: Innstillinger ▸ Apper ▸ Spesiell apptilgang ▸ Fullskjermvarsler.';
+
+  @override
+  String get klingelNurAndroid => 'Ringeskjermen finnes bare på Android.';
 }

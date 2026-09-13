@@ -1,0 +1,58 @@
+group 'de.icd360s.icd_klingel'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+// Die App steht auf AGP 8.13 — dort gibt es kein Built-in Kotlin, KGP muss
+// also angewendet werden. ⚠️ Bei einem Umstieg auf AGP 9 fliegt diese Zeile
+// raus (siehe die Notiz „Built-in Kotlin" der Vorsitzer-App), sonst meldet
+// das Flutter-Gradle-Plugin sie als „Plugin, das KGP selbst anwendet".
+apply plugin: 'kotlin-android'
+
+android {
+    namespace 'de.icd360s.icd_klingel'
+    compileSdk = flutter.compileSdkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // Wie die App. Ein HÖHERER Wert als der der App bricht die
+        // Manifest-Zusammenführung.
+        minSdkVersion flutter.minSdkVersion
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    // NotificationCompat.CallStyle: EIN Weg für Android 11 bis 17. Die
+    // Framework-Klasse Notification.CallStyle gibt es erst ab API 31 — der
+    // Compat-Weg legt darunter dieselbe Meldung mit Aktionen an.
+    implementation 'androidx.core:core-ktx:1.13.1'
+}

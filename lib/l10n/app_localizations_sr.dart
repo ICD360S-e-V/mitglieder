@@ -3187,4 +3187,34 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Промени слику';
+
+  @override
+  String get klingelTitel => 'Poziv na zaključanom ekranu';
+
+  @override
+  String get klingelZweck =>
+      'Ako uprava pozove dok je uređaj zaključan, preko zaključanog ekrana pojavljuje se ekran sa „Prihvati” i „Odbij” — bez potrebe da prvo otključate uređaj.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android za to zahteva dozvolu „Obaveštenja preko celog ekrana”. Može se dati samo u sistemskim podešavanjima.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Bez dozvole ostaje obaveštenje sa „Prihvati” i „Odbij”. Poziv se i dalje može prihvatiti, samo ne preko celog ekrana.';
+
+  @override
+  String get klingelErteilt =>
+      'Dato – ekran se pojavljuje preko zaključanog ekrana.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Nije dato – pojavljuje se samo obaveštenje.';
+
+  @override
+  String get klingelVonHand =>
+      'Ekran podešavanja nije mogao da se otvori. Ručno: Podešavanja ▸ Aplikacije ▸ Specijalni pristup ▸ Obaveštenja preko celog ekrana.';
+
+  @override
+  String get klingelNurAndroid => 'Ekran zvona postoji samo na Androidu.';
 }

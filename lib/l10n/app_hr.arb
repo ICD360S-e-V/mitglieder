@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Prozor poziva postoji samo na Androidu.",
   "anrufLaeuft": "Razgovor u tijeku",
   "videoanrufLaeuft": "Videorazgovor u tijeku",
-  "anruffensterBildWechseln": "Promijeni sliku"
+  "anruffensterBildWechseln": "Promijeni sliku",
+  "klingelTitel": "Poziv na zaključanom zaslonu",
+  "klingelZweck": "Ako uprava pozove dok je uređaj zaključan, preko zaključanog zaslona pojavljuje se zaslon s „Prihvati” i „Odbij” — bez potrebe da prvo otključate uređaj.",
+  "klingelAndroidHinweis": "Android za to zahtijeva dopuštenje „Obavijesti na cijelom zaslonu”. Može se dati samo u postavkama sustava.",
+  "klingelOhneErlaubnis": "Bez dopuštenja ostaje obavijest s „Prihvati” i „Odbij”. Poziv se i dalje može prihvatiti, samo ne na cijelom zaslonu.",
+  "klingelErteilt": "Dano – zaslon se pojavljuje preko zaključanog zaslona.",
+  "klingelNichtErteilt": "Nije dano – pojavljuje se samo obavijest.",
+  "klingelVonHand": "Zaslon postavki nije se mogao otvoriti. Ručno: Postavke ▸ Aplikacije ▸ Poseban pristup ▸ Obavijesti na cijelom zaslonu.",
+  "klingelNurAndroid": "Zaslon zvona postoji samo na Androidu."
 }

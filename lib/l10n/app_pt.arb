@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "A janela de chamada existe apenas no Android.",
   "anrufLaeuft": "Chamada em curso",
   "videoanrufLaeuft": "Videochamada em curso",
-  "anruffensterBildWechseln": "Alternar imagem"
+  "anruffensterBildWechseln": "Alternar imagem",
+  "klingelTitel": "Chamada no ecrã de bloqueio",
+  "klingelZweck": "Se a direção ligar enquanto o dispositivo está bloqueado, aparece um ecrã sobre o ecrã de bloqueio — com Atender e Rejeitar, sem ter de desbloquear o dispositivo primeiro.",
+  "klingelAndroidHinweis": "O Android exige para isso a permissão «Notificações em ecrã inteiro». Só pode ser concedida nas definições do sistema.",
+  "klingelOhneErlaubnis": "Sem a permissão fica uma notificação com Atender e Rejeitar. A chamada continua a poder ser atendida, apenas não em ecrã inteiro.",
+  "klingelErteilt": "Concedida – o ecrã aparece sobre o ecrã de bloqueio.",
+  "klingelNichtErteilt": "Não concedida – aparece apenas uma notificação.",
+  "klingelVonHand": "Não foi possível abrir o ecrã de definições. Manualmente: Definições ▸ Aplicações ▸ Acesso especial ▸ Notificações em ecrã inteiro.",
+  "klingelNurAndroid": "O ecrã de chamada existe apenas no Android."
 }

@@ -3187,4 +3187,33 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Perjungti vaizdą';
+
+  @override
+  String get klingelTitel => 'Skambutis užrakinimo ekrane';
+
+  @override
+  String get klingelZweck =>
+      'Jei valdyba skambina, kai įrenginys užrakintas, virš užrakinimo ekrano atsiranda ekranas su Atsakyti ir Atmesti — įrenginio nereikia pirma atrakinti.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android tam reikalauja leidimo „Viso ekrano pranešimai”. Jį galima suteikti tik sistemos nustatymuose.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Be leidimo lieka pranešimas su Atsakyti ir Atmesti. Skambutį vis dar galima atsakyti, tik ne visame ekrane.';
+
+  @override
+  String get klingelErteilt =>
+      'Suteiktas – ekranas atsiranda virš užrakinimo ekrano.';
+
+  @override
+  String get klingelNichtErteilt => 'Nesuteiktas – atsiranda tik pranešimas.';
+
+  @override
+  String get klingelVonHand =>
+      'Nustatymų ekrano nepavyko atidaryti. Rankiniu būdu: Nustatymai ▸ Programos ▸ Speciali prieiga ▸ Viso ekrano pranešimai.';
+
+  @override
+  String get klingelNurAndroid => 'Skambėjimo ekranas yra tik Android.';
 }

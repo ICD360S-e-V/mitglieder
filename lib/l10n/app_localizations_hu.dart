@@ -3193,4 +3193,34 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Kép váltása';
+
+  @override
+  String get klingelTitel => 'Hívás a lezárási képernyőn';
+
+  @override
+  String get klingelZweck =>
+      'Ha az elnökség hív, miközben a készülék le van zárva, a lezárási képernyő felett megjelenik egy képernyő Fogadás és Elutasítás gombbal — a készüléket nem kell előbb feloldani.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Az Android ehhez a „Teljes képernyős értesítések” engedélyt kéri. Csak a rendszerbeállításokban adható meg.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Az engedély nélkül egy értesítés marad Fogadás és Elutasítás gombbal. A hívás továbbra is fogadható, csak nem a teljes képernyőn.';
+
+  @override
+  String get klingelErteilt =>
+      'Megadva – a képernyő megjelenik a lezárási képernyő felett.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Nincs megadva – csak egy értesítés jelenik meg.';
+
+  @override
+  String get klingelVonHand =>
+      'A beállítások képernyőt nem sikerült megnyitni. Kézzel: Beállítások ▸ Alkalmazások ▸ Speciális hozzáférés ▸ Teljes képernyős értesítések.';
+
+  @override
+  String get klingelNurAndroid => 'A csengő képernyő csak Androidon létezik.';
 }

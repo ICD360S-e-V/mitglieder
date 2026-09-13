@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Samtalevinduet finnes bare på Android.",
   "anrufLaeuft": "Samtale pågår",
   "videoanrufLaeuft": "Videosamtale pågår",
-  "anruffensterBildWechseln": "Bytt bilde"
+  "anruffensterBildWechseln": "Bytt bilde",
+  "klingelTitel": "Anrop på låseskjermen",
+  "klingelZweck": "Ringer styret mens enheten er låst, vises en skjerm over låseskjermen — med Svar og Avvis, uten at du må låse opp enheten først.",
+  "klingelAndroidHinweis": "Android krever til dette tillatelsen „Fullskjermvarsler”. Den kan bare gis i systeminnstillingene.",
+  "klingelOhneErlaubnis": "Uten tillatelsen blir det et varsel med Svar og Avvis. Anropet kan fortsatt besvares, bare ikke over hele skjermen.",
+  "klingelErteilt": "Gitt – skjermen vises over låseskjermen.",
+  "klingelNichtErteilt": "Ikke gitt – det vises bare et varsel.",
+  "klingelVonHand": "Innstillingsskjermen kunne ikke åpnes. Manuelt: Innstillinger ▸ Apper ▸ Spesiell apptilgang ▸ Fullskjermvarsler.",
+  "klingelNurAndroid": "Ringeskjermen finnes bare på Android."
 }

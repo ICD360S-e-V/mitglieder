@@ -5779,6 +5779,54 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Bild wechseln'**
   String get anruffensterBildWechseln;
+
+  /// No description provided for @klingelTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Anruf auf dem Sperrbildschirm'**
+  String get klingelTitel;
+
+  /// No description provided for @klingelZweck.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruft der Vorstand an, während das Gerät gesperrt ist, erscheint ein Schirm über dem Sperrbildschirm — mit Annehmen und Ablehnen, ohne das Gerät erst entsperren zu müssen.'**
+  String get klingelZweck;
+
+  /// No description provided for @klingelAndroidHinweis.
+  ///
+  /// In de, this message translates to:
+  /// **'Android verlangt dafür die Berechtigung „Vollbild-Benachrichtigungen”. Sie lässt sich nur in den Systemeinstellungen geben.'**
+  String get klingelAndroidHinweis;
+
+  /// No description provided for @klingelOhneErlaubnis.
+  ///
+  /// In de, this message translates to:
+  /// **'Ohne die Berechtigung bleibt eine Benachrichtigung mit Annehmen und Ablehnen. Der Anruf ist weiter annehmbar, nur nicht über den ganzen Bildschirm.'**
+  String get klingelOhneErlaubnis;
+
+  /// No description provided for @klingelErteilt.
+  ///
+  /// In de, this message translates to:
+  /// **'Erteilt – der Schirm erscheint über dem Sperrbildschirm.'**
+  String get klingelErteilt;
+
+  /// No description provided for @klingelNichtErteilt.
+  ///
+  /// In de, this message translates to:
+  /// **'Nicht erteilt – es erscheint nur eine Benachrichtigung.'**
+  String get klingelNichtErteilt;
+
+  /// No description provided for @klingelVonHand.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Einstellungs-Bildschirm ließ sich nicht öffnen. Von Hand: Einstellungen ▸ Apps ▸ Spezieller App-Zugriff ▸ Vollbild-Benachrichtigungen.'**
+  String get klingelVonHand;
+
+  /// No description provided for @klingelNurAndroid.
+  ///
+  /// In de, this message translates to:
+  /// **'Den Klingelschirm gibt es nur auf Android.'**
+  String get klingelNurAndroid;
 }
 
 class _AppLocalizationsDelegate

@@ -3188,4 +3188,33 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Skift billede';
+
+  @override
+  String get klingelTitel => 'Opkald på låseskærmen';
+
+  @override
+  String get klingelZweck =>
+      'Ringer bestyrelsen, mens enheden er låst, vises en skærm over låseskærmen — med Besvar og Afvis, uden at du først skal låse enheden op.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android kræver til dette tilladelsen „Fuldskærmsnotifikationer”. Den kan kun gives i systemindstillingerne.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Uden tilladelsen bliver der en notifikation med Besvar og Afvis. Opkaldet kan stadig besvares, blot ikke på hele skærmen.';
+
+  @override
+  String get klingelErteilt => 'Givet – skærmen vises over låseskærmen.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Ikke givet – der vises kun en notifikation.';
+
+  @override
+  String get klingelVonHand =>
+      'Indstillingsskærmen kunne ikke åbnes. Manuelt: Indstillinger ▸ Apps ▸ Særlig appadgang ▸ Fuldskærmsnotifikationer.';
+
+  @override
+  String get klingelNurAndroid => 'Ringeskærmen findes kun på Android.';
 }

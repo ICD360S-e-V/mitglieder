@@ -3194,4 +3194,34 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Alternar imagem';
+
+  @override
+  String get klingelTitel => 'Chamada no ecrã de bloqueio';
+
+  @override
+  String get klingelZweck =>
+      'Se a direção ligar enquanto o dispositivo está bloqueado, aparece um ecrã sobre o ecrã de bloqueio — com Atender e Rejeitar, sem ter de desbloquear o dispositivo primeiro.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'O Android exige para isso a permissão «Notificações em ecrã inteiro». Só pode ser concedida nas definições do sistema.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Sem a permissão fica uma notificação com Atender e Rejeitar. A chamada continua a poder ser atendida, apenas não em ecrã inteiro.';
+
+  @override
+  String get klingelErteilt =>
+      'Concedida – o ecrã aparece sobre o ecrã de bloqueio.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Não concedida – aparece apenas uma notificação.';
+
+  @override
+  String get klingelVonHand =>
+      'Não foi possível abrir o ecrã de definições. Manualmente: Definições ▸ Aplicações ▸ Acesso especial ▸ Notificações em ecrã inteiro.';
+
+  @override
+  String get klingelNurAndroid => 'O ecrã de chamada existe apenas no Android.';
 }

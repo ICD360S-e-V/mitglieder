@@ -3203,4 +3203,34 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Cambia immagine';
+
+  @override
+  String get klingelTitel => 'Chiamata sulla schermata di blocco';
+
+  @override
+  String get klingelZweck =>
+      'Se il consiglio chiama mentre il dispositivo è bloccato, sopra la schermata di blocco compare una schermata con Rispondi e Rifiuta — senza dover prima sbloccare il dispositivo.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android richiede a tale scopo l’autorizzazione «Notifiche a schermo intero». Può essere concessa solo nelle impostazioni di sistema.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Senza l’autorizzazione resta una notifica con Rispondi e Rifiuta. La chiamata è comunque accettabile, solo non a schermo intero.';
+
+  @override
+  String get klingelErteilt =>
+      'Concessa – la schermata compare sopra la schermata di blocco.';
+
+  @override
+  String get klingelNichtErteilt => 'Non concessa – compare solo una notifica.';
+
+  @override
+  String get klingelVonHand =>
+      'Non è stato possibile aprire la schermata delle impostazioni. A mano: Impostazioni ▸ App ▸ Accesso speciale ▸ Notifiche a schermo intero.';
+
+  @override
+  String get klingelNurAndroid =>
+      'La schermata di chiamata esiste solo su Android.';
 }

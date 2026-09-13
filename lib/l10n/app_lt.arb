@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Skambučio langas yra tik Android.",
   "anrufLaeuft": "Vyksta skambutis",
   "videoanrufLaeuft": "Vyksta vaizdo skambutis",
-  "anruffensterBildWechseln": "Perjungti vaizdą"
+  "anruffensterBildWechseln": "Perjungti vaizdą",
+  "klingelTitel": "Skambutis užrakinimo ekrane",
+  "klingelZweck": "Jei valdyba skambina, kai įrenginys užrakintas, virš užrakinimo ekrano atsiranda ekranas su Atsakyti ir Atmesti — įrenginio nereikia pirma atrakinti.",
+  "klingelAndroidHinweis": "Android tam reikalauja leidimo „Viso ekrano pranešimai”. Jį galima suteikti tik sistemos nustatymuose.",
+  "klingelOhneErlaubnis": "Be leidimo lieka pranešimas su Atsakyti ir Atmesti. Skambutį vis dar galima atsakyti, tik ne visame ekrane.",
+  "klingelErteilt": "Suteiktas – ekranas atsiranda virš užrakinimo ekrano.",
+  "klingelNichtErteilt": "Nesuteiktas – atsiranda tik pranešimas.",
+  "klingelVonHand": "Nustatymų ekrano nepavyko atidaryti. Rankiniu būdu: Nustatymai ▸ Programos ▸ Speciali prieiga ▸ Viso ekrano pranešimai.",
+  "klingelNurAndroid": "Skambėjimo ekranas yra tik Android."
 }

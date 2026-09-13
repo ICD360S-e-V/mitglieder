@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Samtalsfönstret finns bara på Android.",
   "anrufLaeuft": "Samtal pågår",
   "videoanrufLaeuft": "Videosamtal pågår",
-  "anruffensterBildWechseln": "Växla bild"
+  "anruffensterBildWechseln": "Växla bild",
+  "klingelTitel": "Samtal på låsskärmen",
+  "klingelZweck": "Om styrelsen ringer medan enheten är låst visas en skärm över låsskärmen — med Svara och Avvisa, utan att du först måste låsa upp enheten.",
+  "klingelAndroidHinweis": "Android kräver för detta behörigheten „Helskärmsaviseringar”. Den kan bara ges i systeminställningarna.",
+  "klingelOhneErlaubnis": "Utan behörigheten återstår en avisering med Svara och Avvisa. Samtalet kan fortfarande besvaras, bara inte över hela skärmen.",
+  "klingelErteilt": "Given – skärmen visas över låsskärmen.",
+  "klingelNichtErteilt": "Inte given – endast en avisering visas.",
+  "klingelVonHand": "Inställningsskärmen kunde inte öppnas. Manuellt: Inställningar ▸ Appar ▸ Särskild appåtkomst ▸ Helskärmsaviseringar.",
+  "klingelNurAndroid": "Ringskärmen finns bara på Android."
 }

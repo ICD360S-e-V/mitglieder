@@ -3182,4 +3182,32 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Vaheta pilti';
+
+  @override
+  String get klingelTitel => 'Kõne lukustuskuval';
+
+  @override
+  String get klingelZweck =>
+      'Kui juhatus helistab, kui seade on lukus, ilmub lukustuskuva peale kuva nuppudega Vasta ja Keeldu — seadet ei pea enne avama.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android nõuab selleks luba „Täisekraaniteated”. Seda saab anda ainult süsteemi seadetes.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Loata jääb teade nuppudega Vasta ja Keeldu. Kõnele saab endiselt vastata, lihtsalt mitte üle kogu ekraani.';
+
+  @override
+  String get klingelErteilt => 'Antud – kuva ilmub lukustuskuva peale.';
+
+  @override
+  String get klingelNichtErteilt => 'Pole antud – ilmub ainult teade.';
+
+  @override
+  String get klingelVonHand =>
+      'Seadete kuva ei õnnestunud avada. Käsitsi: Seaded ▸ Rakendused ▸ Eriline juurdepääs ▸ Täisekraaniteated.';
+
+  @override
+  String get klingelNurAndroid => 'Helinakuva on olemas ainult Androidis.';
 }

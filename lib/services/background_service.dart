@@ -9,6 +9,9 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/status.dart' as status;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:icd_klingel/icd_klingel.dart';
+
+import 'anruf_klingel.dart';
 import 'battery_usage_service.dart';
 import 'http_client_factory.dart';
 
@@ -427,6 +430,34 @@ class BackgroundService {
     // Health check removed - notification is already updated reactively in
     // connect(), disconnect(), scheduleReconnect() (saves battery: -1 timer)
 
+    // ------------------------------------------------------------------
+    // „Ablehnen" vom Klingelschirm.
+    //
+    // 🔴 DIESES Isolat schickt die Absage hinaus, nicht die Oberflaeche: bei
+    // ruhendem Geraet lebt nur dieses, und nur es hat eine stehende
+    // WebSocket-Verbindung. Ein Ablehnen, das nirgends ankommt, laesst den
+    // Anrufer 45 s ins Leere klingeln.
+    //
+    // ⚠️ ANSEHEN, nicht verbrauchen: das Isolat der Oberflaeche hoert
+    // dasselbe Anklopfen und braucht „Annehmen". Quittiert wird nur, was
+    // hier auch erledigt wurde.
+    IcdKlingel.anklopfen.listen((_) async {
+      try {
+        final e = await IcdKlingel.entscheidungAnsehen();
+        if (e == null || !e.istAblehnen) return;
+        debugPrint('[BackgroundService] Ablehnen fuer Gespraech ${e.gespraechId}');
+        channel?.sink.add(jsonEncode({
+          'type': 'call_reject',
+          'conversation_id': e.gespraechId,
+          'reason': 'declined',
+        }));
+        await AnrufKlingel.vergessen();
+        await IcdKlingel.entscheidungQuittieren();
+      } catch (fehler) {
+        debugPrint('[BackgroundService] Ablehnen fehlgeschlagen: $fehler');
+      }
+    });
+
     debugPrint('[BackgroundService] Service ready - waiting for credentials');
   }
 
@@ -457,6 +488,16 @@ class BackgroundService {
         break;
       case 'remote_offer':
         await _showRemoteNotification(message, notificationsPlugin);
+        break;
+      case 'call_ended':
+      case 'call_rejected':
+      case 'call_busy':
+        // 🔴 Der Anrufer hat aufgelegt oder abgewiesen. Ohne das bliebe der
+        // Klingelschirm auf dem Sperrbildschirm stehen und klingelte weiter,
+        // fuer ein Gespraech, das es nicht mehr gibt — genau der Fehler vom
+        // 11.09.2026, eine Ebene tiefer.
+        debugPrint('[BackgroundService] Anruf weg ($type) — Klingeln abraeumen');
+        await AnrufKlingel.abraeumen();
         break;
       case 'pong':
         debugPrint('[BackgroundService] Pong received - connection alive');
@@ -552,17 +593,77 @@ class BackgroundService {
     debugPrint('[BackgroundService] Chat notification shown (fullScreen: $shouldUseFullScreen)');
   }
 
-  /// Show notification for incoming call
+  /// Ein eingehender Anruf, waehrend das Geraet ruht.
+  ///
+  /// 🔴 HIER LAG DER FEHLER. Bisher wurde nur eine Benachrichtigung gezeigt.
+  /// Sie war nicht annehmbar: das Angebot des Anrufers (SDP) lebte allein in
+  /// DIESEM Isolat, und beim Oeffnen der App verband sich das Isolat der
+  /// Oberflaeche neu — der Anrufer wiederholt sein Angebot nicht. Das Mitglied
+  /// sah also eine Meldung ueber einen Anruf, den es nicht annehmen konnte,
+  /// und bis es die App offen hatte, hatte der Anrufer aufgegeben.
+  ///
+  /// Jetzt wird das Angebot festgehalten und ein Klingelschirm UEBER dem
+  /// Sperrbildschirm gezeigt, mit Annehmen und Ablehnen.
   @pragma('vm:entry-point')
   static Future<void> _showCallNotification(
     Map<String, dynamic> message,
     FlutterLocalNotificationsPlugin notificationsPlugin,
   ) async {
     final callPrefs = await SharedPreferences.getInstance();
-    final callerName = message['from_name'] ?? (callPrefs.getString('l10n_unknown') ?? 'Unknown');
+    await callPrefs.reload();
+    // ⚠️ `caller_name`/`caller_id`, NICHT `from_name`/`from`. Der Server
+    // schickt die ersten (siehe ChatService), die zweiten gab es nie — bis
+    // heute stand in dieser Meldung deshalb IMMER „Unknown".
+    final callerName = (message['caller_name'] as String?)?.trim().isNotEmpty == true
+        ? message['caller_name'] as String
+        : (callPrefs.getString('l10n_unknown') ?? 'Unbekannt');
+    final callerId = message['caller_id']?.toString() ?? '';
+    final gespraechId = int.tryParse(message['conversation_id']?.toString() ?? '') ?? 0;
+    final sdp = message['sdp'] as String? ?? '';
+    final sdpTyp = message['sdp_type'] as String? ?? 'offer';
 
-    debugPrint('[BackgroundService] Showing call notification from $callerName');
+    debugPrint('[BackgroundService] Klingeln: $callerName (conv $gespraechId, SDP ${sdp.length} Zeichen)');
 
+    // ⚠️ Ohne Angebot gibt es nichts anzunehmen. Dann bleibt es bei der
+    // schlichten Meldung — besser als ein Klingelschirm, dessen „Annehmen"
+    // ins Leere fuehrt.
+    if (sdp.isEmpty || gespraechId <= 0) {
+      debugPrint('[BackgroundService] Klingeln OHNE Angebot — nur Meldung');
+      await _schlichteAnrufmeldung(message, notificationsPlugin, callerName, callPrefs);
+      return;
+    }
+
+    // Ein Videoanruf liegt vor, wenn der Anrufer wirklich Video SENDET. Die
+    // genaue Pruefung steht in VoiceCallService; hier reicht der Hinweis fuer
+    // die Beschriftung, und ein Irrtum kostet nur ein Wort auf dem Schirm.
+    final video = sdp.contains('m=video') && !sdp.contains('a=recvonly');
+
+    final ok = await AnrufKlingel.anbieten(
+      gespraechId: gespraechId,
+      anruferId: callerId,
+      anruferName: callerName,
+      sdp: sdp,
+      sdpTyp: sdpTyp,
+      video: video,
+    );
+    if (!ok) {
+      // Android hat die Klingelmeldung abgelehnt (z. B. fehlendes
+      // POST_NOTIFICATIONS). Das Angebot liegt trotzdem bereit, also ist der
+      // Anruf beim Oeffnen der App annehmbar — die schlichte Meldung ist dann
+      // der einzige Hinweis darauf.
+      debugPrint('[BackgroundService] Klingelmeldung abgelehnt — schlichte Meldung');
+      await _schlichteAnrufmeldung(message, notificationsPlugin, callerName, callPrefs);
+    }
+  }
+
+  /// Der Rueckfall: die Meldung, die es vorher schon gab.
+  @pragma('vm:entry-point')
+  static Future<void> _schlichteAnrufmeldung(
+    Map<String, dynamic> message,
+    FlutterLocalNotificationsPlugin notificationsPlugin,
+    String callerName,
+    SharedPreferences callPrefs,
+  ) async {
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'voice_calls',
       'Sprachanrufe',
@@ -577,11 +678,8 @@ class BackgroundService {
       ongoing: true,
       autoCancel: false,
     );
-
-    const NotificationDetails notificationDetails = NotificationDetails(
-      android: androidDetails,
-    );
-
+    const NotificationDetails notificationDetails =
+        NotificationDetails(android: androidDetails);
     final incomingCallText = callPrefs.getString('l10n_notifIncomingCall') ?? 'Incoming call';
     final callingYouText = callPrefs.getString('l10n_notifCallingYou') ?? 'is calling...';
     await notificationsPlugin.show(
@@ -589,9 +687,8 @@ class BackgroundService {
       title: incomingCallText,
       body: '$callerName $callingYouText',
       notificationDetails: notificationDetails,
-      payload: 'call:${message['from']}',
+      payload: 'call:${message['caller_id']}',
     );
-    debugPrint('[BackgroundService] Call notification shown');
   }
 
   /// Show notification for an incoming Fernwartung (remote support) request while

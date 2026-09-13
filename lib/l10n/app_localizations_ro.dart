@@ -3193,4 +3193,32 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Schimbă imaginea';
+
+  @override
+  String get klingelTitel => 'Apel pe ecranul blocat';
+
+  @override
+  String get klingelZweck =>
+      'Dacă sună conducerea în timp ce dispozitivul este blocat, apare un ecran peste ecranul blocat — cu Răspunde și Refuză, fără să fie nevoie să deblocați dispozitivul mai întâi.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android cere pentru asta permisiunea „Notificări pe tot ecranul”. Ea se poate acorda doar din setările sistemului.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Fără permisiune rămâne o notificare cu Răspunde și Refuză. Apelul poate fi preluat în continuare, doar nu pe tot ecranul.';
+
+  @override
+  String get klingelErteilt => 'Acordată – ecranul apare peste ecranul blocat.';
+
+  @override
+  String get klingelNichtErteilt => 'Neacordată – apare doar o notificare.';
+
+  @override
+  String get klingelVonHand =>
+      'Ecranul de setări nu s-a putut deschide. Manual: Setări ▸ Aplicații ▸ Acces special al aplicațiilor ▸ Notificări pe tot ecranul.';
+
+  @override
+  String get klingelNurAndroid => 'Ecranul de sonerie există doar pe Android.';
 }

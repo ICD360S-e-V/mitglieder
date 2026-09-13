@@ -3202,4 +3202,34 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Beeld wisselen';
+
+  @override
+  String get klingelTitel => 'Gesprek op het vergrendelscherm';
+
+  @override
+  String get klingelZweck =>
+      'Belt het bestuur terwijl het apparaat vergrendeld is, dan verschijnt er een scherm over het vergrendelscherm — met Opnemen en Weigeren, zonder het apparaat eerst te ontgrendelen.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android vereist hiervoor de toestemming „Volledig-schermmeldingen”. Die kan alleen in de systeeminstellingen worden gegeven.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Zonder de toestemming blijft een melding met Opnemen en Weigeren. Het gesprek kan nog steeds worden aangenomen, alleen niet op het hele scherm.';
+
+  @override
+  String get klingelErteilt =>
+      'Gegeven – het scherm verschijnt over het vergrendelscherm.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Niet gegeven – er verschijnt alleen een melding.';
+
+  @override
+  String get klingelVonHand =>
+      'Het instellingenscherm kon niet worden geopend. Handmatig: Instellingen ▸ Apps ▸ Speciale app-toegang ▸ Volledig-schermmeldingen.';
+
+  @override
+  String get klingelNurAndroid => 'Het belscherm bestaat alleen op Android.';
 }
