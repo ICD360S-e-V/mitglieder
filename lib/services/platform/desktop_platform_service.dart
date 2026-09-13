@@ -10,6 +10,7 @@ import 'package:uuid/uuid.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
 import '../notification_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:path_provider/path_provider.dart';
@@ -323,9 +324,17 @@ class DesktopPlatformService implements PlatformService, WindowListener {
           );
           break;
         case 'call_offer':
+          // 🔴 `caller_name`/`conversation_id`, NICHT `from_name`/`call_id`.
+          // Der Server schickt die ersten (siehe ChatService), die zweiten gab
+          // es nie: in dieser Meldung stand deshalb IMMER der Rueckfalltext,
+          // und die Nutzlast war IMMER null — ein Tipp auf die Meldung fuehrte
+          // also nirgendwohin. Dasselbe Versehen wie im Isolat des
+          // Hintergrunddienstes, dort am 13.09.2026 behoben.
           showCallNotification(
-            callerName: message['from_name'] ?? 'Unbekannt',
-            callId: message['call_id']?.toString(),
+            // ⚠️ Leer durchreichen und NICHT hier aufloesen: dieser Verteiler
+            // ist nicht `async`. Den Rueckfalltext setzt die Meldung selbst.
+            callerName: (message['caller_name'] as String?)?.trim() ?? '',
+            callId: message['conversation_id']?.toString(),
           );
           break;
         case 'pong':
@@ -400,10 +409,30 @@ class DesktopPlatformService implements PlatformService, WindowListener {
     String? conversationId,
   }) async {
     await showNotification(
-      title: 'Neue Nachricht von $senderName',
+      title: '${await _text('l10n_notifNewMessageFrom', 'Neue Nachricht von')} $senderName',
       body: message,
       payload: conversationId,
     );
+  }
+
+  /// Ein uebersetzter Text aus dem Vorrat, den das Dashboard hinterlegt.
+  ///
+  /// ⚠️ Dieser Dienst hat keinen `BuildContext` und damit keine
+  /// `AppLocalizations`. Dieselbe Bruecke wie im Isolat des
+  /// Hintergrunddienstes: die Oberflaeche legt die `l10n_*`-Schluessel ab, hier
+  /// werden sie gelesen. Ohne das stand auf einem Windows- oder Linux-Rechner
+  /// ein DEUTSCHER Satz — in einer App mit 28 Sprachen.
+  Future<String> _text(String schluessel, String rueckfall) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      // ⚠️ `reload()`: geschrieben hat das Dashboard, moeglicherweise erst nach
+      // dem Start dieses Dienstes.
+      await p.reload();
+      final w = p.getString(schluessel);
+      return (w != null && w.trim().isNotEmpty) ? w : rueckfall;
+    } catch (_) {
+      return rueckfall;
+    }
   }
 
   @override
@@ -411,13 +440,23 @@ class DesktopPlatformService implements PlatformService, WindowListener {
     required String callerName,
     String? callId,
   }) async {
+    final titel = await _text('l10n_notifIncomingCall', 'Eingehender Anruf');
+    final ruft = await _text('l10n_notifCallingYou', 'ruft an...');
+    // ⚠️ EIN Ort fuer den Rueckfall. Kommt kein Name mit, steht hier der
+    // uebersetzte Ersatz — nicht ein deutsches „Unbekannt" aus dem Verteiler.
+    final wer = callerName.trim().isNotEmpty
+        ? callerName
+        : await _text('l10n_unknown', 'Unbekannt');
     await showNotification(
-      title: 'Eingehender Anruf',
-      body: '$callerName ruft an...',
+      title: titel,
+      body: '$wer $ruft',
       payload: callId,
     );
 
-    // Also restore window on incoming call
+    // ⚠️ DAS ist die Windows-Antwort auf den Klingelschirm: ueber den
+    // Sperrbildschirm von Windows darf KEINE App zeichnen, aber das Fenster
+    // darf sich nach vorne holen. Ist die App in den Infobereich minimiert,
+    // kommt sie damit zurueck, und der Klingelschirm der App ist zu sehen.
     await restoreFromTray();
   }
 
