@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.100.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.99.0...v1.100.0) (2026-09-13)
+
+
+### Features
+
+* **anruf:** Klingelschirm über dem Sperrbildschirm, annehmbar ohne Entsperren ([#407](https://github.com/ICD360S-e-V/mitglieder/issues/407)) ([aff7d01](https://github.com/ICD360S-e-V/mitglieder/commit/aff7d0175595448a11e56be10070a835f6842679))
+
 ## [1.99.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.98.1...v1.99.0) (2026-09-13)
 
 
