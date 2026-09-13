@@ -98,11 +98,29 @@ published APK, from a public repository. It does not authenticate the sender,
 and it does not hide the transcript from anyone who has the APK.
 
 The fix is an asymmetric envelope: a **public** key in the client, the private
-key only on the server (libsodium sealed box — `crypto_box_seal` on the client,
-`sodium_crypto_box_seal_open()` on the server, which is in PHP 8.5 core). That
-is a new wire format on both ends plus a coordinated rollout, so it is not
-bundled here. See the docstring on `_diagKeyHex` in
-`lib/services/startup_diagnostics.dart`.
+key only on the server. The server half is free — `sodium_crypto_box_seal_open()`
+is in PHP 8.5 core, and a Dart→PHP round trip was verified on 13.09.2026
+(pinenacl `SealedBox` → `sodium_crypto_box_seal_open`; framing 32 + 16 + payload,
+UTF-8 intact).
+
+The client half is where it stalls, and the three ways out all cost something:
+
+| option | gives | costs |
+|---|---|---|
+| `pinenacl` | real sealed box, pure Dart, no native code | last published 2024 — an unmaintained package on the crypto path |
+| `cryptography` (already a dependency) | maintained, no new package | no XSalsa20-Poly1305, so no libsodium-compatible sealed box. Ephemeral X25519 + HKDF + AES-GCM gets to the same place and is textbook (RFC 9180) — but it is **our** construction |
+| `sodium_libs` | real libsodium, maintained | a native library across six build targets: Flatpak, AppImage, deb, Windows, macOS, Android |
+
+⚠️ **Weigh the gain first.** With this hardening deployed, the envelope is no
+longer what keeps the endpoint safe — the size cap, the rate limit and the
+device key are. What an asymmetric envelope still buys is confidentiality
+against something that sees request **bodies** but not the log directory: a CDN,
+an external log aggregator. Anyone with shell access to this server reads the
+decrypted transcripts straight off the disk either way. If no such intermediary
+exists, the change buys close to nothing — and none of the three prices above is
+worth nothing.
+
+See the docstring on `_diagKeyHex` in `lib/services/startup_diagnostics.dart`.
 
 Until then, what protects the endpoint is the size cap, the rate limit and the
 device key — not the envelope.

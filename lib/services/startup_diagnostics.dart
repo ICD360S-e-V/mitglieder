@@ -226,12 +226,34 @@ class StartupDiagnostics {
   ///     bump, and it is worth having, as long as nobody mistakes it for a
   ///     wall.
   ///
-  /// The fix that would actually close this is an asymmetric envelope — the
+  /// The fix that would actually close this is an asymmetric envelope: the
   /// client carries only a PUBLIC key, the private one never leaves the
-  /// server (libsodium sealed box: `crypto_box_seal` here,
-  /// `sodium_crypto_box_seal_open()` in PHP, which ships in PHP 8.5 core).
-  /// That is a new wire format on both ends and a coordinated rollout, so it
-  /// is deliberately not bundled with the endpoint hardening.
+  /// server. The server half is free — `sodium_crypto_box_seal_open()` is in
+  /// PHP 8.5 core, and a Dart→PHP round trip was verified on 13.09.2026
+  /// (pinenacl `SealedBox` → `sodium_crypto_box_seal_open`, framing and UTF-8
+  /// intact). It is the CLIENT half that has no good answer, which is why
+  /// this is still here:
+  ///
+  ///   - `pinenacl` is the pure-Dart libsodium port with `SealedBox`. It
+  ///     works, and it was last published in 2024 — an unmaintained
+  ///     dependency on the cryptographic path is its own risk.
+  ///   - `cryptography`, which this file already uses, has X25519 and
+  ///     Blake2b but no XSalsa20-Poly1305, so it cannot build a
+  ///     libsodium-compatible sealed box. Reaching the same place with
+  ///     ephemeral X25519 + HKDF + AES-GCM is a textbook construction (it is
+  ///     what RFC 9180 standardises) but it would be OUR construction.
+  ///   - `sodium_libs` binds real libsodium and is maintained, at the price
+  ///     of a native library across six build targets — Flatpak, AppImage,
+  ///     deb, Windows, macOS, Android.
+  ///
+  /// ⚠️ Weigh the gain before paying any of those prices. Once the endpoint
+  /// hardening of 13.09.2026 is deployed, the envelope is no longer what
+  /// keeps the endpoint safe — the size cap, the rate limit and the device
+  /// key are. What an asymmetric envelope would still buy is confidentiality
+  /// against something that sees request BODIES but not the log directory:
+  /// a CDN, an external log aggregator. Anyone with shell access to this
+  /// server reads the decrypted transcripts straight from disk either way.
+  /// If no such intermediary exists, this change buys close to nothing.
   ///
   /// If the constant is empty (local `flutter run`, forgotten CI secret,
   /// developer build), `uploadToServer` short-circuits and only the
