@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:cryptography/cryptography.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/io_client.dart';
+import 'device_key_service.dart';
 import 'http_client_factory.dart';
 
 /// Records every step of `main()` to a plain-text log file from the very
@@ -201,9 +202,36 @@ class StartupDiagnostics {
 
   /// 32-byte hex (256-bit AES-GCM key) injected at build time via
   /// `--dart-define=STARTUP_DIAG_KEY=…`. The value lives in the
-  /// `STARTUP_DIAG_KEY` GitHub Secret on the CI side and never lands in
-  /// source. The same value must live in the server-side PHP — see the
-  /// decryption snippet in [uploadToServer]'s docstring.
+  /// `STARTUP_DIAG_KEY` GitHub Secret on the CI side. The same value must live
+  /// in the server-side PHP — see the decryption snippet in [uploadToServer]'s
+  /// docstring.
+  ///
+  /// ⚠️ IT IS NOT A SECRET, AND NOTHING HERE MAKES IT ONE. It used to say the
+  /// value "never lands in source", which is true and beside the point:
+  /// `String.fromEnvironment` resolves at compile time, so the 64 hex
+  /// characters sit as a constant in the shipped binary. The Android build is
+  /// published on GitHub Releases from a public repository — `strings` on the
+  /// APK is the whole attack. Checked 13.09.2026.
+  ///
+  /// What follows from that, and what does not:
+  ///   - The envelope below does NOT authenticate the sender. Anyone can
+  ///     produce a well-formed one. What keeps the endpoint from being a
+  ///     free write onto the server is the size limit, the rate limit and the
+  ///     device key — see server/api/logs/log_ingest_lib.php.
+  ///   - It does NOT keep the transcript from whoever can read the request
+  ///     bodies (nginx, a CDN), which was the stated reason for having it.
+  ///     Someone with those logs can pull the key out of the APK.
+  ///   - It DOES still keep the transcript out of plain sight in transit logs
+  ///     for anyone who has not bothered to open the APK. That is a speed
+  ///     bump, and it is worth having, as long as nobody mistakes it for a
+  ///     wall.
+  ///
+  /// The fix that would actually close this is an asymmetric envelope — the
+  /// client carries only a PUBLIC key, the private one never leaves the
+  /// server (libsodium sealed box: `crypto_box_seal` here,
+  /// `sodium_crypto_box_seal_open()` in PHP, which ships in PHP 8.5 core).
+  /// That is a new wire format on both ends and a coordinated rollout, so it
+  /// is deliberately not bundled with the endpoint hardening.
   ///
   /// If the constant is empty (local `flutter run`, forgotten CI secret,
   /// developer build), `uploadToServer` short-circuits and only the
@@ -320,11 +348,26 @@ class StartupDiagnostics {
       // catch below - which is why no Windows startup transcript ever reached
       // the server while Android's arrived daily.
       final client = IOClient(HttpClientFactory.createPinnedHttpClient());
+      // Der Geraeteschluessel, sofern schon einer da ist. Zum Zeitpunkt dieses
+      // Aufrufs ist er es normalerweise: main() ruft ApiService.initialize()
+      // — und damit DeviceKeyService.initialize() — deutlich vor
+      // uploadToServer(). Ein eigenes try darum, weil diese Datei auch dann
+      // noch etwas abliefern muss, wenn ringsum alles kaputt ist; ein
+      // fehlender Schluessel darf das Transkript nicht kosten.
+      String? geraeteschluessel;
+      try {
+        geraeteschluessel = DeviceKeyService().deviceKey;
+      } catch (e) {
+        log('  … Geraeteschluessel nicht lesbar: $e');
+      }
       try {
         final response = await client
             .post(
               Uri.parse(_reportUrl),
-              headers: {'Content-Type': 'application/json'},
+              headers: {
+                'Content-Type': 'application/json',
+                if (geraeteschluessel != null) 'X-Device-Key': geraeteschluessel,
+              },
               body: envelope,
             )
             .timeout(const Duration(seconds: 10));
