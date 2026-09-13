@@ -1,0 +1,103 @@
+name: Security Scans
+
+# Read-only scanners, deliberately in their own workflow so a scanner failure
+# can never stop a v* tag from publishing: the build workflows care about
+# producing artifacts, this one cares about reporting risk.
+#
+# - osv-scanner:        pubspec.lock CVE scan on push/PR, results to the
+#                       Security tab as SARIF
+# - dependency-review:  on PR, blocks the merge when the PR pulls in a new
+#                       vulnerable dependency
+# - trufflehog:         nightly scan of the FULL history for secrets
+#
+# ⚠️ All three are free here because this repository is PUBLIC. Vorsitzer runs
+# the same file with the SARIF upload and the dependency review switched off —
+# it went private, where both want the paid "Code Security". If this repository
+# is ever made private, the two jobs start failing with HTTP 403 resp.
+# "Dependency review is not supported on this repository" — and that is a real
+# loss of cover, not a cosmetic red mark: dependency-review is the only gate
+# that BLOCKS such a PR. osv-scanner next to it reads the same pubspec.lock,
+# but with `fail-on-vuln: false` and without comparing against the base branch.
+#
+# ⚠️ Adapted from vorsitzer's `security-scans.yml`. Keep the action pins in
+# both files moving together; a pin that drifts on one side only is how the
+# two quietly stop testing the same thing.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '41 3 * * *'  # nightly 03:41 UTC — off-peak, and not on the hour
+  workflow_dispatch:
+
+# Everything read-only by default; the jobs opt into the writes they need.
+permissions:
+  contents: read
+
+concurrency:
+  group: security-scans-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ─── pubspec.lock CVE scan ──────────────────────────────────────────────
+  # Invoked as a reusable workflow rather than an action — that is the only
+  # supported way to call google/osv-scanner-action. It does its own checkout,
+  # scan, SARIF generation and upload.
+  osv-scanner:
+    name: "🔎 OSV-Scanner (pubspec.lock)"
+    permissions:
+      actions: read
+      contents: read
+      security-events: write   # upload SARIF to the Security tab
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@8deb546fdb875b9996d27d4950be7312dac076a1  # v2.5.0
+    with:
+      scan-args: |-
+        --lockfile=pubspec.lock
+      # ⚠️ Report, do not fail. A vulnerability in a Dart/Flutter package is
+      # fixed upstream on someone else's schedule; failing here would block
+      # every PR in the meantime for something nobody here can act on. The
+      # gate that DOES block is dependency-review below, and it only blocks
+      # what a PR newly introduces.
+      fail-on-vuln: false
+
+  # ─── PR gate: block a PR that introduces a new vulnerable dependency ────
+  dependency-review:
+    name: "🔎 Dependency Review"
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write   # post the summary comment on the PR
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294  # v5.0.0
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: on-failure
+
+  # ─── Nightly full-history secret scan ───────────────────────────────────
+  # Defence in depth behind GitHub push protection (enabled on this repository
+  # on 13.09.2026). Push protection stops a secret going IN; this finds one
+  # that is already in the history — including anything committed before that
+  # date. The private key `vps_icd360sev_icd360s.de` sits in the working
+  # directory and is covered by .gitignore, which is exactly the kind of file
+  # a single `git add -f` puts into the history forever.
+  trufflehog-history:
+    name: "🔎 TruffleHog (full history)"
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        with:
+          fetch-depth: 0   # the whole history — that is the point
+      # No base/head/path given, so trufflehog walks the entire repository and
+      # its history. `--only-verified` keeps it to secrets it could actually
+      # confirm against the issuing service, instead of every high-entropy
+      # string that happens to look like a key.
+      - uses: trufflesecurity/trufflehog@37b77001d0174ebec2fcca2bd83ff83a6d45a3ab  # v3.95.3
+        with:
+          extra_args: --only-verified
