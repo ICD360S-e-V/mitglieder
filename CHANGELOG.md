@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.99.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.98.1...v1.99.0) (2026-09-13)
+
+
+### Features
+
+* **anruffenster:** die Kamera der Gegenstelle im Systemfenster, mit Umschaltknopf ([#404](https://github.com/ICD360S-e-V/mitglieder/issues/404)) ([1bb0c80](https://github.com/ICD360S-e-V/mitglieder/commit/1bb0c8039d1b972cc4cd4e06974b6205d497543b))
+
 ## [1.98.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.98.0...v1.98.1) (2026-09-13)
 
 
