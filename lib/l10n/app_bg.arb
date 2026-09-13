@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Екранът с настройките не можа да се отвори. Ръчно: Настройки ▸ Приложения ▸ ICD360S ▸ Показване върху други приложения.",
   "anruffensterNurAndroid": "Прозорецът за разговор съществува само на Android.",
   "anrufLaeuft": "Тече разговор",
-  "videoanrufLaeuft": "Тече видеоразговор"
+  "videoanrufLaeuft": "Тече видеоразговор",
+  "anruffensterBildWechseln": "Смяна на картината"
 }

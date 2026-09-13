@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Не вдалося відкрити екран налаштувань. Вручну: Налаштування ▸ Програми ▸ ICD360S ▸ Поверх інших програм.",
   "anruffensterNurAndroid": "Вікно виклику доступне лише на Android.",
   "anrufLaeuft": "Триває виклик",
-  "videoanrufLaeuft": "Триває відеовиклик"
+  "videoanrufLaeuft": "Триває відеовиклик",
+  "anruffensterBildWechseln": "Змінити зображення"
 }

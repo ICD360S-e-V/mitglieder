@@ -11,6 +11,7 @@ import android.os.PowerManager
 import android.provider.Settings
 import android.util.Log
 import android.view.WindowManager
+import com.cloudwebrtc.webrtc.FlutterWebRTCPlugin
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -48,6 +49,10 @@ class MainActivity : FlutterActivity() {
     // restore it. Called from Dart (RemoteAgentService) on session start/stop.
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        // Die WebRTC-Instanz DIESER Engine merken, solange sie noch die
+        // richtige ist — ausfuehrlich begruendet bei
+        // [AnrufSystemfenster.webrtcPlugin].
+        AnrufSystemfenster.webrtcPlugin = FlutterWebRTCPlugin.sharedSingleton
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, SECURE_CHANNEL)
             .setMethodCallHandler { call, result ->
                 when (call.method) {
@@ -124,8 +129,13 @@ class MainActivity : FlutterActivity() {
                             // eine zweite Uebersetzungsquelle neben den ARB.
                             call.argument<String>("titel") ?: "",
                             call.argument<String>("auflegen") ?: "",
+                            call.argument<String>("wechseln") ?: "",
                             (call.argument<Number>("startzeit"))?.toLong() ?: -1L,
                             (call.argument<Number>("guete"))?.toInt() ?: 0,
+                            // ⚠️ NUR DIE KENNUNGEN, nie die Spur selbst: die
+                            // holt die native Seite ueber das WebRTC-Plugin.
+                            call.argument<String>("fernSpur") ?: "",
+                            call.argument<String>("eigeneSpur") ?: "",
                         )
                         result.success(true)
                     }
@@ -133,6 +143,8 @@ class MainActivity : FlutterActivity() {
                         AnrufSystemfenster.stand(
                             (call.argument<Number>("startzeit"))?.toLong() ?: -1L,
                             (call.argument<Number>("guete"))?.toInt() ?: 0,
+                            call.argument<String>("fernSpur") ?: "",
+                            call.argument<String>("eigeneSpur") ?: "",
                         )
                         result.success(true)
                     }

@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Obrazovku nastavení nebylo možné otevřít. Ručně: Nastavení ▸ Aplikace ▸ ICD360S ▸ Zobrazení přes ostatní aplikace.",
   "anruffensterNurAndroid": "Okno hovoru existuje pouze v Androidu.",
   "anrufLaeuft": "Probíhá hovor",
-  "videoanrufLaeuft": "Probíhá videohovor"
+  "videoanrufLaeuft": "Probíhá videohovor",
+  "anruffensterBildWechseln": "Přepnout obraz"
 }

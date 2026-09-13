@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Δεν ήταν δυνατό να ανοίξει η οθόνη ρυθμίσεων. Χειροκίνητα: Ρυθμίσεις ▸ Εφαρμογές ▸ ICD360S ▸ Εμφάνιση πάνω από άλλες εφαρμογές.",
   "anruffensterNurAndroid": "Το παράθυρο κλήσης υπάρχει μόνο στο Android.",
   "anrufLaeuft": "Κλήση σε εξέλιξη",
-  "videoanrufLaeuft": "Βιντεοκλήση σε εξέλιξη"
+  "videoanrufLaeuft": "Βιντεοκλήση σε εξέλιξη",
+  "anruffensterBildWechseln": "Αλλαγή εικόνας"
 }

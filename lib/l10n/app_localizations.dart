@@ -5773,6 +5773,12 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Videoanruf läuft'**
   String get videoanrufLaeuft;
+
+  /// No description provided for @anruffensterBildWechseln.
+  ///
+  /// In de, this message translates to:
+  /// **'Bild wechseln'**
+  String get anruffensterBildWechseln;
 }
 
 class _AppLocalizationsDelegate

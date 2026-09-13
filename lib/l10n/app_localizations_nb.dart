@@ -3181,4 +3181,7 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videosamtale pågår';
+
+  @override
+  String get anruffensterBildWechseln => 'Bytt bilde';
 }

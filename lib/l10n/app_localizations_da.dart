@@ -3185,4 +3185,7 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videoopkald i gang';
+
+  @override
+  String get anruffensterBildWechseln => 'Skift billede';
 }

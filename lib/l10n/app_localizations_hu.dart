@@ -3190,4 +3190,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videóhívás folyamatban';
+
+  @override
+  String get anruffensterBildWechseln => 'Kép váltása';
 }

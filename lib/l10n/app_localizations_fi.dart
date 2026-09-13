@@ -3184,4 +3184,7 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videopuhelu käynnissä';
+
+  @override
+  String get anruffensterBildWechseln => 'Vaihda kuvaa';
 }

@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Екран поставки није могао да се отвори. Ручно: Поставке ▸ Апликације ▸ ICD360S ▸ Приказ преко других апликација.",
   "anruffensterNurAndroid": "Прозор позива постоји само на Android-у.",
   "anrufLaeuft": "Разговор у току",
-  "videoanrufLaeuft": "Видео разговор у току"
+  "videoanrufLaeuft": "Видео разговор у току",
+  "anruffensterBildWechseln": "Промени слику"
 }

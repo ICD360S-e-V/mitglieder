@@ -3185,4 +3185,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Идёт видеовызов';
+
+  @override
+  String get anruffensterBildWechseln => 'Сменить изображение';
 }

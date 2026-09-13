@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Zaslon s postavkama nije se mogao otvoriti. Ručno: Postavke ▸ Aplikacije ▸ ICD360S ▸ Prikaz iznad drugih aplikacija.",
   "anruffensterNurAndroid": "Prozor poziva postoji samo na Androidu.",
   "anrufLaeuft": "Razgovor u tijeku",
-  "videoanrufLaeuft": "Videorazgovor u tijeku"
+  "videoanrufLaeuft": "Videorazgovor u tijeku",
+  "anruffensterBildWechseln": "Promijeni sliku"
 }

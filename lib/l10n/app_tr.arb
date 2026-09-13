@@ -1471,5 +1471,6 @@
   "anruffensterVonHand": "Ayarlar ekranı açılamadı. Elle: Ayarlar ▸ Uygulamalar ▸ ICD360S ▸ Diğer uygulamaların üzerinde göster.",
   "anruffensterNurAndroid": "Arama penceresi yalnızca Android’de vardır.",
   "anrufLaeuft": "Arama sürüyor",
-  "videoanrufLaeuft": "Görüntülü arama sürüyor"
+  "videoanrufLaeuft": "Görüntülü arama sürüyor",
+  "anruffensterBildWechseln": "Görüntüyü değiştir"
 }

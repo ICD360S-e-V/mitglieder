@@ -3183,4 +3183,7 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videorazgovor u tijeku';
+
+  @override
+  String get anruffensterBildWechseln => 'Promijeni sliku';
 }

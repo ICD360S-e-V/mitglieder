@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Seadete ekraani ei õnnestunud avada. Käsitsi: Seaded ▸ Rakendused ▸ ICD360S ▸ Kuva teiste rakenduste peal.",
   "anruffensterNurAndroid": "Kõneaken on olemas ainult Androidis.",
   "anrufLaeuft": "Kõne käib",
-  "videoanrufLaeuft": "Videokõne käib"
+  "videoanrufLaeuft": "Videokõne käib",
+  "anruffensterBildWechseln": "Vaheta pilti"
 }

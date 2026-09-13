@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Zaslona z nastavitvami ni bilo mogoče odpreti. Ročno: Nastavitve ▸ Aplikacije ▸ ICD360S ▸ Prikaz nad drugimi aplikacijami.",
   "anruffensterNurAndroid": "Okno klica obstaja samo v Androidu.",
   "anrufLaeuft": "Pogovor poteka",
-  "videoanrufLaeuft": "Videopogovor poteka"
+  "videoanrufLaeuft": "Videopogovor poteka",
+  "anruffensterBildWechseln": "Zamenjaj sliko"
 }

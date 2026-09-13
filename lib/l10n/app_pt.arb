@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Não foi possível abrir o ecrã de configurações. Manualmente: Configurações ▸ Aplicações ▸ ICD360S ▸ Sobrepor a outras aplicações.",
   "anruffensterNurAndroid": "A janela de chamada existe apenas no Android.",
   "anrufLaeuft": "Chamada em curso",
-  "videoanrufLaeuft": "Videochamada em curso"
+  "videoanrufLaeuft": "Videochamada em curso",
+  "anruffensterBildWechseln": "Alternar imagem"
 }

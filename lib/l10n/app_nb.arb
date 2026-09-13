@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Innstillingsskjermen kunne ikke åpnes. Manuelt: Innstillinger ▸ Apper ▸ ICD360S ▸ Vis over andre apper.",
   "anruffensterNurAndroid": "Samtalevinduet finnes bare på Android.",
   "anrufLaeuft": "Samtale pågår",
-  "videoanrufLaeuft": "Videosamtale pågår"
+  "videoanrufLaeuft": "Videosamtale pågår",
+  "anruffensterBildWechseln": "Bytt bilde"
 }

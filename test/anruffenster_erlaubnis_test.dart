@@ -80,7 +80,7 @@ String nurEinstellweg(String kotlin) {
       .join('\n');
 }
 
-/// Die zehn Schluessel dieser Funktion.
+/// Die elf Schluessel dieser Funktion.
 const kSchluessel = [
   'anruffensterTitel',
   'anruffensterZweck',
@@ -92,6 +92,7 @@ const kSchluessel = [
   'anruffensterNurAndroid',
   'anrufLaeuft',
   'videoanrufLaeuft',
+  'anruffensterBildWechseln',
 ];
 
 /// Schneidet den Rumpf von `bauen()` aus — Anfang UND Ende.
@@ -349,7 +350,7 @@ void main() {
   });
 
   group('Alle 28 Sprachen', () {
-    test('jede ARB-Datei hat alle zehn Schluessel', () {
+    test('jede ARB-Datei hat alle elf Schluessel', () {
       final dateien = Directory('lib/l10n')
           .listSync()
           .whereType<File>()
@@ -680,7 +681,21 @@ void main() {
 
     test('der Kanal spricht nur bei einer Aenderung', () {
       final b = rumpf(karte, 'void _standSenden()');
-      expect(b, contains('if (s == _standStartzeit && g == _standGuete) return;'));
+      expect(b, contains('s == _standStartzeit'));
+      expect(b, contains('g == _standGuete'));
+    });
+
+    // 🔴 Die Spurkennungen MUESSEN im Vergleich stehen. Bei einem Videoanruf
+    // trifft die Spur der Gegenstelle regelmaessig erst ein, nachdem die Karte
+    // schon steht (ICE braucht Sekunden) — Dauer und Guete aendern sich dabei
+    // nicht zwingend im selben Takt. Fehlen sie hier, bleibt die Videokachel
+    // fuer immer leer, und zwar ohne jede Fehlermeldung.
+    test('🔴 die Spurkennungen gehoeren MIT in den Aenderungsvergleich', () {
+      final b = rumpf(karte, 'void _standSenden()');
+      expect(b, contains('f == _standFern'));
+      expect(b, contains('e == _standEigen'));
+      expect(b, contains('fernSpur: f'));
+      expect(b, contains('eigeneSpur: e'));
     });
 
     test('der Melder wird an- und wieder abgemeldet', () {
@@ -786,6 +801,338 @@ void main() {
     test('ein Fenster NUR aus Verlusten ist schlecht, nicht unbekannt', () {
       expect(anrufGueteStufe(dEmpfangen: 0, dVerloren: 60, jitterMs: 0),
           kGueteSchlecht);
+    });
+  });
+
+  // ---------------------------------------------------------------------
+  // Die Videokachel im Systemfenster.
+  //
+  // 🔴 Auftrag: „cand sunt cu video si ies din aplicatie ar trebui sa se vada
+  // camera" — gewaehlt wurde die Kamera DER GEGENSTELLE, dazu ein Knopf, der
+  // zwischen ihr und der eigenen umschaltet.
+  //
+  // Ein laufender Videoanruf mit Wechsel in eine fremde App ist von einem Test
+  // aus nicht herstellbar; geprueft wird deshalb der Quelltext, und jede
+  // Zusicherung ist gegengeprobt.
+  group('Videokachel und Umschaltknopf', () {
+    late String kt;
+    late String ma;
+    late String karte;
+    late String vg;
+    late String dienst;
+    late String dash;
+
+    // ⚠️ Im `setUpAll`, nicht im Rumpf von `group`: die Helfer benutzen
+    // `expect`, und das wirft dort `OutsideTestException`.
+    setUpAll(() {
+      kt = ohneKommentare(File(
+              'android/app/src/main/kotlin/de/icd360s/mitglieder/'
+              'AnrufSystemfenster.kt')
+          .readAsStringSync());
+      ma = ohneKommentare(File(
+              'android/app/src/main/kotlin/de/icd360s/mitglieder/'
+              'MainActivity.kt')
+          .readAsStringSync());
+      karte = ohneKommentare(
+          File('lib/services/anruf_systemkarte.dart').readAsStringSync());
+      vg = ohneKommentare(
+          File('lib/services/anruf_vordergrund.dart').readAsStringSync());
+      dienst = ohneKommentare(
+          File('lib/services/voice_call_service.dart').readAsStringSync());
+      dash = ohneKommentare(
+          File('lib/screens/mitglied_dashboard.dart').readAsStringSync());
+    });
+
+    test('🔴 NUR die Spurkennung geht ueber den Kanal, nie die Spur', () {
+      // Eine `MediaStreamTrack` laesst sich nicht durch einen Method-Channel
+      // schicken; die native Seite holt sie beim WebRTC-Plugin.
+      final b = rumpf(vg, 'static Future<void> systemfensterZeigen({');
+      expect(b, contains("'fernSpur': fernSpur"));
+      expect(b, contains("'eigeneSpur': eigeneSpur"));
+      expect(b, isNot(contains('MediaStreamTrack')));
+    });
+
+    test('die Kennungen kommen aus dem Anrufdienst', () {
+      // ⚠️ Mit der schliessenden Klammer: `fernVideoSpurXX` enthaelt
+      // `fernVideoSpur`, eine Umbenennung waere sonst unbemerkt durchgegangen.
+      expect(dienst, contains('String get fernVideoSpur {'));
+      expect(dienst, contains('String get eigeneVideoSpur {'));
+      expect(rumpf(dienst, 'String get fernVideoSpur'),
+          contains('_remoteStream?.getVideoTracks()'));
+      expect(rumpf(dienst, 'String get eigeneVideoSpur'),
+          contains('_localStream?.getVideoTracks()'));
+    });
+
+    // 🔴 Bei abgeschalteter Kamera gibt es die Spur noch, sie liefert aber kein
+    // Bild. Ein Umschaltknopf, der auf eine schwarze Flaeche fuehrt, sieht aus
+    // wie ein Fehler — deshalb ist die eigene Kennung dann LEER, und der Knopf
+    // verschwindet von selbst.
+    test('🔴 abgeschaltete Kamera liefert eine LEERE eigene Kennung', () {
+      final b = rumpf(dienst, 'String get eigeneVideoSpur');
+      final i = b.indexOf('_isCameraOff');
+      final j = b.indexOf('_localStream');
+      expect(i, greaterThanOrEqualTo(0), reason: 'die Pruefung fehlt ganz');
+      expect(j, greaterThan(i),
+          reason: 'die Pruefung muss VOR dem Lesen der Spur stehen');
+    });
+
+    test('MainActivity reicht beide Kennungen durch', () {
+      final z = nurBlock(ma, '"overlayZeigen" ->');
+      expect(z, contains('call.argument<String>("fernSpur")'));
+      expect(z, contains('call.argument<String>("eigeneSpur")'));
+      final s = nurBlock(ma, '"overlayStand" ->');
+      expect(s, contains('call.argument<String>("fernSpur")'));
+      expect(s, contains('call.argument<String>("eigeneSpur")'));
+    });
+
+    // 🔴 Die wichtigste Zusicherung der Gruppe. Die Spur der Gegenstelle trifft
+    // regelmaessig erst ein, NACHDEM die Karte schon steht (ICE braucht
+    // Sekunden). Nimmt `stand()` sie nicht mit, bleibt die Kachel fuer immer
+    // leer — und nichts schlaegt fehl.
+    test('🔴 stand() nimmt die Kennungen mit und bindet neu', () {
+      expect(
+          kt,
+          contains('fun stand(startzeit: Long, guete: Int, '
+              'fernSpur: String, eigeneSpur: String)'));
+      final b = nurBlock(kt, 'fun stand(startzeit: Long');
+      expect(b, contains('fernSpurId = fernSpur'));
+      expect(b, contains('eigeneSpurId = eigeneSpur'));
+      expect(b, contains('spurAuffrischen()'));
+    });
+
+    // ⚠️ Zwei verschiedene Wege: die eigene Spur kennt das Plugin als
+    // `LocalTrack` (Huelle mit dem oeffentlichen Feld `track`), die der
+    // Gegenstelle als `MediaStreamTrack`. Wer beide gleich behandelt, bekommt
+    // fuer eine von ihnen immer null — und die Kachel bliebe leer.
+    test('🔴 eigene Spur ueber getLocalTrack().track, fremde ueber getRemoteTrack',
+        () {
+      final b = nurBlock(kt, 'private fun spurHolen(');
+      expect(b, contains('getLocalTrack(id)?.track'));
+      expect(b, contains('getRemoteTrack(id)'));
+      expect(b, contains('as? VideoTrack'),
+          reason: 'eine Tonspur darf nicht in den Renderer wandern');
+    });
+
+    // 🔴 `sharedSingleton` wird von JEDER neuen Plugin-Instanz ueberschrieben,
+    // und diese App hat mehrere Flutter-Engines. Loest sich eine, ist ihr
+    // `methodCallHandler` null — der Zeiger aber nicht, `?.` hilft also nicht.
+    // In der Vorsitzer-App war das am 31.08.2026 ein NullPointer im Gespraech.
+    test('🔴 gemerkte Plugin-Instanz zuerst, sharedSingleton nur als Rueckfall',
+        () {
+      final b = nurBlock(kt, 'private fun spurHolen(');
+      expect(b, contains('webrtcPlugin ?: FlutterWebRTCPlugin.sharedSingleton'));
+      expect(b, contains('catch'),
+          reason: 'ein NullPointer AUS dem Plugin darf nichts umbringen');
+      expect(
+          ma,
+          contains('AnrufSystemfenster.webrtcPlugin = '
+              'FlutterWebRTCPlugin.sharedSingleton'));
+    });
+
+    // 🔴 Drei Zustaende, nicht zwei: „zeigt die Gegenstelle", „zeigt die eigene
+    // Kamera" und „hat gar kein Bild". Der dritte ist am Anfang eines
+    // Gespraechs der Normalfall und muss UNSICHTBAR bleiben — ein schwarzes
+    // Rechteck ueber einer fremden App sieht wie ein Defekt aus.
+    test('🔴 ohne gebundene Spur bleibt die Kachel unsichtbar, nicht schwarz',
+        () {
+      final b = nurBlock(kt, 'private fun spurAuffrischen()');
+      // ⚠️ GEZAEHLT, nicht `contains`: es gibt DREI Ausgaenge ohne Bild —
+      // keine Kennung, Spur noch nicht bei uns, `addSink` gescheitert. Ein
+      // blosses `contains` blieb gruen, wenn zwei davon die Kachel stehen
+      // liessen, weil der dritte sie versteckt.
+      expect(RegExp(r'kachel\.visibility = View\.GONE').allMatches(b).length, 3,
+          reason: 'jeder Ausgang ohne Bild muss die Kachel verstecken');
+      expect(b, contains('kachel.visibility = View.VISIBLE'));
+      // ⚠️ Auf die KACHEL eingegrenzt: der Umschaltknopf in derselben
+      // Funktion hat ebenfalls ein `visibility = View.GONE`, und darueber war
+      // die Zusicherung gruen, obwohl die Kachel sichtbar startete.
+      expect(nurBlock(kt, 'val kachel = FrameLayout(app).apply'),
+          contains('visibility = View.GONE'),
+          reason: 'sie startet unsichtbar');
+    });
+
+    test('🔴 der Umschaltknopf erscheint nur, wenn es ZWEI Bilder gibt', () {
+      final b = nurBlock(kt, 'private fun spurAuffrischen()');
+      expect(
+          b,
+          contains('if (fernSpurId.isNotEmpty() && '
+              'eigeneSpurId.isNotEmpty()) View.VISIBLE'));
+    });
+
+    // Faellt die gewaehlte Seite weg (Kamera aus, Gegenstelle stellt Video ab),
+    // wird auf die andere gewechselt statt schwarz zu bleiben.
+    test('🔴 faellt die gezeigte Seite weg, wird die andere genommen', () {
+      final b = nurBlock(kt, 'private fun spurAuffrischen()');
+      expect(b, contains('if (eigene && eigeneSpurId.isEmpty()) eigene = false'));
+      expect(
+          b,
+          contains('if (!eigene && fernSpurId.isEmpty() && '
+              'eigeneSpurId.isNotEmpty()) eigene = true'));
+    });
+
+    test('die Gegenstelle ist die Vorgabe, nicht die eigene Kamera', () {
+      expect(nurBlock(kt, 'fun zeigen('), contains('zeigtEigene = false'));
+    });
+
+    // ⚠️ Eigener Zuhoerer, sonst landet der Tipp beim Zieh-Zuhoerer der Karte —
+    // dasselbe wie beim Auflegen-Knopf.
+    test('der Umschaltknopf hat seinen EIGENEN Zuhoerer', () {
+      final b = nurBlock(kt, 'private fun kachelBauen(');
+      final a = b.indexOf('R.drawable.ic_anruf_kamera_wechseln');
+      expect(a, greaterThan(0), reason: 'der Knopf fehlt ganz');
+      final e = b.indexOf('\n        }', a);
+      final knopf = b.substring(a, e > a ? e : b.length);
+      expect(knopf, contains('setOnClickListener { umschalten() }'));
+      expect(knopf, contains('contentDescription = wechselText'),
+          reason: 'sonst liest der Bildschirmleser '
+              '„nicht benannte Schaltflaeche"');
+    });
+
+    // Auf eine Seite umzuschalten, die es nicht gibt, hiesse ein schwarzes Bild
+    // zu zeigen.
+    test('🔴 umschalten() tut nichts, wenn die andere Seite fehlt', () {
+      expect(nurBlock(kt, 'private fun umschalten()'),
+          contains('if (id.isEmpty()) return'));
+    });
+
+    // ⚠️ Die Beschriftung kommt aus Dart. Eine `values-xx/strings.xml` waere
+    // eine ZWEITE Uebersetzungsquelle neben den 28 ARB-Dateien, und beide
+    // liefen beim ersten geaenderten Wort auseinander.
+    test('🔴 die Beschriftung des Knopfes kommt uebersetzt aus Dart', () {
+      expect(karte, contains('required String wechseln'));
+      expect(karte, contains('_titelWechseln = wechseln'));
+      expect(karte, contains('wechseln: _titelWechseln'));
+      expect(vg, contains("'wechseln': wechseln"));
+      expect(dash, contains('wechseln: lFenster.anruffensterBildWechseln'));
+      // ⚠️ NICHT „es gibt keine values-xx/" — die gibt es, und zwar
+      // berechtigt: die Beschreibung des Fernwartungs-Dienstes MUSS eine
+      // Android-Ressource sein, weil das System sie selbst anzeigt. Geprueft
+      // wird deshalb, dass dort nichts vom Anruffenster steht.
+      final ressourcen = Directory('android/app/src/main/res')
+          .listSync()
+          .whereType<Directory>()
+          // ⚠️ `$` als Anker, nicht `\$`: letzteres verlangte ein echtes
+          // Dollarzeichen im Pfad, und `values/` (die deutsche Vorgabe) faellt
+          // dann stillschweigend aus der Pruefung.
+          .where((d) => d.path.contains(RegExp(r'/values(-|$)')))
+          .expand((d) => d.listSync().whereType<File>())
+          .where((f) => f.path.endsWith('.xml'));
+      for (final f in ressourcen) {
+        final x = f.readAsStringSync().toLowerCase();
+        expect(x, isNot(contains('anruffenster')),
+            reason: '${f.path} ist eine zweite Uebersetzungsquelle');
+        expect(x, isNot(contains('wechseln')),
+            reason: '${f.path} ist eine zweite Uebersetzungsquelle');
+      }
+    });
+
+    test('der Wechseltext steht VOR dem Bauen der Kachel', () {
+      final b = nurBlock(kt, 'fun zeigen(');
+      final i = b.indexOf('wechselText = wechseln');
+      final j = b.indexOf('bauen(app, video');
+      expect(i, greaterThanOrEqualTo(0), reason: 'nie gesetzt');
+      expect(j, greaterThan(i),
+          reason: 'sonst traegt der Knopf eine leere Beschreibung');
+    });
+
+    // ⚠️ `release()` wartet auf den Zeichen-Thread. Stuende die Ansicht dann
+    // noch im Fenster, zeichnete sie in eine Oberflaeche, die es nicht mehr
+    // gibt.
+    test('🔴 Verbergen: erst Spur loesen, dann Fenster ab, dann Renderer frei',
+        () {
+      final b = nurBlock(kt, 'fun verbergen()');
+      final a = b.indexOf('spurLoesen()');
+      final c = b.indexOf('removeView');
+      final d = b.indexOf('kachelAufraeumen()');
+      expect(a, greaterThanOrEqualTo(0), reason: 'die Spur bleibt haengen');
+      expect(c, greaterThan(a), reason: 'Spur zuerst abhaengen');
+      expect(d, greaterThan(c), reason: 'Renderer erst nach removeView');
+    });
+
+    // Schlug `addView` fehl, gibt es eine Kachel ohne Fenster — und die haelt
+    // einen EGL-Kontext bis zum Prozessende.
+    test('🔴 ein abgelehntes Fenster laesst keinen Renderer liegen', () {
+      final b = nurBlock(kt, 'fun zeigen(');
+      final i = b.indexOf('addView abgelehnt');
+      expect(i, greaterThan(0), reason: 'der Fang fehlt');
+      // ⚠️ Bis zum Ende des Fang-Blocks, nicht „die naechsten 400 Zeichen":
+      // ein festes Fenster haengt an der Laenge des Textes davor und trifft
+      // beim naechsten Umbau daneben.
+      final e = b.indexOf('\n        }', i);
+      expect(e, greaterThan(i), reason: 'Fang-Block nicht geschlossen');
+      expect(b.substring(i, e), contains('kachelAufraeumen()'));
+    });
+
+    // ⚠️ Mit `setZOrderOnTop(true)` liegt die Oberflaeche UEBER dem Fenster,
+    // und der Umschaltknopf darueber waere unsichtbar. In der Vorgabe liegt sie
+    // darunter und das Fenster stanzt ein Loch.
+    test('🔴 KEIN setZOrderOnTop', () {
+      expect(kt, isNot(contains('setZOrderOnTop')));
+    });
+
+    test('SCALE_ASPECT_FIT, nicht FILL', () {
+      final b = nurBlock(kt, 'private fun kachelBauen(');
+      expect(b, contains('SCALE_ASPECT_FIT'));
+      expect(b, isNot(contains('SCALE_ASPECT_FILL')),
+          reason: 'ein zugeschnittenes Gesicht ist schlimmer als ein Rand');
+    });
+
+    // Die eigene Kamera wird gespiegelt wie auf jedem Selfie-Schirm, das Bild
+    // der Gegenstelle NICHT — sie soll so aussehen, wie sie aussieht.
+    test('nur das eigene Bild wird gespiegelt', () {
+      expect(nurBlock(kt, 'private fun spurAuffrischen()'),
+          contains('r.setMirror(eigene)'));
+    });
+
+    test('die Kachel entsteht nur bei einem VIDEO-Anruf', () {
+      expect(nurBauen(kt), contains('if (video) kachelBauen(app) else null'));
+    });
+
+    // Ohne Kachel bleibt die Karte genau die Pille von PR #399/#401 — mit
+    // Kachel traegt die Wurzel den Hintergrund, sonst lagen zwei uebereinander.
+    test('🔴 der Hintergrund haengt daran, ob eine Kachel darueber sitzt', () {
+      final b = nurBauen(kt);
+      expect(b,
+          contains('background = if (kachel != null) null else GradientDrawable()'));
+      expect(b, contains('if (kachel == null) return reihe'));
+    });
+  });
+
+  group('Die WebRTC-Fassung', () {
+    // ⚠️ Das App-Modul bindet die AAR `compileOnly` ein, geladen wird zur
+    // Laufzeit die von `flutter_webrtc`. Laufen die beiden auseinander, faellt
+    // es beim Bauen NICHT auf — es erscheint erst auf dem Geraet als
+    // `NoSuchMethodError` mitten im Gespraech.
+    test('🔴 App-Modul und flutter_webrtc uebersetzen gegen dieselbe AAR', () {
+      final app = File('android/app/build.gradle.kts').readAsStringSync();
+      final meine = RegExp(r'io\.github\.webrtc-sdk:android:([0-9.]+)')
+          .firstMatch(app)
+          ?.group(1);
+      expect(meine, isNotNull, reason: 'compileOnly-Zeile fehlt im App-Modul');
+
+      // Den Pfad aus der Sperrdatei holen, damit eine Aktualisierung von
+      // flutter_webrtc auffaellt statt an einer festen Zahl vorbeizulaufen.
+      final lock = File('pubspec.lock').readAsStringSync();
+      final v = RegExp(r'flutter_webrtc:[\s\S]{0,400}?version: "([0-9.+]+)"')
+          .firstMatch(lock)
+          ?.group(1);
+      expect(v, isNotNull, reason: 'flutter_webrtc steht nicht in pubspec.lock');
+
+      final heim = Platform.environment['PUB_CACHE'] ??
+          '${Platform.environment['HOME']}/.pub-cache';
+      final gradle =
+          File('$heim/hosted/pub.dev/flutter_webrtc-$v/android/build.gradle');
+      if (!gradle.existsSync()) {
+        // Auf einem Rechner ohne warmen Paketspeicher gibt es die Datei nicht.
+        // Kein Grund fuer rot — aber sagen muss man es.
+        markTestSkipped('flutter_webrtc-$v nicht im Paketspeicher');
+        return;
+      }
+      final seine = RegExp(r'io\.github\.webrtc-sdk:android:([0-9.]+)')
+          .firstMatch(gradle.readAsStringSync())
+          ?.group(1);
+      expect(meine, seine,
+          reason: 'App-Modul uebersetzt gegen $meine, geladen wird $seine');
     });
   });
 }

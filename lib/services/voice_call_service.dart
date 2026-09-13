@@ -354,6 +354,36 @@ class VoiceCallService {
   // Getters
   CallState get callState => _callState;
   DateTime? get gespraechBeginn => _gespraechBeginn;
+
+  /// Kennung der Videospur der GEGENSTELLE, leer wenn es keine gibt.
+  ///
+  /// ⚠️ Nur die Kennung, nie die Spur selbst: das Systemfenster ist nativ, und
+  /// die Spur wird drueben ueber `FlutterWebRTCPlugin.getRemoteTrack` geholt.
+  String get fernVideoSpur {
+    try {
+      final t = _remoteStream?.getVideoTracks();
+      if (t == null || t.isEmpty) return '';
+      return t.first.id ?? '';
+    } catch (_) {
+      return '';
+    }
+  }
+
+  /// Kennung der EIGENEN Videospur — fuer den Umschaltknopf auf der Karte.
+  ///
+  /// ⚠️ Bei abgeschalteter Kamera bleibt sie LEER. Die Spur gibt es dann zwar
+  /// noch, sie liefert aber kein Bild; ein Knopf, der auf eine schwarze
+  /// Flaeche umschaltet, sieht aus wie ein Fehler.
+  String get eigeneVideoSpur {
+    if (_isCameraOff) return '';
+    try {
+      final t = _localStream?.getVideoTracks();
+      if (t == null || t.isEmpty) return '';
+      return t.first.id ?? '';
+    } catch (_) {
+      return '';
+    }
+  }
   bool get isMuted => _isMuted;
   bool get isSpeakerOn => _isSpeakerOn;
   bool get isVideoCall => _isVideoCall;

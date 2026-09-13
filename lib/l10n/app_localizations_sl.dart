@@ -3186,4 +3186,7 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videopogovor poteka';
+
+  @override
+  String get anruffensterBildWechseln => 'Zamenjaj sliko';
 }

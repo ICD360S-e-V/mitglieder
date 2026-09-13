@@ -3180,4 +3180,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Videosamtal pågår';
+
+  @override
+  String get anruffensterBildWechseln => 'Växla bild';
 }

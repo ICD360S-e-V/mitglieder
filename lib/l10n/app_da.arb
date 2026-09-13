@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Indstillingsskærmen kunne ikke åbnes. Manuelt: Indstillinger ▸ Apps ▸ ICD360S ▸ Vis over andre apps.",
   "anruffensterNurAndroid": "Opkaldsvinduet findes kun på Android.",
   "anrufLaeuft": "Opkald i gang",
-  "videoanrufLaeuft": "Videoopkald i gang"
+  "videoanrufLaeuft": "Videoopkald i gang",
+  "anruffensterBildWechseln": "Skift billede"
 }

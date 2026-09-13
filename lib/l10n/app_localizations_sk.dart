@@ -3182,4 +3182,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Prebieha videohovor';
+
+  @override
+  String get anruffensterBildWechseln => 'Prepnúť obraz';
 }

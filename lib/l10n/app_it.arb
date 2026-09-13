@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "Non è stato possibile aprire la schermata delle impostazioni. Manualmente: Impostazioni ▸ App ▸ ICD360S ▸ Mostra sopra le altre app.",
   "anruffensterNurAndroid": "La finestra di chiamata esiste solo su Android.",
   "anrufLaeuft": "Chiamata in corso",
-  "videoanrufLaeuft": "Videochiamata in corso"
+  "videoanrufLaeuft": "Videochiamata in corso",
+  "anruffensterBildWechseln": "Cambia immagine"
 }

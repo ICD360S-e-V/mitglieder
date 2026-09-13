@@ -1450,5 +1450,6 @@
   "anruffensterVonHand": "No se pudo abrir la pantalla de ajustes. Manualmente: Ajustes ▸ Aplicaciones ▸ ICD360S ▸ Mostrar sobre otras aplicaciones.",
   "anruffensterNurAndroid": "La ventana de llamada solo existe en Android.",
   "anrufLaeuft": "Llamada en curso",
-  "videoanrufLaeuft": "Videollamada en curso"
+  "videoanrufLaeuft": "Videollamada en curso",
+  "anruffensterBildWechseln": "Cambiar imagen"
 }

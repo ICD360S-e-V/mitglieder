@@ -3190,4 +3190,7 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get videoanrufLaeuft => 'Тече видеоразговор';
+
+  @override
+  String get anruffensterBildWechseln => 'Смяна на картината';
 }
