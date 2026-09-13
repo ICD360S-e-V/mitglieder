@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.100.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.100.2...v1.100.3) (2026-09-13)
+
+
+### Bug Fixes
+
+* **desktop:** die Anrufmeldung nannte immer „Unbekannt" und sprach Deutsch ([#413](https://github.com/ICD360S-e-V/mitglieder/issues/413)) ([cab8750](https://github.com/ICD360S-e-V/mitglieder/commit/cab8750916eebf5b3eb0cde7f986a7e2bb60f1b9))
+
 ## [1.100.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.100.1...v1.100.2) (2026-09-13)
 
 
