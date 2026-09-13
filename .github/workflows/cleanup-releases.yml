@@ -1,0 +1,141 @@
+name: Cleanup Releases
+
+# ───────────────────────────────────────────────────────────────
+# Keeps the release list short: the newest N stay, everything older is
+# deleted. Modelled on Vorsitzer's `releases-aufraeumen.yml`, with the
+# retention lowered to 10 by the chairman's decision (13.09.2026).
+#
+# ⚠️ WHY 10 IS SAFE HERE — and what to re-measure before touching it:
+#   1. The updater never looks back. UpdateService pulls its manifest from
+#      `releases/latest/download/` (lib/services/update_service.dart:30), so
+#      only the newest release is ever fetched by a client. Deleting older
+#      ones cannot break an update. Vorsitzer keeps 30 because its server
+#      mirror walks 8 releases back — mitglieder has no such lookback.
+#   2. Nothing pins an old tag. Measured 13.09.2026: zero
+#      `releases/download/vX.Y.Z` references in README, lib/, server/,
+#      flatpak/, fastlane/ or .github/.
+#   3. Every recent release carries its assets. Measured 13.09.2026: the
+#      newest 78 of 237 releases all had assets; the longest run without
+#      any was 6, back at v1.10.7. So the kept 10 are all installable.
+#   What 10 DOES cost: at the measured cadence (11 releases on 12.09.2026,
+#   7 by midday on 13.09.) 10 releases is roughly one to two days of manual
+#   rollback depth. An evening regression is still rollable the next
+#   morning, but not a week later. If the cadence rises, raise `behalten`.
+#
+# ⚠️ IT IS NOT ABOUT COST. Measured 13.09.2026: 237 releases, 147.9 GiB of
+# release assets — release assets do NOT count against the Actions storage
+# quota, and this repository is public, where Actions storage and minutes
+# are free anyway. What actually occupies Actions storage here is caches
+# (10.5 GiB in 64 entries, evicted LRU by GitHub on its own) and workflow
+# artifacts (4.7 GiB, already on `retention-days: 1`). The gain from this
+# workflow is a readable release list, nothing else. Anyone who later
+# "saves space" here saves nothing.
+#
+# ⚠️ TAGS SURVIVE. `gh release delete` without `--cleanup-tag` leaves the tag
+# in place, so the source of every version stays reachable — only the built
+# artifacts go. Do NOT add `--cleanup-tag`: unlike Vorsitzer, this repo has
+# no ruleset protecting `refs/tags/v*` (checked 13.09.2026: zero rulesets,
+# main unprotected), so nothing here would stop a tag deletion.
+#
+# ⚠️ FIRST RUN NEEDS A HIGHER CAP. With a 227-release backlog the cap below
+# trips on purpose. Clear it by hand:
+#   gh workflow run cleanup-releases.yml -f trocken=false -f deckel=250
+# ───────────────────────────────────────────────────────────────
+
+on:
+  schedule:
+    # ⚠️ Not on the hour: GitHub's scheduled runs bunch up there and a run
+    # can start minutes late.
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      trocken:
+        description: 'Dry run — list only, delete nothing'
+        type: boolean
+        default: true
+      behalten:
+        description: 'How many of the newest releases to keep'
+        type: string
+        default: '10'
+      deckel:
+        description: 'Abort if more than this many would be deleted'
+        type: string
+        default: '30'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cleanup-releases
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    name: "🧹 Remove old releases"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trim release list
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          TROCKEN: ${{ inputs.trocken || 'false' }}
+          BEHALTEN: ${{ inputs.behalten || '10' }}
+          DECKEL: ${{ inputs.deckel || '30' }}
+        run: |
+          set -euo pipefail
+
+          # ⚠️ The order comes from the API (newest first, by created_at),
+          # NEVER from sorting the names: `sort -r` puts v1.99.0 above
+          # v1.100.0, and the run would then delete the newest release.
+          gh api "repos/$GH_REPO/releases?per_page=100" --paginate \
+             --jq '.[].tag_name' > /tmp/alle.txt
+          GESAMT=$(wc -l < /tmp/alle.txt)
+          echo "Releases total: $GESAMT, keeping: $BEHALTEN"
+
+          tail -n +$((BEHALTEN + 1)) /tmp/alle.txt > /tmp/weg.txt || true
+          ANZ=$(wc -l < /tmp/weg.txt)
+          echo "To delete: $ANZ"
+
+          if [ "$ANZ" -eq 0 ]; then echo "Nothing to do."; exit 0; fi
+
+          # ⚠️ Cap: in steady state this is a handful per run (roughly 1-3 at
+          # the measured cadence with a 6-hourly schedule). A large number
+          # means either a backlog to work off or a broken list/order — in
+          # both cases the run reports instead of deleting.
+          if [ "$ANZ" -gt "$DECKEL" ]; then
+            echo "::error::$ANZ releases to delete, cap is $DECKEL — aborting."
+            echo "This is deliberate: either work off a backlog by hand with a"
+            echo "higher 'deckel', or find out why the list is wrong."
+            head -20 /tmp/weg.txt
+            exit 1
+          fi
+
+          if [ "$TROCKEN" = "true" ]; then
+            echo "── DRY RUN, nothing is deleted ──"
+            cat /tmp/weg.txt
+            exit 0
+          fi
+
+          OK=0; FEHL=0
+          while read -r tag; do
+            [ -z "$tag" ] && continue
+            if gh release delete "$tag" --repo "$GH_REPO" --yes 2>/dev/null; then
+              OK=$((OK+1)); echo "  deleted: $tag"
+            else
+              FEHL=$((FEHL+1)); echo "::warning::could not delete $tag"
+            fi
+          done < /tmp/weg.txt
+
+          echo "Done: $OK deleted, $FEHL failed."
+          {
+            echo "### Releases cleaned up"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| before | $GESAMT |"
+            echo "| kept | $BEHALTEN |"
+            echo "| deleted | $OK |"
+            echo "| failed | $FEHL |"
+            echo ""
+            echo "⚠️ Tags are kept — only the built artifacts are gone."
+          } >> "$GITHUB_STEP_SUMMARY"
