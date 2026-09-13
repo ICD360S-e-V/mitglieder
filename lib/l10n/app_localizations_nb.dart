@@ -3212,4 +3212,27 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Ringeskjermen finnes bare på Android.';
+
+  @override
+  String get autostartTitel => 'Start ved pålogging';
+
+  @override
+  String get autostartZweck =>
+      'På en datamaskin finnes ingen bakgrunnstjeneste som holder forbindelsen. Kjører ikke appen, kommer ingen anrop inn — det ringer ingen steder. Å lukke vinduet legger den bare i varslingsområdet.';
+
+  @override
+  String get autostartAn =>
+      'På – appen starter etter pålogging og er tilgjengelig.';
+
+  @override
+  String get autostartAus =>
+      'Av – anrop kommer bare inn så lenge appen kjører.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Dette kunne ikke endres. Legg appen til i oppstart manuelt.';
+
+  @override
+  String get autostartFlatpak =>
+      'I Flatpak kan autostart ikke settes. Bruk systeminnstillingene.';
 }

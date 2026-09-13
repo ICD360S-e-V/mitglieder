@@ -3223,4 +3223,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'The ring screen only exists on Android.';
+
+  @override
+  String get autostartTitel => 'Start on sign-in';
+
+  @override
+  String get autostartZweck =>
+      'On a computer no background service keeps the connection. If the app is not running, no call arrives — nothing rings. Closing the window only puts it in the notification area.';
+
+  @override
+  String get autostartAn =>
+      'On – the app starts after sign-in and can be reached.';
+
+  @override
+  String get autostartAus =>
+      'Off – calls only arrive while the app is running.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'This could not be changed. Please add the app to your startup items manually.';
+
+  @override
+  String get autostartFlatpak =>
+      'Autostart cannot be set inside Flatpak. Please use your system settings.';
 }

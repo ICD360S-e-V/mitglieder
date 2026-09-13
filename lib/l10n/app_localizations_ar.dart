@@ -3186,4 +3186,26 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'شاشة الرنين متوفرة على Android فقط.';
+
+  @override
+  String get autostartTitel => 'التشغيل عند تسجيل الدخول';
+
+  @override
+  String get autostartZweck =>
+      'لا توجد خدمة في الخلفية تحفظ الاتصال على الحاسوب. إذا لم يكن التطبيق يعمل، لا تصل أي مكالمة — ولا يرن شيء. إغلاق النافذة يضعها في منطقة الإشعارات فقط.';
+
+  @override
+  String get autostartAn =>
+      'مُفعّل – يبدأ التطبيق بعد تسجيل الدخول ويمكن الوصول إليه.';
+
+  @override
+  String get autostartAus => 'مُعطّل – تصل المكالمات فقط أثناء تشغيل التطبيق.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'لم يتمكن من التغيير. أضف التطبيق إلى بدء التشغيل يدويًا.';
+
+  @override
+  String get autostartFlatpak =>
+      'لا يمكن ضبط البدء التلقائي داخل Flatpak. استخدم إعدادات النظام.';
 }

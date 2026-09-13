@@ -3214,4 +3214,26 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Obrazovka zvonenia existuje iba v Androide.';
+
+  @override
+  String get autostartTitel => 'Spustiť pri prihlásení';
+
+  @override
+  String get autostartZweck =>
+      'Na počítači neexistuje služba na pozadí, ktorá by udržiavala spojenie. Ak aplikácia nebeží, hovor nepríde — nikde nezvoní. Zatvorenie okna ju len odloží do oblasti upozornení.';
+
+  @override
+  String get autostartAn =>
+      'Zapnuté – aplikácia sa spustí po prihlásení a je dostupná.';
+
+  @override
+  String get autostartAus => 'Vypnuté – hovory prídu len počas behu aplikácie.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Toto sa nedalo zmeniť. Pridajte aplikáciu do spustenia ručne.';
+
+  @override
+  String get autostartFlatpak =>
+      'Vo Flatpaku sa automatické spustenie nedá nastaviť. Použite nastavenia systému.';
 }

@@ -3213,4 +3213,27 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Zvana ekrāns ir tikai Android.';
+
+  @override
+  String get autostartTitel => 'Startēt pieteikšanās laikā';
+
+  @override
+  String get autostartZweck =>
+      'Datorā nav fona pakalpojuma, kas uzturētu savienojumu. Ja lietotne nedarbojas, zvans nepienāk — nekur nezvana. Loga aizvēršana to tikai novieto paziņojumu zonā.';
+
+  @override
+  String get autostartAn =>
+      'Ieslēgts – lietotne startē pēc pieteikšanās un ir sasniedzama.';
+
+  @override
+  String get autostartAus =>
+      'Izslēgts – zvani pienāk tikai tad, kad lietotne darbojas.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'To nevarēja mainīt. Pievienojiet lietotni startēšanai manuāli.';
+
+  @override
+  String get autostartFlatpak =>
+      'Flatpak vidē automātisko startēšanu nevar iestatīt. Izmantojiet sistēmas iestatījumus.';
 }

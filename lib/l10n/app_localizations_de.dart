@@ -3239,4 +3239,27 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Den Klingelschirm gibt es nur auf Android.';
+
+  @override
+  String get autostartTitel => 'Beim Anmelden starten';
+
+  @override
+  String get autostartZweck =>
+      'Auf dem Rechner hält kein Hintergrunddienst die Verbindung. Läuft die App nicht, kommt kein Anruf an — es klingelt nirgends. Das Schließen des Fensters legt sie nur in den Infobereich.';
+
+  @override
+  String get autostartAn =>
+      'Ein – die App startet nach dem Anmelden und ist erreichbar.';
+
+  @override
+  String get autostartAus =>
+      'Aus – Anrufe kommen nur an, solange die App läuft.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Das ließ sich nicht umstellen. Bitte tragen Sie die App von Hand in den Autostart ein.';
+
+  @override
+  String get autostartFlatpak =>
+      'Im Flatpak lässt sich der Autostart nicht setzen. Bitte über die Einstellungen Ihres Systems.';
 }

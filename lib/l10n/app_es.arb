@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Concedido – la pantalla aparece sobre la pantalla de bloqueo.",
   "klingelNichtErteilt": "No concedido – solo aparece una notificación.",
   "klingelVonHand": "No se pudo abrir la pantalla de ajustes. A mano: Ajustes ▸ Aplicaciones ▸ Acceso especial ▸ Notificaciones a pantalla completa.",
-  "klingelNurAndroid": "La pantalla de llamada solo existe en Android."
+  "klingelNurAndroid": "La pantalla de llamada solo existe en Android.",
+  "autostartTitel": "Iniciar al iniciar sesión",
+  "autostartZweck": "En un ordenador no hay un servicio en segundo plano que mantenga la conexión. Si la aplicación no está en marcha, no llega ninguna llamada: no suena en ningún sitio. Cerrar la ventana solo la deja en el área de notificación.",
+  "autostartAn": "Activado: la aplicación se inicia tras iniciar sesión y es accesible.",
+  "autostartAus": "Desactivado: las llamadas solo llegan mientras la aplicación está en marcha.",
+  "autostartFehlgeschlagen": "No se pudo cambiar. Añada la aplicación al inicio manualmente.",
+  "autostartFlatpak": "En Flatpak no se puede configurar el inicio automático. Use los ajustes del sistema."
 }

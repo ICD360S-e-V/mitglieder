@@ -3212,4 +3212,27 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get klingelNurAndroid =>
       'Obrazovka zvonění existuje pouze v Androidu.';
+
+  @override
+  String get autostartTitel => 'Spustit při přihlášení';
+
+  @override
+  String get autostartZweck =>
+      'Na počítači neexistuje služba na pozadí, která by udržovala spojení. Pokud aplikace neběží, hovor nepřijde — nikde nezvoní. Zavření okna ji jen odloží do oblasti oznámení.';
+
+  @override
+  String get autostartAn =>
+      'Zapnuto – aplikace se spustí po přihlášení a je dostupná.';
+
+  @override
+  String get autostartAus =>
+      'Vypnuto – hovory přijdou jen během běhu aplikace.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Toto se nepodařilo změnit. Přidejte aplikaci do spuštění ručně.';
+
+  @override
+  String get autostartFlatpak =>
+      'Ve Flatpaku nelze automatické spuštění nastavit. Použijte nastavení systému.';
 }

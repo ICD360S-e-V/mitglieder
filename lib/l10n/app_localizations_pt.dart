@@ -3224,4 +3224,27 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'O ecrã de chamada existe apenas no Android.';
+
+  @override
+  String get autostartTitel => 'Iniciar ao iniciar sessão';
+
+  @override
+  String get autostartZweck =>
+      'No computador não existe um serviço em segundo plano que mantenha a ligação. Se a aplicação não estiver em execução, nenhuma chamada chega — não toca em lugar algum. Fechar a janela apenas a coloca na área de notificação.';
+
+  @override
+  String get autostartAn =>
+      'Ligado – a aplicação inicia depois de iniciar sessão e está acessível.';
+
+  @override
+  String get autostartAus =>
+      'Desligado – as chamadas só chegam enquanto a aplicação estiver em execução.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Não foi possível alterar. Adicione a aplicação ao arranque manualmente.';
+
+  @override
+  String get autostartFlatpak =>
+      'No Flatpak o arranque automático não pode ser definido. Use as definições do sistema.';
 }

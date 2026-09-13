@@ -3217,4 +3217,27 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Soittonäyttö on vain Androidissa.';
+
+  @override
+  String get autostartTitel => 'Käynnistä kirjautumisen yhteydessä';
+
+  @override
+  String get autostartZweck =>
+      'Tietokoneessa ei ole taustapalvelua, joka ylläpitäisi yhteyttä. Jos sovellus ei ole käynnissä, puhelu ei saavu — mikään ei soi. Ikkunan sulkeminen siirtää sen vain ilmoitusalueelle.';
+
+  @override
+  String get autostartAn =>
+      'Päällä – sovellus käynnistyy kirjautumisen jälkeen ja on tavoitettavissa.';
+
+  @override
+  String get autostartAus =>
+      'Pois – puhelut saapuvat vain sovelluksen ollessa käynnissä.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Tätä ei voitu muuttaa. Lisää sovellus käynnistykseen käsin.';
+
+  @override
+  String get autostartFlatpak =>
+      'Flatpakissa automaattista käynnistystä ei voi asettaa. Käytä järjestelmän asetuksia.';
 }

@@ -15,6 +15,7 @@ import '../utils/app_theme.dart';
 import '../utils/responsive.dart';
 import 'anruffenster_erlaubnis.dart';
 import 'klingel_erlaubnis.dart';
+import 'autostart_zeile.dart';
 
 /// Die Einwilligung zu den SMS-Erinnerungen lässt sich hier jederzeit
 /// ändern. Art. 7 Abs. 3 DSGVO verlangt das ausdrücklich: der Widerruf muss
@@ -792,6 +793,9 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
                   // Sperrbildschirm nicht, und ein ruhendes Tablet
                   // zeigt nur eine Meldung.
                   const KlingelErlaubnis(),
+                  // Auf dem Rechner haelt kein Vordergrunddienst die
+                  // Verbindung: laeuft die App nicht, kommt kein Anruf an.
+                  const AutostartZeile(),
                 ],
               ),
             ),

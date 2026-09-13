@@ -3223,4 +3223,27 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'A csengő képernyő csak Androidon létezik.';
+
+  @override
+  String get autostartTitel => 'Indítás bejelentkezéskor';
+
+  @override
+  String get autostartZweck =>
+      'A számítógépen nincs háttérszolgáltatás, amely fenntartja a kapcsolatot. Ha az alkalmazás nem fut, nem érkezik hívás — semmi nem csörög. Az ablak bezárása csak az értesítési területre teszi.';
+
+  @override
+  String get autostartAn =>
+      'Be – az alkalmazás bejelentkezés után indul és elérhető.';
+
+  @override
+  String get autostartAus =>
+      'Ki – hívások csak akkor érkeznek, amíg az alkalmazás fut.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Ezt nem sikerült átállítani. Kérjük, kézzel adja hozzá az indítópulthoz.';
+
+  @override
+  String get autostartFlatpak =>
+      'Flatpakban az automatikus indítás nem állítható be. Használja a rendszerbeállításokat.';
 }

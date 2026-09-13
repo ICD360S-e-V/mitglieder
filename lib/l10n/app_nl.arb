@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Gegeven – het scherm verschijnt over het vergrendelscherm.",
   "klingelNichtErteilt": "Niet gegeven – er verschijnt alleen een melding.",
   "klingelVonHand": "Het instellingenscherm kon niet worden geopend. Handmatig: Instellingen ▸ Apps ▸ Speciale app-toegang ▸ Volledig-schermmeldingen.",
-  "klingelNurAndroid": "Het belscherm bestaat alleen op Android."
+  "klingelNurAndroid": "Het belscherm bestaat alleen op Android.",
+  "autostartTitel": "Starten bij aanmelden",
+  "autostartZweck": "Op een computer houdt geen achtergronddienst de verbinding in stand. Draait de app niet, dan komt er geen gesprek binnen — er gaat nergens iets over. Het venster sluiten zet hem alleen in het systeemvak.",
+  "autostartAn": "Aan – de app start na het aanmelden en is bereikbaar.",
+  "autostartAus": "Uit – gesprekken komen alleen binnen zolang de app draait.",
+  "autostartFehlgeschlagen": "Dit kon niet worden gewijzigd. Voeg de app handmatig toe aan het opstarten.",
+  "autostartFlatpak": "In Flatpak kan automatisch opstarten niet worden ingesteld. Gebruik uw systeeminstellingen."
 }

@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Suteiktas – ekranas atsiranda virš užrakinimo ekrano.",
   "klingelNichtErteilt": "Nesuteiktas – atsiranda tik pranešimas.",
   "klingelVonHand": "Nustatymų ekrano nepavyko atidaryti. Rankiniu būdu: Nustatymai ▸ Programos ▸ Speciali prieiga ▸ Viso ekrano pranešimai.",
-  "klingelNurAndroid": "Skambėjimo ekranas yra tik Android."
+  "klingelNurAndroid": "Skambėjimo ekranas yra tik Android.",
+  "autostartTitel": "Paleisti prisijungus",
+  "autostartZweck": "Kompiuteryje nėra foninės paslaugos, kuri palaikytų ryšį. Jei programa neveikia, skambutis nepasiekia — niekur neskamba. Uždarius langą ji tik padedama į pranešimų sritį.",
+  "autostartAn": "Įjungta – programa pasileidžia po prisijungimo ir yra pasiekiama.",
+  "autostartAus": "Išjungta – skambučiai pasiekia tik kol programa veikia.",
+  "autostartFehlgeschlagen": "Šio nustatymo pakeisti nepavyko. Pridėkite programą į paleidimą rankiniu būdu.",
+  "autostartFlatpak": "Flatpak aplinkoje automatinio paleidimo nustatyti negalima. Naudokite sistemos nustatymus."
 }

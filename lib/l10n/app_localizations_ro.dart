@@ -3221,4 +3221,27 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Ecranul de sonerie există doar pe Android.';
+
+  @override
+  String get autostartTitel => 'Pornește la conectare';
+
+  @override
+  String get autostartZweck =>
+      'Pe calculator nu există un serviciu de fundal care să țină legătura. Dacă aplicația nu rulează, nu ajunge niciun apel — nu sună nicăieri. Închiderea ferestrei o pune doar în zona de notificare.';
+
+  @override
+  String get autostartAn =>
+      'Activat – aplicația pornește după conectare și e accesibilă.';
+
+  @override
+  String get autostartAus =>
+      'Dezactivat – apelurile ajung doar cât timp aplicația rulează.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Nu s-a putut modifica. Adăugați aplicația manual la programele de pornire.';
+
+  @override
+  String get autostartFlatpak =>
+      'În Flatpak pornirea automată nu se poate seta. Folosiți setările sistemului.';
 }

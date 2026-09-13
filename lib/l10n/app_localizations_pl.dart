@@ -3231,4 +3231,27 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get klingelNurAndroid =>
       'Ekran dzwonienia istnieje tylko w Androidzie.';
+
+  @override
+  String get autostartTitel => 'Uruchom przy logowaniu';
+
+  @override
+  String get autostartZweck =>
+      'Na komputerze nie ma usługi w tle, która utrzymuje połączenie. Jeśli aplikacja nie działa, połączenie nie dochodzi — nigdzie nie dzwoni. Zamknięcie okna tylko odkłada ją do obszaru powiadomień.';
+
+  @override
+  String get autostartAn =>
+      'Włączone – aplikacja uruchamia się po zalogowaniu i jest dostępna.';
+
+  @override
+  String get autostartAus =>
+      'Wyłączone – połączenia dochodzą tylko gdy aplikacja działa.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Nie udało się tego zmienić. Dodaj aplikację do autostartu ręcznie.';
+
+  @override
+  String get autostartFlatpak =>
+      'We Flatpaku nie można ustawić autostartu. Skorzystaj z ustawień systemu.';
 }

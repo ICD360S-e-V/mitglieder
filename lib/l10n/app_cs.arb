@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Uděleno – obrazovka se zobrazí nad uzamčenou obrazovkou.",
   "klingelNichtErteilt": "Neuděleno – zobrazí se pouze oznámení.",
   "klingelVonHand": "Obrazovku nastavení nebylo možné otevřít. Ručně: Nastavení ▸ Aplikace ▸ Speciální přístup ▸ Oznámení na celou obrazovku.",
-  "klingelNurAndroid": "Obrazovka zvonění existuje pouze v Androidu."
+  "klingelNurAndroid": "Obrazovka zvonění existuje pouze v Androidu.",
+  "autostartTitel": "Spustit při přihlášení",
+  "autostartZweck": "Na počítači neexistuje služba na pozadí, která by udržovala spojení. Pokud aplikace neběží, hovor nepřijde — nikde nezvoní. Zavření okna ji jen odloží do oblasti oznámení.",
+  "autostartAn": "Zapnuto – aplikace se spustí po přihlášení a je dostupná.",
+  "autostartAus": "Vypnuto – hovory přijdou jen během běhu aplikace.",
+  "autostartFehlgeschlagen": "Toto se nepodařilo změnit. Přidejte aplikaci do spuštění ručně.",
+  "autostartFlatpak": "Ve Flatpaku nelze automatické spuštění nastavit. Použijte nastavení systému."
 }

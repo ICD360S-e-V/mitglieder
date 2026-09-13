@@ -3223,4 +3223,27 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get klingelNurAndroid =>
       'Екранът за звънене съществува само на Android.';
+
+  @override
+  String get autostartTitel => 'Стартиране при влизане';
+
+  @override
+  String get autostartZweck =>
+      'На компютъра няма фонова услуга, която да поддържа връзката. Ако приложението не работи, не постъпва обаждане — никъде не звъни. Затварянето на прозореца го оставя само в областта за известия.';
+
+  @override
+  String get autostartAn =>
+      'Включено – приложението стартира след влизане и е достъпно.';
+
+  @override
+  String get autostartAus =>
+      'Изключено – обажданията постъпват само докато приложението работи.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Това не можа да се промени. Добавете приложението ръчно към автостартиране.';
+
+  @override
+  String get autostartFlatpak =>
+      'Във Flatpak автостартирането не може да се зададе. Използвайте системните настройки.';
 }

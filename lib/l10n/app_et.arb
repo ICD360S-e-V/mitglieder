@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Antud – kuva ilmub lukustuskuva peale.",
   "klingelNichtErteilt": "Pole antud – ilmub ainult teade.",
   "klingelVonHand": "Seadete kuva ei õnnestunud avada. Käsitsi: Seaded ▸ Rakendused ▸ Eriline juurdepääs ▸ Täisekraaniteated.",
-  "klingelNurAndroid": "Helinakuva on olemas ainult Androidis."
+  "klingelNurAndroid": "Helinakuva on olemas ainult Androidis.",
+  "autostartTitel": "Käivita sisselogimisel",
+  "autostartZweck": "Arvutis pole taustateenust, mis ühendust hoiaks. Kui rakendus ei tööta, kõnet ei saabu — miski ei helise. Akna sulgemine paneb selle vaid teavitusalale.",
+  "autostartAn": "Sees – rakendus käivitub pärast sisselogimist ja on kättesaadav.",
+  "autostartAus": "Väljas – kõned saabuvad ainult siis, kui rakendus töötab.",
+  "autostartFehlgeschlagen": "Seda ei õnnestunud muuta. Lisage rakendus käivitusse käsitsi.",
+  "autostartFlatpak": "Flatpakis automaatkäivitust seada ei saa. Kasutage süsteemi seadeid."
 }

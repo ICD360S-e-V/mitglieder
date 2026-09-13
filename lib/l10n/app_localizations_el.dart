@@ -3239,4 +3239,27 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Η οθόνη κλήσης υπάρχει μόνο στο Android.';
+
+  @override
+  String get autostartTitel => 'Εκκίνηση κατά τη σύνδεση';
+
+  @override
+  String get autostartZweck =>
+      'Στον υπολογιστή δεν υπάρχει υπηρεσία παρασκηνίου που διατηρεί τη σύνδεση. Αν η εφαρμογή δεν εκτελείται, δεν φτάνει καμία κλήση — δεν χτυπά πουθενά. Το κλείσιμο του παραθύρου το βάζει μόνο στην περιοχή ειδοποιήσεων.';
+
+  @override
+  String get autostartAn =>
+      'Ενεργό – η εφαρμογή ξεκινά μετά τη σύνδεση και είναι προσβάσιμη.';
+
+  @override
+  String get autostartAus =>
+      'Ανενεργό – οι κλήσεις φτάνουν μόνο όσο εκτελείται η εφαρμογή.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Δεν ήταν δυνατή η αλλαγή. Προσθέστε την εφαρμογή χειροκίνητα στην εκκίνηση.';
+
+  @override
+  String get autostartFlatpak =>
+      'Στο Flatpak δεν μπορεί να οριστεί αυτόματη εκκίνηση. Χρησιμοποιήστε τις ρυθμίσεις συστήματος.';
 }

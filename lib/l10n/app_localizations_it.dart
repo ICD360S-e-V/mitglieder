@@ -3233,4 +3233,27 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get klingelNurAndroid =>
       'La schermata di chiamata esiste solo su Android.';
+
+  @override
+  String get autostartTitel => 'Avvia all’accesso';
+
+  @override
+  String get autostartZweck =>
+      'Su un computer non esiste un servizio in background che mantenga la connessione. Se l’app non è in esecuzione, nessuna chiamata arriva — non squilla da nessuna parte. Chiudere la finestra la mette solo nell’area di notifica.';
+
+  @override
+  String get autostartAn =>
+      'Attivo – l’app si avvia dopo l’accesso ed è raggiungibile.';
+
+  @override
+  String get autostartAus =>
+      'Disattivo – le chiamate arrivano solo mentre l’app è in esecuzione.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Non è stato possibile modificarlo. Aggiunga l’app all’avvio manualmente.';
+
+  @override
+  String get autostartFlatpak =>
+      'In Flatpak l’avvio automatico non può essere impostato. Usi le impostazioni di sistema.';
 }

@@ -3210,4 +3210,27 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Helinakuva on olemas ainult Androidis.';
+
+  @override
+  String get autostartTitel => 'Käivita sisselogimisel';
+
+  @override
+  String get autostartZweck =>
+      'Arvutis pole taustateenust, mis ühendust hoiaks. Kui rakendus ei tööta, kõnet ei saabu — miski ei helise. Akna sulgemine paneb selle vaid teavitusalale.';
+
+  @override
+  String get autostartAn =>
+      'Sees – rakendus käivitub pärast sisselogimist ja on kättesaadav.';
+
+  @override
+  String get autostartAus =>
+      'Väljas – kõned saabuvad ainult siis, kui rakendus töötab.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Seda ei õnnestunud muuta. Lisage rakendus käivitusse käsitsi.';
+
+  @override
+  String get autostartFlatpak =>
+      'Flatpakis automaatkäivitust seada ei saa. Kasutage süsteemi seadeid.';
 }

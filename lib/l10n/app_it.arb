@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Concessa – la schermata compare sopra la schermata di blocco.",
   "klingelNichtErteilt": "Non concessa – compare solo una notifica.",
   "klingelVonHand": "Non è stato possibile aprire la schermata delle impostazioni. A mano: Impostazioni ▸ App ▸ Accesso speciale ▸ Notifiche a schermo intero.",
-  "klingelNurAndroid": "La schermata di chiamata esiste solo su Android."
+  "klingelNurAndroid": "La schermata di chiamata esiste solo su Android.",
+  "autostartTitel": "Avvia all’accesso",
+  "autostartZweck": "Su un computer non esiste un servizio in background che mantenga la connessione. Se l’app non è in esecuzione, nessuna chiamata arriva — non squilla da nessuna parte. Chiudere la finestra la mette solo nell’area di notifica.",
+  "autostartAn": "Attivo – l’app si avvia dopo l’accesso ed è raggiungibile.",
+  "autostartAus": "Disattivo – le chiamate arrivano solo mentre l’app è in esecuzione.",
+  "autostartFehlgeschlagen": "Non è stato possibile modificarlo. Aggiunga l’app all’avvio manualmente.",
+  "autostartFlatpak": "In Flatpak l’avvio automatico non può essere impostato. Usi le impostazioni di sistema."
 }

@@ -3218,4 +3218,27 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get klingelNurAndroid => 'Экран звонка есть только на Android.';
+
+  @override
+  String get autostartTitel => 'Запускать при входе';
+
+  @override
+  String get autostartZweck =>
+      'На компьютере нет фоновой службы, которая держит соединение. Если приложение не запущено, звонок не приходит — нигде не звонит. Закрытие окна лишь убирает его в область уведомлений.';
+
+  @override
+  String get autostartAn =>
+      'Включено – приложение запускается после входа и доступно.';
+
+  @override
+  String get autostartAus =>
+      'Выключено – звонки приходят только пока приложение запущено.';
+
+  @override
+  String get autostartFehlgeschlagen =>
+      'Не удалось изменить. Добавьте приложение в автозапуск вручную.';
+
+  @override
+  String get autostartFlatpak =>
+      'В Flatpak автозапуск установить нельзя. Используйте настройки системы.';
 }

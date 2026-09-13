@@ -1459,5 +1459,11 @@
   "klingelErteilt": "Dato – ekran se pojavljuje preko zaključanog ekrana.",
   "klingelNichtErteilt": "Nije dato – pojavljuje se samo obaveštenje.",
   "klingelVonHand": "Ekran podešavanja nije mogao da se otvori. Ručno: Podešavanja ▸ Aplikacije ▸ Specijalni pristup ▸ Obaveštenja preko celog ekrana.",
-  "klingelNurAndroid": "Ekran zvona postoji samo na Androidu."
+  "klingelNurAndroid": "Ekran zvona postoji samo na Androidu.",
+  "autostartTitel": "Pokretanje pri prijavi",
+  "autostartZweck": "Na računaru ne postoji servis u pozadini koji održava vezu. Ako aplikacija ne radi, poziv ne dolazi — nigde ne zvoni. Zatvaranje prozora je samo sklanja u oblast obaveštenja.",
+  "autostartAn": "Uključeno – aplikacija se pokreće nakon prijave i dostupna je.",
+  "autostartAus": "Isključeno – pozivi dolaze samo dok aplikacija radi.",
+  "autostartFehlgeschlagen": "Nije moglo da se promeni. Dodajte aplikaciju ručno u pokretanje.",
+  "autostartFlatpak": "U Flatpaku se automatsko pokretanje ne može podesiti. Koristite sistemska podešavanja."
 }

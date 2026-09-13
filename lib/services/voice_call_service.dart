@@ -6,6 +6,7 @@ import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:http/io_client.dart';
+import 'anruf_desktop.dart';
 import 'anruf_vordergrund.dart';
 import 'api_service.dart';
 import 'chat_service.dart';
@@ -250,6 +251,14 @@ class VoiceCallService {
   int _letztVerloren = 0;
   bool _gueteBasisDa = false;
   AudioPlayer? _ringbackPlayer; // looping "ring-ring" for the caller
+
+  /// Der Klingelton fuer den ANGERUFENEN — nur auf dem Rechner.
+  ///
+  /// 🔴 Eigener Spieler und nicht [_ringbackPlayer]: die Zustaende `ringing`
+  /// und `calling` schliessen sich zwar aus, aber ein gemeinsamer Spieler
+  /// hiesse, dass ein Aufraeumen des einen den anderen mitnimmt — genau die
+  /// Verwechslung, wegen der `_sfxPlayer` schon getrennt ist.
+  AudioPlayer? _klingelPlayer;
   AudioPlayer? _sfxPlayer; // one-shot busy/rejected tone
 
   /// Set when [startCall] returns false. Reset to null at the start of every
@@ -1365,16 +1374,38 @@ class VoiceCallService {
   void _updateRingSound(CallState state) {
     try {
       if (state == CallState.ringing) {
-        // Callee: the full system ringtone.
-        FlutterRingtonePlayer().playRingtone(looping: true, asAlarm: false);
+        // 🔴 AUF DEM RECHNER HOERTE DER ANGERUFENE NICHTS.
+        // `flutter_ringtone_player` hat nur einen Unterbau fuer android und ios
+        // (nachgemessen in seiner pubspec) — auf Windows, Linux und macOS warf
+        // der Aufruf eine `MissingPluginException`, der Fang unten verschluckte
+        // sie, und es klingelte einfach nicht. Der ANRUFER hoerte sein
+        // Freizeichen, weil das ueber just_audio laeuft; wer gerufen wurde,
+        // sass in der Stille.
+        //
+        // ⚠️ Und es gibt dort keinen Systemklingelton, den man erbitten
+        // koennte: Windows kennt das Konzept nicht. Der mitgelieferte Ton ist
+        // die einzige Moeglichkeit.
+        if (AnrufDesktop.verfuegbar) {
+          _klingelSpielen();
+          // Das Fenster nach vorne und ueber alles — die Antwort des Rechners
+          // auf den Klingelschirm von Android.
+          AnrufDesktop.klingelnAn();
+        } else {
+          // Callee: the full system ringtone.
+          FlutterRingtonePlayer().playRingtone(looping: true, asAlarm: false);
+        }
         _stopRingback();
       } else if (state == CallState.calling) {
         // Caller: a quiet "ring-ring" ringback, NOT the full system ringtone.
-        FlutterRingtonePlayer().stop();
+        _klingelStoppen();
+        AnrufDesktop.klingelnAus();
+        if (!AnrufDesktop.verfuegbar) FlutterRingtonePlayer().stop();
         _playRingback();
       } else {
         // connecting / inCall / idle: silence.
-        FlutterRingtonePlayer().stop();
+        _klingelStoppen();
+        AnrufDesktop.klingelnAus();
+        if (!AnrufDesktop.verfuegbar) FlutterRingtonePlayer().stop();
         _stopRingback();
       }
     } catch (e) {
@@ -1397,6 +1428,33 @@ class VoiceCallService {
   Future<void> _stopRingback() async {
     try {
       await _ringbackPlayer?.stop();
+    } catch (_) {}
+  }
+
+  /// Klingeln fuer den Angerufenen auf dem Rechner — IN SCHLEIFE.
+  ///
+  /// ⚠️ In Schleife und nicht einmal: ein Anruf muss klingeln, bis jemand
+  /// abnimmt. Und ueber just_audio, das auf Windows und Linux schon beim Start
+  /// durch media_kit geleitet wird (siehe main.dart) — dieselbe Strecke, auf
+  /// der das Freizeichen des Anrufers nachweislich laeuft.
+  Future<void> _klingelSpielen() async {
+    try {
+      _klingelPlayer ??= AudioPlayer();
+      if (_klingelPlayer!.playing) return;
+      await _klingelPlayer!.setAsset('assets/sounds/ringback.wav');
+      await _klingelPlayer!.setLoopMode(LoopMode.one);
+      // ⚠️ Voll aufgedreht: das ist der Ton fuer den, der GERUFEN wird, nicht
+      // das leise Freizeichen des Anrufers.
+      await _klingelPlayer!.setVolume(1.0);
+      await _klingelPlayer!.play();
+    } catch (e) {
+      _log.warning('VoiceCallService: Klingelton nicht spielbar: $e', tag: 'CALL');
+    }
+  }
+
+  Future<void> _klingelStoppen() async {
+    try {
+      await _klingelPlayer?.stop();
     } catch (_) {}
   }
 
@@ -1549,6 +1607,7 @@ class VoiceCallService {
     _signalEndeAbo?.cancel();
     _signalEndeAbo = null;
     _ringbackPlayer?.dispose();
+    _klingelPlayer?.dispose();
     _sfxPlayer?.dispose();
     _callStateController.close();
     _remoteStreamController.close();
