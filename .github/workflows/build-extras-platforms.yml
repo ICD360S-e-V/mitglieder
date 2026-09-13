@@ -506,6 +506,79 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
         run: |
+          set -uo pipefail
           # --clobber overwrites any prior asset with the same name, so a
           # retry of this job is idempotent.
-          gh release upload "$TAG" release/* --clobber --repo "$GITHUB_REPOSITORY"
+          #
+          # 🔴 JE DATEI EINZELN UND MIT WIEDERHOLUNG. Am 13.09.2026 (v1.100.0)
+          # gab uploads.github.com fuer die 148 MB grosse .dmg ein HTTP 500;
+          # ein EINZIGER Aufruf fuer `release/*` bricht dann ab, und alles, was
+          # noch nicht hochgeladen war, fehlte im Release. Das Fenster fuer so
+          # einen Fehlschlag waechst mit der Dateigroesse — die .dmg ist mit
+          # Abstand die groesste Datei, die wir veroeffentlichen.
+          hochladen() {
+            local datei="$1"
+            for versuch in 1 2 3 4; do
+              if gh release upload "$TAG" "$datei" --clobber \
+                   --repo "$GITHUB_REPOSITORY"; then
+                echo "✓ $(basename "$datei")"
+                return 0
+              fi
+              echo "  Versuch $versuch fuer $(basename "$datei") fehlgeschlagen"
+              # 15 s, 30 s, 60 s — ein 500 der Upload-Strecke ist meist nach
+              # Sekunden vorbei, aber nicht immer.
+              [ "$versuch" -lt 4 ] && sleep $((15 * 2 ** (versuch - 1)))
+            done
+            echo "::error::$(basename "$datei") liess sich nach 4 Versuchen nicht hochladen"
+            return 1
+          }
+
+          # 🔴 ZUERST DIE BINAERDATEIEN, DIE MANIFESTE ZULETZT. Ein Manifest
+          # sagt den Geraeten, welche Fassung es zu holen gibt. Am 13.09.2026
+          # stand `version_mitglieder_macos.json` im Release, waehrend die
+          # zugehoerige .dmg fehlte — jeder macOS-Client haette auf eine 404
+          # zugegriffen. Fehlt umgekehrt nur das Manifest, sieht niemand ein
+          # Update, und das ist der harmlose der beiden Faelle.
+          fehler=0
+          for f in release/*; do
+            case "$(basename "$f")" in
+              version_mitglieder_*.json) continue ;;
+            esac
+            hochladen "$f" || fehler=1
+          done
+
+          if [ "$fehler" -ne 0 ]; then
+            echo "::error::Mindestens eine Binaerdatei fehlt — die Manifeste werden NICHT veroeffentlicht"
+            exit 1
+          fi
+
+          for f in release/version_mitglieder_*.json; do
+            [ -e "$f" ] || continue
+            hochladen "$f" || fehler=1
+          done
+          [ "$fehler" -eq 0 ] || exit 1
+
+      # ⚠️ Nachzaehlen, nicht auf den Rueckgabewert vertrauen: ein Upload kann
+      # 0 melden und die Datei trotzdem nicht im Release liegen (teilweise
+      # uebertragen, serverseitig verworfen). Gemessen wird, was das Release
+      # wirklich traegt.
+      - name: Verify uploaded assets
+        if: steps.stage.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          vorhanden=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --json assets --jq '.assets[].name')
+          fehlt=0
+          for f in release/*; do
+            name=$(basename "$f")
+            if printf '%s\n' "$vorhanden" | grep -qxF "$name"; then
+              echo "✓ $name"
+            else
+              echo "::error::$name fehlt im Release $TAG"
+              fehlt=1
+            fi
+          done
+          exit "$fehlt"
