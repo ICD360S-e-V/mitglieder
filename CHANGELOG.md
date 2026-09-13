@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.101.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.100.3...v1.101.0) (2026-09-13)
+
+
+### Features
+
+* **desktop:** es klingelt jetzt auch auf dem Rechner, und die App ist erreichbar ([#414](https://github.com/ICD360S-e-V/mitglieder/issues/414)) ([1d628d3](https://github.com/ICD360S-e-V/mitglieder/commit/1d628d3a678ee723cae7a75f070b5e6ddbe48f83))
+
 ## [1.100.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.100.2...v1.100.3) (2026-09-13)
 
 
