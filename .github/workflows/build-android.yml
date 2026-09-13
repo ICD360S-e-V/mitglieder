@@ -197,11 +197,37 @@ jobs:
           echo "build_number=$BUILD" >> "$GITHUB_OUTPUT"
 
       - name: Decode release keystore
-        run: echo "${{ secrets.RELEASE_KEYSTORE }}" | base64 -d > android/app/release-keystore.jks
+        # ⚠️ The secret arrives through `env:`, never through ${{ }} inside
+        # `run:`. An expression is substituted into the shell script BEFORE a
+        # shell ever sees it: the keystore would be written verbatim into the
+        # script file on the runner, and any character it contains would be
+        # read as shell syntax. Through `env:` the value is handed over as
+        # data. Same shape as the GPG import in build-linux-flatpak.yml.
+        env:
+          RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
+        run: |
+          set -euo pipefail
+          if [ -z "$RELEASE_KEYSTORE" ]; then
+            echo "::error::RELEASE_KEYSTORE secret missing"
+            exit 1
+          fi
+          printf '%s' "$RELEASE_KEYSTORE" | base64 -d > android/app/release-keystore.jks
+          chmod 600 android/app/release-keystore.jks
 
       - name: Build APK (${{ matrix.flavor }})
-        run: ${{ matrix.build_cmd }} --build-name=${{ steps.ver.outputs.version }} --build-number=${{ steps.ver.outputs.build_number }} --dart-define=STARTUP_DIAG_KEY=${{ secrets.MITGLIEDER_STARTUP_DIAG_KEY }}
+        # ⚠️ The diagnostic key is read from `env:` and quoted, not pasted into
+        # the command line by ${{ }} — see the note on the keystore step above.
+        # NOTE: whatever goes in here ends up inside the published APK as a
+        # constant (`String.fromEnvironment`), so it is public by construction.
+        # See lib/services/startup_diagnostics.dart for what that means and
+        # what actually protects the endpoint.
+        run: >-
+          ${{ matrix.build_cmd }}
+          --build-name=${{ steps.ver.outputs.version }}
+          --build-number=${{ steps.ver.outputs.build_number }}
+          --dart-define=STARTUP_DIAG_KEY="$STARTUP_DIAG_KEY_VALUE"
         env:
+          STARTUP_DIAG_KEY_VALUE: ${{ secrets.MITGLIEDER_STARTUP_DIAG_KEY }}
           KEYSTORE_PATH: release-keystore.jks
           KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
