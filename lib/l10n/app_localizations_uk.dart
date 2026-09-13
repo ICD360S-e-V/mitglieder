@@ -3189,4 +3189,34 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Змінити зображення';
+
+  @override
+  String get klingelTitel => 'Виклик на екрані блокування';
+
+  @override
+  String get klingelZweck =>
+      'Якщо правління дзвонить, коли пристрій заблоковано, поверх екрана блокування з’являється екран із кнопками «Прийняти» та «Відхилити» — розблоковувати пристрій не потрібно.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android вимагає для цього дозвіл «Повноекранні повідомлення». Його можна надати лише в системних налаштуваннях.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Без дозволу залишиться повідомлення з кнопками «Прийняти» та «Відхилити». Виклик усе одно можна прийняти, лише не на весь екран.';
+
+  @override
+  String get klingelErteilt =>
+      'Надано – екран з’являється поверх екрана блокування.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Не надано – з’являється лише повідомлення.';
+
+  @override
+  String get klingelVonHand =>
+      'Не вдалося відкрити екран налаштувань. Вручну: Налаштування ▸ Додатки ▸ Спеціальний доступ ▸ Повноекранні повідомлення.';
+
+  @override
+  String get klingelNurAndroid => 'Екран дзвінка є лише на Android.';
 }

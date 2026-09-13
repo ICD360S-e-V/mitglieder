@@ -3,6 +3,9 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
+import 'package:icd_klingel/icd_klingel.dart';
+
+import '../services/anruf_klingel.dart';
 import '../services/anruf_rueckweg.dart';
 import '../services/api_service.dart';
 import '../services/logger_service.dart';
@@ -13,6 +16,7 @@ import 'package:flutter_webrtc/flutter_webrtc.dart' show RTCIceConnectionState;
 import '../widgets/anruf_overlay.dart';
 import '../services/anruf_systemkarte.dart';
 import '../widgets/anruffenster_erlaubnis.dart';
+import '../widgets/klingel_erlaubnis.dart';
 import '../widgets/video_call_screen.dart';
 import '../widgets/legal_footer.dart';
 import '../widgets/live_chat_dialog.dart';
@@ -97,6 +101,14 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   int _unreadTicketCount = 0;
   StreamSubscription<ChatMessage>? _messageSubscription;
   StreamSubscription<CallOfferEvent>? _callOfferSubscription;
+
+  /// Anklopfen des NATIVEN Klingelschirms: „es liegt eine Entscheidung".
+  StreamSubscription<void>? _klingelAbo;
+
+  /// ⚠️ Einmal je App-Lauf. Wer zweimal „Spaeter" gesagt hat, sagt es auch
+  /// beim dritten Mal; der dauerhafte Weg steht in Konto ▸ Anruf auf dem
+  /// Sperrbildschirm.
+  static bool _klingelErlaubnisGefragt = false;
   StreamSubscription<int>? _ticketNotificationSubscription;
   /// Zustellung derselben Ticket-Meldungen über den WebSocket.
   StreamSubscription<TicketNotificationEvent>? _ticketWsSubscription;
@@ -181,6 +193,13 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
           prefs.setString('l10n_notifReconnecting', l.errorConnecting);
           prefs.setString('l10n_notifWaitingLogin', l.welcomeLoading);
           prefs.setString('l10n_unknown', l.unknown);
+          // Beschriftungen des NATIVEN Klingelschirms. ⚠️ Sie muessen hier
+          // durch, weil das Isolat des Hintergrunddienstes keine
+          // `AppLocalizations` hat — und weil der Kotlin-Teil sonst ein
+          // `values-xx/strings.xml` braeuchte, also eine ZWEITE
+          // Uebersetzungsquelle neben den 28 ARB-Dateien.
+          prefs.setString('l10n_acceptCall', l.acceptCall);
+          prefs.setString('l10n_rejectCall', l.rejectCall);
         });
       }
     }
@@ -228,8 +247,20 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     // — der Client soll das nicht selbst festlegen können.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
+      // 🔴 ZUERST: ein Anruf, der waehrend des Ruhezustands eingetroffen ist,
+      // ist dringender als jede Frage. Wurde er vom Sperrbildschirm aus
+      // angenommen, fuehrt dieser Aufruf ihn zu Ende.
+      _wartendenAnrufPruefen();
       BenachrichtigungConsentDialog.zeigenFallsNoetig(context, _apiService);
       _ladeUngelesene();
+      // Und mit Abstand die Frage nach der Berechtigung fuer den
+      // Klingelschirm. ⚠️ Sie darf einen laufenden Anruf nicht verdecken —
+      // deshalb die Wache auf den Zustand.
+      Future<void>.delayed(const Duration(seconds: 4), () {
+        if (!mounted) return;
+        if (_voiceCallService.callState != CallState.idle) return;
+        _klingelErlaubnisFragen();
+      });
     });
 
     // Start log upload to server (every 30s) with app version
@@ -368,6 +399,12 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       if (_selectedIndex == 3) {
         _loadTickets();
       }
+      // 🔴 Auch HIER pruefen. Nimmt das Mitglied den Anruf vom
+      // Sperrbildschirm an, waehrend die App noch im Speicher liegt, wird sie
+      // nur nach vorne geholt — `initState` laeuft dann nicht, und ohne diese
+      // Zeile waere genau der haeufigste Fall der einzige, der nicht
+      // funktioniert.
+      _wartendenAnrufPruefen();
       debugPrint('[Dashboard] App resumed - UI timers restarted');
     }
   }
@@ -382,6 +419,124 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     anruffensterHinweisZeigen(context);
   }
 
+  /// Fragt nach der Berechtigung fuer den Klingelschirm.
+  ///
+  /// ⚠️ BEIM OEFFNEN DES DASHBOARDS und nicht erst, wenn der Klingelschirm
+  /// faellig waere: faellig ist er, wenn das Tablet gesperrt in der Schublade
+  /// liegt — einen Dialog sieht dort niemand. Das ist der Unterschied zur
+  /// Berechtigung fuer das Anruffenster, die beim Beginn eines Gespraechs
+  /// erfragt wird.
+  Future<void> _klingelErlaubnisFragen() async {
+    if (_klingelErlaubnisGefragt) return;
+    if (!IcdKlingel.verfuegbar) return;
+    if (await IcdKlingel.erlaubt()) return;
+    // ⚠️ Die Sperre VOR dem Zeigen setzen: sonst fragt ein zweiter Durchlauf
+    // (etwa nach einem Sprachwechsel) noch einmal.
+    _klingelErlaubnisGefragt = true;
+    if (!mounted) return;
+    await klingelHinweisZeigen(context);
+  }
+
+  /// Ein Anruf, der eingetroffen ist, waehrend das Geraet ruhte.
+  ///
+  /// 🔴 DAS IST DER EIGENTLICHE FEHLER, DEN DAS ALLES BEHEBT. Das Angebot des
+  /// Anrufers lebte allein im Isolat des Hintergrunddienstes; beim Oeffnen der
+  /// App verband sich dieses Isolat neu, und der Anrufer wiederholt sein
+  /// Angebot nicht. Es wird deshalb festgehalten und hier abgeholt.
+  Future<void> _wartendenAnrufPruefen() async {
+    if (!IcdKlingel.verfuegbar) return;
+    final entscheidung = await IcdKlingel.entscheidungAnsehen();
+    final angebot = await AnrufKlingel.lesen();
+    if (!mounted) return;
+
+    if (entscheidung == null) {
+      // Es hat geklingelt, niemand hat getippt, und die App wurde auf anderem
+      // Weg geoeffnet. Dann gehoert der Klingelschirm IN die App — sonst stuende
+      // das Mitglied vor dem Dashboard, waehrend es klingelt.
+      if (angebot != null && _voiceCallService.callState == CallState.idle) {
+        _handleIncomingCall(_alsAnrufEreignis(angebot));
+      }
+      return;
+    }
+
+    if (entscheidung.istAblehnen) {
+      // ⚠️ NUR quittieren, wenn dieser Schirm den Anruf selbst kennt und die
+      // Absage also von hier hinausgeht. Sonst bleibt sie stehen: hinausschicken
+      // muss sie das Isolat des Hintergrunddienstes, weil nur es eine stehende
+      // Verbindung hat. Quittierten wir hier blind, faende es nichts vor und
+      // der Anrufer klingelte 45 s ins Leere.
+      if (_voiceCallService.callState == CallState.ringing) {
+        _voiceCallService.rejectCall();
+        await IcdKlingel.entscheidungQuittieren();
+      }
+      await AnrufKlingel.vergessen();
+      return;
+    }
+
+    await IcdKlingel.entscheidungQuittieren();
+    if (angebot == null) {
+      // Das Angebot ist verfallen (aelter als 90 s), der Anrufer hat aufgegeben.
+      // ⚠️ Das MUSS gesagt werden: ein Tipp auf „Annehmen", nach dem nichts
+      // geschieht, sieht wie eine kaputte App aus — genau die Stille, die am
+      // 11.09.2026 gemeldet wurde.
+      _anrufWeggemeldet();
+      return;
+    }
+    await _kaltAnnehmen(angebot);
+  }
+
+  CallOfferEvent _alsAnrufEreignis(WartendesAngebot a) => CallOfferEvent(
+        conversationId: a.gespraechId,
+        callerId: a.anruferId,
+        callerName: a.anruferName,
+        sdp: a.sdp,
+        sdpType: a.sdpTyp,
+      );
+
+  /// Annehmen, nachdem die App erst durch den Klingelschirm gestartet wurde.
+  Future<void> _kaltAnnehmen(WartendesAngebot a) async {
+    // 🔴 Die Antwort kann nur ueber eine STEHENDE Verbindung hinaus, und beim
+    // Kaltstart steht sie nicht. Ohne dieses Warten waere `acceptCall`
+    // gescheitert — und zwar stumm, was genau der gemeldete Eindruck war.
+    if (!_chatService.isConnected) {
+      _log.info('MitgliedDash: kalter Weg wartet auf die Verbindung', tag: 'CALL');
+      final da = await _chatService.connectionStream
+          .firstWhere((v) => v)
+          .timeout(const Duration(seconds: 15), onTimeout: () => false);
+      if (!da) {
+        _log.warning('MitgliedDash: keine Verbindung — Anruf nicht annehmbar', tag: 'CALL');
+        await AnrufKlingel.vergessen();
+        if (mounted) _anrufNichtVerbunden();
+        return;
+      }
+    }
+    if (!mounted) return;
+    // idle → ringing. `acceptCall` weist JEDEN anderen Zustand ab.
+    await _voiceCallService.handleIncomingCall(
+      a.gespraechId,
+      a.anruferId,
+      a.anruferName,
+      a.sdp,
+      a.sdpTyp,
+    );
+    await AnrufKlingel.vergessen();
+    if (!mounted) return;
+    // ⚠️ `ersetzen: false` — es gibt keinen Klingelschirm, den man ersetzen
+    // koennte. `pushReplacement` naehme hier das DASHBOARD.
+    _acceptCall(_alsAnrufEreignis(a),
+        beiFehlschlag: _anrufWeggemeldet, ersetzen: false);
+  }
+
+  /// ⚠️ Ein eigener Satz, nicht derselbe wie „hat aufgelegt": es ist ein
+  /// Unterschied, ob der Anrufer weg ist oder ob wir keine Verbindung haben.
+  void _anrufNichtVerbunden() {
+    final l = AppLocalizations.of(context);
+    if (l == null) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(l.callFailed), duration: const Duration(seconds: 4)),
+    );
+  }
+
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
@@ -390,6 +545,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         .removeListener(_anruffensterErlaubnisFragen);
     _messageSubscription?.cancel();
     _callOfferSubscription?.cancel();
+    _klingelAbo?.cancel();
     _remoteOfferSubscription?.cancel();
     _ticketNotificationSubscription?.cancel();
     _ticketWsSubscription?.cancel();
@@ -418,6 +574,17 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       if (mounted) {
         _handleIncomingCall(event);
       }
+    });
+
+    // Der Klingelschirm ueber dem Sperrbildschirm klopft an, wenn das Mitglied
+    // „Annehmen" oder „Ablehnen" getippt hat.
+    //
+    // ⚠️ Das Anklopfen traegt die Entscheidung NICHT mit sich — abgeholt wird
+    // sie aus dem Speicher. Zwei Isolate hoeren dasselbe Signal, und jedes
+    // erledigt nur seinen Teil: die Absage schickt der Hintergrunddienst
+    // (stehende Verbindung), das Annehmen gehoert hierher (WebRTC).
+    _klingelAbo = IcdKlingel.anklopfen.listen((_) {
+      if (mounted) _wartendenAnrufPruefen();
     });
 
     // Fernwartung: a Vorsitzer requests remote access → show the consent prompt.
@@ -509,6 +676,16 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   void _handleIncomingCall(CallOfferEvent event) {
     _log.info('MitgliedDash: Incoming call from ${event.callerName} (conv: ${event.conversationId})', tag: 'CALL');
 
+    // ⚠️ Die App ist im Blick, also uebernimmt DIESER Schirm — das native
+    // Klingeln muss weg. Sonst laeutet es zweimal: das Isolat des
+    // Hintergrunddienstes hat denselben Anruf ueber seine eigene
+    // WebSocket-Verbindung bekommen und schon geklingelt.
+    //
+    // ⚠️ Nur `verbergen`, NICHT `abraeumen`: das wartende Angebot bleibt
+    // liegen, bis der Anruf entschieden ist. Wird die App waehrend des
+    // Klingelns weggewischt, ist es der einzige Weg zurueck.
+    IcdKlingel.verbergen();
+
     // Inform VoiceCallService about incoming call (sets state to RINGING)
     _voiceCallService.handleIncomingCall(
       event.conversationId,
@@ -534,6 +711,10 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       offen = false;
       endeAbo?.cancel();
       endeAbo = null;
+      // Der Anruf ist entschieden — Klingeln, Schirm und das wartende Angebot
+      // gehen mit. ⚠️ Bliebe das Angebot liegen, zeigte der naechste Start der
+      // App einen Klingelschirm fuer ein Gespraech, das es nicht mehr gibt.
+      AnrufKlingel.abraeumen();
       Navigator.of(ctx).pop();
     }
 
@@ -611,15 +792,26 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   /// verschwindende Klingelschirm nicht von einem Absturz zu unterscheiden.
   void _anrufWeggemeldet() {
     if (!mounted) return;
+    // ⚠️ Vorbestehend war das ein DEUTSCHER Satz im Quelltext — in einer App
+    // mit 28 Sprachen. `callEnded` ist ein bestehender, ueberall uebersetzter
+    // Schluessel.
+    final l = AppLocalizations.of(context);
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Der Anrufer hat aufgelegt.'),
-        duration: Duration(seconds: 3),
+      SnackBar(
+        content: Text(l?.callEnded ?? 'Anruf beendet'),
+        duration: const Duration(seconds: 3),
       ),
     );
   }
 
-  void _acceptCall(CallOfferEvent event, {VoidCallback? beiFehlschlag}) async {
+  /// [ersetzen] sagt, ob der Klingelschirm ERSETZT wird.
+  ///
+  /// 🔴 Auf dem kalten Weg (Anruf ueber den Sperrbildschirm angenommen, App
+  /// startet erst) gibt es keinen Klingelschirm — `pushReplacement` haette
+  /// dort das DASHBOARD ersetzt, und nach dem Auflegen stuende die App vor
+  /// einem leeren Stapel.
+  void _acceptCall(CallOfferEvent event,
+      {VoidCallback? beiFehlschlag, bool ersetzen = true}) async {
     _log.info('🎯🎯🎯 _acceptCall() STARTED for ${event.callerName}', tag: 'CALL');
     _log.info('🎯 Conversation ID: ${event.conversationId}', tag: 'CALL');
 
@@ -661,7 +853,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       _log.info('🎯 Navigating to active call screen...', tag: 'CALL');
       if (!mounted) return;
       _anrufSchirmZeigen(event.callerName, event.conversationId,
-          ersetzen: true);
+          ersetzen: ersetzen);
       _log.info('🎯 Navigation to active call screen complete', tag: 'CALL');
     } catch (e, stackTrace) {
       _log.error('❌❌❌ _acceptCall() ERROR: $e', tag: 'CALL');

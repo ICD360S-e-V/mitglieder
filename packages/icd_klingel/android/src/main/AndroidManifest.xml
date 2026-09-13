@@ -1,0 +1,51 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ⚠️ USE_FULL_SCREEN_INTENT und POST_NOTIFICATIONS stehen bewusst im
+         App-Manifest, nicht hier: die Berechtigungen sollen bei der App
+         sichtbar bleiben, die sie benutzt. -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application>
+
+        <!-- Der Klingelschirm.
+
+             ⚠️ showWhenLocked/turnScreenOn STEHEN IM MANIFEST und werden nicht
+             zur Laufzeit gesetzt. Zur Laufzeit gibt es ein Wettrennen zwischen
+             onCreate und der ersten Zeichnung des Fensters; auf strengen
+             Hersteller-Oberflächen bleibt der Schirm dann hinter dem
+             Sperrbildschirm. Das Manifest wird ausgewertet, bevor das Fenster
+             existiert.
+
+             ⚠️ taskAffinity="" gibt ihm eine EIGENE Aufgabe. Läge er in der
+             Aufgabe von MainActivity, nähme sein Beenden die App mit — oder
+             umgekehrt stünde die App hinter ihm im Aufgabenstapel.
+
+             ⚠️ excludeFromRecents: ein beendeter Anruf hat in der Übersicht
+             der letzten Apps nichts zu suchen.
+
+             ⚠️ exported="false": niemand von aussen darf einen Anruf
+             vortäuschen. Gestartet wird er nur vom Vollbild-Intent unserer
+             eigenen Benachrichtigung. -->
+        <activity
+            android:name=".KlingelActivity"
+            android:exported="false"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:launchMode="singleInstance"
+            android:noHistory="true"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+
+        <!-- „Ablehnen" aus der Benachrichtigung. Nur Ablehnen, NICHT Annehmen:
+             ein BroadcastReceiver darf seit Android 10 keine Activity aus dem
+             Hintergrund starten. Annehmen ist deshalb ein
+             PendingIntent.getActivity auf KlingelActivity — das ist ein vom
+             System vermittelter Start mit Nutzergeste und erlaubt. -->
+        <receiver
+            android:name=".KlingelEmpfaenger"
+            android:exported="false" />
+
+    </application>
+</manifest>

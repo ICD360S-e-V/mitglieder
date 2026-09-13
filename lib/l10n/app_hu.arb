@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "A hívásablak csak Androidon létezik.",
   "anrufLaeuft": "Hívás folyamatban",
   "videoanrufLaeuft": "Videóhívás folyamatban",
-  "anruffensterBildWechseln": "Kép váltása"
+  "anruffensterBildWechseln": "Kép váltása",
+  "klingelTitel": "Hívás a lezárási képernyőn",
+  "klingelZweck": "Ha az elnökség hív, miközben a készülék le van zárva, a lezárási képernyő felett megjelenik egy képernyő Fogadás és Elutasítás gombbal — a készüléket nem kell előbb feloldani.",
+  "klingelAndroidHinweis": "Az Android ehhez a „Teljes képernyős értesítések” engedélyt kéri. Csak a rendszerbeállításokban adható meg.",
+  "klingelOhneErlaubnis": "Az engedély nélkül egy értesítés marad Fogadás és Elutasítás gombbal. A hívás továbbra is fogadható, csak nem a teljes képernyőn.",
+  "klingelErteilt": "Megadva – a képernyő megjelenik a lezárási képernyő felett.",
+  "klingelNichtErteilt": "Nincs megadva – csak egy értesítés jelenik meg.",
+  "klingelVonHand": "A beállítások képernyőt nem sikerült megnyitni. Kézzel: Beállítások ▸ Alkalmazások ▸ Speciális hozzáférés ▸ Teljes képernyős értesítések.",
+  "klingelNurAndroid": "A csengő képernyő csak Androidon létezik."
 }

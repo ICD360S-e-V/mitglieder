@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Fereastra de apel există doar pe Android.",
   "anrufLaeuft": "Apel în curs",
   "videoanrufLaeuft": "Apel video în curs",
-  "anruffensterBildWechseln": "Schimbă imaginea"
+  "anruffensterBildWechseln": "Schimbă imaginea",
+  "klingelTitel": "Apel pe ecranul blocat",
+  "klingelZweck": "Dacă sună conducerea în timp ce dispozitivul este blocat, apare un ecran peste ecranul blocat — cu Răspunde și Refuză, fără să fie nevoie să deblocați dispozitivul mai întâi.",
+  "klingelAndroidHinweis": "Android cere pentru asta permisiunea „Notificări pe tot ecranul”. Ea se poate acorda doar din setările sistemului.",
+  "klingelOhneErlaubnis": "Fără permisiune rămâne o notificare cu Răspunde și Refuză. Apelul poate fi preluat în continuare, doar nu pe tot ecranul.",
+  "klingelErteilt": "Acordată – ecranul apare peste ecranul blocat.",
+  "klingelNichtErteilt": "Neacordată – apare doar o notificare.",
+  "klingelVonHand": "Ecranul de setări nu s-a putut deschide. Manual: Setări ▸ Aplicații ▸ Acces special al aplicațiilor ▸ Notificări pe tot ecranul.",
+  "klingelNurAndroid": "Ecranul de sonerie există doar pe Android."
 }

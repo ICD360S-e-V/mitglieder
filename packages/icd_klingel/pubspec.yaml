@@ -1,0 +1,33 @@
+name: icd_klingel
+description: >-
+  Zeigt einen eingehenden Anruf als Vollbild-Klingelschirm ÜBER dem
+  Sperrbildschirm, damit ein Mitglied mit ruhendem Tablet den Anruf überhaupt
+  annehmen kann.
+
+  Eigenes Plugin-Paket und NICHT ein MethodChannel in MainActivity: der
+  Anruf trifft im Isolat des Vordergrunddienstes ein (flutter_background_service),
+  und dort existieren nur Plugins aus dem GeneratedPluginRegistrant. Genau
+  dieselbe Begründung wie bei icd_sms/icd_anruf/icd_netinfo der Vorsitzer-App.
+
+  ⚠️ Der Klingelschirm ist eine EIGENE Activity und nicht MainActivity. Stünde
+  `showWhenLocked` an MainActivity, liesse sich die ganze App vom
+  Sperrbildschirm aus öffnen, indem man irgendeine Benachrichtigung antippt —
+  mit den Gesundheitsdaten des Mitglieds darin. Hier ist nur der Name des
+  Anrufers zu sehen.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+  flutter: '>=3.32.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: de.icd360s.icd_klingel
+        pluginClass: IcdKlingelPlugin

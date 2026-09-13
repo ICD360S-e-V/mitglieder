@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Okno klica obstaja samo v Androidu.",
   "anrufLaeuft": "Pogovor poteka",
   "videoanrufLaeuft": "Videopogovor poteka",
-  "anruffensterBildWechseln": "Zamenjaj sliko"
+  "anruffensterBildWechseln": "Zamenjaj sliko",
+  "klingelTitel": "Klic na zaklenjenem zaslonu",
+  "klingelZweck": "Če vodstvo pokliče, ko je naprava zaklenjena, se nad zaklenjenim zaslonom pojavi zaslon s „Sprejmi” in „Zavrni” — naprave ni treba najprej odkleniti.",
+  "klingelAndroidHinweis": "Android za to zahteva dovoljenje „Obvestila na celotnem zaslonu”. Dati ga je mogoče le v sistemskih nastavitvah.",
+  "klingelOhneErlaubnis": "Brez dovoljenja ostane obvestilo s „Sprejmi” in „Zavrni”. Klic je še vedno mogoče sprejeti, le ne na celotnem zaslonu.",
+  "klingelErteilt": "Dano – zaslon se pojavi nad zaklenjenim zaslonom.",
+  "klingelNichtErteilt": "Ni dano – pojavi se samo obvestilo.",
+  "klingelVonHand": "Zaslona z nastavitvami ni bilo mogoče odpreti. Ročno: Nastavitve ▸ Aplikacije ▸ Poseben dostop ▸ Obvestila na celotnem zaslonu.",
+  "klingelNurAndroid": "Zaslon zvonjenja obstaja samo na Androidu."
 }

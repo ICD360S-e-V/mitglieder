@@ -28,6 +28,11 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  # Klingelschirm ueber dem Sperrbildschirm. Eigenes Paket, weil nur
+  # registrierte Plugins im Isolat des Hintergrunddienstes existieren — und
+  # genau dort trifft der Anruf ein.
+  icd_klingel:
+    path: packages/icd_klingel
   flutter:
     sdk: flutter
 

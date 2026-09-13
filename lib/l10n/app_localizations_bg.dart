@@ -3193,4 +3193,34 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Смяна на картината';
+
+  @override
+  String get klingelTitel => 'Обаждане на заключения екран';
+
+  @override
+  String get klingelZweck =>
+      'Ако управителният съвет се обади, докато устройството е заключено, върху заключения екран се появява екран с „Приемане“ и „Отказ“ — без да е нужно да отключвате устройството.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android изисква за това разрешението „Известия на цял екран“. То може да се даде само от системните настройки.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Без разрешението остава известие с „Приемане“ и „Отказ“. Обаждането все още може да бъде прието, само не на цял екран.';
+
+  @override
+  String get klingelErteilt =>
+      'Дадено – екранът се появява върху заключения екран.';
+
+  @override
+  String get klingelNichtErteilt => 'Не е дадено – появява се само известие.';
+
+  @override
+  String get klingelVonHand =>
+      'Екранът с настройки не можа да се отвори. Ръчно: Настройки ▸ Приложения ▸ Специален достъп ▸ Известия на цял екран.';
+
+  @override
+  String get klingelNurAndroid =>
+      'Екранът за звънене съществува само на Android.';
 }

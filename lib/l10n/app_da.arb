@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Opkaldsvinduet findes kun på Android.",
   "anrufLaeuft": "Opkald i gang",
   "videoanrufLaeuft": "Videoopkald i gang",
-  "anruffensterBildWechseln": "Skift billede"
+  "anruffensterBildWechseln": "Skift billede",
+  "klingelTitel": "Opkald på låseskærmen",
+  "klingelZweck": "Ringer bestyrelsen, mens enheden er låst, vises en skærm over låseskærmen — med Besvar og Afvis, uden at du først skal låse enheden op.",
+  "klingelAndroidHinweis": "Android kræver til dette tilladelsen „Fuldskærmsnotifikationer”. Den kan kun gives i systemindstillingerne.",
+  "klingelOhneErlaubnis": "Uden tilladelsen bliver der en notifikation med Besvar og Afvis. Opkaldet kan stadig besvares, blot ikke på hele skærmen.",
+  "klingelErteilt": "Givet – skærmen vises over låseskærmen.",
+  "klingelNichtErteilt": "Ikke givet – der vises kun en notifikation.",
+  "klingelVonHand": "Indstillingsskærmen kunne ikke åbnes. Manuelt: Indstillinger ▸ Apps ▸ Særlig appadgang ▸ Fuldskærmsnotifikationer.",
+  "klingelNurAndroid": "Ringeskærmen findes kun på Android."
 }

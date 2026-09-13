@@ -3209,4 +3209,34 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Bild wechseln';
+
+  @override
+  String get klingelTitel => 'Anruf auf dem Sperrbildschirm';
+
+  @override
+  String get klingelZweck =>
+      'Ruft der Vorstand an, während das Gerät gesperrt ist, erscheint ein Schirm über dem Sperrbildschirm — mit Annehmen und Ablehnen, ohne das Gerät erst entsperren zu müssen.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android verlangt dafür die Berechtigung „Vollbild-Benachrichtigungen”. Sie lässt sich nur in den Systemeinstellungen geben.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Ohne die Berechtigung bleibt eine Benachrichtigung mit Annehmen und Ablehnen. Der Anruf ist weiter annehmbar, nur nicht über den ganzen Bildschirm.';
+
+  @override
+  String get klingelErteilt =>
+      'Erteilt – der Schirm erscheint über dem Sperrbildschirm.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Nicht erteilt – es erscheint nur eine Benachrichtigung.';
+
+  @override
+  String get klingelVonHand =>
+      'Der Einstellungs-Bildschirm ließ sich nicht öffnen. Von Hand: Einstellungen ▸ Apps ▸ Spezieller App-Zugriff ▸ Vollbild-Benachrichtigungen.';
+
+  @override
+  String get klingelNurAndroid => 'Den Klingelschirm gibt es nur auf Android.';
 }

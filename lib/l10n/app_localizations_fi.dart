@@ -3187,4 +3187,34 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Vaihda kuvaa';
+
+  @override
+  String get klingelTitel => 'Puhelu lukitusnäytöllä';
+
+  @override
+  String get klingelZweck =>
+      'Jos johtokunta soittaa laitteen ollessa lukittuna, lukitusnäytön päälle ilmestyy näyttö, jossa on Vastaa ja Hylkää — laitetta ei tarvitse ensin avata.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android vaatii tähän luvan „Koko näytön ilmoitukset”. Se voidaan antaa vain järjestelmän asetuksissa.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Ilman lupaa jää ilmoitus, jossa on Vastaa ja Hylkää. Puheluun voi edelleen vastata, mutta ei koko näytöllä.';
+
+  @override
+  String get klingelErteilt =>
+      'Annettu – näyttö ilmestyy lukitusnäytön päälle.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Ei annettu – näkyviin tulee vain ilmoitus.';
+
+  @override
+  String get klingelVonHand =>
+      'Asetusnäyttöä ei voitu avata. Käsin: Asetukset ▸ Sovellukset ▸ Erityinen sovellusoikeus ▸ Koko näytön ilmoitukset.';
+
+  @override
+  String get klingelNurAndroid => 'Soittonäyttö on vain Androidissa.';
 }

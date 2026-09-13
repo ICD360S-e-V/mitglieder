@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "La finestra di chiamata esiste solo su Android.",
   "anrufLaeuft": "Chiamata in corso",
   "videoanrufLaeuft": "Videochiamata in corso",
-  "anruffensterBildWechseln": "Cambia immagine"
+  "anruffensterBildWechseln": "Cambia immagine",
+  "klingelTitel": "Chiamata sulla schermata di blocco",
+  "klingelZweck": "Se il consiglio chiama mentre il dispositivo è bloccato, sopra la schermata di blocco compare una schermata con Rispondi e Rifiuta — senza dover prima sbloccare il dispositivo.",
+  "klingelAndroidHinweis": "Android richiede a tale scopo l’autorizzazione «Notifiche a schermo intero». Può essere concessa solo nelle impostazioni di sistema.",
+  "klingelOhneErlaubnis": "Senza l’autorizzazione resta una notifica con Rispondi e Rifiuta. La chiamata è comunque accettabile, solo non a schermo intero.",
+  "klingelErteilt": "Concessa – la schermata compare sopra la schermata di blocco.",
+  "klingelNichtErteilt": "Non concessa – compare solo una notifica.",
+  "klingelVonHand": "Non è stato possibile aprire la schermata delle impostazioni. A mano: Impostazioni ▸ App ▸ Accesso speciale ▸ Notifiche a schermo intero.",
+  "klingelNurAndroid": "La schermata di chiamata esiste solo su Android."
 }

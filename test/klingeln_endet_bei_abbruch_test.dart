@@ -101,7 +101,7 @@ void main() {
   String klingeln() =>
       rumpf(dashboard, 'void _handleIncomingCall(CallOfferEvent event)');
   String annehmen() => rumpf(dashboard,
-      'void _acceptCall(CallOfferEvent event, {VoidCallback? beiFehlschlag})');
+      'void _acceptCall(CallOfferEvent event,');
 
   group('Der Dienst erfaehrt das Auflegen selbst', () {
     test('abonniert im Konstruktor, nicht in einem Widget', () {

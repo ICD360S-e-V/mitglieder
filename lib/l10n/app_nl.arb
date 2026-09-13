@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Het gespreksvenster bestaat alleen op Android.",
   "anrufLaeuft": "Gesprek actief",
   "videoanrufLaeuft": "Videogesprek actief",
-  "anruffensterBildWechseln": "Beeld wisselen"
+  "anruffensterBildWechseln": "Beeld wisselen",
+  "klingelTitel": "Gesprek op het vergrendelscherm",
+  "klingelZweck": "Belt het bestuur terwijl het apparaat vergrendeld is, dan verschijnt er een scherm over het vergrendelscherm — met Opnemen en Weigeren, zonder het apparaat eerst te ontgrendelen.",
+  "klingelAndroidHinweis": "Android vereist hiervoor de toestemming „Volledig-schermmeldingen”. Die kan alleen in de systeeminstellingen worden gegeven.",
+  "klingelOhneErlaubnis": "Zonder de toestemming blijft een melding met Opnemen en Weigeren. Het gesprek kan nog steeds worden aangenomen, alleen niet op het hele scherm.",
+  "klingelErteilt": "Gegeven – het scherm verschijnt over het vergrendelscherm.",
+  "klingelNichtErteilt": "Niet gegeven – er verschijnt alleen een melding.",
+  "klingelVonHand": "Het instellingenscherm kon niet worden geopend. Handmatig: Instellingen ▸ Apps ▸ Speciale app-toegang ▸ Volledig-schermmeldingen.",
+  "klingelNurAndroid": "Het belscherm bestaat alleen op Android."
 }

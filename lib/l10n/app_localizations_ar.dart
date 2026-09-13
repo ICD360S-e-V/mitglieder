@@ -3158,4 +3158,32 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'تبديل الصورة';
+
+  @override
+  String get klingelTitel => 'مكالمة على شاشة القفل';
+
+  @override
+  String get klingelZweck =>
+      'إذا اتصل المجلس والجهاز مقفل، تظهر شاشة فوق شاشة القفل مع «قبول» و«رفض»، دون الحاجة إلى إلغاء قفل الجهاز أولاً.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'يطلب Android لذلك إذن «الإشعارات بملء الشاشة». لا يمكن منحه إلا من إعدادات النظام.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'بدون الإذن يبقى إشعار يحتوي على «قبول» و«رفض». لا يزال بإمكانك قبول المكالمة، لكن ليس على كامل الشاشة.';
+
+  @override
+  String get klingelErteilt => 'ممنوح – تظهر الشاشة فوق شاشة القفل.';
+
+  @override
+  String get klingelNichtErteilt => 'غير ممنوح – يظهر إشعار فقط.';
+
+  @override
+  String get klingelVonHand =>
+      'لم يتمكن من فتح شاشة الإعدادات. يدويًا: الإعدادات ▸ التطبيقات ▸ وصول التطبيقات الخاص ▸ الإشعارات بملء الشاشة.';
+
+  @override
+  String get klingelNurAndroid => 'شاشة الرنين متوفرة على Android فقط.';
 }

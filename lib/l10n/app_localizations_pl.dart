@@ -3200,4 +3200,35 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Przełącz obraz';
+
+  @override
+  String get klingelTitel => 'Połączenie na ekranie blokady';
+
+  @override
+  String get klingelZweck =>
+      'Jeśli zarząd dzwoni, gdy urządzenie jest zablokowane, nad ekranem blokady pojawia się ekran z „Odbierz” i „Odrzuć” — bez konieczności wcześniejszego odblokowania urządzenia.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android wymaga do tego uprawnienia „Powiadomienia pełnoekranowe”. Można je nadać tylko w ustawieniach systemu.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Bez uprawnienia pozostaje powiadomienie z „Odbierz” i „Odrzuć”. Połączenie nadal można odebrać, tylko nie na pełnym ekranie.';
+
+  @override
+  String get klingelErteilt =>
+      'Nadane – ekran pojawia się nad ekranem blokady.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Nie nadane – pojawia się tylko powiadomienie.';
+
+  @override
+  String get klingelVonHand =>
+      'Nie udało się otworzyć ekranu ustawień. Ręcznie: Ustawienia ▸ Aplikacje ▸ Specjalny dostęp ▸ Powiadomienia pełnoekranowe.';
+
+  @override
+  String get klingelNurAndroid =>
+      'Ekran dzwonienia istnieje tylko w Androidzie.';
 }

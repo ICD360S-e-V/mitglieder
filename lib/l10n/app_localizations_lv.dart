@@ -3184,4 +3184,33 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Pārslēgt attēlu';
+
+  @override
+  String get klingelTitel => 'Zvans bloķēšanas ekrānā';
+
+  @override
+  String get klingelZweck =>
+      'Ja valde zvana, kamēr ierīce ir bloķēta, virs bloķēšanas ekrāna parādās ekrāns ar Atbildēt un Atteikt — ierīce vispirms nav jāatbloķē.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android tam pieprasa atļauju „Pilnekrāna paziņojumi”. To var piešķirt tikai sistēmas iestatījumos.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Bez atļaujas paliek paziņojums ar Atbildēt un Atteikt. Zvanu joprojām var atbildēt, tikai ne visā ekrānā.';
+
+  @override
+  String get klingelErteilt =>
+      'Piešķirta – ekrāns parādās virs bloķēšanas ekrāna.';
+
+  @override
+  String get klingelNichtErteilt => 'Nav piešķirta – parādās tikai paziņojums.';
+
+  @override
+  String get klingelVonHand =>
+      'Iestatījumu ekrānu nevarēja atvērt. Manuāli: Iestatījumi ▸ Lietotnes ▸ Īpaša piekļuve ▸ Pilnekrāna paziņojumi.';
+
+  @override
+  String get klingelNurAndroid => 'Zvana ekrāns ir tikai Android.';
 }

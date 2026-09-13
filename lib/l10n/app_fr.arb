@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "La fenêtre d’appel n’existe que sur Android.",
   "anrufLaeuft": "Appel en cours",
   "videoanrufLaeuft": "Appel vidéo en cours",
-  "anruffensterBildWechseln": "Changer d'image"
+  "anruffensterBildWechseln": "Changer d'image",
+  "klingelTitel": "Appel sur l’écran de verrouillage",
+  "klingelZweck": "Si le conseil appelle alors que l’appareil est verrouillé, un écran apparaît par-dessus l’écran de verrouillage — avec Répondre et Refuser, sans devoir d’abord déverrouiller l’appareil.",
+  "klingelAndroidHinweis": "Android exige pour cela l’autorisation « Notifications en plein écran ». Elle ne peut être accordée que dans les paramètres du système.",
+  "klingelOhneErlaubnis": "Sans l’autorisation, il reste une notification avec Répondre et Refuser. L’appel reste acceptable, simplement pas en plein écran.",
+  "klingelErteilt": "Accordée – l’écran apparaît par-dessus l’écran de verrouillage.",
+  "klingelNichtErteilt": "Non accordée – seule une notification apparaît.",
+  "klingelVonHand": "L’écran des paramètres n’a pas pu être ouvert. Manuellement : Paramètres ▸ Applications ▸ Accès spécial ▸ Notifications en plein écran.",
+  "klingelNurAndroid": "L’écran de sonnerie n’existe que sur Android."
 }

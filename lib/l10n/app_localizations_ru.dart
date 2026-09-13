@@ -3188,4 +3188,34 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Сменить изображение';
+
+  @override
+  String get klingelTitel => 'Звонок на экране блокировки';
+
+  @override
+  String get klingelZweck =>
+      'Если правление звонит, когда устройство заблокировано, поверх экрана блокировки появляется экран с кнопками «Принять» и «Отклонить» — разблокировать устройство не нужно.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android требует для этого разрешение «Полноэкранные уведомления». Его можно выдать только в настройках системы.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Без разрешения останется уведомление с кнопками «Принять» и «Отклонить». Звонок по-прежнему можно принять, только не на весь экран.';
+
+  @override
+  String get klingelErteilt =>
+      'Выдано – экран появляется поверх экрана блокировки.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Не выдано – появляется только уведомление.';
+
+  @override
+  String get klingelVonHand =>
+      'Не удалось открыть экран настроек. Вручную: Настройки ▸ Приложения ▸ Специальный доступ ▸ Полноэкранные уведомления.';
+
+  @override
+  String get klingelNurAndroid => 'Экран звонка есть только на Android.';
 }

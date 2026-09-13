@@ -3185,4 +3185,33 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Prepnúť obraz';
+
+  @override
+  String get klingelTitel => 'Hovor na uzamknutej obrazovke';
+
+  @override
+  String get klingelZweck =>
+      'Ak vedenie zavolá, keď je zariadenie uzamknuté, nad uzamknutou obrazovkou sa zobrazí obrazovka s „Prijať” a „Odmietnuť” — zariadenie nemusíte najprv odomykať.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android na to vyžaduje povolenie „Upozornenia na celú obrazovku”. Dá sa udeliť iba v systémových nastaveniach.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Bez povolenia zostane upozornenie s „Prijať” a „Odmietnuť”. Hovor sa dá stále prijať, len nie na celú obrazovku.';
+
+  @override
+  String get klingelErteilt =>
+      'Udelené – obrazovka sa zobrazí nad uzamknutou obrazovkou.';
+
+  @override
+  String get klingelNichtErteilt => 'Neudelené – zobrazí sa iba upozornenie.';
+
+  @override
+  String get klingelVonHand =>
+      'Obrazovku nastavení nebolo možné otvoriť. Ručne: Nastavenia ▸ Aplikácie ▸ Špeciálny prístup ▸ Upozornenia na celú obrazovku.';
+
+  @override
+  String get klingelNurAndroid => 'Obrazovka zvonenia existuje iba v Androide.';
 }

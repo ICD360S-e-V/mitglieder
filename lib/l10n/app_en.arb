@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "The call window is only available on Android.",
   "anrufLaeuft": "Call in progress",
   "videoanrufLaeuft": "Video call in progress",
-  "anruffensterBildWechseln": "Switch view"
+  "anruffensterBildWechseln": "Switch view",
+  "klingelTitel": "Call on the lock screen",
+  "klingelZweck": "If the board calls while your device is locked, a screen appears over the lock screen — with Answer and Decline, without having to unlock the device first.",
+  "klingelAndroidHinweis": "Android requires the „Full-screen notifications” permission for this. It can only be granted in the system settings.",
+  "klingelOhneErlaubnis": "Without the permission a notification with Answer and Decline remains. The call can still be answered, just not across the whole screen.",
+  "klingelErteilt": "Granted – the screen appears over the lock screen.",
+  "klingelNichtErteilt": "Not granted – only a notification appears.",
+  "klingelVonHand": "The settings screen could not be opened. Manually: Settings ▸ Apps ▸ Special app access ▸ Full-screen notifications.",
+  "klingelNurAndroid": "The ring screen only exists on Android."
 }

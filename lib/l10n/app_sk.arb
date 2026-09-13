@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Okno hovoru existuje iba v Androide.",
   "anrufLaeuft": "Prebieha hovor",
   "videoanrufLaeuft": "Prebieha videohovor",
-  "anruffensterBildWechseln": "Prepnúť obraz"
+  "anruffensterBildWechseln": "Prepnúť obraz",
+  "klingelTitel": "Hovor na uzamknutej obrazovke",
+  "klingelZweck": "Ak vedenie zavolá, keď je zariadenie uzamknuté, nad uzamknutou obrazovkou sa zobrazí obrazovka s „Prijať” a „Odmietnuť” — zariadenie nemusíte najprv odomykať.",
+  "klingelAndroidHinweis": "Android na to vyžaduje povolenie „Upozornenia na celú obrazovku”. Dá sa udeliť iba v systémových nastaveniach.",
+  "klingelOhneErlaubnis": "Bez povolenia zostane upozornenie s „Prijať” a „Odmietnuť”. Hovor sa dá stále prijať, len nie na celú obrazovku.",
+  "klingelErteilt": "Udelené – obrazovka sa zobrazí nad uzamknutou obrazovkou.",
+  "klingelNichtErteilt": "Neudelené – zobrazí sa iba upozornenie.",
+  "klingelVonHand": "Obrazovku nastavení nebolo možné otvoriť. Ručne: Nastavenia ▸ Aplikácie ▸ Špeciálny prístup ▸ Upozornenia na celú obrazovku.",
+  "klingelNurAndroid": "Obrazovka zvonenia existuje iba v Androide."
 }

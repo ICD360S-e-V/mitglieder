@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Zvana logs pastāv tikai Android.",
   "anrufLaeuft": "Notiek zvans",
   "videoanrufLaeuft": "Notiek video zvans",
-  "anruffensterBildWechseln": "Pārslēgt attēlu"
+  "anruffensterBildWechseln": "Pārslēgt attēlu",
+  "klingelTitel": "Zvans bloķēšanas ekrānā",
+  "klingelZweck": "Ja valde zvana, kamēr ierīce ir bloķēta, virs bloķēšanas ekrāna parādās ekrāns ar Atbildēt un Atteikt — ierīce vispirms nav jāatbloķē.",
+  "klingelAndroidHinweis": "Android tam pieprasa atļauju „Pilnekrāna paziņojumi”. To var piešķirt tikai sistēmas iestatījumos.",
+  "klingelOhneErlaubnis": "Bez atļaujas paliek paziņojums ar Atbildēt un Atteikt. Zvanu joprojām var atbildēt, tikai ne visā ekrānā.",
+  "klingelErteilt": "Piešķirta – ekrāns parādās virs bloķēšanas ekrāna.",
+  "klingelNichtErteilt": "Nav piešķirta – parādās tikai paziņojums.",
+  "klingelVonHand": "Iestatījumu ekrānu nevarēja atvērt. Manuāli: Iestatījumi ▸ Lietotnes ▸ Īpaša piekļuve ▸ Pilnekrāna paziņojumi.",
+  "klingelNurAndroid": "Zvana ekrāns ir tikai Android."
 }

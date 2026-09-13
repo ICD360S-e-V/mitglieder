@@ -3189,4 +3189,34 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Görüntüyü değiştir';
+
+  @override
+  String get klingelTitel => 'Kilit ekranında arama';
+
+  @override
+  String get klingelZweck =>
+      'Cihaz kilitliyken yönetim ararsa, kilit ekranının üzerinde Kabul et ve Reddet düğmeleriyle bir ekran görünür — cihazın kilidini açmanız gerekmez.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android bunun için „Tam ekran bildirimleri” iznini ister. Bu izin yalnızca sistem ayarlarından verilebilir.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'İzin olmadan Kabul et ve Reddet düğmeli bir bildirim kalır. Arama yine kabul edilebilir, yalnızca tam ekran olmaz.';
+
+  @override
+  String get klingelErteilt =>
+      'Verildi – ekran kilit ekranının üzerinde görünür.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Verilmedi – yalnızca bir bildirim görünür.';
+
+  @override
+  String get klingelVonHand =>
+      'Ayarlar ekranı açılamadı. Elle: Ayarlar ▸ Uygulamalar ▸ Özel uygulama erişimi ▸ Tam ekran bildirimleri.';
+
+  @override
+  String get klingelNurAndroid => 'Zil ekranı yalnızca Android’de vardır.';
 }

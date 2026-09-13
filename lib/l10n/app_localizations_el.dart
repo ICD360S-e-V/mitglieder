@@ -3209,4 +3209,34 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Αλλαγή εικόνας';
+
+  @override
+  String get klingelTitel => 'Κλήση στην οθόνη κλειδώματος';
+
+  @override
+  String get klingelZweck =>
+      'Αν καλέσει το διοικητικό συμβούλιο ενώ η συσκευή είναι κλειδωμένη, εμφανίζεται μια οθόνη πάνω από την οθόνη κλειδώματος — με Απάντηση και Απόρριψη, χωρίς να ξεκλειδώσετε πρώτα τη συσκευή.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Το Android απαιτεί για αυτό την άδεια «Ειδοποιήσεις πλήρους οθόνης». Μπορεί να δοθεί μόνο από τις ρυθμίσεις συστήματος.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Χωρίς την άδεια παραμένει μια ειδοποίηση με Απάντηση και Απόρριψη. Η κλήση μπορεί να απαντηθεί, απλώς όχι σε πλήρη οθόνη.';
+
+  @override
+  String get klingelErteilt =>
+      'Δόθηκε – η οθόνη εμφανίζεται πάνω από την οθόνη κλειδώματος.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Δεν δόθηκε – εμφανίζεται μόνο μια ειδοποίηση.';
+
+  @override
+  String get klingelVonHand =>
+      'Η οθόνη ρυθμίσεων δεν άνοιξε. Χειροκίνητα: Ρυθμίσεις ▸ Εφαρμογές ▸ Ειδική πρόσβαση εφαρμογών ▸ Ειδοποιήσεις πλήρους οθόνης.';
+
+  @override
+  String get klingelNurAndroid => 'Η οθόνη κλήσης υπάρχει μόνο στο Android.';
 }

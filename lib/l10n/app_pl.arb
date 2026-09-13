@@ -1451,5 +1451,13 @@
   "anruffensterNurAndroid": "Okno połączenia istnieje tylko na Androidzie.",
   "anrufLaeuft": "Trwa połączenie",
   "videoanrufLaeuft": "Trwa połączenie wideo",
-  "anruffensterBildWechseln": "Przełącz obraz"
+  "anruffensterBildWechseln": "Przełącz obraz",
+  "klingelTitel": "Połączenie na ekranie blokady",
+  "klingelZweck": "Jeśli zarząd dzwoni, gdy urządzenie jest zablokowane, nad ekranem blokady pojawia się ekran z „Odbierz” i „Odrzuć” — bez konieczności wcześniejszego odblokowania urządzenia.",
+  "klingelAndroidHinweis": "Android wymaga do tego uprawnienia „Powiadomienia pełnoekranowe”. Można je nadać tylko w ustawieniach systemu.",
+  "klingelOhneErlaubnis": "Bez uprawnienia pozostaje powiadomienie z „Odbierz” i „Odrzuć”. Połączenie nadal można odebrać, tylko nie na pełnym ekranie.",
+  "klingelErteilt": "Nadane – ekran pojawia się nad ekranem blokady.",
+  "klingelNichtErteilt": "Nie nadane – pojawia się tylko powiadomienie.",
+  "klingelVonHand": "Nie udało się otworzyć ekranu ustawień. Ręcznie: Ustawienia ▸ Aplikacje ▸ Specjalny dostęp ▸ Powiadomienia pełnoekranowe.",
+  "klingelNurAndroid": "Ekran dzwonienia istnieje tylko w Androidzie."
 }

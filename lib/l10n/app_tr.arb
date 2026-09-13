@@ -1472,5 +1472,13 @@
   "anruffensterNurAndroid": "Arama penceresi yalnızca Android’de vardır.",
   "anrufLaeuft": "Arama sürüyor",
   "videoanrufLaeuft": "Görüntülü arama sürüyor",
-  "anruffensterBildWechseln": "Görüntüyü değiştir"
+  "anruffensterBildWechseln": "Görüntüyü değiştir",
+  "klingelTitel": "Kilit ekranında arama",
+  "klingelZweck": "Cihaz kilitliyken yönetim ararsa, kilit ekranının üzerinde Kabul et ve Reddet düğmeleriyle bir ekran görünür — cihazın kilidini açmanız gerekmez.",
+  "klingelAndroidHinweis": "Android bunun için „Tam ekran bildirimleri” iznini ister. Bu izin yalnızca sistem ayarlarından verilebilir.",
+  "klingelOhneErlaubnis": "İzin olmadan Kabul et ve Reddet düğmeli bir bildirim kalır. Arama yine kabul edilebilir, yalnızca tam ekran olmaz.",
+  "klingelErteilt": "Verildi – ekran kilit ekranının üzerinde görünür.",
+  "klingelNichtErteilt": "Verilmedi – yalnızca bir bildirim görünür.",
+  "klingelVonHand": "Ayarlar ekranı açılamadı. Elle: Ayarlar ▸ Uygulamalar ▸ Özel uygulama erişimi ▸ Tam ekran bildirimleri.",
+  "klingelNurAndroid": "Zil ekranı yalnızca Android’de vardır."
 }

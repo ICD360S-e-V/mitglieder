@@ -3193,4 +3193,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Switch view';
+
+  @override
+  String get klingelTitel => 'Call on the lock screen';
+
+  @override
+  String get klingelZweck =>
+      'If the board calls while your device is locked, a screen appears over the lock screen — with Answer and Decline, without having to unlock the device first.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android requires the „Full-screen notifications” permission for this. It can only be granted in the system settings.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Without the permission a notification with Answer and Decline remains. The call can still be answered, just not across the whole screen.';
+
+  @override
+  String get klingelErteilt =>
+      'Granted – the screen appears over the lock screen.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'Not granted – only a notification appears.';
+
+  @override
+  String get klingelVonHand =>
+      'The settings screen could not be opened. Manually: Settings ▸ Apps ▸ Special app access ▸ Full-screen notifications.';
+
+  @override
+  String get klingelNurAndroid => 'The ring screen only exists on Android.';
 }

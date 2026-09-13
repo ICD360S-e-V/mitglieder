@@ -161,6 +161,8 @@ void main() {
   late String vordergrund;
   late String mainActivity;
   late String manifest;
+  late String gemeinsam;
+  late String klingelQ;
 
   setUpAll(() {
     karte = ohneKommentare(
@@ -178,6 +180,15 @@ void main() {
         .readAsStringSync();
     manifest =
         File('android/app/src/main/AndroidManifest.xml').readAsStringSync();
+    // ⚠️ Seit dem 13.09.2026 steht der ABLAUF in [Sonderberechtigung] und nur
+    // noch die TEXTE in anruffenster_erlaubnis.dart — es gibt eine zweite
+    // solche Berechtigung (Vollbild-Benachrichtigungen fuer den
+    // Klingelschirm), und zwei Kopien desselben Ablaufs liefen auseinander,
+    // ohne dass etwas fehlschlaegt.
+    gemeinsam = ohneKommentare(
+        File('lib/widgets/sonderberechtigung.dart').readAsStringSync());
+    klingelQ = ohneKommentare(
+        File('lib/widgets/klingel_erlaubnis.dart').readAsStringSync());
   });
 
   group('Es wird ueberhaupt gefragt', () {
@@ -301,36 +312,48 @@ void main() {
 
   group('Das Widget selbst', () {
     test('liest nach der Rueckkehr aus den Systemeinstellungen neu', () {
-      final l = rumpf(widgetQ, 'void didChangeAppLifecycleState(');
+      final l = rumpf(gemeinsam, 'void didChangeAppLifecycleState(');
       expect(l, contains('AppLifecycleState.resumed'));
       expect(l, contains('_lesen()'));
     });
 
     test('der Knopf bleibt auch bei erteilter Berechtigung', () {
-      final b = rumpf(widgetQ, 'Widget build(BuildContext context)');
+      final b = rumpf(gemeinsam, 'Widget build(BuildContext context)');
       expect(b, contains('onPressed: _oeffnen'));
       final knopf = b.substring(b.indexOf('TextButton('));
       expect(knopf.substring(0, knopf.indexOf('child:')),
           isNot(contains('erlaubt')),
           reason: 'der Knopf selbst darf nicht am Zustand haengen');
-      final o = rumpf(widgetQ, 'Future<void> _oeffnen()');
-      expect(o, contains('systemfensterEinstellung()'));
-      expect(o, contains('anruffensterVonHand'));
+      final o = rumpf(gemeinsam, 'Future<void> _oeffnen()');
+      expect(o, contains('berechtigung.oeffnen()'));
+      expect(o, contains('vonHandText'));
+      // ⚠️ Und die TEXTE muessen weiter von HIER kommen. Ohne das waere der
+      // gemeinsame Aufbau da und niemand fuettert ihn — die Zeile im Konto
+      // stuende leer, und kein Test haette es gesehen.
+      expect(widgetQ,
+          contains('oeffnen: AnrufVordergrund.systemfensterEinstellung'));
+      expect(widgetQ, contains('vonHandText: l.anruffensterVonHand'));
     });
 
     test('drei Zustaende, und „wird geladen" ist keiner von beiden', () {
-      final b = rumpf(widgetQ, 'Widget build(BuildContext context)');
+      final b = rumpf(gemeinsam, 'Widget build(BuildContext context)');
       expect(b, contains('erlaubt == null'),
           reason: 'null heisst „noch nicht gelesen", nicht „nicht erteilt"');
-      expect(b, contains('anruffensterErteilt'));
-      expect(b, contains('anruffensterNichtErteilt'));
+      expect(b, contains('erteiltText'));
+      expect(b, contains('nichtErteiltText'));
+      expect(widgetQ, contains('erteiltText: l.anruffensterErteilt'));
+      expect(widgetQ, contains('nichtErteiltText: l.anruffensterNichtErteilt'));
     });
 
     test('die Einstellung wird nur auf Wunsch geoeffnet', () {
-      final h = rumpf(widgetQ, 'Future<void> anruffensterHinweisZeigen(');
+      final h = rumpf(gemeinsam, 'Future<void> sonderberechtigungHinweis(');
+      // ⚠️ BEIDE Stellen muessen vorkommen, sonst ist der Positionsvergleich
+      // wertlos: `indexOf` gibt bei fehlender Stelle -1 zurueck, und -1 ist
+      // kleiner als jeder Fund.
       expect(h, contains('if (erlauben != true) return;'));
+      expect(h, contains('await b.oeffnen()'));
       expect(h.indexOf('if (erlauben != true) return;'),
-          lessThan(h.indexOf('systemfensterEinstellung()')),
+          lessThan(h.indexOf('await b.oeffnen()')),
           reason: 'die Wache muss VOR dem Sprung stehen');
     });
 
@@ -338,14 +361,21 @@ void main() {
       // Die Vorsitzer-App ist deutsch; diese App hat 28 Sprachen. Ein
       // deutscher Satz vor einem Mitglied, das die App auf Arabisch bedient,
       // ist kein Hinweis, sondern ein Raetsel.
-      final texte = RegExp(r"""Text\(\s*'([^']{12,})'""")
-          .allMatches(widgetQ)
-          .map((m) => m[1]!)
-          .toList();
-      expect(texte, isEmpty,
-          reason: 'diese Zeichenketten muessen ueber AppLocalizations laufen: '
-              '$texte');
+      // ⚠️ ALLE DREI Dateien: der Aufbau steht im gemeinsamen Widget, die
+      // Texte in den zwei Konfigurationen. Nur eine zu pruefen liesse einen
+      // deutschen Satz in den anderen zwei durch.
+      for (final q in <String>[widgetQ, gemeinsam, klingelQ]) {
+        final texte = RegExp(r"""Text\(\s*'([^']{12,})'""")
+            .allMatches(q)
+            .map((m) => m[1]!)
+            .toList();
+        expect(texte, isEmpty,
+            reason: 'diese Zeichenketten muessen ueber AppLocalizations '
+                'laufen: $texte');
+      }
       expect(widgetQ, contains('AppLocalizations.of(context)'));
+      expect(klingelQ, contains('AppLocalizations.of(context)'));
+      expect(gemeinsam, contains('AppLocalizations.of(context)'));
     });
   });
 
@@ -420,9 +450,13 @@ void main() {
 
     test('das Ergebnis wird nach Dart gemeldet und dort ausgewertet', () {
       expect(vordergrund, contains('Future<bool> systemfensterEinstellung()'));
-      expect('anruffensterVonHand'.allMatches(widgetQ).length,
-          greaterThanOrEqualTo(2),
-          reason: 'beide Ausgaenge muessen den Fehlschlag sagen');
+      // Beide Ausgaenge — der einmalige Hinweis und die dauerhafte Zeile —
+      // muessen den Fehlschlag sagen; sie liegen jetzt im gemeinsamen Widget.
+      expect('vonHandText'.allMatches(gemeinsam).length,
+          greaterThanOrEqualTo(3),
+          reason: 'Feld + beide Ausgaenge');
+      expect(widgetQ, contains('l.anruffensterVonHand'),
+          reason: 'der Text muss von hier kommen');
     });
   });
 

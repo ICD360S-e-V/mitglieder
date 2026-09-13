@@ -3197,4 +3197,35 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get anruffensterBildWechseln => 'Cambiar imagen';
+
+  @override
+  String get klingelTitel => 'Llamada en la pantalla de bloqueo';
+
+  @override
+  String get klingelZweck =>
+      'Si la junta llama mientras el dispositivo está bloqueado, aparece una pantalla sobre la pantalla de bloqueo — con Responder y Rechazar, sin tener que desbloquear el dispositivo primero.';
+
+  @override
+  String get klingelAndroidHinweis =>
+      'Android exige para ello el permiso «Notificaciones a pantalla completa». Solo puede concederse en los ajustes del sistema.';
+
+  @override
+  String get klingelOhneErlaubnis =>
+      'Sin el permiso queda una notificación con Responder y Rechazar. La llamada sigue siendo contestable, solo no a pantalla completa.';
+
+  @override
+  String get klingelErteilt =>
+      'Concedido – la pantalla aparece sobre la pantalla de bloqueo.';
+
+  @override
+  String get klingelNichtErteilt =>
+      'No concedido – solo aparece una notificación.';
+
+  @override
+  String get klingelVonHand =>
+      'No se pudo abrir la pantalla de ajustes. A mano: Ajustes ▸ Aplicaciones ▸ Acceso especial ▸ Notificaciones a pantalla completa.';
+
+  @override
+  String get klingelNurAndroid =>
+      'La pantalla de llamada solo existe en Android.';
 }
