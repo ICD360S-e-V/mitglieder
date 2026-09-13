@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.100.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.100.1...v1.100.2) (2026-09-13)
+
+
+### Bug Fixes
+
+* **ci:** Release-Upload je Datei mit Wiederholung, Manifeste zuletzt ([#410](https://github.com/ICD360S-e-V/mitglieder/issues/410)) ([6738e48](https://github.com/ICD360S-e-V/mitglieder/commit/6738e48829e7b4cfb638dbe5a17c73fb99ce0eda))
+
 ## [1.100.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.100.0...v1.100.1) (2026-09-13)
 
 
