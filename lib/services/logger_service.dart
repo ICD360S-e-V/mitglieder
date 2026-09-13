@@ -10,6 +10,7 @@ import 'http_client_factory.dart';
 import 'battery_usage_service.dart';
 import 'energiepolitik_waechter.dart';
 import 'api_service.dart';
+import 'device_key_service.dart';
 
 /// Logger Service - captures app logs for debugging
 class LoggerService {
@@ -212,9 +213,21 @@ class LoggerService {
       }).toList();
 
       BatteryUsageService.instance.noteNetworkRequest(NetworkSource.logUpload);
+      // Der Geraeteschluessel, den der Rest der API ohnehin verlangt. Der
+      // Log-Endpunkt nimmt ihn ab 13.09.2026 entgegen und vermerkt Uploads
+      // OHNE ihn in php-fpm/error.log; scharf gestellt wird er erst, wenn
+      // diese Vermerke aufhoeren (LOG_INGEST_REQUIRE_DEVICE_KEY in
+      // server/api/logs/log_ingest_lib.php). Deshalb hier `if (… != null)`
+      // und kein `!`: ein Geraet, das sich noch nicht registrieren konnte,
+      // soll sein Protokoll weiterhin loswerden — das ist meistens genau das
+      // Geraet, dessen Protokoll man braucht.
+      final geraeteschluessel = DeviceKeyService().deviceKey;
       final response = await _httpClient.post(
         Uri.parse(_uploadUrl),
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          if (geraeteschluessel != null) 'X-Device-Key': geraeteschluessel,
+        },
         body: jsonEncode({
           // The server files uploads under this and rejects the request when
           // it is missing, so pre-login uploads send the device id here. The
