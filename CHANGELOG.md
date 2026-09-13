@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.98.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.98.0...v1.98.1) (2026-09-13)
+
+
+### Bug Fixes
+
+* **diagnose:** nachgereichte Migration — anonymous_id passte nie in VARCHAR(20) ([#403](https://github.com/ICD360S-e-V/mitglieder/issues/403)) ([ee0f94f](https://github.com/ICD360S-e-V/mitglieder/commit/ee0f94f005334b57e52de62c94fc71fc3b3670b0))
+
 ## [1.98.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.97.1...v1.98.0) (2026-09-12)
 
 
