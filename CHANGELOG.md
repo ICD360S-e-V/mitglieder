@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.100.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.100.0...v1.100.1) (2026-09-13)
+
+
+### Bug Fixes
+
+* **anruf:** der Klingelschirm bleibt stehen, wenn die App nicht im Blick ist ([#409](https://github.com/ICD360S-e-V/mitglieder/issues/409)) ([52f83f6](https://github.com/ICD360S-e-V/mitglieder/commit/52f83f62369e5d040d1310aea0c0e9c805230b98))
+
 ## [1.100.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.99.0...v1.100.0) (2026-09-13)
 
 
