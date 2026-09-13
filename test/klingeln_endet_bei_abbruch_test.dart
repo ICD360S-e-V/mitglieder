@@ -98,8 +98,13 @@ void main() {
 
   String beendetMethode() =>
       rumpf(dienst, 'void _signalAnrufBeendet(CallEndedEvent event)');
+  // ⚠️ Seit dem 13.09.2026 baut `_klingelschirmZeigen` den Schirm, nicht mehr
+  // `_handleIncomingCall`: liegt die App nicht im Blick, gehoert das Klingeln
+  // dem NATIVEN Schirm ueber dem Sperrbildschirm, und dieser hier haelt sich
+  // heraus. Die Zusicherungen darunter gelten unveraendert — nur der Ort des
+  // Rumpfes hat sich geaendert.
   String klingeln() =>
-      rumpf(dashboard, 'void _handleIncomingCall(CallOfferEvent event)');
+      rumpf(dashboard, 'void _klingelschirmZeigen(CallOfferEvent event)');
   String annehmen() => rumpf(dashboard,
       'void _acceptCall(CallOfferEvent event,');
 
