@@ -1,0 +1,131 @@
+name: Warm Cache
+
+# ───────────────────────────────────────────────────────────────
+# Puts the build caches into the `main` scope, which is the only scope every
+# other run is allowed to read.
+#
+# 🔴 WHY THIS EXISTS. Measured 13.09.2026: of 10.49 GiB of cache, 5.09 GiB sat
+# in scopes that nothing can ever read — 3.47 GiB on tag refs (50 entries) and
+# 1.62 GiB on pull-request refs (10). GitHub's rule is that a run restores from
+# its OWN ref and from the default branch, and writes only to its own ref. Every
+# build workflow here triggers on `push: tags: ['v*']` or on `pull_request`, so
+# everything they save is unreachable the moment the run ends. Nothing in this
+# repository ever ran on `main` and left a cache behind.
+#
+# The numbers that show it, from the same day:
+#   • 25 `flutter-pub-*` caches existed. ZERO of them on `main`. Every build
+#     wrote ~165-179 MiB that no later run could read, and started cold itself.
+#   • The only usable entries — the three Flutter SDKs, 5.40 GiB — were created
+#     on 08.08.2026 and have survived on restores alone ever since. Nothing in
+#     the repository can recreate them. One quiet week (GitHub drops anything
+#     not accessed for seven days) and every build downloads a 1.6-2.1 GiB SDK
+#     again, on three platforms.
+#
+# ⚠️ THE KEYS HERE MUST MATCH THE CONSUMERS EXACTLY. Same action, same pinned
+# SHA, same inputs, same `hashFiles` arguments. A warmer whose key differs by
+# one character warms a cache nobody hits, and nothing fails to tell you —
+# it just stays slow. Consumers as of 14.09.2026:
+#   build-android.yml, build-linux-flatpak.yml, build-extras-platforms.yml,
+#   pr-check.yml.
+#
+# ⚠️ NOT warmed here, on purpose:
+#   • Gradle — build-android.yml calls setup-java WITHOUT `cache: 'gradle'`,
+#     so there is no consumer. Warming it would be decoration. (Adding the
+#     consumer side is worth doing, but that is a change to the build.)
+#   • flatpak/.flatpak-builder — warming it means running flatpak-builder,
+#     which is the expensive part of the Linux build. The entry from
+#     08.08.2026 is alive on restores; if it ever goes, this is the first
+#     place to look.
+# ───────────────────────────────────────────────────────────────
+
+on:
+  push:
+    branches: [main]
+    # Only when something that is part of a cache key actually moved. A merge
+    # that touches neither the dependencies nor the translations produces the
+    # same keys, so the run would restore, hit, and save nothing.
+    paths:
+      - 'pubspec.lock'
+      - 'pubspec.yaml'
+      - 'l10n.yaml'
+      - 'lib/l10n/**'
+      - '.github/workflows/warm-cache.yml'
+  schedule:
+    # ⚠️ Mondays AND Thursdays, not weekly. GitHub drops any entry that has not
+    # been accessed for seven days — a once-a-week run sits exactly on that
+    # boundary, and the first late run loses everything. Twice a week keeps a
+    # margin on both sides even if one run fails.
+    - cron: '0 4 * * 1,4'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: warm-cache
+  # ⚠️ Deliberately false. For a cache warmer, "only the newest state matters"
+  # is backwards: a warmer that is cancelled mid-run stores nothing at all, and
+  # a slightly older cache is harmless — the keys hang off pubspec.lock and the
+  # Flutter version, not off the commit.
+  cancel-in-progress: false
+
+env:
+  # ⚠️ Must equal FLUTTER_VERSION in the three build workflows and the
+  # hardcoded version in pr-check.yml. All five were 3.44.9 on 14.09.2026.
+  # The Flutter cache key contains this string; a mismatch here means a
+  # different key, so nothing hits.
+  FLUTTER_VERSION: '3.44.9'
+
+jobs:
+  warm:
+    name: "🔥 Warm ${{ matrix.os }}"
+    strategy:
+      # One platform failing must not stop the other two from being warmed.
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      # Same action, same pin, same inputs as every consumer. `cache` stores
+      # the SDK (1.6-2.1 GiB per platform), `pub-cache` stores ~/.pub-cache
+      # keyed by pubspec.lock.
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+          pub-cache: true
+
+      # Same key as all four consumers. `runner.os` is what makes the three
+      # platforms three separate entries, which is intended — a .dart_tool from
+      # a different OS is not interchangeable.
+      - name: Cache .dart_tool (l10n + pub artifacts)
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v5
+        with:
+          path: .dart_tool
+          key: dart-tool-${{ runner.os }}-${{ hashFiles('pubspec.lock', 'l10n.yaml', 'lib/l10n/*.arb') }}
+
+      # Both steps are what actually fills the two caches above: `pub get`
+      # populates ~/.pub-cache, `gen-l10n` populates .dart_tool. Warming
+      # without running them would store empty directories.
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Generate l10n
+        run: flutter gen-l10n
+
+      - name: What is warm now
+        shell: bash
+        run: |
+          {
+            echo "### Warmed on \`${{ matrix.os }}\`"
+            echo ""
+            echo "Flutter ${{ env.FLUTTER_VERSION }}, pub cache, \`.dart_tool\`."
+            echo ""
+            echo "These now sit in the \`refs/heads/main\` scope, which is the"
+            echo "only one that tag builds and pull requests are allowed to read."
+          } >> "$GITHUB_STEP_SUMMARY"
