@@ -206,7 +206,7 @@ dev_dependencies:
   # ⚠️ Ausdruecklich und nicht transitiv: test/release_upload_test.dart
   # liest die Workflow-YAML. Als blosse Mitgift eines anderen Pakets
   # bricht der Test, sobald jenes es fallen laesst.
-  yaml: ^3.1.2
+  yaml: ^3.1.4
   flutter_test:
     sdk: flutter
 
