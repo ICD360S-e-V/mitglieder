@@ -1,0 +1,176 @@
+name: Cleanup Caches
+
+# ───────────────────────────────────────────────────────────────
+# Removes cache entries that live in a scope nothing can read any more.
+#
+# A run restores from its OWN ref and from the default branch, and writes only
+# to its own ref. So:
+#   • a cache on `refs/tags/vX.Y.Z` can only ever be read by another run on
+#     that same tag — i.e. a re-run of that one build, and nothing else;
+#   • a cache on `refs/pull/N/merge` can only be read by a re-run of PR N,
+#     which is over once the PR is closed.
+#
+# Measured 13.09.2026, before this existed: 10.49 GiB of cache against a 10 GB
+# cap, of which 3.47 GiB sat on tag refs (50 entries) and 1.62 GiB on PR refs
+# (10). That is 49% of the budget in scopes nothing could read.
+#
+# ⚠️ THIS IS NOT THE MAIN FIX, warm-cache.yml is. Deleting dead entries frees
+# the budget; it does not make a single build faster on its own. What makes
+# builds faster is having something readable in the `main` scope. Run this one
+# without that one and you have a tidy cache that is still always cold.
+#
+# ⚠️ It is also NOT about money. Actions storage is free on a public
+# repository. The 10 GB cache cap is a hard limit though, and GitHub evicts by
+# LAST ACCESS when it is reached — which, to be fair, already protects the
+# useful entries, because those get read on every build and the dead ones are
+# never read at all. The real cost of the dead entries is the time every build
+# spends compressing and uploading ~170 MiB that no one will ever read.
+#
+# ⚠️ `refs/heads/main` IS NEVER TOUCHED. That is the only scope every run can
+# read, and on 13.09.2026 it held the only four usable entries in the whole
+# repository. Deleting one of them makes every build on every platform
+# re-download a 1.6-2.1 GiB SDK.
+# ───────────────────────────────────────────────────────────────
+
+on:
+  schedule:
+    # Not on the hour — GitHub's scheduled runs bunch up there.
+    - cron: '47 5,17 * * *'
+  workflow_dispatch:
+    inputs:
+      trocken:
+        description: 'Dry run — list only, delete nothing'
+        type: boolean
+        default: true
+      mindestalter:
+        description: 'Only delete tag caches older than this many hours'
+        type: string
+        # ⚠️ The trade-off, with the numbers behind it. A re-run of a failed
+        # tag build is the ONLY thing that can still read a tag-scoped entry,
+        # and it usually happens within the hour — 24 h is generous cover for
+        # it. The price is standing garbage: at the measured cadence (11 tags
+        # on 12.09.2026) a day's worth is ~50 entries, ~3.5 GiB. Together with
+        # the ~5.4 GiB on `main` that is ~8.9 GiB against the 10 GB cap, which
+        # fits, but not by much. Lower this to 6 if the cap starts biting;
+        # do not raise it without re-measuring both numbers.
+        default: '24'
+      deckel:
+        description: 'Abort if more than this many would be deleted'
+        type: string
+        default: '120'
+
+permissions:
+  contents: read
+  actions: write   # deleting a cache is a write
+
+concurrency:
+  group: cleanup-caches
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    name: "🧹 Drop unreachable caches"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Drop caches in dead scopes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          TROCKEN: ${{ inputs.trocken || 'false' }}
+          MINDESTALTER: ${{ inputs.mindestalter || '24' }}
+          DECKEL: ${{ inputs.deckel || '120' }}
+        run: |
+          set -euo pipefail
+
+          gh api "repos/$GH_REPO/actions/caches?per_page=100" --paginate \
+             --jq '.actions_caches[] | [.id, .ref, .created_at, .size_in_bytes, .key] | @tsv' \
+             > /tmp/alle.tsv
+          GESAMT=$(wc -l < /tmp/alle.tsv)
+          GESAMT_GIB=$(awk -F'\t' '{s+=$4} END {printf "%.2f", s/1073741824}' /tmp/alle.tsv)
+          echo "Caches: $GESAMT entries, $GESAMT_GIB GiB"
+
+          GRENZE=$(( $(date +%s) - MINDESTALTER * 3600 ))
+          : > /tmp/weg.tsv
+
+          while IFS=$'\t' read -r id ref created size key; do
+            [ -z "${id:-}" ] && continue
+
+            # ⚠️ main is never a candidate. Checked first and explicitly, so a
+            # later edit to the matching below cannot reach it by accident.
+            if [ "$ref" = "refs/heads/main" ]; then
+              continue
+            fi
+
+            case "$ref" in
+              # ⚠️ The API reports a tag scope as `refs/heads/refs/tags/v…` —
+              # a doubled prefix. Matching on `*refs/tags/*` catches both that
+              # and the plain spelling, should it ever change.
+              *refs/tags/*)
+                # Age gate: a failed tag build gets re-run, and a re-run runs on
+                # the same tag, so it is the one thing that CAN still read this
+                # entry. Give it a day before taking it away.
+                ALTER=$(date -d "$created" +%s 2>/dev/null || echo 0)
+                if [ "$ALTER" -gt 0 ] && [ "$ALTER" -lt "$GRENZE" ]; then
+                  printf '%s\t%s\t%s\t%s\n' "$id" "$ref" "$size" "$key" >> /tmp/weg.tsv
+                fi
+                ;;
+              refs/pull/*/merge|refs/pull/*/head)
+                # Only once the pull request is closed. While it is open, a
+                # re-run of that PR still restores this entry.
+                NR=$(printf '%s' "$ref" | cut -d/ -f3)
+                ZUSTAND=$(gh pr view "$NR" --repo "$GH_REPO" --json state --jq .state 2>/dev/null || echo UNKNOWN)
+                if [ "$ZUSTAND" = "CLOSED" ] || [ "$ZUSTAND" = "MERGED" ]; then
+                  printf '%s\t%s\t%s\t%s\n' "$id" "$ref" "$size" "$key" >> /tmp/weg.tsv
+                fi
+                ;;
+            esac
+          done < /tmp/alle.tsv
+
+          ANZ=$(wc -l < /tmp/weg.tsv)
+          FREI=$(awk -F'\t' '{s+=$3} END {printf "%.2f", s/1073741824}' /tmp/weg.tsv)
+          echo "Unreachable: $ANZ entries, $FREI GiB"
+
+          if [ "$ANZ" -eq 0 ]; then echo "Nothing to do."; exit 0; fi
+
+          # A large number on a settled repository means the listing or the
+          # matching is wrong — then report rather than delete.
+          if [ "$ANZ" -gt "$DECKEL" ]; then
+            echo "::error::$ANZ caches to delete, cap is $DECKEL — aborting."
+            echo "Either a backlog to work off (re-run by hand with a higher"
+            echo "'deckel') or the matching is wrong. First 20:"
+            head -20 /tmp/weg.tsv
+            exit 1
+          fi
+
+          if [ "$TROCKEN" = "true" ]; then
+            echo "── DRY RUN, nothing is deleted ──"
+            awk -F'\t' '{printf "  %6.0f MiB  %-34s %s\n", $3/1048576, $2, substr($4,1,50)}' /tmp/weg.tsv
+            exit 0
+          fi
+
+          OK=0; FEHL=0
+          while IFS=$'\t' read -r id ref size key; do
+            [ -z "${id:-}" ] && continue
+            if gh api -X DELETE "repos/$GH_REPO/actions/caches/$id" >/dev/null 2>&1; then
+              OK=$((OK+1)); echo "  deleted: $ref  $key"
+            else
+              FEHL=$((FEHL+1)); echo "::warning::could not delete cache $id ($ref)"
+            fi
+          done < /tmp/weg.tsv
+
+          NACHHER=$(gh api "repos/$GH_REPO/actions/cache/usage" --jq '.active_caches_size_in_bytes')
+          echo "Done: $OK deleted, $FEHL failed."
+          {
+            echo "### Caches cleaned up"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| before | $GESAMT entries, $GESAMT_GIB GiB |"
+            echo "| unreachable | $ANZ entries, $FREI GiB |"
+            echo "| deleted | $OK |"
+            echo "| failed | $FEHL |"
+            echo "| now | $(awk -v b="$NACHHER" 'BEGIN{printf "%.2f", b/1073741824}') GiB |"
+            echo ""
+            echo "⚠️ \`refs/heads/main\` is never touched — it is the only scope"
+            echo "every other run can read."
+          } >> "$GITHUB_STEP_SUMMARY"
