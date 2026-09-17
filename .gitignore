@@ -75,3 +75,21 @@ devtools_options.yaml
 
 # Local build scripts (CI/CD handles builds)
 build_all_stores.sh
+
+# Serverseitiger PHP-Code. Gepflegt wird er auf dem Server, nicht hier.
+#
+# Bis 17.09.2026 lag unter server/ eine Kopie davon im Repository. Sie war
+# stumm veraltet: seal_signaturen.php und SignaturHelper.php wichen live vom
+# eingecheckten Stand ab, und api/lib/RueckzugFenster.php aus PR #393 lag auf
+# dem Produktionsserver ueberhaupt nicht. Wer aus dem Repository ausgerollt
+# haette, haette damit den Siegel-Cron der beweisfuehrenden Unterschriften auf
+# einen aelteren Stand zurueckgesetzt — ohne es zu merken. Eine Kopie, der man
+# nicht ansieht, ob sie dem Server entspricht, ist schlimmer als keine.
+server/
+
+# Und zwar jede PHP-Datei, nicht nur die unter server/. Die Regel darueber
+# haelt nur, solange serverseitiger Code auch dort liegt; ein Endpunkt, den
+# jemand versehentlich woanders ablegt, waere sonst wieder im Repository.
+# Stand 17.09.2026 ist keine einzige PHP-Datei ausserhalb von server/
+# eingecheckt, die Regel nimmt also nichts weg.
+*.php
