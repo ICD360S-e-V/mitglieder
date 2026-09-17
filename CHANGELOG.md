@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.102.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.101.1...v1.102.0) (2026-09-17)
+
+
+### Features
+
+* **mitglied:** Stern statt Glocke, eigenes PDF unterschreiben ([#429](https://github.com/ICD360S-e-V/mitglieder/issues/429)) ([73e19a9](https://github.com/ICD360S-e-V/mitglieder/commit/73e19a9833c4e8a48d90be140c75a1b34c9d5cd3))
+
 ## [1.101.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.101.0...v1.101.1) (2026-09-13)
 
 
