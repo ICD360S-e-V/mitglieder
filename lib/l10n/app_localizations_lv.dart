@@ -3236,4 +3236,78 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Flatpak vidē automātisko startēšanu nevar iestatīt. Izmantojiet sistēmas iestatījumus.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Izvēlieties PDF';
+
+  @override
+  String get extrasTitel => 'Īpašās funkcijas';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Zīmēt no jauna';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Pievienot datumu zemāk';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Šī ir ērtība jūsu pašu dokumentiem — īres līgumam, veidlapai, uzteikumam. Tai nav nekāda sakara ar parakstiem, ko no jums prasa biedrība: tur ir kods ar SMS un zīmogs, šeit nav.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Tiek ievietots dokumentā …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Uzzīmējiet parakstu';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Parakstiet savu dokumentu ar roku, nenododot to svešai interneta vietnei.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Dokuments vēl nav izvēlēts.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Parakstu var pārvietot; no stūra to var palielināt un samazināt.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'Neizdevās. Lūdzu, mēģiniet vēlreiz.';
+
+  @override
+  String get pdfWerkzeugFertig =>
+      'Gatavs. Parakstītais dokuments ir saglabāts.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Ievietot parakstu';
+
+  @override
+  String get pdfWerkzeugLeer => 'Vēl nekas nav uzzīmēts.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Atvērt';
+
+  @override
+  String get extrasUntertitel => 'Rīki, kas pieejami tikai biedriem.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Izmantot';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Parakstīt savu PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Dokuments ir pārāk liels (ne vairāk kā 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return '$aktuell. lappuse no $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Šo PDF neizdevās atvērt.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Parakstīt savu PDF';
 }

@@ -3244,4 +3244,76 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'În Flatpak pornirea automată nu se poate seta. Folosiți setările sistemului.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Alegeți un PDF';
+
+  @override
+  String get extrasTitel => 'Funcții speciale';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Desenați din nou';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Adaugă data dedesubt';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Aceasta e o comoditate pentru documentele dumneavoastră — un contract de închiriere, un formular, o reziliere. Nu are legătură cu semnăturile pe care le cere asociația: acolo există un cod prin SMS și un sigiliu, aici nu.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Se aplică în document …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Desenați semnătura';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Semnați de mână un document propriu, fără să-l dați unui site străin.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Încă nu e ales niciun document.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Semnătura se poate muta; din colț devine mai mare sau mai mică.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Nu a mers. Încercați din nou.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Gata. Documentul semnat a fost salvat.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Aplică semnătura';
+
+  @override
+  String get pdfWerkzeugLeer => 'Nu s-a desenat încă nimic.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Deschide';
+
+  @override
+  String get extrasUntertitel => 'Unelte pe care le au doar membrii.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Folosește';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Semnează propriul PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Documentul e prea mare (cel mult 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Pagina $aktuell din $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Acest PDF nu a putut fi deschis.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Semnează propriul PDF';
 }

@@ -5863,6 +5863,138 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Im Flatpak lässt sich der Autostart nicht setzen. Bitte über die Einstellungen Ihres Systems.'**
   String get autostartFlatpak;
+
+  /// No description provided for @pdfWerkzeugDateiWaehlen.
+  ///
+  /// In de, this message translates to:
+  /// **'PDF auswählen'**
+  String get pdfWerkzeugDateiWaehlen;
+
+  /// No description provided for @extrasTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Sonderfunktionen'**
+  String get extrasTitel;
+
+  /// No description provided for @pdfWerkzeugUnterschriftNochmal.
+  ///
+  /// In de, this message translates to:
+  /// **'Neu malen'**
+  String get pdfWerkzeugUnterschriftNochmal;
+
+  /// No description provided for @pdfWerkzeugMitDatum.
+  ///
+  /// In de, this message translates to:
+  /// **'Datum darunter setzen'**
+  String get pdfWerkzeugMitDatum;
+
+  /// No description provided for @pdfWerkzeugHinweisRechtlich.
+  ///
+  /// In de, this message translates to:
+  /// **'Dies ist eine Bequemlichkeit für Ihre eigenen Dokumente — Mietvertrag, Formular, Kündigung. Sie hat nichts mit den Unterschriften zu tun, die der Verein von Ihnen anfordert: dort gibt es einen Code per SMS und ein Siegel, hier nicht.'**
+  String get pdfWerkzeugHinweisRechtlich;
+
+  /// No description provided for @pdfWerkzeugLaeuft.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Dokument wird gesetzt …'**
+  String get pdfWerkzeugLaeuft;
+
+  /// No description provided for @pdfWerkzeugUnterschriftMalen.
+  ///
+  /// In de, this message translates to:
+  /// **'Unterschrift malen'**
+  String get pdfWerkzeugUnterschriftMalen;
+
+  /// No description provided for @extrasPdfUnterschreibenText.
+  ///
+  /// In de, this message translates to:
+  /// **'Ein eigenes Dokument mit der Hand unterschreiben, ohne es einer fremden Internetseite zu geben.'**
+  String get extrasPdfUnterschreibenText;
+
+  /// No description provided for @pdfWerkzeugKeineDatei.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch kein Dokument gewählt.'**
+  String get pdfWerkzeugKeineDatei;
+
+  /// No description provided for @pdfWerkzeugPlatzierenHinweis.
+  ///
+  /// In de, this message translates to:
+  /// **'Die Unterschrift lässt sich verschieben; an der Ecke wird sie größer und kleiner.'**
+  String get pdfWerkzeugPlatzierenHinweis;
+
+  /// No description provided for @pdfWerkzeugFehlerAllgemein.
+  ///
+  /// In de, this message translates to:
+  /// **'Das hat nicht geklappt. Bitte noch einmal versuchen.'**
+  String get pdfWerkzeugFehlerAllgemein;
+
+  /// No description provided for @pdfWerkzeugFertig.
+  ///
+  /// In de, this message translates to:
+  /// **'Fertig. Das unterschriebene Dokument ist gespeichert.'**
+  String get pdfWerkzeugFertig;
+
+  /// No description provided for @pdfWerkzeugFertigstellen.
+  ///
+  /// In de, this message translates to:
+  /// **'Unterschrift einsetzen'**
+  String get pdfWerkzeugFertigstellen;
+
+  /// No description provided for @pdfWerkzeugLeer.
+  ///
+  /// In de, this message translates to:
+  /// **'Es wurde noch nichts gemalt.'**
+  String get pdfWerkzeugLeer;
+
+  /// No description provided for @pdfWerkzeugOeffnen.
+  ///
+  /// In de, this message translates to:
+  /// **'Öffnen'**
+  String get pdfWerkzeugOeffnen;
+
+  /// No description provided for @extrasUntertitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Werkzeuge, die es nur für Mitglieder gibt.'**
+  String get extrasUntertitel;
+
+  /// No description provided for @pdfWerkzeugUebernehmen.
+  ///
+  /// In de, this message translates to:
+  /// **'Übernehmen'**
+  String get pdfWerkzeugUebernehmen;
+
+  /// No description provided for @extrasPdfUnterschreibenTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Eigenes PDF unterschreiben'**
+  String get extrasPdfUnterschreibenTitel;
+
+  /// No description provided for @pdfWerkzeugFehlerZuGross.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Dokument ist zu groß (höchstens 20 MB).'**
+  String get pdfWerkzeugFehlerZuGross;
+
+  /// No description provided for @pdfWerkzeugSeiteVon.
+  ///
+  /// In de, this message translates to:
+  /// **'Seite {aktuell} von {gesamt}'**
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt);
+
+  /// No description provided for @pdfWerkzeugFehlerOeffnen.
+  ///
+  /// In de, this message translates to:
+  /// **'Dieses PDF ließ sich nicht öffnen.'**
+  String get pdfWerkzeugFehlerOeffnen;
+
+  /// No description provided for @pdfWerkzeugTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Eigenes PDF unterschreiben'**
+  String get pdfWerkzeugTitel;
 }
 
 class _AppLocalizationsDelegate

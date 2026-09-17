@@ -3256,4 +3256,78 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'In Flatpak l’avvio automatico non può essere impostato. Usi le impostazioni di sistema.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Scegliere un PDF';
+
+  @override
+  String get extrasTitel => 'Funzioni speciali';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Disegnare di nuovo';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Aggiungere la data sotto';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Questa è una comodità per i Suoi documenti personali — contratto di affitto, modulo, disdetta. Non ha nulla a che vedere con le firme che l\'associazione Le richiede: là c\'è un codice via SMS e un sigillo, qui no.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Inserimento nel documento …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Disegnare la firma';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Firmi a mano un Suo documento, senza affidarlo a un sito Internet esterno.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Nessun documento ancora scelto.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'La firma si può spostare; dall\'angolo si ingrandisce e si rimpicciolisce.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Non ha funzionato. Riprovi.';
+
+  @override
+  String get pdfWerkzeugFertig =>
+      'Fatto. Il documento firmato è stato salvato.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Applicare la firma';
+
+  @override
+  String get pdfWerkzeugLeer => 'Non è stato ancora disegnato nulla.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Aprire';
+
+  @override
+  String get extrasUntertitel => 'Strumenti riservati ai soci.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Usare';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Firmare un PDF proprio';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Il documento è troppo grande (al massimo 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Pagina $aktuell di $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen =>
+      'Non è stato possibile aprire questo PDF.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Firmare un PDF proprio';
 }

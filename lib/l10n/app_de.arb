@@ -1565,5 +1565,37 @@
   "autostartAn": "Ein – die App startet nach dem Anmelden und ist erreichbar.",
   "autostartAus": "Aus – Anrufe kommen nur an, solange die App läuft.",
   "autostartFehlgeschlagen": "Das ließ sich nicht umstellen. Bitte tragen Sie die App von Hand in den Autostart ein.",
-  "autostartFlatpak": "Im Flatpak lässt sich der Autostart nicht setzen. Bitte über die Einstellungen Ihres Systems."
+  "autostartFlatpak": "Im Flatpak lässt sich der Autostart nicht setzen. Bitte über die Einstellungen Ihres Systems.",
+  "pdfWerkzeugDateiWaehlen": "PDF auswählen",
+  "extrasTitel": "Sonderfunktionen",
+  "pdfWerkzeugUnterschriftNochmal": "Neu malen",
+  "pdfWerkzeugMitDatum": "Datum darunter setzen",
+  "pdfWerkzeugHinweisRechtlich": "Dies ist eine Bequemlichkeit für Ihre eigenen Dokumente — Mietvertrag, Formular, Kündigung. Sie hat nichts mit den Unterschriften zu tun, die der Verein von Ihnen anfordert: dort gibt es einen Code per SMS und ein Siegel, hier nicht.",
+  "pdfWerkzeugLaeuft": "Das Dokument wird gesetzt …",
+  "pdfWerkzeugUnterschriftMalen": "Unterschrift malen",
+  "extrasPdfUnterschreibenText": "Ein eigenes Dokument mit der Hand unterschreiben, ohne es einer fremden Internetseite zu geben.",
+  "pdfWerkzeugKeineDatei": "Noch kein Dokument gewählt.",
+  "pdfWerkzeugPlatzierenHinweis": "Die Unterschrift lässt sich verschieben; an der Ecke wird sie größer und kleiner.",
+  "pdfWerkzeugFehlerAllgemein": "Das hat nicht geklappt. Bitte noch einmal versuchen.",
+  "pdfWerkzeugFertig": "Fertig. Das unterschriebene Dokument ist gespeichert.",
+  "pdfWerkzeugFertigstellen": "Unterschrift einsetzen",
+  "pdfWerkzeugLeer": "Es wurde noch nichts gemalt.",
+  "pdfWerkzeugOeffnen": "Öffnen",
+  "extrasUntertitel": "Werkzeuge, die es nur für Mitglieder gibt.",
+  "pdfWerkzeugUebernehmen": "Übernehmen",
+  "extrasPdfUnterschreibenTitel": "Eigenes PDF unterschreiben",
+  "pdfWerkzeugFehlerZuGross": "Das Dokument ist zu groß (höchstens 20 MB).",
+  "pdfWerkzeugSeiteVon": "Seite {aktuell} von {gesamt}",
+  "pdfWerkzeugFehlerOeffnen": "Dieses PDF ließ sich nicht öffnen.",
+  "pdfWerkzeugTitel": "Eigenes PDF unterschreiben",
+  "@pdfWerkzeugSeiteVon": {
+    "placeholders": {
+      "aktuell": {
+        "type": "int"
+      },
+      "gesamt": {
+        "type": "int"
+      }
+    }
+  }
 }

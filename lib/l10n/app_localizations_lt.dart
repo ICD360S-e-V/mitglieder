@@ -3239,4 +3239,76 @@ class AppLocalizationsLt extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Flatpak aplinkoje automatinio paleidimo nustatyti negalima. Naudokite sistemos nustatymus.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Pasirinkite PDF';
+
+  @override
+  String get extrasTitel => 'Specialios funkcijos';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Piešti iš naujo';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Pridėti datą apačioje';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Tai patogumas jūsų pačių dokumentams — nuomos sutarčiai, formai, pranešimui apie nutraukimą. Tai neturi nieko bendra su parašais, kurių iš jūsų prašo asociacija: ten yra kodas SMS žinute ir antspaudas, čia ne.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Įdedama į dokumentą …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Nupieškite parašą';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Pasirašykite savo dokumentą ranka, neatiduodami jo svetimai interneto svetainei.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Dokumentas dar nepasirinktas.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Parašą galima perkelti; iš kampo jis didėja ir mažėja.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Nepavyko. Bandykite dar kartą.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Baigta. Pasirašytas dokumentas išsaugotas.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Įdėti parašą';
+
+  @override
+  String get pdfWerkzeugLeer => 'Dar nieko nenupiešta.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Atidaryti';
+
+  @override
+  String get extrasUntertitel => 'Įrankiai, kuriuos turi tik nariai.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Naudoti';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Pasirašyti savo PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Dokumentas per didelis (daugiausia 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return '$aktuell psl. iš $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Šio PDF atidaryti nepavyko.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Pasirašyti savo PDF';
 }

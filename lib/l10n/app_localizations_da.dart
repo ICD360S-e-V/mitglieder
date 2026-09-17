@@ -3239,4 +3239,76 @@ class AppLocalizationsDa extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'I Flatpak kan automatisk start ikke sættes. Brug dine systemindstillinger.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Vælg PDF';
+
+  @override
+  String get extrasTitel => 'Særlige funktioner';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Tegn igen';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Sæt datoen nedenunder';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Dette er en bekvemmelighed til dine egne dokumenter — lejekontrakt, formular, opsigelse. Det har intet at gøre med de underskrifter, foreningen beder dig om: dér er der en kode via SMS og et segl, her ikke.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Sættes ind i dokumentet …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Tegn din underskrift';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Underskriv et af dine egne dokumenter i hånden uden at give det til et fremmed websted.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Der er endnu ikke valgt et dokument.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Underskriften kan flyttes; i hjørnet bliver den større og mindre.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Det lykkedes ikke. Prøv igen.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Færdig. Det underskrevne dokument er gemt.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Indsæt underskriften';
+
+  @override
+  String get pdfWerkzeugLeer => 'Der er endnu ikke tegnet noget.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Åbn';
+
+  @override
+  String get extrasUntertitel => 'Værktøjer, som kun medlemmer har.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Brug denne';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Underskriv din egen PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Dokumentet er for stort (højst 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Side $aktuell af $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Denne PDF kunne ikke åbnes.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Underskriv din egen PDF';
 }

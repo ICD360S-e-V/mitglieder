@@ -3241,4 +3241,76 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'В Flatpak автозапуск установить нельзя. Используйте настройки системы.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Выбрать PDF';
+
+  @override
+  String get extrasTitel => 'Особые функции';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Нарисовать заново';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Поставить дату под подписью';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Это удобство для ваших собственных документов — договора аренды, анкеты, заявления о расторжении. Оно не имеет отношения к подписям, которые запрашивает объединение: там есть код по SMS и печать, здесь нет.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Вставляется в документ …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Нарисовать подпись';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Подпишите от руки собственный документ, не передавая его чужому сайту.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Документ ещё не выбран.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Подпись можно передвигать; за угол она увеличивается и уменьшается.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Не получилось. Попробуйте ещё раз.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Готово. Подписанный документ сохранён.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Вставить подпись';
+
+  @override
+  String get pdfWerkzeugLeer => 'Пока ничего не нарисовано.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Открыть';
+
+  @override
+  String get extrasUntertitel => 'Инструменты, доступные только членам.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Применить';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Подписать свой PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Документ слишком большой (не более 20 МБ).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Страница $aktuell из $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Этот PDF открыть не удалось.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Подписать свой PDF';
 }

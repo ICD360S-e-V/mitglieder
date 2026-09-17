@@ -3254,4 +3254,78 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'We Flatpaku nie można ustawić autostartu. Skorzystaj z ustawień systemu.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Wybierz PDF';
+
+  @override
+  String get extrasTitel => 'Funkcje specjalne';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Narysuj ponownie';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Dodaj datę poniżej';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'To udogodnienie dla Państwa własnych dokumentów — umowy najmu, formularza, wypowiedzenia. Nie ma nic wspólnego z podpisami, o które prosi stowarzyszenie: tam jest kod SMS i pieczęć, tutaj nie.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Wstawianie do dokumentu …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Narysuj podpis';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Podpisz odręcznie własny dokument, bez oddawania go obcej stronie internetowej.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Nie wybrano jeszcze żadnego dokumentu.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Podpis można przesuwać; w rogu powiększa się i pomniejsza.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'Nie udało się. Proszę spróbować jeszcze raz.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Gotowe. Podpisany dokument został zapisany.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Wstaw podpis';
+
+  @override
+  String get pdfWerkzeugLeer => 'Nic jeszcze nie narysowano.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Otwórz';
+
+  @override
+  String get extrasUntertitel => 'Narzędzia dostępne tylko dla członków.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Użyj';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Podpisz własny PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Dokument jest za duży (najwyżej 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Strona $aktuell z $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen =>
+      'Nie udało się otworzyć tego pliku PDF.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Podpisz własny PDF';
 }

@@ -3251,4 +3251,78 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'En Flatpak no se puede configurar el inicio automático. Use los ajustes del sistema.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Elegir un PDF';
+
+  @override
+  String get extrasTitel => 'Funciones especiales';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Dibujar de nuevo';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Añadir la fecha debajo';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Esto es una comodidad para sus propios documentos: contrato de alquiler, formulario, carta de baja. No tiene nada que ver con las firmas que le solicita la asociación: allí hay un código por SMS y un sello, aquí no.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Colocándola en el documento …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Dibujar la firma';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Firme a mano un documento propio, sin entregarlo a una página de Internet ajena.';
+
+  @override
+  String get pdfWerkzeugKeineDatei =>
+      'Todavía no se ha elegido ningún documento.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'La firma se puede mover; desde la esquina se hace más grande o más pequeña.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'No ha funcionado. Inténtelo de nuevo.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Listo. El documento firmado se ha guardado.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Colocar la firma';
+
+  @override
+  String get pdfWerkzeugLeer => 'Todavía no se ha dibujado nada.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Abrir';
+
+  @override
+  String get extrasUntertitel => 'Herramientas que solo tienen los socios.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Usar';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Firmar un PDF propio';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'El documento es demasiado grande (20 MB como máximo).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Página $aktuell de $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'No se ha podido abrir este PDF.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Firmar un PDF propio';
 }

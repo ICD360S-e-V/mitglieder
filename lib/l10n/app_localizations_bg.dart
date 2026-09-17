@@ -3246,4 +3246,76 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Във Flatpak автостартирането не може да се зададе. Използвайте системните настройки.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Изберете PDF';
+
+  @override
+  String get extrasTitel => 'Специални функции';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Нарисувайте отново';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Добави датата отдолу';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Това е удобство за вашите собствени документи — договор за наем, формуляр, предизвестие. Няма нищо общо с подписите, които сдружението иска от вас: там има код по SMS и печат, тук не.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Поставя се в документа …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Нарисувайте подписа';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Подпишете саморъчно собствен документ, без да го предавате на чужд сайт.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Все още не е избран документ.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Подписът може да се мести; от ъгъла се уголемява и намалява.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Не се получи. Опитайте отново.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Готово. Подписаният документ е запазен.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Постави подписа';
+
+  @override
+  String get pdfWerkzeugLeer => 'Още нищо не е нарисувано.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Отвори';
+
+  @override
+  String get extrasUntertitel => 'Инструменти, достъпни само за членове.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Използвай';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Подписване на собствен PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Документът е твърде голям (най-много 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Страница $aktuell от $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Този PDF не можа да бъде отворен.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Подписване на собствен PDF';
 }

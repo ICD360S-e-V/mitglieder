@@ -3241,4 +3241,75 @@ class AppLocalizationsSl extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'V Flatpaku samodejnega zagona ni mogoče nastaviti. Uporabite sistemske nastavitve.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Izberi PDF';
+
+  @override
+  String get extrasTitel => 'Posebne funkcije';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Nariši znova';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Pod podpis dodaj datum';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'To je pripomoček za vaše lastne dokumente — najemno pogodbo, obrazec, odpoved. Nima nobene zveze s podpisi, ki jih od vas zahteva društvo: tam sta koda po SMS in pečat, tu ne.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Vstavljanje v dokument …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Nariši podpis';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Lastnoročno podpišite svoj dokument, ne da bi ga izročili tuji spletni strani.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Dokument še ni izbran.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Podpis lahko premikate; z vogalom ga povečate ali pomanjšate.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Ni uspelo. Poskusite znova.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Končano. Podpisani dokument je shranjen.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Vstavi podpis';
+
+  @override
+  String get pdfWerkzeugLeer => 'Ničesar še ni narisanega.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Odpri';
+
+  @override
+  String get extrasUntertitel => 'Orodja, ki jih imajo samo člani.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Uporabi';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Podpiši lasten PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross => 'Dokument je prevelik (največ 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Stran $aktuell od $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Tega PDF-ja ni bilo mogoče odpreti.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Podpiši lasten PDF';
 }

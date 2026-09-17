@@ -3235,4 +3235,76 @@ class AppLocalizationsNb extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'I Flatpak kan autostart ikke settes. Bruk systeminnstillingene.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Velg PDF';
+
+  @override
+  String get extrasTitel => 'Spesialfunksjoner';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Tegn på nytt';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Sett datoen under';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Dette er en bekvemmelighet for dine egne dokumenter — leiekontrakt, skjema, oppsigelse. Det har ingenting å gjøre med underskriftene foreningen ber deg om: der finnes en kode via SMS og et segl, her ikke.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Settes inn i dokumentet …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Tegn signaturen din';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Undertegn et av dine egne dokumenter for hånd uten å gi det til et fremmed nettsted.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Ingen dokumenter er valgt ennå.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Signaturen kan flyttes; i hjørnet blir den større og mindre.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Det gikk ikke. Prøv igjen.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Ferdig. Det signerte dokumentet er lagret.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Sett inn signaturen';
+
+  @override
+  String get pdfWerkzeugLeer => 'Ingenting er tegnet ennå.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Åpne';
+
+  @override
+  String get extrasUntertitel => 'Verktøy bare medlemmer har.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Bruk';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Signer din egen PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Dokumentet er for stort (høyst 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Side $aktuell av $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Denne PDF-en kunne ikke åpnes.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Signer din egen PDF';
 }

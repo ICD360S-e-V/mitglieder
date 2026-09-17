@@ -3246,4 +3246,77 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Autostart cannot be set inside Flatpak. Please use your system settings.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Choose a PDF';
+
+  @override
+  String get extrasTitel => 'Special features';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Draw again';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Add today\'s date below';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'This is a convenience for your own documents — a lease, a form, a cancellation letter. It has nothing to do with the signatures the association asks of you: those come with a code by SMS and a seal, this one does not.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Placing it in the document …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Draw your signature';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Sign one of your own documents by hand, without handing it to an outside website.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'No document chosen yet.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Drag the signature to move it; the corner makes it larger or smaller.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'That did not work. Please try again.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Done. The signed document has been saved.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Place the signature';
+
+  @override
+  String get pdfWerkzeugLeer => 'Nothing has been drawn yet.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Open';
+
+  @override
+  String get extrasUntertitel => 'Tools that only members get.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Use this';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Sign your own PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'The document is too large (20 MB at most).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Page $aktuell of $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'This PDF could not be opened.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Sign your own PDF';
 }

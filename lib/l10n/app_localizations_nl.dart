@@ -3255,4 +3255,78 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'In Flatpak kan automatisch opstarten niet worden ingesteld. Gebruik uw systeeminstellingen.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Pdf kiezen';
+
+  @override
+  String get extrasTitel => 'Speciale functies';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Opnieuw tekenen';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Datum eronder zetten';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Dit is een gemak voor uw eigen documenten — huurcontract, formulier, opzegging. Het heeft niets te maken met de handtekeningen die de vereniging van u vraagt: daar is er een code per sms en een zegel, hier niet.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Wordt in het document gezet …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Handtekening zetten';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Onderteken een eigen document met de hand, zonder het aan een vreemde website te geven.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Nog geen document gekozen.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'De handtekening kunt u verschuiven; met de hoek wordt ze groter en kleiner.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'Dat is niet gelukt. Probeer het opnieuw.';
+
+  @override
+  String get pdfWerkzeugFertig =>
+      'Klaar. Het ondertekende document is opgeslagen.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Handtekening plaatsen';
+
+  @override
+  String get pdfWerkzeugLeer => 'Er is nog niets getekend.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Openen';
+
+  @override
+  String get extrasUntertitel => 'Hulpmiddelen die alleen leden hebben.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Gebruiken';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Eigen pdf ondertekenen';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Het document is te groot (hoogstens 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Pagina $aktuell van $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Deze pdf kon niet worden geopend.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Eigen pdf ondertekenen';
 }

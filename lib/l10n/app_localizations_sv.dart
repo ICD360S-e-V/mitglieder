@@ -3232,4 +3232,77 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'I Flatpak kan autostart inte ställas in. Använd dina systeminställningar.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Välj PDF';
+
+  @override
+  String get extrasTitel => 'Särskilda funktioner';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Rita om';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Sätt dagens datum under';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Detta är en bekvämlighet för dina egna dokument — hyreskontrakt, blankett, uppsägning. Det har inget att göra med de underskrifter föreningen begär av dig: där finns en kod via SMS och ett sigill, här inte.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Placeras i dokumentet …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Rita din namnteckning';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Skriv under ett eget dokument för hand utan att lämna det till en främmande webbplats.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Inget dokument har valts ännu.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Namnteckningen går att flytta; i hörnet blir den större och mindre.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Det gick inte. Försök igen.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Klart. Det signerade dokumentet är sparat.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Placera namnteckningen';
+
+  @override
+  String get pdfWerkzeugLeer => 'Ingenting har ritats ännu.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Öppna';
+
+  @override
+  String get extrasUntertitel => 'Verktyg som bara medlemmar har.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Använd';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Signera din egen PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Dokumentet är för stort (högst 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Sida $aktuell av $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen =>
+      'Den här PDF-filen gick inte att öppna.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Signera din egen PDF';
 }

@@ -3262,4 +3262,77 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Στο Flatpak δεν μπορεί να οριστεί αυτόματη εκκίνηση. Χρησιμοποιήστε τις ρυθμίσεις συστήματος.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Επιλογή PDF';
+
+  @override
+  String get extrasTitel => 'Ειδικές λειτουργίες';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Σχεδιάστε ξανά';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Προσθήκη ημερομηνίας από κάτω';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Αυτό είναι μια διευκόλυνση για τα δικά σας έγγραφα — μισθωτήριο, έντυπο, καταγγελία. Δεν έχει καμία σχέση με τις υπογραφές που ζητά ο σύλλογος από εσάς: εκεί υπάρχει κωδικός μέσω SMS και σφραγίδα, εδώ όχι.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Τοποθετείται στο έγγραφο …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Σχεδιάστε την υπογραφή';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Υπογράψτε ιδιοχείρως ένα δικό σας έγγραφο, χωρίς να το δώσετε σε ξένη ιστοσελίδα.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Δεν έχει επιλεγεί ακόμη έγγραφο.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Η υπογραφή μετακινείται· από τη γωνία μεγαλώνει και μικραίνει.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Δεν πέτυχε. Δοκιμάστε ξανά.';
+
+  @override
+  String get pdfWerkzeugFertig =>
+      'Έτοιμο. Το υπογεγραμμένο έγγραφο αποθηκεύτηκε.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Τοποθέτηση υπογραφής';
+
+  @override
+  String get pdfWerkzeugLeer => 'Δεν έχει σχεδιαστεί ακόμη τίποτα.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Άνοιγμα';
+
+  @override
+  String get extrasUntertitel => 'Εργαλεία μόνο για τα μέλη.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Χρήση';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Υπογραφή δικού σας PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Το έγγραφο είναι πολύ μεγάλο (το πολύ 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Σελίδα $aktuell από $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Αυτό το PDF δεν μπόρεσε να ανοίξει.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Υπογραφή δικού σας PDF';
 }

@@ -80,12 +80,11 @@ void main() {
           unreadChatCount: 12,
           unreadTicketCount: 3,
           pendingTerminCount: 5,
-          ungeleseneBenachrichtigungen: 9,
           onHome: () => getippt.add('home'),
           onTermine: () => getippt.add('termine'),
           onTickets: () => getippt.add('tickets'),
           onLiveChat: () => getippt.add('chat'),
-          onNotifications: () => getippt.add('glocke'),
+          onExtras: () => getippt.add('extras'),
           onProfile: () => getippt.add('profil'),
         ),
         body: const SizedBox.shrink(),
@@ -97,7 +96,7 @@ void main() {
       Icons.calendar_month_outlined: 'termine',
       Icons.local_activity_outlined: 'tickets',
       Icons.forum_outlined: 'chat',
-      Icons.notifications_outlined: 'glocke',
+      Icons.auto_awesome_outlined: 'extras',
       Icons.person_outlined: 'profil',
     };
 
@@ -111,44 +110,44 @@ void main() {
 
     expect(getippt, symbole.values.toList());
 
-    // Die Plakette an der Glocke zeigt die Zahl — hier stand wörtlich
-    // „$anzahl", weil das Dollarzeichen im Quelltext escaped war.
-    expect(find.text('9'), findsOneWidget);
-    expect(find.textContaining('anzahl'), findsNothing);
-
     await _abraeumen(tester);
   });
 
-  testWidgets('AppBar: die Glocke reagiert auch mit dreistelliger Plakette',
+  testWidgets('AppBar: der Stern bleibt auch neben vollen Plaketten erreichbar',
       (tester) async {
-    // Der breiteste Fall: „99+" liegt über der Mitte der Glocke. Ohne
-    // IgnorePointer schluckt die Plakette den Tipper, und die Glocke wirkt
-    // kaputt — für ein Mitglied mit vielen ungelesenen Meldungen der Normalfall.
-    var geglockt = 0;
+    // Vorher stand hier der Fall der Glocke: ihre Plakette wurde bei „99+" so
+    // breit, dass sie über der Mitte der Glocke lag und jeden Tipper
+    // schluckte. Die Glocke ist weg, die Gefahr nicht: der Stern steht
+    // zwischen vier Schaltflächen, die alle eine Plakette tragen können, und
+    // die Zeile schrumpft erst, wenn sie sonst nicht mehr passt. Getestet wird
+    // deshalb der volle Fall — alle Zähler an der Obergrenze, schmalstes
+    // Gerät, größte Systemschrift.
+    var gesternt = 0;
     await _pump(
       tester,
       Scaffold(
         appBar: MitgliedAppBar(
           mitgliedernummer: '360-1234',
           status: 'active',
-          unreadChatCount: 0,
-          unreadTicketCount: 0,
-          ungeleseneBenachrichtigungen: 150,
+          unreadChatCount: 150,
+          unreadTicketCount: 150,
+          pendingTerminCount: 150,
           onHome: () {},
           onTermine: () {},
           onTickets: () {},
           onLiveChat: () {},
-          onNotifications: () => geglockt++,
+          onExtras: () => gesternt++,
           onProfile: () {},
         ),
         body: const SizedBox.shrink(),
       ),
     );
 
-    expect(find.text('99+'), findsOneWidget);
-    await tester.tap(find.byIcon(Icons.notifications_outlined));
+    final stern = find.byIcon(Icons.auto_awesome_outlined);
+    _erwarteVollstaendigSichtbar(tester, stern);
+    await tester.tap(stern);
     await tester.pump();
-    expect(geglockt, 1, reason: 'Die Plakette hat den Tipper verschluckt');
+    expect(gesternt, 1, reason: 'Der Stern war nicht zu treffen');
     await _abraeumen(tester);
   });
 

@@ -3242,4 +3242,75 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Flatpak içinde otomatik başlatma ayarlanamaz. Lütfen sistem ayarlarını kullanın.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'PDF seçin';
+
+  @override
+  String get extrasTitel => 'Özel işlevler';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Yeniden çizin';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Altına tarihi ekle';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Bu, kendi belgeleriniz için bir kolaylıktır — kira sözleşmesi, form, fesih yazısı. Derneğin sizden istediği imzalarla ilgisi yoktur: orada SMS ile bir kod ve bir mühür vardır, burada yoktur.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Belgeye yerleştiriliyor …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'İmzanızı çizin';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Kendi belgenizi yabancı bir internet sitesine vermeden elle imzalayın.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Henüz belge seçilmedi.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'İmza taşınabilir; köşesinden büyütülüp küçültülebilir.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Olmadı. Lütfen tekrar deneyin.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Bitti. İmzalanan belge kaydedildi.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'İmzayı yerleştir';
+
+  @override
+  String get pdfWerkzeugLeer => 'Henüz hiçbir şey çizilmedi.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Aç';
+
+  @override
+  String get extrasUntertitel => 'Yalnızca üyelerin sahip olduğu araçlar.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Kullan';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Kendi PDF\'nizi imzalayın';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross => 'Belge çok büyük (en fazla 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Sayfa $aktuell / $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Bu PDF açılamadı.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Kendi PDF\'nizi imzalayın';
 }

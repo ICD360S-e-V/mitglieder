@@ -3233,4 +3233,78 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Flatpakis automaatkäivitust seada ei saa. Kasutage süsteemi seadeid.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Vali PDF';
+
+  @override
+  String get extrasTitel => 'Erifunktsioonid';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Joonistage uuesti';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Lisa kuupäev alla';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'See on mugavus teie enda dokumentide jaoks — üürileping, vorm, ülesütlemisavaldus. Sellel pole mingit pistmist allkirjadega, mida ühing teilt palub: seal on SMS-iga kood ja pitser, siin mitte.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Asetatakse dokumenti …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Joonistage allkiri';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Allkirjastage oma dokument käsitsi, andmata seda võõrale veebisaidile.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Ühtegi dokumenti pole veel valitud.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Allkirja saab liigutada; nurgast muutub see suuremaks ja väiksemaks.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'See ei õnnestunud. Palun proovige uuesti.';
+
+  @override
+  String get pdfWerkzeugFertig =>
+      'Valmis. Allkirjastatud dokument on salvestatud.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Aseta allkiri';
+
+  @override
+  String get pdfWerkzeugLeer => 'Midagi pole veel joonistatud.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Ava';
+
+  @override
+  String get extrasUntertitel => 'Tööriistad, mis on ainult liikmetel.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Kasuta';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Allkirjasta oma PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Dokument on liiga suur (kõige rohkem 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Lehekülg $aktuell / $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Seda PDF-i ei õnnestunud avada.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Allkirjasta oma PDF';
 }
