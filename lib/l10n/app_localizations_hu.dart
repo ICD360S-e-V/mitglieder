@@ -3246,4 +3246,77 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Flatpakban az automatikus indítás nem állítható be. Használja a rendszerbeállításokat.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'PDF kiválasztása';
+
+  @override
+  String get extrasTitel => 'Különleges funkciók';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Rajzolja újra';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Dátum hozzáadása alá';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Ez kényelmi szolgáltatás a saját dokumentumaihoz — bérleti szerződés, űrlap, felmondás. Semmi köze azokhoz az aláírásokhoz, amelyeket az egyesület kér Öntől: ott van SMS-ben kapott kód és pecsét, itt nincs.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Elhelyezés a dokumentumban …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Rajzolja meg az aláírást';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Írja alá kézzel a saját dokumentumát anélkül, hogy idegen internetes oldalnak adná.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Még nincs kiválasztva dokumentum.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Az aláírás mozgatható; a sarkánál nagyítható és kicsinyíthető.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'Nem sikerült. Kérjük, próbálja újra.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Kész. Az aláírt dokumentum mentve.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Aláírás elhelyezése';
+
+  @override
+  String get pdfWerkzeugLeer => 'Még semmi sincs megrajzolva.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Megnyitás';
+
+  @override
+  String get extrasUntertitel => 'Eszközök, amelyek csak a tagoké.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Használat';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Saját PDF aláírása';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'A dokumentum túl nagy (legfeljebb 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return '$aktuell. oldal / $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Ezt a PDF-et nem sikerült megnyitni.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Saját PDF aláírása';
 }

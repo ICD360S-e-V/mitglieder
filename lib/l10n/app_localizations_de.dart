@@ -3262,4 +3262,78 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Im Flatpak lässt sich der Autostart nicht setzen. Bitte über die Einstellungen Ihres Systems.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'PDF auswählen';
+
+  @override
+  String get extrasTitel => 'Sonderfunktionen';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Neu malen';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Datum darunter setzen';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Dies ist eine Bequemlichkeit für Ihre eigenen Dokumente — Mietvertrag, Formular, Kündigung. Sie hat nichts mit den Unterschriften zu tun, die der Verein von Ihnen anfordert: dort gibt es einen Code per SMS und ein Siegel, hier nicht.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Das Dokument wird gesetzt …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Unterschrift malen';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Ein eigenes Dokument mit der Hand unterschreiben, ohne es einer fremden Internetseite zu geben.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Noch kein Dokument gewählt.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Die Unterschrift lässt sich verschieben; an der Ecke wird sie größer und kleiner.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'Das hat nicht geklappt. Bitte noch einmal versuchen.';
+
+  @override
+  String get pdfWerkzeugFertig =>
+      'Fertig. Das unterschriebene Dokument ist gespeichert.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Unterschrift einsetzen';
+
+  @override
+  String get pdfWerkzeugLeer => 'Es wurde noch nichts gemalt.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Öffnen';
+
+  @override
+  String get extrasUntertitel => 'Werkzeuge, die es nur für Mitglieder gibt.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Übernehmen';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Eigenes PDF unterschreiben';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Das Dokument ist zu groß (höchstens 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Seite $aktuell von $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Dieses PDF ließ sich nicht öffnen.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Eigenes PDF unterschreiben';
 }

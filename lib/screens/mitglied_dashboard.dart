@@ -21,7 +21,6 @@ import '../widgets/video_call_screen.dart';
 import '../widgets/legal_footer.dart';
 import '../widgets/live_chat_dialog.dart';
 import '../widgets/benachrichtigung_consent_dialog.dart';
-import '../widgets/benachrichtigungen_dialog.dart';
 import '../widgets/update_dialog.dart';
 import '../widgets/ticket_dialogs.dart';
 import '../services/ticket_service.dart';
@@ -46,7 +45,9 @@ import '../widgets/remote_consent_dialog.dart';
 import '../widgets/remote_sharing_banner.dart';
 import '../services/termin_service.dart';
 import '../widgets/signatur_card.dart';
+import '../widgets/mitglied_extras_dialog.dart';
 import 'signatur_screen.dart';
+import 'pdf_werkzeug_screen.dart';
 import '../utils/app_theme.dart';
 
 final _log = LoggerService();
@@ -155,8 +156,6 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   bool _isLoadingTickets = true;
   bool _ticketsLoadStarted = false;
 
-  /// Ungelesene Benachrichtigungen — steuert den Punkt auf der Glocke.
-  int _ungeleseneBenachrichtigungen = 0;
   String _ticketFilter = 'all'; // all, open, in_progress, done
   Timer? _ticketRefreshTimer;
 
@@ -267,7 +266,6 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       // angenommen, fuehrt dieser Aufruf ihn zu Ende.
       _wartendenAnrufPruefen();
       BenachrichtigungConsentDialog.zeigenFallsNoetig(context, _apiService);
-      _ladeUngelesene();
       // Und mit Abstand die Frage nach der Berechtigung fuer den
       // Klingelschirm. ⚠️ Sie darf einen laufenden Anruf nicht verdecken —
       // deshalb die Wache auf den Zustand.
@@ -1274,21 +1272,27 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     );
   }
 
-  Future<void> _ladeUngelesene() async {
-    final res = await _apiService.getBenachrichtigungen();
-    if (!mounted || res['success'] != true) return;
-    setState(() => _ungeleseneBenachrichtigungen =
-        res['ungelesen'] is int ? res['ungelesen'] : 0);
+  /// Die Sonderfunktionen hinter dem Stern in der Leiste.
+  void _showExtrasDialog() {
+    showDialog<void>(
+      context: context,
+      builder: (_) => MitgliedExtrasDialog(
+        onPdfUnterschreiben: _openPdfWerkzeug,
+      ),
+    );
   }
 
-  void _showNotificationsDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => BenachrichtigungenDialog(
-        apiService: _apiService,
-        onUngelesen: (n) {
-          if (mounted) setState(() => _ungeleseneBenachrichtigungen = n);
-        },
+  /// Das Werkzeug fuer die eigenen PDFs des Mitglieds.
+  ///
+  /// NICHT [_openSignaturen]: dort liegen die Dokumente, die der Verein zur
+  /// Unterschrift stellt — mit TAN, Siegel und Beweiskette. Hier bringt das
+  /// Mitglied ein eigenes Dokument mit, und es entsteht nichts, was etwas
+  /// beweisen soll.
+  void _openPdfWerkzeug() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => PdfWerkzeugScreen(apiService: _apiService),
       ),
     );
   }
@@ -1354,8 +1358,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
           });
         },
         onLiveChat: _showLiveChatDialog,
-        onNotifications: _showNotificationsDialog,
-        ungeleseneBenachrichtigungen: _ungeleseneBenachrichtigungen,
+        onExtras: _showExtrasDialog,
         onProfile: _showProfileDialog,
       ),
       body: SeasonalBackground(

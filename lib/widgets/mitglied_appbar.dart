@@ -15,11 +15,9 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onTermine;
   final VoidCallback onTickets;
   final VoidCallback onLiveChat;
-  final VoidCallback onNotifications;
 
-  /// Ungelesene Benachrichtigungen. 0 heißt: kein Punkt — der war vorher fest
-  /// gemalt und leuchtete auch dann, wenn nichts anlag.
-  final int ungeleseneBenachrichtigungen;
+  /// Öffnet die Sonderfunktionen — Werkzeuge, die nur Mitglieder haben.
+  final VoidCallback onExtras;
   final VoidCallback onProfile;
 
   const MitgliedAppBar({
@@ -33,8 +31,7 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onTermine,
     required this.onTickets,
     required this.onLiveChat,
-    required this.onNotifications,
-    this.ungeleseneBenachrichtigungen = 0,
+    required this.onExtras,
     required this.onProfile,
   });
 
@@ -118,12 +115,11 @@ class MitgliedAppBar extends StatelessWidget implements PreferredSizeWidget {
           iconSize: iconSize,
         ),
         SizedBox(width: spacing),
-        // Notifications bell
-        _NotificationIcon(
-          onPressed: onNotifications,
-          tooltip: l10n.notifications,
-          iconSize: iconSize,
-          anzahl: ungeleseneBenachrichtigungen,
+        // Sonderfunktionen
+        IconButton(
+          icon: Icon(Icons.auto_awesome_outlined, size: iconSize, color: Colors.white),
+          onPressed: onExtras,
+          tooltip: l10n.extrasTitel,
         ),
         SizedBox(width: spacing),
         // Profile
@@ -304,66 +300,6 @@ class _CalendarIconWithBadge extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-      ],
-    );
-  }
-}
-
-class _NotificationIcon extends StatelessWidget {
-  final VoidCallback onPressed;
-  final String tooltip;
-  final double iconSize;
-
-  final int anzahl;
-
-  const _NotificationIcon({
-    required this.onPressed,
-    required this.tooltip,
-    required this.iconSize,
-    this.anzahl = 0,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        IconButton(
-          icon: Icon(Icons.notifications_outlined, size: iconSize, color: Colors.white),
-          onPressed: onPressed,
-          tooltip: tooltip,
-        ),
-        // Punkt nur, wenn wirklich etwas ungelesen ist.
-        if (anzahl > 0)
-          Positioned(
-            right: 4,
-            top: 4,
-            // IgnorePointer, weil die Plakette über der Schaltfläche liegt und
-            // Tipper sonst in ihr versanden — bei einem breiten Wert deckt sie
-            // die Mitte der Glocke ab, und die Glocke reagiert nicht mehr.
-            child: IgnorePointer(
-              child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-              decoration: BoxDecoration(
-                color: context.colors.dangerSolid,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              constraints: const BoxConstraints(minWidth: 16),
-              child: Text(
-                // Vorher stand hier '\$anzahl' mit Fluchtzeichen: in der
-                // Plakette erschien wörtlich „$anzahl" statt der Zahl — und
-                // weil der Text dadurch so breit wurde, deckte die Plakette die
-                // Mitte der Glocke ab und schluckte jeden Tipper.
-                anzahl > 99 ? '99+' : '$anzahl',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
               ),
             ),
           ),

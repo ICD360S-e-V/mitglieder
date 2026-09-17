@@ -3242,4 +3242,76 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'У Flatpak автозапуск встановити неможливо. Скористайтеся налаштуваннями системи.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Вибрати PDF';
+
+  @override
+  String get extrasTitel => 'Особливі функції';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Намалювати заново';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Поставити дату під підписом';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Це зручність для ваших власних документів — договору оренди, анкети, заяви про розірвання. Вона не має стосунку до підписів, яких вимагає об\'єднання: там є код через SMS і печатка, тут ні.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Вставляється в документ …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Намалювати підпис';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Підпишіть від руки власний документ, не передаючи його чужому сайту.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Документ ще не вибрано.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Підпис можна пересувати; за ріг він збільшується і зменшується.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Не вийшло. Спробуйте ще раз.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Готово. Підписаний документ збережено.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Вставити підпис';
+
+  @override
+  String get pdfWerkzeugLeer => 'Поки що нічого не намальовано.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Відкрити';
+
+  @override
+  String get extrasUntertitel => 'Інструменти, доступні лише членам.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Застосувати';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Підписати власний PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Документ завеликий (щонайбільше 20 МБ).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Сторінка $aktuell з $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Цей PDF відкрити не вдалося.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Підписати власний PDF';
 }

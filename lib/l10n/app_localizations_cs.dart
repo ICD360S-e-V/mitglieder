@@ -3235,4 +3235,77 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Ve Flatpaku nelze automatické spuštění nastavit. Použijte nastavení systému.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Vybrat PDF';
+
+  @override
+  String get extrasTitel => 'Zvláštní funkce';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Nakreslit znovu';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Přidat datum pod podpis';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Toto je pohodlí pro vaše vlastní dokumenty — nájemní smlouvu, formulář, výpověď. Nemá to nic společného s podpisy, které od vás žádá spolek: tam je kód přes SMS a pečeť, zde ne.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Vkládá se do dokumentu …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Nakreslit podpis';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Podepište rukou vlastní dokument, aniž byste jej dávali cizí internetové stránce.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Zatím není vybrán žádný dokument.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Podpisem lze posouvat; v rohu se zvětšuje a zmenšuje.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'Nepodařilo se to. Zkuste to prosím znovu.';
+
+  @override
+  String get pdfWerkzeugFertig => 'Hotovo. Podepsaný dokument byl uložen.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Vložit podpis';
+
+  @override
+  String get pdfWerkzeugLeer => 'Zatím nebylo nic nakresleno.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Otevřít';
+
+  @override
+  String get extrasUntertitel => 'Nástroje, které mají jen členové.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Použít';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Podepsat vlastní PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Dokument je příliš velký (nejvýše 20 MB).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Strana $aktuell z $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Toto PDF se nepodařilo otevřít.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Podepsat vlastní PDF';
 }

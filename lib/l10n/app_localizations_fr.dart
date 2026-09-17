@@ -3272,4 +3272,78 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Dans Flatpak, le démarrage automatique ne peut pas être réglé. Utilisez les paramètres de votre système.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Choisir un PDF';
+
+  @override
+  String get extrasTitel => 'Fonctions spéciales';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Recommencer';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Ajouter la date en dessous';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Il s\'agit d\'une commodité pour vos propres documents — bail, formulaire, lettre de résiliation. Cela n\'a rien à voir avec les signatures que l\'association vous demande : là, il y a un code par SMS et un sceau, ici non.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Insertion dans le document …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Tracer votre signature';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Signer à la main un de vos documents, sans le confier à un site Internet étranger.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Aucun document choisi pour l\'instant.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'La signature se déplace ; le coin permet de l\'agrandir ou de la réduire.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'Cela n\'a pas fonctionné. Veuillez réessayer.';
+
+  @override
+  String get pdfWerkzeugFertig =>
+      'Terminé. Le document signé a été enregistré.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Apposer la signature';
+
+  @override
+  String get pdfWerkzeugLeer => 'Rien n\'a encore été tracé.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Ouvrir';
+
+  @override
+  String get extrasUntertitel => 'Des outils réservés aux membres.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Utiliser';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Signer votre propre PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Le document est trop volumineux (20 Mo au maximum).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Page $aktuell sur $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Ce PDF n\'a pas pu être ouvert.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Signer votre propre PDF';
 }

@@ -1533,6 +1533,95 @@ class ApiService {
         'grund': grund,
       });
 
+  // ========== PDF-WERKZEUG ==========
+  //
+  // ACHTUNG: das hier ist NICHT die digitale Unterschrift oben drüber.
+  //
+  // Oben fordert der Verein ein Dokument an, es gibt eine TAN per SMS, ein
+  // Siegel, einen Zeitstempel und eine Beweiskette — das soll vor Gericht
+  // halten. Hier hat das Mitglied privat einen Mietvertrag oder ein Formular
+  // und will es unterschreiben, ohne es bei smallpdf hochzuladen. Kein
+  // Datenbankeintrag, kein Code, kein Siegel, kein Beweiswert.
+  //
+  // Wer die beiden zusammenlegt, zerstört den Beweiswert der echten
+  // Unterschriften: in derselben Tabelle stünden dann Zeilen ohne TAN und ohne
+  // Kette, und die müsste im Streitfall jemand erklären.
+
+  /// Setzt die gemalte Unterschrift in das mitgebrachte PDF und gibt das
+  /// fertige Dokument zurück.
+  ///
+  /// [x], [y], [breite] und [hoehe] sind Anteile der Seite (0…1), [y] von oben
+  /// gerechnet — nicht Millimeter. Die Seitenmaße kennt erst der Server, und
+  /// zwar für JEDE Seite einzeln; ein Dokument mit einer Querformatseite
+  /// zwischen Hochformatseiten würde sonst die Unterschrift verrücken.
+  ///
+  /// Die Anfrage geht durch [_client] und damit durch das Zertifikats-Pinning.
+  /// Eine nackte `MultipartRequest.send()` nähme ihren eigenen Client und
+  /// damit den Zertifikatsspeicher der Plattform — ausgerechnet beim einzigen
+  /// Aufruf, der ein fremdes Privatdokument überträgt.
+  Future<({Uint8List? pdf, String? fehler})> pdfWerkzeugUnterschreiben({
+    required String pdfPfad,
+    required String unterschriftSvg,
+    required int seite,
+    required double x,
+    required double y,
+    required double breite,
+    required double hoehe,
+    bool mitDatum = false,
+  }) async {
+    try {
+      final request = http.MultipartRequest(
+        'POST',
+        Uri.parse('$baseUrl/member/pdf_werkzeug.php'),
+      );
+
+      // _headers setzt Content-Type: application/json — das wäre hier falsch
+      // und würde die Multipart-Grenze überschreiben. Deshalb die drei Köpfe,
+      // auf die es ankommt, einzeln.
+      request.headers['User-Agent'] = 'ICD360S-Mitglied/1.0';
+      if (_token != null) request.headers['Authorization'] = 'Bearer $_token';
+      final deviceKey = _deviceKeyService.deviceKey;
+      if (deviceKey != null) request.headers['X-Device-Key'] = deviceKey;
+
+      request.files.add(await http.MultipartFile.fromPath('datei', pdfPfad));
+      request.fields.addAll({
+        'unterschrift_svg': unterschriftSvg,
+        'seite': '$seite',
+        'x': x.toStringAsFixed(6),
+        'y': y.toStringAsFixed(6),
+        'b': breite.toStringAsFixed(6),
+        'h': hoehe.toStringAsFixed(6),
+        'mit_datum': mitDatum ? '1' : '0',
+      });
+
+      final streamed = await _client.send(request)
+          .timeout(const Duration(seconds: 120));
+      final antwort = await http.Response.fromStream(streamed);
+
+      // PDF heißt: fertig. JSON heißt: der Server hat einen Grund, und den
+      // soll das Mitglied lesen statt eine kaputte Datei zu bekommen.
+      if (antwort.statusCode == 200 &&
+          (antwort.headers['content-type'] ?? '').contains('pdf')) {
+        return (pdf: antwort.bodyBytes, fehler: null);
+      }
+
+      String? meldung;
+      try {
+        final daten = jsonDecode(antwort.body);
+        if (daten is Map) meldung = daten['message']?.toString();
+      } catch (_) {
+        // Weder PDF noch JSON — dann bleibt es beim Statuscode unten.
+      }
+      LoggerService().warning(
+        'PDF-Werkzeug: HTTP ${antwort.statusCode} ${meldung ?? ''}',
+        tag: 'PDFWERK');
+      return (pdf: null, fehler: meldung);
+    } catch (e) {
+      LoggerService().error('PDF-Werkzeug: $e', tag: 'PDFWERK');
+      return (pdf: null, fehler: null);
+    }
+  }
+
   Future<Map<String, dynamic>> _postSignatur(Map<String, dynamic> body) async {
     try {
       final response = await _client.post(

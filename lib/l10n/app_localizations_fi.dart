@@ -3240,4 +3240,77 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'Flatpakissa automaattista käynnistystä ei voi asettaa. Käytä järjestelmän asetuksia.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'Valitse PDF';
+
+  @override
+  String get extrasTitel => 'Erityistoiminnot';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'Piirrä uudelleen';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'Lisää päivämäärä alle';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'Tämä on kätevyys omia asiakirjojasi varten — vuokrasopimus, lomake, irtisanominen. Sillä ei ole mitään tekemistä niiden allekirjoitusten kanssa, joita yhdistys sinulta pyytää: siellä on koodi tekstiviestillä ja sinetti, täällä ei.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'Asetetaan asiakirjaan …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'Piirrä allekirjoitus';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'Allekirjoita oma asiakirjasi käsin antamatta sitä vieraalle verkkosivustolle.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'Asiakirjaa ei ole vielä valittu.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'Allekirjoitusta voi siirtää; kulmasta se suurenee ja pienenee.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein => 'Se ei onnistunut. Yritä uudelleen.';
+
+  @override
+  String get pdfWerkzeugFertig =>
+      'Valmis. Allekirjoitettu asiakirja on tallennettu.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'Aseta allekirjoitus';
+
+  @override
+  String get pdfWerkzeugLeer => 'Mitään ei ole vielä piirretty.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'Avaa';
+
+  @override
+  String get extrasUntertitel => 'Työkaluja, jotka ovat vain jäsenillä.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'Käytä';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'Allekirjoita oma PDF';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'Asiakirja on liian suuri (enintään 20 Mt).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'Sivu $aktuell / $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'Tätä PDF-tiedostoa ei voitu avata.';
+
+  @override
+  String get pdfWerkzeugTitel => 'Allekirjoita oma PDF';
 }

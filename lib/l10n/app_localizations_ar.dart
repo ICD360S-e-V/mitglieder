@@ -3208,4 +3208,77 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get autostartFlatpak =>
       'لا يمكن ضبط البدء التلقائي داخل Flatpak. استخدم إعدادات النظام.';
+
+  @override
+  String get pdfWerkzeugDateiWaehlen => 'اختيار ملف PDF';
+
+  @override
+  String get extrasTitel => 'وظائف خاصة';
+
+  @override
+  String get pdfWerkzeugUnterschriftNochmal => 'ارسم من جديد';
+
+  @override
+  String get pdfWerkzeugMitDatum => 'إضافة التاريخ أسفله';
+
+  @override
+  String get pdfWerkzeugHinweisRechtlich =>
+      'هذه تسهيلات لمستنداتك الخاصة — عقد إيجار أو استمارة أو خطاب إنهاء. ولا علاقة لها بالتوقيعات التي تطلبها الجمعية منك: فهناك رمز عبر الرسائل القصيرة وختم، وهنا لا يوجد.';
+
+  @override
+  String get pdfWerkzeugLaeuft => 'جارٍ إدراجه في المستند …';
+
+  @override
+  String get pdfWerkzeugUnterschriftMalen => 'ارسم توقيعك';
+
+  @override
+  String get extrasPdfUnterschreibenText =>
+      'وقّع مستندك بخط يدك دون تسليمه إلى موقع إنترنت خارجي.';
+
+  @override
+  String get pdfWerkzeugKeineDatei => 'لم يتم اختيار أي مستند بعد.';
+
+  @override
+  String get pdfWerkzeugPlatzierenHinweis =>
+      'يمكن تحريك التوقيع، ومن الزاوية يكبر ويصغر.';
+
+  @override
+  String get pdfWerkzeugFehlerAllgemein =>
+      'لم ينجح ذلك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get pdfWerkzeugFertig => 'تم. حُفظ المستند الموقَّع.';
+
+  @override
+  String get pdfWerkzeugFertigstellen => 'إدراج التوقيع';
+
+  @override
+  String get pdfWerkzeugLeer => 'لم يُرسم شيء بعد.';
+
+  @override
+  String get pdfWerkzeugOeffnen => 'فتح';
+
+  @override
+  String get extrasUntertitel => 'أدوات متاحة للأعضاء فقط.';
+
+  @override
+  String get pdfWerkzeugUebernehmen => 'استخدام';
+
+  @override
+  String get extrasPdfUnterschreibenTitel => 'توقيع ملف PDF خاص بك';
+
+  @override
+  String get pdfWerkzeugFehlerZuGross =>
+      'المستند كبير جدًا (20 ميغابايت كحد أقصى).';
+
+  @override
+  String pdfWerkzeugSeiteVon(int aktuell, int gesamt) {
+    return 'الصفحة $aktuell من $gesamt';
+  }
+
+  @override
+  String get pdfWerkzeugFehlerOeffnen => 'تعذّر فتح ملف PDF هذا.';
+
+  @override
+  String get pdfWerkzeugTitel => 'توقيع ملف PDF خاص بك';
 }
