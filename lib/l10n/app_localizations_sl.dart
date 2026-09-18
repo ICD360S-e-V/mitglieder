@@ -3312,4 +3312,112 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Podpiši lasten PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Računalo';
+
+  @override
+  String get extrasRechnerText =>
+      'Seštevanje, odštevanje, odstotki — z oklepaji in zgodovino, ki je samo vaša.';
+
+  @override
+  String get rechnerTitel => 'Računalo';
+
+  @override
+  String get rechnerVerlauf => 'Zgodovina';
+
+  @override
+  String get rechnerZurueck => 'Nazaj na računalo';
+
+  @override
+  String get rechnerVorrang =>
+      'Množenje pred seštevanjem: 2 + 3 × 4 = 14. Za drugačen vrstni red uporabite oklepaje.';
+
+  @override
+  String get rechnerKopieren => 'Kopiraj';
+
+  @override
+  String get rechnerKopiert => 'Rezultat kopiran';
+
+  @override
+  String get rechnerLeer => 'Še nič izračunanega.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Vsak končan izračun se shrani — šifrirano in viden samo temu računu.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Tu ni ničesar — izračunov te seje ni bilo mogoče shraniti.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Dotik vrstice nadaljuje računanje z njenim rezultatom.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Izbriši vse';
+
+  @override
+  String get rechnerLoeschen => 'Izbriši';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Izbrisati ta izračun?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Izbriši ta izračun';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Tega ni mogoče razveljaviti.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Izbrisati zgodovino?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Vsi shranjeni izračuni bodo odstranjeni. Tega ni mogoče razveljaviti.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Brisanje ni uspelo';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Zgodovine ni bilo mogoče naložiti — torej ni prazna, ampak neznana. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Enega izračuna ni bilo mogoče zapisati v zgodovino. Rezultat zgoraj kljub temu drži.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl izračunov ni bilo mogoče zapisati v zgodovino. Rezultati kljub temu držijo.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Ni dosegljivo';
+
+  @override
+  String get rechnerFehlerZuGross => 'Število je preveliko';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Zaklepaj brez oklepaja';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Oklepaj ni zaprt';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Deljenje z nič';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Nepopoln izraz';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Nepričakovan znak: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Ni veljavno število: $text';
+  }
 }

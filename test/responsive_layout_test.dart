@@ -34,6 +34,7 @@ import 'package:icd360sev_mitglied/utils/responsive.dart';
 import 'package:icd360sev_mitglied/services/api_service.dart';
 import 'package:icd360sev_mitglied/widgets/benachrichtigungen_dialog.dart';
 import 'package:icd360sev_mitglied/widgets/mitglied_extras_dialog.dart';
+import 'package:icd360sev_mitglied/widgets/rechner_dialog.dart';
 import 'package:icd360sev_mitglied/widgets/changelog_dialog.dart';
 import 'package:icd360sev_mitglied/widgets/chat_input_area.dart';
 import 'package:icd360sev_mitglied/widgets/debug_console.dart';
@@ -620,6 +621,10 @@ void main() {
           BenachrichtigungenDialog(apiService: ApiService()),
       'MitgliedExtrasDialog': () =>
           MitgliedExtrasDialog(onPdfUnterschreiben: () {}),
+      // Zwanzig Tasten plus Anzeige plus Hinweiszeile — der Dialog mit den
+      // meisten Zeilen in dieser Batterie. Auf 320 dp bei 200 % Systemschrift
+      // ist er der wahrscheinlichste Ueberlauf.
+      'RechnerDialog': () => const RechnerDialog(),
       'PersonalDataDialog': () => const PersonalDataDialog(
         userName: 'Maximilian Freiherr von Habsburg',
         mitgliedernummer: '360-1234',

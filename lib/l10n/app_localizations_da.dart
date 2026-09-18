@@ -3311,4 +3311,113 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Underskriv din egen PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Lommeregner';
+
+  @override
+  String get extrasRechnerText =>
+      'Lægge sammen, trække fra, procenter — med parenteser og en historik, der kun er din.';
+
+  @override
+  String get rechnerTitel => 'Lommeregner';
+
+  @override
+  String get rechnerVerlauf => 'Historik';
+
+  @override
+  String get rechnerZurueck => 'Tilbage til lommeregneren';
+
+  @override
+  String get rechnerVorrang =>
+      'Gange før plus: 2 + 3 × 4 = 14. Brug parenteser for en anden rækkefølge.';
+
+  @override
+  String get rechnerKopieren => 'Kopiér';
+
+  @override
+  String get rechnerKopiert => 'Resultat kopieret';
+
+  @override
+  String get rechnerLeer => 'Der er endnu ikke regnet noget.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Hver afsluttet beregning gemmes — krypteret og kun synlig for denne konto.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Her står intet — denne sessions beregninger kunne ikke gemmes.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Tryk på en linje for at regne videre med dens resultat.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Slet alt';
+
+  @override
+  String get rechnerLoeschen => 'Slet';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Slet denne beregning?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Slet denne beregning';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Det kan ikke fortrydes.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Slet historikken?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Alle gemte beregninger fjernes. Det kan ikke fortrydes.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Sletning mislykkedes';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Historikken kunne ikke indlæses — den er derfor ikke tom, men ukendt. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Én beregning kunne ikke skrives til historikken. Resultatet ovenfor er alligevel rigtigt.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl beregninger kunne ikke skrives til historikken. Resultaterne er alligevel rigtige.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Ikke tilgængelig';
+
+  @override
+  String get rechnerFehlerZuGross => 'Tallet er for stort';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Slutparentes uden startparentes';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Parentesen er ikke lukket';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Division med nul';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Udtrykket er ufuldstændigt';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Uventet tegn: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Ikke et gyldigt tal: $text';
+  }
 }

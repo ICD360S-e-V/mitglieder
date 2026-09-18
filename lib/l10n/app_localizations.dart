@@ -5995,6 +5995,192 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Eigenes PDF unterschreiben'**
   String get pdfWerkzeugTitel;
+
+  /// No description provided for @extrasRechnerTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Taschenrechner'**
+  String get extrasRechnerTitel;
+
+  /// No description provided for @extrasRechnerText.
+  ///
+  /// In de, this message translates to:
+  /// **'Addieren, abziehen, Prozent — mit Klammern und einem Verlauf, der nur Ihnen gehört.'**
+  String get extrasRechnerText;
+
+  /// No description provided for @rechnerTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Taschenrechner'**
+  String get rechnerTitel;
+
+  /// No description provided for @rechnerVerlauf.
+  ///
+  /// In de, this message translates to:
+  /// **'Verlauf'**
+  String get rechnerVerlauf;
+
+  /// No description provided for @rechnerZurueck.
+  ///
+  /// In de, this message translates to:
+  /// **'Zurück zum Rechner'**
+  String get rechnerZurueck;
+
+  /// No description provided for @rechnerVorrang.
+  ///
+  /// In de, this message translates to:
+  /// **'Punkt vor Strich: 2 + 3 × 4 = 14. Für die andere Reihenfolge Klammern setzen.'**
+  String get rechnerVorrang;
+
+  /// No description provided for @rechnerKopieren.
+  ///
+  /// In de, this message translates to:
+  /// **'Kopieren'**
+  String get rechnerKopieren;
+
+  /// No description provided for @rechnerKopiert.
+  ///
+  /// In de, this message translates to:
+  /// **'Ergebnis kopiert'**
+  String get rechnerKopiert;
+
+  /// No description provided for @rechnerLeer.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch nichts gerechnet.'**
+  String get rechnerLeer;
+
+  /// No description provided for @rechnerVerlaufErklaerung.
+  ///
+  /// In de, this message translates to:
+  /// **'Gespeichert wird jede abgeschlossene Rechnung — verschlüsselt, und nur für dieses Konto sichtbar.'**
+  String get rechnerVerlaufErklaerung;
+
+  /// No description provided for @rechnerLeerWeilUngespeichert.
+  ///
+  /// In de, this message translates to:
+  /// **'Hier steht nichts — die Rechnungen dieser Sitzung konnten nicht gespeichert werden.'**
+  String get rechnerLeerWeilUngespeichert;
+
+  /// No description provided for @rechnerWeiterrechnen.
+  ///
+  /// In de, this message translates to:
+  /// **'Antippen rechnet mit dem Ergebnis weiter.'**
+  String get rechnerWeiterrechnen;
+
+  /// No description provided for @rechnerAllesLoeschen.
+  ///
+  /// In de, this message translates to:
+  /// **'Alles löschen'**
+  String get rechnerAllesLoeschen;
+
+  /// No description provided for @rechnerLoeschen.
+  ///
+  /// In de, this message translates to:
+  /// **'Löschen'**
+  String get rechnerLoeschen;
+
+  /// No description provided for @rechnerZeileLoeschenFrage.
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Rechnung löschen?'**
+  String get rechnerZeileLoeschenFrage;
+
+  /// No description provided for @rechnerZeileLoeschenTooltip.
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Rechnung löschen'**
+  String get rechnerZeileLoeschenTooltip;
+
+  /// No description provided for @rechnerNichtRueckgaengig.
+  ///
+  /// In de, this message translates to:
+  /// **'Das lässt sich nicht rückgängig machen.'**
+  String get rechnerNichtRueckgaengig;
+
+  /// No description provided for @rechnerVerlaufLoeschenFrage.
+  ///
+  /// In de, this message translates to:
+  /// **'Verlauf löschen?'**
+  String get rechnerVerlaufLoeschenFrage;
+
+  /// No description provided for @rechnerVerlaufLoeschenText.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle gespeicherten Rechnungen werden entfernt. Das lässt sich nicht rückgängig machen.'**
+  String get rechnerVerlaufLoeschenText;
+
+  /// No description provided for @rechnerLoeschenFehlgeschlagen.
+  ///
+  /// In de, this message translates to:
+  /// **'Löschen fehlgeschlagen'**
+  String get rechnerLoeschenFehlgeschlagen;
+
+  /// No description provided for @rechnerVerlaufNichtLadbar.
+  ///
+  /// In de, this message translates to:
+  /// **'Verlauf konnte nicht geladen werden — er ist deshalb nicht leer, sondern unbekannt. ({grund})'**
+  String rechnerVerlaufNichtLadbar(String grund);
+
+  /// No description provided for @rechnerEineNichtGespeichert.
+  ///
+  /// In de, this message translates to:
+  /// **'Eine Rechnung konnte nicht in den Verlauf geschrieben werden. Das Ergebnis oben stimmt trotzdem.'**
+  String get rechnerEineNichtGespeichert;
+
+  /// No description provided for @rechnerNichtGespeichert.
+  ///
+  /// In de, this message translates to:
+  /// **'{anzahl} Rechnungen konnten nicht in den Verlauf geschrieben werden. Die Ergebnisse stimmen trotzdem.'**
+  String rechnerNichtGespeichert(int anzahl);
+
+  /// No description provided for @rechnerNichtErreichbar.
+  ///
+  /// In de, this message translates to:
+  /// **'Nicht erreichbar'**
+  String get rechnerNichtErreichbar;
+
+  /// No description provided for @rechnerFehlerZuGross.
+  ///
+  /// In de, this message translates to:
+  /// **'Zahl zu groß'**
+  String get rechnerFehlerZuGross;
+
+  /// No description provided for @rechnerFehlerKlammerOhneAnfang.
+  ///
+  /// In de, this message translates to:
+  /// **'Klammer ohne Anfang'**
+  String get rechnerFehlerKlammerOhneAnfang;
+
+  /// No description provided for @rechnerFehlerKlammerOffen.
+  ///
+  /// In de, this message translates to:
+  /// **'Klammer nicht geschlossen'**
+  String get rechnerFehlerKlammerOffen;
+
+  /// No description provided for @rechnerFehlerDurchNull.
+  ///
+  /// In de, this message translates to:
+  /// **'Division durch null'**
+  String get rechnerFehlerDurchNull;
+
+  /// No description provided for @rechnerFehlerUnvollstaendig.
+  ///
+  /// In de, this message translates to:
+  /// **'Ausdruck unvollständig'**
+  String get rechnerFehlerUnvollstaendig;
+
+  /// No description provided for @rechnerFehlerZeichen.
+  ///
+  /// In de, this message translates to:
+  /// **'Unerwartetes Zeichen: {zeichen}'**
+  String rechnerFehlerZeichen(String zeichen);
+
+  /// No description provided for @rechnerFehlerKeineZahl.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine gültige Zahl: {text}'**
+  String rechnerFehlerKeineZahl(String text);
 }
 
 class _AppLocalizationsDelegate

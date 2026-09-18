@@ -3346,4 +3346,113 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Signer votre propre PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Calculatrice';
+
+  @override
+  String get extrasRechnerText =>
+      'Additionner, soustraire, pourcentages — avec parenthèses et un historique qui n\'appartient qu\'à vous.';
+
+  @override
+  String get rechnerTitel => 'Calculatrice';
+
+  @override
+  String get rechnerVerlauf => 'Historique';
+
+  @override
+  String get rechnerZurueck => 'Retour à la calculatrice';
+
+  @override
+  String get rechnerVorrang =>
+      'Multiplication avant addition : 2 + 3 × 4 = 14. Pour l\'autre ordre, utilisez des parenthèses.';
+
+  @override
+  String get rechnerKopieren => 'Copier';
+
+  @override
+  String get rechnerKopiert => 'Résultat copié';
+
+  @override
+  String get rechnerLeer => 'Rien de calculé pour l\'instant.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Chaque calcul terminé est enregistré — chiffré, et visible de ce seul compte.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Rien ici — les calculs de cette session n\'ont pas pu être enregistrés.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Touchez une ligne pour continuer avec son résultat.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Tout supprimer';
+
+  @override
+  String get rechnerLoeschen => 'Supprimer';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Supprimer ce calcul ?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Supprimer ce calcul';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Cela ne peut pas être annulé.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Supprimer l\'historique ?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Tous les calculs enregistrés seront supprimés. Cela ne peut pas être annulé.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'La suppression a échoué';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'L\'historique n\'a pas pu être chargé — il n\'est donc pas vide, il est inconnu. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Un calcul n\'a pas pu être écrit dans l\'historique. Le résultat ci-dessus reste correct.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl calculs n\'ont pas pu être écrits dans l\'historique. Les résultats restent corrects.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Injoignable';
+
+  @override
+  String get rechnerFehlerZuGross => 'Nombre trop grand';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Parenthèse fermante sans ouvrante';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Parenthèse non fermée';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Division par zéro';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Expression incomplète';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Caractère inattendu : $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Nombre non valide : $text';
+  }
 }

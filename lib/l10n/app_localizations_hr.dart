@@ -3310,4 +3310,112 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Potpiši vlastiti PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Kalkulator';
+
+  @override
+  String get extrasRechnerText =>
+      'Zbrajanje, oduzimanje, postoci — sa zagradama i poviješću koja pripada samo vama.';
+
+  @override
+  String get rechnerTitel => 'Kalkulator';
+
+  @override
+  String get rechnerVerlauf => 'Povijest';
+
+  @override
+  String get rechnerZurueck => 'Natrag na kalkulator';
+
+  @override
+  String get rechnerVorrang =>
+      'Množenje prije zbrajanja: 2 + 3 × 4 = 14. Za drugačiji redoslijed upotrijebite zagrade.';
+
+  @override
+  String get rechnerKopieren => 'Kopiraj';
+
+  @override
+  String get rechnerKopiert => 'Rezultat kopiran';
+
+  @override
+  String get rechnerLeer => 'Još ništa izračunato.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Svaki dovršeni izračun se sprema — šifrirano i vidljivo samo ovom računu.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Ovdje nema ničega — izračuni ove sesije nisu se mogli spremiti.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Dodir retka nastavlja računanje s njegovim rezultatom.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Obriši sve';
+
+  @override
+  String get rechnerLoeschen => 'Obriši';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Obrisati ovaj izračun?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Obriši ovaj izračun';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'To se ne može poništiti.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Obrisati povijest?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Svi spremljeni izračuni bit će uklonjeni. To se ne može poništiti.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Brisanje nije uspjelo';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Povijest se nije mogla učitati — dakle nije prazna, nego nepoznata. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Jedan izračun nije se mogao zapisati u povijest. Rezultat gore ipak vrijedi.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl izračuna nije se moglo zapisati u povijest. Rezultati ipak vrijede.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Nedostupno';
+
+  @override
+  String get rechnerFehlerZuGross => 'Broj je prevelik';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Zatvorena zagrada bez otvorene';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Zagrada nije zatvorena';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Dijeljenje nulom';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Nepotpun izraz';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Neočekivani znak: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Nije valjan broj: $text';
+  }
 }

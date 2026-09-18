@@ -3328,4 +3328,113 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Podpisz własny PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Kalkulator';
+
+  @override
+  String get extrasRechnerText =>
+      'Dodawanie, odejmowanie, procenty — z nawiasami i historią, która należy tylko do Państwa.';
+
+  @override
+  String get rechnerTitel => 'Kalkulator';
+
+  @override
+  String get rechnerVerlauf => 'Historia';
+
+  @override
+  String get rechnerZurueck => 'Powrót do kalkulatora';
+
+  @override
+  String get rechnerVorrang =>
+      'Mnożenie przed dodawaniem: 2 + 3 × 4 = 14. Dla innej kolejności proszę użyć nawiasów.';
+
+  @override
+  String get rechnerKopieren => 'Kopiuj';
+
+  @override
+  String get rechnerKopiert => 'Wynik skopiowany';
+
+  @override
+  String get rechnerLeer => 'Jeszcze nic nie policzono.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Każde zakończone obliczenie jest zapisywane — zaszyfrowane i widoczne tylko dla tego konta.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Tu nic nie ma — obliczeń z tej sesji nie udało się zapisać.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Dotknięcie wiersza pozwala liczyć dalej z jego wynikiem.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Usuń wszystko';
+
+  @override
+  String get rechnerLoeschen => 'Usuń';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Usunąć to obliczenie?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Usuń to obliczenie';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Tego nie można cofnąć.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Usunąć historię?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Wszystkie zapisane obliczenia zostaną usunięte. Tego nie można cofnąć.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Usuwanie nie powiodło się';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Nie udało się wczytać historii — nie jest więc pusta, lecz nieznana. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Jednego obliczenia nie udało się zapisać w historii. Wynik powyżej jest mimo to poprawny.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return 'Nie udało się zapisać $anzahl obliczeń w historii. Wyniki są mimo to poprawne.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Niedostępny';
+
+  @override
+  String get rechnerFehlerZuGross => 'Liczba za duża';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Nawias zamykający bez otwierającego';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Nawias niezamknięty';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Dzielenie przez zero';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Wyrażenie niekompletne';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Nieoczekiwany znak: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'To nie jest poprawna liczba: $text';
+  }
 }

@@ -3281,4 +3281,111 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'توقيع ملف PDF خاص بك';
+
+  @override
+  String get extrasRechnerTitel => 'الآلة الحاسبة';
+
+  @override
+  String get extrasRechnerText =>
+      'جمع وطرح ونِسب مئوية — مع أقواس وسجل يخصك وحدك.';
+
+  @override
+  String get rechnerTitel => 'الآلة الحاسبة';
+
+  @override
+  String get rechnerVerlauf => 'السجل';
+
+  @override
+  String get rechnerZurueck => 'العودة إلى الآلة الحاسبة';
+
+  @override
+  String get rechnerVorrang =>
+      'الضرب قبل الجمع: 2 + 3 × 4 = 14. للترتيب الآخر استخدم الأقواس.';
+
+  @override
+  String get rechnerKopieren => 'نسخ';
+
+  @override
+  String get rechnerKopiert => 'تم نسخ النتيجة';
+
+  @override
+  String get rechnerLeer => 'لم يُحسب شيء بعد.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'كل عملية حساب مكتملة تُحفظ — مشفَّرة، وظاهرة لهذا الحساب وحده.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'لا شيء هنا — تعذّر حفظ عمليات هذه الجلسة.';
+
+  @override
+  String get rechnerWeiterrechnen => 'اضغط على سطر لتكمل الحساب بنتيجته.';
+
+  @override
+  String get rechnerAllesLoeschen => 'حذف الكل';
+
+  @override
+  String get rechnerLoeschen => 'حذف';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'حذف هذه العملية؟';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'حذف هذه العملية';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'لا يمكن التراجع عن ذلك.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'حذف السجل؟';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'ستُزال جميع العمليات المحفوظة. لا يمكن التراجع عن ذلك.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'فشل الحذف';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'تعذّر تحميل السجل — فهو إذن ليس فارغًا، بل غير معروف. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'تعذّر كتابة عملية واحدة في السجل. النتيجة أعلاه صحيحة رغم ذلك.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return 'تعذّر كتابة $anzahl عمليات في السجل. النتائج صحيحة رغم ذلك.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'غير متاح';
+
+  @override
+  String get rechnerFehlerZuGross => 'العدد كبير جدًا';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'قوس إغلاق بلا قوس فتح';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'القوس لم يُغلق';
+
+  @override
+  String get rechnerFehlerDurchNull => 'القسمة على صفر';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'التعبير ناقص';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'محرف غير متوقَّع: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'ليس عددًا صالحًا: $text';
+  }
 }

@@ -3307,4 +3307,112 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Allkirjasta oma PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Kalkulaator';
+
+  @override
+  String get extrasRechnerText =>
+      'Liitmine, lahutamine, protsendid — sulgudega ja ajalooga, mis kuulub ainult teile.';
+
+  @override
+  String get rechnerTitel => 'Kalkulaator';
+
+  @override
+  String get rechnerVerlauf => 'Ajalugu';
+
+  @override
+  String get rechnerZurueck => 'Tagasi kalkulaatorisse';
+
+  @override
+  String get rechnerVorrang =>
+      'Korrutamine enne liitmist: 2 + 3 × 4 = 14. Teise järjekorra jaoks kasutage sulge.';
+
+  @override
+  String get rechnerKopieren => 'Kopeeri';
+
+  @override
+  String get rechnerKopiert => 'Tulemus kopeeritud';
+
+  @override
+  String get rechnerLeer => 'Veel pole midagi arvutatud.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Iga lõpetatud arvutus salvestatakse — krüptitult ja nähtavana ainult sellele kontole.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Siin pole midagi — selle seansi arvutusi ei õnnestunud salvestada.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Puudutage rida, et jätkata selle tulemusega.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Kustuta kõik';
+
+  @override
+  String get rechnerLoeschen => 'Kustuta';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Kas kustutada see arvutus?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Kustuta see arvutus';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Seda ei saa tagasi võtta.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Kas kustutada ajalugu?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Kõik salvestatud arvutused eemaldatakse. Seda ei saa tagasi võtta.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Kustutamine ebaõnnestus';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Ajalugu ei õnnestunud laadida — see pole seega tühi, vaid teadmata. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Üht arvutust ei õnnestunud ajalukku kirjutada. Ülalolev tulemus kehtib sellegipoolest.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl arvutust ei õnnestunud ajalukku kirjutada. Tulemused kehtivad sellegipoolest.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Pole kättesaadav';
+
+  @override
+  String get rechnerFehlerZuGross => 'Arv on liiga suur';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Sulgev sulg ilma avavata';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Sulg on sulgemata';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Nulliga jagamine';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Avaldis on poolik';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Ootamatu märk: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Pole kehtiv arv: $text';
+  }
 }

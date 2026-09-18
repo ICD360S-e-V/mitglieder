@@ -3329,4 +3329,114 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Eigen pdf ondertekenen';
+
+  @override
+  String get extrasRechnerTitel => 'Rekenmachine';
+
+  @override
+  String get extrasRechnerText =>
+      'Optellen, aftrekken, procenten — met haakjes en een geschiedenis die alleen van u is.';
+
+  @override
+  String get rechnerTitel => 'Rekenmachine';
+
+  @override
+  String get rechnerVerlauf => 'Geschiedenis';
+
+  @override
+  String get rechnerZurueck => 'Terug naar de rekenmachine';
+
+  @override
+  String get rechnerVorrang =>
+      'Vermenigvuldigen gaat voor optellen: 2 + 3 × 4 = 14. Gebruik haakjes voor de andere volgorde.';
+
+  @override
+  String get rechnerKopieren => 'Kopiëren';
+
+  @override
+  String get rechnerKopiert => 'Resultaat gekopieerd';
+
+  @override
+  String get rechnerLeer => 'Nog niets berekend.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Elke afgeronde berekening wordt bewaard — versleuteld en alleen zichtbaar voor dit account.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Hier staat niets — de berekeningen van deze sessie konden niet worden bewaard.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Tik op een regel om verder te rekenen met het resultaat.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Alles verwijderen';
+
+  @override
+  String get rechnerLoeschen => 'Verwijderen';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Deze berekening verwijderen?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Deze berekening verwijderen';
+
+  @override
+  String get rechnerNichtRueckgaengig =>
+      'Dit kan niet ongedaan worden gemaakt.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Geschiedenis verwijderen?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Alle bewaarde berekeningen worden verwijderd. Dit kan niet ongedaan worden gemaakt.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Verwijderen mislukt';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'De geschiedenis kon niet worden geladen — hij is dus niet leeg, maar onbekend. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Eén berekening kon niet in de geschiedenis worden geschreven. Het resultaat hierboven klopt wel.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl berekeningen konden niet in de geschiedenis worden geschreven. De resultaten kloppen wel.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Niet bereikbaar';
+
+  @override
+  String get rechnerFehlerZuGross => 'Getal te groot';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Sluithaakje zonder openingshaakje';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Haakje niet gesloten';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Deling door nul';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Uitdrukking onvolledig';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Onverwacht teken: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Geen geldig getal: $text';
+  }
 }

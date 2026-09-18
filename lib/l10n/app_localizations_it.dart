@@ -3330,4 +3330,113 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Firmare un PDF proprio';
+
+  @override
+  String get extrasRechnerTitel => 'Calcolatrice';
+
+  @override
+  String get extrasRechnerText =>
+      'Addizioni, sottrazioni, percentuali — con parentesi e una cronologia che appartiene solo a Lei.';
+
+  @override
+  String get rechnerTitel => 'Calcolatrice';
+
+  @override
+  String get rechnerVerlauf => 'Cronologia';
+
+  @override
+  String get rechnerZurueck => 'Torna alla calcolatrice';
+
+  @override
+  String get rechnerVorrang =>
+      'Moltiplicazione prima dell\'addizione: 2 + 3 × 4 = 14. Per l\'altro ordine usi le parentesi.';
+
+  @override
+  String get rechnerKopieren => 'Copia';
+
+  @override
+  String get rechnerKopiert => 'Risultato copiato';
+
+  @override
+  String get rechnerLeer => 'Non è ancora stato calcolato nulla.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Ogni calcolo concluso viene salvato — cifrato e visibile solo a questo account.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Qui non c\'è nulla: i calcoli di questa sessione non sono stati salvati.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Tocchi una riga per proseguire con il suo risultato.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Elimina tutto';
+
+  @override
+  String get rechnerLoeschen => 'Elimina';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Eliminare questo calcolo?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Elimina questo calcolo';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Non si può annullare.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Eliminare la cronologia?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Tutti i calcoli salvati verranno rimossi. Non si può annullare.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Eliminazione non riuscita';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'La cronologia non è stata caricata — quindi non è vuota, è sconosciuta. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Un calcolo non è stato scritto nella cronologia. Il risultato sopra è comunque corretto.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl calcoli non sono stati scritti nella cronologia. I risultati sono comunque corretti.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Non raggiungibile';
+
+  @override
+  String get rechnerFehlerZuGross => 'Numero troppo grande';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Parentesi chiusa senza apertura';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Parentesi non chiusa';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Divisione per zero';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Espressione incompleta';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Carattere inatteso: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Numero non valido: $text';
+  }
 }

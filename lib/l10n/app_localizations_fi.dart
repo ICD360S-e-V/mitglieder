@@ -3313,4 +3313,112 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Allekirjoita oma PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Laskin';
+
+  @override
+  String get extrasRechnerText =>
+      'Yhteen, vähennys, prosentit — sulkeineen ja historialla, joka on vain sinun.';
+
+  @override
+  String get rechnerTitel => 'Laskin';
+
+  @override
+  String get rechnerVerlauf => 'Historia';
+
+  @override
+  String get rechnerZurueck => 'Takaisin laskimeen';
+
+  @override
+  String get rechnerVorrang =>
+      'Kertolasku ennen yhteenlaskua: 2 + 3 × 4 = 14. Toista järjestystä varten käytä sulkeita.';
+
+  @override
+  String get rechnerKopieren => 'Kopioi';
+
+  @override
+  String get rechnerKopiert => 'Tulos kopioitu';
+
+  @override
+  String get rechnerLeer => 'Mitään ei ole vielä laskettu.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Jokainen valmis lasku tallennetaan — salattuna ja näkyvissä vain tälle tilille.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Täällä ei ole mitään — tämän istunnon laskuja ei voitu tallentaa.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Napauta riviä jatkaaksesi sen tuloksella.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Poista kaikki';
+
+  @override
+  String get rechnerLoeschen => 'Poista';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Poistetaanko tämä lasku?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Poista tämä lasku';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Tätä ei voi perua.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Poistetaanko historia?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Kaikki tallennetut laskut poistetaan. Tätä ei voi perua.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Poistaminen epäonnistui';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Historiaa ei voitu ladata — se ei siis ole tyhjä, vaan tuntematon. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Yhtä laskua ei voitu kirjoittaa historiaan. Yllä oleva tulos pitää silti paikkansa.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl laskua ei voitu kirjoittaa historiaan. Tulokset pitävät silti paikkansa.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Ei tavoitettavissa';
+
+  @override
+  String get rechnerFehlerZuGross => 'Luku on liian suuri';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Sulkeva sulje ilman avaavaa';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Suljetta ei ole suljettu';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Nollalla jakaminen';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Lauseke on vaillinainen';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Odottamaton merkki: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Ei kelvollinen luku: $text';
+  }
 }

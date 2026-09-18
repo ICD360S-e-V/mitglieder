@@ -3316,4 +3316,113 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Semnează propriul PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Calculator';
+
+  @override
+  String get extrasRechnerText =>
+      'Adunare, scădere, procente — cu paranteze și un istoric care e doar al dumneavoastră.';
+
+  @override
+  String get rechnerTitel => 'Calculator';
+
+  @override
+  String get rechnerVerlauf => 'Istoric';
+
+  @override
+  String get rechnerZurueck => 'Înapoi la calculator';
+
+  @override
+  String get rechnerVorrang =>
+      'Înmulțirea înaintea adunării: 2 + 3 × 4 = 14. Pentru cealaltă ordine, puneți paranteze.';
+
+  @override
+  String get rechnerKopieren => 'Copiază';
+
+  @override
+  String get rechnerKopiert => 'Rezultat copiat';
+
+  @override
+  String get rechnerLeer => 'Încă nu s-a calculat nimic.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Fiecare calcul încheiat se salvează — criptat, și vizibil doar pentru acest cont.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Aici nu e nimic — calculele acestei sesiuni nu au putut fi salvate.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Atingeți o linie ca să continuați cu rezultatul ei.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Șterge tot';
+
+  @override
+  String get rechnerLoeschen => 'Șterge';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Ștergeți acest calcul?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Șterge acest calcul';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Asta nu se poate anula.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Ștergeți istoricul?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Toate calculele salvate vor fi înlăturate. Asta nu se poate anula.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Ștergerea a eșuat';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Istoricul nu a putut fi încărcat — deci nu e gol, ci necunoscut. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Un calcul nu a putut fi scris în istoric. Rezultatul de mai sus e totuși corect.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl calcule nu au putut fi scrise în istoric. Rezultatele sunt totuși corecte.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Inaccesibil';
+
+  @override
+  String get rechnerFehlerZuGross => 'Număr prea mare';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Paranteză închisă fără una deschisă';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Paranteză neînchisă';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Împărțire la zero';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Expresie incompletă';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Caracter neașteptat: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Nu e un număr valid: $text';
+  }
 }

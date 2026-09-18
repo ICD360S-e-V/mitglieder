@@ -3308,4 +3308,112 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Podepsat vlastní PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Kalkulačka';
+
+  @override
+  String get extrasRechnerText =>
+      'Sčítání, odčítání, procenta — se závorkami a historií, která patří jen vám.';
+
+  @override
+  String get rechnerTitel => 'Kalkulačka';
+
+  @override
+  String get rechnerVerlauf => 'Historie';
+
+  @override
+  String get rechnerZurueck => 'Zpět ke kalkulačce';
+
+  @override
+  String get rechnerVorrang =>
+      'Násobení před sčítáním: 2 + 3 × 4 = 14. Pro jiné pořadí použijte závorky.';
+
+  @override
+  String get rechnerKopieren => 'Kopírovat';
+
+  @override
+  String get rechnerKopiert => 'Výsledek zkopírován';
+
+  @override
+  String get rechnerLeer => 'Zatím nic spočítáno.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Každý dokončený výpočet se ukládá — zašifrovaně a viditelně jen pro tento účet.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Tady nic není — výpočty této relace se nepodařilo uložit.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Klepnutím na řádek budete počítat dál s jeho výsledkem.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Smazat vše';
+
+  @override
+  String get rechnerLoeschen => 'Smazat';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Smazat tento výpočet?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Smazat tento výpočet';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'To nelze vrátit zpět.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Smazat historii?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Všechny uložené výpočty budou odstraněny. To nelze vrátit zpět.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Mazání se nezdařilo';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Historii se nepodařilo načíst — není tedy prázdná, ale neznámá. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Jeden výpočet se nepodařilo zapsat do historie. Výsledek nahoře přesto platí.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl výpočtů se nepodařilo zapsat do historie. Výsledky přesto platí.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Nedostupné';
+
+  @override
+  String get rechnerFehlerZuGross => 'Číslo je příliš velké';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Zavírací závorka bez otevírací';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Neuzavřená závorka';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Dělení nulou';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Neúplný výraz';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Neočekávaný znak: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Neplatné číslo: $text';
+  }
 }
