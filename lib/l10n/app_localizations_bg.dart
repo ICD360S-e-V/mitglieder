@@ -3318,4 +3318,112 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Подписване на собствен PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Калкулатор';
+
+  @override
+  String get extrasRechnerText =>
+      'Събиране, изваждане, проценти — със скоби и история, която е само ваша.';
+
+  @override
+  String get rechnerTitel => 'Калкулатор';
+
+  @override
+  String get rechnerVerlauf => 'История';
+
+  @override
+  String get rechnerZurueck => 'Обратно към калкулатора';
+
+  @override
+  String get rechnerVorrang =>
+      'Умножение преди събиране: 2 + 3 × 4 = 14. За друг ред използвайте скоби.';
+
+  @override
+  String get rechnerKopieren => 'Копирай';
+
+  @override
+  String get rechnerKopiert => 'Резултатът е копиран';
+
+  @override
+  String get rechnerLeer => 'Още нищо не е пресметнато.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Всяко завършено пресмятане се запазва — криптирано и видимо само за този акаунт.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Тук няма нищо — пресмятанията от тази сесия не можаха да бъдат запазени.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Докоснете ред, за да продължите с неговия резултат.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Изтрий всичко';
+
+  @override
+  String get rechnerLoeschen => 'Изтрий';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Да се изтрие ли това пресмятане?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Изтрий това пресмятане';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Това не може да се върне.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Да се изтрие ли историята?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Всички запазени пресмятания ще бъдат премахнати. Това не може да се върне.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Изтриването не успя';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Историята не можа да се зареди — значи не е празна, а неизвестна. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Едно пресмятане не можа да се запише в историята. Резултатът горе все пак е верен.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl пресмятания не можаха да се запишат в историята. Резултатите все пак са верни.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Недостъпно';
+
+  @override
+  String get rechnerFehlerZuGross => 'Числото е твърде голямо';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Затваряща скоба без отваряща';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Скобата не е затворена';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Деление на нула';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Непълен израз';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Неочакван знак: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Невалидно число: $text';
+  }
 }

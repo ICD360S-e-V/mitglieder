@@ -3305,4 +3305,113 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Signera din egen PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Miniräknare';
+
+  @override
+  String get extrasRechnerText =>
+      'Addera, subtrahera, procent — med parenteser och en historik som bara är din.';
+
+  @override
+  String get rechnerTitel => 'Miniräknare';
+
+  @override
+  String get rechnerVerlauf => 'Historik';
+
+  @override
+  String get rechnerZurueck => 'Tillbaka till miniräknaren';
+
+  @override
+  String get rechnerVorrang =>
+      'Multiplikation före addition: 2 + 3 × 4 = 14. Använd parenteser för annan ordning.';
+
+  @override
+  String get rechnerKopieren => 'Kopiera';
+
+  @override
+  String get rechnerKopiert => 'Resultatet kopierat';
+
+  @override
+  String get rechnerLeer => 'Inget uträknat ännu.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Varje avslutad uträkning sparas — krypterad och synlig bara för detta konto.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Här står ingenting — den här sessionens uträkningar kunde inte sparas.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Tryck på en rad för att räkna vidare med dess resultat.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Radera allt';
+
+  @override
+  String get rechnerLoeschen => 'Radera';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Radera den här uträkningen?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Radera den här uträkningen';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Det går inte att ångra.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Radera historiken?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Alla sparade uträkningar tas bort. Det går inte att ångra.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Raderingen misslyckades';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Historiken kunde inte läsas in — den är alltså inte tom, utan okänd. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'En uträkning kunde inte skrivas till historiken. Resultatet ovan stämmer ändå.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl uträkningar kunde inte skrivas till historiken. Resultaten stämmer ändå.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Inte nåbar';
+
+  @override
+  String get rechnerFehlerZuGross => 'Talet är för stort';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Slutparentes utan startparentes';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Parentesen är inte stängd';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Division med noll';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Uttrycket är ofullständigt';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Oväntat tecken: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Inte ett giltigt tal: $text';
+  }
 }

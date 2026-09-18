@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
 import '../utils/app_theme.dart';
+import 'rechner_dialog.dart';
 
 /// Was ein Mitglied kann und ein Besucher nicht.
 ///
@@ -93,6 +94,19 @@ class MitgliedExtrasDialog extends StatelessWidget {
                 onDruck: () {
                   Navigator.pop(context);
                   onPdfUnterschreiben();
+                },
+              ),
+              _Werkzeug(
+                symbol: Icons.calculate_outlined,
+                titel: l10n.extrasRechnerTitel,
+                text: l10n.extrasRechnerText,
+                // Der Rechner braucht keinen Rückruf von aussen: er ist selbst
+                // ein Dialog und bleibt deshalb hier. Das PDF-Werkzeug schiebt
+                // dagegen eine ganze Seite auf den Stapel, und die gehört dem
+                // Dashboard.
+                onDruck: () {
+                  Navigator.pop(context);
+                  zeigeRechner(context);
                 },
               ),
               const SizedBox(height: 8),

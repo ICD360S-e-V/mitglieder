@@ -1622,6 +1622,48 @@ class ApiService {
     }
   }
 
+  // ========== TASCHENRECHNER ==========
+
+  /// Verlauf des Taschenrechners. Aktionen: list | add | delete | clear.
+  ///
+  /// ⚠️ Wirft NIE. Der Rechner selbst rechnet ohne Netz — nur sein Verlauf
+  /// liegt auf dem Server. Eine Ausnahme von hier würde bedeuten, dass ein
+  /// Netzwackler das Rechnen unterbricht, und das ist genau verkehrt herum.
+  ///
+  /// ⚠️ Der Endpunkt liegt unter `/admin/`, wird hier aber von einem MITGLIED
+  /// gerufen, und das ist kein Versehen: `rechner_verlauf.php` prüft
+  /// ausdrücklich nur `requireAuth()` und KEINE Rolle. Jede Zeile hängt an der
+  /// `user_id` aus dem Token, es kann also nichts über Konten hinweg sichtbar
+  /// werden — ein Rechenverlauf ist keine Vereinsakte, sondern das Notizblatt
+  /// dessen, der gerechnet hat. Der Pfad ist geerbt, weil der Endpunkt für die
+  /// Vorsitzer-App gebaut wurde; ein Alias unter `/member/` wäre sauberer und
+  /// ist der nächste Handgriff, nicht dieser.
+  Future<Map<String, dynamic>> rechnerVerlaufAktion(
+    String action, [
+    Map<String, dynamic> data = const {},
+  ]) async {
+    try {
+      final response = await _client
+          .post(
+            Uri.parse('$baseUrl/admin/rechner_verlauf.php'),
+            headers: _headers,
+            body: jsonEncode({'action': action, ...data}),
+          )
+          .timeout(const Duration(seconds: 20));
+      try {
+        final daten = jsonDecode(response.body);
+        return daten is Map<String, dynamic>
+            ? daten
+            : {'success': false, 'message': 'Unerwartete Antwort'};
+      } on FormatException {
+        return {'success': false, 'message': 'Ungültige Serverantwort'};
+      }
+    } catch (e) {
+      LoggerService().warning('Rechner-Verlauf ($action): $e', tag: 'RECHNER');
+      return {'success': false, 'message': 'Server nicht erreichbar'};
+    }
+  }
+
   Future<Map<String, dynamic>> _postSignatur(Map<String, dynamic> body) async {
     try {
       final response = await _client.post(

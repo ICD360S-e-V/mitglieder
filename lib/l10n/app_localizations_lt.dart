@@ -3311,4 +3311,113 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Pasirašyti savo PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Skaičiuotuvas';
+
+  @override
+  String get extrasRechnerText =>
+      'Sudėtis, atimtis, procentai — su skliaustais ir istorija, kuri priklauso tik jums.';
+
+  @override
+  String get rechnerTitel => 'Skaičiuotuvas';
+
+  @override
+  String get rechnerVerlauf => 'Istorija';
+
+  @override
+  String get rechnerZurueck => 'Atgal į skaičiuotuvą';
+
+  @override
+  String get rechnerVorrang =>
+      'Daugyba prieš sudėtį: 2 + 3 × 4 = 14. Kitai tvarkai naudokite skliaustus.';
+
+  @override
+  String get rechnerKopieren => 'Kopijuoti';
+
+  @override
+  String get rechnerKopiert => 'Rezultatas nukopijuotas';
+
+  @override
+  String get rechnerLeer => 'Dar nieko neapskaičiuota.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Kiekvienas baigtas skaičiavimas įrašomas — užšifruotas ir matomas tik šiai paskyrai.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Čia nieko nėra — šios sesijos skaičiavimų nepavyko įrašyti.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Bakstelėkite eilutę, kad tęstumėte su jos rezultatu.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Ištrinti viską';
+
+  @override
+  String get rechnerLoeschen => 'Ištrinti';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Ištrinti šį skaičiavimą?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Ištrinti šį skaičiavimą';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'To atšaukti nepavyks.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Ištrinti istoriją?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Visi įrašyti skaičiavimai bus pašalinti. To atšaukti nepavyks.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Ištrinti nepavyko';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Istorijos nepavyko įkelti — vadinasi ji ne tuščia, o nežinoma. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Vieno skaičiavimo nepavyko įrašyti į istoriją. Rezultatas viršuje vis tiek teisingas.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl skaičiavimų nepavyko įrašyti į istoriją. Rezultatai vis tiek teisingi.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Nepasiekiama';
+
+  @override
+  String get rechnerFehlerZuGross => 'Skaičius per didelis';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Uždarantis skliaustas be atidarančio';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Skliaustas neuždarytas';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Dalyba iš nulio';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Reiškinys nebaigtas';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Netikėtas ženklas: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Netinkamas skaičius: $text';
+  }
 }

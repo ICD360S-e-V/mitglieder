@@ -3310,4 +3310,112 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Parakstīt savu PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Kalkulators';
+
+  @override
+  String get extrasRechnerText =>
+      'Saskaitīšana, atņemšana, procenti — ar iekavām un vēsturi, kas pieder tikai jums.';
+
+  @override
+  String get rechnerTitel => 'Kalkulators';
+
+  @override
+  String get rechnerVerlauf => 'Vēsture';
+
+  @override
+  String get rechnerZurueck => 'Atpakaļ uz kalkulatoru';
+
+  @override
+  String get rechnerVorrang =>
+      'Reizināšana pirms saskaitīšanas: 2 + 3 × 4 = 14. Citai secībai lietojiet iekavas.';
+
+  @override
+  String get rechnerKopieren => 'Kopēt';
+
+  @override
+  String get rechnerKopiert => 'Rezultāts nokopēts';
+
+  @override
+  String get rechnerLeer => 'Vēl nekas nav aprēķināts.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Katrs pabeigtais aprēķins tiek saglabāts — šifrēts un redzams tikai šim kontam.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Šeit nav nekā — šīs sesijas aprēķinus neizdevās saglabāt.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Pieskarieties rindai, lai turpinātu ar tās rezultātu.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Dzēst visu';
+
+  @override
+  String get rechnerLoeschen => 'Dzēst';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Dzēst šo aprēķinu?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Dzēst šo aprēķinu';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'To nevar atsaukt.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Dzēst vēsturi?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Visi saglabātie aprēķini tiks noņemti. To nevar atsaukt.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Dzēšana neizdevās';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Vēsturi neizdevās ielādēt — tātad tā nav tukša, bet nezināma. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Vienu aprēķinu neizdevās ierakstīt vēsturē. Rezultāts augšā tomēr ir pareizs.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl aprēķinus neizdevās ierakstīt vēsturē. Rezultāti tomēr ir pareizi.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Nav sasniedzams';
+
+  @override
+  String get rechnerFehlerZuGross => 'Skaitlis ir pārāk liels';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Aizverošā iekava bez atverošās';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Iekava nav aizvērta';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Dalīšana ar nulli';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Izteiksme nav pabeigta';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Negaidīta zīme: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Nav derīgs skaitlis: $text';
+  }
 }

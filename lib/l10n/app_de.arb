@@ -1597,5 +1597,64 @@
         "type": "int"
       }
     }
+  },
+  "extrasRechnerTitel": "Taschenrechner",
+  "extrasRechnerText": "Addieren, abziehen, Prozent — mit Klammern und einem Verlauf, der nur Ihnen gehört.",
+  "rechnerTitel": "Taschenrechner",
+  "rechnerVerlauf": "Verlauf",
+  "rechnerZurueck": "Zurück zum Rechner",
+  "rechnerVorrang": "Punkt vor Strich: 2 + 3 × 4 = 14. Für die andere Reihenfolge Klammern setzen.",
+  "rechnerKopieren": "Kopieren",
+  "rechnerKopiert": "Ergebnis kopiert",
+  "rechnerLeer": "Noch nichts gerechnet.",
+  "rechnerVerlaufErklaerung": "Gespeichert wird jede abgeschlossene Rechnung — verschlüsselt, und nur für dieses Konto sichtbar.",
+  "rechnerLeerWeilUngespeichert": "Hier steht nichts — die Rechnungen dieser Sitzung konnten nicht gespeichert werden.",
+  "rechnerWeiterrechnen": "Antippen rechnet mit dem Ergebnis weiter.",
+  "rechnerAllesLoeschen": "Alles löschen",
+  "rechnerLoeschen": "Löschen",
+  "rechnerZeileLoeschenFrage": "Diese Rechnung löschen?",
+  "rechnerZeileLoeschenTooltip": "Diese Rechnung löschen",
+  "rechnerNichtRueckgaengig": "Das lässt sich nicht rückgängig machen.",
+  "rechnerVerlaufLoeschenFrage": "Verlauf löschen?",
+  "rechnerVerlaufLoeschenText": "Alle gespeicherten Rechnungen werden entfernt. Das lässt sich nicht rückgängig machen.",
+  "rechnerLoeschenFehlgeschlagen": "Löschen fehlgeschlagen",
+  "rechnerVerlaufNichtLadbar": "Verlauf konnte nicht geladen werden — er ist deshalb nicht leer, sondern unbekannt. ({grund})",
+  "rechnerEineNichtGespeichert": "Eine Rechnung konnte nicht in den Verlauf geschrieben werden. Das Ergebnis oben stimmt trotzdem.",
+  "rechnerNichtGespeichert": "{anzahl} Rechnungen konnten nicht in den Verlauf geschrieben werden. Die Ergebnisse stimmen trotzdem.",
+  "rechnerNichtErreichbar": "Nicht erreichbar",
+  "rechnerFehlerZuGross": "Zahl zu groß",
+  "rechnerFehlerKlammerOhneAnfang": "Klammer ohne Anfang",
+  "rechnerFehlerKlammerOffen": "Klammer nicht geschlossen",
+  "rechnerFehlerDurchNull": "Division durch null",
+  "rechnerFehlerUnvollstaendig": "Ausdruck unvollständig",
+  "rechnerFehlerZeichen": "Unerwartetes Zeichen: {zeichen}",
+  "rechnerFehlerKeineZahl": "Keine gültige Zahl: {text}",
+  "@rechnerVerlaufNichtLadbar": {
+    "placeholders": {
+      "grund": {
+        "type": "String"
+      }
+    }
+  },
+  "@rechnerNichtGespeichert": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "@rechnerFehlerZeichen": {
+    "placeholders": {
+      "zeichen": {
+        "type": "String"
+      }
+    }
+  },
+  "@rechnerFehlerKeineZahl": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
   }
 }

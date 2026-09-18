@@ -3319,4 +3319,112 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Sign your own PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Calculator';
+
+  @override
+  String get extrasRechnerText =>
+      'Add, subtract, percentages — with brackets and a history that is yours alone.';
+
+  @override
+  String get rechnerTitel => 'Calculator';
+
+  @override
+  String get rechnerVerlauf => 'History';
+
+  @override
+  String get rechnerZurueck => 'Back to the calculator';
+
+  @override
+  String get rechnerVorrang =>
+      'Multiplication before addition: 2 + 3 × 4 = 14. Use brackets for the other order.';
+
+  @override
+  String get rechnerKopieren => 'Copy';
+
+  @override
+  String get rechnerKopiert => 'Result copied';
+
+  @override
+  String get rechnerLeer => 'Nothing calculated yet.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Every completed calculation is saved — encrypted, and visible only to this account.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Nothing here — this session\'s calculations could not be saved.';
+
+  @override
+  String get rechnerWeiterrechnen => 'Tap a line to carry on with its result.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Delete all';
+
+  @override
+  String get rechnerLoeschen => 'Delete';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Delete this calculation?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Delete this calculation';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'This cannot be undone.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Delete the history?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'All saved calculations will be removed. This cannot be undone.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Deleting failed';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'The history could not be loaded — so it is not empty, it is unknown. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'One calculation could not be written to the history. The result above is still correct.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl calculations could not be written to the history. The results are still correct.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Not reachable';
+
+  @override
+  String get rechnerFehlerZuGross => 'Number too large';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Closing bracket without an opening one';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Bracket not closed';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Division by zero';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Expression incomplete';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Unexpected character: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Not a valid number: $text';
+  }
 }

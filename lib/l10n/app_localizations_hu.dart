@@ -3319,4 +3319,112 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Saját PDF aláírása';
+
+  @override
+  String get extrasRechnerTitel => 'Számológép';
+
+  @override
+  String get extrasRechnerText =>
+      'Összeadás, kivonás, százalék — zárójelekkel és előzményekkel, amelyek csak az Önéi.';
+
+  @override
+  String get rechnerTitel => 'Számológép';
+
+  @override
+  String get rechnerVerlauf => 'Előzmények';
+
+  @override
+  String get rechnerZurueck => 'Vissza a számológéphez';
+
+  @override
+  String get rechnerVorrang =>
+      'Szorzás az összeadás előtt: 2 + 3 × 4 = 14. Más sorrendhez használjon zárójelet.';
+
+  @override
+  String get rechnerKopieren => 'Másolás';
+
+  @override
+  String get rechnerKopiert => 'Eredmény másolva';
+
+  @override
+  String get rechnerLeer => 'Még nincs számítás.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Minden befejezett számítás mentésre kerül — titkosítva, és csak ehhez a fiókhoz látható.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Itt nincs semmi — a munkamenet számításait nem sikerült menteni.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Koppintson egy sorra, hogy az eredményével számoljon tovább.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Összes törlése';
+
+  @override
+  String get rechnerLoeschen => 'Törlés';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Törli ezt a számítást?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Számítás törlése';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Ezt nem lehet visszavonni.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Törli az előzményeket?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Minden mentett számítás törlődik. Ezt nem lehet visszavonni.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'A törlés nem sikerült';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Az előzményeket nem sikerült betölteni — tehát nem üresek, hanem ismeretlenek. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Egy számítást nem sikerült az előzményekbe írni. A fenti eredmény ettől még helyes.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl számítást nem sikerült az előzményekbe írni. Az eredmények ettől még helyesek.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Nem érhető el';
+
+  @override
+  String get rechnerFehlerZuGross => 'A szám túl nagy';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Záró zárójel nyitó nélkül';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'A zárójel nincs lezárva';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Nullával való osztás';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Hiányos kifejezés';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Váratlan karakter: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Nem érvényes szám: $text';
+  }
 }

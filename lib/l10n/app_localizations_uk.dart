@@ -3314,4 +3314,112 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Підписати власний PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Калькулятор';
+
+  @override
+  String get extrasRechnerText =>
+      'Додавання, віднімання, відсотки — з дужками та історією, що належить лише вам.';
+
+  @override
+  String get rechnerTitel => 'Калькулятор';
+
+  @override
+  String get rechnerVerlauf => 'Історія';
+
+  @override
+  String get rechnerZurueck => 'Назад до калькулятора';
+
+  @override
+  String get rechnerVorrang =>
+      'Множення раніше додавання: 2 + 3 × 4 = 14. Для іншого порядку поставте дужки.';
+
+  @override
+  String get rechnerKopieren => 'Копіювати';
+
+  @override
+  String get rechnerKopiert => 'Результат скопійовано';
+
+  @override
+  String get rechnerLeer => 'Поки нічого не пораховано.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Кожен завершений розрахунок зберігається — зашифровано і видно лише цьому обліковому запису.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Тут нічого немає — розрахунки цього сеансу не вдалося зберегти.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Натисніть рядок, щоб продовжити з його результатом.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Видалити все';
+
+  @override
+  String get rechnerLoeschen => 'Видалити';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Видалити цей розрахунок?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Видалити цей розрахунок';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Це не можна скасувати.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Видалити історію?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Усі збережені розрахунки буде видалено. Це не можна скасувати.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Не вдалося видалити';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Історію не вдалося завантажити — отже вона не порожня, а невідома. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Один розрахунок не вдалося записати в історію. Результат вище все одно правильний.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return 'Не вдалося записати в історію $anzahl розрахунків. Результати все одно правильні.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Недоступно';
+
+  @override
+  String get rechnerFehlerZuGross => 'Число завелике';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Закривна дужка без відкривної';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Дужку не закрито';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Ділення на нуль';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Неповний вираз';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Неочікуваний символ: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Недопустиме число: $text';
+  }
 }

@@ -3336,4 +3336,113 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Eigenes PDF unterschreiben';
+
+  @override
+  String get extrasRechnerTitel => 'Taschenrechner';
+
+  @override
+  String get extrasRechnerText =>
+      'Addieren, abziehen, Prozent — mit Klammern und einem Verlauf, der nur Ihnen gehört.';
+
+  @override
+  String get rechnerTitel => 'Taschenrechner';
+
+  @override
+  String get rechnerVerlauf => 'Verlauf';
+
+  @override
+  String get rechnerZurueck => 'Zurück zum Rechner';
+
+  @override
+  String get rechnerVorrang =>
+      'Punkt vor Strich: 2 + 3 × 4 = 14. Für die andere Reihenfolge Klammern setzen.';
+
+  @override
+  String get rechnerKopieren => 'Kopieren';
+
+  @override
+  String get rechnerKopiert => 'Ergebnis kopiert';
+
+  @override
+  String get rechnerLeer => 'Noch nichts gerechnet.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Gespeichert wird jede abgeschlossene Rechnung — verschlüsselt, und nur für dieses Konto sichtbar.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Hier steht nichts — die Rechnungen dieser Sitzung konnten nicht gespeichert werden.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Antippen rechnet mit dem Ergebnis weiter.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Alles löschen';
+
+  @override
+  String get rechnerLoeschen => 'Löschen';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Diese Rechnung löschen?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Diese Rechnung löschen';
+
+  @override
+  String get rechnerNichtRueckgaengig =>
+      'Das lässt sich nicht rückgängig machen.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Verlauf löschen?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Alle gespeicherten Rechnungen werden entfernt. Das lässt sich nicht rückgängig machen.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Löschen fehlgeschlagen';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Verlauf konnte nicht geladen werden — er ist deshalb nicht leer, sondern unbekannt. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Eine Rechnung konnte nicht in den Verlauf geschrieben werden. Das Ergebnis oben stimmt trotzdem.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl Rechnungen konnten nicht in den Verlauf geschrieben werden. Die Ergebnisse stimmen trotzdem.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Nicht erreichbar';
+
+  @override
+  String get rechnerFehlerZuGross => 'Zahl zu groß';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang => 'Klammer ohne Anfang';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Klammer nicht geschlossen';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Division durch null';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Ausdruck unvollständig';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Unerwartetes Zeichen: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Keine gültige Zahl: $text';
+  }
 }

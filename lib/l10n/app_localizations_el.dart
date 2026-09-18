@@ -3335,4 +3335,113 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Υπογραφή δικού σας PDF';
+
+  @override
+  String get extrasRechnerTitel => 'Αριθμομηχανή';
+
+  @override
+  String get extrasRechnerText =>
+      'Πρόσθεση, αφαίρεση, ποσοστά — με παρενθέσεις και ιστορικό που ανήκει μόνο σε εσάς.';
+
+  @override
+  String get rechnerTitel => 'Αριθμομηχανή';
+
+  @override
+  String get rechnerVerlauf => 'Ιστορικό';
+
+  @override
+  String get rechnerZurueck => 'Πίσω στην αριθμομηχανή';
+
+  @override
+  String get rechnerVorrang =>
+      'Ο πολλαπλασιασμός πριν την πρόσθεση: 2 + 3 × 4 = 14. Για άλλη σειρά βάλτε παρενθέσεις.';
+
+  @override
+  String get rechnerKopieren => 'Αντιγραφή';
+
+  @override
+  String get rechnerKopiert => 'Το αποτέλεσμα αντιγράφηκε';
+
+  @override
+  String get rechnerLeer => 'Δεν έχει υπολογιστεί τίποτα ακόμη.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Κάθε ολοκληρωμένος υπολογισμός αποθηκεύεται — κρυπτογραφημένος και ορατός μόνο σε αυτόν τον λογαριασμό.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Εδώ δεν υπάρχει τίποτα — οι υπολογισμοί αυτής της συνεδρίας δεν αποθηκεύτηκαν.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Πατήστε μια γραμμή για να συνεχίσετε με το αποτέλεσμά της.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Διαγραφή όλων';
+
+  @override
+  String get rechnerLoeschen => 'Διαγραφή';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Διαγραφή αυτού του υπολογισμού;';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Διαγραφή αυτού του υπολογισμού';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Αυτό δεν αναιρείται.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Διαγραφή ιστορικού;';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Όλοι οι αποθηκευμένοι υπολογισμοί θα αφαιρεθούν. Αυτό δεν αναιρείται.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Η διαγραφή απέτυχε';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Το ιστορικό δεν φορτώθηκε — άρα δεν είναι άδειο, αλλά άγνωστο. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Ένας υπολογισμός δεν γράφτηκε στο ιστορικό. Το αποτέλεσμα πάνω ισχύει παρ\' όλα αυτά.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl υπολογισμοί δεν γράφτηκαν στο ιστορικό. Τα αποτελέσματα ισχύουν παρ\' όλα αυτά.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Μη προσβάσιμο';
+
+  @override
+  String get rechnerFehlerZuGross => 'Ο αριθμός είναι πολύ μεγάλος';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Κλείσιμο παρένθεσης χωρίς άνοιγμα';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Η παρένθεση δεν έκλεισε';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Διαίρεση με το μηδέν';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'Ατελής παράσταση';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Μη αναμενόμενος χαρακτήρας: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Μη έγκυρος αριθμός: $text';
+  }
 }

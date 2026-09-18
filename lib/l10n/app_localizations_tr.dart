@@ -3313,4 +3313,113 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pdfWerkzeugTitel => 'Kendi PDF\'nizi imzalayın';
+
+  @override
+  String get extrasRechnerTitel => 'Hesap makinesi';
+
+  @override
+  String get extrasRechnerText =>
+      'Toplama, çıkarma, yüzde — parantezlerle ve yalnızca size ait bir geçmişle.';
+
+  @override
+  String get rechnerTitel => 'Hesap makinesi';
+
+  @override
+  String get rechnerVerlauf => 'Geçmiş';
+
+  @override
+  String get rechnerZurueck => 'Hesap makinesine dön';
+
+  @override
+  String get rechnerVorrang =>
+      'Çarpma toplamadan önce gelir: 2 + 3 × 4 = 14. Başka sıra için parantez kullanın.';
+
+  @override
+  String get rechnerKopieren => 'Kopyala';
+
+  @override
+  String get rechnerKopiert => 'Sonuç kopyalandı';
+
+  @override
+  String get rechnerLeer => 'Henüz bir hesap yapılmadı.';
+
+  @override
+  String get rechnerVerlaufErklaerung =>
+      'Tamamlanan her hesap kaydedilir — şifreli ve yalnızca bu hesaba görünür.';
+
+  @override
+  String get rechnerLeerWeilUngespeichert =>
+      'Burada bir şey yok — bu oturumun hesapları kaydedilemedi.';
+
+  @override
+  String get rechnerWeiterrechnen =>
+      'Bir satıra dokunarak sonucuyla devam edin.';
+
+  @override
+  String get rechnerAllesLoeschen => 'Tümünü sil';
+
+  @override
+  String get rechnerLoeschen => 'Sil';
+
+  @override
+  String get rechnerZeileLoeschenFrage => 'Bu hesap silinsin mi?';
+
+  @override
+  String get rechnerZeileLoeschenTooltip => 'Bu hesabı sil';
+
+  @override
+  String get rechnerNichtRueckgaengig => 'Bu geri alınamaz.';
+
+  @override
+  String get rechnerVerlaufLoeschenFrage => 'Geçmiş silinsin mi?';
+
+  @override
+  String get rechnerVerlaufLoeschenText =>
+      'Kaydedilen tüm hesaplar kaldırılacak. Bu geri alınamaz.';
+
+  @override
+  String get rechnerLoeschenFehlgeschlagen => 'Silme başarısız';
+
+  @override
+  String rechnerVerlaufNichtLadbar(String grund) {
+    return 'Geçmiş yüklenemedi — yani boş değil, bilinmiyor. ($grund)';
+  }
+
+  @override
+  String get rechnerEineNichtGespeichert =>
+      'Bir hesap geçmişe yazılamadı. Yukarıdaki sonuç yine de doğru.';
+
+  @override
+  String rechnerNichtGespeichert(int anzahl) {
+    return '$anzahl hesap geçmişe yazılamadı. Sonuçlar yine de doğru.';
+  }
+
+  @override
+  String get rechnerNichtErreichbar => 'Erişilemiyor';
+
+  @override
+  String get rechnerFehlerZuGross => 'Sayı çok büyük';
+
+  @override
+  String get rechnerFehlerKlammerOhneAnfang =>
+      'Açılışı olmayan kapanış parantezi';
+
+  @override
+  String get rechnerFehlerKlammerOffen => 'Parantez kapatılmadı';
+
+  @override
+  String get rechnerFehlerDurchNull => 'Sıfıra bölme';
+
+  @override
+  String get rechnerFehlerUnvollstaendig => 'İfade eksik';
+
+  @override
+  String rechnerFehlerZeichen(String zeichen) {
+    return 'Beklenmeyen karakter: $zeichen';
+  }
+
+  @override
+  String rechnerFehlerKeineZahl(String text) {
+    return 'Geçerli bir sayı değil: $text';
+  }
 }
