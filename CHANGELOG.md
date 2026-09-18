@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.103.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.102.1...v1.103.0) (2026-09-18)
+
+
+### Features
+
+* **rechner:** Taschenrechner in den Sonderfunktionen ([#434](https://github.com/ICD360S-e-V/mitglieder/issues/434)) ([85929ce](https://github.com/ICD360S-e-V/mitglieder/commit/85929ce733302be70f1d1d836d6864b04a651b46))
+
 ## [1.102.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.102.0...v1.102.1) (2026-09-18)
 
 
