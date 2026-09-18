@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.102.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.102.0...v1.102.1) (2026-09-18)
+
+
+### Bug Fixes
+
+* **android:** compileSdk auf 37, sonst baut Android gar nicht mehr ([#432](https://github.com/ICD360S-e-V/mitglieder/issues/432)) ([af1fd1c](https://github.com/ICD360S-e-V/mitglieder/commit/af1fd1cc0dec2ac75d705ac40171271f82724634))
+
 ## [1.102.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.101.1...v1.102.0) (2026-09-17)
 
 
