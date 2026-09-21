@@ -54,7 +54,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   # Secure storage - encrypted credentials (Android Keystore)
-  flutter_secure_storage: ^10.3.1
+  flutter_secure_storage: ^10.3.4
 
   # SVG rendering — used for the country flags in the first-launch
   # language selector (assets/flags/<lang>.svg).
