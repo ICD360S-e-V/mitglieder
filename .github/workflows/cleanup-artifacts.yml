@@ -1,0 +1,95 @@
+name: Cleanup artifacts
+
+# ───────────────────────────────────────────────────────────────
+# Löscht abgelaufene Actions-Artefakte AUSDRÜCKLICH.
+#
+# ⚠️ WARUM: Gemessen am 24.09.2026 über die Abrechnungs-API (Posten
+# „Actions storage", je Tag): GitHub berechnete für vorsitzer ~117 GB,
+# für mitglieder ~31,6 GB, für schatzmeister ~0,4 GB — gültig waren in
+# dem Moment 3,4 GB, 0 GB und 0 GB. Die Differenz sind Artefakte mit
+# `retention-days: 1`, die GitHub als `expired` führt (Download → 410
+# Gone), die der Speicherzähler aber weiter mitzählt, bis sie per DELETE
+# entfernt sind. Bei mitglieder deckte sich die Summe der abgelaufenen
+# Artefakte (31,9 GB) mit dem Berechneten (31,6 GB), obwohl dort seit Tagen
+# nichts mehr hochgeladen worden war. Derselbe Befund:
+# github.com/orgs/community/discussions/194857
+#
+# Ein abgelaufenes Artefakt hat keinen Inhalt mehr — hier geht nichts
+# verloren. Gültige Artefakte fasst dieser Lauf NICHT an; die löscht der
+# jeweilige Veröffentlichungs-Job selbst („Transport-Artefakte löschen").
+#
+# ⚠️ Deckel je Lauf: das GITHUB_TOKEN hat ein eigenes Stundenlimit je
+# Repositorium, und ein Rückstand von Tausenden soll nicht einen Lauf
+# über das Limit treiben. Der Rest folgt im nächsten Lauf.
+# ───────────────────────────────────────────────────────────────
+
+on:
+  schedule:
+    # Nicht zur vollen Stunde: dort drängeln sich die geplanten Abläufe.
+    - cron: '43 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      deckel:
+        description: 'Höchstens so viele Artefakte je Lauf löschen'
+        type: string
+        default: '500'
+
+permissions:
+  actions: write   # DELETE auf ein Artefakt ist ein Schreibzugriff
+
+concurrency:
+  group: cleanup-artifacts
+  cancel-in-progress: false
+
+jobs:
+  aufraeumen:
+    name: "🧹 Abgelaufene Artefakte löschen"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Löschen
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          DECKEL: ${{ inputs.deckel || '500' }}
+        run: |
+          set -euo pipefail
+          gh api "repos/$GH_REPO/actions/artifacts?per_page=100" --paginate \
+             --jq '.artifacts[] | select(.expired) | "\(.id) \(.size_in_bytes) \(.name)"' \
+             > /tmp/abgelaufen.txt
+          ANZ=$(wc -l < /tmp/abgelaufen.txt)
+          MB=$(awk '{s += $2} END {printf "%.0f", s / 1e6}' /tmp/abgelaufen.txt)
+          echo "Abgelaufen: $ANZ Artefakte, $MB MB (Deckel: $DECKEL)"
+
+          OK=0; WEG=0; FEHL=0
+          while read -r id groesse name; do
+            [ -z "$id" ] && continue
+            if [ $((OK + WEG + FEHL)) -ge "$DECKEL" ]; then
+              echo "Deckel erreicht — der Rest folgt im nächsten Lauf."
+              break
+            fi
+            # `< /dev/null`: sonst läse gh aus der Liste, über die die Schleife läuft.
+            if AUSGABE=$(gh api -X DELETE "repos/$GH_REPO/actions/artifacts/$id" 2>&1 < /dev/null); then
+              OK=$((OK + 1))
+            elif printf '%s' "$AUSGABE" | grep -q 'HTTP 404'; then
+              WEG=$((WEG + 1))   # inzwischen schon gelöscht
+            else
+              FEHL=$((FEHL + 1))
+              echo "::warning::$name ($id) nicht gelöscht: $AUSGABE"
+            fi
+            # Schreibende Aufrufe nicht im Takt feuern (sekundäres Ratenlimit).
+            sleep 1
+          done < /tmp/abgelaufen.txt
+
+          echo "Fertig: $OK gelöscht, $WEG schon weg, $FEHL Fehler."
+          {
+            echo "### Abgelaufene Artefakte"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| gefunden | $ANZ ($MB MB) |"
+            echo "| gelöscht | $OK |"
+            echo "| schon weg | $WEG |"
+            echo "| Fehler | $FEHL |"
+          } >> "$GITHUB_STEP_SUMMARY"
+          [ "$FEHL" -eq 0 ] || exit 1
