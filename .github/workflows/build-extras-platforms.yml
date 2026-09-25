@@ -431,6 +431,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write    # Transport-Artefakte nach dem Hochladen löschen
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
@@ -582,3 +583,35 @@ jobs:
             fi
           done
           exit "$fehlt"
+
+      # ── Transport-Artefakte sofort löschen ────────────────────────────
+      # ⚠️ Nicht auf `retention-days: 1` verlassen. Gemessen am 24.09.2026
+      # (Abrechnungs-API, Posten „Actions storage"): abgelaufene Artefakte
+      # (Download → 410 Gone) zählt der Speicherzähler weiter, bis sie
+      # ausdrücklich per DELETE entfernt sind — in der Organisation ~150 GB
+      # berechnet bei 3,4 GB gültigen (github.com/orgs/community/discussions/194857).
+      # Gelöscht wird nur, was DIESER Job geholt und schon weitergegeben hat.
+      #
+      # Nur bei Erfolg: sonst bleibt das Artefakt für „Re-run failed jobs"
+      # liegen, und cleanup-artifacts.yml nimmt es nach Ablauf mit.
+      # `continue-on-error`, damit Veröffentlichtes nicht am Aufräumen rot wird.
+      #
+      # ⚠️ Der Job läuft mit `always()` auch nach einem teilweise gescheiterten
+      # Build und lädt dann nur, was da ist. In dem Fall NICHT löschen: ein
+      # „Re-run failed jobs" lädt die Artefakte der grünen Teile erneut.
+      - name: Transport-Artefakte löschen
+        if: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NAMEN: 'icd360sev-windows icd360sev-macos icd360sev-ios'
+        run: |
+          set -euo pipefail
+          for name in $NAMEN; do
+            IDS=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=$name" \
+                    --jq '.artifacts[].id')
+            for id in $IDS; do
+              gh api -X DELETE "repos/$GITHUB_REPOSITORY/actions/artifacts/$id"
+              echo "gelöscht: $name ($id)"
+            done
+          done
