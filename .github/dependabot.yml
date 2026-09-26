@@ -11,13 +11,10 @@ updates:
       - "dependencies"
       - "ci"
 
-  - package-ecosystem: "pub"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    commit-message:
-      prefix: "deps"
-    labels:
-      - "dependencies"
-      - "dart"
+  # ⚠️ KEIN `pub` mehr. Dart-/Flutter-Pakete hebt .github/workflows/deps-update.yml
+  # an — erst nachdem Android, Linux, iOS/macOS/Windows gebaut haben und alle
+  # Tests grün sind. Entscheidung des Users (24.09.2026, hier übernommen am
+  # 26.09.): angehoben wird nur, was keine Anpassung braucht, und das wird VOR
+  # dem PR geprüft. Dependabot legte den PR zuerst an und prüfte danach nur
+  # `flutter analyze`; so kam #426 durch (flutter_webrtc 1.6.2+hotfix.2 →
+  # falsche WebRTC-AAR im App-Modul).

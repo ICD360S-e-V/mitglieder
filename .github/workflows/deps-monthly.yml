@@ -7,6 +7,11 @@
 # Version man mitnehmen kann, hat sich zu oft erst beim Lesen des Quelltextes
 # entschieden — das Changelog allein hat schon getäuscht.
 #
+# Anheben INNERHALB der Grenzen übernimmt seit 26.09.2026 deps-update.yml
+# (montags): erst nachdem Tests und alle Release-Bauten grün waren, als PR, den
+# jemand von Hand merged. Dieser Bericht bleibt für den Überblick — vor allem
+# über Major-Sprünge und festgehaltene Pakete, die Handarbeit brauchen.
+#
 # ⚠️ Der Bericht sagt nichts über Umgebungsdrift. Ein Build, der am Runner-Image
 # scheitert, taucht hier nie auf; dagegen hilft nur, dass CI weiterbaut.
 #
