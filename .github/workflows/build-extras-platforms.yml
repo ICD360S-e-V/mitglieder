@@ -20,8 +20,13 @@ on:
 # ~10-15 min of cancelled-build work in the worst case, vs ~2h of
 # queue pile-up before this fix (each version bump previously got its
 # own lane via github.ref).
+#
+# ⚠️ Die eine Spur gilt nur für TAGS (Name unverändert). Alles andere —
+# Probebauten von deps-update.yml auf deps/pruefung, Handstarts auf Zweigen —
+# bekommt eine eigene Spur je Ref. Vorher teilten sie die Spur mit dem Release
+# und hätten einen laufenden Release-Bau abgebrochen (cancel-in-progress).
 concurrency:
-  group: mitglieder-extras
+  group: ${{ startsWith(github.ref, 'refs/tags/') && 'mitglieder-extras' || format('mitglieder-extras-{0}', github.ref) }}
   cancel-in-progress: true
 
 env:
