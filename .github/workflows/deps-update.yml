@@ -58,7 +58,7 @@ permissions:
   actions: write         # die Bau-Abläufe per workflow_dispatch starten
 
 env:
-  FLUTTER_VERSION: '3.44.9'
+  FLUTTER_VERSION: '3.47.5'
   PRUEFZWEIG: deps/pruefung
   ZWEIG: deps/automatisch
   # Beim Wochenlauf leer, also „false".
