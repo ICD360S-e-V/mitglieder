@@ -36,7 +36,7 @@ env:
   # ⚠️ Die Fassung, mit der DIESES Repo baut — nicht die neueste. Die Spalte
   # „Resolvable" hängt am SDK: mit einem anderen Flutter meldet der Bericht
   # Anhebungen, die hier gar nicht auflösbar sind.
-  FLUTTER_VERSION: '3.44.9'
+  FLUTTER_VERSION: '3.47.5'
 
 jobs:
   report:

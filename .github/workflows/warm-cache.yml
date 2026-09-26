@@ -71,10 +71,10 @@ concurrency:
 
 env:
   # ⚠️ Must equal FLUTTER_VERSION in the three build workflows and the
-  # hardcoded version in pr-check.yml. All five were 3.44.9 on 14.09.2026.
+  # hardcoded version in pr-check.yml. All five were 3.47.5 on 26.09.2026.
   # The Flutter cache key contains this string; a mismatch here means a
   # different key, so nothing hits.
-  FLUTTER_VERSION: '3.44.9'
+  FLUTTER_VERSION: '3.47.5'
 
 jobs:
   warm:
