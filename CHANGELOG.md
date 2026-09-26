@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.103.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.103.0...v1.103.1) (2026-09-26)
+
+
+### Bug Fixes
+
+* **anruf:** App-Modul übersetzt gegen die WebRTC-AAR von flutter_webrtc ([#442](https://github.com/ICD360S-e-V/mitglieder/issues/442)) ([8ff2b61](https://github.com/ICD360S-e-V/mitglieder/commit/8ff2b61fe4f0926993ba48f0acdd54196d421afc))
+
 ## [1.103.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.102.1...v1.103.0) (2026-09-18)
 
 
