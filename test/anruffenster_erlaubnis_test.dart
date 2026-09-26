@@ -1147,7 +1147,9 @@ void main() {
       // Den Pfad aus der Sperrdatei holen, damit eine Aktualisierung von
       // flutter_webrtc auffaellt statt an einer festen Zahl vorbeizulaufen.
       final lock = File('pubspec.lock').readAsStringSync();
-      final v = RegExp(r'flutter_webrtc:[\s\S]{0,400}?version: "([0-9.+]+)"')
+      // `[^"]+`, nicht nur Ziffern: flutter_webrtc heisst auch mal
+      // `1.6.2+hotfix.2` — daran lief dieser Test ab #426 ins Leere.
+      final v = RegExp(r'flutter_webrtc:[\s\S]{0,400}?version: "([^"]+)"')
           .firstMatch(lock)
           ?.group(1);
       expect(v, isNotNull, reason: 'flutter_webrtc steht nicht in pubspec.lock');
