@@ -41,7 +41,7 @@ env:
   # ⚠️ Die Fassung, mit der DIESES Repo baut — nicht die neueste. Die Spalte
   # „Resolvable" hängt am SDK: mit einem anderen Flutter meldet der Bericht
   # Anhebungen, die hier gar nicht auflösbar sind.
-  FLUTTER_VERSION: '3.44.9'
+  FLUTTER_VERSION: '3.47.5'
 
 jobs:
   report:
@@ -59,7 +59,7 @@ jobs:
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2  # v2
         continue-on-error: true
         with:
-          flutter-version: ${ env.FLUTTER_VERSION }
+          flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
       - name: Kurze Pause vor dem zweiten Versuch
@@ -71,7 +71,7 @@ jobs:
       - if: steps.flutter1.outcome == 'failure'
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2  # v2
         with:
-          flutter-version: ${ env.FLUTTER_VERSION }
+          flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
       - name: flutter pub get

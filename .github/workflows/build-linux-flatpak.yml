@@ -35,12 +35,12 @@ concurrency:
 
 env:
   # Still matching Vorsitzer's known-working desktop build, which is what the
-  # old 3.38.4 pin was for - Vorsitzer has since moved to 3.44.8 (its #163,
-  # "auf Flutter 3.44.8 gehen und Windows und iOS wieder mitbauen"), so staying
-  # on 3.38.4 was what had drifted away from it. The renderer concern behind
-  # the original pin - welcome screen not appearing on the test VM - is worth
-  # re-checking there after this lands.
-  FLUTTER_VERSION: '3.44.9'
+  # old 3.38.4 pin was for - Vorsitzer has since moved to 3.47.5 (its #541
+  # "Flutter 3.44.8 → 3.47.2" and #823 "Flutter 3.47.2 -> 3.47.5"), so this
+  # follows it there. The renderer concern behind the original pin - welcome
+  # screen not appearing on the test VM - is worth re-checking there after
+  # this lands.
+  FLUTTER_VERSION: '3.47.5'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
