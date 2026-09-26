@@ -54,7 +54,7 @@ jobs:
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2  # v2
         continue-on-error: true
         with:
-          flutter-version: ${ env.FLUTTER_VERSION }
+          flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
       - name: Kurze Pause vor dem zweiten Versuch
@@ -66,7 +66,7 @@ jobs:
       - if: steps.flutter1.outcome == 'failure'
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2  # v2
         with:
-          flutter-version: ${ env.FLUTTER_VERSION }
+          flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
       - name: flutter pub get
