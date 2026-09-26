@@ -40,7 +40,7 @@ class ClipboardImport {
     try {
       final bytes = await Pasteboard.image;
       if (bytes == null || bytes.isEmpty) return null;
-      return writeTemp(bytes);
+      return await writeTemp(bytes);
     } catch (e) {
       // Wayland/X11 ohne Bild in der Ablage wirft je nach Toolkit statt
       // null zu liefern — kein Grund, den Paste abzubrechen.

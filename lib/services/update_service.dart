@@ -457,7 +457,7 @@ class UpdateService {
         // failure is better than opening a "not found" page and letting them
         // conclude the update is broken.
         _log.info('iOS: handing off to the App Store', tag: 'UPDATE');
-        return openAppStore();
+        return await openAppStore();
       } else if (Platform.isWindows) {
         return await _launchWindowsInstaller(installerPath, silent: silent);
       } else if (Platform.isMacOS) {
@@ -539,7 +539,7 @@ class UpdateService {
     }
     try {
       if (await canLaunchUrl(uri)) {
-        return launchUrl(uri, mode: LaunchMode.externalApplication);
+        return await launchUrl(uri, mode: LaunchMode.externalApplication);
       }
       _log.error('App Store URL could not be launched: $uri', tag: 'UPDATE');
       return false;
