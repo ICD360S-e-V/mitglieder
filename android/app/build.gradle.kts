@@ -112,7 +112,10 @@ dependencies {
     // eine andere, fällt es beim Bauen nicht auf: es erscheint erst auf dem
     // Gerät als `NoSuchMethodError` mitten im Gespräch. Ein Test vergleicht
     // beide Zahlen.
-    compileOnly("io.github.webrtc-sdk:android:144.7559.09")
+    // Steht in `flutter_webrtc-1.6.2+hotfix.2/android/build.gradle`. Bis v1.101
+    // passte 144.7559.09 (flutter_webrtc 1.6.0); #426 hob flutter_webrtc an, und
+    // der Test dazu lief nie — er konnte `+hotfix.2` nicht lesen.
+    compileOnly("io.github.webrtc-sdk:android:150.7871.01")
 }
 
 flutter {
