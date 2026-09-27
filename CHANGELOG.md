@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.103.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.103.1...v1.103.2) (2026-09-27)
+
+
+### Bug Fixes
+
+* **android:** Gradle 8.14 und Kotlin 2.2.20 — Mindestfassungen von Flutter 3.47 ([#448](https://github.com/ICD360S-e-V/mitglieder/issues/448)) ([088d1d1](https://github.com/ICD360S-e-V/mitglieder/commit/088d1d1a35de0d625f4749cf9e61ee645196fd58))
+
 ## [1.103.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.103.0...v1.103.1) (2026-09-26)
 
 
