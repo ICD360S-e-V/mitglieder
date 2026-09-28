@@ -98,6 +98,6 @@ jobs:
       # its history. `--only-verified` keeps it to secrets it could actually
       # confirm against the issuing service, instead of every high-entropy
       # string that happens to look like a key.
-      - uses: trufflesecurity/trufflehog@a5f3de55cc2065ae4dde8fee24076f137fd62fcf  # v3.97.8
+      - uses: trufflesecurity/trufflehog@4dd8831c5f12599465d4d45c3c447b4018a34c85  # v3.97.9
         with:
           extra_args: --only-verified
