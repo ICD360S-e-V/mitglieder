@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.104.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.1...v1.104.2) (2026-09-28)
+
+
+### Bug Fixes
+
+* **linux,macos:** App läuft nur einmal — zweiter Start holt das laufende Fenster zurück ([#455](https://github.com/ICD360S-e-V/mitglieder/issues/455)) ([aae913b](https://github.com/ICD360S-e-V/mitglieder/commit/aae913b40ee0dc707fb8186a0af8dc563f165abb))
+
 ## [1.104.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.0...v1.104.1) (2026-09-28)
 
 
