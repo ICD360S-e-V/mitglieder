@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.104.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.0...v1.104.1) (2026-09-28)
+
+
+### Bug Fixes
+
+* **windows:** App startet nur noch einmal — ein zweiter Start holt das laufende Fenster nach vorne ([#454](https://github.com/ICD360S-e-V/mitglieder/issues/454)) ([80b264d](https://github.com/ICD360S-e-V/mitglieder/commit/80b264d30c2cd1fd59ecd1bca7c09e48857a4caf))
+
 ## [1.104.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.103.2...v1.104.0) (2026-09-28)
 
 
