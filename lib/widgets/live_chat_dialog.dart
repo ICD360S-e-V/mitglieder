@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:crop_your_image/crop_your_image.dart';
@@ -12,6 +11,9 @@ import '../l10n/app_localizations.dart';
 import 'eastern.dart';
 import 'linkified_text.dart';
 import '../utils/clipboard_import.dart';
+import '../utils/chat_anhang_laden.dart';
+import '../utils/datei_ablage.dart';
+import 'chat_anhang_zeile.dart';
 import 'chat_image_attachment.dart';
 import 'chat_pending_attachments.dart';
 import 'paste_image_detector.dart';
@@ -99,6 +101,12 @@ class _LiveChatDialogState extends State<LiveChatDialog>
   // File upload state
   List<File> _selectedFiles = [];
   bool _isUploading = false;
+
+  // Herunterladen-Knopf an den Anhängen: welcher gerade läuft (der
+  // Speichern-Dialog des Systems kann nur einmal offen sein) und wohin die
+  // schon gespeicherten gingen.
+  Object? _savingAttachmentId;
+  final Map<Object, String> _savedAttachments = {};
 
   // Stream subscriptions
   StreamSubscription? _messageSubscription;
@@ -1359,7 +1367,11 @@ class _LiveChatDialogState extends State<LiveChatDialog>
     }
   }
 
-  Future<void> _downloadAttachment(Map<String, dynamic> attachment) async {
+  /// Holt Name und Inhalt eines Anhangs vom Server — für Öffnen und
+  /// Herunterladen gleichermaßen. Meldet Fehler selbst und gibt dann `null`
+  /// zurück.
+  Future<({Uint8List bytes, String dateiname})?> _loadAttachment(
+      Map<String, dynamic> attachment) async {
     final l = AppLocalizations.of(context)!;
     final errorDownloadText = l.errorDownloading;
     final fileNotLoadedText = l.fileNotLoaded;
@@ -1369,7 +1381,7 @@ class _LiveChatDialogState extends State<LiveChatDialog>
       if (attachId == null) {
         _showError(attachIdMissingText);
         _log.error('LiveChat: Download failed - attachment has no id: $attachment', tag: 'CHAT');
-        return;
+        return null;
       }
       final int parsedId = attachId is int ? attachId : int.parse(attachId.toString());
 
@@ -1377,34 +1389,69 @@ class _LiveChatDialogState extends State<LiveChatDialog>
         attachmentId: parsedId,
         mitgliedernummer: widget.mitgliedernummer,
       );
-
-      if (result['success'] == true && mounted) {
-        // Server uses array_merge, so fields are at root level (not under 'data')
-        final base64Data = result['content'] ?? result['data']?['content'] ?? result['data']?['file_data'];
-        final filename = result['filename'] ?? result['data']?['filename'];
-
-        if (base64Data == null || filename == null) {
-          _showError(fileNotLoadedText);
-          return;
-        }
-
-        // Decode and save file
-        final bytes = base64Decode(base64Data);
-        final tempDir = await getTemporaryDirectory();
-        final safeName = filename.split(RegExp(r'[/\\]')).last.replaceAll('..', '');
-        final file = File('${tempDir.path}/$safeName');
-        await file.writeAsBytes(bytes);
-
-        // Open file internally (PDF, images) or externally (other types)
-        if (mounted) {
-          await FileViewer.open(context, file, filename);
-        }
-      } else {
+      if (!mounted) return null;
+      if (result['success'] != true) {
         _showError(result['message'] ?? errorDownloadText);
+        return null;
+      }
+
+      final anhang = await chatAnhangAusAntwort(
+        result,
+        streamLaden: _apiService.chatAnhangStreamLaden,
+      );
+      if (anhang == null) _showError(fileNotLoadedText);
+      return anhang;
+    } catch (e) {
+      _log.error('LiveChat: Download error: $e', tag: 'CHAT');
+      _showError(getUserFriendlyError(l, e, tag: 'CHAT'));
+      return null;
+    }
+  }
+
+  /// Tippen auf die Dateizeile: in den Zwischenspeicher und öffnen.
+  Future<void> _openAttachment(Map<String, dynamic> attachment) async {
+    final l = AppLocalizations.of(context)!;
+    final anhang = await _loadAttachment(attachment);
+    if (anhang == null || !mounted) return;
+    try {
+      final tempDir = await getTemporaryDirectory();
+      final file = File('${tempDir.path}/${sichererDateiname(anhang.dateiname)}');
+      await file.writeAsBytes(anhang.bytes);
+
+      // Open file internally (PDF, images) or externally (other types)
+      if (mounted) {
+        await FileViewer.open(context, file, anhang.dateiname);
       }
     } catch (e) {
       _log.error('LiveChat: Download error: $e', tag: 'CHAT');
       _showError(getUserFriendlyError(l, e, tag: 'CHAT'));
+    }
+  }
+
+  /// Herunterladen-Knopf: legt den Anhang dort ab, wo das Mitglied ihn auch
+  /// außerhalb der App wiederfindet ([dateiAblegen]). Öffnen allein ließ ihn
+  /// im Zwischenspeicher der App zurück, an den es nicht herankommt.
+  Future<void> _saveAttachment(Map<String, dynamic> attachment) async {
+    if (_savingAttachmentId != null) return;
+    final l = AppLocalizations.of(context)!;
+    final id = attachment['id'];
+    setState(() => _savingAttachmentId = id);
+    try {
+      final anhang = await _loadAttachment(attachment);
+      if (anhang == null || !mounted) return;
+      final ort = await dateiAblegen(
+        bytes: anhang.bytes,
+        dateiname: anhang.dateiname,
+      );
+      // null: im Speichern-Dialog abgebrochen — kein Fehler.
+      if (ort != null && id != null && mounted) {
+        setState(() => _savedAttachments[id] = ort);
+      }
+    } catch (e) {
+      _log.error('LiveChat: Speichern fehlgeschlagen: $e', tag: 'CHAT');
+      _showError(l.errorSaving);
+    } finally {
+      if (mounted) setState(() => _savingAttachmentId = null);
     }
   }
 
@@ -2065,6 +2112,17 @@ class _LiveChatDialogState extends State<LiveChatDialog>
   Widget _buildGhostBubble(Map<String, dynamic> msg, bool isOwn) => const SizedBox.shrink();
 
   Widget _buildModernAttachment(Map<String, dynamic> attachment, bool isOwn) {
+    // Auf jeder Plattform dieselbe Zeile mit Herunterladen-Knopf; nur das
+    // Ablegen unterscheidet sich (siehe dateiAblegen).
+    final id = attachment['id'];
+    final zeile = ChatAnhangZeile(
+      attachment: attachment,
+      isOwn: isOwn,
+      onOeffnen: () => _openAttachment(attachment),
+      onHerunterladen: () => _saveAttachment(attachment),
+      laedt: id != null && _savingAttachmentId == id,
+      gespeichertIn: _savedAttachments[id],
+    );
     // Ein Bild zeigt man, statt seinen Dateinamen vorzulesen. Die Dateizeile
     // bleibt darunter — sie traegt den Speichern-Knopf.
     if (ChatImageAttachment.isImage(attachment)) {
@@ -2075,81 +2133,11 @@ class _LiveChatDialogState extends State<LiveChatDialog>
             attachment: attachment,
             mitgliedernummer: widget.mitgliedernummer,
           ),
-          _buildModernAttachmentRow(attachment, isOwn),
+          zeile,
         ],
       );
     }
-    return _buildModernAttachmentRow(attachment, isOwn);
-  }
-
-  Widget _buildModernAttachmentRow(Map<String, dynamic> attachment, bool isOwn) {
-    final filename = attachment['filename'] ?? AppLocalizations.of(context)!.file;
-    final size = attachment['size'] ?? 0;
-    final extension = (attachment['extension'] ?? '').toString().toLowerCase();
-
-    IconData icon;
-    switch (extension) {
-      case 'pdf':
-        icon = Icons.picture_as_pdf;
-        break;
-      case 'png':
-      case 'jpg':
-      case 'jpeg':
-        icon = Icons.image;
-        break;
-      default:
-        icon = Icons.attach_file;
-    }
-
-    return InkWell(
-      onTap: () => _downloadAttachment(attachment),
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        margin: const EdgeInsets.only(top: 6),
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: isOwn ? Colors.white.withValues(alpha: 0.2) : context.colors.cardSubtle,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: isOwn ? Colors.white.withValues(alpha: 0.3) : const Color(0xFF667eea).withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(icon, size: 20, color: isOwn ? Colors.white : const Color(0xFF667eea)),
-            ),
-            const SizedBox(width: 10),
-            Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    filename,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: isOwn ? Colors.white : context.colors.textPrimary,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    _formatFileSize(size),
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: isOwn ? Colors.white70 : context.colors.textSecondary,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return zeile;
   }
 
   Widget _buildModernInputArea() {
@@ -2314,12 +2302,6 @@ class _LiveChatDialogState extends State<LiveChatDialog>
         ],
       );
     }
-  }
-
-  String _formatFileSize(int bytes) {
-    if (bytes < 1024) return '$bytes B';
-    if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(1)} KB';
-    return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
   }
 
   String _formatTime(String? dateStr) {
