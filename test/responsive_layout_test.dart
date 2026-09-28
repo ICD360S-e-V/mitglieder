@@ -87,6 +87,7 @@ import 'package:icd360sev_mitglied/services/wizard_service.dart';
 import 'package:icd360sev_mitglied/widgets/approval_waiting_dialog.dart';
 import 'package:icd360sev_mitglied/widgets/benachrichtigung_consent_dialog.dart';
 import 'package:icd360sev_mitglied/widgets/chat_attachment_item.dart';
+import 'package:icd360sev_mitglied/widgets/chat_anhang_zeile.dart';
 import 'package:icd360sev_mitglied/widgets/chat_header.dart';
 import 'package:icd360sev_mitglied/widgets/chat_image_attachment.dart';
 import 'package:icd360sev_mitglied/widgets/chat_pending_attachments.dart';
@@ -448,6 +449,30 @@ final Map<String, Widget Function()> _bausteine = <String, Widget Function()>{
           },
           isOwn: false,
           onDownload: (_) {},
+        ),
+      ),
+  // Die Dateizeile im Live-Chat mit Herunterladen-Knopf — mit langem Namen,
+  // damit der Knopf gegen den Text um die Breite ringen muss.
+  'ChatAnhangZeile': () => _aufSeite(
+        ChatAnhangZeile(
+          attachment: const {
+            'id': 42,
+            'filename': 'Widerspruchsbescheid_Jobcenter_Landkreis_Mitgliedsantrag.pdf',
+            'extension': 'pdf',
+            'size': 8400000,
+          },
+          isOwn: false,
+          onOeffnen: () {},
+          onHerunterladen: () {},
+        ),
+      ),
+  'ChatAnhangZeile gespeichert': () => _aufSeite(
+        ChatAnhangZeile(
+          attachment: const {'id': 7, 'filename': 'foto.jpg', 'extension': 'jpg', 'size': 1200},
+          isOwn: false,
+          onOeffnen: () {},
+          onHerunterladen: () {},
+          gespeichertIn: 'foto.jpg',
         ),
       ),
   'ChatPendingAttachments': () => _aufSeite(

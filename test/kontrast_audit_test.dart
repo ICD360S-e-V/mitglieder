@@ -18,6 +18,7 @@ import 'package:icd360sev_mitglied/l10n/app_localizations.dart';
 import 'package:icd360sev_mitglied/services/api_service.dart';
 import 'package:icd360sev_mitglied/utils/app_theme.dart';
 
+import 'package:icd360sev_mitglied/widgets/chat_anhang_zeile.dart';
 import 'package:icd360sev_mitglied/widgets/chat_message_bubble.dart';
 import 'package:icd360sev_mitglied/widgets/conversation_list_item.dart';
 import 'package:icd360sev_mitglied/widgets/claudiu_login_coach.dart';
@@ -156,6 +157,17 @@ final Map<String, Widget Function()> _bausteine = <String, Widget Function()>{
         isSelected: false,
         hasActiveCall: true,
         onTap: () {},
+      ),
+  'ChatAnhangZeile fremd': () => ChatAnhangZeile(
+        attachment: const {
+          'id': 42,
+          'filename': 'Bescheid Jobcenter.pdf',
+          'extension': 'pdf',
+          'size': 240000,
+        },
+        isOwn: false,
+        onOeffnen: () {},
+        onHerunterladen: () {},
       ),
   'ChatMessageBubble fremd': () => ChatMessageBubble(
         message: const {

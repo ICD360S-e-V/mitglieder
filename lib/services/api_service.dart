@@ -916,6 +916,45 @@ class ApiService {
     }
   }
 
+  /// Rohe Bytes eines großen Chat-Anhangs von `chat/stream.php`. Dorthin
+  /// verweist `chat/download.php` ab 5 MB, statt den Inhalt als Base64
+  /// mitzuschicken (siehe `chatAnhangAusAntwort`).
+  ///
+  /// ⚠️ Die Adresse stammt aus einer Serverantwort. Gerätschlüssel und Token
+  /// gehen nur an genau diesen Endpunkt des eigenen Servers
+  /// ([chatStreamAdresseErlaubt]) — nie an eine Adresse, bloß weil sie in
+  /// einer Antwort stand.
+  Future<Uint8List?> chatAnhangStreamLaden(String url) async {
+    if (!chatStreamAdresseErlaubt(url)) {
+      LoggerService().warning('Chat-Anhang: fremde Stream-Adresse abgelehnt', tag: 'CHAT');
+      return null;
+    }
+    try {
+      final r = await _client.get(Uri.parse(url), headers: _headers);
+      if (r.statusCode != 200) {
+        LoggerService().warning('Chat-Anhang (Stream): HTTP ${r.statusCode}', tag: 'CHAT');
+        return null;
+      }
+      return r.bodyBytes;
+    } catch (e) {
+      LoggerService().error('Chat-Anhang (Stream): $e', tag: 'CHAT');
+      return null;
+    }
+  }
+
+  /// Nur `https://<eigener Server>/api/chat/stream.php`, ohne Anmeldedaten in
+  /// der Adresse.
+  static bool chatStreamAdresseErlaubt(String url) {
+    final uri = Uri.tryParse(url);
+    final eigen = Uri.parse(baseUrl);
+    return uri != null &&
+        uri.scheme == 'https' &&
+        uri.userInfo.isEmpty &&
+        uri.host == eigen.host &&
+        uri.port == eigen.port &&
+        uri.path == '${eigen.path}/chat/stream.php';
+  }
+
   // Mark messages as read/delivered (WhatsApp-style read receipts)
   Future<Map<String, dynamic>> markMessagesRead({
     required int conversationId,
