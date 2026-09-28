@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.104.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.103.2...v1.104.0) (2026-09-28)
+
+
+### Features
+
+* **chat:** Anhänge im Live-Chat herunterladen — Knopf neben jeder Datei ([#453](https://github.com/ICD360S-e-V/mitglieder/issues/453)) ([8a1290c](https://github.com/ICD360S-e-V/mitglieder/commit/8a1290c3519b3060703f6060839d70e51ffd5242))
+
 ## [1.103.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.103.1...v1.103.2) (2026-09-27)
 
 
