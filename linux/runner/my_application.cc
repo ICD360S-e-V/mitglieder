@@ -22,6 +22,19 @@ static void first_frame_cb(MyApplication* self, FlView* view) {
 // Implements GApplication::activate.
 static void my_application_activate(GApplication* application) {
   MyApplication* self = MY_APPLICATION(application);
+
+  // NUR EIN FENSTER. Ein zweiter Start der App (Anwendungsmenue, Autostart,
+  // Doppelklick) laeuft nicht als eigener Prozess, sondern kommt ueber D-Bus
+  // hier in der laufenden App an (siehe my_application_new). Dann das
+  // vorhandene Fenster zurueckholen - auch aus dem Infobereich, wo
+  // window_manager es mit gtk_widget_hide versteckt - statt ein zweites mit
+  // eigener Engine und eigener Verbindung zu bauen.
+  GList* fenster = gtk_application_get_windows(GTK_APPLICATION(application));
+  if (fenster != nullptr) {
+    gtk_window_present(GTK_WINDOW(fenster->data));
+    return;
+  }
+
   GtkWindow* window =
       GTK_WINDOW(gtk_application_window_new(GTK_APPLICATION(application)));
 
@@ -88,9 +101,17 @@ static gboolean my_application_local_command_line(GApplication* application,
 
   g_autoptr(GError) error = nullptr;
   if (!g_application_register(application, nullptr, &error)) {
-    g_warning("Failed to register: %s", error->message);
-    *exit_status = 1;
-    return TRUE;
+    // Die Sperre ist kein Startverbot: verweigert der Bus den Namen (fremde
+    // Sandbox, Richtlinie), startet die App ohne sie statt gar nicht.
+    g_warning("Einzelinstanz nicht moeglich (%s), starte ohne",
+              error->message);
+    g_clear_error(&error);
+    g_application_set_flags(application, G_APPLICATION_NON_UNIQUE);
+    if (!g_application_register(application, nullptr, &error)) {
+      g_warning("Failed to register: %s", error->message);
+      *exit_status = 1;
+      return TRUE;
+    }
   }
 
   g_application_activate(application);
@@ -142,7 +163,29 @@ MyApplication* my_application_new() {
   // the application to be recognized beyond its binary name.
   g_set_prgname(APPLICATION_ID);
 
+  // Die App laeuft nur EINMAL je Sitzung. Ohne G_APPLICATION_NON_UNIQUE belegt
+  // die erste den Namen auf dem Sitzungsbus; ein zweiter Start reicht nur
+  // sein activate an sie weiter (my_application_activate) und beendet sich.
+  // Vorher lief jede Kopie mit eigener Verbindung, und eine Fernwartung ging
+  // an alle.
+  //
+  // Im Flatpak darf die App auf dem Sitzungsbus nur ihren EIGENEN Namen
+  // belegen (FLATPAK_ID = de.icd360s.Mitglieder). Mit APPLICATION_ID
+  // schluege die Anmeldung dort fehl.
+  //
+  // Im Debug-Bau bleibt es beim alten Verhalten, damit `flutter run` neben
+  // der installierten App moeglich bleibt.
+#ifdef NDEBUG
+  const gchar* flatpak_id = g_getenv("FLATPAK_ID");
+  const gchar* kennung =
+      flatpak_id != nullptr && g_application_id_is_valid(flatpak_id)
+          ? flatpak_id
+          : APPLICATION_ID;
+  return MY_APPLICATION(g_object_new(my_application_get_type(),
+                                     "application-id", kennung, nullptr));
+#else
   return MY_APPLICATION(g_object_new(my_application_get_type(),
                                      "application-id", APPLICATION_ID, "flags",
                                      G_APPLICATION_NON_UNIQUE, nullptr));
+#endif
 }

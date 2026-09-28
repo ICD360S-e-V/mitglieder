@@ -468,10 +468,7 @@ class UpdateService {
         await Process.run('open', ['/Volumes/ICD360S Mitglieder']);
         return true;
       } else if (Platform.isLinux) {
-        // Linux: Run AppImage directly
-        _log.info('Linux: Running AppImage', tag: 'UPDATE');
-        await Process.start(installerPath, [], runInShell: true);
-        return true;
+        return await _launchLinuxAppImage(installerPath);
       }
       return false;
     } catch (e) {
@@ -520,6 +517,43 @@ class UpdateService {
 
     // Let the cmd → start → setup.exe chain get far enough to break away.
     await Future.delayed(const Duration(milliseconds: 800));
+    exit(0);
+  }
+
+  /// Hand the running app over to the new AppImage and exit.
+  ///
+  /// 🔴 EXIT FIRST, THEN START. The app runs only once per session
+  /// (linux/runner/my_application.cc): an AppImage started NEXT TO this
+  /// version would only pass its `activate` on to it and quit again — the
+  /// update would never arrive. Before that, the old version simply kept
+  /// running beside the new one: two copies, and a Fernwartung reached both.
+  ///
+  /// So a small detached shell waits until this process is gone and then
+  /// starts the AppImage. Like on Windows, this function never returns on
+  /// success.
+  ///
+  /// ⚠️ Not inside Flatpak: an AppImage cannot run in the sandbox (no FUSE),
+  /// and Flatpak installs get their updates from Flatpak itself. Exiting there
+  /// would leave the member with no app at all, so it stays as it was.
+  Future<bool> _launchLinuxAppImage(String appImagePath) async {
+    if (Platform.environment['FLATPAK_ID'] != null) {
+      _log.info('Linux (Flatpak): Running AppImage', tag: 'UPDATE');
+      await Process.start(appImagePath, [], runInShell: true);
+      return true;
+    }
+
+    _log.info('Linux: AppImage starts once this process has exited', tag: 'UPDATE');
+    await Process.start(
+      '/bin/sh',
+      [
+        '-c',
+        r'while kill -0 "$1" 2>/dev/null; do sleep 0.2; done; exec "$2"',
+        'icd360sev-update',
+        '$pid',
+        appImagePath,
+      ],
+      mode: ProcessStartMode.detached,
+    );
     exit(0);
   }
 
