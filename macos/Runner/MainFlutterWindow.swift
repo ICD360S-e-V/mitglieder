@@ -4,6 +4,12 @@ import ApplicationServices
 
 class MainFlutterWindow: NSWindow {
   override func awakeFromNib() {
+    // Vor allem anderen: laeuft die App schon, holt dieser Start sie nach
+    // vorne und beendet sich - bevor hier Engine und Verbindung entstehen.
+    if MainFlutterWindow.laufendeKopieNachVorne() {
+      exit(0)
+    }
+
     let flutterViewController = FlutterViewController()
     let windowFrame = self.frame
     self.contentViewController = flutterViewController
@@ -60,6 +66,40 @@ class MainFlutterWindow: NSWindow {
     }
 
     super.awakeFromNib()
+  }
+
+  /// Laeuft schon eine andere Kopie dieser App? Dann sie nach vorne holen und
+  /// `true` - dieser Start beendet sich.
+  ///
+  /// macOS verhindert einen zweiten Start von selbst nur fuer DIESELBE Kopie
+  /// (ein Doppelklick auf die App in /Programme holt die laufende nach vorne).
+  /// Eine zweite Kopie an anderem Ort - etwa direkt aus dem Update-DMG
+  /// gestartet - lief als eigener Prozess mit eigener Verbindung, und eine
+  /// Fernwartung ging an beide.
+  private static func laufendeKopieNachVorne() -> Bool {
+    guard let kennung = Bundle.main.bundleIdentifier else { return false }
+    let selbst = NSRunningApplication.current.processIdentifier
+    guard let laufend = NSRunningApplication
+      .runningApplications(withBundleIdentifier: kennung)
+      .first(where: { $0.processIdentifier != selbst && !$0.isTerminated })
+    else { return false }
+
+    // Wie ein Klick auf ihr Dock-Symbol: LaunchServices schickt der laufenden
+    // Kopie "reopen", und AppDelegate.applicationShouldHandleReopen holt ihr
+    // Fenster zurueck - auch aus dem Infobereich.
+    guard let ort = laufend.bundleURL else {
+      laufend.activate(options: [.activateAllWindows])
+      return true
+    }
+    let fertig = DispatchSemaphore(value: 0)
+    NSWorkspace.shared.openApplication(
+      at: ort, configuration: NSWorkspace.OpenConfiguration()
+    ) { _, _ in
+      fertig.signal()
+    }
+    // Die Antwort kommt auf einer anderen Warteschlange; nicht ewig warten.
+    _ = fertig.wait(timeout: .now() + 3)
+    return true
   }
 }
 
