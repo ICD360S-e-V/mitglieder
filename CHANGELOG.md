@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.104.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.2...v1.104.3) (2026-09-30)
+
+
+### Bug Fixes
+
+* **fernwartung:** Sitzung schreibt ins Protokoll, was sie aufnimmt, kodiert und sendet ([#459](https://github.com/ICD360S-e-V/mitglieder/issues/459)) ([d40953c](https://github.com/ICD360S-e-V/mitglieder/commit/d40953cd09caf984379e061f30812e5842a77608))
+
 ## [1.104.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.1...v1.104.2) (2026-09-28)
 
 
