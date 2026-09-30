@@ -10,6 +10,8 @@ import 'voice_call_service.dart' show iceServerEintraege;
 import 'logger_service.dart';
 import 'secure_screen.dart';
 import 'remote_input/input_injector.dart';
+import '../utils/sdp_kurz.dart';
+import '../utils/sende_befund.dart';
 
 final _log = LoggerService();
 
@@ -356,11 +358,15 @@ class RemoteAgentService {
       }
 
       // Answer the Vorsitzer's offer.
+      _sdpProtokollieren('Angebot', offer.sdp);
       await _pc!.setRemoteDescription(RTCSessionDescription(offer.sdp, offer.sdpType));
       _remoteDescriptionSet = true;
       await _flushQueuedIce();
       final answer = await _pc!.createAnswer();
       await _pc!.setLocalDescription(answer);
+      // Was WIRKLICH ausgehandelt ist: der erste Codec der Antwort ist der,
+      // mit dem dieses Gerät sendet.
+      _sdpProtokollieren('Antwort', answer.sdp);
       // Plattform und Steuerbarkeit gehen MIT der Antwort zurueck. Der Vorsitz
       // kann beides nicht wissen, wenn er die Anfrage stellt — er traegt sonst
       // „Steuerung erlaubt" ins Pruefprotokoll, wo gar keine moeglich war, und
@@ -380,6 +386,7 @@ class RemoteAgentService {
       // Erst NACH setLocalDescription: vorher hat der Sender noch keine
       // Encodings, und setParameters liefe ins Leere.
       await bildgueteSetzen(_guete);
+      _befundUhrStarten();
 
       _subscribeSession();
       _log.info('RemoteAgent: answered offer, sharing screen (control=${_injector?.isSupported})', tag: 'REMOTE');
@@ -606,6 +613,12 @@ class RemoteAgentService {
           // Der erste Bildschirm ist der ganze Bildschirm — kein Auswahlfenster
           // fuer das Mitglied, das gerade Hilfe braucht.
           final src = sources.first;
+          // Fuers Protokoll: bei zwei Monitoren ist „der erste" nicht
+          // unbedingt der, vor dem das Mitglied sitzt.
+          _log.info(
+              'RemoteAgent: Aufnahme — ${sources.length} Bildschirm(e), '
+              'gewaehlt 1: „${src.name}"',
+              tag: 'REMOTE');
           return await navigator.mediaDevices.getDisplayMedia(<String, dynamic>{
             'video': {
               'deviceId': {'exact': src.id},
@@ -886,6 +899,68 @@ class RemoteAgentService {
   /// Aktuelle Bitrate der Automatik in kbit/s (0 = Automatik läuft nicht).
   int get automatikKbit => _guete == Bildguete.automatik ? _kbit : 0;
 
+  // ─── Sendebefund ───────────────────────────────────────────────────────
+  //
+  // ⚠️ Warum: am 30.09.2026 stand hier im Protokoll „answered offer, sharing
+  // screen", die Verbindung war da, über das Relais flossen rund 100 kB/s —
+  // und der Vorsitz sah Schwarz. Was dieses Gerät aufnahm, in welcher Größe,
+  // mit welchem Codec, und ob die Gegenseite ständig um ein neues Vollbild
+  // bat, stand nirgends. Siehe [SendeBefund].
+  //
+  // Eigene Uhr, nicht der Regeltakt: der läuft nur in der Automatik und
+  // bricht ab, solange es keine Umlaufzeit gibt — also genau dann, wenn etwas
+  // nicht stimmt.
+
+  Timer? _befundUhr;
+  int _befundTakte = 0;
+  SendeBefund? _letzterBefund;
+  String? _protokollierteLage;
+
+  /// Der letzte Sendebefund — für Tests und für das Banner.
+  SendeBefund? get letzterSendeBefund => _letzterBefund;
+
+  void _befundUhrStarten() {
+    _befundUhr?.cancel();
+    _befundTakte = 0;
+    _letzterBefund = null;
+    _protokollierteLage = null;
+    _befundUhr =
+        Timer.periodic(const Duration(seconds: 5), (_) => _befundLesen());
+  }
+
+  Future<void> _befundLesen() async {
+    final pc = _pc;
+    if (pc == null) return;
+    try {
+      final befund = SendeBefund.ausStatistik([
+        for (final b in await pc.getStats())
+          (id: b.id, type: b.type, werte: b.values),
+      ]);
+      final vorher = _letzterBefund;
+      _letzterBefund = befund;
+      _befundTakte++;
+      final lage = befund.lage(vorher);
+      final wechsel = lage != _protokollierteLage;
+      if (!SendeBefund.faellig(_befundTakte, wechsel: wechsel)) return;
+      _protokollierteLage = lage;
+      final zeile = 'RemoteAgent: Bild $lage — ${befund.protokoll}';
+      if (lage == SendeBefund.lageLaeuft) {
+        _log.info(zeile, tag: 'REMOTE');
+      } else {
+        _log.warning(zeile, tag: 'REMOTE');
+      }
+    } catch (e) {
+      _log.warning('RemoteAgent: Sendebefund nicht lesbar: $e', tag: 'REMOTE');
+    }
+  }
+
+  /// Die Bildabschnitte der SDP ins Protokoll — siehe [sdpVideoKurz].
+  void _sdpProtokollieren(String was, String? sdp) {
+    for (final zeile in sdpVideoKurz(sdp)) {
+      _log.info('RemoteAgent: SDP $was — $zeile', tag: 'REMOTE');
+    }
+  }
+
   /// Eigenes Mikrofon stummschalten, ohne die Sitzung zu beenden.
   void mikrofonStumm(bool stumm) {
     for (final t in _mikroStream?.getAudioTracks() ?? const <MediaStreamTrack>[]) {
@@ -982,6 +1057,16 @@ class RemoteAgentService {
 
   void _cleanup() {
     _reglerStoppen();
+    _befundUhr?.cancel();
+    _befundUhr = null;
+    // Der Schlussstand gehoert ins Protokoll: eine Sitzung, die nach einer
+    // halben Minute Schwarz abgebrochen wird, liegt sonst zwischen zwei
+    // protokollierten Messungen.
+    final schluss = _letzterBefund;
+    if (schluss != null) {
+      _log.info('RemoteAgent: Bild am Ende — ${schluss.protokoll}', tag: 'REMOTE');
+    }
+    _letzterBefund = null;
     _vormerkUhr?.cancel();
     _vormerkUhr = null;
     // Restore the screenshot/recording block + stop the capture FG service.
