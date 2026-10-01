@@ -1687,7 +1687,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   }
 
   Future<void> _pickLeistungsbescheid() async {
-    final result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png'],
     );

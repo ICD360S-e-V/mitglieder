@@ -90,7 +90,7 @@ class _PdfWerkzeugScreenState extends State<PdfWerkzeugScreen> {
   Future<void> _dateiWaehlen() async {
     final l10n = AppLocalizations.of(context)!;
 
-    final auswahl = await FilePicker.platform.pickFiles(
+    final auswahl = await FilePicker.pickFiles(
       type: FileType.custom,
       allowedExtensions: const ['pdf'],
       withData: false,

@@ -1245,7 +1245,7 @@ class _LiveChatDialogState extends State<LiveChatDialog>
   Future<void> _pickFiles() async {
     final errorText = AppLocalizations.of(context)!.errorPickingFiles;
     try {
-      final result = await FilePicker.platform.pickFiles(
+      final result = await FilePicker.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['pdf', 'png', 'jpg', 'jpeg', 'txt'],
         allowMultiple: true,
