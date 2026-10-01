@@ -190,7 +190,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   /// File-system picker with multi-select on. Mirrors the
   /// verifizierung_tab.dart filter set (PDF / JPG / JPEG / PNG).
   Future<void> _pickFromFiles() async {
-    final result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker.pickFiles(
       type: FileType.custom,
       allowedExtensions: const ['pdf', 'jpg', 'jpeg', 'png'],
       allowMultiple: true,

@@ -102,7 +102,7 @@ String freierDateiname(String name, bool Function(String) existiert) {
 }
 
 Future<String?> _systemDialog(String dateiname, Uint8List bytes) =>
-    FilePicker.platform.saveFile(fileName: dateiname, bytes: bytes);
+    FilePicker.saveFile(fileName: dateiname, bytes: bytes);
 
 Future<Directory> _downloadsOrdner() async {
   final dir = await getDownloadsDirectory() ??
