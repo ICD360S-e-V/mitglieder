@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.104.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.3...v1.104.4) (2026-10-01)
+
+
+### Bug Fixes
+
+* **deps:** file_picker 10.3.10 -&gt; 11.0.3 (statische API, ersetzt Dependabot [#306](https://github.com/ICD360S-e-V/mitglieder/issues/306)) ([#461](https://github.com/ICD360S-e-V/mitglieder/issues/461)) ([753bc4e](https://github.com/ICD360S-e-V/mitglieder/commit/753bc4e1c27d1c43835b94250fe46f0ae66e587d))
+
 ## [1.104.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.2...v1.104.3) (2026-09-30)
 
 
