@@ -1248,11 +1248,10 @@ class _LiveChatDialogState extends State<LiveChatDialog>
       final result = await FilePicker.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['pdf', 'png', 'jpg', 'jpeg', 'txt'],
-        allowMultiple: true,
       );
 
-      if (result != null && result.files.isNotEmpty) {
-        final files = result.files
+      if (result.isNotEmpty) {
+        final files = result
             .where((f) => f.path != null)
             .take(10)
             .map((f) => File(f.path!))

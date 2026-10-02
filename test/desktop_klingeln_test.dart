@@ -191,9 +191,9 @@ void main() {
       // Ein Schalter, der umspringt, obwohl im Register nichts stand, ist
       // genau die stille Luege, die dieses Projekt zweimal eingesammelt hat.
       final s = rumpf(autostart, 'static Future<bool?> setzen(bool an)');
-      vorher(s, 'launchAtStartup.enable()', 'launchAtStartup.isEnabled()',
+      vorher(s, 'eintrag.einschalten()', 'eintrag.istAn()',
           reason: 'erst setzen, dann nachlesen');
-      expect(s, contains('return await launchAtStartup.isEnabled();'));
+      expect(s, contains('return await eintrag.istAn();'));
       final u = rumpf(zeile, 'Future<void> _umlegen(bool gewuenscht)');
       expect(u, contains('_an = jetzt'),
           reason: 'der Schalter zeigt, was danach WIRKLICH gilt');

@@ -193,10 +193,9 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
     final result = await FilePicker.pickFiles(
       type: FileType.custom,
       allowedExtensions: const ['pdf', 'jpg', 'jpeg', 'png'],
-      allowMultiple: true,
     );
-    if (result == null || result.files.isEmpty) return;
-    final files = result.files
+    if (result.isEmpty) return;
+    final files = result
         .where((f) => f.path != null)
         .map((f) => File(f.path!))
         .toList();

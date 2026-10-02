@@ -9,7 +9,7 @@ import audio_session
 import battery_plus
 import connectivity_plus
 import device_info_plus
-import file_picker
+import file_picker_darwin
 import file_selector_macos
 import flutter_local_notifications
 import flutter_secure_storage_darwin

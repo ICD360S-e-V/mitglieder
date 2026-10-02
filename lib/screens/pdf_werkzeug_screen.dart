@@ -90,12 +90,11 @@ class _PdfWerkzeugScreenState extends State<PdfWerkzeugScreen> {
   Future<void> _dateiWaehlen() async {
     final l10n = AppLocalizations.of(context)!;
 
-    final auswahl = await FilePicker.pickFiles(
+    final auswahl = await FilePicker.pickFile(
       type: FileType.custom,
       allowedExtensions: const ['pdf'],
-      withData: false,
     );
-    final pfad = auswahl?.files.single.path;
+    final pfad = auswahl?.path;
     if (pfad == null || !mounted) return;
 
     // Die Grenze steht auch auf dem Server. Hier zusätzlich, weil ein Mitglied
