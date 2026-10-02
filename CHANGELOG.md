@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.105.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.6...v1.105.0) (2026-10-02)
+
+
+### Features
+
+* **signatur:** Gerätename und Betriebssystem auf allen fünf Plattformen ([#467](https://github.com/ICD360S-e-V/mitglieder/issues/467)) ([b63cf02](https://github.com/ICD360S-e-V/mitglieder/commit/b63cf02b3c6166da7be1f83f8d62d23d0a136528))
+
 ## [1.104.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.5...v1.104.6) (2026-10-02)
 
 
