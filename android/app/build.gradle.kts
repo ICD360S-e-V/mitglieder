@@ -16,10 +16,6 @@ android {
         isCoreLibraryDesugaringEnabled = true
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     // Build flavors for different app stores
     flavorDimensions += "store"
     productFlavors {
@@ -95,6 +91,14 @@ android {
             }
             signingConfig = signingConfigs.getByName("release")
         }
+    }
+}
+
+// Ersetzt den früheren `kotlinOptions`-Block im android{}: ab KGP 2.3 gibt es
+// ihn nicht mehr.
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }
 
