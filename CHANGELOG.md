@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.104.6](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.5...v1.104.6) (2026-10-02)
+
+
+### Bug Fixes
+
+* **chat:** der Kanal, der das JWT trägt, war als einziger ungepinnt ([#466](https://github.com/ICD360S-e-V/mitglieder/issues/466)) ([ca8f4bb](https://github.com/ICD360S-e-V/mitglieder/commit/ca8f4bb2b1443e2b1b488fabf32ee32a7d00676e))
+
 ## [1.104.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.4...v1.104.5) (2026-10-02)
 
 
