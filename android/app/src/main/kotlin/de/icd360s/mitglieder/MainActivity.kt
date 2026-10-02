@@ -53,6 +53,9 @@ class MainActivity : FlutterActivity() {
         // richtige ist — ausfuehrlich begruendet bei
         // [AnrufSystemfenster.webrtcPlugin].
         AnrufSystemfenster.webrtcPlugin = FlutterWebRTCPlugin.sharedSingleton
+        // Jede Kopie: sensibel markiert, nach 30 s geloescht, und die App
+        // sagt es. Siehe [Zwischenablage].
+        Zwischenablage.anbinden(this, flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, SECURE_CHANNEL)
             .setMethodCallHandler { call, result ->
                 when (call.method) {

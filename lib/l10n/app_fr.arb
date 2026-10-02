@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Division par zéro",
   "rechnerFehlerUnvollstaendig": "Expression incomplète",
   "rechnerFehlerZeichen": "Caractère inattendu : {zeichen}",
-  "rechnerFehlerKeineZahl": "Nombre non valide : {text}"
+  "rechnerFehlerKeineZahl": "Nombre non valide : {text}",
+  "zwischenablageGeloescht": "Presse-papiers effacé",
+  "zwischenablageGeloeschtUm": "Presse-papiers effacé à {zeit}"
 }

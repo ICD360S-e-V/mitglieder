@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Deling door nul",
   "rechnerFehlerUnvollstaendig": "Uitdrukking onvolledig",
   "rechnerFehlerZeichen": "Onverwacht teken: {zeichen}",
-  "rechnerFehlerKeineZahl": "Geen geldig getal: {text}"
+  "rechnerFehlerKeineZahl": "Geen geldig getal: {text}",
+  "zwischenablageGeloescht": "Klembord gewist",
+  "zwischenablageGeloeschtUm": "Klembord gewist om {zeit}"
 }

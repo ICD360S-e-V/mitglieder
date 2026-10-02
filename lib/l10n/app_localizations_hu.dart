@@ -3427,4 +3427,12 @@ class AppLocalizationsHu extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Nem érvényes szám: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Vágólap törölve';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Vágólap törölve ekkor: $zeit';
+  }
 }

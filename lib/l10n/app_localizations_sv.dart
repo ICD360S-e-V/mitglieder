@@ -3414,4 +3414,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Inte ett giltigt tal: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Urklipp rensat';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Urklipp rensat kl. $zeit';
+  }
 }

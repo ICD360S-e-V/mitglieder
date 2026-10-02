@@ -3455,4 +3455,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Nombre non valide : $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Presse-papiers effacé';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Presse-papiers effacé à $zeit';
+  }
 }

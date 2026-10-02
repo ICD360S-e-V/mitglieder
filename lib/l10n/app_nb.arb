@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Divisjon med null",
   "rechnerFehlerUnvollstaendig": "Uttrykket er ufullstendig",
   "rechnerFehlerZeichen": "Uventet tegn: {zeichen}",
-  "rechnerFehlerKeineZahl": "Ikke et gyldig tall: {text}"
+  "rechnerFehlerKeineZahl": "Ikke et gyldig tall: {text}",
+  "zwischenablageGeloescht": "Utklippstavlen er tømt",
+  "zwischenablageGeloeschtUm": "Utklippstavlen ble tømt kl. {zeit}"
 }

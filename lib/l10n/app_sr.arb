@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Дељење нулом",
   "rechnerFehlerUnvollstaendig": "Непотпун израз",
   "rechnerFehlerZeichen": "Неочекивани знак: {zeichen}",
-  "rechnerFehlerKeineZahl": "Није исправан број: {text}"
+  "rechnerFehlerKeineZahl": "Није исправан број: {text}",
+  "zwischenablageGeloescht": "Привремена меморија је обрисана",
+  "zwischenablageGeloeschtUm": "Привремена меморија је обрисана у {zeit}"
 }

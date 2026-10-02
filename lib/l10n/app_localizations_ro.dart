@@ -3425,4 +3425,12 @@ class AppLocalizationsRo extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Nu e un număr valid: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Clipboardul a fost golit';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Clipboardul a fost golit la ora $zeit';
+  }
 }

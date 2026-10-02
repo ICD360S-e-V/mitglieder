@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "División por cero",
   "rechnerFehlerUnvollstaendig": "Expresión incompleta",
   "rechnerFehlerZeichen": "Carácter inesperado: {zeichen}",
-  "rechnerFehlerKeineZahl": "Número no válido: {text}"
+  "rechnerFehlerKeineZahl": "Número no válido: {text}",
+  "zwischenablageGeloescht": "Portapapeles borrado",
+  "zwischenablageGeloeschtUm": "Portapapeles borrado a las {zeit}"
 }

@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Division by zero",
   "rechnerFehlerUnvollstaendig": "Expression incomplete",
   "rechnerFehlerZeichen": "Unexpected character: {zeichen}",
-  "rechnerFehlerKeineZahl": "Not a valid number: {text}"
+  "rechnerFehlerKeineZahl": "Not a valid number: {text}",
+  "zwischenablageGeloescht": "Clipboard cleared",
+  "zwischenablageGeloeschtUm": "Clipboard cleared at {zeit}"
 }

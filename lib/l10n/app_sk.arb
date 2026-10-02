@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Delenie nulou",
   "rechnerFehlerUnvollstaendig": "Neúplný výraz",
   "rechnerFehlerZeichen": "Neočakávaný znak: {zeichen}",
-  "rechnerFehlerKeineZahl": "Neplatné číslo: {text}"
+  "rechnerFehlerKeineZahl": "Neplatné číslo: {text}",
+  "zwischenablageGeloescht": "Schránka vymazaná",
+  "zwischenablageGeloeschtUm": "Schránka vymazaná o {zeit}"
 }

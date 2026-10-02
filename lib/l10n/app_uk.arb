@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Ділення на нуль",
   "rechnerFehlerUnvollstaendig": "Неповний вираз",
   "rechnerFehlerZeichen": "Неочікуваний символ: {zeichen}",
-  "rechnerFehlerKeineZahl": "Недопустиме число: {text}"
+  "rechnerFehlerKeineZahl": "Недопустиме число: {text}",
+  "zwischenablageGeloescht": "Буфер обміну очищено",
+  "zwischenablageGeloeschtUm": "Буфер обміну очищено о {zeit}"
 }

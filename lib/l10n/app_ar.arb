@@ -1539,5 +1539,7 @@
   "rechnerFehlerDurchNull": "القسمة على صفر",
   "rechnerFehlerUnvollstaendig": "التعبير ناقص",
   "rechnerFehlerZeichen": "محرف غير متوقَّع: {zeichen}",
-  "rechnerFehlerKeineZahl": "ليس عددًا صالحًا: {text}"
+  "rechnerFehlerKeineZahl": "ليس عددًا صالحًا: {text}",
+  "zwischenablageGeloescht": "تم مسح الحافظة",
+  "zwischenablageGeloeschtUm": "تم مسح الحافظة الساعة {zeit}"
 }

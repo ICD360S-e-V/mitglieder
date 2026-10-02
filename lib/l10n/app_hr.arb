@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Dijeljenje nulom",
   "rechnerFehlerUnvollstaendig": "Nepotpun izraz",
   "rechnerFehlerZeichen": "Neočekivani znak: {zeichen}",
-  "rechnerFehlerKeineZahl": "Nije valjan broj: {text}"
+  "rechnerFehlerKeineZahl": "Nije valjan broj: {text}",
+  "zwischenablageGeloescht": "Međuspremnik je obrisan",
+  "zwischenablageGeloeschtUm": "Međuspremnik je obrisan u {zeit}"
 }

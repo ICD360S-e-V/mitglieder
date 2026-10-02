@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Διαίρεση με το μηδέν",
   "rechnerFehlerUnvollstaendig": "Ατελής παράσταση",
   "rechnerFehlerZeichen": "Μη αναμενόμενος χαρακτήρας: {zeichen}",
-  "rechnerFehlerKeineZahl": "Μη έγκυρος αριθμός: {text}"
+  "rechnerFehlerKeineZahl": "Μη έγκυρος αριθμός: {text}",
+  "zwischenablageGeloescht": "Το πρόχειρο διαγράφηκε",
+  "zwischenablageGeloeschtUm": "Το πρόχειρο διαγράφηκε στις {zeit}"
 }

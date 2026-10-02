@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Nullával való osztás",
   "rechnerFehlerUnvollstaendig": "Hiányos kifejezés",
   "rechnerFehlerZeichen": "Váratlan karakter: {zeichen}",
-  "rechnerFehlerKeineZahl": "Nem érvényes szám: {text}"
+  "rechnerFehlerKeineZahl": "Nem érvényes szám: {text}",
+  "zwischenablageGeloescht": "Vágólap törölve",
+  "zwischenablageGeloeschtUm": "Vágólap törölve ekkor: {zeit}"
 }

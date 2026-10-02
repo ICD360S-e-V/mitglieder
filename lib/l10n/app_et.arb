@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Nulliga jagamine",
   "rechnerFehlerUnvollstaendig": "Avaldis on poolik",
   "rechnerFehlerZeichen": "Ootamatu märk: {zeichen}",
-  "rechnerFehlerKeineZahl": "Pole kehtiv arv: {text}"
+  "rechnerFehlerKeineZahl": "Pole kehtiv arv: {text}",
+  "zwischenablageGeloescht": "Lõikelaud tühjendatud",
+  "zwischenablageGeloeschtUm": "Lõikelaud tühjendati kell {zeit}"
 }

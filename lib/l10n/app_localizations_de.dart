@@ -3445,4 +3445,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Keine gültige Zahl: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Zwischenablage gelöscht';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Zwischenablage um $zeit gelöscht';
+  }
 }

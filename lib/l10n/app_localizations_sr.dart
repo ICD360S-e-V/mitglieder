@@ -3420,4 +3420,12 @@ class AppLocalizationsSr extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Није исправан број: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Привремена меморија је обрисана';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Привремена меморија је обрисана у $zeit';
+  }
 }

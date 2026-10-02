@@ -3426,4 +3426,12 @@ class AppLocalizationsBg extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Невалидно число: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Клипбордът е изчистен';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Клипбордът е изчистен в $zeit';
+  }
 }

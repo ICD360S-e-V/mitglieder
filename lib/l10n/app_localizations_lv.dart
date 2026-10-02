@@ -3418,4 +3418,12 @@ class AppLocalizationsLv extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Nav derīgs skaitlis: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Starpliktuve notīrīta';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Starpliktuve notīrīta plkst. $zeit';
+  }
 }

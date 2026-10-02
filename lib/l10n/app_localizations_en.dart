@@ -3427,4 +3427,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Not a valid number: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Clipboard cleared';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Clipboard cleared at $zeit';
+  }
 }

@@ -3420,4 +3420,12 @@ class AppLocalizationsDa extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Ikke et gyldigt tal: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Udklipsholder ryddet';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Udklipsholder ryddet kl. $zeit';
+  }
 }

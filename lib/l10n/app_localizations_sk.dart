@@ -3418,4 +3418,12 @@ class AppLocalizationsSk extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Neplatné číslo: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Schránka vymazaná';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Schránka vymazaná o $zeit';
+  }
 }

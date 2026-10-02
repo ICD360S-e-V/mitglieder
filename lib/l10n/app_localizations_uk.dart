@@ -3422,4 +3422,12 @@ class AppLocalizationsUk extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Недопустиме число: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Буфер обміну очищено';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Буфер обміну очищено о $zeit';
+  }
 }

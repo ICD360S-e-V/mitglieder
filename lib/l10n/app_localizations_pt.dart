@@ -3429,4 +3429,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Número inválido: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Área de transferência limpa';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Área de transferência limpa às $zeit';
+  }
 }

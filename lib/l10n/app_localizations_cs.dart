@@ -3416,4 +3416,12 @@ class AppLocalizationsCs extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Neplatné číslo: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Schránka vymazána';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Schránka vymazána v $zeit';
+  }
 }

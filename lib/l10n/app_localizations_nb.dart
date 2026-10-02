@@ -3416,4 +3416,12 @@ class AppLocalizationsNb extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Ikke et gyldig tall: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Utklippstavlen er tømt';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Utklippstavlen ble tømt kl. $zeit';
+  }
 }

@@ -3388,4 +3388,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'ليس عددًا صالحًا: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'تم مسح الحافظة';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'تم مسح الحافظة الساعة $zeit';
+  }
 }

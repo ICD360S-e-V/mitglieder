@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Dalīšana ar nulli",
   "rechnerFehlerUnvollstaendig": "Izteiksme nav pabeigta",
   "rechnerFehlerZeichen": "Negaidīta zīme: {zeichen}",
-  "rechnerFehlerKeineZahl": "Nav derīgs skaitlis: {text}"
+  "rechnerFehlerKeineZahl": "Nav derīgs skaitlis: {text}",
+  "zwischenablageGeloescht": "Starpliktuve notīrīta",
+  "zwischenablageGeloeschtUm": "Starpliktuve notīrīta plkst. {zeit}"
 }
