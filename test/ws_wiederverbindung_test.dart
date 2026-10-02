@@ -70,6 +70,21 @@ void main() {
       expect(Uri.parse('wss://icd360sev.icd360s.de/wss/').port, 0,
           reason: 'so sieht dieselbe Adresse ohne die Angabe aus');
     });
+
+    test('🔴 im Release über den gepinnten Client', () {
+      // Hier im Test laeuft alles als Debug-Build, also ungepinnt — pruefen
+      // laesst sich der Release-Weg nur am Quelltext. Durch diesen Kanal geht
+      // das JWT; er war als einziger ohne die Vertrauensanker der REST-Aufrufe.
+      final q = File('lib/services/chat_service.dart')
+          .readAsStringSync()
+          .replaceAll(RegExp(r'\s+'), ' ');
+      expect(q,
+          contains('kDebugMode ? null : HttpClientFactory.createPinnedHttpClient()'),
+          reason: 'im Release muss der Chat-Kanal gepinnt sein');
+      expect(q,
+          contains('WebSocket.connect(testWsUrl ?? wsUrl, customClient: _wsClient)'),
+          reason: 'der gepinnte Client muss auch benutzt werden');
+    });
   });
 
   test('eine abgelehnte Anmeldung stoesst einen neuen Versuch an', () async {

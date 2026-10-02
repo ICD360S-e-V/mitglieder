@@ -190,8 +190,13 @@ class ChatService {
       // `background_service.dart` pinnt diesen Weg seit jeher; nur der Chat im
       // Vordergrund tat es nicht.
       //
-      // Im Debug-Build gibt die Fabrik einen ungepinnten Client zurueck, damit
-      // ein Zwischenrechner beim Entwickeln weiter funktioniert.
+      // ⚠️ Im Debug-Build KEIN eigener Client — dort pinnt die Fabrik ohnehin
+      // nicht (ein Zwischenrechner beim Entwickeln soll gehen), und unter
+      // `TestWidgetsFlutterBinding` liefert `HttpClient()` eine Attrappe, die
+      // jede Antwort mit „Mocked response" quittiert und keinen Aufstieg auf
+      // WebSocket kann. Mit ihr fielen die Wiederverbindungs-Tests der
+      // Fernwartung und jedes Layout mit MitgliedDashboard. Ohne `customClient`
+      // nimmt `WebSocket.connect` seinen eingebauten Client — wie bisher.
       //
       // ⚠️ Erst den Client des VORIGEN Versuchs wegraeumen, nicht den eigenen:
       // zu diesem Zeitpunkt liegt jener still. Den laufenden mit `force: true`
@@ -199,7 +204,8 @@ class ChatService {
       // Zonenkontext, den niemand mehr faengt. So bleibt hoechstens ein
       // einziger Client liegen, und der nur bis zum naechsten Versuch.
       _wsClient?.close(force: true);
-      _wsClient = HttpClientFactory.createPinnedHttpClient();
+      _wsClient =
+          kDebugMode ? null : HttpClientFactory.createPinnedHttpClient();
       final webSocket =
           await WebSocket.connect(testWsUrl ?? wsUrl, customClient: _wsClient);
       // Keepalive: ping every 20s. The signaling channel goes completely idle
