@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.104.5](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.4...v1.104.5) (2026-10-02)
+
+
+### Bug Fixes
+
+* **deps:** win32-Knoten auflösen — file_picker 13, launch_at_startup raus (wie Vorsitzer-App) ([#464](https://github.com/ICD360S-e-V/mitglieder/issues/464)) ([d38d90c](https://github.com/ICD360S-e-V/mitglieder/commit/d38d90ced370b36c0c1aead3be2c662e2bc97ef0))
+
 ## [1.104.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.3...v1.104.4) (2026-10-01)
 
 
