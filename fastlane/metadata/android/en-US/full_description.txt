@@ -10,7 +10,7 @@ The official app for members of ICD360S e.V. — a non-profit association based 
 
 <b>Security &amp; privacy</b>
 • No trackers, no ads, no analytics SDKs
-• TLS certificate pinning to Let's Encrypt roots (ISRG X1 + X2)
+• TLS certificate pinning to Let's Encrypt roots (ISRG X1, X2, YE, YR)
 • Encrypted local storage of sensitive tokens (Keychain / EncryptedSharedPreferences)
 • Cleartext HTTP traffic blocked at the OS level
 • Self-hosted server in Germany — GDPR compliant

@@ -10,7 +10,7 @@ Die offizielle App für Mitglieder des ICD360S e.V. – eines gemeinnützigen Ve
 
 <b>Sicherheit &amp; Datenschutz</b>
 • Keine Tracker, keine Werbung, keine Analyse-SDKs
-• TLS-Zertifikat-Pinning auf Let's-Encrypt-Roots (ISRG X1 + X2)
+• TLS-Zertifikat-Pinning auf Let's-Encrypt-Roots (ISRG X1, X2, YE, YR)
 • Verschlüsselte lokale Speicherung sensibler Tokens (Keychain / EncryptedSharedPreferences)
 • Cleartext-HTTP-Verkehr OS-seitig blockiert
 • Eigener Server in Deutschland – DSGVO-konform
