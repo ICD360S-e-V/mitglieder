@@ -11,6 +11,21 @@ import '../services/api_service.dart';
 import '../services/logger_service.dart';
 import '../utils/app_theme.dart';
 
+/// „Galaxy Tab A11 · Android 14" — Gerät und System fürs Beweisbündel,
+/// getrennt lesbar. `null`, wenn beides fehlt.
+///
+/// Die Spalte `device_hostname` fasst 120 Zeichen; Windows-Rechnernamen und
+/// lange Distributionsnamen kommen zusammen durchaus in die Nähe, deshalb wird
+/// hier gekürzt statt es der Datenbank zu überlassen.
+@visibleForTesting
+String? geraetUndSystem(String geraet, String system) {
+  final teile =
+      [geraet.trim(), system.trim()].where((t) => t.isNotEmpty).toList();
+  if (teile.isEmpty) return null;
+  final text = teile.join(' · ');
+  return text.length <= 120 ? text : text.substring(0, 120);
+}
+
 /// Was der Verein von diesem Mitglied unterschrieben haben möchte.
 ///
 /// Der Bildschirm zeigt bewusst auch das Erledigte: wer wissen will, ob er
@@ -605,17 +620,41 @@ class _SignaturUnterschreibenScreenState
   Future<String?> _geraetename() async {
     try {
       final info = DeviceInfoPlugin();
+
       if (Platform.isAndroid) {
         final a = await info.androidInfo;
-        return '${a.manufacturer} ${a.model}'.trim();
+        return geraetUndSystem(
+            '${a.manufacturer} ${a.model}', 'Android ${a.version.release}');
       }
       if (Platform.isIOS) {
         final i = await info.iosInfo;
-        return i.utsname.machine;
+        return geraetUndSystem(
+            i.modelName.isNotEmpty ? i.modelName : i.model,
+            '${i.systemName} ${i.systemVersion}');
+      }
+      if (Platform.isMacOS) {
+        final m = await info.macOsInfo;
+        return geraetUndSystem(
+            m.modelName.isNotEmpty ? m.modelName : m.model,
+            'macOS ${m.osRelease}');
+      }
+      if (Platform.isWindows) {
+        final w = await info.windowsInfo;
+        return geraetUndSystem(
+            w.computerName, '${w.productName} ${w.displayVersion}'.trim());
+      }
+      if (Platform.isLinux) {
+        final l = await info.linuxInfo;
+        // prettyName ist schon „Ubuntu 24.04.1 LTS"; der Rechnername steckt
+        // dort nicht drin, deshalb getrennt geholt.
+        return geraetUndSystem(Platform.localHostname, l.prettyName);
       }
       return null;
     } catch (e) {
-      _log.error('Gerätename: $e', tag: 'SIGNATUR');
+      // Kein stilles null mehr: fehlt der Gerätename im Beweisbündel, soll
+      // nachvollziehbar sein warum. Genau das ist beim ersten echten
+      // Dokument passiert — das Feld blieb leer und niemand wusste weshalb.
+      _log.error('Gerätename nicht ermittelbar: $e', tag: 'SIGNATUR');
       return null;
     }
   }
