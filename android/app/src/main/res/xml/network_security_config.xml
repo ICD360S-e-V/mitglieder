@@ -8,8 +8,10 @@
       - No cleartext anywhere.
       - User-installed CAs NOT trusted in release builds — blocks MITM via
         an attacker-installed root cert.
-      - icd360sev.icd360s.de must chain to a system CA AND its leaf must
-        pin to ISRG Root X1 (in use) or ISRG Root X2 (backup, ECDSA root).
+      - icd360sev.icd360s.de must chain to a system CA AND its chain must
+        pin to an ISRG root: X1, X2, or the next generation YE / YR. Since
+        10/2026 the server's chain is leaf <- YE1 <- Root YE (cross-signed
+        by X2); YE and YR keep the pin valid once that cross-signature goes.
       - Pin expiration is a forcing function to revisit before 2027-06-01;
         after that date, pinning silently degrades to system validation,
         which prevents lockout if we forget to update.
@@ -29,6 +31,10 @@
             <pin digest="SHA-256">C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=</pin>
             <!-- ISRG Root X2 (ECDSA, valid through 2040-09) — backup root for rotation -->
             <pin digest="SHA-256">diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=</pin>
+            <!-- ISRG Root YE (ECDSA, valid through 2045-09) — next generation, issues YE1..YE3 -->
+            <pin digest="SHA-256">sCkq5UWXjg+7mKu9lMhhYF5bGLsy7VI/UNW3tccdR7w=</pin>
+            <!-- ISRG Root YR (RSA, valid through 2045-09) — next generation, issues YR1..YR3 -->
+            <pin digest="SHA-256">fk6IOKit1ild5647BH06ujSIq5XbCgqlbYl6ANhhi88=</pin>
         </pin-set>
     </domain-config>
 

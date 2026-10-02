@@ -27,7 +27,8 @@ class ApiService {
   static final ApiService _instance = ApiService._internal();
   factory ApiService() => _instance;
   ApiService._internal() {
-    // Certificate pinning: only trusts Let's Encrypt (ISRG Root X1).
+    // Certificate pinning: only trusts the Let's Encrypt roots of
+    // HttpClientFactory (ISRG Root X1, X2, YE, YR).
     // Resilient wrapper: routes every request through the global circuit
     // breaker so TLS handshake failures and persistent timeouts are detected,
     // recorded as security events, and fast-fail until the network recovers.
