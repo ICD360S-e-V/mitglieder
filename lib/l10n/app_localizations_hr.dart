@@ -3418,4 +3418,12 @@ class AppLocalizationsHr extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Nije valjan broj: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Međuspremnik je obrisan';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Međuspremnik je obrisan u $zeit';
+  }
 }

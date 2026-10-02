@@ -25,11 +25,15 @@ import 'services/platform/platform_factory.dart';
 import 'widgets/anruf_overlay.dart';
 import 'widgets/network_security_banner.dart';
 import 'widgets/remote_touch_overlay.dart';
+import 'widgets/zwischenablage_melder.dart';
 import 'utils/app_theme.dart';
 import 'utils/responsive.dart';
+import 'utils/sicher_clipboard_bindung.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // Jede Kopie — auch „Kopieren" im Kontextmenü — nach 30 s gelöscht, auf
+  // Android sensibel markiert. Siehe [SicherClipboardBindung].
+  SicherClipboardBindung.ensureInitialized();
 
   // Record every startup step to a plain-text log file from the very first
   // moment. A startup that never reaches runApp() (gray frame, no UI) is
@@ -266,14 +270,18 @@ class _MitgliedAppState extends State<MitgliedApp> {
             // Telefon. Hier bekommen sie die vom Mitglied eingestellte
             // System-Schriftgröße mit — bis zu 200 %, wie die Bedienungshilfen
             // sie hergeben.
-            builder: (context, child) => AnnotatedRegion<SystemUiOverlayStyle>(
-              value: AppTheme.overlayStyleFor(Theme.of(context).brightness),
-              child: ResponsiveScaling(
-                child: RemoteTouchOverlay(
-                  // During a Fernwartung session, marks where the member taps
-                  // so the Vorsitzer sees it in the shared screen.
-                  child: NetworkSecurityBanner(
-                    child: child ?? const SizedBox.shrink(),
+            // Ganz außen der Melder: „Zwischenablage gelöscht", sobald die
+            // 30 s um sind. Siehe [ZwischenablageMelder].
+            builder: (context, child) => ZwischenablageMelder(
+              child: AnnotatedRegion<SystemUiOverlayStyle>(
+                value: AppTheme.overlayStyleFor(Theme.of(context).brightness),
+                child: ResponsiveScaling(
+                  child: RemoteTouchOverlay(
+                    // During a Fernwartung session, marks where the member taps
+                    // so the Vorsitzer sees it in the shared screen.
+                    child: NetworkSecurityBanner(
+                      child: child ?? const SizedBox.shrink(),
+                    ),
                   ),
                 ),
               ),

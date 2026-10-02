@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Division med noll",
   "rechnerFehlerUnvollstaendig": "Uttrycket är ofullständigt",
   "rechnerFehlerZeichen": "Oväntat tecken: {zeichen}",
-  "rechnerFehlerKeineZahl": "Inte ett giltigt tal: {text}"
+  "rechnerFehlerKeineZahl": "Inte ett giltigt tal: {text}",
+  "zwischenablageGeloescht": "Urklipp rensat",
+  "zwischenablageGeloeschtUm": "Urklipp rensat kl. {zeit}"
 }

@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Division med nul",
   "rechnerFehlerUnvollstaendig": "Udtrykket er ufuldstændigt",
   "rechnerFehlerZeichen": "Uventet tegn: {zeichen}",
-  "rechnerFehlerKeineZahl": "Ikke et gyldigt tal: {text}"
+  "rechnerFehlerKeineZahl": "Ikke et gyldigt tal: {text}",
+  "zwischenablageGeloescht": "Udklipsholder ryddet",
+  "zwischenablageGeloeschtUm": "Udklipsholder ryddet kl. {zeit}"
 }

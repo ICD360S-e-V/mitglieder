@@ -3421,4 +3421,12 @@ class AppLocalizationsFi extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Ei kelvollinen luku: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Leikepöytä tyhjennetty';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Leikepöytä tyhjennettiin klo $zeit';
+  }
 }

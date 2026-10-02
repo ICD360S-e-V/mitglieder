@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Deljenje z nič",
   "rechnerFehlerUnvollstaendig": "Nepopoln izraz",
   "rechnerFehlerZeichen": "Nepričakovan znak: {zeichen}",
-  "rechnerFehlerKeineZahl": "Ni veljavno število: {text}"
+  "rechnerFehlerKeineZahl": "Ni veljavno število: {text}",
+  "zwischenablageGeloescht": "Odložišče počiščeno",
+  "zwischenablageGeloeschtUm": "Odložišče počiščeno ob {zeit}"
 }

@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Divisão por zero",
   "rechnerFehlerUnvollstaendig": "Expressão incompleta",
   "rechnerFehlerZeichen": "Caráter inesperado: {zeichen}",
-  "rechnerFehlerKeineZahl": "Número inválido: {text}"
+  "rechnerFehlerKeineZahl": "Número inválido: {text}",
+  "zwischenablageGeloescht": "Área de transferência limpa",
+  "zwischenablageGeloeschtUm": "Área de transferência limpa às {zeit}"
 }

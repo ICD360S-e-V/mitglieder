@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Împărțire la zero",
   "rechnerFehlerUnvollstaendig": "Expresie incompletă",
   "rechnerFehlerZeichen": "Caracter neașteptat: {zeichen}",
-  "rechnerFehlerKeineZahl": "Nu e un număr valid: {text}"
+  "rechnerFehlerKeineZahl": "Nu e un număr valid: {text}",
+  "zwischenablageGeloescht": "Clipboardul a fost golit",
+  "zwischenablageGeloeschtUm": "Clipboardul a fost golit la ora {zeit}"
 }

@@ -3420,4 +3420,12 @@ class AppLocalizationsSl extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Ni veljavno število: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Odložišče počiščeno';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Odložišče počiščeno ob $zeit';
+  }
 }

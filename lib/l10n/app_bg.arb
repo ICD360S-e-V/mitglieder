@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Деление на нула",
   "rechnerFehlerUnvollstaendig": "Непълен израз",
   "rechnerFehlerZeichen": "Неочакван знак: {zeichen}",
-  "rechnerFehlerKeineZahl": "Невалидно число: {text}"
+  "rechnerFehlerKeineZahl": "Невалидно число: {text}",
+  "zwischenablageGeloescht": "Клипбордът е изчистен",
+  "zwischenablageGeloeschtUm": "Клипбордът е изчистен в {zeit}"
 }

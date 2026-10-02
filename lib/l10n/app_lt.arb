@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Dalyba iš nulio",
   "rechnerFehlerUnvollstaendig": "Reiškinys nebaigtas",
   "rechnerFehlerZeichen": "Netikėtas ženklas: {zeichen}",
-  "rechnerFehlerKeineZahl": "Netinkamas skaičius: {text}"
+  "rechnerFehlerKeineZahl": "Netinkamas skaičius: {text}",
+  "zwischenablageGeloescht": "Iškarpinė išvalyta",
+  "zwischenablageGeloeschtUm": "Iškarpinė išvalyta {zeit}"
 }

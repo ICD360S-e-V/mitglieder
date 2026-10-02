@@ -6181,6 +6181,18 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Keine gültige Zahl: {text}'**
   String rechnerFehlerKeineZahl(String text);
+
+  /// No description provided for @zwischenablageGeloescht.
+  ///
+  /// In de, this message translates to:
+  /// **'Zwischenablage gelöscht'**
+  String get zwischenablageGeloescht;
+
+  /// No description provided for @zwischenablageGeloeschtUm.
+  ///
+  /// In de, this message translates to:
+  /// **'Zwischenablage um {zeit} gelöscht'**
+  String zwischenablageGeloeschtUm(String zeit);
 }
 
 class _AppLocalizationsDelegate

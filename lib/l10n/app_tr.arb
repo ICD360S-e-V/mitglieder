@@ -1539,5 +1539,7 @@
   "rechnerFehlerDurchNull": "Sıfıra bölme",
   "rechnerFehlerUnvollstaendig": "İfade eksik",
   "rechnerFehlerZeichen": "Beklenmeyen karakter: {zeichen}",
-  "rechnerFehlerKeineZahl": "Geçerli bir sayı değil: {text}"
+  "rechnerFehlerKeineZahl": "Geçerli bir sayı değil: {text}",
+  "zwischenablageGeloescht": "Pano temizlendi",
+  "zwischenablageGeloeschtUm": "Pano temizlendi (saat {zeit})"
 }

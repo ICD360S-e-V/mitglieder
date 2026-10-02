@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Divisione per zero",
   "rechnerFehlerUnvollstaendig": "Espressione incompleta",
   "rechnerFehlerZeichen": "Carattere inatteso: {zeichen}",
-  "rechnerFehlerKeineZahl": "Numero non valido: {text}"
+  "rechnerFehlerKeineZahl": "Numero non valido: {text}",
+  "zwischenablageGeloescht": "Appunti cancellati",
+  "zwischenablageGeloeschtUm": "Appunti cancellati alle {zeit}"
 }

@@ -3434,4 +3434,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Número no válido: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Portapapeles borrado';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Portapapeles borrado a las $zeit';
+  }
 }

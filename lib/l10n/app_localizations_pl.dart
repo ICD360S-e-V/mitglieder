@@ -3437,4 +3437,12 @@ class AppLocalizationsPl extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'To nie jest poprawna liczba: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Schowek wyczyszczony';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Schowek wyczyszczony o $zeit';
+  }
 }

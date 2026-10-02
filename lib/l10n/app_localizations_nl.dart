@@ -3439,4 +3439,12 @@ class AppLocalizationsNl extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Geen geldig getal: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Klembord gewist';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Klembord gewist om $zeit';
+  }
 }

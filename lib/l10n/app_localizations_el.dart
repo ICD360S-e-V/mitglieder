@@ -3444,4 +3444,12 @@ class AppLocalizationsEl extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Μη έγκυρος αριθμός: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Το πρόχειρο διαγράφηκε';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Το πρόχειρο διαγράφηκε στις $zeit';
+  }
 }

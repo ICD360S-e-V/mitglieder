@@ -3415,4 +3415,12 @@ class AppLocalizationsEt extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Pole kehtiv arv: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Lõikelaud tühjendatud';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Lõikelaud tühjendati kell $zeit';
+  }
 }

@@ -3422,4 +3422,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Geçerli bir sayı değil: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Pano temizlendi';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Pano temizlendi (saat $zeit)';
+  }
 }

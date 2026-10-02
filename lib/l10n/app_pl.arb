@@ -1518,5 +1518,7 @@
   "rechnerFehlerDurchNull": "Dzielenie przez zero",
   "rechnerFehlerUnvollstaendig": "Wyrażenie niekompletne",
   "rechnerFehlerZeichen": "Nieoczekiwany znak: {zeichen}",
-  "rechnerFehlerKeineZahl": "To nie jest poprawna liczba: {text}"
+  "rechnerFehlerKeineZahl": "To nie jest poprawna liczba: {text}",
+  "zwischenablageGeloescht": "Schowek wyczyszczony",
+  "zwischenablageGeloeschtUm": "Schowek wyczyszczony o {zeit}"
 }

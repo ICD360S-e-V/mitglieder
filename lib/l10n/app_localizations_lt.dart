@@ -3420,4 +3420,12 @@ class AppLocalizationsLt extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Netinkamas skaičius: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Iškarpinė išvalyta';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Iškarpinė išvalyta $zeit';
+  }
 }

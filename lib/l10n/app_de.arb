@@ -1656,5 +1656,14 @@
         "type": "String"
       }
     }
+  },
+  "zwischenablageGeloescht": "Zwischenablage gelöscht",
+  "zwischenablageGeloeschtUm": "Zwischenablage um {zeit} gelöscht",
+  "@zwischenablageGeloeschtUm": {
+    "placeholders": {
+      "zeit": {
+        "type": "String"
+      }
+    }
   }
 }

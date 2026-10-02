@@ -3439,4 +3439,12 @@ class AppLocalizationsIt extends AppLocalizations {
   String rechnerFehlerKeineZahl(String text) {
     return 'Numero non valido: $text';
   }
+
+  @override
+  String get zwischenablageGeloescht => 'Appunti cancellati';
+
+  @override
+  String zwischenablageGeloeschtUm(String zeit) {
+    return 'Appunti cancellati alle $zeit';
+  }
 }
