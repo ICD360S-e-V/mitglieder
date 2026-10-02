@@ -1687,14 +1687,14 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   }
 
   Future<void> _pickLeistungsbescheid() async {
-    final result = await FilePicker.pickFiles(
+    final result = await FilePicker.pickFile(
       type: FileType.custom,
       allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png'],
     );
 
-    if (result == null || result.files.single.path == null) return;
+    if (result == null || result.path == null) return;
 
-    final filePath = result.files.single.path!;
+    final filePath = result.path!;
     final fileSize = File(filePath).lengthSync();
 
     // Max 10 MB

@@ -37,21 +37,21 @@ class WindowsInputInjector extends InputInjector {
 
   void _sendMouse(int flags, {int dx = 0, int dy = 0, int mouseData = 0}) {
     final input = calloc<INPUT>();
-    input.ref.type = _inputMouse;
+    input.ref.type = INPUT_TYPE(_inputMouse);
     input.ref.mi.dx = dx;
     input.ref.mi.dy = dy;
     input.ref.mi.mouseData = mouseData;
-    input.ref.mi.dwFlags = flags;
+    input.ref.mi.dwFlags = MOUSE_EVENT_FLAGS(flags);
     SendInput(1, input, sizeOf<INPUT>());
     calloc.free(input);
   }
 
   void _sendKey({int vk = 0, int scan = 0, int flags = 0}) {
     final input = calloc<INPUT>();
-    input.ref.type = _inputKeyboard;
-    input.ref.ki.wVk = vk;
+    input.ref.type = INPUT_TYPE(_inputKeyboard);
+    input.ref.ki.wVk = VIRTUAL_KEY(vk);
     input.ref.ki.wScan = scan;
-    input.ref.ki.dwFlags = flags;
+    input.ref.ki.dwFlags = KEYBD_EVENT_FLAGS(flags);
     SendInput(1, input, sizeOf<INPUT>());
     calloc.free(input);
   }

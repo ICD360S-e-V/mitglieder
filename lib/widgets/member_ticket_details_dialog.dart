@@ -128,13 +128,13 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
   }
 
   Future<void> _pickAndUploadFile() async {
-    final result = await FilePicker.pickFiles(
+    final result = await FilePicker.pickFile(
       type: FileType.custom,
       allowedExtensions: ['jpg', 'jpeg', 'pdf', 'txt', 'zip'],
     );
 
-    if (result != null && result.files.single.path != null) {
-      final filePath = result.files.single.path!;
+    if (result != null && result.path != null) {
+      final filePath = result.path!;
 
       if (!mounted) return;
 

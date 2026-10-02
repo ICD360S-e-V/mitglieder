@@ -43,26 +43,10 @@ subprojects {
     }
 }
 
-// ⚠️ BRÜCKE bis file_picker ≥ 12: file_picker 11.0.3 wendet das Kotlin-Plugin
-// nur unter AGP < 9 an und ignoriert `android.builtInKotlin=false`. Unter
-// AGP 9 entstünden so gar keine Klassen, der Bau stürbe an „cannot find
-// symbol: FilePickerPlugin". Hier holen wir das Plugin für dieses eine Modul
-// nach. Mit file_picker ≥ 12 (eigenes android_file_picker) entfällt der Block.
-subprojects {
-    if (name == "file_picker") {
-        plugins.withId("com.android.library") {
-            apply(plugin = "org.jetbrains.kotlin.android")
-            tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-                compilerOptions {
-                    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-                }
-            }
-        }
-    }
-}
-
 // Wie im Flutter-Template: :app — und damit Flutters Gradle-Plugin — zuerst
-// auswerten. Muss nach den afterEvaluate-Blöcken oben stehen.
+// auswerten. Muss nach den afterEvaluate-Blöcken oben stehen. ⚠️ Nötig für
+// android_file_picker (file_picker ≥ 12): es liest die Erweiterung `flutter`,
+// die es erst gibt, wenn :app ausgewertet ist.
 subprojects {
     project.evaluationDependsOn(":app")
 }

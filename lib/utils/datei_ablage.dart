@@ -101,8 +101,8 @@ String freierDateiname(String name, bool Function(String) existiert) {
   return '$basis(${DateTime.now().millisecondsSinceEpoch})$endung';
 }
 
-Future<String?> _systemDialog(String dateiname, Uint8List bytes) =>
-    FilePicker.saveFile(fileName: dateiname, bytes: bytes);
+Future<String?> _systemDialog(String dateiname, Uint8List bytes) async =>
+    (await FilePicker.saveFile(fileName: dateiname, bytes: bytes))?.toString();
 
 Future<Directory> _downloadsOrdner() async {
   final dir = await getDownloadsDirectory() ??
