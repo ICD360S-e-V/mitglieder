@@ -11,6 +11,21 @@ import '../services/api_service.dart';
 import '../services/logger_service.dart';
 import '../utils/app_theme.dart';
 
+/// „Galaxy Tab A11 · Android 14" — Gerät und System fürs Beweisbündel,
+/// getrennt lesbar. `null`, wenn beides fehlt.
+///
+/// Die Spalte `device_hostname` fasst 120 Zeichen; Windows-Rechnernamen und
+/// lange Distributionsnamen kommen zusammen durchaus in die Nähe, deshalb wird
+/// hier gekürzt statt es der Datenbank zu überlassen.
+@visibleForTesting
+String? geraetUndSystem(String geraet, String system) {
+  final teile =
+      [geraet.trim(), system.trim()].where((t) => t.isNotEmpty).toList();
+  if (teile.isEmpty) return null;
+  final text = teile.join(' · ');
+  return text.length <= 120 ? text : text.substring(0, 120);
+}
+
 /// Was der Verein von diesem Mitglied unterschrieben haben möchte.
 ///
 /// Der Bildschirm zeigt bewusst auch das Erledigte: wer wissen will, ob er
@@ -608,31 +623,31 @@ class _SignaturUnterschreibenScreenState
 
       if (Platform.isAndroid) {
         final a = await info.androidInfo;
-        return _zusammensetzen(
+        return geraetUndSystem(
             '${a.manufacturer} ${a.model}', 'Android ${a.version.release}');
       }
       if (Platform.isIOS) {
         final i = await info.iosInfo;
-        return _zusammensetzen(
+        return geraetUndSystem(
             i.modelName.isNotEmpty ? i.modelName : i.model,
             '${i.systemName} ${i.systemVersion}');
       }
       if (Platform.isMacOS) {
         final m = await info.macOsInfo;
-        return _zusammensetzen(
+        return geraetUndSystem(
             m.modelName.isNotEmpty ? m.modelName : m.model,
             'macOS ${m.osRelease}');
       }
       if (Platform.isWindows) {
         final w = await info.windowsInfo;
-        return _zusammensetzen(
+        return geraetUndSystem(
             w.computerName, '${w.productName} ${w.displayVersion}'.trim());
       }
       if (Platform.isLinux) {
         final l = await info.linuxInfo;
         // prettyName ist schon „Ubuntu 24.04.1 LTS"; der Rechnername steckt
         // dort nicht drin, deshalb getrennt geholt.
-        return _zusammensetzen(Platform.localHostname, l.prettyName);
+        return geraetUndSystem(Platform.localHostname, l.prettyName);
       }
       return null;
     } catch (e) {
@@ -642,20 +657,6 @@ class _SignaturUnterschreibenScreenState
       _log.error('Gerätename nicht ermittelbar: $e', tag: 'SIGNATUR');
       return null;
     }
-  }
-
-  /// „Galaxy Tab A11 · Android 14" — Gerät und System, getrennt lesbar.
-  ///
-  /// Die Spalte fasst 120 Zeichen; Windows-Rechnernamen und lange
-  /// Distributionsnamen kommen zusammen durchaus in die Nähe, deshalb wird
-  /// hier gekürzt statt es der Datenbank zu überlassen.
-  static String? _zusammensetzen(String geraet, String system) {
-    final teile = [geraet.trim(), system.trim()]
-        .where((t) => t.isNotEmpty)
-        .toList();
-    if (teile.isEmpty) return null;
-    final text = teile.join(' · ');
-    return text.length <= 120 ? text : text.substring(0, 120);
   }
 
   // ── Bausteine ──
