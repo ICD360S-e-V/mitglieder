@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.105.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.105.0...v1.105.1) (2026-10-02)
+
+
+### Bug Fixes
+
+* **security:** Pinning auch auf Let's Encrypts neue Wurzeln ISRG Root YE und YR ([#469](https://github.com/ICD360S-e-V/mitglieder/issues/469)) ([fa302a7](https://github.com/ICD360S-e-V/mitglieder/commit/fa302a7dcae27829380bf40e85d547cec97f805a))
+
 ## [1.105.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.104.6...v1.105.0) (2026-10-02)
 
 
