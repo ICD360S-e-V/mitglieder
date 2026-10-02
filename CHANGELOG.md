@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.106.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.105.1...v1.106.0) (2026-10-02)
+
+
+### Features
+
+* **zwischenablage:** jede Kopie nach 30 s löschen — auf Android sensibel markiert, mit Hinweis in der App ([#472](https://github.com/ICD360S-e-V/mitglieder/issues/472)) ([d44dc63](https://github.com/ICD360S-e-V/mitglieder/commit/d44dc6341ba70a08866d6f11704163615718c05e))
+
 ## [1.105.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.105.0...v1.105.1) (2026-10-02)
 
 
