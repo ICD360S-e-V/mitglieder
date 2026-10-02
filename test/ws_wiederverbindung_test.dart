@@ -52,6 +52,41 @@ void main() {
     await server.close(force: true);
   });
 
+  group('Die Adresse des Kanals', () {
+    test('zeigt auf unseren Server', () {
+      expect(ChatService.wsUrl, startsWith('wss://'));
+      expect(ChatService.wsUrl, contains('icd360sev.icd360s.de'),
+          reason: 'nur der eigene Rechner darf auf unsere Anker gepinnt werden');
+    });
+
+    test('nennt den Anschluss ausdruecklich', () {
+      // 🔴 `Uri` kennt Standardanschluesse nur fuer http und https; fuer wss
+      // gibt der Aufrufer 0 zurueck, und `WebSocket.connect` reicht diese 0
+      // weiter. Eine eigene connectionFactory liest sie woertlich und haengt
+      // dann bis zum Zeitablauf — daran lag der Live-Chat der Vorsitzer-App
+      // drei Tage fest. Hier gibt es diese Fabrik nicht; die 443 kostet
+      // trotzdem nichts und nimmt der Falle die Wirkung.
+      expect(Uri.parse(ChatService.wsUrl).port, 443);
+      expect(Uri.parse('wss://icd360sev.icd360s.de/wss/').port, 0,
+          reason: 'so sieht dieselbe Adresse ohne die Angabe aus');
+    });
+
+    test('🔴 im Release über den gepinnten Client', () {
+      // Hier im Test laeuft alles als Debug-Build, also ungepinnt — pruefen
+      // laesst sich der Release-Weg nur am Quelltext. Durch diesen Kanal geht
+      // das JWT; er war als einziger ohne die Vertrauensanker der REST-Aufrufe.
+      final q = File('lib/services/chat_service.dart')
+          .readAsStringSync()
+          .replaceAll(RegExp(r'\s+'), ' ');
+      expect(q,
+          contains('kDebugMode ? null : HttpClientFactory.createPinnedHttpClient()'),
+          reason: 'im Release muss der Chat-Kanal gepinnt sein');
+      expect(q,
+          contains('WebSocket.connect(testWsUrl ?? wsUrl, customClient: _wsClient)'),
+          reason: 'der gepinnte Client muss auch benutzt werden');
+    });
+  });
+
   test('eine abgelehnte Anmeldung stoesst einen neuen Versuch an', () async {
     nochAblehnen = 99;
     final ergebnis = await ChatService().connect('M68650');
