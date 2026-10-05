@@ -849,9 +849,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get accept => 'Kabul Et';
 
   @override
-  String get selectFile => 'Dosya seç';
-
-  @override
   String get dataLoadingText => 'Veriler yükleniyor...';
 
   @override
@@ -1243,12 +1240,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get membershipStartSaved => 'Üyelik başlangıcı kaydedildi';
 
   @override
-  String get fileTooLarge => 'Dosya çok büyük (maks. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded => 'Yardım belgesi başarıyla yüklendi';
-
-  @override
   String get verificationProgress => 'Doğrulama İlerlemesi';
 
   @override
@@ -1328,17 +1319,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get feeExempt => 'Aylık üyelik aidatınız: 0,00 €/Ay';
-
-  @override
-  String get uploadLeistungsbescheid => 'Yardım belgesi yükle';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Aidat muafiyetini onaylamak için lütfen 14 gün içinde güncel bir yardım belgesi yükleyin.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'İzin verilen formatlar: PDF, JPG, PNG (maks. 10 MB)';
 
   @override
   String get feeRegular => 'Aylık üyelik aidatınız: 25,00 €/Ay';
@@ -2155,13 +2135,6 @@ class AppLocalizationsTr extends AppLocalizations {
       'Resmi olarak tanışalım. Adını lütfen Personalausweis, Reisepass veya Aufenthaltstitel\'de göründüğü gibi yaz — belgelerinle uyumlu kalsın.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (adlar)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Tüm adların belgendekiyle aynı şekilde. Boşluk veya tire kullan (örn. Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (soyad)';
 
   @override
@@ -2424,13 +2397,6 @@ class AppLocalizationsTr extends AppLocalizations {
       'Derneği maddi olarak desteklersin ama kararlara aktif katılmazsın. Oy hakkı yok. Uzaktan yardım etmek istiyorsan iyi seçim.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Onursal üye (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Yönetim Kurulu tarafından özel hizmetler için verilir. Bunu kendin seçemezsin — bir takdir olarak verilir. Yalnızca daha önce onurlandırıldıysan seç.';
-
-  @override
   String get wizardStufe3Title => 'Mali durum';
 
   @override
@@ -2448,26 +2414,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Aidat: 0 € / ay 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Bürgergeld, Sozialamt, ALG I veya Krankengeld ile Tüzük §6 uyarınca aidattan tamamen muafsın. Bize sadece bir belge (Leistungsbescheid veya kurum / hastalık sigortasından alınan belge) lazım.';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Leistungsbescheid yükle';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, en fazla 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Devam etmeden önce lütfen Leistungsbescheid\'i yükle.';
-
-  @override
-  String get wizardStufe3FileTooLarge => 'Dosya çok büyük. En fazla 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed => 'Dosya yüklenemedi. Tekrar dene.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Aidat: 25 € / ay';
@@ -2492,13 +2438,6 @@ class AppLocalizationsTr extends AppLocalizations {
       'Her ay ödemeyi kendin başlatırsın.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (otomatik ödeme)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Tutarı hesabından otomatik çekiyoruz. En kolayı ama IBAN ve imzalı yetki belgesi gerekiyor.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (düzenli talimat)';
 
@@ -2510,7 +2449,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Ödeme günü';
 
   @override
-  String get wizardStufe4DayHint => '1 ile 31 arasında bir gün seç';
+  String get wizardStufe4DayHint => '1 ile 28 arasında bir gün seç';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2651,25 +2590,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Krankengeld (uzun süreli hastalık ödeneği) alıyorum';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Başka belge ekle';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Sınıra ulaştın: en fazla 20 belge.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Toplam sınır 100 MB doldu. Mevcut bir dosyayı sil.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Sil';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max belge';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3430,4 +3350,63 @@ class AppLocalizationsTr extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Pano temizlendi (saat $zeit)';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Kimlikte yazdığı şekliyle ilk adın.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'İkinci ad — isteğe bağlı';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Varsa diğer adların — boşlukla ayrılmış olarak.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Kayıtlı birliktelik';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Ayrı yaşıyor';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich =>
+      'Evlilik dışı birliktelik';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint =>
+      'Ukrayna\'dan yerinden edilmiş kişiler';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Çifte vatandaşlık (Alman ve bir diğeri)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Sabit telefon — isteğe bağlı';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Yalnızca varsa — oraya SMS göndermiyoruz.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Lütfen ülke koduyla yaz — Alman numarası için $eingabe yerine $vorschlag.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Lütfen ülke koduyla yaz, örneğin +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Numara $anzahl haneli — bu doğru olamaz.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Belge gerekmiyor — Vorstand\'ın ihtiyacı olursa iletişime geçer.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Bürgergeld, Sozialamt, ALG I veya Krankengeld ile Tüzük §6 uyarınca aidattan tamamen muafsın. Burada belge yüklemen gerekmiyor — Vorstand\'ın ihtiyacı olursa seninle iletişime geçer.';
 }

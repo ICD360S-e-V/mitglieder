@@ -1,31 +1,21 @@
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
 /// Stufe 3 — Finanzielle Situation. Five radio options covering every
 /// fee-exempt social benefit the Vorstand accepts under Satzung §6
-/// Abs. 4 ("Ermäßigung, Stundung oder Erlass möglich"):
+/// Abs. 4 ("Ermäßigung, Stundung oder Erlass möglich"): Bürgergeld,
+/// Sozialamt, ALG I, Krankengeld — or none, then the regular fee applies.
 ///
-///   • bürgergeld   → fee waived; upload Leistungsbescheid (Jobcenter)
-///   • sozialamt    → fee waived; upload Sozialhilfebescheid
-///   • alg1         → fee waived; upload ALG-I-Bescheid (Arbeitsagentur)
-///   • krankengeld  → fee waived; upload Krankengeld-Bescheinigung
-///                    (Krankenkasse)
-///   • nein         → regular monthly fee applies
-///
-/// All four exempt options share the same upload tile (PDF/JPG/PNG
-/// ≤ 10 MB). The upload calls `WizardService().uploadLeistungsbescheid()`
-/// which streams the file to `/api/public/wizard/upload_leistungsbescheid.php`
-/// and writes the relative path into the draft so finalize.php picks
-/// it up later.
+/// ⚠️ Kein Hochladen mehr (Entscheidung des Vorstands, 05.10.2026): Ein
+/// Bescheid wird nicht beim Antrag verlangt. Braucht der Vorstand einen —
+/// für Jobcenter, Rente, Arbeitsagentur … —, fordert er ihn selbst an.
+/// Genauso im Online-Formular und in der Verifizierung des Vorstandspanels.
 class WizardStufe3Screen extends StatefulWidget {
   final Map<String, dynamic>? initial;
   final VoidCallback onNext;
@@ -44,255 +34,14 @@ class WizardStufe3Screen extends StatefulWidget {
 
 class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   String? _situation;
-  final List<WizardBescheidFile> _files = [];
-  bool _uploading = false;
   bool _saving = false;
-
-  // Mirror the per-file caps so we can fail fast without burning a
-  // round-trip. The 100 MB cumulative cap is enforced exclusively
-  // server-side (we don't track per-file sizes once they're accepted)
-  // and surfaced through the 413 path. Keep in sync with
-  // upload_leistungsbescheid.php.
-  static const int _kMaxCount       = 20;
-  static const int _kMaxPerFile     = 10 * 1024 * 1024;    // 10 MB
-
-  static const _options = <String>[
-    'buergergeld',
-    'sozialamt',
-    'alg1',
-    'krankengeld',
-    'nein',
-  ];
-
-  static const _exemptOptions = <String>{
-    'buergergeld',
-    'sozialamt',
-    'alg1',
-    'krankengeld',
-  };
 
   @override
   void initState() {
     super.initState();
-    _situation = widget.initial?['finanzielle_situation'];
-    // Files come pre-parsed by the orchestrator via getState — the
-    // server returns a JOIN of wizard_draft_files at the top level
-    // and the orchestrator forwards the list under this key.
-    final raw = widget.initial?['leistungsbescheid_files'];
-    if (raw is List) {
-      _files.addAll(raw.whereType<WizardBescheidFile>());
-    }
-  }
-
-  bool get _needsUpload =>
-      _situation != null && _exemptOptions.contains(_situation);
-
-  /// Bottom sheet offering Camera / Gallery / Documents — camera +
-  /// gallery only show on Android / iOS since image_picker has no
-  /// desktop backend. Visitors on desktop see only the file picker
-  /// option, same as the legacy verifizierung_tab.dart flow.
-  Future<void> _showAttachmentSheet() async {
-    final l10n = AppLocalizations.of(context)!;
-    final isMobile = Platform.isAndroid || Platform.isIOS;
-    await showModalBottomSheet<void>(
-      context: context,
-      backgroundColor: context.colors.card,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (sheetCtx) => SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 40,
-              height: 4,
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              decoration: BoxDecoration(
-                color: context.colors.divider,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-            if (isMobile) ...[
-              ListTile(
-                leading: Icon(Icons.camera_alt,
-                    color: context.colors.brandStrong),
-                title: Text(l10n.camera),
-                onTap: () {
-                  Navigator.pop(sheetCtx);
-                  _pickFromCamera();
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.photo_library,
-                    color: context.colors.brandStrong),
-                title: Text(l10n.gallery),
-                onTap: () {
-                  Navigator.pop(sheetCtx);
-                  _pickFromGallery();
-                },
-              ),
-            ],
-            ListTile(
-              leading: Icon(Icons.attach_file,
-                  color: context.colors.brandStrong),
-              title: Text(l10n.documents),
-              subtitle: Text(
-                l10n.wizardStufe3UploadHint,
-                style: const TextStyle(fontSize: 11.5),
-              ),
-              onTap: () {
-                Navigator.pop(sheetCtx);
-                _pickFromFiles();
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  /// Camera path — one Bescheid photo at a time. The visitor can tap
-  /// the Add button again to keep adding pages of the same Bescheid.
-  Future<void> _pickFromCamera() async {
-    try {
-      final picker = ImagePicker();
-      final XFile? picked = await picker.pickImage(
-        source: ImageSource.camera,
-        // Compress to keep the upload reasonable for a Bescheid photo.
-        imageQuality: 85,
-        maxWidth: 2400,
-      );
-      if (picked == null) return;
-      await _uploadFiles([File(picked.path)]);
-    } catch (e) {
-      _toastUploadFailed();
-    }
-  }
-
-  /// Gallery path — multi-select native picker. Each photo is
-  /// uploaded sequentially through the same endpoint so the server
-  /// can enforce its caps file-by-file.
-  Future<void> _pickFromGallery() async {
-    try {
-      final picker = ImagePicker();
-      final picked = await picker.pickMultiImage(
-        imageQuality: 85,
-        maxWidth: 2400,
-      );
-      if (picked.isEmpty) return;
-      await _uploadFiles(picked.map((x) => File(x.path)).toList());
-    } catch (e) {
-      _toastUploadFailed();
-    }
-  }
-
-  /// File-system picker with multi-select on. Mirrors the
-  /// verifizierung_tab.dart filter set (PDF / JPG / JPEG / PNG).
-  Future<void> _pickFromFiles() async {
-    final result = await FilePicker.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: const ['pdf', 'jpg', 'jpeg', 'png'],
-    );
-    if (result.isEmpty) return;
-    final files = result
-        .where((f) => f.path != null)
-        .map((f) => File(f.path!))
-        .toList();
-    if (files.isEmpty) return;
-    await _uploadFiles(files);
-  }
-
-  /// Sequential upload loop. Count and per-file caps are checked
-  /// client-side (cheap, known); the cumulative size cap is enforced
-  /// server-side and surfaced through the 413 response. We stop the
-  /// loop on first server rejection so the toast lines up with the
-  /// offending file rather than dumping a generic "some failed".
-  Future<void> _uploadFiles(List<File> files) async {
-    if (_uploading) return;
-    final l10n = AppLocalizations.of(context)!;
-    // Read once up front, like l10n: the loop awaits between toasts, and
-    // reaching back into the context after an await is what
-    // use_build_context_synchronously warns about.
-    final colors = context.colors;
-    setState(() => _uploading = true);
-    try {
-      for (final file in files) {
-        if (_files.length >= _kMaxCount) {
-          _toast(l10n.wizardStufe3UploadLimitCount, colors.warningFg);
-          break;
-        }
-        final size = await file.length();
-        if (size > _kMaxPerFile) {
-          _toast(l10n.wizardStufe3FileTooLarge, colors.dangerFg);
-          continue;
-        }
-        // The radio is non-null here because _showAttachmentSheet is
-        // gated behind _needsUpload, which itself requires a category.
-        final res = await WizardService().uploadLeistungsbescheid(
-          file,
-          _situation!,
-        );
-        if (!mounted) return;
-        if (!res.isSuccess) {
-          // 413 = the server tripped the 100 MB cumulative cap, 409 =
-          // the 20-file cap — both are user-actionable; anything else
-          // gets the generic upload-failed toast.
-          final msg = switch (res.errorCode) {
-            413 => l10n.wizardStufe3UploadLimitTotal,
-            409 => l10n.wizardStufe3UploadLimitCount,
-            _   => res.errorMessage ?? l10n.wizardStufe3UploadFailed,
-          };
-          _toast(msg, colors.warningFg);
-          break;
-        }
-        setState(() {
-          _files
-            ..clear()
-            ..addAll(res.allFiles);
-        });
-      }
-    } finally {
-      if (mounted) setState(() => _uploading = false);
-    }
-  }
-
-  Future<void> _deleteFile(WizardBescheidFile f) async {
-    if (_uploading) return;
-    final l10n = AppLocalizations.of(context)!;
-    setState(() => _uploading = true);
-    final updated = await WizardService().deleteLeistungsbescheid(f.id);
-    if (!mounted) return;
-    setState(() => _uploading = false);
-    if (updated == null) {
-      _toast(l10n.wizardStufe3UploadFailed, context.colors.dangerFg);
-      return;
-    }
-    // Sync to the server's authoritative list.
-    setState(() {
-      _files
-        ..clear()
-        ..addAll(updated);
-    });
-  }
-
-  void _toast(String message, Color bg) {
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: bg,
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-  }
-
-  void _toastUploadFailed() {
-    if (!mounted) return;
-    _toast(
-      AppLocalizations.of(context)!.wizardStufe3UploadFailed,
-      context.colors.dangerFg,
-    );
+    final gespeichert = widget.initial?['finanzielle_situation'] as String?;
+    _situation =
+        finanzielleSituationWerte.contains(gespeichert) ? gespeichert : null;
   }
 
   Future<void> _submit() async {
@@ -303,16 +52,6 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
         SnackBar(
           content: Text(l10n.wizardErrRequired),
           backgroundColor: context.colors.dangerSolid,
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
-      return;
-    }
-    if (_needsUpload && _files.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l10n.wizardStufe3UploadRequired),
-          backgroundColor: context.colors.warningSolid,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -382,7 +121,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          for (final key in _options) ...[
+          for (final key in finanzielleSituationWerte) ...[
             _optionTile(key, l10n),
             const SizedBox(height: 8),
           ],
@@ -450,22 +189,15 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   }
 
   Widget _conditionalBlock(AppLocalizations l10n) {
-    if (_needsUpload) {
+    if (istBeitragsfrei(_situation)) {
       return Padding(
-        key: const ValueKey('upload'),
+        key: const ValueKey('beitragsfrei'),
         padding: const EdgeInsets.only(top: 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _hintBox(
-              color: context.colors.successFg,
-              icon: Icons.check_circle,
-              title: l10n.wizardStufe3FeeExemptTitle,
-              body: l10n.wizardStufe3FeeExemptBody,
-            ),
-            const SizedBox(height: 12),
-            _uploadTile(l10n),
-          ],
+        child: _hintBox(
+          color: context.colors.successFg,
+          icon: Icons.check_circle,
+          title: l10n.wizardStufe3FeeExemptTitle,
+          body: l10n.wizardStufe3FeeExemptBodyOhneNachweis,
         ),
       ).animate().fadeIn(duration: 250.ms);
     }
@@ -525,178 +257,6 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Multi-file Bescheid block: an "Add" tile (or "Add more" when the
-  /// list is non-empty), a count/limit pill, and the list of uploaded
-  /// items with per-item delete buttons. The "Add" tile is disabled
-  /// once the 20-file cap is reached.
-  Widget _uploadTile(AppLocalizations l10n) {
-    final atCap = _files.length >= _kMaxCount;
-    final hasFiles = _files.isNotEmpty;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        _addTile(l10n, atCap: atCap, hasFiles: hasFiles),
-        if (hasFiles) ...[
-          const SizedBox(height: 10),
-          _countPill(l10n),
-          const SizedBox(height: 8),
-          for (final f in _files) ...[
-            _fileRow(f, l10n),
-            const SizedBox(height: 6),
-          ],
-        ],
-      ],
-    );
-  }
-
-  Widget _addTile(AppLocalizations l10n,
-      {required bool atCap, required bool hasFiles}) {
-    final disabled = atCap || _uploading;
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: disabled ? null : _showAttachmentSheet,
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(
-            color: atCap
-                ? Colors.white.withValues(alpha: 0.05)
-                : Colors.orange.withValues(alpha: 0.16),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: atCap
-                  ? Colors.white.withValues(alpha: 0.15)
-                  : context.colors.warningBorder,
-              width: 1.5,
-            ),
-          ),
-          child: Row(
-            children: [
-              if (_uploading)
-                const SizedBox(
-                  width: 22,
-                  height: 22,
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                    strokeWidth: 2.4,
-                  ),
-                )
-              else
-                Icon(
-                  hasFiles ? Icons.add_circle_outline : Icons.upload_file,
-                  color: atCap
-                      ? Colors.white.withValues(alpha: 0.45)
-                      : context.colors.onDarkWarning,
-                  size: 24,
-                ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      hasFiles
-                          ? l10n.wizardStufe3UploadAddMore
-                          : l10n.wizardStufe3UploadTitle,
-                      style: TextStyle(
-                        color: atCap
-                            ? Colors.white.withValues(alpha: 0.55)
-                            : Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      atCap
-                          ? l10n.wizardStufe3UploadLimitCount
-                          : l10n.wizardStufe3UploadHint,
-                      style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.85),
-                        fontSize: 11.5,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _countPill(AppLocalizations l10n) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: Colors.white.withValues(alpha: 0.25),
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(Icons.folder_zip,
-              color: Colors.white70, size: 16),
-          const SizedBox(width: 6),
-          Text(
-            l10n.wizardStufe3UploadCounter(_files.length, _kMaxCount),
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.3,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _fileRow(WizardBescheidFile f, AppLocalizations l10n) {
-    final ext = f.name.contains('.')
-        ? f.name.split('.').last.toLowerCase()
-        : '';
-    final icon = ext == 'pdf' ? Icons.picture_as_pdf : Icons.image;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.green.withValues(alpha: 0.14),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: context.colors.onDarkSuccess),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, color: context.colors.onDarkSuccess, size: 20),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Text(
-              f.name,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          IconButton(
-            onPressed: _uploading ? null : () => _deleteFile(f),
-            tooltip: l10n.wizardStufe3UploadDeleteTooltip,
-            icon: Icon(Icons.delete_outline,
-                color: Colors.white.withValues(alpha: 0.8)),
-            visualDensity: VisualDensity.compact,
           ),
         ],
       ),

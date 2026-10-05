@@ -849,9 +849,6 @@ class AppLocalizationsLt extends AppLocalizations {
   String get accept => 'Priimti';
 
   @override
-  String get selectFile => 'Pasirinkti failą';
-
-  @override
   String get dataLoadingText => 'Kraunami duomenys...';
 
   @override
@@ -1243,12 +1240,6 @@ class AppLocalizationsLt extends AppLocalizations {
   String get membershipStartSaved => 'Narystės pradžia išsaugota';
 
   @override
-  String get fileTooLarge => 'Failas per didelis (maks. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded => 'Išmokų pažyma sėkmingai įkelta';
-
-  @override
   String get verificationProgress => 'Tikrinimo eiga';
 
   @override
@@ -1327,17 +1318,6 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get feeExempt => 'Jūsų mėnesinis mokestis: 0,00 €/mėn.';
-
-  @override
-  String get uploadLeistungsbescheid => 'Įkelti išmokų pažymą';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Įkelkite aktualią išmokų pažymą per 14 dienų, kad patvirtintumėte atleidimą nuo mokesčio.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Leidžiami formatai: PDF, JPG, PNG (maks. 10 MB)';
 
   @override
   String get feeRegular => 'Jūsų mėnesinis mokestis: 25,00 €/mėn.';
@@ -2148,13 +2128,6 @@ class AppLocalizationsLt extends AppLocalizations {
       'Susipažinkime oficialiai. Įrašyk savo vardą tiksliai taip, kaip yra Personalausweis, Reisepass arba Aufenthaltstitel dokumente — kad sutaptų su tavo dokumentais.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (vardai)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Visi tavo vardai tiksliai kaip dokumente. Su tarpu arba brūkšneliu (pvz. Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (pavardė)';
 
   @override
@@ -2418,13 +2391,6 @@ class AppLocalizationsLt extends AppLocalizations {
       'Remi asociaciją finansiškai, bet aktyviai nedalyvauji sprendimuose. Be balsavimo teisės. Gera, jei nori padėti iš toli.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Garbės narys (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Skiriama valdybos už ypatingus nuopelnus. Pats nesirinki — gauni kaip pripažinimą. Pasirink tik jei jau buvai pagerbtas.';
-
-  @override
   String get wizardStufe3Title => 'Finansinė padėtis';
 
   @override
@@ -2442,28 +2408,6 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Mokestis: 0 € / mėn. 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Su Bürgergeldu, Sozialamtu, ALG I ar Krankengeldu pagal Satzung §6 esi visiškai atleistas nuo mokesčio. Mums tereikia įrodymo (Leistungsbescheid arba pažymos iš institucijos / sveikatos draudimo kasos).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Įkelti Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, iki 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Prieš tęsiant, įkelk Leistungsbescheid.';
-
-  @override
-  String get wizardStufe3FileTooLarge =>
-      'Failas per didelis. Daugiausia 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Nepavyko įkelti failo. Bandyk dar kartą.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Mokestis: 25 € / mėn.';
@@ -2488,14 +2432,6 @@ class AppLocalizationsLt extends AppLocalizations {
       'Pats pradedi mokėjimą kiekvieną mėnesį iš savo sąskaitos.';
 
   @override
-  String get wizardStufe4MethodSepaTitle =>
-      'SEPA-Lastschrift (tiesioginis debetas)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Sumą automatiškai nuskaitome iš tavo sąskaitos. Patogiausia, bet reikia IBAN ir pasirašyto įgaliojimo.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (nuolatinis pavedimas)';
 
@@ -2507,7 +2443,7 @@ class AppLocalizationsLt extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Mokėjimo diena';
 
   @override
-  String get wizardStufe4DayHint => 'Pasirink dieną nuo 1 iki 31';
+  String get wizardStufe4DayHint => 'Pasirink dieną nuo 1 iki 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2649,25 +2585,6 @@ class AppLocalizationsLt extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Gaunu Krankengeld (ilgalaikės ligos pašalpą)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Pridėti dar dokumentą';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Pasiekta riba: ne daugiau kaip 20 dokumentų.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Pasiekta bendra 100 MB riba. Ištrink esamą failą.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Ištrinti';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max dokumentų';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3428,4 +3345,62 @@ class AppLocalizationsLt extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Iškarpinė išvalyta $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Tavo pirmasis vardas, tiksliai kaip asmens dokumente.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Antrasis vardas — neprivaloma';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Kiti vardai, jei turi — atskirti tarpu.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Registruota partnerystė';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Gyvena skyrium';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich =>
+      'Gyvena kartu nesusituokę';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'perkeltieji iš Ukrainos';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Dviguba pilietybė (Vokietijos ir kita)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Laidinis telefonas — neprivaloma';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Tik jei turi — ten SMS nesiunčiame.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Įrašyk su šalies kodu — vokiško numerio atveju $vorschlag vietoje $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Įrašyk su šalies kodu, pavyzdžiui, +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Numeryje yra $anzahl skaitmenų — taip negali būti.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Įrodymo nereikia — jei Vorstand jo prireiks, susisieks.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Su Bürgergeldu, Sozialamtu, ALG I ar Krankengeldu pagal Satzung §6 esi visiškai atleistas nuo mokesčio. Įrodymo čia įkelti nereikia — jei Vorstand jo prireiks, su tavimi susisieks.';
 }

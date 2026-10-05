@@ -846,9 +846,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get accept => 'قبول';
 
   @override
-  String get selectFile => 'اختر ملفاً';
-
-  @override
   String get dataLoadingText => 'جاري تحميل البيانات...';
 
   @override
@@ -1240,12 +1237,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get membershipStartSaved => 'تم حفظ بدء العضوية';
 
   @override
-  String get fileTooLarge => 'الملف كبير جداً (الحد الأقصى: 50 ميغابايت)';
-
-  @override
-  String get leistungsbescheidUploaded => 'تم رفع شهادة الإعانة بنجاح';
-
-  @override
   String get verificationProgress => 'تقدم التحقق';
 
   @override
@@ -1323,17 +1314,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get feeExempt => 'رسوم عضويتك الشهرية: 0.00€/شهر';
-
-  @override
-  String get uploadLeistungsbescheid => 'رفع شهادة الإعانة';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'يرجى رفع شهادة إعانة حالية خلال 14 يوماً لتأكيد الإعفاء.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'الصيغ المسموحة: PDF, JPG, PNG (حد أقصى 10 ميغابايت)';
 
   @override
   String get feeRegular => 'رسوم عضويتك الشهرية: 25.00€/شهر';
@@ -2138,13 +2118,6 @@ class AppLocalizationsAr extends AppLocalizations {
       'لنتعرف عليك رسميًا. اكتب اسمك تمامًا كما يظهر على بطاقة الهوية (Personalausweis) أو جواز السفر (Reisepass) أو تصريح الإقامة (Aufenthaltstitel) — حتى يكون متطابقًا مع وثائقك.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (الأسماء الأولى)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'كل أسمائك الأولى تمامًا كما في الوثيقة. استخدم مسافة أو شرطة (مثلاً Hans-Peter أو Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (اللقب)';
 
   @override
@@ -2403,13 +2376,6 @@ class AppLocalizationsAr extends AppLocalizations {
       'تدعم الجمعية ماليًا لكن لا تشارك بنشاط في القرارات. لا حق تصويت. مناسب إذا أردت المساعدة عن بُعد.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'عضو فخري (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'يُمنح من قبل مجلس الإدارة لمزايا خاصة. لا تختاره بنفسك — يُمنح كاعتراف. اختر فقط إذا تم تكريمك بالفعل.';
-
-  @override
   String get wizardStufe3Title => 'الوضع المالي';
 
   @override
@@ -2427,27 +2393,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'الاشتراك: 0 € / شهر 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'مع Bürgergeld أو Sozialamt أو ALG I أو Krankengeld أنت معفى كاملاً من الاشتراك بموجب §6 من النظام الأساسي. نحتاج فقط إلى إثبات (Leistungsbescheid أو شهادة من السلطة / صندوق التأمين الصحي).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'رفع Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG، 10 ميجابايت كحد أقصى.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'يرجى رفع Leistungsbescheid قبل المتابعة.';
-
-  @override
-  String get wizardStufe3FileTooLarge =>
-      'الملف كبير جدًا. 10 ميجابايت كحد أقصى.';
-
-  @override
-  String get wizardStufe3UploadFailed => 'تعذر رفع الملف. حاول مرة أخرى.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'الاشتراك: 25 € / شهر';
@@ -2471,13 +2416,6 @@ class AppLocalizationsAr extends AppLocalizations {
       'تقوم بإجراء الدفعة يدويًا كل شهر من حسابك.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (خصم مباشر)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'نسحب المبلغ تلقائيًا من حسابك. الأكثر راحة، لكن نحتاج إلى IBAN وتفويض موقع.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle => 'Dauerauftrag (أمر دائم)';
 
   @override
@@ -2488,7 +2426,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wizardStufe4DayLabel => 'يوم الدفع';
 
   @override
-  String get wizardStufe4DayHint => 'اختر يومًا بين 1 و 31';
+  String get wizardStufe4DayHint => 'اختر يومًا بين 1 و 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2628,25 +2566,6 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'أتلقى Krankengeld (بدل المرض طويل الأمد)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'إضافة وثيقة أخرى';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'تم بلوغ الحد الأقصى: 20 وثيقة كحد أعلى.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'تم بلوغ الحد الإجمالي 100 ميغابايت. احذف ملفًا موجودًا أولاً.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'حذف';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max وثائق';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3396,4 +3315,60 @@ class AppLocalizationsAr extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'تم مسح الحافظة الساعة $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'اسمك الأول، تمامًا كما في بطاقة الهوية.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'الاسم الثاني — اختياري';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'أسماء أولى إضافية إن وُجدت — مفصولة بمسافات.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'شراكة حياة مسجّلة';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'منفصل / منفصلة';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich => 'معاشرة شبيهة بالزواج';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'النازحون من أوكرانيا';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt => 'جنسية مزدوجة (ألمانية وأخرى)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'رقم الهاتف الأرضي — اختياري';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'فقط إن كان لديك واحد — لا نرسل إليه رسائل SMS.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'يرجى إضافة رمز الدولة — للرقم الألماني يعني ذلك $vorschlag بدلًا من $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'يرجى إضافة رمز الدولة، مثلًا +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'يحتوي الرقم على $anzahl أرقام — هذا لا يمكن أن يكون صحيحًا.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'لا حاجة إلى إثبات — إذا احتاج Vorstand إلى إثبات، فسيتواصل.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'مع Bürgergeld أو Sozialamt أو ALG I أو Krankengeld أنت معفى كاملاً من الاشتراك بموجب §6 من النظام الأساسي. لا تحتاج إلى رفع أي إثبات هنا — إذا احتاج Vorstand إلى إثبات، فسيتواصل معك.';
 }

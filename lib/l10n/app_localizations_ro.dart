@@ -853,9 +853,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get accept => 'Acceptă';
 
   @override
-  String get selectFile => 'Selectează fișier';
-
-  @override
   String get dataLoadingText => 'Se încarcă datele...';
 
   @override
@@ -1249,12 +1246,6 @@ class AppLocalizationsRo extends AppLocalizations {
   String get membershipStartSaved => 'Începutul membriei salvat';
 
   @override
-  String get fileTooLarge => 'Fișier prea mare (max. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded => 'Certificat încărcat cu succes';
-
-  @override
   String get verificationProgress => 'Progres verificare';
 
   @override
@@ -1332,17 +1323,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get feeExempt => 'Cotizația lunară: 0,00 €/lună';
-
-  @override
-  String get uploadLeistungsbescheid => 'Încarcă certificat';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Încărcați un certificat actual în 14 zile pentru a confirma scutirea.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Formate permise: PDF, JPG, PNG (max. 10 MB)';
 
   @override
   String get feeRegular => 'Cotizația lunară: 25,00 €/lună';
@@ -2158,13 +2138,6 @@ class AppLocalizationsRo extends AppLocalizations {
       'Hai să te cunoaștem oficial. Te rog să scrii numele tău exact cum apare pe Personalausweis, Reisepass sau Aufenthaltstitel — așa rămâne consistent cu actele.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (prenumele)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Toate prenumele tale, exact ca pe acte. Folosește spațiu sau cratimă (ex: Hans-Peter, Maria Anna, José María).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (numele de familie)';
 
   @override
@@ -2428,13 +2401,6 @@ class AppLocalizationsRo extends AppLocalizations {
       'Sprijini asociația financiar, dar nu participi activ la decizii. Fără drept de vot. Bun dacă vrei să ajuți de la distanță.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Membru de onoare (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Statut acordat de Vorstand pentru merite deosebite. Nu îl alegi singur — îl primești ca recunoaștere. Selectează doar dacă ai fost deja onorat.';
-
-  @override
   String get wizardStufe3Title => 'Situație financiară';
 
   @override
@@ -2452,27 +2418,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Cotizație: 0 € / lună 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Cu Bürgergeld, Sozialamt, ALG I sau Krankengeld ești scutit complet de cotizație, conform Satzung-ului §6. Avem nevoie doar de o dovadă (Leistungsbescheid sau Bescheinigung de la autoritate / casa de asigurări).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Încarcă Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, maxim 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Te rog încarcă Leistungsbescheid înainte să mergi mai departe.';
-
-  @override
-  String get wizardStufe3FileTooLarge => 'Fișierul e prea mare. Maxim 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Nu am putut încărca fișierul. Încearcă din nou.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Cotizație: 25 € / lună';
@@ -2497,13 +2442,6 @@ class AppLocalizationsRo extends AppLocalizations {
       'Tu inițiezi plata manual în fiecare lună din contul tău.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (debit direct)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Noi tragem suma automat din contul tău. Cel mai comod, dar avem nevoie de IBAN și un mandat semnat.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (ordin permanent)';
 
@@ -2515,7 +2453,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Ziua plății';
 
   @override
-  String get wizardStufe4DayHint => 'Alege o zi între 1 și 31';
+  String get wizardStufe4DayHint => 'Alege o zi între 1 și 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2657,25 +2595,6 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Primesc Krankengeld (concediu medical prelungit)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Adaugă alt document';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Ai atins limita: maxim 20 documente.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Ai atins limita totală de 100 MB. Șterge un fișier existent.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Șterge';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max documente';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3433,4 +3352,63 @@ class AppLocalizationsRo extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Clipboardul a fost golit la ora $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Primul tău prenume, exact ca în actul de identitate.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Al doilea prenume — opțional';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Alte prenume, dacă există — separate prin spațiu.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Parteneriat civil înregistrat';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Separat(ă) în fapt';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich =>
+      'Uniune consensuală (concubinaj)';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint =>
+      'persoane strămutate din Ucraina';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Dublă cetățenie (germană și încă una)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Telefon fix — opțional';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Doar dacă ai unul — acolo nu trimitem SMS.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Te rog cu prefixul țării — pentru un număr german deci $vorschlag în loc de $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Te rog cu prefixul țării, de exemplu +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Numărul are $anzahl cifre — nu poate fi corect.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Nu e nevoie de dovadă — dacă Vorstand-ul are nevoie de una, ia legătura.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Cu Bürgergeld, Sozialamt, ALG I sau Krankengeld ești scutit complet de cotizație, conform Satzung-ului §6. Nu trebuie să încarci aici nicio dovadă — dacă Vorstand-ul are nevoie de una, te contactează.';
 }

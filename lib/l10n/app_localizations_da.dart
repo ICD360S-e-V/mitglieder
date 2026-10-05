@@ -849,9 +849,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get accept => 'Accepter';
 
   @override
-  String get selectFile => 'Vælg fil';
-
-  @override
   String get dataLoadingText => 'Indlæser data...';
 
   @override
@@ -1243,12 +1240,6 @@ class AppLocalizationsDa extends AppLocalizations {
   String get membershipStartSaved => 'Medlemskabets start gemt';
 
   @override
-  String get fileTooLarge => 'Filen er for stor (maks. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded => 'Ydelsesattest uploadet';
-
-  @override
   String get verificationProgress => 'Verificeringsfremskridt';
 
   @override
@@ -1326,17 +1317,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get feeExempt => 'Dit månedlige kontingent er: 0,00 €/måned';
-
-  @override
-  String get uploadLeistungsbescheid => 'Upload ydelsesattest';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Upload en aktuel ydelsesattest inden for 14 dage for at bekræfte kontingentfritagelsen.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Tilladte formater: PDF, JPG, PNG (maks. 10 MB)';
 
   @override
   String get feeRegular => 'Dit månedlige kontingent er: 25,00 €/måned';
@@ -2152,13 +2132,6 @@ class AppLocalizationsDa extends AppLocalizations {
       'Lad os lære dig officielt at kende. Skriv dit navn præcis som det står på Personalausweis, Reisepass eller Aufenthaltstitel — så det matcher dine dokumenter.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (fornavne)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Alle dine fornavne, præcis som på dokumentet. Med mellemrum eller bindestreg (fx Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (efternavn)';
 
   @override
@@ -2421,13 +2394,6 @@ class AppLocalizationsDa extends AppLocalizations {
       'Du støtter foreningen økonomisk, men deltager ikke aktivt i beslutninger. Ingen stemmeret. Godt hvis du vil hjælpe på afstand.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Æresmedlem (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Tildeles af Vorstand for særlige fortjenester. Du vælger det ikke selv — det tildeles som anerkendelse. Vælg kun hvis du allerede er blevet hædret.';
-
-  @override
   String get wizardStufe3Title => 'Økonomisk situation';
 
   @override
@@ -2446,27 +2412,6 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Kontingent: 0 € / måned 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Med Bürgergeld, Sozialamt, ALG I eller Krankengeld er du helt fritaget for kontingent efter Satzung §6. Vi har kun brug for et bevis (Leistungsbescheid eller bekræftelse fra myndigheden / sygekassen).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Upload Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, maks. 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Upload venligst Leistungsbescheid før du fortsætter.';
-
-  @override
-  String get wizardStufe3FileTooLarge => 'Filen er for stor. Maks. 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Filen kunne ikke uploades. Prøv igen.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Kontingent: 25 € / måned';
@@ -2491,14 +2436,6 @@ class AppLocalizationsDa extends AppLocalizations {
       'Du starter selv betalingen hver måned fra din konto.';
 
   @override
-  String get wizardStufe4MethodSepaTitle =>
-      'SEPA-Lastschrift (direkte debitering)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Vi trækker beløbet automatisk fra din konto. Mest praktisk, men vi har brug for IBAN og et underskrevet mandat.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (fast overførsel)';
 
@@ -2510,7 +2447,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Betalingsdag';
 
   @override
-  String get wizardStufe4DayHint => 'Vælg en dag mellem 1 og 31';
+  String get wizardStufe4DayHint => 'Vælg en dag mellem 1 og 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2651,25 +2588,6 @@ class AppLocalizationsDa extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Jeg modtager Krankengeld (sygedagpenge)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Tilføj et dokument til';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Grænse nået: højst 20 dokumenter.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Samlet grænse 100 MB nået. Slet en eksisterende fil først.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Slet';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max dokumenter';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3428,4 +3346,62 @@ class AppLocalizationsDa extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Udklipsholder ryddet kl. $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Dit første fornavn, præcis som på dit ID.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Andet fornavn — valgfrit';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Yderligere fornavne, hvis du har nogen — adskilt med mellemrum.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Registreret partnerskab';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Separeret';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich =>
+      'Samlevende (ægteskabslignende forhold)';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'fordrevne fra Ukraine';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Dobbelt statsborgerskab (tysk og et andet)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Fastnet — valgfrit';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Kun hvis du har en — vi sender ingen SMS dertil.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Angiv venligst landekode — for et tysk nummer altså $vorschlag i stedet for $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Angiv venligst landekode, for eksempel +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Nummeret har $anzahl cifre — det kan ikke passe.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Intet bevis nødvendigt — hvis Vorstand har brug for et, tager de kontakt.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Med Bürgergeld, Sozialamt, ALG I eller Krankengeld er du helt fritaget for kontingent efter Satzung §6. Du behøver ikke uploade noget bevis her — hvis Vorstand har brug for et, kontakter de dig.';
 }

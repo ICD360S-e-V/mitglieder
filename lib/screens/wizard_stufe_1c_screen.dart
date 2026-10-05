@@ -4,6 +4,7 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
 /// Stufe 1c — Geschlecht + Familienstand. Two radio lists, no
 /// freeform text. We keep the gender options aligned with German
@@ -34,24 +35,14 @@ class _WizardStufe1cScreenState extends State<WizardStufe1cScreen> {
   String? _familienstand;
   bool _saving = false;
 
-  static const _geschlechtOptions = <String>[
-    'maennlich',
-    'weiblich',
-    'divers',
-    'keine_angabe',
-  ];
-  static const _familienstandOptions = <String>[
-    'ledig',
-    'verheiratet',
-    'geschieden',
-    'verwitwet',
-  ];
-
   @override
   void initState() {
     super.initState();
-    _geschlecht = widget.initial?['geschlecht'];
-    _familienstand = widget.initial?['familienstand'];
+    // Ein Entwurf von vorher trägt noch 'maennlich' & Co. — als Code
+    // vorbelegen, damit die Wahl sichtbar bleibt.
+    _geschlecht = geschlechtCode(widget.initial?['geschlecht'] as String?);
+    final fst = widget.initial?['familienstand'] as String?;
+    _familienstand = familienstandWerte.contains(fst) ? fst : null;
   }
 
   Future<void> _submit() async {
@@ -87,23 +78,6 @@ class _WizardStufe1cScreenState extends State<WizardStufe1cScreen> {
     widget.onNext();
   }
 
-  String _geschlechtLabel(String key, AppLocalizations l10n) => switch (key) {
-        'maennlich'    => l10n.wizardStufe1cGeschlechtMaennlich,
-        'weiblich'     => l10n.wizardStufe1cGeschlechtWeiblich,
-        'divers'       => l10n.wizardStufe1cGeschlechtDivers,
-        'keine_angabe' => l10n.wizardStufe1cGeschlechtKeineAngabe,
-        _              => key,
-      };
-
-  String _familienstandLabel(String key, AppLocalizations l10n) =>
-      switch (key) {
-        'ledig'        => l10n.wizardStufe1cFamilienstandLedig,
-        'verheiratet'  => l10n.wizardStufe1cFamilienstandVerheiratet,
-        'geschieden'   => l10n.wizardStufe1cFamilienstandGeschieden,
-        'verwitwet'    => l10n.wizardStufe1cFamilienstandVerwitwet,
-        _              => key,
-      };
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -117,24 +91,24 @@ class _WizardStufe1cScreenState extends State<WizardStufe1cScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _sectionTitle(l10n.wizardStufe1cGeschlechtLabel),
-          for (final key in _geschlechtOptions)
+          for (final key in geschlechtWerte)
             Padding(
               padding: const EdgeInsets.only(bottom: 6),
               child: _radioTile(
                 key: key,
-                label: _geschlechtLabel(key, l10n),
+                label: geschlechtAnzeige(key, l10n),
                 selected: _geschlecht == key,
                 onTap: () => setState(() => _geschlecht = key),
               ),
             ),
           const SizedBox(height: 18),
           _sectionTitle(l10n.wizardStufe1cFamilienstandLabel),
-          for (final key in _familienstandOptions)
+          for (final key in familienstandWerte)
             Padding(
               padding: const EdgeInsets.only(bottom: 6),
               child: _radioTile(
                 key: key,
-                label: _familienstandLabel(key, l10n),
+                label: familienstandAnzeige(key, l10n),
                 selected: _familienstand == key,
                 onTap: () => setState(() => _familienstand = key),
               ),

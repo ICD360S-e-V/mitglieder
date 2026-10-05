@@ -1632,12 +1632,6 @@ abstract class AppLocalizations {
   /// **'Akzeptieren'**
   String get accept;
 
-  /// No description provided for @selectFile.
-  ///
-  /// In de, this message translates to:
-  /// **'Datei auswählen'**
-  String get selectFile;
-
   /// No description provided for @dataLoadingText.
   ///
   /// In de, this message translates to:
@@ -2370,18 +2364,6 @@ abstract class AppLocalizations {
   /// **'Mitgliedschaftsbeginn gespeichert'**
   String get membershipStartSaved;
 
-  /// No description provided for @fileTooLarge.
-  ///
-  /// In de, this message translates to:
-  /// **'Datei zu groß (max. 10 MB).'**
-  String get fileTooLarge;
-
-  /// No description provided for @leistungsbescheidUploaded.
-  ///
-  /// In de, this message translates to:
-  /// **'Leistungsbescheid erfolgreich hochgeladen'**
-  String get leistungsbescheidUploaded;
-
   /// No description provided for @verificationProgress.
   ///
   /// In de, this message translates to:
@@ -2525,24 +2507,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Ihr monatlicher Mitgliedsbeitrag beträgt: 0,00 €/Monat'**
   String get feeExempt;
-
-  /// No description provided for @uploadLeistungsbescheid.
-  ///
-  /// In de, this message translates to:
-  /// **'Leistungsbescheid hochladen'**
-  String get uploadLeistungsbescheid;
-
-  /// No description provided for @uploadLeistungsbescheidHint.
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte laden Sie innerhalb von 14 Tagen einen aktuellen Leistungsbescheid hoch, um die Beitragsbefreiung zu bestätigen.'**
-  String get uploadLeistungsbescheidHint;
-
-  /// No description provided for @allowedFormatsUpload.
-  ///
-  /// In de, this message translates to:
-  /// **'Erlaubte Formate: PDF, JPG, PNG (max. 10 MB)'**
-  String get allowedFormatsUpload;
 
   /// No description provided for @feeRegular.
   ///
@@ -3985,18 +3949,6 @@ abstract class AppLocalizations {
   /// **'Wir lernen dich offiziell kennen. Bitte schreib deinen Namen genau so, wie er auf Personalausweis, Reisepass oder Aufenthaltstitel steht — dann passt es zu deinen Dokumenten.'**
   String get wizardStufe1aPrompt;
 
-  /// No description provided for @wizardStufe1aVornameLabel.
-  ///
-  /// In de, this message translates to:
-  /// **'Vornamen'**
-  String get wizardStufe1aVornameLabel;
-
-  /// No description provided for @wizardStufe1aVornameHelper.
-  ///
-  /// In de, this message translates to:
-  /// **'Alle deine Vornamen, genau wie auf dem Ausweis. Mit Leerzeichen oder Bindestrich (z.B. Hans-Peter, Maria Anna).'**
-  String get wizardStufe1aVornameHelper;
-
   /// No description provided for @wizardStufe1aNachnameLabel.
   ///
   /// In de, this message translates to:
@@ -4465,18 +4417,6 @@ abstract class AppLocalizations {
   /// **'Du unterstützt den Verein finanziell, nimmst aber nicht aktiv an Entscheidungen teil. Kein Stimmrecht. Gut, wenn du aus der Ferne helfen willst.'**
   String get wizardStufe2FoerderBody;
 
-  /// No description provided for @wizardStufe2EhrenTitle.
-  ///
-  /// In de, this message translates to:
-  /// **'Ehrenmitglied'**
-  String get wizardStufe2EhrenTitle;
-
-  /// No description provided for @wizardStufe2EhrenBody.
-  ///
-  /// In de, this message translates to:
-  /// **'Wird vom Vorstand für besondere Verdienste verliehen. Du wählst es nicht selbst — es wird als Anerkennung gewährt. Wähle nur, wenn dir bereits diese Ehre zuteilwurde.'**
-  String get wizardStufe2EhrenBody;
-
   /// No description provided for @wizardStufe3Title.
   ///
   /// In de, this message translates to:
@@ -4512,42 +4452,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Beitrag: 0 € / Monat 🎉'**
   String get wizardStufe3FeeExemptTitle;
-
-  /// No description provided for @wizardStufe3FeeExemptBody.
-  ///
-  /// In de, this message translates to:
-  /// **'Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Wir brauchen nur einen Nachweis (Leistungsbescheid oder Bescheinigung der Behörde / Krankenkasse).'**
-  String get wizardStufe3FeeExemptBody;
-
-  /// No description provided for @wizardStufe3UploadTitle.
-  ///
-  /// In de, this message translates to:
-  /// **'Leistungsbescheid hochladen'**
-  String get wizardStufe3UploadTitle;
-
-  /// No description provided for @wizardStufe3UploadHint.
-  ///
-  /// In de, this message translates to:
-  /// **'PDF / JPG / PNG, maximal 10 MB.'**
-  String get wizardStufe3UploadHint;
-
-  /// No description provided for @wizardStufe3UploadRequired.
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte lade den Leistungsbescheid hoch, bevor es weitergeht.'**
-  String get wizardStufe3UploadRequired;
-
-  /// No description provided for @wizardStufe3FileTooLarge.
-  ///
-  /// In de, this message translates to:
-  /// **'Datei zu groß. Maximal 10 MB.'**
-  String get wizardStufe3FileTooLarge;
-
-  /// No description provided for @wizardStufe3UploadFailed.
-  ///
-  /// In de, this message translates to:
-  /// **'Datei konnte nicht hochgeladen werden. Bitte erneut versuchen.'**
-  String get wizardStufe3UploadFailed;
 
   /// No description provided for @wizardStufe3RegularFeeTitle.
   ///
@@ -4585,18 +4489,6 @@ abstract class AppLocalizations {
   /// **'Du löst die Zahlung jeden Monat manuell von deinem Konto aus.'**
   String get wizardStufe4MethodUeberweisungBody;
 
-  /// No description provided for @wizardStufe4MethodSepaTitle.
-  ///
-  /// In de, this message translates to:
-  /// **'SEPA-Lastschrift'**
-  String get wizardStufe4MethodSepaTitle;
-
-  /// No description provided for @wizardStufe4MethodSepaBody.
-  ///
-  /// In de, this message translates to:
-  /// **'Wir ziehen den Betrag automatisch von deinem Konto ein. Am bequemsten, aber wir brauchen IBAN und ein Mandat.'**
-  String get wizardStufe4MethodSepaBody;
-
   /// No description provided for @wizardStufe4MethodDauerauftragTitle.
   ///
   /// In de, this message translates to:
@@ -4618,7 +4510,7 @@ abstract class AppLocalizations {
   /// No description provided for @wizardStufe4DayHint.
   ///
   /// In de, this message translates to:
-  /// **'Wähle einen Tag zwischen 1 und 31'**
+  /// **'Wähle einen Tag zwischen 1 und 28'**
   String get wizardStufe4DayHint;
 
   /// No description provided for @wizardStufe4DayItem.
@@ -4843,36 +4735,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Ich beziehe Krankengeld'**
   String get wizardStufe3OptionKrankengeld;
-
-  /// No description provided for @wizardStufe3UploadAddMore.
-  ///
-  /// In de, this message translates to:
-  /// **'Weiteres Dokument hinzufügen'**
-  String get wizardStufe3UploadAddMore;
-
-  /// No description provided for @wizardStufe3UploadLimitCount.
-  ///
-  /// In de, this message translates to:
-  /// **'Limit erreicht: maximal 20 Dokumente.'**
-  String get wizardStufe3UploadLimitCount;
-
-  /// No description provided for @wizardStufe3UploadLimitTotal.
-  ///
-  /// In de, this message translates to:
-  /// **'Gesamtlimit 100 MB erreicht. Lösche eine bestehende Datei.'**
-  String get wizardStufe3UploadLimitTotal;
-
-  /// No description provided for @wizardStufe3UploadDeleteTooltip.
-  ///
-  /// In de, this message translates to:
-  /// **'Löschen'**
-  String get wizardStufe3UploadDeleteTooltip;
-
-  /// No description provided for @wizardStufe3UploadCounter.
-  ///
-  /// In de, this message translates to:
-  /// **'{count} / {max} Dokumente'**
-  String wizardStufe3UploadCounter(int count, int max);
 
   /// No description provided for @wizardDocumentExternalOpenFailed.
   ///
@@ -6193,6 +6055,96 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Zwischenablage um {zeit} gelöscht'**
   String zwischenablageGeloeschtUm(String zeit);
+
+  /// No description provided for @wizardStufe1aVornameErsterHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Dein erster Vorname, genau wie auf dem Ausweis.'**
+  String get wizardStufe1aVornameErsterHelper;
+
+  /// No description provided for @wizardStufe1aVorname2Label.
+  ///
+  /// In de, this message translates to:
+  /// **'Zweiter Vorname (optional)'**
+  String get wizardStufe1aVorname2Label;
+
+  /// No description provided for @wizardStufe1aVorname2Helper.
+  ///
+  /// In de, this message translates to:
+  /// **'Weitere Vornamen, falls vorhanden — mit Leerzeichen getrennt.'**
+  String get wizardStufe1aVorname2Helper;
+
+  /// No description provided for @wizardStufe1cFamilienstandLebenspartnerschaft.
+  ///
+  /// In de, this message translates to:
+  /// **'Eingetragene Lebenspartnerschaft'**
+  String get wizardStufe1cFamilienstandLebenspartnerschaft;
+
+  /// No description provided for @wizardStufe1cFamilienstandGetrenntLebend.
+  ///
+  /// In de, this message translates to:
+  /// **'Getrennt lebend'**
+  String get wizardStufe1cFamilienstandGetrenntLebend;
+
+  /// No description provided for @wizardStufe1cFamilienstandEheaehnlich.
+  ///
+  /// In de, this message translates to:
+  /// **'Eheähnliche Gemeinschaft'**
+  String get wizardStufe1cFamilienstandEheaehnlich;
+
+  /// No description provided for @wizardStufe1dAufenthaltUkraineHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Vertriebene aus der Ukraine'**
+  String get wizardStufe1dAufenthaltUkraineHint;
+
+  /// No description provided for @wizardStufe1dAufenthaltDoppelt.
+  ///
+  /// In de, this message translates to:
+  /// **'Doppelte Staatsbürgerschaft (deutsch und eine weitere)'**
+  String get wizardStufe1dAufenthaltDoppelt;
+
+  /// No description provided for @wizardStufe1fFestnetzLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Festnetznummer (optional)'**
+  String get wizardStufe1fFestnetzLabel;
+
+  /// No description provided for @wizardStufe1fFestnetzHelper.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur wenn du eine hast — dorthin geht keine SMS.'**
+  String get wizardStufe1fFestnetzHelper;
+
+  /// No description provided for @wizardErrPhoneVorwahl.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte mit Ländervorwahl — bei einer deutschen Nummer also {vorschlag} statt {eingabe}.'**
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe);
+
+  /// No description provided for @wizardErrPhoneVorwahlBeispiel.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte mit Ländervorwahl, zum Beispiel +49 176 1234567.'**
+  String get wizardErrPhoneVorwahlBeispiel;
+
+  /// No description provided for @wizardErrPhoneLaenge.
+  ///
+  /// In de, this message translates to:
+  /// **'Die Nummer hat {anzahl} Ziffern — das kann nicht stimmen.'**
+  String wizardErrPhoneLaenge(int anzahl);
+
+  /// No description provided for @nachweisNichtNoetig.
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Nachweis nötig — falls der Vorstand einen braucht, meldet er sich.'**
+  String get nachweisNichtNoetig;
+
+  /// No description provided for @wizardStufe3FeeExemptBodyOhneNachweis.
+  ///
+  /// In de, this message translates to:
+  /// **'Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Einen Nachweis musst du hier nicht hochladen — falls der Vorstand einen braucht, meldet er sich bei dir.'**
+  String get wizardStufe3FeeExemptBodyOhneNachweis;
 }
 
 class _AppLocalizationsDelegate

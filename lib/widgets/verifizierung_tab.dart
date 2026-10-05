@@ -1,5 +1,3 @@
-import 'dart:io';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -11,6 +9,7 @@ import '../utils/error_helpers.dart';
 import '../utils/eu_eea_citizenship.dart';
 import '../utils/staatsangehoerigkeit_options.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
 class VerifizierungTab extends StatefulWidget {
   final String mitgliedernummer;
@@ -37,6 +36,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   // geschlecht, familienstand, staatsangehoerigkeit, aufenthaltsstatus,
   // muttersprache, address + land, telefon_mobil, email).
   final _vornameController = TextEditingController();
+  final _vorname2Controller = TextEditingController();
   final _nachnameController = TextEditingController();
   final _geburtsnameController = TextEditingController();
   final _geburtsortController = TextEditingController();
@@ -67,6 +67,15 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   String? _selectedFamilienstand;
   String? _selectedAufenthaltsstatus;
 
+  /// Was gespeichert war. ⚠️ Ein Familienstand außerhalb der Liste
+  /// ('unbekannt' setzt nur der Vorstand) und ein Aufenthalts-Etikett, das
+  /// keinem Schlüssel entspricht, gehen UNBERÜHRT so zurück, wie sie kamen —
+  /// sonst ersetzte jedes Speichern der Anschrift die genaue Angabe des
+  /// Vorstands durch „Sonstiges".
+  String _familienstandGespeichert = '';
+  String _aufenthaltGespeichert = '';
+  bool _aufenthaltAngefasst = false;
+
   // Stufe 2: Mitgliedsart
   String? _selectedMitgliedsart;
 
@@ -86,12 +95,12 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
 
   bool _isSaving = false;
 
+  /// Nur was das Mitglied selbst wählen kann — die Ehrenmitgliedschaft
+  /// verleiht die Mitgliederversammlung (Satzung § 6 Abs. 1b).
   Map<String, String> _getMitgliedsartLabels() {
     final l = AppLocalizations.of(context)!;
     return {
-      'ordentlich': l.memberType_ordentlich,
-      'foerdermitglied': l.memberType_foerder,
-      'ehrenmitglied': l.memberType_ehren,
+      for (final m in mitgliedsartWaehlbar) m: mitgliedsartAnzeige(m, l),
     };
   }
 
@@ -104,12 +113,12 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     };
   }
 
+  /// SEPA-Lastschrift braucht ein unterschriebenes Mandat — die trägt der
+  /// Vorstand ein, gewählt wird sie hier nicht.
   Map<String, String> _getZahlungsmethodeLabels() {
     final l = AppLocalizations.of(context)!;
     return {
-      'ueberweisung': l.payMethod_ueberweisung,
-      'sepa_lastschrift': 'SEPA-Lastschrift',
-      'dauerauftrag': l.payMethod_dauerauftrag,
+      for (final z in zahlungsmethodeWaehlbar) z: zahlungsmethodeAnzeige(z, l),
     };
   }
 
@@ -180,6 +189,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     _plzController.dispose();
     _ortController.dispose();
     _landController.dispose();
+    _vorname2Controller.dispose();
     _telefonMobilController.dispose();
     _telefonFixController.dispose();
     _emailController.dispose();
@@ -197,20 +207,6 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   // --------------------------------------------------------------------------
 
 
-  static const _residenceTitles = <String>[
-    'aufenthaltserlaubnis',
-    'niederlassungserlaubnis',
-    'daueraufenthalt_eu',
-    'blaue_karte_eu',
-    'asylberechtigt',
-    'fluechtling_gfk',
-    'subsidiaerer_schutz',
-    'aufenthaltsgestattung',
-    'duldung',
-    'humanitaer',
-    'sonstige',
-  ];
-
   /// Beibehaltene String-Werte, damit die Aufrufstellen unverändert bleiben;
   /// die Einstufung selbst kommt aus dem gemeinsamen Util.
   String get _citizenshipBucket => switch (citizenshipBucket(
@@ -226,12 +222,17 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     if (!mounted) return;
     final bucket = _citizenshipBucket;
     setState(() {
+      // Neue Staatsangehörigkeit = neuer Status; das alte Etikett gilt nicht mehr.
+      _aufenthaltAngefasst = true;
       if (bucket == 'german') {
-        _selectedAufenthaltsstatus = 'deutsch';
+        if (_selectedAufenthaltsstatus != 'doppelt_de') {
+          _selectedAufenthaltsstatus = 'deutsch';
+        }
       } else if (bucket == 'eu_eea') {
         _selectedAufenthaltsstatus = 'eu_eea_freizuegigkeit';
       } else if (bucket == 'third' &&
           (_selectedAufenthaltsstatus == 'deutsch' ||
+              _selectedAufenthaltsstatus == 'doppelt_de' ||
               _selectedAufenthaltsstatus == 'eu_eea_freizuegigkeit')) {
         _selectedAufenthaltsstatus = null;
       }
@@ -275,6 +276,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
 
   void _populateFormFields() {
     _vornameController.text = _personalData['vorname'] ?? '';
+    _vorname2Controller.text = _personalData['vorname2'] ?? '';
     _nachnameController.text = _personalData['nachname'] ?? '';
     _geburtsnameController.text = _personalData['geburtsname'] ?? '';
     _geburtsortController.text = _personalData['geburtsort'] ?? '';
@@ -299,59 +301,42 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     final gd = _personalData['geburtsdatum'];
     _selectedGeburtsdatum = gd != null ? DateTime.tryParse(gd.toString()) : null;
 
-    const validGeschlecht = {'maennlich', 'weiblich', 'divers'};
-    final g = _personalData['geschlecht']?.toString() ?? '';
-    _selectedGeschlecht = validGeschlecht.contains(g) ? g : null;
+    // Altwerte ('maennlich' …) werden zum Code, wie überall sonst.
+    _selectedGeschlecht =
+        geschlechtCode(_personalData['geschlecht']?.toString());
 
-    const validFamilienstand = {
-      'ledig', 'verheiratet', 'geschieden', 'verwitwet',
-    };
-    final fst = _personalData['familienstand']?.toString() ?? '';
-    _selectedFamilienstand = validFamilienstand.contains(fst) ? fst : null;
+    _familienstandGespeichert =
+        _personalData['familienstand']?.toString().trim() ?? '';
+    _selectedFamilienstand =
+        familienstandWerte.contains(_familienstandGespeichert)
+            ? _familienstandGespeichert
+            : null;
 
-    // Aufenthaltsstatus — accept the canonical enum keys plus the two
-    // synthetic markers ('deutsch', 'eu_eea_freizuegigkeit'). Legacy
-    // free-text values from the original free-text wizard get mapped
-    // to the closest enum key so the member sees their data carried
-    // over instead of an empty dropdown.
-    final raw = _personalData['aufenthaltsstatus']?.toString() ?? '';
-    final a = raw.toLowerCase().trim();
-    if (a == 'deutsch' ||
-        a == 'eu_eea_freizuegigkeit' ||
-        _residenceTitles.contains(a)) {
-      _selectedAufenthaltsstatus = a;
-    } else if (a.contains('befristet') && !a.contains('unbefristet')) {
-      _selectedAufenthaltsstatus = 'aufenthaltserlaubnis';
-    } else if (a.contains('unbefristet') ||
-        a.contains('niederlassung')) {
-      _selectedAufenthaltsstatus = 'niederlassungserlaubnis';
-    } else if (a.contains('eu-bürger') ||
-        a.contains('eu burger') ||
-        a.contains('freizug')) {
-      _selectedAufenthaltsstatus = 'eu_eea_freizuegigkeit';
-    } else if (a.contains('asyl')) {
-      _selectedAufenthaltsstatus = 'asylberechtigt';
-    } else if (a.contains('flücht') || a.contains('fluecht')) {
-      _selectedAufenthaltsstatus = 'fluechtling_gfk';
-    } else if (a.contains('subsid')) {
-      _selectedAufenthaltsstatus = 'subsidiaerer_schutz';
-    } else if (a.contains('duldung')) {
-      _selectedAufenthaltsstatus = 'duldung';
-    } else {
-      _selectedAufenthaltsstatus = null;
-    }
+    // Aufenthaltsstatus: der Server speichert das deutsche Etikett; ein
+    // bekanntes wird wieder zum Schlüssel, ein fremdes bleibt gespeichert
+    // und erscheint als „Sonstiges".
+    _aufenthaltGespeichert =
+        _personalData['aufenthaltsstatus']?.toString().trim() ?? '';
+    _aufenthaltAngefasst = false;
+    _selectedAufenthaltsstatus = aufenthaltSchluessel(_aufenthaltGespeichert) ??
+        (_aufenthaltGespeichert.isNotEmpty ? 'sonstige' : null);
 
     final ma = _personalData['mitgliedsart']?.toString() ?? '';
-    _selectedMitgliedsart = _getMitgliedsartLabels().containsKey(ma) ? ma : null;
+    _selectedMitgliedsart = mitgliedsartWaehlbar.contains(ma) ? ma : null;
 
     final fs = _personalData['finanzielle_situation']?.toString() ?? '';
-    _selectedFinanzielleSituation = (fs == 'buergergeld' || fs == 'sozialamt' || fs == 'nein') ? fs : null;
+    _selectedFinanzielleSituation =
+        finanzielleSituationWerte.contains(fs) ? fs : null;
 
     final zm = _personalData['zahlungsmethode'] ?? '';
-    _selectedZahlungsmethode = _getZahlungsmethodeLabels().containsKey(zm) ? zm : null;
+    _selectedZahlungsmethode =
+        zahlungsmethodeWaehlbar.contains(zm) ? zm.toString() : null;
 
     final zt = _personalData['zahlungstag'];
-    _selectedZahlungstag = zt != null ? int.tryParse(zt.toString()) : null;
+    final tag = zt != null ? int.tryParse(zt.toString()) : null;
+    // 1–28: einen 29.–31. gibt es nicht in jedem Monat.
+    _selectedZahlungstag =
+        (tag != null && tag >= 1 && tag <= zahlungstagMax) ? tag : null;
 
     final mbo = _personalData['mitgliedschaftsbeginn_option']?.toString() ?? '';
     _selectedMitgliedschaftsbeginnOption =
@@ -438,9 +423,21 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     return status == 'offen' || status == 'abgelehnt';
   }
 
-  bool _isStufe4Skipped() {
-    return _selectedFinanzielleSituation == 'buergergeld' ||
-        _selectedFinanzielleSituation == 'sozialamt';
+  bool _isStufe4Skipped() => istBeitragsfrei(_selectedFinanzielleSituation);
+
+  /// Der Aufenthaltsstatus, der gespeichert wird.
+  String? _aufenthaltZumSenden() {
+    // Unberührt → genau das zurück, was kam (auch ein Etikett des Vorstands).
+    if (!_aufenthaltAngefasst && _aufenthaltGespeichert.isNotEmpty) {
+      return _aufenthaltGespeichert;
+    }
+    return switch (_citizenshipBucket) {
+      'german' => aufenthaltDeutsch.contains(_selectedAufenthaltsstatus)
+          ? _selectedAufenthaltsstatus
+          : 'deutsch',
+      'eu_eea' => 'eu_eea_freizuegigkeit',
+      _ => _selectedAufenthaltsstatus,
+    };
   }
 
   bool _isStufeUnlocked(int stufe) {
@@ -475,8 +472,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     // before save — the dropdown is shown but a fresh load leaves it
     // null until the visitor confirms.
     if (_citizenshipBucket == 'third' &&
-        (_selectedAufenthaltsstatus == null ||
-            _selectedAufenthaltsstatus!.isEmpty)) {
+        (_aufenthaltZumSenden() ?? '').isEmpty) {
       _showSnackBar(
         AppLocalizations.of(context)!.wizardStufe1dAufenthaltRequired,
         isError: true,
@@ -484,10 +480,25 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       return;
     }
 
+    // Festnetz: freiwillig, aber wenn ausgefüllt mit Ländervorwahl — dieselbe
+    // Regel wie beim Server, im Online-Formular und im Assistenten.
+    final festnetzRoh = _telefonFixController.text.trim();
+    String festnetz = '';
+    if (festnetzRoh.isNotEmpty) {
+      final p = telefonPruefen(festnetzRoh);
+      final meldung = telefonMeldung(p, AppLocalizations.of(context)!);
+      if (meldung != null) {
+        _showSnackBar(meldung, isError: true);
+        return;
+      }
+      festnetz = p.nummer!;
+    }
+
     setState(() => _isSaving = true);
     try {
       final result = await _apiService.updatePersonalData(
         vorname: _vornameController.text.trim(),
+        vorname2: _vorname2Controller.text.trim(),
         nachname: _nachnameController.text.trim(),
         geburtsname: _geburtsnameController.text.trim(),
         strasse: _strasseController.text.trim(),
@@ -496,14 +507,14 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         ort: _ortController.text.trim(),
         land: _landController.text.trim(),
         telefonMobil: _telefonMobilController.text.trim(),
-        telefonFix: _telefonFixController.text.trim(),
+        telefonFix: festnetz,
         email: _emailController.text.trim(),
         geburtsdatum: DateFormat('yyyy-MM-dd').format(_selectedGeburtsdatum!),
         geburtsort: _geburtsortController.text.trim(),
         geschlecht: _selectedGeschlecht,
         familienstand: _selectedFamilienstand,
         staatsangehoerigkeit: _staatsangehoerigkeitController.text.trim(),
-        aufenthaltsstatus: _selectedAufenthaltsstatus,
+        aufenthaltsstatus: _aufenthaltZumSenden(),
         muttersprache: _mutterspracheController.text.trim(),
       );
 
@@ -531,15 +542,12 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
 
     setState(() => _isSaving = true);
     try {
-      final result = await _apiService.updatePersonalData(
-        vorname: _vornameController.text.trim().isEmpty ? (_personalData['vorname'] ?? '') : _vornameController.text.trim(),
-        nachname: _nachnameController.text.trim().isEmpty ? (_personalData['nachname'] ?? '') : _nachnameController.text.trim(),
-        strasse: _strasseController.text.trim().isEmpty ? (_personalData['strasse'] ?? '') : _strasseController.text.trim(),
-        hausnummer: _hausnummerController.text.trim().isEmpty ? (_personalData['hausnummer'] ?? '') : _hausnummerController.text.trim(),
-        plz: _plzController.text.trim().isEmpty ? (_personalData['plz'] ?? '') : _plzController.text.trim(),
-        ort: _ortController.text.trim().isEmpty ? (_personalData['ort'] ?? '') : _ortController.text.trim(),
-        mitgliedsart: _selectedMitgliedsart,
-      );
+      // ⚠️ NUR die Mitgliedsart. Vorher ging hier updatePersonalData() mit
+      // leerer Mobilnummer hinaus — der Server las das als Änderungswunsch
+      // und antwortete „Die Mobilnummer kann hier nicht geaendert werden"
+      // (gemeldet 05.10.2026), und Festnetz, zweiter Vorname, Bundesland
+      // und Land wären geleert worden.
+      final result = await _apiService.updateMitgliedsart(_selectedMitgliedsart!);
       if (!mounted) return;
       if (result['success'] == true) {
         _showSnackBar(AppLocalizations.of(context)!.memberTypeSaved);
@@ -1036,6 +1044,14 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           ],
         ),
         const SizedBox(height: 12),
+        // Zweiter Vorname — wie im Online-Formular und in der Verifizierung
+        // des Vorstandspanels.
+        _buildTextField(
+          controller: _vorname2Controller,
+          label: AppLocalizations.of(context)!.wizardStufe1aVorname2Label,
+          enabled: canEdit,
+        ),
+        const SizedBox(height: 12),
         // Geburtsdatum
         GestureDetector(
           onTap: canEdit ? () => _pickGeburtsdatum() : null,
@@ -1203,11 +1219,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
 
   Widget _buildGeschlechtDropdown(bool canEdit) {
     final l = AppLocalizations.of(context)!;
-    final labels = {
-      'maennlich': l.wizardStufe1cGeschlechtMaennlich,
-      'weiblich':  l.wizardStufe1cGeschlechtWeiblich,
-      'divers':    l.wizardStufe1cGeschlechtDivers,
-    };
+    final labels = {for (final g in geschlechtWerte) g: geschlechtAnzeige(g, l)};
     return DropdownButtonFormField<String>(
       initialValue: _selectedGeschlecht,
       isExpanded: true,
@@ -1229,14 +1241,16 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   Widget _buildFamilienstandDropdown(bool canEdit) {
     final l = AppLocalizations.of(context)!;
     final labels = {
-      'ledig': l.wizardStufe1cFamilienstandLedig,
-      'verheiratet': l.wizardStufe1cFamilienstandVerheiratet,
-      'geschieden': l.wizardStufe1cFamilienstandGeschieden,
-      'verwitwet': l.wizardStufe1cFamilienstandVerwitwet,
+      for (final f in familienstandWerte) f: familienstandAnzeige(f, l),
     };
+    // 'unbekannt' (setzt nur der Vorstand) steht nicht in der Liste — als
+    // Hinweis zeigen und unberührt lassen.
+    final fremd = _selectedFamilienstand == null &&
+        _familienstandGespeichert.isNotEmpty;
     return DropdownButtonFormField<String>(
       initialValue: _selectedFamilienstand,
       isExpanded: true,
+      hint: fremd ? Text(familienstandAnzeige(_familienstandGespeichert, l)) : null,
       decoration: InputDecoration(
         labelText: l.wizardStufe1cFamilienstandLabel,
         prefixIcon: const Icon(Icons.favorite_outline),
@@ -1260,9 +1274,34 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     final l = AppLocalizations.of(context)!;
     final bucket = _citizenshipBucket;
     if (bucket == 'german') {
-      return _aufenthaltsstatusBadge(
-        l.wizardStufe1dAufenthaltGerman,
-        Icons.verified_user_outlined,
+      // Deutsch oder doppelte Staatsbürgerschaft — die erste Zeile der Liste
+      // im Vorstandspanel.
+      return DropdownButtonFormField<String>(
+        initialValue: aufenthaltDeutsch.contains(_selectedAufenthaltsstatus)
+            ? _selectedAufenthaltsstatus
+            : 'deutsch',
+        isExpanded: true,
+        decoration: InputDecoration(
+          labelText: l.wizardStufe1dAufenthaltLabel,
+          prefixIcon: const Icon(Icons.verified_user_outlined),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          filled: true,
+          fillColor: canEdit ? context.colors.inputFill : context.colors.cardSubtle,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        ),
+        items: [
+          for (final v in aufenthaltDeutsch)
+            DropdownMenuItem<String>(
+              value: v,
+              child: Text(aufenthaltAnzeige(v, l), overflow: TextOverflow.ellipsis),
+            ),
+        ],
+        onChanged: canEdit
+            ? (v) => setState(() {
+                  _aufenthaltAngefasst = true;
+                  _selectedAufenthaltsstatus = v;
+                })
+            : null,
       );
     }
     if (bucket == 'eu_eea') {
@@ -1278,13 +1317,23 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         dim: true,
       );
     }
+    final optionen =
+        aufenthaltDrittstaatFuer(_staatsangehoerigkeitController.text);
+    // Ein Etikett des Vorstands, das keinem Schlüssel entspricht: als
+    // „Sonstiges" gewählt, das genaue Etikett steht darunter.
+    final fremdesEtikett = !_aufenthaltAngefasst &&
+        _aufenthaltGespeichert.isNotEmpty &&
+        aufenthaltSchluessel(_aufenthaltGespeichert) == null;
     return DropdownButtonFormField<String>(
-      initialValue: _selectedAufenthaltsstatus,
+      initialValue: optionen.contains(_selectedAufenthaltsstatus)
+          ? _selectedAufenthaltsstatus
+          : null,
       isExpanded: true,
       decoration: InputDecoration(
         labelText: l.wizardStufe1dAufenthaltLabel,
         prefixIcon: const Icon(Icons.badge_outlined),
-        helperText: l.wizardStufe1dAufenthaltHelper,
+        helperText:
+            fremdesEtikett ? _aufenthaltGespeichert : l.wizardStufe1dAufenthaltHelper,
         helperMaxLines: 3,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         filled: true,
@@ -1292,17 +1341,20 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       ),
       items: [
-        for (final v in _residenceTitles)
+        for (final v in optionen)
           DropdownMenuItem<String>(
             value: v,
             child: Text(
-              _residenceTitleLabel(v, l),
+              aufenthaltAnzeige(v, l),
               overflow: TextOverflow.ellipsis,
             ),
           ),
       ],
       onChanged: canEdit
-          ? (v) => setState(() => _selectedAufenthaltsstatus = v)
+          ? (v) => setState(() {
+                _aufenthaltAngefasst = true;
+                _selectedAufenthaltsstatus = v;
+              })
           : null,
     );
   }
@@ -1340,24 +1392,6 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     );
   }
 
-  String _residenceTitleLabel(String key, AppLocalizations l) => switch (key) {
-        'aufenthaltserlaubnis' =>
-          'Aufenthaltserlaubnis (${l.wizardStufe1dAufenthaltTempHint})',
-        'niederlassungserlaubnis' =>
-          'Niederlassungserlaubnis (${l.wizardStufe1dAufenthaltPermHint})',
-        'daueraufenthalt_eu' => 'Daueraufenthalt-EU',
-        'blaue_karte_eu' => 'Blaue Karte EU',
-        'asylberechtigt' => 'Asylberechtigt (Art. 16a GG)',
-        'fluechtling_gfk' => 'Anerkannter Flüchtling (GFK § 25 Abs. 2)',
-        'subsidiaerer_schutz' => 'Subsidiärer Schutz (§ 25 Abs. 2 Satz 1 Alt. 2)',
-        'aufenthaltsgestattung' =>
-          'Aufenthaltsgestattung (${l.wizardStufe1dAufenthaltAsylumProcessHint})',
-        'duldung' => 'Duldung (§ 60a)',
-        'humanitaer' => 'Humanitärer Aufenthalt (§ 25 Abs. 4/5)',
-        'sonstige' => l.wizardStufe1dAufenthaltOther,
-        _ => key,
-      };
-
   Future<void> _pickGeburtsdatum() async {
     final picked = await showDatePicker(
       context: context,
@@ -1382,6 +1416,21 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           style: TextStyle(fontSize: 13, color: context.colors.textPrimary),
         ),
         const SizedBox(height: 12),
+        // Ehrenmitglied wählt man nicht — ist es gespeichert, steht es hier.
+        if ((_personalData['mitgliedsart']?.toString() ?? '').isNotEmpty &&
+            !mitgliedsartWaehlbar
+                .contains(_personalData['mitgliedsart']?.toString())) ...[
+          Text(
+            mitgliedsartAnzeige(_personalData['mitgliedsart']?.toString(),
+                AppLocalizations.of(context)!),
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: context.colors.infoFg,
+            ),
+          ),
+          const SizedBox(height: 12),
+        ],
         for (final entry in _getMitgliedsartLabels().entries)
           Padding(
             padding: const EdgeInsets.only(bottom: 8),
@@ -1451,8 +1500,9 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   Widget _buildStufe3FinanziellForm(bool canEdit) {
     return StatefulBuilder(
       builder: (context, setLocalState) {
-        final showUpload = _selectedFinanzielleSituation == 'buergergeld' ||
-            _selectedFinanzielleSituation == 'sozialamt';
+        // Kein Hochladen mehr: braucht der Vorstand einen Bescheid, fordert
+        // er ihn selbst an — wie im Online-Formular und im Assistenten.
+        final beitragsfrei = istBeitragsfrei(_selectedFinanzielleSituation);
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1489,36 +1539,25 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               ),
             ),
             const SizedBox(height: 12),
-            // Option: Bürgergeld
-            _buildFinanziellOption(
-              value: 'buergergeld',
-              label: AppLocalizations.of(context)!.optionBuergergeld,
-              icon: Icons.account_balance,
-              canEdit: canEdit,
-              setLocalState: setLocalState,
-            ),
-            const SizedBox(height: 8),
-            // Option: Sozialamt
-            _buildFinanziellOption(
-              value: 'sozialamt',
-              label: AppLocalizations.of(context)!.optionSozialamt,
-              icon: Icons.health_and_safety,
-              canEdit: canEdit,
-              setLocalState: setLocalState,
-            ),
-            const SizedBox(height: 8),
-            // Option: Nein
-            _buildFinanziellOption(
-              value: 'nein',
-              label: AppLocalizations.of(context)!.optionNoBenefits,
-              icon: Icons.work,
-              canEdit: canEdit,
-              setLocalState: setLocalState,
-            ),
+            for (final (wert, label, icon) in [
+              ('buergergeld', AppLocalizations.of(context)!.optionBuergergeld, Icons.account_balance),
+              ('sozialamt', AppLocalizations.of(context)!.optionSozialamt, Icons.health_and_safety),
+              ('alg1', AppLocalizations.of(context)!.wizardStufe3OptionAlg1, Icons.business_center),
+              ('krankengeld', AppLocalizations.of(context)!.wizardStufe3OptionKrankengeld, Icons.medical_services),
+              ('nein', AppLocalizations.of(context)!.optionNoBenefits, Icons.work),
+            ]) ...[
+              _buildFinanziellOption(
+                value: wert,
+                label: label,
+                icon: icon,
+                canEdit: canEdit,
+                setLocalState: setLocalState,
+              ),
+              const SizedBox(height: 8),
+            ],
             // Conditional content based on selection
-            if (showUpload) ...[
-              const SizedBox(height: 16),
-              // 0€ hint
+            if (beitragsfrei) ...[
+              const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
@@ -1527,77 +1566,33 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                   border: Border.all(color: context.colors.successBorder),
                 ),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Icon(Icons.check_circle, size: 20, color: context.colors.successFg),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: Text(
-                        AppLocalizations.of(context)!.feeExempt,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: context.colors.successFg,
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.feeExempt,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: context.colors.successFg,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            AppLocalizations.of(context)!.nachweisNichtNoetig,
+                            style: TextStyle(fontSize: 12, color: context.colors.successFg),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 12),
-              // Upload hint
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: context.colors.warningBg,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: context.colors.warningBorder),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.upload_file, size: 20, color: context.colors.warningFg),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            AppLocalizations.of(context)!.uploadLeistungsbescheid,
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              color: context.colors.warningFg,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      AppLocalizations.of(context)!.uploadLeistungsbescheidHint,
-                      style: TextStyle(fontSize: 12, color: context.colors.warningFg),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      AppLocalizations.of(context)!.allowedFormatsUpload,
-                      style: TextStyle(fontSize: 11, color: context.colors.warningFg, fontStyle: FontStyle.italic),
-                    ),
-                  ],
-                ),
-              ),
-              if (canEdit) ...[
-                const SizedBox(height: 12),
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton.icon(
-                    onPressed: _isSaving ? null : _pickLeistungsbescheid,
-                    icon: const Icon(Icons.cloud_upload),
-                    label: Text(AppLocalizations.of(context)!.selectFile),
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                    ),
-                  ),
-                ),
-              ],
             ] else if (_selectedFinanzielleSituation == 'nein') ...[
               const SizedBox(height: 16),
               Container(
@@ -1686,66 +1681,6 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     );
   }
 
-  Future<void> _pickLeistungsbescheid() async {
-    final result = await FilePicker.pickFile(
-      type: FileType.custom,
-      allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png'],
-    );
-
-    if (result == null || result.path == null) return;
-
-    final filePath = result.path!;
-    final fileSize = File(filePath).lengthSync();
-
-    // Max 10 MB
-    if (fileSize > 10 * 1024 * 1024) {
-      if (!mounted) return;
-      _showSnackBar(AppLocalizations.of(context)!.fileTooLarge, isError: true);
-      return;
-    }
-
-    if (!mounted) return;
-
-    // Show upload progress dialog
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => Center(
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const CircularProgressIndicator(),
-                const SizedBox(height: 16),
-                Text(AppLocalizations.of(context)!.uploading),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-
-    try {
-      final uploadResult = await _apiService.uploadLeistungsbescheid(filePath);
-
-      if (!mounted) return;
-      Navigator.pop(context); // Close progress dialog
-
-      if (uploadResult['success'] == true) {
-        _showSnackBar(AppLocalizations.of(context)!.leistungsbescheidUploaded);
-        _loadVerifizierung();
-      } else {
-        _showSnackBar(uploadResult['message'] ?? AppLocalizations.of(context)!.uploadFailed, isError: true);
-      }
-    } catch (e) {
-      if (!mounted) return;
-      Navigator.pop(context); // Close progress dialog
-      _showSnackBar(getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY'), isError: true);
-    }
-  }
-
   // ============ STUFE 4: ZAHLUNGSMETHODE ============
 
   Widget _buildStufe4ZahlungForm(bool canEdit) {
@@ -1785,7 +1720,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             fillColor: canEdit ? context.colors.inputFill : context.colors.cardSubtle,
             contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           ),
-          items: List.generate(31, (i) => i + 1)
+          items: List.generate(zahlungstagMax, (i) => i + 1)
               .map((day) => DropdownMenuItem(
                     value: day,
                     child: Text(AppLocalizations.of(context)!.dayOfMonth(day)),

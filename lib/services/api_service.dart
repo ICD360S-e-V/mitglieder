@@ -484,18 +484,82 @@ class ApiService {
     String? muttersprache,
     String? mitgliedsart,
   }) async {
+    final body = personalDataBody(
+      vorname: vorname,
+      vorname2: vorname2,
+      nachname: nachname,
+      geburtsname: geburtsname,
+      strasse: strasse,
+      hausnummer: hausnummer,
+      plz: plz,
+      ort: ort,
+      bundesland: bundesland,
+      land: land,
+      telefonMobil: telefonMobil,
+      telefonFix: telefonFix,
+      email: email,
+      geburtsdatum: geburtsdatum,
+      geburtsort: geburtsort,
+      geschlecht: geschlecht,
+      familienstand: familienstand,
+      staatsangehoerigkeit: staatsangehoerigkeit,
+      aufenthaltsstatus: aufenthaltsstatus,
+      muttersprache: muttersprache,
+      mitgliedsart: mitgliedsart,
+    );
+    final response = await _client.post(
+      Uri.parse('$baseUrl/member/update_personal_data.php'),
+      headers: _headers,
+      body: jsonEncode(body),
+    );
+    return jsonDecode(response.body);
+  }
+
+  /// Der Rumpf für member/update_personal_data.php.
+  ///
+  /// ⚠️ Optionale Felder gehen NUR mit, wenn sie übergeben wurden. Vorher
+  /// stand hier `'telefon_mobil': telefonMobil ?? ''` (ebenso zweiter
+  /// Vorname, Bundesland, Land, Festnetz): wer nur die Mitgliedsart
+  /// speicherte, schickte eine leere Mobilnummer — der Server las das als
+  /// Änderungswunsch und antwortete „Die Mobilnummer kann hier nicht
+  /// geaendert werden" (gemeldet 05.10.2026), und die übrigen vier Felder
+  /// wären geleert worden. Ein übergebener Leerstring heißt weiterhin
+  /// „leeren" (Festnetz entfernen).
+  static Map<String, dynamic> personalDataBody({
+    required String vorname,
+    String? vorname2,
+    required String nachname,
+    String? geburtsname,
+    required String strasse,
+    required String hausnummer,
+    required String plz,
+    required String ort,
+    String? bundesland,
+    String? land,
+    String? telefonMobil,
+    String? telefonFix,
+    String? email,
+    String? geburtsdatum,
+    String? geburtsort,
+    String? geschlecht,
+    String? familienstand,
+    String? staatsangehoerigkeit,
+    String? aufenthaltsstatus,
+    String? muttersprache,
+    String? mitgliedsart,
+  }) {
     final body = <String, dynamic>{
       'vorname': vorname,
-      'vorname2': vorname2 ?? '',
       'nachname': nachname,
       'strasse': strasse,
       'hausnummer': hausnummer,
       'plz': plz,
       'ort': ort,
-      'bundesland': bundesland ?? '',
-      'land': land ?? '',
-      'telefon_mobil': telefonMobil ?? '',
-      'telefon_fix': telefonFix ?? '',
+      if (vorname2 != null) 'vorname2': vorname2,
+      if (bundesland != null) 'bundesland': bundesland,
+      if (land != null) 'land': land,
+      if (telefonMobil != null) 'telefon_mobil': telefonMobil,
+      if (telefonFix != null) 'telefon_fix': telefonFix,
     };
     if (geburtsname != null && geburtsname.isNotEmpty) body['geburtsname'] = geburtsname;
     if (email != null && email.isNotEmpty) body['email'] = email;
@@ -507,14 +571,22 @@ class ApiService {
     if (aufenthaltsstatus != null && aufenthaltsstatus.isNotEmpty) body['aufenthaltsstatus'] = aufenthaltsstatus;
     if (muttersprache != null && muttersprache.isNotEmpty) body['muttersprache'] = muttersprache;
     if (mitgliedsart != null && mitgliedsart.isNotEmpty) body['mitgliedsart'] = mitgliedsart;
+    return body;
+  }
 
+  /// Nur die Mitgliedsart (Stufe 2) — ohne ein einziges anderes Feld.
+  Future<Map<String, dynamic>> updateMitgliedsart(String mitgliedsart) async {
     final response = await _client.post(
       Uri.parse('$baseUrl/member/update_personal_data.php'),
       headers: _headers,
-      body: jsonEncode(body),
+      body: jsonEncode(mitgliedsartBody(mitgliedsart)),
     );
     return jsonDecode(response.body);
   }
+
+  /// Der Rumpf für [updateMitgliedsart]: genau ein Schlüssel.
+  static Map<String, dynamic> mitgliedsartBody(String mitgliedsart) =>
+      {'mitgliedsart': mitgliedsart};
 
   // ── Kontaktdaten bestätigen ───────────────────────────────────────────
   //
@@ -627,24 +699,6 @@ class ApiService {
       headers: _headers,
       body: jsonEncode(body),
     );
-    return jsonDecode(response.body);
-  }
-
-  // Upload Leistungsbescheid (Stufe 3 - finanzielle Situation)
-  Future<Map<String, dynamic>> uploadLeistungsbescheid(String filePath) async {
-    final uri = Uri.parse('$baseUrl/member/upload_leistungsbescheid.php');
-    final request = http.MultipartRequest('POST', uri);
-
-    request.headers['User-Agent'] = 'ICD360S-Mitglieder-Android/1.0';
-    if (_token != null) request.headers['Authorization'] = 'Bearer $_token';
-
-    final deviceKey = DeviceKeyService().deviceKey ?? '';
-    if (deviceKey.isNotEmpty) request.headers['X-Device-Key'] = deviceKey;
-
-    request.files.add(await http.MultipartFile.fromPath('file', filePath));
-
-    final streamedResponse = await request.send();
-    final response = await http.Response.fromStream(streamedResponse);
     return jsonDecode(response.body);
   }
 
