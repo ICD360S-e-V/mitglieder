@@ -18,6 +18,7 @@ import 'wizard_stufe_3_screen.dart';
 import 'wizard_stufe_4_screen.dart';
 import 'wizard_stufe_5_screen.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
 /// Terminal screen of the onboarding wizard. Two variants drive off
 /// the [WizardFinalizeResult]:
@@ -1271,21 +1272,25 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
             .where((p) => p.isNotEmpty)
             .join(' ');
         return [
-          (label: l10n.wizardStufe1aVornameLabel,         value: s('vorname')),
+          (label: l10n.firstNameLabel,                    value: s('vorname')),
+          if (s('vorname2').isNotEmpty)
+            (label: l10n.wizardStufe1aVorname2Label,      value: s('vorname2')),
           (label: l10n.wizardStufe1aNachnameLabel,        value: s('nachname')),
           if (s('geburtsname').isNotEmpty)
             (label: l10n.wizardStufe1aGeburtsnameLabel,   value: s('geburtsname')),
           (label: l10n.wizardStufe1bGeburtsdatumLabel,    value: _fmtBirthdate(s('geburtsdatum'))),
           (label: l10n.wizardStufe1bGeburtsortLabel,      value: s('geburtsort')),
-          (label: l10n.wizardStufe1cGeschlechtLabel,      value: _geschlechtLabel(s('geschlecht'), l10n)),
-          (label: l10n.wizardStufe1cFamilienstandLabel,   value: _familienstandLabel(s('familienstand'), l10n)),
+          (label: l10n.wizardStufe1cGeschlechtLabel,      value: geschlechtAnzeige(s('geschlecht'), l10n)),
+          (label: l10n.wizardStufe1cFamilienstandLabel,   value: familienstandAnzeige(s('familienstand'), l10n)),
           (label: l10n.wizardStufe1dStaatLabel,           value: s('staatsangehoerigkeit')),
-          (label: l10n.wizardStufe1dAufenthaltLabel,      value: _aufenthaltsstatusLabel(s('aufenthaltsstatus'), l10n)),
+          (label: l10n.wizardStufe1dAufenthaltLabel,      value: aufenthaltAnzeige(s('aufenthaltsstatus'), l10n)),
           (label: l10n.wizardStufe1dMutterspracheLabel,   value: s('muttersprache')),
           (label: l10n.wizardStufe1eStrasseLabel,         value: addressLine),
           (label: l10n.wizardStufe1ePlzLabel,             value: cityLine),
           (label: l10n.wizardStufe1eLandLabel,            value: s('land')),
           (label: l10n.wizardStufe1fTelefonLabel,         value: s('telefon_mobil')),
+          if (s('telefon_fix').isNotEmpty)
+            (label: l10n.wizardStufe1fFestnetzLabel,      value: s('telefon_fix')),
           // Email is computed live from the mitgliedernummer so the
           // preview always shows the canonical digits-only address
           // (M12345 → 12345@icd360s.de), even when the draft was
@@ -1295,7 +1300,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       case 2:
         return [
           (label: l10n.wizardStufe2Title,
-           value: _mitgliedsartLabel(s('mitgliedsart'), l10n)),
+           value: mitgliedsartAnzeige(s('mitgliedsart'), l10n)),
         ];
       case 3:
         return [
@@ -1311,7 +1316,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
         }
         return [
           (label: 'Zahlungsmethode',
-           value: _zahlungsmethodeLabel(s('zahlungsmethode'), l10n)),
+           value: zahlungsmethodeAnzeige(s('zahlungsmethode'), l10n)),
           (label: 'Zahlungstag',
            value: s('zahlungstag')),
         ];
@@ -1360,49 +1365,6 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     return '${two(dt.day)}.${two(dt.month)}.${dt.year}';
   }
 
-  String _geschlechtLabel(String key, AppLocalizations l10n) => switch (key) {
-        'maennlich' => l10n.wizardStufe1cGeschlechtMaennlich,
-        'weiblich'  => l10n.wizardStufe1cGeschlechtWeiblich,
-        'divers'    => l10n.wizardStufe1cGeschlechtDivers,
-        _           => key,
-      };
-
-  String _familienstandLabel(String key, AppLocalizations l10n) => switch (key) {
-        'ledig'       => l10n.wizardStufe1cFamilienstandLedig,
-        'verheiratet' => l10n.wizardStufe1cFamilienstandVerheiratet,
-        'geschieden'  => l10n.wizardStufe1cFamilienstandGeschieden,
-        'verwitwet'   => l10n.wizardStufe1cFamilienstandVerwitwet,
-        _             => key,
-      };
-
-  String _aufenthaltsstatusLabel(String key, AppLocalizations l10n) => switch (key) {
-        ''                          => '',
-        'deutsch'                   => l10n.wizardStufe1dAufenthaltGerman,
-        'eu_eea_freizuegigkeit'     => l10n.wizardStufe1dAufenthaltEuEea,
-        'aufenthaltserlaubnis'      =>
-          'Aufenthaltserlaubnis (${l10n.wizardStufe1dAufenthaltTempHint})',
-        'niederlassungserlaubnis'   =>
-          'Niederlassungserlaubnis (${l10n.wizardStufe1dAufenthaltPermHint})',
-        'daueraufenthalt_eu'        => 'Daueraufenthalt-EU',
-        'blaue_karte_eu'            => 'Blaue Karte EU',
-        'asylberechtigt'            => 'Asylberechtigt (Art. 16a GG)',
-        'fluechtling_gfk'           => 'Anerkannter Flüchtling (GFK § 25 Abs. 2)',
-        'subsidiaerer_schutz'       => 'Subsidiärer Schutz',
-        'aufenthaltsgestattung'     =>
-          'Aufenthaltsgestattung (${l10n.wizardStufe1dAufenthaltAsylumProcessHint})',
-        'duldung'                   => 'Duldung (§ 60a)',
-        'humanitaer'                => 'Humanitärer Aufenthalt (§ 25 Abs. 4/5)',
-        'sonstige'                  => l10n.wizardStufe1dAufenthaltOther,
-        _                           => key,  // Vorstand-written free text passes through
-      };
-
-  String _mitgliedsartLabel(String key, AppLocalizations l10n) => switch (key) {
-        'ordentlich'      => l10n.memberType_ordentlich,
-        'foerdermitglied' => l10n.memberType_foerder,
-        'ehrenmitglied'   => l10n.memberType_ehren,
-        _                 => key,
-      };
-
   String _finanzielleSituationLabel(String key, AppLocalizations l10n) => switch (key) {
         'buergergeld'   => 'Bürgergeld (SGB II)',
         'sozialamt'     => 'Sozialamt (SGB XII)',
@@ -1410,13 +1372,6 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
         'krankengeld'   => 'Krankengeld',
         'nein'          => l10n.wizardFinalStufeNotExempt,
         _               => key,
-      };
-
-  String _zahlungsmethodeLabel(String key, AppLocalizations l10n) => switch (key) {
-        'ueberweisung'      => l10n.payMethod_ueberweisung,
-        'sepa_lastschrift'  => 'SEPA-Lastschrift',
-        'dauerauftrag'      => l10n.payMethod_dauerauftrag,
-        _                   => key,
       };
 
   String _mitgliedschaftsbeginnLabel(String key, AppLocalizations l10n) => switch (key) {

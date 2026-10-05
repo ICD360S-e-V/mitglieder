@@ -8,6 +8,7 @@ import '../utils/eu_eea_citizenship.dart';
 import '../utils/staatsangehoerigkeit_options.dart';
 import '../widgets/wizard_step_shell.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
 /// Stufe 1d — Staatsangehörigkeit + Aufenthaltsstatus + Muttersprache.
 ///
@@ -50,21 +51,9 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
   static final _wordRegex = RegExp(r"^[\p{L}\s\-'.,/()]+$", unicode: true);
 
 
-  /// Stored as the `aufenthaltsstatus` string in the DB — keep these
-  /// snake_case values stable so the Vorstand panel can switch on them.
-  static const _residenceTitles = <String>[
-    'aufenthaltserlaubnis',
-    'niederlassungserlaubnis',
-    'daueraufenthalt_eu',
-    'blaue_karte_eu',
-    'asylberechtigt',
-    'fluechtling_gfk',
-    'subsidiaerer_schutz',
-    'aufenthaltsgestattung',
-    'duldung',
-    'humanitaer',
-    'sonstige',
-  ];
+  /// Die App schickt den SCHLÜSSEL; der Server speichert das deutsche
+  /// Etikett (siehe [aufenthaltEtiketten]) — dasselbe wie im
+  /// Online-Formular und im Vorstandspanel.
 
   @override
   void initState() {
@@ -76,14 +65,10 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
     // of our keys; otherwise leave null and let the user choose. The
     // resume case for legacy free-text values just shows the dropdown
     // un-selected, which is the most predictable behaviour.
-    final saved = widget.initial?['aufenthaltsstatus'] as String?;
-    if (saved != null && saved.isNotEmpty) {
-      if (saved == 'deutsch' ||
-          saved == 'eu_eea_freizuegigkeit' ||
-          _residenceTitles.contains(saved)) {
-        _aufenthaltsstatus = saved;
-      }
-    }
+    // Ein gespeicherter Schlüssel oder ein bekanntes Etikett wird wieder zum
+    // Schlüssel; ein fremdes Etikett lässt die Auswahl leer.
+    _aufenthaltsstatus =
+        aufenthaltSchluessel(widget.initial?['aufenthaltsstatus'] as String?);
     _muttersprache = TextEditingController(
       text: widget.initial?['muttersprache'] ??
           LanguageService.instance.currentCode,
@@ -124,11 +109,13 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
       // Clear stale dropdown selection when bucket changes.
       final bucket = _bucket;
       if (bucket == CitizenshipBucket.german) {
-        _aufenthaltsstatus = 'deutsch';
+        // Doppelte Staatsbürgerschaft bleibt gewählt, sonst deutsch.
+        if (_aufenthaltsstatus != 'doppelt_de') _aufenthaltsstatus = 'deutsch';
       } else if (bucket == CitizenshipBucket.euEea) {
         _aufenthaltsstatus = 'eu_eea_freizuegigkeit';
       } else if (bucket == CitizenshipBucket.thirdCountry &&
           (_aufenthaltsstatus == 'deutsch' ||
+              _aufenthaltsstatus == 'doppelt_de' ||
               _aufenthaltsstatus == 'eu_eea_freizuegigkeit')) {
         // Was auto-filled for previous bucket; reset so the visitor
         // actually picks a residence title for the new third-country
@@ -143,9 +130,11 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
   Future<void> _submit() async {
     if (_saving) return;
     if (!_formKey.currentState!.validate()) return;
-    // Third-country citizens must pick a residence title.
+    // Third-country citizens must pick a residence title — one from THEIR
+    // list, not a leftover from an earlier citizenship.
     if (_bucket == CitizenshipBucket.thirdCountry &&
-        (_aufenthaltsstatus == null || _aufenthaltsstatus!.isEmpty)) {
+        !aufenthaltDrittstaatFuer(_staatsangehoerigkeit.text)
+            .contains(_aufenthaltsstatus)) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.wizardStufe1dAufenthaltRequired),
@@ -158,7 +147,7 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
     setState(() => _saving = true);
     final ok = await WizardService().saveStep(WizardStep.stufe1d, {
       'staatsangehoerigkeit': _staatsangehoerigkeit.text.trim(),
-      'aufenthaltsstatus': _aufenthaltsstatus ?? '',
+      'aufenthaltsstatus': _aufenthaltZumSenden(),
       'muttersprache': _muttersprache.text.trim(),
     });
     if (!mounted) return;
@@ -175,6 +164,19 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
     }
     widget.onNext();
   }
+
+  /// Was gespeichert wird. Deutsche und EU/EWR/CH-Bürger bekommen ihren
+  /// Status auch ohne Tippen — vorher ging bei ihnen ein leerer Wert hinaus,
+  /// und die Verifizierung zeigte nichts.
+  String _aufenthaltZumSenden() => switch (_bucket) {
+        CitizenshipBucket.german =>
+          aufenthaltDeutsch.contains(_aufenthaltsstatus)
+              ? _aufenthaltsstatus!
+              : 'deutsch',
+        CitizenshipBucket.euEea => 'eu_eea_freizuegigkeit',
+        CitizenshipBucket.thirdCountry => _aufenthaltsstatus ?? '',
+        CitizenshipBucket.none => '',
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -230,9 +232,7 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
       CitizenshipBucket.none =>
         _statusBadge(l10n.wizardStufe1dAufenthaltAwaitingCitizenship,
             icon: Icons.info_outline, dim: true),
-      CitizenshipBucket.german =>
-        _statusBadge(l10n.wizardStufe1dAufenthaltGerman,
-            icon: Icons.verified_user_outlined),
+      CitizenshipBucket.german => _deutschAuswahl(l10n),
       CitizenshipBucket.euEea =>
         _statusBadge(l10n.wizardStufe1dAufenthaltEuEea,
             icon: Icons.public_outlined),
@@ -353,9 +353,44 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
     );
   }
 
-  Widget _residenceDropdown(AppLocalizations l10n) {
+  /// Deutsche Staatsangehörige: deutsch oder doppelte Staatsbürgerschaft —
+  /// die erste Zeile der Liste im Vorstandspanel.
+  Widget _deutschAuswahl(AppLocalizations l10n) {
     return DropdownButtonFormField<String>(
-      initialValue: _aufenthaltsstatus,
+      initialValue: aufenthaltDeutsch.contains(_aufenthaltsstatus)
+          ? _aufenthaltsstatus
+          : 'deutsch',
+      isExpanded: true,
+      dropdownColor: context.colors.brandFill,
+      iconEnabledColor: Colors.white,
+      style: const TextStyle(color: Colors.white, fontSize: 14),
+      decoration: _input(
+        label: l10n.wizardStufe1dAufenthaltLabel,
+        helper: l10n.wizardStufe1dAufenthaltHelper,
+        prefixIcon: Icons.verified_user_outlined,
+      ),
+      items: [
+        for (final v in aufenthaltDeutsch)
+          DropdownMenuItem<String>(
+            value: v,
+            child: Text(
+              aufenthaltAnzeige(v, l10n),
+              style: const TextStyle(color: Colors.white),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+      ],
+      onChanged: (v) => setState(() => _aufenthaltsstatus = v),
+    );
+  }
+
+  Widget _residenceDropdown(AppLocalizations l10n) {
+    final optionen = aufenthaltDrittstaatFuer(_staatsangehoerigkeit.text);
+    return DropdownButtonFormField<String>(
+      // Ein Schlüssel, der nicht in die Drittstaaten-Liste gehört (z. B. aus
+      // einer früheren Staatsangehörigkeit), zählt nicht als Auswahl.
+      initialValue:
+          optionen.contains(_aufenthaltsstatus) ? _aufenthaltsstatus : null,
       isExpanded: true,
       dropdownColor: context.colors.brandFill,
       iconEnabledColor: Colors.white,
@@ -366,11 +401,11 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
         prefixIcon: Icons.badge_outlined,
       ),
       items: [
-        for (final v in _residenceTitles)
+        for (final v in optionen)
           DropdownMenuItem<String>(
             value: v,
             child: Text(
-              _residenceTitleLabel(v, l10n),
+              aufenthaltAnzeige(v, l10n),
               style: const TextStyle(color: Colors.white),
               overflow: TextOverflow.ellipsis,
             ),
@@ -381,32 +416,6 @@ class _WizardStufe1dScreenState extends State<WizardStufe1dScreen> {
           (v == null || v.isEmpty) ? l10n.wizardErrRequired : null,
     );
   }
-
-  /// German legal residence-title labels with localized helper text in
-  /// parentheses where the term isn't self-explanatory in the visitor's
-  /// language. Legal terms (Aufenthaltserlaubnis, Niederlassungserlaubnis,
-  /// GFK, etc.) stay in German since they reference §§ AufenthG/AsylG.
-  String _residenceTitleLabel(String key, AppLocalizations l10n) =>
-      switch (key) {
-        'aufenthaltserlaubnis' =>
-          'Aufenthaltserlaubnis (${l10n.wizardStufe1dAufenthaltTempHint})',
-        'niederlassungserlaubnis' =>
-          'Niederlassungserlaubnis (${l10n.wizardStufe1dAufenthaltPermHint})',
-        'daueraufenthalt_eu' => 'Daueraufenthalt-EU',
-        'blaue_karte_eu' => 'Blaue Karte EU',
-        'asylberechtigt' =>
-          'Asylberechtigt (Art. 16a GG)',
-        'fluechtling_gfk' =>
-          'Anerkannter Flüchtling (GFK § 25 Abs. 2)',
-        'subsidiaerer_schutz' => 'Subsidiärer Schutz (§ 25 Abs. 2 Satz 1 Alt. 2)',
-        'aufenthaltsgestattung' =>
-          'Aufenthaltsgestattung (${l10n.wizardStufe1dAufenthaltAsylumProcessHint})',
-        'duldung' => 'Duldung (§ 60a)',
-        'humanitaer' =>
-          'Humanitärer Aufenthalt (§ 25 Abs. 4/5)',
-        'sonstige' => l10n.wizardStufe1dAufenthaltOther,
-        _ => key,
-      };
 
   InputDecoration _input({
     required String label,

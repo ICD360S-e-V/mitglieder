@@ -852,9 +852,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get accept => 'Αποδοχή';
 
   @override
-  String get selectFile => 'Επιλογή αρχείου';
-
-  @override
   String get dataLoadingText => 'Φόρτωση δεδομένων...';
 
   @override
@@ -1249,13 +1246,6 @@ class AppLocalizationsEl extends AppLocalizations {
   String get membershipStartSaved => 'Η έναρξη συνδρομής αποθηκεύτηκε';
 
   @override
-  String get fileTooLarge => 'Το αρχείο είναι πολύ μεγάλο (μέγ. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded =>
-      'Η βεβαίωση παροχών μεταφορτώθηκε επιτυχώς';
-
-  @override
   String get verificationProgress => 'Πρόοδος επαλήθευσης';
 
   @override
@@ -1334,17 +1324,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get feeExempt => 'Η μηνιαία συνδρομή σας είναι: 0,00 €/μήνα';
-
-  @override
-  String get uploadLeistungsbescheid => 'Μεταφόρτωση βεβαίωσης παροχών';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Μεταφορτώστε μια τρέχουσα βεβαίωση παροχών εντός 14 ημερών για επιβεβαίωση της απαλλαγής.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Επιτρεπόμενες μορφές: PDF, JPG, PNG (μέγ. 10 MB)';
 
   @override
   String get feeRegular => 'Η μηνιαία συνδρομή σας είναι: 25,00 €/μήνα';
@@ -2161,13 +2140,6 @@ class AppLocalizationsEl extends AppLocalizations {
       'Ας γνωριστούμε επίσημα. Γράψε το όνομά σου ακριβώς όπως εμφανίζεται στο Personalausweis, Reisepass ή Aufenthaltstitel — ώστε να ταιριάζει με τα έγγραφά σου.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (όνομα)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Όλα τα ονόματά σου, ακριβώς όπως στην ταυτότητα. Με κενό ή παύλα (π.χ. Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (επώνυμο)';
 
   @override
@@ -2432,13 +2404,6 @@ class AppLocalizationsEl extends AppLocalizations {
       'Στηρίζεις τον σύλλογο οικονομικά αλλά δεν συμμετέχεις ενεργά στις αποφάσεις. Χωρίς δικαίωμα ψήφου. Καλό αν θες να βοηθήσεις από μακριά.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Επίτιμο μέλος (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Απονέμεται από το Διοικητικό Συμβούλιο για ιδιαίτερες υπηρεσίες. Δεν το επιλέγεις μόνος — δίνεται ως αναγνώριση. Επίλεξε μόνο αν έχεις ήδη τιμηθεί.';
-
-  @override
   String get wizardStufe3Title => 'Οικονομική κατάσταση';
 
   @override
@@ -2456,28 +2421,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Συνδρομή: 0 € / μήνα 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Με Bürgergeld, Sozialamt, ALG I ή Krankengeld απαλλάσσεσαι πλήρως από τη συνδρομή σύμφωνα με το Καταστατικό §6. Χρειαζόμαστε μόνο μια απόδειξη (Leistungsbescheid ή βεβαίωση από την αρχή / το ταμείο υγείας).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Μεταφόρτωση Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, μέγ. 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Παρακαλώ μεταφόρτωσε το Leistungsbescheid πριν συνεχίσεις.';
-
-  @override
-  String get wizardStufe3FileTooLarge =>
-      'Το αρχείο είναι πολύ μεγάλο. Μέγιστο 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Δεν ήταν δυνατή η μεταφόρτωση. Δοκίμασε ξανά.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Συνδρομή: 25 € / μήνα';
@@ -2502,13 +2445,6 @@ class AppLocalizationsEl extends AppLocalizations {
       'Ξεκινάς εσύ την πληρωμή κάθε μήνα από τον λογαριασμό σου.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (άμεση χρέωση)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Χρεώνουμε αυτόματα από τον λογαριασμό σου. Πιο βολικό, αλλά χρειαζόμαστε IBAN και υπογεγραμμένη εντολή.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (πάγια εντολή)';
 
@@ -2520,7 +2456,7 @@ class AppLocalizationsEl extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Ημέρα πληρωμής';
 
   @override
-  String get wizardStufe4DayHint => 'Επίλεξε ημέρα από 1 έως 31';
+  String get wizardStufe4DayHint => 'Επίλεξε ημέρα από 1 έως 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2663,25 +2599,6 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Λαμβάνω Krankengeld (επίδομα μακροχρόνιας ασθένειας)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Πρόσθεσε άλλο έγγραφο';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Έφτασες στο όριο: έως 20 έγγραφα.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Έφτασες το συνολικό όριο 100 MB. Διέγραψε ένα υπάρχον αρχείο.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Διαγραφή';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max έγγραφα';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3452,4 +3369,62 @@ class AppLocalizationsEl extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Το πρόχειρο διαγράφηκε στις $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Το πρώτο σου όνομα, ακριβώς όπως στην ταυτότητα.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Δεύτερο όνομα — προαιρετικό';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Επιπλέον ονόματα, αν υπάρχουν — χωρισμένα με κενό.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Καταχωρημένη συμβίωση';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Σε διάσταση';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich => 'Συμβίωση χωρίς γάμο';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint =>
+      'εκτοπισμένοι από την Ουκρανία';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Διπλή υπηκοότητα (γερμανική και μία ακόμη)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Σταθερό τηλέφωνο — προαιρετικό';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Μόνο αν έχεις — εκεί δεν στέλνουμε SMS.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Παρακαλώ με τον κωδικό χώρας — για γερμανικό αριθμό δηλαδή $vorschlag αντί για $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Παρακαλώ με τον κωδικό χώρας, για παράδειγμα +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Ο αριθμός έχει $anzahl ψηφία — αυτό δεν μπορεί να είναι σωστό.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Δεν χρειάζεται απόδειξη — αν το Vorstand χρειαστεί μία, θα επικοινωνήσει.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Με Bürgergeld, Sozialamt, ALG I ή Krankengeld απαλλάσσεσαι πλήρως από τη συνδρομή σύμφωνα με το Καταστατικό §6. Δεν χρειάζεται να ανεβάσεις απόδειξη εδώ — αν το Vorstand χρειαστεί μία, θα επικοινωνήσει μαζί σου.';
 }

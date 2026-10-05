@@ -19,10 +19,11 @@ import 'wizard_stufe_3_screen.dart';
 import 'wizard_stufe_4_screen.dart';
 import 'wizard_stufe_5_screen.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
 /// Top-level orchestrator for the onboarding wizard. Wires the 14
 /// stage screens together, drives the navigation graph, hides Stufe 4
-/// for fee-exempt visitors (bürgergeld / sozialamt), short-circuits
+/// for fee-exempt visitors (Bürgergeld, Sozialamt, ALG I, Krankengeld), short-circuits
 /// to the AgeGate when the visitor is under 16, and finalises the
 /// draft into a real `users` row when Stufe 8 ships. Welcome screen
 /// pushes this widget onto the navigator and `Navigator.pop` exits
@@ -109,13 +110,8 @@ class _WizardScreenState extends State<WizardScreen> {
   /// (SGB II), Sozialamt (SGB XII), Arbeitslosengeld I (SGB III) or
   /// Krankengeld (SGB V). Satzung §6 Abs. 4 allows the Vorstand to
   /// grant Erlass for these categories without amending the bylaws.
-  bool get _isBeitragsfrei {
-    final fs = _data['finanzielle_situation'];
-    return fs == 'buergergeld' ||
-        fs == 'sozialamt' ||
-        fs == 'alg1' ||
-        fs == 'krankengeld';
-  }
+  bool get _isBeitragsfrei =>
+      istBeitragsfrei(_data['finanzielle_situation'] as String?);
 
   bool get _isMinor => _ageStatus == WizardAgeStatus.minor;
 
@@ -157,14 +153,7 @@ class _WizardScreenState extends State<WizardScreen> {
 
     // 2) Pull whatever the visitor previously saved.
     final state = await WizardService().getState();
-    final dataRaw = (state?['data'] as Map<String, dynamic>?) ?? const {};
-    // Stufe 3 reads files from data['leistungsbescheid_files'] — the
-    // wizard_draft_files JOIN sits at the top of the getState payload,
-    // so we merge it into the data map here.
-    final data = <String, dynamic>{
-      ...dataRaw,
-      'leistungsbescheid_files': state?['leistungsbescheid_files'] ?? const [],
-    };
+    final data = (state?['data'] as Map<String, dynamic>?) ?? const {};
 
     // 3) Recompute age status from the stored birthdate (resume case).
     WizardAgeStatus? ageStatus;
@@ -241,8 +230,6 @@ class _WizardScreenState extends State<WizardScreen> {
         return WizardStep.stufe3;
       case WizardStep.stufe3:
         return _isBeitragsfrei ? WizardStep.stufe5 : WizardStep.stufe4;
-      case WizardStep.stufe3Upload:
-        return _isBeitragsfrei ? WizardStep.stufe5 : WizardStep.stufe4;
       case WizardStep.stufe4:
         return WizardStep.stufe5;
       case WizardStep.stufe5:
@@ -299,12 +286,8 @@ class _WizardScreenState extends State<WizardScreen> {
   Future<void> _refreshData() async {
     final state = await WizardService().getState();
     if (state == null || !mounted) return;
-    final dataRaw = (state['data'] as Map<String, dynamic>?) ?? const {};
-    setState(() => _data = <String, dynamic>{
-          ...dataRaw,
-          'leistungsbescheid_files':
-              state['leistungsbescheid_files'] ?? const [],
-        });
+    setState(() =>
+        _data = (state['data'] as Map<String, dynamic>?) ?? const {});
   }
 
   Future<void> _goNext() async {
@@ -495,7 +478,6 @@ class _WizardScreenState extends State<WizardScreen> {
           onBack: _goBack,
         );
       case WizardStep.stufe3:
-      case WizardStep.stufe3Upload:
         return WizardStufe3Screen(
           initial: _data,
           onNext: _goNext,

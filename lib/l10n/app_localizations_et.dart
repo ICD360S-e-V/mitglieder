@@ -848,9 +848,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get accept => 'Nõustu';
 
   @override
-  String get selectFile => 'Vali fail';
-
-  @override
   String get dataLoadingText => 'Andmete laadimine...';
 
   @override
@@ -1243,12 +1240,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get membershipStartSaved => 'Liikmesuse algus salvestatud';
 
   @override
-  String get fileTooLarge => 'Fail on liiga suur (max. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded => 'Hüvitise otsus edukalt üles laetud';
-
-  @override
   String get verificationProgress => 'Kinnitamise edenemine';
 
   @override
@@ -1327,17 +1318,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get feeExempt => 'Teie kuumakse on: 0,00 €/kuu';
-
-  @override
-  String get uploadLeistungsbescheid => 'Laadige üles hüvitise otsus';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Laadige üles kehtiv hüvitise otsus 14 päeva jooksul makse vabastuse kinnitamiseks.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Lubatud formaadid: PDF, JPG, PNG (max. 10 MB)';
 
   @override
   String get feeRegular => 'Teie kuumakse on: 25,00 €/kuu';
@@ -2150,13 +2130,6 @@ class AppLocalizationsEt extends AppLocalizations {
       'Tutvume ametlikult. Palun kirjuta oma nimi täpselt nii nagu Personalausweis, Reisepass või Aufenthaltstitel — et see sobiks dokumentidega.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (eesnimed)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Kõik eesnimed täpselt nagu dokumendil. Tühiku või sidekriipsuga (nt Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (perekonnanimi)';
 
   @override
@@ -2415,13 +2388,6 @@ class AppLocalizationsEt extends AppLocalizations {
       'Toetad ühingut rahaliselt, kuid ei osale aktiivselt otsustes. Hääleõiguseta. Hea kui soovid aidata kaugelt.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Auliige (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Annab juhatus erilise teenistuse eest. Sa ei vali seda ise — antakse tunnustusena. Vali ainult, kui sind on juba pärjatud.';
-
-  @override
   String get wizardStufe3Title => 'Rahaline olukord';
 
   @override
@@ -2439,28 +2405,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Liikmemaks: 0 € / kuu 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Bürgergeldi, Sozialamti, ALG I või Krankengeldiga oled vastavalt Satzungi §6-le liikmemaksust täielikult vabastatud. Vajame ainult tõendit (Leistungsbescheid või kinnitus ametiasutuselt / haigekassalt).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Lae üles Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, kuni 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Palun lae Leistungsbescheid üles enne jätkamist.';
-
-  @override
-  String get wizardStufe3FileTooLarge =>
-      'Fail on liiga suur. Maksimaalselt 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Faili üleslaadimine ebaõnnestus. Proovi uuesti.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Liikmemaks: 25 € / kuu';
@@ -2485,14 +2429,6 @@ class AppLocalizationsEt extends AppLocalizations {
       'Sa algatad makse igal kuul ise oma kontolt.';
 
   @override
-  String get wizardStufe4MethodSepaTitle =>
-      'SEPA-Lastschrift (otsedebiteerimine)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Veame summa automaatselt sinu kontolt. Kõige mugavam, kuid vajame IBAN-i ja allkirjastatud volitust.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (püsikorraldus)';
 
@@ -2504,7 +2440,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Maksepäev';
 
   @override
-  String get wizardStufe4DayHint => 'Vali päev 1 ja 31 vahel';
+  String get wizardStufe4DayHint => 'Vali päev 1 ja 28 vahel';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2645,24 +2581,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Saan Krankengeld (pikaajaline haigushüvitis)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Lisa veel üks dokument';
-
-  @override
-  String get wizardStufe3UploadLimitCount => 'Piir täis: kuni 20 dokumenti.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Saavutatud kogu maht 100 MB. Kustuta üks olemasolev fail.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Kustuta';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max dokumenti';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3423,4 +3341,61 @@ class AppLocalizationsEt extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Lõikelaud tühjendati kell $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Sinu esimene eesnimi, täpselt nagu isikutunnistusel.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Teine eesnimi — vabatahtlik';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Muud eesnimed, kui need on — tühikuga eraldatud.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Registreeritud kooselu';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Lahus elav';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich => 'Vabaabielu';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'Ukrainast põgenenud';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Topeltkodakondsus (Saksa ja veel üks)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Lauatelefon — vabatahtlik';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Ainult siis, kui sul see on — sinna SMS-e ei saadeta.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Palun koos riigikoodiga — Saksa numbri puhul seega $vorschlag, mitte $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Palun koos riigikoodiga, näiteks +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Numbril on $anzahl numbrit — see ei saa õige olla.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Tõendit pole vaja — kui Vorstand seda vajab, võtab ta ühendust.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Bürgergeldi, Sozialamti, ALG I või Krankengeldiga oled vastavalt Satzungi §6-le liikmemaksust täielikult vabastatud. Tõendit ei pea siia üles laadima — kui Vorstand seda vajab, võtab ta sinuga ühendust.';
 }

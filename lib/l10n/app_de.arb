@@ -446,7 +446,6 @@
   "retry": "Erneut versuchen",
   "save": "Speichern",
   "accept": "Akzeptieren",
-  "selectFile": "Datei auswählen",
   "dataLoadingText": "Daten werden geladen...",
   "dataSavedSuccess": "Daten erfolgreich gespeichert",
   "errorSaving": "Fehler beim Speichern",
@@ -583,8 +582,6 @@
   "paymentDataSaved": "Zahlungsdaten gespeichert",
   "selectDate": "Bitte wählen Sie ein Datum.",
   "membershipStartSaved": "Mitgliedschaftsbeginn gespeichert",
-  "fileTooLarge": "Datei zu groß (max. 10 MB).",
-  "leistungsbescheidUploaded": "Leistungsbescheid erfolgreich hochgeladen",
   "verificationProgress": "Verifizierungsfortschritt",
   "notApplicable": "Entfällt",
   "socialBenefitsExempt": "Bei Bürgergeld/Sozialamt entfällt die Zahlungsmethode.",
@@ -609,9 +606,6 @@
   "optionSozialamt": "Ja, Sozialleistungen vom Sozialamt",
   "optionNoBenefits": "Nein, ich beziehe keine Sozialleistungen",
   "feeExempt": "Ihr monatlicher Mitgliedsbeitrag beträgt: 0,00 €/Monat",
-  "uploadLeistungsbescheid": "Leistungsbescheid hochladen",
-  "uploadLeistungsbescheidHint": "Bitte laden Sie innerhalb von 14 Tagen einen aktuellen Leistungsbescheid hoch, um die Beitragsbefreiung zu bestätigen.",
-  "allowedFormatsUpload": "Erlaubte Formate: PDF, JPG, PNG (max. 10 MB)",
   "feeRegular": "Ihr monatlicher Mitgliedsbeitrag beträgt: 25,00 €/Monat",
   "paymentDayReminder": "Sie werden jeden {day}. des Monats an die Zahlung erinnert.",
   "membershipStartPrompt": "Wählen Sie, ab wann Ihre Mitgliedschaft beginnen soll.",
@@ -1052,8 +1046,6 @@
   "wizardErrSaveFailed": "Speichern fehlgeschlagen. Verbindung prüfen und erneut versuchen.",
   "wizardStufe1aTitle": "Identität",
   "wizardStufe1aPrompt": "Wir lernen dich offiziell kennen. Bitte schreib deinen Namen genau so, wie er auf Personalausweis, Reisepass oder Aufenthaltstitel steht — dann passt es zu deinen Dokumenten.",
-  "wizardStufe1aVornameLabel": "Vornamen",
-  "wizardStufe1aVornameHelper": "Alle deine Vornamen, genau wie auf dem Ausweis. Mit Leerzeichen oder Bindestrich (z.B. Hans-Peter, Maria Anna).",
   "wizardStufe1aNachnameLabel": "Familienname",
   "wizardStufe1aNachnameHelper": "Dein aktueller Familienname.",
   "wizardStufe1aGeburtsnameLabel": "Geburtsname (optional)",
@@ -1142,32 +1134,22 @@
   "wizardStufe2OrdentlichBody": "Volle Rechte. Du zahlst monatlich Beitrag, stimmst in der Mitgliederversammlung ab und kannst in den Vorstand gewählt werden. Standardwahl.",
   "wizardStufe2FoerderTitle": "Fördermitglied",
   "wizardStufe2FoerderBody": "Du unterstützt den Verein finanziell, nimmst aber nicht aktiv an Entscheidungen teil. Kein Stimmrecht. Gut, wenn du aus der Ferne helfen willst.",
-  "wizardStufe2EhrenTitle": "Ehrenmitglied",
-  "wizardStufe2EhrenBody": "Wird vom Vorstand für besondere Verdienste verliehen. Du wählst es nicht selbst — es wird als Anerkennung gewährt. Wähle nur, wenn dir bereits diese Ehre zuteilwurde.",
   "wizardStufe3Title": "Finanzielle Situation",
   "wizardStufe3Prompt": "Jetzt zu deiner finanziellen Situation. Nicht um zu urteilen — sondern um dich vom Beitrag zu befreien, falls du Sozialleistungen beziehst.",
   "wizardStufe3OptionBuergergeld": "Ich beziehe Bürgergeld",
   "wizardStufe3OptionSozialamt": "Ich beziehe Sozialamt-Leistungen",
   "wizardStufe3OptionNein": "Ich beziehe keine dieser Leistungen",
   "wizardStufe3FeeExemptTitle": "Beitrag: 0 € / Monat 🎉",
-  "wizardStufe3FeeExemptBody": "Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Wir brauchen nur einen Nachweis (Leistungsbescheid oder Bescheinigung der Behörde / Krankenkasse).",
-  "wizardStufe3UploadTitle": "Leistungsbescheid hochladen",
-  "wizardStufe3UploadHint": "PDF / JPG / PNG, maximal 10 MB.",
-  "wizardStufe3UploadRequired": "Bitte lade den Leistungsbescheid hoch, bevor es weitergeht.",
-  "wizardStufe3FileTooLarge": "Datei zu groß. Maximal 10 MB.",
-  "wizardStufe3UploadFailed": "Datei konnte nicht hochgeladen werden. Bitte erneut versuchen.",
   "wizardStufe3RegularFeeTitle": "Beitrag: 25 € / Monat",
   "wizardStufe3RegularFeeBody": "Regulärer Beitrag für ordentliche Mitglieder laut Satzung.",
   "wizardStufe4Title": "Zahlung",
   "wizardStufe4Prompt": "Wie möchtest du den Beitrag zahlen? Und an welchem Tag im Monat soll abgebucht werden?",
   "wizardStufe4MethodUeberweisungTitle": "Überweisung",
   "wizardStufe4MethodUeberweisungBody": "Du löst die Zahlung jeden Monat manuell von deinem Konto aus.",
-  "wizardStufe4MethodSepaTitle": "SEPA-Lastschrift",
-  "wizardStufe4MethodSepaBody": "Wir ziehen den Betrag automatisch von deinem Konto ein. Am bequemsten, aber wir brauchen IBAN und ein Mandat.",
   "wizardStufe4MethodDauerauftragTitle": "Dauerauftrag",
   "wizardStufe4MethodDauerauftragBody": "Du richtest einen Dauerauftrag bei deiner Bank ein. Deine Bank überweist den Betrag jeden Monat automatisch.",
   "wizardStufe4DayLabel": "Zahlungstag",
-  "wizardStufe4DayHint": "Wähle einen Tag zwischen 1 und 31",
+  "wizardStufe4DayHint": "Wähle einen Tag zwischen 1 und 28",
   "wizardStufe4DayItem": "Tag {day}",
   "@wizardStufe4DayItem": {
     "placeholders": {
@@ -1263,21 +1245,6 @@
   "wizardErrInvalidEmail": "Ungültige E-Mail-Adresse",
   "wizardStufe3OptionAlg1": "Ich beziehe Arbeitslosengeld I (ALG I)",
   "wizardStufe3OptionKrankengeld": "Ich beziehe Krankengeld",
-  "wizardStufe3UploadAddMore": "Weiteres Dokument hinzufügen",
-  "wizardStufe3UploadLimitCount": "Limit erreicht: maximal 20 Dokumente.",
-  "wizardStufe3UploadLimitTotal": "Gesamtlimit 100 MB erreicht. Lösche eine bestehende Datei.",
-  "wizardStufe3UploadDeleteTooltip": "Löschen",
-  "wizardStufe3UploadCounter": "{count} / {max} Dokumente",
-  "@wizardStufe3UploadCounter": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      },
-      "max": {
-        "type": "int"
-      }
-    }
-  },
   "wizardDocumentExternalOpenFailed": "Konnte den Browser nicht öffnen. Der Link wurde in die Zwischenablage kopiert — füge ihn in einen Browser ein, um fortzufahren.",
   "wizardFinalTimelineProcessing": "Vorstand prüft · meist 1 Werktag, max. 7",
   "wizardFinalTimelineActivated": "Konto aktiviert",
@@ -1665,5 +1632,37 @@
         "type": "String"
       }
     }
-  }
+  },
+  "wizardStufe1aVornameErsterHelper": "Dein erster Vorname, genau wie auf dem Ausweis.",
+  "wizardStufe1aVorname2Label": "Zweiter Vorname (optional)",
+  "wizardStufe1aVorname2Helper": "Weitere Vornamen, falls vorhanden — mit Leerzeichen getrennt.",
+  "wizardStufe1cFamilienstandLebenspartnerschaft": "Eingetragene Lebenspartnerschaft",
+  "wizardStufe1cFamilienstandGetrenntLebend": "Getrennt lebend",
+  "wizardStufe1cFamilienstandEheaehnlich": "Eheähnliche Gemeinschaft",
+  "wizardStufe1dAufenthaltUkraineHint": "Vertriebene aus der Ukraine",
+  "wizardStufe1dAufenthaltDoppelt": "Doppelte Staatsbürgerschaft (deutsch und eine weitere)",
+  "wizardStufe1fFestnetzLabel": "Festnetznummer (optional)",
+  "wizardStufe1fFestnetzHelper": "Nur wenn du eine hast — dorthin geht keine SMS.",
+  "wizardErrPhoneVorwahl": "Bitte mit Ländervorwahl — bei einer deutschen Nummer also {vorschlag} statt {eingabe}.",
+  "@wizardErrPhoneVorwahl": {
+    "placeholders": {
+      "vorschlag": {
+        "type": "String"
+      },
+      "eingabe": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardErrPhoneVorwahlBeispiel": "Bitte mit Ländervorwahl, zum Beispiel +49 176 1234567.",
+  "wizardErrPhoneLaenge": "Die Nummer hat {anzahl} Ziffern — das kann nicht stimmen.",
+  "@wizardErrPhoneLaenge": {
+    "placeholders": {
+      "anzahl": {
+        "type": "int"
+      }
+    }
+  },
+  "nachweisNichtNoetig": "Kein Nachweis nötig — falls der Vorstand einen braucht, meldet er sich.",
+  "wizardStufe3FeeExemptBodyOhneNachweis": "Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Einen Nachweis musst du hier nicht hochladen — falls der Vorstand einen braucht, meldet er sich bei dir."
 }

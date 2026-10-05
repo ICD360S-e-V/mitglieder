@@ -848,9 +848,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get accept => 'Elfogadás';
 
   @override
-  String get selectFile => 'Fájl kiválasztása';
-
-  @override
   String get dataLoadingText => 'Adatok betöltése...';
 
   @override
@@ -1244,13 +1241,6 @@ class AppLocalizationsHu extends AppLocalizations {
   String get membershipStartSaved => 'Tagság kezdete mentve';
 
   @override
-  String get fileTooLarge => 'A fájl túl nagy (max. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded =>
-      'Juttatási határozat sikeresen feltöltve';
-
-  @override
   String get verificationProgress => 'Ellenőrzés haladása';
 
   @override
@@ -1328,17 +1318,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get feeExempt => 'Az Ön havi díja: 0,00 €/hó';
-
-  @override
-  String get uploadLeistungsbescheid => 'Juttatási határozat feltöltése';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Töltse fel az aktuális juttatási határozatot 14 napon belül a díjmentesség megerősítéséhez.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Engedélyezett formátumok: PDF, JPG, PNG (max. 10 MB)';
 
   @override
   String get feeRegular => 'Az Ön havi díja: 25,00 €/hó';
@@ -2156,13 +2135,6 @@ class AppLocalizationsHu extends AppLocalizations {
       'Ismerkedjünk meg hivatalosan. Írd be a neved pontosan úgy, ahogy a Personalausweis, Reisepass vagy Aufenthaltstitel okiraton szerepel — hogy egyezzen a dokumentumaiddal.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (utónevek)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Minden utóneved pontosan úgy, ahogy a dokumentumon. Szóközzel vagy kötőjellel (pl. Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (vezetéknév)';
 
   @override
@@ -2428,13 +2400,6 @@ class AppLocalizationsHu extends AppLocalizations {
       'Anyagilag támogatod az egyesületet, de nem veszel részt aktívan a döntésekben. Nincs szavazati jog. Jó választás, ha távolról szeretnél segíteni.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Tiszteletbeli tag (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Az elnökség adományozza különleges érdemekért. Nem te választod — elismerésként kapod. Csak akkor jelöld, ha már megkaptad ezt a kitüntetést.';
-
-  @override
   String get wizardStufe3Title => 'Anyagi helyzet';
 
   @override
@@ -2452,27 +2417,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Tagdíj: 0 € / hó 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Bürgergelddel, Sozialamttal, ALG I-vel vagy Krankengelddel a Satzung §6 szerint teljesen mentes vagy a tagdíj alól. Csak egy igazolás kell (Leistungsbescheid vagy igazolás a hatóságtól / egészségbiztosítótól).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Leistungsbescheid feltöltése';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, max. 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Kérlek töltsd fel a Leistungsbescheidet, mielőtt továbblépsz.';
-
-  @override
-  String get wizardStufe3FileTooLarge => 'A fájl túl nagy. Maximum 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Nem sikerült feltölteni a fájlt. Próbáld újra.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Tagdíj: 25 € / hó';
@@ -2497,14 +2441,6 @@ class AppLocalizationsHu extends AppLocalizations {
       'A fizetést te indítod minden hónapban a számládról.';
 
   @override
-  String get wizardStufe4MethodSepaTitle =>
-      'SEPA-Lastschrift (közvetlen beszedés)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Az összeget automatikusan levonjuk a számládról. A legkényelmesebb, de IBAN és aláírt megbízás kell.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (állandó megbízás)';
 
@@ -2516,7 +2452,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Fizetési nap';
 
   @override
-  String get wizardStufe4DayHint => 'Válassz egy napot 1 és 31 között';
+  String get wizardStufe4DayHint => 'Válassz egy napot 1 és 28 között';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2658,25 +2594,6 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Krankengeldet kapok (hosszabb betegség idejére)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Még egy dokumentum hozzáadása';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Elérted a határt: legfeljebb 20 dokumentum.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Elérted az összesen 100 MB határt. Törölj egy meglévő fájlt.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Törlés';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max dokumentum';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3435,4 +3352,61 @@ class AppLocalizationsHu extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Vágólap törölve ekkor: $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Az első utóneved, pontosan úgy, ahogy a személyi igazolványodban áll.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Második utónév — opcionális';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'További utónevek, ha vannak — szóközzel elválasztva.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Bejegyzett élettársi kapcsolat';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Különváltan él';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich => 'Élettársi kapcsolat';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'Ukrajnából elüldözöttek';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Kettős állampolgárság (német és egy másik)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Vezetékes telefon — opcionális';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Csak ha van — oda nem küldünk SMS-t.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Kérjük, országhívószámmal — német számnál tehát $vorschlag a(z) $eingabe helyett.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Kérjük, országhívószámmal, például +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'A szám $anzahl számjegyből áll — ez nem lehet helyes.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Nem kell igazolás — ha a Vorstandnak szüksége lesz rá, jelentkezik.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Bürgergelddel, Sozialamttal, ALG I-vel vagy Krankengelddel a Satzung §6 szerint teljesen mentes vagy a tagdíj alól. Itt nem kell igazolást feltöltened — ha a Vorstandnak szüksége lesz rá, jelentkezik nálad.';
 }

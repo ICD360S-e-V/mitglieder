@@ -38,6 +38,7 @@ class WizardStufe1aScreen extends StatefulWidget {
 class _WizardStufe1aScreenState extends State<WizardStufe1aScreen> {
   final _formKey = GlobalKey<FormState>();
   late final TextEditingController _vorname;
+  late final TextEditingController _vorname2;
   late final TextEditingController _nachname;
   late final TextEditingController _geburtsname;
   bool _saving = false;
@@ -51,6 +52,7 @@ class _WizardStufe1aScreenState extends State<WizardStufe1aScreen> {
   void initState() {
     super.initState();
     _vorname = TextEditingController(text: widget.initial?['vorname'] ?? '');
+    _vorname2 = TextEditingController(text: widget.initial?['vorname2'] ?? '');
     _nachname = TextEditingController(text: widget.initial?['nachname'] ?? '');
     _geburtsname =
         TextEditingController(text: widget.initial?['geburtsname'] ?? '');
@@ -59,6 +61,7 @@ class _WizardStufe1aScreenState extends State<WizardStufe1aScreen> {
   @override
   void dispose() {
     _vorname.dispose();
+    _vorname2.dispose();
     _nachname.dispose();
     _geburtsname.dispose();
     super.dispose();
@@ -70,6 +73,9 @@ class _WizardStufe1aScreenState extends State<WizardStufe1aScreen> {
     setState(() => _saving = true);
     final ok = await WizardService().saveStep(WizardStep.stufe1a, {
       'vorname': _vorname.text.trim(),
+      // Wie im Online-Formular und in der Verifizierung: ein eigenes Feld.
+      // Ältere Server übergehen den Schlüssel — dann bleibt er leer.
+      'vorname2': _vorname2.text.trim(),
       'nachname': _nachname.text.trim(),
       'geburtsname': _geburtsname.text.trim(),
     });
@@ -104,10 +110,18 @@ class _WizardStufe1aScreenState extends State<WizardStufe1aScreen> {
           children: [
             _field(
               controller: _vorname,
-              label: l10n.wizardStufe1aVornameLabel,
-              helper: l10n.wizardStufe1aVornameHelper,
+              label: l10n.firstNameLabel,
+              helper: l10n.wizardStufe1aVornameErsterHelper,
               required: true,
               autofocus: true,
+              textCapitalization: TextCapitalization.words,
+            ),
+            const SizedBox(height: 16),
+            _field(
+              controller: _vorname2,
+              label: l10n.wizardStufe1aVorname2Label,
+              helper: l10n.wizardStufe1aVorname2Helper,
+              required: false,
               textCapitalization: TextCapitalization.words,
             ),
             const SizedBox(height: 16),

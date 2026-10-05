@@ -852,9 +852,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get accept => 'Aceptar';
 
   @override
-  String get selectFile => 'Seleccionar archivo';
-
-  @override
   String get dataLoadingText => 'Cargando datos...';
 
   @override
@@ -1247,12 +1244,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get membershipStartSaved => 'Inicio guardado';
 
   @override
-  String get fileTooLarge => 'Archivo muy grande (máx. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded => 'Certificado subido';
-
-  @override
   String get verificationProgress => 'Progreso de verificación';
 
   @override
@@ -1329,16 +1320,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get feeExempt => 'Cuota: 0,00 €/mes';
-
-  @override
-  String get uploadLeistungsbescheid => 'Subir certificado';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Suba certificado en 14 días para confirmar exención.';
-
-  @override
-  String get allowedFormatsUpload => 'Formatos: PDF, JPG, PNG (máx. 10 MB)';
 
   @override
   String get feeRegular => 'Cuota: 25,00 €/mes';
@@ -2152,13 +2133,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Vamos a conocerte oficialmente. Por favor escribe tu nombre exactamente como aparece en Personalausweis, Reisepass o Aufenthaltstitel — para que coincida con tus documentos.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (nombres)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Todos tus nombres, exactamente como en el documento. Con espacio o guion (p. ej. Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (apellido)';
 
   @override
@@ -2424,13 +2398,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Apoyas la asociación económicamente pero no participas activamente en las decisiones. Sin derecho a voto. Bueno si quieres ayudar a distancia.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Miembro honorario (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Otorgado por el Vorstand por méritos especiales. No lo eliges tú — se concede como reconocimiento. Selecciona solo si ya has sido honrado.';
-
-  @override
   String get wizardStufe3Title => 'Situación financiera';
 
   @override
@@ -2448,28 +2415,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Cuota: 0 € / mes 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Con Bürgergeld, Sozialamt, ALG I o Krankengeld estás totalmente exento de la cuota según Satzung §6. Solo necesitamos un comprobante (Leistungsbescheid o certificado de la autoridad / seguro de salud).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Subir Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, máximo 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Por favor sube el Leistungsbescheid antes de continuar.';
-
-  @override
-  String get wizardStufe3FileTooLarge =>
-      'Archivo demasiado grande. Máximo 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'No se pudo subir el archivo. Inténtalo de nuevo.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Cuota: 25 € / mes';
@@ -2494,13 +2439,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Tú inicias el pago cada mes desde tu cuenta.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (domiciliación)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Cargamos el importe automáticamente desde tu cuenta. Lo más cómodo, pero necesitamos IBAN y un mandato firmado.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (orden permanente)';
 
@@ -2512,7 +2450,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Día de pago';
 
   @override
-  String get wizardStufe4DayHint => 'Elige un día entre 1 y 31';
+  String get wizardStufe4DayHint => 'Elige un día entre 1 y 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2655,25 +2593,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Recibo Krankengeld (prestación por enfermedad de larga duración)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Añadir otro documento';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Has alcanzado el límite: máximo 20 documentos.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Has alcanzado el límite total de 100 MB. Elimina un archivo existente.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Eliminar';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max documentos';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3442,4 +3361,62 @@ class AppLocalizationsEs extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Portapapeles borrado a las $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Tu primer nombre, exactamente como en tu documento de identidad.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Segundo nombre — opcional';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Otros nombres, si los tienes — separados por espacios.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Pareja de hecho registrada';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Separado/a';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich =>
+      'Convivencia en pareja (sin casarse)';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'desplazados de Ucrania';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Doble nacionalidad (alemana y otra)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Teléfono fijo — opcional';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Solo si tienes uno — ahí no enviamos SMS.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Incluye el prefijo del país — para un número alemán sería $vorschlag en lugar de $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Incluye el prefijo del país, por ejemplo +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'El número tiene $anzahl dígitos — eso no puede ser correcto.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'No hace falta comprobante — si el Vorstand lo necesita, se pondrá en contacto.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Con Bürgergeld, Sozialamt, ALG I o Krankengeld estás totalmente exento de la cuota según Satzung §6. No necesitas subir ningún comprobante aquí — si el Vorstand lo necesita, se pondrá en contacto contigo.';
 }

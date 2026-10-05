@@ -847,9 +847,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get accept => 'Pieņemt';
 
   @override
-  String get selectFile => 'Izvēlēties failu';
-
-  @override
   String get dataLoadingText => 'Datu ielāde...';
 
   @override
@@ -1241,13 +1238,6 @@ class AppLocalizationsLv extends AppLocalizations {
   String get membershipStartSaved => 'Dalības sākums saglabāts';
 
   @override
-  String get fileTooLarge => 'Fails ir pārāk liels (maks. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded =>
-      'Pabalstu apliecība veiksmīgi augšupielādēta';
-
-  @override
   String get verificationProgress => 'Verifikācijas progress';
 
   @override
@@ -1326,17 +1316,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get feeExempt => 'Jūsu ikmēneša maksa ir: 0,00 €/mēnesī';
-
-  @override
-  String get uploadLeistungsbescheid => 'Augšupielādēt pabalstu apliecību';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Augšupielādējiet aktuālu pabalstu apliecību 14 dienu laikā, lai apstiprinātu atbrīvojumu no maksas.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Atļautie formāti: PDF, JPG, PNG (maks. 10 MB)';
 
   @override
   String get feeRegular => 'Jūsu ikmēneša maksa ir: 25,00 €/mēnesī';
@@ -2148,13 +2127,6 @@ class AppLocalizationsLv extends AppLocalizations {
       'Iepazīsimies oficiāli. Lūdzu, ieraksti savu vārdu tieši tā, kā tas redzams Personalausweis, Reisepass vai Aufenthaltstitel — lai atbilstu dokumentiem.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (vārdi)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Visi tavi vārdi tieši kā dokumentā. Ar atstarpi vai defisi (piem., Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (uzvārds)';
 
   @override
@@ -2415,13 +2387,6 @@ class AppLocalizationsLv extends AppLocalizations {
       'Atbalsti biedrību finansiāli, bet aktīvi nepiedalies lēmumos. Bez balsstiesībām. Labi, ja vēlies palīdzēt no attāluma.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Goda biedrs (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Piešķir valde par īpašiem nopelniem. Pats to neizvēlies — to piešķir kā atzinību. Izvēlies tikai, ja jau esi pagodināts.';
-
-  @override
   String get wizardStufe3Title => 'Finansiālā situācija';
 
   @override
@@ -2439,28 +2404,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Biedru maksa: 0 € / mēn. 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Ar Bürgergeld, Sozialamt, ALG I vai Krankengeld saskaņā ar Satzung §6 esi pilnībā atbrīvots no biedru maksas. Mums vajadzīgs tikai pierādījums (Leistungsbescheid vai izziņa no iestādes / veselības apdrošināšanas).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Augšupielādēt Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, līdz 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Lūdzu augšupielādē Leistungsbescheid pirms turpināt.';
-
-  @override
-  String get wizardStufe3FileTooLarge =>
-      'Fails ir pārāk liels. Maksimums 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Faila augšupielāde neizdevās. Mēģini vēlreiz.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Biedru maksa: 25 € / mēn.';
@@ -2485,13 +2428,6 @@ class AppLocalizationsLv extends AppLocalizations {
       'Maksājumu uzsāc pats katru mēnesi no sava konta.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (tiešais debets)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Summu automātiski noņemam no tava konta. Visērtāk, bet vajag IBAN un parakstītu pilnvarojumu.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (pastāvīgais rīkojums)';
 
@@ -2503,7 +2439,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Maksājuma diena';
 
   @override
-  String get wizardStufe4DayHint => 'Izvēlies dienu no 1 līdz 31';
+  String get wizardStufe4DayHint => 'Izvēlies dienu no 1 līdz 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2645,25 +2581,6 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Saņemu Krankengeld (ilgstošas slimības pabalstu)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Pievienot vēl dokumentu';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Sasniegts limits: ne vairāk kā 20 dokumenti.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Sasniegts kopējais limits 100 MB. Dzēs esošo failu.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Dzēst';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max dokumenti';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3426,4 +3343,61 @@ class AppLocalizationsLv extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Starpliktuve notīrīta plkst. $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Tavs pirmais vārds, tieši kā personu apliecinošā dokumentā.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Otrais vārds — pēc izvēles';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Citi vārdi, ja tādi ir — atdalīti ar atstarpi.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Reģistrētas partnerattiecības';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Dzīvo šķirti';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich => 'Kopdzīve bez laulības';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'pārvietotie no Ukrainas';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Dubultpilsonība (Vācijas un vēl viena)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Fiksētais tālrunis — pēc izvēles';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Tikai, ja tev tāds ir — uz to SMS netiek sūtītas.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Lūdzu, ar valsts kodu — Vācijas numuram tātad $vorschlag, nevis $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Lūdzu, ar valsts kodu, piemēram, +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Numurā ir $anzahl cipari — tā nevar būt.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Pierādījums nav vajadzīgs — ja Vorstand tas būs vajadzīgs, tas sazināsies.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Ar Bürgergeld, Sozialamt, ALG I vai Krankengeld saskaņā ar Satzung §6 esi pilnībā atbrīvots no biedru maksas. Pierādījums šeit nav jāaugšupielādē — ja Vorstand tas būs vajadzīgs, ar tevi sazināsies.';
 }

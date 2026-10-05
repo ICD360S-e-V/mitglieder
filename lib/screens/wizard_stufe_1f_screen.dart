@@ -5,8 +5,12 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
-/// Stufe 1f — Contact: Mobile phone (required) + Email (auto-derived).
+/// Stufe 1f — Contact: Mobile phone (required, mit Ländervorwahl — dieselbe
+/// Regel wie Server und Online-Formular, siehe [telefonPruefen]), landline
+/// (optional, wie im Online-Formular und in der Verifizierung) + Email
+/// (auto-derived).
 /// The Vorstand reaches out by phone for urgent matters and uses the
 /// in-app end-to-end encrypted channel for everything else. The email
 /// is **not** typed by the visitor — every member gets a managed
@@ -34,9 +38,8 @@ class WizardStufe1fScreen extends StatefulWidget {
 class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
   final _formKey = GlobalKey<FormState>();
   late final TextEditingController _telefon;
+  late final TextEditingController _festnetz;
   bool _saving = false;
-
-  static final _phoneRegex = RegExp(r"^[+0-9\s\-/()]{5,20}$");
 
   @override
   void initState() {
@@ -45,11 +48,15 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
     _telefon = TextEditingController(
       text: (initialPhone == null || initialPhone.isEmpty) ? '+49 ' : initialPhone,
     );
+    _festnetz = TextEditingController(
+      text: (widget.initial?['telefon_fix'] as String?) ?? '',
+    );
   }
 
   @override
   void dispose() {
     _telefon.dispose();
+    _festnetz.dispose();
     super.dispose();
   }
 
@@ -66,8 +73,15 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
     if (_saving) return;
     if (!_formKey.currentState!.validate()) return;
     setState(() => _saving = true);
+    // Kanonisch speichern (+49…), wie der Server und das Online-Formular.
+    final mobil = telefonPruefen(_telefon.text).nummer ?? _telefon.text.trim();
+    final fest = _festnetz.text.trim().isEmpty
+        ? ''
+        : (telefonPruefen(_festnetz.text).nummer ?? _festnetz.text.trim());
     final ok = await WizardService().saveStep(WizardStep.stufe1f, {
-      'telefon_mobil': _telefon.text.trim(),
+      'telefon_mobil': mobil,
+      // Ältere Server übergehen den Schlüssel — dann bleibt er leer.
+      'telefon_fix': fest,
       // Email is server-derivable from mitgliedernummer but we send it
       // so the saved draft is self-describing — the Vorstand panel can
       // show what the assigned address will be without recomputing.
@@ -120,11 +134,29 @@ class _WizardStufe1fScreenState extends State<WizardStufe1fScreen> {
               validator: (value) {
                 final v = (value ?? '').trim();
                 if (v.isEmpty || v == '+49') return l10n.wizardErrRequired;
-                if (!_phoneRegex.hasMatch(v)) {
-                  return l10n.wizardErrInvalidPhone;
-                }
-                return null;
+                return telefonMeldung(telefonPruefen(v), l10n,
+                    leer: l10n.wizardErrRequired);
               },
+            ),
+            const SizedBox(height: 12),
+            TextFormField(
+              controller: _festnetz,
+              style: const TextStyle(color: Colors.white, fontSize: 15),
+              keyboardType: TextInputType.phone,
+              maxLength: 20,
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(
+                  RegExp(r"[+0-9\s\-/()]"),
+                ),
+              ],
+              decoration: _input(
+                label: l10n.wizardStufe1fFestnetzLabel,
+                helper: l10n.wizardStufe1fFestnetzHelper,
+                prefixIcon: Icons.phone,
+              ),
+              // Freiwillig — aber wenn ausgefüllt, dieselbe Regel.
+              validator: (value) =>
+                  telefonMeldung(telefonPruefen(value), l10n),
             ),
             const SizedBox(height: 20),
             _emailInfoCard(l10n),

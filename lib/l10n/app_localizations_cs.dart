@@ -850,9 +850,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get accept => 'Přijmout';
 
   @override
-  String get selectFile => 'Vybrat soubor';
-
-  @override
   String get dataLoadingText => 'Načítání dat...';
 
   @override
@@ -1244,13 +1241,6 @@ class AppLocalizationsCs extends AppLocalizations {
   String get membershipStartSaved => 'Začátek členství uložen';
 
   @override
-  String get fileTooLarge => 'Soubor je příliš velký (max. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded =>
-      'Rozhodnutí o dávkách úspěšně nahráno';
-
-  @override
   String get verificationProgress => 'Průběh ověření';
 
   @override
@@ -1328,17 +1318,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get feeExempt => 'Váš měsíční příspěvek je: 0,00 €/měsíc';
-
-  @override
-  String get uploadLeistungsbescheid => 'Nahrát rozhodnutí o dávkách';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Nahrajte aktuální rozhodnutí o dávkách do 14 dnů pro potvrzení osvobození od příspěvku.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Povolené formáty: PDF, JPG, PNG (max. 10 MB)';
 
   @override
   String get feeRegular => 'Váš měsíční příspěvek je: 25,00 €/měsíc';
@@ -2149,13 +2128,6 @@ class AppLocalizationsCs extends AppLocalizations {
       'Pojďme se oficiálně seznámit. Napiš své jméno přesně tak, jak je na Personalausweis, Reisepass nebo Aufenthaltstitel — ať to sedí s doklady.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (křestní jména)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Všechna tvá křestní jména přesně jako na dokladu. S mezerou nebo pomlčkou (např. Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (příjmení)';
 
   @override
@@ -2415,13 +2387,6 @@ class AppLocalizationsCs extends AppLocalizations {
       'Podporuješ spolek finančně, ale neúčastníš se aktivně rozhodování. Bez hlasovacího práva. Hodí se, pokud chceš pomáhat na dálku.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Čestný člen (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Udělován představenstvem za zvláštní zásluhy. Nevybíráš si ho sám — uděluje se jako uznání. Zvol jen pokud ti už byla tato pocta udělena.';
-
-  @override
   String get wizardStufe3Title => 'Finanční situace';
 
   @override
@@ -2439,28 +2404,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Příspěvek: 0 € / měsíc 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'S Bürgergeldem, Sozialamtem, ALG I nebo Krankengeldem jsi podle Satzung §6 plně osvobozen od příspěvku. Potřebujeme jen doklad (Leistungsbescheid nebo potvrzení od úřadu / zdravotní pojišťovny).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Nahrát Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, max 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Před pokračováním prosím nahraj Leistungsbescheid.';
-
-  @override
-  String get wizardStufe3FileTooLarge =>
-      'Soubor je příliš velký. Maximálně 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Soubor se nepodařilo nahrát. Zkus to znovu.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Příspěvek: 25 € / měsíc';
@@ -2485,13 +2428,6 @@ class AppLocalizationsCs extends AppLocalizations {
       'Platbu zadáváš sám každý měsíc ze svého účtu.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (přímé inkaso)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Strhneme částku automaticky z tvého účtu. Nejpohodlnější, ale potřebujeme IBAN a podepsané SEPA pověření.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (trvalý příkaz)';
 
@@ -2503,7 +2439,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Den platby';
 
   @override
-  String get wizardStufe4DayHint => 'Vyber den mezi 1 a 31';
+  String get wizardStufe4DayHint => 'Vyber den mezi 1 a 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2646,25 +2582,6 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Pobírám Krankengeld (nemocenské po dlouhodobé pracovní neschopnosti)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Přidat další dokument';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Dosažen limit: nejvýše 20 dokumentů.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Dosažen celkový limit 100 MB. Smaž některý existující soubor.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Smazat';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max dokumentů';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3424,4 +3341,61 @@ class AppLocalizationsCs extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Schránka vymazána v $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Tvé první křestní jméno, přesně jako v průkazu.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Druhé křestní jméno — volitelné';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Další křestní jména, pokud je máš — oddělená mezerou.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Registrované partnerství';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Žijící odloučeně';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich => 'Nesezdané soužití';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'vysídlení z Ukrajiny';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Dvojí občanství (německé a další)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Pevná linka — volitelné';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Jen pokud ji máš — SMS na ni neposíláme.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Prosím s mezinárodní předvolbou — u německého čísla tedy $vorschlag místo $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Prosím s mezinárodní předvolbou, například +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Číslo má $anzahl číslic — to nemůže být správně.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Doklad není potřeba — pokud ho Vorstand bude potřebovat, ozve se.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'S Bürgergeldem, Sozialamtem, ALG I nebo Krankengeldem jsi podle Satzung §6 plně osvobozen od příspěvku. Doklad sem nahrávat nemusíš — pokud ho Vorstand bude potřebovat, ozve se ti.';
 }

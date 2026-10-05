@@ -4,15 +4,16 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
 /// Stufe 4 — Payment method + payment day.
 ///
-/// Three radio options for `users.zahlungsmethode` (ueberweisung /
-/// sepa_lastschrift / dauerauftrag) and a dropdown of 1-31 for
-/// `users.zahlungstag`. The screen is skipped by the wizard
-/// orchestrator when Stufe 3's finanzielle_situation is bürgergeld
-/// or sozialamt — those visitors are fully fee-exempt under the
-/// Satzung so there's nothing to pay.
+/// Two radio options for `users.zahlungsmethode` (Überweisung /
+/// Dauerauftrag — SEPA-Lastschrift braucht ein unterschriebenes Mandat und
+/// wird hier nicht angeboten) and a dropdown of 1–28 for
+/// `users.zahlungstag` — wie im Online-Formular. The screen is skipped by
+/// the wizard orchestrator for the four fee-exempt situations (Bürgergeld,
+/// Sozialamt, ALG I, Krankengeld) — there's nothing to pay.
 class WizardStufe4Screen extends StatefulWidget {
   final Map<String, dynamic>? initial;
   final VoidCallback onNext;
@@ -34,12 +35,6 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
   int? _day;
   bool _saving = false;
 
-  static const _methods = <String>[
-    'ueberweisung',
-    'sepa_lastschrift',
-    'dauerauftrag',
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -56,6 +51,9 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
     } else if (rawDay is String) {
       _day = int.tryParse(rawDay);
     }
+    // Ein Entwurf von vorher kann den 29.–31. tragen — den gibt es nicht
+    // in jedem Monat, also neu wählen lassen.
+    if (_day != null && (_day! < 1 || _day! > zahlungstagMax)) _day = null;
   }
 
   Future<void> _submit() async {
@@ -91,11 +89,9 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
     widget.onNext();
   }
 
-  /// Whether a payment method is currently selectable. SEPA-Lastschrift
-  /// is opt-in for the future once the Gläubiger-ID and mandate
-  /// signature flow land — until then the card renders as a
-  /// "Coming soon" tile that can't be picked.
-  bool _isMethodAvailable(String key) => key != 'sepa_lastschrift';
+  /// Whether a payment method is selectable here — see
+  /// [zahlungsmethodeWaehlbar].
+  bool _isMethodAvailable(String key) => zahlungsmethodeWaehlbar.contains(key);
 
   ({String title, String body, IconData icon}) _methodInfo(
     String key,
@@ -106,11 +102,6 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
           title: l10n.wizardStufe4MethodUeberweisungTitle,
           body: l10n.wizardStufe4MethodUeberweisungBody,
           icon: Icons.swap_horiz,
-        ),
-        'sepa_lastschrift' => (
-          title: l10n.wizardStufe4MethodSepaTitle,
-          body: l10n.wizardStufe4MethodSepaBody,
-          icon: Icons.account_balance,
         ),
         'dauerauftrag' => (
           title: l10n.wizardStufe4MethodDauerauftragTitle,
@@ -132,7 +123,7 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          for (final key in _methods) ...[
+          for (final key in zahlungsmethodeWaehlbar) ...[
             _methodCard(key, l10n),
             const SizedBox(height: 8),
           ],
@@ -345,7 +336,7 @@ class _WizardStufe4ScreenState extends State<WizardStufe4Screen> {
             style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
           ),
           style: const TextStyle(color: Colors.white, fontSize: 15),
-          items: List.generate(31, (i) => i + 1)
+          items: List.generate(zahlungstagMax, (i) => i + 1)
               .map(
                 (d) => DropdownMenuItem<int>(
                   value: d,

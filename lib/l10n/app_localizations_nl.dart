@@ -850,9 +850,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get accept => 'Accepteren';
 
   @override
-  String get selectFile => 'Bestand selecteren';
-
-  @override
   String get dataLoadingText => 'Gegevens laden...';
 
   @override
@@ -1246,13 +1243,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get membershipStartSaved => 'Aanvangsdatum opgeslagen';
 
   @override
-  String get fileTooLarge => 'Bestand te groot (max. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded =>
-      'Uitkeringsbeschikking succesvol geüpload';
-
-  @override
   String get verificationProgress => 'Voortgang verificatie';
 
   @override
@@ -1331,17 +1321,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get feeExempt => 'Uw maandelijkse bijdrage is: € 0,00/maand';
-
-  @override
-  String get uploadLeistungsbescheid => 'Uitkeringsbeschikking uploaden';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Upload een actuele uitkeringsbeschikking binnen 14 dagen om de vrijstelling te bevestigen.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Toegestane formaten: PDF, JPG, PNG (max. 10 MB)';
 
   @override
   String get feeRegular => 'Uw maandelijkse bijdrage is: € 25,00/maand';
@@ -2159,13 +2138,6 @@ class AppLocalizationsNl extends AppLocalizations {
       'Laten we officieel kennismaken. Schrijf je naam precies zoals hij op je Personalausweis, Reisepass of Aufenthaltstitel staat — zo blijft het consistent met je documenten.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (voornamen)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Al je voornamen, precies zoals op het document. Met spatie of koppelteken (bv. Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (achternaam)';
 
   @override
@@ -2427,13 +2399,6 @@ class AppLocalizationsNl extends AppLocalizations {
       'Je steunt de vereniging financieel maar neemt geen actief deel aan beslissingen. Geen stemrecht. Goed als je van afstand wilt helpen.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Erelid (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Wordt door het bestuur toegekend voor bijzondere verdiensten. Je kiest het niet zelf — het wordt verleend als erkenning. Kies alleen als je al geëerd bent.';
-
-  @override
   String get wizardStufe3Title => 'Financiële situatie';
 
   @override
@@ -2452,27 +2417,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Contributie: € 0 / maand 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Met Bürgergeld, Sozialamt, ALG I of Krankengeld ben je volgens Satzung §6 volledig vrijgesteld van contributie. We hebben alleen een bewijs nodig (Leistungsbescheid of verklaring van de instantie / zorgverzekeraar).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Leistungsbescheid uploaden';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, max 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Upload de Leistungsbescheid voordat je verder gaat.';
-
-  @override
-  String get wizardStufe3FileTooLarge => 'Bestand te groot. Maximaal 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Bestand uploaden mislukt. Probeer opnieuw.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Contributie: € 25 / maand';
@@ -2497,14 +2441,6 @@ class AppLocalizationsNl extends AppLocalizations {
       'Je begint elke maand zelf de betaling vanaf je rekening.';
 
   @override
-  String get wizardStufe4MethodSepaTitle =>
-      'SEPA-Lastschrift (automatische incasso)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'We schrijven het bedrag automatisch van je rekening af. Het handigst, maar we hebben je IBAN en een ondertekend mandaat nodig.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (vaste opdracht)';
 
@@ -2516,7 +2452,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Betalingsdag';
 
   @override
-  String get wizardStufe4DayHint => 'Kies een dag tussen 1 en 31';
+  String get wizardStufe4DayHint => 'Kies een dag tussen 1 en 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2660,25 +2596,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Ik ontvang Krankengeld (langdurige ziekteuitkering)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Nog een document toevoegen';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Limiet bereikt: maximaal 20 documenten.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Totale limiet van 100 MB bereikt. Verwijder een bestaand bestand.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Verwijderen';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max documenten';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3447,4 +3364,63 @@ class AppLocalizationsNl extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Klembord gewist om $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Je eerste voornaam, precies zoals op je identiteitsbewijs.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Tweede voornaam — optioneel';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Overige voornamen, als je die hebt — gescheiden door spaties.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Geregistreerd partnerschap';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend =>
+      'Gescheiden van tafel en bed';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich =>
+      'Samenwonend (niet getrouwd)';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'ontheemden uit Oekraïne';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Dubbele nationaliteit (Duits en een andere)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Vaste telefoon — optioneel';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Alleen als je er een hebt — daar sturen we geen sms naartoe.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Graag met landcode — voor een Duits nummer dus $vorschlag in plaats van $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Graag met landcode, bijvoorbeeld +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Het nummer heeft $anzahl cijfers — dat kan niet kloppen.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Geen bewijs nodig — als de Vorstand er een nodig heeft, neemt die contact op.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Met Bürgergeld, Sozialamt, ALG I of Krankengeld ben je volgens Satzung §6 volledig vrijgesteld van contributie. Je hoeft hier geen bewijs te uploaden — als de Vorstand er een nodig heeft, neemt die contact met je op.';
 }

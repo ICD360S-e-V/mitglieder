@@ -849,9 +849,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get accept => 'Hyväksy';
 
   @override
-  String get selectFile => 'Valitse tiedosto';
-
-  @override
   String get dataLoadingText => 'Ladataan tietoja...';
 
   @override
@@ -1245,12 +1242,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get membershipStartSaved => 'Jäsenyyden alku tallennettu';
 
   @override
-  String get fileTooLarge => 'Tiedosto on liian suuri (enint. 10 Mt).';
-
-  @override
-  String get leistungsbescheidUploaded => 'Etuuspäätös ladattu onnistuneesti';
-
-  @override
   String get verificationProgress => 'Vahvistuksen edistyminen';
 
   @override
@@ -1329,17 +1320,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get feeExempt => 'Kuukausimaksusi on: 0,00 €/kk';
-
-  @override
-  String get uploadLeistungsbescheid => 'Lataa etuuspäätös';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Lataa ajantasainen etuuspäätös 14 päivän kuluessa maksuvapautuksen vahvistamiseksi.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Sallitut muodot: PDF, JPG, PNG (enint. 10 Mt)';
 
   @override
   String get feeRegular => 'Kuukausimaksusi on: 25,00 €/kk';
@@ -2152,13 +2132,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tutustutaan virallisesti. Kirjoita nimesi täsmälleen samoin kuin Personalausweis-, Reisepass- tai Aufenthaltstitel-asiakirjassa — niin se vastaa dokumenttejasi.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (etunimet)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Kaikki etunimesi tarkalleen kuten asiakirjassa. Välilyönnillä tai väliviivalla (esim. Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (sukunimi)';
 
   @override
@@ -2420,13 +2393,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tuet yhdistystä taloudellisesti mutta et osallistu aktiivisesti päätöksiin. Ei äänioikeutta. Sopii jos haluat auttaa etäältä.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Kunniajäsen (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Hallitus myöntää erityisistä ansioista. Et valitse sitä itse — se myönnetään tunnustuksena. Valitse vain jos sinut on jo kunnioitettu.';
-
-  @override
   String get wizardStufe3Title => 'Taloudellinen tilanne';
 
   @override
@@ -2444,28 +2410,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Maksu: 0 € / kk 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Bürgergeldillä, Sozialamtilla, ALG I:llä tai Krankengeldillä olet Satzungin §6 mukaan kokonaan vapaa jäsenmaksusta. Tarvitsemme vain todisteen (Leistungsbescheid tai todistus viranomaiselta / sairauskassalta).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Lataa Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, enintään 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Lataa Leistungsbescheid ennen jatkamista.';
-
-  @override
-  String get wizardStufe3FileTooLarge =>
-      'Tiedosto on liian suuri. Enintään 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Tiedoston lataus epäonnistui. Yritä uudelleen.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Maksu: 25 € / kk';
@@ -2489,13 +2433,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Aloitat maksun itse kuukausittain tililtäsi.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (suoraveloitus)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Veloitamme summan automaattisesti tililtäsi. Helpoin, mutta tarvitsemme IBANin ja allekirjoitetun valtakirjan.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (toistuva toimeksianto)';
 
@@ -2507,7 +2444,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Maksupäivä';
 
   @override
-  String get wizardStufe4DayHint => 'Valitse päivä väliltä 1–31';
+  String get wizardStufe4DayHint => 'Valitse päivä väliltä 1–28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2649,25 +2586,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Saan Krankengeld (sairauspäiväraha pitkäaikaisesta sairaudesta)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Lisää uusi asiakirja';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Raja saavutettu: enintään 20 asiakirjaa.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Kokonaisraja 100 MB saavutettu. Poista olemassa oleva tiedosto.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Poista';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max asiakirjaa';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3429,4 +3347,62 @@ class AppLocalizationsFi extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Leikepöytä tyhjennettiin klo $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Ensimmäinen etunimesi, täsmälleen kuten henkilöllisyystodistuksessa.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Toinen etunimi — valinnainen';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Muut etunimet, jos niitä on — välilyönnillä erotettuina.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Rekisteröity parisuhde';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Asumuserossa';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich => 'Avoliitto';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint =>
+      'Ukrainasta siirtymään joutuneet';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Kaksoiskansalaisuus (Saksan ja jokin muu)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Lankapuhelin — valinnainen';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Vain jos sinulla on — sinne ei lähetetä tekstiviestejä.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Lisää maatunnus — saksalaisessa numerossa siis $vorschlag eikä $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Lisää maatunnus, esimerkiksi +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Numerossa on $anzahl numeroa — se ei voi pitää paikkaansa.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Todistetta ei tarvita — jos Vorstand tarvitsee sellaisen, se ottaa yhteyttä.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Bürgergeldillä, Sozialamtilla, ALG I:llä tai Krankengeldillä olet Satzungin §6 mukaan kokonaan vapaa jäsenmaksusta. Sinun ei tarvitse ladata todistetta tähän — jos Vorstand tarvitsee sellaisen, se ottaa sinuun yhteyttä.';
 }

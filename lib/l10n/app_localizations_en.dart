@@ -849,9 +849,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accept => 'Accept';
 
   @override
-  String get selectFile => 'Select file';
-
-  @override
   String get dataLoadingText => 'Loading data...';
 
   @override
@@ -1243,13 +1240,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipStartSaved => 'Membership start saved';
 
   @override
-  String get fileTooLarge => 'File too large (max. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded =>
-      'Benefits certificate uploaded successfully';
-
-  @override
   String get verificationProgress => 'Verification Progress';
 
   @override
@@ -1328,17 +1318,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get feeExempt => 'Your monthly membership fee is: €0.00/month';
-
-  @override
-  String get uploadLeistungsbescheid => 'Upload benefits certificate';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Please upload a current benefits certificate within 14 days to confirm the fee exemption.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Allowed formats: PDF, JPG, PNG (max. 10 MB)';
 
   @override
   String get feeRegular => 'Your monthly membership fee is: €25.00/month';
@@ -2154,13 +2133,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Let\'s get to know you officially. Please write your name exactly as it appears on your Personalausweis, Reisepass or Aufenthaltstitel — so it stays consistent with your documents.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (first names)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'All your first names, exactly as on your ID. Use space or hyphen (e.g. Hans-Peter, Maria Anna, José María).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (family name)';
 
   @override
@@ -2424,13 +2396,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'You support the association financially but don\'t take part in decisions. No voting right. Good if you want to help from a distance.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Honorary member (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Awarded by the Vorstand for special merit. You don\'t pick this yourself — it\'s granted as recognition. Only choose if you\'ve already been honoured.';
-
-  @override
   String get wizardStufe3Title => 'Financial situation';
 
   @override
@@ -2448,27 +2413,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Fee: € 0 / month 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'With Bürgergeld, Sozialamt, ALG I or Krankengeld you\'re fully exempt under Satzung §6. We just need a proof document (Leistungsbescheid or Bescheinigung from the authority / health insurance).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Upload Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, max 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Please upload the Leistungsbescheid before continuing.';
-
-  @override
-  String get wizardStufe3FileTooLarge => 'File too large. Maximum 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Couldn\'t upload the file. Please try again.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Fee: € 25 / month';
@@ -2493,13 +2437,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'You start the payment yourself each month from your account.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (direct debit)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'We pull the amount automatically from your account. Most convenient, but we\'ll need your IBAN and a signed mandate.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (standing order)';
 
@@ -2511,7 +2448,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Payment day';
 
   @override
-  String get wizardStufe4DayHint => 'Pick a day between 1 and 31';
+  String get wizardStufe4DayHint => 'Pick a day between 1 and 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2653,25 +2590,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'I receive Krankengeld (long-term sick pay)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Add another document';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Limit reached: up to 20 documents.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      '100 MB total limit reached. Delete an existing file first.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Delete';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max documents';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3435,4 +3353,62 @@ class AppLocalizationsEn extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Clipboard cleared at $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Your first given name, exactly as on your ID.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Second given name — optional';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Further given names, if any — separated by spaces.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Registered civil partnership';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Separated';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich => 'Cohabiting partnership';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint =>
+      'displaced persons from Ukraine';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Dual citizenship (German and another)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Landline — optional';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Only if you have one — we don\'t send SMS there.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Please include the country code — for a German number that\'s $vorschlag instead of $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Please include the country code, e.g. +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'The number has $anzahl digits — that can\'t be right.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'No proof needed — if the Vorstand needs one, they\'ll get in touch.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'With Bürgergeld, Sozialamt, ALG I or Krankengeld you\'re fully exempt under Satzung §6. You don\'t need to upload any proof here — if the Vorstand needs one, they\'ll get in touch with you.';
 }

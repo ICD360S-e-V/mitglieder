@@ -4,6 +4,7 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
 /// Stufe 2 — Mitgliedsart. Three option cards mirroring the existing
 /// `verifizierung_tab.dart` enum (ordentlich / foerdermitglied /
@@ -35,16 +36,14 @@ class _WizardStufe2ScreenState extends State<WizardStufe2Screen> {
   String? _mitgliedsart;
   bool _saving = false;
 
-  static const _options = <String>[
-    'ordentlich',
-    'foerdermitglied',
-    'ehrenmitglied',
-  ];
-
   @override
   void initState() {
     super.initState();
-    _mitgliedsart = widget.initial?['mitgliedsart'];
+    // Nur, was hier wählbar ist: die Ehrenmitgliedschaft verleiht die
+    // Mitgliederversammlung (Satzung § 6 Abs. 1b), gewählt wird sie nicht.
+    final gespeichert = widget.initial?['mitgliedsart'] as String?;
+    _mitgliedsart =
+        mitgliedsartWaehlbar.contains(gespeichert) ? gespeichert : null;
   }
 
   Future<void> _submit() async {
@@ -94,11 +93,6 @@ class _WizardStufe2ScreenState extends State<WizardStufe2Screen> {
           body: l10n.wizardStufe2FoerderBody,
           icon: Icons.favorite_outline,
         ),
-        'ehrenmitglied' => (
-          title: l10n.wizardStufe2EhrenTitle,
-          body: l10n.wizardStufe2EhrenBody,
-          icon: Icons.military_tech_outlined,
-        ),
         _ => (title: key, body: '', icon: Icons.circle_outlined),
       };
 
@@ -114,7 +108,7 @@ class _WizardStufe2ScreenState extends State<WizardStufe2Screen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          for (final key in _options) ...[
+          for (final key in mitgliedsartWaehlbar) ...[
             _optionCard(key, l10n),
             const SizedBox(height: 10),
           ],

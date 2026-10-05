@@ -853,9 +853,6 @@ class AppLocalizationsSl extends AppLocalizations {
   String get accept => 'Sprejmi';
 
   @override
-  String get selectFile => 'Izberi datoteko';
-
-  @override
   String get dataLoadingText => 'Nalaganje podatkov...';
 
   @override
@@ -1247,13 +1244,6 @@ class AppLocalizationsSl extends AppLocalizations {
   String get membershipStartSaved => 'Začetek članstva shranjen';
 
   @override
-  String get fileTooLarge => 'Datoteka je prevelika (maks. 10 MB).';
-
-  @override
-  String get leistungsbescheidUploaded =>
-      'Odločba o prejemkih uspešno naložena';
-
-  @override
   String get verificationProgress => 'Napredek preverjanja';
 
   @override
@@ -1332,17 +1322,6 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get feeExempt => 'Vaša mesečna članarina je: 0,00 €/mesec';
-
-  @override
-  String get uploadLeistungsbescheid => 'Naložite odločbo o prejemkih';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Naložite aktualno odločbo o prejemkih v 14 dneh za potrditev oprostitve članarine.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Dovoljeni formati: PDF, JPG, PNG (maks. 10 MB)';
 
   @override
   String get feeRegular => 'Vaša mesečna članarina je: 25,00 €/mesec';
@@ -2154,13 +2133,6 @@ class AppLocalizationsSl extends AppLocalizations {
       'Spoznajmo se uradno. Napiši ime točno tako, kot je na Personalausweis, Reisepass ali Aufenthaltstitel — da bo skladno z dokumenti.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (imena)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Vsa tvoja imena točno kot na dokumentu. S presledkom ali vezajem (npr. Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (priimek)';
 
   @override
@@ -2422,13 +2394,6 @@ class AppLocalizationsSl extends AppLocalizations {
       'Društvo podpiraš finančno, a ne sodeluješ aktivno pri odločitvah. Brez glasovalne pravice. Dobro, če želiš pomagati od daleč.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Častni član (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Podeli uprava za posebne zasluge. Ne izbereš ga sam — podeljen je kot priznanje. Izberi le, če si že bil počaščen.';
-
-  @override
   String get wizardStufe3Title => 'Finančni položaj';
 
   @override
@@ -2446,27 +2411,6 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Članarina: 0 € / mesec 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'Z Bürgergeldom, Sozialamtom, ALG I ali Krankengeldom si po Satzungu §6 popolnoma oproščen članarine. Potrebujemo le dokazilo (Leistungsbescheid ali potrdilo organa / zdravstvene blagajne).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Naloži Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, največ 10 MB.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Prosim naloži Leistungsbescheid, preden nadaljuješ.';
-
-  @override
-  String get wizardStufe3FileTooLarge => 'Datoteka je prevelika. Največ 10 MB.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Datoteke ni bilo mogoče naložiti. Poskusi znova.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Članarina: 25 € / mesec';
@@ -2491,14 +2435,6 @@ class AppLocalizationsSl extends AppLocalizations {
       'Plačilo začneš sam vsak mesec s svojega računa.';
 
   @override
-  String get wizardStufe4MethodSepaTitle =>
-      'SEPA-Lastschrift (neposredna bremenitev)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Znesek samodejno potegnemo s tvojega računa. Najbolj priročno, vendar potrebujemo IBAN in podpisano pooblastilo.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (trajni nalog)';
 
@@ -2510,7 +2446,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get wizardStufe4DayLabel => 'Dan plačila';
 
   @override
-  String get wizardStufe4DayHint => 'Izberi dan med 1 in 31';
+  String get wizardStufe4DayHint => 'Izberi dan med 1 in 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2651,25 +2587,6 @@ class AppLocalizationsSl extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Prejemam Krankengeld (nadomestilo za dolgotrajno bolezen)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Dodaj še en dokument';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Dosežena meja: največ 20 dokumentov.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Dosežena skupna meja 100 MB. Izbriši obstoječo datoteko.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Izbriši';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max dokumentov';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3428,4 +3345,61 @@ class AppLocalizationsSl extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Odložišče počiščeno ob $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Tvoje prvo ime, natanko kot na osebni izkaznici.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Drugo ime — neobvezno';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Druga imena, če jih imaš — ločena s presledkom.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Registrirana partnerska zveza';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Živi ločeno';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich => 'Zunajzakonska skupnost';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'razseljeni iz Ukrajine';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Dvojno državljanstvo (nemško in še eno)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel => 'Stacionarni telefon — neobvezno';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Samo če ga imaš — tja ne pošiljamo SMS-ov.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Prosim s kodo države — za nemško številko torej $vorschlag namesto $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Prosim s kodo države, na primer +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'Številka ima $anzahl števk — to ne more biti prav.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Dokazilo ni potrebno — če ga bo Vorstand potreboval, se bo oglasil.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'Z Bürgergeldom, Sozialamtom, ALG I ali Krankengeldom si po Satzungu §6 popolnoma oproščen članarine. Dokazila tukaj ni treba naložiti — če ga bo Vorstand potreboval, se ti bo oglasil.';
 }

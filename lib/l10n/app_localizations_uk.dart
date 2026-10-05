@@ -851,9 +851,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get accept => 'Прийняти';
 
   @override
-  String get selectFile => 'Вибрати файл';
-
-  @override
   String get dataLoadingText => 'Завантаження даних...';
 
   @override
@@ -1247,13 +1244,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get membershipStartSaved => 'Початок членства збережено';
 
   @override
-  String get fileTooLarge => 'Файл занадто великий (макс. 10 МБ).';
-
-  @override
-  String get leistungsbescheidUploaded =>
-      'Довідку про виплати успішно завантажено';
-
-  @override
   String get verificationProgress => 'Прогрес верифікації';
 
   @override
@@ -1332,17 +1322,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get feeExempt => 'Ваш щомісячний внесок: 0,00 €/місяць';
-
-  @override
-  String get uploadLeistungsbescheid => 'Завантажити довідку про виплати';
-
-  @override
-  String get uploadLeistungsbescheidHint =>
-      'Завантажте актуальну довідку про виплати протягом 14 днів для підтвердження звільнення від внеску.';
-
-  @override
-  String get allowedFormatsUpload =>
-      'Дозволені формати: PDF, JPG, PNG (макс. 10 МБ)';
 
   @override
   String get feeRegular => 'Ваш щомісячний внесок: 25,00 €/місяць';
@@ -2154,13 +2133,6 @@ class AppLocalizationsUk extends AppLocalizations {
       'Знайомимося офіційно. Напиши своє імʼя точно так, як у Personalausweis, Reisepass або Aufenthaltstitel — щоб збігалося з документами.';
 
   @override
-  String get wizardStufe1aVornameLabel => 'Vornamen (імена)';
-
-  @override
-  String get wizardStufe1aVornameHelper =>
-      'Усі імена точно як у документі. Через пробіл або дефіс (наприклад, Hans-Peter, Maria Anna).';
-
-  @override
   String get wizardStufe1aNachnameLabel => 'Familienname (прізвище)';
 
   @override
@@ -2424,13 +2396,6 @@ class AppLocalizationsUk extends AppLocalizations {
       'Підтримуєш асоціацію фінансово, але не береш активної участі в рішеннях. Без права голосу. Добре, якщо хочеш допомагати на відстані.';
 
   @override
-  String get wizardStufe2EhrenTitle => 'Почесний член (Ehrenmitglied)';
-
-  @override
-  String get wizardStufe2EhrenBody =>
-      'Присвоюється Vorstand за особливі заслуги. Не вибираєш сам — отримуєш як визнання. Обери лише якщо вже був удостоєний.';
-
-  @override
   String get wizardStufe3Title => 'Фінансовий стан';
 
   @override
@@ -2448,28 +2413,6 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get wizardStufe3FeeExemptTitle => 'Внесок: 0 € / місяць 🎉';
-
-  @override
-  String get wizardStufe3FeeExemptBody =>
-      'З Bürgergeld, Sozialamt, ALG I чи Krankengeld ти повністю звільнений від внеску згідно з Satzung §6. Нам потрібне лише підтвердження (Leistungsbescheid чи довідка від відомства / лікарняної каси).';
-
-  @override
-  String get wizardStufe3UploadTitle => 'Завантажити Leistungsbescheid';
-
-  @override
-  String get wizardStufe3UploadHint => 'PDF / JPG / PNG, максимум 10 МБ.';
-
-  @override
-  String get wizardStufe3UploadRequired =>
-      'Завантаж Leistungsbescheid перш ніж продовжити.';
-
-  @override
-  String get wizardStufe3FileTooLarge =>
-      'Файл занадто великий. Максимум 10 МБ.';
-
-  @override
-  String get wizardStufe3UploadFailed =>
-      'Не вдалося завантажити файл. Спробуй ще раз.';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Внесок: 25 € / місяць';
@@ -2494,13 +2437,6 @@ class AppLocalizationsUk extends AppLocalizations {
       'Ти сам ініціюєш платіж щомісяця зі свого рахунку.';
 
   @override
-  String get wizardStufe4MethodSepaTitle => 'SEPA-Lastschrift (прямий дебет)';
-
-  @override
-  String get wizardStufe4MethodSepaBody =>
-      'Ми автоматично списуємо суму з твого рахунку. Найзручніше, але нам потрібні IBAN і підписаний мандат.';
-
-  @override
   String get wizardStufe4MethodDauerauftragTitle =>
       'Dauerauftrag (постійне доручення)';
 
@@ -2512,7 +2448,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get wizardStufe4DayLabel => 'День оплати';
 
   @override
-  String get wizardStufe4DayHint => 'Вибери день від 1 до 31';
+  String get wizardStufe4DayHint => 'Вибери день від 1 до 28';
 
   @override
   String wizardStufe4DayItem(int day) {
@@ -2654,25 +2590,6 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get wizardStufe3OptionKrankengeld =>
       'Отримую Krankengeld (допомога з хвороби)';
-
-  @override
-  String get wizardStufe3UploadAddMore => 'Додати ще документ';
-
-  @override
-  String get wizardStufe3UploadLimitCount =>
-      'Досягнуто ліміту: до 20 документів.';
-
-  @override
-  String get wizardStufe3UploadLimitTotal =>
-      'Досягнуто ліміту 100 МБ. Видали один із наявних файлів.';
-
-  @override
-  String get wizardStufe3UploadDeleteTooltip => 'Видалити';
-
-  @override
-  String wizardStufe3UploadCounter(int count, int max) {
-    return '$count / $max документів';
-  }
 
   @override
   String get wizardDocumentExternalOpenFailed =>
@@ -3430,4 +3347,63 @@ class AppLocalizationsUk extends AppLocalizations {
   String zwischenablageGeloeschtUm(String zeit) {
     return 'Буфер обміну очищено о $zeit';
   }
+
+  @override
+  String get wizardStufe1aVornameErsterHelper =>
+      'Твоє перше імʼя — точно як у посвідченні особи.';
+
+  @override
+  String get wizardStufe1aVorname2Label => 'Друге імʼя — необовʼязково';
+
+  @override
+  String get wizardStufe1aVorname2Helper =>
+      'Інші імена, якщо є — через пробіл.';
+
+  @override
+  String get wizardStufe1cFamilienstandLebenspartnerschaft =>
+      'Зареєстроване партнерство';
+
+  @override
+  String get wizardStufe1cFamilienstandGetrenntLebend => 'Живу окремо';
+
+  @override
+  String get wizardStufe1cFamilienstandEheaehnlich =>
+      'Цивільний шлюб (співжиття)';
+
+  @override
+  String get wizardStufe1dAufenthaltUkraineHint => 'переміщені особи з України';
+
+  @override
+  String get wizardStufe1dAufenthaltDoppelt =>
+      'Подвійне громадянство (німецьке та ще одне)';
+
+  @override
+  String get wizardStufe1fFestnetzLabel =>
+      'Стаціонарний телефон — необовʼязково';
+
+  @override
+  String get wizardStufe1fFestnetzHelper =>
+      'Лише якщо він у тебе є — SMS туди не надсилаємо.';
+
+  @override
+  String wizardErrPhoneVorwahl(String vorschlag, String eingabe) {
+    return 'Вкажи код країни — для німецького номера це $vorschlag замість $eingabe.';
+  }
+
+  @override
+  String get wizardErrPhoneVorwahlBeispiel =>
+      'Вкажи код країни, наприклад +49 176 1234567.';
+
+  @override
+  String wizardErrPhoneLaenge(int anzahl) {
+    return 'У номері $anzahl цифр — так не буває.';
+  }
+
+  @override
+  String get nachweisNichtNoetig =>
+      'Підтвердження не потрібне — якщо воно знадобиться Vorstand, з вами звʼяжуться.';
+
+  @override
+  String get wizardStufe3FeeExemptBodyOhneNachweis =>
+      'З Bürgergeld, Sozialamt, ALG I чи Krankengeld ти повністю звільнений від внеску згідно з Satzung §6. Завантажувати підтвердження тут не потрібно — якщо воно знадобиться Vorstand, з тобою звʼяжуться.';
 }
