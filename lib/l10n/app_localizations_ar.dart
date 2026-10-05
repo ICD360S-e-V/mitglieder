@@ -1244,7 +1244,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'طريقة الدفع غير مطلوبة لمستفيدي الإعانات.';
+      'غير مطلوب عند طلب تخفيض وللأعضاء دون 18 عامًا.';
 
   @override
   String get locked => 'مقفل';
@@ -1301,19 +1301,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'للتحقق من أهليتك لتخفيض الرسوم، نحتاج المعلومات التالية. تُستخدم حصرياً لتحديد رسوم عضويتك.';
 
   @override
-  String get socialBenefitsQuestion => 'هل تتلقى حالياً إعانات اجتماعية؟';
-
-  @override
-  String get optionBuergergeld => 'نعم، إعانة المواطن (مركز التوظيف)';
-
-  @override
-  String get optionSozialamt => 'نعم، إعانات اجتماعية (الشؤون الاجتماعية)';
-
-  @override
-  String get optionNoBenefits => 'لا، لا أتلقى إعانات اجتماعية';
-
-  @override
-  String get feeExempt => 'رسوم عضويتك الشهرية: 0.00€/شهر';
+  String get socialBenefitsQuestion => 'هل ينطبق عليك أحد هذه الخيارات؟';
 
   @override
   String get feeRegular => 'رسوم عضويتك الشهرية: 25.00€/شهر';
@@ -1354,10 +1342,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'ليس قبل 01.08.2025 (تاريخ التأسيس)';
-
-  @override
-  String get feeExemptRetro =>
-      'معفى من الرسوم: 0.00€ بأثر رجعي.\nيتم تحديد تاريخ العضوية فقط بأثر رجعي.';
 
   @override
   String get retroactiveFees => 'رسوم بأثر رجعي';
@@ -2380,7 +2364,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'الآن عن وضعك المالي. ليس للحكم عليك — بل لإعفائك من الاشتراك إذا كنت تتلقى مساعدات اجتماعية.';
+      'الآن عن وضعك المالي. ليس للحكم عليك: إذا انطبق عليك أحد هذه الخيارات يمكنك طلب تخفيض مع إثبات — يراجع Vorstand الطلب ويقرر.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'أتلقى Bürgergeld';
@@ -2389,10 +2373,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'أتلقى مساعدات من Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'لا أتلقى أيًا منها';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'الاشتراك: 0 € / شهر 🎉';
+  String get wizardStufe3OptionNein => 'لا ينطبق عليّ أي من هذه';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'الاشتراك: 25 € / شهر';
@@ -2489,13 +2470,6 @@ class AppLocalizationsAr extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'من $start إلى $end هذا $months شهرًا. بسعر 25 يورو/شهر، يصبح المبلغ $amount يورو مستحقًا بأثر رجعي، إضافة إلى الاشتراك الشهري الجاري.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'الاشتراك بأثر رجعي: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'مع Bürgergeld أو Sozialamt أنت معفى تمامًا — حتى بأثر رجعي لا تدين بشيء.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2640,12 +2614,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'تمت القراءة في:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei => 'معفى من الرسوم (لا يلزم الدفع)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'بدون مساعدات اجتماعية';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'يبدأ عند التحقق';
@@ -3365,10 +3333,53 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'لا حاجة إلى إثبات — إذا احتاج Vorstand إلى إثبات، فسيتواصل.';
+  String get wizardStufe3OptionRente => 'أتلقى معاشًا (Rente)';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'مع Bürgergeld أو Sozialamt أو ALG I أو Krankengeld أنت معفى كاملاً من الاشتراك بموجب §6 من النظام الأساسي. لا تحتاج إلى رفع أي إثبات هنا — إذا احتاج Vorstand إلى إثبات، فسيتواصل معك.';
+  String get wizardStufe3OptionBehinderung =>
+      'لدي إعاقة (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'تم طلب التخفيض';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'التخفيض فقط مع إثبات: $nachweis. أحضره إلينا أو أرسله — بدون إثبات لا يوجد تخفيض. يراجع Vorstand ويقرر.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'التخفيض فقط مع إثبات: $nachweis. يرجى إحضاره إلينا أو إرساله — بدون إثبات لا يوجد تخفيض. يراجع Vorstand ويقرر.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'قرار (Bescheid) من Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'قرار (Bescheid) من Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur => 'قرار (Bescheid) من Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'قرار (Bescheid) من صندوق التأمين الصحي (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'قرار المعاش (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'بطاقة الإعاقة الشديدة (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'يقرر Vorstand بعد المراجعة ما إذا كان يجب الدفع بأثر رجعي وكم.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'العضوية معفاة من الاشتراك لمن هم دون 18 عامًا.';
+
+  @override
+  String get finanzMinderjaehrig => 'دون 18 عامًا — معفى من الاشتراك';
 }

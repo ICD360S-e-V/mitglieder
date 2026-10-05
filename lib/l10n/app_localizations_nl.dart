@@ -1250,7 +1250,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Betaalmethode niet vereist voor ontvangers van sociale uitkeringen.';
+      'Vervalt bij aangevraagde korting en voor leden jonger dan 18 jaar.';
 
   @override
   String get locked => 'Vergrendeld';
@@ -1307,20 +1307,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Om te controleren of u in aanmerking komt voor korting op de bijdrage, hebben wij de volgende informatie nodig. Deze wordt uitsluitend gebruikt om uw lidmaatschapsbijdrage te bepalen.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Ontvangt u momenteel sociale uitkeringen?';
-
-  @override
-  String get optionBuergergeld => 'Ja, burgergeld (Jobcenter)';
-
-  @override
-  String get optionSozialamt => 'Ja, sociale bijstand (Sociale Dienst)';
-
-  @override
-  String get optionNoBenefits => 'Nee, ik ontvang geen sociale uitkeringen';
-
-  @override
-  String get feeExempt => 'Uw maandelijkse bijdrage is: € 0,00/maand';
+  String get socialBenefitsQuestion => 'Is een hiervan op u van toepassing?';
 
   @override
   String get feeRegular => 'Uw maandelijkse bijdrage is: € 25,00/maand';
@@ -1364,10 +1351,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Niet voor 01.08.2025 (oprichtingsdatum)';
-
-  @override
-  String get feeExemptRetro =>
-      'Vrijstelling: € 0,00 terugwerkend.\nAlleen de lidmaatschapsdatum wordt terugwerkend ingesteld.';
 
   @override
   String get retroactiveFees => 'Terugwerkende bijdragen';
@@ -2403,7 +2386,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Nu over je financiële situatie. Niet om te oordelen — alleen om je vrij te stellen van contributie als je sociale uitkeringen ontvangt.';
+      'Nu over je financiële situatie. Niet om te oordelen: als een hiervan op jou van toepassing is, kun je met bewijs een korting aanvragen — de Vorstand beoordeelt en beslist.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Ik ontvang Bürgergeld';
@@ -2413,10 +2396,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Ik ontvang uitkeringen van Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Ik ontvang geen van deze';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Contributie: € 0 / maand 🎉';
+  String get wizardStufe3OptionNein => 'Niets hiervan is op mij van toepassing';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Contributie: € 25 / maand';
@@ -2517,14 +2497,6 @@ class AppLocalizationsNl extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Van $start tot $end zijn dat $months maanden. Bij € 25/maand komt dat op € $amount met terugwerkende kracht te betalen, bovenop de huidige maandcontributie.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle =>
-      'Contributie met terugwerkende kracht: € 0 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Met Bürgergeld of Sozialamt ben je volledig vrijgesteld — ook met terugwerkende kracht ben je niets verschuldigd.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2671,13 +2643,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Gelezen op:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Contributievrij (geen betaling vereist)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Geen sociale uitkering';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Start bij verificatie';
@@ -3417,10 +3382,54 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Geen bewijs nodig — als de Vorstand er een nodig heeft, neemt die contact op.';
+  String get wizardStufe3OptionRente => 'Ik ontvang een pensioen';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Met Bürgergeld, Sozialamt, ALG I of Krankengeld ben je volgens Satzung §6 volledig vrijgesteld van contributie. Je hoeft hier geen bewijs te uploaden — als de Vorstand er een nodig heeft, neemt die contact met je op.';
+  String get wizardStufe3OptionBehinderung =>
+      'Ik heb een handicap (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Korting aangevraagd';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Korting alleen met bewijs: $nachweis. Breng het of stuur het ons — zonder bewijs geen korting. De Vorstand beoordeelt en beslist.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Korting alleen met bewijs: $nachweis. Brengt u het of stuurt u het ons — zonder bewijs geen korting. De Vorstand beoordeelt en beslist.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'beschikking (Bescheid) van het Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'beschikking (Bescheid) van het Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur =>
+      'beschikking (Bescheid) van de Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'beschikking (Bescheid) van de zorgverzekeraar (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'pensioenbeschikking (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'pas voor ernstig gehandicapten (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Of en hoeveel er met terugwerkende kracht betaald moet worden, beslist de Vorstand na beoordeling.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Onder de 18 jaar is het lidmaatschap contributievrij.';
+
+  @override
+  String get finanzMinderjaehrig => 'Onder 18 — contributievrij';
 }

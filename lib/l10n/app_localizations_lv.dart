@@ -1245,7 +1245,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Maksājuma veids nav nepieciešams sociālo pabalstu saņēmējiem.';
+      'Nav vajadzīgs, ja lūgta atlaide, un biedriem līdz 18 gadiem.';
 
   @override
   String get locked => 'Bloķēts';
@@ -1302,20 +1302,7 @@ class AppLocalizationsLv extends AppLocalizations {
       'Lai pārbaudītu, vai jums pienākas maksas samazinājums, mums nepieciešama šāda informācija. Tā tiks izmantota tikai jūsu biedra naudas noteikšanai.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Vai jūs pašlaik saņemat sociālos pabalstus?';
-
-  @override
-  String get optionBuergergeld => 'Jā, pilsoņu pabalsts (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Jā, sociālā palīdzība (Sociālais dienests)';
-
-  @override
-  String get optionNoBenefits => 'Nē, es nesaņemu sociālos pabalstus';
-
-  @override
-  String get feeExempt => 'Jūsu ikmēneša maksa ir: 0,00 €/mēnesī';
+  String get socialBenefitsQuestion => 'Vai kaut kas no šī attiecas uz jums?';
 
   @override
   String get feeRegular => 'Jūsu ikmēneša maksa ir: 25,00 €/mēnesī';
@@ -1358,10 +1345,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Ne agrāk par 01.08.2025 (dibināšanas datums)';
-
-  @override
-  String get feeExemptRetro =>
-      'Atbrīvojums no maksas: 0,00 € ar atpakaļejošu spēku.\nTikai dalības datums tiek iestatīts ar atpakaļejošu spēku.';
 
   @override
   String get retroactiveFees => 'Atpakaļejošas maksas';
@@ -2391,7 +2374,7 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Tagad par tavu finansiālo situāciju. Ne lai vērtētu — bet lai atbrīvotu no biedru maksas, ja saņem sociālos pabalstus.';
+      'Tagad par tavu finansiālo situāciju. Ne lai vērtētu: ja kaut kas no šī attiecas uz tevi, vari ar pierādījumu lūgt atlaidi — Vorstand pārbauda un izlemj.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Saņemu Bürgergeld';
@@ -2400,10 +2383,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Saņemu pabalstus no Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Nesaņemu nevienu no šiem';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Biedru maksa: 0 € / mēn. 🎉';
+  String get wizardStufe3OptionNein => 'Nekas no šī uz mani neattiecas';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Biedru maksa: 25 € / mēn.';
@@ -2503,13 +2483,6 @@ class AppLocalizationsLv extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'No $start līdz $end ir $months mēneši. Pie 25 €/mēn. tas ir $amount € apmaksai ar atpakaļejošu spēku, papildus pašreizējai mēneša biedru maksai.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Atpakaļejošā maksa: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Ar Bürgergeld vai Sozialamt esi pilnībā atbrīvots — pat ar atpakaļejošu spēku neko nav jāmaksā.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2656,13 +2629,6 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Izlasīts:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Atbrīvots no biedra naudas (nav jāmaksā)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Bez sociāliem pabalstiem';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Sākas pēc verifikācijas';
@@ -3394,10 +3360,53 @@ class AppLocalizationsLv extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Pierādījums nav vajadzīgs — ja Vorstand tas būs vajadzīgs, tas sazināsies.';
+  String get wizardStufe3OptionRente => 'Saņemu pensiju';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Ar Bürgergeld, Sozialamt, ALG I vai Krankengeld saskaņā ar Satzung §6 esi pilnībā atbrīvots no biedru maksas. Pierādījums šeit nav jāaugšupielādē — ja Vorstand tas būs vajadzīgs, ar tevi sazināsies.';
+  String get wizardStufe3OptionBehinderung =>
+      'Man ir invaliditāte (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Atlaide pieprasīta';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Atlaide tikai ar pierādījumu: $nachweis. Atnes vai atsūti to mums — bez pierādījuma atlaides nav. Vorstand pārbauda un izlemj.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Atlaide tikai ar pierādījumu: $nachweis. Atnesiet vai atsūtiet to mums — bez pierādījuma atlaides nav. Vorstand pārbauda un izlemj.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'Jobcenter lēmums (Bescheid)';
+
+  @override
+  String get nachweisSozialamt => 'Sozialamt lēmums (Bescheid)';
+
+  @override
+  String get nachweisArbeitsagentur => 'Arbeitsagentur lēmums (Bescheid)';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'slimokases lēmums (Bescheid, Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'pensijas lēmums (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'smagas invaliditātes apliecība (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Vai un cik jāmaksā ar atpakaļejošu datumu, Vorstand izlemj pēc pārbaudes.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Līdz 18 gadiem dalība ir bez biedru maksas.';
+
+  @override
+  String get finanzMinderjaehrig => 'Līdz 18 — bez maksas';
 }

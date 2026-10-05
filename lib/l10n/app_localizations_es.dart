@@ -1251,7 +1251,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'No se requiere pago para beneficiarios sociales.';
+      'No es necesario si se ha solicitado una reducción ni para socios menores de 18 años.';
 
   @override
   String get locked => 'Bloqueado';
@@ -1307,19 +1307,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Para verificar reducción de cuota, necesitamos esta información.';
 
   @override
-  String get socialBenefitsQuestion => '¿Recibe prestaciones sociales?';
-
-  @override
-  String get optionBuergergeld => 'Sí, subsidio ciudadano';
-
-  @override
-  String get optionSozialamt => 'Sí, ayuda social';
-
-  @override
-  String get optionNoBenefits => 'No recibo prestaciones';
-
-  @override
-  String get feeExempt => 'Cuota: 0,00 €/mes';
+  String get socialBenefitsQuestion =>
+      '¿Le corresponde alguna de estas opciones?';
 
   @override
   String get feeRegular => 'Cuota: 25,00 €/mes';
@@ -1358,10 +1347,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'No antes del 01.08.2025';
-
-  @override
-  String get feeExemptRetro =>
-      'Exento: 0,00 € retroactivo.\nSolo la fecha se establece retroactivamente.';
 
   @override
   String get retroactiveFees => 'Cuotas retroactivas';
@@ -2402,7 +2387,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Ahora sobre tu situación financiera. No para juzgarte — solo para eximirte de la cuota si recibes prestaciones sociales.';
+      'Ahora sobre tu situación financiera. No para juzgarte: si alguna de estas opciones te corresponde, puedes solicitar una reducción con justificante — el Vorstand la revisa y decide.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Recibo Bürgergeld';
@@ -2411,10 +2396,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Recibo ayudas del Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'No recibo ninguna';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Cuota: 0 € / mes 🎉';
+  String get wizardStufe3OptionNein => 'Nada de esto me corresponde';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Cuota: 25 € / mes';
@@ -2514,13 +2496,6 @@ class AppLocalizationsEs extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Desde $start hasta $end son $months meses. A 25 €/mes son $amount € a pagar retroactivamente, además de la cuota mensual actual.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Cuota retroactiva: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Con Bürgergeld o Sozialamt estás totalmente exento — incluso retroactivamente no debes nada.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2668,12 +2643,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Leído el:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei => 'Exento de cuota (sin pago)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Sin ayudas sociales';
 
   @override
   String get wizardFinalStufeBeginAtVerification =>
@@ -3413,10 +3382,54 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'No hace falta comprobante — si el Vorstand lo necesita, se pondrá en contacto.';
+  String get wizardStufe3OptionRente => 'Recibo una pensión';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Con Bürgergeld, Sozialamt, ALG I o Krankengeld estás totalmente exento de la cuota según Satzung §6. No necesitas subir ningún comprobante aquí — si el Vorstand lo necesita, se pondrá en contacto contigo.';
+  String get wizardStufe3OptionBehinderung =>
+      'Tengo una discapacidad (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Reducción solicitada';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Reducción solo con justificante: $nachweis. Tráenoslo o envíanoslo — sin justificante no hay reducción. El Vorstand revisa y decide.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Reducción solo con justificante: $nachweis. Tráiganoslo o envíenoslo — sin justificante no hay reducción. El Vorstand revisa y decide.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'resolución (Bescheid) del Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'resolución (Bescheid) del Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur =>
+      'resolución (Bescheid) de la Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'resolución (Bescheid) de la caja de seguro de enfermedad (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'resolución de pensión (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'tarjeta de discapacidad grave (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Si hay que pagar con carácter retroactivo y cuánto, lo decide el Vorstand tras la revisión.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Para menores de 18 años la afiliación no tiene cuota.';
+
+  @override
+  String get finanzMinderjaehrig => 'Menor de 18 — sin cuota';
 }

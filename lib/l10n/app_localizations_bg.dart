@@ -1248,7 +1248,7 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Начин на плащане не е необходим за получатели на социални помощи.';
+      'Не е нужен при поискано намаление и за членове под 18 години.';
 
   @override
   String get locked => 'Заключено';
@@ -1305,20 +1305,7 @@ class AppLocalizationsBg extends AppLocalizations {
       'За да проверим дали имате право на намалена вноска, се нуждаем от следната информация. Тя ще бъде използвана единствено за определяне на вашия членски внос.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Получавате ли в момента социални помощи?';
-
-  @override
-  String get optionBuergergeld => 'Да, гражданска помощ (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Да, социална помощ (Социална служба)';
-
-  @override
-  String get optionNoBenefits => 'Не, не получавам социални помощи';
-
-  @override
-  String get feeExempt => 'Вашата месечна вноска е: 0,00 €/месец';
+  String get socialBenefitsQuestion => 'Отнася ли се някое от тези за вас?';
 
   @override
   String get feeRegular => 'Вашата месечна вноска е: 25,00 €/месец';
@@ -1360,10 +1347,6 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Не по-рано от 01.08.2025 (дата на основаване)';
-
-  @override
-  String get feeExemptRetro =>
-      'Освобождение от вноска: 0,00 € ретроактивно.\nСамо датата на членството се задава ретроактивно.';
 
   @override
   String get retroactiveFees => 'Ретроактивни вноски';
@@ -2400,7 +2383,7 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Сега за финансовото ти положение. Не за да те съдя — а за да те освободим от вноска ако получаваш социални помощи.';
+      'Сега за финансовото ти положение. Не за да те съдя: ако някое от тези се отнася за теб, можеш да поискаш намаление с доказателство — Vorstand проверява и решава.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Получавам Bürgergeld';
@@ -2409,10 +2392,7 @@ class AppLocalizationsBg extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Получавам помощи от Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Не получавам нито едно от тези';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Членски внос: 0 € / месец 🎉';
+  String get wizardStufe3OptionNein => 'Нищо от това не се отнася за мен';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Членски внос: 25 € / месец';
@@ -2512,14 +2492,6 @@ class AppLocalizationsBg extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'От $start до $end са $months месеца. По 25 €/месец това прави $amount € за изплащане с обратна сила, плюс текущия месечен внос.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle =>
-      'Членски внос с обратна сила: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'С Bürgergeld или Sozialamt си напълно освободен — дори с обратна сила не дължиш нищо.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2666,13 +2638,6 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Прочетено на:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Освободен от вноска (без плащане)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Без социални помощи';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Започва при верификация';
@@ -3402,10 +3367,53 @@ class AppLocalizationsBg extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Не е нужно доказателство — ако Vorstand-ът има нужда, ще се свърже.';
+  String get wizardStufe3OptionRente => 'Получавам пенсия';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'С Bürgergeld, Sozialamt, ALG I или Krankengeld си напълно освободен от членски внос съгласно Satzung §6. Тук не е нужно да качваш доказателство — ако Vorstand-ът има нужда от такова, ще се свърже с теб.';
+  String get wizardStufe3OptionBehinderung =>
+      'Имам увреждане (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Поискано е намаление';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Намаление само с доказателство: $nachweis. Донеси ни го или го изпрати — без доказателство няма намаление. Vorstand проверява и решава.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Намаление само с доказателство: $nachweis. Донесете ни го или го изпратете — без доказателство няма намаление. Vorstand проверява и решава.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'решение (Bescheid) от Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'решение (Bescheid) от Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur => 'решение (Bescheid) от Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'решение (Bescheid) от здравната каса (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'решение за пенсия (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'карта за тежко увреждане (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Дали и колко да се плати със задна дата, решава Vorstand след проверка.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Под 18 години членството е без членски внос.';
+
+  @override
+  String get finanzMinderjaehrig => 'Под 18 — без вноска';
 }

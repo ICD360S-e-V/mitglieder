@@ -584,7 +584,7 @@
   "membershipStartSaved": "Mitgliedschaftsbeginn gespeichert",
   "verificationProgress": "Verifizierungsfortschritt",
   "notApplicable": "Entfällt",
-  "socialBenefitsExempt": "Bei Bürgergeld/Sozialamt entfällt die Zahlungsmethode.",
+  "socialBenefitsExempt": "Entfällt bei beantragter Ermäßigung und für Mitglieder unter 18 Jahren.",
   "locked": "Gesperrt",
   "completePreviousStep": "Bitte schließen Sie zuerst Stufe {step} ab.",
   "rejectedNote": "Abgelehnt: {note}",
@@ -601,11 +601,7 @@
   "phonePurpose": "Zweck: Kontaktaufnahme bei Nichterreichbarkeit über die App",
   "selectMemberTypePrompt": "Bitte wählen Sie Ihre gewünschte Mitgliedsart:",
   "financialExplanation": "Um zu prüfen, ob Sie Anspruch auf eine Beitragsermäßigung haben, benötigen wir folgende Information. Diese Information wird ausschließlich zur Festlegung Ihres Mitgliedsbeitrags verwendet.",
-  "socialBenefitsQuestion": "Beziehen Sie derzeit Sozialleistungen?",
-  "optionBuergergeld": "Ja, Bürgergeld (Jobcenter)",
-  "optionSozialamt": "Ja, Sozialleistungen vom Sozialamt",
-  "optionNoBenefits": "Nein, ich beziehe keine Sozialleistungen",
-  "feeExempt": "Ihr monatlicher Mitgliedsbeitrag beträgt: 0,00 €/Monat",
+  "socialBenefitsQuestion": "Trifft eines davon auf Sie zu?",
   "feeRegular": "Ihr monatlicher Mitgliedsbeitrag beträgt: 25,00 €/Monat",
   "paymentDayReminder": "Sie werden jeden {day}. des Monats an die Zahlung erinnert.",
   "membershipStartPrompt": "Wählen Sie, ab wann Ihre Mitgliedschaft beginnen soll.",
@@ -618,7 +614,6 @@
   "selectDateLabel": "Datum wählen",
   "selectDateHint": "Datum auswählen...",
   "dateNotBefore": "Nicht vor dem 01.08.2025 (Gründungsdatum)",
-  "feeExemptRetro": "Beitragsbefreit: 0,00 € retroaktiv.\nNur das Mitgliedschaftsdatum wird rückwirkend gesetzt.",
   "retroactiveFees": "Retroaktive Beiträge",
   "retroFeeCalculation": "Zeitraum: {from} – {to}\nMonate: {months}\nBeitrag: {months} × 25,00 € = {total} €",
   "pleaseReadSatzung": "Bitte lesen Sie die Satzung des Vereins.",
@@ -1135,11 +1130,10 @@
   "wizardStufe2FoerderTitle": "Fördermitglied",
   "wizardStufe2FoerderBody": "Du unterstützt den Verein finanziell, nimmst aber nicht aktiv an Entscheidungen teil. Kein Stimmrecht. Gut, wenn du aus der Ferne helfen willst.",
   "wizardStufe3Title": "Finanzielle Situation",
-  "wizardStufe3Prompt": "Jetzt zu deiner finanziellen Situation. Nicht um zu urteilen — sondern um dich vom Beitrag zu befreien, falls du Sozialleistungen beziehst.",
+  "wizardStufe3Prompt": "Jetzt zu deiner finanziellen Situation. Nicht um zu urteilen: Trifft eines davon auf dich zu, kannst du mit einem Nachweis eine Ermäßigung beantragen — der Vorstand prüft und entscheidet.",
   "wizardStufe3OptionBuergergeld": "Ich beziehe Bürgergeld",
   "wizardStufe3OptionSozialamt": "Ich beziehe Sozialamt-Leistungen",
-  "wizardStufe3OptionNein": "Ich beziehe keine dieser Leistungen",
-  "wizardStufe3FeeExemptTitle": "Beitrag: 0 € / Monat 🎉",
+  "wizardStufe3OptionNein": "Nichts davon trifft auf mich zu",
   "wizardStufe3RegularFeeTitle": "Beitrag: 25 € / Monat",
   "wizardStufe3RegularFeeBody": "Regulärer Beitrag für ordentliche Mitglieder laut Satzung.",
   "wizardStufe4Title": "Zahlung",
@@ -1203,8 +1197,6 @@
       }
     }
   },
-  "wizardStufe5FeeExemptTitle": "Rückwirkender Beitrag: 0 € 🎉",
-  "wizardStufe5FeeExemptBody": "Mit Bürgergeld oder Sozialamt bist du komplett befreit — auch rückwirkend nichts zu zahlen.",
   "wizardDocumentPrompt": "Bevor wir abschließen, lies bitte sorgfältig die {doc}. Es ist wichtig zu wissen, was du unterschreibst.",
   "@wizardDocumentPrompt": {
     "placeholders": {
@@ -1293,8 +1285,6 @@
   "wizardFinalApprovalRejected": "ABGELEHNT",
   "wizardFinalStufeNoDataYet": "Daten sind noch nicht verfügbar.",
   "wizardFinalStufeReadAt": "Gelesen am:",
-  "wizardFinalStufeBeitragsfrei": "Beitragsfrei (kein Beitrag erforderlich)",
-  "wizardFinalStufeNotExempt": "Keine Sozialleistungen",
   "wizardFinalStufeBeginAtVerification": "Beginn ab Verifizierung",
   "wizardFinalStufeBeginAtFoundation": "Gründungsdatum (rückwirkend)",
   "wizardFinalStufeBeginAtCustom": "Anderes Datum",
@@ -1663,6 +1653,72 @@
       }
     }
   },
-  "nachweisNichtNoetig": "Kein Nachweis nötig — falls der Vorstand einen braucht, meldet er sich.",
-  "wizardStufe3FeeExemptBodyOhneNachweis": "Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Einen Nachweis musst du hier nicht hochladen — falls der Vorstand einen braucht, meldet er sich bei dir."
+  "wizardStufe3OptionRente": "Ich beziehe eine Rente",
+  "@wizardStufe3OptionRente": {
+    "description": "Stufe 3: Ermäßigungsgrund Rente (05.10.2026)"
+  },
+  "wizardStufe3OptionBehinderung": "Ich habe eine Behinderung (Schwerbehindertenausweis)",
+  "@wizardStufe3OptionBehinderung": {
+    "description": "Stufe 3: Ermäßigungsgrund Behinderung, Nachweis Schwerbehindertenausweis"
+  },
+  "ermaessigungBeantragtTitel": "Ermäßigung beantragt",
+  "@ermaessigungBeantragtTitel": {
+    "description": "Ermäßigung beantragt — der Vorstand entscheidet; KEINE Zusage"
+  },
+  "ermaessigungNurMitNachweis": "Ermäßigung nur mit Nachweis: {nachweis}. Bring oder schick ihn uns — ohne Nachweis keine Ermäßigung. Der Vorstand prüft und entscheidet.",
+  "@ermaessigungNurMitNachweis": {
+    "description": "Assistent (du): ohne Nachweis keine Ermäßigung; hochgeladen wird nichts",
+    "placeholders": {
+      "nachweis": {
+        "type": "String",
+        "example": "Rentenbescheid"
+      }
+    }
+  },
+  "ermaessigungNurMitNachweisSie": "Ermäßigung nur mit Nachweis: {nachweis}. Bringen oder schicken Sie ihn uns — ohne Nachweis keine Ermäßigung. Der Vorstand prüft und entscheidet.",
+  "@ermaessigungNurMitNachweisSie": {
+    "description": "Mitglieds-Tab (Sie): ohne Nachweis keine Ermäßigung; hochgeladen wird nichts",
+    "placeholders": {
+      "nachweis": {
+        "type": "String",
+        "example": "Rentenbescheid"
+      }
+    }
+  },
+  "nachweisJobcenter": "Bescheid vom Jobcenter",
+  "@nachweisJobcenter": {
+    "description": "Nachweis zu Bürgergeld"
+  },
+  "nachweisSozialamt": "Bescheid vom Sozialamt",
+  "@nachweisSozialamt": {
+    "description": "Nachweis zu Sozialamt"
+  },
+  "nachweisArbeitsagentur": "Bescheid der Arbeitsagentur",
+  "@nachweisArbeitsagentur": {
+    "description": "Nachweis zu Arbeitslosengeld I"
+  },
+  "nachweisKrankenkasse": "Bescheid der Krankenkasse",
+  "@nachweisKrankenkasse": {
+    "description": "Nachweis zu Krankengeld"
+  },
+  "nachweisRente": "Rentenbescheid",
+  "@nachweisRente": {
+    "description": "Nachweis zu Rente"
+  },
+  "nachweisBehinderung": "Schwerbehindertenausweis",
+  "@nachweisBehinderung": {
+    "description": "Nachweis zu Behinderung"
+  },
+  "ermaessigungRueckwirkend": "Ob und wie viel rückwirkend zu zahlen ist, entscheidet der Vorstand nach Prüfung.",
+  "@ermaessigungRueckwirkend": {
+    "description": "Stufe 5 bei beantragter Ermäßigung"
+  },
+  "minderjaehrigBeitragsfrei": "Unter 18 Jahren ist die Mitgliedschaft beitragsfrei.",
+  "@minderjaehrigBeitragsfrei": {
+    "description": "Unter 18 beitragsfrei — fest, ohne Prüfung"
+  },
+  "finanzMinderjaehrig": "Unter 18 — beitragsfrei",
+  "@finanzMinderjaehrig": {
+    "description": "Etikett des gesetzten Werts minderjaehrig"
+  }
 }

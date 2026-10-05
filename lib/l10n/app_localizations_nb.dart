@@ -1246,7 +1246,7 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Betalingsmetode er ikke påkrevd for mottakere av sosiale ytelser.';
+      'Bortfaller ved søkt reduksjon og for medlemmer under 18 år.';
 
   @override
   String get locked => 'Låst';
@@ -1302,19 +1302,7 @@ class AppLocalizationsNb extends AppLocalizations {
       'For å sjekke om du har rett til redusert avgift, trenger vi følgende informasjon. Den brukes utelukkende til å fastsette din medlemsavgift.';
 
   @override
-  String get socialBenefitsQuestion => 'Mottar du for tiden sosiale ytelser?';
-
-  @override
-  String get optionBuergergeld => 'Ja, borgerytelse (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Ja, sosialhjelp (Sosialkontoret)';
-
-  @override
-  String get optionNoBenefits => 'Nei, jeg mottar ikke sosiale ytelser';
-
-  @override
-  String get feeExempt => 'Din månedlige avgift er: 0,00 €/måned';
+  String get socialBenefitsQuestion => 'Gjelder noe av dette for deg?';
 
   @override
   String get feeRegular => 'Din månedlige avgift er: 25,00 €/måned';
@@ -1357,10 +1345,6 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Ikke før 01.08.2025 (stiftelsesdato)';
-
-  @override
-  String get feeExemptRetro =>
-      'Avgiftsfritak: 0,00 € tilbakevirkende.\nKun medlemskapsdatoen settes tilbakevirkende.';
 
   @override
   String get retroactiveFees => 'Tilbakevirkende avgifter';
@@ -2396,7 +2380,7 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Nå om din økonomiske situasjon. Ikke for å dømme — bare for å frita deg for kontingent hvis du mottar sosiale ytelser.';
+      'Nå om din økonomiske situasjon. Ikke for å dømme: Gjelder noe av dette for deg, kan du med dokumentasjon søke om redusert kontingent — Vorstand vurderer og bestemmer.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Jeg mottar Bürgergeld';
@@ -2405,10 +2389,7 @@ class AppLocalizationsNb extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Jeg mottar ytelser fra Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Jeg mottar ingen av disse';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Kontingent: 0 € / måned 🎉';
+  String get wizardStufe3OptionNein => 'Ingenting av dette gjelder for meg';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Kontingent: 25 € / måned';
@@ -2508,13 +2489,6 @@ class AppLocalizationsNb extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Fra $start til $end er det $months måneder. Ved 25 €/måned gir det $amount € tilbakevirkende, i tillegg til løpende månedlig kontingent.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Tilbakevirkende kontingent: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Med Bürgergeld eller Sozialamt er du helt fritatt — heller ikke tilbakevirkende skylder du noe.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2661,12 +2635,6 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Lest:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei => 'Kontingentfri (ingen betaling)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Ingen sosiale ytelser';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Starter ved verifisering';
@@ -3394,10 +3362,53 @@ class AppLocalizationsNb extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Ikke behov for bevis — hvis Vorstand trenger et, tar de kontakt.';
+  String get wizardStufe3OptionRente => 'Jeg mottar pensjon';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Med Bürgergeld, Sozialamt, ALG I eller Krankengeld er du helt fritatt for kontingent etter Satzung §6. Du trenger ikke laste opp noe bevis her — hvis Vorstand trenger et, tar de kontakt med deg.';
+  String get wizardStufe3OptionBehinderung =>
+      'Jeg har en funksjonsnedsettelse (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Reduksjon søkt';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Reduksjon bare med dokumentasjon: $nachweis. Ta den med eller send den til oss — uten dokumentasjon ingen reduksjon. Vorstand vurderer og bestemmer.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Reduksjon bare med dokumentasjon: $nachweis. Ta den med eller send den til oss — uten dokumentasjon ingen reduksjon. Vorstand vurderer og bestemmer.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'vedtak (Bescheid) fra Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'vedtak (Bescheid) fra Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur => 'vedtak (Bescheid) fra Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'vedtak (Bescheid) fra sykekassen (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'pensjonsvedtak (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'bevis for alvorlig funksjonsnedsettelse (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Om og hvor mye som skal betales med tilbakevirkende kraft, bestemmer Vorstand etter vurdering.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Under 18 år er medlemskapet kontingentfritt.';
+
+  @override
+  String get finanzMinderjaehrig => 'Under 18 — kontingentfritt';
 }

@@ -1256,7 +1256,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Mode de paiement non requis pour les bénéficiaires d\'aides sociales.';
+      'Non requis en cas de réduction demandée et pour les membres de moins de 18 ans.';
 
   @override
   String get locked => 'Verrouillé';
@@ -1315,21 +1315,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Pour vérifier votre éligibilité à une réduction de cotisation, nous avons besoin des informations suivantes.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Recevez-vous actuellement des prestations sociales ?';
-
-  @override
-  String get optionBuergergeld => 'Oui, allocation citoyenne (Pôle emploi)';
-
-  @override
-  String get optionSozialamt => 'Oui, aide sociale';
-
-  @override
-  String get optionNoBenefits =>
-      'Non, je ne reçois pas de prestations sociales';
-
-  @override
-  String get feeExempt => 'Votre cotisation mensuelle : 0,00 €/mois';
+  String get socialBenefitsQuestion => 'L\'un de ces cas vous concerne-t-il ?';
 
   @override
   String get feeRegular => 'Votre cotisation mensuelle : 25,00 €/mois';
@@ -1373,10 +1359,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Pas avant le 01.08.2025 (date de fondation)';
-
-  @override
-  String get feeExemptRetro =>
-      'Exempté : 0,00 € rétroactif.\nSeule la date d\'adhésion est définie rétroactivement.';
 
   @override
   String get retroactiveFees => 'Cotisations rétroactives';
@@ -2422,7 +2404,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Maintenant ta situation financière. Pas pour te juger — juste pour t\'exempter de cotisation si tu reçois des aides sociales.';
+      'Maintenant ta situation financière. Pas pour te juger : si l\'un de ces cas te concerne, tu peux demander une réduction avec un justificatif — le Vorstand examine et décide.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Je reçois Bürgergeld';
@@ -2431,10 +2413,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Je reçois des aides du Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Je ne reçois aucune de ces aides';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Cotisation : 0 € / mois 🎉';
+  String get wizardStufe3OptionNein => 'Rien de cela ne me concerne';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Cotisation : 25 € / mois';
@@ -2533,13 +2512,6 @@ class AppLocalizationsFr extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'De $start à $end cela fait $months mois. À 25 €/mois cela représente $amount € à payer rétroactivement, en plus de la cotisation mensuelle courante.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Cotisation rétroactive : 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Avec Bürgergeld ou Sozialamt tu es totalement exempté — même rétroactivement, tu ne dois rien.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2687,13 +2659,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Lu le :';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Exempté de cotisation (sans paiement)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Sans aides sociales';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Débute à la vérification';
@@ -3434,10 +3399,54 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Aucun justificatif nécessaire — si le Vorstand en a besoin, il prendra contact.';
+  String get wizardStufe3OptionRente => 'Je perçois une pension (Rente)';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Avec Bürgergeld, Sozialamt, ALG I ou Krankengeld tu es totalement exempté de cotisation selon Satzung §6. Tu n\'as pas besoin de téléverser de justificatif ici — si le Vorstand en a besoin, il te contactera.';
+  String get wizardStufe3OptionBehinderung =>
+      'J\'ai un handicap (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Réduction demandée';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Réduction uniquement avec justificatif : $nachweis. Apporte-le ou envoie-le-nous — sans justificatif, pas de réduction. Le Vorstand examine et décide.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Réduction uniquement avec justificatif : $nachweis. Apportez-le ou envoyez-le-nous — sans justificatif, pas de réduction. Le Vorstand examine et décide.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'décision (Bescheid) du Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'décision (Bescheid) du Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur =>
+      'décision (Bescheid) de l\'Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'décision (Bescheid) de la caisse d\'assurance maladie (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'décision de pension (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'carte de personne gravement handicapée (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Le Vorstand décide après examen s\'il faut payer rétroactivement et combien.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Pour les moins de 18 ans, l\'adhésion est sans cotisation.';
+
+  @override
+  String get finanzMinderjaehrig => 'Moins de 18 ans — sans cotisation';
 }

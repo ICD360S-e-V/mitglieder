@@ -1253,7 +1253,7 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Metoda płatności nie jest wymagana dla osób pobierających świadczenia socjalne.';
+      'Niepotrzebne przy wnioskowanej zniżce i dla członków poniżej 18 lat.';
 
   @override
   String get locked => 'Zablokowane';
@@ -1310,20 +1310,7 @@ class AppLocalizationsPl extends AppLocalizations {
       'Aby sprawdzić, czy przysługuje Ci obniżka składki, potrzebujemy poniższych informacji. Będą one wykorzystane wyłącznie do ustalenia Twojej składki członkowskiej.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Czy obecnie pobierasz świadczenia socjalne?';
-
-  @override
-  String get optionBuergergeld => 'Tak, zasiłek obywatelski (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Tak, pomoc społeczna (MOPS)';
-
-  @override
-  String get optionNoBenefits => 'Nie, nie pobieram świadczeń socjalnych';
-
-  @override
-  String get feeExempt => 'Twoja miesięczna składka wynosi: 0,00 €/miesiąc';
+  String get socialBenefitsQuestion => 'Czy coś z tego cię dotyczy?';
 
   @override
   String get feeRegular => 'Twoja miesięczna składka wynosi: 25,00 €/miesiąc';
@@ -1366,10 +1353,6 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Nie wcześniej niż 01.08.2025 (data założenia)';
-
-  @override
-  String get feeExemptRetro =>
-      'Zwolnienie ze składki: 0,00 € wstecznie.\nTylko data członkostwa jest ustawiona wstecznie.';
 
   @override
   String get retroactiveFees => 'Składki wsteczne';
@@ -2404,7 +2387,7 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Teraz o twojej sytuacji finansowej. Nie żeby cię oceniać — tylko żeby zwolnić ze składki jeśli otrzymujesz świadczenia socjalne.';
+      'Teraz o twojej sytuacji finansowej. Nie żeby cię oceniać: jeśli coś z tego cię dotyczy, możesz z dowodem wnioskować o zniżkę — Vorstand sprawdza i decyduje.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Otrzymuję Bürgergeld';
@@ -2414,10 +2397,7 @@ class AppLocalizationsPl extends AppLocalizations {
       'Otrzymuję świadczenia od Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Nie otrzymuję żadnego z tych';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Składka: 0 € / m-c 🎉';
+  String get wizardStufe3OptionNein => 'Nic z tego mnie nie dotyczy';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Składka: 25 € / m-c';
@@ -2516,13 +2496,6 @@ class AppLocalizationsPl extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Od $start do $end to $months miesięcy. Po 25 €/mies. to $amount € do zapłaty z mocą wsteczną, oprócz bieżącej składki miesięcznej.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Składka z mocą wsteczną: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Z Bürgergeld lub Sozialamt jesteś całkowicie zwolniony — nawet z mocą wsteczną nic nie jesteś winien.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2669,13 +2642,6 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Przeczytano:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Zwolniony ze składki (bez opłaty)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Bez świadczeń socjalnych';
 
   @override
   String get wizardFinalStufeBeginAtVerification =>
@@ -3412,10 +3378,53 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Dowód nie jest potrzebny — jeśli Vorstand będzie go potrzebował, skontaktuje się.';
+  String get wizardStufe3OptionRente => 'Pobieram emeryturę lub rentę';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Z Bürgergeldem, Sozialamtem, ALG I lub Krankengeldem jesteś całkowicie zwolniony ze składki zgodnie z Satzung §6. Nie musisz tu przesyłać żadnego dowodu — jeśli Vorstand będzie go potrzebował, odezwie się do Ciebie.';
+  String get wizardStufe3OptionBehinderung =>
+      'Mam niepełnosprawność (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Wniosek o zniżkę złożony';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Zniżka tylko z dowodem: $nachweis. Przynieś go albo wyślij nam — bez dowodu nie ma zniżki. Vorstand sprawdza i decyduje.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Zniżka tylko z dowodem: $nachweis. Przynieś go albo wyślij nam — bez dowodu nie ma zniżki. Vorstand sprawdza i decyduje.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'decyzja (Bescheid) z Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'decyzja (Bescheid) z Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur => 'decyzja (Bescheid) z Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'decyzja (Bescheid) z kasy chorych (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'decyzja emerytalna (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'legitymacja osoby ze znacznym stopniem niepełnosprawności (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Czy i ile trzeba zapłacić wstecz, decyduje Vorstand po sprawdzeniu.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Poniżej 18 lat członkostwo jest bezpłatne.';
+
+  @override
+  String get finanzMinderjaehrig => 'Poniżej 18 — bez składki';
 }

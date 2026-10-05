@@ -82,6 +82,9 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   // Stufe 3: Finanzielle Situation
   String? _selectedFinanzielleSituation;
 
+  /// Noch nicht 18 (aus dem Geburtsdatum) — Stufe 3 ohne Auswahl, beitragsfrei.
+  bool _istMinderjaehrig = false;
+
   // Stufe 4: Zahlungsmethode + Zahlungstag
   String? _selectedZahlungsmethode;
   int? _selectedZahlungstag;
@@ -324,9 +327,15 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     final ma = _personalData['mitgliedsart']?.toString() ?? '';
     _selectedMitgliedsart = mitgliedsartWaehlbar.contains(ma) ? ma : null;
 
+    // Unter 18: keine Auswahl, beitragsfrei ('minderjaehrig'). Sonst nur ein
+    // wählbarer Wert — ein gespeichertes 'minderjaehrig' eines inzwischen
+    // Volljährigen muss neu gewählt werden.
+    _istMinderjaehrig =
+        istMinderjaehrigAm(_personalData['geburtsdatum']?.toString());
     final fs = _personalData['finanzielle_situation']?.toString() ?? '';
-    _selectedFinanzielleSituation =
-        finanzielleSituationWerte.contains(fs) ? fs : null;
+    _selectedFinanzielleSituation = _istMinderjaehrig
+        ? finanzielleSituationMinderjaehrig
+        : (finanzielleSituationWerte.contains(fs) ? fs : null);
 
     final zm = _personalData['zahlungsmethode'] ?? '';
     _selectedZahlungsmethode =
@@ -423,7 +432,10 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     return status == 'offen' || status == 'abgelehnt';
   }
 
-  bool _isStufe4Skipped() => istBeitragsfrei(_selectedFinanzielleSituation);
+  /// Stufe 4 entfällt bei beantragter Ermäßigung (nur mit Nachweis, der
+  /// Vorstand entscheidet) und unter 18 (beitragsfrei).
+  bool _isStufe4Skipped() =>
+      _istMinderjaehrig || zahlungswegEntfaellt(_selectedFinanzielleSituation);
 
   /// Der Aufenthaltsstatus, der gespeichert wird.
   String? _aufenthaltZumSenden() {
@@ -564,7 +576,8 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   }
 
   Future<void> _saveStufe3Finanziell() async {
-    if (_selectedFinanzielleSituation == null) {
+    if (_istMinderjaehrig ||
+        !finanzielleSituationWerte.contains(_selectedFinanzielleSituation)) {
       _showSnackBar(AppLocalizations.of(context)!.selectOption, isError: true);
       return;
     }
@@ -1500,9 +1513,37 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   Widget _buildStufe3FinanziellForm(bool canEdit) {
     return StatefulBuilder(
       builder: (context, setLocalState) {
-        // Kein Hochladen mehr: braucht der Vorstand einen Bescheid, fordert
-        // er ihn selbst an — wie im Online-Formular und im Assistenten.
-        final beitragsfrei = istBeitragsfrei(_selectedFinanzielleSituation);
+        // Kein Hochladen: der Nachweis wird gebracht oder geschickt — ohne
+        // ihn keine Ermäßigung. Wie im Online-Formular und im Assistenten.
+        final nachweis = nachweisFuer(_selectedFinanzielleSituation,
+            AppLocalizations.of(context)!);
+
+        if (_istMinderjaehrig) {
+          return Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: context.colors.successBg,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: context.colors.successBorder),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.check_circle, size: 20, color: context.colors.successFg),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    AppLocalizations.of(context)!.minderjaehrigBeitragsfrei,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: context.colors.successFg,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1539,53 +1580,57 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
               ),
             ),
             const SizedBox(height: 12),
-            for (final (wert, label, icon) in [
-              ('buergergeld', AppLocalizations.of(context)!.optionBuergergeld, Icons.account_balance),
-              ('sozialamt', AppLocalizations.of(context)!.optionSozialamt, Icons.health_and_safety),
-              ('alg1', AppLocalizations.of(context)!.wizardStufe3OptionAlg1, Icons.business_center),
-              ('krankengeld', AppLocalizations.of(context)!.wizardStufe3OptionKrankengeld, Icons.medical_services),
-              ('nein', AppLocalizations.of(context)!.optionNoBenefits, Icons.work),
-            ]) ...[
+            for (final wert in finanzielleSituationWerte) ...[
               _buildFinanziellOption(
                 value: wert,
-                label: label,
-                icon: icon,
+                label: finanzielleSituationAnzeige(wert, AppLocalizations.of(context)!),
+                icon: switch (wert) {
+                  'buergergeld' => Icons.account_balance,
+                  'sozialamt' => Icons.health_and_safety,
+                  'alg1' => Icons.business_center,
+                  'krankengeld' => Icons.medical_services,
+                  'rente' => Icons.elderly,
+                  'behinderung' => Icons.accessible,
+                  _ => Icons.work,
+                },
                 canEdit: canEdit,
                 setLocalState: setLocalState,
               ),
               const SizedBox(height: 8),
             ],
-            // Conditional content based on selection
-            if (beitragsfrei) ...[
+            // Beantragte Ermäßigung: welcher Nachweis gilt — ohne ihn keine
+            // Ermäßigung. Keine Zusage, der Vorstand entscheidet.
+            if (nachweis != null) ...[
               const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: context.colors.successBg,
+                  color: context.colors.infoBg,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: context.colors.successBorder),
+                  border: Border.all(color: context.colors.infoBorder),
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.check_circle, size: 20, color: context.colors.successFg),
+                    Icon(Icons.fact_check, size: 20, color: context.colors.infoFg),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            AppLocalizations.of(context)!.feeExempt,
+                            AppLocalizations.of(context)!.ermaessigungBeantragtTitel,
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
-                              color: context.colors.successFg,
+                              color: context.colors.infoFg,
                             ),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            AppLocalizations.of(context)!.nachweisNichtNoetig,
-                            style: TextStyle(fontSize: 12, color: context.colors.successFg),
+                            AppLocalizations.of(context)!
+                                .ermaessigungNurMitNachweisSie(nachweis),
+                            style: TextStyle(fontSize: 12, color: context.colors.infoFg),
                           ),
                         ],
                       ),
@@ -1759,7 +1804,10 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
   Widget _buildStufe5MitgliedschaftForm(bool canEdit) {
     final gruendungsdatum = DateTime(2025, 8, 1);
     final today = DateTime.now();
-    final isBeitragsfrei = _isStufe4Skipped();
+    final unter18 = _istMinderjaehrig ||
+        istBeitragsfreiMinderjaehrig(_selectedFinanzielleSituation);
+    final ermaessigung =
+        istErmaessigungBeantragt(_selectedFinanzielleSituation);
 
     return StatefulBuilder(
       builder: (context, setLocalState) {
@@ -1867,22 +1915,31 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
                 }
                 final months = _monthsBetween(startDate, today);
 
-                if (isBeitragsfrei) {
+                if (unter18 || ermaessigung) {
+                  // Unter 18 beitragsfrei, auch rückwirkend. Bei beantragter
+                  // Ermäßigung entscheidet der Vorstand — keine Zusage.
                   return Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: context.colors.successBg,
+                      color: unter18 ? context.colors.successBg : context.colors.infoBg,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: context.colors.successBorder),
+                      border: Border.all(
+                          color: unter18 ? context.colors.successBorder : context.colors.infoBorder),
                     ),
                     child: Row(
                       children: [
-                        Icon(Icons.check_circle, size: 20, color: context.colors.successFg),
+                        Icon(unter18 ? Icons.check_circle : Icons.fact_check,
+                            size: 20,
+                            color: unter18 ? context.colors.successFg : context.colors.infoFg),
                         const SizedBox(width: 10),
                         Expanded(
                           child: Text(
-                            AppLocalizations.of(context)!.feeExemptRetro,
-                            style: TextStyle(fontSize: 13, color: context.colors.successFg),
+                            unter18
+                                ? AppLocalizations.of(context)!.minderjaehrigBeitragsfrei
+                                : AppLocalizations.of(context)!.ermaessigungRueckwirkend,
+                            style: TextStyle(
+                                fontSize: 13,
+                                color: unter18 ? context.colors.successFg : context.colors.infoFg),
                           ),
                         ),
                       ],
