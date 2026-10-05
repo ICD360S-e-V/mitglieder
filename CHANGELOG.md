@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.108.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.107.0...v1.108.0) (2026-10-05)
+
+
+### Features
+
+* **wizard:** Ermäßigung nur mit Nachweis — sechs Gründe, unter 18 beitragsfrei ([#476](https://github.com/ICD360S-e-V/mitglieder/issues/476)) ([f3d0918](https://github.com/ICD360S-e-V/mitglieder/commit/f3d09184b0585b038104120d8041323a44c9dea4))
+
 ## [1.107.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.106.0...v1.107.0) (2026-10-05)
 
 
