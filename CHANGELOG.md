@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.107.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.106.0...v1.107.0) (2026-10-05)
+
+
+### Features
+
+* **wizard:** dieselben Felder und Werte wie Online-Formular und Verifizierung — ohne Hochladen ([#474](https://github.com/ICD360S-e-V/mitglieder/issues/474)) ([98ab9a6](https://github.com/ICD360S-e-V/mitglieder/commit/98ab9a6ee541b11dc6874aca7308e40f9dd7d930))
+
 ## [1.106.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.105.1...v1.106.0) (2026-10-02)
 
 
