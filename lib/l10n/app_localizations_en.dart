@@ -1247,7 +1247,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Payment method not required for social benefit recipients.';
+      'Not needed when a reduction has been requested or for members under 18.';
 
   @override
   String get locked => 'Locked';
@@ -1304,20 +1304,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'To check if you are eligible for a fee reduction, we need the following information. This information will be used exclusively to determine your membership fee.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Are you currently receiving social benefits?';
-
-  @override
-  String get optionBuergergeld => 'Yes, citizen\'s allowance (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Yes, social benefits (Social Services)';
-
-  @override
-  String get optionNoBenefits => 'No, I do not receive social benefits';
-
-  @override
-  String get feeExempt => 'Your monthly membership fee is: €0.00/month';
+  String get socialBenefitsQuestion => 'Does one of these apply to you?';
 
   @override
   String get feeRegular => 'Your monthly membership fee is: €25.00/month';
@@ -1361,10 +1348,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Not before 01.08.2025 (founding date)';
-
-  @override
-  String get feeExemptRetro =>
-      'Fee exempt: €0.00 retroactive.\nOnly the membership date is set retroactively.';
 
   @override
   String get retroactiveFees => 'Retroactive Fees';
@@ -2400,7 +2383,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Now about your financial situation. Not to judge you — just so we can waive the fee if you receive social benefits.';
+      'Now about your financial situation. Not to judge you: if one of these applies to you, you can apply for a reduced fee with proof — the Vorstand reviews and decides.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'I receive Bürgergeld';
@@ -2409,10 +2392,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'I receive Sozialamt benefits';
 
   @override
-  String get wizardStufe3OptionNein => 'I don\'t receive any of these';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Fee: € 0 / month 🎉';
+  String get wizardStufe3OptionNein => 'None of these applies to me';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Fee: € 25 / month';
@@ -2512,13 +2492,6 @@ class AppLocalizationsEn extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'From $start to $end is $months months. At €25/month that\'s €$amount due retroactively, on top of the current monthly fee.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Retroactive fee: € 0 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'With Bürgergeld or Sozialamt you\'re fully exempt — even retroactively nothing is owed.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2665,12 +2638,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Read on:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei => 'Fee-exempt (no payment required)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Not on social benefits';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Starts on validation';
@@ -3405,10 +3372,54 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'No proof needed — if the Vorstand needs one, they\'ll get in touch.';
+  String get wizardStufe3OptionRente => 'I receive a pension';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'With Bürgergeld, Sozialamt, ALG I or Krankengeld you\'re fully exempt under Satzung §6. You don\'t need to upload any proof here — if the Vorstand needs one, they\'ll get in touch with you.';
+  String get wizardStufe3OptionBehinderung =>
+      'I have a disability (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Reduction requested';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Reduction only with proof: $nachweis. Bring it or send it to us — no proof, no reduction. The Vorstand reviews and decides.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Reduction only with proof: $nachweis. Bring it or send it to us — no proof, no reduction. The Vorstand reviews and decides.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'notice (Bescheid) from the Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'notice (Bescheid) from the Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur =>
+      'notice (Bescheid) from the Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'notice (Bescheid) from the health insurance fund (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'pension notice (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'severe disability card (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Whether and how much has to be paid retroactively is decided by the Vorstand after review.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Membership is free of charge for anyone under 18.';
+
+  @override
+  String get finanzMinderjaehrig => 'Under 18 — no fee';
 }

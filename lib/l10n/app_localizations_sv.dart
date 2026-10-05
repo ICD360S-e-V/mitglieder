@@ -1247,7 +1247,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Betalningsmetod krävs inte för mottagare av socialbidrag.';
+      'Behövs inte vid ansökt nedsättning och för medlemmar under 18 år.';
 
   @override
   String get locked => 'Låst';
@@ -1303,19 +1303,7 @@ class AppLocalizationsSv extends AppLocalizations {
       'För att kontrollera om du är berättigad till avgiftsreduktion behöver vi följande information. Den används uteslutande för att fastställa din medlemsavgift.';
 
   @override
-  String get socialBenefitsQuestion => 'Får du för närvarande socialbidrag?';
-
-  @override
-  String get optionBuergergeld => 'Ja, medborgarbidrag (Jobcenter)';
-
-  @override
-  String get optionSozialamt => 'Ja, socialbidrag (Socialkontoret)';
-
-  @override
-  String get optionNoBenefits => 'Nej, jag får inte socialbidrag';
-
-  @override
-  String get feeExempt => 'Din månadsavgift är: 0,00 €/månad';
+  String get socialBenefitsQuestion => 'Gäller något av detta dig?';
 
   @override
   String get feeRegular => 'Din månadsavgift är: 25,00 €/månad';
@@ -1358,10 +1346,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Inte före 01.08.2025 (grundningsdatum)';
-
-  @override
-  String get feeExemptRetro =>
-      'Avgiftsbefrielse: 0,00 € retroaktivt.\nEndast medlemsdatumet sätts retroaktivt.';
 
   @override
   String get retroactiveFees => 'Retroaktiva avgifter';
@@ -2393,7 +2377,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Nu om din ekonomiska situation. Inte för att döma — bara för att kunna befria dig från avgiften om du får socialbidrag.';
+      'Nu om din ekonomiska situation. Inte för att döma: gäller något av detta dig kan du med underlag ansöka om nedsatt avgift — Vorstand granskar och beslutar.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Jag får Bürgergeld';
@@ -2402,10 +2386,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Jag får förmåner från Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Jag får ingen av dessa';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Avgift: 0 € / månad 🎉';
+  String get wizardStufe3OptionNein => 'Inget av detta gäller mig';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Avgift: 25 € / månad';
@@ -2505,13 +2486,6 @@ class AppLocalizationsSv extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Från $start till $end är det $months månader. Vid 25 €/månad blir det $amount € att betala retroaktivt, utöver den löpande månadsavgiften.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Retroaktiv avgift: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Med Bürgergeld eller Sozialamt är du helt befriad — inte ens retroaktivt är du skyldig något.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2659,12 +2633,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Läst:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei => 'Avgiftsbefriad (ingen betalning)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Inga socialbidrag';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Startar vid verifiering';
@@ -3392,10 +3360,53 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Inget intyg behövs — om Vorstand behöver ett hör de av sig.';
+  String get wizardStufe3OptionRente => 'Jag får pension';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Med Bürgergeld, Sozialamt, ALG I eller Krankengeld är du helt befriad från avgiften enligt Satzung §6. Du behöver inte ladda upp något intyg här — om Vorstand behöver ett hör de av sig till dig.';
+  String get wizardStufe3OptionBehinderung =>
+      'Jag har en funktionsnedsättning (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Nedsättning ansökt';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Nedsättning bara med underlag: $nachweis. Ta med det eller skicka det till oss — utan underlag ingen nedsättning. Vorstand granskar och beslutar.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Nedsättning bara med underlag: $nachweis. Ta med det eller skicka det till oss — utan underlag ingen nedsättning. Vorstand granskar och beslutar.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'beslut (Bescheid) från Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'beslut (Bescheid) från Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur => 'beslut (Bescheid) från Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'beslut (Bescheid) från sjukkassan (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'pensionsbeslut (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'intyg om svår funktionsnedsättning (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Om och hur mycket som ska betalas retroaktivt beslutar Vorstand efter granskning.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Under 18 år är medlemskapet avgiftsfritt.';
+
+  @override
+  String get finanzMinderjaehrig => 'Under 18 — avgiftsfritt';
 }

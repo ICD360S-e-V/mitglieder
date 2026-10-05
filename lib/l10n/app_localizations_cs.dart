@@ -1248,7 +1248,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Platební metoda není vyžadována pro příjemce sociálních dávek.';
+      'Odpadá při žádosti o slevu a u členů mladších 18 let.';
 
   @override
   String get locked => 'Zamčeno';
@@ -1305,19 +1305,7 @@ class AppLocalizationsCs extends AppLocalizations {
       'Pro ověření nároku na snížení příspěvku potřebujeme následující informace. Budou použity výhradně ke stanovení vašeho členského příspěvku.';
 
   @override
-  String get socialBenefitsQuestion => 'Pobíráte v současnosti sociální dávky?';
-
-  @override
-  String get optionBuergergeld => 'Ano, občanský příspěvek (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Ano, sociální pomoc (Sociální úřad)';
-
-  @override
-  String get optionNoBenefits => 'Ne, nepobírám sociální dávky';
-
-  @override
-  String get feeExempt => 'Váš měsíční příspěvek je: 0,00 €/měsíc';
+  String get socialBenefitsQuestion => 'Týká se vás něco z toho?';
 
   @override
   String get feeRegular => 'Váš měsíční příspěvek je: 25,00 €/měsíc';
@@ -1358,10 +1346,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Ne dříve než 01.08.2025 (datum založení)';
-
-  @override
-  String get feeExemptRetro =>
-      'Osvobození od příspěvku: 0,00 € zpětně.\nPouze datum členství je nastaveno zpětně.';
 
   @override
   String get retroactiveFees => 'Zpětné příspěvky';
@@ -2391,7 +2375,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Teď k tvé finanční situaci. Ne abych soudil — ale abychom tě osvobodili od příspěvku, pokud pobíráš sociální dávky.';
+      'Teď k tvé finanční situaci. Ne abych soudil: pokud se tě něco z toho týká, můžeš s dokladem požádat o slevu — Vorstand ji posoudí a rozhodne.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Pobírám Bürgergeld';
@@ -2400,10 +2384,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Dostávám dávky od Sozialamtu';
 
   @override
-  String get wizardStufe3OptionNein => 'Nepobírám žádné z těchto';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Příspěvek: 0 € / měsíc 🎉';
+  String get wizardStufe3OptionNein => 'Nic z toho se mě netýká';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Příspěvek: 25 € / měsíc';
@@ -2503,13 +2484,6 @@ class AppLocalizationsCs extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Od $start do $end je to $months měsíců. Při 25 €/měsíc to znamená $amount € zpětně k uhrazení, navíc k aktuálnímu měsíčnímu příspěvku.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Zpětný příspěvek: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'S Bürgergeld nebo Sozialamtem jsi plně osvobozen — i zpětně nic nedlužíš.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2657,13 +2631,6 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Přečteno:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Osvobozeno od příspěvku (bez platby)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Bez sociálních dávek';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Začíná ověřením';
@@ -3392,10 +3359,53 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Doklad není potřeba — pokud ho Vorstand bude potřebovat, ozve se.';
+  String get wizardStufe3OptionRente => 'Pobírám důchod';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'S Bürgergeldem, Sozialamtem, ALG I nebo Krankengeldem jsi podle Satzung §6 plně osvobozen od příspěvku. Doklad sem nahrávat nemusíš — pokud ho Vorstand bude potřebovat, ozve se ti.';
+  String get wizardStufe3OptionBehinderung =>
+      'Mám zdravotní postižení (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Žádost o slevu podána';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Sleva jen s dokladem: $nachweis. Přines nám ho nebo ho pošli — bez dokladu žádná sleva. Vorstand posoudí a rozhodne.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Sleva jen s dokladem: $nachweis. Přineste nám ho nebo ho pošlete — bez dokladu žádná sleva. Vorstand posoudí a rozhodne.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'rozhodnutí (Bescheid) z Jobcenteru';
+
+  @override
+  String get nachweisSozialamt => 'rozhodnutí (Bescheid) ze Sozialamtu';
+
+  @override
+  String get nachweisArbeitsagentur => 'rozhodnutí (Bescheid) z Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'rozhodnutí (Bescheid) ze zdravotní pojišťovny (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'rozhodnutí o důchodu (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'průkaz těžce zdravotně postižené osoby (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Zda a kolik se má platit zpětně, rozhodne Vorstand po posouzení.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Do 18 let je členství bez příspěvku.';
+
+  @override
+  String get finanzMinderjaehrig => 'Do 18 let — bez příspěvku';
 }

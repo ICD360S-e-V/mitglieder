@@ -1253,7 +1253,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Metoda de plată nu este necesară pentru beneficiarii de ajutor social.';
+      'Nu e necesară când s-a cerut o reducere și pentru membrii sub 18 ani.';
 
   @override
   String get locked => 'Blocat';
@@ -1310,19 +1310,7 @@ class AppLocalizationsRo extends AppLocalizations {
       'Pentru a verifica dacă aveți dreptul la o reducere a cotizației, avem nevoie de următoarele informații.';
 
   @override
-  String get socialBenefitsQuestion => 'Primiți în prezent ajutor social?';
-
-  @override
-  String get optionBuergergeld => 'Da, ajutor social (Centrul de Muncă)';
-
-  @override
-  String get optionSozialamt => 'Da, prestații sociale (Asistență Socială)';
-
-  @override
-  String get optionNoBenefits => 'Nu, nu primesc ajutor social';
-
-  @override
-  String get feeExempt => 'Cotizația lunară: 0,00 €/lună';
+  String get socialBenefitsQuestion => 'Vi se aplică una dintre acestea?';
 
   @override
   String get feeRegular => 'Cotizația lunară: 25,00 €/lună';
@@ -1366,10 +1354,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Nu înainte de 01.08.2025 (data înființării)';
-
-  @override
-  String get feeExemptRetro =>
-      'Scutit: 0,00 € retroactiv.\nDoar data membriei este setată retroactiv.';
 
   @override
   String get retroactiveFees => 'Cotizații retroactive';
@@ -2405,7 +2389,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Acum despre situația ta financiară. Nu e ca să te judec — e ca să te scutim de cotizație dacă primești ajutor social.';
+      'Acum despre situația ta financiară. Nu ca să te judec: dacă ți se aplică una dintre acestea, poți cere o reducere cu dovadă — Vorstand-ul verifică și decide.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Primesc Bürgergeld';
@@ -2414,10 +2398,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Primesc ajutor de la Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Nu primesc niciuna din acestea';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Cotizație: 0 € / lună 🎉';
+  String get wizardStufe3OptionNein => 'Nu mi se aplică nimic din acestea';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Cotizație: 25 € / lună';
@@ -2517,13 +2498,6 @@ class AppLocalizationsRo extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'De la $start până la $end sunt $months luni. La 25 €/lună înseamnă $amount € de plată retroactivă, în plus față de cotizația lunară curentă.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Cotizație retroactivă: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Cu Bürgergeld sau Sozialamt ești scutit complet — chiar și retroactiv nu datorezi nimic.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2670,13 +2644,6 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Citit la:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Scutit de contribuție (fără plată)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Fără ajutoare sociale';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Începe la validare';
@@ -3405,10 +3372,54 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Nu e nevoie de dovadă — dacă Vorstand-ul are nevoie de una, ia legătura.';
+  String get wizardStufe3OptionRente => 'Primesc pensie';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Cu Bürgergeld, Sozialamt, ALG I sau Krankengeld ești scutit complet de cotizație, conform Satzung-ului §6. Nu trebuie să încarci aici nicio dovadă — dacă Vorstand-ul are nevoie de una, te contactează.';
+  String get wizardStufe3OptionBehinderung =>
+      'Am o dizabilitate (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Reducere cerută';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Reducere doar cu dovadă: $nachweis. Adu-ne dovada sau trimite-ne-o — fără dovadă nu există reducere. Vorstand-ul verifică și decide.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Reducere doar cu dovadă: $nachweis. Aduceți-ne dovada sau trimiteți-ne-o — fără dovadă nu există reducere. Vorstand-ul verifică și decide.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'decizie (Bescheid) de la Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'decizie (Bescheid) de la Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur =>
+      'decizie (Bescheid) de la Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'decizie (Bescheid) de la casa de asigurări de sănătate (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'decizie de pensie (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'legitimație de persoană cu handicap grav (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Dacă și cât trebuie plătit retroactiv decide Vorstand-ul după verificare.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Sub 18 ani, calitatea de membru este scutită de cotizație.';
+
+  @override
+  String get finanzMinderjaehrig => 'Sub 18 ani — fără cotizație';
 }

@@ -1251,7 +1251,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Способ оплаты не требуется для получателей социальных пособий.';
+      'Не требуется при запрошенной скидке и для членов младше 18 лет.';
 
   @override
   String get locked => 'Заблокировано';
@@ -1308,20 +1308,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Чтобы проверить, имеете ли вы право на снижение взноса, нам нужна следующая информация. Она будет использована исключительно для определения вашего членского взноса.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Вы сейчас получаете социальные пособия?';
-
-  @override
-  String get optionBuergergeld => 'Да, гражданское пособие (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Да, социальная помощь (Социальная служба)';
-
-  @override
-  String get optionNoBenefits => 'Нет, я не получаю социальных пособий';
-
-  @override
-  String get feeExempt => 'Ваш ежемесячный взнос: 0,00 €/месяц';
+  String get socialBenefitsQuestion => 'Относится ли к вам что-то из этого?';
 
   @override
   String get feeRegular => 'Ваш ежемесячный взнос: 25,00 €/месяц';
@@ -1365,10 +1352,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Не ранее 01.08.2025 (дата основания)';
-
-  @override
-  String get feeExemptRetro =>
-      'Освобождение от взноса: 0,00 € ретроактивно.\nТолько дата членства устанавливается ретроактивно.';
 
   @override
   String get retroactiveFees => 'Ретроактивные взносы';
@@ -2399,7 +2382,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Теперь о твоей финансовой ситуации. Не для того, чтобы судить — а чтобы освободить от взноса, если получаешь социальные выплаты.';
+      'Теперь о твоей финансовой ситуации. Не для того, чтобы судить: если что-то из этого относится к тебе, можешь с подтверждением попросить скидку — Vorstand проверит и решит.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Получаю Bürgergeld';
@@ -2408,10 +2391,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Получаю пособие от Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Не получаю ни одно из этих';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Взнос: 0 € / месяц 🎉';
+  String get wizardStufe3OptionNein => 'Ничего из этого ко мне не относится';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Взнос: 25 € / месяц';
@@ -2511,13 +2491,6 @@ class AppLocalizationsRu extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'С $start по $end это $months месяцев. По 25 €/месяц получается $amount € к доплате, помимо текущего месячного взноса.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Ретроактивный взнос: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'С Bürgergeld или Sozialamt ты полностью освобождён — даже ретроактивно ничего не должен.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2664,13 +2637,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Прочитано:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Освобождён от взноса (без оплаты)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Без социальных пособий';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Начало при верификации';
@@ -3400,10 +3366,52 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Подтверждение не нужно — если оно понадобится Vorstand, с вами свяжутся.';
+  String get wizardStufe3OptionRente => 'Получаю пенсию';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'С Bürgergeld, Sozialamt, ALG I или Krankengeld ты полностью освобождён от взноса по Satzung §6. Загружать подтверждение здесь не нужно — если оно понадобится Vorstand, с тобой свяжутся.';
+  String get wizardStufe3OptionBehinderung =>
+      'У меня инвалидность (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Скидка запрошена';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Скидка только с подтверждением: $nachweis. Принеси или пришли его нам — без подтверждения скидки нет. Vorstand проверит и решит.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Скидка только с подтверждением: $nachweis. Принесите или пришлите его нам — без подтверждения скидки нет. Vorstand проверит и решит.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'решение (Bescheid) Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'решение (Bescheid) Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur => 'решение (Bescheid) Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'решение (Bescheid) больничной кассы (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'решение о пенсии (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'удостоверение о тяжёлой инвалидности (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Нужно ли платить задним числом и сколько, решает Vorstand после проверки.';
+
+  @override
+  String get minderjaehrigBeitragsfrei => 'До 18 лет членство без взносов.';
+
+  @override
+  String get finanzMinderjaehrig => 'До 18 лет — без взноса';
 }

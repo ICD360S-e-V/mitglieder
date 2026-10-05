@@ -1249,7 +1249,7 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Начин плаћања није потребан за примаоце социјалних накнада.';
+      'Није потребно код затраженог умањења и за чланове млађе од 18 година.';
 
   @override
   String get locked => 'Закључано';
@@ -1306,20 +1306,7 @@ class AppLocalizationsSr extends AppLocalizations {
       'Да бисмо проверили да ли имате право на смањење чланарине, потребне су нам следеће информације. Користиће се искључиво за одређивање ваше чланарине.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Да ли тренутно примате социјалне накнаде?';
-
-  @override
-  String get optionBuergergeld => 'Да, грађанска накнада (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Да, социјална помоћ (Социјална служба)';
-
-  @override
-  String get optionNoBenefits => 'Не, не примам социјалне накнаде';
-
-  @override
-  String get feeExempt => 'Ваша месечна чланарина је: 0,00 €/месец';
+  String get socialBenefitsQuestion => 'Да ли се нешто од овога односи на вас?';
 
   @override
   String get feeRegular => 'Ваша месечна чланарина је: 25,00 €/месец';
@@ -1363,10 +1350,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Не пре 01.08.2025. (датум оснивања)';
-
-  @override
-  String get feeExemptRetro =>
-      'Ослобађање од чланарине: 0,00 € ретроактивно.\nСамо датум чланства се поставља ретроактивно.';
 
   @override
   String get retroactiveFees => 'Ретроактивне чланарине';
@@ -2395,7 +2378,7 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Сада о твојој финансијској ситуацији. Не да те осуђујем — већ да те ослободимо чланарине ако примаш социјалне накнаде.';
+      'Сада о твојој финансијској ситуацији. Не да те осуђујем: ако се нешто од овога односи на тебе, можеш уз доказ да затражиш умањење — Vorstand проверава и одлучује.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Примам Bürgergeld';
@@ -2404,10 +2387,7 @@ class AppLocalizationsSr extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Примам помоћ од Sozialamta';
 
   @override
-  String get wizardStufe3OptionNein => 'Не примам ниједно од овога';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Чланарина: 0 € / месечно 🎉';
+  String get wizardStufe3OptionNein => 'Ништа од овога се не односи на мене';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Чланарина: 25 € / месечно';
@@ -2506,13 +2486,6 @@ class AppLocalizationsSr extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Од $start до $end то је $months месеци. По 25 €/месечно то износи $amount € за плаћање ретроактивно, поред тренутне месечне чланарине.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Ретроактивна чланарина: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Са Bürgergeld или Sozialamt-ом потпуно си ослобођен — чак ни ретроактивно не дугујеш ништа.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2659,13 +2632,6 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Прочитано:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Ослобођено чланарине (без плаћања)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Без социјалне помоћи';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Почиње при верификацији';
@@ -3395,10 +3361,53 @@ class AppLocalizationsSr extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Доказ није потребан — ако га Vorstand буде требао, јавиће се.';
+  String get wizardStufe3OptionRente => 'Примам пензију';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Са Bürgergeldom, Sozialamtom, ALG I или Krankengeldom потпуно си ослобођен чланарине према Сатзунг-у §6. Овде не мораш да отпремаш доказ — ако га Vorstand буде требао, јавиће ти се.';
+  String get wizardStufe3OptionBehinderung =>
+      'Имам инвалидитет (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Умањење затражено';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Умањење само уз доказ: $nachweis. Донеси нам га или пошаљи — без доказа нема умањења. Vorstand проверава и одлучује.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Умањење само уз доказ: $nachweis. Донесите нам га или пошаљите — без доказа нема умањења. Vorstand проверава и одлучује.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'решење (Bescheid) Jobcentera';
+
+  @override
+  String get nachweisSozialamt => 'решење (Bescheid) Sozialamta';
+
+  @override
+  String get nachweisArbeitsagentur => 'решење (Bescheid) Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'решење (Bescheid) здравственог осигурања (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'решење о пензији (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'легитимација особе са тешким инвалидитетом (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Да ли и колико треба платити уназад, одлучује Vorstand након провере.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'За млађе од 18 година чланство је без чланарине.';
+
+  @override
+  String get finanzMinderjaehrig => 'Млађи од 18 — без чланарине';
 }

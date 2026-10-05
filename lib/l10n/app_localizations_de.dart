@@ -1255,7 +1255,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Bei Bürgergeld/Sozialamt entfällt die Zahlungsmethode.';
+      'Entfällt bei beantragter Ermäßigung und für Mitglieder unter 18 Jahren.';
 
   @override
   String get locked => 'Gesperrt';
@@ -1313,20 +1313,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Um zu prüfen, ob Sie Anspruch auf eine Beitragsermäßigung haben, benötigen wir folgende Information. Diese Information wird ausschließlich zur Festlegung Ihres Mitgliedsbeitrags verwendet.';
 
   @override
-  String get socialBenefitsQuestion => 'Beziehen Sie derzeit Sozialleistungen?';
-
-  @override
-  String get optionBuergergeld => 'Ja, Bürgergeld (Jobcenter)';
-
-  @override
-  String get optionSozialamt => 'Ja, Sozialleistungen vom Sozialamt';
-
-  @override
-  String get optionNoBenefits => 'Nein, ich beziehe keine Sozialleistungen';
-
-  @override
-  String get feeExempt =>
-      'Ihr monatlicher Mitgliedsbeitrag beträgt: 0,00 €/Monat';
+  String get socialBenefitsQuestion => 'Trifft eines davon auf Sie zu?';
 
   @override
   String get feeRegular =>
@@ -1371,10 +1358,6 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Nicht vor dem 01.08.2025 (Gründungsdatum)';
-
-  @override
-  String get feeExemptRetro =>
-      'Beitragsbefreit: 0,00 € retroaktiv.\nNur das Mitgliedschaftsdatum wird rückwirkend gesetzt.';
 
   @override
   String get retroactiveFees => 'Retroaktive Beiträge';
@@ -2416,7 +2399,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Jetzt zu deiner finanziellen Situation. Nicht um zu urteilen — sondern um dich vom Beitrag zu befreien, falls du Sozialleistungen beziehst.';
+      'Jetzt zu deiner finanziellen Situation. Nicht um zu urteilen: Trifft eines davon auf dich zu, kannst du mit einem Nachweis eine Ermäßigung beantragen — der Vorstand prüft und entscheidet.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Ich beziehe Bürgergeld';
@@ -2425,10 +2408,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Ich beziehe Sozialamt-Leistungen';
 
   @override
-  String get wizardStufe3OptionNein => 'Ich beziehe keine dieser Leistungen';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Beitrag: 0 € / Monat 🎉';
+  String get wizardStufe3OptionNein => 'Nichts davon trifft auf mich zu';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Beitrag: 25 € / Monat';
@@ -2526,13 +2506,6 @@ class AppLocalizationsDe extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Vom $start bis $end sind das $months Monate. Bei 25 €/Monat ergibt das eine rückwirkende Zahlung von $amount €, zusätzlich zum laufenden Monatsbeitrag.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Rückwirkender Beitrag: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Mit Bürgergeld oder Sozialamt bist du komplett befreit — auch rückwirkend nichts zu zahlen.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2678,13 +2651,6 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Gelesen am:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Beitragsfrei (kein Beitrag erforderlich)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Keine Sozialleistungen';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Beginn ab Verifizierung';
@@ -3424,10 +3390,51 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Kein Nachweis nötig — falls der Vorstand einen braucht, meldet er sich.';
+  String get wizardStufe3OptionRente => 'Ich beziehe eine Rente';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Einen Nachweis musst du hier nicht hochladen — falls der Vorstand einen braucht, meldet er sich bei dir.';
+  String get wizardStufe3OptionBehinderung =>
+      'Ich habe eine Behinderung (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Ermäßigung beantragt';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Ermäßigung nur mit Nachweis: $nachweis. Bring oder schick ihn uns — ohne Nachweis keine Ermäßigung. Der Vorstand prüft und entscheidet.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Ermäßigung nur mit Nachweis: $nachweis. Bringen oder schicken Sie ihn uns — ohne Nachweis keine Ermäßigung. Der Vorstand prüft und entscheidet.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'Bescheid vom Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'Bescheid vom Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur => 'Bescheid der Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse => 'Bescheid der Krankenkasse';
+
+  @override
+  String get nachweisRente => 'Rentenbescheid';
+
+  @override
+  String get nachweisBehinderung => 'Schwerbehindertenausweis';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Ob und wie viel rückwirkend zu zahlen ist, entscheidet der Vorstand nach Prüfung.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Unter 18 Jahren ist die Mitgliedschaft beitragsfrei.';
+
+  @override
+  String get finanzMinderjaehrig => 'Unter 18 — beitragsfrei';
 }

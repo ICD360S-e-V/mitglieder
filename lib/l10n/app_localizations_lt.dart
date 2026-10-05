@@ -1247,7 +1247,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Mokėjimo būdas nereikalingas socialinių išmokų gavėjams.';
+      'Nereikia, jei prašoma nuolaidos, ir jaunesniems nei 18 metų nariams.';
 
   @override
   String get locked => 'Užrakinta';
@@ -1304,20 +1304,7 @@ class AppLocalizationsLt extends AppLocalizations {
       'Norėdami patikrinti, ar jums priklauso mokesčio sumažinimas, mums reikia šios informacijos. Ji bus naudojama tik jūsų nario mokesčiui nustatyti.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Ar šiuo metu gaunate socialines išmokas?';
-
-  @override
-  String get optionBuergergeld => 'Taip, piliečio pašalpa (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Taip, socialinė parama (Socialinis skyrius)';
-
-  @override
-  String get optionNoBenefits => 'Ne, negaunu socialinių išmokų';
-
-  @override
-  String get feeExempt => 'Jūsų mėnesinis mokestis: 0,00 €/mėn.';
+  String get socialBenefitsQuestion => 'Ar kuris nors iš šių jums tinka?';
 
   @override
   String get feeRegular => 'Jūsų mėnesinis mokestis: 25,00 €/mėn.';
@@ -1361,10 +1348,6 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Ne anksčiau nei 01.08.2025 (įkūrimo data)';
-
-  @override
-  String get feeExemptRetro =>
-      'Atleidimas nuo mokesčio: 0,00 € atgaline data.\nTik narystės data nustatoma atgaline data.';
 
   @override
   String get retroactiveFees => 'Atgaliniai mokesčiai';
@@ -2395,7 +2378,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Dabar apie tavo finansinę padėtį. Ne tam, kad teisčiau — kad atleisčiau nuo mokesčio, jei gauni socialinę paramą.';
+      'Dabar apie tavo finansinę padėtį. Ne tam, kad teisčiau: jei kas nors iš šių tinka tau, gali su įrodymu prašyti nuolaidos — Vorstand patikrina ir nusprendžia.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Gaunu Bürgergeld';
@@ -2404,10 +2387,7 @@ class AppLocalizationsLt extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Gaunu išmokas iš Sozialamto';
 
   @override
-  String get wizardStufe3OptionNein => 'Negaunu nė vienos';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Mokestis: 0 € / mėn. 🎉';
+  String get wizardStufe3OptionNein => 'Nė vienas iš šių man netinka';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Mokestis: 25 € / mėn.';
@@ -2507,13 +2487,6 @@ class AppLocalizationsLt extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Nuo $start iki $end yra $months mėn. Po 25 €/mėn. tai sudaro $amount € atgaline data, papildomai prie esamo mėnesinio mokesčio.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Atgalinis mokestis: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Su Bürgergeld arba Sozialamt esi visiškai atleistas — net atgaline data nieko nesi skolingas.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2660,13 +2633,6 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Perskaityta:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Atleista nuo mokesčio (mokėti nereikia)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Be socialinių išmokų';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Pradedama patvirtinus';
@@ -3397,10 +3363,53 @@ class AppLocalizationsLt extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Įrodymo nereikia — jei Vorstand jo prireiks, susisieks.';
+  String get wizardStufe3OptionRente => 'Gaunu pensiją';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Su Bürgergeldu, Sozialamtu, ALG I ar Krankengeldu pagal Satzung §6 esi visiškai atleistas nuo mokesčio. Įrodymo čia įkelti nereikia — jei Vorstand jo prireiks, su tavimi susisieks.';
+  String get wizardStufe3OptionBehinderung =>
+      'Turiu negalią (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Nuolaidos paprašyta';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Nuolaida tik su įrodymu: $nachweis. Atnešk arba atsiųsk jį mums — be įrodymo nuolaidos nėra. Vorstand patikrina ir nusprendžia.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Nuolaida tik su įrodymu: $nachweis. Atneškite arba atsiųskite jį mums — be įrodymo nuolaidos nėra. Vorstand patikrina ir nusprendžia.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'Jobcenter sprendimas (Bescheid)';
+
+  @override
+  String get nachweisSozialamt => 'Sozialamt sprendimas (Bescheid)';
+
+  @override
+  String get nachweisArbeitsagentur => 'Arbeitsagentur sprendimas (Bescheid)';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'ligonių kasos sprendimas (Bescheid, Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'pensijos sprendimas (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'sunkios negalios pažymėjimas (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Ar ir kiek mokėti atgaline data, Vorstand sprendžia po patikrinimo.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Jaunesniems nei 18 metų narystė be mokesčio.';
+
+  @override
+  String get finanzMinderjaehrig => 'Iki 18 — be mokesčio';
 }

@@ -1253,7 +1253,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Ο τρόπος πληρωμής δεν απαιτείται για δικαιούχους κοινωνικών παροχών.';
+      'Δεν απαιτείται όταν έχει ζητηθεί μείωση και για μέλη κάτω των 18 ετών.';
 
   @override
   String get locked => 'Κλειδωμένο';
@@ -1310,20 +1310,7 @@ class AppLocalizationsEl extends AppLocalizations {
       'Για να ελέγξουμε αν δικαιούστε μείωση συνδρομής, χρειαζόμαστε τις ακόλουθες πληροφορίες. Θα χρησιμοποιηθούν αποκλειστικά για τον καθορισμό της συνδρομής σας.';
 
   @override
-  String get socialBenefitsQuestion =>
-      'Λαμβάνετε αυτήν τη στιγμή κοινωνικές παροχές;';
-
-  @override
-  String get optionBuergergeld => 'Ναι, επίδομα πολίτη (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Ναι, κοινωνική πρόνοια (Κοινωνική Υπηρεσία)';
-
-  @override
-  String get optionNoBenefits => 'Όχι, δεν λαμβάνω κοινωνικές παροχές';
-
-  @override
-  String get feeExempt => 'Η μηνιαία συνδρομή σας είναι: 0,00 €/μήνα';
+  String get socialBenefitsQuestion => 'Ισχύει κάτι από αυτά για εσάς;';
 
   @override
   String get feeRegular => 'Η μηνιαία συνδρομή σας είναι: 25,00 €/μήνα';
@@ -1367,10 +1354,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Όχι πριν τις 01.08.2025 (ημερομηνία ίδρυσης)';
-
-  @override
-  String get feeExemptRetro =>
-      'Απαλλαγή συνδρομής: 0,00 € αναδρομικά.\nΜόνο η ημερομηνία συνδρομής ορίζεται αναδρομικά.';
 
   @override
   String get retroactiveFees => 'Αναδρομικές συνδρομές';
@@ -2408,7 +2391,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Τώρα για την οικονομική σου κατάσταση. Όχι για να κρίνω — απλά για να σε απαλλάξουμε από τη συνδρομή αν λαμβάνεις κοινωνικά επιδόματα.';
+      'Τώρα για την οικονομική σου κατάσταση. Όχι για να σε κρίνω: αν ισχύει κάτι από αυτά για σένα, μπορείς να ζητήσεις μείωση με δικαιολογητικό — το Vorstand εξετάζει και αποφασίζει.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Λαμβάνω Bürgergeld';
@@ -2417,10 +2400,7 @@ class AppLocalizationsEl extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Λαμβάνω παροχές από το Sozialamt';
 
   @override
-  String get wizardStufe3OptionNein => 'Δεν λαμβάνω κανένα από αυτά';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Συνδρομή: 0 € / μήνα 🎉';
+  String get wizardStufe3OptionNein => 'Τίποτα από αυτά δεν ισχύει για μένα';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Συνδρομή: 25 € / μήνα';
@@ -2520,13 +2500,6 @@ class AppLocalizationsEl extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Από $start έως $end είναι $months μήνες. Με 25 €/μήνα γίνονται $amount € οφειλόμενα αναδρομικά, επιπλέον της τρέχουσας μηνιαίας συνδρομής.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Αναδρομική συνδρομή: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Με Bürgergeld ή Sozialamt είσαι πλήρως απαλλαγμένος — ακόμη και αναδρομικά δεν χρωστάς τίποτα.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2675,13 +2648,6 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Διαβάστηκε στις:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Απαλλαγή εισφοράς (χωρίς πληρωμή)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Χωρίς κοινωνικές παροχές';
 
   @override
   String get wizardFinalStufeBeginAtVerification =>
@@ -3421,10 +3387,53 @@ class AppLocalizationsEl extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Δεν χρειάζεται απόδειξη — αν το Vorstand χρειαστεί μία, θα επικοινωνήσει.';
+  String get wizardStufe3OptionRente => 'Λαμβάνω σύνταξη';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Με Bürgergeld, Sozialamt, ALG I ή Krankengeld απαλλάσσεσαι πλήρως από τη συνδρομή σύμφωνα με το Καταστατικό §6. Δεν χρειάζεται να ανεβάσεις απόδειξη εδώ — αν το Vorstand χρειαστεί μία, θα επικοινωνήσει μαζί σου.';
+  String get wizardStufe3OptionBehinderung =>
+      'Έχω αναπηρία (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Ζητήθηκε μείωση';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Μείωση μόνο με δικαιολογητικό: $nachweis. Φέρε το ή στείλε το σε εμάς — χωρίς δικαιολογητικό δεν υπάρχει μείωση. Το Vorstand εξετάζει και αποφασίζει.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Μείωση μόνο με δικαιολογητικό: $nachweis. Φέρτε το ή στείλτε το σε εμάς — χωρίς δικαιολογητικό δεν υπάρχει μείωση. Το Vorstand εξετάζει και αποφασίζει.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'απόφαση (Bescheid) του Jobcenter';
+
+  @override
+  String get nachweisSozialamt => 'απόφαση (Bescheid) του Sozialamt';
+
+  @override
+  String get nachweisArbeitsagentur => 'απόφαση (Bescheid) της Arbeitsagentur';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'απόφαση (Bescheid) του ταμείου υγείας (Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'απόφαση σύνταξης (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'κάρτα σοβαρής αναπηρίας (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Αν και πόσα θα πληρωθούν αναδρομικά, αποφασίζει το Vorstand μετά τον έλεγχο.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Κάτω των 18 ετών η συμμετοχή είναι χωρίς συνδρομή.';
+
+  @override
+  String get finanzMinderjaehrig => 'Κάτω των 18 — χωρίς συνδρομή';
 }

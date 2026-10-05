@@ -1247,7 +1247,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Sosyal yardım alanlarda ödeme yöntemi gerekmez.';
+      'İndirim talep edildiğinde ve 18 yaş altı üyeler için gerekmez.';
 
   @override
   String get locked => 'Kilitli';
@@ -1306,19 +1306,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Aidat indirimine hak kazanıp kazanmadığınızı kontrol etmek için aşağıdaki bilgiye ihtiyacımız var. Bu bilgi yalnızca üyelik aidatınızın belirlenmesi için kullanılacaktır.';
 
   @override
-  String get socialBenefitsQuestion => 'Şu anda sosyal yardım alıyor musunuz?';
-
-  @override
-  String get optionBuergergeld => 'Evet, vatandaş parası (İş Merkezi)';
-
-  @override
-  String get optionSozialamt => 'Evet, sosyal yardım (Sosyal Hizmetler)';
-
-  @override
-  String get optionNoBenefits => 'Hayır, sosyal yardım almıyorum';
-
-  @override
-  String get feeExempt => 'Aylık üyelik aidatınız: 0,00 €/Ay';
+  String get socialBenefitsQuestion => 'Bunlardan biri sizin için geçerli mi?';
 
   @override
   String get feeRegular => 'Aylık üyelik aidatınız: 25,00 €/Ay';
@@ -1362,10 +1350,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get dateNotBefore => '01.08.2025\'ten önce olamaz (Kuruluş tarihi)';
-
-  @override
-  String get feeExemptRetro =>
-      'Aidat muafiyeti: 0,00 € geçmişe dönük.\nSadece üyelik tarihi geriye dönük olarak belirlenir.';
 
   @override
   String get retroactiveFees => 'Geçmişe Dönük Aidatlar';
@@ -2401,7 +2385,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Şimdi mali durumun hakkında. Yargılamak için değil — sosyal yardım alıyorsan aidattan muaf tutalım diye.';
+      'Şimdi mali durumun hakkında. Yargılamak için değil: bunlardan biri senin için geçerliyse belgeyle indirim talep edebilirsin — Vorstand inceler ve karar verir.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Bürgergeld alıyorum';
@@ -2410,10 +2394,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Sozialamt\'tan yardım alıyorum';
 
   @override
-  String get wizardStufe3OptionNein => 'Bunlardan hiçbirini almıyorum';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Aidat: 0 € / ay 🎉';
+  String get wizardStufe3OptionNein =>
+      'Bunların hiçbiri benim için geçerli değil';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Aidat: 25 € / ay';
@@ -2513,13 +2495,6 @@ class AppLocalizationsTr extends AppLocalizations {
       String start, String end, int months, String amount) {
     return '$start - $end arası $months ay. Ayda 25 € üzerinden bu, mevcut aylık aidatın yanı sıra geriye dönük $amount € borç anlamına gelir.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Geriye dönük aidat: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Bürgergeld veya Sozialamt ile tamamen muafsın — geriye dönük olarak da hiçbir şey ödemen gerekmez.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2665,12 +2640,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Okundu:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei => 'Aidattan muaf (ödeme gerekmez)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Sosyal yardım yok';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Doğrulamada başlar';
@@ -3403,10 +3372,53 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Belge gerekmiyor — Vorstand\'ın ihtiyacı olursa iletişime geçer.';
+  String get wizardStufe3OptionRente => 'Emekli maaşı (Rente) alıyorum';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Bürgergeld, Sozialamt, ALG I veya Krankengeld ile Tüzük §6 uyarınca aidattan tamamen muafsın. Burada belge yüklemen gerekmiyor — Vorstand\'ın ihtiyacı olursa seninle iletişime geçer.';
+  String get wizardStufe3OptionBehinderung =>
+      'Engelliyim (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'İndirim talep edildi';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'İndirim yalnızca belgeyle: $nachweis. Belgeyi bize getir veya gönder — belge yoksa indirim yok. Vorstand inceler ve karar verir.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'İndirim yalnızca belgeyle: $nachweis. Belgeyi bize getirin veya gönderin — belge yoksa indirim yok. Vorstand inceler ve karar verir.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'Jobcenter\'dan karar (Bescheid)';
+
+  @override
+  String get nachweisSozialamt => 'Sozialamt\'tan karar (Bescheid)';
+
+  @override
+  String get nachweisArbeitsagentur => 'Arbeitsagentur\'dan karar (Bescheid)';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'hastalık sigortası kasasından karar (Bescheid, Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'emeklilik kararı (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'ağır engelli kimlik kartı (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Geriye dönük ödeme yapılıp yapılmayacağına ve ne kadar olacağına Vorstand inceleme sonrası karar verir.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      '18 yaşın altındakiler için üyelik aidatsızdır.';
+
+  @override
+  String get finanzMinderjaehrig => '18 yaş altı — aidatsız';
 }

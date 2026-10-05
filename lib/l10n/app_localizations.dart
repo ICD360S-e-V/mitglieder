@@ -2379,7 +2379,7 @@ abstract class AppLocalizations {
   /// No description provided for @socialBenefitsExempt.
   ///
   /// In de, this message translates to:
-  /// **'Bei Bürgergeld/Sozialamt entfällt die Zahlungsmethode.'**
+  /// **'Entfällt bei beantragter Ermäßigung und für Mitglieder unter 18 Jahren.'**
   String get socialBenefitsExempt;
 
   /// No description provided for @locked.
@@ -2481,32 +2481,8 @@ abstract class AppLocalizations {
   /// No description provided for @socialBenefitsQuestion.
   ///
   /// In de, this message translates to:
-  /// **'Beziehen Sie derzeit Sozialleistungen?'**
+  /// **'Trifft eines davon auf Sie zu?'**
   String get socialBenefitsQuestion;
-
-  /// No description provided for @optionBuergergeld.
-  ///
-  /// In de, this message translates to:
-  /// **'Ja, Bürgergeld (Jobcenter)'**
-  String get optionBuergergeld;
-
-  /// No description provided for @optionSozialamt.
-  ///
-  /// In de, this message translates to:
-  /// **'Ja, Sozialleistungen vom Sozialamt'**
-  String get optionSozialamt;
-
-  /// No description provided for @optionNoBenefits.
-  ///
-  /// In de, this message translates to:
-  /// **'Nein, ich beziehe keine Sozialleistungen'**
-  String get optionNoBenefits;
-
-  /// No description provided for @feeExempt.
-  ///
-  /// In de, this message translates to:
-  /// **'Ihr monatlicher Mitgliedsbeitrag beträgt: 0,00 €/Monat'**
-  String get feeExempt;
 
   /// No description provided for @feeRegular.
   ///
@@ -2579,12 +2555,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Nicht vor dem 01.08.2025 (Gründungsdatum)'**
   String get dateNotBefore;
-
-  /// No description provided for @feeExemptRetro.
-  ///
-  /// In de, this message translates to:
-  /// **'Beitragsbefreit: 0,00 € retroaktiv.\nNur das Mitgliedschaftsdatum wird rückwirkend gesetzt.'**
-  String get feeExemptRetro;
 
   /// No description provided for @retroactiveFees.
   ///
@@ -4426,7 +4396,7 @@ abstract class AppLocalizations {
   /// No description provided for @wizardStufe3Prompt.
   ///
   /// In de, this message translates to:
-  /// **'Jetzt zu deiner finanziellen Situation. Nicht um zu urteilen — sondern um dich vom Beitrag zu befreien, falls du Sozialleistungen beziehst.'**
+  /// **'Jetzt zu deiner finanziellen Situation. Nicht um zu urteilen: Trifft eines davon auf dich zu, kannst du mit einem Nachweis eine Ermäßigung beantragen — der Vorstand prüft und entscheidet.'**
   String get wizardStufe3Prompt;
 
   /// No description provided for @wizardStufe3OptionBuergergeld.
@@ -4444,14 +4414,8 @@ abstract class AppLocalizations {
   /// No description provided for @wizardStufe3OptionNein.
   ///
   /// In de, this message translates to:
-  /// **'Ich beziehe keine dieser Leistungen'**
+  /// **'Nichts davon trifft auf mich zu'**
   String get wizardStufe3OptionNein;
-
-  /// No description provided for @wizardStufe3FeeExemptTitle.
-  ///
-  /// In de, this message translates to:
-  /// **'Beitrag: 0 € / Monat 🎉'**
-  String get wizardStufe3FeeExemptTitle;
 
   /// No description provided for @wizardStufe3RegularFeeTitle.
   ///
@@ -4609,18 +4573,6 @@ abstract class AppLocalizations {
   /// **'Vom {start} bis {end} sind das {months} Monate. Bei 25 €/Monat ergibt das eine rückwirkende Zahlung von {amount} €, zusätzlich zum laufenden Monatsbeitrag.'**
   String wizardStufe5RetroactiveBody(
       String start, String end, int months, String amount);
-
-  /// No description provided for @wizardStufe5FeeExemptTitle.
-  ///
-  /// In de, this message translates to:
-  /// **'Rückwirkender Beitrag: 0 € 🎉'**
-  String get wizardStufe5FeeExemptTitle;
-
-  /// No description provided for @wizardStufe5FeeExemptBody.
-  ///
-  /// In de, this message translates to:
-  /// **'Mit Bürgergeld oder Sozialamt bist du komplett befreit — auch rückwirkend nichts zu zahlen.'**
-  String get wizardStufe5FeeExemptBody;
 
   /// No description provided for @wizardDocumentPrompt.
   ///
@@ -4861,18 +4813,6 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Gelesen am:'**
   String get wizardFinalStufeReadAt;
-
-  /// No description provided for @wizardFinalStufeBeitragsfrei.
-  ///
-  /// In de, this message translates to:
-  /// **'Beitragsfrei (kein Beitrag erforderlich)'**
-  String get wizardFinalStufeBeitragsfrei;
-
-  /// No description provided for @wizardFinalStufeNotExempt.
-  ///
-  /// In de, this message translates to:
-  /// **'Keine Sozialleistungen'**
-  String get wizardFinalStufeNotExempt;
 
   /// No description provided for @wizardFinalStufeBeginAtVerification.
   ///
@@ -6134,17 +6074,89 @@ abstract class AppLocalizations {
   /// **'Die Nummer hat {anzahl} Ziffern — das kann nicht stimmen.'**
   String wizardErrPhoneLaenge(int anzahl);
 
-  /// No description provided for @nachweisNichtNoetig.
+  /// Stufe 3: Ermäßigungsgrund Rente (05.10.2026)
   ///
   /// In de, this message translates to:
-  /// **'Kein Nachweis nötig — falls der Vorstand einen braucht, meldet er sich.'**
-  String get nachweisNichtNoetig;
+  /// **'Ich beziehe eine Rente'**
+  String get wizardStufe3OptionRente;
 
-  /// No description provided for @wizardStufe3FeeExemptBodyOhneNachweis.
+  /// Stufe 3: Ermäßigungsgrund Behinderung, Nachweis Schwerbehindertenausweis
   ///
   /// In de, this message translates to:
-  /// **'Mit Bürgergeld, Sozialamt, ALG I oder Krankengeld bist du nach Satzung §6 vollständig beitragsbefreit. Einen Nachweis musst du hier nicht hochladen — falls der Vorstand einen braucht, meldet er sich bei dir.'**
-  String get wizardStufe3FeeExemptBodyOhneNachweis;
+  /// **'Ich habe eine Behinderung (Schwerbehindertenausweis)'**
+  String get wizardStufe3OptionBehinderung;
+
+  /// Ermäßigung beantragt — der Vorstand entscheidet; KEINE Zusage
+  ///
+  /// In de, this message translates to:
+  /// **'Ermäßigung beantragt'**
+  String get ermaessigungBeantragtTitel;
+
+  /// Assistent (du): ohne Nachweis keine Ermäßigung; hochgeladen wird nichts
+  ///
+  /// In de, this message translates to:
+  /// **'Ermäßigung nur mit Nachweis: {nachweis}. Bring oder schick ihn uns — ohne Nachweis keine Ermäßigung. Der Vorstand prüft und entscheidet.'**
+  String ermaessigungNurMitNachweis(String nachweis);
+
+  /// Mitglieds-Tab (Sie): ohne Nachweis keine Ermäßigung; hochgeladen wird nichts
+  ///
+  /// In de, this message translates to:
+  /// **'Ermäßigung nur mit Nachweis: {nachweis}. Bringen oder schicken Sie ihn uns — ohne Nachweis keine Ermäßigung. Der Vorstand prüft und entscheidet.'**
+  String ermaessigungNurMitNachweisSie(String nachweis);
+
+  /// Nachweis zu Bürgergeld
+  ///
+  /// In de, this message translates to:
+  /// **'Bescheid vom Jobcenter'**
+  String get nachweisJobcenter;
+
+  /// Nachweis zu Sozialamt
+  ///
+  /// In de, this message translates to:
+  /// **'Bescheid vom Sozialamt'**
+  String get nachweisSozialamt;
+
+  /// Nachweis zu Arbeitslosengeld I
+  ///
+  /// In de, this message translates to:
+  /// **'Bescheid der Arbeitsagentur'**
+  String get nachweisArbeitsagentur;
+
+  /// Nachweis zu Krankengeld
+  ///
+  /// In de, this message translates to:
+  /// **'Bescheid der Krankenkasse'**
+  String get nachweisKrankenkasse;
+
+  /// Nachweis zu Rente
+  ///
+  /// In de, this message translates to:
+  /// **'Rentenbescheid'**
+  String get nachweisRente;
+
+  /// Nachweis zu Behinderung
+  ///
+  /// In de, this message translates to:
+  /// **'Schwerbehindertenausweis'**
+  String get nachweisBehinderung;
+
+  /// Stufe 5 bei beantragter Ermäßigung
+  ///
+  /// In de, this message translates to:
+  /// **'Ob und wie viel rückwirkend zu zahlen ist, entscheidet der Vorstand nach Prüfung.'**
+  String get ermaessigungRueckwirkend;
+
+  /// Unter 18 beitragsfrei — fest, ohne Prüfung
+  ///
+  /// In de, this message translates to:
+  /// **'Unter 18 Jahren ist die Mitgliedschaft beitragsfrei.'**
+  String get minderjaehrigBeitragsfrei;
+
+  /// Etikett des gesetzten Werts minderjaehrig
+  ///
+  /// In de, this message translates to:
+  /// **'Unter 18 — beitragsfrei'**
+  String get finanzMinderjaehrig;
 }
 
 class _AppLocalizationsDelegate

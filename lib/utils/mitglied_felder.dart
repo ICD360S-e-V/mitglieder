@@ -199,21 +199,95 @@ String mitgliedsartAnzeige(String? wert, AppLocalizations l) =>
     };
 
 // ── Finanzielle Situation ──────────────────────────────────────────────────
+//
+// ⚠️ Seit 05.10.2026 (Vorstand): Eine Ermäßigung gibt es nur auf Antrag, NUR
+// MIT NACHWEIS und nach Prüfung — bei Bürgergeld, Leistungen vom Sozialamt,
+// Arbeitslosengeld I, Krankengeld, Rente oder Behinderung. Ohne Nachweis keine
+// Ermäßigung; alle anderen zahlen den vollen Beitrag. Vorher versprach die App
+// „beitragsfrei". Hochgeladen wird weiterhin nichts — der Nachweis wird
+// gebracht oder geschickt. Unter 18 ist die Mitgliedschaft beitragsfrei — fest,
+// ohne Prüfung. Gleich im Online-Formular, in der Verifizierung des
+// Vorstandspanels und auf dem Server.
 
+/// Was ein Erwachsener selbst wählt.
 const finanzielleSituationWerte = <String>[
   'buergergeld',
   'sozialamt',
   'alg1',
   'krankengeld',
+  'rente',
+  'behinderung',
   'nein',
 ];
 
-/// Beitragsfrei nach Satzung § 6 Abs. 4. Ein Nachweis wird nicht mehr
-/// hochgeladen — braucht der Vorstand einen, fragt er nach.
-const beitragsfreiWerte = <String>{'buergergeld', 'sozialamt', 'alg1', 'krankengeld'};
+/// Unter 18 — beitragsfrei, ohne Prüfung. Wird nicht gewählt, sondern
+/// gesetzt, wenn der Antragsteller noch nicht 18 ist ([istMinderjaehrigAm]).
+const finanzielleSituationMinderjaehrig = 'minderjaehrig';
 
-bool istBeitragsfrei(String? finanzielleSituation) =>
-    beitragsfreiWerte.contains(finanzielleSituation);
+/// Beantragte Ermäßigung — nur mit Nachweis; der Vorstand prüft und
+/// entscheidet. Das ist KEINE Zusage; bis 05.10.2026 hieß es „beitragsfrei".
+const ermaessigungWerte = <String>{
+  'buergergeld',
+  'sozialamt',
+  'alg1',
+  'krankengeld',
+  'rente',
+  'behinderung',
+};
+
+bool istErmaessigungBeantragt(String? finanzielleSituation) =>
+    ermaessigungWerte.contains(finanzielleSituation);
+
+bool istBeitragsfreiMinderjaehrig(String? finanzielleSituation) =>
+    finanzielleSituation == finanzielleSituationMinderjaehrig;
+
+/// Stufe 4 (Zahlungsweg) entfällt: bei beantragter Ermäßigung bis zur
+/// Entscheidung des Vorstands, unter 18 ganz.
+bool zahlungswegEntfaellt(String? finanzielleSituation) =>
+    istErmaessigungBeantragt(finanzielleSituation) ||
+    istBeitragsfreiMinderjaehrig(finanzielleSituation);
+
+/// Noch nicht 18 — aus dem gespeicherten Geburtsdatum (JJJJ-MM-TT).
+/// Ohne gültiges Datum: false; dann wählt man wie ein Erwachsener.
+bool istMinderjaehrigAm(String? geburtsdatumIso, {DateTime? heute}) {
+  final geburt = DateTime.tryParse(geburtsdatumIso ?? '');
+  if (geburt == null) return false;
+  final tag = heute ?? DateTime.now();
+  var alter = tag.year - geburt.year;
+  if (tag.month < geburt.month ||
+      (tag.month == geburt.month && tag.day < geburt.day)) {
+    alter--;
+  }
+  return alter < 18;
+}
+
+/// Der Nachweis des Grundes — genannt, nicht hochgeladen: er wird gebracht
+/// oder geschickt, und ohne ihn gibt es keine Ermäßigung. Null für alles ohne
+/// Ermäßigung.
+String? nachweisFuer(String? finanzielleSituation, AppLocalizations l) =>
+    switch (finanzielleSituation) {
+      'buergergeld' => l.nachweisJobcenter,
+      'sozialamt' => l.nachweisSozialamt,
+      'alg1' => l.nachweisArbeitsagentur,
+      'krankengeld' => l.nachweisKrankenkasse,
+      'rente' => l.nachweisRente,
+      'behinderung' => l.nachweisBehinderung,
+      _ => null,
+    };
+
+/// Anzeige eines gespeicherten Werts.
+String finanzielleSituationAnzeige(String? wert, AppLocalizations l) =>
+    switch ((wert ?? '').trim()) {
+      'buergergeld' => l.wizardStufe3OptionBuergergeld,
+      'sozialamt' => l.wizardStufe3OptionSozialamt,
+      'alg1' => l.wizardStufe3OptionAlg1,
+      'krankengeld' => l.wizardStufe3OptionKrankengeld,
+      'rente' => l.wizardStufe3OptionRente,
+      'behinderung' => l.wizardStufe3OptionBehinderung,
+      'nein' => l.wizardStufe3OptionNein,
+      'minderjaehrig' => l.finanzMinderjaehrig,
+      final w => w,
+    };
 
 // ── Zahlung ────────────────────────────────────────────────────────────────
 

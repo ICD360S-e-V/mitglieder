@@ -1247,7 +1247,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Makseviis pole vajalik sotsiaalhüvitiste saajatele.';
+      'Pole vajalik soodustuse taotlemisel ega alla 18-aastastele liikmetele.';
 
   @override
   String get locked => 'Lukustatud';
@@ -1305,19 +1305,7 @@ class AppLocalizationsEt extends AppLocalizations {
       'Selleks, et kontrollida, kas teil on õigus makse vähendamisele, vajame järgmist teavet. Seda kasutatakse ainult teie liikmemaksu määramiseks.';
 
   @override
-  String get socialBenefitsQuestion => 'Kas te saate praegu sotsiaalhüvitisi?';
-
-  @override
-  String get optionBuergergeld => 'Jah, kodaniku toetus (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Jah, sotsiaalabi (Sotsiaalamet)';
-
-  @override
-  String get optionNoBenefits => 'Ei, ma ei saa sotsiaalhüvitisi';
-
-  @override
-  String get feeExempt => 'Teie kuumakse on: 0,00 €/kuu';
+  String get socialBenefitsQuestion => 'Kas mõni neist kehtib teie kohta?';
 
   @override
   String get feeRegular => 'Teie kuumakse on: 25,00 €/kuu';
@@ -1361,10 +1349,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Mitte enne 01.08.2025 (asutamiskuupäev)';
-
-  @override
-  String get feeExemptRetro =>
-      'Makse vabastus: 0,00 € tagasiulatuvalt.\nAinult liikmesuse kuupäev määratakse tagasiulatuvalt.';
 
   @override
   String get retroactiveFees => 'Tagasiulatuvad maksed';
@@ -2392,7 +2376,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Nüüd sinu rahalisest olukorrast. Mitte selleks, et hinnata — vaid et vabastada sind liikmemaksust, kui saad sotsiaaltoetusi.';
+      'Nüüd sinu rahalisest olukorrast. Mitte selleks, et hinnata: kui mõni neist kehtib sinu kohta, saad tõendiga taotleda soodustust — Vorstand kontrollib ja otsustab.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Saan Bürgergeld';
@@ -2401,10 +2385,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Saan Sozialamt-toetusi';
 
   @override
-  String get wizardStufe3OptionNein => 'Ei saa kumbagi neist';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Liikmemaks: 0 € / kuu 🎉';
+  String get wizardStufe3OptionNein => 'Ükski neist ei kehti minu kohta';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Liikmemaks: 25 € / kuu';
@@ -2503,13 +2484,6 @@ class AppLocalizationsEt extends AppLocalizations {
       String start, String end, int months, String amount) {
     return 'Alates $start kuni $end on see $months kuud. 25 €/kuus on see $amount € tagasiulatuvalt tasumiseks, lisaks praegusele kuumaksule.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Tagasiulatuv liikmemaks: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Bürgergeld või Sozialamt korral oled täiesti vabastatud — ka tagasiulatuvalt ei võlgne midagi.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2656,13 +2630,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Loetud:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei =>
-      'Liikmemaksuvaba (makse pole nõutav)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Ilma sotsiaaltoetusteta';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Algab kinnitamisel';
@@ -3392,10 +3359,53 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Tõendit pole vaja — kui Vorstand seda vajab, võtab ta ühendust.';
+  String get wizardStufe3OptionRente => 'Saan pensioni';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Bürgergeldi, Sozialamti, ALG I või Krankengeldiga oled vastavalt Satzungi §6-le liikmemaksust täielikult vabastatud. Tõendit ei pea siia üles laadima — kui Vorstand seda vajab, võtab ta sinuga ühendust.';
+  String get wizardStufe3OptionBehinderung =>
+      'Mul on puue (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Soodustust taotletud';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Soodustus ainult tõendiga: $nachweis. Too või saada see meile — tõendita soodustust ei ole. Vorstand kontrollib ja otsustab.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Soodustus ainult tõendiga: $nachweis. Tooge või saatke see meile — tõendita soodustust ei ole. Vorstand kontrollib ja otsustab.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'Jobcenteri otsus (Bescheid)';
+
+  @override
+  String get nachweisSozialamt => 'Sozialamti otsus (Bescheid)';
+
+  @override
+  String get nachweisArbeitsagentur => 'Arbeitsagenturi otsus (Bescheid)';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'haigekassa otsus (Bescheid, Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'pensioniotsus (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'raske puude tunnistus (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Kas ja kui palju tuleb tagasiulatuvalt maksta, otsustab Vorstand pärast kontrollimist.';
+
+  @override
+  String get minderjaehrigBeitragsfrei =>
+      'Alla 18-aastastele on liikmesus liikmemaksuta.';
+
+  @override
+  String get finanzMinderjaehrig => 'Alla 18 — liikmemaksuta';
 }

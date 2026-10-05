@@ -6,6 +6,7 @@ import '../l10n/app_localizations.dart';
 import '../services/wizard_service.dart';
 import '../widgets/wizard_step_shell.dart';
 import '../utils/app_theme.dart';
+import '../utils/mitglied_felder.dart';
 
 /// Stufe 5 — Mitgliedschaftsbeginn. Three options for when the
 /// membership formally starts:
@@ -17,18 +18,17 @@ import '../utils/app_theme.dart';
 ///   • anderes_datum    — backdated to a custom date the visitor
 ///                         picks between 2025-08-01 and today.
 ///
-/// The screen also surfaces the retroactive fee preview. For visitors
-/// whose Stufe 3 was bürgergeld or sozialamt (`isBeitragsfrei = true`)
-/// the preview turns into a green "Fee exempt" hint instead — they
-/// would be paying €0 anyway. The retroactive sum is calculated
-/// client-side as `months × 25€`, same logic as
-/// verifizierung_tab.dart.
+/// The screen also surfaces the retroactive fee preview, calculated
+/// client-side as `months × 25€`, same logic as verifizierung_tab.dart.
+/// Unter 18 ('minderjaehrig') ist nichts zu zahlen — auch rückwirkend nicht.
+/// Bei beantragter Ermäßigung (Stufe 3, nur mit Nachweis) entscheidet der
+/// Vorstand, ob und wie viel rückwirkend zu zahlen ist — bis 05.10.2026
+/// stand hier „Rückwirkender Beitrag: 0 €" als Zusage.
 class WizardStufe5Screen extends StatefulWidget {
   final Map<String, dynamic>? initial;
 
-  /// True when Stufe 3 resolved to bürgergeld or sozialamt. Passed in
-  /// so we can show the right fee preview without re-asking.
-  final bool isBeitragsfrei;
+  /// Der Wert aus Stufe 3 — steuert die Vorschau des rückwirkenden Beitrags.
+  final String? finanzielleSituation;
 
   final VoidCallback onNext;
   final VoidCallback? onBack;
@@ -38,7 +38,7 @@ class WizardStufe5Screen extends StatefulWidget {
     required this.onNext,
     this.onBack,
     this.initial,
-    this.isBeitragsfrei = false,
+    this.finanzielleSituation,
   });
 
   @override
@@ -370,12 +370,20 @@ class _WizardStufe5ScreenState extends State<WizardStufe5Screen> {
     final startStr = DateFormat.yMMMd(localeStr).format(start);
     final todayStr = DateFormat.yMMMd(localeStr).format(today);
 
-    if (widget.isBeitragsfrei) {
+    if (istBeitragsfreiMinderjaehrig(widget.finanzielleSituation)) {
       return _hintBox(
         color: context.colors.successBorder,
         icon: Icons.check_circle,
-        title: l10n.wizardStufe5FeeExemptTitle,
-        body: l10n.wizardStufe5FeeExemptBody,
+        title: l10n.finanzMinderjaehrig,
+        body: l10n.minderjaehrigBeitragsfrei,
+      );
+    }
+    if (istErmaessigungBeantragt(widget.finanzielleSituation)) {
+      return _hintBox(
+        color: context.colors.infoBorder,
+        icon: Icons.fact_check,
+        title: l10n.ermaessigungBeantragtTitel,
+        body: l10n.ermaessigungRueckwirkend,
       );
     }
 

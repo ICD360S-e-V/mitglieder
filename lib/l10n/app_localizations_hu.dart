@@ -1248,7 +1248,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get socialBenefitsExempt =>
-      'Fizetési mód nem szükséges szociális juttatásban részesülők számára.';
+      'Kedvezménykérelem esetén és 18 év alatti tagoknál nem szükséges.';
 
   @override
   String get locked => 'Zárolva';
@@ -1305,19 +1305,7 @@ class AppLocalizationsHu extends AppLocalizations {
       'A díjcsökkentésre való jogosultság ellenőrzéséhez a következő információkra van szükségünk. Ezek kizárólag a tagsági díj meghatározásához kerülnek felhasználásra.';
 
   @override
-  String get socialBenefitsQuestion => 'Jelenleg kap szociális juttatásokat?';
-
-  @override
-  String get optionBuergergeld => 'Igen, állampolgári juttatás (Job Center)';
-
-  @override
-  String get optionSozialamt => 'Igen, szociális segély (Szociális Hivatal)';
-
-  @override
-  String get optionNoBenefits => 'Nem, nem kapok szociális juttatásokat';
-
-  @override
-  String get feeExempt => 'Az Ön havi díja: 0,00 €/hó';
+  String get socialBenefitsQuestion => 'Vonatkozik Önre ezek közül valamelyik?';
 
   @override
   String get feeRegular => 'Az Ön havi díja: 25,00 €/hó';
@@ -1360,10 +1348,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get dateNotBefore => 'Nem korábbi, mint 2025.08.01. (alapítási dátum)';
-
-  @override
-  String get feeExemptRetro =>
-      'Díjmentesség: 0,00 € visszamenőleg.\nCsak a tagsági dátum kerül visszamenőlegesen beállításra.';
 
   @override
   String get retroactiveFees => 'Visszamenőleges díjak';
@@ -2404,7 +2388,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get wizardStufe3Prompt =>
-      'Most az anyagi helyzetedről. Nem ítélkezni — csak hogy mentesíthessünk a tagdíj alól, ha szociális ellátást kapsz.';
+      'Most az anyagi helyzetedről. Nem ítélkezni: ha ezek közül valamelyik rád vonatkozik, igazolással kedvezményt kérhetsz — a Vorstand megvizsgálja és dönt.';
 
   @override
   String get wizardStufe3OptionBuergergeld => 'Bürgergeldet kapok';
@@ -2413,10 +2397,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get wizardStufe3OptionSozialamt => 'Sozialamt-támogatást kapok';
 
   @override
-  String get wizardStufe3OptionNein => 'Egyiket sem kapom';
-
-  @override
-  String get wizardStufe3FeeExemptTitle => 'Tagdíj: 0 € / hó 🎉';
+  String get wizardStufe3OptionNein => 'Ezek közül egyik sem vonatkozik rám';
 
   @override
   String get wizardStufe3RegularFeeTitle => 'Tagdíj: 25 € / hó';
@@ -2516,13 +2497,6 @@ class AppLocalizationsHu extends AppLocalizations {
       String start, String end, int months, String amount) {
     return '$start-tól $end-ig $months hónap. 25 €/hó esetén ez $amount € visszamenőlegesen fizetendő, a folyó havi tagdíjon felül.';
   }
-
-  @override
-  String get wizardStufe5FeeExemptTitle => 'Visszamenőleges tagdíj: 0 € 🎉';
-
-  @override
-  String get wizardStufe5FeeExemptBody =>
-      'Bürgergelddel vagy Sozialamttal teljesen mentes vagy — visszamenőleg sem tartozol semmivel.';
 
   @override
   String wizardDocumentPrompt(String doc) {
@@ -2669,12 +2643,6 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get wizardFinalStufeReadAt => 'Olvasva:';
-
-  @override
-  String get wizardFinalStufeBeitragsfrei => 'Tagdíjmentes (nincs fizetés)';
-
-  @override
-  String get wizardFinalStufeNotExempt => 'Nincs szociális juttatás';
 
   @override
   String get wizardFinalStufeBeginAtVerification => 'Verifikációkor kezdődik';
@@ -3403,10 +3371,53 @@ class AppLocalizationsHu extends AppLocalizations {
   }
 
   @override
-  String get nachweisNichtNoetig =>
-      'Nem kell igazolás — ha a Vorstandnak szüksége lesz rá, jelentkezik.';
+  String get wizardStufe3OptionRente => 'Nyugdíjat kapok';
 
   @override
-  String get wizardStufe3FeeExemptBodyOhneNachweis =>
-      'Bürgergelddel, Sozialamttal, ALG I-vel vagy Krankengelddel a Satzung §6 szerint teljesen mentes vagy a tagdíj alól. Itt nem kell igazolást feltöltened — ha a Vorstandnak szüksége lesz rá, jelentkezik nálad.';
+  String get wizardStufe3OptionBehinderung =>
+      'Fogyatékossággal élek (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungBeantragtTitel => 'Kedvezmény kérelmezve';
+
+  @override
+  String ermaessigungNurMitNachweis(String nachweis) {
+    return 'Kedvezmény csak igazolással: $nachweis. Hozd be vagy küldd el nekünk — igazolás nélkül nincs kedvezmény. A Vorstand megvizsgálja és dönt.';
+  }
+
+  @override
+  String ermaessigungNurMitNachweisSie(String nachweis) {
+    return 'Kedvezmény csak igazolással: $nachweis. Hozza be vagy küldje el nekünk — igazolás nélkül nincs kedvezmény. A Vorstand megvizsgálja és dönt.';
+  }
+
+  @override
+  String get nachweisJobcenter => 'a Jobcenter határozata (Bescheid)';
+
+  @override
+  String get nachweisSozialamt => 'a Sozialamt határozata (Bescheid)';
+
+  @override
+  String get nachweisArbeitsagentur =>
+      'az Arbeitsagentur határozata (Bescheid)';
+
+  @override
+  String get nachweisKrankenkasse =>
+      'a betegpénztár határozata (Bescheid, Krankenkasse)';
+
+  @override
+  String get nachweisRente => 'nyugdíjhatározat (Rentenbescheid)';
+
+  @override
+  String get nachweisBehinderung =>
+      'súlyos fogyatékossági igazolvány (Schwerbehindertenausweis)';
+
+  @override
+  String get ermaessigungRueckwirkend =>
+      'Hogy kell-e visszamenőleg fizetni, és mennyit, azt a Vorstand dönti el a vizsgálat után.';
+
+  @override
+  String get minderjaehrigBeitragsfrei => '18 év alatt a tagság tagdíjmentes.';
+
+  @override
+  String get finanzMinderjaehrig => '18 év alatt — tagdíjmentes';
 }

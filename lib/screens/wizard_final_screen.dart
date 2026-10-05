@@ -665,7 +665,7 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
           await Navigator.of(context).push(MaterialPageRoute(
             builder: (_) => WizardStufe5Screen(
               initial: initial,
-              isBeitragsfrei: _isBeitragsfreiFromData(initial),
+              finanzielleSituation: initial['finanzielle_situation'] as String?,
               onNext: () => Navigator.of(context).pop(),
               onBack: () => Navigator.of(context).pop(),
             ),
@@ -733,14 +733,6 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
         return;
     }
     await Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
-  }
-
-  bool _isBeitragsfreiFromData(Map<String, dynamic> data) {
-    final fs = data['finanzielle_situation'];
-    return fs == 'buergergeld' ||
-        fs == 'sozialamt' ||
-        fs == 'alg1' ||
-        fs == 'krankengeld';
   }
 
   /// Chronological details bottom sheet. Tap the Status Card to open.
@@ -1305,13 +1297,18 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
       case 3:
         return [
           (label: l10n.wizardStufe3Title,
-           value: _finanzielleSituationLabel(s('finanzielle_situation'), l10n)),
+           value: finanzielleSituationAnzeige(s('finanzielle_situation'), l10n)),
         ];
       case 4:
-        if (_isBeitragsfreiFromData(d)) {
+        // Zahlungsweg entfällt: unter 18 beitragsfrei, sonst beantragte
+        // Ermäßigung (nur mit Nachweis, der Vorstand entscheidet).
+        final fs = s('finanzielle_situation');
+        if (zahlungswegEntfaellt(fs)) {
           return [
             (label: l10n.wizardStufe4Title,
-             value: l10n.wizardFinalStufeBeitragsfrei),
+             value: istBeitragsfreiMinderjaehrig(fs)
+                 ? l10n.finanzMinderjaehrig
+                 : l10n.ermaessigungBeantragtTitel),
           ];
         }
         return [
@@ -1364,15 +1361,6 @@ class _WizardFinalScreenState extends State<WizardFinalScreen> {
     String two(int v) => v.toString().padLeft(2, '0');
     return '${two(dt.day)}.${two(dt.month)}.${dt.year}';
   }
-
-  String _finanzielleSituationLabel(String key, AppLocalizations l10n) => switch (key) {
-        'buergergeld'   => 'Bürgergeld (SGB II)',
-        'sozialamt'     => 'Sozialamt (SGB XII)',
-        'alg1'          => 'Arbeitslosengeld I',
-        'krankengeld'   => 'Krankengeld',
-        'nein'          => l10n.wizardFinalStufeNotExempt,
-        _               => key,
-      };
 
   String _mitgliedschaftsbeginnLabel(String key, AppLocalizations l10n) => switch (key) {
         'ab_verifizierung' => l10n.wizardFinalStufeBeginAtVerification,

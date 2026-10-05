@@ -105,13 +105,12 @@ class _WizardScreenState extends State<WizardScreen> {
   /// "you already have an account" screen routed from Stufe 1b.
   WizardDuplicateAction? _duplicateAction;
 
-  /// Visitor falls into the fee-exempt bucket when their Stufe 3
-  /// answer is one of the recognised social benefits — Bürgergeld
-  /// (SGB II), Sozialamt (SGB XII), Arbeitslosengeld I (SGB III) or
-  /// Krankengeld (SGB V). Satzung §6 Abs. 4 allows the Vorstand to
-  /// grant Erlass for these categories without amending the bylaws.
-  bool get _isBeitragsfrei =>
-      istBeitragsfrei(_data['finanzielle_situation'] as String?);
+  /// Stufe 4 (Zahlungsweg) entfällt bei beantragter Ermäßigung — einer der
+  /// sechs Gründe aus Stufe 3, nur mit Nachweis, der Vorstand entscheidet —
+  /// und unter 18 ('minderjaehrig', beitragsfrei). Keine Zusage: bis
+  /// 05.10.2026 hieß das hier „beitragsfrei".
+  bool get _zahlungswegEntfaellt =>
+      zahlungswegEntfaellt(_data['finanzielle_situation'] as String?);
 
   bool get _isMinor => _ageStatus == WizardAgeStatus.minor;
 
@@ -229,7 +228,7 @@ class _WizardScreenState extends State<WizardScreen> {
       case WizardStep.stufe2:
         return WizardStep.stufe3;
       case WizardStep.stufe3:
-        return _isBeitragsfrei ? WizardStep.stufe5 : WizardStep.stufe4;
+        return _zahlungswegEntfaellt ? WizardStep.stufe5 : WizardStep.stufe4;
       case WizardStep.stufe4:
         return WizardStep.stufe5;
       case WizardStep.stufe5:
@@ -271,7 +270,7 @@ class _WizardScreenState extends State<WizardScreen> {
       case WizardStep.stufe4:
         return WizardStep.stufe3;
       case WizardStep.stufe5:
-        return _isBeitragsfrei ? WizardStep.stufe3 : WizardStep.stufe4;
+        return _zahlungswegEntfaellt ? WizardStep.stufe3 : WizardStep.stufe4;
       case WizardStep.stufe6:
         return WizardStep.stufe5;
       case WizardStep.stufe7:
@@ -492,7 +491,7 @@ class _WizardScreenState extends State<WizardScreen> {
       case WizardStep.stufe5:
         return WizardStufe5Screen(
           initial: _data,
-          isBeitragsfrei: _isBeitragsfrei,
+          finanzielleSituation: _data['finanzielle_situation'] as String?,
           onNext: _goNext,
           onBack: _goBack,
         );

@@ -7,14 +7,17 @@ import '../widgets/wizard_step_shell.dart';
 import '../utils/app_theme.dart';
 import '../utils/mitglied_felder.dart';
 
-/// Stufe 3 — Finanzielle Situation. Five radio options covering every
-/// fee-exempt social benefit the Vorstand accepts under Satzung §6
-/// Abs. 4 ("Ermäßigung, Stundung oder Erlass möglich"): Bürgergeld,
-/// Sozialamt, ALG I, Krankengeld — or none, then the regular fee applies.
+/// Stufe 3 — Finanzielle Situation.
 ///
-/// ⚠️ Kein Hochladen mehr (Entscheidung des Vorstands, 05.10.2026): Ein
-/// Bescheid wird nicht beim Antrag verlangt. Braucht der Vorstand einen —
-/// für Jobcenter, Rente, Arbeitsagentur … —, fordert er ihn selbst an.
+/// ⚠️ Seit 05.10.2026 (Vorstand): sechs Gründe für eine Ermäßigung —
+/// Bürgergeld, Sozialamt, ALG I, Krankengeld, Rente, Behinderung — oder
+/// „nichts davon", dann gilt der volle Beitrag. Eine Ermäßigung gibt es NUR MIT
+/// NACHWEIS; die Karte nennt ihn (Rentenbescheid …), hochgeladen wird nichts —
+/// er wird gebracht oder geschickt, und der Vorstand prüft und entscheidet.
+/// Vorher stand hier „Beitrag: 0 €" als Zusage.
+///
+/// Unter 18 gibt es keine Auswahl: die Mitgliedschaft ist beitragsfrei, und
+/// gespeichert wird 'minderjaehrig' (der Server setzt es ohnehin selbst).
 /// Genauso im Online-Formular und in der Verifizierung des Vorstandspanels.
 class WizardStufe3Screen extends StatefulWidget {
   final Map<String, dynamic>? initial;
@@ -36,12 +39,18 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   String? _situation;
   bool _saving = false;
 
+  /// Noch nicht 18 (aus dem Geburtsdatum in Stufe 1b) — dann keine Auswahl.
+  late final bool _minderjaehrig;
+
   @override
   void initState() {
     super.initState();
+    _minderjaehrig =
+        istMinderjaehrigAm(widget.initial?['geburtsdatum'] as String?);
     final gespeichert = widget.initial?['finanzielle_situation'] as String?;
-    _situation =
-        finanzielleSituationWerte.contains(gespeichert) ? gespeichert : null;
+    _situation = _minderjaehrig
+        ? finanzielleSituationMinderjaehrig
+        : (finanzielleSituationWerte.contains(gespeichert) ? gespeichert : null);
   }
 
   Future<void> _submit() async {
@@ -101,6 +110,16 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
           icon: Icons.medical_services,
           color: Colors.pinkAccent,
         ),
+        'rente' => (
+          title: l10n.wizardStufe3OptionRente,
+          icon: Icons.elderly,
+          color: Colors.amberAccent,
+        ),
+        'behinderung' => (
+          title: l10n.wizardStufe3OptionBehinderung,
+          icon: Icons.accessible,
+          color: Colors.cyanAccent,
+        ),
         'nein' => (
           title: l10n.wizardStufe3OptionNein,
           icon: Icons.work_outline,
@@ -112,6 +131,20 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    if (_minderjaehrig) {
+      return WizardStepShell(
+        stepLabel: l10n.wizardStepLabel(3, 8, l10n.wizardStufe3Title),
+        prompt: l10n.minderjaehrigBeitragsfrei,
+        onBack: widget.onBack,
+        onNext: _submit,
+        saving: _saving,
+        child: _hintBox(
+          color: context.colors.successFg,
+          icon: Icons.check_circle,
+          title: l10n.finanzMinderjaehrig,
+        ),
+      );
+    }
     return WizardStepShell(
       stepLabel: l10n.wizardStepLabel(3, 8, l10n.wizardStufe3Title),
       prompt: l10n.wizardStufe3Prompt,
@@ -189,15 +222,18 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
   }
 
   Widget _conditionalBlock(AppLocalizations l10n) {
-    if (istBeitragsfrei(_situation)) {
+    final nachweis = nachweisFuer(_situation, l10n);
+    if (istErmaessigungBeantragt(_situation) && nachweis != null) {
+      // Je Grund ein eigener Schlüssel: beim Wechsel zwischen zwei Gründen
+      // blendet der Hinweis neu ein und nennt den richtigen Nachweis.
       return Padding(
-        key: const ValueKey('beitragsfrei'),
+        key: ValueKey('ermaessigung_$_situation'),
         padding: const EdgeInsets.only(top: 12),
         child: _hintBox(
-          color: context.colors.successFg,
-          icon: Icons.check_circle,
-          title: l10n.wizardStufe3FeeExemptTitle,
-          body: l10n.wizardStufe3FeeExemptBodyOhneNachweis,
+          color: Colors.lightBlueAccent.shade100,
+          icon: Icons.fact_check,
+          title: l10n.ermaessigungBeantragtTitel,
+          body: l10n.ermaessigungNurMitNachweis(nachweis),
         ),
       ).animate().fadeIn(duration: 250.ms);
     }
@@ -220,7 +256,7 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
     required Color color,
     required IconData icon,
     required String title,
-    required String body,
+    String? body,
   }) {
     return Container(
       padding: const EdgeInsets.all(12),
@@ -246,15 +282,17 @@ class _WizardStufe3ScreenState extends State<WizardStufe3Screen> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  body,
-                  style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.9),
-                    fontSize: 12.5,
-                    height: 1.4,
+                if (body != null) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    body,
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.9),
+                      fontSize: 12.5,
+                      height: 1.4,
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),
