@@ -199,7 +199,7 @@ jobs:
             --dart-define=STARTUP_DIAG_KEY=${{ secrets.MITGLIEDER_STARTUP_DIAG_KEY }}
 
       - name: Upload Linux bundle
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: icd360sev-linux
           path: build/linux/x64/release/bundle/
@@ -226,7 +226,7 @@ jobs:
           mv icd360sev-mitglied_*.deb icd360sev-mitglied.deb
 
       - name: Upload .deb
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: icd360sev-linux-deb
           path: icd360sev-mitglied.deb
@@ -247,7 +247,7 @@ jobs:
           mv icd360sev-mitglied-*.rpm icd360sev-mitglied.rpm
 
       - name: Upload .rpm
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: icd360sev-linux-rpm
           path: icd360sev-mitglied.rpm
@@ -272,7 +272,7 @@ jobs:
           ARCH=x86_64 appimagetool --no-appstream AppDir icd360sev-mitglied.AppImage
 
       - name: Upload AppImage
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: icd360sev-linux-appimage
           path: icd360sev-mitglied.AppImage
@@ -402,14 +402,14 @@ jobs:
           GPGKey=$PUBKEY
           REFEOF
 
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: icd360sev-flatpak
           path: icd360sev-mitglied.flatpak
           if-no-files-found: error
           retention-days: 1
 
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: icd360sev-flatpakref
           path: de.icd360s.Mitglieder.flatpakref
@@ -467,7 +467,7 @@ jobs:
           </html>
           EOF
 
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: flatpak-pages
           path: pages-out
