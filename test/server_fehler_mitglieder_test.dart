@@ -77,6 +77,7 @@ void main() {
         if (antwortStatus == 404) {
           return http.Response(jsonEncode({'success': false, 'message': 'Wizard draft not found'}), 404);
         }
+        if (antwortStatus == 204) return http.Response('', 204);
         return http.Response(jsonEncode({'success': true, 'status': 'neu', 'user_id': 7, 'stufen': []}), 200);
       });
     });
@@ -91,6 +92,14 @@ void main() {
     test('nach einem 404 wird für dieselbe Kennung nicht mehr gefragt', () async {
       SharedPreferences.setMockInitialValues({'wizard_anonymous_id': 'a' * 32});
       expect(await WizardService().checkUserStatus(), isNull);
+      expect(await WizardService().checkUserStatus(), isNull);
+      expect(await WizardService().checkUserStatus(), isNull);
+      expect(anfragen, ['check_status.php'], reason: 'genau eine Anfrage, dann Ruhe');
+    });
+
+    test('auch 204 (seit 15.10. die Antwort des Servers für „kein Entwurf“) bringt Ruhe', () async {
+      SharedPreferences.setMockInitialValues({'wizard_anonymous_id': 'e' * 32});
+      antwortStatus = 204;
       expect(await WizardService().checkUserStatus(), isNull);
       expect(await WizardService().checkUserStatus(), isNull);
       expect(anfragen, ['check_status.php'], reason: 'genau eine Anfrage, dann Ruhe');
