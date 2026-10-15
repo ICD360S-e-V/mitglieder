@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.108.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.108.1...v1.108.2) (2026-10-15)
+
+
+### Bug Fixes
+
+* **anmeldung:** „kein Entwurf“ als 204 genauso merken wie 404 ([#484](https://github.com/ICD360S-e-V/mitglieder/issues/484)) ([b2f576c](https://github.com/ICD360S-e-V/mitglieder/commit/b2f576c183ab33d56a2fd7fcb318ca84ab7a5a41))
+
 ## [1.108.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.108.0...v1.108.1) (2026-10-15)
 
 
