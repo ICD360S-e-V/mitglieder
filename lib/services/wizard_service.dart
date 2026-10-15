@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -337,6 +338,12 @@ class WizardService {
   /// pop it, relaunch, and you were right back inside.
   static const String _kSuppressKey   = 'wizard_resume_suppressed';
 
+  /// Die anonymous_id, zu der check_status.php „Wizard draft not found“
+  /// (404) sagte. Für sie wird nicht mehr gefragt, bis auf diesem Gerät
+  /// wirklich ein Entwurf entsteht ([start]) oder die Kennung neu ist
+  /// ([resetLocal]). Siehe [checkUserStatus].
+  static const String _kOhneEntwurfKey = 'wizard_ohne_entwurf';
+
   String? _cachedId;
 
   /// Mitgliedernummer reserved by the server at check_age time (or
@@ -355,6 +362,10 @@ class WizardService {
   WizardService._internal() {
     _client = IOClient(HttpClientFactory.createPinnedHttpClient());
   }
+
+  /// Ersetzt den HTTP-Client — ausschließlich für Tests.
+  @visibleForTesting
+  set testClient(http.Client client) => _client = client;
 
   // ---------------------------------------------------------------------------
   // Local state — anonymous_id + under-16 deterrent.
@@ -420,6 +431,7 @@ class WizardService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_kIdKey);
     await prefs.remove(_kSuppressKey);
+    await prefs.remove(_kOhneEntwurfKey);
     _cachedId = null;
     _mitgliedernummer = null;
   }
@@ -456,6 +468,11 @@ class WizardService {
   Future<WizardStartResult?> start() async {
     try {
       final id = await ensureId();
+      // Ab hier gibt es (gleich) einen Entwurf: check_status darf wieder
+      // fragen. Vor dem Aufruf, damit auch ein halb geglückter Start nicht
+      // als „kein Entwurf“ hängen bleibt.
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(_kOhneEntwurfKey);
       final r = await _client
           .post(
             Uri.parse('$_baseUrl/start.php'),
@@ -690,9 +707,23 @@ class WizardService {
   /// polls every 30 s. Returns the user's current status (or null
   /// if finalize hasn't created the user row yet — shouldn't happen
   /// since the screen is only rendered post-finalize).
+  ///
+  /// ⚠️ Fragt nur, wenn es auf diesem Gerät überhaupt einen Entwurf geben
+  /// KANN (15.10.2026). Bisher rief WelcomeScreen bei jedem Start hierher,
+  /// und `ensureId()` erfand dafür eine Kennung, falls keine da war — der
+  /// Server kannte sie natürlich nicht und antwortete 404 „Wizard draft not
+  /// found“ (nginx-Log 07.–15.10.: 375-mal, von Telefonen, die nie eine
+  /// Anmeldung begonnen hatten). Jetzt:
+  ///   - keine gespeicherte Kennung → keine Anfrage, und es wird auch keine
+  ///     erfunden (das tut erst [start]);
+  ///   - der Server sagte zu dieser Kennung schon 404 → keine Anfrage mehr,
+  ///     bis [start] einen Entwurf anlegt oder [resetLocal] neu beginnt.
   Future<WizardStatusProbe?> checkUserStatus() async {
     try {
-      final id = await ensureId();
+      final prefs = await SharedPreferences.getInstance();
+      final id = _cachedId ?? prefs.getString(_kIdKey);
+      if (id == null || id.length < 16) return null;
+      if (prefs.getString(_kOhneEntwurfKey) == id) return null;
       final r = await _client
           .post(
             Uri.parse('$_baseUrl/check_status.php'),
@@ -700,6 +731,10 @@ class WizardService {
             body: jsonEncode({'anonymous_id': id}),
           )
           .timeout(const Duration(seconds: 10));
+      if (r.statusCode == 404) {
+        await prefs.setString(_kOhneEntwurfKey, id);
+        return null;
+      }
       if (r.statusCode != 200) return null;
       final body = jsonDecode(r.body) as Map<String, dynamic>;
       if (body['success'] != true) return null;

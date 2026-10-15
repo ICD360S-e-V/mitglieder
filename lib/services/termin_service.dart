@@ -383,6 +383,10 @@ class TerminService {
     _client = IOClient(HttpClientFactory.createPinnedHttpClient());
   }
 
+  /// Ersetzt den HTTP-Client — ausschließlich für Tests.
+  @visibleForTesting
+  set testClient(http.Client client) => _client = client;
+
   void setToken(String? token) {
     _token = token;
   }
@@ -441,10 +445,18 @@ class TerminService {
   }
 
   /// Respond to termin (member)
+  ///
+  /// [participantUserId]: FÜR WEN — aus [Termin.participantUserId]. my_termine
+  /// liefert Eltern auch die Termine ihrer Kinder; ohne diese Angabe antwortete
+  /// der Server nur für den Anrufer selbst und wies Eltern mit 403 ab („You
+  /// are not a participant“, nginx-Log 09.–15.10.2026). Seit 15.10. nimmt
+  /// respond.php sie an und prüft, dass es das eigene Konto oder ein eigenes
+  /// Kind ist.
   Future<Map<String, dynamic>> respondToTermin({
     required int terminId,
     required String response, // confirmed, declined, rescheduling
     String? reason,
+    int? participantUserId,
   }) async {
     return _withAuthRetry(() => _client.post(
           Uri.parse('$baseUrl/termine/respond.php'),
@@ -453,6 +465,7 @@ class TerminService {
             'termin_id': terminId,
             'response': response,
             if (reason != null) 'reason': reason,
+            if (participantUserId != null) 'participant_user_id': participantUserId,
           }),
         ));
   }

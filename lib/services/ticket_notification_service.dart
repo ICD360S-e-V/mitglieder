@@ -6,10 +6,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:workmanager/workmanager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'api_service.dart';
 import 'device_key_service.dart';
 import 'battery_usage_service.dart';
 import 'energiepolitik_waechter.dart';
+import 'secure_storage_helper.dart';
 
 /// Ticket Notification Service - Android (NO Google FCM!)
 /// Uses HTTP Polling + WorkManager for background
@@ -240,6 +242,42 @@ void callbackDispatcher() {
   });
 }
 
+/// Kopfzeilen für den Abruf im Hintergrund (WorkManager) — aus DEMSELBEN
+/// sicheren Speicher, in den DeviceKeyService ('device_key') und ApiService
+/// ('access_token') schreiben.
+///
+/// ⚠️ Bis zum 15.10.2026 las der Hintergrundlauf 'auth_token' und
+/// 'device_key' aus SharedPreferences. Dorthin schreibt aber niemand — beides
+/// liegt im sicheren Speicher. Ohne Kopfzeilen wies der Server JEDEN Abruf
+/// mit 403 ab (nginx-Log 07.–15.10.: 5.493-mal, von allen
+/// Mitglieder-Telefonen); im Hintergrund kam also nie eine
+/// Ticket-Benachrichtigung an.
+///
+/// Der Geräteschlüssel allein genügt: ist das Token abgelaufen (es lebt eine
+/// Stunde, der Lauf kommt alle 15 Minuten), erkennt der Server das Mitglied
+/// am Schlüssel (ticketZugriff in config.php).
+@visibleForTesting
+Future<Map<String, String>> hintergrundKoepfe([FlutterSecureStorage? speicher]) async {
+  final s = speicher ?? createSecureStorage();
+  Future<String> lies(String schluessel) async {
+    try {
+      return await s.read(key: schluessel) ?? '';
+    } catch (e) {
+      debugPrint('[BACKGROUND] Sicherer Speicher ($schluessel): $e');
+      return '';
+    }
+  }
+
+  final token = await lies('access_token');
+  final deviceKey = await lies('device_key');
+  return {
+    'Content-Type': 'application/json',
+    'User-Agent': 'ICD360S-Mitglieder-Android/1.0',
+    if (token.isNotEmpty) 'Authorization': 'Bearer $token',
+    if (deviceKey.isNotEmpty) 'X-Device-Key': deviceKey,
+  };
+}
+
 /// Background polling (called by WorkManager)
 Future<void> _pollInBackground() async {
   try {
@@ -251,18 +289,11 @@ Future<void> _pollInBackground() async {
       return;
     }
 
-    final token = prefs.getString('auth_token') ?? '';
-    final deviceKey = prefs.getString('device_key') ?? '';
     final response = await http
         .post(
           Uri.parse(
               'https://icd360sev.icd360s.de/api/tickets/poll_notifications_member.php'),
-          headers: {
-            'Content-Type': 'application/json',
-            'User-Agent': 'ICD360S-Mitglieder-Android/1.0',
-            if (token.isNotEmpty) 'Authorization': 'Bearer $token',
-            if (deviceKey.isNotEmpty) 'X-Device-Key': deviceKey,
-          },
+          headers: await hintergrundKoepfe(),
           body: jsonEncode({'mitgliedernummer': mitgliedernummer}),
         )
         .timeout(const Duration(seconds: 10));
