@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.108.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.108.0...v1.108.1) (2026-10-15)
+
+
+### Bug Fixes
+
+* **server-fehler:** Hintergrund-Abruf mit Schlüssel, kein check_status ohne Entwurf, Eltern antworten für Kinder ([#482](https://github.com/ICD360S-e-V/mitglieder/issues/482)) ([96e8074](https://github.com/ICD360S-e-V/mitglieder/commit/96e807434246937a0b6d21cc05ce0630278c48c1))
+
 ## [1.108.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.107.0...v1.108.0) (2026-10-05)
 
 
