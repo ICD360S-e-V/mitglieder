@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'background_service.dart';
@@ -36,6 +37,10 @@ class ApiService {
       IOClient(HttpClientFactory.createPinnedHttpClient()),
     );
   }
+
+  /// Ersetzt den HTTP-Client — ausschließlich für Tests.
+  @visibleForTesting
+  set testClient(http.Client client) => _client = client;
 
   /// Inițializează API service - TREBUIE apelat la pornirea aplicației
   Future<bool> initialize() async {
@@ -133,8 +138,16 @@ class ApiService {
         body: jsonEncode({'refresh_token': _refreshToken}),
       );
 
-      if (response.statusCode == 401) {
-        // Refresh token expired or revoked — force re-login.
+      // 401: Refresh-Token abgelaufen oder widerrufen. 403: der Server lehnt
+      // die SITZUNG ab — Kontostatus („Account is gesperrt“), Gerät eines
+      // anderen Kontos, gesperrter Geräteschlüssel. Beides wird durch
+      // Wiederholen nicht besser → neu anmelden.
+      //
+      // ⚠️ 403 kam bis zum 15.10.2026 hier nicht vor: die App behielt die tote
+      // Sitzung, sah sich weiter als angemeldet und fragte alle paar Minuten
+      // erneut — nginx-Log 08.–15.10.: 126 × refresh 403, jedes gepaart mit
+      // einem 401 von my_termine. Das Mitglied sah nur leere Listen.
+      if (response.statusCode == 401 || response.statusCode == 403) {
         await clearTokens();
         return false;
       }

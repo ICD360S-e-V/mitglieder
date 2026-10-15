@@ -102,7 +102,22 @@ class _MemberCalendarViewState extends State<MemberCalendarView>
         terminId: termin.id,
         response: response,
         reason: reason,
+        participantUserId: termin.participantUserId,
       );
+
+      // ⚠️ Eine Absage des Servers SAGEN. Bis zum 15.10.2026 blieb bei
+      // `success: false` alles still: Eltern tippten bei einem Termin ihres
+      // Kindes auf „Zusagen“, der Server sagte 403 — und auf dem Bildschirm
+      // geschah nichts.
+      if (mounted && result['success'] != true) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(l.error((result['message'] ?? '').toString())),
+            backgroundColor: context.colors.dangerSolid,
+          ),
+        );
+        return;
+      }
 
       if (mounted && result['success'] == true) {
         ScaffoldMessenger.of(context).showSnackBar(
