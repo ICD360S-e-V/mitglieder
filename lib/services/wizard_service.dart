@@ -716,8 +716,9 @@ class WizardService {
   /// Anmeldung begonnen hatten). Jetzt:
   ///   - keine gespeicherte Kennung → keine Anfrage, und es wird auch keine
   ///     erfunden (das tut erst [start]);
-  ///   - der Server sagte zu dieser Kennung schon 404 → keine Anfrage mehr,
-  ///     bis [start] einen Entwurf anlegt oder [resetLocal] neu beginnt.
+  ///   - der Server sagte zu dieser Kennung schon „kein Entwurf“ (204, früher
+  ///     404) → keine Anfrage mehr, bis [start] einen Entwurf anlegt oder
+  ///     [resetLocal] neu beginnt.
   Future<WizardStatusProbe?> checkUserStatus() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -731,7 +732,10 @@ class WizardService {
             body: jsonEncode({'anonymous_id': id}),
           )
           .timeout(const Duration(seconds: 10));
-      if (r.statusCode == 404) {
+      // „Kein Entwurf zu dieser Kennung“: bis 15.10.2026 404, seitdem 204 —
+      // der Normalfall soll im Fenster „App-Fehler“ des Vorstands nicht als
+      // Fehler stehen. Beides heisst dasselbe und wird gleich gemerkt.
+      if (r.statusCode == 404 || r.statusCode == 204) {
         await prefs.setString(_kOhneEntwurfKey, id);
         return null;
       }
