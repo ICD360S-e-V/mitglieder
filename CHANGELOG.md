@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.109.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.108.2...v1.109.0) (2026-10-16)
+
+
+### Features
+
+* **fehler:** FehlerWaechter aus der Vorsitzer-App — ungefangene Fehler und die Engines im Hintergrund melden sich ([#486](https://github.com/ICD360S-e-V/mitglieder/issues/486)) ([7a5b1bd](https://github.com/ICD360S-e-V/mitglieder/commit/7a5b1bd2576f88d8f336cde6eb1a18f88a80bc96))
+
 ## [1.108.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.108.1...v1.108.2) (2026-10-15)
 
 
