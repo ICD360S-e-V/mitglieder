@@ -9,8 +9,8 @@ import 'package:icd360sev_mitglied/services/api_service.dart';
 import 'package:icd360sev_mitglied/services/ticket_service.dart';
 
 /// Abgleich App ↔ Server (Etappe 2.6, 16.10.2026): jeder Aufruf der App gegen
-/// das, was der Server wirklich kann. Zwei Befunde in der Mitglieder-App,
-/// beide still — kein Fehler, nur ein Bildschirm, der nichts tat:
+/// das, was der Server wirklich kann. Drei Befunde in der Mitglieder-App,
+/// alle still — kein Fehler, nur ein Bildschirm, der nichts tat:
 ///
 /// - Tickets: die App fragte `tickets/categories.php`, `tickets/upload.php`
 ///   und `tickets/download.php`. Die Endpunkte heißen
@@ -22,6 +22,10 @@ import 'package:icd360sev_mitglied/services/ticket_service.dart';
 ///   (requireRollen schatzmeister/vorsitzer → 403). Kein Bildschirm rief sie
 ///   noch; Wunsch des Vorsitzenden: „mitglieder nu ar trebui sa vada notar,
 ///   vereinverwaltung … scoatele din aplicatia mitglieder“.
+/// - Registrierung: `auth/register.php` gibt es nicht (404). Gerufen wurde es
+///   nur vom alten Bildschirm register.dart/register_tab.dart, den nichts
+///   mehr öffnete — die Anmeldung läuft über den Assistenten. Toter Code,
+///   samt Bildschirm entfernt („elimina codul mort“).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -132,5 +136,18 @@ void main() {
       }
     }
     expect(befunde, isEmpty);
+  });
+
+  test('🔴 kein auth/register.php — den Endpunkt gibt es nicht', () {
+    final befunde = <String>[];
+    for (final f in Directory('lib').listSync(recursive: true).whereType<File>()) {
+      if (!f.path.endsWith('.dart')) continue;
+      final zeilen = f.readAsLinesSync();
+      for (var i = 0; i < zeilen.length; i++) {
+        if (zeilen[i].trimLeft().startsWith('//')) continue;
+        if (zeilen[i].contains('auth/register.php')) befunde.add('${f.path}:${i + 1}');
+      }
+    }
+    expect(befunde, isEmpty, reason: 'die Anmeldung läuft über den Assistenten; register.php → 404');
   });
 }

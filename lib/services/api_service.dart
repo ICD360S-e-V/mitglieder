@@ -337,40 +337,6 @@ class ApiService {
     return jsonDecode(response.body);
   }
 
-  // Register — passwordless, no recovery code. Identity is anchored to
-  // the device_key (per-install) and the device_id (hardware fingerprint).
-  Future<Map<String, dynamic>> register(
-    String email,
-    String name, {
-    bool datenschutzAccepted = false,
-    bool satzungAccepted = false,
-    bool widerrufsbelehrungAccepted = false,
-  }) async {
-    final deviceKey = _deviceKeyService.deviceKey;
-    final deviceId = LoggerService().deviceId;
-    final deviceLocale = getDeviceLocale(); // Auto-detect device language
-
-    final response = await _client.post(
-      Uri.parse('$baseUrl/auth/register.php'),
-      headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': 'ICD360S-Mitglied/1.0',
-        if (deviceKey != null) 'X-Device-Key': deviceKey,
-      },
-      body: jsonEncode({
-        'email': email,
-        'name': name,
-        'device_id': deviceId,
-        'device_locale': deviceLocale, // Send device language for auto-translation
-        'datenschutz_accepted': datenschutzAccepted,
-        'satzung_accepted': satzungAccepted,
-        'widerrufsbelehrung_accepted': widerrufsbelehrungAccepted,
-      }),
-    );
-
-    return jsonDecode(response.body);
-  }
-
   // Get Profile (personal data + beitrag status)
   Future<Map<String, dynamic>> getProfile(String mitgliedernummer) async {
     final response = await _client.post(

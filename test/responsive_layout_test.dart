@@ -23,7 +23,6 @@ import 'package:icd360sev_mitglied/screens/login.dart';
 import 'package:icd360sev_mitglied/screens/mitglied_dashboard.dart';
 import 'package:icd360sev_mitglied/screens/problem_help.dart';
 import 'package:icd360sev_mitglied/screens/problem_report.dart';
-import 'package:icd360sev_mitglied/screens/register.dart';
 import 'package:icd360sev_mitglied/screens/welcome.dart';
 import 'package:icd360sev_mitglied/screens/wizard_age_gate_screen.dart';
 import 'package:icd360sev_mitglied/screens/wizard_intro_screen.dart';
@@ -318,7 +317,6 @@ final Map<String, Widget Function()> _bausteine = <String, Widget Function()>{
         status: 'active',
       ),
   'LoginPage': () => const LoginPage(),
-  'RegisterPage': () => const RegisterPage(),
   'AnonymousChatScreen': () => const AnonymousChatScreen(),
   'ProblemHelpScreen': () => const ProblemHelpScreen(),
   'ProblemReportScreen': () => const ProblemReportScreen(),
