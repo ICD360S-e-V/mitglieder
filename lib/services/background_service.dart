@@ -13,6 +13,7 @@ import 'package:icd_klingel/icd_klingel.dart';
 
 import 'anruf_klingel.dart';
 import 'battery_usage_service.dart';
+import 'fehler_waechter.dart';
 import 'http_client_factory.dart';
 
 /// Background Service für persistent WebSocket connection
@@ -147,6 +148,8 @@ class BackgroundService {
   @pragma('vm:entry-point')
   static void onStart(ServiceInstance service) async {
     DartPluginRegistrant.ensureInitialized();
+    // Eigene Engine, eigene Handler — ihre Fehler gehen selbst hinaus.
+    FehlerWaechter.einrichten('dienst', hochladen: true);
     debugPrint('[BackgroundService] onStart called');
 
     // Variables for WebSocket connection

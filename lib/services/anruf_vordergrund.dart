@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
+import 'fehler_waechter.dart';
 import 'logger_service.dart';
 
 /// Haelt Ton und Kamera am Leben, wenn die App waehrend eines Anrufs aus dem
@@ -38,10 +39,10 @@ class AnrufVordergrund {
   static void _handlerStellen() {
     if (_handlerSteht) return;
     _handlerSteht = true;
-    _kanal.setMethodCallHandler((ruf) async {
+    _kanal.setMethodCallHandler(FehlerWaechter.kanal('anruf', (ruf) async {
       if (ruf.method == 'auflegen') beimAuflegenAusDemFenster?.call();
       return null;
-    });
+    }));
   }
 
   /// Zeigt das Fenster ueber anderen Apps. Ohne die Berechtigung „Ueber

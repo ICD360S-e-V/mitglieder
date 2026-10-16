@@ -16,6 +16,7 @@ import 'services/logger_service.dart';
 import 'services/background_service.dart';
 import 'services/battery_usage_service.dart';
 import 'services/energiepolitik_waechter.dart';
+import 'services/fehler_waechter.dart';
 import 'services/network_resilience.dart';
 import 'services/security_event_reporter.dart';
 import 'services/startup_diagnostics.dart';
@@ -48,6 +49,12 @@ void main() async {
     StartupDiagnostics.log('FlutterError: ${details.exception}');
     debugPrint('[CRASH] Flutter error: ${details.exception}');
   };
+
+  // Und jeder Fehler, den niemand fängt — auch der ohne Flutter auf dem
+  // Stapel (Future, Timer, Stream) —, als FEHLER-Zeile zum Server: Fenster
+  // „App-Fehler“ der Vorsitzer-App. NACH dem Handler oben, der im Wächter
+  // weiterläuft. Siehe [FehlerWaechter].
+  FehlerWaechter.einrichten('haupt');
 
   // Platform-specific initialization
   if (PlatformFactory.isMobile) {
