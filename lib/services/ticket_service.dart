@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
+import 'package:path_provider/path_provider.dart';
 import 'api_service.dart';
 import 'device_key_service.dart';
 import 'http_client_factory.dart';
@@ -312,7 +313,10 @@ class TicketService {
   final _deviceKeyService = DeviceKeyService();
   final _logger = LoggerService();
 
-  late final http.Client _client;
+  late http.Client _client;
+
+  @visibleForTesting
+  set testClient(http.Client client) => _client = client;
 
   // ==================== CATEGORIES ====================
 
@@ -335,7 +339,11 @@ class TicketService {
         'User-Agent': _userAgent,
       };
 
-      final url = Uri.parse('$baseUrl/tickets/categories.php');
+      // Der Endpunkt liegt in einem Ordner: tickets/categories/list.php. Bis
+      // zum 16.10.2026 fragte die App tickets/categories.php — die Adresse
+      // gibt es nicht (404), und der Dialog „Neues Ticket“ blieb ohne
+      // Kategorien. Gefunden beim Abgleich App ↔ Server (Etappe 2.6).
+      final url = Uri.parse('$baseUrl/tickets/categories/list.php');
       final response = await _client.get(url, headers: headers);
 
       _logger.log(
@@ -650,19 +658,26 @@ class TicketService {
       }
 
       final deviceKey = _deviceKeyService.deviceKey ?? '';
-      final url = Uri.parse('$baseUrl/tickets/upload.php');
+      // tickets/attachments/upload.php — die frühere Adresse
+      // tickets/upload.php gab es nie (404). Der Endpunkt verlangt
+      // mitgliedernummer, ticket_id und file (ticketZugriff prüft die Nummer
+      // gegen den Geräteschlüssel).
+      final url = Uri.parse('$baseUrl/tickets/attachments/upload.php');
 
       final request = http.MultipartRequest('POST', url);
       request.headers['Authorization'] = 'Bearer $token';
       request.headers['X-Device-Key'] = deviceKey;
       request.headers['User-Agent'] = 'ICD360S-Mitglieder-Android/1.0';  // ← SPECIFIC ANDROID
 
+      request.fields['mitgliedernummer'] = mitgliedernummer;
       request.fields['ticket_id'] = ticketId.toString();
       request.files.add(
         await http.MultipartFile.fromPath('file', filePath),
       );
 
-      final streamedResponse = await request.send();
+      // Über den Client mit Pinning — `request.send()` nähme einen eigenen
+      // ohne, und unter Windows scheiterte genau der am TLS (LoggerService).
+      final streamedResponse = await _client.send(request);
       final response = await http.Response.fromStream(streamedResponse);
 
       _logger.log(
@@ -684,9 +699,50 @@ class TicketService {
     }
   }
 
-  /// Get attachment download URL
-  String getAttachmentDownloadUrl(
-      String mitgliedernummer, int attachmentId) {
-    return '$baseUrl/tickets/download.php?attachment_id=$attachmentId';
+  /// Lädt einen Anhang herunter und legt ihn in einen eigenen Temp-Ordner —
+  /// der Pfad zum Öffnen, sonst null.
+  ///
+  /// Bis zum 16.10.2026 öffnete die App `tickets/download.php` im Browser.
+  /// Die Adresse gibt es nicht (der Endpunkt heißt
+  /// tickets/attachments/download.php), und ein Browser käme ohnehin nicht
+  /// durch: validateApiKey() will den Geräteschlüssel, blockBrowserAccess()
+  /// weist Browser ab. Jetzt wie in der Vorsitzer-App — mit den Kopfzeilen
+  /// der App.
+  Future<String?> downloadAttachment({
+    required String mitgliedernummer,
+    required int attachmentId,
+    required String originalFilename,
+  }) async {
+    try {
+      final token = _apiService.token;
+      final deviceKey = _deviceKeyService.deviceKey ?? '';
+      final url = Uri.parse('$baseUrl/tickets/attachments/download.php').replace(
+        queryParameters: {
+          'mitgliedernummer': mitgliedernummer,
+          'attachment_id': attachmentId.toString(),
+        },
+      );
+      final response = await _client.get(url, headers: {
+        if (token != null) 'Authorization': 'Bearer $token',
+        'X-Device-Key': deviceKey,
+        'User-Agent': _userAgent,
+      }).timeout(const Duration(seconds: 30));
+      _logger.log('TicketService.downloadAttachment: ${response.statusCode}');
+      if (response.statusCode != 200) return null;
+
+      // Nur der Name, kein Pfad: „../“ oder „C:\“ im Namen bleiben draußen.
+      final name = originalFilename
+          .split(RegExp(r'[\\/]'))
+          .last
+          .replaceAll(RegExp(r'[:*?"<>|]'), '_');
+      final ordner =
+          await (await getTemporaryDirectory()).createTemp('ticket_anhang_');
+      final datei = File('${ordner.path}/${name.isEmpty ? 'anhang' : name}');
+      await datei.writeAsBytes(response.bodyBytes);
+      return datei.path;
+    } catch (e) {
+      _logger.log('TicketService.downloadAttachment error: $e');
+      return null;
+    }
   }
 }
