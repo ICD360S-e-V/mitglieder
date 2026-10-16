@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'secure_storage_helper.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
@@ -55,6 +56,20 @@ class LoggerService {
   /// through the pinned client all along.
   static final http.Client _httpClient =
       IOClient(HttpClientFactory.createPinnedHttpClient());
+
+  /// Statt des Clients mit Pinning — nur im Test.
+  @visibleForTesting
+  static http.Client? testClient;
+
+  /// Die Marke der Zeilen des FehlerWaechter. Der Server trägt sie ins
+  /// Fenster „App-Fehler“ der Vorsitzer-App ein, mit [LogEntry.felder].
+  static const String fehlerTag = 'FEHLER';
+
+  /// In einer Engine ohne Takt (WorkManager, Vordergrunddienst) gehen nur
+  /// Fehlerzeilen hinaus, jede gleich — siehe [nurFehlerHochladen].
+  bool _nurFehler = false;
+  Future<void>? _hintergrund;
+  Timer? _nachzuegler;
   final _controller = StreamController<List<LogEntry>>.broadcast();
   final _secureStorage = createSecureStorage();
   Timer? _uploadTimer;
@@ -133,6 +148,8 @@ class LoggerService {
     );
     info('Log upload started for ${_uploadKey ?? "unidentified device"} '
         'v$appVersion (every ${_uploadInterval.inSeconds}s)', tag: 'LOG');
+    // Ein Fehler von davor (beim Start der App) nicht erst im nächsten Takt.
+    if (_uploadQueue.any(_istFehler)) _uploadLogsToServer();
   }
 
   /// Identifier the server files uploads under: the member number once known,
@@ -162,12 +179,14 @@ class LoggerService {
     return values.map((b) => b.toRadixString(16).padLeft(2, '0')).join();
   }
 
-  void log(String message, {LogLevel level = LogLevel.info, String? tag}) {
+  void log(String message,
+      {LogLevel level = LogLevel.info, String? tag, Map<String, Object?>? felder}) {
     final entry = LogEntry(
       timestamp: DateTime.now(),
       message: message,
       level: level,
       tag: tag,
+      felder: felder,
     );
     _logs.add(entry);
     if (_logs.length > 500) {
@@ -184,13 +203,82 @@ class LoggerService {
     }
 
     // Fehler ausserplanmässig melden — aber gedrosselt, siehe _fehlerDrossel.
-    if (level == LogLevel.error && _uploadTimer != null) {
+    if (_istFehler(entry) && (_uploadTimer != null || _nurFehler)) {
       final jetzt = DateTime.now();
       final letzter = _letzterUpload;
       if (letzter == null || jetzt.difference(letzter) >= _fehlerDrossel) {
         _uploadLogsToServer();
+      } else if (_nurFehler) {
+        // Ohne Takt holte die Zeile sonst niemand ab.
+        _nachzuegler ??= Timer(_fehlerDrossel - jetzt.difference(letzter), () {
+          _nachzuegler = null;
+          _uploadLogsToServer();
+        });
       }
     }
+  }
+
+  static bool _istFehler(LogEntry e) =>
+      e.level == LogLevel.error || e.tag == fehlerTag;
+
+  /// Eine Zeile des FehlerWaechter: Marke [fehlerTag], dazu die Felder, die
+  /// der Server liest (`engine`, `stack`, `fingerprint`, `count`, `version`).
+  /// Sie gehen nur in der Übertragung mit ([LogEntry.alsJson]), nicht in
+  /// den Text der Zeile.
+  void fehlerZeile(String text,
+          {required LogLevel level, required Map<String, Object?> felder}) =>
+      log(text, level: level, tag: fehlerTag, felder: felder);
+
+  /// Für eine Engine ohne Takt (WorkManager, Vordergrunddienst): ab jetzt
+  /// geht jede Fehlerzeile gleich hinaus — unter der Mitgliedsnummer, die die
+  /// App beim Anmelden ablegt (`current_mitgliedernummer`, dieselbe, die der
+  /// Ticket-Abruf liest), sonst unter der Geräte-ID wie vor der Anmeldung.
+  ///
+  /// Bis zum 16.10.2026 kam aus diesen Engines NICHTS an: der Ticket-Abruf
+  /// im Hintergrund wurde eine Woche lang 5.493-mal abgewiesen (403), und
+  /// niemand sah es — er schrieb nur `debugPrint`.
+  void nurFehlerHochladen(Future<String> fassung) {
+    _nurFehler = true;
+    _hintergrund ??= _hintergrundEinrichten(fassung);
+  }
+
+  Future<void> _hintergrundEinrichten(Future<String> fassung) async {
+    if (_deviceId == null) await init();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      _mitgliedernummer ??= prefs.getString('current_mitgliedernummer');
+    } catch (_) {
+      // Dann unter der Geräte-ID.
+    }
+    _appVersion ??= await fassung;
+    // Was vor dem Schlüssel kam, wartet noch.
+    if (_uploadQueue.any(_istFehler)) await _uploadLogsToServer();
+  }
+
+  /// Was an Fehlerzeilen wartet, JETZT hinaus — am Ende eines Laufs im
+  /// Hintergrund: danach ist die Engine womöglich weg.
+  Future<void> fehlerHochladen() async {
+    await _hintergrund;
+    if (!_uploadQueue.any(_istFehler)) return;
+    _nachzuegler?.cancel();
+    _nachzuegler = null;
+    await _uploadLogsToServer();
+  }
+
+  @visibleForTesting
+  void zuruecksetzen() {
+    _logs.clear();
+    _uploadQueue.clear();
+    _uploadTimer?.cancel();
+    _uploadTimer = null;
+    _nachzuegler?.cancel();
+    _nachzuegler = null;
+    _nurFehler = false;
+    _hintergrund = null;
+    _letzterUpload = null;
+    _mitgliedernummer = null;
+    _appVersion = null;
+    _deviceId = null;
   }
 
   /// Upload logs to server
@@ -205,12 +293,7 @@ class LoggerService {
     _uploadQueue.clear();
 
     try {
-      final logsJson = logsToUpload.map((log) => {
-        'timestamp': log.timestamp.toIso8601String(),
-        'message': log.message,
-        'level': log.level.toString().split('.').last,
-        'tag': log.tag,
-      }).toList();
+      final logsJson = logsToUpload.map((log) => log.alsJson()).toList();
 
       BatteryUsageService.instance.noteNetworkRequest(NetworkSource.logUpload);
       // Der Geraeteschluessel, den der Rest der API ohnehin verlangt. Der
@@ -222,7 +305,7 @@ class LoggerService {
       // soll sein Protokoll weiterhin loswerden — das ist meistens genau das
       // Geraet, dessen Protokoll man braucht.
       final geraeteschluessel = DeviceKeyService().deviceKey;
-      final response = await _httpClient.post(
+      final response = await (testClient ?? _httpClient).post(
         Uri.parse(_uploadUrl),
         headers: {
           'Content-Type': 'application/json',
@@ -321,12 +404,27 @@ class LogEntry {
   final LogLevel level;
   final String? tag;
 
+  /// Nur an den Zeilen des FehlerWaechter: `engine`, `stack`,
+  /// `fingerprint`, `count`, `version`.
+  final Map<String, Object?>? felder;
+
   LogEntry({
     required this.timestamp,
     required this.message,
     required this.level,
     this.tag,
+    this.felder,
   });
+
+  /// So geht die Zeile zum Server: die vier Felder jeder Zeile, eine Zeile
+  /// des FehlerWaechter dazu mit ihren [felder] — die vier gewinnen.
+  Map<String, Object?> alsJson() => {
+        ...?felder,
+        'timestamp': timestamp.toIso8601String(),
+        'message': message,
+        'level': level.name,
+        'tag': tag,
+      };
 
   String get levelIcon {
     switch (level) {

@@ -11,6 +11,8 @@ import 'api_service.dart';
 import 'device_key_service.dart';
 import 'battery_usage_service.dart';
 import 'energiepolitik_waechter.dart';
+import 'fehler_waechter.dart';
+import 'logger_service.dart';
 import 'secure_storage_helper.dart';
 
 /// Ticket Notification Service - Android (NO Google FCM!)
@@ -234,10 +236,15 @@ class TicketNotificationService {
 /// Background task callback (runs even when app is closed!)
 @pragma('vm:entry-point')
 void callbackDispatcher() {
+  // Eine eigene Engine mit eigenen Handlern — und ohne Takt zum Hochladen:
+  // ihre Fehler gehen selbst hinaus (Fenster „App-Fehler“ der Vorsitzer-App).
+  FehlerWaechter.einrichten('hintergrund', hochladen: true);
   Workmanager().executeTask((task, inputData) async {
     if (task == 'ticketNotificationPoll') {
       await _pollInBackground();
     }
+    // Vor dem Ende: danach ist die Engine womöglich weg.
+    await LoggerService().fehlerHochladen();
     return Future.value(true);
   });
 }
@@ -335,8 +342,17 @@ Future<void> _pollInBackground() async {
           debugPrint('[BACKGROUND] Notification shown: $title');
         }
       }
+    } else {
+      // Bis zum 16.10.2026 nur stillschweigend übergangen — so blieb der
+      // 403 eine Woche lang unbemerkt (siehe [hintergrundKoepfe]). Jetzt eine
+      // Fehlerzeile: der Server zeigt sie im Fenster „App-Fehler“.
+      LoggerService().error(
+          'Ticket-Abruf im Hintergrund abgewiesen: HTTP ${response.statusCode}',
+          tag: 'HINTERGRUND');
     }
   } catch (e) {
     debugPrint('[BACKGROUND] Poll error: $e');
+    LoggerService().error('Ticket-Abruf im Hintergrund gescheitert: $e',
+        tag: 'HINTERGRUND');
   }
 }

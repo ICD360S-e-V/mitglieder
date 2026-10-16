@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
+import '../services/fehler_waechter.dart';
+
 /// Die Zwischenablage der App — abgesichert: was die App hineinlegt, ist nach
 /// [frist] wieder weg, und das Fenster sagt es.
 ///
@@ -79,7 +81,7 @@ class SicherClipboard {
   static void melderSetzen(
       void Function(DateTime zeit, {required bool spaet}) melder) {
     _melder = melder;
-    kanal.setMethodCallHandler(_vonAndroid);
+    kanal.setMethodCallHandler(FehlerWaechter.kanal('zwischenablage', _vonAndroid));
   }
 
   /// Nimmt [melder] wieder ab — nur, wenn er noch der aktuelle ist.
