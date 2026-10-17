@@ -16,6 +16,13 @@ name: Merge-Warteschlange
 # grün, ohne Konflikt. Rote, Entwürfe usw. werden übersprungen; laufen beim
 # ältesten noch die Prüfungen, wartet die Schlange (kein jüngerer zieht vorbei).
 #
+# Ein Lauf arbeitet die Schlange ab: er mergt, wartet SELBST, bis die Fassung
+# gebaut und im GitHub-Release ist, und nimmt dann den nächsten — höchstens
+# 40 Minuten lang (WARTEN_HOECHSTENS im Skript). Kein Zeitplan: am 17.10.2026
+# kam die Schlange nach einem Bau nicht von selbst wieder, und der 15-Minuten-
+# Zeitplan lief nie an. Der Vorsitzende: „trebuie sa astepte cand se termina
+# versionarea cand apare versiunea“.
+#
 # ⚠️ Gemergt wird mit dem GITHUB_TOKEN. Dessen Push startet KEINE Abläufe
 # (Schleifenschutz von GitHub) — das Skript startet danach selbst, was ein Push
 # auf main sonst startet (NACH_DEM_MERGEN). Ein neuer Ablauf mit
@@ -27,14 +34,12 @@ name: Merge-Warteschlange
 
 on:
   # Ein PR ist fertig geprüft, oder eine Fassung ist gebaut: gleich nachsehen.
+  # Die Bauten für Windows/iOS/macOS und Linux stehen hier nicht: ihr „+“ im
+  # Namen liest GitHub als Muster, sie trafen nie. Auf sie wartet ein Lauf
+  # selbst, wie auf eine Fassung ohne neuen Bau.
   workflow_run:
-    workflows: ["PR Check", "Build Android (priority)", "Build Extra Platforms (Windows + iOS + macOS)", "Build Linux + Flatpak (priority)"]
+    workflows: ["PR Check", "Build Android (priority)"]
     types: [completed]
-  # Sonst alle 15 Minuten — z. B. nachdem ein Etikett `asteapta` weg ist, oder
-  # nach einem Merge ohne neue Fassung (nur Tests oder Doku: release-please
-  # macht dann keine).
-  schedule:
-    - cron: '*/15 * * * *'
   workflow_dispatch:
     inputs:
       trocken:
@@ -58,7 +63,8 @@ jobs:
   naechster:
     name: Nächsten PR mergen
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # WARTEN_HOECHSTENS (40 Min.) im Skript, und Luft dazu.
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

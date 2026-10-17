@@ -9,8 +9,15 @@ si daca apare un pr in acelasi timp asteapta pana cand se termina pr care sa
 facut merge“. Gleiche Datei in vorsitzer, mitglieder und schatzmeister; was
 sich je App unterscheidet, steht in .github/workflows/merge-warteschlange.yml.
 
-Jeder Lauf mergt hoechstens EINEN PR und sieht nur nach, was GitHub gerade
-zeigt — er merkt sich nichts. Reihenfolge der Pruefung:
+Ein Lauf arbeitet die Schlange ab: er mergt den aeltesten fertigen PR, wartet
+SELBST, bis dessen Fassung gebaut und im GitHub-Release ist, und nimmt dann den
+naechsten — bis keiner mehr bereit ist, ein Halt kommt oder WARTEN_HOECHSTENS
+um ist. Kein Takt: am 17.10.2026 kam die Schlange nach einem Bau nicht von
+selbst wieder (Laeufe des GITHUB_TOKEN loesen kein workflow_run aus, Namen mit
+„+“ trafen keinen Ausloeser, der 15-Minuten-Zeitplan lief nie an) — der
+Vorsitzende: „trebuie sa astepte cand se termina versionarea cand apare
+versiunea“. Er merkt sich nichts; jeder Blick fragt GitHub neu.
+Reihenfolge der Pruefung bei jedem Blick:
   1. laeuft ein Release oder ein Bau (ohne PR-Pruefungen)?  -> warten
   2. ist der Release-Ablauf gerade erst fertig (seine Folgelaeufe melden
      sich erst nach Sekunden)?                               -> warten
@@ -47,6 +54,7 @@ Einstellungen (Umgebung):
 
   --entscheiden DATEI   nur die Entscheidung, aus einer JSON-Datei (Tests)
   --folgelaeufe DATEI   nur, welche Ablaeufe nach dem Merge starten (Tests)
+  --folge DATEI         die Schleife ueber feste Staende statt GitHub (Tests)
 """
 import argparse
 import json
@@ -54,6 +62,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 
 # Nach einem fertigen Release-Ablauf: so lange, bis sich der Bau zeigt, den er
@@ -63,6 +72,11 @@ NACHLAUF = timedelta(minutes=2)
 SETZEN = timedelta(minutes=3)
 # Ein PR ganz ohne Pruefungen: so lange warten, dann ueberspringen.
 OHNE_PRUEFUNG = timedelta(minutes=30)
+# So lange wartet ein Lauf selbst (auf eine Fassung, auf Pruefungen) und sieht
+# dabei alle TAKT Sekunden nach. Danach endet er; der naechste kommt vom Ende
+# des Baus (vorsitzer, schatzmeister) oder von workflow_run.
+WARTEN_HOECHSTENS = timedelta(minutes=40)
+TAKT = 60
 
 HALTE_ETIKETT = 'asteapta'
 RELEASE_PLEASE_ZWEIG = 'release-please--'
@@ -312,10 +326,73 @@ def _zusammenfassung(zeilen):
             f.write(text)
 
 
+def schlange(holen, mergen_fn, schlafen, uhr, k, trocken=False):
+    """Die Schleife eines Laufs. Gibt zurueck, was er tat — je Aenderung des
+    Stands eine Zeile (nicht 40-mal dasselbe Warten)."""
+    bis = uhr() + WARTEN_HOECHSTENS
+    protokoll = []
+    vorher = None
+    while True:
+        jetzt = uhr()
+        e = entscheiden(holen(), k, jetzt)
+        stand = (e['aktion'], e['grund'])
+        if stand != vorher:
+            protokoll.append({'zeit': jetzt.strftime('%H:%M:%SZ'), **e})
+            # stderr: im Protokoll des Laufs zu sehen, stoert aber stdout (Tests).
+            print(f"{jetzt:%H:%M:%SZ} {e['aktion']} — {e['grund']}", file=sys.stderr, flush=True)
+            vorher = stand
+        if trocken:
+            break
+        if e['aktion'] == 'mergen':
+            protokoll[-1]['gestartet'] = mergen_fn(e)
+            vorher = None
+            continue
+        if e['aktion'] == 'warten' and uhr() < bis:
+            schlafen(TAKT)
+            continue
+        break
+    return protokoll
+
+
+def _folge(d):
+    """Fuer die Tests: die Schleife mit festen Staenden statt GitHub — jeder Blick
+    nimmt den naechsten Stand (der letzte bleibt), die Uhr laeuft nur beim Schlafen."""
+    staende = d['staende']
+    start = _zeit(d['jetzt'])
+    zustand = {'blick': 0, 'geschlafen': 0, 'gemergt': []}
+
+    def holen():
+        # Eine Schleife, die nie schlaeft und nie endet, soll den Test ROT machen
+        # — nicht ihn haengen lassen.
+        if zustand['blick'] > 200:
+            raise RuntimeError('mehr als 200 Blicke — die Schleife endet nicht')
+        i = min(zustand['blick'], len(staende) - 1)
+        zustand['blick'] += 1
+        return staende[i]
+
+    def mergen_fn(e):
+        zustand['gemergt'].append(e['pr'])
+        return []
+
+    def schlafen(s):
+        zustand['geschlafen'] += 1
+
+    def uhr():
+        return start + timedelta(seconds=TAKT * zustand['geschlafen'])
+
+    protokoll = schlange(holen, mergen_fn, schlafen, uhr, d['konfig'], d.get('trocken', False))
+    return {
+        'aktionen': [p['aktion'] for p in protokoll],
+        'gemergt': zustand['gemergt'],
+        'geschlafen': zustand['geschlafen'],
+    }
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--entscheiden')
     ap.add_argument('--folgelaeufe')
+    ap.add_argument('--folge')
     a = ap.parse_args()
 
     if a.entscheiden:
@@ -328,19 +405,26 @@ def main():
             d = json.load(f)
         print(json.dumps(folgelaeufe(d['eintraege'], d['dateien'])))
         return
+    if a.folge:
+        with open(a.folge, encoding='utf-8') as f:
+            print(json.dumps(_folge(json.load(f))))
+        return
 
     k = konfig_aus_umgebung()
-    e = entscheiden(daten_holen(k), k, datetime.now(timezone.utc))
-    zeilen = [f"**Merge-Warteschlange:** {e['aktion']} — {e['grund']}"]
-    zeilen += [f'- übersprungen {u}' for u in e.get('uebersprungen') or []]
-    if e['aktion'] == 'mergen':
-        if os.environ.get('TROCKEN'):
-            zeilen.append(f"- trocken: #{e['pr']} würde jetzt gemergt ({k['art']})")
-        else:
-            gestartet = mergen(e, k)
-            zeilen.append(f"- gemergt: #{e['pr']} {e['titel']}")
-            zeilen.append(f"- gestartet: {', '.join(gestartet) or '—'}")
-    _zusammenfassung(zeilen)
+    trocken = bool(os.environ.get('TROCKEN'))
+    protokoll = schlange(lambda: daten_holen(k), lambda e: mergen(e, k), time.sleep,
+                         lambda: datetime.now(timezone.utc), k, trocken)
+    zeilen = []
+    for p in protokoll:
+        zeilen.append(f"{p['zeit']} **{p['aktion']}** — {p['grund']}")
+        zeilen += [f'- übersprungen {u}' for u in p.get('uebersprungen') or []]
+        if p['aktion'] == 'mergen':
+            if trocken:
+                zeilen.append(f"- trocken: #{p['pr']} würde jetzt gemergt ({k['art']})")
+            else:
+                zeilen.append(f"- gemergt: #{p['pr']} {p['titel']}")
+                zeilen.append(f"- gestartet: {', '.join(p.get('gestartet') or []) or '—'}")
+    _zusammenfassung(['**Merge-Warteschlange**', ''] + zeilen)
 
 
 if __name__ == '__main__':
