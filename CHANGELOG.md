@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.116.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.0...v1.116.1) (2026-10-17)
+
+
+### Bug Fixes
+
+* **verifizierung:** neue E-Mail-Adresse — Knopf „Code per E-Mail anfordern“ statt „per SMS“ ([#518](https://github.com/ICD360S-e-V/mitglieder/issues/518)) ([5eeced7](https://github.com/ICD360S-e-V/mitglieder/commit/5eeced7db1c179e0b33b0b9e67ff9e5b6cf49fc7))
+
 ## [1.116.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.115.2...v1.116.0) (2026-10-17)
 
 
