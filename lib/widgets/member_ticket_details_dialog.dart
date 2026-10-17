@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../services/ticket_service.dart';
+import 'file_viewer.dart';
 import '../utils/app_theme.dart';
 
 /// Mobile-optimized Ticket Details Dialog for Members
@@ -683,23 +685,26 @@ class _MemberTicketDetailsDialogState extends State<MemberTicketDetailsDialog>
                             final messenger =
                                 ScaffoldMessenger.of(context);
                             final errorText = AppLocalizations.of(context)!.openError;
-                            final downloadUrl =
-                                _ticketService.getAttachmentDownloadUrl(
-                              widget.mitgliedernummer,
-                              attachment.id,
+                            // In der App laden, mit ihren Kopfzeilen — der
+                            // Browser bekäme den Anhang nie (Geräteschlüssel,
+                            // blockBrowserAccess). Öffnen wie die Anhänge im
+                            // Chat: FileViewer.
+                            final pfad = await _ticketService.downloadAttachment(
+                              mitgliedernummer: widget.mitgliedernummer,
+                              attachmentId: attachment.id,
+                              originalFilename: attachment.originalFilename,
                             );
-                            final uri = Uri.parse(downloadUrl);
-                            if (await canLaunchUrl(uri)) {
-                              await launchUrl(uri,
-                                  mode: LaunchMode.externalApplication);
-                            } else {
-                              if (mounted) {
-                                messenger.showSnackBar(
-                                  SnackBar(
-                                      content: Text(errorText)),
-                                );
-                              }
+                            if (!mounted) return;
+                            if (pfad == null) {
+                              messenger.showSnackBar(
+                                SnackBar(content: Text(errorText)),
+                              );
+                              return;
                             }
+                            // this.context: das des Dialogs, nicht das der Liste —
+                            // nur dafür gilt die Prüfung `mounted` oben.
+                            await FileViewer.open(
+                                this.context, File(pfad), attachment.originalFilename);
                           },
                         );
                       },

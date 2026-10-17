@@ -15,7 +15,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:icd360sev_mitglied/l10n/app_localizations.dart';
-import 'package:icd360sev_mitglied/services/api_service.dart';
 import 'package:icd360sev_mitglied/utils/app_theme.dart';
 
 import 'package:icd360sev_mitglied/widgets/chat_anhang_zeile.dart';
@@ -24,7 +23,6 @@ import 'package:icd360sev_mitglied/widgets/conversation_list_item.dart';
 import 'package:icd360sev_mitglied/widgets/claudiu_login_coach.dart';
 import 'package:icd360sev_mitglied/widgets/legal_footer.dart';
 import 'package:icd360sev_mitglied/widgets/login_tab.dart';
-import 'package:icd360sev_mitglied/widgets/register_tab.dart';
 import 'package:icd360sev_mitglied/widgets/mitglied_banners.dart';
 import 'package:icd360sev_mitglied/widgets/mitglied_cards.dart';
 import 'package:icd360sev_mitglied/widgets/signatur_card.dart';
@@ -184,24 +182,6 @@ final Map<String, Widget Function()> _bausteine = <String, Widget Function()>{
         isLoading: false,
         errorMessage: 'Anmeldung fehlgeschlagen.',
         onLogin: () {},
-      )),
-  'RegisterTab (Fehler)': () => _aufHero(RegisterTab(
-        apiService: ApiService(),
-        isLoading: false,
-        errorMessage: 'Diese E-Mail ist bereits vergeben.',
-        onRegisterSuccess: (_) {},
-        onLoadingChanged: (_) {},
-        onErrorChanged: (_) {},
-        onSuccessChanged: (_) {},
-      )),
-  'RegisterTab (Erfolg)': () => _aufHero(RegisterTab(
-        apiService: ApiService(),
-        isLoading: false,
-        successMessage: 'Ihr Antrag ist eingegangen.',
-        onRegisterSuccess: (_) {},
-        onLoadingChanged: (_) {},
-        onErrorChanged: (_) {},
-        onSuccessChanged: (_) {},
       )),
   'ClaudiuLoginCoach': () => _aufHero(const ClaudiuLoginCoach(
         digitCount: 3,
