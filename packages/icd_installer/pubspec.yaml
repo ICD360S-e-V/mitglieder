@@ -1,0 +1,25 @@
+name: icd_installer
+description: >-
+  Installiert ein heruntergeladenes APK über die PackageInstaller-Session-API —
+  die App aktualisiert sich damit selbst, ab Android 12 ohne Rückfrage.
+
+  Kopie des gleichnamigen Pakets der Vorsitzer-App (17.10.2026, „ca pe
+  vorsitzer“), angepasst an minSdk 24. Ersetzt für das Update OpenFilex: das
+  reicht das APK nur an den Installer des Systems weiter, und der fragt immer.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+  flutter: '>=3.32.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: de.icd360s.icd_installer
+        pluginClass: IcdInstallerPlugin

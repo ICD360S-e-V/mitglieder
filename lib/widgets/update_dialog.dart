@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/update_service.dart';
 import '../utils/app_theme.dart';
+import 'anruf_overlay.dart';
 
 /// Update Available Dialog - prompts user to download and install update
 class UpdateDialog extends StatefulWidget {
@@ -193,6 +196,28 @@ class _UpdateDialogState extends State<UpdateDialog> {
   }
 }
 
+/// Der kurze Hinweis, bevor die App für ein Update zugeht: „Version … wird im
+/// Hintergrund installiert. Die App startet gleich neu.“
+///
+/// Über den Navigator der App ([AnrufOverlay.navigatorKey]) und nicht über
+/// einen Bildschirm: auf Android kommt er erst, wenn das Paket geladen ist —
+/// der Bildschirm, der das Update angestoßen hat, kann dann längst zu sein,
+/// und der Start der App (main.dart) hat gar keinen.
+void updateHinweisZeigen(String version, {BuildContext? context}) {
+  final ort = context != null && context.mounted
+      ? context
+      : AnrufOverlay.navigatorKey.currentContext;
+  if (ort == null) return;
+  final l = AppLocalizations.of(ort);
+  if (l == null) return;
+  ScaffoldMessenger.maybeOf(ort)?.showSnackBar(
+    SnackBar(
+      content: Text(l.autoUpdateInstalling(version)),
+      duration: const Duration(seconds: 8),
+    ),
+  );
+}
+
 /// Checks GitHub for a newer release and applies it.
 ///
 /// On Windows this asks nothing and shows no dialog: it downloads the
@@ -200,27 +225,34 @@ class _UpdateDialogState extends State<UpdateDialog> {
 /// A short snackbar is the only UI, so the restart is not a surprise. Users who
 /// would rather approve each update turn the switch off in the profile dialog.
 ///
-/// Everywhere else — and on Windows if the silent path fails, e.g. the download
-/// died halfway or the installer refused to start — it falls back to the
+/// Android seit dem 17.10.2026 ebenso, wo Android ohne Rückfrage installiert
+/// (ab Android 12): im Hintergrund laden, nie während eines Anrufs oder einer
+/// Fernwartung, je Fassung ein Versuch; der Hinweis kommt erst kurz vor dem
+/// Installieren (UpdateService.installUnattended).
+///
+/// Everywhere else — and if the silent path fails, e.g. the download died
+/// halfway or the installer refused to start — it falls back to the
 /// [UpdateDialog] prompt rather than leaving the user stuck on an old build.
 Future<void> checkAndShowUpdateDialog(BuildContext context) async {
   final updateService = UpdateService();
+  // Ein Update von selbst läuft schon (vom Start der App aus): nicht noch
+  // einmal prüfen, laden oder fragen.
+  if (updateService.unattendedInProgress) return;
   final updateInfo = await updateService.checkForUpdate();
   if (updateInfo == null) return;
 
   if (updateService.supportsSilentUpdate &&
       await UpdateService.isAutoUpdateEnabled()) {
-    if (context.mounted) {
-      final l = AppLocalizations.of(context)!;
-      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-        SnackBar(
-          content: Text(l.autoUpdateInstalling(updateInfo.version)),
-          duration: const Duration(seconds: 8),
-        ),
-      );
+    // Windows: der Hinweis gleich, das Laden dauert Sekunden. Android: erst
+    // kurz vor dem Installieren — das Laden kann Minuten dauern.
+    if (Platform.isWindows && context.mounted) {
+      updateHinweisZeigen(updateInfo.version, context: context);
     }
-    if (await updateService.installUnattended(updateInfo)) {
-      return; // process is being replaced
+    if (await updateService.installUnattended(
+      updateInfo,
+      vorDemNeustart: (v) => updateHinweisZeigen(v, context: context),
+    )) {
+      return; // process is being replaced, or another run is applying it
     }
   }
 

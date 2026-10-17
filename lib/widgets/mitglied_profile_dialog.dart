@@ -68,6 +68,10 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
   String _displayEmail = '';
   bool _loadingAccountInfo = true;
   bool _autoUpdateEnabled = false;
+  /// Ob Updates hier von selbst durchlaufen können — Windows, und Android ab
+  /// 12 mit „Apps aus unbekannten Quellen installieren“. Sonst wirkte der
+  /// Schalter nicht, und er bleibt weg.
+  bool _autoUpdateMoeglich = false;
   bool _fernsteuerungAn = false;
 
   @override
@@ -111,7 +115,13 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
 
   Future<void> _loadAutoUpdatePreference() async {
     final enabled = await UpdateService.isAutoUpdateEnabled();
-    if (mounted) setState(() => _autoUpdateEnabled = enabled);
+    final moeglich = await UpdateService().kannUnbeaufsichtigt();
+    if (mounted) {
+      setState(() {
+        _autoUpdateEnabled = enabled;
+        _autoUpdateMoeglich = moeglich;
+      });
+    }
   }
 
   @override
@@ -907,7 +917,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
             ),
           ],
 
-          // ===== UPDATES (desktop only) =====
+          // ===== UPDATES (Windows; Android ab 12 seit 17.10.2026) =====
           // The consent checkbox in UpdateDialog can only ever turn this on,
           // and once it is on the dialog stops appearing entirely - so without
           // a switch here the choice would be one-way in both directions.
@@ -1016,7 +1026,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
               ),
             ),
           ],
-          if (UpdateService().supportsSilentUpdate) ...[
+          if (_autoUpdateMoeglich) ...[
             const SizedBox(height: 20),
             _buildSectionHeader(
               Icons.system_update,

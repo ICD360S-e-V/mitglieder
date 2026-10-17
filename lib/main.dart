@@ -26,6 +26,7 @@ import 'services/platform/platform_factory.dart';
 import 'widgets/anruf_overlay.dart';
 import 'widgets/network_security_banner.dart';
 import 'widgets/remote_touch_overlay.dart';
+import 'widgets/update_dialog.dart';
 import 'widgets/zwischenablage_melder.dart';
 import 'utils/app_theme.dart';
 import 'utils/responsive.dart';
@@ -205,8 +206,12 @@ void main() async {
   // Delayed past the first frame: the download and install would otherwise
   // compete with startup for I/O, and a member who opened the app to do
   // something should see a usable window first.
+  //
+  // Seit dem 17.10.2026 auch auf Android (ab Android 12, wie die
+  // Vorsitzer-App); dort zeigt der Hinweis kurz vor dem Installieren, dass die
+  // App gleich neu startet.
   Future<void>.delayed(const Duration(seconds: 10), () {
-    UpdateService().checkAndInstallAtStartup();
+    UpdateService().checkAndInstallAtStartup(vorDemNeustart: updateHinweisZeigen);
   });
 }
 

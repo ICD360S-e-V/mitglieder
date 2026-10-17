@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- REQUEST_INSTALL_PACKAGES und UPDATE_PACKAGES_WITHOUT_USER_ACTION stehen
+         bewusst im App-Manifest, nicht hier: die Berechtigungen sollen bei der
+         App sichtbar bleiben, die sie nutzt. -->
+</manifest>
