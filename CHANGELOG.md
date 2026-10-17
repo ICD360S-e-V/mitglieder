@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.115.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.114.0...v1.115.0) (2026-10-17)
+
+
+### Features
+
+* **verifizierung:** der Link aus der Mail führt zu Stufe 1 und trägt dort den Code ein ([#509](https://github.com/ICD360S-e-V/mitglieder/issues/509)) ([3a75c25](https://github.com/ICD360S-e-V/mitglieder/commit/3a75c250608cce4daefb5cd0e8af001e294454f8))
+
 ## [1.114.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.113.0...v1.114.0) (2026-10-17)
 
 
