@@ -855,27 +855,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         color: context.colors.cardSubtle,
         child: ListTile(
           leading: Icon(Icons.block, color: context.colors.textDisabled),
-          title: Row(
-            children: [
-              Icon(_stufenIcons[stufe] ?? Icons.circle, size: 18, color: context.colors.textDisabled),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  '${_stufenCircle(stufe)} ${_getStufenNames()[stufe]}',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: context.colors.textTertiary),
-                ),
-              ),
-            ],
-          ),
-          trailing: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: BoxDecoration(
-              color: Colors.amber.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
+          title: _stufenKopf(
+            stufe,
+            gedaempft: true,
+            abzeichen: _abzeichen(
               AppLocalizations.of(context)!.notApplicable,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: context.colors.warningFg),
+              hintergrund: Colors.amber.withValues(alpha: 0.15),
+              farbe: context.colors.warningFg,
             ),
           ),
           subtitle: Padding(
@@ -896,27 +882,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         color: context.colors.cardSubtle,
         child: ListTile(
           leading: Icon(Icons.lock, color: context.colors.textDisabled),
-          title: Row(
-            children: [
-              Icon(_stufenIcons[stufe] ?? Icons.circle, size: 18, color: context.colors.textDisabled),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  '${_stufenCircle(stufe)} ${_getStufenNames()[stufe]}',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: context.colors.textTertiary),
-                ),
-              ),
-            ],
-          ),
-          trailing: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: BoxDecoration(
-              color: Colors.grey.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
+          title: _stufenKopf(
+            stufe,
+            gedaempft: true,
+            abzeichen: _abzeichen(
               AppLocalizations.of(context)!.locked,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: context.colors.textTertiary),
+              hintergrund: Colors.grey.withValues(alpha: 0.15),
+              farbe: context.colors.textTertiary,
             ),
           ),
           subtitle: Padding(
@@ -945,39 +917,15 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           _statusIcon(status),
           color: _statusColor(status),
         ),
-        title: Row(
-          children: [
-            Icon(_stufenIcons[stufe] ?? Icons.circle, size: 18, color: context.colors.textSecondary),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Text(
-                '${_stufenCircle(stufe)} ${_getStufenNames()[stufe]}',
-                style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
-              ),
-            ),
-          ],
-        ),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                color: _statusColor(status).withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                _statusLabel(status),
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: _statusColor(status),
-                ),
-              ),
-            ),
-            const SizedBox(width: 4),
-            const Icon(Icons.expand_more),
-          ],
+        // Kein eigenes `trailing`: dort steht der Pfeil von ExpansionTile
+        // selbst (er dreht sich beim Öffnen), das Abzeichen sitzt im Kopf.
+        title: _stufenKopf(
+          stufe,
+          abzeichen: _abzeichen(
+            _statusLabel(status),
+            hintergrund: _statusColor(status).withValues(alpha: 0.15),
+            farbe: _statusColor(status),
+          ),
         ),
         children: [
           // Status banners
@@ -1010,6 +958,64 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
             child: _buildStufeContent(stufe, canEdit),
           ),
         ],
+      ),
+    );
+  }
+
+  /// Der Kopf einer Stufe: Name und Abzeichen („Ausgefüllt“, „Gesperrt“,
+  /// „Entfällt“ …). Das Abzeichen steht rechts, solange beides in eine Zeile
+  /// passt — sonst unter dem Namen.
+  ///
+  /// ⚠️ Früher als `trailing` der Kachel: auf einem schmalen Telefon mit
+  /// großer Schrift (277 dp, 130 %) nahm das Abzeichen dort fast die ganze
+  /// Zeile ein, und vom Namen blieben ein paar Buchstaben (Hinweis des
+  /// Vorsitzenden, 17.10.2026). `gedaempft` = gesperrte und entfallende
+  /// Stufen, grau.
+  Widget _stufenKopf(int stufe, {required Widget abzeichen, bool gedaempft = false}) {
+    // spaceBetween schiebt das Abzeichen nach rechts: die Kachel gibt ihrem
+    // `title` die ganze Breite fest vor.
+    return Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      spacing: 8,
+      runSpacing: 4,
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              _stufenIcons[stufe] ?? Icons.circle,
+              size: 18,
+              color: gedaempft ? context.colors.textDisabled : context.colors.textSecondary,
+            ),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                '${_stufenCircle(stufe)} ${_getStufenNames()[stufe]}',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                  color: gedaempft ? context.colors.textTertiary : null,
+                ),
+              ),
+            ),
+          ],
+        ),
+        abzeichen,
+      ],
+    );
+  }
+
+  Widget _abzeichen(String text, {required Color hintergrund, required Color farbe}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: hintergrund,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: farbe),
       ),
     );
   }
