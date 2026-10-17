@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.116.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.3...v1.116.4) (2026-10-17)
+
+
+### Bug Fixes
+
+* **chat-anonym:** eine gespeicherte ID, die der Server ablehnt, wird ersetzt (App-Fehler [#137](https://github.com/ICD360S-e-V/mitglieder/issues/137)) ([#524](https://github.com/ICD360S-e-V/mitglieder/issues/524)) ([cb8339a](https://github.com/ICD360S-e-V/mitglieder/commit/cb8339a90c9047f555bc0d32c87c3f04773a262d))
+
 ## [1.116.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.2...v1.116.3) (2026-10-17)
 
 
