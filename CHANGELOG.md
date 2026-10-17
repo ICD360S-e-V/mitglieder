@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.115.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.115.0...v1.115.1) (2026-10-17)
+
+
+### Bug Fixes
+
+* **verifizierung:** Abzeichen im Kopf jeder Stufe rückt auf schmalen Telefonen unter den Namen ([#511](https://github.com/ICD360S-e-V/mitglieder/issues/511)) ([fac2a83](https://github.com/ICD360S-e-V/mitglieder/commit/fac2a83cfb6e86858faca43ccf6fa19d8bb957a0))
+
 ## [1.115.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.114.0...v1.115.0) (2026-10-17)
 
 
