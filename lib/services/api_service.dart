@@ -12,6 +12,7 @@ import 'language_service.dart';
 import 'logger_service.dart';
 import 'resilient_http_client.dart';
 import 'secure_storage_helper.dart';
+import '../utils/chat_upload_protokoll.dart';
 
 class ApiService {
   static const String baseUrl = 'https://icd360sev.icd360s.de/api';
@@ -888,6 +889,10 @@ class ApiService {
     required List<File> files,
     String? message,
   }) async {
+    // Nur fürs Protokoll bei einem Fehlschlag — und dort nur, um die Namen zu
+    // ERSETZEN (siehe chat_upload_protokoll.dart).
+    final pfade = [for (final f in files) f.path];
+    final namen = [for (final p in pfade) chatUploadDateiname(p)];
     try {
       final deviceKey = _deviceKeyService.deviceKey;
 
@@ -921,10 +926,49 @@ class ApiService {
       final streamedResponse = await _client.send(request);
       final response = await http.Response.fromStream(streamedResponse);
 
-      return jsonDecode(response.body);
+      final antwort = _jsonObjekt(response.body);
+      final status = response.statusCode;
+      if (status < 200 || status >= 300 || antwort == null) {
+        // App-Fehler #136: der Grund einer Ablehnung stand bisher nirgends.
+        final grund = chatUploadGrundAusAntwort(response.body, namen);
+        LoggerService().warning(
+          chatUploadProtokollZeile(
+            was: 'abgelehnt, HTTP $status',
+            grund: grund,
+            anzahl: files.length,
+            bytes: chatUploadGroesse(files),
+            dateinamen: namen,
+          ),
+          tag: 'CHAT',
+        );
+      }
+      // Keine JSON-Antwort (nginx-Fehlerseite) endete früher in der Ausnahme
+      // unten — dasselbe Ergebnis, nur ohne deren Text im Protokoll.
+      return antwort ?? {'success': false, 'message': 'Upload failed'};
     } catch (e) {
-      LoggerService().error('$e', tag: 'API');
+      // ⚠️ Nicht '$e': PathNotFoundException nennt den vollen Pfad der Datei.
+      final grund = chatUploadAusnahmeOhneNamen(e, pfade);
+      LoggerService().error(
+        chatUploadProtokollZeile(
+          was: 'fehlgeschlagen, ${e.runtimeType}',
+          grund: grund,
+          anzahl: files.length,
+          bytes: chatUploadGroesse(files),
+          dateinamen: namen,
+        ),
+        tag: 'API',
+      );
       return {'success': false, 'message': 'Upload failed'};
+    }
+  }
+
+  /// Die Antwort als JSON-Objekt, `null`, wenn sie keins ist.
+  static Map<String, dynamic>? _jsonObjekt(String rumpf) {
+    try {
+      final j = jsonDecode(rumpf);
+      return j is Map<String, dynamic> ? j : null;
+    } on FormatException {
+      return null;
     }
   }
 
