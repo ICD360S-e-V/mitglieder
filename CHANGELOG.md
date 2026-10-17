@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.109.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.109.0...v1.109.1) (2026-10-17)
+
+
+### Bug Fixes
+
+* **tickets:** Kategorien und Anhänge an den richtigen Endpunkten; Notar und Vereinsverwaltung aus der Mitglieder-App ([#488](https://github.com/ICD360S-e-V/mitglieder/issues/488)) ([7b89f6f](https://github.com/ICD360S-e-V/mitglieder/commit/7b89f6ffe93673bcb2eda9721bc49e649d73e699))
+
 ## [1.109.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.108.2...v1.109.0) (2026-10-16)
 
 
