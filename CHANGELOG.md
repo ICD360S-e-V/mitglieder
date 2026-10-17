@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.116.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.115.2...v1.116.0) (2026-10-17)
+
+
+### Features
+
+* **verifizierung:** „Code erneut senden“ zeigt die Restzeit und ist bis dahin gesperrt (App-Fehler [#130](https://github.com/ICD360S-e-V/mitglieder/issues/130)) ([#516](https://github.com/ICD360S-e-V/mitglieder/issues/516)) ([6aed3a0](https://github.com/ICD360S-e-V/mitglieder/commit/6aed3a05013c950eba3c17f4ba894cc15fb637c5))
+
 ## [1.115.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.115.1...v1.115.2) (2026-10-17)
 
 
