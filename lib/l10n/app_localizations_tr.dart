@@ -2904,6 +2904,34 @@ class AppLocalizationsTr extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Değişti';
 
   @override
+  String get kontaktMailGeschickt => 'Size bir e-posta gönderdik.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return '$ziel adresine bir e-posta gönderdik.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Size bir SMS gönderdik.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return '$ziel numarasına bir SMS gönderdik.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Yeni e-posta adresi';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Yeni cep telefonu numarası';
+
+  @override
+  String get kontaktNichtHinterlegt => 'belirtilmemiş';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Görünüm';
 
   @override

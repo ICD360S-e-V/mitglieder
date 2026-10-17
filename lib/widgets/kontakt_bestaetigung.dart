@@ -391,7 +391,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
         Expanded(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(titel, style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600)),
-            Text(vorhanden ? wert : 'nicht hinterlegt',
+            Text(vorhanden ? wert : t.kontaktNichtHinterlegt,
                 style: TextStyle(
                     fontSize: 13,
                     color: vorhanden ? context.colors.textPrimary : context.colors.textSecondary,
@@ -448,7 +448,9 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
     final ok = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('Neue $titel'),
+        // Ein eigener Titel je Kanal: „Neue $titel“ war in jeder Sprache
+        // Deutsch und ergab bei der Nummer „Neue Telefon (Mobil)“.
+        title: Text(kanal == 'telefon' ? t.kontaktNeueNummerTitel : t.kontaktNeueMailTitel),
         content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             kanal == 'telefon'
@@ -474,7 +476,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
             autocorrect: false,
             decoration: InputDecoration(
               labelText: titel,
-              hintText: kanal == 'telefon' ? '+49 176 1234567' : 'name@beispiel.de',
+              hintText: kanal == 'telefon' ? '+49 176 1234567' : t.kontaktMailBeispiel,
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
             ),
           ),
@@ -494,8 +496,8 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
         _offenerKanal == 'email'
-            ? 'Wir haben Ihnen eine E-Mail geschickt${_zielKurz != null ? " an $_zielKurz" : ""}.'
-            : 'Wir haben Ihnen eine SMS geschickt${_zielKurz != null ? " an $_zielKurz" : ""}.',
+            ? (_zielKurz != null ? t.kontaktMailGeschicktAn(_zielKurz!) : t.kontaktMailGeschickt)
+            : (_zielKurz != null ? t.kontaktSmsGeschicktAn(_zielKurz!) : t.kontaktSmsGeschickt),
         style: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600),
       ),
       const SizedBox(height: 12),

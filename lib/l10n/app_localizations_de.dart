@@ -2920,6 +2920,34 @@ class AppLocalizationsDe extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Ist anders geworden';
 
   @override
+  String get kontaktMailGeschickt => 'Wir haben Ihnen eine E-Mail geschickt.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Wir haben Ihnen eine E-Mail an $ziel geschickt.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Wir haben Ihnen eine SMS geschickt.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Wir haben Ihnen eine SMS an $ziel geschickt.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Neue E-Mail-Adresse';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Neue Mobilnummer';
+
+  @override
+  String get kontaktNichtHinterlegt => 'nicht hinterlegt';
+
+  @override
+  String get kontaktMailBeispiel => 'name@beispiel.de';
+
+  @override
   String get themeTitle => 'Darstellung';
 
   @override

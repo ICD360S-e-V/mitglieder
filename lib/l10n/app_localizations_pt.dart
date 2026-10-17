@@ -2906,6 +2906,34 @@ class AppLocalizationsPt extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Foi alterado';
 
   @override
+  String get kontaktMailGeschickt => 'Enviámos-lhe um email.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Enviámos-lhe um email para $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Enviámos-lhe um SMS.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Enviámos-lhe um SMS para $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Novo endereço de email';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Novo número de telemóvel';
+
+  @override
+  String get kontaktNichtHinterlegt => 'não indicado';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Aparência';
 
   @override

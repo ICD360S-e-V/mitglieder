@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -67,7 +68,7 @@ void main() {
 
     expect(server.letzte('code_anfordern'), {'aktion': 'code_anfordern', 'kanal': 'email'});
     expect(find.byType(TextField), findsOneWidget);
-    expect(find.text('Wir haben Ihnen eine E-Mail geschickt an a***@beispiel.de.'), findsOneWidget);
+    expect(find.text('Wir haben Ihnen eine E-Mail an a***@beispiel.de geschickt.'), findsOneWidget);
   });
 
   testWidgets('„Abbrechen“, dann „Bestätigen“: wieder das Feld, kein neuer Code', (tester) async {
@@ -92,7 +93,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(server.letzte('code_anfordern'), {'aktion': 'code_anfordern', 'kanal': 'email'});
-    expect(find.text('Wir haben Ihnen eine E-Mail geschickt an a***@beispiel.de.'), findsOneWidget);
+    expect(find.text('Wir haben Ihnen eine E-Mail an a***@beispiel.de geschickt.'), findsOneWidget);
     expect(find.byType(TextField), findsOneWidget);
   });
 
@@ -212,6 +213,97 @@ void main() {
     });
   });
 
+  // ── Kein deutscher Text mehr in der Karte (17.10.2026) ────────────────
+  // „Wir haben Ihnen eine E-Mail/SMS geschickt …“, „Neue $titel“ (bei der
+  // Nummer „Neue Telefon (Mobil)“), „nicht hinterlegt“ und „name@beispiel.de“
+  // standen fest im Code — in jeder der 28 Sprachen auf Deutsch.
+
+  group('Texte der Karte in der Sprache der App', () {
+    const ro = Locale('ro');
+
+    testWidgets('rumänisch: Code aus der Mail — „V-am trimis un e-mail.“', (tester) async {
+      server.email = _offen(code: true);
+      await _zeigen(tester, sprache: ro);
+      expect(find.text('V-am trimis un e-mail.'), findsOneWidget);
+    });
+
+    testWidgets('rumänisch: SMS mit Ziel — „V-am trimis un SMS la …5611.“', (tester) async {
+      server.email = _bestaetigt();
+      server.telefon = _offen(code: false, wert: '+4917612345611');
+      await _zeigen(tester, sprache: ro);
+      await tester.tap(find.widgetWithText(TextButton, 'Confirmă'));
+      await tester.pumpAndSettle();
+      expect(find.text('V-am trimis un SMS la …5611.'), findsOneWidget);
+    });
+
+    testWidgets('rumänisch: keine Nummer — „necompletat“; Dialog für die Adresse rumänisch', (tester) async {
+      server.email = _offen(code: false);
+      server.telefon = {..._offen(code: false, wert: ''), 'vorhanden': false};
+      await _zeigen(tester, sprache: ro);
+      expect(find.text('necompletat'), findsOneWidget);
+
+      await tester.tap(find.byIcon(Icons.edit).first);
+      await tester.pumpAndSettle();
+      expect(find.text('Adresă de e-mail nouă'), findsOneWidget);
+      expect(find.widgetWithText(TextField, 'name@example.com'), findsOneWidget);
+    });
+
+    testWidgets('rumänisch: Dialog für die Nummer — „Număr de mobil nou“', (tester) async {
+      server.email = _bestaetigt();
+      server.telefon = _offen(code: false, wert: '+4917612345611');
+      await _zeigen(tester, sprache: ro);
+      await tester.tap(find.byIcon(Icons.edit));
+      await tester.pumpAndSettle();
+      expect(find.text('Număr de mobil nou'), findsOneWidget);
+    });
+
+    testWidgets('deutsch: „… eine SMS an …5611 geschickt.“ und „Neue Mobilnummer“ statt „Neue Telefon (Mobil)“',
+        (tester) async {
+      server.email = _bestaetigt();
+      server.telefon = _offen(code: false, wert: '+4917612345611');
+      await _zeigen(tester);
+      await tester.tap(find.byIcon(Icons.edit));
+      await tester.pumpAndSettle();
+      expect(find.text('Neue Mobilnummer'), findsOneWidget);
+      expect(find.text('Neue Telefon (Mobil)'), findsNothing);
+      await tester.tap(find.widgetWithText(TextButton, 'Abbrechen'));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.widgetWithText(TextButton, 'Bestätigen'));
+      await tester.pumpAndSettle();
+      expect(find.text('Wir haben Ihnen eine SMS an …5611 geschickt.'), findsOneWidget);
+    });
+
+    test('alle 28 Sprachen haben die 8 Texte — übersetzt, mit {ziel} wo nötig', () {
+      const schluessel = ['kontaktMailGeschickt', 'kontaktMailGeschicktAn', 'kontaktSmsGeschickt', 'kontaktSmsGeschicktAn',
+          'kontaktNeueMailTitel', 'kontaktNeueNummerTitel', 'kontaktNichtHinterlegt', 'kontaktMailBeispiel'];
+      final de = jsonDecode(File('lib/l10n/app_de.arb').readAsStringSync()) as Map<String, dynamic>;
+      final dateien = Directory('lib/l10n').listSync().whereType<File>().where((f) => f.path.endsWith('.arb')).toList();
+      expect(dateien, hasLength(28));
+      for (final f in dateien) {
+        final arb = jsonDecode(f.readAsStringSync()) as Map<String, dynamic>;
+        for (final k in schluessel) {
+          final v = arb[k] as String?;
+          expect(v?.trim(), isNotEmpty, reason: '${f.path}: $k fehlt');
+          expect(v!.contains('{ziel}'), k.endsWith('An'), reason: '${f.path}: $k und {ziel}');
+          if (!f.path.endsWith('app_de.arb')) {
+            expect(v, isNot(de[k]), reason: '${f.path}: $k ist noch deutsch');
+          }
+        }
+      }
+    });
+
+    test('in der Karte steht kein deutscher Satz mehr im Code', () {
+      final code = File('lib/widgets/kontakt_bestaetigung.dart')
+          .readAsLinesSync()
+          .where((z) => !z.trimLeft().startsWith('//') && !z.trimLeft().startsWith('///'))
+          .join('\n');
+      for (final alt in ["'Wir haben Ihnen", "'Neue \$titel'", "'nicht hinterlegt'", "'name@beispiel.de'", 'geschickt\${']) {
+        expect(code.contains(alt), isFalse, reason: alt);
+      }
+    });
+  });
+
   // ── Restzeit an „Code erneut senden“ (App-Fehler #130) ─────────────────
   // Ein Mitglied tippte 2 s nach dem Versand auf „Code erneut senden“ und las
   // „Bitte warten Sie 118 Sekunden …“: der Server lässt erst nach 2 Minuten
@@ -296,6 +388,7 @@ Future<void> _zeigen(
   VoidCallback? onBestaetigt,
   KontaktCodeAusLink? codeAusLink,
   bool nurWennFaellig = true,
+  Locale sprache = const Locale('de'),
 }) async {
   await tester.pumpWidget(_app(
     SingleChildScrollView(
@@ -306,12 +399,13 @@ Future<void> _zeigen(
         nurWennFaellig: nurWennFaellig,
       ),
     ),
+    sprache: sprache,
   ));
   await tester.pumpAndSettle();
 }
 
-Widget _app(Widget body) => MaterialApp(
-      locale: const Locale('de'),
+Widget _app(Widget body, {Locale sprache = const Locale('de')}) => MaterialApp(
+      locale: sprache,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: AppTheme.light,

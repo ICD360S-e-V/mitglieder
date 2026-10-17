@@ -2898,6 +2898,35 @@ class AppLocalizationsSv extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Det har ändrats';
 
   @override
+  String get kontaktMailGeschickt =>
+      'Vi har skickat ett e-postmeddelande till dig.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Vi har skickat ett e-postmeddelande till $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Vi har skickat ett sms till dig.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Vi har skickat ett sms till $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Ny e-postadress';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Nytt mobilnummer';
+
+  @override
+  String get kontaktNichtHinterlegt => 'inte angivet';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Utseende';
 
   @override

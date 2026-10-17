@@ -1399,6 +1399,48 @@
   "@kontaktIstAndersGeworden": {
     "description": "Knopf: Adresse oder Nummer hat sich geaendert"
   },
+  "kontaktMailGeschickt": "Wir haben Ihnen eine E-Mail geschickt.",
+  "@kontaktMailGeschickt": {
+    "description": "Über dem Code-Feld: ein Code ist per Mail unterwegs (Ziel unbekannt, z. B. aus der Erinnerungsmail)"
+  },
+  "kontaktMailGeschicktAn": "Wir haben Ihnen eine E-Mail an {ziel} geschickt.",
+  "@kontaktMailGeschicktAn": {
+    "description": "Über dem Code-Feld: Code per Mail an die gekürzte Adresse geschickt",
+    "placeholders": {
+      "ziel": {
+        "type": "String"
+      }
+    }
+  },
+  "kontaktSmsGeschickt": "Wir haben Ihnen eine SMS geschickt.",
+  "@kontaktSmsGeschickt": {
+    "description": "Über dem Code-Feld: ein Code ist per SMS unterwegs (Ziel unbekannt)"
+  },
+  "kontaktSmsGeschicktAn": "Wir haben Ihnen eine SMS an {ziel} geschickt.",
+  "@kontaktSmsGeschicktAn": {
+    "description": "Über dem Code-Feld: Code per SMS an die gekürzte Nummer geschickt",
+    "placeholders": {
+      "ziel": {
+        "type": "String"
+      }
+    }
+  },
+  "kontaktNeueMailTitel": "Neue E-Mail-Adresse",
+  "@kontaktNeueMailTitel": {
+    "description": "Titel des Dialogs für eine neue E-Mail-Adresse"
+  },
+  "kontaktNeueNummerTitel": "Neue Mobilnummer",
+  "@kontaktNeueNummerTitel": {
+    "description": "Titel des Dialogs für eine neue Mobilnummer"
+  },
+  "kontaktNichtHinterlegt": "nicht hinterlegt",
+  "@kontaktNichtHinterlegt": {
+    "description": "Steht statt der Adresse/Nummer, wenn keine hinterlegt ist"
+  },
+  "kontaktMailBeispiel": "name@beispiel.de",
+  "@kontaktMailBeispiel": {
+    "description": "Beispiel im Feld für eine neue E-Mail-Adresse (Domain für Beispiele: example.com)"
+  },
   "themeTitle": "Darstellung",
   "themeLight": "Hell",
   "themeDark": "Dunkel",

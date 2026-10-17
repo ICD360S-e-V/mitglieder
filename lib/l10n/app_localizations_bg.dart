@@ -2901,6 +2901,34 @@ class AppLocalizationsBg extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Промени се';
 
   @override
+  String get kontaktMailGeschickt => 'Изпратихме Ви имейл.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Изпратихме Ви имейл на $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Изпратихме Ви SMS.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Изпратихме Ви SMS на $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Нов имейл адрес';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Нов мобилен номер';
+
+  @override
+  String get kontaktNichtHinterlegt => 'не е посочен';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Външен вид';
 
   @override

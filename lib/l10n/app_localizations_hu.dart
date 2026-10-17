@@ -2905,6 +2905,34 @@ class AppLocalizationsHu extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Megváltozott';
 
   @override
+  String get kontaktMailGeschickt => 'E-mailt küldtünk Önnek.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'E-mailt küldtünk Önnek erre a címre: $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'SMS-t küldtünk Önnek.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'SMS-t küldtünk Önnek erre a számra: $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Új e-mail-cím';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Új mobilszám';
+
+  @override
+  String get kontaktNichtHinterlegt => 'nincs megadva';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Megjelenés';
 
   @override

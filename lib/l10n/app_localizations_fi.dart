@@ -2900,6 +2900,34 @@ class AppLocalizationsFi extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'On muuttunut';
 
   @override
+  String get kontaktMailGeschickt => 'Lähetimme sinulle sähköpostin.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Lähetimme sähköpostin osoitteeseen $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Lähetimme sinulle tekstiviestin.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Lähetimme tekstiviestin numeroon $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Uusi sähköpostiosoite';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Uusi matkapuhelinnumero';
+
+  @override
+  String get kontaktNichtHinterlegt => 'ei annettu';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Ulkoasu';
 
   @override

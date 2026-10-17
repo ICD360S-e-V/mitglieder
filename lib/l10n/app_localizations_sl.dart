@@ -2899,6 +2899,34 @@ class AppLocalizationsSl extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Se je spremenilo';
 
   @override
+  String get kontaktMailGeschickt => 'Poslali smo vam e-sporočilo.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Poslali smo vam e-sporočilo na naslov $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Poslali smo vam SMS.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Poslali smo vam SMS na številko $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Nov e-poštni naslov';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Nova številka mobilnega telefona';
+
+  @override
+  String get kontaktNichtHinterlegt => 'ni vneseno';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Videz';
 
   @override

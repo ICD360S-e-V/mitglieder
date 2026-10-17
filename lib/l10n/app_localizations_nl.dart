@@ -2910,6 +2910,34 @@ class AppLocalizationsNl extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Het is gewijzigd';
 
   @override
+  String get kontaktMailGeschickt => 'We hebben u een e-mail gestuurd.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'We hebben u een e-mail gestuurd naar $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'We hebben u een sms gestuurd.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'We hebben u een sms gestuurd naar $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Nieuw e-mailadres';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Nieuw mobiel nummer';
+
+  @override
+  String get kontaktNichtHinterlegt => 'niet opgegeven';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Weergave';
 
   @override
