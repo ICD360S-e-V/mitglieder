@@ -1,0 +1,81 @@
+name: Merge-Warteschlange
+
+# Mergt die offenen PRs der Reihe nach, vom ältesten zum neuesten — den
+# nächsten erst, wenn die Fassung des vorigen gebaut und im GitHub-Release ist.
+#
+# Wunsch des Vorsitzenden (17.10.2026): „pai faci un sistem sa automatizeze
+# prurile in ordine cronologica cand detecteaza un pr pentru merge sa faca merge
+# si daca apare un pr in acelasi timp asteapta pana cand se termina pr care sa
+# facut merge“. Entschieden wird in .github/scripts/merge_warteschlange.py
+# (gleich in vorsitzer, mitglieder und schatzmeister); hier steht nur, was bei
+# dieser App anders ist.
+#
+# Gemergt wird ein PR nur, wenn kein Release und kein Bau unterwegs ist, die
+# letzte Fassung draußen ist, und er der älteste offene ist: auf main, kein
+# Entwurf, von icd360sevofficial, kein Fork, ohne Etikett `asteapta`, Prüfungen
+# grün, ohne Konflikt. Rote, Entwürfe usw. werden übersprungen; laufen beim
+# ältesten noch die Prüfungen, wartet die Schlange (kein jüngerer zieht vorbei).
+#
+# ⚠️ Gemergt wird mit dem GITHUB_TOKEN. Dessen Push startet KEINE Abläufe
+# (Schleifenschutz von GitHub) — das Skript startet danach selbst, was ein Push
+# auf main sonst startet (NACH_DEM_MERGEN). Ein neuer Ablauf mit
+# `push: branches: [main]` gehört dort dazu; test/merge_warteschlange_test.dart
+# prüft das.
+#
+# ⚠️ Nie den Code eines PR auschecken oder ausführen: workflow_run läuft mit
+# Schreibrechten. Ausgecheckt wird nur .github/scripts von main.
+
+on:
+  # Ein PR ist fertig geprüft, oder eine Fassung ist gebaut: gleich nachsehen.
+  workflow_run:
+    workflows: ["PR Check", "Build Android (priority)", "Build Extra Platforms (Windows + iOS + macOS)", "Build Linux + Flatpak (priority)"]
+    types: [completed]
+  # Sonst alle 15 Minuten — z. B. nachdem ein Etikett `asteapta` weg ist, oder
+  # nach einem Merge ohne neue Fassung (nur Tests oder Doku: release-please
+  # macht dann keine).
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      trocken:
+        description: 'Nur sagen, was geschähe'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+  checks: read
+  statuses: read
+
+# Nie zwei auf einmal: beide sähen denselben PR als den nächsten.
+concurrency:
+  group: merge-warteschlange
+  cancel-in-progress: false
+
+jobs:
+  naechster:
+    name: Nächsten PR mergen
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: .github/scripts
+
+      - name: Entscheiden und mergen
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          # Wie der Knopf „Mergen" der Vorsitzer-App für dieses Repo (Squash,
+          # „<Titel> (#N)" — release-please liest daraus die Fassung).
+          MERGE_ART: squash
+          LAEUFE_WARTEN: release-please.yml build-android.yml build-extras-platforms.yml build-linux-flatpak.yml
+          FREIGABE_LAUF: release-please.yml
+          BAU_LAUF: build-android.yml
+          BAU_VEROEFFENTLICHT: "Release upload (Android)"
+          NACH_DEM_MERGEN: release-please.yml security-scans.yml warm-cache.yml@pubspec.lock,pubspec.yaml,l10n.yaml,lib/l10n/**,.github/workflows/warm-cache.yml
+          AUTOREN: icd360sevofficial
+          TROCKEN: ${{ inputs.trocken && '1' || '' }}
+        run: python3 .github/scripts/merge_warteschlange.py
