@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.114.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.113.0...v1.114.0) (2026-10-17)
+
+
+### Features
+
+* **mitglied:** Foto bearbeiten — Ordner oder ein Foto, sechs Werkzeuge, Kopie statt Überschreiben ([#507](https://github.com/ICD360S-e-V/mitglieder/issues/507)) ([e4f37b0](https://github.com/ICD360S-e-V/mitglieder/commit/e4f37b049614586b5e07bf17478427bf3891ab1f))
+
 ## [1.113.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.112.0...v1.113.0) (2026-10-17)
 
 
