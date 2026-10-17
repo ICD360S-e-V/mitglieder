@@ -22,6 +22,14 @@ import '../utils/app_theme.dart';
 /// kein Nachweis über irgendetwas — sie ist dann nur die zuletzt eingetippte
 /// Zeichenkette. Der Code geht an die NEUE Nummer; wer ihn eingibt, hat
 /// bewiesen, dass er das Telefon in der Hand hält.
+///
+/// ⚠️ Liegt schon ein Code bereit (`code_offen`), steht das Eingabefeld vorn —
+/// nicht der Knopf, der einen NEUEN Code schickt. Den Code bringt meist die
+/// Erinnerungsmail des Vereins (7 Tage gültig), und die sagte bis zum
+/// 17.10.2026 „tippen Sie auf „Bestätigen““. Der Knopf forderte einen neuen
+/// Code an, der Server löschte dabei den aus der Mail, und wer ihn eintippte,
+/// las „Der Code stimmt nicht“. Der Server lässt ihn seitdem stehen; hier
+/// kommt man gar nicht erst auf den Umweg.
 class KontaktBestaetigung extends StatefulWidget {
   final ApiService apiService;
 
@@ -57,6 +65,10 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
   String? _fehler;
   String? _zielKurz;
 
+  /// Kanäle, deren Eingabefeld das Mitglied mit „Abbrechen" zugemacht hat —
+  /// die öffnen sich nicht von selbst wieder.
+  final _zugemacht = <String>{};
+
   @override
   void initState() {
     super.initState();
@@ -78,10 +90,36 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
       setState(() {
         _stand = r['success'] == true ? Map<String, dynamic>.from(r) : null;
         _laedt = false;
+        _offenerKanal ??= _kanalMitCode();
       });
     } catch (_) {
       if (mounted) setState(() => _laedt = false);
     }
+  }
+
+  /// Der erste fällige Kanal, für den schon ein Code unterwegs ist — aus der
+  /// Erinnerungsmail oder von vorhin aus der App. null = keiner.
+  String? _kanalMitCode() {
+    final s = _stand;
+    if (s == null) return null;
+    for (final kanal in const ['email', 'telefon']) {
+      final k = s[kanal];
+      if (k is Map && k['faellig'] == true && k['code_offen'] == true && !_zugemacht.contains(kanal)) {
+        return kanal;
+      }
+    }
+    return null;
+  }
+
+  /// Das Eingabefeld für einen Code, der schon unterwegs ist — ohne einen
+  /// neuen anzufordern.
+  void _codeEingeben(String kanal) {
+    setState(() {
+      _offenerKanal = kanal;
+      _zielKurz = null;
+      _fehler = null;
+      _codeCtrl.clear();
+    });
   }
 
   bool get _etwasFaellig {
@@ -265,7 +303,13 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
                       _aendern = false;
                       _neuCtrl.text = wert;
                     });
-                    _codeAnfordern(kanal);
+                    // Ein Code ist schon unterwegs: erst den eingeben lassen.
+                    // Ein neuer hiesse eine zweite Mail mit anderem Code.
+                    if (k['code_offen'] == true) {
+                      _codeEingeben(kanal);
+                    } else {
+                      _codeAnfordern(kanal);
+                    }
                   },
             child: Text(t.confirm),
           ),
@@ -370,24 +414,43 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
           if (v.length == 6 && !_sendet) _codePruefen();
         },
       ),
-      const SizedBox(height: 4),
-      Row(children: [
-        TextButton(
-          onPressed: _sendet ? null : () => setState(() {
-            _offenerKanal = null;
-            _fehler = null;
-          }),
-          child: Text(t.cancel),
+      // Kein Code angekommen, oder die Mail ist weg: ein neuer. Der Code aus
+      // der Erinnerungsmail bleibt dabei gültig (Server); ein früherer Code
+      // aus der App wird ersetzt. Eigene Zeile — drei Knöpfe nebeneinander
+      // passen auf ein schmales Telefon nicht.
+      Align(
+        alignment: AlignmentDirectional.centerStart,
+        child: TextButton.icon(
+          onPressed: _sendet ? null : () => _codeAnfordern(_offenerKanal!),
+          icon: const Icon(Icons.refresh, size: 18),
+          label: Text(t.signaturCodeErneutSenden),
         ),
-        const Spacer(),
-        if (_sendet)
-          const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
-        else
-          ElevatedButton(
-            onPressed: _codeCtrl.text.trim().length == 6 ? _codePruefen : null,
-            child: Text(t.confirm),
+      ),
+      // OverflowBar statt Row: auf einem schmalen Telefon mit grosser Schrift
+      // (277 dp, 130 %) liefen „Abbrechen“ und „Bestätigen“ nebeneinander
+      // 165 px über den Rand — dann stehen sie untereinander.
+      OverflowBar(
+        alignment: MainAxisAlignment.spaceBetween,
+        overflowAlignment: OverflowBarAlignment.end,
+        overflowSpacing: 4,
+        children: [
+          TextButton(
+            onPressed: _sendet ? null : () => setState(() {
+              _zugemacht.add(_offenerKanal!);
+              _offenerKanal = null;
+              _fehler = null;
+            }),
+            child: Text(t.cancel),
           ),
-      ]),
+          if (_sendet)
+            const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
+          else
+            ElevatedButton(
+              onPressed: _codeCtrl.text.trim().length == 6 ? _codePruefen : null,
+              child: Text(t.confirm),
+            ),
+        ],
+      ),
     ]);
   }
 
