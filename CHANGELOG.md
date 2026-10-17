@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.116.3](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.2...v1.116.3) (2026-10-17)
+
+
+### Bug Fixes
+
+* **chat:** Fotos aus der Galerie gehen als JPG/PNG hinaus — HEIC, WEBP, GIF … werden zu JPG (App-Fehler [#136](https://github.com/ICD360S-e-V/mitglieder/issues/136)) ([#522](https://github.com/ICD360S-e-V/mitglieder/issues/522)) ([066a2aa](https://github.com/ICD360S-e-V/mitglieder/commit/066a2aa7ac199c8c747eae9d5a4769b99706c94e))
+
 ## [1.116.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.1...v1.116.2) (2026-10-17)
 
 
