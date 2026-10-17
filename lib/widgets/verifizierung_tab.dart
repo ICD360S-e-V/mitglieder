@@ -25,6 +25,18 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
 
   bool _isLoading = true;
   String? _error;
+
+  /// E-Mail-Adresse oder Mobilnummer wollen bestätigt werden
+  /// (member/kontakt_bestaetigen.php, `faellig`). Dann steht „① Persönliche
+  /// Daten“ gleich offen — ganz oben darin sitzt die Karte „Stimmen diese
+  /// Angaben noch?“ mit dem Feld für den Code.
+  ///
+  /// Hinweis des Vorsitzenden, 17.10.2026: der Weg dorthin ist Personen-Symbol
+  /// › Schild › Stufe 1 — und Stufe 1 war zu, ein Schritt mehr für jeden, der
+  /// den Code aus der Mail abtippt. Die Mail nennt den Weg so, wie er hier
+  /// aussieht.
+  bool _kontaktFaellig = false;
+
   List<Map<String, dynamic>> _stufen = [];
   Map<String, dynamic> _personalData = {};
   Map<String, dynamic> _documentAcceptances = {};
@@ -249,7 +261,11 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     });
 
     try {
+      // Nebenher: ist eine Bestätigung fällig? Steht fest, bevor die Stufen
+      // zum ersten Mal gebaut werden — `initiallyExpanded` zählt nur dann.
+      final kontakt = _kontaktFaelligLaden();
       final result = await _apiService.getMyVerifizierung();
+      final kontaktFaellig = await kontakt;
 
       if (!mounted) return;
 
@@ -259,6 +275,7 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
           _stufen = List<Map<String, dynamic>>.from(data['stufen'] ?? []);
           _personalData = Map<String, dynamic>.from(data['personal_data'] ?? {});
           _documentAcceptances = Map<String, dynamic>.from(data['document_acceptances'] ?? {});
+          _kontaktFaellig = kontaktFaellig;
           _isLoading = false;
           _populateFormFields();
         });
@@ -274,6 +291,18 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         _error = getUserFriendlyError(AppLocalizations.of(context)!, e, tag: 'VERIFY');
         _isLoading = false;
       });
+    }
+  }
+
+  /// true = E-Mail oder Mobilnummer sind zu bestätigen. Ein Fehler hier lässt
+  /// den Reiter, wie er war: Stufe 1 bleibt dann eben zu.
+  Future<bool> _kontaktFaelligLaden() async {
+    try {
+      final r = await _apiService.kontaktStatus();
+      if (r['success'] != true) return false;
+      return r['email']?['faellig'] == true || r['telefon']?['faellig'] == true;
+    } catch (_) {
+      return false;
     }
   }
 
@@ -891,6 +920,10 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
     return Card(
       clipBehavior: Clip.antiAlias,
       child: ExpansionTile(
+        // Eine fällige Bestätigung öffnet Stufe 1 von selbst (siehe
+        // [_kontaktFaellig]). Zählt nur beim ersten Bauen — nach jedem
+        // _loadVerifizierung werden die Stufen neu gebaut.
+        initiallyExpanded: stufe == 1 && _kontaktFaellig,
         leading: Icon(
           _statusIcon(status),
           color: _statusColor(status),
