@@ -137,6 +137,25 @@ class BackgroundService {
     debugPrint('[BackgroundService] Credentials cleared');
   }
 
+  /// Schliesst eine Verbindung des Dienstes und hört sie nicht mehr an.
+  ///
+  /// Mit 1000 (normalClosure): web_socket_channel 3 baut auch
+  /// IOWebSocketChannel auf package:web_socket, und das nimmt nur 1000 oder
+  /// 3000–4999 an. Das frühere 1001 (goingAway) warf einen ArgumentError —
+  /// asynchron, am try/catch vorbei — und schloss die Verbindung NICHT
+  /// (App-Fehler #133): die alte blieb neben der neuen offen.
+  ///
+  /// Das Abo wird gekündigt, damit eine aufgegebene Verbindung keine
+  /// Nachricht mehr meldet (sonst doppelt) und ihr spätes onDone nicht die
+  /// neue Verbindung stört (Ping-Takt weg, unnötiger Neuaufbau).
+  @visibleForTesting
+  static void closeConnection(WebSocketChannel? channel, StreamSubscription<dynamic>? subscription) {
+    if (subscription != null) unawaited(subscription.cancel());
+    try {
+      channel?.sink.close(status.normalClosure);
+    } catch (_) {}
+  }
+
   /// iOS background handler
   @pragma('vm:entry-point')
   static Future<bool> onIosBackground(ServiceInstance service) async {
@@ -156,6 +175,7 @@ class BackgroundService {
     String? token;
     String? mitgliedernummer;
     WebSocketChannel? channel;
+    StreamSubscription<dynamic>? subscription;
     Timer? reconnectTimer;
     Timer? pingTimer;
     bool isConnected = false;
@@ -207,9 +227,8 @@ class BackgroundService {
       isConnecting = false;
       pingTimer?.cancel();
       reconnectTimer?.cancel();
-      try {
-        channel?.sink.close(status.goingAway);
-      } catch (_) {}
+      closeConnection(channel, subscription);
+      subscription = null;
       channel = null;
 
       if (service is AndroidServiceInstance) {
@@ -334,16 +353,15 @@ class BackgroundService {
               debugPrint('[BackgroundService] Ping failed: $e');
               isConnected = false;
               timer.cancel();
-              try {
-                channel?.sink.close(status.goingAway);
-              } catch (_) {}
+              closeConnection(channel, subscription);
+              subscription = null;
               scheduleReconnect();
             }
           }
         });
 
         // Listen to messages
-        channel!.stream.listen(
+        subscription = channel!.stream.listen(
           (data) {
             try {
               debugPrint('[BackgroundService] Message received: $data');
@@ -356,6 +374,10 @@ class BackgroundService {
           onError: (error) {
             debugPrint('[BackgroundService] WebSocket error: $error');
             isConnected = false;
+            // Diese Verbindung aufgeben, bevor eine neue kommt — sonst bliebe
+            // sie neben der neuen offen und ihr spätes onDone störte die neue.
+            closeConnection(channel, subscription);
+            subscription = null;
             scheduleReconnect();
           },
           onDone: () {
@@ -369,6 +391,10 @@ class BackgroundService {
         debugPrint('[BackgroundService] Connection failed: $e');
         isConnected = false;
         isConnecting = false;
+        // Auch ein Versuch, der nicht rechtzeitig bereit war, kann später noch
+        // aufgehen — er darf dann nicht unbenutzt offen bleiben.
+        closeConnection(channel, subscription);
+        subscription = null;
         scheduleReconnect();
       }
     };
