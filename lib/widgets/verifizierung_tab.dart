@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import 'kontakt_bestaetigung.dart';
 import '../services/api_service.dart';
+import '../services/kontakt_link.dart';
 import '../screens/webview_screen.dart';
 import '../utils/error_helpers.dart';
 import '../utils/eu_eea_citizenship.dart';
@@ -14,7 +15,12 @@ import '../utils/mitglied_felder.dart';
 class VerifizierungTab extends StatefulWidget {
   final String mitgliedernummer;
 
-  const VerifizierungTab({super.key, required this.mitgliedernummer});
+  /// Ein Code, der per Link aus der Mail kam ([KontaktLink]): Stufe 1 steht
+  /// offen, und die Karte „Stimmen diese Angaben noch?“ trägt ihn ein und
+  /// prüft ihn — derselbe Weg wie von Hand, nur ohne Tippen.
+  final KontaktCodeAusLink? codeAusLink;
+
+  const VerifizierungTab({super.key, required this.mitgliedernummer, this.codeAusLink});
 
   @override
   State<VerifizierungTab> createState() => _VerifizierungTabState();
@@ -791,21 +797,31 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.verificationProgress,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-                Text(
-                  AppLocalizations.of(context)!.stepsCompleted(totalCompleted, totalStages),
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: totalCompleted == totalStages ? context.colors.successFg : context.colors.infoFg,
+            // Wrap statt Row: „Verifizierungsfortschritt“ und „2/5 Stufen
+            // erledigt“ passen auf einem Telefon nicht nebeneinander — als Row
+            // liefen sie über den Rand (gefunden, als der Link aus der Mail
+            // genau diesen Reiter öffnete). Dann steht die Zahl darunter.
+            // Volle Breite, sonst rückte spaceBetween nichts auseinander.
+            SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                spacing: 12,
+                runSpacing: 4,
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.verificationProgress,
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
-                ),
-              ],
+                  Text(
+                    AppLocalizations.of(context)!.stepsCompleted(totalCompleted, totalStages),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: totalCompleted == totalStages ? context.colors.successFg : context.colors.infoFg,
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 8),
             ClipRRect(
@@ -921,9 +937,10 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
       clipBehavior: Clip.antiAlias,
       child: ExpansionTile(
         // Eine fällige Bestätigung öffnet Stufe 1 von selbst (siehe
-        // [_kontaktFaellig]). Zählt nur beim ersten Bauen — nach jedem
-        // _loadVerifizierung werden die Stufen neu gebaut.
-        initiallyExpanded: stufe == 1 && _kontaktFaellig,
+        // [_kontaktFaellig]), ein Code aus dem Link auch. Zählt nur beim
+        // ersten Bauen — nach jedem _loadVerifizierung werden die Stufen neu
+        // gebaut.
+        initiallyExpanded: stufe == 1 && (_kontaktFaellig || widget.codeAusLink != null),
         leading: Icon(
           _statusIcon(status),
           color: _statusColor(status),
@@ -1065,9 +1082,13 @@ class _VerifizierungTabState extends State<VerifizierungTab> {
         //
         // Zeigt sich selbst nur, wenn wirklich etwas fällig ist
         // (nurWennFaellig), und verschwindet nach der Bestätigung von allein.
+        // Kam ein Code per Link, bleibt sie stehen: danach steht dort
+        // „bestätigt am …“ — die Antwort auf den Link, an seinem Ort.
         KontaktBestaetigung(
           apiService: _apiService,
           onBestaetigt: _loadVerifizierung,
+          codeAusLink: widget.codeAusLink,
+          nurWennFaellig: widget.codeAusLink == null,
         ),
         // Vorname + Nachname
         Row(

@@ -175,7 +175,11 @@ void main() {
     expect(init.indexOf('_codeAusLinkZeigen();', bild), greaterThan(bild));
     expect(rumpf(dashboard, 'void dispose()'),
         contains('KontaktLink.instance.offen.removeListener(_codeAusLinkZeigen);'));
-    expect(rumpf(dashboard, 'void _codeAusLinkZeigen()'),
-        contains('KontaktCodeDialog.offenenZeigen(context, _apiService);'));
+    // Der Code landet dort, wo man ihn auch von Hand eingibt: im Profil,
+    // Reiter „Verifizierung“, Stufe 1 (verifizierung_stufe1_offen_test.dart).
+    final zeigen = rumpf(dashboard, 'void _codeAusLinkZeigen()');
+    expect(zeigen, contains('KontaktLink.instance.abholen()'));
+    expect(zeigen, contains('_showProfileDialog(codeAusLink: code);'));
+    expect(rumpf(dashboard, 'void _showProfileDialog('), contains('codeAusLink: codeAusLink,'));
   });
 }

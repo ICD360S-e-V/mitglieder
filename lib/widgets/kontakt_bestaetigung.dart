@@ -247,11 +247,11 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    // Im Fenster für den Link ist die Karte das Einzige — dort steht beim
-    // Laden ein Kreisel und bei einem Fehler ein Satz, kein leeres Fenster.
-    final imLinkFenster = widget.codeAusLink != null;
+    // Kam der Code per Link, sucht das Mitglied genau diese Karte — dort steht
+    // beim Laden ein Kreisel und bei einem Fehler ein Satz, kein leerer Platz.
+    final ausLink = widget.codeAusLink != null;
     if (_laedt) {
-      return imLinkFenster
+      return ausLink
           ? const Padding(
               padding: EdgeInsets.all(24),
               child: Center(child: CircularProgressIndicator()),
@@ -260,7 +260,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
     }
     final s = _stand;
     if (s == null) {
-      return imLinkFenster ? Text(t.signaturFehlgeschlagen) : const SizedBox.shrink();
+      return ausLink ? Text(t.signaturFehlgeschlagen) : const SizedBox.shrink();
     }
     if (widget.nurWennFaellig && !_etwasFaellig) return const SizedBox.shrink();
 
@@ -504,49 +504,5 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
     if (d == null) return '';
     return '${d.day.toString().padLeft(2, '0')}.'
         '${d.month.toString().padLeft(2, '0')}.${d.year}';
-  }
-}
-
-/// Das Fenster für einen Code, der per Link aus der Mail kam ([KontaktLink]).
-///
-/// Die Karte sitzt sonst drei Schritte tief (Profil ▸ Verifizierung ▸ Stufe 1)
-/// — der Link soll aber gleich bestätigen. Darum ein eigenes Fenster über dem
-/// Dashboard, mit eingetragenem Code. Nach der Bestätigung geht es von selbst
-/// zu; die grüne Meldung steht dann auf dem Bildschirm darunter. Stimmt der
-/// Code nicht, bleibt es offen — mit der Meldung des Servers, dem Feld und
-/// „Code erneut senden“.
-class KontaktCodeDialog extends StatelessWidget {
-  final ApiService apiService;
-  final KontaktCodeAusLink code;
-
-  const KontaktCodeDialog({super.key, required this.apiService, required this.code});
-
-  /// Zeigt das Fenster für den wartenden Code, falls einer da ist.
-  static Future<void> offenenZeigen(BuildContext context, ApiService apiService) async {
-    final code = KontaktLink.instance.abholen();
-    if (code == null) return;
-    await showDialog<void>(
-      context: context,
-      builder: (_) => KontaktCodeDialog(apiService: apiService, code: code),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final t = AppLocalizations.of(context)!;
-    return AlertDialog(
-      scrollable: true,
-      content: KontaktBestaetigung(
-        apiService: apiService,
-        // Auch was schon bestätigt ist, zeigen: ein zweites Öffnen des Links
-        // soll „bestätigt am …“ sagen, nicht ein leeres Fenster.
-        nurWennFaellig: false,
-        codeAusLink: code,
-        onBestaetigt: () => Navigator.of(context).pop(),
-      ),
-      actions: [
-        TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(t.close)),
-      ],
-    );
   }
 }
