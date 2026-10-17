@@ -2931,6 +2931,37 @@ class AppLocalizationsRu extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Правление спрашивает';
+
+  @override
+  String get webChatFrageText => 'Вы сейчас пишете в чате на icd360s.de?';
+
+  @override
+  String get webChatFrageZahl =>
+      'Нажмите на число, которое показано там в чате.';
+
+  @override
+  String get webChatNein => 'Нет, это не я';
+
+  @override
+  String get webChatBestaetigt =>
+      'Спасибо! Теперь правление знает, что это вы.';
+
+  @override
+  String get webChatAbgelehnt => 'Хорошо. Правление узнает, что это не вы.';
+
+  @override
+  String get webChatFalsch =>
+      'Это число неверное. Попросите правление спросить ещё раз.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Этот вопрос больше не действителен. Попросите правление спросить ещё раз.';
+
+  @override
+  String get webChatFehler => 'Нет связи с сервером. Попробуйте ещё раз.';
+
+  @override
   String get themeTitle => 'Оформление';
 
   @override

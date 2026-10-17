@@ -2903,6 +2903,37 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'مجلس الإدارة يسأل';
+
+  @override
+  String get webChatFrageText => 'هل تكتب الآن في الدردشة على icd360s.de؟';
+
+  @override
+  String get webChatFrageZahl => 'اضغط على الرقم الظاهر هناك في الدردشة.';
+
+  @override
+  String get webChatNein => 'لا، لست أنا';
+
+  @override
+  String get webChatBestaetigt =>
+      'شكراً! يعلم مجلس الإدارة الآن أنك أنت من يكتب.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'حسناً. سيُبلَّغ مجلس الإدارة بأن الكاتب ليس أنت.';
+
+  @override
+  String get webChatFalsch =>
+      'هذا الرقم غير صحيح. اطلب من مجلس الإدارة أن يسأل مرة أخرى.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'لم يعد هذا السؤال صالحاً. اطلب من مجلس الإدارة أن يسأل مرة أخرى.';
+
+  @override
+  String get webChatFehler => 'لا يوجد اتصال بالخادم. يرجى المحاولة مرة أخرى.';
+
+  @override
   String get themeTitle => 'المظهر';
 
   @override

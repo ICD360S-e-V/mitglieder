@@ -2926,6 +2926,35 @@ class AppLocalizationsSr extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Управа пита';
+
+  @override
+  String get webChatFrageText => 'Да ли управо пишете у чету на icd360s.de?';
+
+  @override
+  String get webChatFrageZahl => 'Додирните број који пише тамо у чету.';
+
+  @override
+  String get webChatNein => 'Не, то нисам ја';
+
+  @override
+  String get webChatBestaetigt => 'Хвала! Управа сада зна да сте то ви.';
+
+  @override
+  String get webChatAbgelehnt => 'У реду. Управа ће сазнати да то нисте ви.';
+
+  @override
+  String get webChatFalsch =>
+      'Тај број није тачан. Замолите управу да поново пита.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'То питање више не важи. Замолите управу да поново пита.';
+
+  @override
+  String get webChatFehler => 'Нема везе са сервером. Покушајте поново.';
+
+  @override
   String get themeTitle => 'Izgled';
 
   @override

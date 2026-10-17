@@ -2932,6 +2932,35 @@ class AppLocalizationsUk extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Правління запитує';
+
+  @override
+  String get webChatFrageText => 'Ви зараз пишете в чаті на icd360s.de?';
+
+  @override
+  String get webChatFrageZahl => 'Натисніть на число, яке показано там у чаті.';
+
+  @override
+  String get webChatNein => 'Ні, це не я';
+
+  @override
+  String get webChatBestaetigt => 'Дякуємо! Тепер правління знає, що це ви.';
+
+  @override
+  String get webChatAbgelehnt => 'Добре. Правління дізнається, що це не ви.';
+
+  @override
+  String get webChatFalsch =>
+      'Це число неправильне. Попросіть правління запитати ще раз.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Це питання вже недійсне. Попросіть правління запитати ще раз.';
+
+  @override
+  String get webChatFehler => 'Немає з\'єднання із сервером. Спробуйте ще раз.';
+
+  @override
   String get themeTitle => 'Оформлення';
 
   @override

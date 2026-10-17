@@ -2932,6 +2932,38 @@ class AppLocalizationsBg extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Управителният съвет пита';
+
+  @override
+  String get webChatFrageText => 'Пишете ли в момента в чата на icd360s.de?';
+
+  @override
+  String get webChatFrageZahl =>
+      'Докоснете числото, което е показано там в чата.';
+
+  @override
+  String get webChatNein => 'Не, това не съм аз';
+
+  @override
+  String get webChatBestaetigt =>
+      'Благодарим! Управителният съвет вече знае, че това сте вие.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'Добре. Управителният съвет ще научи, че това не сте вие.';
+
+  @override
+  String get webChatFalsch =>
+      'Това число не е вярно. Помолете управителния съвет да попита отново.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Този въпрос вече не е валиден. Помолете управителния съвет да попита отново.';
+
+  @override
+  String get webChatFehler => 'Няма връзка със сървъра. Опитайте отново.';
+
+  @override
   String get themeTitle => 'Външен вид';
 
   @override

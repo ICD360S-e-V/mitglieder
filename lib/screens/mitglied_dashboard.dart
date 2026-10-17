@@ -22,6 +22,7 @@ import '../widgets/video_call_screen.dart';
 import '../widgets/legal_footer.dart';
 import '../widgets/live_chat_dialog.dart';
 import '../widgets/benachrichtigung_consent_dialog.dart';
+import '../widgets/web_chat_bestaetigung_dialog.dart';
 import '../widgets/update_dialog.dart';
 import '../widgets/ticket_dialogs.dart';
 import '../services/ticket_service.dart';
@@ -261,6 +262,9 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
 
     // Start ntfy push notifications (server-sent via NDJSON stream)
     NtfyService().start(widget.mitgliedernummer);
+    // Fragt der Vorstand per Push, ob das Mitglied gerade im Website-Chat
+    // schreibt, kommt die Frage sofort — nicht erst beim nächsten Zurückkommen.
+    NtfyService().webChatSignal.addListener(_webChatAusPush);
 
     // Einmal fragen, ob SMS-Erinnerungen erwünscht sind. Ob überhaupt gefragt
     // wird, entscheidet der Server (nur bei hinterlegter Mobilnummer, nur wenn
@@ -275,7 +279,11 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       // Danach der Code aus dem Link, falls einer wartet: wer den Link
       // angetippt hat, hat die App genau dafür geöffnet.
       _codeAusLinkZeigen();
-      BenachrichtigungConsentDialog.zeigenFallsNoetig(context, _apiService);
+      // Danach die Frage aus dem Website-Chat, falls eine offen ist — erst
+      // nach der Frage zu den SMS-Erinnerungen, damit nie zwei Dialoge
+      // übereinander stehen. (Die kommt höchstens dreimal überhaupt.)
+      BenachrichtigungConsentDialog.zeigenFallsNoetig(context, _apiService)
+          .whenComplete(_webChatPruefen);
       // Und mit Abstand die Frage nach der Berechtigung fuer den
       // Klingelschirm. ⚠️ Sie darf einen laufenden Anruf nicht verdecken —
       // deshalb die Wache auf den Zustand.
@@ -439,9 +447,30 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         if (e == null || _voiceCallService.callState != CallState.ringing) return;
         _klingelschirmZeigen(e);
       });
+      _webChatPruefen();
       debugPrint('[Dashboard] App resumed - UI timers restarted');
     }
   }
+
+  /// Fragt der Vorstand, ob dieses Mitglied gerade im Chat auf icd360s.de
+  /// schreibt? Dann hier die Frage mit den drei Zahlen
+  /// ([webChatBestaetigungPruefen]) — höchstens alle 30 s, nach einem Push
+  /// sofort.
+  ///
+  /// ⚠️ Nur im Vordergrund und nie über einem Anruf: hinter dem
+  /// Sperrbildschirm sähe den Dialog niemand, über dem Klingelschirm
+  /// verdeckte er das Annehmen. Der nächste Auslöser holt ihn nach. Beim
+  /// Kaltstart kann der Lebenszyklus noch leer sein — dann ist die App eben
+  /// erst geöffnet worden, also im Blick.
+  void _webChatPruefen({bool sofort = false}) {
+    if (!mounted) return;
+    final zustand = WidgetsBinding.instance.lifecycleState;
+    if (zustand != null && zustand != AppLifecycleState.resumed) return;
+    if (_voiceCallService.callState != CallState.idle || _klingelschirmOffen) return;
+    webChatBestaetigungPruefen(context, sofort: sofort);
+  }
+
+  void _webChatAusPush() => _webChatPruefen(sofort: true);
 
   /// Fragt nach der Berechtigung fuer das Anruffenster.
   ///
@@ -600,6 +629,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         .erlaubnisFehlt
         .removeListener(_anruffensterErlaubnisFragen);
     KontaktLink.instance.offen.removeListener(_codeAusLinkZeigen);
+    NtfyService().webChatSignal.removeListener(_webChatAusPush);
     _messageSubscription?.cancel();
     _callOfferSubscription?.cancel();
     _klingelAbo?.cancel();

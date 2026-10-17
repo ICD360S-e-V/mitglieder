@@ -36,9 +36,11 @@ import 'package:icd360sev_mitglied/utils/app_theme.dart';
 import 'package:icd360sev_mitglied/utils/foto_bearbeiten.dart';
 import 'package:icd360sev_mitglied/utils/responsive.dart';
 import 'package:icd360sev_mitglied/services/api_service.dart';
+import 'package:icd360sev_mitglied/services/web_chat_bestaetigung.dart';
 import 'package:icd360sev_mitglied/widgets/benachrichtigungen_dialog.dart';
 import 'package:icd360sev_mitglied/widgets/mitglied_extras_dialog.dart';
 import 'package:icd360sev_mitglied/widgets/rechner_dialog.dart';
+import 'package:icd360sev_mitglied/widgets/web_chat_bestaetigung_dialog.dart';
 import 'package:icd360sev_mitglied/widgets/changelog_dialog.dart';
 import 'package:icd360sev_mitglied/widgets/chat_input_area.dart';
 import 'package:icd360sev_mitglied/widgets/debug_console.dart';
@@ -693,6 +695,11 @@ void main() {
           ),
       'BenachrichtigungConsentDialog': () =>
           BenachrichtigungConsentDialog(apiService: ApiService()),
+      // „Der Vorstand fragt" (Website-Chat): drei große Zahlenknöpfe
+      // nebeneinander — auf 320 dp bei größter Schrift brechen sie um.
+      'WebChatBestaetigungDialog': () => const WebChatBestaetigungDialog(
+            anfrage: WebChatAnfrage(id: 5, zahlen: [47, 12, 85]),
+          ),
       'ProfileDialog': () => ProfileDialog(
             userName: 'Maximilian Freiherr von Habsburg',
             mitgliedernummer: '360-1234',

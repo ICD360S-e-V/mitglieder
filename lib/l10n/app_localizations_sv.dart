@@ -2930,6 +2930,35 @@ class AppLocalizationsSv extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Styrelsen frågar';
+
+  @override
+  String get webChatFrageText => 'Skriver du just nu i chatten på icd360s.de?';
+
+  @override
+  String get webChatFrageZahl => 'Tryck på talet som visas där i chatten.';
+
+  @override
+  String get webChatNein => 'Nej, det är inte jag';
+
+  @override
+  String get webChatBestaetigt => 'Tack! Styrelsen vet nu att det är du.';
+
+  @override
+  String get webChatAbgelehnt => 'Okej. Styrelsen får veta att det inte är du.';
+
+  @override
+  String get webChatFalsch =>
+      'Det talet stämmer inte. Be styrelsen att fråga igen.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Frågan gäller inte längre. Be styrelsen att fråga igen.';
+
+  @override
+  String get webChatFehler => 'Ingen anslutning till servern. Försök igen.';
+
+  @override
   String get themeTitle => 'Utseende';
 
   @override

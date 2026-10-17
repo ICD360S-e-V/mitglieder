@@ -2925,6 +2925,38 @@ class AppLocalizationsCs extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Představenstvo se ptá';
+
+  @override
+  String get webChatFrageText => 'Píšete právě v chatu na icd360s.de?';
+
+  @override
+  String get webChatFrageZahl => 'Klepněte na číslo, které je tam v chatu.';
+
+  @override
+  String get webChatNein => 'Ne, to nejsem já';
+
+  @override
+  String get webChatBestaetigt =>
+      'Děkujeme! Představenstvo teď ví, že jste to vy.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'V pořádku. Představenstvo se dozví, že to nejste vy.';
+
+  @override
+  String get webChatFalsch =>
+      'Toto číslo nesouhlasí. Požádejte představenstvo, aby se zeptalo znovu.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Tato otázka už neplatí. Požádejte představenstvo, aby se zeptalo znovu.';
+
+  @override
+  String get webChatFehler =>
+      'Žádné spojení se serverem. Zkuste to prosím znovu.';
+
+  @override
   String get themeTitle => 'Vzhled';
 
   @override

@@ -5324,6 +5324,60 @@ abstract class AppLocalizations {
   /// **'name@beispiel.de'**
   String get kontaktMailBeispiel;
 
+  /// Titel des Dialogs, wenn der Vorstand fragt, ob das Mitglied gerade im Website-Chat schreibt
+  ///
+  /// In de, this message translates to:
+  /// **'Der Vorstand fragt'**
+  String get webChatFrageTitel;
+
+  /// Frage im Dialog; icd360s.de ist die Website des Vereins (nicht übersetzen)
+  ///
+  /// In de, this message translates to:
+  /// **'Schreiben Sie gerade im Chat auf icd360s.de?'**
+  String get webChatFrageText;
+
+  /// Anleitung: im Website-Chat steht eine Zahl, darunter stehen drei Zahlen zur Auswahl
+  ///
+  /// In de, this message translates to:
+  /// **'Tippen Sie auf die Zahl, die dort im Chat steht.'**
+  String get webChatFrageZahl;
+
+  /// Knopf: das Mitglied schreibt NICHT im Website-Chat
+  ///
+  /// In de, this message translates to:
+  /// **'Nein, das bin ich nicht'**
+  String get webChatNein;
+
+  /// Nach der richtigen Zahl: das Gespräch im Website-Chat ist jetzt diesem Mitglied zugeordnet
+  ///
+  /// In de, this message translates to:
+  /// **'Danke! Der Vorstand weiß jetzt, dass Sie es sind.'**
+  String get webChatBestaetigt;
+
+  /// Nach „Nein, das bin ich nicht"
+  ///
+  /// In de, this message translates to:
+  /// **'In Ordnung. Der Vorstand erfährt, dass Sie es nicht sind.'**
+  String get webChatAbgelehnt;
+
+  /// Falsche Zahl getippt: die Frage ist damit verbraucht
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Zahl stimmt nicht. Bitten Sie den Vorstand, noch einmal zu fragen.'**
+  String get webChatFalsch;
+
+  /// Die Frage gilt nicht mehr (nach 10 Minuten oder vom Vorstand zurückgenommen)
+  ///
+  /// In de, this message translates to:
+  /// **'Die Frage gilt nicht mehr. Bitten Sie den Vorstand, noch einmal zu fragen.'**
+  String get webChatAbgelaufen;
+
+  /// Netzfehler beim Antworten; das Mitglied kann gleich noch einmal tippen
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Verbindung zum Server. Bitte versuchen Sie es noch einmal.'**
+  String get webChatFehler;
+
   /// No description provided for @themeTitle.
   ///
   /// In de, this message translates to:

@@ -2941,6 +2941,38 @@ class AppLocalizationsNl extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Het bestuur vraagt';
+
+  @override
+  String get webChatFrageText =>
+      'Schrijft u op dit moment in de chat op icd360s.de?';
+
+  @override
+  String get webChatFrageZahl => 'Tik op het getal dat daar in de chat staat.';
+
+  @override
+  String get webChatNein => 'Nee, dat ben ik niet';
+
+  @override
+  String get webChatBestaetigt => 'Dank u! Het bestuur weet nu dat u het bent.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'In orde. Het bestuur hoort dat u het niet bent.';
+
+  @override
+  String get webChatFalsch =>
+      'Dit getal klopt niet. Vraag het bestuur om het nog eens te vragen.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Deze vraag geldt niet meer. Vraag het bestuur om het nog eens te vragen.';
+
+  @override
+  String get webChatFehler =>
+      'Geen verbinding met de server. Probeer het opnieuw.';
+
+  @override
   String get themeTitle => 'Weergave';
 
   @override
