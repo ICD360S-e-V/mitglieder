@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.113.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.112.0...v1.113.0) (2026-10-17)
+
+
+### Features
+
+* **verifizierung:** Stufe 1 steht offen, wenn eine Bestätigung fällig ist ([#505](https://github.com/ICD360S-e-V/mitglieder/issues/505)) ([7b64542](https://github.com/ICD360S-e-V/mitglieder/commit/7b64542fc9bff3a206862732e26e9dc6767876b6))
+
 ## [1.112.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.111.1...v1.112.0) (2026-10-17)
 
 
