@@ -2921,6 +2921,34 @@ class AppLocalizationsEl extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Έχει αλλάξει';
 
   @override
+  String get kontaktMailGeschickt => 'Σας στείλαμε ένα email.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Σας στείλαμε ένα email στο $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Σας στείλαμε ένα SMS.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Σας στείλαμε ένα SMS στο $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Νέα διεύθυνση email';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Νέος αριθμός κινητού';
+
+  @override
+  String get kontaktNichtHinterlegt => 'δεν έχει καταχωριστεί';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Εμφάνιση';
 
   @override

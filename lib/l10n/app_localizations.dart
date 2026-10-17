@@ -5276,6 +5276,54 @@ abstract class AppLocalizations {
   /// **'Ist anders geworden'**
   String get kontaktIstAndersGeworden;
 
+  /// Über dem Code-Feld: ein Code ist per Mail unterwegs (Ziel unbekannt, z. B. aus der Erinnerungsmail)
+  ///
+  /// In de, this message translates to:
+  /// **'Wir haben Ihnen eine E-Mail geschickt.'**
+  String get kontaktMailGeschickt;
+
+  /// Über dem Code-Feld: Code per Mail an die gekürzte Adresse geschickt
+  ///
+  /// In de, this message translates to:
+  /// **'Wir haben Ihnen eine E-Mail an {ziel} geschickt.'**
+  String kontaktMailGeschicktAn(String ziel);
+
+  /// Über dem Code-Feld: ein Code ist per SMS unterwegs (Ziel unbekannt)
+  ///
+  /// In de, this message translates to:
+  /// **'Wir haben Ihnen eine SMS geschickt.'**
+  String get kontaktSmsGeschickt;
+
+  /// Über dem Code-Feld: Code per SMS an die gekürzte Nummer geschickt
+  ///
+  /// In de, this message translates to:
+  /// **'Wir haben Ihnen eine SMS an {ziel} geschickt.'**
+  String kontaktSmsGeschicktAn(String ziel);
+
+  /// Titel des Dialogs für eine neue E-Mail-Adresse
+  ///
+  /// In de, this message translates to:
+  /// **'Neue E-Mail-Adresse'**
+  String get kontaktNeueMailTitel;
+
+  /// Titel des Dialogs für eine neue Mobilnummer
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Mobilnummer'**
+  String get kontaktNeueNummerTitel;
+
+  /// Steht statt der Adresse/Nummer, wenn keine hinterlegt ist
+  ///
+  /// In de, this message translates to:
+  /// **'nicht hinterlegt'**
+  String get kontaktNichtHinterlegt;
+
+  /// Beispiel im Feld für eine neue E-Mail-Adresse (Domain für Beispiele: example.com)
+  ///
+  /// In de, this message translates to:
+  /// **'name@beispiel.de'**
+  String get kontaktMailBeispiel;
+
   /// No description provided for @themeTitle.
   ///
   /// In de, this message translates to:

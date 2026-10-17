@@ -2912,6 +2912,34 @@ class AppLocalizationsPl extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Zmieniło się';
 
   @override
+  String get kontaktMailGeschickt => 'Wysłaliśmy wiadomość e-mail.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Wysłaliśmy wiadomość e-mail na adres $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Wysłaliśmy wiadomość SMS.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Wysłaliśmy wiadomość SMS na numer $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Nowy adres e-mail';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Nowy numer komórkowy';
+
+  @override
+  String get kontaktNichtHinterlegt => 'nie podano';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Wygląd';
 
   @override

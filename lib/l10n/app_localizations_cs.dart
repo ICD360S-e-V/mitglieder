@@ -2897,6 +2897,34 @@ class AppLocalizationsCs extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Změnilo se';
 
   @override
+  String get kontaktMailGeschickt => 'Poslali jsme vám e-mail.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Poslali jsme vám e-mail na adresu $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Poslali jsme vám SMS.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Poslali jsme vám SMS na číslo $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Nová e-mailová adresa';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Nové mobilní číslo';
+
+  @override
+  String get kontaktNichtHinterlegt => 'nezadáno';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Vzhled';
 
   @override

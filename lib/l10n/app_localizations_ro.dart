@@ -2910,6 +2910,34 @@ class AppLocalizationsRo extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'S-a schimbat';
 
   @override
+  String get kontaktMailGeschickt => 'V-am trimis un e-mail.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'V-am trimis un e-mail la $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'V-am trimis un SMS.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'V-am trimis un SMS la $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Adresă de e-mail nouă';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Număr de mobil nou';
+
+  @override
+  String get kontaktNichtHinterlegt => 'necompletat';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Aspect';
 
   @override

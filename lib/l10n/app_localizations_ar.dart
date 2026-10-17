@@ -2875,6 +2875,34 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'لقد تغيّر';
 
   @override
+  String get kontaktMailGeschickt => 'أرسلنا إليك رسالة بريد إلكتروني.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'أرسلنا رسالة بريد إلكتروني إلى $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'أرسلنا إليك رسالة نصية.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'أرسلنا رسالة نصية إلى $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'عنوان بريد إلكتروني جديد';
+
+  @override
+  String get kontaktNeueNummerTitel => 'رقم جوال جديد';
+
+  @override
+  String get kontaktNichtHinterlegt => 'غير مسجل';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'المظهر';
 
   @override

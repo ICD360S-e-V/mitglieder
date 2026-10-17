@@ -2898,6 +2898,34 @@ class AppLocalizationsSr extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Променило се';
 
   @override
+  String get kontaktMailGeschickt => 'Послали смо Вам имејл.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Послали смо Вам имејл на $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Послали смо Вам СМС.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Послали смо Вам СМС на $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Нова имејл адреса';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Нови број мобилног телефона';
+
+  @override
+  String get kontaktNichtHinterlegt => 'није унето';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Izgled';
 
   @override

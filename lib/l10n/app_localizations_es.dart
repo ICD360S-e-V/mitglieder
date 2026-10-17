@@ -2915,6 +2915,34 @@ class AppLocalizationsEs extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Ha cambiado';
 
   @override
+  String get kontaktMailGeschickt => 'Le hemos enviado un correo electrónico.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Le hemos enviado un correo electrónico a $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Le hemos enviado un SMS.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Le hemos enviado un SMS al $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Nueva dirección de correo electrónico';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Nuevo número de móvil';
+
+  @override
+  String get kontaktNichtHinterlegt => 'no indicado';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Apariencia';
 
   @override

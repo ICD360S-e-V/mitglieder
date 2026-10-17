@@ -2898,6 +2898,34 @@ class AppLocalizationsEt extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'On muutunud';
 
   @override
+  String get kontaktMailGeschickt => 'Saatsime Teile e-kirja.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Saatsime Teile e-kirja aadressile $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Saatsime Teile SMS-i.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Saatsime Teile SMS-i numbrile $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Uus e-posti aadress';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Uus mobiilinumber';
+
+  @override
+  String get kontaktNichtHinterlegt => 'pole sisestatud';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Välimus';
 
   @override

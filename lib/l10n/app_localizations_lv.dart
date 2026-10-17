@@ -2898,6 +2898,34 @@ class AppLocalizationsLv extends AppLocalizations {
   String get kontaktIstAndersGeworden => 'Ir mainījies';
 
   @override
+  String get kontaktMailGeschickt => 'Mēs nosūtījām Jums e-pastu.';
+
+  @override
+  String kontaktMailGeschicktAn(String ziel) {
+    return 'Mēs nosūtījām Jums e-pastu uz $ziel.';
+  }
+
+  @override
+  String get kontaktSmsGeschickt => 'Mēs nosūtījām Jums SMS.';
+
+  @override
+  String kontaktSmsGeschicktAn(String ziel) {
+    return 'Mēs nosūtījām Jums SMS uz numuru $ziel.';
+  }
+
+  @override
+  String get kontaktNeueMailTitel => 'Jauna e-pasta adrese';
+
+  @override
+  String get kontaktNeueNummerTitel => 'Jauns mobilā tālruņa numurs';
+
+  @override
+  String get kontaktNichtHinterlegt => 'nav norādīts';
+
+  @override
+  String get kontaktMailBeispiel => 'name@example.com';
+
+  @override
   String get themeTitle => 'Izskats';
 
   @override
