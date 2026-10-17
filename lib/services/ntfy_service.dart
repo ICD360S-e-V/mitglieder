@@ -180,7 +180,12 @@ class NtfyService {
       final body = data['message'] as String? ?? '';
 
       debugPrint('[NTFY] Notification: $title - $body');
-      _log.info('NtfyService: Received: $title', tag: 'NTFY');
+      // Ohne Wortlaut — der Titel trägt den Namen des Absenders.
+      _log.info(
+        'NtfyService: Benachrichtigung erhalten '
+        '(Titel ${title.length} Z., Text ${body.length} Z.)',
+        tag: 'NTFY',
+      );
 
       NotificationService().show(
         title: title,

@@ -481,7 +481,8 @@ class WizardService {
           )
           .timeout(const Duration(seconds: 15));
       if (r.statusCode != 200) {
-        _log.error('wizard.start HTTP ${r.statusCode}: ${r.body}', tag: 'WIZ');
+        // Ohne den Rumpf: die Antwort kann Angaben des Antrags enthalten.
+        _log.error('wizard.start HTTP ${r.statusCode} (${r.body.length} Byte)', tag: 'WIZ');
         return null;
       }
       final body = jsonDecode(r.body) as Map<String, dynamic>;
@@ -515,7 +516,7 @@ class WizardService {
           )
           .timeout(const Duration(seconds: 15));
       if (r.statusCode != 200) {
-        _log.error('wizard.save HTTP ${r.statusCode}: ${r.body}', tag: 'WIZ');
+        _log.error('wizard.save HTTP ${r.statusCode} (${r.body.length} Byte)', tag: 'WIZ');
         return false;
       }
       final body = jsonDecode(r.body) as Map<String, dynamic>;
@@ -637,7 +638,7 @@ class WizardService {
         body = null;
       }
       if (r.statusCode != 201 && r.statusCode != 200) {
-        _log.error('wizard.finalize HTTP ${r.statusCode}: ${r.body}',
+        _log.error('wizard.finalize HTTP ${r.statusCode} (${r.body.length} Byte)',
             tag: 'WIZ');
         // 429 = anti-abuse throttle. The server returns
         // {success:false, message, code:'too_many_withdrawals',
@@ -689,7 +690,7 @@ class WizardService {
         return WizardWithdrawOutcome.nothingToWithdraw;
       }
       if (r.statusCode != 200) {
-        _log.error('wizard.withdraw HTTP ${r.statusCode}: ${r.body}',
+        _log.error('wizard.withdraw HTTP ${r.statusCode} (${r.body.length} Byte)',
             tag: 'WIZ');
         return WizardWithdrawOutcome.failed;
       }
