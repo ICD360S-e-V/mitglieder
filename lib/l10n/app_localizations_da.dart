@@ -3165,6 +3165,10 @@ class AppLocalizationsDa extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Færdig. Det underskrevne dokument er gemt.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Ikke gemt. Det underskrevne dokument er her stadig.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Indsæt underskriften';
 
   @override

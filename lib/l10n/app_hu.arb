@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Az aláírás mozgatható; a sarkánál nagyítható és kicsinyíthető.",
   "pdfWerkzeugFehlerAllgemein": "Nem sikerült. Kérjük, próbálja újra.",
   "pdfWerkzeugFertig": "Kész. Az aláírt dokumentum mentve.",
+  "pdfWerkzeugNichtGespeichert": "Nincs mentve. Az aláírt dokumentum még itt van.",
   "pdfWerkzeugFertigstellen": "Aláírás elhelyezése",
   "pdfWerkzeugLeer": "Még semmi sincs megrajzolva.",
   "pdfWerkzeugOeffnen": "Megnyitás",

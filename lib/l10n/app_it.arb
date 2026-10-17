@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "La firma si può spostare; dall'angolo si ingrandisce e si rimpicciolisce.",
   "pdfWerkzeugFehlerAllgemein": "Non ha funzionato. Riprovi.",
   "pdfWerkzeugFertig": "Fatto. Il documento firmato è stato salvato.",
+  "pdfWerkzeugNichtGespeichert": "Non salvato. Il documento firmato è ancora qui.",
   "pdfWerkzeugFertigstellen": "Applicare la firma",
   "pdfWerkzeugLeer": "Non è stato ancora disegnato nulla.",
   "pdfWerkzeugOeffnen": "Aprire",

@@ -3162,6 +3162,10 @@ class AppLocalizationsLv extends AppLocalizations {
       'Gatavs. Parakstītais dokuments ir saglabāts.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Nav saglabāts. Parakstītais dokuments joprojām ir šeit.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Ievietot parakstu';
 
   @override

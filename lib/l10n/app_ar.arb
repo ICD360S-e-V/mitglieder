@@ -1456,6 +1456,7 @@
   "pdfWerkzeugPlatzierenHinweis": "يمكن تحريك التوقيع، ومن الزاوية يكبر ويصغر.",
   "pdfWerkzeugFehlerAllgemein": "لم ينجح ذلك. يرجى المحاولة مرة أخرى.",
   "pdfWerkzeugFertig": "تم. حُفظ المستند الموقَّع.",
+  "pdfWerkzeugNichtGespeichert": "لم يُحفظ. المستند الموقَّع لا يزال هنا.",
   "pdfWerkzeugFertigstellen": "إدراج التوقيع",
   "pdfWerkzeugLeer": "لم يُرسم شيء بعد.",
   "pdfWerkzeugOeffnen": "فتح",

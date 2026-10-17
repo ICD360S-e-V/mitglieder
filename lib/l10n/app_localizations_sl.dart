@@ -3165,6 +3165,10 @@ class AppLocalizationsSl extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Končano. Podpisani dokument je shranjen.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Ni shranjeno. Podpisani dokument je še vedno tukaj.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Vstavi podpis';
 
   @override

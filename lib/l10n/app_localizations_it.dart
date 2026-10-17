@@ -3181,6 +3181,10 @@ class AppLocalizationsIt extends AppLocalizations {
       'Fatto. Il documento firmato è stato salvato.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Non salvato. Il documento firmato è ancora qui.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Applicare la firma';
 
   @override

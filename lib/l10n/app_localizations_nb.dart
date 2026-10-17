@@ -3163,6 +3163,10 @@ class AppLocalizationsNb extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Ferdig. Det signerte dokumentet er lagret.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Ikke lagret. Det signerte dokumentet er fortsatt her.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Sett inn signaturen';
 
   @override

@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Підпис можна пересувати; за ріг він збільшується і зменшується.",
   "pdfWerkzeugFehlerAllgemein": "Не вийшло. Спробуйте ще раз.",
   "pdfWerkzeugFertig": "Готово. Підписаний документ збережено.",
+  "pdfWerkzeugNichtGespeichert": "Не збережено. Підписаний документ досі тут.",
   "pdfWerkzeugFertigstellen": "Вставити підпис",
   "pdfWerkzeugLeer": "Поки що нічого не намальовано.",
   "pdfWerkzeugOeffnen": "Відкрити",

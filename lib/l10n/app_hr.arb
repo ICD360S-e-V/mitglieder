@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Potpis se može pomicati; u kutu se povećava i smanjuje.",
   "pdfWerkzeugFehlerAllgemein": "Nije uspjelo. Pokušajte ponovno.",
   "pdfWerkzeugFertig": "Gotovo. Potpisani dokument je spremljen.",
+  "pdfWerkzeugNichtGespeichert": "Nije spremljeno. Potpisani dokument još je ovdje.",
   "pdfWerkzeugFertigstellen": "Umetni potpis",
   "pdfWerkzeugLeer": "Još ništa nije nacrtano.",
   "pdfWerkzeugOeffnen": "Otvori",

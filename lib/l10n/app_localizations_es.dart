@@ -3182,6 +3182,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Listo. El documento firmado se ha guardado.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'No se ha guardado. El documento firmado sigue aquí.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Colocar la firma';
 
   @override

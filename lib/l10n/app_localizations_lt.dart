@@ -3163,6 +3163,10 @@ class AppLocalizationsLt extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Baigta. Pasirašytas dokumentas išsaugotas.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Neišsaugota. Pasirašytas dokumentas vis dar čia.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Įdėti parašą';
 
   @override

@@ -3172,6 +3172,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Bitti. İmzalanan belge kaydedildi.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Kaydedilmedi. İmzalanan belge hâlâ burada.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'İmzayı yerleştir';
 
   @override

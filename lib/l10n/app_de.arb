@@ -1535,6 +1535,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Die Unterschrift lässt sich verschieben; an der Ecke wird sie größer und kleiner.",
   "pdfWerkzeugFehlerAllgemein": "Das hat nicht geklappt. Bitte noch einmal versuchen.",
   "pdfWerkzeugFertig": "Fertig. Das unterschriebene Dokument ist gespeichert.",
+  "pdfWerkzeugNichtGespeichert": "Nicht gespeichert. Das unterschriebene Dokument ist noch da.",
   "pdfWerkzeugFertigstellen": "Unterschrift einsetzen",
   "pdfWerkzeugLeer": "Es wurde noch nichts gemalt.",
   "pdfWerkzeugOeffnen": "Öffnen",

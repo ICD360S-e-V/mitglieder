@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Allkirja saab liigutada; nurgast muutub see suuremaks ja väiksemaks.",
   "pdfWerkzeugFehlerAllgemein": "See ei õnnestunud. Palun proovige uuesti.",
   "pdfWerkzeugFertig": "Valmis. Allkirjastatud dokument on salvestatud.",
+  "pdfWerkzeugNichtGespeichert": "Ei salvestatud. Allkirjastatud dokument on endiselt alles.",
   "pdfWerkzeugFertigstellen": "Aseta allkiri",
   "pdfWerkzeugLeer": "Midagi pole veel joonistatud.",
   "pdfWerkzeugOeffnen": "Ava",

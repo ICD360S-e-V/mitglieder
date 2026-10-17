@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Η υπογραφή μετακινείται· από τη γωνία μεγαλώνει και μικραίνει.",
   "pdfWerkzeugFehlerAllgemein": "Δεν πέτυχε. Δοκιμάστε ξανά.",
   "pdfWerkzeugFertig": "Έτοιμο. Το υπογεγραμμένο έγγραφο αποθηκεύτηκε.",
+  "pdfWerkzeugNichtGespeichert": "Δεν αποθηκεύτηκε. Το υπογεγραμμένο έγγραφο είναι ακόμη εδώ.",
   "pdfWerkzeugFertigstellen": "Τοποθέτηση υπογραφής",
   "pdfWerkzeugLeer": "Δεν έχει σχεδιαστεί ακόμη τίποτα.",
   "pdfWerkzeugOeffnen": "Άνοιγμα",

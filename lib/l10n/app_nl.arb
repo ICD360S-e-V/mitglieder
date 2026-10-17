@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "De handtekening kunt u verschuiven; met de hoek wordt ze groter en kleiner.",
   "pdfWerkzeugFehlerAllgemein": "Dat is niet gelukt. Probeer het opnieuw.",
   "pdfWerkzeugFertig": "Klaar. Het ondertekende document is opgeslagen.",
+  "pdfWerkzeugNichtGespeichert": "Niet opgeslagen. Het ondertekende document is er nog.",
   "pdfWerkzeugFertigstellen": "Handtekening plaatsen",
   "pdfWerkzeugLeer": "Er is nog niets getekend.",
   "pdfWerkzeugOeffnen": "Openen",

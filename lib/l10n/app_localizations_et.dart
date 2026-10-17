@@ -3161,6 +3161,10 @@ class AppLocalizationsEt extends AppLocalizations {
       'Valmis. Allkirjastatud dokument on salvestatud.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Ei salvestatud. Allkirjastatud dokument on endiselt alles.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Aseta allkiri';
 
   @override

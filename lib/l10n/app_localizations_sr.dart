@@ -3163,6 +3163,10 @@ class AppLocalizationsSr extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Готово. Потписани документ је сачуван.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Није сачувано. Потписани документ је још увек ту.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Убаци потпис';
 
   @override

@@ -5738,6 +5738,12 @@ abstract class AppLocalizations {
   /// **'Fertig. Das unterschriebene Dokument ist gespeichert.'**
   String get pdfWerkzeugFertig;
 
+  /// No description provided for @pdfWerkzeugNichtGespeichert.
+  ///
+  /// In de, this message translates to:
+  /// **'Nicht gespeichert. Das unterschriebene Dokument ist noch da.'**
+  String get pdfWerkzeugNichtGespeichert;
+
   /// No description provided for @pdfWerkzeugFertigstellen.
   ///
   /// In de, this message translates to:

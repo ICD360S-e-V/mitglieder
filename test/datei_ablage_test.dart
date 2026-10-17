@@ -110,5 +110,58 @@ void main() {
       final namen = ordner.listSync().map((e) => e.uri.pathSegments.last).toSet();
       expect(namen, {'a.pdf', 'a(1).pdf'});
     });
+
+    // Das unterschriebene eigene PDF: der Ort ist die Wahl des Mitglieds, auch
+    // am Rechner. Vorher lag es auf dem Telefon unsichtbar im App-Verzeichnis.
+    test('immerDialog: auch am Rechner der Dialog — nichts landet ungefragt im Ordner',
+        () async {
+      final ordner = await Directory.systemTemp.createTemp('datei_ablage_');
+      addTearDown(() => ordner.delete(recursive: true));
+      String? name;
+
+      final ort = await dateiAblegen(
+        bytes: bytes,
+        dateiname: 'Mietvertrag_unterschrieben.pdf',
+        immerDialog: true,
+        ordner: ordner,
+        dialog: (n, _) async {
+          name = n;
+          return '/egal/$n';
+        },
+      );
+
+      expect(name, 'Mietvertrag_unterschrieben.pdf');
+      expect(ort, 'Mietvertrag_unterschrieben.pdf');
+      expect(ordner.listSync(), isEmpty);
+    });
+
+    test('immerDialog: abgebrochen heißt null', () async {
+      final ort = await dateiAblegen(
+        bytes: bytes,
+        dateiname: 'a.pdf',
+        immerDialog: true,
+        dialog: (_, __) async => null,
+      );
+      expect(ort, isNull);
+    });
+
+    test('ohne immerDialog bleibt der Rechner beim Ordner, ohne Dialog', () async {
+      final ordner = await Directory.systemTemp.createTemp('datei_ablage_');
+      addTearDown(() => ordner.delete(recursive: true));
+      var gefragt = false;
+
+      final ort = await dateiAblegen(
+        bytes: bytes,
+        dateiname: 'a.pdf',
+        ordner: ordner,
+        dialog: (_, __) async {
+          gefragt = true;
+          return null;
+        },
+      );
+
+      expect(gefragt, isFalse);
+      expect(ort, '${ordner.path}${Platform.pathSeparator}a.pdf');
+    });
   });
 }

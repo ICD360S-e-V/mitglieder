@@ -3187,6 +3187,10 @@ class AppLocalizationsEl extends AppLocalizations {
       'Έτοιμο. Το υπογεγραμμένο έγγραφο αποθηκεύτηκε.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Δεν αποθηκεύτηκε. Το υπογεγραμμένο έγγραφο είναι ακόμη εδώ.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Τοποθέτηση υπογραφής';
 
   @override

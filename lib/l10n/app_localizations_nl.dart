@@ -3180,6 +3180,10 @@ class AppLocalizationsNl extends AppLocalizations {
       'Klaar. Het ondertekende document is opgeslagen.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Niet opgeslagen. Het ondertekende document is er nog.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Handtekening plaatsen';
 
   @override

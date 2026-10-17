@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Podpisem lze posouvat; v rohu se zvětšuje a zmenšuje.",
   "pdfWerkzeugFehlerAllgemein": "Nepodařilo se to. Zkuste to prosím znovu.",
   "pdfWerkzeugFertig": "Hotovo. Podepsaný dokument byl uložen.",
+  "pdfWerkzeugNichtGespeichert": "Neuloženo. Podepsaný dokument je stále tady.",
   "pdfWerkzeugFertigstellen": "Vložit podpis",
   "pdfWerkzeugLeer": "Zatím nebylo nic nakresleno.",
   "pdfWerkzeugOeffnen": "Otevřít",

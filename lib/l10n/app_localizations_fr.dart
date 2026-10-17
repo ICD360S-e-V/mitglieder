@@ -3199,6 +3199,10 @@ class AppLocalizationsFr extends AppLocalizations {
       'Terminé. Le document signé a été enregistré.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Non enregistré. Le document signé est toujours là.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Apposer la signature';
 
   @override

@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Underskriften kan flyttes; i hjørnet bliver den større og mindre.",
   "pdfWerkzeugFehlerAllgemein": "Det lykkedes ikke. Prøv igen.",
   "pdfWerkzeugFertig": "Færdig. Det underskrevne dokument er gemt.",
+  "pdfWerkzeugNichtGespeichert": "Ikke gemt. Det underskrevne dokument er her stadig.",
   "pdfWerkzeugFertigstellen": "Indsæt underskriften",
   "pdfWerkzeugLeer": "Der er endnu ikke tegnet noget.",
   "pdfWerkzeugOeffnen": "Åbn",

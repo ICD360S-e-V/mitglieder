@@ -3173,6 +3173,10 @@ class AppLocalizationsHu extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Kész. Az aláírt dokumentum mentve.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Nincs mentve. Az aláírt dokumentum még itt van.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Aláírás elhelyezése';
 
   @override

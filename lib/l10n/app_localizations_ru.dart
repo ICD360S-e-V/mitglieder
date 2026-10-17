@@ -3165,6 +3165,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Готово. Подписанный документ сохранён.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Не сохранено. Подписанный документ всё ещё здесь.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Вставить подпись';
 
   @override
