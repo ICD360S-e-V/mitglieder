@@ -3413,4 +3413,74 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Under 18 — avgiftsfritt';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF till bilder';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Varje sida blir en bild — JPG, JPEG eller PNG, i en mapp du väljer.';
+
+  @override
+  String get pdfBilderTitel => 'PDF till bilder';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl sidor → $anzahl bilder',
+      one: '$anzahl sida → $anzahl bild',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Format';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG och JPEG är samma bild; bara filnamnets ändelse skiljer sig (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Bilderna skapas på den här enheten. PDF:en skickas ingenstans.';
+
+  @override
+  String get pdfBilderStarten => 'Välj mapp och starta';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Välj en mapp för bilderna';
+
+  @override
+  String get pdfBilderAnhalten => 'Stoppa';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl bilder sparade i ”$ordner”.',
+      one: '$anzahl bild sparad i ”$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Stoppat — $anzahl bilder finns redan i ”$ordner”.',
+      one: 'Stoppat — $anzahl bild finns redan i ”$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer => 'Stoppat — ingen bild sparades.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Det gick inte att skriva till den här mappen. Välj en annan mapp.';
 }

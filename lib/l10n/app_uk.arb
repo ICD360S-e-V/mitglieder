@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "посвідчення особи з тяжкою інвалідністю (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Чи потрібно платити заднім числом і скільки, вирішує Vorstand після перевірки.",
   "minderjaehrigBeitragsfrei": "До 18 років членство без внесків.",
-  "finanzMinderjaehrig": "До 18 років — без внеску"
+  "finanzMinderjaehrig": "До 18 років — без внеску",
+  "extrasPdfBilderTitel": "PDF у зображення",
+  "extrasPdfBilderText": "Кожна сторінка стає зображенням — JPG, JPEG або PNG, у вибраній вами папці.",
+  "pdfBilderTitel": "PDF у зображення",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} сторінка → {anzahl} зображення} few{{anzahl} сторінки → {anzahl} зображення} many{{anzahl} сторінок → {anzahl} зображень} other{{anzahl} сторінок → {anzahl} зображень}}",
+  "pdfBilderFormat": "Формат",
+  "pdfBilderJpgGleich": "JPG і JPEG — те саме зображення; відрізняється лише розширення назви файлу (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Зображення створюються на цьому пристрої. PDF нікуди не надсилається.",
+  "pdfBilderStarten": "Вибрати папку й почати",
+  "pdfBilderOrdnerTitel": "Вибрати папку для зображень",
+  "pdfBilderAnhalten": "Зупинити",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} зображення збережено в «{ordner}».} few{{anzahl} зображення збережено в «{ordner}».} many{{anzahl} зображень збережено в «{ordner}».} other{{anzahl} зображень збережено в «{ordner}».}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Зупинено — {anzahl} зображення вже в «{ordner}».} few{Зупинено — {anzahl} зображення вже в «{ordner}».} many{Зупинено — {anzahl} зображень уже в «{ordner}».} other{Зупинено — {anzahl} зображень уже в «{ordner}».}}",
+  "pdfBilderAngehaltenLeer": "Зупинено — жодного зображення не збережено.",
+  "pdfBilderFehlerOrdner": "Не вдалося записати в цю папку. Виберіть іншу папку."
 }

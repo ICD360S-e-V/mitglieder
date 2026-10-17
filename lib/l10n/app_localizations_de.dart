@@ -3441,4 +3441,75 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Unter 18 — beitragsfrei';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF in Bilder';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Jede Seite wird ein Bild — JPG, JPEG oder PNG, in einem Ordner Ihrer Wahl.';
+
+  @override
+  String get pdfBilderTitel => 'PDF in Bilder';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl Seiten → $anzahl Bilder',
+      one: '$anzahl Seite → $anzahl Bild',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Format';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG und JPEG sind dasselbe Bild; nur die Endung des Dateinamens ist anders (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Die Bilder entstehen auf diesem Gerät. Das PDF wird nirgendwohin geschickt.';
+
+  @override
+  String get pdfBilderStarten => 'Ordner auswählen und starten';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Ordner für die Bilder auswählen';
+
+  @override
+  String get pdfBilderAnhalten => 'Anhalten';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl Bilder in „$ordner“ gespeichert.',
+      one: '$anzahl Bild in „$ordner“ gespeichert.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Angehalten — $anzahl Bilder liegen schon in „$ordner“.',
+      one: 'Angehalten — $anzahl Bild liegt schon in „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Angehalten — es wurde kein Bild gespeichert.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'In diesen Ordner ließ sich nicht schreiben. Bitte einen anderen Ordner auswählen.';
 }

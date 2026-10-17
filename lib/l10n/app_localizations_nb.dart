@@ -3415,4 +3415,74 @@ class AppLocalizationsNb extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Under 18 — kontingentfritt';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF til bilder';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Hver side blir et bilde — JPG, JPEG eller PNG, i en mappe du velger.';
+
+  @override
+  String get pdfBilderTitel => 'PDF til bilder';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl sider → $anzahl bilder',
+      one: '$anzahl side → $anzahl bilde',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Format';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG og JPEG er det samme bildet; bare filnavnets endelse er forskjellig (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Bildene lages på denne enheten. PDF-en sendes ingen steder.';
+
+  @override
+  String get pdfBilderStarten => 'Velg mappe og start';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Velg en mappe for bildene';
+
+  @override
+  String get pdfBilderAnhalten => 'Stopp';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl bilder lagret i «$ordner».',
+      one: '$anzahl bilde lagret i «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Stoppet — $anzahl bilder ligger allerede i «$ordner».',
+      one: 'Stoppet — $anzahl bilde ligger allerede i «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer => 'Stoppet — ingen bilder ble lagret.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Kunne ikke skrive til denne mappen. Velg en annen mappe.';
 }

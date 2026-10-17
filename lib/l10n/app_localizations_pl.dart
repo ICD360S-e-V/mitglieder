@@ -3431,4 +3431,81 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Poniżej 18 — bez składki';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF na obrazy';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Każda strona staje się obrazem — JPG, JPEG lub PNG, w wybranym przez Ciebie folderze.';
+
+  @override
+  String get pdfBilderTitel => 'PDF na obrazy';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl stron → $anzahl obrazów',
+      many: '$anzahl stron → $anzahl obrazów',
+      few: '$anzahl strony → $anzahl obrazy',
+      one: '$anzahl strona → $anzahl obraz',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Format';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG i JPEG to ten sam obraz; różni się tylko rozszerzenie nazwy pliku (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Obrazy powstają na tym urządzeniu. PDF nie jest nigdzie wysyłany.';
+
+  @override
+  String get pdfBilderStarten => 'Wybierz folder i rozpocznij';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Wybierz folder na obrazy';
+
+  @override
+  String get pdfBilderAnhalten => 'Zatrzymaj';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Zapisano $anzahl obrazów w „$ordner”.',
+      many: 'Zapisano $anzahl obrazów w „$ordner”.',
+      few: 'Zapisano $anzahl obrazy w „$ordner”.',
+      one: 'Zapisano $anzahl obraz w „$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Zatrzymano — $anzahl obrazów jest już w „$ordner”.',
+      many: 'Zatrzymano — $anzahl obrazów jest już w „$ordner”.',
+      few: 'Zatrzymano — $anzahl obrazy są już w „$ordner”.',
+      one: 'Zatrzymano — $anzahl obraz jest już w „$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Zatrzymano — nie zapisano żadnego obrazu.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Nie udało się zapisać w tym folderze. Wybierz inny folder.';
 }

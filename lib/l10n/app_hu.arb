@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "súlyos fogyatékossági igazolvány (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Hogy kell-e visszamenőleg fizetni, és mennyit, azt a Vorstand dönti el a vizsgálat után.",
   "minderjaehrigBeitragsfrei": "18 év alatt a tagság tagdíjmentes.",
-  "finanzMinderjaehrig": "18 év alatt — tagdíjmentes"
+  "finanzMinderjaehrig": "18 év alatt — tagdíjmentes",
+  "extrasPdfBilderTitel": "PDF-ből képek",
+  "extrasPdfBilderText": "Minden oldalból kép lesz — JPG, JPEG vagy PNG, az Ön által választott mappában.",
+  "pdfBilderTitel": "PDF-ből képek",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} oldal → {anzahl} kép} other{{anzahl} oldal → {anzahl} kép}}",
+  "pdfBilderFormat": "Formátum",
+  "pdfBilderJpgGleich": "A JPG és a JPEG ugyanaz a kép; csak a fájlnév kiterjesztése más (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "A képek ezen az eszközön készülnek. A PDF-et nem küldjük el sehova.",
+  "pdfBilderStarten": "Mappa kiválasztása és indítás",
+  "pdfBilderOrdnerTitel": "Mappa kiválasztása a képeknek",
+  "pdfBilderAnhalten": "Leállítás",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} kép mentve ide: „{ordner}“.} other{{anzahl} kép mentve ide: „{ordner}“.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Leállítva — {anzahl} kép már itt van: „{ordner}“.} other{Leállítva — {anzahl} kép már itt van: „{ordner}“.}}",
+  "pdfBilderAngehaltenLeer": "Leállítva — egy kép sem lett mentve.",
+  "pdfBilderFehlerOrdner": "Ebbe a mappába nem sikerült írni. Válasszon másik mappát."
 }

@@ -3425,4 +3425,74 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => '18 yaş altı — aidatsız';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF\'den resimlere';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Her sayfa bir resim olur — JPG, JPEG veya PNG, seçtiğiniz bir klasöre.';
+
+  @override
+  String get pdfBilderTitel => 'PDF\'den resimlere';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl sayfa → $anzahl resim',
+      one: '$anzahl sayfa → $anzahl resim',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Biçim';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG ve JPEG aynı resimdir; yalnızca dosya adının uzantısı farklıdır (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Resimler bu cihazda oluşturulur. PDF hiçbir yere gönderilmez.';
+
+  @override
+  String get pdfBilderStarten => 'Klasör seçin ve başlatın';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Resimler için bir klasör seçin';
+
+  @override
+  String get pdfBilderAnhalten => 'Durdurun';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl resim „$ordner“ klasörüne kaydedildi.',
+      one: '$anzahl resim „$ordner“ klasörüne kaydedildi.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Durduruldu — $anzahl resim zaten „$ordner“ klasöründe.',
+      one: 'Durduruldu — $anzahl resim zaten „$ordner“ klasöründe.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer => 'Durduruldu — hiç resim kaydedilmedi.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Bu klasöre yazılamadı. Lütfen başka bir klasör seçin.';
 }

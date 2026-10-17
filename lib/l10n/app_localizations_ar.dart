@@ -3386,4 +3386,83 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'دون 18 عامًا — معفى من الاشتراك';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF إلى صور';
+
+  @override
+  String get extrasPdfBilderText =>
+      'تصبح كل صفحة صورة — JPG أو JPEG أو PNG، في مجلد من اختيارك.';
+
+  @override
+  String get pdfBilderTitel => 'PDF إلى صور';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl صفحة ← $anzahl صورة',
+      many: '$anzahl صفحة ← $anzahl صورة',
+      few: '$anzahl صفحات ← $anzahl صور',
+      two: 'صفحتان ← صورتان',
+      one: 'صفحة واحدة ← صورة واحدة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'الصيغة';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG وJPEG هما الصورة نفسها؛ يختلف فقط امتداد اسم الملف (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'تُنشأ الصور على هذا الجهاز. لا يُرسَل ملف PDF إلى أي مكان.';
+
+  @override
+  String get pdfBilderStarten => 'اختيار المجلد والبدء';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'اختيار مجلد للصور';
+
+  @override
+  String get pdfBilderAnhalten => 'إيقاف';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'حُفظت $anzahl صورة في «$ordner».',
+      many: 'حُفظت $anzahl صورة في «$ordner».',
+      few: 'حُفظت $anzahl صور في «$ordner».',
+      two: 'حُفظت صورتان في «$ordner».',
+      one: 'حُفظت صورة واحدة في «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'تم الإيقاف — توجد $anzahl صورة بالفعل في «$ordner».',
+      many: 'تم الإيقاف — توجد $anzahl صورة بالفعل في «$ordner».',
+      few: 'تم الإيقاف — توجد $anzahl صور بالفعل في «$ordner».',
+      two: 'تم الإيقاف — توجد صورتان بالفعل في «$ordner».',
+      one: 'تم الإيقاف — توجد صورة واحدة بالفعل في «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer => 'تم الإيقاف — لم تُحفظ أي صورة.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'تعذّرت الكتابة في هذا المجلد. يُرجى اختيار مجلد آخر.';
 }

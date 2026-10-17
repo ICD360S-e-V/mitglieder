@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "smagas invaliditātes apliecība (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Vai un cik jāmaksā ar atpakaļejošu datumu, Vorstand izlemj pēc pārbaudes.",
   "minderjaehrigBeitragsfrei": "Līdz 18 gadiem dalība ir bez biedru maksas.",
-  "finanzMinderjaehrig": "Līdz 18 — bez maksas"
+  "finanzMinderjaehrig": "Līdz 18 — bez maksas",
+  "extrasPdfBilderTitel": "PDF attēlos",
+  "extrasPdfBilderText": "Katra lappuse kļūst par attēlu — JPG, JPEG vai PNG, jūsu izvēlētā mapē.",
+  "pdfBilderTitel": "PDF attēlos",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} lappuse → {anzahl} attēls} other{{anzahl} lappuses → {anzahl} attēli}}",
+  "pdfBilderFormat": "Formāts",
+  "pdfBilderJpgGleich": "JPG un JPEG ir viens un tas pats attēls; atšķiras tikai faila nosaukuma paplašinājums (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Attēli tiek veidoti šajā ierīcē. PDF netiek nekur nosūtīts.",
+  "pdfBilderStarten": "Izvēlieties mapi un sāciet",
+  "pdfBilderOrdnerTitel": "Izvēlieties mapi attēliem",
+  "pdfBilderAnhalten": "Apturēt",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} attēls saglabāts mapē “{ordner}”.} other{{anzahl} attēli saglabāti mapē “{ordner}”.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Apturēts — {anzahl} attēls jau ir mapē “{ordner}”.} other{Apturēts — {anzahl} attēli jau ir mapē “{ordner}”.}}",
+  "pdfBilderAngehaltenLeer": "Apturēts — neviens attēls netika saglabāts.",
+  "pdfBilderFehlerOrdner": "Šajā mapē neizdevās ierakstīt. Lūdzu, izvēlieties citu mapi."
 }

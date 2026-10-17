@@ -3414,4 +3414,78 @@ class AppLocalizationsSr extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Млађи од 18 — без чланарине';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF у слике';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Свака страница постаје слика — JPG, JPEG или PNG, у фасцикли по вашем избору.';
+
+  @override
+  String get pdfBilderTitel => 'PDF у слике';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl страница → $anzahl слика',
+      few: '$anzahl странице → $anzahl слике',
+      one: '$anzahl страница → $anzahl слика',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Формат';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG и JPEG су иста слика; разликује се само наставак назива датотеке (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Слике настају на овом уређају. PDF се никуда не шаље.';
+
+  @override
+  String get pdfBilderStarten => 'Изабери фасциклу и почни';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Изабери фасциклу за слике';
+
+  @override
+  String get pdfBilderAnhalten => 'Заустави';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl слика сачувано у „$ordner”.',
+      few: '$anzahl слике сачуване у „$ordner”.',
+      one: '$anzahl слика сачувана у „$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Заустављено — $anzahl слика је већ у „$ordner”.',
+      few: 'Заустављено — $anzahl слике су већ у „$ordner”.',
+      one: 'Заустављено — $anzahl слика је већ у „$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Заустављено — није сачувана ниједна слика.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'У ову фасциклу није било могуће писати. Изаберите другу фасциклу.';
 }

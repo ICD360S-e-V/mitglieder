@@ -3420,4 +3420,75 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Под 18 — без вноска';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF в изображения';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Всяка страница става изображение — JPG, JPEG или PNG, в папка по ваш избор.';
+
+  @override
+  String get pdfBilderTitel => 'PDF в изображения';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl страници → $anzahl изображения',
+      one: '$anzahl страница → $anzahl изображение',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Формат';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG и JPEG са едно и също изображение; различава се само разширението на името на файла (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Изображенията се създават на това устройство. PDF файлът не се изпраща никъде.';
+
+  @override
+  String get pdfBilderStarten => 'Изберете папка и започнете';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Изберете папка за изображенията';
+
+  @override
+  String get pdfBilderAnhalten => 'Спрете';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl изображения са запазени в „$ordner“.',
+      one: '$anzahl изображение е запазено в „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Спряно — $anzahl изображения вече са в „$ordner“.',
+      one: 'Спряно — $anzahl изображение вече е в „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Спряно — не е запазено нито едно изображение.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'В тази папка не може да се записва. Изберете друга папка.';
 }

@@ -164,6 +164,11 @@ dependencies:
   # PDF viewer (internal - no external app needed)
   pdfrx: ^2.6.5
 
+  # JPG/PNG aus PDF-Seiten („PDF in Bilder“). Kam bisher nur über pdfrx mit;
+  # jetzt direkt benutzt, also direkt eingetragen — dieselbe Fassung wie im
+  # Lockfile und in der Vorsitzer-App.
+  image: ^4.8.0
+
   # Root/Jailbreak/Emulator detection
   safe_device: ^1.4.1
 

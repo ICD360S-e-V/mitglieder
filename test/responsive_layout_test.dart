@@ -21,6 +21,7 @@ import 'package:icd360sev_mitglied/l10n/app_localizations.dart';
 import 'package:icd360sev_mitglied/screens/anonymous_chat.dart';
 import 'package:icd360sev_mitglied/screens/login.dart';
 import 'package:icd360sev_mitglied/screens/mitglied_dashboard.dart';
+import 'package:icd360sev_mitglied/screens/pdf_bilder_screen.dart';
 import 'package:icd360sev_mitglied/screens/problem_help.dart';
 import 'package:icd360sev_mitglied/screens/problem_report.dart';
 import 'package:icd360sev_mitglied/screens/welcome.dart';
@@ -537,6 +538,9 @@ final Map<String, Widget Function()> _bausteine = <String, Widget Function()>{
         ),
         body: const SizedBox.shrink(),
       ),
+  // Der leere Zustand von „PDF in Bilder“: Hinweis, Knopf und der Satz,
+  // dass alles auf dem Gerät bleibt.
+  'PdfBilderScreen': () => const PdfBilderScreen(),
 };
 
 void main() {
@@ -642,8 +646,10 @@ void main() {
       ),
       'BenachrichtigungenDialog': () =>
           BenachrichtigungenDialog(apiService: ApiService()),
-      'MitgliedExtrasDialog': () =>
-          MitgliedExtrasDialog(onPdfUnterschreiben: () {}),
+      'MitgliedExtrasDialog': () => MitgliedExtrasDialog(
+            onPdfUnterschreiben: () {},
+            onPdfInBilder: () {},
+          ),
       // Zwanzig Tasten plus Anzeige plus Hinweiszeile — der Dialog mit den
       // meisten Zeilen in dieser Batterie. Auf 320 dp bei 200 % Systemschrift
       // ist er der wahrscheinlichste Ueberlauf.

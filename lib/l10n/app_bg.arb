@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "карта за тежко увреждане (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Дали и колко да се плати със задна дата, решава Vorstand след проверка.",
   "minderjaehrigBeitragsfrei": "Под 18 години членството е без членски внос.",
-  "finanzMinderjaehrig": "Под 18 — без вноска"
+  "finanzMinderjaehrig": "Под 18 — без вноска",
+  "extrasPdfBilderTitel": "PDF в изображения",
+  "extrasPdfBilderText": "Всяка страница става изображение — JPG, JPEG или PNG, в папка по ваш избор.",
+  "pdfBilderTitel": "PDF в изображения",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} страница → {anzahl} изображение} other{{anzahl} страници → {anzahl} изображения}}",
+  "pdfBilderFormat": "Формат",
+  "pdfBilderJpgGleich": "JPG и JPEG са едно и също изображение; различава се само разширението на името на файла (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Изображенията се създават на това устройство. PDF файлът не се изпраща никъде.",
+  "pdfBilderStarten": "Изберете папка и започнете",
+  "pdfBilderOrdnerTitel": "Изберете папка за изображенията",
+  "pdfBilderAnhalten": "Спрете",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} изображение е запазено в „{ordner}“.} other{{anzahl} изображения са запазени в „{ordner}“.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Спряно — {anzahl} изображение вече е в „{ordner}“.} other{Спряно — {anzahl} изображения вече са в „{ordner}“.}}",
+  "pdfBilderAngehaltenLeer": "Спряно — не е запазено нито едно изображение.",
+  "pdfBilderFehlerOrdner": "В тази папка не може да се записва. Изберете друга папка."
 }

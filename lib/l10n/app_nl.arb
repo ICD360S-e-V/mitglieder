@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "pas voor ernstig gehandicapten (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Of en hoeveel er met terugwerkende kracht betaald moet worden, beslist de Vorstand na beoordeling.",
   "minderjaehrigBeitragsfrei": "Onder de 18 jaar is het lidmaatschap contributievrij.",
-  "finanzMinderjaehrig": "Onder 18 — contributievrij"
+  "finanzMinderjaehrig": "Onder 18 — contributievrij",
+  "extrasPdfBilderTitel": "Pdf naar afbeeldingen",
+  "extrasPdfBilderText": "Elke pagina wordt een afbeelding — JPG, JPEG of PNG, in een map naar keuze.",
+  "pdfBilderTitel": "Pdf naar afbeeldingen",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} pagina → {anzahl} afbeelding} other{{anzahl} pagina’s → {anzahl} afbeeldingen}}",
+  "pdfBilderFormat": "Formaat",
+  "pdfBilderJpgGleich": "JPG en JPEG zijn dezelfde afbeelding; alleen de extensie van de bestandsnaam verschilt (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "De afbeeldingen worden op dit apparaat gemaakt. De pdf wordt nergens naartoe gestuurd.",
+  "pdfBilderStarten": "Map kiezen en starten",
+  "pdfBilderOrdnerTitel": "Map voor de afbeeldingen kiezen",
+  "pdfBilderAnhalten": "Stoppen",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} afbeelding opgeslagen in ‘{ordner}’.} other{{anzahl} afbeeldingen opgeslagen in ‘{ordner}’.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Gestopt — {anzahl} afbeelding staat al in ‘{ordner}’.} other{Gestopt — {anzahl} afbeeldingen staan al in ‘{ordner}’.}}",
+  "pdfBilderAngehaltenLeer": "Gestopt — er is geen afbeelding opgeslagen.",
+  "pdfBilderFehlerOrdner": "Er kon niet in deze map worden geschreven. Kies een andere map."
 }

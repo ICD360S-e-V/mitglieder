@@ -3419,4 +3419,75 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Alle 18 — maksuton';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF kuviksi';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Jokaisesta sivusta tulee kuva — JPG, JPEG tai PNG, valitsemaasi kansioon.';
+
+  @override
+  String get pdfBilderTitel => 'PDF kuviksi';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl sivua → $anzahl kuvaa',
+      one: '$anzahl sivu → $anzahl kuva',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Muoto';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG ja JPEG ovat sama kuva; vain tiedostonimen pääte eroaa (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Kuvat tehdään tällä laitteella. PDF:ää ei lähetetä minnekään.';
+
+  @override
+  String get pdfBilderStarten => 'Valitse kansio ja aloita';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Valitse kansio kuville';
+
+  @override
+  String get pdfBilderAnhalten => 'Pysäytä';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl kuvaa tallennettu kansioon ”$ordner”.',
+      one: '$anzahl kuva tallennettu kansioon ”$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Pysäytetty — $anzahl kuvaa on jo kansiossa ”$ordner”.',
+      one: 'Pysäytetty — $anzahl kuva on jo kansiossa ”$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Pysäytetty — yhtään kuvaa ei tallennettu.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Tähän kansioon ei voitu kirjoittaa. Valitse toinen kansio.';
 }

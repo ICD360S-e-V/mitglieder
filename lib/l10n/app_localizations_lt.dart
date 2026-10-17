@@ -3416,4 +3416,78 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Iki 18 — be mokesčio';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF į paveikslėlius';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Kiekvienas puslapis tampa paveikslėliu — JPG, JPEG arba PNG, jūsų pasirinktame aplanke.';
+
+  @override
+  String get pdfBilderTitel => 'PDF į paveikslėlius';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl puslapių → $anzahl paveikslėlių',
+      few: '$anzahl puslapiai → $anzahl paveikslėliai',
+      one: '$anzahl puslapis → $anzahl paveikslėlis',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Formatas';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG ir JPEG yra tas pats paveikslėlis; skiriasi tik failo pavadinimo plėtinys (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Paveikslėliai kuriami šiame įrenginyje. PDF niekur nesiunčiamas.';
+
+  @override
+  String get pdfBilderStarten => 'Pasirinkite aplanką ir pradėkite';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Pasirinkite aplanką paveikslėliams';
+
+  @override
+  String get pdfBilderAnhalten => 'Sustabdyti';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl paveikslėlių išsaugota aplanke „$ordner“.',
+      few: '$anzahl paveikslėliai išsaugoti aplanke „$ordner“.',
+      one: '$anzahl paveikslėlis išsaugotas aplanke „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Sustabdyta — $anzahl paveikslėlių jau yra aplanke „$ordner“.',
+      few: 'Sustabdyta — $anzahl paveikslėliai jau yra aplanke „$ordner“.',
+      one: 'Sustabdyta — $anzahl paveikslėlis jau yra aplanke „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Sustabdyta — neišsaugotas nė vienas paveikslėlis.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Į šį aplanką įrašyti nepavyko. Pasirinkite kitą aplanką.';
 }

@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "bevis for alvorlig funksjonsnedsettelse (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Om og hvor mye som skal betales med tilbakevirkende kraft, bestemmer Vorstand etter vurdering.",
   "minderjaehrigBeitragsfrei": "Under 18 år er medlemskapet kontingentfritt.",
-  "finanzMinderjaehrig": "Under 18 — kontingentfritt"
+  "finanzMinderjaehrig": "Under 18 — kontingentfritt",
+  "extrasPdfBilderTitel": "PDF til bilder",
+  "extrasPdfBilderText": "Hver side blir et bilde — JPG, JPEG eller PNG, i en mappe du velger.",
+  "pdfBilderTitel": "PDF til bilder",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} side → {anzahl} bilde} other{{anzahl} sider → {anzahl} bilder}}",
+  "pdfBilderFormat": "Format",
+  "pdfBilderJpgGleich": "JPG og JPEG er det samme bildet; bare filnavnets endelse er forskjellig (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Bildene lages på denne enheten. PDF-en sendes ingen steder.",
+  "pdfBilderStarten": "Velg mappe og start",
+  "pdfBilderOrdnerTitel": "Velg en mappe for bildene",
+  "pdfBilderAnhalten": "Stopp",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} bilde lagret i «{ordner}».} other{{anzahl} bilder lagret i «{ordner}».}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Stoppet — {anzahl} bilde ligger allerede i «{ordner}».} other{Stoppet — {anzahl} bilder ligger allerede i «{ordner}».}}",
+  "pdfBilderAngehaltenLeer": "Stoppet — ingen bilder ble lagret.",
+  "pdfBilderFehlerOrdner": "Kunne ikke skrive til denne mappen. Velg en annen mappe."
 }

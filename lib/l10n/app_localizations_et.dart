@@ -3412,4 +3412,75 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Alla 18 — liikmemaksuta';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF piltideks';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Igast leheküljest saab pilt — JPG, JPEG või PNG, teie valitud kausta.';
+
+  @override
+  String get pdfBilderTitel => 'PDF piltideks';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl lehekülge → $anzahl pilti',
+      one: '$anzahl lehekülg → $anzahl pilt',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Vorming';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG ja JPEG on sama pilt; erineb ainult failinime lõpp (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Pildid tehakse selles seadmes. PDF-i ei saadeta kuhugi.';
+
+  @override
+  String get pdfBilderStarten => 'Vali kaust ja alusta';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Vali piltide jaoks kaust';
+
+  @override
+  String get pdfBilderAnhalten => 'Peata';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl pilti salvestati kausta „$ordner“.',
+      one: '$anzahl pilt salvestati kausta „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Peatatud — $anzahl pilti on juba kaustas „$ordner“.',
+      one: 'Peatatud — $anzahl pilt on juba kaustas „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Peatatud — ühtegi pilti ei salvestatud.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Sellesse kausta ei õnnestunud kirjutada. Valige mõni teine kaust.';
 }

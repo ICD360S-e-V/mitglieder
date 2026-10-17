@@ -3436,4 +3436,75 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Menor de 18 — sin cuota';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF a imágenes';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Cada página se convierte en una imagen — JPG, JPEG o PNG, en la carpeta que usted elija.';
+
+  @override
+  String get pdfBilderTitel => 'PDF a imágenes';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl páginas → $anzahl imágenes',
+      one: '$anzahl página → $anzahl imagen',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Formato';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG y JPEG son la misma imagen; solo cambia la extensión del nombre del archivo (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Las imágenes se crean en este dispositivo. El PDF no se envía a ninguna parte.';
+
+  @override
+  String get pdfBilderStarten => 'Elegir carpeta y empezar';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Elegir una carpeta para las imágenes';
+
+  @override
+  String get pdfBilderAnhalten => 'Detener';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl imágenes guardadas en «$ordner».',
+      one: '$anzahl imagen guardada en «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Detenido — $anzahl imágenes ya están en «$ordner».',
+      one: 'Detenido — $anzahl imagen ya está en «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Detenido — no se ha guardado ninguna imagen.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'No se ha podido escribir en esta carpeta. Elija otra carpeta.';
 }

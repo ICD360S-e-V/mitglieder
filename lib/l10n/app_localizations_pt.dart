@@ -3428,4 +3428,74 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Menos de 18 — sem quota';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF em imagens';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Cada página torna-se uma imagem — JPG, JPEG ou PNG, na pasta que escolher.';
+
+  @override
+  String get pdfBilderTitel => 'PDF em imagens';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl páginas → $anzahl imagens',
+      one: '$anzahl página → $anzahl imagem',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Formato';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG e JPEG são a mesma imagem; só muda a extensão do nome (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'As imagens são criadas neste dispositivo. O PDF não é enviado para lado nenhum.';
+
+  @override
+  String get pdfBilderStarten => 'Escolher a pasta e começar';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Escolher uma pasta para as imagens';
+
+  @override
+  String get pdfBilderAnhalten => 'Parar';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl imagens guardadas em «$ordner».',
+      one: '$anzahl imagem guardada em «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Parado — $anzahl imagens já estão em «$ordner».',
+      one: 'Parado — $anzahl imagem já está em «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer => 'Parado — nenhuma imagem foi guardada.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Não foi possível escrever nesta pasta. Escolha outra pasta.';
 }

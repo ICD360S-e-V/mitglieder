@@ -3435,4 +3435,75 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Sotto i 18 anni — senza quota';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF in immagini';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Ogni pagina diventa un’immagine — JPG, JPEG o PNG, in una cartella a Sua scelta.';
+
+  @override
+  String get pdfBilderTitel => 'PDF in immagini';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl pagine → $anzahl immagini',
+      one: '$anzahl pagina → $anzahl immagine',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Formato';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG e JPEG sono la stessa immagine; cambia solo l’estensione del nome del file (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Le immagini vengono create su questo dispositivo. Il PDF non viene inviato da nessuna parte.';
+
+  @override
+  String get pdfBilderStarten => 'Scegliere la cartella e avviare';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Scegliere una cartella per le immagini';
+
+  @override
+  String get pdfBilderAnhalten => 'Interrompere';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl immagini salvate in «$ordner».',
+      one: '$anzahl immagine salvata in «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Interrotto — $anzahl immagini si trovano già in «$ordner».',
+      one: 'Interrotto — $anzahl immagine si trova già in «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Interrotto — non è stata salvata nessuna immagine.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Non è stato possibile scrivere in questa cartella. Ne scelga un’altra.';
 }

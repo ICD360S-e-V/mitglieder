@@ -3440,4 +3440,75 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Κάτω των 18 — χωρίς συνδρομή';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF σε εικόνες';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Κάθε σελίδα γίνεται εικόνα — JPG, JPEG ή PNG, σε φάκελο της επιλογής σας.';
+
+  @override
+  String get pdfBilderTitel => 'PDF σε εικόνες';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl σελίδες → $anzahl εικόνες',
+      one: '$anzahl σελίδα → $anzahl εικόνα',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Μορφή';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'Το JPG και το JPEG είναι η ίδια εικόνα· διαφέρει μόνο η κατάληξη του ονόματος αρχείου (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Οι εικόνες δημιουργούνται σε αυτήν τη συσκευή. Το PDF δεν αποστέλλεται πουθενά.';
+
+  @override
+  String get pdfBilderStarten => 'Επιλογή φακέλου και έναρξη';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Επιλογή φακέλου για τις εικόνες';
+
+  @override
+  String get pdfBilderAnhalten => 'Διακοπή';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl εικόνες αποθηκεύτηκαν στο «$ordner».',
+      one: '$anzahl εικόνα αποθηκεύτηκε στο «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Διακόπηκε — $anzahl εικόνες βρίσκονται ήδη στο «$ordner».',
+      one: 'Διακόπηκε — $anzahl εικόνα βρίσκεται ήδη στο «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Διακόπηκε — δεν αποθηκεύτηκε καμία εικόνα.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Δεν ήταν δυνατή η εγγραφή σε αυτόν τον φάκελο. Επιλέξτε άλλον φάκελο.';
 }

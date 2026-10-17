@@ -3415,4 +3415,78 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Do 18 rokov — bez príspevku';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF na obrázky';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Každá strana sa stane obrázkom — JPG, JPEG alebo PNG, v priečinku podľa vášho výberu.';
+
+  @override
+  String get pdfBilderTitel => 'PDF na obrázky';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl strán → $anzahl obrázkov',
+      few: '$anzahl strany → $anzahl obrázky',
+      one: '$anzahl strana → $anzahl obrázok',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Formát';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG a JPEG sú ten istý obrázok; líši sa len prípona názvu súboru (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Obrázky vznikajú v tomto zariadení. PDF sa nikam neposiela.';
+
+  @override
+  String get pdfBilderStarten => 'Vybrať priečinok a začať';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Vybrať priečinok pre obrázky';
+
+  @override
+  String get pdfBilderAnhalten => 'Zastaviť';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl obrázkov uložených do „$ordner“.',
+      few: '$anzahl obrázky uložené do „$ordner“.',
+      one: '$anzahl obrázok uložený do „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Zastavené — $anzahl obrázkov už je v „$ordner“.',
+      few: 'Zastavené — $anzahl obrázky už sú v „$ordner“.',
+      one: 'Zastavené — $anzahl obrázok už je v „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Zastavené — neuložil sa žiadny obrázok.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Do tohto priečinka sa nedalo zapisovať. Vyberte iný priečinok.';
 }

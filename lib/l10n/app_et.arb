@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "raske puude tunnistus (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Kas ja kui palju tuleb tagasiulatuvalt maksta, otsustab Vorstand pärast kontrollimist.",
   "minderjaehrigBeitragsfrei": "Alla 18-aastastele on liikmesus liikmemaksuta.",
-  "finanzMinderjaehrig": "Alla 18 — liikmemaksuta"
+  "finanzMinderjaehrig": "Alla 18 — liikmemaksuta",
+  "extrasPdfBilderTitel": "PDF piltideks",
+  "extrasPdfBilderText": "Igast leheküljest saab pilt — JPG, JPEG või PNG, teie valitud kausta.",
+  "pdfBilderTitel": "PDF piltideks",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} lehekülg → {anzahl} pilt} other{{anzahl} lehekülge → {anzahl} pilti}}",
+  "pdfBilderFormat": "Vorming",
+  "pdfBilderJpgGleich": "JPG ja JPEG on sama pilt; erineb ainult failinime lõpp (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Pildid tehakse selles seadmes. PDF-i ei saadeta kuhugi.",
+  "pdfBilderStarten": "Vali kaust ja alusta",
+  "pdfBilderOrdnerTitel": "Vali piltide jaoks kaust",
+  "pdfBilderAnhalten": "Peata",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} pilt salvestati kausta „{ordner}“.} other{{anzahl} pilti salvestati kausta „{ordner}“.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Peatatud — {anzahl} pilt on juba kaustas „{ordner}“.} other{Peatatud — {anzahl} pilti on juba kaustas „{ordner}“.}}",
+  "pdfBilderAngehaltenLeer": "Peatatud — ühtegi pilti ei salvestatud.",
+  "pdfBilderFehlerOrdner": "Sellesse kausta ei õnnestunud kirjutada. Valige mõni teine kaust."
 }

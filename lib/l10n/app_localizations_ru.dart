@@ -3418,4 +3418,81 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'До 18 лет — без взноса';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF в изображения';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Каждая страница становится изображением — JPG, JPEG или PNG, в выбранной вами папке.';
+
+  @override
+  String get pdfBilderTitel => 'PDF в изображения';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl страниц → $anzahl изображений',
+      many: '$anzahl страниц → $anzahl изображений',
+      few: '$anzahl страницы → $anzahl изображения',
+      one: '$anzahl страница → $anzahl изображение',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Формат';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG и JPEG — одно и то же изображение; отличается только расширение имени файла (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Изображения создаются на этом устройстве. PDF никуда не отправляется.';
+
+  @override
+  String get pdfBilderStarten => 'Выбрать папку и начать';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Выбрать папку для изображений';
+
+  @override
+  String get pdfBilderAnhalten => 'Остановить';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl изображений сохранено в «$ordner».',
+      many: '$anzahl изображений сохранено в «$ordner».',
+      few: '$anzahl изображения сохранены в «$ordner».',
+      one: '$anzahl изображение сохранено в «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Остановлено — $anzahl изображений уже в «$ordner».',
+      many: 'Остановлено — $anzahl изображений уже в «$ordner».',
+      few: 'Остановлено — $anzahl изображения уже в «$ordner».',
+      one: 'Остановлено — $anzahl изображение уже в «$ordner».',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Остановлено — ни одно изображение не сохранено.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Не удалось записать в эту папку. Выберите другую папку.';
 }

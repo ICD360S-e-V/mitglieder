@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "κάρτα σοβαρής αναπηρίας (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Αν και πόσα θα πληρωθούν αναδρομικά, αποφασίζει το Vorstand μετά τον έλεγχο.",
   "minderjaehrigBeitragsfrei": "Κάτω των 18 ετών η συμμετοχή είναι χωρίς συνδρομή.",
-  "finanzMinderjaehrig": "Κάτω των 18 — χωρίς συνδρομή"
+  "finanzMinderjaehrig": "Κάτω των 18 — χωρίς συνδρομή",
+  "extrasPdfBilderTitel": "PDF σε εικόνες",
+  "extrasPdfBilderText": "Κάθε σελίδα γίνεται εικόνα — JPG, JPEG ή PNG, σε φάκελο της επιλογής σας.",
+  "pdfBilderTitel": "PDF σε εικόνες",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} σελίδα → {anzahl} εικόνα} other{{anzahl} σελίδες → {anzahl} εικόνες}}",
+  "pdfBilderFormat": "Μορφή",
+  "pdfBilderJpgGleich": "Το JPG και το JPEG είναι η ίδια εικόνα· διαφέρει μόνο η κατάληξη του ονόματος αρχείου (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Οι εικόνες δημιουργούνται σε αυτήν τη συσκευή. Το PDF δεν αποστέλλεται πουθενά.",
+  "pdfBilderStarten": "Επιλογή φακέλου και έναρξη",
+  "pdfBilderOrdnerTitel": "Επιλογή φακέλου για τις εικόνες",
+  "pdfBilderAnhalten": "Διακοπή",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} εικόνα αποθηκεύτηκε στο «{ordner}».} other{{anzahl} εικόνες αποθηκεύτηκαν στο «{ordner}».}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Διακόπηκε — {anzahl} εικόνα βρίσκεται ήδη στο «{ordner}».} other{Διακόπηκε — {anzahl} εικόνες βρίσκονται ήδη στο «{ordner}».}}",
+  "pdfBilderAngehaltenLeer": "Διακόπηκε — δεν αποθηκεύτηκε καμία εικόνα.",
+  "pdfBilderFehlerOrdner": "Δεν ήταν δυνατή η εγγραφή σε αυτόν τον φάκελο. Επιλέξτε άλλον φάκελο."
 }

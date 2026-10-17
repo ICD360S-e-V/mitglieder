@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "průkaz těžce zdravotně postižené osoby (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Zda a kolik se má platit zpětně, rozhodne Vorstand po posouzení.",
   "minderjaehrigBeitragsfrei": "Do 18 let je členství bez příspěvku.",
-  "finanzMinderjaehrig": "Do 18 let — bez příspěvku"
+  "finanzMinderjaehrig": "Do 18 let — bez příspěvku",
+  "extrasPdfBilderTitel": "PDF na obrázky",
+  "extrasPdfBilderText": "Každá strana se stane obrázkem — JPG, JPEG nebo PNG, ve složce podle vašeho výběru.",
+  "pdfBilderTitel": "PDF na obrázky",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} strana → {anzahl} obrázek} few{{anzahl} strany → {anzahl} obrázky} other{{anzahl} stran → {anzahl} obrázků}}",
+  "pdfBilderFormat": "Formát",
+  "pdfBilderJpgGleich": "JPG a JPEG jsou stejný obrázek; liší se jen přípona názvu souboru (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Obrázky vznikají v tomto zařízení. PDF se nikam neposílá.",
+  "pdfBilderStarten": "Vybrat složku a začít",
+  "pdfBilderOrdnerTitel": "Vybrat složku pro obrázky",
+  "pdfBilderAnhalten": "Zastavit",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} obrázek uložen do „{ordner}“.} few{{anzahl} obrázky uloženy do „{ordner}“.} other{{anzahl} obrázků uloženo do „{ordner}“.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Zastaveno — {anzahl} obrázek už je v „{ordner}“.} few{Zastaveno — {anzahl} obrázky už jsou v „{ordner}“.} other{Zastaveno — {anzahl} obrázků už je v „{ordner}“.}}",
+  "pdfBilderAngehaltenLeer": "Zastaveno — nebyl uložen žádný obrázek.",
+  "pdfBilderFehlerOrdner": "Do této složky nebylo možné zapisovat. Vyberte prosím jinou složku."
 }

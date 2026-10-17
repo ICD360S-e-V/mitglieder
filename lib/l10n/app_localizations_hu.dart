@@ -3424,4 +3424,74 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => '18 év alatt — tagdíjmentes';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF-ből képek';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Minden oldalból kép lesz — JPG, JPEG vagy PNG, az Ön által választott mappában.';
+
+  @override
+  String get pdfBilderTitel => 'PDF-ből képek';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl oldal → $anzahl kép',
+      one: '$anzahl oldal → $anzahl kép',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Formátum';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'A JPG és a JPEG ugyanaz a kép; csak a fájlnév kiterjesztése más (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'A képek ezen az eszközön készülnek. A PDF-et nem küldjük el sehova.';
+
+  @override
+  String get pdfBilderStarten => 'Mappa kiválasztása és indítás';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Mappa kiválasztása a képeknek';
+
+  @override
+  String get pdfBilderAnhalten => 'Leállítás';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl kép mentve ide: „$ordner“.',
+      one: '$anzahl kép mentve ide: „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Leállítva — $anzahl kép már itt van: „$ordner“.',
+      one: 'Leállítva — $anzahl kép már itt van: „$ordner“.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer => 'Leállítva — egy kép sem lett mentve.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Ebbe a mappába nem sikerült írni. Válasszon másik mappát.';
 }

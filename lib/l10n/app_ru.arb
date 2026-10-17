@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "удостоверение о тяжёлой инвалидности (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Нужно ли платить задним числом и сколько, решает Vorstand после проверки.",
   "minderjaehrigBeitragsfrei": "До 18 лет членство без взносов.",
-  "finanzMinderjaehrig": "До 18 лет — без взноса"
+  "finanzMinderjaehrig": "До 18 лет — без взноса",
+  "extrasPdfBilderTitel": "PDF в изображения",
+  "extrasPdfBilderText": "Каждая страница становится изображением — JPG, JPEG или PNG, в выбранной вами папке.",
+  "pdfBilderTitel": "PDF в изображения",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} страница → {anzahl} изображение} few{{anzahl} страницы → {anzahl} изображения} many{{anzahl} страниц → {anzahl} изображений} other{{anzahl} страниц → {anzahl} изображений}}",
+  "pdfBilderFormat": "Формат",
+  "pdfBilderJpgGleich": "JPG и JPEG — одно и то же изображение; отличается только расширение имени файла (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Изображения создаются на этом устройстве. PDF никуда не отправляется.",
+  "pdfBilderStarten": "Выбрать папку и начать",
+  "pdfBilderOrdnerTitel": "Выбрать папку для изображений",
+  "pdfBilderAnhalten": "Остановить",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} изображение сохранено в «{ordner}».} few{{anzahl} изображения сохранены в «{ordner}».} many{{anzahl} изображений сохранено в «{ordner}».} other{{anzahl} изображений сохранено в «{ordner}».}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Остановлено — {anzahl} изображение уже в «{ordner}».} few{Остановлено — {anzahl} изображения уже в «{ordner}».} many{Остановлено — {anzahl} изображений уже в «{ordner}».} other{Остановлено — {anzahl} изображений уже в «{ordner}».}}",
+  "pdfBilderAngehaltenLeer": "Остановлено — ни одно изображение не сохранено.",
+  "pdfBilderFehlerOrdner": "Не удалось записать в эту папку. Выберите другую папку."
 }

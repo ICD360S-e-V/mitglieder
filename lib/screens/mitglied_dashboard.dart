@@ -48,6 +48,7 @@ import '../widgets/signatur_card.dart';
 import '../widgets/mitglied_extras_dialog.dart';
 import 'signatur_screen.dart';
 import 'pdf_werkzeug_screen.dart';
+import 'pdf_bilder_screen.dart';
 import '../utils/app_theme.dart';
 
 final _log = LoggerService();
@@ -1278,7 +1279,17 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       context: context,
       builder: (_) => MitgliedExtrasDialog(
         onPdfUnterschreiben: _openPdfWerkzeug,
+        onPdfInBilder: _openPdfBilder,
       ),
+    );
+  }
+
+  /// „PDF in Bilder" — rein auf dem Gerät, braucht deshalb keinen
+  /// [ApiService].
+  void _openPdfBilder() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const PdfBilderScreen()),
     );
   }
 

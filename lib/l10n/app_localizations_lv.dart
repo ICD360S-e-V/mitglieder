@@ -3413,4 +3413,75 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Līdz 18 — bez maksas';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF attēlos';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Katra lappuse kļūst par attēlu — JPG, JPEG vai PNG, jūsu izvēlētā mapē.';
+
+  @override
+  String get pdfBilderTitel => 'PDF attēlos';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl lappuses → $anzahl attēli',
+      one: '$anzahl lappuse → $anzahl attēls',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Formāts';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG un JPEG ir viens un tas pats attēls; atšķiras tikai faila nosaukuma paplašinājums (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Attēli tiek veidoti šajā ierīcē. PDF netiek nekur nosūtīts.';
+
+  @override
+  String get pdfBilderStarten => 'Izvēlieties mapi un sāciet';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Izvēlieties mapi attēliem';
+
+  @override
+  String get pdfBilderAnhalten => 'Apturēt';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl attēli saglabāti mapē “$ordner”.',
+      one: '$anzahl attēls saglabāts mapē “$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Apturēts — $anzahl attēli jau ir mapē “$ordner”.',
+      one: 'Apturēts — $anzahl attēls jau ir mapē “$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Apturēts — neviens attēls netika saglabāts.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Šajā mapē neizdevās ierakstīt. Lūdzu, izvēlieties citu mapi.';
 }

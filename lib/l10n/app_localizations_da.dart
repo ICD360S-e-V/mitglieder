@@ -3418,4 +3418,75 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Under 18 — kontingentfri';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF til billeder';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Hver side bliver et billede — JPG, JPEG eller PNG, i en mappe efter eget valg.';
+
+  @override
+  String get pdfBilderTitel => 'PDF til billeder';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl sider → $anzahl billeder',
+      one: '$anzahl side → $anzahl billede',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Format';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG og JPEG er det samme billede; kun filnavnets endelse er forskellig (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Billederne laves på denne enhed. PDF\'en sendes ingen steder hen.';
+
+  @override
+  String get pdfBilderStarten => 'Vælg mappe og start';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Vælg en mappe til billederne';
+
+  @override
+  String get pdfBilderAnhalten => 'Stop';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl billeder gemt i »$ordner«.',
+      one: '$anzahl billede gemt i »$ordner«.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Stoppet — $anzahl billeder ligger allerede i »$ordner«.',
+      one: 'Stoppet — $anzahl billede ligger allerede i »$ordner«.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Stoppet — der blev ikke gemt noget billede.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Der kunne ikke skrives til denne mappe. Vælg en anden mappe.';
 }

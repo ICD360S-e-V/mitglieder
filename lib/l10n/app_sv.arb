@@ -1505,5 +1505,19 @@
   "nachweisBehinderung": "intyg om svår funktionsnedsättning (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Om och hur mycket som ska betalas retroaktivt beslutar Vorstand efter granskning.",
   "minderjaehrigBeitragsfrei": "Under 18 år är medlemskapet avgiftsfritt.",
-  "finanzMinderjaehrig": "Under 18 — avgiftsfritt"
+  "finanzMinderjaehrig": "Under 18 — avgiftsfritt",
+  "extrasPdfBilderTitel": "PDF till bilder",
+  "extrasPdfBilderText": "Varje sida blir en bild — JPG, JPEG eller PNG, i en mapp du väljer.",
+  "pdfBilderTitel": "PDF till bilder",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} sida → {anzahl} bild} other{{anzahl} sidor → {anzahl} bilder}}",
+  "pdfBilderFormat": "Format",
+  "pdfBilderJpgGleich": "JPG och JPEG är samma bild; bara filnamnets ändelse skiljer sig (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Bilderna skapas på den här enheten. PDF:en skickas ingenstans.",
+  "pdfBilderStarten": "Välj mapp och starta",
+  "pdfBilderOrdnerTitel": "Välj en mapp för bilderna",
+  "pdfBilderAnhalten": "Stoppa",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} bild sparad i ”{ordner}”.} other{{anzahl} bilder sparade i ”{ordner}”.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Stoppat — {anzahl} bild finns redan i ”{ordner}”.} other{Stoppat — {anzahl} bilder finns redan i ”{ordner}”.}}",
+  "pdfBilderAngehaltenLeer": "Stoppat — ingen bild sparades.",
+  "pdfBilderFehlerOrdner": "Det gick inte att skriva till den här mappen. Välj en annan mapp."
 }
