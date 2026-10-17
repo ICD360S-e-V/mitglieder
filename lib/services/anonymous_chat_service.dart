@@ -190,7 +190,7 @@ class AnonymousChatService {
         }
       }
       _log.error(
-        'sendMessage HTTP ${response.statusCode}: ${response.body}',
+        'sendMessage HTTP ${response.statusCode} (${response.body.length} Byte)',
         tag: 'AnonChat',
       );
     } catch (e) {

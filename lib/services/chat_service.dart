@@ -222,7 +222,10 @@ class ChatService {
 
       _subscription = _channel!.stream.listen(
         (data) {
-          _log.debug('WS received: ${data.toString().substring(0, data.toString().length > 100 ? 100 : data.toString().length)}...', tag: 'WS');
+          // 🔴 Hier standen die ersten 100 Zeichen JEDES Rahmens — bei einer
+          // Chat-Nachricht Absender und Anfang des Textes. Auf dem Server lagen
+          // davon am 17.10.2026 über 170.000 Zeilen. Nur die Länge.
+          _log.debug('WS received: ${data.toString().length} Z.', tag: 'WS');
           _handleMessage(data, completer);
         },
         onError: (error) {
