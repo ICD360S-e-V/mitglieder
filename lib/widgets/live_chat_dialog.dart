@@ -10,6 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import '../l10n/app_localizations.dart';
 import 'eastern.dart';
 import 'linkified_text.dart';
+import '../utils/chat_bild_jpg.dart';
 import '../utils/clipboard_import.dart';
 import '../utils/chat_anhang_laden.dart';
 import '../utils/datei_ablage.dart';
@@ -1220,7 +1221,14 @@ class _LiveChatDialogState extends State<LiveChatDialog>
       );
 
       if (images.isNotEmpty) {
-        final files = images.take(10).map((xfile) => File(xfile.path)).toList();
+        // Nur JPG/PNG mit passender Endung nimmt chat/upload.php an — ein Foto
+        // aus der Galerie kam als „….heic“ (App-Fehler #136). Siehe
+        // chat_bild_jpg.dart.
+        final files = await Future.wait(images.take(10).map((xfile) => chatBildFuerServer(
+              File(xfile.path),
+              langeSeite: kChatFotoLangeSeite.toInt(),
+              qualitaet: kChatFotoQualitaet,
+            )));
 
         // Check total size
         int totalSize = 0;
