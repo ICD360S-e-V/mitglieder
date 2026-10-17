@@ -2,6 +2,11 @@
 // .github/scripts/merge_warteschlange.py (gleich in vorsitzer, mitglieder und
 // schatzmeister — nur diese Konstante unterscheidet sich je App).
 //
+// Seit dem 17.10.2026 nachmittags ohne Zeitplan: ein Lauf wartet SELBST auf die
+// Fassung und nimmt dann den nächsten PR (Gruppe „die Schleife“). Vorher kam die
+// Schlange nach einem Bau nicht wieder — der Vorsitzende: „trebuie sa astepte
+// cand se termina versionarea cand apare versiunea“.
+//
 // Wunsch des Vorsitzenden (17.10.2026): die PRs der Reihe nach mergen, vom
 // ältesten zum neuesten, und den nächsten erst, wenn die Fassung des vorigen
 // draußen ist.
@@ -70,6 +75,16 @@ Map<String, dynamic> _entscheiden({
       'prs': prs,
       'laeufe': laeufe,
       'merges': merges,
+    })['ergebnis'] as Map<String, dynamic>;
+
+/// Die Schleife eines Laufs über feste Stände statt GitHub (`--folge`): jeder
+/// Blick nimmt den nächsten Stand, die Uhr läuft nur beim Schlafen.
+Map<String, dynamic> _folge(List<Map<String, dynamic>> staende, {bool trocken = false}) =>
+    _skriptFragen('--folge', <String, dynamic>{
+      'jetzt': _jetzt,
+      'konfig': _k,
+      'staende': staende,
+      'trocken': trocken,
     })['ergebnis'] as Map<String, dynamic>;
 
 List<String> _folgelaeufe(List<String> dateien) =>
@@ -302,6 +317,53 @@ void main() {
     });
   });
 
+  group('die Schleife', () {
+    test('nach dem Merge wartet sie selbst auf die Fassung und nimmt dann den nächsten', () {
+      final Map<String, dynamic> bau = _lauf(_k['bau'] as String, status: 'in_progress', zweig: 'v1.0.1');
+      final Map<String, dynamic> f = _folge(<Map<String, dynamic>>[
+        <String, dynamic>{'prs': <Map<String, dynamic>>[_pr(11), _pr(12)]},
+        <String, dynamic>{'prs': <Map<String, dynamic>>[_pr(12)], 'laeufe': <Map<String, dynamic>>[bau]},
+        <String, dynamic>{'prs': <Map<String, dynamic>>[_pr(12)], 'laeufe': <Map<String, dynamic>>[bau]},
+        <String, dynamic>{'prs': <Map<String, dynamic>>[_pr(12)]},
+        <String, dynamic>{'prs': <Map<String, dynamic>>[]},
+      ]);
+      expect(f['aktionen'], <String>['mergen', 'warten', 'mergen', 'nichts']);
+      expect(f['gemergt'], <int>[11, 12]);
+      expect(f['geschlafen'], 2, reason: 'zweimal nachgesehen, solange der Bau lief');
+    });
+
+    test('sie wartet höchstens 40 Minuten, dann endet der Lauf', () {
+      final Map<String, dynamic> f = _folge(<Map<String, dynamic>>[
+        <String, dynamic>{
+          'prs': <Map<String, dynamic>>[_pr(11)],
+          'laeufe': <Map<String, dynamic>>[_lauf(_k['bau'] as String, status: 'in_progress')],
+        },
+      ]);
+      expect(f['aktionen'], <String>['warten']);
+      expect(f['geschlafen'], 40);
+      expect(f['gemergt'], isEmpty);
+    });
+
+    test('Halt: der Lauf endet sofort', () {
+      final Map<String, dynamic> f = _folge(<Map<String, dynamic>>[
+        <String, dynamic>{
+          'prs': <Map<String, dynamic>>[_pr(11)],
+          'laeufe': <Map<String, dynamic>>[_lauf(_k['bau'] as String, conclusion: 'failure', zweig: 'v1.0.1')],
+        },
+      ]);
+      expect(f['aktionen'], <String>['halt']);
+      expect(f['geschlafen'], 0);
+    });
+
+    test('trocken: nur der erste Blick, nichts gemergt', () {
+      final Map<String, dynamic> f = _folge(<Map<String, dynamic>>[
+        <String, dynamic>{'prs': <Map<String, dynamic>>[_pr(11)]},
+      ], trocken: true);
+      expect(f['aktionen'], <String>['mergen']);
+      expect(f['gemergt'], isEmpty);
+    });
+  });
+
   group('Halt nach einer gescheiterten Fassung', () {
     test('kam die letzte Fassung nicht ins Release, kommt nichts darauf', () {
       final Map<String, dynamic> e = _entscheiden(
@@ -401,13 +463,40 @@ void main() {
       }
     });
 
-    test('die Auslöser gibt es — mit genau diesem Namen', () {
+    test('die Auslöser gibt es — mit genau diesem Namen, ohne Musterzeichen', () {
       final RegExpMatch? m = RegExp(r'workflows: \[(.*)\]').firstMatch(text);
       expect(m, isNotNull);
       final Set<String?> namen = ablaeufe.values.map(_name).toSet();
       for (final String w in m!.group(1)!.split(',').map((String s) => s.trim().replaceAll('"', ''))) {
         expect(namen, contains(w), reason: 'workflow_run auf „$w“ — einen Ablauf dieses Namens gibt es nicht');
+        // GitHub liest die Namen als Muster: „Build Linux + Flatpak (priority)“
+        // traf am 17.10.2026 nie, das „+“ hiess „ein oder mehr Leerzeichen“.
+        expect(w, isNot(matches(RegExp(r'[+*?!\[\]]'))), reason: '„$w“ enthält ein Musterzeichen');
       }
+    });
+
+    test('kein Zeitplan — sie kommt, wenn etwas fertig ist, und wartet dann selbst', () {
+      expect(text, isNot(contains('schedule:')));
+      expect(text, isNot(contains('cron:')));
+      final int warten =
+          int.parse(RegExp(r'WARTEN_HOECHSTENS = timedelta\(minutes=(\d+)\)').firstMatch(_lesen(_skript))!.group(1)!);
+      final int frist = int.parse(RegExp(r'timeout-minutes: (\d+)').firstMatch(text)!.group(1)!);
+      expect(frist, greaterThan(warten), reason: 'der Lauf muss sein Warten zu Ende bringen dürfen');
+    });
+
+    // Startet der Release den Bau mit dem GITHUB_TOKEN (vorsitzer,
+    // schatzmeister: `gh workflow run build-android.yml`), löst dessen Ende
+    // KEIN workflow_run aus — der Bau muss die Schlange selbst anstoßen.
+    // In mitglieder kommt der Tag von release-please mit eigenem Token; dort
+    // greift workflow_run, und der Test hat nichts zu prüfen.
+    test('startet der Release den Bau mit dem GITHUB_TOKEN, stößt der Bau sie an', () {
+      if (!ablaeufe[_k['freigabe']]!.contains('gh workflow run ${_k['bau']}')) return;
+      final String bau = ablaeufe[_k['bau']]!;
+      final int anstoss = bau.indexOf('run: gh workflow run merge-warteschlange.yml --ref main\n');
+      expect(anstoss, greaterThan(0));
+      // Im Veröffentlichungs-Job, als letzter Schritt — nach dem Hochladen.
+      expect(anstoss, greaterThan(bau.indexOf('name: "${_k['veroeffentlicht']}"')));
+      expect(bau.indexOf('\n      - name:', anstoss), -1, reason: 'danach kommt kein Schritt mehr');
     });
 
     test('Release, Bau und Veröffentlichungsschritt gibt es', () {
