@@ -2829,6 +2829,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get signaturCodeAnfordern => 'Запросити код через SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Запросити код електронною поштою';
+
+  @override
   String get signaturCodeUnterwegs => 'Код надсилається.';
 
   @override

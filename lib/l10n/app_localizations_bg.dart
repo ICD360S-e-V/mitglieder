@@ -2830,6 +2830,9 @@ class AppLocalizationsBg extends AppLocalizations {
   String get signaturCodeAnfordern => 'Заявете код по SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Заявете код по имейл';
+
+  @override
   String get signaturCodeUnterwegs => 'Кодът е на път.';
 
   @override

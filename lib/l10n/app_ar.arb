@@ -1351,6 +1351,7 @@
   "signaturNochmal": "من جديد",
   "signaturZurueckZumDokument": "العودة إلى المستند",
   "signaturCodeAnfordern": "طلب رمز عبر رسالة نصية",
+  "kontaktCodePerMailAnfordern": "طلب رمز عبر البريد الإلكتروني",
   "signaturCodeUnterwegs": "الرمز في طريقه إليك.",
   "signaturCodeGesendetAn": "أرسلنا رمزاً إلى {nummer}.",
   "@signaturCodeGesendetAn": {

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -280,12 +281,53 @@ void main() {
       await tester.tap(find.byIcon(Icons.edit).first);
       await tester.pumpAndSettle();
       await tester.enterText(find.byType(TextField), 'neu@beispiel.de');
-      await tester.tap(find.widgetWithText(ElevatedButton, 'Code per SMS anfordern'));
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Code per E-Mail anfordern'));
       await tester.pumpAndSettle();
 
       expect(server.letzte('code_anfordern'), {'aktion': 'code_anfordern', 'kanal': 'email', 'neu': 'neu@beispiel.de'});
       expect(find.text('Bitte warten Sie 79 Sekunden, bevor Sie einen neuen Code anfordern.'), findsOneWidget);
       expect(find.byType(TextField), findsNothing);
+    });
+  });
+
+  // ── Neue Adresse / neue Nummer: der Knopf nennt den richtigen Weg ──────
+  // Bis 17.10.2026 stand auch bei einer neuen E-Mail-Adresse „Code per SMS
+  // anfordern“ — der Code geht aber per Mail an die neue Adresse.
+
+  group('Knopf im Dialog „Neue …“', () {
+    testWidgets('neue E-Mail-Adresse: „Code per E-Mail anfordern“, kein „per SMS“', (tester) async {
+      server.email = _offen(code: false);
+      await _zeigen(tester);
+      await tester.tap(find.byIcon(Icons.edit).first);
+      await tester.pumpAndSettle();
+
+      expect(find.widgetWithText(ElevatedButton, 'Code per E-Mail anfordern'), findsOneWidget);
+      expect(find.text('Code per SMS anfordern'), findsNothing);
+    });
+
+    testWidgets('neue Mobilnummer: „Code per SMS anfordern“ — wie bisher', (tester) async {
+      server.email = _bestaetigt();
+      server.telefon = _offen(code: false, wert: '+4917612345611');
+      await _zeigen(tester);
+      await tester.tap(find.byIcon(Icons.edit));
+      await tester.pumpAndSettle();
+
+      expect(find.widgetWithText(ElevatedButton, 'Code per SMS anfordern'), findsOneWidget);
+      expect(find.text('Code per E-Mail anfordern'), findsNothing);
+    });
+
+    test('alle 28 Sprachen haben den Text für die Mail — ohne „SMS“, anders als der für die SMS', () {
+      final dateien = Directory('lib/l10n').listSync().whereType<File>().where((f) => f.path.endsWith('.arb')).toList();
+      expect(dateien, hasLength(28));
+      for (final f in dateien) {
+        final arb = jsonDecode(f.readAsStringSync()) as Map<String, dynamic>;
+        final mail = arb['kontaktCodePerMailAnfordern'] as String?;
+        expect(mail, isNotNull, reason: '${f.path}: Text fehlt');
+        expect(mail!.trim(), isNotEmpty, reason: f.path);
+        expect(RegExp('sms|смс|رسالة نصية|tekstiviesti', caseSensitive: false).hasMatch(mail), isFalse,
+            reason: '${f.path}: „$mail“ nennt die SMS');
+        expect(mail, isNot(arb['signaturCodeAnfordern']), reason: f.path);
+      }
     });
   });
 

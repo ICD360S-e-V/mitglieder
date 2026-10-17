@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Αναμένεται η υπογραφή σας",
   "signaturCodeAbgelaufen": "Ο κωδικός έληξε. Παρακαλούμε ζητήστε νέο κωδικό.",
   "signaturCodeAnfordern": "Αποστολή κωδικού με SMS",
+  "kontaktCodePerMailAnfordern": "Αποστολή κωδικού με email",
   "signaturBitteGanzLesen": "Παρακαλούμε διαβάστε το έγγραφο μέχρι το τέλος (σελίδα {gelesen} από {gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

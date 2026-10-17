@@ -2828,6 +2828,9 @@ class AppLocalizationsNb extends AppLocalizations {
   String get signaturCodeAnfordern => 'Be om kode på SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Be om kode på e-post';
+
+  @override
   String get signaturCodeUnterwegs => 'Koden er på vei.';
 
   @override

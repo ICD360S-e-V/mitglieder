@@ -2827,6 +2827,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get signaturCodeAnfordern => 'Запросить код по SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern =>
+      'Запросить код по электронной почте';
+
+  @override
   String get signaturCodeUnterwegs => 'Код отправляется.';
 
   @override

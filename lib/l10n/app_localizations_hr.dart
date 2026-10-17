@@ -2824,6 +2824,9 @@ class AppLocalizationsHr extends AppLocalizations {
   String get signaturCodeAnfordern => 'Zatražite kod SMS-om';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Zatražite kod e-poštom';
+
+  @override
   String get signaturCodeUnterwegs => 'Kod je na putu.';
 
   @override

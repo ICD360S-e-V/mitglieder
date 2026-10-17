@@ -2838,6 +2838,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get signaturCodeAnfordern => 'Richiedi codice via SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Richiedi codice via email';
+
+  @override
   String get signaturCodeUnterwegs => 'Il codice è in arrivo.';
 
   @override

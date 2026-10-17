@@ -1330,6 +1330,7 @@
   "signaturNochmal": "Заново",
   "signaturZurueckZumDokument": "Назад к документу",
   "signaturCodeAnfordern": "Запросить код по SMS",
+  "kontaktCodePerMailAnfordern": "Запросить код по электронной почте",
   "signaturCodeUnterwegs": "Код отправляется.",
   "signaturCodeGesendetAn": "Мы отправили код на {nummer}.",
   "@signaturCodeGesendetAn": {

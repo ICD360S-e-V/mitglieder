@@ -2822,6 +2822,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get signaturCodeAnfordern => 'Poslat kód přes SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Poslat kód e-mailem';
+
+  @override
   String get signaturCodeUnterwegs => 'Kód je na cestě.';
 
   @override

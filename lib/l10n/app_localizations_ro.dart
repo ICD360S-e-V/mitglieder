@@ -2834,6 +2834,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get signaturCodeAnfordern => 'Cere codul prin SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Cere codul prin e-mail';
+
+  @override
   String get signaturCodeUnterwegs => 'Codul este pe drum.';
 
   @override

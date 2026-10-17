@@ -1351,6 +1351,7 @@
   "signaturNochmal": "Yeniden",
   "signaturZurueckZumDokument": "Belgeye dön",
   "signaturCodeAnfordern": "SMS ile kod iste",
+  "kontaktCodePerMailAnfordern": "E-posta ile kod iste",
   "signaturCodeUnterwegs": "Kod yolda.",
   "signaturCodeGesendetAn": "{nummer} numarasına bir kod gönderdik.",
   "@signaturCodeGesendetAn": {

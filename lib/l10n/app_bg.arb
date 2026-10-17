@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Чака Вашия подпис",
   "signaturCodeAbgelaufen": "Кодът е изтекъл. Моля, заявете нов.",
   "signaturCodeAnfordern": "Заявете код по SMS",
+  "kontaktCodePerMailAnfordern": "Заявете код по имейл",
   "signaturBitteGanzLesen": "Моля, прочетете документа докрай (страница {gelesen} от {gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

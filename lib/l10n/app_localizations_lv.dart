@@ -2823,6 +2823,9 @@ class AppLocalizationsLv extends AppLocalizations {
   String get signaturCodeAnfordern => 'Pieprasīt kodu ar SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Pieprasīt kodu pa e-pastu';
+
+  @override
   String get signaturCodeUnterwegs => 'Kods ir ceļā.';
 
   @override

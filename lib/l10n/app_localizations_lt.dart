@@ -2827,6 +2827,9 @@ class AppLocalizationsLt extends AppLocalizations {
   String get signaturCodeAnfordern => 'Gauti kodą SMS žinute';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Gauti kodą el. paštu';
+
+  @override
   String get signaturCodeUnterwegs => 'Kodas jau siunčiamas.';
 
   @override

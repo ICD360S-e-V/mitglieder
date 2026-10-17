@@ -2838,6 +2838,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get signaturCodeAnfordern => 'Solicitar código por SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern =>
+      'Solicitar código por correo electrónico';
+
+  @override
   String get signaturCodeUnterwegs => 'El código está en camino.';
 
   @override

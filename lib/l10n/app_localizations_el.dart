@@ -2843,6 +2843,9 @@ class AppLocalizationsEl extends AppLocalizations {
   String get signaturCodeAnfordern => 'Αποστολή κωδικού με SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Αποστολή κωδικού με email';
+
+  @override
   String get signaturCodeUnterwegs =>
       'Ο κωδικός στάλθηκε και θα φτάσει σε λίγο.';
 

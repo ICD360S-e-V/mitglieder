@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Venter på din underskrift",
   "signaturCodeAbgelaufen": "Koden er udløbet. Bed venligst om en ny.",
   "signaturCodeAnfordern": "Send kode via SMS",
+  "kontaktCodePerMailAnfordern": "Send kode via e-mail",
   "signaturBitteGanzLesen": "Læs venligst dokumentet helt til ende (side {gelesen} af {gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

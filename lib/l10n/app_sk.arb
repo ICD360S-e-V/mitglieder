@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Čaká na váš podpis",
   "signaturCodeAbgelaufen": "Platnosť kódu uplynula. Vyžiadajte si prosím nový kód.",
   "signaturCodeAnfordern": "Vyžiadať kód cez SMS",
+  "kontaktCodePerMailAnfordern": "Vyžiadať kód e-mailom",
   "signaturBitteGanzLesen": "Prečítajte si prosím dokument až do konca (strana {gelesen} z {gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

@@ -2802,6 +2802,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get signaturCodeAnfordern => 'طلب رمز عبر رسالة نصية';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'طلب رمز عبر البريد الإلكتروني';
+
+  @override
   String get signaturCodeUnterwegs => 'الرمز في طريقه إليك.';
 
   @override

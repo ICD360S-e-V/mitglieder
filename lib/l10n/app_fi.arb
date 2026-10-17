@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Odottaa allekirjoitustasi",
   "signaturCodeAbgelaufen": "Koodi on vanhentunut. Pyydä uusi koodi.",
   "signaturCodeAnfordern": "Pyydä koodi tekstiviestillä",
+  "kontaktCodePerMailAnfordern": "Pyydä koodi sähköpostilla",
   "signaturBitteGanzLesen": "Lue asiakirja loppuun asti (sivu {gelesen}/{gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {
