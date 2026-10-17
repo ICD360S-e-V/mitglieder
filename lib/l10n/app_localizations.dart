@@ -5150,6 +5150,12 @@ abstract class AppLocalizations {
   /// **'Code per SMS anfordern'**
   String get signaturCodeAnfordern;
 
+  /// No description provided for @kontaktCodePerMailAnfordern.
+  ///
+  /// In de, this message translates to:
+  /// **'Code per E-Mail anfordern'**
+  String get kontaktCodePerMailAnfordern;
+
   /// No description provided for @signaturCodeUnterwegs.
   ///
   /// In de, this message translates to:

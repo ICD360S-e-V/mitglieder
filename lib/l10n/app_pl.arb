@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Czeka na Pana/Pani podpis",
   "signaturCodeAbgelaufen": "Kod stracił ważność. Prosimy zamówić nowy kod.",
   "signaturCodeAnfordern": "Zamów kod SMS",
+  "kontaktCodePerMailAnfordern": "Zamów kod e-mailem",
   "signaturBitteGanzLesen": "Prosimy przeczytać dokument do końca (strona {gelesen} z {gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

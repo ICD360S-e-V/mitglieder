@@ -481,7 +481,12 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
         ]),
         actions: [
           TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(t.cancel)),
-          ElevatedButton(onPressed: () => Navigator.pop(ctx, true), child: Text(t.signaturCodeAnfordern)),
+          // Der Code geht an die NEUE Angabe — eine Adresse bekommt ihn per
+          // Mail; „per SMS“ stand bis 17.10.2026 auch dort.
+          ElevatedButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(kanal == 'telefon' ? t.signaturCodeAnfordern : t.kontaktCodePerMailAnfordern),
+          ),
         ],
       ),
     );

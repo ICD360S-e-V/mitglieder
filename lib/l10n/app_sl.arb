@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Čaka na vaš podpis",
   "signaturCodeAbgelaufen": "Koda je potekla. Prosimo, zahtevajte novo.",
   "signaturCodeAnfordern": "Zahtevajte kodo po SMS-u",
+  "kontaktCodePerMailAnfordern": "Zahtevajte kodo po e-pošti",
   "signaturBitteGanzLesen": "Prosimo, preberite dokument do konca (stran {gelesen} od {gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

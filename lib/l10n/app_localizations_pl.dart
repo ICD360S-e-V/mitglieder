@@ -2837,6 +2837,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get signaturCodeAnfordern => 'Zamów kod SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Zamów kod e-mailem';
+
+  @override
   String get signaturCodeUnterwegs => 'Kod jest w drodze.';
 
   @override

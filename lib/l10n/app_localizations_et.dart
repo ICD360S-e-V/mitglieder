@@ -2823,6 +2823,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get signaturCodeAnfordern => 'Saatke kood SMS-iga';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Saatke kood e-postiga';
+
+  @override
   String get signaturCodeUnterwegs => 'Kood on teel.';
 
   @override

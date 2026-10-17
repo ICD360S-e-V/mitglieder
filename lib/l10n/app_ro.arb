@@ -1330,6 +1330,7 @@
   "signaturNochmal": "Din nou",
   "signaturZurueckZumDokument": "Înapoi la document",
   "signaturCodeAnfordern": "Cere codul prin SMS",
+  "kontaktCodePerMailAnfordern": "Cere codul prin e-mail",
   "signaturCodeUnterwegs": "Codul este pe drum.",
   "signaturCodeGesendetAn": "V-am trimis un cod la {nummer}.",
   "@signaturCodeGesendetAn": {

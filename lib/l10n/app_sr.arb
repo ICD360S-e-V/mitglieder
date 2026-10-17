@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Чека Ваш потпис",
   "signaturCodeAbgelaufen": "Код је истекао. Молимо Вас да затражите нови.",
   "signaturCodeAnfordern": "Затражите код СМС-ом",
+  "kontaktCodePerMailAnfordern": "Затражите код имејлом",
   "signaturBitteGanzLesen": "Молимо Вас да прочитате документ до краја (страна {gelesen} од {gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

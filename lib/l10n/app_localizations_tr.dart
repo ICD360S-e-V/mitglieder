@@ -2832,6 +2832,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get signaturCodeAnfordern => 'SMS ile kod iste';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'E-posta ile kod iste';
+
+  @override
   String get signaturCodeUnterwegs => 'Kod yolda.';
 
   @override

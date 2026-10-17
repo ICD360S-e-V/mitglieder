@@ -2823,6 +2823,9 @@ class AppLocalizationsSr extends AppLocalizations {
   String get signaturCodeAnfordern => 'Затражите код СМС-ом';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Затражите код имејлом';
+
+  @override
   String get signaturCodeUnterwegs => 'Код стиже.';
 
   @override

@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Ootab Teie allkirja",
   "signaturCodeAbgelaufen": "Kood on aegunud. Palun küsige uus kood.",
   "signaturCodeAnfordern": "Saatke kood SMS-iga",
+  "kontaktCodePerMailAnfordern": "Saatke kood e-postiga",
   "signaturBitteGanzLesen": "Palun lugege dokument lõpuni (lehekülg {gelesen} {gesamt}-st).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

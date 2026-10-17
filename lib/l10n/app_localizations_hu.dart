@@ -2834,6 +2834,9 @@ class AppLocalizationsHu extends AppLocalizations {
   String get signaturCodeAnfordern => 'Kód kérése SMS-ben';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Kód kérése e-mailben';
+
+  @override
   String get signaturCodeUnterwegs => 'A kód úton van.';
 
   @override

@@ -2846,6 +2846,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get signaturCodeAnfordern => 'Code per SMS anfordern';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Code per E-Mail anfordern';
+
+  @override
   String get signaturCodeUnterwegs => 'Der Code ist unterwegs.';
 
   @override

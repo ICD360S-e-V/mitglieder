@@ -1330,6 +1330,7 @@
   "signaturNochmal": "Start over",
   "signaturZurueckZumDokument": "Back to the document",
   "signaturCodeAnfordern": "Request code by SMS",
+  "kontaktCodePerMailAnfordern": "Request code by email",
   "signaturCodeUnterwegs": "The code is on its way.",
   "signaturCodeGesendetAn": "We sent a code to {nummer}.",
   "@signaturCodeGesendetAn": {

@@ -2828,6 +2828,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get signaturCodeAnfordern => 'Pyydä koodi tekstiviestillä';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Pyydä koodi sähköpostilla';
+
+  @override
   String get signaturCodeUnterwegs => 'Koodi on matkalla.';
 
   @override

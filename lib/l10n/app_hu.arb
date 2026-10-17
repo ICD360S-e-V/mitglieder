@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Az Ön aláírására vár",
   "signaturCodeAbgelaufen": "A kód lejárt. Kérjük, igényeljen újat.",
   "signaturCodeAnfordern": "Kód kérése SMS-ben",
+  "kontaktCodePerMailAnfordern": "Kód kérése e-mailben",
   "signaturBitteGanzLesen": "Kérjük, olvassa el a dokumentumot a végéig ({gelesen}. oldal, összesen {gesamt} oldal).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

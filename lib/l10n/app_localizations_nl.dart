@@ -2837,6 +2837,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get signaturCodeAnfordern => 'Code per sms aanvragen';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Code per e-mail aanvragen';
+
+  @override
   String get signaturCodeUnterwegs => 'De code is onderweg.';
 
   @override

@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "À espera da sua assinatura",
   "signaturCodeAbgelaufen": "O código expirou. Por favor, peça um novo.",
   "signaturCodeAnfordern": "Pedir código por SMS",
+  "kontaktCodePerMailAnfordern": "Pedir código por email",
   "signaturBitteGanzLesen": "Por favor, leia o documento até ao fim (página {gelesen} de {gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {

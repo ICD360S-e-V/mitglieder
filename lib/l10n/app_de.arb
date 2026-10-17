@@ -1351,6 +1351,7 @@
   "signaturNochmal": "Noch einmal",
   "signaturZurueckZumDokument": "Zurück zum Dokument",
   "signaturCodeAnfordern": "Code per SMS anfordern",
+  "kontaktCodePerMailAnfordern": "Code per E-Mail anfordern",
   "signaturCodeUnterwegs": "Der Code ist unterwegs.",
   "signaturCodeGesendetAn": "Wir haben Ihnen einen Code an {nummer} geschickt.",
   "@signaturCodeGesendetAn": {

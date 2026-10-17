@@ -2825,6 +2825,9 @@ class AppLocalizationsSk extends AppLocalizations {
   String get signaturCodeAnfordern => 'Vyžiadať kód cez SMS';
 
   @override
+  String get kontaktCodePerMailAnfordern => 'Vyžiadať kód e-mailom';
+
+  @override
   String get signaturCodeUnterwegs => 'Kód je na ceste.';
 
   @override

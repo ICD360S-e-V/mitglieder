@@ -1333,6 +1333,7 @@
   "signaturStatusOffen": "Gaida Jūsu parakstu",
   "signaturCodeAbgelaufen": "Koda derīguma termiņš ir beidzies. Lūdzu, pieprasiet jaunu kodu.",
   "signaturCodeAnfordern": "Pieprasīt kodu ar SMS",
+  "kontaktCodePerMailAnfordern": "Pieprasīt kodu pa e-pastu",
   "signaturBitteGanzLesen": "Lūdzu, izlasiet dokumentu līdz beigām (lappuse {gelesen} no {gesamt}).",
   "@signaturBitteGanzLesen": {
     "placeholders": {
