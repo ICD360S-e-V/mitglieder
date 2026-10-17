@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.115.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.115.1...v1.115.2) (2026-10-17)
+
+
+### Bug Fixes
+
+* **dienst:** Verbindung mit 1000 schliessen und nicht mehr anhören (App-Fehler [#133](https://github.com/ICD360S-e-V/mitglieder/issues/133)) ([#514](https://github.com/ICD360S-e-V/mitglieder/issues/514)) ([f613d9f](https://github.com/ICD360S-e-V/mitglieder/commit/f613d9f51085607858823d8bc5de343394780a3a))
+
 ## [1.115.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.115.0...v1.115.1) (2026-10-17)
 
 
