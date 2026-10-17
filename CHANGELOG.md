@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.116.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.1...v1.116.2) (2026-10-17)
+
+
+### Bug Fixes
+
+* **verifizierung:** die Kontakt-Karte spricht die Sprache der App — kein fester deutscher Text mehr ([#519](https://github.com/ICD360S-e-V/mitglieder/issues/519)) ([255ce60](https://github.com/ICD360S-e-V/mitglieder/commit/255ce60bd8836d3b70d10d481075e916b2117720))
+
 ## [1.116.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.0...v1.116.1) (2026-10-17)
 
 
