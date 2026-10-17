@@ -37,6 +37,8 @@ on:
   # Die Bauten für Windows/iOS/macOS und Linux stehen hier nicht: ihr „+“ im
   # Namen liest GitHub als Muster, sie trafen nie. Auf sie wartet ein Lauf
   # selbst, wie auf eine Fassung ohne neuen Bau.
+  # Wird ein Entwurf fertig gemeldet oder kommt `asteapta` weg, läuft die
+  # PR-Prüfung neu (`types:` dort) — ihr Ende weckt sie ebenso.
   workflow_run:
     workflows: ["PR Check", "Build Android (priority)"]
     types: [completed]

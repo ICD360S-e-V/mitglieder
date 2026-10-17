@@ -7,6 +7,12 @@ name: PR Check
 # workflow_dispatch lets you run it on demand against any branch.
 on:
   pull_request:
+    # GitHub's three default types plus two: a draft marked ready for review,
+    # and a removed label (`asteapta` holds a PR back from the merge queue).
+    # The check then runs again, against today's main, and its end wakes the
+    # merge queue (workflow_run). Without them such a PR sat until something
+    # else happened to finish (17.10.2026).
+    types: [opened, synchronize, reopened, ready_for_review, unlabeled]
   workflow_dispatch:
 
 concurrency:

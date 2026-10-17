@@ -191,6 +191,21 @@ List<String>? _pushAufMain(String text) {
   ];
 }
 
+/// Auf welche Ereignisse eines PR hört der Ablauf? Ohne `types:` die drei, die
+/// GitHub von sich aus nimmt — ein fertig gemeldeter Entwurf ist nicht dabei.
+List<String> _prArten(String text) {
+  final List<String> block = _ausloeser(text);
+  final int i = block.indexWhere((String z) => z.trim() == 'pull_request:');
+  if (i < 0) return <String>[];
+  final int einzug = block[i].indexOf('pull_request:');
+  for (final String z in block.skip(i + 1)) {
+    if (z.length - z.trimLeft().length <= einzug) break;
+    final RegExpMatch? m = RegExp(r'^types: *\[(.*)\]$').firstMatch(z.trim());
+    if (m != null) return m.group(1)!.split(',').map((String s) => s.trim()).toList();
+  }
+  return <String>['opened', 'synchronize', 'reopened'];
+}
+
 Map<String, String> _ablaeufe() => <String, String>{
       for (final File f in Directory('.github/workflows')
           .listSync()
@@ -472,6 +487,31 @@ void main() {
         // GitHub liest die Namen als Muster: „Build Linux + Flatpak (priority)“
         // traf am 17.10.2026 nie, das „+“ hiess „ein oder mehr Leerzeichen“.
         expect(w, isNot(matches(RegExp(r'[+*?!\[\]]'))), reason: '„$w“ enthält ein Musterzeichen');
+      }
+    });
+
+    // Wird ein Entwurf fertig gemeldet oder kommt `asteapta` weg, ändert sich am
+    // Code nichts — ohne `types:` lief dann keine Prüfung neu, und ohne fertige
+    // Prüfung kein workflow_run: die Schlange schlief weiter (17.10.2026, #1304
+    // wäre nach dem Einspielen seines Servers liegen geblieben).
+    test('ein Entwurf wird fertig oder `asteapta` kommt weg: die PR-Prüfung läuft neu und weckt sie', () {
+      final Set<String> namen = RegExp(r'workflows: \[(.*)\]')
+          .firstMatch(text)!
+          .group(1)!
+          .split(',')
+          .map((String s) => s.trim().replaceAll('"', ''))
+          .toSet();
+      final List<String> pruefungen = <String>[
+        for (final MapEntry<String, String> a in ablaeufe.entries)
+          if (namen.contains(_name(a.value)) && _prArten(a.value).isNotEmpty) a.key,
+      ];
+      expect(pruefungen, isNotEmpty, reason: 'kein Auslöser der Schlange läuft auf einem PR');
+      for (final String datei in pruefungen) {
+        expect(
+          _prArten(ablaeufe[datei]!),
+          containsAll(<String>['opened', 'synchronize', 'reopened', 'ready_for_review', 'unlabeled']),
+          reason: datei,
+        );
       }
     });
 
