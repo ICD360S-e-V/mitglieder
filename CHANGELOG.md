@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.112.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.111.1...v1.112.0) (2026-10-17)
+
+
+### Features
+
+* **verifizierung:** Link in der Mail öffnet die App und trägt den Code ein ([#503](https://github.com/ICD360S-e-V/mitglieder/issues/503)) ([8dc9fe7](https://github.com/ICD360S-e-V/mitglieder/commit/8dc9fe73a2036179e4ef05ca53247044e7b9b3b6))
+
 ## [1.111.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.111.0...v1.111.1) (2026-10-17)
 
 
