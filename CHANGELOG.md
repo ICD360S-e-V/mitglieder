@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.111.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.110.2...v1.111.0) (2026-10-17)
+
+
+### Features
+
+* **mitglied:** PDF in Bilder — jede Seite als JPG, JPEG oder PNG in einen gewählten Ordner ([#496](https://github.com/ICD360S-e-V/mitglieder/issues/496)) ([286b951](https://github.com/ICD360S-e-V/mitglieder/commit/286b9519776e23651446d00856b829a489f916a2))
+
 ## [1.110.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.110.1...v1.110.2) (2026-10-17)
 
 
