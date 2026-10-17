@@ -25,11 +25,18 @@ import 'package:icd360sev_mitglied/widgets/kontakt_bestaetigung.dart';
 /// antwortet wie `member/kontakt_bestaetigen.php` — nur im Test.
 void main() {
   late _Server server;
+  late DateTime jetzt;
 
   setUp(() {
     server = _Server();
     ApiService().testClient = server.client;
+    // Feste Uhr: die Restzeit an „Code erneut senden“ läuft nur, wenn ein
+    // Test sie vorstellt.
+    jetzt = DateTime(2026, 10, 17, 18, 28, 53);
+    KontaktBestaetigung.uhr = () => jetzt;
   });
+
+  tearDown(() => KontaktBestaetigung.uhr = DateTime.now);
 
   testWidgets('Code aus der Erinnerungsmail: das Feld steht sofort da, kein neuer Code',
       (tester) async {
@@ -205,6 +212,83 @@ void main() {
     });
   });
 
+  // ── Restzeit an „Code erneut senden“ (App-Fehler #130) ─────────────────
+  // Ein Mitglied tippte 2 s nach dem Versand auf „Code erneut senden“ und las
+  // „Bitte warten Sie 118 Sekunden …“: der Server lässt erst nach 2 Minuten
+  // einen neuen Code zu. Jetzt steht die Zeit am Knopf, und er ist bis dahin
+  // gesperrt.
+
+  group('Restzeit an „Code erneut senden“', () {
+    TextButton knopf(WidgetTester tester, String text) =>
+        tester.widget<TextButton>(find.widgetWithText(TextButton, text));
+    Future<void> vorstellen(WidgetTester tester, int sekunden) async {
+      jetzt = jetzt.add(Duration(seconds: sekunden));
+      await tester.pump(const Duration(seconds: 1));
+    }
+
+    testWidgets('nach dem Versand gesperrt, die Zeit läuft herunter, nach 2 Minuten wieder frei', (tester) async {
+      server.email = _offen(code: false);
+      await _zeigen(tester);
+      await tester.tap(find.widgetWithText(TextButton, 'Bestätigen'));
+      await tester.pumpAndSettle();
+
+      expect(knopf(tester, 'Code erneut senden (2:00)').onPressed, isNull);
+      await vorstellen(tester, 61);
+      expect(knopf(tester, 'Code erneut senden (0:59)').onPressed, isNull);
+      await vorstellen(tester, 59);
+      expect(knopf(tester, 'Code erneut senden').onPressed, isNotNull);
+
+      await tester.tap(find.widgetWithText(TextButton, 'Code erneut senden'));
+      await tester.pumpAndSettle();
+      expect(server.aktionen.where((a) => a == 'code_anfordern'), hasLength(2));
+      expect(knopf(tester, 'Code erneut senden (2:00)').onPressed, isNull, reason: 'jeder neue Code sperrt wieder');
+    });
+
+    testWidgets('„Abbrechen“ und gleich wieder „Bestätigen“: das Feld, kein zweiter Code', (tester) async {
+      server.email = _offen(code: false);
+      await _zeigen(tester);
+      await tester.tap(find.widgetWithText(TextButton, 'Bestätigen'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.widgetWithText(TextButton, 'Abbrechen'));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.widgetWithText(TextButton, 'Bestätigen'));
+      await tester.pumpAndSettle();
+      expect(find.byType(TextField), findsOneWidget);
+      expect(server.aktionen.where((a) => a == 'code_anfordern'), hasLength(1),
+          reason: 'Der Code von eben gilt — der Stand der Karte wusste noch nichts von ihm.');
+    });
+
+    testWidgets('der Server sagt „warten“ (Code von vorhin): das Feld mit seiner Zeit, keine rote Meldung',
+        (tester) async {
+      server.email = _offen(code: false);   // Stand von vor dem Code
+      server.wartenSekunden = 79;
+      await _zeigen(tester);
+      await tester.tap(find.widgetWithText(TextButton, 'Bestätigen'));
+      await tester.pumpAndSettle();
+
+      expect(find.textContaining('Bitte warten Sie'), findsNothing);
+      expect(find.byType(TextField), findsOneWidget, reason: 'Der Code von vorhin gilt noch (30 Minuten).');
+      expect(knopf(tester, 'Code erneut senden (1:19)').onPressed, isNull);
+    });
+
+    testWidgets('neue Adresse während der Sperre: die Meldung des Servers bleibt, kein Feld für den alten Code',
+        (tester) async {
+      server.email = _offen(code: false);
+      server.wartenSekunden = 79;
+      await _zeigen(tester);
+      await tester.tap(find.byIcon(Icons.edit).first);
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextField), 'neu@beispiel.de');
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Code per SMS anfordern'));
+      await tester.pumpAndSettle();
+
+      expect(server.letzte('code_anfordern'), {'aktion': 'code_anfordern', 'kanal': 'email', 'neu': 'neu@beispiel.de'});
+      expect(find.text('Bitte warten Sie 79 Sekunden, bevor Sie einen neuen Code anfordern.'), findsOneWidget);
+      expect(find.byType(TextField), findsNothing);
+    });
+  });
+
 }
 
 Future<void> _zeigen(
@@ -262,6 +346,9 @@ class _Server {
   Map<String, dynamic> telefon = _bestaetigt();
   final anfragen = <Map<String, dynamic>>[];
 
+  /// Gesetzt: „code_anfordern“ antwortet wie die Sperre des Servers (429).
+  int? wartenSekunden;
+
   List<String> get aktionen => [for (final a in anfragen) a['aktion'] as String];
   Map<String, dynamic>? letzte(String aktion) => anfragen.lastWhere((a) => a['aktion'] == aktion, orElse: () => {});
 
@@ -277,6 +364,14 @@ class _Server {
             return _json({'success': true, 'email': email, 'telefon': telefon, 'gueltig_tage': 90});
           case 'code_anfordern':
             final kanal = b['kanal'] as String;
+            final w = wartenSekunden;
+            if (w != null) {
+              return _json({
+                'success': false,
+                'message': 'Bitte warten Sie $w Sekunden, bevor Sie einen neuen Code anfordern.',
+                'warten_sekunden': w,
+              }, 429);
+            }
             if (kanal == 'email') email = {...email, 'code_offen': true};
             if (kanal == 'telefon') telefon = {...telefon, 'code_offen': true};
             return _json({
