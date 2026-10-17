@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -11,6 +12,26 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'http_client_factory.dart';
 import 'language_service.dart';
 import 'logger_service.dart';
+
+/// Die Regel von public/anonymous_chat/init.php für `anonymous_id`: nach dem
+/// Trimmen 16–64 Zeichen aus A–Z, a–z, 0–9, „_“ und „-“.
+///
+/// App-Fehler #137 (17.10.2026): dreimal in zwei Minuten 400 „Invalid
+/// anonymous_id“ vom selben Telefon. [AnonymousChatService.ensureId] behielt
+/// JEDE gespeicherte ID ab 16 Zeichen — eine, die nicht passt (aus einer
+/// früheren Fassung oder beschädigt), schickte die App so bei jedem Start,
+/// und der Chat ohne Anmeldung öffnete sich auf diesem Telefon nie.
+@visibleForTesting
+bool anonymeIdGueltig(String? id) => id != null && RegExp(r'^[A-Za-z0-9_-]{16,64}$').hasMatch(id.trim());
+
+/// Die gespeicherte ID, wenn sie der Regel des Servers genügt — sonst eine
+/// neue: 16 Zufallsbytes → 32 Hex-Zeichen.
+@visibleForTesting
+String anonymeIdWaehlen(String? gespeichert, Random rng) {
+  if (anonymeIdGueltig(gespeichert)) return gespeichert!;
+  final bytes = List<int>.generate(16, (_) => rng.nextInt(256));
+  return bytes.map((b) => b.toRadixString(16).padLeft(2, '0')).join();
+}
 
 /// Result of a successful POST to /api/public/anonymous_chat/init.php.
 class AnonymousChatSession {
@@ -74,13 +95,13 @@ class AnonymousChatService {
   Future<String> ensureId() async {
     if (_cachedId != null) return _cachedId!;
     final prefs = await SharedPreferences.getInstance();
-    var id = prefs.getString(_idKey);
-    if (id == null || id.length < 16) {
-      final rng = Random.secure();
-      final bytes = List<int>.generate(16, (_) => rng.nextInt(256));
-      id = bytes
-          .map((b) => b.toRadixString(16).padLeft(2, '0'))
-          .join();
+    final gespeichert = prefs.getString(_idKey);
+    final id = anonymeIdWaehlen(gespeichert, Random.secure());
+    if (id != gespeichert) {
+      if (gespeichert != null) {
+        _log.warning('anonymous chat: gespeicherte ID passte nicht zur Regel des Servers — neue erzeugt',
+            tag: 'AnonChat');
+      }
       await prefs.setString(_idKey, id);
     }
     _cachedId = id;
