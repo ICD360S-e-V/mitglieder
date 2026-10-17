@@ -3465,4 +3465,305 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'تعذّرت الكتابة في هذا المجلد. يُرجى اختيار مجلد آخر.';
+
+  @override
+  String get extrasFotoEditTitel => 'تحرير الصور';
+
+  @override
+  String get extrasFotoEditText =>
+      'قص وألوان ورسم ونص وحجم — يبقى الأصل محفوظًا.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'فتح مجلد';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'كل الصور الموجودة فيه';
+
+  @override
+  String get fotoEditFotoOeffnen => 'فتح صورة';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'من المعرض أو من الملفات';
+
+  @override
+  String get fotoEditAufDemGeraet => 'لا تغادر الصور هذا الجهاز.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'اختيار مجلد الصور';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl صورة',
+      many: '$ordner · $anzahl صورة',
+      few: '$ordner · $anzahl صور',
+      two: '$ordner · صورتان',
+      one: '$ordner · صورة واحدة',
+      zero: '$ordner · لا صور',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'لا توجد صور في هذا المجلد.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer من $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'قص';
+
+  @override
+  String get fotoEditAnpassen => 'ضبط';
+
+  @override
+  String get fotoEditFilter => 'فلاتر';
+
+  @override
+  String get fotoEditZeichnen => 'رسم';
+
+  @override
+  String get fotoEditText => 'نص';
+
+  @override
+  String get fotoEditGroesse => 'الحجم';
+
+  @override
+  String get fotoEditProzent => 'نسبة مئوية';
+
+  @override
+  String get fotoEditPixel => 'بكسل';
+
+  @override
+  String get fotoEditBreite => 'العرض';
+
+  @override
+  String get fotoEditHoehe => 'الارتفاع';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'تبقى النِّسب كما هي.';
+
+  @override
+  String get fotoEditFormat => 'الصيغة';
+
+  @override
+  String get fotoEditQualitaet => 'الجودة';
+
+  @override
+  String get fotoEditJetzt => 'الآن';
+
+  @override
+  String get fotoEditDanach => 'بعد ذلك';
+
+  @override
+  String get fotoEditWirdBerechnet => 'جارٍ الحساب…';
+
+  @override
+  String get fotoEditAnwenden => 'تطبيق';
+
+  @override
+  String get fotoEditGespeichertTitel => 'حُفظت الصورة المعدَّلة';
+
+  @override
+  String get fotoEditInFotosApp => 'في «الصور»';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'بقي الأصل دون تغيير:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'هل تريد حذف الأصل؟';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'لا يمكن التراجع عن الحذف.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'ينتقل إلى ألبوم «المحذوفة مؤخرًا» ويمكن استعادته من هناك.';
+
+  @override
+  String get fotoEditBehalten => 'الاحتفاظ';
+
+  @override
+  String get fotoEditLoeschen => 'حذف';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'حُذف الأصل.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'تعذّر حذف الأصل. بقي دون تغيير.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'لم تُحفظ. الصورة المعدَّلة لا تزال هنا.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'تعذّر حفظ الصورة.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'لا يمكن فتح هذه الصورة.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'لا يمكن فتح صور HEIC (من iPhone) على هذا الحاسوب.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'تعذّرت قراءة هذا المجلد.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'تجاهل التغييرات؟';
+
+  @override
+  String get fotoEditVerwerfenText => 'لم تُحفظ الصورة المعدَّلة بعد.';
+
+  @override
+  String get fotoEditVerwerfen => 'تجاهل';
+
+  @override
+  String get fotoEditDateiZusatz => 'معدلة';
+
+  @override
+  String get fotoEditSpeichert => 'جارٍ الحفظ…';
+
+  @override
+  String get fotoEditRueckgaengig => 'تراجع';
+
+  @override
+  String get fotoEditWiederholen => 'إعادة';
+
+  @override
+  String get fotoEditFertig => 'تم';
+
+  @override
+  String get fotoEditZurueck => 'رجوع';
+
+  @override
+  String get fotoEditEntfernen => 'إزالة';
+
+  @override
+  String get fotoEditBearbeiten => 'تعديل';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'تدوير وتغيير الحجم';
+
+  @override
+  String get fotoEditMehr => 'المزيد';
+
+  @override
+  String get fotoEditZuruecksetzen => 'إعادة تعيين';
+
+  @override
+  String get fotoEditBitteWarten => 'يرجى الانتظار…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'جارٍ تطبيق التغييرات…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'جارٍ تجهيز المحرر…';
+
+  @override
+  String get fotoEditDrehen => 'تدوير';
+
+  @override
+  String get fotoEditSpiegeln => 'قلب';
+
+  @override
+  String get fotoEditBegradigen => 'تقويم';
+
+  @override
+  String get fotoEditWaagerecht => 'أفقي';
+
+  @override
+  String get fotoEditSenkrecht => 'عمودي';
+
+  @override
+  String get fotoEditSeitenformat => 'نسبة العرض إلى الارتفاع';
+
+  @override
+  String get fotoEditFrei => 'حر';
+
+  @override
+  String get fotoEditOriginal => 'الأصلي';
+
+  @override
+  String get fotoEditHelligkeit => 'السطوع';
+
+  @override
+  String get fotoEditKontrast => 'التباين';
+
+  @override
+  String get fotoEditSaettigung => 'التشبع';
+
+  @override
+  String get fotoEditBelichtung => 'التعريض';
+
+  @override
+  String get fotoEditFarbton => 'درجة اللون';
+
+  @override
+  String get fotoEditFarbtemperatur => 'حرارة اللون';
+
+  @override
+  String get fotoEditVerblassen => 'البهتان';
+
+  @override
+  String get fotoEditToenung => 'الصبغة';
+
+  @override
+  String get fotoEditKeinFilter => 'بلا فلتر';
+
+  @override
+  String get fotoEditZoomen => 'تكبير';
+
+  @override
+  String get fotoEditFreihand => 'رسم حر';
+
+  @override
+  String get fotoEditPfeil => 'سهم';
+
+  @override
+  String get fotoEditLinie => 'خط';
+
+  @override
+  String get fotoEditRechteck => 'مستطيل';
+
+  @override
+  String get fotoEditKreis => 'دائرة';
+
+  @override
+  String get fotoEditWeichzeichnen => 'تمويه';
+
+  @override
+  String get fotoEditVerpixeln => 'بكسلة';
+
+  @override
+  String get fotoEditLinienstaerke => 'سُمك الخط';
+
+  @override
+  String get fotoEditRadierer => 'ممحاة';
+
+  @override
+  String get fotoEditFuellung => 'تعبئة';
+
+  @override
+  String get fotoEditDeckkraft => 'العتامة';
+
+  @override
+  String get fotoEditFarbe => 'اللون';
+
+  @override
+  String get fotoEditTextEingeben => 'أدخل النص';
+
+  @override
+  String get fotoEditTextAusrichten => 'محاذاة النص';
+
+  @override
+  String get fotoEditSchriftgroesse => 'حجم الخط';
+
+  @override
+  String get fotoEditHintergrund => 'الخلفية';
 }

@@ -3499,4 +3499,302 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'În acest folder nu s-a putut scrie. Alegeți alt folder.';
+
+  @override
+  String get extrasFotoEditTitel => 'Editare foto';
+
+  @override
+  String get extrasFotoEditText =>
+      'Decupare, culori, desen, text, mărime — originalul rămâne.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Deschide un folder';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'toate pozele din el';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Deschide o poză';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'din galerie sau din fișiere';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Pozele nu pleacă de pe acest dispozitiv.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Alegeți folderul cu poze';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl de poze',
+      few: '$ordner · $anzahl poze',
+      one: '$ordner · $anzahl poză',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'În acest folder nu sunt poze.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer din $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Decupare';
+
+  @override
+  String get fotoEditAnpassen => 'Ajustare';
+
+  @override
+  String get fotoEditFilter => 'Filtre';
+
+  @override
+  String get fotoEditZeichnen => 'Desen';
+
+  @override
+  String get fotoEditText => 'Text';
+
+  @override
+  String get fotoEditGroesse => 'Mărime';
+
+  @override
+  String get fotoEditProzent => 'Procent';
+
+  @override
+  String get fotoEditPixel => 'Pixeli';
+
+  @override
+  String get fotoEditBreite => 'Lățime';
+
+  @override
+  String get fotoEditHoehe => 'Înălțime';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'Proporțiile rămân la fel.';
+
+  @override
+  String get fotoEditFormat => 'Format';
+
+  @override
+  String get fotoEditQualitaet => 'Calitate';
+
+  @override
+  String get fotoEditJetzt => 'Acum';
+
+  @override
+  String get fotoEditDanach => 'După';
+
+  @override
+  String get fotoEditWirdBerechnet => 'se calculează…';
+
+  @override
+  String get fotoEditAnwenden => 'Aplică';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Poza editată e salvată';
+
+  @override
+  String get fotoEditInFotosApp => 'În „Poze”';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Originalul a rămas neschimbat:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Doriți să ștergeți originalul?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Ștergerea nu se poate anula.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Ajunge în „Șterse recent”, de unde se poate recupera.';
+
+  @override
+  String get fotoEditBehalten => 'Păstrează';
+
+  @override
+  String get fotoEditLoeschen => 'Șterge';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Originalul a fost șters.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Originalul nu a putut fi șters. A rămas neschimbat.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Nu a fost salvată. Poza editată e încă aici.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Poza nu a putut fi salvată.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Această poză nu se poate deschide.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'Pozele HEIC (de pe iPhone) nu se pot deschide pe acest calculator.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Acest folder nu a putut fi citit.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Renunțați la modificări?';
+
+  @override
+  String get fotoEditVerwerfenText => 'Poza editată nu este încă salvată.';
+
+  @override
+  String get fotoEditVerwerfen => 'Renunță';
+
+  @override
+  String get fotoEditDateiZusatz => 'editat';
+
+  @override
+  String get fotoEditSpeichert => 'Se salvează…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Anulează ultimul pas';
+
+  @override
+  String get fotoEditWiederholen => 'Refă pasul';
+
+  @override
+  String get fotoEditFertig => 'Gata';
+
+  @override
+  String get fotoEditZurueck => 'Înapoi';
+
+  @override
+  String get fotoEditEntfernen => 'Elimină';
+
+  @override
+  String get fotoEditBearbeiten => 'Editează';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Rotește și redimensionează';
+
+  @override
+  String get fotoEditMehr => 'Mai mult';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Resetează';
+
+  @override
+  String get fotoEditBitteWarten => 'Vă rugăm să așteptați…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Se aplică modificările…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Se pregătește editorul…';
+
+  @override
+  String get fotoEditDrehen => 'Rotire';
+
+  @override
+  String get fotoEditSpiegeln => 'Oglindire';
+
+  @override
+  String get fotoEditBegradigen => 'Îndreptare';
+
+  @override
+  String get fotoEditWaagerecht => 'Orizontal';
+
+  @override
+  String get fotoEditSenkrecht => 'Vertical';
+
+  @override
+  String get fotoEditSeitenformat => 'Proporții';
+
+  @override
+  String get fotoEditFrei => 'Liber';
+
+  @override
+  String get fotoEditOriginal => 'Original';
+
+  @override
+  String get fotoEditHelligkeit => 'Luminozitate';
+
+  @override
+  String get fotoEditKontrast => 'Contrast';
+
+  @override
+  String get fotoEditSaettigung => 'Saturație';
+
+  @override
+  String get fotoEditBelichtung => 'Expunere';
+
+  @override
+  String get fotoEditFarbton => 'Nuanță';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Temperatură';
+
+  @override
+  String get fotoEditVerblassen => 'Estompare';
+
+  @override
+  String get fotoEditToenung => 'Tentă';
+
+  @override
+  String get fotoEditKeinFilter => 'Fără filtru';
+
+  @override
+  String get fotoEditZoomen => 'Zoom';
+
+  @override
+  String get fotoEditFreihand => 'Mână liberă';
+
+  @override
+  String get fotoEditPfeil => 'Săgeată';
+
+  @override
+  String get fotoEditLinie => 'Linie';
+
+  @override
+  String get fotoEditRechteck => 'Dreptunghi';
+
+  @override
+  String get fotoEditKreis => 'Cerc';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Încețoșare';
+
+  @override
+  String get fotoEditVerpixeln => 'Pixelare';
+
+  @override
+  String get fotoEditLinienstaerke => 'Grosimea liniei';
+
+  @override
+  String get fotoEditRadierer => 'Radieră';
+
+  @override
+  String get fotoEditFuellung => 'Umplere';
+
+  @override
+  String get fotoEditDeckkraft => 'Opacitate';
+
+  @override
+  String get fotoEditFarbe => 'Culoare';
+
+  @override
+  String get fotoEditTextEingeben => 'Scrieți textul';
+
+  @override
+  String get fotoEditTextAusrichten => 'Aliniere text';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Mărimea fontului';
+
+  @override
+  String get fotoEditHintergrund => 'Fundal';
 }

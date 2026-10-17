@@ -48,6 +48,7 @@ import '../widgets/signatur_card.dart';
 import '../widgets/mitglied_extras_dialog.dart';
 import 'signatur_screen.dart';
 import 'pdf_werkzeug_screen.dart';
+import 'foto_bearbeiten_screen.dart';
 import 'pdf_bilder_screen.dart';
 import '../utils/app_theme.dart';
 
@@ -1280,6 +1281,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       builder: (_) => MitgliedExtrasDialog(
         onPdfUnterschreiben: _openPdfWerkzeug,
         onPdfInBilder: _openPdfBilder,
+        onFotoBearbeiten: _openFotoBearbeiten,
       ),
     );
   }
@@ -1292,6 +1294,10 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       MaterialPageRoute(builder: (_) => const PdfBilderScreen()),
     );
   }
+
+  /// „Foto bearbeiten" — wie „PDF in Bilder" nur auf dem Gerät. Erst die
+  /// Wahl (Ordner oder ein Foto), dann Übersicht oder Editor.
+  void _openFotoBearbeiten() => fotoBearbeitenStarten(context);
 
   /// Das Werkzeug fuer die eigenen PDFs des Mitglieds.
   ///

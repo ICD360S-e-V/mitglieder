@@ -1,6 +1,7 @@
 import Cocoa
 import FlutterMacOS
 import ApplicationServices
+import ImageIO
 
 class MainFlutterWindow: NSWindow {
   override func awakeFromNib() {
@@ -62,6 +63,26 @@ class MainFlutterWindow: NSWindow {
         result(nil)
       default:
         result(FlutterMethodNotImplemented)
+      }
+    }
+
+    // „Foto bearbeiten": HEIC (iPhone-Kamera) als JPG. Flutter dekodiert
+    // HEIC nicht auf jedem System; ImageIO am Mac schon.
+    let umwandeln = FlutterMethodChannel(
+      name: "de.icd360sev.mitglied/foto_umwandeln",
+      binaryMessenger: flutterViewController.engine.binaryMessenger)
+    umwandeln.setMethodCallHandler { call, result in
+      guard call.method == "heicZuJpg",
+        let daten = (call.arguments as? FlutterStandardTypedData)?.data
+      else {
+        result(FlutterMethodNotImplemented)
+        return
+      }
+      DispatchQueue.global(qos: .userInitiated).async {
+        let jpg = FotoUmwandeln.alsJpg(daten)
+        DispatchQueue.main.async {
+          result(jpg.map { FlutterStandardTypedData(bytes: $0) })
+        }
       }
     }
 
@@ -223,4 +244,32 @@ final class RemoteInput {
     0xE6: 0x3D, // RightOption
     0xE7: 0x36, // RightCommand
   ]
+}
+
+/// HEIC → JPG für „Foto bearbeiten" (lib/utils/foto_quelle.dart). Aufrecht
+/// gedreht, damit es nicht auf eine EXIF-Angabe ankommt.
+///
+/// "public.jpeg" als Text statt UTType: die App läuft ab macOS 10.15, UTType
+/// gibt es erst ab 11.
+enum FotoUmwandeln {
+  static func alsJpg(_ daten: Data, qualitaet: CGFloat = 0.95) -> Data? {
+    guard let quelle = CGImageSourceCreateWithData(daten as CFData, nil),
+      let eigenschaften = CGImageSourceCopyPropertiesAtIndex(quelle, 0, nil) as? [CFString: Any]
+    else { return nil }
+    let breite = eigenschaften[kCGImagePropertyPixelWidth] as? Int ?? 0
+    let hoehe = eigenschaften[kCGImagePropertyPixelHeight] as? Int ?? 0
+    let optionen: [CFString: Any] = [
+      kCGImageSourceCreateThumbnailFromImageAlways: true,
+      kCGImageSourceCreateThumbnailWithTransform: true,
+      kCGImageSourceThumbnailMaxPixelSize: max(breite, hoehe, 1),
+    ]
+    guard let bild = CGImageSourceCreateThumbnailAtIndex(quelle, 0, optionen as CFDictionary)
+    else { return nil }
+    let ziel = NSMutableData()
+    guard let schreiber = CGImageDestinationCreateWithData(ziel, "public.jpeg" as CFString, 1, nil)
+    else { return nil }
+    CGImageDestinationAddImage(
+      schreiber, bild, [kCGImageDestinationLossyCompressionQuality: qualitaet] as CFDictionary)
+    return CGImageDestinationFinalize(schreiber) ? ziel as Data : nil
+  }
 }

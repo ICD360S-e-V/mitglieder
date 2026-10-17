@@ -21,10 +21,14 @@ class MitgliedExtrasDialog extends StatelessWidget {
   /// Öffnet „PDF in Bilder" — jede Seite ein Bild in einem gewählten Ordner.
   final VoidCallback onPdfInBilder;
 
+  /// Öffnet „Foto bearbeiten" — ein Ordner oder ein Foto, das Original bleibt.
+  final VoidCallback onFotoBearbeiten;
+
   const MitgliedExtrasDialog({
     super.key,
     required this.onPdfUnterschreiben,
     required this.onPdfInBilder,
+    required this.onFotoBearbeiten,
   });
 
   @override
@@ -122,6 +126,17 @@ class MitgliedExtrasDialog extends StatelessWidget {
                 onDruck: () {
                   Navigator.pop(context);
                   onPdfInBilder();
+                },
+              ),
+              _Werkzeug(
+                symbol: Icons.auto_fix_high_outlined,
+                titel: l10n.extrasFotoEditTitel,
+                text: l10n.extrasFotoEditText,
+                // Wie oben: erst schließen, dann öffnen. Das Dashboard führt
+                // durch Wahl, Auswahl des Systems und Editor.
+                onDruck: () {
+                  Navigator.pop(context);
+                  onFotoBearbeiten();
                 },
               ),
               const SizedBox(height: 8),

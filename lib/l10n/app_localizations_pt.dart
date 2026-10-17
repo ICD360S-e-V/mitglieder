@@ -3498,4 +3498,304 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Não foi possível escrever nesta pasta. Escolha outra pasta.';
+
+  @override
+  String get extrasFotoEditTitel => 'Editar fotografia';
+
+  @override
+  String get extrasFotoEditText =>
+      'Recorte, cores, desenho, texto, tamanho — o original mantém-se.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Abrir uma pasta';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'todas as fotografias que contém';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Abrir uma fotografia';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'da galeria ou dos ficheiros';
+
+  @override
+  String get fotoEditAufDemGeraet =>
+      'As fotografias não saem deste dispositivo.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Escolher a pasta com as fotografias';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl fotografias',
+      one: '$ordner · $anzahl fotografia',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'Esta pasta não tem fotografias.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer de $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Recortar';
+
+  @override
+  String get fotoEditAnpassen => 'Ajustar';
+
+  @override
+  String get fotoEditFilter => 'Filtros';
+
+  @override
+  String get fotoEditZeichnen => 'Desenhar';
+
+  @override
+  String get fotoEditText => 'Texto';
+
+  @override
+  String get fotoEditGroesse => 'Tamanho';
+
+  @override
+  String get fotoEditProzent => 'Percentagem';
+
+  @override
+  String get fotoEditPixel => 'Píxeis';
+
+  @override
+  String get fotoEditBreite => 'Largura';
+
+  @override
+  String get fotoEditHoehe => 'Altura';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'As proporções mantêm-se.';
+
+  @override
+  String get fotoEditFormat => 'Formato';
+
+  @override
+  String get fotoEditQualitaet => 'Qualidade';
+
+  @override
+  String get fotoEditJetzt => 'Agora';
+
+  @override
+  String get fotoEditDanach => 'Depois';
+
+  @override
+  String get fotoEditWirdBerechnet => 'a calcular…';
+
+  @override
+  String get fotoEditAnwenden => 'Aplicar';
+
+  @override
+  String get fotoEditGespeichertTitel => 'A fotografia editada foi guardada';
+
+  @override
+  String get fotoEditInFotosApp => 'Em «Fotografias»';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'O original ficou inalterado:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Pretende eliminar o original?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'A eliminação não pode ser anulada.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Vai para o álbum «Apagados recentemente», de onde pode ser recuperado.';
+
+  @override
+  String get fotoEditBehalten => 'Manter';
+
+  @override
+  String get fotoEditLoeschen => 'Eliminar';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'O original foi eliminado.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Não foi possível eliminar o original. Ficou inalterado.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Não foi guardada. A fotografia editada continua aqui.';
+
+  @override
+  String get fotoEditFehlerSpeichern =>
+      'Não foi possível guardar a fotografia.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Não é possível abrir esta fotografia.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'As fotografias HEIC (de um iPhone) não podem ser abertas neste computador.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Não foi possível ler esta pasta.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Descartar as alterações?';
+
+  @override
+  String get fotoEditVerwerfenText =>
+      'A fotografia editada ainda não foi guardada.';
+
+  @override
+  String get fotoEditVerwerfen => 'Descartar';
+
+  @override
+  String get fotoEditDateiZusatz => 'editada';
+
+  @override
+  String get fotoEditSpeichert => 'A guardar…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Anular';
+
+  @override
+  String get fotoEditWiederholen => 'Refazer';
+
+  @override
+  String get fotoEditFertig => 'Concluído';
+
+  @override
+  String get fotoEditZurueck => 'Voltar';
+
+  @override
+  String get fotoEditEntfernen => 'Remover';
+
+  @override
+  String get fotoEditBearbeiten => 'Editar';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Rodar e redimensionar';
+
+  @override
+  String get fotoEditMehr => 'Mais';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Repor';
+
+  @override
+  String get fotoEditBitteWarten => 'Aguarde…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'A aplicar as alterações…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'A preparar o editor…';
+
+  @override
+  String get fotoEditDrehen => 'Rodar';
+
+  @override
+  String get fotoEditSpiegeln => 'Inverter';
+
+  @override
+  String get fotoEditBegradigen => 'Endireitar';
+
+  @override
+  String get fotoEditWaagerecht => 'Horizontal';
+
+  @override
+  String get fotoEditSenkrecht => 'Vertical';
+
+  @override
+  String get fotoEditSeitenformat => 'Proporção';
+
+  @override
+  String get fotoEditFrei => 'Livre';
+
+  @override
+  String get fotoEditOriginal => 'Original';
+
+  @override
+  String get fotoEditHelligkeit => 'Brilho';
+
+  @override
+  String get fotoEditKontrast => 'Contraste';
+
+  @override
+  String get fotoEditSaettigung => 'Saturação';
+
+  @override
+  String get fotoEditBelichtung => 'Exposição';
+
+  @override
+  String get fotoEditFarbton => 'Matiz';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Temperatura';
+
+  @override
+  String get fotoEditVerblassen => 'Desvanecimento';
+
+  @override
+  String get fotoEditToenung => 'Tonalidade';
+
+  @override
+  String get fotoEditKeinFilter => 'Sem filtro';
+
+  @override
+  String get fotoEditZoomen => 'Zoom';
+
+  @override
+  String get fotoEditFreihand => 'Mão livre';
+
+  @override
+  String get fotoEditPfeil => 'Seta';
+
+  @override
+  String get fotoEditLinie => 'Linha';
+
+  @override
+  String get fotoEditRechteck => 'Retângulo';
+
+  @override
+  String get fotoEditKreis => 'Círculo';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Desfocar';
+
+  @override
+  String get fotoEditVerpixeln => 'Pixelizar';
+
+  @override
+  String get fotoEditLinienstaerke => 'Espessura da linha';
+
+  @override
+  String get fotoEditRadierer => 'Borracha';
+
+  @override
+  String get fotoEditFuellung => 'Preenchimento';
+
+  @override
+  String get fotoEditDeckkraft => 'Opacidade';
+
+  @override
+  String get fotoEditFarbe => 'Cor';
+
+  @override
+  String get fotoEditTextEingeben => 'Introduza o texto';
+
+  @override
+  String get fotoEditTextAusrichten => 'Alinhar texto';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Tamanho da letra';
+
+  @override
+  String get fotoEditHintergrund => 'Fundo';
 }

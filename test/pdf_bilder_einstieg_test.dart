@@ -21,7 +21,7 @@ Widget _app(Widget home) {
 }
 
 void main() {
-  testWidgets('Sonderfunktionen: drei Werkzeuge, das dritte ist „PDF in Bilder“',
+  testWidgets('Sonderfunktionen: „PDF in Bilder“ ist das dritte Werkzeug',
       (tester) async {
     var unterschreiben = 0;
     var bilder = 0;
@@ -33,6 +33,7 @@ void main() {
             builder: (_) => MitgliedExtrasDialog(
               onPdfUnterschreiben: () => unterschreiben++,
               onPdfInBilder: () => bilder++,
+              onFotoBearbeiten: () {},
             ),
           ),
           child: const Text('öffnen'),
@@ -42,12 +43,12 @@ void main() {
     await tester.tap(find.text('öffnen'));
     await tester.pumpAndSettle();
 
-    expect(find.byType(ListTile), findsNWidgets(3));
+    // Das vierte, „Foto bearbeiten", prüft foto_bearbeiten_einstieg_test.dart.
     final titel = tester
         .widgetList<ListTile>(find.byType(ListTile))
         .map((t) => (t.title as Text).data)
         .toList();
-    expect(titel, ['Eigenes PDF unterschreiben', 'Taschenrechner', 'PDF in Bilder']);
+    expect(titel.take(3), ['Eigenes PDF unterschreiben', 'Taschenrechner', 'PDF in Bilder']);
 
     await tester.tap(find.text('PDF in Bilder'));
     await tester.pumpAndSettle();

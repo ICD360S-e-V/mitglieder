@@ -3483,4 +3483,302 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Sellesse kausta ei õnnestunud kirjutada. Valige mõni teine kaust.';
+
+  @override
+  String get extrasFotoEditTitel => 'Fotode töötlemine';
+
+  @override
+  String get extrasFotoEditText =>
+      'Kärpimine, värvid, joonistamine, tekst, suurus — originaal jääb alles.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Ava kaust';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'kõik selles olevad fotod';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Ava foto';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'galeriist või failidest';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Fotod ei lahku sellest seadmest.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Vali fotodega kaust';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl fotot',
+      one: '$ordner · $anzahl foto',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'Selles kaustas pole fotosid.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer / $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Kärbi';
+
+  @override
+  String get fotoEditAnpassen => 'Kohanda';
+
+  @override
+  String get fotoEditFilter => 'Filtrid';
+
+  @override
+  String get fotoEditZeichnen => 'Joonista';
+
+  @override
+  String get fotoEditText => 'Tekst';
+
+  @override
+  String get fotoEditGroesse => 'Suurus';
+
+  @override
+  String get fotoEditProzent => 'Protsent';
+
+  @override
+  String get fotoEditPixel => 'Pikslid';
+
+  @override
+  String get fotoEditBreite => 'Laius';
+
+  @override
+  String get fotoEditHoehe => 'Kõrgus';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'Proportsioonid jäävad samaks.';
+
+  @override
+  String get fotoEditFormat => 'Vorming';
+
+  @override
+  String get fotoEditQualitaet => 'Kvaliteet';
+
+  @override
+  String get fotoEditJetzt => 'Praegu';
+
+  @override
+  String get fotoEditDanach => 'Pärast';
+
+  @override
+  String get fotoEditWirdBerechnet => 'arvutatakse…';
+
+  @override
+  String get fotoEditAnwenden => 'Rakenda';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Töödeldud foto on salvestatud';
+
+  @override
+  String get fotoEditInFotosApp => 'Rakenduses „Fotod“';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Originaal jäi muutmata:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage =>
+      'Kas soovite originaali kustutada?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Kustutamist ei saa tagasi võtta.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'See liigub albumisse „Hiljuti kustutatud“, kust saab selle taastada.';
+
+  @override
+  String get fotoEditBehalten => 'Jäta alles';
+
+  @override
+  String get fotoEditLoeschen => 'Kustuta';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Originaal on kustutatud.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Originaali ei õnnestunud kustutada. See jäi muutmata.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Ei salvestatud. Töödeldud foto on endiselt alles.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Fotot ei õnnestunud salvestada.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Seda fotot ei saa avada.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'HEIC-fotosid (iPhone\'ist) ei saa selles arvutis avada.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Seda kausta ei õnnestunud lugeda.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Kas loobuda muudatustest?';
+
+  @override
+  String get fotoEditVerwerfenText => 'Töödeldud fotot pole veel salvestatud.';
+
+  @override
+  String get fotoEditVerwerfen => 'Loobu';
+
+  @override
+  String get fotoEditDateiZusatz => 'töödeldud';
+
+  @override
+  String get fotoEditSpeichert => 'Salvestamine…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Võta tagasi';
+
+  @override
+  String get fotoEditWiederholen => 'Tee uuesti';
+
+  @override
+  String get fotoEditFertig => 'Valmis';
+
+  @override
+  String get fotoEditZurueck => 'Tagasi';
+
+  @override
+  String get fotoEditEntfernen => 'Eemalda';
+
+  @override
+  String get fotoEditBearbeiten => 'Muuda';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Pööra ja muuda suurust';
+
+  @override
+  String get fotoEditMehr => 'Rohkem';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Lähtesta';
+
+  @override
+  String get fotoEditBitteWarten => 'Palun oodake…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Muudatusi rakendatakse…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Redaktorit valmistatakse ette…';
+
+  @override
+  String get fotoEditDrehen => 'Pööra';
+
+  @override
+  String get fotoEditSpiegeln => 'Peegelda';
+
+  @override
+  String get fotoEditBegradigen => 'Sirgenda';
+
+  @override
+  String get fotoEditWaagerecht => 'Horisontaalne';
+
+  @override
+  String get fotoEditSenkrecht => 'Vertikaalne';
+
+  @override
+  String get fotoEditSeitenformat => 'Kuvasuhe';
+
+  @override
+  String get fotoEditFrei => 'Vaba';
+
+  @override
+  String get fotoEditOriginal => 'Originaal';
+
+  @override
+  String get fotoEditHelligkeit => 'Heledus';
+
+  @override
+  String get fotoEditKontrast => 'Kontrast';
+
+  @override
+  String get fotoEditSaettigung => 'Küllastus';
+
+  @override
+  String get fotoEditBelichtung => 'Säri';
+
+  @override
+  String get fotoEditFarbton => 'Toon';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Värvitemperatuur';
+
+  @override
+  String get fotoEditVerblassen => 'Tuhmumine';
+
+  @override
+  String get fotoEditToenung => 'Tint';
+
+  @override
+  String get fotoEditKeinFilter => 'Filtrita';
+
+  @override
+  String get fotoEditZoomen => 'Suumi';
+
+  @override
+  String get fotoEditFreihand => 'Vabakäsi';
+
+  @override
+  String get fotoEditPfeil => 'Nool';
+
+  @override
+  String get fotoEditLinie => 'Joon';
+
+  @override
+  String get fotoEditRechteck => 'Ristkülik';
+
+  @override
+  String get fotoEditKreis => 'Ring';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Hägusta';
+
+  @override
+  String get fotoEditVerpixeln => 'Pikselda';
+
+  @override
+  String get fotoEditLinienstaerke => 'Joone paksus';
+
+  @override
+  String get fotoEditRadierer => 'Kustukumm';
+
+  @override
+  String get fotoEditFuellung => 'Täide';
+
+  @override
+  String get fotoEditDeckkraft => 'Läbipaistmatus';
+
+  @override
+  String get fotoEditFarbe => 'Värv';
+
+  @override
+  String get fotoEditTextEingeben => 'Sisestage tekst';
+
+  @override
+  String get fotoEditTextAusrichten => 'Joonda tekst';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Fondi suurus';
+
+  @override
+  String get fotoEditHintergrund => 'Taust';
 }

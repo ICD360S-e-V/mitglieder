@@ -67,7 +67,7 @@
 	<string>Für Sprach- und Video-Anrufe mit dem Support-Team benötigt die App Zugriff auf Ihr Mikrofon.</string>
 	<!-- Privacy - Photo Library Usage (Document Upload) -->
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Zum Hochladen von Dokumenten und Bildern benötigt die App Zugriff auf Ihre Fotomediathek.</string>
+	<string>Zum Hochladen von Dokumenten und Bildern und zum Bearbeiten Ihrer Fotos benötigt die App Zugriff auf Ihre Fotomediathek — beim Bearbeiten nur, wenn Sie ein Original löschen möchten.</string>
 	<!-- Privacy - Photo Library Add Usage (Save Photos) -->
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Die App möchte Fotos in Ihrer Mediathek speichern.</string>
