@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.110.2](https://github.com/ICD360S-e-V/mitglieder/compare/v1.110.1...v1.110.2) (2026-10-17)
+
+
+### Bug Fixes
+
+* **pdf-werkzeug:** unterschriebenes PDF über den Speichern-Dialog auf dem Gerät des Mitglieds ablegen ([#497](https://github.com/ICD360S-e-V/mitglieder/issues/497)) ([9cfe937](https://github.com/ICD360S-e-V/mitglieder/commit/9cfe937ea24a25a310666629105031277d81db89))
+
 ## [1.110.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.110.0...v1.110.1) (2026-10-17)
 
 
