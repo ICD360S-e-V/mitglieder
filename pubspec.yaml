@@ -33,6 +33,10 @@ dependencies:
   # genau dort trifft der Anruf ein.
   icd_klingel:
     path: packages/icd_klingel
+  # Das Update der App selbst über die PackageInstaller-Session — ab Android 12
+  # ohne Rückfrage. Kopie aus der Vorsitzer-App.
+  icd_installer:
+    path: packages/icd_installer
   flutter:
     sdk: flutter
 

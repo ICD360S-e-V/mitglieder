@@ -5,13 +5,15 @@ import 'dart:io';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
+import 'package:flutter/foundation.dart' show visibleForTesting;
+import 'package:icd_installer/icd_installer.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:open_filex/open_filex.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'http_client_factory.dart';
 import 'logger_service.dart';
 import 'startup_diagnostics.dart';
+import 'update_gespraechssperre.dart';
 
 final _log = LoggerService();
 
@@ -140,12 +142,76 @@ class UpdateService {
 
   /// Platforms where an update can be applied end-to-end with no clicks.
   ///
-  /// Windows only, and only because the Inno Setup installer is a per-user
-  /// install: `{autopf}` under `PrivilegesRequired=lowest` resolves to
+  /// Windows, because the Inno Setup installer is a per-user install:
+  /// `{autopf}` under `PrivilegesRequired=lowest` resolves to
   /// %LocalAppData%\Programs, so `/VERYSILENT` completes without a UAC prompt.
-  /// macOS (DMG drag-install), Linux (AppImage) and Android (PackageInstaller)
-  /// all require user interaction and stay on the prompt-every-time path.
-  bool get supportsSilentUpdate => Platform.isWindows;
+  ///
+  /// Android seit dem 17.10.2026 (Wunsch des Vorsitzenden: „ca pe vorsitzer“,
+  /// auf Wi-Fi wie auf mobilen Daten): ab Android 12 darf sich eine App selbst
+  /// ersetzen, ohne dass Android fragt (PackageInstaller-Session,
+  /// `UPDATE_PACKAGES_WITHOUT_USER_ACTION`, packages/icd_installer). Ob DIESES
+  /// Telefon das erlaubt, zeigt erst [kannUnbeaufsichtigt] — vorher wird
+  /// nichts geladen; erlaubt es das nicht, bleibt es beim Dialog.
+  ///
+  /// macOS (DMG drag-install) and Linux (AppImage) require user interaction and
+  /// stay on the prompt-every-time path.
+  bool get supportsSilentUpdate => Platform.isWindows || Platform.isAndroid;
+
+  /// Würde ein Update hier jetzt ohne jede Rückfrage durchlaufen?
+  ///
+  /// Windows: ja. Android: erst ab Android 12, nur mit „Apps aus unbekannten
+  /// Quellen installieren“ für diese App, und nur, wenn sich kein Store die
+  /// Updates vorbehalten hat (IcdInstaller.kannOhneNachfrage).
+  Future<bool> kannUnbeaufsichtigt() async {
+    if (Platform.isWindows) return true;
+    if (Platform.isAndroid) return IcdInstaller.kannOhneNachfrage();
+    return false;
+  }
+
+  /// Läuft gerade ein Update von selbst (laden, aufs Gesprächsende warten,
+  /// installieren)? Dann fragt der Dialog nicht noch einmal.
+  bool get unattendedInProgress => _unattendedInProgress;
+
+  /// Android: für welche Fassung das Update sich zuletzt von selbst versucht
+  /// hat — je Fassung nur EIN Versuch (wie die Vorsitzer-App).
+  static const vonSelbstSchluessel = 'update_von_selbst_build';
+
+  /// So lange steht der Hinweis „… startet gleich neu“, bevor installiert wird.
+  static const _hinweisZeit = Duration(seconds: 3);
+
+  /// Darf sich die App jetzt von selbst auf [build] aktualisieren? Kopie von
+  /// `UpdateHud.vonSelbstFreigeben` der Vorsitzer-App.
+  ///
+  /// - Je Fassung nur EIN Versuch, über Neustarts hinweg. Kommt er nicht durch
+  ///   (Android fragt doch, das Paket ist kaputt), bleibt es beim Dialog. Ein
+  ///   zweiter Versuch von selbst brächte die Dialogschleife zurück, die die
+  ///   Vorsitzer-App vom 01.–13.10.2026 hatte (122 abgebrochene Dialoge).
+  /// - Nie während eines Anrufs oder einer Fernwartung: dann wartet es
+  ///   ([UpdateGespraechssperre.abwarten]) und vermerkt den Versuch erst danach.
+  @visibleForTesting
+  static Future<bool> vonSelbstFreigeben(int build) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.reload();
+    if (prefs.getInt(vonSelbstSchluessel) == build) return false;
+    await _ohneGespraech();
+    await prefs.setInt(vonSelbstSchluessel, build);
+    return true;
+  }
+
+  /// Schon einmal von selbst versucht? Dann wird gar nicht erst geladen.
+  static Future<bool> _schonVersucht(int build) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.reload();
+    return prefs.getInt(vonSelbstSchluessel) == build;
+  }
+
+  /// Wartet, bis kein Anruf und keine Fernwartung mehr läuft.
+  static Future<void> _ohneGespraech() async {
+    final sperre = UpdateGespraechssperre.grund;
+    if (sperre == null) return;
+    _log.info('Unattended update wartet, bis vorbei ist: $sperre', tag: 'UPDATE');
+    await UpdateGespraechssperre.abwarten();
+  }
 
   /// Whether unattended updates are switched on. **Defaults to true**: staying
   /// current is the desired behaviour, so the update applies itself without
@@ -189,7 +255,10 @@ class UpdateService {
   /// triggers an upload, because a silent no-op is the failure mode that cost
   /// the most time here: an update that does not happen looks identical to an
   /// update that was never checked for.
-  Future<void> checkAndInstallAtStartup() async {
+  ///
+  /// [vorDemNeustart] zeigt auf Android den Hinweis, bevor die App zugeht
+  /// ([installUnattended]).
+  Future<void> checkAndInstallAtStartup({void Function(String version)? vorDemNeustart}) async {
     var outcome = 'unknown';
     try {
       StartupDiagnostics.log('→ update: startup check (current $_currentVersion)');
@@ -212,9 +281,12 @@ class UpdateService {
       _log.info('Startup check found ${updateInfo.version}', tag: 'UPDATE');
       StartupDiagnostics.log('→ update: ${updateInfo.version} available, installing');
 
-      // Returns only on failure; success replaces this process.
-      await installUnattended(updateInfo);
-      outcome = 'installer hand-off failed for ${updateInfo.version}';
+      // Returns only on failure — or when another run already applies it;
+      // success replaces this process.
+      final schonDabei = await installUnattended(updateInfo, vorDemNeustart: vorDemNeustart);
+      outcome = schonDabei
+          ? 'another run is already applying ${updateInfo.version}'
+          : 'installer hand-off failed for ${updateInfo.version}';
     } catch (e) {
       outcome = 'threw: $e';
       _log.error('Startup check failed: $e', tag: 'UPDATE');
@@ -234,9 +306,20 @@ class UpdateService {
   ///
   /// Returns true when the installer was handed off, in which case this process
   /// is seconds away from being terminated by it — callers must not assume any
-  /// code after this runs. Returns false on every failure so the caller can
-  /// fall back to the interactive dialog.
-  Future<bool> installUnattended(UpdateInfo updateInfo) async {
+  /// code after this runs. Also true when another run is already applying the
+  /// update: then the caller must not prompt either. Returns false on every
+  /// failure so the caller can fall back to the interactive dialog.
+  ///
+  /// Android (17.10.2026, „ca pe vorsitzer“): wie bei der Vorsitzer-App — auf
+  /// jedem Netz laden, gleich danach installieren, nie während eines Anrufs
+  /// oder einer Fernwartung, je Fassung EIN Versuch. Vor dem Installieren
+  /// steht [_hinweisZeit] lang der Hinweis ([vorDemNeustart]), dass die App
+  /// gleich neu startet. Wo Android ohne Rückfrage nicht installiert
+  /// ([kannUnbeaufsichtigt]), wird nichts geladen — es bleibt beim Dialog.
+  Future<bool> installUnattended(
+    UpdateInfo updateInfo, {
+    void Function(String version)? vorDemNeustart,
+  }) async {
     if (!supportsSilentUpdate) return false;
 
     // Two callers can reach this for the same release: the startup check in
@@ -244,11 +327,31 @@ class UpdateService {
     // in. Without this guard a quick login downloads 40 MB twice and races two
     // installers against the same files. The flag is never cleared on the
     // success path because that path does not return - the process is gone.
+    //
+    // true, nicht false (17.10.2026): sonst zeigte das Dashboard den Dialog,
+    // während der andere Lauf noch lädt — ein zweiter Download, ein zweiter
+    // Installer.
     if (_unattendedInProgress) {
       _log.info('Unattended update already running - skipping', tag: 'UPDATE');
-      return false;
+      return true;
     }
     _unattendedInProgress = true;
+
+    if (Platform.isAndroid) {
+      if (!await kannUnbeaufsichtigt()) {
+        _log.info('Android installiert hier nicht ohne Rückfrage - Dialog wie bisher', tag: 'UPDATE');
+        _unattendedInProgress = false;
+        return false;
+      }
+      if (await _schonVersucht(updateInfo.buildNumber)) {
+        _log.info('Update ${updateInfo.version} hat sich schon einmal von selbst versucht - Dialog',
+            tag: 'UPDATE');
+        _unattendedInProgress = false;
+        return false;
+      }
+      // Auch das Laden wartet: es nähme dem Gespräch die Bandbreite.
+      await _ohneGespraech();
+    }
 
     _log.info('Unattended update to ${updateInfo.version} starting', tag: 'UPDATE');
     final installerPath = await downloadUpdate(
@@ -261,6 +364,24 @@ class UpdateService {
           '- staying on current version', tag: 'UPDATE');
       _unattendedInProgress = false;
       return false;
+    }
+
+    if (Platform.isAndroid) {
+      // ⚠️ Noch einmal: das Laden dauert — genau da fiel bei der
+      // Vorsitzer-App die Annahme eines Gesprächs hinein.
+      await _ohneGespraech();
+      vorDemNeustart?.call(updateInfo.version);
+      // Den Hinweis lesen lassen — und das Protokoll noch hinaus, bevor die
+      // App zugeht.
+      await Future.wait<void>([
+        Future<void>.delayed(_hinweisZeit),
+        _log.jetztHochladen().timeout(_hinweisZeit, onTimeout: () {}),
+      ]);
+      if (!await vonSelbstFreigeben(updateInfo.buildNumber)) {
+        _unattendedInProgress = false;
+        return false;
+      }
+      _log.info('Update ${updateInfo.version} installiert sich selbst', tag: 'UPDATE');
     }
 
     final started = await launchInstaller(installerPath, silent: true);
@@ -360,6 +481,18 @@ class UpdateService {
       final filePath = '${downloadDir.path}${Platform.pathSeparator}$fileName';
       final file = File(filePath);
 
+      // Schon geladen und geprüft — der Versuch kam nicht durch, oder die App
+      // wurde beendet, während sie aufs Ende eines Anrufs wartete? Dann nicht
+      // noch einmal 122 MB laden.
+      if (expectedSha256 != null && expectedSha256.isNotEmpty && await file.exists()) {
+        final vorhanden = (await sha256.bind(file.openRead()).first).toString();
+        if (vorhanden == expectedSha256.toLowerCase()) {
+          _log.info('Already downloaded and verified: $filePath', tag: 'UPDATE');
+          onProgress(1.0);
+          return filePath;
+        }
+      }
+
       // Delete old installer if exists
       if (await file.exists()) {
         await file.delete();
@@ -429,14 +562,15 @@ class UpdateService {
   }
 
   /// Launch the installer for current platform
-  /// - Android: Opens APK with system installer
+  /// - Android: PackageInstaller-Session, ab Android 12 ohne Rückfrage
   /// - iOS: Opens App Store URL
   /// - Windows: Runs the Inno Setup EXE (silently when [silent])
   /// - macOS: Mounts DMG and opens it
   /// - Linux: Runs AppImage
   ///
-  /// [silent] is honoured on Windows only; every other platform ignores it
-  /// because their installers cannot run unattended.
+  /// [silent] is honoured on Windows only. Android asks for nothing either way
+  /// where it can (see below); macOS and Linux installers cannot run
+  /// unattended.
   ///
   /// Returns false when the installer could not be started, so the caller can
   /// drop its progress indicator and surface an error instead of waiting for a
@@ -444,13 +578,20 @@ class UpdateService {
   Future<bool> launchInstaller(String installerPath, {bool silent = false}) async {
     try {
       if (Platform.isAndroid) {
-        // Android: Open APK with system installer
-        final result = await OpenFilex.open(installerPath);
-        if (result.type != ResultType.done) {
-          _log.info('Failed to open APK installer: ${result.message}', tag: 'UPDATE');
-          return false;
-        }
-        return true;
+        // Über die PackageInstaller-Session (packages/icd_installer, wie die
+        // Vorsitzer-App) statt über OpenFilex (17.10.2026): das reichte das
+        // APK nur an den Installer des Systems weiter, und der fragte jedes
+        // Mal. Jetzt ersetzt sich die App ab Android 12 ohne zweiten Dialog —
+        // auf „Jetzt aktualisieren" wie von selbst; geht das nicht, fragt
+        // Android wie bisher.
+        //
+        // ⚠️ Kommt die Antwort, kam das Update NICHT durch (abgebrochen,
+        // kaputt …): bei Erfolg beendet Android die App vorher.
+        _log.info('Android: installing $installerPath', tag: 'UPDATE');
+        final status = await IcdInstaller.apkInstallieren(installerPath, ohneNachfrage: true);
+        _log.info('APK install status: ${status.name}', tag: 'UPDATE');
+        // Wartet schon eine Installation derselben Fassung: die läuft weiter.
+        return status == InstallStatus.laeuft;
       } else if (Platform.isIOS) {
         // iOS cannot install anything itself; the App Store is the only route,
         // and without a listing there is nowhere to send the user. Reporting

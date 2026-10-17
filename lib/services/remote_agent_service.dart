@@ -141,6 +141,11 @@ class RemoteAgentService {
     if (!_stateController.isClosed) _stateController.add(s);
   }
 
+  /// Für Tests: den Zustand setzen, ohne eine Verbindung aufzubauen (z. B. die
+  /// Update-Sperre während einer Fernwartung, test/update_von_selbst_test.dart).
+  @visibleForTesting
+  void testZustand(RemoteAgentState s) => _setState(s);
+
   // ─── TURN credentials (own coturn only; GDPR: no third-party STUN) ──────────
   // Local copy of the voice-service pattern so this feature stays isolated.
   static Map<String, dynamic>? _cachedIceServers;

@@ -63,6 +63,14 @@
     <!-- APK Installation Permission -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
+    <!-- Updates der App selbst ohne Rückfrage (17.10.2026, wie die
+         Vorsitzer-App): ab Android 12 darf eine App sich selbst ersetzen, ohne
+         dass Android noch einmal fragt — wenn sie diese Berechtigung erklärt
+         und „Apps aus unbekannten Quellen installieren" erlaubt ist. Eine
+         normale Berechtigung, kein Dialog. Siehe packages/icd_installer und
+         UpdateService.installUnattended. -->
+    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
+
     <!-- Wake Lock for Voice Calls -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 

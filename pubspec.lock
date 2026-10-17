@@ -549,6 +549,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  icd_installer:
+    dependency: "direct main"
+    description:
+      path: "packages/icd_installer"
+      relative: true
+    source: path
+    version: "1.0.0"
   icd_klingel:
     dependency: "direct main"
     description:
