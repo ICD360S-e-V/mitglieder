@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.110.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.109.1...v1.110.0) (2026-10-17)
+
+
+### Features
+
+* **update:** Android installiert Updates selbst – wie die Vorsitzer-App ([#489](https://github.com/ICD360S-e-V/mitglieder/issues/489)) ([e8e8eeb](https://github.com/ICD360S-e-V/mitglieder/commit/e8e8eeba68834214f70fb8ec8ee127c613b202c5))
+
 ## [1.109.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.109.0...v1.109.1) (2026-10-17)
 
 
