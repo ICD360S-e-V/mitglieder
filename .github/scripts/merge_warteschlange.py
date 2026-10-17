@@ -96,12 +96,40 @@ def _warten(grund, **mehr):
     return {'aktion': 'warten', 'grund': grund, **mehr}
 
 
+def _je_pruefung_die_neueste(rollup):
+    """Je Pruefung nur ihr juengster Lauf: gleicher Ablauf, gleicher Name — der
+    mit der spaetesten Startzeit.
+
+    Am 17.10.2026 stand vorsitzer #1307 zweimal mit „Analyse & Tests" da: der
+    Lauf zum Push ABGEBROCHEN, weil `gh pr ready` eine Minute spaeter einen neuen
+    auf DENSELBEN Stand startete (cancel-in-progress), und dieser neue gruen.
+    Der abgebrochene zaehlte als rot — „uebersprungen #1307: Pruefungen rot".
+    Ein aelterer Lauf sagt nichts mehr, sobald ein neuerer da ist.
+    Ohne Startzeit (gh schreibt dann 0001-01-01…) wartet ein Lauf noch: er
+    gilt als der juengste. Bei gleicher Zeit gewinnt der, der noch laeuft oder
+    rot ist. Statusmeldungen und Eintraege ohne Namen bleiben jede fuer sich.
+    """
+    neueste = {}
+    for i, c in enumerate(rollup):
+        if c.get('__typename') != 'StatusContext' and c.get('name'):
+            schluessel = (c.get('workflowName') or '', c['name'])
+        else:
+            schluessel = i
+        start = c.get('startedAt') or ''
+        rang = (start if start and not start.startswith('0001-') else '9999',
+                (c.get('status') or '').upper() != 'COMPLETED',
+                (c.get('conclusion') or '').upper() not in GUT)
+        if schluessel not in neueste or rang >= neueste[schluessel][0]:
+            neueste[schluessel] = (rang, c)
+    return [c for _, c in neueste.values()]
+
+
 def pruefungen(rollup):
     """gruen | laeuft | rot | keine — aus statusCheckRollup eines PR."""
     if not rollup:
         return 'keine'
     laeuft = rot = False
-    for c in rollup:
+    for c in _je_pruefung_die_neueste(rollup):
         if c.get('__typename') == 'StatusContext':
             stand = (c.get('state') or '').upper()
             if stand in ('PENDING', 'EXPECTED'):

@@ -102,7 +102,9 @@ Map<String, dynamic> _pr(
   List<String> etiketten = const <String>[],
   int alter = 120,
   String zweig = 'feat/etwas',
+  List<Map<String, String>>? checks,
 }) =>
+    // [checks] statt [pruefung]: die Läufe genau so, wie gh sie liefert.
     <String, dynamic>{
       'number': n,
       'title': 'feat: PR $n',
@@ -115,7 +117,7 @@ Map<String, dynamic> _pr(
       'mergeable': mergeable,
       'labels': <Map<String, String>>[for (final String e in etiketten) <String, String>{'name': e}],
       'createdAt': _vor(alter),
-      'statusCheckRollup': switch (pruefung) {
+      'statusCheckRollup': checks ?? switch (pruefung) {
         'gruen' => <Map<String, String>>[
             <String, String>{'__typename': 'CheckRun', 'status': 'COMPLETED', 'conclusion': 'SUCCESS'},
             <String, String>{'__typename': 'CheckRun', 'status': 'COMPLETED', 'conclusion': 'SKIPPED'},
@@ -271,6 +273,87 @@ void main() {
 
     test('nichts offen: nichts', () {
       expect(_entscheiden()['aktion'], 'nichts');
+    });
+  });
+
+  // vorsitzer #1307 am 17.10.2026: `gh pr ready` eine Minute nach dem Push
+  // brach den Lauf zum Push ab (cancel-in-progress) und startete einen neuen
+  // auf denselben Stand. Gezählt hat der abgebrochene: „Prüfungen rot“.
+  group('derselbe Stand zweimal geprüft — es zählt je Prüfung der neueste Lauf', () {
+    Map<String, String> lauf(String status, String conclusion, String start,
+            {String ablauf = 'PR Checks', String name = '🔍 Analyse & Tests'}) =>
+        <String, String>{
+          '__typename': 'CheckRun',
+          'workflowName': ablauf,
+          'name': name,
+          'status': status,
+          'conclusion': conclusion,
+          'startedAt': start,
+        };
+
+    test('abgebrochen, dann grün: gemergt', () {
+      final Map<String, dynamic> e = _entscheiden(prs: <Map<String, dynamic>>[
+        _pr(11, checks: <Map<String, String>>[
+          lauf('COMPLETED', 'CANCELLED', _vor(10)),
+          lauf('COMPLETED', 'SUCCESS', _vor(8)),
+          lauf('COMPLETED', 'SUCCESS', _vor(10), ablauf: 'Security Scans', name: 'osv-scan'),
+        ]),
+      ]);
+      expect(e['aktion'], 'mergen');
+      expect(e['pr'], 11);
+    });
+
+    test('abgebrochen, der neue läuft noch: warten — kein jüngerer zieht vorbei', () {
+      final Map<String, dynamic> e = _entscheiden(prs: <Map<String, dynamic>>[
+        _pr(11, checks: <Map<String, String>>[
+          lauf('COMPLETED', 'CANCELLED', _vor(10)),
+          lauf('IN_PROGRESS', '', _vor(2)),
+        ]),
+        _pr(12),
+      ]);
+      expect(e['aktion'], 'warten');
+      expect(e['grund'], contains('#11'));
+    });
+
+    test('neu angestellt, noch ohne Startzeit (0001-01-01): zählt als der neueste', () {
+      final Map<String, dynamic> e = _entscheiden(prs: <Map<String, dynamic>>[
+        _pr(11, checks: <Map<String, String>>[
+          lauf('COMPLETED', 'FAILURE', _vor(10)),
+          lauf('QUEUED', '', '0001-01-01T00:00:00Z'),
+        ]),
+        _pr(12),
+      ]);
+      expect(e['aktion'], 'warten');
+      expect(e['grund'], contains('#11'));
+    });
+
+    test('der neueste ist abgebrochen oder rot: rot, auch wenn ein älterer grün war', () {
+      final Map<String, dynamic> e = _entscheiden(prs: <Map<String, dynamic>>[
+        _pr(11, checks: <Map<String, String>>[
+          lauf('COMPLETED', 'SUCCESS', _vor(10)),
+          lauf('COMPLETED', 'CANCELLED', _vor(8)),
+        ]),
+        _pr(12, checks: <Map<String, String>>[
+          lauf('COMPLETED', 'SUCCESS', _vor(10)),
+          lauf('COMPLETED', 'FAILURE', _vor(8)),
+        ]),
+        _pr(13),
+      ]);
+      expect(e['aktion'], 'mergen');
+      expect(e['pr'], 13);
+      expect(e['uebersprungen'], <String>['#11: Prüfungen rot', '#12: Prüfungen rot']);
+    });
+
+    test('eine grüne Prüfung macht eine andere, abgebrochene nicht wett', () {
+      final Map<String, dynamic> e = _entscheiden(prs: <Map<String, dynamic>>[
+        _pr(11, checks: <Map<String, String>>[
+          lauf('COMPLETED', 'CANCELLED', _vor(10)),
+          lauf('COMPLETED', 'SUCCESS', _vor(8), name: '🔍 Analyse & Tests (Linux)'),
+          lauf('COMPLETED', 'SUCCESS', _vor(8), ablauf: 'Security Scans'),
+        ]),
+      ]);
+      expect(e['aktion'], 'nichts');
+      expect(e['uebersprungen'], <String>['#11: Prüfungen rot']);
     });
   });
 
