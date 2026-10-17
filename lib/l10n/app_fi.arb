@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "vaikeavammaisen kortti (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Vorstand päättää tarkistuksen jälkeen, maksetaanko takautuvasti ja kuinka paljon.",
   "minderjaehrigBeitragsfrei": "Alle 18-vuotiaille jäsenyys on maksuton.",
-  "finanzMinderjaehrig": "Alle 18 — maksuton"
+  "finanzMinderjaehrig": "Alle 18 — maksuton",
+  "extrasPdfBilderTitel": "PDF kuviksi",
+  "extrasPdfBilderText": "Jokaisesta sivusta tulee kuva — JPG, JPEG tai PNG, valitsemaasi kansioon.",
+  "pdfBilderTitel": "PDF kuviksi",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} sivu → {anzahl} kuva} other{{anzahl} sivua → {anzahl} kuvaa}}",
+  "pdfBilderFormat": "Muoto",
+  "pdfBilderJpgGleich": "JPG ja JPEG ovat sama kuva; vain tiedostonimen pääte eroaa (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Kuvat tehdään tällä laitteella. PDF:ää ei lähetetä minnekään.",
+  "pdfBilderStarten": "Valitse kansio ja aloita",
+  "pdfBilderOrdnerTitel": "Valitse kansio kuville",
+  "pdfBilderAnhalten": "Pysäytä",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} kuva tallennettu kansioon ”{ordner}”.} other{{anzahl} kuvaa tallennettu kansioon ”{ordner}”.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Pysäytetty — {anzahl} kuva on jo kansiossa ”{ordner}”.} other{Pysäytetty — {anzahl} kuvaa on jo kansiossa ”{ordner}”.}}",
+  "pdfBilderAngehaltenLeer": "Pysäytetty — yhtään kuvaa ei tallennettu.",
+  "pdfBilderFehlerOrdner": "Tähän kansioon ei voitu kirjoittaa. Valitse toinen kansio."
 }

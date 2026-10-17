@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "tarjeta de discapacidad grave (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Si hay que pagar con carácter retroactivo y cuánto, lo decide el Vorstand tras la revisión.",
   "minderjaehrigBeitragsfrei": "Para menores de 18 años la afiliación no tiene cuota.",
-  "finanzMinderjaehrig": "Menor de 18 — sin cuota"
+  "finanzMinderjaehrig": "Menor de 18 — sin cuota",
+  "extrasPdfBilderTitel": "PDF a imágenes",
+  "extrasPdfBilderText": "Cada página se convierte en una imagen — JPG, JPEG o PNG, en la carpeta que usted elija.",
+  "pdfBilderTitel": "PDF a imágenes",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} página → {anzahl} imagen} other{{anzahl} páginas → {anzahl} imágenes}}",
+  "pdfBilderFormat": "Formato",
+  "pdfBilderJpgGleich": "JPG y JPEG son la misma imagen; solo cambia la extensión del nombre del archivo (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Las imágenes se crean en este dispositivo. El PDF no se envía a ninguna parte.",
+  "pdfBilderStarten": "Elegir carpeta y empezar",
+  "pdfBilderOrdnerTitel": "Elegir una carpeta para las imágenes",
+  "pdfBilderAnhalten": "Detener",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} imagen guardada en «{ordner}».} other{{anzahl} imágenes guardadas en «{ordner}».}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Detenido — {anzahl} imagen ya está en «{ordner}».} other{Detenido — {anzahl} imágenes ya están en «{ordner}».}}",
+  "pdfBilderAngehaltenLeer": "Detenido — no se ha guardado ninguna imagen.",
+  "pdfBilderFehlerOrdner": "No se ha podido escribir en esta carpeta. Elija otra carpeta."
 }

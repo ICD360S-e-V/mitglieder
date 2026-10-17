@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "sunkios negalios pažymėjimas (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Ar ir kiek mokėti atgaline data, Vorstand sprendžia po patikrinimo.",
   "minderjaehrigBeitragsfrei": "Jaunesniems nei 18 metų narystė be mokesčio.",
-  "finanzMinderjaehrig": "Iki 18 — be mokesčio"
+  "finanzMinderjaehrig": "Iki 18 — be mokesčio",
+  "extrasPdfBilderTitel": "PDF į paveikslėlius",
+  "extrasPdfBilderText": "Kiekvienas puslapis tampa paveikslėliu — JPG, JPEG arba PNG, jūsų pasirinktame aplanke.",
+  "pdfBilderTitel": "PDF į paveikslėlius",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} puslapis → {anzahl} paveikslėlis} few{{anzahl} puslapiai → {anzahl} paveikslėliai} other{{anzahl} puslapių → {anzahl} paveikslėlių}}",
+  "pdfBilderFormat": "Formatas",
+  "pdfBilderJpgGleich": "JPG ir JPEG yra tas pats paveikslėlis; skiriasi tik failo pavadinimo plėtinys (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Paveikslėliai kuriami šiame įrenginyje. PDF niekur nesiunčiamas.",
+  "pdfBilderStarten": "Pasirinkite aplanką ir pradėkite",
+  "pdfBilderOrdnerTitel": "Pasirinkite aplanką paveikslėliams",
+  "pdfBilderAnhalten": "Sustabdyti",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} paveikslėlis išsaugotas aplanke „{ordner}“.} few{{anzahl} paveikslėliai išsaugoti aplanke „{ordner}“.} other{{anzahl} paveikslėlių išsaugota aplanke „{ordner}“.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Sustabdyta — {anzahl} paveikslėlis jau yra aplanke „{ordner}“.} few{Sustabdyta — {anzahl} paveikslėliai jau yra aplanke „{ordner}“.} other{Sustabdyta — {anzahl} paveikslėlių jau yra aplanke „{ordner}“.}}",
+  "pdfBilderAngehaltenLeer": "Sustabdyta — neišsaugotas nė vienas paveikslėlis.",
+  "pdfBilderFehlerOrdner": "Į šį aplanką įrašyti nepavyko. Pasirinkite kitą aplanką."
 }

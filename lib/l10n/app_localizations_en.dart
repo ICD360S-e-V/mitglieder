@@ -3422,4 +3422,74 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Under 18 — no fee';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF to images';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Every page becomes an image — JPG, JPEG or PNG, in a folder of your choice.';
+
+  @override
+  String get pdfBilderTitel => 'PDF to images';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl pages → $anzahl images',
+      one: '$anzahl page → $anzahl image',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Format';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG and JPEG are the same image; only the file name ending differs (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'The images are made on this device. The PDF is not sent anywhere.';
+
+  @override
+  String get pdfBilderStarten => 'Choose a folder and start';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Choose a folder for the images';
+
+  @override
+  String get pdfBilderAnhalten => 'Stop';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl images saved in “$ordner”.',
+      one: '$anzahl image saved in “$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Stopped — $anzahl images are already in “$ordner”.',
+      one: 'Stopped — $anzahl image is already in “$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer => 'Stopped — no image was saved.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'This folder could not be written to. Please choose another folder.';
 }

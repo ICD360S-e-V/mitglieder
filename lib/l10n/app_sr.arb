@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "легитимација особе са тешким инвалидитетом (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Да ли и колико треба платити уназад, одлучује Vorstand након провере.",
   "minderjaehrigBeitragsfrei": "За млађе од 18 година чланство је без чланарине.",
-  "finanzMinderjaehrig": "Млађи од 18 — без чланарине"
+  "finanzMinderjaehrig": "Млађи од 18 — без чланарине",
+  "extrasPdfBilderTitel": "PDF у слике",
+  "extrasPdfBilderText": "Свака страница постаје слика — JPG, JPEG или PNG, у фасцикли по вашем избору.",
+  "pdfBilderTitel": "PDF у слике",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} страница → {anzahl} слика} few{{anzahl} странице → {anzahl} слике} other{{anzahl} страница → {anzahl} слика}}",
+  "pdfBilderFormat": "Формат",
+  "pdfBilderJpgGleich": "JPG и JPEG су иста слика; разликује се само наставак назива датотеке (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Слике настају на овом уређају. PDF се никуда не шаље.",
+  "pdfBilderStarten": "Изабери фасциклу и почни",
+  "pdfBilderOrdnerTitel": "Изабери фасциклу за слике",
+  "pdfBilderAnhalten": "Заустави",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} слика сачувана у „{ordner}”.} few{{anzahl} слике сачуване у „{ordner}”.} other{{anzahl} слика сачувано у „{ordner}”.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Заустављено — {anzahl} слика је већ у „{ordner}”.} few{Заустављено — {anzahl} слике су већ у „{ordner}”.} other{Заустављено — {anzahl} слика је већ у „{ordner}”.}}",
+  "pdfBilderAngehaltenLeer": "Заустављено — није сачувана ниједна слика.",
+  "pdfBilderFehlerOrdner": "У ову фасциклу није било могуће писати. Изаберите другу фасциклу."
 }

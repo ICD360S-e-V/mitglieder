@@ -56,6 +56,9 @@ class MainActivity : FlutterActivity() {
         // Jede Kopie: sensibel markiert, nach 30 s geloescht, und die App
         // sagt es. Siehe [Zwischenablage].
         Zwischenablage.anbinden(this, flutterEngine)
+        // „PDF in Bilder": Ordner waehlen und hineinschreiben -- siehe
+        // [OrdnerAblage].
+        OrdnerAblage.anbinden(this, flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, SECURE_CHANNEL)
             .setMethodCallHandler { call, result ->
                 when (call.method) {
@@ -378,6 +381,14 @@ class MainActivity : FlutterActivity() {
         }
 
         return out
+    }
+
+    // Die Ordnerauswahl von [OrdnerAblage] kommt hier zurueck. Alles andere
+    // geht weiter an Flutter -- dort warten die Plugins (file_picker u. a.)
+    // auf IHRE Ergebnisse.
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (OrdnerAblage.ergebnis(this, requestCode, resultCode, data)) return
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

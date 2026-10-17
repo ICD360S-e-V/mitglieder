@@ -1525,5 +1525,19 @@
   "nachweisBehinderung": "ağır engelli kimlik kartı (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Geriye dönük ödeme yapılıp yapılmayacağına ve ne kadar olacağına Vorstand inceleme sonrası karar verir.",
   "minderjaehrigBeitragsfrei": "18 yaşın altındakiler için üyelik aidatsızdır.",
-  "finanzMinderjaehrig": "18 yaş altı — aidatsız"
+  "finanzMinderjaehrig": "18 yaş altı — aidatsız",
+  "extrasPdfBilderTitel": "PDF'den resimlere",
+  "extrasPdfBilderText": "Her sayfa bir resim olur — JPG, JPEG veya PNG, seçtiğiniz bir klasöre.",
+  "pdfBilderTitel": "PDF'den resimlere",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} sayfa → {anzahl} resim} other{{anzahl} sayfa → {anzahl} resim}}",
+  "pdfBilderFormat": "Biçim",
+  "pdfBilderJpgGleich": "JPG ve JPEG aynı resimdir; yalnızca dosya adının uzantısı farklıdır (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Resimler bu cihazda oluşturulur. PDF hiçbir yere gönderilmez.",
+  "pdfBilderStarten": "Klasör seçin ve başlatın",
+  "pdfBilderOrdnerTitel": "Resimler için bir klasör seçin",
+  "pdfBilderAnhalten": "Durdurun",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} resim „{ordner}“ klasörüne kaydedildi.} other{{anzahl} resim „{ordner}“ klasörüne kaydedildi.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Durduruldu — {anzahl} resim zaten „{ordner}“ klasöründe.} other{Durduruldu — {anzahl} resim zaten „{ordner}“ klasöründe.}}",
+  "pdfBilderAngehaltenLeer": "Durduruldu — hiç resim kaydedilmedi.",
+  "pdfBilderFehlerOrdner": "Bu klasöre yazılamadı. Lütfen başka bir klasör seçin."
 }

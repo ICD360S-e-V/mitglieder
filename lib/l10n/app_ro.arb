@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "legitimație de persoană cu handicap grav (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Dacă și cât trebuie plătit retroactiv decide Vorstand-ul după verificare.",
   "minderjaehrigBeitragsfrei": "Sub 18 ani, calitatea de membru este scutită de cotizație.",
-  "finanzMinderjaehrig": "Sub 18 ani — fără cotizație"
+  "finanzMinderjaehrig": "Sub 18 ani — fără cotizație",
+  "extrasPdfBilderTitel": "PDF în poze",
+  "extrasPdfBilderText": "Fiecare pagină devine o poză — JPG, JPEG sau PNG, în folderul ales de dumneavoastră.",
+  "pdfBilderTitel": "PDF în poze",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} pagină → {anzahl} poză} few{{anzahl} pagini → {anzahl} poze} other{{anzahl} de pagini → {anzahl} de poze}}",
+  "pdfBilderFormat": "Format",
+  "pdfBilderJpgGleich": "JPG și JPEG sunt aceeași poză; diferă doar terminația numelui (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Pozele se fac pe acest dispozitiv. PDF-ul nu e trimis nicăieri.",
+  "pdfBilderStarten": "Alegeți folderul și începeți",
+  "pdfBilderOrdnerTitel": "Alegeți folderul pentru poze",
+  "pdfBilderAnhalten": "Oprește",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} poză salvată în „{ordner}”.} few{{anzahl} poze salvate în „{ordner}”.} other{{anzahl} de poze salvate în „{ordner}”.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Oprit — {anzahl} poză e deja în „{ordner}”.} few{Oprit — {anzahl} poze sunt deja în „{ordner}”.} other{Oprit — {anzahl} de poze sunt deja în „{ordner}”.}}",
+  "pdfBilderAngehaltenLeer": "Oprit — nu s-a salvat nicio poză.",
+  "pdfBilderFehlerOrdner": "În acest folder nu s-a putut scrie. Alegeți alt folder."
 }

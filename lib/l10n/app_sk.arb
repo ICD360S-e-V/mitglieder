@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "preukaz osoby s ťažkým zdravotným postihnutím (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Či a koľko sa má platiť spätne, rozhodne Vorstand po posúdení.",
   "minderjaehrigBeitragsfrei": "Do 18 rokov je členstvo bez príspevku.",
-  "finanzMinderjaehrig": "Do 18 rokov — bez príspevku"
+  "finanzMinderjaehrig": "Do 18 rokov — bez príspevku",
+  "extrasPdfBilderTitel": "PDF na obrázky",
+  "extrasPdfBilderText": "Každá strana sa stane obrázkom — JPG, JPEG alebo PNG, v priečinku podľa vášho výberu.",
+  "pdfBilderTitel": "PDF na obrázky",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} strana → {anzahl} obrázok} few{{anzahl} strany → {anzahl} obrázky} other{{anzahl} strán → {anzahl} obrázkov}}",
+  "pdfBilderFormat": "Formát",
+  "pdfBilderJpgGleich": "JPG a JPEG sú ten istý obrázok; líši sa len prípona názvu súboru (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Obrázky vznikajú v tomto zariadení. PDF sa nikam neposiela.",
+  "pdfBilderStarten": "Vybrať priečinok a začať",
+  "pdfBilderOrdnerTitel": "Vybrať priečinok pre obrázky",
+  "pdfBilderAnhalten": "Zastaviť",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} obrázok uložený do „{ordner}“.} few{{anzahl} obrázky uložené do „{ordner}“.} other{{anzahl} obrázkov uložených do „{ordner}“.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Zastavené — {anzahl} obrázok už je v „{ordner}“.} few{Zastavené — {anzahl} obrázky už sú v „{ordner}“.} other{Zastavené — {anzahl} obrázkov už je v „{ordner}“.}}",
+  "pdfBilderAngehaltenLeer": "Zastavené — neuložil sa žiadny obrázok.",
+  "pdfBilderFehlerOrdner": "Do tohto priečinka sa nedalo zapisovať. Vyberte iný priečinok."
 }

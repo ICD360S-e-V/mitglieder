@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "carte de personne gravement handicapée (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Le Vorstand décide après examen s'il faut payer rétroactivement et combien.",
   "minderjaehrigBeitragsfrei": "Pour les moins de 18 ans, l'adhésion est sans cotisation.",
-  "finanzMinderjaehrig": "Moins de 18 ans — sans cotisation"
+  "finanzMinderjaehrig": "Moins de 18 ans — sans cotisation",
+  "extrasPdfBilderTitel": "PDF en images",
+  "extrasPdfBilderText": "Chaque page devient une image — JPG, JPEG ou PNG, dans le dossier de votre choix.",
+  "pdfBilderTitel": "PDF en images",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} page → {anzahl} image} other{{anzahl} pages → {anzahl} images}}",
+  "pdfBilderFormat": "Format",
+  "pdfBilderJpgGleich": "JPG et JPEG sont la même image ; seule l’extension du nom de fichier change (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Les images sont créées sur cet appareil. Le PDF n’est envoyé nulle part.",
+  "pdfBilderStarten": "Choisir un dossier et démarrer",
+  "pdfBilderOrdnerTitel": "Choisir un dossier pour les images",
+  "pdfBilderAnhalten": "Arrêter",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} image enregistrée dans « {ordner} ».} other{{anzahl} images enregistrées dans « {ordner} ».}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Arrêté — {anzahl} image se trouve déjà dans « {ordner} ».} other{Arrêté — {anzahl} images se trouvent déjà dans « {ordner} ».}}",
+  "pdfBilderAngehaltenLeer": "Arrêté — aucune image n’a été enregistrée.",
+  "pdfBilderFehlerOrdner": "Impossible d’écrire dans ce dossier. Veuillez en choisir un autre."
 }

@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "severe disability card (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Whether and how much has to be paid retroactively is decided by the Vorstand after review.",
   "minderjaehrigBeitragsfrei": "Membership is free of charge for anyone under 18.",
-  "finanzMinderjaehrig": "Under 18 — no fee"
+  "finanzMinderjaehrig": "Under 18 — no fee",
+  "extrasPdfBilderTitel": "PDF to images",
+  "extrasPdfBilderText": "Every page becomes an image — JPG, JPEG or PNG, in a folder of your choice.",
+  "pdfBilderTitel": "PDF to images",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} page → {anzahl} image} other{{anzahl} pages → {anzahl} images}}",
+  "pdfBilderFormat": "Format",
+  "pdfBilderJpgGleich": "JPG and JPEG are the same image; only the file name ending differs (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "The images are made on this device. The PDF is not sent anywhere.",
+  "pdfBilderStarten": "Choose a folder and start",
+  "pdfBilderOrdnerTitel": "Choose a folder for the images",
+  "pdfBilderAnhalten": "Stop",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} image saved in “{ordner}”.} other{{anzahl} images saved in “{ordner}”.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Stopped — {anzahl} image is already in “{ordner}”.} other{Stopped — {anzahl} images are already in “{ordner}”.}}",
+  "pdfBilderAngehaltenLeer": "Stopped — no image was saved.",
+  "pdfBilderFehlerOrdner": "This folder could not be written to. Please choose another folder."
 }

@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "izkaznica osebe s težko invalidnostjo (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Ali in koliko je treba plačati za nazaj, odloči Vorstand po preverjanju.",
   "minderjaehrigBeitragsfrei": "Do 18. leta je članstvo brez članarine.",
-  "finanzMinderjaehrig": "Pod 18 — brez članarine"
+  "finanzMinderjaehrig": "Pod 18 — brez članarine",
+  "extrasPdfBilderTitel": "PDF v slike",
+  "extrasPdfBilderText": "Vsaka stran postane slika — JPG, JPEG ali PNG, v mapi po vaši izbiri.",
+  "pdfBilderTitel": "PDF v slike",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} stran → {anzahl} slika} two{{anzahl} strani → {anzahl} sliki} few{{anzahl} strani → {anzahl} slike} other{{anzahl} strani → {anzahl} slik}}",
+  "pdfBilderFormat": "Oblika",
+  "pdfBilderJpgGleich": "JPG in JPEG sta ista slika; razlikuje se le končnica imena datoteke (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Slike nastanejo v tej napravi. PDF se ne pošlje nikamor.",
+  "pdfBilderStarten": "Izberi mapo in začni",
+  "pdfBilderOrdnerTitel": "Izberi mapo za slike",
+  "pdfBilderAnhalten": "Ustavi",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} slika shranjena v »{ordner}«.} two{{anzahl} sliki shranjeni v »{ordner}«.} few{{anzahl} slike shranjene v »{ordner}«.} other{{anzahl} slik shranjenih v »{ordner}«.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Ustavljeno — {anzahl} slika je že v »{ordner}«.} two{Ustavljeno — {anzahl} sliki sta že v »{ordner}«.} few{Ustavljeno — {anzahl} slike so že v »{ordner}«.} other{Ustavljeno — {anzahl} slik je že v »{ordner}«.}}",
+  "pdfBilderAngehaltenLeer": "Ustavljeno — nobena slika ni bila shranjena.",
+  "pdfBilderFehlerOrdner": "V to mapo ni bilo mogoče pisati. Izberite drugo mapo."
 }

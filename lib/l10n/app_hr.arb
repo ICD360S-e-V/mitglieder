@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "iskaznica osobe s teškim invaliditetom (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Hoće li se i koliko plaćati unatrag, odlučuje Vorstand nakon provjere.",
   "minderjaehrigBeitragsfrei": "Za mlađe od 18 godina članstvo je bez članarine.",
-  "finanzMinderjaehrig": "Mlađi od 18 — bez članarine"
+  "finanzMinderjaehrig": "Mlađi od 18 — bez članarine",
+  "extrasPdfBilderTitel": "PDF u slike",
+  "extrasPdfBilderText": "Svaka stranica postaje slika — JPG, JPEG ili PNG, u mapi po vašem izboru.",
+  "pdfBilderTitel": "PDF u slike",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} stranica → {anzahl} slika} few{{anzahl} stranice → {anzahl} slike} other{{anzahl} stranica → {anzahl} slika}}",
+  "pdfBilderFormat": "Format",
+  "pdfBilderJpgGleich": "JPG i JPEG ista su slika; razlikuje se samo nastavak naziva datoteke (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Slike nastaju na ovom uređaju. PDF se nikamo ne šalje.",
+  "pdfBilderStarten": "Odaberi mapu i počni",
+  "pdfBilderOrdnerTitel": "Odaberi mapu za slike",
+  "pdfBilderAnhalten": "Zaustavi",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} slika spremljena u „{ordner}”.} few{{anzahl} slike spremljene u „{ordner}”.} other{{anzahl} slika spremljeno u „{ordner}”.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Zaustavljeno — {anzahl} slika već je u „{ordner}”.} few{Zaustavljeno — {anzahl} slike već su u „{ordner}”.} other{Zaustavljeno — {anzahl} slika već je u „{ordner}”.}}",
+  "pdfBilderAngehaltenLeer": "Zaustavljeno — nije spremljena nijedna slika.",
+  "pdfBilderFehlerOrdner": "U ovu mapu nije bilo moguće pisati. Odaberite drugu mapu."
 }

@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "legitymacja osoby ze znacznym stopniem niepełnosprawności (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Czy i ile trzeba zapłacić wstecz, decyduje Vorstand po sprawdzeniu.",
   "minderjaehrigBeitragsfrei": "Poniżej 18 lat członkostwo jest bezpłatne.",
-  "finanzMinderjaehrig": "Poniżej 18 — bez składki"
+  "finanzMinderjaehrig": "Poniżej 18 — bez składki",
+  "extrasPdfBilderTitel": "PDF na obrazy",
+  "extrasPdfBilderText": "Każda strona staje się obrazem — JPG, JPEG lub PNG, w wybranym przez Ciebie folderze.",
+  "pdfBilderTitel": "PDF na obrazy",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} strona → {anzahl} obraz} few{{anzahl} strony → {anzahl} obrazy} many{{anzahl} stron → {anzahl} obrazów} other{{anzahl} stron → {anzahl} obrazów}}",
+  "pdfBilderFormat": "Format",
+  "pdfBilderJpgGleich": "JPG i JPEG to ten sam obraz; różni się tylko rozszerzenie nazwy pliku (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Obrazy powstają na tym urządzeniu. PDF nie jest nigdzie wysyłany.",
+  "pdfBilderStarten": "Wybierz folder i rozpocznij",
+  "pdfBilderOrdnerTitel": "Wybierz folder na obrazy",
+  "pdfBilderAnhalten": "Zatrzymaj",
+  "pdfBilderFertig": "{anzahl, plural, one{Zapisano {anzahl} obraz w „{ordner}”.} few{Zapisano {anzahl} obrazy w „{ordner}”.} many{Zapisano {anzahl} obrazów w „{ordner}”.} other{Zapisano {anzahl} obrazów w „{ordner}”.}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Zatrzymano — {anzahl} obraz jest już w „{ordner}”.} few{Zatrzymano — {anzahl} obrazy są już w „{ordner}”.} many{Zatrzymano — {anzahl} obrazów jest już w „{ordner}”.} other{Zatrzymano — {anzahl} obrazów jest już w „{ordner}”.}}",
+  "pdfBilderAngehaltenLeer": "Zatrzymano — nie zapisano żadnego obrazu.",
+  "pdfBilderFehlerOrdner": "Nie udało się zapisać w tym folderze. Wybierz inny folder."
 }

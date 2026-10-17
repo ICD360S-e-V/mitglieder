@@ -1525,5 +1525,19 @@
   "nachweisBehinderung": "بطاقة الإعاقة الشديدة (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "يقرر Vorstand بعد المراجعة ما إذا كان يجب الدفع بأثر رجعي وكم.",
   "minderjaehrigBeitragsfrei": "العضوية معفاة من الاشتراك لمن هم دون 18 عامًا.",
-  "finanzMinderjaehrig": "دون 18 عامًا — معفى من الاشتراك"
+  "finanzMinderjaehrig": "دون 18 عامًا — معفى من الاشتراك",
+  "extrasPdfBilderTitel": "PDF إلى صور",
+  "extrasPdfBilderText": "تصبح كل صفحة صورة — JPG أو JPEG أو PNG، في مجلد من اختيارك.",
+  "pdfBilderTitel": "PDF إلى صور",
+  "pdfBilderSeiten": "{anzahl, plural, one{صفحة واحدة ← صورة واحدة} two{صفحتان ← صورتان} few{{anzahl} صفحات ← {anzahl} صور} many{{anzahl} صفحة ← {anzahl} صورة} other{{anzahl} صفحة ← {anzahl} صورة}}",
+  "pdfBilderFormat": "الصيغة",
+  "pdfBilderJpgGleich": "JPG وJPEG هما الصورة نفسها؛ يختلف فقط امتداد اسم الملف (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "تُنشأ الصور على هذا الجهاز. لا يُرسَل ملف PDF إلى أي مكان.",
+  "pdfBilderStarten": "اختيار المجلد والبدء",
+  "pdfBilderOrdnerTitel": "اختيار مجلد للصور",
+  "pdfBilderAnhalten": "إيقاف",
+  "pdfBilderFertig": "{anzahl, plural, one{حُفظت صورة واحدة في «{ordner}».} two{حُفظت صورتان في «{ordner}».} few{حُفظت {anzahl} صور في «{ordner}».} many{حُفظت {anzahl} صورة في «{ordner}».} other{حُفظت {anzahl} صورة في «{ordner}».}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{تم الإيقاف — توجد صورة واحدة بالفعل في «{ordner}».} two{تم الإيقاف — توجد صورتان بالفعل في «{ordner}».} few{تم الإيقاف — توجد {anzahl} صور بالفعل في «{ordner}».} many{تم الإيقاف — توجد {anzahl} صورة بالفعل في «{ordner}».} other{تم الإيقاف — توجد {anzahl} صورة بالفعل في «{ordner}».}}",
+  "pdfBilderAngehaltenLeer": "تم الإيقاف — لم تُحفظ أي صورة.",
+  "pdfBilderFehlerOrdner": "تعذّرت الكتابة في هذا المجلد. يُرجى اختيار مجلد آخر."
 }

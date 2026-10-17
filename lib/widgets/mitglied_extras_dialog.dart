@@ -18,9 +18,13 @@ class MitgliedExtrasDialog extends StatelessWidget {
   /// Öffnet das Werkzeug „eigenes PDF unterschreiben".
   final VoidCallback onPdfUnterschreiben;
 
+  /// Öffnet „PDF in Bilder" — jede Seite ein Bild in einem gewählten Ordner.
+  final VoidCallback onPdfInBilder;
+
   const MitgliedExtrasDialog({
     super.key,
     required this.onPdfUnterschreiben,
+    required this.onPdfInBilder,
   });
 
   @override
@@ -107,6 +111,17 @@ class MitgliedExtrasDialog extends StatelessWidget {
                 onDruck: () {
                   Navigator.pop(context);
                   zeigeRechner(context);
+                },
+              ),
+              _Werkzeug(
+                symbol: Icons.photo_library_outlined,
+                titel: l10n.extrasPdfBilderTitel,
+                text: l10n.extrasPdfBilderText,
+                // Wie beim Unterschreiben: eine ganze Seite, die dem
+                // Dashboard gehört — erst schließen, dann öffnen.
+                onDruck: () {
+                  Navigator.pop(context);
+                  onPdfInBilder();
                 },
               ),
               const SizedBox(height: 8),

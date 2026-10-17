@@ -3422,4 +3422,77 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Sub 18 ani — fără cotizație';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF în poze';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Fiecare pagină devine o poză — JPG, JPEG sau PNG, în folderul ales de dumneavoastră.';
+
+  @override
+  String get pdfBilderTitel => 'PDF în poze';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl de pagini → $anzahl de poze',
+      few: '$anzahl pagini → $anzahl poze',
+      one: '$anzahl pagină → $anzahl poză',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Format';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG și JPEG sunt aceeași poză; diferă doar terminația numelui (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Pozele se fac pe acest dispozitiv. PDF-ul nu e trimis nicăieri.';
+
+  @override
+  String get pdfBilderStarten => 'Alegeți folderul și începeți';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Alegeți folderul pentru poze';
+
+  @override
+  String get pdfBilderAnhalten => 'Oprește';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl de poze salvate în „$ordner”.',
+      few: '$anzahl poze salvate în „$ordner”.',
+      one: '$anzahl poză salvată în „$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Oprit — $anzahl de poze sunt deja în „$ordner”.',
+      few: 'Oprit — $anzahl poze sunt deja în „$ordner”.',
+      one: 'Oprit — $anzahl poză e deja în „$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer => 'Oprit — nu s-a salvat nicio poză.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'În acest folder nu s-a putut scrie. Alegeți alt folder.';
 }

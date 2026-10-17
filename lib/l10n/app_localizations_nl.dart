@@ -3432,4 +3432,75 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Onder 18 — contributievrij';
+
+  @override
+  String get extrasPdfBilderTitel => 'Pdf naar afbeeldingen';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Elke pagina wordt een afbeelding — JPG, JPEG of PNG, in een map naar keuze.';
+
+  @override
+  String get pdfBilderTitel => 'Pdf naar afbeeldingen';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl pagina’s → $anzahl afbeeldingen',
+      one: '$anzahl pagina → $anzahl afbeelding',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Formaat';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG en JPEG zijn dezelfde afbeelding; alleen de extensie van de bestandsnaam verschilt (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'De afbeeldingen worden op dit apparaat gemaakt. De pdf wordt nergens naartoe gestuurd.';
+
+  @override
+  String get pdfBilderStarten => 'Map kiezen en starten';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Map voor de afbeeldingen kiezen';
+
+  @override
+  String get pdfBilderAnhalten => 'Stoppen';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl afbeeldingen opgeslagen in ‘$ordner’.',
+      one: '$anzahl afbeelding opgeslagen in ‘$ordner’.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Gestopt — $anzahl afbeeldingen staan al in ‘$ordner’.',
+      one: 'Gestopt — $anzahl afbeelding staat al in ‘$ordner’.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Gestopt — er is geen afbeelding opgeslagen.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'Er kon niet in deze map worden geschreven. Kies een andere map.';
 }

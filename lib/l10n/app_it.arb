@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "tessera di disabilità grave (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Se e quanto pagare retroattivamente lo decide il Vorstand dopo l'esame.",
   "minderjaehrigBeitragsfrei": "Sotto i 18 anni l'adesione è senza quota.",
-  "finanzMinderjaehrig": "Sotto i 18 anni — senza quota"
+  "finanzMinderjaehrig": "Sotto i 18 anni — senza quota",
+  "extrasPdfBilderTitel": "PDF in immagini",
+  "extrasPdfBilderText": "Ogni pagina diventa un’immagine — JPG, JPEG o PNG, in una cartella a Sua scelta.",
+  "pdfBilderTitel": "PDF in immagini",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} pagina → {anzahl} immagine} other{{anzahl} pagine → {anzahl} immagini}}",
+  "pdfBilderFormat": "Formato",
+  "pdfBilderJpgGleich": "JPG e JPEG sono la stessa immagine; cambia solo l’estensione del nome del file (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "Le immagini vengono create su questo dispositivo. Il PDF non viene inviato da nessuna parte.",
+  "pdfBilderStarten": "Scegliere la cartella e avviare",
+  "pdfBilderOrdnerTitel": "Scegliere una cartella per le immagini",
+  "pdfBilderAnhalten": "Interrompere",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} immagine salvata in «{ordner}».} other{{anzahl} immagini salvate in «{ordner}».}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Interrotto — {anzahl} immagine si trova già in «{ordner}».} other{Interrotto — {anzahl} immagini si trovano già in «{ordner}».}}",
+  "pdfBilderAngehaltenLeer": "Interrotto — non è stata salvata nessuna immagine.",
+  "pdfBilderFehlerOrdner": "Non è stato possibile scrivere in questa cartella. Ne scelga un’altra."
 }

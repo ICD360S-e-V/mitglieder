@@ -1504,5 +1504,19 @@
   "nachweisBehinderung": "cartão de deficiência grave (Schwerbehindertenausweis)",
   "ermaessigungRueckwirkend": "Se e quanto há a pagar retroativamente, decide o Vorstand após a análise.",
   "minderjaehrigBeitragsfrei": "Para menores de 18 anos, a adesão é isenta de quota.",
-  "finanzMinderjaehrig": "Menos de 18 — sem quota"
+  "finanzMinderjaehrig": "Menos de 18 — sem quota",
+  "extrasPdfBilderTitel": "PDF em imagens",
+  "extrasPdfBilderText": "Cada página torna-se uma imagem — JPG, JPEG ou PNG, na pasta que escolher.",
+  "pdfBilderTitel": "PDF em imagens",
+  "pdfBilderSeiten": "{anzahl, plural, one{{anzahl} página → {anzahl} imagem} other{{anzahl} páginas → {anzahl} imagens}}",
+  "pdfBilderFormat": "Formato",
+  "pdfBilderJpgGleich": "JPG e JPEG são a mesma imagem; só muda a extensão do nome (.jpg / .jpeg).",
+  "pdfBilderAufDemGeraet": "As imagens são criadas neste dispositivo. O PDF não é enviado para lado nenhum.",
+  "pdfBilderStarten": "Escolher a pasta e começar",
+  "pdfBilderOrdnerTitel": "Escolher uma pasta para as imagens",
+  "pdfBilderAnhalten": "Parar",
+  "pdfBilderFertig": "{anzahl, plural, one{{anzahl} imagem guardada em «{ordner}».} other{{anzahl} imagens guardadas em «{ordner}».}}",
+  "pdfBilderAngehalten": "{anzahl, plural, one{Parado — {anzahl} imagem já está em «{ordner}».} other{Parado — {anzahl} imagens já estão em «{ordner}».}}",
+  "pdfBilderAngehaltenLeer": "Parado — nenhuma imagem foi guardada.",
+  "pdfBilderFehlerOrdner": "Não foi possível escrever nesta pasta. Escolha outra pasta."
 }

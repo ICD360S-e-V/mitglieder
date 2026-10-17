@@ -6157,6 +6157,90 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Unter 18 — beitragsfrei'**
   String get finanzMinderjaehrig;
+
+  /// No description provided for @extrasPdfBilderTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'PDF in Bilder'**
+  String get extrasPdfBilderTitel;
+
+  /// No description provided for @extrasPdfBilderText.
+  ///
+  /// In de, this message translates to:
+  /// **'Jede Seite wird ein Bild — JPG, JPEG oder PNG, in einem Ordner Ihrer Wahl.'**
+  String get extrasPdfBilderText;
+
+  /// No description provided for @pdfBilderTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'PDF in Bilder'**
+  String get pdfBilderTitel;
+
+  /// No description provided for @pdfBilderSeiten.
+  ///
+  /// In de, this message translates to:
+  /// **'{anzahl, plural, one{{anzahl} Seite → {anzahl} Bild} other{{anzahl} Seiten → {anzahl} Bilder}}'**
+  String pdfBilderSeiten(int anzahl);
+
+  /// No description provided for @pdfBilderFormat.
+  ///
+  /// In de, this message translates to:
+  /// **'Format'**
+  String get pdfBilderFormat;
+
+  /// No description provided for @pdfBilderJpgGleich.
+  ///
+  /// In de, this message translates to:
+  /// **'JPG und JPEG sind dasselbe Bild; nur die Endung des Dateinamens ist anders (.jpg / .jpeg).'**
+  String get pdfBilderJpgGleich;
+
+  /// No description provided for @pdfBilderAufDemGeraet.
+  ///
+  /// In de, this message translates to:
+  /// **'Die Bilder entstehen auf diesem Gerät. Das PDF wird nirgendwohin geschickt.'**
+  String get pdfBilderAufDemGeraet;
+
+  /// No description provided for @pdfBilderStarten.
+  ///
+  /// In de, this message translates to:
+  /// **'Ordner auswählen und starten'**
+  String get pdfBilderStarten;
+
+  /// No description provided for @pdfBilderOrdnerTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Ordner für die Bilder auswählen'**
+  String get pdfBilderOrdnerTitel;
+
+  /// No description provided for @pdfBilderAnhalten.
+  ///
+  /// In de, this message translates to:
+  /// **'Anhalten'**
+  String get pdfBilderAnhalten;
+
+  /// No description provided for @pdfBilderFertig.
+  ///
+  /// In de, this message translates to:
+  /// **'{anzahl, plural, one{{anzahl} Bild in „{ordner}“ gespeichert.} other{{anzahl} Bilder in „{ordner}“ gespeichert.}}'**
+  String pdfBilderFertig(int anzahl, String ordner);
+
+  /// No description provided for @pdfBilderAngehalten.
+  ///
+  /// In de, this message translates to:
+  /// **'{anzahl, plural, one{Angehalten — {anzahl} Bild liegt schon in „{ordner}“.} other{Angehalten — {anzahl} Bilder liegen schon in „{ordner}“.}}'**
+  String pdfBilderAngehalten(int anzahl, String ordner);
+
+  /// No description provided for @pdfBilderAngehaltenLeer.
+  ///
+  /// In de, this message translates to:
+  /// **'Angehalten — es wurde kein Bild gespeichert.'**
+  String get pdfBilderAngehaltenLeer;
+
+  /// No description provided for @pdfBilderFehlerOrdner.
+  ///
+  /// In de, this message translates to:
+  /// **'In diesen Ordner ließ sich nicht schreiben. Bitte einen anderen Ordner auswählen.'**
+  String get pdfBilderFehlerOrdner;
 }
 
 class _AppLocalizationsDelegate

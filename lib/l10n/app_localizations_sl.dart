@@ -3411,4 +3411,81 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Pod 18 — brez članarine';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF v slike';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Vsaka stran postane slika — JPG, JPEG ali PNG, v mapi po vaši izbiri.';
+
+  @override
+  String get pdfBilderTitel => 'PDF v slike';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl strani → $anzahl slik',
+      few: '$anzahl strani → $anzahl slike',
+      two: '$anzahl strani → $anzahl sliki',
+      one: '$anzahl stran → $anzahl slika',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Oblika';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG in JPEG sta ista slika; razlikuje se le končnica imena datoteke (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Slike nastanejo v tej napravi. PDF se ne pošlje nikamor.';
+
+  @override
+  String get pdfBilderStarten => 'Izberi mapo in začni';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Izberi mapo za slike';
+
+  @override
+  String get pdfBilderAnhalten => 'Ustavi';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl slik shranjenih v »$ordner«.',
+      few: '$anzahl slike shranjene v »$ordner«.',
+      two: '$anzahl sliki shranjeni v »$ordner«.',
+      one: '$anzahl slika shranjena v »$ordner«.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Ustavljeno — $anzahl slik je že v »$ordner«.',
+      few: 'Ustavljeno — $anzahl slike so že v »$ordner«.',
+      two: 'Ustavljeno — $anzahl sliki sta že v »$ordner«.',
+      one: 'Ustavljeno — $anzahl slika je že v »$ordner«.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Ustavljeno — nobena slika ni bila shranjena.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'V to mapo ni bilo mogoče pisati. Izberite drugo mapo.';
 }

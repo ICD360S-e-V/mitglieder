@@ -3409,4 +3409,78 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String get finanzMinderjaehrig => 'Mlađi od 18 — bez članarine';
+
+  @override
+  String get extrasPdfBilderTitel => 'PDF u slike';
+
+  @override
+  String get extrasPdfBilderText =>
+      'Svaka stranica postaje slika — JPG, JPEG ili PNG, u mapi po vašem izboru.';
+
+  @override
+  String get pdfBilderTitel => 'PDF u slike';
+
+  @override
+  String pdfBilderSeiten(int anzahl) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl stranica → $anzahl slika',
+      few: '$anzahl stranice → $anzahl slike',
+      one: '$anzahl stranica → $anzahl slika',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderFormat => 'Format';
+
+  @override
+  String get pdfBilderJpgGleich =>
+      'JPG i JPEG ista su slika; razlikuje se samo nastavak naziva datoteke (.jpg / .jpeg).';
+
+  @override
+  String get pdfBilderAufDemGeraet =>
+      'Slike nastaju na ovom uređaju. PDF se nikamo ne šalje.';
+
+  @override
+  String get pdfBilderStarten => 'Odaberi mapu i počni';
+
+  @override
+  String get pdfBilderOrdnerTitel => 'Odaberi mapu za slike';
+
+  @override
+  String get pdfBilderAnhalten => 'Zaustavi';
+
+  @override
+  String pdfBilderFertig(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$anzahl slika spremljeno u „$ordner”.',
+      few: '$anzahl slike spremljene u „$ordner”.',
+      one: '$anzahl slika spremljena u „$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pdfBilderAngehalten(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: 'Zaustavljeno — $anzahl slika već je u „$ordner”.',
+      few: 'Zaustavljeno — $anzahl slike već su u „$ordner”.',
+      one: 'Zaustavljeno — $anzahl slika već je u „$ordner”.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pdfBilderAngehaltenLeer =>
+      'Zaustavljeno — nije spremljena nijedna slika.';
+
+  @override
+  String get pdfBilderFehlerOrdner =>
+      'U ovu mapu nije bilo moguće pisati. Odaberite drugu mapu.';
 }
