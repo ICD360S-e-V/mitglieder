@@ -3483,4 +3483,303 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Det gick inte att skriva till den här mappen. Välj en annan mapp.';
+
+  @override
+  String get extrasFotoEditTitel => 'Redigera bild';
+
+  @override
+  String get extrasFotoEditText =>
+      'Beskärning, färger, ritning, text, storlek — originalet behålls.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Öppna en mapp';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'alla bilder i den';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Öppna en bild';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'från galleriet eller från filerna';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Bilderna lämnar inte den här enheten.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Välj mappen med bilderna';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl bilder',
+      one: '$ordner · $anzahl bild',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'Det finns inga bilder i den här mappen.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer av $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Beskär';
+
+  @override
+  String get fotoEditAnpassen => 'Justera';
+
+  @override
+  String get fotoEditFilter => 'Filter';
+
+  @override
+  String get fotoEditZeichnen => 'Rita';
+
+  @override
+  String get fotoEditText => 'Text';
+
+  @override
+  String get fotoEditGroesse => 'Storlek';
+
+  @override
+  String get fotoEditProzent => 'Procent';
+
+  @override
+  String get fotoEditPixel => 'Pixlar';
+
+  @override
+  String get fotoEditBreite => 'Bredd';
+
+  @override
+  String get fotoEditHoehe => 'Höjd';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt =>
+      'Proportionerna förblir desamma.';
+
+  @override
+  String get fotoEditFormat => 'Format';
+
+  @override
+  String get fotoEditQualitaet => 'Kvalitet';
+
+  @override
+  String get fotoEditJetzt => 'Nu';
+
+  @override
+  String get fotoEditDanach => 'Efter';
+
+  @override
+  String get fotoEditWirdBerechnet => 'beräknas…';
+
+  @override
+  String get fotoEditAnwenden => 'Använd';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Den redigerade bilden har sparats';
+
+  @override
+  String get fotoEditInFotosApp => 'I ”Bilder”';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Originalet är oförändrat:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Vill du radera originalet?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Raderingen kan inte ångras.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Det hamnar i albumet ”Nyligen raderade”, där det kan återställas.';
+
+  @override
+  String get fotoEditBehalten => 'Behåll';
+
+  @override
+  String get fotoEditLoeschen => 'Radera';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Originalet har raderats.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Originalet kunde inte raderas. Det är oförändrat.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Inte sparad. Den redigerade bilden finns kvar.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Bilden kunde inte sparas.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Den här bilden kan inte öppnas.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'HEIC-bilder (från en iPhone) kan inte öppnas på den här datorn.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Den här mappen kunde inte läsas.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Slänga ändringarna?';
+
+  @override
+  String get fotoEditVerwerfenText =>
+      'Den redigerade bilden har inte sparats än.';
+
+  @override
+  String get fotoEditVerwerfen => 'Släng';
+
+  @override
+  String get fotoEditDateiZusatz => 'redigerad';
+
+  @override
+  String get fotoEditSpeichert => 'Sparar…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Ångra';
+
+  @override
+  String get fotoEditWiederholen => 'Gör om';
+
+  @override
+  String get fotoEditFertig => 'Klar';
+
+  @override
+  String get fotoEditZurueck => 'Tillbaka';
+
+  @override
+  String get fotoEditEntfernen => 'Ta bort';
+
+  @override
+  String get fotoEditBearbeiten => 'Redigera';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Rotera och skala';
+
+  @override
+  String get fotoEditMehr => 'Mer';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Återställ';
+
+  @override
+  String get fotoEditBitteWarten => 'Vänta…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Ändringarna tillämpas…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Redigeraren förbereds…';
+
+  @override
+  String get fotoEditDrehen => 'Rotera';
+
+  @override
+  String get fotoEditSpiegeln => 'Spegelvänd';
+
+  @override
+  String get fotoEditBegradigen => 'Räta upp';
+
+  @override
+  String get fotoEditWaagerecht => 'Vågrätt';
+
+  @override
+  String get fotoEditSenkrecht => 'Lodrätt';
+
+  @override
+  String get fotoEditSeitenformat => 'Bildformat';
+
+  @override
+  String get fotoEditFrei => 'Fri';
+
+  @override
+  String get fotoEditOriginal => 'Original';
+
+  @override
+  String get fotoEditHelligkeit => 'Ljusstyrka';
+
+  @override
+  String get fotoEditKontrast => 'Kontrast';
+
+  @override
+  String get fotoEditSaettigung => 'Mättnad';
+
+  @override
+  String get fotoEditBelichtung => 'Exponering';
+
+  @override
+  String get fotoEditFarbton => 'Nyans';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Färgtemperatur';
+
+  @override
+  String get fotoEditVerblassen => 'Blekning';
+
+  @override
+  String get fotoEditToenung => 'Toning';
+
+  @override
+  String get fotoEditKeinFilter => 'Inget filter';
+
+  @override
+  String get fotoEditZoomen => 'Zooma';
+
+  @override
+  String get fotoEditFreihand => 'Frihand';
+
+  @override
+  String get fotoEditPfeil => 'Pil';
+
+  @override
+  String get fotoEditLinie => 'Linje';
+
+  @override
+  String get fotoEditRechteck => 'Rektangel';
+
+  @override
+  String get fotoEditKreis => 'Cirkel';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Oskärpa';
+
+  @override
+  String get fotoEditVerpixeln => 'Pixla';
+
+  @override
+  String get fotoEditLinienstaerke => 'Linjebredd';
+
+  @override
+  String get fotoEditRadierer => 'Suddgummi';
+
+  @override
+  String get fotoEditFuellung => 'Fyllning';
+
+  @override
+  String get fotoEditDeckkraft => 'Opacitet';
+
+  @override
+  String get fotoEditFarbe => 'Färg';
+
+  @override
+  String get fotoEditTextEingeben => 'Skriv text';
+
+  @override
+  String get fotoEditTextAusrichten => 'Justera text';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Teckenstorlek';
+
+  @override
+  String get fotoEditHintergrund => 'Bakgrund';
 }

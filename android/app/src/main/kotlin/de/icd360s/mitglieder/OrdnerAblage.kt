@@ -14,7 +14,9 @@ import java.util.concurrent.Executors
 
 /**
  * Mehrere Dateien in einen Ordner, den das Mitglied waehlt -- fuer
- * „PDF in Bilder" (lib/utils/ordner_ablage.dart).
+ * „PDF in Bilder" (lib/utils/ordner_ablage.dart). „Foto bearbeiten" liest im
+ * selben Ordner: auflisten, lesen, Vorschau, loeschen
+ * (lib/utils/foto_quelle.dart, [FotoDateien]).
  *
  * Der amtliche Weg dafuer ist das Storage Access Framework: Ordner waehlen
  * mit ACTION_OPEN_DOCUMENT_TREE, Dateien anlegen mit
@@ -67,6 +69,24 @@ internal object OrdnerAblage {
                     // Prozess. Der Aufruf ist da, damit Dart auf beiden
                     // Systemen dasselbe tun kann.
                     "schliessen" -> result.success(null)
+                    // „Foto bearbeiten": dieselbe Freigabe des Baums erlaubt
+                    // auch Lesen und Loeschen darin -- siehe [FotoDateien].
+                    "auflisten" -> auflisten(app, call.argument<String>("ordner") ?: "", result)
+                    "lesen" -> imHintergrund(result, "lesen") {
+                        FotoDateien.lesen(app, Uri.parse(call.argument<String>("datei") ?: ""))
+                    }
+                    "vorschau" -> imHintergrund(result, "vorschau") {
+                        FotoDateien.vorschau(
+                            app,
+                            Uri.parse(call.argument<String>("datei") ?: ""),
+                            call.argument<Int>("kante") ?: 256,
+                        )
+                    }
+                    "loeschen" -> FotoDateien.loeschen(
+                        a,
+                        Uri.parse(call.argument<String>("datei") ?: ""),
+                        result,
+                    )
                     else -> result.notImplemented()
                 }
             }
@@ -126,6 +146,75 @@ internal object OrdnerAblage {
             null,
             null,
         )?.use { z -> if (z.moveToFirst()) z.getString(0) else null }
+
+    /**
+     * Die Fotos direkt im Ordner, ohne Unterordner. Schluessel ist die Adresse
+     * des Dokuments im Baum -- mit ihr wird spaeter gelesen und geloescht.
+     */
+    private fun auflisten(c: Context, ordner: String, result: MethodChannel.Result) {
+        FotoDateien.leser.execute {
+            try {
+                val baum = Uri.parse(ordner)
+                val kinder = DocumentsContract.buildChildDocumentsUriUsingTree(
+                    baum,
+                    DocumentsContract.getTreeDocumentId(baum),
+                )
+                val liste = mutableListOf<Map<String, Any?>>()
+                c.contentResolver.query(
+                    kinder,
+                    arrayOf(
+                        DocumentsContract.Document.COLUMN_DOCUMENT_ID,
+                        DocumentsContract.Document.COLUMN_DISPLAY_NAME,
+                        DocumentsContract.Document.COLUMN_MIME_TYPE,
+                        DocumentsContract.Document.COLUMN_SIZE,
+                        DocumentsContract.Document.COLUMN_LAST_MODIFIED,
+                    ),
+                    null,
+                    null,
+                    null,
+                )?.use { z ->
+                    while (z.moveToNext()) {
+                        val name = z.getString(1) ?: continue
+                        val mime = z.getString(2)
+                        if (mime == DocumentsContract.Document.MIME_TYPE_DIR) continue
+                        if (name.startsWith(".") || !FotoDateien.istFoto(mime, name)) continue
+                        liste.add(
+                            mapOf(
+                                "schluessel" to DocumentsContract.buildDocumentUriUsingTree(
+                                    baum,
+                                    z.getString(0),
+                                ).toString(),
+                                "name" to name,
+                                "groesse" to if (z.isNull(3)) null else z.getLong(3),
+                                "geaendert" to if (z.isNull(4)) null else z.getLong(4),
+                            )
+                        )
+                    }
+                }
+                haupt.post { result.success(liste) }
+            } catch (e: Throwable) {
+                Log.w(TAG, "Auflisten fehlgeschlagen: ${e.javaClass.simpleName}")
+                haupt.post { result.error("auflisten", e.message, null) }
+            }
+        }
+    }
+
+    /** Liest im Hintergrund; die Antwort geht auf dem Hauptfaden zurueck. */
+    private fun imHintergrund(
+        result: MethodChannel.Result,
+        was: String,
+        arbeit: () -> ByteArray?,
+    ) {
+        FotoDateien.leser.execute {
+            try {
+                val bytes = arbeit()
+                haupt.post { result.success(bytes) }
+            } catch (e: Throwable) {
+                Log.w(TAG, "$was fehlgeschlagen: ${e.javaClass.simpleName}")
+                haupt.post { result.error(was, e.message, null) }
+            }
+        }
+    }
 
     private fun schreiben(
         c: Context,

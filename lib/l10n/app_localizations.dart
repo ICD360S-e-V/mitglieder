@@ -6247,6 +6247,570 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'In diesen Ordner ließ sich nicht schreiben. Bitte einen anderen Ordner auswählen.'**
   String get pdfBilderFehlerOrdner;
+
+  /// No description provided for @extrasFotoEditTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Foto bearbeiten'**
+  String get extrasFotoEditTitel;
+
+  /// No description provided for @extrasFotoEditText.
+  ///
+  /// In de, this message translates to:
+  /// **'Zuschneiden, Farben, Zeichnen, Text, Größe — das Original bleibt erhalten.'**
+  String get extrasFotoEditText;
+
+  /// No description provided for @fotoEditOrdnerOeffnen.
+  ///
+  /// In de, this message translates to:
+  /// **'Ordner öffnen'**
+  String get fotoEditOrdnerOeffnen;
+
+  /// No description provided for @fotoEditOrdnerOeffnenText.
+  ///
+  /// In de, this message translates to:
+  /// **'alle Fotos darin'**
+  String get fotoEditOrdnerOeffnenText;
+
+  /// No description provided for @fotoEditFotoOeffnen.
+  ///
+  /// In de, this message translates to:
+  /// **'Ein Foto öffnen'**
+  String get fotoEditFotoOeffnen;
+
+  /// No description provided for @fotoEditFotoOeffnenText.
+  ///
+  /// In de, this message translates to:
+  /// **'aus der Galerie oder aus den Dateien'**
+  String get fotoEditFotoOeffnenText;
+
+  /// No description provided for @fotoEditAufDemGeraet.
+  ///
+  /// In de, this message translates to:
+  /// **'Die Fotos verlassen dieses Gerät nicht.'**
+  String get fotoEditAufDemGeraet;
+
+  /// No description provided for @fotoEditOrdnerTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Ordner mit Fotos auswählen'**
+  String get fotoEditOrdnerTitel;
+
+  /// No description provided for @fotoEditOrdnerKopf.
+  ///
+  /// In de, this message translates to:
+  /// **'{anzahl, plural, one{{ordner} · {anzahl} Foto} other{{ordner} · {anzahl} Fotos}}'**
+  String fotoEditOrdnerKopf(int anzahl, String ordner);
+
+  /// No description provided for @fotoEditOrdnerLeer.
+  ///
+  /// In de, this message translates to:
+  /// **'In diesem Ordner sind keine Fotos.'**
+  String get fotoEditOrdnerLeer;
+
+  /// No description provided for @fotoEditPosition.
+  ///
+  /// In de, this message translates to:
+  /// **'{nummer} von {gesamt}'**
+  String fotoEditPosition(int nummer, int gesamt);
+
+  /// No description provided for @fotoEditZuschneiden.
+  ///
+  /// In de, this message translates to:
+  /// **'Zuschneiden'**
+  String get fotoEditZuschneiden;
+
+  /// No description provided for @fotoEditAnpassen.
+  ///
+  /// In de, this message translates to:
+  /// **'Anpassen'**
+  String get fotoEditAnpassen;
+
+  /// No description provided for @fotoEditFilter.
+  ///
+  /// In de, this message translates to:
+  /// **'Filter'**
+  String get fotoEditFilter;
+
+  /// No description provided for @fotoEditZeichnen.
+  ///
+  /// In de, this message translates to:
+  /// **'Zeichnen'**
+  String get fotoEditZeichnen;
+
+  /// No description provided for @fotoEditText.
+  ///
+  /// In de, this message translates to:
+  /// **'Text'**
+  String get fotoEditText;
+
+  /// No description provided for @fotoEditGroesse.
+  ///
+  /// In de, this message translates to:
+  /// **'Größe'**
+  String get fotoEditGroesse;
+
+  /// No description provided for @fotoEditProzent.
+  ///
+  /// In de, this message translates to:
+  /// **'Prozent'**
+  String get fotoEditProzent;
+
+  /// No description provided for @fotoEditPixel.
+  ///
+  /// In de, this message translates to:
+  /// **'Pixel'**
+  String get fotoEditPixel;
+
+  /// No description provided for @fotoEditBreite.
+  ///
+  /// In de, this message translates to:
+  /// **'Breite'**
+  String get fotoEditBreite;
+
+  /// No description provided for @fotoEditHoehe.
+  ///
+  /// In de, this message translates to:
+  /// **'Höhe'**
+  String get fotoEditHoehe;
+
+  /// No description provided for @fotoEditSeitenverhaeltnisBleibt.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Seitenverhältnis bleibt gleich.'**
+  String get fotoEditSeitenverhaeltnisBleibt;
+
+  /// No description provided for @fotoEditFormat.
+  ///
+  /// In de, this message translates to:
+  /// **'Format'**
+  String get fotoEditFormat;
+
+  /// No description provided for @fotoEditQualitaet.
+  ///
+  /// In de, this message translates to:
+  /// **'Qualität'**
+  String get fotoEditQualitaet;
+
+  /// No description provided for @fotoEditJetzt.
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt'**
+  String get fotoEditJetzt;
+
+  /// No description provided for @fotoEditDanach.
+  ///
+  /// In de, this message translates to:
+  /// **'Danach'**
+  String get fotoEditDanach;
+
+  /// No description provided for @fotoEditWirdBerechnet.
+  ///
+  /// In de, this message translates to:
+  /// **'wird berechnet …'**
+  String get fotoEditWirdBerechnet;
+
+  /// No description provided for @fotoEditAnwenden.
+  ///
+  /// In de, this message translates to:
+  /// **'Anwenden'**
+  String get fotoEditAnwenden;
+
+  /// No description provided for @fotoEditGespeichertTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Das bearbeitete Foto ist gespeichert'**
+  String get fotoEditGespeichertTitel;
+
+  /// No description provided for @fotoEditInFotosApp.
+  ///
+  /// In de, this message translates to:
+  /// **'In „Fotos“'**
+  String get fotoEditInFotosApp;
+
+  /// No description provided for @fotoEditOriginalUnveraendert.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Original ist unverändert geblieben:'**
+  String get fotoEditOriginalUnveraendert;
+
+  /// No description provided for @fotoEditOriginalLoeschenFrage.
+  ///
+  /// In de, this message translates to:
+  /// **'Möchten Sie das Original löschen?'**
+  String get fotoEditOriginalLoeschenFrage;
+
+  /// No description provided for @fotoEditLoeschenEndgueltig.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Löschen lässt sich nicht rückgängig machen.'**
+  String get fotoEditLoeschenEndgueltig;
+
+  /// No description provided for @fotoEditLoeschenZuletztGeloescht.
+  ///
+  /// In de, this message translates to:
+  /// **'Es kommt in „Zuletzt gelöscht“ und lässt sich dort wiederherstellen.'**
+  String get fotoEditLoeschenZuletztGeloescht;
+
+  /// No description provided for @fotoEditBehalten.
+  ///
+  /// In de, this message translates to:
+  /// **'Behalten'**
+  String get fotoEditBehalten;
+
+  /// No description provided for @fotoEditLoeschen.
+  ///
+  /// In de, this message translates to:
+  /// **'Löschen'**
+  String get fotoEditLoeschen;
+
+  /// No description provided for @fotoEditOriginalGeloescht.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Original wurde gelöscht.'**
+  String get fotoEditOriginalGeloescht;
+
+  /// No description provided for @fotoEditOriginalNichtGeloescht.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Original ließ sich nicht löschen. Es ist unverändert geblieben.'**
+  String get fotoEditOriginalNichtGeloescht;
+
+  /// No description provided for @fotoEditNichtGespeichert.
+  ///
+  /// In de, this message translates to:
+  /// **'Nicht gespeichert. Das bearbeitete Foto ist noch da.'**
+  String get fotoEditNichtGespeichert;
+
+  /// No description provided for @fotoEditFehlerSpeichern.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Foto ließ sich nicht speichern.'**
+  String get fotoEditFehlerSpeichern;
+
+  /// No description provided for @fotoEditFehlerOeffnen.
+  ///
+  /// In de, this message translates to:
+  /// **'Dieses Foto lässt sich nicht öffnen.'**
+  String get fotoEditFehlerOeffnen;
+
+  /// No description provided for @fotoEditHeicNichtHier.
+  ///
+  /// In de, this message translates to:
+  /// **'HEIC-Fotos (vom iPhone) lassen sich auf diesem Computer nicht öffnen.'**
+  String get fotoEditHeicNichtHier;
+
+  /// No description provided for @fotoEditFehlerOrdner.
+  ///
+  /// In de, this message translates to:
+  /// **'Dieser Ordner ließ sich nicht lesen.'**
+  String get fotoEditFehlerOrdner;
+
+  /// No description provided for @fotoEditVerwerfenTitel.
+  ///
+  /// In de, this message translates to:
+  /// **'Änderungen verwerfen?'**
+  String get fotoEditVerwerfenTitel;
+
+  /// No description provided for @fotoEditVerwerfenText.
+  ///
+  /// In de, this message translates to:
+  /// **'Das bearbeitete Foto ist noch nicht gespeichert.'**
+  String get fotoEditVerwerfenText;
+
+  /// No description provided for @fotoEditVerwerfen.
+  ///
+  /// In de, this message translates to:
+  /// **'Verwerfen'**
+  String get fotoEditVerwerfen;
+
+  /// No description provided for @fotoEditDateiZusatz.
+  ///
+  /// In de, this message translates to:
+  /// **'bearbeitet'**
+  String get fotoEditDateiZusatz;
+
+  /// No description provided for @fotoEditSpeichert.
+  ///
+  /// In de, this message translates to:
+  /// **'Wird gespeichert …'**
+  String get fotoEditSpeichert;
+
+  /// No description provided for @fotoEditRueckgaengig.
+  ///
+  /// In de, this message translates to:
+  /// **'Rückgängig'**
+  String get fotoEditRueckgaengig;
+
+  /// No description provided for @fotoEditWiederholen.
+  ///
+  /// In de, this message translates to:
+  /// **'Wiederholen'**
+  String get fotoEditWiederholen;
+
+  /// No description provided for @fotoEditFertig.
+  ///
+  /// In de, this message translates to:
+  /// **'Fertig'**
+  String get fotoEditFertig;
+
+  /// No description provided for @fotoEditZurueck.
+  ///
+  /// In de, this message translates to:
+  /// **'Zurück'**
+  String get fotoEditZurueck;
+
+  /// No description provided for @fotoEditEntfernen.
+  ///
+  /// In de, this message translates to:
+  /// **'Entfernen'**
+  String get fotoEditEntfernen;
+
+  /// No description provided for @fotoEditBearbeiten.
+  ///
+  /// In de, this message translates to:
+  /// **'Bearbeiten'**
+  String get fotoEditBearbeiten;
+
+  /// No description provided for @fotoEditDrehenSkalieren.
+  ///
+  /// In de, this message translates to:
+  /// **'Drehen und skalieren'**
+  String get fotoEditDrehenSkalieren;
+
+  /// No description provided for @fotoEditMehr.
+  ///
+  /// In de, this message translates to:
+  /// **'Mehr'**
+  String get fotoEditMehr;
+
+  /// No description provided for @fotoEditZuruecksetzen.
+  ///
+  /// In de, this message translates to:
+  /// **'Zurücksetzen'**
+  String get fotoEditZuruecksetzen;
+
+  /// No description provided for @fotoEditBitteWarten.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte warten …'**
+  String get fotoEditBitteWarten;
+
+  /// No description provided for @fotoEditWirdAngewendet.
+  ///
+  /// In de, this message translates to:
+  /// **'Änderungen werden angewendet …'**
+  String get fotoEditWirdAngewendet;
+
+  /// No description provided for @fotoEditWirdVorbereitet.
+  ///
+  /// In de, this message translates to:
+  /// **'Editor wird vorbereitet …'**
+  String get fotoEditWirdVorbereitet;
+
+  /// No description provided for @fotoEditDrehen.
+  ///
+  /// In de, this message translates to:
+  /// **'Drehen'**
+  String get fotoEditDrehen;
+
+  /// No description provided for @fotoEditSpiegeln.
+  ///
+  /// In de, this message translates to:
+  /// **'Spiegeln'**
+  String get fotoEditSpiegeln;
+
+  /// No description provided for @fotoEditBegradigen.
+  ///
+  /// In de, this message translates to:
+  /// **'Begradigen'**
+  String get fotoEditBegradigen;
+
+  /// No description provided for @fotoEditWaagerecht.
+  ///
+  /// In de, this message translates to:
+  /// **'Waagerecht'**
+  String get fotoEditWaagerecht;
+
+  /// No description provided for @fotoEditSenkrecht.
+  ///
+  /// In de, this message translates to:
+  /// **'Senkrecht'**
+  String get fotoEditSenkrecht;
+
+  /// No description provided for @fotoEditSeitenformat.
+  ///
+  /// In de, this message translates to:
+  /// **'Seitenverhältnis'**
+  String get fotoEditSeitenformat;
+
+  /// No description provided for @fotoEditFrei.
+  ///
+  /// In de, this message translates to:
+  /// **'Frei'**
+  String get fotoEditFrei;
+
+  /// No description provided for @fotoEditOriginal.
+  ///
+  /// In de, this message translates to:
+  /// **'Original'**
+  String get fotoEditOriginal;
+
+  /// No description provided for @fotoEditHelligkeit.
+  ///
+  /// In de, this message translates to:
+  /// **'Helligkeit'**
+  String get fotoEditHelligkeit;
+
+  /// No description provided for @fotoEditKontrast.
+  ///
+  /// In de, this message translates to:
+  /// **'Kontrast'**
+  String get fotoEditKontrast;
+
+  /// No description provided for @fotoEditSaettigung.
+  ///
+  /// In de, this message translates to:
+  /// **'Sättigung'**
+  String get fotoEditSaettigung;
+
+  /// No description provided for @fotoEditBelichtung.
+  ///
+  /// In de, this message translates to:
+  /// **'Belichtung'**
+  String get fotoEditBelichtung;
+
+  /// No description provided for @fotoEditFarbton.
+  ///
+  /// In de, this message translates to:
+  /// **'Farbton'**
+  String get fotoEditFarbton;
+
+  /// No description provided for @fotoEditFarbtemperatur.
+  ///
+  /// In de, this message translates to:
+  /// **'Farbtemperatur'**
+  String get fotoEditFarbtemperatur;
+
+  /// No description provided for @fotoEditVerblassen.
+  ///
+  /// In de, this message translates to:
+  /// **'Verblassen'**
+  String get fotoEditVerblassen;
+
+  /// No description provided for @fotoEditToenung.
+  ///
+  /// In de, this message translates to:
+  /// **'Tönung'**
+  String get fotoEditToenung;
+
+  /// No description provided for @fotoEditKeinFilter.
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Filter'**
+  String get fotoEditKeinFilter;
+
+  /// No description provided for @fotoEditZoomen.
+  ///
+  /// In de, this message translates to:
+  /// **'Zoomen'**
+  String get fotoEditZoomen;
+
+  /// No description provided for @fotoEditFreihand.
+  ///
+  /// In de, this message translates to:
+  /// **'Freihand'**
+  String get fotoEditFreihand;
+
+  /// No description provided for @fotoEditPfeil.
+  ///
+  /// In de, this message translates to:
+  /// **'Pfeil'**
+  String get fotoEditPfeil;
+
+  /// No description provided for @fotoEditLinie.
+  ///
+  /// In de, this message translates to:
+  /// **'Linie'**
+  String get fotoEditLinie;
+
+  /// No description provided for @fotoEditRechteck.
+  ///
+  /// In de, this message translates to:
+  /// **'Rechteck'**
+  String get fotoEditRechteck;
+
+  /// No description provided for @fotoEditKreis.
+  ///
+  /// In de, this message translates to:
+  /// **'Kreis'**
+  String get fotoEditKreis;
+
+  /// No description provided for @fotoEditWeichzeichnen.
+  ///
+  /// In de, this message translates to:
+  /// **'Weichzeichnen'**
+  String get fotoEditWeichzeichnen;
+
+  /// No description provided for @fotoEditVerpixeln.
+  ///
+  /// In de, this message translates to:
+  /// **'Verpixeln'**
+  String get fotoEditVerpixeln;
+
+  /// No description provided for @fotoEditLinienstaerke.
+  ///
+  /// In de, this message translates to:
+  /// **'Linienstärke'**
+  String get fotoEditLinienstaerke;
+
+  /// No description provided for @fotoEditRadierer.
+  ///
+  /// In de, this message translates to:
+  /// **'Radierer'**
+  String get fotoEditRadierer;
+
+  /// No description provided for @fotoEditFuellung.
+  ///
+  /// In de, this message translates to:
+  /// **'Füllung'**
+  String get fotoEditFuellung;
+
+  /// No description provided for @fotoEditDeckkraft.
+  ///
+  /// In de, this message translates to:
+  /// **'Deckkraft'**
+  String get fotoEditDeckkraft;
+
+  /// No description provided for @fotoEditFarbe.
+  ///
+  /// In de, this message translates to:
+  /// **'Farbe'**
+  String get fotoEditFarbe;
+
+  /// No description provided for @fotoEditTextEingeben.
+  ///
+  /// In de, this message translates to:
+  /// **'Text eingeben'**
+  String get fotoEditTextEingeben;
+
+  /// No description provided for @fotoEditTextAusrichten.
+  ///
+  /// In de, this message translates to:
+  /// **'Text ausrichten'**
+  String get fotoEditTextAusrichten;
+
+  /// No description provided for @fotoEditSchriftgroesse.
+  ///
+  /// In de, this message translates to:
+  /// **'Schriftgröße'**
+  String get fotoEditSchriftgroesse;
+
+  /// No description provided for @fotoEditHintergrund.
+  ///
+  /// In de, this message translates to:
+  /// **'Hintergrund'**
+  String get fotoEditHintergrund;
 }
 
 class _AppLocalizationsDelegate

@@ -3486,4 +3486,303 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Do této složky nebylo možné zapisovat. Vyberte prosím jinou složku.';
+
+  @override
+  String get extrasFotoEditTitel => 'Úprava fotek';
+
+  @override
+  String get extrasFotoEditText =>
+      'Oříznutí, barvy, kreslení, text, velikost — originál zůstane zachován.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Otevřít složku';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'všechny fotky v ní';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Otevřít fotku';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'z galerie nebo ze souborů';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Fotky toto zařízení neopouštějí.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Vybrat složku s fotkami';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl fotek',
+      many: '$ordner · $anzahl fotky',
+      few: '$ordner · $anzahl fotky',
+      one: '$ordner · $anzahl fotka',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'V této složce nejsou žádné fotky.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer z $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Oříznout';
+
+  @override
+  String get fotoEditAnpassen => 'Úpravy';
+
+  @override
+  String get fotoEditFilter => 'Filtry';
+
+  @override
+  String get fotoEditZeichnen => 'Kreslit';
+
+  @override
+  String get fotoEditText => 'Text';
+
+  @override
+  String get fotoEditGroesse => 'Velikost';
+
+  @override
+  String get fotoEditProzent => 'Procenta';
+
+  @override
+  String get fotoEditPixel => 'Pixely';
+
+  @override
+  String get fotoEditBreite => 'Šířka';
+
+  @override
+  String get fotoEditHoehe => 'Výška';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'Poměr stran zůstane stejný.';
+
+  @override
+  String get fotoEditFormat => 'Formát';
+
+  @override
+  String get fotoEditQualitaet => 'Kvalita';
+
+  @override
+  String get fotoEditJetzt => 'Nyní';
+
+  @override
+  String get fotoEditDanach => 'Potom';
+
+  @override
+  String get fotoEditWirdBerechnet => 'počítá se…';
+
+  @override
+  String get fotoEditAnwenden => 'Použít';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Upravená fotka je uložena';
+
+  @override
+  String get fotoEditInFotosApp => 'V aplikaci „Fotky“';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Originál zůstal beze změny:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Chcete originál smazat?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Smazání nelze vrátit zpět.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Přesune se do alba „Nedávno smazané“, odkud ho lze obnovit.';
+
+  @override
+  String get fotoEditBehalten => 'Ponechat';
+
+  @override
+  String get fotoEditLoeschen => 'Smazat';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Originál byl smazán.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Originál se nepodařilo smazat. Zůstal beze změny.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Neuloženo. Upravená fotka je stále tady.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Fotku se nepodařilo uložit.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Tuto fotku nelze otevřít.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'Fotky HEIC (z iPhonu) nelze na tomto počítači otevřít.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Tuto složku se nepodařilo načíst.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Zahodit změny?';
+
+  @override
+  String get fotoEditVerwerfenText => 'Upravená fotka ještě není uložena.';
+
+  @override
+  String get fotoEditVerwerfen => 'Zahodit';
+
+  @override
+  String get fotoEditDateiZusatz => 'upraveno';
+
+  @override
+  String get fotoEditSpeichert => 'Ukládá se…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Vrátit zpět';
+
+  @override
+  String get fotoEditWiederholen => 'Opakovat';
+
+  @override
+  String get fotoEditFertig => 'Hotovo';
+
+  @override
+  String get fotoEditZurueck => 'Zpět';
+
+  @override
+  String get fotoEditEntfernen => 'Odstranit';
+
+  @override
+  String get fotoEditBearbeiten => 'Upravit';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Otočit a změnit velikost';
+
+  @override
+  String get fotoEditMehr => 'Více';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Obnovit';
+
+  @override
+  String get fotoEditBitteWarten => 'Čekejte prosím…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Změny se uplatňují…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Připravuje se editor…';
+
+  @override
+  String get fotoEditDrehen => 'Otočit';
+
+  @override
+  String get fotoEditSpiegeln => 'Převrátit';
+
+  @override
+  String get fotoEditBegradigen => 'Narovnat';
+
+  @override
+  String get fotoEditWaagerecht => 'Vodorovně';
+
+  @override
+  String get fotoEditSenkrecht => 'Svisle';
+
+  @override
+  String get fotoEditSeitenformat => 'Poměr stran';
+
+  @override
+  String get fotoEditFrei => 'Volně';
+
+  @override
+  String get fotoEditOriginal => 'Originál';
+
+  @override
+  String get fotoEditHelligkeit => 'Jas';
+
+  @override
+  String get fotoEditKontrast => 'Kontrast';
+
+  @override
+  String get fotoEditSaettigung => 'Sytost';
+
+  @override
+  String get fotoEditBelichtung => 'Expozice';
+
+  @override
+  String get fotoEditFarbton => 'Odstín';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Teplota barev';
+
+  @override
+  String get fotoEditVerblassen => 'Vyblednutí';
+
+  @override
+  String get fotoEditToenung => 'Tónování';
+
+  @override
+  String get fotoEditKeinFilter => 'Bez filtru';
+
+  @override
+  String get fotoEditZoomen => 'Přiblížení';
+
+  @override
+  String get fotoEditFreihand => 'Volná ruka';
+
+  @override
+  String get fotoEditPfeil => 'Šipka';
+
+  @override
+  String get fotoEditLinie => 'Čára';
+
+  @override
+  String get fotoEditRechteck => 'Obdélník';
+
+  @override
+  String get fotoEditKreis => 'Kruh';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Rozmazání';
+
+  @override
+  String get fotoEditVerpixeln => 'Pixelizace';
+
+  @override
+  String get fotoEditLinienstaerke => 'Tloušťka čáry';
+
+  @override
+  String get fotoEditRadierer => 'Guma';
+
+  @override
+  String get fotoEditFuellung => 'Výplň';
+
+  @override
+  String get fotoEditDeckkraft => 'Krytí';
+
+  @override
+  String get fotoEditFarbe => 'Barva';
+
+  @override
+  String get fotoEditTextEingeben => 'Zadejte text';
+
+  @override
+  String get fotoEditTextAusrichten => 'Zarovnání textu';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Velikost písma';
+
+  @override
+  String get fotoEditHintergrund => 'Pozadí';
 }

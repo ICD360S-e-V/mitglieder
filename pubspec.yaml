@@ -176,6 +176,20 @@ dependencies:
   # Lockfile und in der Vorsitzer-App.
   image: ^4.8.0
 
+  # „Foto bearbeiten": Zuschneiden, Anpassen, Filter, Zeichnen, Text. Läuft auf
+  # allen fünf Systemen ohne eigene Einrichtung; der native Teil liefert nur
+  # die Emoji-Liste (hier nicht benutzt). Die Größe macht die App selbst mit
+  # `image` — das Paket hat dafür nichts.
+  # ⚠️ Es verkleinert beim Erzeugen still auf 2000 px, wenn man es lässt:
+  # `maxOutputSize` in lib/screens/foto_bearbeiten_screen.dart.
+  pro_image_editor: ^14.14.2
+
+  # Die Texte von Dialogen und Leisten im Editor: ab 14 baut pro_image_editor
+  # auf material_ui statt auf flutter/material. Ohne diese Lokalisierungen in
+  # main.dart wirft er „No MaterialLocalizations found". Kam schon über pdfrx
+  # mit; jetzt direkt benutzt, also direkt eingetragen.
+  material_ui: ^1.4.0
+
   # Root/Jailbreak/Emulator detection
   safe_device: ^1.4.1
 

@@ -3487,4 +3487,303 @@ class AppLocalizationsHr extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'U ovu mapu nije bilo moguće pisati. Odaberite drugu mapu.';
+
+  @override
+  String get extrasFotoEditTitel => 'Uređivanje fotografija';
+
+  @override
+  String get extrasFotoEditText =>
+      'Obrezivanje, boje, crtanje, tekst, veličina — original ostaje sačuvan.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Otvori mapu';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'sve fotografije u njoj';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Otvori fotografiju';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'iz galerije ili iz datoteka';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Fotografije ne napuštaju ovaj uređaj.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Odaberi mapu s fotografijama';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl fotografija',
+      few: '$ordner · $anzahl fotografije',
+      one: '$ordner · $anzahl fotografija',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'U ovoj mapi nema fotografija.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer od $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Izreži';
+
+  @override
+  String get fotoEditAnpassen => 'Prilagodi';
+
+  @override
+  String get fotoEditFilter => 'Filtri';
+
+  @override
+  String get fotoEditZeichnen => 'Crtaj';
+
+  @override
+  String get fotoEditText => 'Tekst';
+
+  @override
+  String get fotoEditGroesse => 'Veličina';
+
+  @override
+  String get fotoEditProzent => 'Postotak';
+
+  @override
+  String get fotoEditPixel => 'Pikseli';
+
+  @override
+  String get fotoEditBreite => 'Širina';
+
+  @override
+  String get fotoEditHoehe => 'Visina';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'Omjer stranica ostaje isti.';
+
+  @override
+  String get fotoEditFormat => 'Format';
+
+  @override
+  String get fotoEditQualitaet => 'Kvaliteta';
+
+  @override
+  String get fotoEditJetzt => 'Sada';
+
+  @override
+  String get fotoEditDanach => 'Nakon';
+
+  @override
+  String get fotoEditWirdBerechnet => 'izračunava se…';
+
+  @override
+  String get fotoEditAnwenden => 'Primijeni';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Uređena fotografija je spremljena';
+
+  @override
+  String get fotoEditInFotosApp => 'U aplikaciji „Foto”';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Original je ostao nepromijenjen:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Želiš li obrisati original?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Brisanje se ne može poništiti.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Premješta se u album „Nedavno izbrisano”, odakle se može vratiti.';
+
+  @override
+  String get fotoEditBehalten => 'Zadrži';
+
+  @override
+  String get fotoEditLoeschen => 'Obriši';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Original je obrisan.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Original se nije mogao obrisati. Ostao je nepromijenjen.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Nije spremljeno. Uređena fotografija još je ovdje.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Fotografija se nije mogla spremiti.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Ova se fotografija ne može otvoriti.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'HEIC fotografije (s iPhonea) ne mogu se otvoriti na ovom računalu.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Ova se mapa nije mogla pročitati.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Odbaciti promjene?';
+
+  @override
+  String get fotoEditVerwerfenText =>
+      'Uređena fotografija još nije spremljena.';
+
+  @override
+  String get fotoEditVerwerfen => 'Odbaci';
+
+  @override
+  String get fotoEditDateiZusatz => 'uređeno';
+
+  @override
+  String get fotoEditSpeichert => 'Spremanje…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Poništi';
+
+  @override
+  String get fotoEditWiederholen => 'Ponovi';
+
+  @override
+  String get fotoEditFertig => 'Gotovo';
+
+  @override
+  String get fotoEditZurueck => 'Natrag';
+
+  @override
+  String get fotoEditEntfernen => 'Ukloni';
+
+  @override
+  String get fotoEditBearbeiten => 'Uredi';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Zakreni i promijeni veličinu';
+
+  @override
+  String get fotoEditMehr => 'Više';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Resetiraj';
+
+  @override
+  String get fotoEditBitteWarten => 'Pričekaj…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Primjenjuju se promjene…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Uređivač se priprema…';
+
+  @override
+  String get fotoEditDrehen => 'Zakreni';
+
+  @override
+  String get fotoEditSpiegeln => 'Zrcali';
+
+  @override
+  String get fotoEditBegradigen => 'Izravnaj';
+
+  @override
+  String get fotoEditWaagerecht => 'Vodoravno';
+
+  @override
+  String get fotoEditSenkrecht => 'Okomito';
+
+  @override
+  String get fotoEditSeitenformat => 'Omjer stranica';
+
+  @override
+  String get fotoEditFrei => 'Slobodno';
+
+  @override
+  String get fotoEditOriginal => 'Original';
+
+  @override
+  String get fotoEditHelligkeit => 'Svjetlina';
+
+  @override
+  String get fotoEditKontrast => 'Kontrast';
+
+  @override
+  String get fotoEditSaettigung => 'Zasićenost';
+
+  @override
+  String get fotoEditBelichtung => 'Ekspozicija';
+
+  @override
+  String get fotoEditFarbton => 'Nijansa';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Temperatura boje';
+
+  @override
+  String get fotoEditVerblassen => 'Izblijeđenost';
+
+  @override
+  String get fotoEditToenung => 'Ton';
+
+  @override
+  String get fotoEditKeinFilter => 'Bez filtra';
+
+  @override
+  String get fotoEditZoomen => 'Zumiraj';
+
+  @override
+  String get fotoEditFreihand => 'Slobodna ruka';
+
+  @override
+  String get fotoEditPfeil => 'Strelica';
+
+  @override
+  String get fotoEditLinie => 'Linija';
+
+  @override
+  String get fotoEditRechteck => 'Pravokutnik';
+
+  @override
+  String get fotoEditKreis => 'Krug';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Zamućenje';
+
+  @override
+  String get fotoEditVerpixeln => 'Pikselizacija';
+
+  @override
+  String get fotoEditLinienstaerke => 'Debljina linije';
+
+  @override
+  String get fotoEditRadierer => 'Gumica';
+
+  @override
+  String get fotoEditFuellung => 'Ispuna';
+
+  @override
+  String get fotoEditDeckkraft => 'Neprozirnost';
+
+  @override
+  String get fotoEditFarbe => 'Boja';
+
+  @override
+  String get fotoEditTextEingeben => 'Unesi tekst';
+
+  @override
+  String get fotoEditTextAusrichten => 'Poravnaj tekst';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Veličina fonta';
+
+  @override
+  String get fotoEditHintergrund => 'Pozadina';
 }

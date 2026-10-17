@@ -3511,4 +3511,311 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Δεν ήταν δυνατή η εγγραφή σε αυτόν τον φάκελο. Επιλέξτε άλλον φάκελο.';
+
+  @override
+  String get extrasFotoEditTitel => 'Επεξεργασία φωτογραφιών';
+
+  @override
+  String get extrasFotoEditText =>
+      'Περικοπή, χρώματα, σχέδιο, κείμενο, μέγεθος — το πρωτότυπο διατηρείται.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Άνοιγμα φακέλου';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'όλες οι φωτογραφίες του';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Άνοιγμα φωτογραφίας';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'από τη συλλογή ή από τα αρχεία';
+
+  @override
+  String get fotoEditAufDemGeraet =>
+      'Οι φωτογραφίες δεν φεύγουν από αυτήν τη συσκευή.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Επιλογή φακέλου με φωτογραφίες';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl φωτογραφίες',
+      one: '$ordner · $anzahl φωτογραφία',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer =>
+      'Δεν υπάρχουν φωτογραφίες σε αυτόν τον φάκελο.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer από $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Περικοπή';
+
+  @override
+  String get fotoEditAnpassen => 'Προσαρμογή';
+
+  @override
+  String get fotoEditFilter => 'Φίλτρα';
+
+  @override
+  String get fotoEditZeichnen => 'Σχέδιο';
+
+  @override
+  String get fotoEditText => 'Κείμενο';
+
+  @override
+  String get fotoEditGroesse => 'Μέγεθος';
+
+  @override
+  String get fotoEditProzent => 'Ποσοστό';
+
+  @override
+  String get fotoEditPixel => 'Pixel';
+
+  @override
+  String get fotoEditBreite => 'Πλάτος';
+
+  @override
+  String get fotoEditHoehe => 'Ύψος';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt =>
+      'Οι αναλογίες παραμένουν ίδιες.';
+
+  @override
+  String get fotoEditFormat => 'Μορφή';
+
+  @override
+  String get fotoEditQualitaet => 'Ποιότητα';
+
+  @override
+  String get fotoEditJetzt => 'Τώρα';
+
+  @override
+  String get fotoEditDanach => 'Μετά';
+
+  @override
+  String get fotoEditWirdBerechnet => 'υπολογίζεται…';
+
+  @override
+  String get fotoEditAnwenden => 'Εφαρμογή';
+
+  @override
+  String get fotoEditGespeichertTitel =>
+      'Η επεξεργασμένη φωτογραφία αποθηκεύτηκε';
+
+  @override
+  String get fotoEditInFotosApp => 'Στην εφαρμογή «Φωτογραφίες»';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Το πρωτότυπο έμεινε αμετάβλητο:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage =>
+      'Θέλετε να διαγράψετε το πρωτότυπο;';
+
+  @override
+  String get fotoEditLoeschenEndgueltig =>
+      'Η διαγραφή δεν μπορεί να αναιρεθεί.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Μεταφέρεται στο άλμπουμ «Πρόσφατα διαγραμμένα», από όπου μπορεί να ανακτηθεί.';
+
+  @override
+  String get fotoEditBehalten => 'Διατήρηση';
+
+  @override
+  String get fotoEditLoeschen => 'Διαγραφή';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Το πρωτότυπο διαγράφηκε.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Δεν ήταν δυνατή η διαγραφή του πρωτοτύπου. Έμεινε αμετάβλητο.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Δεν αποθηκεύτηκε. Η επεξεργασμένη φωτογραφία είναι ακόμη εδώ.';
+
+  @override
+  String get fotoEditFehlerSpeichern =>
+      'Δεν ήταν δυνατή η αποθήκευση της φωτογραφίας.';
+
+  @override
+  String get fotoEditFehlerOeffnen =>
+      'Αυτή η φωτογραφία δεν μπορεί να ανοίξει.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'Οι φωτογραφίες HEIC (από iPhone) δεν ανοίγουν σε αυτόν τον υπολογιστή.';
+
+  @override
+  String get fotoEditFehlerOrdner =>
+      'Δεν ήταν δυνατή η ανάγνωση αυτού του φακέλου.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Απόρριψη αλλαγών;';
+
+  @override
+  String get fotoEditVerwerfenText =>
+      'Η επεξεργασμένη φωτογραφία δεν έχει αποθηκευτεί ακόμη.';
+
+  @override
+  String get fotoEditVerwerfen => 'Απόρριψη';
+
+  @override
+  String get fotoEditDateiZusatz => 'επεξεργασμένη';
+
+  @override
+  String get fotoEditSpeichert => 'Αποθήκευση…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Αναίρεση';
+
+  @override
+  String get fotoEditWiederholen => 'Επανάληψη';
+
+  @override
+  String get fotoEditFertig => 'Τέλος';
+
+  @override
+  String get fotoEditZurueck => 'Πίσω';
+
+  @override
+  String get fotoEditEntfernen => 'Αφαίρεση';
+
+  @override
+  String get fotoEditBearbeiten => 'Επεξεργασία';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Περιστροφή και κλιμάκωση';
+
+  @override
+  String get fotoEditMehr => 'Περισσότερα';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Επαναφορά';
+
+  @override
+  String get fotoEditBitteWarten => 'Περιμένετε…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Εφαρμογή αλλαγών…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Προετοιμασία επεξεργαστή…';
+
+  @override
+  String get fotoEditDrehen => 'Περιστροφή';
+
+  @override
+  String get fotoEditSpiegeln => 'Αναστροφή';
+
+  @override
+  String get fotoEditBegradigen => 'Ίσιωμα';
+
+  @override
+  String get fotoEditWaagerecht => 'Οριζόντια';
+
+  @override
+  String get fotoEditSenkrecht => 'Κατακόρυφα';
+
+  @override
+  String get fotoEditSeitenformat => 'Αναλογία διαστάσεων';
+
+  @override
+  String get fotoEditFrei => 'Ελεύθερα';
+
+  @override
+  String get fotoEditOriginal => 'Πρωτότυπο';
+
+  @override
+  String get fotoEditHelligkeit => 'Φωτεινότητα';
+
+  @override
+  String get fotoEditKontrast => 'Αντίθεση';
+
+  @override
+  String get fotoEditSaettigung => 'Κορεσμός';
+
+  @override
+  String get fotoEditBelichtung => 'Έκθεση';
+
+  @override
+  String get fotoEditFarbton => 'Απόχρωση';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Θερμοκρασία χρώματος';
+
+  @override
+  String get fotoEditVerblassen => 'Ξεθώριασμα';
+
+  @override
+  String get fotoEditToenung => 'Χροιά';
+
+  @override
+  String get fotoEditKeinFilter => 'Χωρίς φίλτρο';
+
+  @override
+  String get fotoEditZoomen => 'Ζουμ';
+
+  @override
+  String get fotoEditFreihand => 'Ελεύθερο σχέδιο';
+
+  @override
+  String get fotoEditPfeil => 'Βέλος';
+
+  @override
+  String get fotoEditLinie => 'Γραμμή';
+
+  @override
+  String get fotoEditRechteck => 'Ορθογώνιο';
+
+  @override
+  String get fotoEditKreis => 'Κύκλος';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Θόλωση';
+
+  @override
+  String get fotoEditVerpixeln => 'Ψηφιδοποίηση';
+
+  @override
+  String get fotoEditLinienstaerke => 'Πάχος γραμμής';
+
+  @override
+  String get fotoEditRadierer => 'Γόμα';
+
+  @override
+  String get fotoEditFuellung => 'Γέμισμα';
+
+  @override
+  String get fotoEditDeckkraft => 'Αδιαφάνεια';
+
+  @override
+  String get fotoEditFarbe => 'Χρώμα';
+
+  @override
+  String get fotoEditTextEingeben => 'Εισαγάγετε κείμενο';
+
+  @override
+  String get fotoEditTextAusrichten => 'Στοίχιση κειμένου';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Μέγεθος γραμματοσειράς';
+
+  @override
+  String get fotoEditHintergrund => 'Φόντο';
 }

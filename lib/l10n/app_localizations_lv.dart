@@ -3484,4 +3484,304 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Šajā mapē neizdevās ierakstīt. Lūdzu, izvēlieties citu mapi.';
+
+  @override
+  String get extrasFotoEditTitel => 'Foto rediģēšana';
+
+  @override
+  String get extrasFotoEditText =>
+      'Apgriešana, krāsas, zīmēšana, teksts, izmērs — oriģināls saglabājas.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Atvērt mapi';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'visi tajā esošie fotoattēli';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Atvērt fotoattēlu';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'no galerijas vai no failiem';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Fotoattēli neatstāj šo ierīci.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Izvēlieties mapi ar fotoattēliem';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl fotoattēli',
+      one: '$ordner · $anzahl fotoattēls',
+      zero: '$ordner · $anzahl fotoattēli',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'Šajā mapē nav fotoattēlu.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer no $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Apgriezt';
+
+  @override
+  String get fotoEditAnpassen => 'Pielāgot';
+
+  @override
+  String get fotoEditFilter => 'Filtri';
+
+  @override
+  String get fotoEditZeichnen => 'Zīmēt';
+
+  @override
+  String get fotoEditText => 'Teksts';
+
+  @override
+  String get fotoEditGroesse => 'Izmērs';
+
+  @override
+  String get fotoEditProzent => 'Procenti';
+
+  @override
+  String get fotoEditPixel => 'Pikseļi';
+
+  @override
+  String get fotoEditBreite => 'Platums';
+
+  @override
+  String get fotoEditHoehe => 'Augstums';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt =>
+      'Proporcijas paliek nemainīgas.';
+
+  @override
+  String get fotoEditFormat => 'Formāts';
+
+  @override
+  String get fotoEditQualitaet => 'Kvalitāte';
+
+  @override
+  String get fotoEditJetzt => 'Tagad';
+
+  @override
+  String get fotoEditDanach => 'Pēc tam';
+
+  @override
+  String get fotoEditWirdBerechnet => 'aprēķina…';
+
+  @override
+  String get fotoEditAnwenden => 'Lietot';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Rediģētais fotoattēls ir saglabāts';
+
+  @override
+  String get fotoEditInFotosApp => 'Lietotnē “Fotoattēli”';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Oriģināls palika nemainīts:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Vai vēlaties dzēst oriģinālu?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Dzēšanu nevar atsaukt.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Tas tiek pārvietots uz albumu “Nesen dzēstie”, no kurienes to var atjaunot.';
+
+  @override
+  String get fotoEditBehalten => 'Paturēt';
+
+  @override
+  String get fotoEditLoeschen => 'Dzēst';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Oriģināls ir izdzēsts.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Oriģinālu neizdevās izdzēst. Tas palika nemainīts.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Nav saglabāts. Rediģētais fotoattēls joprojām ir šeit.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Fotoattēlu neizdevās saglabāt.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Šo fotoattēlu nevar atvērt.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'HEIC fotoattēlus (no iPhone) šajā datorā nevar atvērt.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Šo mapi neizdevās nolasīt.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Atmest izmaiņas?';
+
+  @override
+  String get fotoEditVerwerfenText =>
+      'Rediģētais fotoattēls vēl nav saglabāts.';
+
+  @override
+  String get fotoEditVerwerfen => 'Atmest';
+
+  @override
+  String get fotoEditDateiZusatz => 'rediģēts';
+
+  @override
+  String get fotoEditSpeichert => 'Saglabā…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Atsaukt';
+
+  @override
+  String get fotoEditWiederholen => 'Atkārtot';
+
+  @override
+  String get fotoEditFertig => 'Gatavs';
+
+  @override
+  String get fotoEditZurueck => 'Atpakaļ';
+
+  @override
+  String get fotoEditEntfernen => 'Noņemt';
+
+  @override
+  String get fotoEditBearbeiten => 'Rediģēt';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Pagriezt un mērogot';
+
+  @override
+  String get fotoEditMehr => 'Vairāk';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Atiestatīt';
+
+  @override
+  String get fotoEditBitteWarten => 'Lūdzu, uzgaidiet…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Tiek lietotas izmaiņas…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Tiek sagatavots redaktors…';
+
+  @override
+  String get fotoEditDrehen => 'Pagriezt';
+
+  @override
+  String get fotoEditSpiegeln => 'Apvērst';
+
+  @override
+  String get fotoEditBegradigen => 'Iztaisnot';
+
+  @override
+  String get fotoEditWaagerecht => 'Horizontāli';
+
+  @override
+  String get fotoEditSenkrecht => 'Vertikāli';
+
+  @override
+  String get fotoEditSeitenformat => 'Malu attiecība';
+
+  @override
+  String get fotoEditFrei => 'Brīvi';
+
+  @override
+  String get fotoEditOriginal => 'Oriģināls';
+
+  @override
+  String get fotoEditHelligkeit => 'Spilgtums';
+
+  @override
+  String get fotoEditKontrast => 'Kontrasts';
+
+  @override
+  String get fotoEditSaettigung => 'Piesātinājums';
+
+  @override
+  String get fotoEditBelichtung => 'Ekspozīcija';
+
+  @override
+  String get fotoEditFarbton => 'Nokrāsa';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Krāsu temperatūra';
+
+  @override
+  String get fotoEditVerblassen => 'Izbalēšana';
+
+  @override
+  String get fotoEditToenung => 'Tonis';
+
+  @override
+  String get fotoEditKeinFilter => 'Bez filtra';
+
+  @override
+  String get fotoEditZoomen => 'Tālummaiņa';
+
+  @override
+  String get fotoEditFreihand => 'Brīvroka';
+
+  @override
+  String get fotoEditPfeil => 'Bulta';
+
+  @override
+  String get fotoEditLinie => 'Līnija';
+
+  @override
+  String get fotoEditRechteck => 'Taisnstūris';
+
+  @override
+  String get fotoEditKreis => 'Aplis';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Izpludināt';
+
+  @override
+  String get fotoEditVerpixeln => 'Pikselizēt';
+
+  @override
+  String get fotoEditLinienstaerke => 'Līnijas biezums';
+
+  @override
+  String get fotoEditRadierer => 'Dzēšgumija';
+
+  @override
+  String get fotoEditFuellung => 'Aizpildījums';
+
+  @override
+  String get fotoEditDeckkraft => 'Necaurredzamība';
+
+  @override
+  String get fotoEditFarbe => 'Krāsa';
+
+  @override
+  String get fotoEditTextEingeben => 'Ievadiet tekstu';
+
+  @override
+  String get fotoEditTextAusrichten => 'Līdzināt tekstu';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Fonta lielums';
+
+  @override
+  String get fotoEditHintergrund => 'Fons';
 }

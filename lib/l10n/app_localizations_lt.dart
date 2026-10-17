@@ -3490,4 +3490,303 @@ class AppLocalizationsLt extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Į šį aplanką įrašyti nepavyko. Pasirinkite kitą aplanką.';
+
+  @override
+  String get extrasFotoEditTitel => 'Nuotraukų redagavimas';
+
+  @override
+  String get extrasFotoEditText =>
+      'Apkarpymas, spalvos, piešimas, tekstas, dydis — originalas išlieka.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Atidaryti aplanką';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'visos jame esančios nuotraukos';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Atidaryti nuotrauką';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'iš galerijos arba iš failų';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Nuotraukos nepalieka šio įrenginio.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Pasirinkite aplanką su nuotraukomis';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl nuotraukų',
+      many: '$ordner · $anzahl nuotraukos',
+      few: '$ordner · $anzahl nuotraukos',
+      one: '$ordner · $anzahl nuotrauka',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'Šiame aplanke nuotraukų nėra.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer iš $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Apkarpyti';
+
+  @override
+  String get fotoEditAnpassen => 'Koreguoti';
+
+  @override
+  String get fotoEditFilter => 'Filtrai';
+
+  @override
+  String get fotoEditZeichnen => 'Piešti';
+
+  @override
+  String get fotoEditText => 'Tekstas';
+
+  @override
+  String get fotoEditGroesse => 'Dydis';
+
+  @override
+  String get fotoEditProzent => 'Procentai';
+
+  @override
+  String get fotoEditPixel => 'Pikseliai';
+
+  @override
+  String get fotoEditBreite => 'Plotis';
+
+  @override
+  String get fotoEditHoehe => 'Aukštis';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'Proporcijos nesikeičia.';
+
+  @override
+  String get fotoEditFormat => 'Formatas';
+
+  @override
+  String get fotoEditQualitaet => 'Kokybė';
+
+  @override
+  String get fotoEditJetzt => 'Dabar';
+
+  @override
+  String get fotoEditDanach => 'Po to';
+
+  @override
+  String get fotoEditWirdBerechnet => 'skaičiuojama…';
+
+  @override
+  String get fotoEditAnwenden => 'Taikyti';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Redaguota nuotrauka išsaugota';
+
+  @override
+  String get fotoEditInFotosApp => 'Programoje „Nuotraukos“';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Originalas liko nepakeistas:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Ar norite ištrinti originalą?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Ištrynimo atšaukti negalima.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Jis perkeliamas į albumą „Neseniai ištrinti“, iš kur jį galima atkurti.';
+
+  @override
+  String get fotoEditBehalten => 'Palikti';
+
+  @override
+  String get fotoEditLoeschen => 'Ištrinti';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Originalas ištrintas.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Originalo ištrinti nepavyko. Jis liko nepakeistas.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Neišsaugota. Redaguota nuotrauka vis dar čia.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Nuotraukos išsaugoti nepavyko.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Šios nuotraukos atidaryti negalima.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'HEIC nuotraukų (iš iPhone) šiame kompiuteryje atidaryti negalima.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Šio aplanko nuskaityti nepavyko.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Atmesti pakeitimus?';
+
+  @override
+  String get fotoEditVerwerfenText => 'Redaguota nuotrauka dar neišsaugota.';
+
+  @override
+  String get fotoEditVerwerfen => 'Atmesti';
+
+  @override
+  String get fotoEditDateiZusatz => 'redaguota';
+
+  @override
+  String get fotoEditSpeichert => 'Išsaugoma…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Anuliuoti';
+
+  @override
+  String get fotoEditWiederholen => 'Pakartoti';
+
+  @override
+  String get fotoEditFertig => 'Atlikta';
+
+  @override
+  String get fotoEditZurueck => 'Atgal';
+
+  @override
+  String get fotoEditEntfernen => 'Pašalinti';
+
+  @override
+  String get fotoEditBearbeiten => 'Redaguoti';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Pasukti ir keisti mastelį';
+
+  @override
+  String get fotoEditMehr => 'Daugiau';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Atkurti';
+
+  @override
+  String get fotoEditBitteWarten => 'Palaukite…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Taikomi pakeitimai…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Ruošiama redagavimo priemonė…';
+
+  @override
+  String get fotoEditDrehen => 'Pasukti';
+
+  @override
+  String get fotoEditSpiegeln => 'Apversti';
+
+  @override
+  String get fotoEditBegradigen => 'Ištiesinti';
+
+  @override
+  String get fotoEditWaagerecht => 'Horizontaliai';
+
+  @override
+  String get fotoEditSenkrecht => 'Vertikaliai';
+
+  @override
+  String get fotoEditSeitenformat => 'Kraštinių santykis';
+
+  @override
+  String get fotoEditFrei => 'Laisvas';
+
+  @override
+  String get fotoEditOriginal => 'Originalas';
+
+  @override
+  String get fotoEditHelligkeit => 'Šviesumas';
+
+  @override
+  String get fotoEditKontrast => 'Kontrastas';
+
+  @override
+  String get fotoEditSaettigung => 'Sodrumas';
+
+  @override
+  String get fotoEditBelichtung => 'Ekspozicija';
+
+  @override
+  String get fotoEditFarbton => 'Atspalvis';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Spalvų temperatūra';
+
+  @override
+  String get fotoEditVerblassen => 'Išblukimas';
+
+  @override
+  String get fotoEditToenung => 'Tonavimas';
+
+  @override
+  String get fotoEditKeinFilter => 'Be filtro';
+
+  @override
+  String get fotoEditZoomen => 'Mastelis';
+
+  @override
+  String get fotoEditFreihand => 'Laisva ranka';
+
+  @override
+  String get fotoEditPfeil => 'Rodyklė';
+
+  @override
+  String get fotoEditLinie => 'Linija';
+
+  @override
+  String get fotoEditRechteck => 'Stačiakampis';
+
+  @override
+  String get fotoEditKreis => 'Apskritimas';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Suliejimas';
+
+  @override
+  String get fotoEditVerpixeln => 'Pikseliavimas';
+
+  @override
+  String get fotoEditLinienstaerke => 'Linijos storis';
+
+  @override
+  String get fotoEditRadierer => 'Trintukas';
+
+  @override
+  String get fotoEditFuellung => 'Užpildas';
+
+  @override
+  String get fotoEditDeckkraft => 'Nepermatomumas';
+
+  @override
+  String get fotoEditFarbe => 'Spalva';
+
+  @override
+  String get fotoEditTextEingeben => 'Įveskite tekstą';
+
+  @override
+  String get fotoEditTextAusrichten => 'Lygiuoti tekstą';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Šrifto dydis';
+
+  @override
+  String get fotoEditHintergrund => 'Fonas';
 }

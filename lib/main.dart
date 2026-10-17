@@ -4,6 +4,7 @@ import 'dart:ui' show PlatformDispatcher;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:material_ui/material_ui.dart' as material_ui;
 import 'package:just_audio_media_kit/just_audio_media_kit.dart';
 import 'l10n/app_localizations.dart';
 import 'screens/language_selection.dart';
@@ -269,6 +270,12 @@ class _MitgliedAppState extends State<MitgliedApp> {
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
+              // „Foto bearbeiten": pro_image_editor baut seit 14 auf
+              // material_ui statt flutter/material. Ohne dessen Texte wirft
+              // jeder Dialog im Editor „No MaterialLocalizations found".
+              // Hinten angehängt: Flutter nimmt je Typ den ersten Delegaten,
+              // für flutter/material bleibt also alles wie bisher.
+              ...material_ui.GlobalMaterialLocalizations.delegates,
             ],
             supportedLocales: AppLocalizations.supportedLocales,
             // Both palettes live in AppTheme; which one is live is decided by

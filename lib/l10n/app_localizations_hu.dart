@@ -3494,4 +3494,301 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Ebbe a mappába nem sikerült írni. Válasszon másik mappát.';
+
+  @override
+  String get extrasFotoEditTitel => 'Fotószerkesztés';
+
+  @override
+  String get extrasFotoEditText =>
+      'Vágás, színek, rajz, szöveg, méret — az eredeti megmarad.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Mappa megnyitása';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'az összes benne lévő fotó';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Fotó megnyitása';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'a galériából vagy a fájlok közül';
+
+  @override
+  String get fotoEditAufDemGeraet => 'A fotók nem hagyják el ezt az eszközt.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'A fotókat tartalmazó mappa kiválasztása';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl fotó',
+      one: '$ordner · $anzahl fotó',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'Ebben a mappában nincsenek fotók.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer/$gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Vágás';
+
+  @override
+  String get fotoEditAnpassen => 'Beállítás';
+
+  @override
+  String get fotoEditFilter => 'Szűrők';
+
+  @override
+  String get fotoEditZeichnen => 'Rajz';
+
+  @override
+  String get fotoEditText => 'Szöveg';
+
+  @override
+  String get fotoEditGroesse => 'Méret';
+
+  @override
+  String get fotoEditProzent => 'Százalék';
+
+  @override
+  String get fotoEditPixel => 'Pixel';
+
+  @override
+  String get fotoEditBreite => 'Szélesség';
+
+  @override
+  String get fotoEditHoehe => 'Magasság';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'A képarány nem változik.';
+
+  @override
+  String get fotoEditFormat => 'Formátum';
+
+  @override
+  String get fotoEditQualitaet => 'Minőség';
+
+  @override
+  String get fotoEditJetzt => 'Most';
+
+  @override
+  String get fotoEditDanach => 'Utána';
+
+  @override
+  String get fotoEditWirdBerechnet => 'számítás…';
+
+  @override
+  String get fotoEditAnwenden => 'Alkalmaz';
+
+  @override
+  String get fotoEditGespeichertTitel => 'A szerkesztett fotó mentve';
+
+  @override
+  String get fotoEditInFotosApp => 'A „Fotók“ appban';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Az eredeti változatlan maradt:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Törli az eredetit?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'A törlés nem vonható vissza.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'A „Nemrég törölt“ albumba kerül, ahonnan visszaállítható.';
+
+  @override
+  String get fotoEditBehalten => 'Megtartás';
+
+  @override
+  String get fotoEditLoeschen => 'Törlés';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Az eredeti törölve.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Az eredetit nem sikerült törölni. Változatlan maradt.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Nincs mentve. A szerkesztett fotó még itt van.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'A fotót nem sikerült menteni.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Ez a fotó nem nyitható meg.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'A HEIC fotók (iPhone-ról) nem nyithatók meg ezen a számítógépen.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Ezt a mappát nem sikerült beolvasni.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Elveti a módosításokat?';
+
+  @override
+  String get fotoEditVerwerfenText => 'A szerkesztett fotó még nincs mentve.';
+
+  @override
+  String get fotoEditVerwerfen => 'Elvetés';
+
+  @override
+  String get fotoEditDateiZusatz => 'szerkesztett';
+
+  @override
+  String get fotoEditSpeichert => 'Mentés…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Visszavonás';
+
+  @override
+  String get fotoEditWiederholen => 'Újra';
+
+  @override
+  String get fotoEditFertig => 'Kész';
+
+  @override
+  String get fotoEditZurueck => 'Vissza';
+
+  @override
+  String get fotoEditEntfernen => 'Eltávolítás';
+
+  @override
+  String get fotoEditBearbeiten => 'Szerkesztés';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Forgatás és méretezés';
+
+  @override
+  String get fotoEditMehr => 'Továbbiak';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Visszaállítás';
+
+  @override
+  String get fotoEditBitteWarten => 'Kérjük, várjon…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Módosítások alkalmazása…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'A szerkesztő előkészítése…';
+
+  @override
+  String get fotoEditDrehen => 'Forgatás';
+
+  @override
+  String get fotoEditSpiegeln => 'Tükrözés';
+
+  @override
+  String get fotoEditBegradigen => 'Kiegyenesítés';
+
+  @override
+  String get fotoEditWaagerecht => 'Vízszintes';
+
+  @override
+  String get fotoEditSenkrecht => 'Függőleges';
+
+  @override
+  String get fotoEditSeitenformat => 'Képarány';
+
+  @override
+  String get fotoEditFrei => 'Szabad';
+
+  @override
+  String get fotoEditOriginal => 'Eredeti';
+
+  @override
+  String get fotoEditHelligkeit => 'Fényerő';
+
+  @override
+  String get fotoEditKontrast => 'Kontraszt';
+
+  @override
+  String get fotoEditSaettigung => 'Telítettség';
+
+  @override
+  String get fotoEditBelichtung => 'Expozíció';
+
+  @override
+  String get fotoEditFarbton => 'Színárnyalat';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Színhőmérséklet';
+
+  @override
+  String get fotoEditVerblassen => 'Fakítás';
+
+  @override
+  String get fotoEditToenung => 'Tónus';
+
+  @override
+  String get fotoEditKeinFilter => 'Nincs szűrő';
+
+  @override
+  String get fotoEditZoomen => 'Nagyítás';
+
+  @override
+  String get fotoEditFreihand => 'Szabadkézi';
+
+  @override
+  String get fotoEditPfeil => 'Nyíl';
+
+  @override
+  String get fotoEditLinie => 'Vonal';
+
+  @override
+  String get fotoEditRechteck => 'Téglalap';
+
+  @override
+  String get fotoEditKreis => 'Kör';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Elmosás';
+
+  @override
+  String get fotoEditVerpixeln => 'Pixelezés';
+
+  @override
+  String get fotoEditLinienstaerke => 'Vonalvastagság';
+
+  @override
+  String get fotoEditRadierer => 'Radír';
+
+  @override
+  String get fotoEditFuellung => 'Kitöltés';
+
+  @override
+  String get fotoEditDeckkraft => 'Átlátszatlanság';
+
+  @override
+  String get fotoEditFarbe => 'Szín';
+
+  @override
+  String get fotoEditTextEingeben => 'Írja be a szöveget';
+
+  @override
+  String get fotoEditTextAusrichten => 'Szöveg igazítása';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Betűméret';
+
+  @override
+  String get fotoEditHintergrund => 'Háttér';
 }

@@ -59,6 +59,9 @@ class MainActivity : FlutterActivity() {
         // „PDF in Bilder": Ordner waehlen und hineinschreiben -- siehe
         // [OrdnerAblage].
         OrdnerAblage.anbinden(this, flutterEngine)
+        // „Foto bearbeiten": ein einzelnes Foto waehlen, lesen, loeschen --
+        // siehe [FotoQuelle].
+        FotoQuelle.anbinden(this, flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, SECURE_CHANNEL)
             .setMethodCallHandler { call, result ->
                 when (call.method) {
@@ -388,6 +391,8 @@ class MainActivity : FlutterActivity() {
     // auf IHRE Ergebnisse.
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (OrdnerAblage.ergebnis(this, requestCode, resultCode, data)) return
+        if (FotoQuelle.ergebnis(this, requestCode, resultCode, data)) return
+        if (FotoDateien.ergebnis(requestCode, resultCode)) return
         super.onActivityResult(requestCode, resultCode, data)
     }
 

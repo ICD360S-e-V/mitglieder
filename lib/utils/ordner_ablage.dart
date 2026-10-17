@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'datei_ablage.dart';
@@ -101,15 +100,18 @@ class PfadOrdner implements ZielOrdner {
 /// Gleicher Kanal, gleiche Aufrufe auf beiden Systemen:
 /// `waehlen` → `{ordner, name}` oder `null`; `schreiben` → der Name, unter
 /// dem die Datei liegt; `schliessen` → gibt den Ordner frei.
+///
+/// „Foto bearbeiten" liest über denselben Kanal aus dem Ordner
+/// (`KanalFotoOrdner` in foto_quelle.dart): `auflisten`, `lesen`, `vorschau`,
+/// `loeschen`.
 class KanalOrdner implements ZielOrdner {
-  KanalOrdner._(this._schluessel, this.name);
+  KanalOrdner._(this.schluessel, this.name);
 
-  @visibleForTesting
   static const kanal = MethodChannel('de.icd360sev.mitglied/ordner_ablage');
 
   /// Android: die Adresse des gewählten Ordners. iPhone: eine Kennung, unter
   /// der die native Seite den geöffneten Ordner hält.
-  final String _schluessel;
+  final String schluessel;
 
   @override
   final String name;
@@ -126,7 +128,7 @@ class KanalOrdner implements ZielOrdner {
   Future<String> schreiben(String dateiname, Uint8List bytes,
       {required String mime}) async {
     final name = await kanal.invokeMethod<String>('schreiben', {
-      'ordner': _schluessel,
+      'ordner': schluessel,
       'name': sichererDateiname(dateiname),
       'mime': mime,
       'bytes': bytes,
@@ -137,7 +139,7 @@ class KanalOrdner implements ZielOrdner {
   @override
   Future<void> schliessen() async {
     try {
-      await kanal.invokeMethod<void>('schliessen', {'ordner': _schluessel});
+      await kanal.invokeMethod<void>('schliessen', {'ordner': schluessel});
     } catch (_) {
       // Freigeben ist Aufräumen: misslingt es, sind die Bilder trotzdem da.
     }

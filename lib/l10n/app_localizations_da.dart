@@ -3489,4 +3489,302 @@ class AppLocalizationsDa extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Der kunne ikke skrives til denne mappe. Vælg en anden mappe.';
+
+  @override
+  String get extrasFotoEditTitel => 'Rediger foto';
+
+  @override
+  String get extrasFotoEditText =>
+      'Beskæring, farver, tegning, tekst, størrelse — originalen bevares.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Åbn en mappe';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'alle fotos i den';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Åbn et foto';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'fra galleriet eller fra filerne';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Fotoene forlader ikke denne enhed.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Vælg mappen med fotos';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl fotos',
+      one: '$ordner · $anzahl foto',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'Der er ingen fotos i denne mappe.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer af $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Beskær';
+
+  @override
+  String get fotoEditAnpassen => 'Juster';
+
+  @override
+  String get fotoEditFilter => 'Filtre';
+
+  @override
+  String get fotoEditZeichnen => 'Tegn';
+
+  @override
+  String get fotoEditText => 'Tekst';
+
+  @override
+  String get fotoEditGroesse => 'Størrelse';
+
+  @override
+  String get fotoEditProzent => 'Procent';
+
+  @override
+  String get fotoEditPixel => 'Pixels';
+
+  @override
+  String get fotoEditBreite => 'Bredde';
+
+  @override
+  String get fotoEditHoehe => 'Højde';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt =>
+      'Proportionerne forbliver de samme.';
+
+  @override
+  String get fotoEditFormat => 'Format';
+
+  @override
+  String get fotoEditQualitaet => 'Kvalitet';
+
+  @override
+  String get fotoEditJetzt => 'Nu';
+
+  @override
+  String get fotoEditDanach => 'Bagefter';
+
+  @override
+  String get fotoEditWirdBerechnet => 'beregnes…';
+
+  @override
+  String get fotoEditAnwenden => 'Anvend';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Det redigerede foto er gemt';
+
+  @override
+  String get fotoEditInFotosApp => 'I »Fotos«';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Originalen er uændret:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Vil du slette originalen?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Sletningen kan ikke fortrydes.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Den flyttes til albummet »Senest slettet«, hvor den kan gendannes.';
+
+  @override
+  String get fotoEditBehalten => 'Behold';
+
+  @override
+  String get fotoEditLoeschen => 'Slet';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Originalen er slettet.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Originalen kunne ikke slettes. Den er uændret.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Ikke gemt. Det redigerede foto er her stadig.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Fotoet kunne ikke gemmes.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Dette foto kan ikke åbnes.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'HEIC-fotos (fra en iPhone) kan ikke åbnes på denne computer.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Denne mappe kunne ikke læses.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Kassér ændringer?';
+
+  @override
+  String get fotoEditVerwerfenText => 'Det redigerede foto er ikke gemt endnu.';
+
+  @override
+  String get fotoEditVerwerfen => 'Kassér';
+
+  @override
+  String get fotoEditDateiZusatz => 'redigeret';
+
+  @override
+  String get fotoEditSpeichert => 'Gemmer…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Fortryd';
+
+  @override
+  String get fotoEditWiederholen => 'Gentag';
+
+  @override
+  String get fotoEditFertig => 'Færdig';
+
+  @override
+  String get fotoEditZurueck => 'Tilbage';
+
+  @override
+  String get fotoEditEntfernen => 'Fjern';
+
+  @override
+  String get fotoEditBearbeiten => 'Rediger';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Rotér og skalér';
+
+  @override
+  String get fotoEditMehr => 'Mere';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Nulstil';
+
+  @override
+  String get fotoEditBitteWarten => 'Vent venligst…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Ændringerne anvendes…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Editoren gøres klar…';
+
+  @override
+  String get fotoEditDrehen => 'Rotér';
+
+  @override
+  String get fotoEditSpiegeln => 'Spejlvend';
+
+  @override
+  String get fotoEditBegradigen => 'Ret op';
+
+  @override
+  String get fotoEditWaagerecht => 'Vandret';
+
+  @override
+  String get fotoEditSenkrecht => 'Lodret';
+
+  @override
+  String get fotoEditSeitenformat => 'Billedformat';
+
+  @override
+  String get fotoEditFrei => 'Fri';
+
+  @override
+  String get fotoEditOriginal => 'Original';
+
+  @override
+  String get fotoEditHelligkeit => 'Lysstyrke';
+
+  @override
+  String get fotoEditKontrast => 'Kontrast';
+
+  @override
+  String get fotoEditSaettigung => 'Mætning';
+
+  @override
+  String get fotoEditBelichtung => 'Eksponering';
+
+  @override
+  String get fotoEditFarbton => 'Farvetone';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Farvetemperatur';
+
+  @override
+  String get fotoEditVerblassen => 'Falmning';
+
+  @override
+  String get fotoEditToenung => 'Toning';
+
+  @override
+  String get fotoEditKeinFilter => 'Intet filter';
+
+  @override
+  String get fotoEditZoomen => 'Zoom';
+
+  @override
+  String get fotoEditFreihand => 'Frihånd';
+
+  @override
+  String get fotoEditPfeil => 'Pil';
+
+  @override
+  String get fotoEditLinie => 'Linje';
+
+  @override
+  String get fotoEditRechteck => 'Rektangel';
+
+  @override
+  String get fotoEditKreis => 'Cirkel';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Slør';
+
+  @override
+  String get fotoEditVerpixeln => 'Pixelér';
+
+  @override
+  String get fotoEditLinienstaerke => 'Stregtykkelse';
+
+  @override
+  String get fotoEditRadierer => 'Viskelæder';
+
+  @override
+  String get fotoEditFuellung => 'Udfyldning';
+
+  @override
+  String get fotoEditDeckkraft => 'Uigennemsigtighed';
+
+  @override
+  String get fotoEditFarbe => 'Farve';
+
+  @override
+  String get fotoEditTextEingeben => 'Skriv tekst';
+
+  @override
+  String get fotoEditTextAusrichten => 'Juster tekst';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Skriftstørrelse';
+
+  @override
+  String get fotoEditHintergrund => 'Baggrund';
 }

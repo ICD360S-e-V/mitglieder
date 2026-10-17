@@ -11,7 +11,9 @@
 // main.dart benutzt — sonst prüfte er eine Skalierung, die es in der App gar
 // nicht gibt.
 
+import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -21,6 +23,7 @@ import 'package:icd360sev_mitglied/l10n/app_localizations.dart';
 import 'package:icd360sev_mitglied/screens/anonymous_chat.dart';
 import 'package:icd360sev_mitglied/screens/login.dart';
 import 'package:icd360sev_mitglied/screens/mitglied_dashboard.dart';
+import 'package:icd360sev_mitglied/screens/foto_bearbeiten_screen.dart';
 import 'package:icd360sev_mitglied/screens/pdf_bilder_screen.dart';
 import 'package:icd360sev_mitglied/screens/problem_help.dart';
 import 'package:icd360sev_mitglied/screens/problem_report.dart';
@@ -30,6 +33,7 @@ import 'package:icd360sev_mitglied/screens/wizard_intro_screen.dart';
 import 'package:icd360sev_mitglied/screens/wizard_stufe_1a_screen.dart';
 import 'package:icd360sev_mitglied/screens/wizard_stufe_2_screen.dart';
 import 'package:icd360sev_mitglied/utils/app_theme.dart';
+import 'package:icd360sev_mitglied/utils/foto_bearbeiten.dart';
 import 'package:icd360sev_mitglied/utils/responsive.dart';
 import 'package:icd360sev_mitglied/services/api_service.dart';
 import 'package:icd360sev_mitglied/widgets/benachrichtigungen_dialog.dart';
@@ -541,6 +545,15 @@ final Map<String, Widget Function()> _bausteine = <String, Widget Function()>{
   // Der leere Zustand von „PDF in Bilder“: Hinweis, Knopf und der Satz,
   // dass alles auf dem Gerät bleibt.
   'PdfBilderScreen': () => const PdfBilderScreen(),
+  // „Größe" in „Foto bearbeiten", während die Datei noch berechnet wird —
+  // mit den Zahlen des 12-Megapixel-Fotos aus der Skizze.
+  'FotoGroessePanel': () => _aufSeite(FotoGroessePanel(
+        start: const FotoGroesse(),
+        standardFormat: FotoFormat.jpg,
+        jetztMasse: (breite: 4000, hoehe: 3000),
+        jetztBytes: 3201478,
+        bild: Completer<Uint8List>().future,
+      )),
 };
 
 void main() {
@@ -649,6 +662,15 @@ void main() {
       'MitgliedExtrasDialog': () => MitgliedExtrasDialog(
             onPdfUnterschreiben: () {},
             onPdfInBilder: () {},
+            onFotoBearbeiten: () {},
+          ),
+      // „Foto bearbeiten": die Wahl am Anfang und die Frage nach dem Original
+      // mit einem echten, langen Kameranamen.
+      'FotoBearbeitenAuswahl': () => const FotoBearbeitenAuswahl(),
+      'FotoGespeichertDialog': () => const FotoGespeichertDialog(
+            kopie: 'IMG_20261017_142305_bearbeitet.jpg',
+            original: 'IMG_20261017_142305.jpg',
+            inFotosApp: false,
           ),
       // Zwanzig Tasten plus Anzeige plus Hinweiszeile — der Dialog mit den
       // meisten Zeilen in dieser Batterie. Auf 320 dp bei 200 % Systemschrift

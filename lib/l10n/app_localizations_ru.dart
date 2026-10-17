@@ -3495,4 +3495,304 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Не удалось записать в эту папку. Выберите другую папку.';
+
+  @override
+  String get extrasFotoEditTitel => 'Редактирование фото';
+
+  @override
+  String get extrasFotoEditText =>
+      'Обрезка, цвета, рисование, текст, размер — оригинал сохраняется.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Открыть папку';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'все фото в ней';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Открыть фото';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'из галереи или из файлов';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Фото не покидают это устройство.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Выбрать папку с фото';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl фото',
+      many: '$ordner · $anzahl фото',
+      few: '$ordner · $anzahl фото',
+      one: '$ordner · $anzahl фото',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'В этой папке нет фото.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer из $gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Обрезка';
+
+  @override
+  String get fotoEditAnpassen => 'Настройка';
+
+  @override
+  String get fotoEditFilter => 'Фильтры';
+
+  @override
+  String get fotoEditZeichnen => 'Рисование';
+
+  @override
+  String get fotoEditText => 'Текст';
+
+  @override
+  String get fotoEditGroesse => 'Размер';
+
+  @override
+  String get fotoEditProzent => 'Проценты';
+
+  @override
+  String get fotoEditPixel => 'Пиксели';
+
+  @override
+  String get fotoEditBreite => 'Ширина';
+
+  @override
+  String get fotoEditHoehe => 'Высота';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'Пропорции сохраняются.';
+
+  @override
+  String get fotoEditFormat => 'Формат';
+
+  @override
+  String get fotoEditQualitaet => 'Качество';
+
+  @override
+  String get fotoEditJetzt => 'Сейчас';
+
+  @override
+  String get fotoEditDanach => 'После';
+
+  @override
+  String get fotoEditWirdBerechnet => 'вычисляется…';
+
+  @override
+  String get fotoEditAnwenden => 'Применить';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Отредактированное фото сохранено';
+
+  @override
+  String get fotoEditInFotosApp => 'В приложении «Фото»';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Оригинал остался без изменений:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage => 'Удалить оригинал?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Удаление нельзя отменить.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      'Он попадёт в альбом «Недавно удаленные», откуда его можно восстановить.';
+
+  @override
+  String get fotoEditBehalten => 'Оставить';
+
+  @override
+  String get fotoEditLoeschen => 'Удалить';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Оригинал удалён.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Не удалось удалить оригинал. Он остался без изменений.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Не сохранено. Отредактированное фото всё ещё здесь.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Не удалось сохранить фото.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Не удаётся открыть это фото.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'Фото в формате HEIC (с iPhone) нельзя открыть на этом компьютере.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Не удалось прочитать эту папку.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Сбросить изменения?';
+
+  @override
+  String get fotoEditVerwerfenText =>
+      'Отредактированное фото ещё не сохранено.';
+
+  @override
+  String get fotoEditVerwerfen => 'Сбросить';
+
+  @override
+  String get fotoEditDateiZusatz => 'изменено';
+
+  @override
+  String get fotoEditSpeichert => 'Сохранение…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Отменить';
+
+  @override
+  String get fotoEditWiederholen => 'Повторить';
+
+  @override
+  String get fotoEditFertig => 'Готово';
+
+  @override
+  String get fotoEditZurueck => 'Назад';
+
+  @override
+  String get fotoEditEntfernen => 'Убрать';
+
+  @override
+  String get fotoEditBearbeiten => 'Изменить';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Повернуть и масштабировать';
+
+  @override
+  String get fotoEditMehr => 'Ещё';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Сброс';
+
+  @override
+  String get fotoEditBitteWarten => 'Пожалуйста, подождите…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Применение изменений…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Подготовка редактора…';
+
+  @override
+  String get fotoEditDrehen => 'Повернуть';
+
+  @override
+  String get fotoEditSpiegeln => 'Отразить';
+
+  @override
+  String get fotoEditBegradigen => 'Выровнять';
+
+  @override
+  String get fotoEditWaagerecht => 'По горизонтали';
+
+  @override
+  String get fotoEditSenkrecht => 'По вертикали';
+
+  @override
+  String get fotoEditSeitenformat => 'Соотношение сторон';
+
+  @override
+  String get fotoEditFrei => 'Свободно';
+
+  @override
+  String get fotoEditOriginal => 'Оригинал';
+
+  @override
+  String get fotoEditHelligkeit => 'Яркость';
+
+  @override
+  String get fotoEditKontrast => 'Контраст';
+
+  @override
+  String get fotoEditSaettigung => 'Насыщенность';
+
+  @override
+  String get fotoEditBelichtung => 'Экспозиция';
+
+  @override
+  String get fotoEditFarbton => 'Оттенок';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Цветовая температура';
+
+  @override
+  String get fotoEditVerblassen => 'Выцветание';
+
+  @override
+  String get fotoEditToenung => 'Тонирование';
+
+  @override
+  String get fotoEditKeinFilter => 'Без фильтра';
+
+  @override
+  String get fotoEditZoomen => 'Масштаб';
+
+  @override
+  String get fotoEditFreihand => 'От руки';
+
+  @override
+  String get fotoEditPfeil => 'Стрелка';
+
+  @override
+  String get fotoEditLinie => 'Линия';
+
+  @override
+  String get fotoEditRechteck => 'Прямоугольник';
+
+  @override
+  String get fotoEditKreis => 'Круг';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Размытие';
+
+  @override
+  String get fotoEditVerpixeln => 'Пикселизация';
+
+  @override
+  String get fotoEditLinienstaerke => 'Толщина линии';
+
+  @override
+  String get fotoEditRadierer => 'Ластик';
+
+  @override
+  String get fotoEditFuellung => 'Заливка';
+
+  @override
+  String get fotoEditDeckkraft => 'Непрозрачность';
+
+  @override
+  String get fotoEditFarbe => 'Цвет';
+
+  @override
+  String get fotoEditTextEingeben => 'Введите текст';
+
+  @override
+  String get fotoEditTextAusrichten => 'Выравнивание текста';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Размер шрифта';
+
+  @override
+  String get fotoEditHintergrund => 'Фон';
 }

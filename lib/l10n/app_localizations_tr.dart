@@ -3495,4 +3495,302 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get pdfBilderFehlerOrdner =>
       'Bu klasöre yazılamadı. Lütfen başka bir klasör seçin.';
+
+  @override
+  String get extrasFotoEditTitel => 'Fotoğraf düzenleme';
+
+  @override
+  String get extrasFotoEditText =>
+      'Kırpma, renkler, çizim, metin, boyut — orijinal korunur.';
+
+  @override
+  String get fotoEditOrdnerOeffnen => 'Klasör aç';
+
+  @override
+  String get fotoEditOrdnerOeffnenText => 'içindeki tüm fotoğraflar';
+
+  @override
+  String get fotoEditFotoOeffnen => 'Fotoğraf aç';
+
+  @override
+  String get fotoEditFotoOeffnenText => 'galeriden veya dosyalardan';
+
+  @override
+  String get fotoEditAufDemGeraet => 'Fotoğraflar bu cihazdan çıkmaz.';
+
+  @override
+  String get fotoEditOrdnerTitel => 'Fotoğrafların olduğu klasörü seçin';
+
+  @override
+  String fotoEditOrdnerKopf(int anzahl, String ordner) {
+    String _temp0 = intl.Intl.pluralLogic(
+      anzahl,
+      locale: localeName,
+      other: '$ordner · $anzahl fotoğraf',
+      one: '$ordner · $anzahl fotoğraf',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fotoEditOrdnerLeer => 'Bu klasörde fotoğraf yok.';
+
+  @override
+  String fotoEditPosition(int nummer, int gesamt) {
+    return '$nummer/$gesamt';
+  }
+
+  @override
+  String get fotoEditZuschneiden => 'Kırp';
+
+  @override
+  String get fotoEditAnpassen => 'Ayarla';
+
+  @override
+  String get fotoEditFilter => 'Filtreler';
+
+  @override
+  String get fotoEditZeichnen => 'Çiz';
+
+  @override
+  String get fotoEditText => 'Metin';
+
+  @override
+  String get fotoEditGroesse => 'Boyut';
+
+  @override
+  String get fotoEditProzent => 'Yüzde';
+
+  @override
+  String get fotoEditPixel => 'Piksel';
+
+  @override
+  String get fotoEditBreite => 'Genişlik';
+
+  @override
+  String get fotoEditHoehe => 'Yükseklik';
+
+  @override
+  String get fotoEditSeitenverhaeltnisBleibt => 'Oranlar aynı kalır.';
+
+  @override
+  String get fotoEditFormat => 'Biçim';
+
+  @override
+  String get fotoEditQualitaet => 'Kalite';
+
+  @override
+  String get fotoEditJetzt => 'Şimdi';
+
+  @override
+  String get fotoEditDanach => 'Sonra';
+
+  @override
+  String get fotoEditWirdBerechnet => 'hesaplanıyor…';
+
+  @override
+  String get fotoEditAnwenden => 'Uygula';
+
+  @override
+  String get fotoEditGespeichertTitel => 'Düzenlenen fotoğraf kaydedildi';
+
+  @override
+  String get fotoEditInFotosApp => '„Fotoğraflar“ uygulamasında';
+
+  @override
+  String get fotoEditOriginalUnveraendert => 'Orijinal değişmeden kaldı:';
+
+  @override
+  String get fotoEditOriginalLoeschenFrage =>
+      'Orijinali silmek istiyor musunuz?';
+
+  @override
+  String get fotoEditLoeschenEndgueltig => 'Silme işlemi geri alınamaz.';
+
+  @override
+  String get fotoEditLoeschenZuletztGeloescht =>
+      '„Son Silinenler“ albümüne taşınır ve oradan geri yüklenebilir.';
+
+  @override
+  String get fotoEditBehalten => 'Sakla';
+
+  @override
+  String get fotoEditLoeschen => 'Sil';
+
+  @override
+  String get fotoEditOriginalGeloescht => 'Orijinal silindi.';
+
+  @override
+  String get fotoEditOriginalNichtGeloescht =>
+      'Orijinal silinemedi. Değişmeden kaldı.';
+
+  @override
+  String get fotoEditNichtGespeichert =>
+      'Kaydedilmedi. Düzenlenen fotoğraf hâlâ burada.';
+
+  @override
+  String get fotoEditFehlerSpeichern => 'Fotoğraf kaydedilemedi.';
+
+  @override
+  String get fotoEditFehlerOeffnen => 'Bu fotoğraf açılamıyor.';
+
+  @override
+  String get fotoEditHeicNichtHier =>
+      'HEIC fotoğrafları (iPhone\'dan) bu bilgisayarda açılamaz.';
+
+  @override
+  String get fotoEditFehlerOrdner => 'Bu klasör okunamadı.';
+
+  @override
+  String get fotoEditVerwerfenTitel => 'Değişikliklerden vazgeçilsin mi?';
+
+  @override
+  String get fotoEditVerwerfenText => 'Düzenlenen fotoğraf henüz kaydedilmedi.';
+
+  @override
+  String get fotoEditVerwerfen => 'Vazgeç';
+
+  @override
+  String get fotoEditDateiZusatz => 'düzenlendi';
+
+  @override
+  String get fotoEditSpeichert => 'Kaydediliyor…';
+
+  @override
+  String get fotoEditRueckgaengig => 'Geri al';
+
+  @override
+  String get fotoEditWiederholen => 'Yinele';
+
+  @override
+  String get fotoEditFertig => 'Bitti';
+
+  @override
+  String get fotoEditZurueck => 'Geri';
+
+  @override
+  String get fotoEditEntfernen => 'Kaldır';
+
+  @override
+  String get fotoEditBearbeiten => 'Düzenle';
+
+  @override
+  String get fotoEditDrehenSkalieren => 'Döndür ve ölçekle';
+
+  @override
+  String get fotoEditMehr => 'Daha fazla';
+
+  @override
+  String get fotoEditZuruecksetzen => 'Sıfırla';
+
+  @override
+  String get fotoEditBitteWarten => 'Lütfen bekleyin…';
+
+  @override
+  String get fotoEditWirdAngewendet => 'Değişiklikler uygulanıyor…';
+
+  @override
+  String get fotoEditWirdVorbereitet => 'Düzenleyici hazırlanıyor…';
+
+  @override
+  String get fotoEditDrehen => 'Döndür';
+
+  @override
+  String get fotoEditSpiegeln => 'Çevir';
+
+  @override
+  String get fotoEditBegradigen => 'Düzleştir';
+
+  @override
+  String get fotoEditWaagerecht => 'Yatay';
+
+  @override
+  String get fotoEditSenkrecht => 'Dikey';
+
+  @override
+  String get fotoEditSeitenformat => 'En boy oranı';
+
+  @override
+  String get fotoEditFrei => 'Serbest';
+
+  @override
+  String get fotoEditOriginal => 'Orijinal';
+
+  @override
+  String get fotoEditHelligkeit => 'Parlaklık';
+
+  @override
+  String get fotoEditKontrast => 'Kontrast';
+
+  @override
+  String get fotoEditSaettigung => 'Doygunluk';
+
+  @override
+  String get fotoEditBelichtung => 'Pozlama';
+
+  @override
+  String get fotoEditFarbton => 'Renk tonu';
+
+  @override
+  String get fotoEditFarbtemperatur => 'Renk sıcaklığı';
+
+  @override
+  String get fotoEditVerblassen => 'Soldurma';
+
+  @override
+  String get fotoEditToenung => 'Ton';
+
+  @override
+  String get fotoEditKeinFilter => 'Filtre yok';
+
+  @override
+  String get fotoEditZoomen => 'Yakınlaştır';
+
+  @override
+  String get fotoEditFreihand => 'Serbest çizim';
+
+  @override
+  String get fotoEditPfeil => 'Ok';
+
+  @override
+  String get fotoEditLinie => 'Çizgi';
+
+  @override
+  String get fotoEditRechteck => 'Dikdörtgen';
+
+  @override
+  String get fotoEditKreis => 'Daire';
+
+  @override
+  String get fotoEditWeichzeichnen => 'Bulanıklaştır';
+
+  @override
+  String get fotoEditVerpixeln => 'Pikselleştir';
+
+  @override
+  String get fotoEditLinienstaerke => 'Çizgi kalınlığı';
+
+  @override
+  String get fotoEditRadierer => 'Silgi';
+
+  @override
+  String get fotoEditFuellung => 'Dolgu';
+
+  @override
+  String get fotoEditDeckkraft => 'Opaklık';
+
+  @override
+  String get fotoEditFarbe => 'Renk';
+
+  @override
+  String get fotoEditTextEingeben => 'Metni girin';
+
+  @override
+  String get fotoEditTextAusrichten => 'Metni hizala';
+
+  @override
+  String get fotoEditSchriftgroesse => 'Yazı tipi boyutu';
+
+  @override
+  String get fotoEditHintergrund => 'Arka plan';
 }
