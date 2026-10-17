@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.111.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.111.0...v1.111.1) (2026-10-17)
+
+
+### Bug Fixes
+
+* **verifizierung:** Code aus der Erinnerungsmail gleich eingeben — „Bestätigen“ schickt keinen zweiten ([#498](https://github.com/ICD360S-e-V/mitglieder/issues/498)) ([62ba62f](https://github.com/ICD360S-e-V/mitglieder/commit/62ba62f5423775f8443fa96e1d12156ae3cc15f9))
+
 ## [1.111.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.110.2...v1.111.0) (2026-10-17)
 
 
