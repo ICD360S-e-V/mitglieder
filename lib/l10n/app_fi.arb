@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Allekirjoitusta voi siirtää; kulmasta se suurenee ja pienenee.",
   "pdfWerkzeugFehlerAllgemein": "Se ei onnistunut. Yritä uudelleen.",
   "pdfWerkzeugFertig": "Valmis. Allekirjoitettu asiakirja on tallennettu.",
+  "pdfWerkzeugNichtGespeichert": "Ei tallennettu. Allekirjoitettu asiakirja on yhä tallessa.",
   "pdfWerkzeugFertigstellen": "Aseta allekirjoitus",
   "pdfWerkzeugLeer": "Mitään ei ole vielä piirretty.",
   "pdfWerkzeugOeffnen": "Avaa",

@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Namnteckningen går att flytta; i hörnet blir den större och mindre.",
   "pdfWerkzeugFehlerAllgemein": "Det gick inte. Försök igen.",
   "pdfWerkzeugFertig": "Klart. Det signerade dokumentet är sparat.",
+  "pdfWerkzeugNichtGespeichert": "Inte sparat. Det undertecknade dokumentet finns kvar.",
   "pdfWerkzeugFertigstellen": "Placera namnteckningen",
   "pdfWerkzeugLeer": "Ingenting har ritats ännu.",
   "pdfWerkzeugOeffnen": "Öppna",

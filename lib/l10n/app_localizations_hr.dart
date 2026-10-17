@@ -3162,6 +3162,10 @@ class AppLocalizationsHr extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Gotovo. Potpisani dokument je spremljen.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Nije spremljeno. Potpisani dokument još je ovdje.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Umetni potpis';
 
   @override

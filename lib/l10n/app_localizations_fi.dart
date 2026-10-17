@@ -3167,6 +3167,10 @@ class AppLocalizationsFi extends AppLocalizations {
       'Valmis. Allekirjoitettu asiakirja on tallennettu.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Ei tallennettu. Allekirjoitettu asiakirja on yhä tallessa.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Aseta allekirjoitus';
 
   @override

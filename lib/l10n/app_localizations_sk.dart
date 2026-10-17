@@ -3162,6 +3162,10 @@ class AppLocalizationsSk extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Hotovo. Podpísaný dokument bol uložený.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Neuložené. Podpísaný dokument je stále tu.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Vložiť podpis';
 
   @override

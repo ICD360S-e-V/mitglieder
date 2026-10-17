@@ -3189,6 +3189,10 @@ class AppLocalizationsDe extends AppLocalizations {
       'Fertig. Das unterschriebene Dokument ist gespeichert.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Nicht gespeichert. Das unterschriebene Dokument ist noch da.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Unterschrift einsetzen';
 
   @override

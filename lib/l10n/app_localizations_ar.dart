@@ -3137,6 +3137,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get pdfWerkzeugFertig => 'تم. حُفظ المستند الموقَّع.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'لم يُحفظ. المستند الموقَّع لا يزال هنا.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'إدراج التوقيع';
 
   @override

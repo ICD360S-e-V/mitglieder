@@ -3166,6 +3166,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Готово. Підписаний документ збережено.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Не збережено. Підписаний документ досі тут.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Вставити підпис';
 
   @override

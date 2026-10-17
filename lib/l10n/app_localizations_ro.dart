@@ -3171,6 +3171,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Gata. Documentul semnat a fost salvat.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Nu a fost salvat. Documentul semnat e încă aici.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Aplică semnătura';
 
   @override

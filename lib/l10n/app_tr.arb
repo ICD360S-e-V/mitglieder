@@ -1456,6 +1456,7 @@
   "pdfWerkzeugPlatzierenHinweis": "İmza taşınabilir; köşesinden büyütülüp küçültülebilir.",
   "pdfWerkzeugFehlerAllgemein": "Olmadı. Lütfen tekrar deneyin.",
   "pdfWerkzeugFertig": "Bitti. İmzalanan belge kaydedildi.",
+  "pdfWerkzeugNichtGespeichert": "Kaydedilmedi. İmzalanan belge hâlâ burada.",
   "pdfWerkzeugFertigstellen": "İmzayı yerleştir",
   "pdfWerkzeugLeer": "Henüz hiçbir şey çizilmedi.",
   "pdfWerkzeugOeffnen": "Aç",

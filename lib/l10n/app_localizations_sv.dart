@@ -3160,6 +3160,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Klart. Det signerade dokumentet är sparat.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Inte sparat. Det undertecknade dokumentet finns kvar.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Placera namnteckningen';
 
   @override

@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Drag the signature to move it; the corner makes it larger or smaller.",
   "pdfWerkzeugFehlerAllgemein": "That did not work. Please try again.",
   "pdfWerkzeugFertig": "Done. The signed document has been saved.",
+  "pdfWerkzeugNichtGespeichert": "Not saved. The signed document is still here.",
   "pdfWerkzeugFertigstellen": "Place the signature",
   "pdfWerkzeugLeer": "Nothing has been drawn yet.",
   "pdfWerkzeugOeffnen": "Open",

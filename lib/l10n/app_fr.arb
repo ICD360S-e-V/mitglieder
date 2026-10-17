@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "La signature se déplace ; le coin permet de l'agrandir ou de la réduire.",
   "pdfWerkzeugFehlerAllgemein": "Cela n'a pas fonctionné. Veuillez réessayer.",
   "pdfWerkzeugFertig": "Terminé. Le document signé a été enregistré.",
+  "pdfWerkzeugNichtGespeichert": "Non enregistré. Le document signé est toujours là.",
   "pdfWerkzeugFertigstellen": "Apposer la signature",
   "pdfWerkzeugLeer": "Rien n'a encore été tracé.",
   "pdfWerkzeugOeffnen": "Ouvrir",

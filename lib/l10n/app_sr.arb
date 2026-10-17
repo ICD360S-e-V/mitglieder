@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Потпис се може померати; у углу се повећава и смањује.",
   "pdfWerkzeugFehlerAllgemein": "Није успело. Покушајте поново.",
   "pdfWerkzeugFertig": "Готово. Потписани документ је сачуван.",
+  "pdfWerkzeugNichtGespeichert": "Није сачувано. Потписани документ је још увек ту.",
   "pdfWerkzeugFertigstellen": "Убаци потпис",
   "pdfWerkzeugLeer": "Још ништа није нацртано.",
   "pdfWerkzeugOeffnen": "Отвори",

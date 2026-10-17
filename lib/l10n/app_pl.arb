@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Podpis można przesuwać; w rogu powiększa się i pomniejsza.",
   "pdfWerkzeugFehlerAllgemein": "Nie udało się. Proszę spróbować jeszcze raz.",
   "pdfWerkzeugFertig": "Gotowe. Podpisany dokument został zapisany.",
+  "pdfWerkzeugNichtGespeichert": "Nie zapisano. Podpisany dokument wciąż tu jest.",
   "pdfWerkzeugFertigstellen": "Wstaw podpis",
   "pdfWerkzeugLeer": "Nic jeszcze nie narysowano.",
   "pdfWerkzeugOeffnen": "Otwórz",

@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "La firma se puede mover; desde la esquina se hace más grande o más pequeña.",
   "pdfWerkzeugFehlerAllgemein": "No ha funcionado. Inténtelo de nuevo.",
   "pdfWerkzeugFertig": "Listo. El documento firmado se ha guardado.",
+  "pdfWerkzeugNichtGespeichert": "No se ha guardado. El documento firmado sigue aquí.",
   "pdfWerkzeugFertigstellen": "Colocar la firma",
   "pdfWerkzeugLeer": "Todavía no se ha dibujado nada.",
   "pdfWerkzeugOeffnen": "Abrir",

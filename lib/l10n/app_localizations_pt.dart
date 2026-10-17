@@ -3175,6 +3175,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Pronto. O documento assinado foi guardado.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Não foi guardado. O documento assinado continua aqui.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Aplicar a assinatura';
 
   @override

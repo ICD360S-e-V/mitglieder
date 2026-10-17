@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Parašą galima perkelti; iš kampo jis didėja ir mažėja.",
   "pdfWerkzeugFehlerAllgemein": "Nepavyko. Bandykite dar kartą.",
   "pdfWerkzeugFertig": "Baigta. Pasirašytas dokumentas išsaugotas.",
+  "pdfWerkzeugNichtGespeichert": "Neišsaugota. Pasirašytas dokumentas vis dar čia.",
   "pdfWerkzeugFertigstellen": "Įdėti parašą",
   "pdfWerkzeugLeer": "Dar nieko nenupiešta.",
   "pdfWerkzeugOeffnen": "Atidaryti",

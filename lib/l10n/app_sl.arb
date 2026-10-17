@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Podpis lahko premikate; z vogalom ga povečate ali pomanjšate.",
   "pdfWerkzeugFehlerAllgemein": "Ni uspelo. Poskusite znova.",
   "pdfWerkzeugFertig": "Končano. Podpisani dokument je shranjen.",
+  "pdfWerkzeugNichtGespeichert": "Ni shranjeno. Podpisani dokument je še vedno tukaj.",
   "pdfWerkzeugFertigstellen": "Vstavi podpis",
   "pdfWerkzeugLeer": "Ničesar še ni narisanega.",
   "pdfWerkzeugOeffnen": "Odpri",

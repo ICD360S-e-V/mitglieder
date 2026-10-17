@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Подписът може да се мести; от ъгъла се уголемява и намалява.",
   "pdfWerkzeugFehlerAllgemein": "Не се получи. Опитайте отново.",
   "pdfWerkzeugFertig": "Готово. Подписаният документ е запазен.",
+  "pdfWerkzeugNichtGespeichert": "Не е запазено. Подписаният документ все още е тук.",
   "pdfWerkzeugFertigstellen": "Постави подписа",
   "pdfWerkzeugLeer": "Още нищо не е нарисувано.",
   "pdfWerkzeugOeffnen": "Отвори",

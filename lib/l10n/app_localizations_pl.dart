@@ -3178,6 +3178,10 @@ class AppLocalizationsPl extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Gotowe. Podpisany dokument został zapisany.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Nie zapisano. Podpisany dokument wciąż tu jest.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Wstaw podpis';
 
   @override

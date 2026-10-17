@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "A assinatura pode ser deslocada; pelo canto fica maior ou menor.",
   "pdfWerkzeugFehlerAllgemein": "Não resultou. Tente novamente.",
   "pdfWerkzeugFertig": "Pronto. O documento assinado foi guardado.",
+  "pdfWerkzeugNichtGespeichert": "Não foi guardado. O documento assinado continua aqui.",
   "pdfWerkzeugFertigstellen": "Aplicar a assinatura",
   "pdfWerkzeugLeer": "Ainda não foi desenhado nada.",
   "pdfWerkzeugOeffnen": "Abrir",

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -11,7 +12,19 @@ import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
 import '../services/logger_service.dart';
 import '../utils/app_theme.dart';
+import '../utils/datei_ablage.dart';
 import '../widgets/file_viewer.dart';
+
+/// `Mietvertrag.pdf` → `Mietvertrag_unterschrieben.pdf`.
+///
+/// Nur der Vorschlag im Speichern-Dialog — das Mitglied kann ihn dort ändern.
+String unterschriebenName(String quellPfad) {
+  final ausgang = quellPfad.split(RegExp(r'[/\\]')).last;
+  final ohneEndung = ausgang.toLowerCase().endsWith('.pdf')
+      ? ausgang.substring(0, ausgang.length - 4)
+      : ausgang;
+  return '${ohneEndung}_unterschrieben.pdf';
+}
 
 /// Ein eigenes PDF unterschreiben, ohne es einer fremden Seite zu geben.
 ///
@@ -82,6 +95,7 @@ class _PdfWerkzeugScreenState extends State<PdfWerkzeugScreen> {
   @override
   void dispose() {
     _dokument?.dispose();
+    unawaited(_ansichtAufraeumen());
     super.dispose();
   }
 
@@ -213,42 +227,90 @@ class _PdfWerkzeugScreenState extends State<PdfWerkzeugScreen> {
     await _ablegen(bytes, pfad);
   }
 
-  /// Legt das fertige Dokument dorthin, wo das Mitglied es wiederfindet.
+  /// Legt das fertige Dokument dorthin, wo das Mitglied es haben will — über
+  /// den Speichern-Dialog des Systems, auf jedem Gerät ([dateiAblegen]).
+  ///
+  /// ⚠️ Vorher landete es auf Telefon und Tablet im App-Verzeichnis: von
+  /// außen unsichtbar und nur über „Öffnen" in der Meldung zu erreichen, die
+  /// acht Sekunden stand. Danach kam das Mitglied nicht mehr an sein
+  /// unterschriebenes Dokument heran. Jetzt wählt es den Ort — Download,
+  /// Dokumente, iCloud Drive, ein Ordner am Rechner — und findet die Datei
+  /// dort wieder.
   Future<void> _ablegen(Uint8List bytes, String quellPfad) async {
     final l10n = AppLocalizations.of(context)!;
+    final name = unterschriebenName(quellPfad);
 
+    String? ort;
     try {
-      // Auf dem Schreibtisch gibt es einen Download-Ordner, auf dem Telefon
-      // nicht — dort ist das App-Verzeichnis der einzige Ort, in den ohne
-      // zusätzliche Berechtigung geschrieben werden darf.
-      final Directory ziel = (Platform.isMacOS || Platform.isWindows || Platform.isLinux)
-          ? (await getDownloadsDirectory()) ?? await getApplicationDocumentsDirectory()
-          : await getApplicationDocumentsDirectory();
+      ort = await dateiAblegen(bytes: bytes, dateiname: name, immerDialog: true);
+    } catch (e) {
+      _log.error('Ablegen: ${e.runtimeType}', tag: 'PDFWERK');
+      if (mounted) _meldung(l10n.pdfWerkzeugFehlerAllgemein, fehler: true);
+      return;
+    }
+    if (!mounted) return;
 
-      final ausgang = quellPfad.split(RegExp(r'[/\\]')).last;
-      final ohneEndung = ausgang.toLowerCase().endsWith('.pdf')
-          ? ausgang.substring(0, ausgang.length - 4)
-          : ausgang;
-      final name = '${ohneEndung}_unterschrieben.pdf';
-
-      final datei = File('${ziel.path}/$name');
-      await datei.writeAsBytes(bytes);
-
-      if (!mounted) return;
-
+    if (ort == null) {
+      // Im Speichern-Dialog abgebrochen. Das Dokument ist noch da — ein
+      // zweiter Versuch braucht keinen zweiten Weg zum Server.
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(l10n.pdfWerkzeugFertig),
-        backgroundColor: context.colors.successSolid,
-        duration: const Duration(seconds: 8),
+        content: Text(l10n.pdfWerkzeugNichtGespeichert),
+        duration: const Duration(seconds: 10),
         action: SnackBarAction(
-          label: l10n.pdfWerkzeugOeffnen,
-          textColor: Colors.white,
-          onPressed: () => FileViewer.open(context, datei, name),
+          label: l10n.save,
+          onPressed: () => _ablegen(bytes, quellPfad),
         ),
       ));
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(l10n.pdfWerkzeugFertig),
+      backgroundColor: context.colors.successSolid,
+      duration: const Duration(seconds: 8),
+      action: SnackBarAction(
+        label: l10n.pdfWerkzeugOeffnen,
+        textColor: Colors.white,
+        onPressed: () => _ansehen(bytes, ort!),
+      ),
+    ));
+  }
+
+  /// „Öffnen" in der Meldung: das Dokument in der App ansehen.
+  ///
+  /// Der Speichern-Dialog gibt auf dem Telefon keinen Pfad zurück, mit dem
+  /// sich etwas öffnen ließe. Angezeigt wird deshalb eine Kopie im
+  /// Zwischenspeicher der App — sie geht mit diesem Bildschirm wieder weg.
+  /// Die Datei des Mitglieds ist die, die es eben abgelegt hat.
+  Future<void> _ansehen(Uint8List bytes, String name) async {
+    try {
+      final ordner = await _ansichtOrdner();
+      if (!await ordner.exists()) await ordner.create(recursive: true);
+      final datei = File('${ordner.path}/$name');
+      await datei.writeAsBytes(bytes, flush: true);
+      if (!mounted) return;
+      await FileViewer.open(context, datei, name);
     } catch (e) {
-      _log.error('Ablegen: $e', tag: 'PDFWERK');
-      if (mounted) _meldung(l10n.pdfWerkzeugFehlerAllgemein, fehler: true);
+      _log.error('Ansehen: ${e.runtimeType}', tag: 'PDFWERK');
+      if (mounted) {
+        _meldung(AppLocalizations.of(context)!.pdfWerkzeugFehlerAllgemein,
+            fehler: true);
+      }
+    }
+  }
+
+  static Future<Directory> _ansichtOrdner() async =>
+      Directory('${(await getTemporaryDirectory()).path}/pdf_werkzeug_ansicht');
+
+  /// Die Ansichtskopien weg — sie sind private Dokumente, auch im
+  /// Zwischenspeicher.
+  static Future<void> _ansichtAufraeumen() async {
+    try {
+      final ordner = await _ansichtOrdner();
+      if (await ordner.exists()) await ordner.delete(recursive: true);
+    } catch (_) {
+      // Aufräumen darf nie laut scheitern; das System leert den
+      // Zwischenspeicher ohnehin.
     }
   }
 

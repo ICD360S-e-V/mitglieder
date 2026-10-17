@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Parakstu var pārvietot; no stūra to var palielināt un samazināt.",
   "pdfWerkzeugFehlerAllgemein": "Neizdevās. Lūdzu, mēģiniet vēlreiz.",
   "pdfWerkzeugFertig": "Gatavs. Parakstītais dokuments ir saglabāts.",
+  "pdfWerkzeugNichtGespeichert": "Nav saglabāts. Parakstītais dokuments joprojām ir šeit.",
   "pdfWerkzeugFertigstellen": "Ievietot parakstu",
   "pdfWerkzeugLeer": "Vēl nekas nav uzzīmēts.",
   "pdfWerkzeugOeffnen": "Atvērt",

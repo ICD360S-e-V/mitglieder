@@ -23,17 +23,23 @@ typedef SpeicherDialog = Future<String?> Function(
 /// über eine vorhandene Datei ([freierDateiname]). Zurück kommt der volle
 /// Pfad.
 ///
-/// [dialog] und [ordner] sind nur für Tests.
+/// [immerDialog]: der Speichern-Dialog auch am Rechner — wo das Mitglied den
+/// Ort selbst wählen soll, nicht nur auf dem Telefon (das unterschriebene
+/// eigene PDF). Zurück kommt dann auch dort nur der Dateiname.
+///
+/// [dialog] und [ordner] sind nur für Tests: [dialog] ersetzt den Dialog des
+/// Systems, [ordner] den Downloads-Ordner.
 Future<String?> dateiAblegen({
   required Uint8List bytes,
   required String dateiname,
+  bool immerDialog = false,
   SpeicherDialog? dialog,
   Directory? ordner,
 }) async {
   final name = sichererDateiname(dateiname);
 
-  final mitDialog =
-      dialog != null || (ordner == null && (Platform.isAndroid || Platform.isIOS));
+  final mitDialog = immerDialog ||
+      (ordner == null && (dialog != null || Platform.isAndroid || Platform.isIOS));
   if (mitDialog) {
     final gespeichert = await (dialog ?? _systemDialog)(name, bytes);
     return gespeichert == null ? null : name;

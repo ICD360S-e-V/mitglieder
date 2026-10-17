@@ -3173,6 +3173,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pdfWerkzeugFertig => 'Done. The signed document has been saved.';
 
   @override
+  String get pdfWerkzeugNichtGespeichert =>
+      'Not saved. The signed document is still here.';
+
+  @override
   String get pdfWerkzeugFertigstellen => 'Place the signature';
 
   @override

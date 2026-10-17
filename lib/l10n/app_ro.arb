@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Semnătura se poate muta; din colț devine mai mare sau mai mică.",
   "pdfWerkzeugFehlerAllgemein": "Nu a mers. Încercați din nou.",
   "pdfWerkzeugFertig": "Gata. Documentul semnat a fost salvat.",
+  "pdfWerkzeugNichtGespeichert": "Nu a fost salvat. Documentul semnat e încă aici.",
   "pdfWerkzeugFertigstellen": "Aplică semnătura",
   "pdfWerkzeugLeer": "Nu s-a desenat încă nimic.",
   "pdfWerkzeugOeffnen": "Deschide",

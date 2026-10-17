@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Signaturen kan flyttes; i hjørnet blir den større og mindre.",
   "pdfWerkzeugFehlerAllgemein": "Det gikk ikke. Prøv igjen.",
   "pdfWerkzeugFertig": "Ferdig. Det signerte dokumentet er lagret.",
+  "pdfWerkzeugNichtGespeichert": "Ikke lagret. Det signerte dokumentet er fortsatt her.",
   "pdfWerkzeugFertigstellen": "Sett inn signaturen",
   "pdfWerkzeugLeer": "Ingenting er tegnet ennå.",
   "pdfWerkzeugOeffnen": "Åpne",

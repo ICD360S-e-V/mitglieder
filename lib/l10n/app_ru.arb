@@ -1435,6 +1435,7 @@
   "pdfWerkzeugPlatzierenHinweis": "Подпись можно передвигать; за угол она увеличивается и уменьшается.",
   "pdfWerkzeugFehlerAllgemein": "Не получилось. Попробуйте ещё раз.",
   "pdfWerkzeugFertig": "Готово. Подписанный документ сохранён.",
+  "pdfWerkzeugNichtGespeichert": "Не сохранено. Подписанный документ всё ещё здесь.",
   "pdfWerkzeugFertigstellen": "Вставить подпись",
   "pdfWerkzeugLeer": "Пока ничего не нарисовано.",
   "pdfWerkzeugOeffnen": "Открыть",
