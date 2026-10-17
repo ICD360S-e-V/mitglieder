@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.117.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.4...v1.117.0) (2026-10-17)
+
+
+### Features
+
+* **chat:** Protokollzeile bei abgelehntem Chat-Upload – ohne Dateinamen ([#525](https://github.com/ICD360S-e-V/mitglieder/issues/525)) ([ea02443](https://github.com/ICD360S-e-V/mitglieder/commit/ea02443f48dc51c4b681a907caa599f08afba31b))
+
 ## [1.116.4](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.3...v1.116.4) (2026-10-17)
 
 
