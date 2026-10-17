@@ -126,6 +126,34 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <!-- Der Link in der Mail mit dem Bestätigungscode öffnet die App und
+                 trägt den Code ein (lib/services/kontakt_link.dart):
+                   https://icd360sev.icd360s.de/code/#email=482913
+
+                 autoVerify: Android fragt beim Installieren
+                 https://icd360sev.icd360s.de/.well-known/assetlinks.json ab.
+                 Steht dort der Fingerabdruck des Release-Schlüssels, öffnet der
+                 Link die App ohne Rückfrage. Sonst — und in jedem fremden
+                 Browser — kommt die Seite /code/ des Servers, und deren Knopf
+                 „In der App öffnen" ruft das eigene Schema unten auf.
+
+                 ⚠️ flutter_deeplinking_enabled=false: sonst schöbe Flutter den
+                 Pfad /code/ zusätzlich als Route in den Navigator (seit
+                 Flutter 3.24 Standard), neben app_links. -->
+            <meta-data android:name="flutter_deeplinking_enabled" android:value="false" />
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="icd360sev.icd360s.de" android:path="/code/" />
+                <data android:path="/code" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="icd360s-mitglied" android:host="code" />
+            </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->

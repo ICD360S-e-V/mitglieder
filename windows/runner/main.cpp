@@ -2,6 +2,7 @@
 #include <flutter/flutter_view_controller.h>
 #include <windows.h>
 
+#include "app_links/app_links_plugin_c_api.h"
 #include "flutter_window.h"
 #include "utils.h"
 
@@ -85,6 +86,13 @@ bool EinzigeInstanz() {
     }
     const HWND fenster = LaufendesFenster();
     if (fenster != nullptr) {
+      // Kam dieser Start ueber einen Link (icd360s-mitglied://code#email=...
+      // aus der Mail mit dem Bestaetigungscode, lib/services/kontakt_link.dart),
+      // geht der Link an die laufende App - sie traegt den Code ein. Ohne Link
+      // tut SendAppLink nichts. app_links liest ihn aus der Kommandozeile und
+      // schickt ihn per WM_COPYDATA. Nicht SendAppLinkToInstance: das suchte
+      // das Fenster noch einmal, an der Klasse - hier ist es schon gefunden.
+      SendAppLink(fenster);
       NachVorneHolen(fenster);
       ::CloseHandle(sperre);
       return false;

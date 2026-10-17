@@ -17,6 +17,7 @@ import 'services/background_service.dart';
 import 'services/battery_usage_service.dart';
 import 'services/energiepolitik_waechter.dart';
 import 'services/fehler_waechter.dart';
+import 'services/kontakt_link.dart';
 import 'services/network_resilience.dart';
 import 'services/security_event_reporter.dart';
 import 'services/startup_diagnostics.dart';
@@ -180,6 +181,11 @@ void main() async {
 
   // Credentials will be sent to background service after login (in saveTokens)
   // Diagnostic service will be started from LoginScreen after user consent
+
+  // Der Link aus der Mail mit dem Bestätigungscode — auch der, mit dem die App
+  // eben gestartet wurde. Gezeigt wird der Code im Dashboard, sobald jemand
+  // angemeldet ist. Siehe [KontaktLink].
+  KontaktLink.instance.starten();
 
   StartupDiagnostics.log('→ runApp()');
   runApp(const MitgliedApp());

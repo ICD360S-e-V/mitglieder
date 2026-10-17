@@ -8,6 +8,8 @@ import 'package:icd_klingel/icd_klingel.dart';
 import '../services/anruf_klingel.dart';
 import '../services/anruf_rueckweg.dart';
 import '../services/api_service.dart';
+import '../services/kontakt_link.dart';
+import '../widgets/kontakt_bestaetigung.dart';
 import '../services/logger_service.dart';
 import '../services/chat_service.dart';
 import '../services/heartbeat_service.dart';
@@ -234,6 +236,10 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     // Systemeinstellungen erteilt, nie per Laufzeit-Dialog. Der Melder
     // springt beim Beginn eines Gespraechs an, solange die App im Blick ist.
     AnrufSystemkarte().erlaubnisFehlt.addListener(_anruffensterErlaubnisFragen);
+    // Ein Link aus der Mail mit dem Bestätigungscode ([KontaktLink]): erst
+    // hier ist jemand angemeldet, der ihn einlösen kann. Kam er schon vor der
+    // Anmeldung, wartet er — dann gleich nach dem ersten Bild, siehe unten.
+    KontaktLink.instance.offen.addListener(_codeAusLinkZeigen);
     WidgetsBinding.instance.addObserver(this);
     _log.info('Dashboard: Loaded for ${widget.mitgliedernummer} (${widget.userName})', tag: 'DASH');
     _currentEmail = widget.email;
@@ -266,6 +272,9 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       // ist dringender als jede Frage. Wurde er vom Sperrbildschirm aus
       // angenommen, fuehrt dieser Aufruf ihn zu Ende.
       _wartendenAnrufPruefen();
+      // Danach der Code aus dem Link, falls einer wartet: wer den Link
+      // angetippt hat, hat die App genau dafür geöffnet.
+      _codeAusLinkZeigen();
       BenachrichtigungConsentDialog.zeigenFallsNoetig(context, _apiService);
       // Und mit Abstand die Frage nach der Berechtigung fuer den
       // Klingelschirm. ⚠️ Sie darf einen laufenden Anruf nicht verdecken —
@@ -590,6 +599,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     AnrufSystemkarte()
         .erlaubnisFehlt
         .removeListener(_anruffensterErlaubnisFragen);
+    KontaktLink.instance.offen.removeListener(_codeAusLinkZeigen);
     _messageSubscription?.cancel();
     _callOfferSubscription?.cancel();
     _klingelAbo?.cancel();
@@ -1255,6 +1265,13 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     } else {
       return l10n.goodNight;
     }
+  }
+
+  /// Der Code aus einem Link in der Mail — eingetragen und gleich geprüft, in
+  /// einem eigenen Fenster ([KontaktCodeDialog]). Ohne wartenden Code nichts.
+  void _codeAusLinkZeigen() {
+    if (!mounted) return;
+    KontaktCodeDialog.offenenZeigen(context, _apiService);
   }
 
   void _showProfileDialog() {

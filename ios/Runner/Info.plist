@@ -86,5 +86,24 @@
 		<string>https</string>
 		<string>whatsapp</string>
 	</array>
+	<!-- Der Link in der Mail mit dem Bestätigungscode (lib/services/kontakt_link.dart).
+	     Universal Links bräuchten eine signierte App; die iOS-Fassung wird
+	     ohne Signatur gebaut. Darum das eigene Schema: die Seite /code/ des
+	     Servers ruft es mit „In der App öffnen" auf. -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>de.icd360s.mitglieder.code</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>icd360s-mitglied</string>
+			</array>
+		</dict>
+	</array>
+	<!-- ⚠️ Sonst schöbe Flutter jeden Link zusätzlich als Route in den
+	     Navigator (Standard seit Flutter 3.24), neben app_links. -->
+	<key>FlutterDeepLinkingEnabled</key>
+	<false/>
 </dict>
 </plist>
