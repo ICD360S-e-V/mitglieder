@@ -12,6 +12,14 @@ struct _MyApplication {
   char** dart_entrypoint_arguments;
 };
 
+// Der Link in der Mail mit dem Bestaetigungscode
+// (icd360s-mitglied://code#email=..., lib/services/kontakt_link.dart): die
+// Kommandozeile geht als Signal "command-line" an die App - bei einem zweiten
+// Start ueber D-Bus an die schon laufende. Dort liest app_links_linux den Link
+// heraus. Siehe auch my_application_local_command_line.
+constexpr int kLinkFlags =
+    G_APPLICATION_HANDLES_COMMAND_LINE | G_APPLICATION_HANDLES_OPEN;
+
 G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
 
 // Called when first Flutter frame received.
@@ -106,7 +114,9 @@ static gboolean my_application_local_command_line(GApplication* application,
     g_warning("Einzelinstanz nicht moeglich (%s), starte ohne",
               error->message);
     g_clear_error(&error);
-    g_application_set_flags(application, G_APPLICATION_NON_UNIQUE);
+    g_application_set_flags(application,
+                            static_cast<GApplicationFlags>(
+                                G_APPLICATION_NON_UNIQUE | kLinkFlags));
     if (!g_application_register(application, nullptr, &error)) {
       g_warning("Failed to register: %s", error->message);
       *exit_status = 1;
@@ -117,7 +127,10 @@ static gboolean my_application_local_command_line(GApplication* application,
   g_application_activate(application);
   *exit_status = 0;
 
-  return TRUE;
+  // FALSE: danach reicht GApplication die Kommandozeile als "command-line"
+  // weiter - an diese App oder, beim zweiten Start, an die laufende. Darin
+  // steht der Link aus der Mail (kLinkFlags). Mit TRUE kaeme er nie an.
+  return FALSE;
 }
 
 // Implements GApplication::startup.
@@ -182,10 +195,12 @@ MyApplication* my_application_new() {
           ? flatpak_id
           : APPLICATION_ID;
   return MY_APPLICATION(g_object_new(my_application_get_type(),
-                                     "application-id", kennung, nullptr));
+                                     "application-id", kennung, "flags",
+                                     kLinkFlags, nullptr));
 #else
   return MY_APPLICATION(g_object_new(my_application_get_type(),
                                      "application-id", APPLICATION_ID, "flags",
-                                     G_APPLICATION_NON_UNIQUE, nullptr));
+                                     G_APPLICATION_NON_UNIQUE | kLinkFlags,
+                                     nullptr));
 #endif
 }

@@ -97,6 +97,19 @@ Name: "{autodesktop}\ICD360S Mitglieder"; Filename: "{app}\{#MyAppExeName}"; Tas
 [Tasks]
 Name: "desktopicon"; Description: "Desktop-Verknüpfung erstellen"; GroupDescription: "Zusätzliche Symbole:"
 
+[Registry]
+; Der Link in der Mail mit dem Bestaetigungscode: die Seite /code/ des Servers
+; ruft mit "In der App oeffnen" icd360s-mitglied://code#email=... auf, Windows
+; startet damit die App ("%1" = der Link), und die laufende App bekommt ihn von
+; main.cpp (SendAppLink). Siehe lib/services/kontakt_link.dart.
+; HKA = HKCU bei PrivilegesRequired=lowest - je Benutzer wie die ganze
+; Installation. Jedes Update schreibt die Eintraege neu, die Deinstallation
+; nimmt sie mit.
+Root: HKA; Subkey: "Software\Classes\icd360s-mitglied"; ValueType: string; ValueName: ""; ValueData: "URL:{#MyAppName}"; Flags: uninsdeletekey
+Root: HKA; Subkey: "Software\Classes\icd360s-mitglied"; ValueType: string; ValueName: "URL Protocol"; ValueData: ""
+Root: HKA; Subkey: "Software\Classes\icd360s-mitglied\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\{#MyAppExeName},0"
+Root: HKA; Subkey: "Software\Classes\icd360s-mitglied\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
+
 [Run]
 #if HaveRedist
 ; System-wide VC++ runtime repair. The app itself does not need this (the CRT

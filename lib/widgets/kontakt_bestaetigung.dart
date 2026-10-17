@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/api_service.dart';
+import '../services/kontakt_link.dart';
 import '../l10n/app_localizations.dart';
 import '../utils/app_theme.dart';
 
@@ -41,11 +42,18 @@ class KontaktBestaetigung extends StatefulWidget {
   /// einen Bildschirm, der sonst schon voll ist.
   final bool nurWennFaellig;
 
+  /// Ein Code, der per Link aus der Mail kam ([KontaktLink]): wird eingetragen
+  /// und gleich geprüft, als hätte das Mitglied ihn abgetippt. Ist der Kanal
+  /// schon bestätigt, passiert nichts — ein zweites Öffnen desselben Links
+  /// zeigt „bestätigt am …“, keinen Fehler.
+  final KontaktCodeAusLink? codeAusLink;
+
   const KontaktBestaetigung({
     super.key,
     required this.apiService,
     this.onBestaetigt,
     this.nurWennFaellig = true,
+    this.codeAusLink,
   });
 
   @override
@@ -69,6 +77,10 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
   /// die öffnen sich nicht von selbst wieder.
   final _zugemacht = <String>{};
 
+  /// Der Code aus dem Link ist schon eingetragen worden — nur einmal, auch
+  /// wenn die Karte nach der Bestätigung neu lädt.
+  bool _linkEingetragen = false;
+
   @override
   void initState() {
     super.initState();
@@ -83,6 +95,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
   }
 
   Future<void> _laden() async {
+    if (!mounted) return;
     setState(() => _laedt = true);
     try {
       final r = await widget.apiService.kontaktStatus();
@@ -90,11 +103,31 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
       setState(() {
         _stand = r['success'] == true ? Map<String, dynamic>.from(r) : null;
         _laedt = false;
-        _offenerKanal ??= _kanalMitCode();
+        // Kam der Code per Link, geht es um genau dessen Kanal — kein anderes
+        // Feld springt dazwischen auf.
+        _offenerKanal ??= widget.codeAusLink == null ? _kanalMitCode() : null;
       });
+      _linkEintragen();
     } catch (_) {
       if (mounted) setState(() => _laedt = false);
     }
+  }
+
+  /// Trägt den Code aus dem Link ein und prüft ihn. Nur, wenn der Kanal
+  /// fällig ist.
+  void _linkEintragen() {
+    final link = widget.codeAusLink;
+    if (link == null || _linkEingetragen) return;
+    _linkEingetragen = true;
+    final k = _stand?[link.kanal];
+    if (k is! Map || k['faellig'] != true) return;
+    setState(() {
+      _offenerKanal = link.kanal;
+      _zielKurz = null;
+      _fehler = null;
+      _codeCtrl.text = link.code;
+    });
+    _codePruefen();
   }
 
   /// Der erste fällige Kanal, für den schon ein Code unterwegs ist — aus der
@@ -214,9 +247,21 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    if (_laedt) return const SizedBox.shrink();
+    // Im Fenster für den Link ist die Karte das Einzige — dort steht beim
+    // Laden ein Kreisel und bei einem Fehler ein Satz, kein leeres Fenster.
+    final imLinkFenster = widget.codeAusLink != null;
+    if (_laedt) {
+      return imLinkFenster
+          ? const Padding(
+              padding: EdgeInsets.all(24),
+              child: Center(child: CircularProgressIndicator()),
+            )
+          : const SizedBox.shrink();
+    }
     final s = _stand;
-    if (s == null) return const SizedBox.shrink();
+    if (s == null) {
+      return imLinkFenster ? Text(t.signaturFehlgeschlagen) : const SizedBox.shrink();
+    }
     if (widget.nurWennFaellig && !_etwasFaellig) return const SizedBox.shrink();
 
     return Card(
@@ -459,5 +504,49 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
     if (d == null) return '';
     return '${d.day.toString().padLeft(2, '0')}.'
         '${d.month.toString().padLeft(2, '0')}.${d.year}';
+  }
+}
+
+/// Das Fenster für einen Code, der per Link aus der Mail kam ([KontaktLink]).
+///
+/// Die Karte sitzt sonst drei Schritte tief (Profil ▸ Verifizierung ▸ Stufe 1)
+/// — der Link soll aber gleich bestätigen. Darum ein eigenes Fenster über dem
+/// Dashboard, mit eingetragenem Code. Nach der Bestätigung geht es von selbst
+/// zu; die grüne Meldung steht dann auf dem Bildschirm darunter. Stimmt der
+/// Code nicht, bleibt es offen — mit der Meldung des Servers, dem Feld und
+/// „Code erneut senden“.
+class KontaktCodeDialog extends StatelessWidget {
+  final ApiService apiService;
+  final KontaktCodeAusLink code;
+
+  const KontaktCodeDialog({super.key, required this.apiService, required this.code});
+
+  /// Zeigt das Fenster für den wartenden Code, falls einer da ist.
+  static Future<void> offenenZeigen(BuildContext context, ApiService apiService) async {
+    final code = KontaktLink.instance.abholen();
+    if (code == null) return;
+    await showDialog<void>(
+      context: context,
+      builder: (_) => KontaktCodeDialog(apiService: apiService, code: code),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    return AlertDialog(
+      scrollable: true,
+      content: KontaktBestaetigung(
+        apiService: apiService,
+        // Auch was schon bestätigt ist, zeigen: ein zweites Öffnen des Links
+        // soll „bestätigt am …“ sagen, nicht ein leeres Fenster.
+        nurWennFaellig: false,
+        codeAusLink: code,
+        onBestaetigt: () => Navigator.of(context).pop(),
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(t.close)),
+      ],
+    );
   }
 }

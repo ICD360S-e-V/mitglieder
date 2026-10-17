@@ -45,5 +45,20 @@
 		<string>mailto</string>
 		<string>https</string>
 	</array>
+	<!-- Der Link in der Mail mit dem Bestätigungscode (lib/services/kontakt_link.dart):
+	     die Seite /code/ des Servers ruft mit „In der App öffnen" dieses
+	     Schema auf. macOS meldet es an, sobald die App einmal gestartet war.
+	     Universal Links bräuchten eine signierte App — die .dmg ist es nicht. -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>de.icd360s.mitglieder.code</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>icd360s-mitglied</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

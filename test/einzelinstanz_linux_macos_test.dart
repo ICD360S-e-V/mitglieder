@@ -97,10 +97,13 @@ void main() {
       final zeile =
           rumpf(runner, 'static gboolean my_application_local_command_line(');
       final erst = zeile.indexOf('g_application_register(');
-      final rueckfall = zeile.indexOf(
-          'g_application_set_flags(application, G_APPLICATION_NON_UNIQUE)');
+      final rueckfall = zeile.indexOf('g_application_set_flags(application,');
       final zweit = zeile.indexOf('g_application_register(', erst + 1);
       final abbruch = zeile.indexOf('*exit_status = 1;');
+      // Seit dem Link in der Mail (kLinkFlags) nimmt der Rueckfall dessen
+      // Flags mit — NON_UNIQUE muss trotzdem dabei sein.
+      expect(zeile.substring(rueckfall, zeile.indexOf(';', rueckfall)),
+          contains('G_APPLICATION_NON_UNIQUE'));
       expect(rueckfall, greaterThan(erst));
       expect(zweit, greaterThan(rueckfall));
       // Aufgegeben wird erst, wenn auch der zweite Versuch scheitert.

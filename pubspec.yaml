@@ -158,6 +158,13 @@ dependencies:
   # URL launcher for opening downloaded files
   url_launcher: ^6.2.0
 
+  # Der Link in der Mail mit dem Bestätigungscode öffnet die App
+  # (lib/services/kontakt_link.dart): Android App Links, auf Windows, macOS
+  # und Linux ein eigenes Schema. Das Standardpaket dafür, auf allen fünf
+  # Plattformen — 7.2.2 bringt die verlässliche Übergabe an die schon
+  # laufende Windows-App.
+  app_links: ^7.2.2
+
   # Open file with default app
   open_filex: ^4.5.0
 

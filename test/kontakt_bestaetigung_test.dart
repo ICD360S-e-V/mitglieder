@@ -7,6 +7,7 @@ import 'package:http/testing.dart';
 
 import 'package:icd360sev_mitglied/l10n/app_localizations.dart';
 import 'package:icd360sev_mitglied/services/api_service.dart';
+import 'package:icd360sev_mitglied/services/kontakt_link.dart';
 import 'package:icd360sev_mitglied/utils/app_theme.dart';
 import 'package:icd360sev_mitglied/widgets/kontakt_bestaetigung.dart';
 
@@ -153,22 +154,143 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(find.widgetWithText(TextButton, 'Code erneut senden'), findsOneWidget);
   });
+
+  // ── Der Link in der Mail (KontaktLink) ─────────────────────────────────
+  // „… un link care sa duca in aplicatie si codul sa se completeze automat“.
+
+  group('Code aus dem Link', () {
+    const ausMail = KontaktCodeAusLink('email', _Server.richtig);
+
+    testWidgets('wird eingetragen und gleich geprüft — ohne Tippen', (tester) async {
+      server.email = _offen(code: true);
+      var bestaetigt = 0;
+      await _zeigen(tester, codeAusLink: ausMail, nurWennFaellig: false, onBestaetigt: () => bestaetigt++);
+
+      // Kein code_anfordern: der Link bringt den Code schon mit. Nach der
+      // Bestätigung lädt die Karte ihren Stand neu.
+      expect(server.aktionen, ['status', 'code_pruefen', 'status']);
+      expect(server.letzte('code_pruefen'), {'aktion': 'code_pruefen', 'kanal': 'email', 'code': _Server.richtig});
+      expect(bestaetigt, 1);
+    });
+
+    testWidgets('schon bestätigt: nichts geprüft, „bestätigt am …“ statt eines Fehlers', (tester) async {
+      server.email = _bestaetigt();
+      server.telefon = {..._bestaetigt(), 'wert': '+4917612345611', 'bestaetigt_am': '2026-09-01 08:00:00'};
+      await _zeigen(tester, codeAusLink: ausMail, nurWennFaellig: false);
+
+      expect(server.aktionen, ['status'], reason: 'Ein zweites Öffnen des Links darf keinen Fehlversuch zählen.');
+      expect(find.text('bestätigt am 10.10.2026'), findsOneWidget);
+      expect(find.byType(TextField), findsNothing);
+    });
+
+    testWidgets('falscher Code: Meldung des Servers, das Feld bleibt, kein zweiter Versuch von selbst',
+        (tester) async {
+      server.email = _offen(code: true);
+      await _zeigen(tester, codeAusLink: const KontaktCodeAusLink('email', '000000'), nurWennFaellig: false);
+
+      expect(find.text('Der Code stimmt nicht. Noch 4 Versuche.'), findsOneWidget);
+      expect(find.byType(TextField), findsOneWidget);
+      expect(find.widgetWithText(TextButton, 'Code erneut senden'), findsOneWidget);
+      expect(server.aktionen.where((a) => a == 'code_pruefen'), hasLength(1));
+    });
+
+    testWidgets('Link für die Mail: kein SMS-Feld springt dazwischen auf', (tester) async {
+      server.email = _bestaetigt();
+      server.telefon = _offen(code: true, wert: '+4917612345611');
+      await _zeigen(tester, codeAusLink: ausMail, nurWennFaellig: false);
+
+      expect(find.byType(TextField), findsNothing);
+      expect(find.text('Wir haben Ihnen eine SMS geschickt.'), findsNothing);
+      expect(server.aktionen, ['status']);
+    });
+  });
+
+  group('Fenster für den Link (KontaktCodeDialog)', () {
+    setUp(() => KontaktLink.instance.abholen());
+
+    Future<void> oeffnen(WidgetTester tester) async {
+      await tester.pumpWidget(_app(Builder(
+        builder: (context) => TextButton(
+          onPressed: () => KontaktCodeDialog.offenenZeigen(context, ApiService()),
+          child: const Text('los'),
+        ),
+      )));
+      await tester.tap(find.text('los'));
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('bestätigt, geht zu, die grüne Meldung steht darunter', (tester) async {
+      server.email = _offen(code: true);
+      KontaktLink.instance.aufnehmen(Uri.parse('https://icd360sev.icd360s.de/code/#email=${_Server.richtig}'));
+      await oeffnen(tester);
+
+      expect(server.letzte('code_pruefen'), {'aktion': 'code_pruefen', 'kanal': 'email', 'code': _Server.richtig});
+      expect(find.byType(AlertDialog), findsNothing);
+      expect(find.text('Daten erfolgreich gespeichert'), findsOneWidget);
+      expect(KontaktLink.instance.offen.value, isNull, reason: 'Abgeholt — ein zweites Fenster gibt es nicht.');
+    });
+
+    testWidgets('falscher Code: bleibt offen, mit „Schließen“', (tester) async {
+      server.email = _offen(code: true);
+      KontaktLink.instance.aufnehmen(Uri.parse('https://icd360sev.icd360s.de/code/#email=000000'));
+      await oeffnen(tester);
+
+      expect(find.byType(AlertDialog), findsOneWidget);
+      expect(find.text('Der Code stimmt nicht. Noch 4 Versuche.'), findsOneWidget);
+      await tester.tap(find.widgetWithText(TextButton, 'Schließen'));
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsNothing);
+    });
+
+    testWidgets('ohne wartenden Code kein Fenster und keine Anfrage', (tester) async {
+      await oeffnen(tester);
+
+      expect(find.byType(AlertDialog), findsNothing);
+      expect(server.anfragen, isEmpty);
+    });
+
+    testWidgets('passt auf ein schmales Telefon mit großer Schrift (277 dp, 130 %)', (tester) async {
+      server.email = _offen(code: true);
+      tester.view.devicePixelRatio = 2.0;
+      tester.view.physicalSize = const Size(277, 616) * 2.0;
+      tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+      addTearDown(tester.view.reset);
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      KontaktLink.instance.aufnehmen(Uri.parse('https://icd360sev.icd360s.de/code/#email=000000'));
+      await oeffnen(tester);
+
+      expect(tester.takeException(), isNull);
+      expect(find.byType(AlertDialog), findsOneWidget);
+    });
+  });
 }
 
-Future<void> _zeigen(WidgetTester tester, {VoidCallback? onBestaetigt}) async {
-  await tester.pumpWidget(MaterialApp(
-    locale: const Locale('de'),
-    localizationsDelegates: AppLocalizations.localizationsDelegates,
-    supportedLocales: AppLocalizations.supportedLocales,
-    theme: AppTheme.light,
-    home: Scaffold(
-      body: SingleChildScrollView(
-        child: KontaktBestaetigung(apiService: ApiService(), onBestaetigt: onBestaetigt),
+Future<void> _zeigen(
+  WidgetTester tester, {
+  VoidCallback? onBestaetigt,
+  KontaktCodeAusLink? codeAusLink,
+  bool nurWennFaellig = true,
+}) async {
+  await tester.pumpWidget(_app(
+    SingleChildScrollView(
+      child: KontaktBestaetigung(
+        apiService: ApiService(),
+        onBestaetigt: onBestaetigt,
+        codeAusLink: codeAusLink,
+        nurWennFaellig: nurWennFaellig,
       ),
     ),
   ));
   await tester.pumpAndSettle();
 }
+
+Widget _app(Widget body) => MaterialApp(
+      locale: const Locale('de'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      theme: AppTheme.light,
+      home: Scaffold(body: body),
+    );
 
 Map<String, dynamic> _offen({required bool code, String wert = 'anna@beispiel.de'}) => {
       'wert': wert,
