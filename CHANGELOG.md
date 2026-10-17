@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.110.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.110.0...v1.110.1) (2026-10-17)
+
+
+### Bug Fixes
+
+* **datenschutz:** kein Chattext mehr im Protokoll — WS-Rahmen nur noch als Länge ([#490](https://github.com/ICD360S-e-V/mitglieder/issues/490)) ([8ee3dd6](https://github.com/ICD360S-e-V/mitglieder/commit/8ee3dd6ccb176cac3496aed4a97f12a5c5a0b3c9))
+
 ## [1.110.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.109.1...v1.110.0) (2026-10-17)
 
 
