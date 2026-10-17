@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/api_service.dart';
@@ -48,6 +50,15 @@ class KontaktBestaetigung extends StatefulWidget {
   /// zeigt „bestätigt am …“, keinen Fehler.
   final KontaktCodeAusLink? codeAusLink;
 
+  /// So lange lässt der Server nach dem letzten Code aus der App keinen neuen
+  /// zu (KONTAKT_SPERRE_SEKUNDEN in member/kontakt_bestaetigen.php). Nennt der
+  /// Server selbst eine Wartezeit (`warten_sekunden` bei 429), gilt seine.
+  static const sperreSekunden = 120;
+
+  /// Die Uhr — im Test fest.
+  @visibleForTesting
+  static DateTime Function() uhr = DateTime.now;
+
   const KontaktBestaetigung({
     super.key,
     required this.apiService,
@@ -81,6 +92,17 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
   /// wenn die Karte nach der Bestätigung neu lädt.
   bool _linkEingetragen = false;
 
+  /// Ab wann je Kanal wieder ein Code angefordert werden darf. Bis dahin ist
+  /// „Code erneut senden“ gesperrt und zeigt die Restzeit — App-Fehler #130:
+  /// ein Mitglied tippte 2 s nach dem Versand darauf und las „Bitte warten
+  /// Sie 118 Sekunden …“.
+  final _wartenBis = <String, DateTime>{};
+  Timer? _takt;
+
+  /// Die zuletzt gezeigten Restzeiten — neu gezeichnet wird nur, wenn sich
+  /// eine ändert.
+  String _angezeigt = '';
+
   @override
   void initState() {
     super.initState();
@@ -89,6 +111,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
 
   @override
   void dispose() {
+    _takt?.cancel();
     _codeCtrl.dispose();
     _neuCtrl.dispose();
     super.dispose();
@@ -161,6 +184,36 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
     return (s['email']?['faellig'] == true) || (s['telefon']?['faellig'] == true);
   }
 
+  /// Sekunden, bis für [kanal] wieder ein Code angefordert werden darf; 0 = jetzt.
+  int _rest(String kanal) {
+    final bis = _wartenBis[kanal];
+    if (bis == null) return 0;
+    final ms = bis.difference(KontaktBestaetigung.uhr()).inMilliseconds;
+    return ms <= 0 ? 0 : (ms + 999) ~/ 1000;
+  }
+
+  String _restzeiten() => [for (final k in _wartenBis.keys) _rest(k)].join(',');
+
+  /// Sperrt das Nachfordern für [kanal] und lässt die Restzeit jede Sekunde
+  /// nachziehen.
+  void _sperren(String kanal, int sekunden) {
+    _wartenBis[kanal] = KontaktBestaetigung.uhr().add(Duration(seconds: sekunden));
+    _angezeigt = _restzeiten();
+    _takt ??= Timer.periodic(const Duration(seconds: 1), (_) {
+      final jetzt = _restzeiten();
+      if (jetzt == _angezeigt) return;
+      _angezeigt = jetzt;
+      if (mounted) setState(() {});
+      if (_wartenBis.keys.every((k) => _rest(k) == 0)) {
+        _takt?.cancel();
+        _takt = null;
+      }
+    });
+  }
+
+  /// „1:58“
+  String _minSek(int s) => '${s ~/ 60}:${(s % 60).toString().padLeft(2, '0')}';
+
   Future<void> _codeAnfordern(String kanal) async {
     final t = AppLocalizations.of(context)!;
     setState(() {
@@ -173,12 +226,24 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
         neu: _aendern ? _neuCtrl.text : null,
       );
       if (!mounted) return;
+      final warten = int.tryParse('${r['warten_sekunden'] ?? ''}') ?? 0;
       setState(() {
         _sendet = false;
         if (r['success'] == true) {
           _offenerKanal = kanal;
           _zielKurz = r['ziel_kurz']?.toString();
           _codeCtrl.clear();
+          _sperren(kanal, KontaktBestaetigung.sperreSekunden);
+        } else if (warten > 0 && !_aendern) {
+          // 429: der letzte Code aus der App ist keine zwei Minuten alt — er
+          // gilt also noch. Statt „Bitte warten Sie 118 Sekunden …“ in Rot:
+          // das Feld für diesen Code, und am Knopf läuft die Zeit des Servers.
+          // (Für eine NEUE Adresse taugt der alte Code nicht — dort bleibt die
+          // Meldung.)
+          _offenerKanal = kanal;
+          _zielKurz = null;
+          _codeCtrl.clear();
+          _sperren(kanal, warten);
         } else {
           // ⚠️ Die Meldung des Servers wird durchgereicht und nicht durch ein
           // allgemeines „Fehler" ersetzt. Sie sagt genau, was los ist: die
@@ -349,8 +414,10 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
                       _neuCtrl.text = wert;
                     });
                     // Ein Code ist schon unterwegs: erst den eingeben lassen.
-                    // Ein neuer hiesse eine zweite Mail mit anderem Code.
-                    if (k['code_offen'] == true) {
+                    // Ein neuer hiesse eine zweite Mail mit anderem Code. Das
+                    // gilt auch für den, den die App eben selbst angefordert
+                    // hat (der Stand hier ist dann noch der von vorher).
+                    if (k['code_offen'] == true || _rest(kanal) > 0) {
                       _codeEingeben(kanal);
                     } else {
                       _codeAnfordern(kanal);
@@ -423,6 +490,7 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
 
   Widget _codeEingabe() {
     final t = AppLocalizations.of(context)!;
+    final rest = _rest(_offenerKanal!);
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
         _offenerKanal == 'email'
@@ -466,9 +534,14 @@ class _KontaktBestaetigungState extends State<KontaktBestaetigung> {
       Align(
         alignment: AlignmentDirectional.centerStart,
         child: TextButton.icon(
-          onPressed: _sendet ? null : () => _codeAnfordern(_offenerKanal!),
+          // Gesperrt, solange der Server ohnehin „Bitte warten …“ sagte.
+          onPressed: _sendet || rest > 0 ? null : () => _codeAnfordern(_offenerKanal!),
           icon: const Icon(Icons.refresh, size: 18),
-          label: Text(t.signaturCodeErneutSenden),
+          // Die Restzeit in Klammern, ohne eigenen Text: „1:58“ liest sich in
+          // jeder Sprache der App gleich.
+          label: Text(rest > 0
+              ? '${t.signaturCodeErneutSenden} (${_minSek(rest)})'
+              : t.signaturCodeErneutSenden),
         ),
       ),
       // OverflowBar statt Row: auf einem schmalen Telefon mit grosser Schrift
