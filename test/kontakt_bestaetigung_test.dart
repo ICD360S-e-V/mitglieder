@@ -205,64 +205,6 @@ void main() {
     });
   });
 
-  group('Fenster für den Link (KontaktCodeDialog)', () {
-    setUp(() => KontaktLink.instance.abholen());
-
-    Future<void> oeffnen(WidgetTester tester) async {
-      await tester.pumpWidget(_app(Builder(
-        builder: (context) => TextButton(
-          onPressed: () => KontaktCodeDialog.offenenZeigen(context, ApiService()),
-          child: const Text('los'),
-        ),
-      )));
-      await tester.tap(find.text('los'));
-      await tester.pumpAndSettle();
-    }
-
-    testWidgets('bestätigt, geht zu, die grüne Meldung steht darunter', (tester) async {
-      server.email = _offen(code: true);
-      KontaktLink.instance.aufnehmen(Uri.parse('https://icd360sev.icd360s.de/code/#email=${_Server.richtig}'));
-      await oeffnen(tester);
-
-      expect(server.letzte('code_pruefen'), {'aktion': 'code_pruefen', 'kanal': 'email', 'code': _Server.richtig});
-      expect(find.byType(AlertDialog), findsNothing);
-      expect(find.text('Daten erfolgreich gespeichert'), findsOneWidget);
-      expect(KontaktLink.instance.offen.value, isNull, reason: 'Abgeholt — ein zweites Fenster gibt es nicht.');
-    });
-
-    testWidgets('falscher Code: bleibt offen, mit „Schließen“', (tester) async {
-      server.email = _offen(code: true);
-      KontaktLink.instance.aufnehmen(Uri.parse('https://icd360sev.icd360s.de/code/#email=000000'));
-      await oeffnen(tester);
-
-      expect(find.byType(AlertDialog), findsOneWidget);
-      expect(find.text('Der Code stimmt nicht. Noch 4 Versuche.'), findsOneWidget);
-      await tester.tap(find.widgetWithText(TextButton, 'Schließen'));
-      await tester.pumpAndSettle();
-      expect(find.byType(AlertDialog), findsNothing);
-    });
-
-    testWidgets('ohne wartenden Code kein Fenster und keine Anfrage', (tester) async {
-      await oeffnen(tester);
-
-      expect(find.byType(AlertDialog), findsNothing);
-      expect(server.anfragen, isEmpty);
-    });
-
-    testWidgets('passt auf ein schmales Telefon mit großer Schrift (277 dp, 130 %)', (tester) async {
-      server.email = _offen(code: true);
-      tester.view.devicePixelRatio = 2.0;
-      tester.view.physicalSize = const Size(277, 616) * 2.0;
-      tester.platformDispatcher.textScaleFactorTestValue = 1.3;
-      addTearDown(tester.view.reset);
-      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
-      KontaktLink.instance.aufnehmen(Uri.parse('https://icd360sev.icd360s.de/code/#email=000000'));
-      await oeffnen(tester);
-
-      expect(tester.takeException(), isNull);
-      expect(find.byType(AlertDialog), findsOneWidget);
-    });
-  });
 }
 
 Future<void> _zeigen(

@@ -9,7 +9,6 @@ import '../services/anruf_klingel.dart';
 import '../services/anruf_rueckweg.dart';
 import '../services/api_service.dart';
 import '../services/kontakt_link.dart';
-import '../widgets/kontakt_bestaetigung.dart';
 import '../services/logger_service.dart';
 import '../services/chat_service.dart';
 import '../services/heartbeat_service.dart';
@@ -1267,14 +1266,21 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     }
   }
 
-  /// Der Code aus einem Link in der Mail — eingetragen und gleich geprüft, in
-  /// einem eigenen Fenster ([KontaktCodeDialog]). Ohne wartenden Code nichts.
+  /// Der Code aus einem Link in der Mail: das Profil öffnet sich gleich auf
+  /// „Verifizierung“, Stufe 1 offen, der Code in der Karte eingetragen und
+  /// geprüft — der Weg, den die Mail beschreibt (Personen-Symbol › Schild ›
+  /// „① Persönliche Daten“), von selbst. Ohne wartenden Code nichts.
+  ///
+  /// Bis v1.113 ein eigenes Fenster über dem Dashboard; der Vorsitzende
+  /// wollte den Code dort sehen, wo man ihn auch von Hand eingibt (17.10.2026).
   void _codeAusLinkZeigen() {
     if (!mounted) return;
-    KontaktCodeDialog.offenenZeigen(context, _apiService);
+    final code = KontaktLink.instance.abholen();
+    if (code == null) return;
+    _showProfileDialog(codeAusLink: code);
   }
 
-  void _showProfileDialog() {
+  void _showProfileDialog({KontaktCodeAusLink? codeAusLink}) {
     showDialog(
       context: context,
       builder: (context) => MitgliedProfileDialog(
@@ -1286,6 +1292,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
         onEmailChanged: (newEmail) {
           setState(() => _currentEmail = newEmail);
         },
+        codeAusLink: codeAusLink,
       ),
     );
   }

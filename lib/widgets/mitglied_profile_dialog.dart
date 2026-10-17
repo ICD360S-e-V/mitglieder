@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/api_service.dart';
+import '../services/kontakt_link.dart';
 import '../services/remote_input/input_injector_android.dart';
 import '../services/theme_service.dart';
 import '../services/update_service.dart';
@@ -29,6 +30,12 @@ class MitgliedProfileDialog extends StatefulWidget {
   final ApiService apiService;
   final Function(String) onEmailChanged;
 
+  /// Ein Code, der per Link aus der Mail kam ([KontaktLink]). Dann öffnet sich
+  /// das Profil gleich auf „Verifizierung“, mit offener Stufe 1 und dem Code
+  /// in der Karte — der Weg, den die Mail beschreibt (Personen-Symbol ›
+  /// Schild › „① Persönliche Daten“), nur von selbst.
+  final KontaktCodeAusLink? codeAusLink;
+
   const MitgliedProfileDialog({
     super.key,
     required this.userName,
@@ -37,7 +44,11 @@ class MitgliedProfileDialog extends StatefulWidget {
     required this.status,
     required this.apiService,
     required this.onEmailChanged,
+    this.codeAusLink,
   });
+
+  /// Der Reiter „Verifizierung“ (das Schild).
+  static const reiterVerifizierung = 2;
 
   @override
   State<MitgliedProfileDialog> createState() => _MitgliedProfileDialogState();
@@ -77,7 +88,11 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(
+      length: 6,
+      vsync: this,
+      initialIndex: widget.codeAusLink != null ? MitgliedProfileDialog.reiterVerifizierung : 0,
+    );
     _loadMySessions();
     _loadAccountInfo();
     _loadAutoUpdatePreference();
@@ -468,7 +483,7 @@ class _MitgliedProfileDialogState extends State<MitgliedProfileDialog>
                     isLoading: _loadingSessions,
                     onRevokeSession: (id) => _confirmRevokeMySession(id),
                   ),
-                  VerifizierungTab(mitgliedernummer: widget.mitgliedernummer),
+                  VerifizierungTab(mitgliedernummer: widget.mitgliedernummer, codeAusLink: widget.codeAusLink),
                   const VerwarnungenTab(),
                   const DokumenteTab(),
                   MitgliedschaftTab(mitgliedernummer: widget.mitgliedernummer),
