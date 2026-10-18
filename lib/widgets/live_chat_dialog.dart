@@ -210,7 +210,7 @@ class _LiveChatDialogState extends State<LiveChatDialog>
   }
 
   void _handlePendingCall(CallOfferEvent event) async {
-    _log.info('LiveChat: _handlePendingCall() from ${event.callerName} (conv: ${event.conversationId})', tag: 'CALL');
+    _log.info('LiveChat: _handlePendingCall() (conv: ${event.conversationId})', tag: 'CALL');
     // Wait a bit for WebSocket to connect
     await Future.delayed(const Duration(milliseconds: 500));
 
@@ -340,7 +340,7 @@ class _LiveChatDialogState extends State<LiveChatDialog>
           }
         });
 
-        _log.debug('LiveChat: Support status loaded - online: $anyOnline, name: $_supportName, seconds: $_supportLastSeenSeconds', tag: 'CHAT');
+        _log.debug('LiveChat: Support status loaded - online: $anyOnline, seconds: $_supportLastSeenSeconds', tag: 'CHAT');
       }
     } catch (e) {
       _log.error('LiveChat: _loadSupportStatus error: $e', tag: 'CHAT');
@@ -531,7 +531,7 @@ class _LiveChatDialogState extends State<LiveChatDialog>
 
     // Set up voice call listeners
     _callAnswerSubscription = _chatService.callAnswerStream.listen((event) {
-      _log.info('LiveChat: [WS] Received call_answer from ${event.answererName} (conv: ${event.conversationId})', tag: 'CALL');
+      _log.info('LiveChat: [WS] Received call_answer (conv: ${event.conversationId})', tag: 'CALL');
       if (!mounted) return;
       if (event.conversationId == _conversationId) {
         _handleCallAnswer(event.sdp, event.sdpType, event.answererName);
@@ -576,7 +576,7 @@ class _LiveChatDialogState extends State<LiveChatDialog>
     // Incoming calls are now handled centrally in mitglied_dashboard.dart
     /*
     _callOfferSubscription = _chatService.callOfferStream.listen((event) {
-      _log.info('LiveChat: [WS] Received call_offer from ${event.callerName} (conv: ${event.conversationId})', tag: 'CALL');
+      _log.info('LiveChat: [WS] Received call_offer (conv: ${event.conversationId})', tag: 'CALL');
       if (!mounted) return;
       if (event.conversationId == _conversationId) {
         _handleIncomingCall(event);
@@ -757,7 +757,7 @@ class _LiveChatDialogState extends State<LiveChatDialog>
 
   /// Handle answer from support - REFACTORED to use VoiceCallService
   Future<void> _handleCallAnswer(String sdp, String sdpType, String answererName) async {
-    _log.info('LiveChat: _handleCallAnswer() from $answererName, sdpType: $sdpType (using VoiceCallService)', tag: 'CALL');
+    _log.info('LiveChat: _handleCallAnswer() sdpType: $sdpType (using VoiceCallService)', tag: 'CALL');
     if (!mounted) return;
 
     try {

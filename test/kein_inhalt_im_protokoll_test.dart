@@ -135,6 +135,72 @@ void main() {
     expect(nutzdaten.hasMatch(r"_log.info('x ${request.headers}')"), isTrue);
   });
 
+  // ── Personendaten (18.10.2026) ───────────────────────────────────────────
+  //
+  // Die Regeln oben sahen den Namen nur, wenn er DIREKT hinter `$` stand:
+  // `${chatMsg.senderName}`, `${event.callerName}`, `$memberName` rutschten
+  // durch — ebenso genaue Positionen, die IP-Adressen der
+  // ICE-Kandidaten, Pfade mit dem Windows-Benutzernamen, die Heimatadresse und
+  // `lib/utils/protokoll_schutz.dart` gibt für
+  // Positionen und Pfade die FORM zurück; ein Name wird weggelassen.
+
+  /// Ein Name, gleich hinter welchem Objekt er steht.
+  final name = RegExp(
+    r'\$\{?[\w.!?]*\b_?(callerName|answererName|controllerName|targetUserName|memberName|'
+    r'supportName|senderName|currentUserName|userName|displayName|vorname|nachname|'
+    r'anruferAnzeige)\b(?!\??\.(length|isEmpty|isNotEmpty)\b)'
+    r"""|\[['"](caller_name|answerer_name|controller_name|member_name|user_name|"""
+    r"""sender_name|display_name|vorname|nachname)['"]\]""",
+  );
+
+  /// Genaue Position, IP-Adresse, Pfad, Heimatadresse, Start/Ziel einer Fahrt.
+  final ortUndPfad = RegExp(
+    r'\$\{?(lat|lon|_latitude|_longitude|latitude|longitude)\b(?!\??\.(length)\b)'
+    r'|\$\{[\w.!?]+\.(latitude|longitude|path)\b(?!\??\.(length|isEmpty|isNotEmpty)\b)'
+    r"""|\[['"](ip|address)['"]\]"""
+    r'|\$\{?\w*(Path|Pfad)\b(?!\??\.(length|isEmpty|isNotEmpty)\b)'
+    r'|\$\{?_memberHome(Ort|Plz)\b(?!\s*[=!]=\s*null|\??\.(length|isEmpty|isNotEmpty)\b)'
+    r'|\$\{?(fromName|toName)\b|\$\{[\w.!?]*\b(from|to)\.name\b|\bleg\.(fromName|toName)\b',
+  );
+
+  test('kein Log-Aufruf trägt einen Namen — auch nicht hinter einem Objekt', () {
+    final befunde = [
+      for (final a in logAufrufe())
+        if (name.firstMatch(a.aufruf) case final t?) '${a.ort}  ${t.group(0)}',
+    ];
+    expect(befunde, isEmpty, reason: 'Name im Protokoll:\n${befunde.join('\n')}');
+  });
+
+  test('keine genaue Position, IP-Adresse, kein Pfad, keine Adresse im Protokoll', () {
+    final befunde = [
+      for (final a in logAufrufe())
+        if (ortUndPfad.firstMatch(a.aufruf) case final t?) '${a.ort}  ${t.group(0)}',
+    ];
+    expect(befunde, isEmpty, reason: 'Ort oder Pfad im Protokoll:\n${befunde.join('\n')}');
+  });
+
+  test('die Personendaten-Regeln treffen genau das Gemeinte', () {
+    expect(name.hasMatch(r"'von ${event.callerName}'"), isTrue);
+    expect(name.hasMatch(r"'sender=${chatMsg.senderName}'"), isTrue);
+    expect(name.hasMatch(r"'an $memberName'"), isTrue);
+    expect(name.hasMatch(r"'name: $_supportName'"), isTrue);
+    expect(name.hasMatch(r"'x ${json['caller_name']}'"), isTrue);
+    expect(name.hasMatch(r"'(${_currentUserName?.length ?? 0} Zeichen)'"), isFalse);
+    expect(name.hasMatch(r"'conv ${event.conversationId}'"), isFalse);
+    expect(ortUndPfad.hasMatch(r"'GPS ($lat, $lon)'"), isTrue);
+    expect(ortUndPfad.hasMatch(r"'GPS = ${position.latitude}'"), isTrue);
+    expect(ortUndPfad.hasMatch(r"'GPS ${protokollPosition(position.latitude, position.longitude)}'"), isFalse);
+    expect(ortUndPfad.hasMatch(r"'[CAND] ${v['ip'] ?? v['address']}'"), isTrue);
+    expect(ortUndPfad.hasMatch(r"'nach ${ziel.path}'"), isTrue);
+    expect(ortUndPfad.hasMatch(r"'Installing APK: $installerPath'"), isTrue);
+    expect(ortUndPfad.hasMatch(r"'Installing APK: ${protokollDatei(installerPath)}'"), isFalse);
+    expect(ortUndPfad.hasMatch(r"'EFA ${from.name}→${to.name}'"), isTrue);
+    expect(ortUndPfad.hasMatch(r"'provider ${p.name}'"), isFalse);
+    expect(ortUndPfad.hasMatch(r"'${route.path.length} path points'"), isFalse);
+    expect(ortUndPfad.hasMatch(r"'ort ${_memberHomeOrt == null ? 'fehlt' : 'da'}'"), isFalse);
+    expect(ortUndPfad.hasMatch(r"'ort=$_memberHomeOrt'"), isTrue);
+  });
+
   test('die Länge zu protokollieren bleibt erlaubt und wird genutzt', () {
     // ⚠️ Sonst liesse sich der Wächter erfüllen, indem man gar nichts mehr
     // protokolliert — und verlöre die Auskunft „kam die Benachrichtigung an?",

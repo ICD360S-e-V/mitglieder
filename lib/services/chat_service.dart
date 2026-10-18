@@ -688,7 +688,7 @@ class ChatService {
         // Voice call events
         case 'call_offer':
           _log.info('📞📞📞 WebSocket: CALL_OFFER received!', tag: 'CHAT');
-          _log.info('📞 From: ${json['caller_name']} (${json['caller_id']})', tag: 'CHAT');
+          _log.info('📞 From: ${json['caller_id']}', tag: 'CHAT');
           _log.info('📞 Conversation: ${json['conversation_id']}', tag: 'CHAT');
           _log.info('📞 SDP Type: ${json['sdp_type']}', tag: 'CHAT');
           _log.info('📞 SDP Length: ${(json['sdp'] as String?)?.length ?? 0} characters', tag: 'CHAT');
@@ -713,7 +713,7 @@ class ChatService {
 
         case 'call_answer':
           _log.info('✅✅✅ WebSocket: CALL_ANSWER received!', tag: 'CHAT');
-          _log.info('✅ From: ${json['answerer_name']} (${json['answerer_id']})', tag: 'CHAT');
+          _log.info('✅ From: ${json['answerer_id']}', tag: 'CHAT');
           _log.info('✅ Conversation: ${json['conversation_id']}', tag: 'CHAT');
           _log.info('✅ SDP Type: ${json['sdp_type']}', tag: 'CHAT');
           _log.info('✅ SDP Length: ${(json['sdp'] as String?)?.length ?? 0} characters', tag: 'CHAT');
@@ -773,7 +773,7 @@ class ChatService {
         // Remote-control (Fernwartung) events. This app is the AGENT: it acts on
         // remote_offer (consent prompt), remote_ice and remote_ended.
         case 'remote_offer':
-          _log.info('🖥️ WebSocket: REMOTE_OFFER received from ${json['controller_name'] ?? json['caller_name']}', tag: 'REMOTE');
+          _log.info('🖥️ WebSocket: REMOTE_OFFER received from ${json['controller_id'] ?? json['caller_id']}', tag: 'REMOTE');
           _remoteOfferController.add(RemoteOfferEvent(
             conversationId: json['conversation_id'] ?? 0,
             controllerId: json['controller_id']?.toString() ?? json['caller_id']?.toString() ?? '',
