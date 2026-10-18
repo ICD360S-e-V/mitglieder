@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.118.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.117.0...v1.118.0) (2026-10-18)
+
+
+### Features
+
+* **chat:** Website-Chat bestätigen – Frage des Vorstands mit drei Zahlen ([#527](https://github.com/ICD360S-e-V/mitglieder/issues/527)) ([c40e1c0](https://github.com/ICD360S-e-V/mitglieder/commit/c40e1c00fdf52417f19dbe4a215a58f5607bbc0d))
+
 ## [1.117.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.116.4...v1.117.0) (2026-10-17)
 
 
