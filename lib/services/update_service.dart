@@ -14,6 +14,7 @@ import 'http_client_factory.dart';
 import 'logger_service.dart';
 import 'startup_diagnostics.dart';
 import 'update_gespraechssperre.dart';
+import '../utils/protokoll_schutz.dart';
 
 final _log = LoggerService();
 
@@ -487,7 +488,7 @@ class UpdateService {
       if (expectedSha256 != null && expectedSha256.isNotEmpty && await file.exists()) {
         final vorhanden = (await sha256.bind(file.openRead()).first).toString();
         if (vorhanden == expectedSha256.toLowerCase()) {
-          _log.info('Already downloaded and verified: $filePath', tag: 'UPDATE');
+          _log.info('Already downloaded and verified: ${protokollDatei(filePath)}', tag: 'UPDATE');
           onProgress(1.0);
           return filePath;
         }
@@ -498,7 +499,7 @@ class UpdateService {
         await file.delete();
       }
 
-      _log.info('Downloading to: $filePath', tag: 'UPDATE');
+      _log.info('Downloading to: ${protokollDatei(filePath)}', tag: 'UPDATE');
 
       final request = http.Request('GET', Uri.parse(downloadUrl));
       final response = await _client.send(request);
@@ -537,7 +538,7 @@ class UpdateService {
           await Process.run('chmod', ['+x', filePath]);
         }
 
-        _log.info('Download complete: $filePath', tag: 'UPDATE');
+        _log.info('Download complete: ${protokollDatei(filePath)}', tag: 'UPDATE');
         return filePath;
       }
     } catch (e) {
@@ -587,7 +588,7 @@ class UpdateService {
         //
         // ⚠️ Kommt die Antwort, kam das Update NICHT durch (abgebrochen,
         // kaputt …): bei Erfolg beendet Android die App vorher.
-        _log.info('Android: installing $installerPath', tag: 'UPDATE');
+        _log.info('Android: installing ${protokollDatei(installerPath)}', tag: 'UPDATE');
         final status = await IcdInstaller.apkInstallieren(installerPath, ohneNachfrage: true);
         _log.info('APK install status: ${status.name}', tag: 'UPDATE');
         // Wartet schon eine Installation derselben Fassung: die läuft weiter.

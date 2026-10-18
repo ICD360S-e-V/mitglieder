@@ -407,7 +407,7 @@ class RemoteAgentService {
   void decline(RemoteOfferEvent offer, {String reason = 'declined'}) {
     vormerkungVerwerfen();
     _chat.sendRemoteReject(offer.conversationId, reason);
-    _log.info('RemoteAgent: declined offer from ${offer.controllerName}', tag: 'REMOTE');
+    _log.info('RemoteAgent: declined offer from ${offer.controllerId}', tag: 'REMOTE');
   }
 
   /// Tear the session down. [notifyPeer] sends remote_end to the Vorsitzer

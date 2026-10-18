@@ -466,7 +466,7 @@ class VoiceCallService {
   /// On failure returns false; the caller can read [lastStartFailure] for
   /// the reason and map it to a localised user-facing message.
   Future<bool> startCall(int conversationId, String targetUserId, String targetUserName, {bool video = false}) async {
-    _log.info('VoiceCallService: startCall() - conv: $conversationId, target: $targetUserName', tag: 'CALL');
+    _log.info('VoiceCallService: startCall() - conv: $conversationId, target: $targetUserId', tag: 'CALL');
     _lastStartFailure = null;
     if (_callState != CallState.idle) {
       _log.warning('VoiceCallService: startCall() aborted - already in state: $_callState', tag: 'CALL');
@@ -556,7 +556,7 @@ class VoiceCallService {
 
   /// Handle incoming call offer (callee side)
   Future<void> handleIncomingCall(int conversationId, String callerId, String callerName, String sdp, String sdpType) async {
-    _log.info('VoiceCallService: handleIncomingCall() - from: $callerName (conv: $conversationId), current state: $_callState', tag: 'CALL');
+    _log.info('VoiceCallService: handleIncomingCall() - from: $callerId (conv: $conversationId), current state: $_callState', tag: 'CALL');
     if (_callState != CallState.idle) {
       // Already in a call, reject
       _log.warning('VoiceCallService: Already in call ($_callState), auto-rejecting with busy', tag: 'CALL');
@@ -1497,7 +1497,7 @@ class VoiceCallService {
               _medienPfadBestaetigen('candidate-pair succeeded ($recv B received)');
             }
           } else if (r.type == 'local-candidate' || r.type == 'remote-candidate') {
-            _log.info('[CAND] ${r.type} ${v['candidateType']} ${v['protocol']} ${v['ip'] ?? v['address']}:${v['port']}', tag: 'ICESTAT');
+            _log.info('[CAND] ${r.type} ${v['candidateType']} ${v['protocol']}', tag: 'ICESTAT');
           } else if (r.type == 'outbound-rtp') {
             // Decisive video-flow check: a working video call must show an
             // outbound-rtp with kind=video whose framesEncoded/bytesSent grow.

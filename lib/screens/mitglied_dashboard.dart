@@ -242,7 +242,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     // Anmeldung, wartet er — dann gleich nach dem ersten Bild, siehe unten.
     KontaktLink.instance.offen.addListener(_codeAusLinkZeigen);
     WidgetsBinding.instance.addObserver(this);
-    _log.info('Dashboard: Loaded for ${widget.mitgliedernummer} (${widget.userName})', tag: 'DASH');
+    _log.info('Dashboard: Loaded for ${widget.mitgliedernummer}', tag: 'DASH');
     _currentEmail = widget.email;
     _loadBeitragStatus();
     _loadAccountStatus();
@@ -706,7 +706,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   /// Fernwartung request: show the consent prompt. Nothing is shared unless the
   /// member taps "Erlauben". A session already running auto-declines new requests.
   void _handleRemoteOffer(RemoteOfferEvent event) {
-    _log.info('MitgliedDash: Fernwartung request from ${event.controllerName} (conv: ${event.conversationId})', tag: 'REMOTE');
+    _log.info('MitgliedDash: Fernwartung request (conv: ${event.conversationId})', tag: 'REMOTE');
     if (_remoteAgent.isSharing) {
       _chatService.sendRemoteReject(event.conversationId, 'busy');
       return;
@@ -769,7 +769,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
       WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed;
 
   void _handleIncomingCall(CallOfferEvent event) {
-    _log.info('MitgliedDash: Incoming call from ${event.callerName} (conv: ${event.conversationId})', tag: 'CALL');
+    _log.info('MitgliedDash: Incoming call (conv: ${event.conversationId})', tag: 'CALL');
 
     // Inform VoiceCallService about incoming call (sets state to RINGING)
     _voiceCallService.handleIncomingCall(
@@ -859,7 +859,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
             isSpeakerOn: true,
             onAccept: () {
               _log.info('🟢🟢🟢 ACCEPT BUTTON PRESSED!', tag: 'CALL');
-              _log.info('🟢 Event: ${event.callerName} from conv ${event.conversationId}', tag: 'CALL');
+              _log.info('🟢 Event from conv ${event.conversationId}', tag: 'CALL');
               _log.info('🟢 SDP Type: ${event.sdpType}', tag: 'CALL');
               _log.info('🟢 SDP Length: ${event.sdp.length} chars', tag: 'CALL');
               _log.info('🟢 Calling _acceptCall()...', tag: 'CALL');
@@ -932,7 +932,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
   /// einem leeren Stapel.
   void _acceptCall(CallOfferEvent event,
       {VoidCallback? beiFehlschlag, bool ersetzen = true}) async {
-    _log.info('🎯🎯🎯 _acceptCall() STARTED for ${event.callerName}', tag: 'CALL');
+    _log.info('🎯🎯🎯 _acceptCall() STARTED (conv: ${event.conversationId})', tag: 'CALL');
     _log.info('🎯 Conversation ID: ${event.conversationId}', tag: 'CALL');
 
     try {
@@ -978,7 +978,7 @@ class _MitgliedDashboardState extends State<MitgliedDashboard>
     } catch (e, stackTrace) {
       _log.error('❌❌❌ _acceptCall() ERROR: $e', tag: 'CALL');
       _log.error('❌ Stack trace: $stackTrace', tag: 'CALL');
-      _log.error('❌ Event: ${event.callerName}, Conv: ${event.conversationId}', tag: 'CALL');
+      _log.error('❌ Event: Conv: ${event.conversationId}', tag: 'CALL');
     }
   }
 
