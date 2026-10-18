@@ -2938,6 +2938,39 @@ class AppLocalizationsRo extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Conducerea întreabă';
+
+  @override
+  String get webChatFrageText =>
+      'Scrieți chiar acum în chatul de pe icd360s.de?';
+
+  @override
+  String get webChatFrageZahl => 'Atingeți numărul care apare acolo în chat.';
+
+  @override
+  String get webChatNein => 'Nu, nu sunt eu';
+
+  @override
+  String get webChatBestaetigt =>
+      'Mulțumim! Conducerea știe acum că sunteți dumneavoastră.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'În regulă. Conducerea va afla că nu sunteți dumneavoastră.';
+
+  @override
+  String get webChatFalsch =>
+      'Numărul nu este cel corect. Rugați conducerea să vă întrebe din nou.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Întrebarea nu mai este valabilă. Rugați conducerea să vă întrebe din nou.';
+
+  @override
+  String get webChatFehler =>
+      'Nu există conexiune cu serverul. Vă rugăm să încercați din nou.';
+
+  @override
   String get themeTitle => 'Aspect';
 
   @override

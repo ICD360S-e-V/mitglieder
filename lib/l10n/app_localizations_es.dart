@@ -2943,6 +2943,39 @@ class AppLocalizationsEs extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'La junta directiva pregunta';
+
+  @override
+  String get webChatFrageText =>
+      '¿Está escribiendo ahora mismo en el chat de icd360s.de?';
+
+  @override
+  String get webChatFrageZahl => 'Toque el número que aparece allí en el chat.';
+
+  @override
+  String get webChatNein => 'No, no soy yo';
+
+  @override
+  String get webChatBestaetigt =>
+      '¡Gracias! La junta directiva ya sabe que es usted.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'De acuerdo. La junta directiva sabrá que no es usted.';
+
+  @override
+  String get webChatFalsch =>
+      'Ese número no es correcto. Pida a la junta directiva que le pregunte de nuevo.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Esta pregunta ya no es válida. Pida a la junta directiva que le pregunte de nuevo.';
+
+  @override
+  String get webChatFehler =>
+      'No hay conexión con el servidor. Inténtelo de nuevo.';
+
+  @override
   String get themeTitle => 'Apariencia';
 
   @override

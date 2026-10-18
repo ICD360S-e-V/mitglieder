@@ -628,6 +628,36 @@ class ApiService {
     return jsonDecode(response.body);
   }
 
+  // ── Website-Chat bestätigen ───────────────────────────────────────────
+  //
+  // Schreibt jemand im Chat auf icd360s.de und sagt „Ich bin Mitglied", kann
+  // der Vorstand ein Mitglied fragen lassen, ob es das wirklich ist. Die
+  // Frage kommt per Push; die App holt sie hier ab und zeigt drei Zahlen —
+  // das Mitglied tippt die, die im Website-Chat steht
+  // (lib/services/web_chat_bestaetigung.dart). Gedeutet werden Statuscode und
+  // Rumpf dort, deshalb kommt hier die rohe Antwort zurück.
+
+  /// Die offene Frage des Vorstands, falls es eine gibt.
+  Future<http.Response> webChatOffen() => _client.post(
+        Uri.parse('$baseUrl/member/web_chat_bestaetigen.php'),
+        headers: _headers,
+        body: jsonEncode({'aktion': 'offen'}),
+      );
+
+  /// Antwortet auf die Frage [id]: mit [zahl] „das bin ich", ohne „nein".
+  Future<http.Response> webChatAntworten(int id, {int? zahl}) => _client.post(
+        Uri.parse('$baseUrl/member/web_chat_bestaetigen.php'),
+        headers: _headers,
+        body: jsonEncode(webChatAntwortRumpf(id, zahl: zahl)),
+      );
+
+  /// Der Rumpf für [webChatAntworten]: genau eins von `zahl` und `antwort`.
+  static Map<String, dynamic> webChatAntwortRumpf(int id, {int? zahl}) => {
+        'aktion': 'antworten',
+        'id': id,
+        if (zahl != null) 'zahl': zahl else 'antwort': 'nein',
+      };
+
   /// Meldet die gewählte App-Sprache an den Server (`users.preferred_language`).
   ///
   /// Ohne diesen Aufruf bleibt die Sprachwahl rein lokal: die Oberfläche wäre

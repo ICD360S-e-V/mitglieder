@@ -44,6 +44,20 @@ class NtfyService {
   /// erneut verdoppeln.
   Timer? _reconnectTimer;
 
+  /// Steigt bei jeder Frage des Vorstands „Schreiben Sie gerade im Chat auf
+  /// icd360s.de?" (Push mit Tag `web_chat`, Server:
+  /// member/web_chat_bestaetigen.php). Das Dashboard hört zu und holt die
+  /// Frage sofort ab, statt auf das nächste Zurückkommen der App zu warten.
+  final webChatSignal = ValueNotifier<int>(0);
+
+  /// Trägt die ntfy-Nachricht den Tag `web_chat`?
+  @visibleForTesting
+  static bool hatWebChatTag(Object? data) {
+    if (data is! Map) return false;
+    final tags = data['tags'];
+    return tags is List && tags.contains('web_chat');
+  }
+
   /// Start listening for push notifications on this user's topic.
   void start(String mitgliedernummer) {
     if (_isListening && _mitgliedernummer == mitgliedernummer) return;
@@ -191,6 +205,7 @@ class NtfyService {
         title: title,
         body: body,
       );
+      if (hatWebChatTag(data)) webChatSignal.value++;
     } catch (e) {
       debugPrint('[NTFY] Parse error: $e');
     }

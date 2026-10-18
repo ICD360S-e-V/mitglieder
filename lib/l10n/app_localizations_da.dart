@@ -2932,6 +2932,36 @@ class AppLocalizationsDa extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Bestyrelsen spørger';
+
+  @override
+  String get webChatFrageText => 'Skriver du lige nu i chatten på icd360s.de?';
+
+  @override
+  String get webChatFrageZahl => 'Tryk på tallet, der står der i chatten.';
+
+  @override
+  String get webChatNein => 'Nej, det er ikke mig';
+
+  @override
+  String get webChatBestaetigt => 'Tak! Bestyrelsen ved nu, at det er dig.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'I orden. Bestyrelsen får besked om, at det ikke er dig.';
+
+  @override
+  String get webChatFalsch =>
+      'Det tal passer ikke. Bed bestyrelsen om at spørge igen.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Spørgsmålet gælder ikke længere. Bed bestyrelsen om at spørge igen.';
+
+  @override
+  String get webChatFehler => 'Ingen forbindelse til serveren. Prøv igen.';
+
+  @override
   String get themeTitle => 'Udseende';
 
   @override

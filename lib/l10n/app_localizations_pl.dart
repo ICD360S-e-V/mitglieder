@@ -2940,6 +2940,36 @@ class AppLocalizationsPl extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Zarząd pyta';
+
+  @override
+  String get webChatFrageText => 'Czy piszesz teraz na czacie na icd360s.de?';
+
+  @override
+  String get webChatFrageZahl =>
+      'Dotknij liczby, która jest tam wyświetlona na czacie.';
+
+  @override
+  String get webChatNein => 'Nie, to nie ja';
+
+  @override
+  String get webChatBestaetigt => 'Dziękujemy! Zarząd wie już, że to ty.';
+
+  @override
+  String get webChatAbgelehnt => 'W porządku. Zarząd dowie się, że to nie ty.';
+
+  @override
+  String get webChatFalsch =>
+      'Ta liczba się nie zgadza. Poproś zarząd, aby zapytał ponownie.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'To pytanie jest już nieważne. Poproś zarząd, aby zapytał ponownie.';
+
+  @override
+  String get webChatFehler => 'Brak połączenia z serwerem. Spróbuj ponownie.';
+
+  @override
   String get themeTitle => 'Wygląd';
 
   @override

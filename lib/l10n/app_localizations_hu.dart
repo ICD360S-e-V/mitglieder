@@ -2936,6 +2936,39 @@ class AppLocalizationsHu extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Az elnökség kérdezi';
+
+  @override
+  String get webChatFrageText => 'Most éppen az icd360s.de csevegőjében ír?';
+
+  @override
+  String get webChatFrageZahl =>
+      'Koppintson arra a számra, amely ott a csevegőben látható.';
+
+  @override
+  String get webChatNein => 'Nem, nem én vagyok';
+
+  @override
+  String get webChatBestaetigt =>
+      'Köszönjük! Az elnökség most már tudja, hogy Ön az.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'Rendben. Az elnökség megtudja, hogy nem Ön az.';
+
+  @override
+  String get webChatFalsch =>
+      'Ez a szám nem egyezik. Kérje meg az elnökséget, hogy kérdezzen újra.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Ez a kérdés már nem érvényes. Kérje meg az elnökséget, hogy kérdezzen újra.';
+
+  @override
+  String get webChatFehler =>
+      'Nincs kapcsolat a szerverrel. Kérjük, próbálja újra.';
+
+  @override
   String get themeTitle => 'Megjelenés';
 
   @override

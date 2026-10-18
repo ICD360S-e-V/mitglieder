@@ -2926,6 +2926,38 @@ class AppLocalizationsEt extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Juhatus küsib';
+
+  @override
+  String get webChatFrageText => 'Kas kirjutate praegu icd360s.de vestluses?';
+
+  @override
+  String get webChatFrageZahl =>
+      'Puudutage numbrit, mis on seal vestluses näha.';
+
+  @override
+  String get webChatNein => 'Ei, see ei ole mina';
+
+  @override
+  String get webChatBestaetigt =>
+      'Aitäh! Juhatus teab nüüd, et see olete teie.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'Selge. Juhatus saab teada, et see ei ole teie.';
+
+  @override
+  String get webChatFalsch =>
+      'See number ei klapi. Paluge juhatusel uuesti küsida.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'See küsimus ei kehti enam. Paluge juhatusel uuesti küsida.';
+
+  @override
+  String get webChatFehler => 'Ühendus serveriga puudub. Proovige uuesti.';
+
+  @override
   String get themeTitle => 'Välimus';
 
   @override

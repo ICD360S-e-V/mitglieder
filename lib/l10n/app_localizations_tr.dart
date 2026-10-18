@@ -2935,6 +2935,38 @@ class AppLocalizationsTr extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Yönetim kurulu soruyor';
+
+  @override
+  String get webChatFrageText =>
+      'Şu anda icd360s.de sohbetinde mi yazıyorsunuz?';
+
+  @override
+  String get webChatFrageZahl => 'Orada sohbette görünen sayıya dokunun.';
+
+  @override
+  String get webChatNein => 'Hayır, bu ben değilim';
+
+  @override
+  String get webChatBestaetigt =>
+      'Teşekkürler! Yönetim kurulu artık yazanın siz olduğunuzu biliyor.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'Tamam. Yönetim kuruluna yazanın siz olmadığınız bildirilecek.';
+
+  @override
+  String get webChatFalsch =>
+      'Bu sayı doğru değil. Yönetim kurulundan tekrar sormasını isteyin.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Bu soru artık geçerli değil. Yönetim kurulundan tekrar sormasını isteyin.';
+
+  @override
+  String get webChatFehler => 'Sunucuya bağlantı yok. Lütfen tekrar deneyin.';
+
+  @override
   String get themeTitle => 'Görünüm';
 
   @override

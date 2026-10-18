@@ -2931,6 +2931,38 @@ class AppLocalizationsFi extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Hallitus kysyy';
+
+  @override
+  String get webChatFrageText =>
+      'Kirjoitatko juuri nyt icd360s.de-sivuston chatissa?';
+
+  @override
+  String get webChatFrageZahl => 'Napauta numeroa, joka näkyy siellä chatissa.';
+
+  @override
+  String get webChatNein => 'Ei, se en ole minä';
+
+  @override
+  String get webChatBestaetigt =>
+      'Kiitos! Hallitus tietää nyt, että se olet sinä.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'Selvä. Hallitukselle kerrotaan, ettei se ollut sinä.';
+
+  @override
+  String get webChatFalsch =>
+      'Numero ei täsmää. Pyydä hallitusta kysymään uudelleen.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Kysymys ei ole enää voimassa. Pyydä hallitusta kysymään uudelleen.';
+
+  @override
+  String get webChatFehler => 'Ei yhteyttä palvelimeen. Yritä uudelleen.';
+
+  @override
   String get themeTitle => 'Ulkoasu';
 
   @override

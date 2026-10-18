@@ -2929,6 +2929,37 @@ class AppLocalizationsLt extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Valdyba klausia';
+
+  @override
+  String get webChatFrageText =>
+      'Ar dabar rašote pokalbyje svetainėje icd360s.de?';
+
+  @override
+  String get webChatFrageZahl =>
+      'Bakstelėkite skaičių, kuris rodomas ten, pokalbyje.';
+
+  @override
+  String get webChatNein => 'Ne, tai ne aš';
+
+  @override
+  String get webChatBestaetigt => 'Ačiū! Valdyba dabar žino, kad tai jūs.';
+
+  @override
+  String get webChatAbgelehnt => 'Gerai. Valdyba sužinos, kad tai ne jūs.';
+
+  @override
+  String get webChatFalsch =>
+      'Šis skaičius netinka. Paprašykite valdybos paklausti dar kartą.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Šis klausimas nebegalioja. Paprašykite valdybos paklausti dar kartą.';
+
+  @override
+  String get webChatFehler => 'Nėra ryšio su serveriu. Bandykite dar kartą.';
+
+  @override
   String get themeTitle => 'Išvaizda';
 
   @override

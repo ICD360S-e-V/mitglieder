@@ -2949,6 +2949,40 @@ class AppLocalizationsEl extends AppLocalizations {
   String get kontaktMailBeispiel => 'name@example.com';
 
   @override
+  String get webChatFrageTitel => 'Το διοικητικό συμβούλιο ρωτά';
+
+  @override
+  String get webChatFrageText =>
+      'Γράφετε αυτή τη στιγμή στη συνομιλία στο icd360s.de;';
+
+  @override
+  String get webChatFrageZahl =>
+      'Πατήστε τον αριθμό που εμφανίζεται εκεί στη συνομιλία.';
+
+  @override
+  String get webChatNein => 'Όχι, δεν είμαι εγώ';
+
+  @override
+  String get webChatBestaetigt =>
+      'Ευχαριστούμε! Το διοικητικό συμβούλιο ξέρει πλέον ότι είστε εσείς.';
+
+  @override
+  String get webChatAbgelehnt =>
+      'Εντάξει. Το διοικητικό συμβούλιο θα ενημερωθεί ότι δεν είστε εσείς.';
+
+  @override
+  String get webChatFalsch =>
+      'Αυτός ο αριθμός δεν είναι σωστός. Ζητήστε από το διοικητικό συμβούλιο να ρωτήσει ξανά.';
+
+  @override
+  String get webChatAbgelaufen =>
+      'Η ερώτηση δεν ισχύει πλέον. Ζητήστε από το διοικητικό συμβούλιο να ρωτήσει ξανά.';
+
+  @override
+  String get webChatFehler =>
+      'Δεν υπάρχει σύνδεση με τον διακομιστή. Δοκιμάστε ξανά.';
+
+  @override
   String get themeTitle => 'Εμφάνιση';
 
   @override

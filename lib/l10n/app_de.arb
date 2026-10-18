@@ -1442,6 +1442,42 @@
   "@kontaktMailBeispiel": {
     "description": "Beispiel im Feld für eine neue E-Mail-Adresse (Domain für Beispiele: example.com)"
   },
+  "webChatFrageTitel": "Der Vorstand fragt",
+  "@webChatFrageTitel": {
+    "description": "Titel des Dialogs, wenn der Vorstand fragt, ob das Mitglied gerade im Website-Chat schreibt"
+  },
+  "webChatFrageText": "Schreiben Sie gerade im Chat auf icd360s.de?",
+  "@webChatFrageText": {
+    "description": "Frage im Dialog; icd360s.de ist die Website des Vereins (nicht übersetzen)"
+  },
+  "webChatFrageZahl": "Tippen Sie auf die Zahl, die dort im Chat steht.",
+  "@webChatFrageZahl": {
+    "description": "Anleitung: im Website-Chat steht eine Zahl, darunter stehen drei Zahlen zur Auswahl"
+  },
+  "webChatNein": "Nein, das bin ich nicht",
+  "@webChatNein": {
+    "description": "Knopf: das Mitglied schreibt NICHT im Website-Chat"
+  },
+  "webChatBestaetigt": "Danke! Der Vorstand weiß jetzt, dass Sie es sind.",
+  "@webChatBestaetigt": {
+    "description": "Nach der richtigen Zahl: das Gespräch im Website-Chat ist jetzt diesem Mitglied zugeordnet"
+  },
+  "webChatAbgelehnt": "In Ordnung. Der Vorstand erfährt, dass Sie es nicht sind.",
+  "@webChatAbgelehnt": {
+    "description": "Nach „Nein, das bin ich nicht\""
+  },
+  "webChatFalsch": "Diese Zahl stimmt nicht. Bitten Sie den Vorstand, noch einmal zu fragen.",
+  "@webChatFalsch": {
+    "description": "Falsche Zahl getippt: die Frage ist damit verbraucht"
+  },
+  "webChatAbgelaufen": "Die Frage gilt nicht mehr. Bitten Sie den Vorstand, noch einmal zu fragen.",
+  "@webChatAbgelaufen": {
+    "description": "Die Frage gilt nicht mehr (nach 10 Minuten oder vom Vorstand zurückgenommen)"
+  },
+  "webChatFehler": "Keine Verbindung zum Server. Bitte versuchen Sie es noch einmal.",
+  "@webChatFehler": {
+    "description": "Netzfehler beim Antworten; das Mitglied kann gleich noch einmal tippen"
+  },
   "themeTitle": "Darstellung",
   "themeLight": "Hell",
   "themeDark": "Dunkel",
