@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.118.1](https://github.com/ICD360S-e-V/mitglieder/compare/v1.118.0...v1.118.1) (2026-10-18)
+
+
+### Bug Fixes
+
+* **protokoll:** keine Namen, IP-Adressen und Pfade im hochgeladenen Protokoll ([#530](https://github.com/ICD360S-e-V/mitglieder/issues/530)) ([12ac71f](https://github.com/ICD360S-e-V/mitglieder/commit/12ac71fd708b24b8556a6d7600a5cce3b81ef2a6))
+
 ## [1.118.0](https://github.com/ICD360S-e-V/mitglieder/compare/v1.117.0...v1.118.0) (2026-10-18)
 
 
